@@ -1710,19 +1710,6 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 
-	//
-	// HybridTech parameters
-	//
-
-	/**
-	 * Set is_hybrid: hybrid configuration [0/1]
-	 * options: 0=singletech,1=hybrid
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Battery_HybridTech_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err);
-
-
 	/**
 	 * Simulation Getters
 	 */
@@ -2201,13 +2188,6 @@ extern "C"
 
 
 	/**
-	 * HybridTech Getters
-	 */
-
-	SAM_EXPORT double SAM_Battery_HybridTech_is_hybrid_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
 	 * Outputs Getters
 	 */
 
@@ -2340,6 +2320,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_Outputs_capacity_factor_sales_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 

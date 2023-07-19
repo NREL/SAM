@@ -2421,6 +2421,19 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// HybridFin parameters
+	//
+
+	/**
+	 * Set cf_hybrid_om_sum: Hybrid O&M costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * Revenue Getters
 	 */
@@ -3085,6 +3098,13 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * HybridFin Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

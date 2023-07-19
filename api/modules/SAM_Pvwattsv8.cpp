@@ -278,12 +278,6 @@ SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv8_HybridTech_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_hybrid", number);
-	});
-}
-
 SAM_EXPORT double* SAM_Pvwattsv8_SolarResource_albedo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -778,17 +772,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_tab
 
 
 
-SAM_EXPORT double SAM_Pvwattsv8_HybridTech_is_hybrid_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_hybrid", &result))
-		make_access_error("SAM_Pvwattsv8", "is_hybrid");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -910,6 +893,18 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor_ac", &result))
 		make_access_error("SAM_Pvwattsv8", "capacity_factor_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_battery_replacement_cost_schedule");
 	});
 	return result;
 }

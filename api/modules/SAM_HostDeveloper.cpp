@@ -1742,6 +1742,12 @@ SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "cf_hybrid_om_sum", arr, length);
+	});
+}
+
 SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4979,6 +4985,18 @@ SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_t
 	result = ssc_data_get_array(ptr, "rate_escalation", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "rate_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_hybrid_om_sum", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_hybrid_om_sum");
 	});
 	return result;
 }
