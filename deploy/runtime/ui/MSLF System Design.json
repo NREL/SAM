@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 System Design",
+    "Name": "MSLF System Design",
     "Width": 921.0,
     "Height": 908.0,
     "FormObjects": {
@@ -1900,8 +1900,8 @@
         "\t\t${SF_CALC_T_field_out_des_SS} = ssc_var(obj, \"T_field_out_des_SS\");\r",
         "\t\t${SF_CALC_m_dot_des_SS} = ssc_var(obj, \"m_dot_des_SS\");\r",
         "\t\t${SF_CALC_m_dot_loop_des_SS} = ssc_var(obj, \"m_dot_loop_des_SS\");\r",
-        "\t\t${SF_CALC_V_hdr_min_des_SS} = ssc_var(obj, \"V_hdr_min_des_SS\");\r",
-        "\t\t${SF_CALC_V_hdr_max_des_SS} = ssc_var(obj, \"V_hdr_max_des_SS\");\r",
+        "\t\t//${SF_CALC_V_hdr_min_des_SS} = ssc_var(obj, \"V_hdr_min_des_SS\");\r",
+        "\t\t//${SF_CALC_V_hdr_max_des_SS} = ssc_var(obj, \"V_hdr_max_des_SS\");\r",
         "\t\t${SF_CALC_eta_optical_des_SS} = ssc_var(obj, \"eta_optical_des_SS\");\r",
         "\t\t${SF_CALC_therm_eff_des_SS} = ssc_var(obj, \"therm_eff_des_SS\");\r",
         "\t\t${SF_CALC_eff_des_SS} = ssc_var(obj, \"eff_des_SS\");\r",
@@ -1996,8 +1996,8 @@
         "\t\t${SF_CALC_T_field_out_des_SS} = fail;\r",
         "\t\t${SF_CALC_m_dot_des_SS} = fail;\r",
         "\t\t${SF_CALC_m_dot_loop_des_SS} = fail;\r",
-        "\t\t${SF_CALC_V_hdr_min_des_SS} = fail;\r",
-        "\t\t${SF_CALC_V_hdr_max_des_SS} = fail;\r",
+        "\t\t//${SF_CALC_V_hdr_min_des_SS} = fail;\r",
+        "\t\t//${SF_CALC_V_hdr_max_des_SS} = fail;\r",
         "\t\t${SF_CALC_eta_optical_des_SS} = fail;\r",
         "\t\t${SF_CALC_therm_eff_des_SS} = fail;\r",
         "\t\t${SF_CALC_eff_des_SS} = fail;\r",
