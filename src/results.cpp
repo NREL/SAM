@@ -155,12 +155,12 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
         }
 
         // TODO: hybrid processing
- //       if (sim->GetCase()->GetConfiguration()->Technology.size() > 1) {
- //           steps_per_hour_lt = steps_per_hour / (an_period - 1);
- //           lifetime = true;
- //           if (steps_per_hour_lt * 8760 * (an_period - 1) != (int)row_length)
- //               steps_per_hour_lt = -1;
- //       }
+        if (sim->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            steps_per_hour_lt = steps_per_hour / (an_period - 1);
+            lifetime = true;
+            if (steps_per_hour_lt * 8760 * (an_period - 1) != (int)row_length)
+                steps_per_hour_lt = -1;
+        }
 
 
         // I know we do not want to start this again but wanted lifetime subhourly output
@@ -975,8 +975,8 @@ void ResultsViewer::Setup(Simulation* sim)
             use_lifetime = true;
 
     // TODO: hybrid use_lifetime
- //   if (cfg->Technology.size() > 1)
- //       use_lifetime = true;
+    if (cfg->Technology.size() > 1)
+        use_lifetime = true;
 
     // by default, no valid time shift specified so default to 0.0
     // for subhourly simulation and 0.5 for hourly simulation
@@ -2228,11 +2228,11 @@ public:
             }
 
         // TODO: hybrid processing
- //       if (results->GetCase()->GetConfiguration()->Technology.size() > 1) {
- //           UseLifetime = true;
- //           if (VarValue* vv = results->GetValue("analysis_period"))
- //               Years = (int)vv->Value();
- //       }
+        if (results->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            UseLifetime = true;
+            if (VarValue* vv = results->GetValue("analysis_period"))
+                Years = (int)vv->Value();
+        }
 
         MinCount = 10000000;
 

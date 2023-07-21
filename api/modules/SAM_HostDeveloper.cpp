@@ -1748,6 +1748,12 @@ SAM_EXPORT void SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_HybridFin_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_hybrid", number);
+	});
+}
+
 SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4997,6 +5003,17 @@ SAM_EXPORT double* SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "cf_hybrid_om_sum", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "cf_hybrid_om_sum");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_HostDeveloper_HybridFin_is_hybrid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_hybrid", &result))
+		make_access_error("SAM_HostDeveloper", "is_hybrid");
 	});
 	return result;
 }
