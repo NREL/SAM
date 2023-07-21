@@ -28,9 +28,12 @@ addconfig( 'MSLF_old', ['Commercial','Single Owner', 'Merchant Plant', 'Leverage
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+// Heat
+addconfig( 'MSPT IPH', ['None']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
-// Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MSLF IPH', ['Single Owner']);
+// Marine Energy
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
 addconfig( 'MEwave Battery', ['Single Owner']);
 addconfig( 'MEtidal', ['LCOE Calculator', 'None']);
@@ -66,15 +69,18 @@ configopt( 'Solar Water Heating',         { 'long_name'='Solar Water Heating',  
 configopt( 'Fuel Cell',                   { 'long_name'='Fuel Cell - PV - Battery',                   'short_name'='Fuel Cell',        'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System',              { 'long_name'='Generic System',                         'short_name'='Generic',          'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MSPT',     	                  { 'tree_parent'='CSP', 'long_name'='Power Tower Molten Salt',            'short_name'='Tower (salt)',     'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
+configopt( 'MSPT IPH',     	              { 'tree_parent'='Heat', 'long_name'='Power Tower Molten Salt - Heat',     'short_name'='IPH Tower (salt)',     'description'='CSP molten salt power tower IPH system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough',             { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Physical',        'short_name'='Trough (phys)',    'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough',            { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Empirical',       'short_name'='Trough (empr)',    'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 configopt( 'Dish Stirling',            	  { 'tree_parent'='Retired', 'long_name'='Dish Stirling',                      'short_name'='Dish Stirling',    'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
 configopt( 'Generic CSP System',          { 'tree_parent'='CSP', 'long_name'='Generic Model',                      'short_name'='Generic CSP',      'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF',        				  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam',        'short_name'='Fresnel (steam)',  'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF',		  			  	  { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Molten Salt',     'short_name'='Fresnel',       'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'MSLF_old',        			  { 'tree_parent'='CSP', 'long_name'='OLD Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'Physical Trough IPH',         { 'tree_parent'='CSP', 'long_name'='Parabolic Trough - Heat',            'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH',                    { 'tree_parent'='CSP', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
+configopt( 'MSLF IPH',		  			  { 'tree_parent'='Heat', 'long_name'='Linear Fresnel Molten Salt - Heat',     'short_name'='IPH Fresnel',       'description'='CSP IPH system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+
+configopt( 'MSLF_old',        			  { 'tree_parent'='Retired', 'long_name'='OLD Linear Fresnel Molten Salt',         'short_name'='Fresnel (salt)',   'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
+configopt( 'Physical Trough IPH',         { 'tree_parent'='Heat', 'long_name'='Parabolic Trough - Heat',            'short_name'='IPH Trough',       'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH',                    { 'tree_parent'='Heat', 'long_name'='Linear Fresnel Direct Steam - Heat',       'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave',                     { 'tree_parent'='ME', 'long_name'='Wave',           'short_name'='Marine Wave',          'description'='Marine energy wave system' });
 configopt( 'MEwave Battery',             { 'tree_parent'='ME', 'long_name'='Wave Battery',           'short_name'='Marine Wave Battery',          'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal',                    { 'tree_parent'='ME', 'long_name'='Tidal',          'short_name'='Marine Tidal',         'description'='Marine energy tidal system' });
@@ -1758,6 +1764,13 @@ addpage( [['Sales Tax Rate Single Input','Tower SolarPilot Capital Costs' ]],{ '
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 //-----------------------------------------------------
+setconfig('MSPT IPH', 'None');
+setmodules( ['tcsmolten_salt']);
+setup_MSPT_pages(0);
+addpage( [['Sales Tax Rate Single Input','Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+
+//-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
 setmodules( ['tcsmolten_salt', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSPT_pages(1);
@@ -2066,6 +2079,15 @@ setup_sale_leaseback_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Single Owner' );
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
+setup_MSLF_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_pages();
+setup_electricity_purchases();
+//-----------------------------------------------------
+setconfig( 'MSLF IPH', 'Single Owner' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
