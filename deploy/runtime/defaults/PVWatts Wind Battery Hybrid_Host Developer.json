@@ -56265,7 +56265,13 @@
         "tod_library": "Uniform Dispatch",
         "total_installed_cost": 24304.0,
         "ui_annual_load": 0.0,
+        "ui_battery_capacity": 20.304,
+        "ui_battery_cost": 20304.0,
+        "ui_pv_capacity": 4.0,
+        "ui_pv_cost": 0.0,
         "ui_wacc": 4.06875,
+        "ui_wind_capacity": 1.0,
+        "ui_wind_cost": 4000.0,
         "ur_annual_min_charge": 0.0,
         "ur_billing_demand_is_shown": 0.0,
         "ur_billing_demand_lookback_percentages": [

@@ -2602,6 +2602,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_total_installed_cost'} 
 ]);
+addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system'});
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
@@ -2625,4 +2626,4 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operatin
 addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Battery Incentives', 'help'='incentives', 'bin_name'='Battery' } );
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
-addpage([['Hybrid Summary']], {'sidebar'='Hybrid Summary', 'help'='hybrid_summary'});
+addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_costs'});

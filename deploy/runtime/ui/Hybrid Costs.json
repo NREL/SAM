@@ -1,7 +1,7 @@
 {
-    "Name": "Hybrid Summary",
-    "Width": 693.0,
-    "Height": 491.0,
+    "Name": "Hybrid Costs",
+    "Width": 862.0,
+    "Height": 316.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,15 +12,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 84.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -95,15 +95,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 267.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -178,15 +178,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -257,23 +257,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 4"
+                    "String": "object 45"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 165.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 816.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 285.0
+                    "Integer": 82.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -281,7 +281,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Hybrid system specifications"
+                    "String": "Operation and Maintenance Costs"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -294,23 +294,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 45"
+                    "String": "object 455"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 816.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 154.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -318,7 +318,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Additional cost components"
+                    "String": "Capital Cost"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -335,19 +335,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 612.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 311.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -355,9 +355,71 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Hybrid Summary"
+                    "String": "Hybrid System Costs"
                 },
                 "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 818.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Hybrid system costs are for any costs that cannot be assigned to the PV, wind, or battery subsystems."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -372,15 +434,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 618.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -408,7 +470,256 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$"
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_battery_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 138.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_pv_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_wind_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -451,22 +762,22 @@
         "hybrid_capital_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Additional hybrid capital cost",
+            "Label": "Hybrid installation cost",
             "Units": "$",
-            "Group": "",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "hybrid_om_capacity_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Hybrid OM Capacity cost",
-            "Units": "$/kW",
-            "Group": "",
+            "Label": "Hybrid fixed annual cost by capacity",
+            "Units": "$/kW-yr",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -477,9 +788,9 @@
         "hybrid_om_fixed_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Hybrid OM fixed cost",
-            "Units": "$",
-            "Group": "",
+            "Label": "Hybrid fixed annual cost",
+            "Units": "$/yr",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -490,9 +801,48 @@
         "total_installed_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Combined total cost",
-            "Units": "",
-            "Group": "",
+            "Label": "Total installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_battery_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_pv_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PV installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_wind_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wind installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -507,7 +857,18 @@
         "\t\t+ ${wind_total_installed_cost}\r",
         "\t\t+ ${battery_total_installed_cost}\r",
         "\t\t+ ${hybrid_capital_cost}; };\r",
-        ""
+        "\r",
+        "equations{ 'ui_battery_cost' } = define() {\r",
+        "\treturn ${battery_total_installed_cost};\r",
+        "};\r",
+        "\r",
+        "equations{ 'ui_wind_cost' } = define() {\r",
+        "\treturn ${wind_total_installed_cost};\r",
+        "};\r",
+        "\r",
+        "equations{ 'ui_pv_cost' } = define() {\r",
+        "\treturn ${pv_total_installed_cost};\r",
+        "};"
     ],
     "Callbacks": []
 }
