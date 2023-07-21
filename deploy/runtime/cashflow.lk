@@ -107,6 +107,11 @@ function is_fuel_tech()
 function cf_production()
 {
 	cfline( 'ENERGY', -1);
+	if ( technology() == 'PVWatts Wind Battery Hybrid') 
+	{
+		cfline( 'PVWattscf_energy_net',0);
+		cfline( 'Windcf_energy_net',0);
+	}
 	if ( is_fom_fin() )
 	{
 		cfline( 'cf_energy_sales', 0);
@@ -244,6 +249,13 @@ function cf_om_expenses()
 	{
 		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
 	}
+	if ( technology() == 'PVWatts Wind Battery Hybrid') 
+	{
+		cfline( 'PVWattscf_om_fixed,PVWattscf_om_production,PVWattscf_om_capacity,PVWattscf_om_land_lease',0);
+		cfline( 'Windcf_om_fixed,Windcf_om_production,Windcf_om_capacity',0);
+		cfline( 'Batterycf_om_fixed,Batterycf_om_production,Batterycf_om_capacity,Batterycf_battery_replacement_cost_schedule',0);
+	}
+
 }
 
 function cf_operating_expenses()

@@ -293,6 +293,8 @@
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]
+		},
+		"HybridFin": {
 		}
 	}
 }

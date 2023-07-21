@@ -1082,7 +1082,6 @@ void ResultsViewer::Setup(Simulation* sim)
     // setup graphs
     m_graphViewer->Setup(m_sim);
 
-
     // TODO: remove this after adding for other technologies...
     // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
@@ -1147,7 +1146,7 @@ void ResultsViewer::Setup(Simulation* sim)
             ShowPage(7);
             ShowPage(9);
         }
-        
+
         if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
@@ -1227,7 +1226,6 @@ void ResultsViewer::Setup(Simulation* sim)
             m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
         }
     }
-
     m_tables->Setup(m_sim);
 
     // build cashflow

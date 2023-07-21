@@ -2464,6 +2464,27 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
+	//
+	// HybridFin parameters
+	//
+
+	/**
+	 * Set cf_hybrid_om_sum: Hybrid O&M costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_hybrid: hybrid configuration [0/1]
+	 * options: 0=singletech,1=hybrid
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_HybridFin_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * Revenue Getters
 	 */
@@ -3135,6 +3156,15 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * HybridFin Getters
+	 */
+
+	SAM_EXPORT double* SAM_Singleowner_HybridFin_cf_hybrid_om_sum_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_HybridFin_is_hybrid_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

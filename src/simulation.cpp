@@ -314,7 +314,7 @@ VarValue *Simulation::GetValue( const wxString &name )
 		return vv;
 	else {
 		bool found = false;
-		for (int i = m_inputs.size() - 1; i>0 && !found; i--) {
+		for (int i = m_inputs.size() - 1; i>=0 && !found; i--) {
 			if (vv = GetInput(name, i))
 				found = true;
 		}
@@ -329,7 +329,7 @@ wxString Simulation::GetLabel( const wxString &var )
 	else {
 		bool found = false;
 		wxString label = wxEmptyString;
-		for (int i = m_inputs.size() - 1; i > 0 && !found; i--) {
+		for (int i = m_inputs.size() - 1; i >= 0 && !found; i--) {
 			label = m_case->Variables(i).Label(var);
 			found = (label.Left(11) != "<not found:");
 		}
@@ -344,7 +344,7 @@ wxString Simulation::GetUnits( const wxString &var )
 	else {
 		bool found = false;
 		wxString units = wxEmptyString;
-		for (int i = m_inputs.size() - 1; i > 0 && !found; i--) {
+		for (int i = m_inputs.size() - 1; i >= 0 && !found; i--) {
 			units = m_case->Variables(i).Units(var);
 			found = (units != wxEmptyString);
 		}
@@ -1192,8 +1192,13 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString label(ssc_info_label(p_inf));
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
-							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
-							label = prepend_name + " " + label;
+							wxString sam_output_name = prepend_name + name; // hybrid processing
+							if (prepend_name.Lower() != label.Left(prepend_name.length()).Lower()) { // check for "Battery Battery..."
+								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
+									label = prepend_name + " " + label;
+								else
+									label = prepend_name + " " + label.Left(1).Lower() + label.Right(label.length()-1);
+							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
 							{

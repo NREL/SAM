@@ -281,6 +281,8 @@
 			"batt_salvage_percentage": 0
 		},
 		"ChargesByMonth": {
+		},
+		"HybridFin": {
 		}
 	}
 }
