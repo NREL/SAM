@@ -2545,6 +2545,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_total_installed_cost'} 
 ]);
+addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system'});
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
@@ -2564,9 +2565,10 @@ setup_hybrid_battery_pages(FOM);
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // single owner
+addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs'});
+
 setup_single_owner_pages( );
 setup_electricity_purchases();
-addpage([['Hybrid Summary']], {'sidebar'='Hybrid Summary', 'help'='hybrid_summary'});
 
 ////////////////////////////////////////////////////////////////////////////////
 setconfig('PVWatts Wind Battery Hybrid', 'Host Developer' );
