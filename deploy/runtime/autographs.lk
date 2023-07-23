@@ -173,7 +173,24 @@ autographs { 'PVWatts Wind Battery Hybrid|Single Owner' } = define () {
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
 	// single owner
-	 ppa_revenue_graphs(); ppa_financial_graphs();
+	ppa_revenue_graphs(); ppa_financial_graphs();
+};
+
+
+autographs { 'PVWatts Wind Battery Hybrid|Host Developer' } = define () {
+	// monthly energy
+	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+	agraph( 'PVWattsmonthly_energy,Windmonthly_energy,monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom' );
+	// heatmaps
+	agraph( 'PVWattsannual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'Windannual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	// losses
+	if (varinfo('Windtotal_uncert')){
+		columns = 'Windavail_losses,Windelec_losses,Windenv_losses,ops_losses, Windturb_losses,wake_losses';
+		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
+	}
+	// host developer
+	host_developer_graphs();
 };
 
 
