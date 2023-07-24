@@ -1,7 +1,7 @@
 {
     "Name": "MSPT IPH Capital Costs",
-    "Width": 846.0,
-    "Height": 971.0,
+    "Width": 843.0,
+    "Height": 878.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 620.0
+                    "Integer": 563.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 633.0
+                    "Integer": 573.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 837.0
+                    "Integer": 777.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -189,7 +189,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -251,7 +251,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -313,7 +313,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -375,7 +375,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -437,7 +437,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -499,7 +499,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -582,7 +582,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 498.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -748,7 +748,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -831,7 +831,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 498.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -914,7 +914,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -997,7 +997,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1080,7 +1080,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1163,7 +1163,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1246,90 +1246,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.pt.cost.fossil"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 642.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 372.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1578,7 +1495,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 825.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1661,7 +1578,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 591.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1744,7 +1661,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1827,7 +1744,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1910,7 +1827,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1993,90 +1910,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.pt.cost.power_block"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 642.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2408,7 +2242,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 768.0
+                    "Integer": 708.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2491,7 +2325,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 768.0
+                    "Integer": 708.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2823,7 +2657,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 591.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2981,89 +2815,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "fossil_spec_cost"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 453.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 372.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 10.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "heater_cost"
                 },
                 "X": {
@@ -3072,7 +2823,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3155,7 +2906,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3321,7 +3072,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 729.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3404,7 +3155,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 858.0
+                    "Integer": 798.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3466,7 +3217,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 402.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3516,7 +3267,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 480.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3645,7 +3396,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Power Cycle"
+                    "String": "Heat Sink"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -3816,7 +3567,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3866,7 +3617,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 519.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3966,7 +3717,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 753.0
+                    "Integer": 693.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4016,7 +3767,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 789.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4066,7 +3817,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 801.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4128,7 +3879,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 804.0
+                    "Integer": 744.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4190,7 +3941,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 579.0
+                    "Integer": 534.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4252,7 +4003,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4306,89 +4057,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "plant_spec_cost"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 453.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 420.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 12.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "q_dot_heater_des_calc_COST"
                 },
                 "X": {
@@ -4397,7 +4065,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4729,7 +4397,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 768.0
+                    "Integer": 708.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4978,7 +4646,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 579.0
+                    "Integer": 534.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5061,7 +4729,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 804.0
+                    "Integer": 744.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5144,7 +4812,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 801.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5393,7 +5061,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5718,8 +5386,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Balance of plant cost",
-            "Units": "$/kWe",
-            "Group": "Tower SolarPilot Capital Costs",
+            "Units": "$/kWt",
+            "Group": "MSPT IPH Capital Costs",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 100.0,
@@ -5844,19 +5512,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "csp.pt.cost.fossil": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil backup cost total",
-            "Units": "$",
-            "Group": "Tower SolarPilot Capital Costs",
-            "IndexLabels": "",
-            "Flags": 9.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "csp.pt.cost.heliostats": {
             "Version": 4.0,
             "Type": 1.0,
@@ -5961,25 +5616,12 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "csp.pt.cost.power_block": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Power cycle cost total",
-            "Units": "$",
-            "Group": "Tower SolarPilot Capital Costs",
-            "IndexLabels": "",
-            "Flags": 9.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "csp.pt.cost.power_block_mwe": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Cycle gross capacity",
-            "Units": "MWe",
-            "Group": "Tower SolarPilot Capital Costs",
+            "Label": "Heat sink capacity",
+            "Units": "MWt",
+            "Group": "MSPT IPH Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -6117,19 +5759,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "fossil_spec_cost": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Fossil backup cost",
-            "Units": "$/kWe",
-            "Group": "Tower SolarPilot Capital Costs",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "heater_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -6178,19 +5807,6 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "plant_spec_cost": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Power cycle cost",
-            "Units": "$/kWe",
-            "Group": "Tower SolarPilot Capital Costs",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 730.98,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
