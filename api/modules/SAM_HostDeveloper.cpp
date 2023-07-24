@@ -1754,6 +1754,12 @@ SAM_EXPORT void SAM_HostDeveloper_HybridFin_is_hybrid_nset(SAM_table ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_energy", arr, length);
+	});
+}
+
 SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5014,6 +5020,18 @@ SAM_EXPORT double SAM_HostDeveloper_HybridFin_is_hybrid_nget(SAM_table ptr, SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_hybrid", &result))
 		make_access_error("SAM_HostDeveloper", "is_hybrid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "monthly_energy");
 	});
 	return result;
 }
