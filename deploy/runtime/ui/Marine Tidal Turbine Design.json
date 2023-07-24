@@ -1,7 +1,7 @@
 {
     "Name": "Marine Tidal Turbine Design",
-    "Width": 961.0,
-    "Height": 688.0,
+    "Width": 937.0,
+    "Height": 470.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,11 +20,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 950.0
+                    "Integer": 920.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 671.0
+                    "Integer": 449.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -442,7 +442,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 573.0
+                    "Integer": 540.0
                 },
                 "Height": {
                     "Type": 3.0,
