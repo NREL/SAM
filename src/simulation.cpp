@@ -318,6 +318,12 @@ VarValue *Simulation::GetValue( const wxString &name )
 			if (vv = GetInput(name, i))
 				found = true;
 		}
+		if (!found) {
+			for (int i = m_case->GetConfiguration()->Technology.size() - 1; i >= 0 && !found; i--) {
+				if (vv = m_case->Values(i).Get(name))
+					found = true;
+			}
+		}
 		return vv;
 	}
 }
