@@ -29,7 +29,7 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
-addconfig( 'MSPT IPH', ['None']);
+addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MSLF IPH', ['Single Owner']);
@@ -359,6 +359,13 @@ function setup_iph_lcoefcr_pages() // LCOE calculator will not work with tower m
 {
   addpage( [[ 'Financial LCOE Calc IPH Add',
 				'Financial LCOE Calculator']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+}
+
+function setup_iph_lcoefcr_cost_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
+{
+  addpage( [[ 'Financial LCOE Calc IPH Add',
+				'Financial LCOE Calc with Costs']],
            { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 }
 
@@ -1756,6 +1763,21 @@ function setup_MSPT_pages(is_grid_limits)
   	}
 }
 
+function setup_MSPT_IPH_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'MSPT IPH System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
+	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
+			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
+			'exclusive_header_pages' = ['MSPT Receiver']} );
+	//addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'MSPT IPH System Control' ,
+	{'name' = 'MSPT IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+}
+
 //-----------------------------------------------------
 setconfig('MSPT', 'None');
 setmodules( ['tcsmolten_salt']);
@@ -1766,25 +1788,16 @@ addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financi
 //-----------------------------------------------------
 setconfig('MSPT IPH', 'None');
 setmodules( ['mspt_iph']);
-addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
-addpage( [[ 'MSPT IPH System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
-addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
-		{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
-		'exclusive_header_pages' = ['MSPT Receiver']} );
-//addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
-addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
-//addpage( [[ 'Phys Trough System Control' ,
-//	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-//	  { 'sidebar'='System Control', 'help'='iph_trough-system_control' } );
-
-addpage( [[ 'MSPT IPH System Control' ,
-{'name' = 'MSPT IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-
+setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
+setconfig('MSPT IPH', 'LCOH Calculator');
+setmodules( ['mspt_iph', 'iph_to_lcoefcr', 'lcoefcr']);
+setup_MSPT_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setup_iph_lcoefcr_cost_pages();
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
