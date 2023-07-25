@@ -167,103 +167,77 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 {
 	m_case->AddListener( this );
 
+	// colors and fonts
+	wxColour config_font_color(255,255,255);
+	wxColour tech_color(0, 129, 255);
+	wxColour fin_color(0, 194, 255);
+
+	wxFont lafont(*wxNORMAL_FONT);
+	lafont.SetWeight(wxFONTWEIGHT_BOLD);
+
 	m_pageNote = 0;
 	m_currentGroup = 0;
 
-	wxColour lafore(*wxWHITE);
-	wxColour laback( 100,100,100 );
-	wxColour tech_color(80, 191, 191);
-	wxColour fin_color(133, 191, 75);
-
+	// navigation menu objects
 	m_left_panel = new wxPanel(this);
-	m_left_panel->SetBackgroundColour( laback );
-    m_pTech = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
-    wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
-    choice_sizer->Add(m_pTech, 1, wxALL | wxEXPAND, 0);
-    //m_pFin = new wxMetroDataViewTreeCtrl(m_left_panel, ID_FinTree);
-    m_pTech->SetBackgroundColour(wxColour(243, 243, 243));
-    
+	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
+
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
     m_inputPageList->Show(false);
-	//m_inputPageList->SetCaseWindow( this );
-	//m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
 
-	wxFont lafont( *wxNORMAL_FONT );
-	lafont.SetWeight( wxFONTWEIGHT_BOLD );
+	// box for left panel
+	wxBoxSizer* szvl = new wxBoxSizer(wxVERTICAL);
 
-	m_configLabel = new wxStaticText( m_left_panel, wxID_ANY, "-technology-" );
-	m_configLabel->SetBackgroundColour( tech_color ); // TODO want this to apply color to tech panel background, not just label background
-	m_configLabel->SetForegroundColour( lafore );
-	m_configLabel->SetFont( lafont );
+	m_techLabel = new wxStaticText(m_left_panel, wxID_ANY, "-technology-");
+	m_techLabel->SetBackgroundColour(tech_color); // TODO want this to apply color to tech panel background, not just label background
+	m_techLabel->SetForegroundColour(config_font_color);
+	m_techLabel->SetFont(lafont);
+	//szvl->Add(m_techLabel, 1, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
+	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
 
-    m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
-    m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
-    m_finLabel->SetForegroundColour(lafore);
-    m_finLabel->SetFont(lafont);
-	
-    m_pTech->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
-	
-	m_simButton = new wxMetroButton( m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
-	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
-	m_resultsButton = new wxMetroButton( m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
 
+	m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
+	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
+	m_finLabel->SetForegroundColour(config_font_color);
+	m_finLabel->SetFont(lafont);
+	//szvl->Add(m_finLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
+	szvl->Add(m_finLabel, 0, wxEXPAND | wxALL, 0);
+
+	// navigation menu sizers
+	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
+	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
+	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
+	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
+
+	// box for simulation and results buttons
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
+
+	m_simButton = new wxMetroButton(m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
+	m_simButton->SetFont(wxMetroTheme::Font(wxMT_NORMAL, 14));
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
+
+	m_resultsButton = new wxMetroButton(m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA(graph));
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
+	// grid for parametric buttons etc.
 	m_szsims = new wxGridSizer(2, 0, 0);
 	m_szsims->Add( new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
 	m_szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
-	// select based on technology
 	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV"))
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
 	else
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
 	m_szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
 
-	/*
-	wxSizer* szsims = new wxGridSizer(2, 0, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
-	// select based on technology
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
-	else
-		szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
-
-
-    m_parametricsButton = new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" );
-    m_stochasticButton = new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" );
-    m_pvuncertaintyButton = new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty");
-    m_p50p90Button = new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90");
-    m_macrosButton = new wxMetroButton(m_left_panel, ID_MACRO, "Macros" );
-    
-    m_szsims = new wxGridSizer(2, 0, 0);
-    m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
-    m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
-    // select based on technology
-    if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV")) {
-        m_szsims->Add(m_pvuncertaintyButton, 0, wxALL | wxEXPAND, 0);
-        m_p50p90Button->Hide();
-    }
-    else {
-        m_szsims->Add(m_p50p90Button, 0, wxALL | wxEXPAND, 0);
-        m_pvuncertaintyButton->Hide();
-    }
-    m_szsims->Add( m_macrosButton, 0, wxALL|wxEXPAND, 0 );
-*/
-    
-	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER_HORIZONTAL|wxTOP|wxBOTTOM, 3 );
-    szvl->Add(m_finLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
-    szvl->Add(choice_sizer, 1, wxALL|wxEXPAND, 0);
-    //szvl->Add(choice_sizer, 1, wxALL , 0);
-	//szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
+	
 	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
+
 	m_left_panel->SetSizer( szvl );
 
+	// input and results page objects
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 	
 	m_inputPageScrollWin = new wxScrolledWindow( m_pageFlipper );
@@ -284,7 +258,6 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_exclPanel->SetSizer( m_exclPanelSizer );
 		
 	m_pageFlipper->AddPage( m_inputPageScrollWin, "Input Pages", true );
-
 	
 	m_baseCaseResults = new ResultsViewer( m_pageFlipper, ID_BASECASE_PAGES );
 	m_pageFlipper->AddPage( m_baseCaseResults, "Base Case" );
@@ -294,20 +267,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_stochastic = new StochasticPanel( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_stochastic, "Stochastic", false );
-/*
-	// create based on technology
-    m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
-    m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
-    
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
-		m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
-        m_p50p90->Hide();
-	}
-	else {
-		m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
-		m_pvuncertainty->Hide();
-	}
-*/
+
 	m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
 	m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
 
@@ -317,13 +277,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
 	m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
 
-
 	double xScale, yScale;
 	wxDevicePPIToScale( wxClientDC(this).GetPPI(), &xScale, &yScale );
 	
 	SetMinimumPaneSize( 50 );
 	SplitVertically( m_left_panel, m_pageFlipper, (int)(210*xScale) );
-	
 	
 	m_pageNote = new PageNote( this );
  
@@ -379,13 +337,13 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         bin_name = m_pageGroups[j]->BinName;
         if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
             page_list.Add(bin_name);
-            dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name);
+            dvia[page_list.Index(bin_name)] = m_navigationMenu->AppendContainer(wxDataViewItem(0), bin_name);
         }
         if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
-            m_pTech->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+            m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
         }
         else {
-            m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+            m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
         }
         /*if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
         if (j == 0 && bin_name != "") {
@@ -721,16 +679,16 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 void CaseWindow::OnTechTree(wxDataViewEvent&)
 {
     m_pageFlipper->SetSelection(0);
-    if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
+    if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
-        m_pTech->Expand(m_pTech->GetCurrentItem());
+        m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
         wxDataViewItemArray dvia;
 
-        m_pTech->GetModel()->GetChildren(m_pTech->GetCurrentItem(), dvia);
-        SwitchToInputPage(m_pTech->GetItemText(dvia[0]));
+        m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvia);
+        SwitchToInputPage(m_navigationMenu->GetItemText(dvia[0]));
     }
     else {
-        SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
 }
 
@@ -803,7 +761,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
     else if (evt.GetId() == ID_TechTree)
     {
         m_pageFlipper->SetSelection(0);
-        SwitchToInputPage(m_pTech->GetItemText(m_pTech->GetCurrentItem()));
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
 	else if ( evt.GetId() == ID_EXCL_BUTTON )
 	{
@@ -1410,11 +1368,11 @@ void CaseWindow::UpdateConfiguration()
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
-	
 
-	//m_configLabel->SetLabel( Ts + "\n" + Fs );
-    m_configLabel->SetLabel(Ts);
-    m_finLabel->SetLabel(Fs);
+	// configuration labels for navigation menu
+	// use spaces to set left margin
+    m_techLabel->SetLabel("  " + Ts);
+    m_finLabel->SetLabel("  " + Fs);
 	
 	// update current set of input pages
 	for (size_t i = 0; i < cfg->InputPageGroups.size(); i++) {
