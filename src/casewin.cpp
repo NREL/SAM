@@ -169,8 +169,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	// colors and fonts
 	wxColour config_font_color(255,255,255);
-	wxColour tech_color(0, 129, 255);
-	wxColour fin_color(0, 194, 255);
+	wxColour tech_color(0, 149, 255);
+	wxColour fin_color(128, 202, 255);
 
 	wxFont lafont(*wxNORMAL_FONT);
 	lafont.SetWeight(wxFONTWEIGHT_BOLD);
@@ -192,7 +192,6 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_techLabel->SetBackgroundColour(tech_color); // TODO want this to apply color to tech panel background, not just label background
 	m_techLabel->SetForegroundColour(config_font_color);
 	m_techLabel->SetFont(lafont);
-	//szvl->Add(m_techLabel, 1, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
 	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
 
 
@@ -200,7 +199,6 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
 	m_finLabel->SetForegroundColour(config_font_color);
 	m_finLabel->SetFont(lafont);
-	//szvl->Add(m_finLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP | wxBOTTOM, 3);
 	szvl->Add(m_finLabel, 0, wxEXPAND | wxALL, 0);
 
 	// navigation menu sizers
@@ -1372,8 +1370,10 @@ void CaseWindow::UpdateConfiguration()
 	// configuration labels for navigation menu
 	// use spaces to set left margin
     m_techLabel->SetLabel("  " + Ts);
-    m_finLabel->SetLabel("  " + Fs);
-	
+	m_techLabel->SetToolTip(cfg->TechnologyFullName + " Performance Model");
+	m_finLabel->SetLabel("  " + Fs);
+	m_finLabel->SetToolTip(cfg->Financing + " Financial Model");
+
 	// update current set of input pages
 	for (size_t i = 0; i < cfg->InputPageGroups.size(); i++) {
 		m_pageGroups.insert(m_pageGroups.end(), cfg->InputPageGroups[i].begin(), cfg->InputPageGroups[i].end());
