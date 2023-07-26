@@ -1,7 +1,7 @@
 {
     "Name": "Financial LCOE Calc with Costs",
-    "Width": 862.0,
-    "Height": 691.0,
+    "Width": 863.0,
+    "Height": 663.0,
     "FormObjects": {
         "SchedNumeric": {
             "Visible": 1.0,
@@ -695,89 +695,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "capital_cost"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 570.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 564.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "fixed_charge_rate"
                 },
                 "X": {
@@ -865,7 +782,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 354.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -936,89 +853,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 2.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "fixed_operating_cost13"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 570.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 591.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
                 }
             }
         },
@@ -1255,7 +1089,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 678.0
+                    "Integer": 648.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1342,11 +1176,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 36.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1404,7 +1238,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 354.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1487,11 +1321,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 570.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 591.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1930,7 +1764,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 354.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2017,7 +1851,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 564.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2096,7 +1930,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 354.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2167,89 +2001,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 5.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "variable_operating_cost30"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 570.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 618.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
                 }
             }
         }
@@ -2389,19 +2140,6 @@
             "Group": "LCOE Calculator",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "capital_cost": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Capital cost (CC)",
-            "Units": "$",
-            "Group": "LCOE Calculator",
-            "IndexLabels": "",
-            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2611,11 +2349,35 @@
         "equations{ 'ui_capital_cost_reference' } =define() {",
         "\treturn ${total_installed_cost};",
         "};",
-        "",
-        "equations{ 'capital_cost' } = define() {",
-        "\treturn ${total_installed_cost};",
-        "};",
-        "",
+        "\r",
+        "equations{ '$MIMO$ ui_lcoh_fcr_design' } = define()\r",
+        "{\r",
+        "\tobj = ssc_create();\r",
+        "\r",
+        "\t//#ssc_auto_exec(obj, 'lcoefcr_design', 2);\r",
+        "\r",
+        "\t//ret_d = ssc_dump(obj, 'lcoefcr_design_auto_exec.txt');\r",
+        "\r",
+        "\tret = ssc_exec(obj, 'lcoefcr_design');\r",
+        "\r",
+        "\tif(ret == 0){\r",
+        "\t\t${fixed_charge_rate} = ssc_var(obj, \"fixed_charge_rate_calc\");\r",
+        "\t\t${ui_crf} = ssc_var(obj, \"crf\");\r",
+        "\t\t${ui_pfin} = ssc_var(obj, \"pfin\");\r",
+        "\t\t${ui_cfin} = ssc_var(obj, \"cfin\");\r",
+        "\t\t${ui_wacc} = ssc_var(obj, \"wacc\");\r",
+        "\t}\r",
+        "\telse{\r",
+        "\t\tfail = -987;\r",
+        "\t\t${fixed_charge_rate} = fail;\r",
+        "\t\t${ui_crf} = fail;\r",
+        "\t\t${ui_pfin} = fail;\r",
+        "\t\t${ui_cfin} = fail;\r",
+        "\t\t${ui_wacc} = fail;\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "/*",
         "equations{ '$MIMO$ fixed_charge_rate_calculator' } = define() {",
         "  if ( ${ui_fcr_input_option}==0 )",
         "    ${fixed_charge_rate} = ${ui_fixed_charge_rate};",
@@ -2652,7 +2414,8 @@
         "    ${ui_ireal} = ireal;",
         "    ${fixed_charge_rate} = fcr;",
         "  }",
-        "};"
+        "};\r",
+        "*/"
     ],
     "Callbacks": [
         "function enable_disable() {",
@@ -2669,7 +2432,8 @@
         "  enable( 'c_construction_interest', calculator );",
         "  enable( 'ui_crf', calculator );",
         "  enable( 'ui_pfin', calculator );",
-        "  enable( 'ui_cfin', calculator );",
+        "  enable( 'ui_cfin', calculator );\r",
+        "  enable( 'ui_wacc', calculator );",
         "  enable( 'ui_fixed_charge_rate', !calculator );",
         "}",
         "",
@@ -2681,7 +2445,7 @@
         "\tproperty( 'ui_lbl_cff_msg', 'Caption', msg );",
         "}",
         "",
-        "on_load{\"Financial LCOE Calc with Costs Page\"} = define()",
+        "on_load{\"Financial LCOE Calc with Costs\"} = define()",
         "{",
         "\tenable_disable();",
         "\tcfin_is_zero_check();",

@@ -97,7 +97,6 @@
     "c_nominal_interest_rate": 4.0,
     "c_tax_rate": 28.0,
     "cant_type": 1.0,
-    "capital_cost": 512847000.0,
     "cav_panel_width_calc": "nan",
     "cav_panel_width_ui": "nan",
     "cav_radius_calc": "nan",

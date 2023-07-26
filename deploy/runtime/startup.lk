@@ -1793,7 +1793,7 @@ addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('MSPT IPH', 'LCOH Calculator');
-setmodules( ['mspt_iph', 'iph_to_lcoefcr', 'lcoefcr']);
+setmodules( ['mspt_iph', 'iph_to_lcoefcr', 'lcoefcr_design']);
 setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
