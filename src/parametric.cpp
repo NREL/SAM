@@ -1023,7 +1023,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	bool inputcol = true;
 	wxArrayString allOutputNames, allOutputLabels;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
-	VarInfoLookup &vil = m_case->GetConfiguration()->Variables[0];
+	VarInfoLookup &vil = m_case->GetConfiguration()->Variables[0];  // TODO: hybrids
 
 
 	for (int c = 0; c < col; c++) {
@@ -1746,23 +1746,29 @@ void ParametricViewer::SelectInputs()
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarInfoLookup &vil = ci->Variables[0];
+	if (!ci) return;
 
 	SelectVariableDialog dlg(this, "Select Inputs");
-	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
-	{
-		wxString name = it->first;
-		VarInfo &vi = *(it->second);
 
-		// update to select only "Parametric" variables and NOT calculated variables
-		if ((vi.Flags & VF_PARAMETRIC) 	&& !(vi.Flags & VF_INDICATOR)	&& !(vi.Flags & VF_CALCULATED))
+
+	for (size_t ndxHybrid = 0; ndxHybrid < ci->Technology.size(); ndxHybrid++) {
+		VarInfoLookup& vil = ci->Variables[ndxHybrid]; 
+
+		for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
 		{
-			wxString label = dlg.PrettyPrintLabel(name, vi);
-			labels.Add(label);
-			names.Add(name);
+			wxString name = it->first;
+			if (ci->Technology.size() > 1) name = ci->Technology[ndxHybrid].Lower() + "_" + name;
+			VarInfo& vi = *(it->second);
+
+			// update to select only "Parametric" variables and NOT calculated variables
+			if ((vi.Flags & VF_PARAMETRIC) && !(vi.Flags & VF_INDICATOR) && !(vi.Flags & VF_CALCULATED))
+			{
+				wxString label = dlg.PrettyPrintLabel(name, vi);
+				labels.Add(label);
+				names.Add(name);
+			}
 		}
 	}
-
 	wxSortByLabels(names, labels);
 	dlg.SetItems(names, labels);
 	dlg.SetCheckedNames(m_input_names);
@@ -2807,14 +2813,16 @@ bool ParametricGridData::RunSimulations_multi()
 					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
 						// set for simulation
-						m_par.Runs[i]->Override(m_var_names[col], *vv,0);// TODO: hybrids
+						m_par.Runs[i]->Override(m_var_names[col], *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
 					}
 				}
 			}
 			// Excel exchange if necessary
 			ExcelExchange &ex = m_case->ExcelExch();
-			if (ex.Enabled)
-				ExcelExchange::RunExcelExchange(ex, m_case->Values(0), m_par.Runs[i]);// TODO: hybrids
+			if (ex.Enabled) {
+				for (size_t ndxHybrids = 0; ndxHybrids < m_case->GetConfiguration()->Technology.size(); ndxHybrids++)
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(ndxHybrids), m_par.Runs[i]);// TODO: hybrids
+			}
 
 			if (!m_par.Runs[i]->Prepare())
 				wxMessageBox(wxString::Format("internal error preparing simulation %d for parametric: %s", (int)(i + 1), m_par.Runs[i]->GetErrors()[0]));
@@ -3021,7 +3029,7 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values(0).Get(input_names[i]))
+				if (VarValue *vv = m_case->Values(0).Get(input_names[i])) // TODO: hybrids
 					vvv.push_back(*vv);
 			}
 			pv.Name = input_names[i];

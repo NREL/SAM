@@ -1175,15 +1175,17 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 					ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name); // every variable in "output" is an output - do not need to check type below
 					for (size_t i = 0; i < m_simlist.size(); i++) { // each vartable
 						const char* vartable_name;
-						wxString prepend_name;
+						wxString prepend_name, prepend_label;
 						if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
 							vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
 //							prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
 							prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
+							prepend_label = ""; // change "Hybrid" to nothing for normal metric processing
 						}
 						else {
 							vartable_name = m_simlist[i];
-							prepend_name = m_case->GetConfiguration()->Technology[i];
+							prepend_name = m_case->GetConfiguration()->Technology[i].Lower() + "_";
+							prepend_label = m_case->GetConfiguration()->Technology[i] + " ";
 						}
 						ssc_data_t p_vartable = ssc_data_get_table(p_outputs, vartable_name);
 						// prepend outputs with "Technology" names (i.e. bin_names)
@@ -1199,11 +1201,11 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
 							wxString sam_output_name = prepend_name + name; // hybrid processing
-							if (prepend_name.Lower() != label.Left(prepend_name.length()).Lower()) { // check for "Battery Battery..."
+							if ((prepend_name.Len() > 0) && (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())) { // check for "Battery Battery..."
 								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
-									label = prepend_name + " " + label;
+									label = prepend_label + label;
 								else
-									label = prepend_name + " " + label.Left(1).Lower() + label.Right(label.length()-1);
+									label = prepend_label + label.Left(1).Lower() + label.Right(label.length()-1);
 							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
@@ -1545,7 +1547,7 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 	wxArrayString *units, 
 	wxArrayString *groups,
 	wxArrayString* types,
-	bool single_values )
+	bool single_values )  // TODO: hybrids
 {
 	if ( !cfg ) return false;
 
