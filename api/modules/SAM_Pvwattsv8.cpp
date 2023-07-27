@@ -899,6 +899,78 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_battery_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_net", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_energy_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_fixed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_land_lease");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_production");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{

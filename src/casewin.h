@@ -147,11 +147,10 @@ private:
 	void LayoutPage();
 	void DetachCurrentInputPage();
 
-	wxStaticText *m_configLabel;
+	wxStaticText *m_techLabel;
     wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
-    wxMetroDataViewTreeCtrl* m_pTech;
-    wxMetroDataViewTreeCtrl* m_pFin;
+	wxMetroDataViewTreeCtrl *m_navigationMenu;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;

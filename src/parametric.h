@@ -60,6 +60,7 @@ public:
 		wxString Name;
 		std::vector<VarValue> Values;
 		bool IsInput;
+		int ndxHybrid;
 	};
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;

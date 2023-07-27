@@ -2421,6 +2421,40 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// HybridFin parameters
+	//
+
+	/**
+	 * Set cf_hybrid_om_sum: Hybrid O&M costs [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_hybrid: hybrid configuration [0/1]
+	 * options: 0=singletech,1=hybrid
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridFin_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Monthly parameters
+	//
+
+	/**
+	 * Set monthly_energy: Monthly energy [kWh]
+	 * options: None
+	 * constraints: LENGTH = 12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * Revenue Getters
 	 */
@@ -3085,6 +3119,22 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_HostDeveloper_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * HybridFin Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridFin_cf_hybrid_om_sum_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridFin_is_hybrid_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Monthly Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

@@ -305,6 +305,10 @@
 			"battery_total_cost_lcos": 0
 		},
 		"ChargesByMonth": {
+		},
+		"HybridFin": {
+		},
+		"Monthly": {
 		}
 	}
 }

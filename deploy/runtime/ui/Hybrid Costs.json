@@ -1,14 +1,337 @@
 {
-    "Name": "Financial Solution Mode Single Owner",
-    "Width": 859.0,
-    "Height": 134.0,
+    "Name": "Hybrid Costs",
+    "Width": 862.0,
+    "Height": 316.0,
     "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "hybrid_capital_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "hybrid_om_capacity_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "hybrid_om_fixed_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "GroupBox1"
+                    "String": "object 45"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 82.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Operation and Maintenance Costs"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 455"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 154.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Capital Cost"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 46"
                 },
                 "X": {
                     "Type": 3.0,
@@ -24,7 +347,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 128.0
+                    "Integer": 311.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -32,223 +355,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Solution Mode"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "flip_target_percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 312.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "flip_target_year"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 495.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                }
-            }
-        },
-        "Divider": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 21"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 570.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 279.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Orientation": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Colour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 120.0,
-                        "Green": 120.0,
-                        "Blue": 120.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Escalation Rate"
+                    "String": "Hybrid System Costs"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -265,19 +372,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 579.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 818.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -285,7 +392,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Inflation does not apply to the PPA price."
+                    "String": "Hybrid system costs are for any costs that cannot be assigned to the PV, wind, or battery subsystems."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -323,23 +430,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ppa_escalation"
+                    "String": "total_installed_cost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 723.0
+                    "Integer": 618.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -355,11 +462,11 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 2.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -371,7 +478,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -397,28 +504,28 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 5.0
+                    "Integer": -1.0
                 }
             }
         },
-        "SchedNumeric": {
+        "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ppa_price_input"
+                    "String": "ui_battery_cost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 618.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 51.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -428,311 +535,340 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Label": {
-                    "Type": 5.0,
-                    "String": "Value"
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
                 },
-                "UseSchedule": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ScheduleOnly": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FixedLength": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "RadioChoice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "ppa_soln_mode"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 212.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 47.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Specify IRR target|Specify PPA price"
-                },
-                "ShowCaptions": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Horizontal": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
+                "Mode": {
                     "Type": 3.0,
                     "Integer": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "solution_mode_message"
                 },
-                "X": {
+                "Format": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 0.0
                 },
-                "Y": {
+                "Decimals": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 2.0
                 },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 834.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 48.0
-                },
-                "Tool Tip": {
+                "Prefix": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
+                "Suffix": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "TextColour": {
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
+                        "Red": 0.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
                     }
                 },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
                 },
-                "FontSize": {
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_pv_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
                     "Type": 3.0,
                     "Integer": 0.0
                 },
-                "WordWrap": {
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
+                "Editable": {
                     "Type": 2.0,
                     "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_wind_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
     },
     "VarDatabase": {
-        "flip_target_percent": {
+        "hybrid_capital_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "IRR target",
-            "Units": "%",
-            "Group": "PPA Price and IRR",
+            "Label": "Hybrid installation cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 10.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "flip_target_year": {
+        "hybrid_om_capacity_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "IRR target year",
-            "Units": " ",
-            "Group": "PPA Price and IRR",
+            "Label": "Hybrid fixed annual cost by capacity",
+            "Units": "$/kW-yr",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 10.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "ppa_escalation": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "PPA price escalation",
-            "Units": "%/year",
-            "Group": "PPA Price and IRR",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "ppa_price_input": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "PPA price",
-            "Units": "$/kWh",
-            "Group": "PPA Price and IRR",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "SchedNumeric",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "ppa_soln_mode": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "PPA solution mode (0=Specify IRR target, 1=Specify PPA price)",
-            "Units": " ",
-            "Group": "PPA Price and IRR",
-            "IndexLabels": "Specify IRR target|Specify PPA price",
-            "Flags": 3.0,
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": " ",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "solution_mode_message": {
+        "hybrid_om_fixed_cost": {
             "Version": 4.0,
-            "Type": 4.0,
-            "Label": "UI message for solution mode 1",
-            "Units": " ",
-            "Group": "PPA Price and IRR",
+            "Type": 1.0,
+            "Label": "Hybrid fixed annual cost",
+            "Units": "$/yr",
+            "Group": "Hybrid Costs",
             "IndexLabels": "",
-            "Flags": 9.0,
-            "DefaultValue": "",
-            "UIObject": "MultilineText",
-            "sscVariableName": " ",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_battery_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_pv_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "PV installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_wind_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wind installed cost",
+            "Units": "$",
+            "Group": "Hybrid Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
             "sscVariableValue": ""
         }
     },
     "Equations": [
-        "",
-        ""
+        "equations{ 'total_installed_cost' } = define() {\r",
+        "\treturn ${pv_total_installed_cost}\r",
+        "\t\t+ ${wind_total_installed_cost}\r",
+        "\t\t+ ${battery_total_installed_cost}\r",
+        "\t\t+ ${hybrid_capital_cost}; };\r",
+        "\r",
+        "equations{ 'ui_battery_cost' } = define() {\r",
+        "\treturn ${battery_total_installed_cost};\r",
+        "};\r",
+        "\r",
+        "equations{ 'ui_wind_cost' } = define() {\r",
+        "\treturn ${wind_total_installed_cost};\r",
+        "};\r",
+        "\r",
+        "equations{ 'ui_pv_cost' } = define() {\r",
+        "\treturn ${pv_total_installed_cost};\r",
+        "};"
     ],
-    "Callbacks": [
-        "// This form is a copy of Financial Solution Flip Leaseback",
-        "// so ppa_soln_mode radio button can have different labels",
-        "// to indicate IRR target is for the tax investor for flip ",
-        "// structures. Any updates should be made to both forms.",
-        "",
-        "on_load{'Financial Solution Mode Single Owner'} = define()",
-        "{",
-        "\tsoln_mode_ctrl_refresh();",
-        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && financing() != \"Host Developer\") {",
-        "\t\tcheck_auto_ppa();",
-        "\t}",
-        "\tdisplay_message();",
-        "\ton_change{'ppa_soln_mode'};",
-        "};",
-        "",
-        "on_change{'ppa_soln_mode'} = define()",
-        "{",
-        "\tsoln_mode_ctrl_refresh();",
-        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && financing() != \"Host Developer\") {",
-        "\t\tcheck_auto_ppa();",
-        "\t}",
-        "\tdisplay_message();",
-        "};",
-        "",
-        "on_change{'ppa_price_input'} = define()",
-        "{",
-        "\tsoln_mode_ctrl_refresh();",
-        "};",
-        "",
-        "on_change{'flip_target_year'} = define () {",
-        "\tdisplay_message();",
-        "};",
-        "",
-        "function display_message() ",
-        "{",
-        "\ttxt = '';",
-        "\tclr = 'black';",
-        "\tif ( value('flip_target_year') > value('analysis_period') )",
-        "\t{",
-        "\t\ttxt += 'IRR target year is greater than the analysis period. ';",
-        "\t\tclr = 'red';",
-        "\t}",
-        "\tif ( financing() == 'Host Developer' ) ",
-        "\t{",
-        "\t\ttxt += 'IRR is the developer internal rate of return. ';",
-        "\t}",
-        "\telseif( financing() == 'Community Solar' )",
-        "\t{",
-        "\t\ttxt += 'Set PPA price or IRR target to zero if project only earns revenue from subscription payments on the Community Solar page.';",
-        "\t}",
-        "\telseif ( value('ppa_soln_mode') == 0 && value('en_electricity_rates') == 0 )",
-        "\t{",
-        "\t\tclr = 'red';",
-        "\t\ttxt += 'The Specify IRR Target option is not available with the Use PPA Price option on Electricity Purchases page. Either change the option on the Electricity Purchases page or use the Specify PPA Price option.';",
-        "\t}",
-        "\tproperty('solution_mode_message','Caption',txt);",
-        "\tproperty('solution_mode_message','TextColour',clr);",
-        "}",
-        "",
-        "function soln_mode_ctrl_refresh()",
-        "{",
-        "    is_specify_irr = ( value('ppa_soln_mode') == 0 );",
-        "    enable( 'flip_target_percent', is_specify_irr );",
-        "    enable( 'ppa_price_input', !is_specify_irr );",
-        "\tshow_escalation = (#${ppa_price_input} < 2);",
-        "\tenable(\"ppa_escalation\",(show_escalation || is_specify_irr));",
-        "}\r",
-        "\r",
-        "\r",
-        "function check_auto_ppa()\r",
-        "{\r",
-        "\tdispatch = value('batt_dispatch_choice_ui');\r",
-        "\tif (dispatch == 0 && value('en_batt') != 0 && financing() != \"Merchant Plant\") \r",
-        "\t{\r",
-        "\t\tppa_mode = value('ppa_soln_mode');\r",
-        "\t\tif (ppa_mode == 0) {\r",
-        "\t\t\tmsgbox('Specify IRR Target not available for automated dispatch.\\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\\n\\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');\r",
-        "\t\t}\r",
-        "\t}\r",
-        "}\r",
-        ""
-    ]
+    "Callbacks": []
 }

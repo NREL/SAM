@@ -607,6 +607,18 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_elec_losses_nget(SAM_table ptr, SAM_error *err);

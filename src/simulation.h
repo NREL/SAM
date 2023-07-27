@@ -103,11 +103,11 @@ public:
 	static bool WriteDebugFile( const wxString &file, ssc_data_t p_data );
 
 	// setting up the simulation
-	void Override( const wxString &name, const VarValue &val );
-	wxString GetOverridesLabel( bool with_labels = true );
+	void Override( const wxString &name, const VarValue &val, size_t ndxHybrid);
+	wxString GetOverridesLabel(size_t ndxHybrid, bool with_labels = true );
 	void SetName( const wxString &s ) { m_name = s; }
 	wxString GetName() { return m_name; }
-	VarValue *GetInput( const wxString &name );
+	VarValue *GetInput( const wxString &name, size_t ndxHybrid);
 	void SetInput(const wxString & name, lk::vardata_t val);
 
 	// generate code
@@ -126,7 +126,7 @@ public:
 	// returns an output or input, outputs have precedence
 	VarValue *GetValue( const wxString &name );
 
-	VarTable *GetInputVarTable() { return &m_inputs; }
+	VarTable *GetInputVarTable(size_t ndxHybrid) { return &m_inputs[ndxHybrid]; }
 
 	bool JSONInputsToSSCData(wxString& fn, ssc_data_t p_data);
 
@@ -196,10 +196,10 @@ protected:
 	Case *m_case;
 	wxArrayString m_simlist;
 	wxString m_name;
-	wxArrayString m_overrides;
-	VarTable m_inputs;
+	std::vector<wxArrayString> m_overrides; // one or more vartables (more than one for hybrids) see case.h m_vals
+	std::vector<VarTable> m_inputs; // one or more vartables (more than one for hybrids) see case.h m_vals
 	wxArrayString m_outputList;
-	VarTable m_outputs;
+	VarTable m_outputs; // single vartable for all outputs including hybrids
 	wxArrayString m_errors, m_warnings, m_notices;
 
 	StringHash m_outputLabels, m_outputUnits, m_uiHints;
