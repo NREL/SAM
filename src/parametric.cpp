@@ -3025,16 +3025,23 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 		int ndx = m_par.FindSetup(input_names[i], true);
 		if (ndx < 0)
 		{
+			size_t ndxHybrid = 0;
+			// decode hybrids if necessary
+			if (m_case->GetConfiguration()->Technology.size() > 1) {
+				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+			}
+
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values(0).Get(input_names[i])) // TODO: hybrids
+				if (VarValue *vv = m_case->Values(ndxHybrid).Get(input_names[i])) // TODO: hybrids
 					vvv.push_back(*vv);
 			}
 			pv.Name = input_names[i];
 			pv.Values = vvv;
 			pv.IsInput = true;
+			pv.ndxHybrid = ndxHybrid;
 			AddSetup(pv);
 		}
 	}
@@ -3065,16 +3072,22 @@ void ParametricGridData::UpdateOutputs(wxArrayString &output_names)
 		int ndx = m_par.FindSetup(output_names[i], false);
 		if (ndx < 0)
 		{
+			size_t ndxHybrid = 0;
+			// decode hybrids if necessary
+			if (m_case->GetConfiguration()->Technology.size() > 1) {
+				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+			}
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values(0).Get(output_names[i]))
+				if (VarValue *vv = m_case->Values(ndxHybrid).Get(output_names[i]))
 					vvv.push_back(*vv);
 			}
 			pv.Name = output_names[i];
 			pv.Values = vvv;
 			pv.IsInput = false;
+			pv.ndxHybrid = ndxHybrid;
 			AddSetup(pv);
 		}
 	}
