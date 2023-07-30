@@ -2813,7 +2813,8 @@ bool ParametricGridData::RunSimulations_multi()
 					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
 						// set for simulation
-						m_par.Runs[i]->Override(m_var_names[col], *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
+//						m_par.Runs[i]->Override(m_var_names[col], *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
+						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
 					}
 				}
 			}
@@ -3026,22 +3027,34 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 		if (ndx < 0)
 		{
 			size_t ndxHybrid = 0;
+			wxString varName = input_names[i];
 			// decode hybrids if necessary
 			if (m_case->GetConfiguration()->Technology.size() > 1) {
 				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
-			}
+				wxArrayString as = wxSplit(input_names[i], '_');
+				for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
+					if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
+						ndxHybrid = j;
+						varName = input_names[i].Right(input_names[i].length()-(as[0].length()+1));
+					}
+				}
+/*				// if "Hybrids" then no prepending was added
+				if (varName == input_names[i])
+					ndxHybrid = m_case->GetConfiguration()->Technology.size() - 1;
+*/			}
 
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)
 			{ // add values for inputs only
-				if (VarValue *vv = m_case->Values(ndxHybrid).Get(input_names[i])) // TODO: hybrids
+				if (VarValue *vv = m_case->Values(ndxHybrid).Get(varName)) 
 					vvv.push_back(*vv);
 			}
 			pv.Name = input_names[i];
 			pv.Values = vvv;
 			pv.IsInput = true;
 			pv.ndxHybrid = ndxHybrid;
+			pv.varName = varName;
 			AddSetup(pv);
 		}
 	}

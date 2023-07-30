@@ -208,6 +208,8 @@ void Simulation::Clear()
 	m_outputLabels.clear();
 	m_outputUnits.clear();
 	m_uiHints.clear();
+	
+	Setup(); // resize after clearing
 }
 
 void Simulation::Override( const wxString &name, const VarValue &val, size_t ndxHybrid)
@@ -548,6 +550,23 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	return ok;
 }
 
+bool Simulation::Setup()
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+
+	// resize vectors
+	size_t nHybrids = cfg->Technology.size();
+	m_inputs.resize(nHybrids);
+	m_overrides.resize(nHybrids);
+
+	return true;
+}
+
 bool Simulation::Prepare()
 {	
 	ConfigInfo *cfg = m_case->GetConfiguration();
@@ -564,10 +583,7 @@ bool Simulation::Prepare()
 	m_outputUnits.clear();
 	m_uiHints.clear();
 
-	// resize vectors
 	size_t nHybrids = cfg->Technology.size();
-	m_inputs.resize(nHybrids);
-	m_overrides.resize(nHybrids);
 
 	for (size_t ndx_hybrid = 0; ndx_hybrid < nHybrids; ndx_hybrid++) {
 
@@ -1553,6 +1569,17 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 
 	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
 	{
+		wxString prepend_name, prepend_label;
+		if (kk >= cfg->Technology.size() - 1) {
+			prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
+			prepend_label = ""; // change "Hybrid" to nothing for normal metric processing
+		}
+		else {
+			prepend_name = cfg->Technology[kk].Lower() + "_";
+			prepend_label = cfg->Technology[kk] + " ";
+		}
+
+
 		ssc_module_t p_mod = ssc_module_create( cfg->Simulations[kk].c_str() );
 		if ( !p_mod )
 			return false;
@@ -1574,14 +1601,14 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
                     if (names) {
                         auto ndx = names->Index(strName);
                         if (ndx == wxNOT_FOUND) {
-                            if (names) names->Add(wxString(ssc_info_name(p_inf)));
-                            if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
+                            if (names) names->Add(prepend_name + wxString(ssc_info_name(p_inf)));
+                            if (labels) labels->Add(prepend_label + wxString(ssc_info_label(p_inf)));
                             if (units) units->Add(wxString(ssc_info_units(p_inf)));
                             if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
                             if (types) types->Add(wxString::Format(wxT("%i"), data_type));
                         }
                         else {
-                            if (labels) labels->Item(ndx) = wxString(ssc_info_label(p_inf));
+                            if (labels) labels->Item(ndx) = prepend_label + wxString(ssc_info_label(p_inf));
                             if (units) units->Item(ndx) = wxString(ssc_info_units(p_inf));
                             if (groups) groups->Item(ndx) = wxString(ssc_info_group(p_inf));
                             if (types) types->Item(ndx) = wxString::Format(wxT("%i"), data_type);
