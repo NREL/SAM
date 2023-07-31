@@ -253,6 +253,7 @@ struct InputPageGroup
 	std::vector< PageInfo > ExclusiveHeaderPages;
 	bool ExclusiveTabs;
     bool ExclusiveHide;
+    bool ExclTop;
     wxString BinName;
 	size_t ndxHybrid;
 };
@@ -320,7 +321,7 @@ public:
 		const wxString &hlpcxt,
 		const wxString &exclvar,
 		const std::vector<PageInfo> &exclhdr_pages,
-		bool excl_tabs, bool excl_hide, wxString bin_name);
+		bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top);
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);

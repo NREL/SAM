@@ -324,21 +324,40 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     wxString Ts_lower = Ts.Lower();
     wxArrayString Ts_split = wxSplit(Ts, '-');
     wxDataViewItem cont_pv;
-    wxDataViewItemArray dvia{ m_pageGroups.size()};
+    wxDataViewItemArray dvia{ m_pageGroups.size() + 1};
+    wxArrayString bin_list;
     //wxDataViewItemArray dvia;
     wxArrayString page_list;
     wxString bin_name;
     wxString bin_name_prev;
     int Ts_count = 0;
     int bin_count = 0;
+    for (int i = 0; i < m_pageGroups.size(); i++) {
+        if (m_pageGroups[i]->ExclTop) {
+            bin_list.Add("Hybrid System");
+            if (page_list.Index("Hybrid System") == wxNOT_FOUND) {
+                dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid System");
+            }
+        }
+        else if (m_pageGroups[i]->BinName != "") {
+            bin_list.Add(m_pageGroups[i]->BinName);
+        }
+        else {
+            bin_list.Add("");
+        }
+    }
     for (int j = 0; j < m_pageGroups.size(); j++) {
         bin_name = m_pageGroups[j]->BinName;
+        
         if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
             page_list.Add(bin_name);
-            dvia[page_list.Index(bin_name)] = m_navigationMenu->AppendContainer(wxDataViewItem(0), bin_name);
+            dvia[page_list.Index(bin_name) + 1] = m_navigationMenu->AppendContainer(wxDataViewItem(0), bin_name);
         }
         if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
-            m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name)], m_pageGroups[j]->SideBarLabel);
+            m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name) + 1], m_pageGroups[j]->SideBarLabel);
+        }
+        else if (m_pageGroups[j]->ExclTop) {
+            m_navigationMenu->AppendItem(dvia[0], m_pageGroups[j]->SideBarLabel);
         }
         else {
             m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);

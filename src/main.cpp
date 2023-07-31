@@ -1920,7 +1920,7 @@ void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVaria
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide, wxString bin_name )
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top )
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1934,6 +1934,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
     ip->BinName = bin_name;
+    ip->ExclTop = excl_top;
 
 	int ndx = 0;
 	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
