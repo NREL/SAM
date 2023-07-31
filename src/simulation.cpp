@@ -1153,8 +1153,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 
 		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < m_simlist.size(); i++) { // each vartable
 			ssc_data_t p_val = ssc_data_create();
-			m_case->Values(i).AsSSCData(p_val);
-			if (i == m_case->GetConfiguration()->Technology.size() - 1)
+//			m_case->Values(i).AsSSCData(p_val); // skips overrides
+			m_inputs[i].AsSSCData(p_val); // includes overrides
+			if (i == m_case->GetConfiguration()->Technology.size() - 1) // "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
 				ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i], p_val);
 			else
 				ssc_data_set_table(p_input, m_simlist[i], p_val);

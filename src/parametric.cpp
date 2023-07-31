@@ -123,12 +123,14 @@ void ParametricData::Write( wxOutputStream &_O )
 	wxDataOutputStream out( _O );
 
 	out.Write8( 0x2b );
-	out.Write8( 4 ); // version
+	out.Write8( 5 ); // version
 
 	out.Write32( Setup.size() );
 	for( size_t i=0;i<Setup.size();i++ )
 	{
-		out.WriteString( Setup[i].Name );
+		out.WriteString(Setup[i].Name);
+		out.WriteString(Setup[i].varName);
+		out.Write8(Setup[i].ndxHybrid);
 		out.Write32( Setup[i].Values.size() );
 		for( size_t k=0;k<Setup[i].Values.size();k++ )
 			Setup[i].Values[k].Write( _O );
@@ -168,6 +170,10 @@ bool ParametricData::Read( wxInputStream &_I )
 	{
 		Var x;
 		x.Name = in.ReadString();
+		if (ver > 4) {
+			x.varName = in.ReadString();
+			x.ndxHybrid = in.Read8();
+		}
 		size_t m = in.Read32();
 		for( size_t k=0;k<m;k++ )
 		{
