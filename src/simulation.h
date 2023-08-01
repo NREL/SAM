@@ -144,6 +144,7 @@ public:
 	bool Invoke(bool silent=false, bool prepare=true, wxString folder=wxEmptyString);
 	
 	bool Prepare(); // not threadable, but must be called before below
+	bool Setup(); // not threadable, but must be called before below
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
 
 	bool InvokeSSC(bool silent, const wxString& fn);

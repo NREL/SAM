@@ -61,6 +61,7 @@ public:
 		std::vector<VarValue> Values;
 		bool IsInput;
 		int ndxHybrid;
+		wxString varName;
 	};
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;
@@ -155,6 +156,7 @@ public:
 	int GetRunNumberForRowNumber(const int& rowNum);
 
 	std::vector<int> GetRowSortOrder();
+	ParametricData& GetParametricData() { return m_par; }
 
 private:
 	int m_sortColumn;
