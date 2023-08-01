@@ -156,6 +156,7 @@ public:
 	int GetRunNumberForRowNumber(const int& rowNum);
 
 	std::vector<int> GetRowSortOrder();
+	ParametricData& GetParametricData() { return m_par; }
 
 private:
 	int m_sortColumn;

@@ -1485,7 +1485,8 @@ bool ParametricViewer::IsLineInputs()
 {
 	bool retVal = false;
 	if (m_input_names.Count() == 1) {
-		if (VarValue* vv = m_case->Values(0).Get(m_input_names[0])) // TODO: hybrid 
+//		if (VarValue* vv = m_case->Values(0).Get(m_input_names[0])) // TODO: hybrid 
+		if (VarValue* vv = m_case->Values(m_grid_data->GetParametricData().Setup[0].ndxHybrid).Get(m_grid_data->GetParametricData().Setup[0].varName))
 			retVal = (vv->Type() == VV_NUMBER);
 	}
 	return retVal;
@@ -1495,8 +1496,10 @@ bool ParametricViewer::IsContourInputs()
 {
 	bool retVal = false;
 	if (m_input_names.Count() == 2) {
-		if (VarValue* vv1 = m_case->Values(0).Get(m_input_names[0])) {
-			if (VarValue* vv2 = m_case->Values(0).Get(m_input_names[0])) {
+//		if (VarValue* vv1 = m_case->Values(0).Get(m_input_names[0])) {
+//			if (VarValue* vv2 = m_case->Values(0).Get(m_input_names[1])) {
+		if (VarValue* vv1 = m_case->Values(m_grid_data->GetParametricData().Setup[0].ndxHybrid).Get(m_grid_data->GetParametricData().Setup[0].varName)) {
+			if (VarValue* vv2 = m_case->Values(m_grid_data->GetParametricData().Setup[0].ndxHybrid).Get(m_grid_data->GetParametricData().Setup[1].varName)) {
 				retVal = ((vv1->Type() == VV_NUMBER) && (vv2->Type() == VV_NUMBER));
 			}
 		}
@@ -2037,7 +2040,8 @@ wxString ParametricGridData::GetColLabelValue(int col)
 	{
 		if (IsInput(col)) // label if non-blank
 		{
-			if (VarInfo *vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
+//			if (VarInfo* vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
+			if (VarInfo* vi = m_par.GetCase()->Variables(m_par.Setup[col].ndxHybrid).Lookup(m_par.Setup[col].varName))
 			{
 //				col_label = m_var_names[col];
 				col_label = vi->Label;
@@ -2088,7 +2092,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 }
 
 bool ParametricGridData::IsValid(const ParametricData::Var& pv) {
-	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.Name,0); // TODO:hybrids
+	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.Name,pv.ndxHybrid);
 	if (vv == nullptr) {
 		return false;
 	}
@@ -2104,7 +2108,8 @@ VarInfo* ParametricGridData::GetVarInfo(int , int col)
 	if ((col>-1) && (col < m_cols))
 	{
 		if (IsInput(col))
-			vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]); // TODO: hybrids
+			vi = m_par.GetCase()->Variables(m_par.Setup[col].ndxHybrid).Lookup(m_par.Setup[col].varName); 
+//		vi = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]); // TODO: hybrids
 	}
 	return vi;
 }
@@ -2114,7 +2119,8 @@ void ParametricGridData::SetVarInfo(int , int col, VarInfo *vi)
 	if ((col>-1) && (col < m_cols))
 	{
 		if (IsInput(col))
-			if (VarInfo *var_info = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
+//			if (VarInfo *var_info = m_par.GetCase()->Variables(0).Lookup(m_var_names[col]))
+			if (VarInfo* var_info = m_par.GetCase()->Variables(m_par.Setup[col].ndxHybrid).Lookup(m_par.Setup[col].varName))
 				var_info = vi;
 	}
 }
@@ -2693,7 +2699,11 @@ wxString ParametricGridData::GetVarName(int row, int col)
 	wxString  ret_val=wxEmptyString;
 	if ((col > -1) && (col < (int)m_var_names.Count()) && (row > -1) && (row < m_rows))
 	{
-		ret_val = m_var_names[col];
+//		ret_val = m_var_names[col];
+		if (IsInput(col))
+			ret_val = m_par.Setup[col].varName;
+		else
+			ret_val = m_var_names[col];
 	}
 	return ret_val;
 }
@@ -3796,9 +3806,22 @@ void Parametric_QS::UpdateCaseParametricData()
 		// create new inputs
 		for (size_t i = 0; i < m_input_names.Count(); i++)
 		{
+			size_t ndxHybrid = 0;
+			wxString varName = m_input_names[i];
+			// decode hybrids if necessary
+			if (m_case->GetConfiguration()->Technology.size() > 1) {
+				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+				wxArrayString as = wxSplit(m_input_names[i], '_');
+				for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
+					if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
+						ndxHybrid = j;
+						varName = m_input_names[i].Right(m_input_names[i].length() - (as[0].length() + 1));
+					}
+				}
+			}
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
-			if (VarValue *vv = m_case->Values(0).Get(m_input_names[i]))
+			if (VarValue *vv = m_case->Values(0).Get(m_input_names[i])) // TODO: hybrids
 			{
 				for (size_t num_run = 0; num_run < num_runs; num_run++)
 				{ // add values for inputs only
@@ -3808,8 +3831,15 @@ void Parametric_QS::UpdateCaseParametricData()
 			pv.Name = m_input_names[i];
 			pv.Values = vvv;
 			pv.IsInput = true;
+			pv.ndxHybrid = ndxHybrid;
+			pv.varName = varName;
 			par.Setup.push_back(pv);
 		}
+
+
+
+
+
 		for (size_t num_run = 0; num_run < num_runs; num_run++)
 		{
 			Simulation *s = new Simulation(m_case, wxString::Format("Parametric #%d", ((int)num_run + 1)));
