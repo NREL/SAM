@@ -3415,7 +3415,7 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 	{
 		wxString name = m_input_names[idx];
 		wxArrayString values = GetValuesList(name);
-		VarInfo *varinfo = m_case->Variables(0).Lookup(name);
+		VarInfo *varinfo = m_case->Variables(0).Lookup(name); // TODO: hybrids
 		if (varinfo)
 		{
 			if (ShowEditValuesDialog(
@@ -3474,10 +3474,10 @@ bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
 	wxArrayString &values, const wxString &varname)
 {
 
-	VarInfo *vi = m_case->Variables(0).Lookup(varname);
+	VarInfo *vi = m_case->Variables(0).Lookup(varname); // TODO: hybrids
 	if (!vi)
 		return false;
-	VarValue *vv = m_case->Values(0).Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname); // TODO: hybrids
 	if (!vv)
 		return false;
 
@@ -3607,7 +3607,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
-	VarInfoLookup &vil = ci->Variables[0];
+	VarInfoLookup &vil = ci->Variables[0]; // TODO: hybrids
 
 	SelectVariableDialog dlg(this, "Select Inputs");
 	for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it)
@@ -3689,7 +3689,7 @@ void Parametric_QS::RefreshValuesList()
 wxString Parametric_QS::GetBaseCaseValue(const wxString &varname)
 {
 	wxString val;
-	VarValue *vv = m_case->Values(0).Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname); // TODO: hybrids
 	if (vv)
 		val = vv->AsString();
 	return val;
@@ -3715,10 +3715,10 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname)
 {
 	wxArrayString list;
 
-	VarInfo *vi = m_case->Variables(0).Lookup(varname);
+	VarInfo *vi = m_case->Variables(0).Lookup(varname); // TODO: hybrids
 	if (!vi)
 		return list;
-	VarValue *vv = m_case->Values(0).Get(varname);
+	VarValue *vv = m_case->Values(0).Get(varname); // TODO: hybrids
 	if (!vv)
 		return list;
 
@@ -3942,7 +3942,7 @@ void Parametric_QS::RefreshVariableList()
 
 	for (size_t i = 0; i<m_input_names.Count(); i++)
 	{
-		VarInfo *vi = m_case->Variables(0).Lookup(m_input_names[i]);
+		VarInfo *vi = m_case->Variables(0).Lookup(m_input_names[i]); // TODO: hybrids
 		if (!vi)
 		{
 			lstVariables->Append("<<Label Lookup Error>>");
