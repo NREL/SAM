@@ -334,10 +334,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     int bin_count = 0;
     for (int i = 0; i < m_pageGroups.size(); i++) {
         if (m_pageGroups[i]->ExclTop) {
-            bin_list.Add("Hybrid System");
-            if (page_list.Index("Hybrid System") == wxNOT_FOUND) {
-                dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid System");
+            
+            if (bin_list.Index("Hybrid Bin Placeholder") == wxNOT_FOUND) {
+                dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid Bin Placeholder");
             }
+            bin_list.Add("Hybrid Bin Placeholder");
         }
         else if (m_pageGroups[i]->BinName != "") {
             bin_list.Add(m_pageGroups[i]->BinName);
@@ -356,6 +357,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
             m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name) + 1], m_pageGroups[j]->SideBarLabel);
         }
+        
         else if (m_pageGroups[j]->ExclTop) {
             m_navigationMenu->AppendItem(dvia[0], m_pageGroups[j]->SideBarLabel);
         }
@@ -698,11 +700,13 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     m_pageFlipper->SetSelection(0);
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
+        
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
         wxDataViewItemArray dvia;
 
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvia);
         SwitchToInputPage(m_navigationMenu->GetItemText(dvia[0]));
+        
     }
     else {
         SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
