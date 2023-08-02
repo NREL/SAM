@@ -326,9 +326,9 @@ public:
 	void RefreshVariableList();
 	void RefreshValuesList();
 
-	wxString GetBaseCaseValue(const wxString &varname);
+	wxString GetBaseCaseValue(const wxString &varname, size_t ndxHybrid);
 	wxArrayString GetValuesList(const wxString &varname);
-	wxArrayString GetValuesDisplayList(const wxString &varname);
+	wxArrayString GetValuesDisplayList(const wxString &varname, size_t ndxHybrid);
 	void SetValuesList(const wxString &varname, const wxArrayString &values);
 
 	bool ShowEditValuesDialog(const wxString &title,
@@ -353,7 +353,10 @@ private:
 
 	Case *m_case;
 	wxArrayString m_input_names;
+	wxArrayString m_input_var_names;
+	wxArrayInt m_input_ndxHybrid;
 	std::vector<wxArrayString> m_input_values;
+
 
 	DECLARE_EVENT_TABLE()
 };

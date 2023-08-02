@@ -1882,13 +1882,23 @@ void SelectVariableDialog::SetCheckedNames(const wxArrayString &list)
 wxArrayString SelectVariableDialog::GetCheckedNames()
 {
 	wxArrayString list;
-	for (size_t i=0;i<m_items.size();i++)
-		if ( m_items[i].checked )
-			list.Add( m_items[i].name );
+	for (size_t i = 0; i < m_items.size(); i++)
+		if (m_items[i].checked)
+			list.Add(m_items[i].name);
 
 	return list;
 }
-	
+
+wxArrayInt SelectVariableDialog::GetCheckedIndices()
+{
+	wxArrayInt list;
+	for (size_t i = 0; i < m_items.size(); i++)
+		if (m_items[i].checked)
+			list.Add(i);
+
+	return list;
+}
+
 void SelectVariableDialog::OnExpandAll(wxCommandEvent &)
 {
 	tree->ExpandAll();

@@ -209,6 +209,7 @@ public:
 	void SetItems(const wxArrayString &names, const wxArrayString &labels);
 	void SetCheckedNames(const wxArrayString &list);
 	wxArrayString GetCheckedNames();
+	wxArrayInt GetCheckedIndices();
 	void ShowAllItems();
 	void UpdateTree();
 
