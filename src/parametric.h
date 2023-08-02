@@ -331,8 +331,7 @@ public:
 	wxArrayString GetValuesDisplayList(const wxString &varname, size_t ndxHybrid);
 	void SetValuesList(const wxString &varname, const wxArrayString &values);
 
-	bool ShowEditValuesDialog(const wxString &title,
-		wxArrayString &values, const wxString &varname);
+	bool ShowEditValuesDialog(const wxString &title, wxArrayString &values, const wxString &varname, int &ndxHybrid);
 	bool ShowNumericValuesDialog(const wxString &title, wxArrayString &values);
 	bool ShowFixedDomainDialog(const wxString &title,
 		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,

@@ -3415,13 +3415,13 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 	{
 		wxString name = m_input_names[idx];
 		wxArrayString values = GetValuesList(name);
-		VarInfo *varinfo = m_case->Variables(0).Lookup(name); // TODO: hybrids
+		VarInfo *varinfo = m_case->Variables(m_input_ndxHybrid[idx]).Lookup(m_input_var_names[idx]);
 		if (varinfo)
 		{
 			if (ShowEditValuesDialog(
 				"Edit Parametric Values for '" + varinfo->Label +
 				((varinfo->Units != "") ? (" (" + varinfo->Units + ")'") : "'"),
-				values, name))
+				values, m_input_var_names[idx], m_input_ndxHybrid[idx]))
 			{
 				SetValuesList(name, values);
 				RefreshValuesList();
@@ -3471,13 +3471,13 @@ bool Parametric_QS::ShowFixedDomainDialog(const wxString &title,
 
 
 bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
-	wxArrayString &values, const wxString &varname)
+	wxArrayString &values, const wxString &varname, int& ndxHybrid)
 {
 
-	VarInfo *vi = m_case->Variables(0).Lookup(varname); // TODO: hybrids
+	VarInfo *vi = m_case->Variables(ndxHybrid).Lookup(varname); 
 	if (!vi)
 		return false;
-	VarValue *vv = m_case->Values(0).Get(varname); // TODO: hybrids
+	VarValue *vv = m_case->Values(ndxHybrid).Get(varname); 
 	if (!vv)
 		return false;
 
@@ -3703,7 +3703,7 @@ void Parametric_QS::RefreshValuesList()
 		if (items.Count() == 0) // add base case value
 		{
 			wxArrayString values;
-			values.Add(name);
+			values.Add(m_input_var_names[idx]);
 			wxString val = GetBaseCaseValue(m_input_var_names[idx], m_input_ndxHybrid[idx]);
 			values.Add(val);
 			m_input_values.push_back(values);
