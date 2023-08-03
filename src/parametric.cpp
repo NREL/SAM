@@ -3414,7 +3414,7 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 	else
 	{
 		wxString name = m_input_names[idx];
-		wxArrayString values = GetValuesList(name);
+		wxArrayString values = GetValuesList(m_input_var_names[idx]);
 		VarInfo *varinfo = m_case->Variables(m_input_ndxHybrid[idx]).Lookup(m_input_var_names[idx]);
 		if (varinfo)
 		{
@@ -3423,7 +3423,7 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 				((varinfo->Units != "") ? (" (" + varinfo->Units + ")'") : "'"),
 				values, m_input_var_names[idx], m_input_ndxHybrid[idx]))
 			{
-				SetValuesList(name, values);
+				SetValuesList(m_input_var_names[idx], values);
 				RefreshValuesList();
 			}
 		}
@@ -3604,7 +3604,7 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 		return;
 
 	wxArrayString names, labels, varnames;
-	wxArrayInt ndxHybrids;
+//	wxArrayInt ndxHybrids;
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
@@ -3631,8 +3631,8 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 				wxString label = dlg.PrettyPrintLabel(name, vi);
 				labels.Add(label);
 				names.Add(name);
-				varnames.Add(varname);
-				ndxHybrids.Add(ndxHybrid);
+//				varnames.Add(varname);
+//				ndxHybrids.Add(ndxHybrid);
 			}
 		}
 	}
@@ -3884,7 +3884,7 @@ void Parametric_QS::UpdateCaseParametricData()
 				for (size_t col = 0; col < m_input_names.Count(); col++)
 				{
 					size_t row = 0;
-					wxArrayString vals = GetValuesList(m_input_names[col]);
+					wxArrayString vals = GetValuesList(m_input_var_names[col]);
 					while (row < num_runs - 1)
 					{
 						for (size_t j = 0; j < vals.Count(); j++)
