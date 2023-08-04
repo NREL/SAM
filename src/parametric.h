@@ -326,12 +326,12 @@ public:
 	void RefreshVariableList();
 	void RefreshValuesList();
 
-	wxString GetBaseCaseValue(const wxString &varname, size_t ndxHybrid);
-	wxArrayString GetValuesList(const wxString &varname);
-	wxArrayString GetValuesDisplayList(const wxString &varname, size_t ndxHybrid);
-	void SetValuesList(const wxString &varname, const wxArrayString &values);
+	wxString GetBaseCaseValue(const wxString &input_name);
+	wxArrayString GetValuesList(const wxString &input_name);
+	wxArrayString GetValuesDisplayList(const wxString &input_name);
+	void SetValuesList(const wxString &input_name, const wxArrayString &values);
 
-	bool ShowEditValuesDialog(const wxString &title, wxArrayString &values, const wxString &varname, int &ndxHybrid);
+	bool ShowEditValuesDialog(const wxString &title, wxArrayString &values, const wxString &varname, size_t &ndxHybrid);
 	bool ShowNumericValuesDialog(const wxString &title, wxArrayString &values);
 	bool ShowFixedDomainDialog(const wxString &title,
 		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
@@ -344,6 +344,8 @@ public:
 	size_t UpdateNumberRuns();
 	bool UpdateLinkedEnabled();
 
+	bool UpdateVarNameNdxHybrid(const wxString &input_name, wxString *var_name, size_t *ndx_hybrid);
+
 private:
 	wxListBox *lstValues;
 	wxListBox *lstVariables;
@@ -352,8 +354,8 @@ private:
 
 	Case *m_case;
 	wxArrayString m_input_names;
-	wxArrayString m_input_var_names;
-	wxArrayInt m_input_ndxHybrid;
+//	wxArrayString m_input_var_names;
+//	wxArrayInt m_input_ndxHybrid;
 	std::vector<wxArrayString> m_input_values;
 
 

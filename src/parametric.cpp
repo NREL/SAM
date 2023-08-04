@@ -3413,17 +3413,19 @@ void Parametric_QS::OnEditValues(wxCommandEvent &)
 		wxMessageBox("No variable selected!");
 	else
 	{
-		wxString name = m_input_names[idx];
-		wxArrayString values = GetValuesList(m_input_var_names[idx]);
-		VarInfo *varinfo = m_case->Variables(m_input_ndxHybrid[idx]).Lookup(m_input_var_names[idx]);
+		wxString var_name;
+		size_t ndx_hybrid;
+		UpdateVarNameNdxHybrid(m_input_names[idx], &var_name, &ndx_hybrid);
+		wxArrayString values = GetValuesList(m_input_names[idx]);
+		VarInfo *varinfo = m_case->Variables(ndx_hybrid).Lookup(var_name);
 		if (varinfo)
 		{
 			if (ShowEditValuesDialog(
 				"Edit Parametric Values for '" + varinfo->Label +
 				((varinfo->Units != "") ? (" (" + varinfo->Units + ")'") : "'"),
-				values, m_input_var_names[idx], m_input_ndxHybrid[idx]))
+				values, var_name, ndx_hybrid))
 			{
-				SetValuesList(m_input_var_names[idx], values);
+				SetValuesList(m_input_names[idx], values);
 				RefreshValuesList();
 			}
 		}
@@ -3471,7 +3473,7 @@ bool Parametric_QS::ShowFixedDomainDialog(const wxString &title,
 
 
 bool Parametric_QS::ShowEditValuesDialog(const wxString &title,
-	wxArrayString &values, const wxString &varname, int& ndxHybrid)
+	wxArrayString &values, const wxString &varname, size_t& ndxHybrid)
 {
 
 	VarInfo *vi = m_case->Variables(ndxHybrid).Lookup(varname); 
@@ -3598,6 +3600,25 @@ void Parametric_QS::OnRemoveVariable(wxCommandEvent &)
 
 }
 
+bool Parametric_QS::UpdateVarNameNdxHybrid(const wxString& input_name, wxString* var_name, size_t* ndx_hybrid)
+{
+	*ndx_hybrid = 0;
+	*var_name = input_name;
+	// decode if necessary for hybrids varname for unsorted index
+	if (m_case->GetConfiguration()->Technology.size() > 1) {
+		// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+		wxArrayString as = wxSplit(input_name, '_');
+		for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
+			if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
+				*ndx_hybrid = j;
+				*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+			}
+		}
+	}
+	return true;
+}
+
+
 void Parametric_QS::OnAddVariable(wxCommandEvent &)
 {
 	if (!m_case)
@@ -3643,26 +3664,6 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 	if (dlg.ShowModal() == wxID_OK)
 	{
 		m_input_names = dlg.GetCheckedNames();
-		m_input_var_names.clear();
-		m_input_ndxHybrid.clear();
-		// update dependencies - assumes names sorted and unique when prepended
-		for (size_t i = 0; i < m_input_names.size(); i++) {
-			size_t ndxHybrid = 0;
-			wxString varName = m_input_names[i];
-			// decode if necessary for hybrids varname for unsorted index
-			if (ci->Technology.size() > 1) {
-				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
-				wxArrayString as = wxSplit(m_input_names[i], '_');
-				for (size_t j = 0; j < ci->Technology.size(); j++) {
-					if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
-						ndxHybrid = j;
-						varName = m_input_names[i].Right(m_input_names[i].length() - (as[0].length() + 1));
-					}
-				}
-			}
-			m_input_var_names.Add(varName);
-			m_input_ndxHybrid.Add(ndxHybrid);
-		}
 
 		RefreshVariableList();
 		if (m_input_names.Count() > 0)
@@ -3691,7 +3692,6 @@ void Parametric_QS::RefreshValuesList()
 	if (!m_case)
 		return;
 
-
 	wxArrayString items;
 
 	int idx = lstVariables->GetSelection();
@@ -3699,15 +3699,15 @@ void Parametric_QS::RefreshValuesList()
 	if (idx >= 0 && idx < (int)m_input_names.Count())
 	{
 		wxString name = m_input_names[idx];
-		items = GetValuesDisplayList(m_input_var_names[idx], m_input_ndxHybrid[idx]);
+		items = GetValuesDisplayList(m_input_names[idx]);
 		if (items.Count() == 0) // add base case value
 		{
 			wxArrayString values;
-			values.Add(m_input_var_names[idx]);
-			wxString val = GetBaseCaseValue(m_input_var_names[idx], m_input_ndxHybrid[idx]);
+			values.Add(m_input_names[idx]);
+			wxString val = GetBaseCaseValue(m_input_names[idx]);
 			values.Add(val);
 			m_input_values.push_back(values);
-			items = GetValuesDisplayList(m_input_var_names[idx], m_input_ndxHybrid[idx]);
+			items = GetValuesDisplayList(m_input_names[idx]);
 		}
 	}
 
@@ -3719,22 +3719,26 @@ void Parametric_QS::RefreshValuesList()
 }
 
 
-wxString Parametric_QS::GetBaseCaseValue(const wxString &varname, size_t ndxHybrid)
+wxString Parametric_QS::GetBaseCaseValue(const wxString &input_name)
 {
 	wxString val;
-	VarValue *vv = m_case->Values(ndxHybrid).Get(varname);
+	size_t ndx_hybrid;
+	wxString var_name;
+	UpdateVarNameNdxHybrid(input_name, &var_name, &ndx_hybrid);
+
+	VarValue *vv = m_case->Values(ndx_hybrid).Get(var_name);
 	if (vv)
 		val = vv->AsString();
 	return val;
 }
 
 
-wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
+wxArrayString Parametric_QS::GetValuesList(const wxString &input_name)
 {
 	wxArrayString list;
 	for (int i = 0; i < (int)m_input_values.size(); i++)
 	{
-		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == input_name)
 		{
 			for (int j = 1; j < (int)m_input_values[i].Count(); j++)
 				list.Add(m_input_values[i].Item(j));
@@ -3744,14 +3748,19 @@ wxArrayString Parametric_QS::GetValuesList(const wxString &varname)
 	return list;
 }
 
-wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname, size_t ndxHybrid)
+wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &input_name)
 {
 	wxArrayString list;
 
-	VarInfo *vi = m_case->Variables(ndxHybrid).Lookup(varname); 
+	wxString var_name;
+	size_t ndx_hybrid;
+
+	UpdateVarNameNdxHybrid(input_name, &var_name, &ndx_hybrid);
+
+	VarInfo *vi = m_case->Variables(ndx_hybrid).Lookup(var_name); 
 	if (!vi)
 		return list;
-	VarValue *vv = m_case->Values(ndxHybrid).Get(varname);
+	VarValue *vv = m_case->Values(ndx_hybrid).Get(var_name);
 	if (!vv)
 		return list;
 
@@ -3765,7 +3774,7 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname, size_
 		wxArrayString fixed_items = vi->IndexLabels;
 		for (size_t i = 0; i < m_input_values.size(); i++)
 		{
-			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == input_name)
 			{
 				for (size_t j = 1; j < m_input_values[i].Count(); j++)
 				{
@@ -3781,7 +3790,7 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname, size_
 	{
 		for (int i = 0; i < (int)m_input_values.size(); i++)
 		{
-			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+			if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == input_name)
 			{
 				for (int j = 1; j < (int)m_input_values[i].Count(); j++)
 					list.Add(m_input_values[i].Item(j));
@@ -3792,20 +3801,20 @@ wxArrayString Parametric_QS::GetValuesDisplayList(const wxString &varname, size_
 	return list;
 }
 
-void Parametric_QS::SetValuesList(const wxString &varname, const wxArrayString &values)
+void Parametric_QS::SetValuesList(const wxString &input_name, const wxArrayString &values)
 {
 	int idx = -1;
 	if (values.Count() <= 0) return;
 	for (int i = 0; i <(int) m_input_values.size(); i++)
 	{
-		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == varname)
+		if (m_input_values[i].Count() > 0 && m_input_values[i].Item(0) == input_name)
 		{
 			idx = i;
 			break;
 		}
 	}
 	wxArrayString vals;
-	vals.Add(varname);
+	vals.Add(input_name);
 	for (int i = 0; i < (int)values.Count(); i++)
 		vals.Add(values[i]);
 	if (idx > -1)
@@ -3839,19 +3848,9 @@ void Parametric_QS::UpdateCaseParametricData()
 		// create new inputs
 		for (size_t i = 0; i < m_input_names.Count(); i++)
 		{
-			size_t ndxHybrid = 0;
-			wxString varName = m_input_names[i];
-			// decode hybrids if necessary
-			if (m_case->GetConfiguration()->Technology.size() > 1) {
-				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
-				wxArrayString as = wxSplit(m_input_names[i], '_');
-				for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
-					if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
-						ndxHybrid = j;
-						varName = m_input_names[i].Right(m_input_names[i].length() - (as[0].length() + 1));
-					}
-				}
-			}
+			size_t ndxHybrid;
+			wxString varName;
+			UpdateVarNameNdxHybrid(m_input_names[i], &varName, &ndxHybrid);
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			if (VarValue *vv = m_case->Values(ndxHybrid).Get(varName)) 
@@ -3884,7 +3883,7 @@ void Parametric_QS::UpdateCaseParametricData()
 				for (size_t col = 0; col < m_input_names.Count(); col++)
 				{
 					size_t row = 0;
-					wxArrayString vals = GetValuesList(m_input_var_names[col]);
+					wxArrayString vals = GetValuesList(m_input_names[col]);
 					while (row < num_runs - 1)
 					{
 						for (size_t j = 0; j < vals.Count(); j++)
@@ -3940,7 +3939,7 @@ void Parametric_QS::UpdateCaseParametricData()
 		{
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
-			if (VarValue *vv = m_case->Values(0).Get(outputs[i])) // TODO: hybrids
+			if (VarValue *vv = m_case->Values(0).Get(outputs[i])) // TODO: hybrids??
 			{
 				for (size_t num_run = 0; num_run < num_runs; num_run++)
 				{ // add values for inputs only
@@ -3971,7 +3970,11 @@ void Parametric_QS::RefreshVariableList()
 
 	for (size_t i = 0; i<m_input_names.Count(); i++)
 	{
-		VarInfo *vi = m_case->Variables(m_input_ndxHybrid[i]).Lookup(m_input_var_names[i]);
+		size_t ndx_hybrid;
+		wxString var_name;
+		UpdateVarNameNdxHybrid(m_input_names[i], &var_name, &ndx_hybrid);
+
+		VarInfo *vi = m_case->Variables(ndx_hybrid).Lookup(var_name);
 		if (!vi)
 		{
 			lstVariables->Append("<<Label Lookup Error>>");
@@ -3989,13 +3992,12 @@ void Parametric_QS::RefreshVariableList()
 
 		// update m_input_values if necessary
 		// add items
-		wxString name = m_input_names[i];
-		wxArrayString items = GetValuesDisplayList(m_input_var_names[i], m_input_ndxHybrid[i]);
+		wxArrayString items = GetValuesDisplayList(m_input_names[i]);
 		if (items.Count() == 0) // add base case value
 		{
 			wxArrayString values;
-			values.Add(name);
-			wxString val = GetBaseCaseValue(m_input_var_names[i], m_input_ndxHybrid[i]);
+			values.Add(m_input_names[i]);
+			wxString val = GetBaseCaseValue(m_input_names[i]);
 			values.Add(val);
 			m_input_values.push_back(values);
 		}
