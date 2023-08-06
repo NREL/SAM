@@ -92,20 +92,20 @@ void VariableGridData::Init()
 		m_col_hdrs.push_back("Label");
 		if (m_cases.size() == 1)
 		{
-			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
+			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0])); // TODO: hybrids
 			if (m_vt)
 				m_var_table_vec.push_back(m_vt); // for parametric simulation
 			else
-				m_var_table_vec.push_back(&m_cases[0]->Values(0));
-			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables(0));
+				m_var_table_vec.push_back(&m_cases[0]->Values(0));// TODO: hybrids
+			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables(0));// TODO: hybrids
 		}
 		else
 		{
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
-				m_var_table_vec.push_back(&(*it)->Values(0));
-				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));
+				m_var_table_vec.push_back(&(*it)->Values(0));// TODO: hybrids
+				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));// TODO: hybrids
 			}
 		}
 

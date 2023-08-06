@@ -354,8 +354,6 @@ private:
 
 	Case *m_case;
 	wxArrayString m_input_names;
-//	wxArrayString m_input_var_names;
-//	wxArrayInt m_input_ndxHybrid;
 	std::vector<wxArrayString> m_input_values;
 
 

@@ -3606,7 +3606,7 @@ bool Parametric_QS::UpdateVarNameNdxHybrid(const wxString& input_name, wxString*
 	*var_name = input_name;
 	// decode if necessary for hybrids varname for unsorted index
 	if (m_case->GetConfiguration()->Technology.size() > 1) {
-		// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+		// split hybrid name and match with Technology name or use "Hybrid" for remainder
 		wxArrayString as = wxSplit(input_name, '_');
 		for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
 			if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
@@ -3625,7 +3625,6 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 		return;
 
 	wxArrayString names, labels, varnames;
-//	wxArrayInt ndxHybrids;
 	wxString case_name(SamApp::Project().GetCaseName(m_case));
 
 	ConfigInfo *ci = m_case->GetConfiguration();
@@ -3652,8 +3651,6 @@ void Parametric_QS::OnAddVariable(wxCommandEvent &)
 				wxString label = dlg.PrettyPrintLabel(name, vi);
 				labels.Add(label);
 				names.Add(name);
-//				varnames.Add(varname);
-//				ndxHybrids.Add(ndxHybrid);
 			}
 		}
 	}
