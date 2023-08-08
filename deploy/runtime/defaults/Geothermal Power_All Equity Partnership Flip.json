@@ -9719,7 +9719,7 @@
     "geotherm.cost.sales_tax.value": 5.0,
     "geotherm.cost.stim_non_drill": 0.0,
     "geotherm.cost.stim_num_wells": 10.7605,
-    "geotherm.cost.stim_per_well": 0.0,
+    "geotherm.cost.stim_per_well": 1250000.0,
     "geotherm.cost.stim_total": 0.0,
     "geotherm.cost.surf_non_drill": 1345070.0,
     "geotherm.cost.surf_num_wells": 10.7605,
