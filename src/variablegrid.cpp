@@ -92,7 +92,7 @@ void VariableGridData::Init()
 		m_col_hdrs.push_back("Label");
 		if (m_cases.size() == 1)
 		{
-			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0])); // TODO: hybrids
+			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
 			if (m_vt)
 				m_var_table_vec.push_back(m_vt); // for parametric simulation
 			else
