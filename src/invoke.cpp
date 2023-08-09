@@ -2896,7 +2896,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+        if (!GeoTools::GeocodeGoogle(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -2936,7 +2936,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<LAT>", wxString::Format("%lg", lat));
 	url.Replace("<LON>", wxString::Format("%lg", lon));
 	url.Replace("<INTERVAL>", interval);
-	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
+	url.Replace("<ATTRS>", attributes); // empty attributes parameter returns file with all hub heights
 
 	// make API call to download weather file
 	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
