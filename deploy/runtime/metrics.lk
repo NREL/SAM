@@ -324,7 +324,7 @@ function DSPT_metrics()
 	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
-function MSLF_metrics()
+function MSLF_old_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 //	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
@@ -333,7 +333,15 @@ function MSLF_metrics()
 	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
-function MSLF_v2_metrics()
+function MSLF_IPH_metrics()
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+}
+
+function MSLF_metrics()
 {
 	//metric( 'annual_gross_energy', {'label'='Annual Gross Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 	metric( 'annual_energy', {'label'='Annual AC Energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
@@ -558,8 +566,9 @@ metrics{ 'ETES' } = define() { ETES_metrics(); };
 metrics{ 'PTES' } = define() { PTES_metrics(); };
 metrics{ 'ISCC' } = define() { ISCC_metrics(); };
 metrics{ 'DSPT' } = define() { DSPT_metrics(); };
-metrics{ 'MSLF' } = define() { MSLF_metrics(); };
-metrics{ 'MSLF_v2' } = define() { MSLF_v2_metrics(); }; 
+metrics{ 'MSLF_old' } = define() { MSLF_old_metrics(); };
+metrics{ 'MSLF' } = define() { MSLF_metrics(); }; 
+metrics{ 'MSLF IPH' } = define() { MSLF_IPH_metrics(); }; 
 metrics{ 'DSLF' } = define() { DSLF_metrics(); };
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };

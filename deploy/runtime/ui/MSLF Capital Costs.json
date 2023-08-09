@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 Capital Costs",
+    "Name": "MSLF Capital Costs",
     "Width": 738.0,
     "Height": 592.0,
     "FormObjects": {
@@ -4846,13 +4846,13 @@
         "\treturn ${SD_CALC_total_Ap}; };\r",
         "\t\r",
         "equations{ 'CC_DISP_fossil_mwe' } = define() {\r",
-        "\treturn ${P_ref}; };\r",
+        "\treturn ${q_pb_design}; };\r",
         "\r",
         "equations{ 'CC_DISP_power_plant_mwe' } = define() {\r",
-        "\treturn ${P_ref}; };\r",
+        "\treturn ${q_pb_design}; };\r",
         "\r",
         "equations{ 'CC_DISP_bop_mwe' } = define() {\r",
-        "\treturn ${P_ref}; };\r",
+        "\treturn ${q_pb_design}; };\r",
         "\r",
         "equations{ 'CC_COPY_total_land_area' } = define() {\r",
         "\treturn ${SF_CALC_total_land_area}; };\r",

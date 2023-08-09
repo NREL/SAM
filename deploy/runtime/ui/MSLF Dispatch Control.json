@@ -4178,7 +4178,7 @@
         ""
     ],
     "Callbacks": [
-        "on_load{ 'Physical Trough Dispatch Control' } = define() {",
+        "on_load{ 'MSLF Dispatch Control' } = define() {",
         "",
         "  fin = financing();",
         "  if ( fin == \"Commercial\" || fin == \"None\") ",

@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 Collector and Receiver",
+    "Name": "MSLF Collector and Receiver",
     "Width": 774.0,
     "Height": 1543.0,
     "FormObjects": {
@@ -12707,7 +12707,7 @@
         ""
     ],
     "Callbacks": [
-        "on_load{\"MSLF_v2 Collector and Receiver\"}=define(){",
+        "on_load{\"MSLF Collector and Receiver\"}=define(){",
         "\ton_change{\"DISP_opt_model\"}();",
         "\ton_change{\"DISP_rec_model\"}();",
         "\t\t};",

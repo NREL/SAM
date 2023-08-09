@@ -32,7 +32,7 @@ addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant',
 addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
-addconfig( 'MSLF IPH', ['Single Owner']);
+addconfig( 'MSLF IPH', ['None']);
 // Marine Energy
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
 addconfig( 'MEwave Battery', ['Single Owner']);
@@ -2116,15 +2116,6 @@ addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' 
 setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
-setconfig( 'MSLF IPH', 'Single Owner' );
-setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
-setup_MSLF_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_single_owner_pages();
-setup_electricity_purchases();
-//-----------------------------------------------------
 setconfig( 'MSLF', 'Merchant Plant' );
 setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_pages();
@@ -2133,7 +2124,30 @@ addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='c
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
+//-----------------------------------------------------
 
+function setup_MSLF_IPH_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
+	addpage( [[ 'MSLF IPH System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
+	addpage( [[ 'MSLF Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
+
+	addpage( [[ 'MSLF Collector and Receiver' ]],
+		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
+
+	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
+
+	addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='mslf_iph_system_control' } );
+}
+
+//-----------------------------------------------------
+setconfig('MSLF IPH', 'None');
+setmodules( ['fresnel_physical_iph']);
+setup_MSLF_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 
 // Marine Energy ////////////////////////////////////////////////////////////////////

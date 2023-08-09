@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 Storage",
+    "Name": "MSLF Storage",
     "Width": 959.0,
     "Height": 573.0,
     "FormObjects": {
@@ -2762,7 +2762,16 @@
     },
     "Equations": [
         "equations{ 'TS_COPY_q_pb_design' } = define() {\r",
-        "\treturn ${SD_CALC_q_pb_design}; };\r",
+        "\t\r",
+        "\ttech = technology();\r",
+        "\tif ( tech == 'MSLF' ) {\r",
+        "\t\treturn ${SD_CALC_q_pb_design};\r",
+        "\t\t}\r",
+        "\telse if ( tech == 'MSLF IPH' ) {\r",
+        "\t\treturn ${q_pb_design};}\r",
+        "\r",
+        "\treturn 0;\r",
+        "\t};\r",
         "\r",
         "equations{ 'TS_COPY_tshours' } = define() {\r",
         "\treturn ${tshours}; };\r",
@@ -2794,7 +2803,7 @@
         ""
     ],
     "Callbacks": [
-        "on_load{'MSLF_v2 Storage'} = define()",
+        "on_load{'MSLF Storage'} = define()",
         "{",
         "\ton_change{'DISP_store_fluid'}();",
         "\t//mslf_hx_derate_update();",

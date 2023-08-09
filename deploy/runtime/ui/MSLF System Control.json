@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 System Control",
+    "Name": "MSLF System Control",
     "Width": 921.0,
     "Height": 441.0,
     "FormObjects": {
@@ -2942,7 +2942,7 @@
         ""
     ],
     "Callbacks": [
-        "on_load{\"MSLF_v2 System Control\"} = define()\r",
+        "on_load{'MSLF System Control'} = define()\r",
         "{\r",
         "\ton_change{\"is_dispatch\"}();\r",
         "\tloss_adjustment_set();\r",
