@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -320,7 +320,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -395,6 +395,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "L_rnr_pb"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "Pipe_hl_coef"
                 },
                 "X": {
@@ -403,7 +486,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 135.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -486,7 +569,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3391,7 +3474,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3557,7 +3640,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 303.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3806,7 +3889,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 243.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3972,7 +4055,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 108.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4586,7 +4669,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4706,7 +4789,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 378.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4872,7 +4955,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4955,7 +5038,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 324.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5038,7 +5121,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5121,7 +5204,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5420,6 +5503,19 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.000046,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "L_rnr_pb": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of runner pipe in power block",
+            "Units": "m",
+            "Group": "MSLF Solar Field",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
