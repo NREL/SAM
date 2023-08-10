@@ -67,36 +67,70 @@
         "bos_equip_perarea": 0.0,
         "bos_equip_perwatt": 0.27,
         "bos_equip_total": 54000000.0,
-        "capex_table_ac_cost_per_w": 0.0,
+        "capex_table_ac_cost_per_w": 0.29,
         "capex_table_ac_inputs": [
             [
-                0.0
+                5000000.0,
+                0.44
+            ],
+            [
+                10000000.0,
+                0.44
+            ],
+            [
+                10000000.0,
+                0.39
+            ],
+            [
+                50000000.0,
+                0.39
+            ],
+            [
+                50000000.0,
+                0.33
+            ],
+            [
+                100000000.0,
+                0.33
+            ],
+            [
+                100000000.0,
+                0.29
             ]
         ],
-        "capex_table_cost_per_w": 0.45,
+        "capex_table_cost_per_w": 0.65,
         "capex_table_dc_inputs": [
             [
-                2.0,
-                0.35
+                5000000.0,
+                0.79
             ],
             [
-                5.0,
-                0.4
+                10000000.0,
+                0.79
             ],
             [
-                8.0,
-                0.45
-            ]
-        ],
-        "capex_table_land_cost_per_acre": 0.0,
-        "capex_table_land_inputs": [
+                10000000.0,
+                0.75
+            ],
             [
-                0.0
+                50000000.0,
+                0.75
+            ],
+            [
+                50000000.0,
+                0.69
+            ],
+            [
+                100000000.0,
+                0.69
+            ],
+            [
+                100000000.0,
+                0.65
             ]
         ],
-        "capex_table_total_installed_ac_cost": 0.0,
-        "capex_table_total_installed_dc_cost": 90000000.0,
-        "capex_table_total_installed_land_cost": 0.0,
+        "capex_table_total_installed_ac_cost": 44615300.0,
+        "capex_table_total_installed_dc_cost": 130000000.0,
         "city": "-",
         "contingency": 0.0,
         "contingency_percent": 0.0,
@@ -142,7 +176,6 @@
         "inverterarray_power_w": 153846000.0,
         "is_advanced": 0.0,
         "land_area": 0.0,
-        "land_area_capex": 1300.55,
         "land_area_value": 1300.55,
         "land_fixed": 0.0,
         "land_per_acre": 0.0,
@@ -30134,7 +30167,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 451766000.0,
+        "property_assessed_value": 451765000.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -30171,7 +30204,7 @@
         "term_int_rate": 4.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 451766000.0,
+        "total_installed_cost": 451765000.0,
         "ui_battery_capacity": 59400.0,
         "ui_battery_cost": 104368000.0,
         "ui_electricity_rate_option": 0.0,
