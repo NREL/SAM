@@ -55,7 +55,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COMPARE_SHOW_SAME 2
 
 
-VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_pf(pf), m_vt(vt)
+//VariableGridData::VariableGridData(ProjectFile* pf, Case* c, VarTable* vt) : m_pf(pf), m_vt(vt)
+VariableGridData::VariableGridData(ProjectFile* pf, Case* c, std::vector<VarTable*> *vts) : m_pf(pf), m_vts(vts)
 {
 	m_attr_for_calculated = new wxGridCellAttr;
 	m_attr_for_calculated->SetBackgroundColour(UIColorCalculatedBack);
@@ -84,7 +85,7 @@ void VariableGridData::Init()
 	m_var_table_vec.clear();
 	VarInfoLookup vi_not_calculated;
 	VarTable vt_not_calculated;
-
+	size_t i, n;
 
 	if (m_cases.size() > 0)
 	{
@@ -93,19 +94,49 @@ void VariableGridData::Init()
 		if (m_cases.size() == 1)
 		{
 			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
-			if (m_vt)
-				m_var_table_vec.push_back(m_vt); // for parametric simulation
-			else
-				m_var_table_vec.push_back(&m_cases[0]->Values(0));// TODO: hybrids
-			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables(0));// TODO: hybrids
+//			if (m_vt)
+//			m_var_table_vec.push_back(m_vt); // for parametric simulation
+//		else
+//			m_var_table_vec.push_back(&m_cases[0]->Values(0));// TODO: hybrids
+			ConfigInfo* ci = m_cases[0]->GetConfiguration();
+			if (!ci) return; // throw error?
+			n = ci->Technology.size();
+			if (m_vts) {
+				m_var_table_vec.push_back(*m_vts); // for parametric simulation
+			}
+			else {
+				std::vector<VarTable*> pvt;
+				for (i = 0; i < n; i++)
+					pvt.push_back(&m_cases[0]->Values(i));
+				m_var_table_vec.push_back(pvt);
+			}
+			std::vector<VarInfoLookup*> pvil;
+			for (i = 0; i < n; i++)
+				pvil.push_back(&m_cases[0]->Variables(i));
+			m_var_info_lookup_vec.push_back(pvil);
 		}
 		else
 		{
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
-				m_var_table_vec.push_back(&(*it)->Values(0));// TODO: hybrids
-				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));// TODO: hybrids
+
+				ConfigInfo* ci = m_cases[0]->GetConfiguration();
+				if (!ci) return; // throw error?
+				n = ci->Technology.size();
+
+				std::vector<VarTable*> pvt;
+				for (i = 0; i < n; i++)
+					pvt.push_back(&m_cases[0]->Values(i));
+				m_var_table_vec.push_back(pvt);
+
+				std::vector<VarInfoLookup*> pvil;
+				for (i = 0; i < n; i++)
+					pvil.push_back(&m_cases[0]->Variables(i));
+				m_var_info_lookup_vec.push_back(pvil);
+
+//				m_var_table_vec.push_back(&(*it)->Values(0));// TODO: hybrids
+//				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));// TODO: hybrids
 			}
 		}
 
@@ -691,15 +722,18 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 //	EVT_SHOW(VariableGridFrame::OnShow)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
+VariableGridFrame::VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c, std::vector<VarTable*>* vts, wxString frame_title)
 	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxScaleSize(800, 700)), m_pf(pf)
+//	VariableGridFrame::VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c, VarTable* vt, wxString frame_title)
+//	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxScaleSize(800, 700)), m_pf(pf)
 {
 	m_show_calculated = false;
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	if (!m_pf) return;
 
-	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
+//	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
+	if (!vts) m_pf->AddListener(this); // no listeners when using parametric var tables
 
 	if (c)
 	{
@@ -714,7 +748,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 	if (m_cases.size() > 0)
 	{
-		if (!vt)
+//		if (!vt)
+		if (!vts)
 		{
 			for (size_t i = 0; i < m_cases.size(); i++)
 				m_cases[i]->AddListener(this);
@@ -731,7 +766,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 		SetTitle(title);
 
-		m_griddata = new VariableGridData(m_pf, c, vt);
+//		m_griddata = new VariableGridData(m_pf, c, vt);
+		m_griddata = new VariableGridData(m_pf, c, vts);
 
 		m_grid = new VariableGrid(this, wxID_ANY);
 
