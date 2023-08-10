@@ -810,11 +810,12 @@ void ParametricViewer::OnMenuItem(wxCommandEvent &evt)
 		FillDown(-1);
 		break;
 	case ID_SHOW_ALL_INPUTS:
-		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row))
-		{
-			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])
-			{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable(0), wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1)); // TODO:hybrids
+		if ((int)m_grid_data->GetRuns().size() > m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)){
+			if (m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)])	{
+				std::vector<VarTable*> pvts;
+				for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++)
+					pvts.push_back(m_grid_data->GetRuns()[m_grid_data->GetRunNumberForRowNumber(m_selected_grid_row)]->GetInputVarTable(i));
+				new VariableGridFrame(this, &SamApp::Project(), m_case, &pvts, wxString::Format("Parametric run %d inputs", m_selected_grid_row + 1));
 			}
 		}
 		break;

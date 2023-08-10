@@ -1177,9 +1177,11 @@ void StochasticPanel::OnMenuItem(wxCommandEvent &evt)
 	switch (evt.GetId())
 	{
 	case ID_SHOW_ALL_INPUTS:
-		if (m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)
-		{
-				new VariableGridFrame(this, &SamApp::Project(), m_case, m_sims[m_selected_grid_row]->GetInputVarTable(0), wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1)); // TOD:hybrids
+		if (m_dataGrid->GetNumberRows() > m_selected_grid_row && (int) m_sims.size() > m_selected_grid_row)	{
+			std::vector<VarTable*> pvts;
+			for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++)
+				pvts.push_back(m_sims[m_selected_grid_row]->GetInputVarTable(i));
+			new VariableGridFrame(this, &SamApp::Project(), m_case, &pvts, wxString::Format("Inputs for stochastic run %d", m_selected_grid_row + 1)); // TOD:hybrids
 		}
 		break;
 	}

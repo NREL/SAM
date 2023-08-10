@@ -103,7 +103,7 @@ public:
 
 	Case* GetCase(int row, int col);
 
-
+	bool UpdateVarNameNdxHybrid(Case * c, const wxString& input_name, wxString* var_name, size_t* ndx_hybrid);
 
 private:
 	void Init();
