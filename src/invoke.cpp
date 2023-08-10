@@ -2896,7 +2896,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-        if (!GeoTools::GeocodeGoogle(spd.GetAddress(), &lat, &lon, NULL, false))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+        if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -3582,6 +3583,7 @@ void fcall_geocode(lk::invoke_t& cxt)
 		"(string:address):table");
 
 	double lat = 0, lon = 0, tz = 0;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	bool ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon, &tz);
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);

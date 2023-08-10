@@ -46,7 +46,7 @@ const char* user_email = "";
 
 // Google APIs:
 // For non-NREL builds of SAM, use this instead of NREL geocoding API
-// Get a Google Cloud Platform account at https://code.google.com/apis/console
+// Requires Google Cloud account and subscription https://cloud.google.com
 const char *google_api_key = "";
 
 // Bing Map APIs:
