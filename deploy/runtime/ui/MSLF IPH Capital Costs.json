@@ -2464,7 +2464,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": " $/kWe"
+                    "String": " $/kWt"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -2962,7 +2962,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": " $/kWe"
+                    "String": " $/kWt"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -4209,7 +4209,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Nameplate",
-            "Units": "MWe",
+            "Units": "MWt",
             "Group": "MSLF Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -4248,7 +4248,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Balance of plant",
-            "Units": "MWe, Gross",
+            "Units": "MWt, Gross",
             "Group": "MSLF Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
