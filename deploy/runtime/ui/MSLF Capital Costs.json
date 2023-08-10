@@ -1,5 +1,5 @@
 {
-    "Name": "MSLF_v2 Capital Costs",
+    "Name": "MSLF Capital Costs",
     "Width": 738.0,
     "Height": 592.0,
     "FormObjects": {
@@ -2843,7 +2843,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,

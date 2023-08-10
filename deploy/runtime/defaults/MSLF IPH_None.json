@@ -15,7 +15,6 @@
     "CC_CALC_bop_cost": 95159200.0,
     "CC_CALC_contingency_cost": 22999400.0,
     "CC_CALC_epc_total_cost": 38671800.0,
-    "CC_CALC_fossil_backup_cost": 0.0,
     "CC_CALC_heat_sink_cost": 0.0,
     "CC_CALC_htf_system_cost": 42793500.0,
     "CC_CALC_installed_per_capacity": 1.4574,
@@ -32,7 +31,6 @@
     "CC_COPY_sales_tax_rate": 5.0,
     "CC_COPY_total_land_area": 359.983,
     "CC_DISP_bop_mwe": 279.88,
-    "CC_DISP_fossil_mwe": 279.88,
     "CC_DISP_heat_sink_mwe": 279.88,
     "CC_DISP_htf_system_area": 910501.0,
     "CC_DISP_site_improvements_area": 910501.0,
@@ -689,7 +687,6 @@
         ]
     ],
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
-    "fossil_spec_cost": 0.0,
     "fp_mode": 0.0,
     "h_tank": 20.0,
     "h_tank_min": 1.0,
