@@ -350,10 +350,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     for (int i = 0; i < m_pageGroups.size(); i++) {
         if (m_pageGroups[i]->ExclTop) {
             
-            if (bin_list.Index("Hybrid Bin Placeholder") == wxNOT_FOUND) {
-                dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid Bin Placeholder");
+            if (bin_list.Index("Hybrid") == wxNOT_FOUND) {
+                dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid");
             }
-            bin_list.Add("Hybrid Bin Placeholder");
+            bin_list.Add("Hybrid");
         }
         else if (m_pageGroups[i]->BinName != "") {
             bin_list.Add(m_pageGroups[i]->BinName);
