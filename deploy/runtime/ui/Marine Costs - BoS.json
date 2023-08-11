@@ -334,7 +334,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -1121,7 +1121,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -1577,7 +1577,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -2033,7 +2033,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -3878,7 +3878,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -4417,7 +4417,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -4790,7 +4790,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -5150,7 +5150,7 @@
         "};",
         "",
         "equations{ 'plant_commissioning_cost' } = define() {",
-        "\tarray_scaling_b_value = log(1 - ${plant_commissioning_cost_rvalue}) / log(2);\r",
+        "\tarray_scaling_b_value = -log(1 - ${plant_commissioning_cost_rvalue}) / log(2);\r",
         "\treturn ?${plant_commissioning_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${plant_commissioning_cost_input} * ${system_capacity},",

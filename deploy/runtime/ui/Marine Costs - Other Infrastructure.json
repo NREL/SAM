@@ -1710,7 +1710,7 @@
         "};",
         "",
         "equations {'other_infrastructure_cost'} = define() {",
-        "\tarray_scaling_b_value = log(1 - ${other_infrastructure_cost_rvalue}) / log(2);\r",
+        "\tarray_scaling_b_value = -log(1 - ${other_infrastructure_cost_rvalue}) / log(2);\r",
         "\treturn ?${other_infrastructure_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${other_infrastructure_cost_input}*${system_capacity},",
