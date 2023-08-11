@@ -1660,19 +1660,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 366.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 318.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 400.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 400.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2261,7 +2261,13 @@
         "\txmin = min( xCoordinates );",
         "\tymax = max( yCoordinates );",
         "\tymin = min( yCoordinates );",
-        "",
+        "\t\r",
+        "\t// use equal axis convention to show aspect ratio \r",
+        "\txmax = max(xmax,ymax);\r",
+        "\tymax = xmax;\r",
+        "\txmin = min(xmin,ymin);\r",
+        "\tymin = xmin;\r",
+        "\r",
         "\tratio = width/height;",
         "\txspan = xmax - xmin;",
         "\tyspan = ymax - ymin;",
