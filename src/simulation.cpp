@@ -1145,9 +1145,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 		ssc_var_t p_compute_modules[10];  // only constant allowed here - assumes m_simlist.size() < 10
 		for (size_t i = 0; i < m_simlist.size() && i<10; i++) {
 			p_compute_modules[i] = ssc_var_create();
-			ssc_var_set_string(p_compute_modules[i], m_simlist[i]);
+			ssc_var_set_string(p_compute_modules[i], m_simlist[i].c_str());
 		}
-		ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], m_simlist.size());
+		ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], (int)m_simlist.size());
 		for (size_t i = 0; i < m_simlist.size() && i < 10; i++)
 			ssc_var_free(p_compute_modules[i]);
 
@@ -1156,9 +1156,9 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 //			m_case->Values(i).AsSSCData(p_val); // skips overrides
 			m_inputs[i].AsSSCData(p_val); // includes overrides
 			if (i == m_case->GetConfiguration()->Technology.size() - 1) // "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
-				ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i], p_val);
+				ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i].c_str(), p_val);
 			else
-				ssc_data_set_table(p_input, m_simlist[i], p_val);
+				ssc_data_set_table(p_input, m_simlist[i].c_str(), p_val);
 			ssc_data_free(p_val);
 		}
 		// set "input" SSC_TABLE
@@ -1194,20 +1194,20 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 						const char* vartable_name;
 						wxString prepend_name, prepend_label;
 						if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
-							vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+							vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1].c_str();
 //							prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
 							prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
 							prepend_label = ""; // change "Hybrid" to nothing for normal metric processing
 						}
 						else {
-							vartable_name = m_simlist[i];
+							vartable_name = m_simlist[i].c_str();
 							prepend_name = m_case->GetConfiguration()->Technology[i].Lower() + "_";
 							prepend_label = m_case->GetConfiguration()->Technology[i] + " ";
 						}
 						ssc_data_t p_vartable = ssc_data_get_table(p_outputs, vartable_name);
 						// prepend outputs with "Technology" names (i.e. bin_names)
 
-						ssc_module_t p_mod = ssc_module_create(m_simlist[i]);
+						ssc_module_t p_mod = ssc_module_create(m_simlist[i].c_str());
 						int pidx = 0;
 						while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 						{
