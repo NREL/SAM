@@ -593,6 +593,8 @@ wxString VariableGridData::GetTypeName(int row, int col)
 				else
 					return wxGRID_VALUE_STRING;
 			}
+			else
+				return wxGRID_VALUE_STRING;
 		}
 		else
 			return wxGRID_VALUE_STRING;
@@ -610,7 +612,7 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		{
 		case COMPARE_SHOW_DIFFERENT:
 		case COMPARE_SHOW_SAME:
-		{
+		{ // note that the comparison starts with first case and then check other cases if variable exists - ORDER DEPENDENT
 				int lookup_row = row;
 				if (m_sorted) lookup_row = m_sorted_index[row];
 				Case* c = m_cases[0]; // TODO: verify
@@ -640,6 +642,8 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 						else
 							show = (show && row_varvalues_same);
 					}
+					else
+						show = false; // no variable in first case
 				}
 				else
 					show = false; // no variable value for (row, col=0)
@@ -655,17 +659,20 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		bool calculated = false;
 		int lookup_row = row;
 		if ((row < (int)m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
-		Case* c = m_cases[0]; // TODO: verify
-		wxString var_name;
-		size_t ndx_hybrid;
-		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
-			if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[0][ndx_hybrid]->Lookup(var_name))) {
-				VarInfo* vi = m_var_info_lookup_vec[0][ndx_hybrid]->Lookup(var_name);
-				if (vi)
-					calculated = (vi->Flags & VF_CALCULATED) > 0;
-				if (calculated) show = show && show_calculated;
+		// calculated = calculated in any case!
+		for (size_t iCase = 0; iCase < m_cases.size(); iCase++) {
+			Case* c = m_cases[iCase]; 
+			wxString var_name;
+			size_t ndx_hybrid;
+			if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+				if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name))) {
+					VarInfo* vi = m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name);
+					if (vi)
+						calculated = calculated || (vi->Flags & VF_CALCULATED) > 0;
+				}
 			}
 		}
+		if (calculated) show = show && show_calculated;
 	}
 	return show;
 }
