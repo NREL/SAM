@@ -11782,6 +11782,7 @@
         "cp_capacity_payment_esc": 0.0,
         "cp_capacity_payment_type": 0.0,
         "cp_system_nameplate": 349.4,
+        "dc_ac_ratio": 1.1,
         "debt_message": "",
         "debt_option": 0.0,
         "debt_percent": 50.0,
