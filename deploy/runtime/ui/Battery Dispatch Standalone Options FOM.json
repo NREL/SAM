@@ -339,6 +339,7 @@
     },
     "Equations": [
         "equations{'batt_dispatch_choice'} = define() {",
+        "\t// 1 is pv smoothing, skip for standalone battery\r",
         "\tif (${batt_dispatch_choice_ui} == 0)",
         "\t\treturn ${batt_dispatch_choice_ui};",
         "\telse",
