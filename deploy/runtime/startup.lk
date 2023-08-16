@@ -2599,6 +2599,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_replacement_option', 'DependentVartableIndex' = 3,'DependentVariableName' = 'batt_replacement_option'}, // battery dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_total_installed_cost'},
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'dc_ac_ratio', 'DependentVartableIndex' = 3,'DependentVariableName' = 'dc_ac_ratio'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_system_capacity'},
@@ -2628,4 +2629,4 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operatin
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Battery Incentives', 'help'='incentives', 'bin_name'='Battery' } );
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
-addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_costs'});
+addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});

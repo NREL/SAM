@@ -20208,6 +20208,7 @@
         "crit_load_user_data": [
             0.0
         ],
+        "dc_ac_ratio": 1.1,
         "debt_message": "",
         "debt_option": 1.0,
         "debt_percent": 50.0,
@@ -37850,9 +37851,7 @@
         ],
         "host_nominal_discount_rate": 9.06,
         "host_real_discount_rate": 6.4,
-        "hybrid_capital_cost": 0.0,
-        "hybrid_om_capacity_cost": 0.0,
-        "hybrid_om_fixed_cost": 0.0,
+        "hybrid_capital_cost": 50000.0,
         "ibi_fed_amount": 0.0,
         "ibi_fed_amount_deprbas_fed": 0.0,
         "ibi_fed_amount_deprbas_sta": 0.0,
@@ -56117,6 +56116,9 @@
         ],
         "nominal_discount_rate": 9.06,
         "normalize_to_utility_bill": 0.0,
+        "om_capacity": 1.0,
+        "om_fixed": 100.0,
+        "om_production": 0.1,
         "payment_option": 0.0,
         "pbi_fed_amount": [
             0.0
@@ -56170,7 +56172,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 2028430.0,
+        "property_assessed_value": 2078430.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -56206,7 +56208,7 @@
         "term_int_rate": 0.0,
         "term_tenor": 0.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 2028430.0,
+        "total_installed_cost": 2078430.0,
         "ui_annual_load": 0.0,
         "ui_battery_capacity": 20.304,
         "ui_battery_cost": 20304.0,

@@ -29404,9 +29404,7 @@
         ],
         "grid_curtailment_price_esc": 0.0,
         "grid_interconnection_limit_kwac": 20000.0,
-        "hybrid_capital_cost": 0.0,
-        "hybrid_om_capacity_cost": 0.0,
-        "hybrid_om_fixed_cost": 0.0,
+        "hybrid_capital_cost": 100000.0,
         "ibi_fed_amount": 0.0,
         "ibi_fed_amount_deprbas_fed": 0.0,
         "ibi_fed_amount_deprbas_sta": 0.0,
@@ -30127,6 +30125,9 @@
         "months_receivables_reserve": 0.0,
         "months_working_reserve": 6.0,
         "nominal_discount_rate": 9.06,
+        "om_capacity": 1.0,
+        "om_fixed": 100.0,
+        "om_production": 0.1,
         "payment_option": 0.0,
         "pbi_fed_amount": [
             0.0
@@ -30168,7 +30169,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 451765000.0,
+        "property_assessed_value": 451866000.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -30205,7 +30206,7 @@
         "term_int_rate": 4.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 451765000.0,
+        "total_installed_cost": 451866000.0,
         "ui_battery_capacity": 59400.0,
         "ui_battery_cost": 104368000.0,
         "ui_electricity_rate_option": 0.0,

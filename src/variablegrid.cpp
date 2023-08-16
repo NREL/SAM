@@ -615,7 +615,7 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		{ // note that the comparison starts with first case and then check other cases if variable exists - ORDER DEPENDENT
 				int lookup_row = row;
 				if (m_sorted) lookup_row = m_sorted_index[row];
-				Case* c = m_cases[0]; // TODO: verify
+				Case* c = m_cases[0];
 				wxString var_name;
 				size_t ndx_hybrid;
 				if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
