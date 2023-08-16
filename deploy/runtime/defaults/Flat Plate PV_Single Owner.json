@@ -9511,6 +9511,7 @@
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
     "calculated_dcac_ratio": 1.34109,
+    "calculated_num_inverter_dcac_unity": 0.0,
     "capex_table_ac_cost_per_w": 0.33,
     "capex_table_ac_inputs": [
         [
