@@ -1398,6 +1398,7 @@ void CaseWindow::UpdateConfiguration()
 	DetachCurrentInputPage();
 	m_currentGroup = 0;
 	m_inputPageList->ClearItems();
+	m_pageGroups.clear();
 
 	ConfigInfo *cfg = m_case->GetConfiguration();
 	if ( !cfg ) return;

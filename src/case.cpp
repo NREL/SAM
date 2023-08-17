@@ -1372,11 +1372,12 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 			}
 		}
 
-		// TODO: update UI - check for hybrids
-		SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
-
 	} // end iterating over vartables
-	
+
+	 // TODO: update UI - check for hybrids
+	SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
+
+
 	wxString mm(  wxJoin( notices, wxChar('\n') ) );
 	if ( !silent && notices.size() > 0 )
 		::wxShowTextMessageDialog( mm );
