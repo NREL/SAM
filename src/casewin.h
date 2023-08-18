@@ -151,6 +151,7 @@ private:
     wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
 	wxMetroDataViewTreeCtrl *m_navigationMenu;
+    wxDataViewItem m_previousPage;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;

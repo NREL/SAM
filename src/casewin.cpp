@@ -379,6 +379,8 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         else {
             m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
         }
+        //Try to start with beginning bin expanded, first page selected
+
         /*if (j > 0 && m_pageGroups[j-1]->BinName != "") bin_name_prev = m_pageGroups[j - 1]->BinName;
         if (j == 0 && bin_name != "") {
             dvia[page_list.Index(bin_name)] = m_pTech->AppendContainer(wxDataViewItem(0), bin_name.Capitalize());
@@ -397,6 +399,18 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
             m_pTech->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
         }*/
         
+    }
+    if (m_navigationMenu->IsContainer(dvia[0])) {
+        m_navigationMenu->Expand(dvia[0]);
+        wxDataViewItemArray dvic;
+        m_navigationMenu->GetModel()->GetChildren(dvia[0], dvic);
+        m_navigationMenu->SetCurrentItem(dvic[0]);
+    }
+    else if (m_navigationMenu->IsContainer(dvia[1])) {
+        m_navigationMenu->Expand(dvia[1]);
+        wxDataViewItemArray dvic;
+        m_navigationMenu->GetModel()->GetChildren(dvia[1], dvic);
+        m_navigationMenu->SetCurrentItem(dvic[0]);
     }
     /*for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
@@ -474,7 +488,20 @@ void CaseWindow::SaveCurrentViewProperties()
 bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 {
 	Simulation &bcsim = m_case->BaseCase();
-	m_inputPageList->Select( -1 );	
+	m_inputPageList->Select( -1 );
+    //m_navigationMenu->SetCurrentItem(wxDataViewItem(0));
+    
+    wxDataViewItemArray dvia;
+    m_navigationMenu->UnselectAll();
+    /*
+    m_navigationMenu->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+    wxDataViewItem dvi = dvia[0];
+    m_navigationMenu->GetModel()->GetChildren(dvi, dvia);
+    m_navigationMenu->SetCurrentItem(dvia[0]);
+    m_navigationMenu->Collapse(dvi);
+    */
+    //m_navigationMenu->Expand(dvi);
+    
 
     int i_results_page = m_baseCaseResults->GetSelection();
     m_baseCaseResults->SetSelection(0);
@@ -716,16 +743,34 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
         
+        wxDataViewItemArray dvic;
+        m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvic);
+        for (int i = 0; i < dvic.Count(); i++) {
+            if (dvic[1] == m_previousPage)
+                return;
+        }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
-        wxDataViewItemArray dvia;
+        m_navigationMenu->SetCurrentItem(m_previousPage);
+        //wxDataViewItemArray dvia;
 
+        /*
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvia);
-        SwitchToInputPage(m_navigationMenu->GetItemText(dvia[0]));
+        if (m_navigationMenu->GetItemText(dvia[0]) != L"")
+            SwitchToInputPage(m_navigationMenu->GetItemText(dvia[0]));
+            */
         
     }
     else {
-        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
+        wxDataViewItemArray dvia;
+        wxDataViewItem parent = m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem());
+        m_navigationMenu->GetModel()->GetChildren(parent, dvia);
+        if (dvia.Count() > 0) {
+            SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
+            m_previousPage = m_navigationMenu->GetCurrentItem();
+        }
+        
     }
+    
 }
 
 void CaseWindow::OnTreeActivated(wxDataViewEvent& evt)
@@ -1105,7 +1150,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 	wxBusyCursor wait;
 //	m_inputPagePanel->Freeze();
 
-	DetachCurrentInputPage();
+	//DetachCurrentInputPage();
 
 	m_currentGroup = 0;
 	for( size_t i=0;i<m_pageGroups.size();i++ )
@@ -1113,6 +1158,8 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 			m_currentGroup = m_pageGroups[i];
 
 	if ( !m_currentGroup ) return false;
+
+    DetachCurrentInputPage();
 
 	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
 		for( size_t j=0;j<m_currentGroup->Pages[i].size();j++ )
