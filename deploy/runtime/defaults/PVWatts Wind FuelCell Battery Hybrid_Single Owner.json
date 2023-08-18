@@ -534,6 +534,7 @@
         "batt_discharge_percent_4": 25.0,
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
+        "batt_dispatch_choice_ui": 3.0,
         "batt_gridcharge_percent_1": 100.0,
         "batt_gridcharge_percent_2": 100.0,
         "batt_gridcharge_percent_3": 100.0,
