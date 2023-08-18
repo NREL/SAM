@@ -949,9 +949,11 @@
     },
     "Equations": [
         "equations{ 'total_installed_cost' } = define() {\r",
+        "//\tmsgbox(\"Fuel Cell = \" + technology() + strpos(technology(), \"FuelCell\"));\r",
         "\treturn ${pv_total_installed_cost}\r",
         "\t\t+ ${wind_total_installed_cost}\r",
         "\t\t+ ${battery_total_installed_cost}\r",
+        "//\t\t+ (strpos(technology(), \"FuelCell\") > -1 ? ${fuelcell_total_intstalled_cost}:0.0)\r",
         "\t\t+ ${hybrid_capital_cost}; };\r",
         "\r",
         "equations{ 'ui_battery_cost' } = define() {\r",
