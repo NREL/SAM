@@ -19664,7 +19664,7 @@
     "fuelcell_power_kw": 200.0,
     "fuelcell_power_min": 60.0,
     "fuelcell_power_nameplate": 200.0,
-    "fuelcell_power_total": 200.0,
+    "fuelcell_power_total": 100.0,
     "fuelcell_replacement_option": 0.0,
     "fuelcell_replacement_percent": 50.0,
     "fuelcell_replacement_schedule": [

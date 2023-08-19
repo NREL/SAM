@@ -83,9 +83,9 @@ configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short
 configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Marine Wave Battery', 'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal', { 'tree_parent'='Marine Energy', 'long_name'='Tidal', 'short_name'='Marine Tidal', 'description'='Marine energy tidal system' });
 configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Battery Hybrid', 'short_name' = 'PVWatts-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
-configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-Fuelcell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
+configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
 configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery Hybrid', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
-configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-Fuelcell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 
 configopt( 'Retired', { 'tree_parent'='Retired', 'long_name'= 'Retired technology', 'short_name' = 'Retired', 'description'= 'Retired technologies' });
 
@@ -668,7 +668,7 @@ function setup_fuel_cell_pages_btm()
 function setup_fuel_cell_pages_hybrid()
 {
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-	addpage( [['Fuel Cell Dispatch', 'Fuel Cell Dispatch Manual' ]],
+	addpage( [['Fuel Cell Dispatch'],[ 'Fuel Cell Dispatch Manual' ]],
 				{ 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell'} );
 /*	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
 		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
@@ -2736,7 +2736,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
 setup_fuel_cell_pages_hybrid();
-addpage( [[ 'Fuel Cell Costs' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_hybrid_battery_pages(FOM);
 addpage( [[ 'Standalone Battery Costs' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
