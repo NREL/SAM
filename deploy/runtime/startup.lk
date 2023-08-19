@@ -2736,7 +2736,8 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
 setup_fuel_cell_pages_hybrid();
-addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_hybrid_battery_pages(FOM);
 addpage( [[ 'Standalone Battery Costs' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -2801,7 +2802,8 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
 setup_fuel_cell_pages_hybrid();
-addpage( [[ 'Fuel Cell Costs' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_hybrid_battery_pages(BTM);
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -2991,7 +2993,8 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
 setup_fuel_cell_pages_hybrid();
-addpage( [[ 'Fuel Cell Costs' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_hybrid_battery_pages(FOM);
 addpage( [[ 'Standalone Battery Costs' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -3065,7 +3068,8 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
 setup_fuel_cell_pages_hybrid();
-addpage( [[ 'Fuel Cell Costs' ]], { 'sidebar'='Fuel Cell Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
+addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_hybrid_battery_pages(BTM);
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
