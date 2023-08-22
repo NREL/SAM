@@ -31034,7 +31034,7 @@
         "ui_battery_capacity": 0.0,
         "ui_battery_cost": 0.0,
         "ui_electricity_rate_option": 0.0,
-        "ui_pv_capacity": 181818.0,
+        "ui_hyb_pv_capacity": 181818.0,
         "ui_pv_cost": 96546200.0,
         "ui_system_nameplate_standalone": 0.0,
         "ui_wacc": 5.9994,
