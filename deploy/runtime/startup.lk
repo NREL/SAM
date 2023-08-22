@@ -2706,6 +2706,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_replacement_option', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_replacement_option'}, // battery replacements
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_total_installed_cost'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'dc_ac_ratio', 'DependentVartableIndex' = 4,'DependentVariableName' = 'dc_ac_ratio'},
@@ -2774,6 +2775,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 3,'DependentVariableName' = 'load'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_replacement_option', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_replacement_option'}, // battery dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_system_capacity'},
+{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_total_installed_cost'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'dc_ac_ratio', 'DependentVartableIndex' = 4,'DependentVariableName' = 'dc_ac_ratio'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_system_capacity'},
