@@ -405,13 +405,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         wxDataViewItemArray dvic;
         m_navigationMenu->GetModel()->GetChildren(dvia[0], dvic);
         m_navigationMenu->SetCurrentItem(dvic[0]);
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
     else if (m_navigationMenu->IsContainer(dvia[1])) {
         m_navigationMenu->Expand(dvia[1]);
         wxDataViewItemArray dvic;
         m_navigationMenu->GetModel()->GetChildren(dvia[1], dvic);
         m_navigationMenu->SetCurrentItem(dvic[0]);
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
+    m_previousPage = m_navigationMenu->GetCurrentItem();
     /*for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
         if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
@@ -744,10 +747,20 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     {
         
         wxDataViewItemArray dvic;
+        bool keep_open = false;
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvic);
+        int children_count = dvic.Count();
         for (int i = 0; i < dvic.Count(); i++) {
-            if (dvic[1] == m_previousPage)
+            if (dvic[i] == m_previousPage) {
+                keep_open = true;
+                m_navigationMenu->SetCurrentItem(m_previousPage);
                 return;
+            }
+        }
+        if (!keep_open && m_navigationMenu->IsExpanded(m_navigationMenu->GetCurrentItem())) {
+            m_navigationMenu->Collapse(m_navigationMenu->GetCurrentItem());
+            m_navigationMenu->SetCurrentItem(m_previousPage);
+            return;
         }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
         m_navigationMenu->SetCurrentItem(m_previousPage);
