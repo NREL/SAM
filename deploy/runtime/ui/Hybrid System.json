@@ -8,7 +8,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "lbl_hybrid_description"
                 },
                 "X": {
                     "Type": 3.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The hybrid system combines generation profiles from the PVWatts and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application."
+                    "String": "Text defined by on_load()"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -273,7 +273,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_pv_capacity"
+                    "String": "ui_hyb_pv_capacity"
                 },
                 "X": {
                     "Type": 3.0,
@@ -462,7 +462,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_pv_capacity": {
+        "ui_hyb_pv_capacity": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "PV capacity",
@@ -491,12 +491,13 @@
     },
     "Equations": [
         "equations{ 'system_capacity' } = define() {\r",
-        "\treturn ${ui_pv_capacity} \r",
+        "\treturn ${ui_hyb_pv_capacity} \r",
         "\t+ ${ui_wind_capacity} \r",
         "\t+ ${ui_battery_capacity}; \r",
         "};\r",
-        "\t\t\r",
-        "equations{ 'ui_pv_capacity' } = define() {\r",
+        "\r",
+        "// ui_pv_capacity is used on operating costs form, so use ui_hyb_pv_capacity here\t\t\r",
+        "equations{ 'ui_hyb_pv_capacity' } = define() {\r",
         "\tif (strpos(lower(technology()), 'pvwatts') > - 1)\r",
         "\t{\r",
         "\t\treturn ${pv_system_capacity} / ${dc_ac_ratio};\r",
@@ -504,12 +505,6 @@
         "\telse\r",
         "\t{\r",
         "\t\treturn ${total_inverter_capacity};\r",
-        "\t\t/*return ?${inverter_model} \r",
-        "\t\t\t[ ${inv_snl_paco},\r",
-        "\t\t\t${inv_ds_paco}, \r",
-        "\t\t\t${inv_pd_paco}, \r",
-        "\t\t\t${inv_cec_cg_paco} ] \r",
-        "\t\t\t* ${inverter_count} /1000;*/\r",
         "\t}\t\r",
         "};\r",
         "\r",
@@ -521,5 +516,18 @@
         "\treturn ${battery_system_capacity};\r",
         "};"
     ],
-    "Callbacks": []
+    "Callbacks": [
+        "on_load{'Hybrid System'} = define() {\r",
+        "\tmsg = '';\r",
+        "\tif (strpos(lower(technology()), 'pvwatts') > - 1)\r",
+        "\t{\r",
+        "\t\tmsg = 'The hybrid system combines generation profiles from the PVWatts and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
+        "\t}\r",
+        "\telse\r",
+        "\t{\r",
+        "\t\tmsg = 'The hybrid system combines generation profiles from the Detailed PV and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
+        "\t}\r",
+        "\tproperty('lbl_hybrid_description','Caption',msg);\r",
+        "};"
+    ]
 }
