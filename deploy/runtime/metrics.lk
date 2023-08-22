@@ -590,6 +590,36 @@ metrics{ 'PVWatts Wind Battery Hybrid|Single Owner'}  = define() {
 	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='Table4'  } );
 };
 
+
+metrics{ 'PVWatts Wind FuelCell Battery Hybrid|Single Owner'}  = define() {
+	metric( 'pvwatts_annual_energy', {'label'='PV annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+	metric( 'wind_annual_energy', {'label'='Wind annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+	metric( 'annual_energy', {'label'='Annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+	so_metrics();
+	
+	metric_table('Table2', {'headers'='PV Outputs,Value'});
+	metric_row( 'pvwatts_annual_energy', {'label'='PV annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table2' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='DC capacity factor in Year 1', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='Table2'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='Energy yield in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='Table2' } );
+
+	metric_table('Table3', {'headers'='Wind Outputs,Value'});
+	metric_row( 'wind_annual_energy', {'label'='Annual AC energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table3' } );
+	metric_row( 'wind_capacity_factor', {'label'='Capacity factor in Year 1', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='Table3' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Energy yield in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='Table3' } );
+
+	metric_table('Table5', {'headers'='Fuel Cell Outputs,Value'});
+	metric_row( 'fuelcell_annual_energy', {'label'='Annual AC energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table5' } );
+	metric_row( 'fuelCell_capacity_factor', {'label'='Capacity factor in Year 1', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='Table5' } );
+
+	metric_table('Table4', {'headers'='Battery Outputs,Value'});
+	metric_row( 'battery_annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table4' } );
+	metric_row( 'battery_capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='Table4'  } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='Table4'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='Table4'  } );
+};
+
+
+
 metrics{ 'PVWatts Wind Battery Hybrid|Host Developer'}  = define() {
 	metric( 'pvwatts_annual_energy', {'label'='PV annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
 	metric( 'wind_annual_energy', {'label'='Wind annual energy production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );

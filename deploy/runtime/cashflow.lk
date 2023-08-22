@@ -107,7 +107,7 @@ function is_fuel_tech()
 function cf_production()
 {
 	cfline( 'ENERGY', -1);
-	if ( technology() == 'PVWatts Wind Battery Hybrid') 
+	if (( technology() == 'PVWatts Wind Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') )
 	{
 		cfline( 'pvwatts_cf_energy_net',0);
 		cfline( 'wind_cf_energy_net',0);
@@ -253,6 +253,13 @@ function cf_om_expenses()
 	{
 		cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
 		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+	}
+	if ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') 
+	{
+		cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'fuelcell_cf_om_fixed,fuelcell_cf_om_production,fuelcell_cf_om_capacity,fuelcell_cf_fuelcell_replacement_cost_schedule',0);
 		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
 	}
 
