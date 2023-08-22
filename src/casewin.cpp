@@ -148,7 +148,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
     EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTechTree)
     EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
     EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
-    EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
+    //EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
@@ -745,7 +745,6 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     m_pageFlipper->SetSelection(0);
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
-        
         wxDataViewItemArray dvic;
         bool keep_open = false;
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvic);
