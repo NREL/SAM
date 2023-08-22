@@ -1611,7 +1611,7 @@
         "\tif ( strpos(lower(technology()),'generic')<0 && ",
         "\tstrpos(lower(technology()),'standalone')<0 && ",
         "\tstrpos(lower(technology()),'wave')<0)*/\r",
-        "\tif ( strpos(lower(technology()), 'pv') > -1 || strpos(lower(technology()), 'photovoltaic') > -1 )",
+        "\tif ( strpos(lower(technology()), 'pv') > -1 || strpos(lower(technology()), 'photovoltaic') > -1 || technology() == 'Fuel Cell')",
         "\t{",
         "\t\tsolar_resource =  ${solar_resource_file};",
         "\t\tif (file_exists(solar_resource))",
