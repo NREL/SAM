@@ -492,8 +492,8 @@
     "Equations": [
         "equations{ 'system_capacity' } = define() {\r",
         "\treturn ${ui_pv_capacity} \r",
-        "\t+ ${ui_wind_system_capacity} \r",
-        "\t+ ${ui_battery_system_capacity}; \r",
+        "\t+ ${ui_wind_capacity} \r",
+        "\t+ ${ui_battery_capacity}; \r",
         "};\r",
         "\t\t\r",
         "equations{ 'ui_pv_capacity' } = define() {\r",
