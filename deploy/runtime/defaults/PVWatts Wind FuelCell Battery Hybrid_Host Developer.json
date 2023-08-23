@@ -12119,6 +12119,7 @@
         ],
         "flip_target_percent": 10.0,
         "flip_target_year": 10.0,
+        "fuelcell_power_nameplate": 0.0,
         "fuelcell_total_installed_cost": 0.0,
         "grid_curtailment": [
             0.0
