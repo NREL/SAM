@@ -2599,7 +2599,6 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
@@ -2658,7 +2657,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
+addpage( [[ 'Operating Costs']], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
@@ -2723,7 +2722,6 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
@@ -2791,7 +2789,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
+addpage( [[ 'Operating Costs']], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
@@ -2911,7 +2909,7 @@ setup_flat_plate_pv_pages_hybrid();
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
@@ -3057,7 +3055,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
