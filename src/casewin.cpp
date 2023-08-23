@@ -148,7 +148,7 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
     EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTechTree)
     EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
     EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
-    EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
+    //EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
@@ -405,13 +405,16 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         wxDataViewItemArray dvic;
         m_navigationMenu->GetModel()->GetChildren(dvia[0], dvic);
         m_navigationMenu->SetCurrentItem(dvic[0]);
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
     else if (m_navigationMenu->IsContainer(dvia[1])) {
         m_navigationMenu->Expand(dvia[1]);
         wxDataViewItemArray dvic;
         m_navigationMenu->GetModel()->GetChildren(dvia[1], dvic);
         m_navigationMenu->SetCurrentItem(dvic[0]);
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
+    m_previousPage = m_navigationMenu->GetCurrentItem();
     /*for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
         if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
@@ -742,12 +745,21 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     m_pageFlipper->SetSelection(0);
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
-        
         wxDataViewItemArray dvic;
+        bool keep_open = false;
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvic);
+        int children_count = dvic.Count();
         for (int i = 0; i < dvic.Count(); i++) {
-            if (dvic[1] == m_previousPage)
+            if (dvic[i] == m_previousPage) {
+                keep_open = true;
+                m_navigationMenu->SetCurrentItem(m_previousPage);
                 return;
+            }
+        }
+        if (!keep_open && m_navigationMenu->IsExpanded(m_navigationMenu->GetCurrentItem())) {
+            m_navigationMenu->Collapse(m_navigationMenu->GetCurrentItem());
+            m_navigationMenu->SetCurrentItem(m_previousPage);
+            return;
         }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
         m_navigationMenu->SetCurrentItem(m_previousPage);

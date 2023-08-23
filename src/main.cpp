@@ -500,17 +500,20 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 	// when creating a new case, at least
 	// show the first input page
+   /*
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
 		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
 			// TODO: hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-			for (int i = c->GetConfiguration()->Technology.size() - 1; i >= 0; i--)
-				win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
+            for (int i = c->GetConfiguration()->Technology.size() - 1; i >= 0; i--) {
+                win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
+                //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
+            }
 		}
 		else {
 			win->SwitchToInputPage(pages[0]);
 		}
-	}
+	}*/ //mp trying to not overwrite first page switch at start
 	return win;
 }
 
