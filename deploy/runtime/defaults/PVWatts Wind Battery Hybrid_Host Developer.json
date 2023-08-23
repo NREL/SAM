@@ -1,4 +1,617 @@
 {
+    "PVWatts": {
+        "ac_nameplate": 469.565,
+        "adjust": 0.0,
+        "adjust_constant": 0.0,
+        "adjust_en_periods": 0.0,
+        "adjust_en_timeindex": 0.0,
+        "adjust_periods": [
+            [
+                0.0
+            ],
+            [
+                0.0
+            ],
+            [
+                0.0
+            ],
+            [
+                0.0
+            ],
+            [
+                0.0
+            ],
+            [
+                0.0
+            ],
+            [
+                0.0
+            ]
+        ],
+        "adjust_timeindex": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "albedo": [
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2,
+            0.2
+        ],
+        "analysis_period": 25.0,
+        "annual_albedo": 0.183951,
+        "annual_beam": 7.33564,
+        "annual_diffuse": 1.34843,
+        "annual_global": 5.79476,
+        "annual_snow": "nan",
+        "annual_tdry": 21.9385,
+        "annual_wspd": 1.78648,
+        "array_type": 1.0,
+        "azimuth": 180.0,
+        "batt_simple_enable": 0.0,
+        "bifaciality": 0.0,
+        "bos_equip_fixed": 0.0,
+        "bos_equip_perarea": 0.0,
+        "bos_equip_perwatt": 0.36,
+        "bos_equip_total": 194400.0,
+        "capex_table_ac_cost_per_w": 0.72,
+        "capex_table_ac_inputs": [
+            [
+                100000.0,
+                0.79
+            ],
+            [
+                199999.0,
+                0.79
+            ],
+            [
+                200000.0,
+                0.72
+            ],
+            [
+                499999.0,
+                0.72
+            ],
+            [
+                500000.0,
+                0.68
+            ],
+            [
+                999999.0,
+                0.68
+            ],
+            [
+                1000000.0,
+                0.66
+            ],
+            [
+                2000000.0,
+                0.66
+            ],
+            [
+                2000000.0,
+                0.65
+            ]
+        ],
+        "capex_table_cost_per_w": 0.96,
+        "capex_table_dc_inputs": [
+            [
+                100000.0,
+                1.08
+            ],
+            [
+                199999.0,
+                1.08
+            ],
+            [
+                200000.0,
+                1.0
+            ],
+            [
+                499999.0,
+                1.0
+            ],
+            [
+                500000.0,
+                0.96
+            ],
+            [
+                999999.0,
+                0.96
+            ],
+            [
+                1000000.0,
+                0.95
+            ],
+            [
+                2000000.0,
+                0.95
+            ],
+            [
+                2000000.0,
+                0.94
+            ]
+        ],
+        "capex_table_total_installed_ac_cost": 338087.0,
+        "capex_table_total_installed_dc_cost": 518400.0,
+        "city": "-",
+        "contingency": 29376.0,
+        "contingency_percent": 4.0,
+        "country": "-",
+        "dc_ac_ratio": 1.15,
+        "degradation": [
+            0.5
+        ],
+        "elev": 358.0,
+        "en_snowloss": 0.0,
+        "en_user_spec_losses": 0.0,
+        "engr_fixed": 0.0,
+        "engr_per_watt": 0.38,
+        "engr_percent": 0.0,
+        "engr_total": 205200.0,
+        "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
+        "gcr": 0.3,
+        "grid_fixed": 0.0,
+        "grid_per_watt": 0.06,
+        "grid_percent": 0.0,
+        "grid_total": 32400.0,
+        "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
+        "in_location_list": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",
+        "in_location_options": 0.0,
+        "in_nsrdb_options": 0.0,
+        "in_time_step": 0.0,
+        "inflation_rate": 2.5,
+        "install_labor_fixed": 0.0,
+        "install_labor_perarea": 0.0,
+        "install_labor_perwatt": 0.16,
+        "install_labor_total": 86400.0,
+        "install_margin_fixed": 0.0,
+        "install_margin_perarea": 0.0,
+        "install_margin_perwatt": 0.31,
+        "install_margin_total": 167400.0,
+        "installed_per_capacity": 1.94098,
+        "inv_eff": 96.0,
+        "inverter_costunits": 1.0,
+        "inverter_num_units": 1.0,
+        "inverter_power": 469.565,
+        "inverter_total": 32400.0,
+        "inverterarray_power": 469.565,
+        "inverterarray_power_w": 469565.0,
+        "is_advanced": 0.0,
+        "land_area_value": 3.51186,
+        "land_fixed": 0.0,
+        "land_per_acre": 0.0,
+        "land_per_watt": 0.0,
+        "land_percent": 0.0,
+        "land_total": 0.0,
+        "landprep_fixed": 0.0,
+        "landprep_per_acre": 0.0,
+        "landprep_per_watt": 0.0,
+        "landprep_percent": 0.0,
+        "landprep_total": 0.0,
+        "lat": 33.45,
+        "library_folder_list": "x",
+        "library_paths": "",
+        "lon": -111.98,
+        "loss_age": 0.0,
+        "loss_avail": 3.0,
+        "loss_conn": 0.5,
+        "loss_lid": 1.5,
+        "loss_mismatch": 2.0,
+        "loss_nameplate": 1.0,
+        "loss_shading": 3.0,
+        "loss_snow": 0.0,
+        "loss_soiling": 2.0,
+        "loss_wiring": 2.0,
+        "losses": 14.0757,
+        "losses_user": 14.0,
+        "module_costunits": 0.0,
+        "module_is_bifacial": 0.0,
+        "module_num_units": 1.0,
+        "module_power": 540.0,
+        "module_total": 253800.0,
+        "module_type": 0.0,
+        "modulearray_area": 2842.11,
+        "modulearray_power": 540.0,
+        "modulearray_power_w": 540000.0,
+        "om_capacity": [
+            18.0
+        ],
+        "om_capacity_escal": 0.0,
+        "om_fixed": [
+            0.0
+        ],
+        "om_fixed_escal": 0.0,
+        "om_production": [
+            0.0
+        ],
+        "om_production_escal": 0.0,
+        "per_inverter": 0.06,
+        "per_module": 0.47,
+        "permitting_fixed": 0.0,
+        "permitting_per_watt": 0.03,
+        "permitting_percent": 0.0,
+        "permitting_total": 16200.0,
+        "pv_capex_cost_choice": 0.0,
+        "pv_land_area_is_shown": 1.0,
+        "pvwatts.advanced.is_shown": 1.0,
+        "sales_tax_percent": 80.0,
+        "sales_tax_rate": 5.0,
+        "sales_tax_total": 30551.0,
+        "sales_tax_value": 5.0,
+        "shading": 0.0,
+        "shading_3d_scene": {
+            "VV_TYPE": 6,
+            "DATA": ""
+        },
+        "shading_azal": [
+            [
+                0.0
+            ]
+        ],
+        "shading_diff": 0.0,
+        "shading_en_azal": 0.0,
+        "shading_en_diff": 0.0,
+        "shading_en_mxh": 0.0,
+        "shading_en_string_option": 0.0,
+        "shading_en_timestep": 0.0,
+        "shading_mxh": [
+            [
+                0.0
+            ]
+        ],
+        "shading_string_option": 0.0,
+        "shading_timestep": [
+            [
+                0.0
+            ]
+        ],
+        "soiling": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "solar_data_file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
+        "solar_data_file_name_load": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
+        "solar_data_source": "NSRDB",
+        "solar_resource": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy",
+        "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
+        "state": "-",
+        "station_id": "78208",
+        "step": 3600.0,
+        "subtotal_direct": 734400.0,
+        "system_capacity": 540.0,
+        "system_use_lifetime_output": 0.0,
+        "tilt": 20.0,
+        "total_direct_cost": 763776.0,
+        "total_indirect_cost": 253800.0,
+        "total_installed_cost": 1048130.0,
+        "total_land_area": 3.51186,
+        "total_module_area": 2842.11,
+        "tz": -7.0,
+        "ui_ac_capacity": 0.469565,
+        "ui_array_land_area_acres": 3.51186,
+        "ui_array_land_area_ha": 1.4212,
+        "ui_array_land_area_multiplier": 1.0,
+        "ui_land_area_additional": 0.0,
+        "ui_land_area_additional_units": 0.0,
+        "ui_land_area_per_mw": 0.0,
+        "ui_step_minutes": 60.0,
+        "ui_total_land_area_ha": 1.4212,
+        "ui_total_module_area": 2842.11,
+        "ui_total_module_area_acres": 0.702299,
+        "ui_total_module_area_ha": 0.284211,
+        "ui_use_acre_per_mw": 0.0,
+        "use_specific_weather_file": 0.0,
+        "use_wf_albedo": 1.0,
+        "user_specified_constant_albedo": 0.2,
+        "user_specified_weather_file": "",
+        "wf_nrecords": 8760.0
+    },
+    "Wind": {
+        "a_error_test_number": 17.345,
+        "a_error_test_string": "\"default err msg\"",
+        "adjust": 0.0,
+        "adjust_constant": 0.0,
+        "adjust_en_periods": 0.0,
+        "adjust_en_timeindex": 0.0,
+        "adjust_periods": [
+            [
+                0.0
+            ]
+        ],
+        "adjust_timeindex": [
+            0.0
+        ],
+        "analysis_period": 25.0,
+        "avail_bop_loss": 0.5,
+        "avail_grid_loss": 1.5,
+        "avail_loss_total": 5.50117,
+        "avail_turb_loss": 3.58,
+        "bos_cost_fixed": 0.0,
+        "bos_cost_per_kw": 0.0,
+        "bos_cost_per_turbine": 0.0,
+        "bos_cost_total": 0.0,
+        "cols": 1.0,
+        "degradation": [
+            0.0
+        ],
+        "desired_farm_size": 5.0,
+        "elec_eff_loss": 1.91,
+        "elec_loss_total": 2.00809,
+        "elec_parasitic_loss": 0.1,
+        "env_degrad_loss": 1.8,
+        "env_env_loss": 0.4,
+        "env_exposure_loss": 0.0,
+        "env_icing_loss": 0.21,
+        "env_loss_total": 2.3982,
+        "est_bos_cost": 0.0,
+        "est_turbine_cost": 0.0,
+        "inflation_rate": 2.5,
+        "install_type": 0.0,
+        "om_capacity": [
+            37.0
+        ],
+        "om_capacity_escal": 0.0,
+        "om_fixed": [
+            0.0
+        ],
+        "om_fixed_escal": 0.0,
+        "om_production": [
+            0.0
+        ],
+        "om_production_escal": 0.0,
+        "ops_env_loss": 1.0,
+        "ops_grid_loss": 0.84,
+        "ops_load_loss": 0.99,
+        "ops_loss_total": 2.80347,
+        "ops_strategies_loss": 0.0,
+        "reference_capacity": 100.0,
+        "reference_number_turbines": 1.0,
+        "reference_resource_file": "WY Southern-Flat Lands.srw",
+        "reference_sales_tax_percent": 5.0,
+        "resource_definition_type": 0.0,
+        "rows": 1.0,
+        "sales_tax_basis": 0.0,
+        "sales_tax_rate": 5.0,
+        "sales_tax_total": 0.0,
+        "sizing_warning": 0.0,
+        "specify_label": 0.0,
+        "system_capacity": 100.0,
+        "system_use_lifetime_output": 0.0,
+        "total_installed_cost": 359773.0,
+        "total_installed_cost_per_kw": 3597.73,
+        "turb_generic_loss": 1.7,
+        "turb_hysteresis_loss": 0.4,
+        "turb_loss_total": 3.9545,
+        "turb_perf_loss": 1.1,
+        "turb_specific_loss": 0.81,
+        "turbine_cost_fixed": 0.0,
+        "turbine_cost_per_kw": 3597.73,
+        "turbine_cost_per_turbine": 0.0,
+        "turbine_cost_total": 359773.0,
+        "use_specific_wf_wind": 0.0,
+        "user_specified_wf_wind": " ",
+        "wake_ext_loss": 1.1,
+        "wake_future_loss": 0.0,
+        "wake_int_loss": 0.0,
+        "wake_loss": 0.0,
+        "wake_loss_total": 1.1,
+        "weibull_k_factor": 2.0,
+        "weibull_reference_height": 50.0,
+        "weibull_wind_speed": 7.25,
+        "wind.turbine.blade_design": 0.0,
+        "wind.turbine.drive_train": 0.0,
+        "wind.turbine.dummy": 0.0,
+        "wind.turbine.elevation": 0.0,
+        "wind.turbine.max_tip_speed": 80.0,
+        "wind.turbine.max_tspeed_ratio": 8.0,
+        "wind.turbine.name_only": "0",
+        "wind.turbine.radio_list_or_design": 0.0,
+        "wind.turbine.region2nhalf_slope": 5.0,
+        "wind.turbine.tower_design": 0.0,
+        "wind_climate.avg_wind_speed_closest_to_hub_ht": 0.0,
+        "wind_climate.msg": "",
+        "wind_climate.msg_is_error": 0.0,
+        "wind_climate.url_info": "empty",
+        "wind_farm_num_turbines": 1.0,
+        "wind_farm_sizing_mode": 0.0,
+        "wind_farm_wake_model": 0.0,
+        "wind_farm_xCoord_file": [
+            0.0
+        ],
+        "wind_farm_xCoordinates": [
+            0.0
+        ],
+        "wind_farm_yCoord_file": [
+            0.0
+        ],
+        "wind_farm_yCoordinates": [
+            0.0
+        ],
+        "wind_resource.city": "city??",
+        "wind_resource.closest_dir_meas_ht": 80.0,
+        "wind_resource.closest_speed_meas_ht": 80.0,
+        "wind_resource.country": "USA",
+        "wind_resource.description": "Southern WY - flat lands (NREL AWS Truepower representative file)",
+        "wind_resource.elev": 2088.0,
+        "wind_resource.file": "WY Southern-Flat Lands.srw",
+        "wind_resource.lat": 0.0,
+        "wind_resource.lat_requested": 0.0,
+        "wind_resource.location": "WY Southern-Flat Lands",
+        "wind_resource.location_id": "loc_id",
+        "wind_resource.lon": 0.0,
+        "wind_resource.lon_requested": 0.0,
+        "wind_resource.requested_ht": 80.0,
+        "wind_resource.state": "WY",
+        "wind_resource.year": 1900.0,
+        "wind_resource_distribution": [
+            [
+                0.0
+            ]
+        ],
+        "wind_resource_filename": "WY Southern-Flat Lands.srw",
+        "wind_resource_model_choice": 0.0,
+        "wind_resource_shear": 0.14,
+        "wind_resource_turbulence_coeff": 0.1,
+        "wind_turbine_IEC_Class_from_lib": "Unknown",
+        "wind_turbine_cut_out": 25.0,
+        "wind_turbine_cutin": 4.0,
+        "wind_turbine_hub_ht": 80.0,
+        "wind_turbine_kw_rating": 100.0,
+        "wind_turbine_kw_rating_from_lib": 100.0,
+        "wind_turbine_kw_rating_input": 1500.0,
+        "wind_turbine_max_cp": 0.45,
+        "wind_turbine_powercurve_err_msg": "",
+        "wind_turbine_powercurve_hub_efficiency": [
+            0.0
+        ],
+        "wind_turbine_powercurve_powerout": [
+            0.0,
+            0.0,
+            0.5,
+            4.1,
+            10.5,
+            19.0,
+            29.4,
+            41.0,
+            54.3,
+            66.8,
+            77.7,
+            86.4,
+            92.8,
+            97.8,
+            100.0,
+            99.9,
+            99.2,
+            98.4,
+            97.5,
+            96.8,
+            96.4,
+            96.3,
+            96.8,
+            98.0,
+            99.2
+        ],
+        "wind_turbine_powercurve_powerout_from_lib": [
+            0.0,
+            0.0,
+            0.5,
+            4.1,
+            10.5,
+            19.0,
+            29.4,
+            41.0,
+            54.3,
+            66.8,
+            77.7,
+            86.4,
+            92.8,
+            97.8,
+            100.0,
+            99.9,
+            99.2,
+            98.4,
+            97.5,
+            96.8,
+            96.4,
+            96.3,
+            96.8,
+            98.0,
+            99.2
+        ],
+        "wind_turbine_powercurve_windspeeds": [
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0,
+            9.0,
+            10.0,
+            11.0,
+            12.0,
+            13.0,
+            14.0,
+            15.0,
+            16.0,
+            17.0,
+            18.0,
+            19.0,
+            20.0,
+            21.0,
+            22.0,
+            23.0,
+            24.0,
+            25.0
+        ],
+        "wind_turbine_powercurve_windspeeds_from_lib": [
+            1.0,
+            2.0,
+            3.0,
+            4.0,
+            5.0,
+            6.0,
+            7.0,
+            8.0,
+            9.0,
+            10.0,
+            11.0,
+            12.0,
+            13.0,
+            14.0,
+            15.0,
+            16.0,
+            17.0,
+            18.0,
+            19.0,
+            20.0,
+            21.0,
+            22.0,
+            23.0,
+            24.0,
+            25.0
+        ],
+        "wind_turbine_rated_wind_speed": 100.0,
+        "wind_turbine_rotor_diameter": 21.0,
+        "wind_turbine_rotor_diameter_from_lib": 21.0,
+        "wind_turbine_rotor_diameter_input": 75.0,
+        "wind_turbine_selection": "Northern Power Northwind 100",
+        "windfarm.farm.layout_angle": 0.0,
+        "windfarm.farm.layout_slider": 0.0,
+        "windfarm.farm.number_of_rows": 10.0,
+        "windfarm.farm.offset": 0.0,
+        "windfarm.farm.offset_type": 0.0,
+        "windfarm.farm.row_spacing": 8.0,
+        "windfarm.farm.shape": 0.0,
+        "windfarm.farm.turbine_spacing": 8.0,
+        "windfarm.farm.turbines_per_row": 10.0,
+        "windfarm.layout.file_or_controls": 1.0
+    },
     "Battery": {
         "LeadAcid_q10": 93.0,
         "LeadAcid_q10_computed": 2229.02,
@@ -10471,7 +11084,7 @@
             ]
         ],
         "dispatch_tod_factors": [
-            1.1,
+            1.0,
             1.0,
             1.0,
             1.0,
@@ -19365,18 +19978,18 @@
         "cbi_uti_tax_fed": 1.0,
         "cbi_uti_tax_sta": 1.0,
         "chk_update_peaks": 0.0,
-        "const_per_interest1": 0.0,
+        "const_per_interest1": 18494.3,
         "const_per_interest2": 0.0,
         "const_per_interest3": 0.0,
         "const_per_interest4": 0.0,
         "const_per_interest5": 0.0,
-        "const_per_interest_rate1": 0.0,
+        "const_per_interest_rate1": 4.0,
         "const_per_interest_rate2": 0.0,
         "const_per_interest_rate3": 0.0,
         "const_per_interest_rate4": 0.0,
         "const_per_interest_rate5": 0.0,
-        "const_per_interest_total": 0.0,
-        "const_per_months1": 0.0,
+        "const_per_interest_total": 18494.3,
+        "const_per_months1": 6.0,
         "const_per_months2": 0.0,
         "const_per_months3": 0.0,
         "const_per_months4": 0.0,
@@ -19386,31 +19999,31 @@
         "const_per_name3": "Loan 3",
         "const_per_name4": "Loan 4",
         "const_per_name5": "Loan 5",
-        "const_per_percent1": 0.0,
+        "const_per_percent1": 100.0,
         "const_per_percent2": 0.0,
         "const_per_percent3": 0.0,
         "const_per_percent4": 0.0,
         "const_per_percent5": 0.0,
-        "const_per_percent_total": 0.0,
-        "const_per_principal1": 0.0,
+        "const_per_percent_total": 100.0,
+        "const_per_principal1": 1849430.0,
         "const_per_principal2": 0.0,
         "const_per_principal3": 0.0,
         "const_per_principal4": 0.0,
         "const_per_principal5": 0.0,
-        "const_per_principal_total": 0.0,
-        "const_per_total1": 0.0,
+        "const_per_principal_total": 1849430.0,
+        "const_per_total1": 36988.6,
         "const_per_total2": 0.0,
         "const_per_total3": 0.0,
         "const_per_total4": 0.0,
         "const_per_total5": 0.0,
-        "const_per_upfront_rate1": 0.0,
+        "const_per_upfront_rate1": 1.0,
         "const_per_upfront_rate2": 0.0,
         "const_per_upfront_rate3": 0.0,
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
-        "construction_financing_cost": 0.0,
-        "cost_debt_closing": 0.0,
-        "cost_debt_fee": 0.0,
+        "construction_financing_cost": 36988.6,
+        "cost_debt_closing": 450000.0,
+        "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
         "crit_1": 0.0,
         "crit_10": 0.0,
@@ -19438,7 +20051,7 @@
         "dc_ac_ratio": 1.15,
         "debt_message": "",
         "debt_option": 1.0,
-        "debt_percent": 50.0,
+        "debt_percent": 60.0,
         "depr_alloc_custom_percent": 0.0,
         "depr_alloc_macrs_15_percent": 0.0,
         "depr_alloc_macrs_5_percent": 100.0,
@@ -28261,7 +28874,7 @@
             ]
         ],
         "dispatch_tod_factors": [
-            1.1,
+            1.0,
             1.0,
             1.0,
             1.0,
@@ -28271,7 +28884,7 @@
             1.0,
             1.0
         ],
-        "dscr": 0.0,
+        "dscr": 1.3,
         "dscr_limit_debt_fraction": 0.0,
         "dscr_maximum_debt_fraction": 100.0,
         "dscr_reserve_months": 0.0,
@@ -28288,8 +28901,8 @@
         "energy_7": 77708.5,
         "energy_8": 77555.1,
         "energy_9": 61793.7,
-        "equip1_reserve_cost": 0.0,
-        "equip1_reserve_freq": 0.0,
+        "equip1_reserve_cost": 0.1,
+        "equip1_reserve_freq": 15.0,
         "equip2_reserve_cost": 0.0,
         "equip2_reserve_freq": 0.0,
         "equip3_reserve_cost": 0.0,
@@ -28308,7 +28921,7 @@
         "federal_tax_rate": [
             21.0
         ],
-        "flip_target_percent": 10.0,
+        "flip_target_percent": 11.0,
         "flip_target_year": 20.0,
         "grid_curtailment": [
             1e38,
@@ -55319,7 +55932,7 @@
             33.5754
         ],
         "loan_moratorium": 0.0,
-        "mera_cost1": 0.0,
+        "mera_cost1": 85741.1,
         "mera_cost2": 0.0,
         "mera_cost3": 0.0,
         "mera_name1": "Replacement Reserve 1",
@@ -55423,17 +56036,17 @@
         "salvage_percentage": 0.0,
         "salvage_value": 0.0,
         "scale_factor": 1.0,
-        "show_CapitalCostSO": 0.0,
-        "show_DebtConstDSCR": 0.0,
-        "show_ReserveAccounts": 0.0,
+        "show_CapitalCostSO": 1.0,
+        "show_DebtConstDSCR": 1.0,
+        "show_ReserveAccounts": 1.0,
         "show_construction_period": 1.0,
         "solution_mode_message": "",
         "state_tax_rate": [
             7.0
         ],
         "system_capacity": 857.411,
-        "term_int_rate": 0.0,
-        "term_tenor": 0.0,
+        "term_int_rate": 7.0,
+        "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
         "total_installed_cost": 1849430.0,
         "ui_annual_load": 0.0,
@@ -55441,7 +56054,7 @@
         "ui_battery_cost": 391531.0,
         "ui_hyb_pv_capacity": 469.565,
         "ui_pv_cost": 1048130.0,
-        "ui_wacc": 4.06875,
+        "ui_wacc": 6.70974,
         "ui_wind_capacity": 100.0,
         "ui_wind_cost": 359773.0,
         "ur_annual_min_charge": 0.0,
@@ -55543,7 +56156,7 @@
                 0.0
             ]
         ],
-        "ur_dc_is_shown": 1.0,
+        "ur_dc_is_shown": 0.0,
         "ur_dc_sched_weekday": [
             [
                 1.0,
@@ -56875,7 +57488,7 @@
         "ur_monthly_fixed_charge": 0.0,
         "ur_monthly_min_charge": 0.0,
         "ur_name": "",
-        "ur_nm_credit_month": 0.0,
+        "ur_nm_credit_month": 11.0,
         "ur_nm_credit_rollover": 0.0,
         "ur_nm_yearend_sell_rate": 0.0,
         "ur_phase_wiring": "",
@@ -56916,619 +57529,5 @@
         ],
         "wind_system_capacity": 100.0,
         "wind_total_installed_cost": 359773.0
-    },
-    "PVWatts": {
-        "ac_nameplate": 469.565,
-        "adjust": 0.0,
-        "adjust_constant": 0.0,
-        "adjust_en_periods": 0.0,
-        "adjust_en_timeindex": 0.0,
-        "adjust_periods": [
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ]
-        ],
-        "adjust_timeindex": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-        ],
-        "albedo": [
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2,
-            0.2
-        ],
-        "analysis_period": 25.0,
-        "annual_albedo": 0.183951,
-        "annual_beam": 7.33564,
-        "annual_diffuse": 1.34843,
-        "annual_global": 5.79476,
-        "annual_snow": "nan",
-        "annual_tdry": 21.9385,
-        "annual_wspd": 1.78648,
-        "array_type": 1.0,
-        "azimuth": 180.0,
-        "batt_simple_enable": 0.0,
-        "bifaciality": 0.0,
-        "bos_equip_fixed": 0.0,
-        "bos_equip_perarea": 0.0,
-        "bos_equip_perwatt": 0.36,
-        "bos_equip_total": 194400.0,
-        "capex_table_ac_cost_per_w": 0.72,
-        "capex_table_ac_inputs": [
-            [
-                100000.0,
-                0.79
-            ],
-            [
-                199999.0,
-                0.79
-            ],
-            [
-                200000.0,
-                0.72
-            ],
-            [
-                499999.0,
-                0.72
-            ],
-            [
-                500000.0,
-                0.68
-            ],
-            [
-                999999.0,
-                0.68
-            ],
-            [
-                1000000.0,
-                0.66
-            ],
-            [
-                2000000.0,
-                0.66
-            ],
-            [
-                2000000.0,
-                0.65
-            ]
-        ],
-        "capex_table_cost_per_w": 0.96,
-        "capex_table_dc_inputs": [
-            [
-                100000.0,
-                1.08
-            ],
-            [
-                199999.0,
-                1.08
-            ],
-            [
-                200000.0,
-                1.0
-            ],
-            [
-                499999.0,
-                1.0
-            ],
-            [
-                500000.0,
-                0.96
-            ],
-            [
-                999999.0,
-                0.96
-            ],
-            [
-                1000000.0,
-                0.95
-            ],
-            [
-                2000000.0,
-                0.95
-            ],
-            [
-                2000000.0,
-                0.94
-            ]
-        ],
-        "capex_table_total_installed_ac_cost": 338087.0,
-        "capex_table_total_installed_dc_cost": 518400.0,
-        "city": "-",
-        "contingency": 29376.0,
-        "contingency_percent": 4.0,
-        "country": "-",
-        "dc_ac_ratio": 1.15,
-        "degradation": [
-            0.5
-        ],
-        "elev": 358.0,
-        "en_snowloss": 0.0,
-        "en_user_spec_losses": 0.0,
-        "engr_fixed": 0.0,
-        "engr_per_watt": 0.38,
-        "engr_percent": 0.0,
-        "engr_total": 205200.0,
-        "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-        "gcr": 0.3,
-        "grid_fixed": 0.0,
-        "grid_per_watt": 0.06,
-        "grid_percent": 0.0,
-        "grid_total": 32400.0,
-        "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
-        "in_location_list": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",
-        "in_location_options": 0.0,
-        "in_nsrdb_options": 0.0,
-        "in_time_step": 0.0,
-        "inflation_rate": 2.5,
-        "install_labor_fixed": 0.0,
-        "install_labor_perarea": 0.0,
-        "install_labor_perwatt": 0.16,
-        "install_labor_total": 86400.0,
-        "install_margin_fixed": 0.0,
-        "install_margin_perarea": 0.0,
-        "install_margin_perwatt": 0.31,
-        "install_margin_total": 167400.0,
-        "installed_per_capacity": 1.94098,
-        "inv_eff": 96.0,
-        "inverter_costunits": 1.0,
-        "inverter_num_units": 1.0,
-        "inverter_power": 469.565,
-        "inverter_total": 32400.0,
-        "inverterarray_power": 469.565,
-        "inverterarray_power_w": 469565.0,
-        "is_advanced": 0.0,
-        "land_area_value": 3.51186,
-        "land_fixed": 0.0,
-        "land_per_acre": 0.0,
-        "land_per_watt": 0.0,
-        "land_percent": 0.0,
-        "land_total": 0.0,
-        "landprep_fixed": 0.0,
-        "landprep_per_acre": 0.0,
-        "landprep_per_watt": 0.0,
-        "landprep_percent": 0.0,
-        "landprep_total": 0.0,
-        "lat": 33.45,
-        "library_folder_list": "x",
-        "library_paths": "",
-        "lon": -111.98,
-        "loss_age": 0.0,
-        "loss_avail": 3.0,
-        "loss_conn": 0.5,
-        "loss_lid": 1.5,
-        "loss_mismatch": 2.0,
-        "loss_nameplate": 1.0,
-        "loss_shading": 3.0,
-        "loss_snow": 0.0,
-        "loss_soiling": 2.0,
-        "loss_wiring": 2.0,
-        "losses": 14.0757,
-        "losses_user": 14.0,
-        "module_costunits": 0.0,
-        "module_is_bifacial": 0.0,
-        "module_num_units": 1.0,
-        "module_power": 540.0,
-        "module_total": 253800.0,
-        "module_type": 0.0,
-        "modulearray_area": 2842.11,
-        "modulearray_power": 540.0,
-        "modulearray_power_w": 540000.0,
-        "om_capacity": [
-            18.0
-        ],
-        "om_capacity_escal": 0.0,
-        "om_fixed": [
-            0.0
-        ],
-        "om_fixed_escal": 0.0,
-        "om_production": [
-            0.0
-        ],
-        "om_production_escal": 0.0,
-        "per_inverter": 0.06,
-        "per_module": 0.47,
-        "permitting_fixed": 0.0,
-        "permitting_per_watt": 0.03,
-        "permitting_percent": 0.0,
-        "permitting_total": 16200.0,
-        "pv_capex_cost_choice": 0.0,
-        "pv_land_area_is_shown": 1.0,
-        "pvwatts.advanced.is_shown": 1.0,
-        "sales_tax_percent": 80.0,
-        "sales_tax_rate": 5.0,
-        "sales_tax_total": 30551.0,
-        "sales_tax_value": 5.0,
-        "shading": 0.0,
-        "shading_3d_scene": {
-            "VV_TYPE": 6,
-            "DATA": ""
-        },
-        "shading_azal": [
-            [
-                0.0
-            ]
-        ],
-        "shading_diff": 0.0,
-        "shading_en_azal": 0.0,
-        "shading_en_diff": 0.0,
-        "shading_en_mxh": 0.0,
-        "shading_en_string_option": 0.0,
-        "shading_en_timestep": 0.0,
-        "shading_mxh": [
-            [
-                0.0
-            ]
-        ],
-        "shading_string_option": 0.0,
-        "shading_timestep": [
-            [
-                0.0
-            ]
-        ],
-        "soiling": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
-        ],
-        "solar_data_file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-        "solar_data_file_name_load": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-        "solar_data_source": "NSRDB",
-        "solar_resource": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy",
-        "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-        "state": "-",
-        "station_id": "78208",
-        "step": 3600.0,
-        "subtotal_direct": 734400.0,
-        "system_capacity": 540.0,
-        "system_use_lifetime_output": 0.0,
-        "tilt": 20.0,
-        "total_direct_cost": 763776.0,
-        "total_indirect_cost": 253800.0,
-        "total_installed_cost": 1048130.0,
-        "total_land_area": 3.51186,
-        "total_module_area": 2842.11,
-        "tz": -7.0,
-        "ui_ac_capacity": 0.469565,
-        "ui_array_land_area_acres": 3.51186,
-        "ui_array_land_area_ha": 1.4212,
-        "ui_array_land_area_multiplier": 1.0,
-        "ui_land_area_additional": 0.0,
-        "ui_land_area_additional_units": 0.0,
-        "ui_land_area_per_mw": 0.0,
-        "ui_step_minutes": 60.0,
-        "ui_total_land_area_ha": 1.4212,
-        "ui_total_module_area": 2842.11,
-        "ui_total_module_area_acres": 0.702299,
-        "ui_total_module_area_ha": 0.284211,
-        "ui_use_acre_per_mw": 0.0,
-        "use_specific_weather_file": 0.0,
-        "use_wf_albedo": 1.0,
-        "user_specified_constant_albedo": 0.2,
-        "user_specified_weather_file": "",
-        "wf_nrecords": 8760.0
-    },
-    "Wind": {
-        "a_error_test_number": 17.345,
-        "a_error_test_string": "\"default err msg\"",
-        "adjust": 0.0,
-        "adjust_constant": 0.0,
-        "adjust_en_periods": 0.0,
-        "adjust_en_timeindex": 0.0,
-        "adjust_periods": [
-            [
-                0.0
-            ]
-        ],
-        "adjust_timeindex": [
-            0.0
-        ],
-        "analysis_period": 25.0,
-        "avail_bop_loss": 0.5,
-        "avail_grid_loss": 1.5,
-        "avail_loss_total": 5.50117,
-        "avail_turb_loss": 3.58,
-        "bos_cost_fixed": 0.0,
-        "bos_cost_per_kw": 0.0,
-        "bos_cost_per_turbine": 0.0,
-        "bos_cost_total": 0.0,
-        "cols": 1.0,
-        "degradation": [
-            0.0
-        ],
-        "desired_farm_size": 5.0,
-        "elec_eff_loss": 1.91,
-        "elec_loss_total": 2.00809,
-        "elec_parasitic_loss": 0.1,
-        "env_degrad_loss": 1.8,
-        "env_env_loss": 0.4,
-        "env_exposure_loss": 0.0,
-        "env_icing_loss": 0.21,
-        "env_loss_total": 2.3982,
-        "est_bos_cost": 0.0,
-        "est_turbine_cost": 0.0,
-        "inflation_rate": 2.5,
-        "install_type": 0.0,
-        "om_capacity": [
-            37.0
-        ],
-        "om_capacity_escal": 0.0,
-        "om_fixed": [
-            0.0
-        ],
-        "om_fixed_escal": 0.0,
-        "om_production": [
-            0.0
-        ],
-        "om_production_escal": 0.0,
-        "ops_env_loss": 1.0,
-        "ops_grid_loss": 0.84,
-        "ops_load_loss": 0.99,
-        "ops_loss_total": 2.80347,
-        "ops_strategies_loss": 0.0,
-        "reference_capacity": 100.0,
-        "reference_number_turbines": 1.0,
-        "reference_resource_file": "WY Southern-Flat Lands.srw",
-        "reference_sales_tax_percent": 5.0,
-        "resource_definition_type": 0.0,
-        "rows": 1.0,
-        "sales_tax_basis": 0.0,
-        "sales_tax_rate": 5.0,
-        "sales_tax_total": 0.0,
-        "sizing_warning": 0.0,
-        "specify_label": 0.0,
-        "system_capacity": 100.0,
-        "system_use_lifetime_output": 0.0,
-        "total_installed_cost": 359773.0,
-        "total_installed_cost_per_kw": 3597.73,
-        "turb_generic_loss": 1.7,
-        "turb_hysteresis_loss": 0.4,
-        "turb_loss_total": 3.9545,
-        "turb_perf_loss": 1.1,
-        "turb_specific_loss": 0.81,
-        "turbine_cost_fixed": 0.0,
-        "turbine_cost_per_kw": 3597.73,
-        "turbine_cost_per_turbine": 0.0,
-        "turbine_cost_total": 359773.0,
-        "use_specific_wf_wind": 0.0,
-        "user_specified_wf_wind": " ",
-        "wake_ext_loss": 1.1,
-        "wake_future_loss": 0.0,
-        "wake_int_loss": 0.0,
-        "wake_loss": 0.0,
-        "wake_loss_total": 1.1,
-        "weibull_k_factor": 2.0,
-        "weibull_reference_height": 50.0,
-        "weibull_wind_speed": 7.25,
-        "wind.turbine.blade_design": 0.0,
-        "wind.turbine.drive_train": 0.0,
-        "wind.turbine.dummy": 0.0,
-        "wind.turbine.elevation": 0.0,
-        "wind.turbine.max_tip_speed": 80.0,
-        "wind.turbine.max_tspeed_ratio": 8.0,
-        "wind.turbine.name_only": "0",
-        "wind.turbine.radio_list_or_design": 0.0,
-        "wind.turbine.region2nhalf_slope": 5.0,
-        "wind.turbine.tower_design": 0.0,
-        "wind_climate.avg_wind_speed_closest_to_hub_ht": 0.0,
-        "wind_climate.msg": "",
-        "wind_climate.msg_is_error": 0.0,
-        "wind_climate.url_info": "empty",
-        "wind_farm_num_turbines": 1.0,
-        "wind_farm_sizing_mode": 0.0,
-        "wind_farm_wake_model": 0.0,
-        "wind_farm_xCoord_file": [
-            0.0
-        ],
-        "wind_farm_xCoordinates": [
-            0.0
-        ],
-        "wind_farm_yCoord_file": [
-            0.0
-        ],
-        "wind_farm_yCoordinates": [
-            0.0
-        ],
-        "wind_resource.city": "city??",
-        "wind_resource.closest_dir_meas_ht": 80.0,
-        "wind_resource.closest_speed_meas_ht": 80.0,
-        "wind_resource.country": "USA",
-        "wind_resource.description": "Southern WY - flat lands (NREL AWS Truepower representative file)",
-        "wind_resource.elev": 2088.0,
-        "wind_resource.file": "WY Southern-Flat Lands.srw",
-        "wind_resource.lat": 0.0,
-        "wind_resource.lat_requested": 0.0,
-        "wind_resource.location": "WY Southern-Flat Lands",
-        "wind_resource.location_id": "loc_id",
-        "wind_resource.lon": 0.0,
-        "wind_resource.lon_requested": 0.0,
-        "wind_resource.requested_ht": 80.0,
-        "wind_resource.state": "WY",
-        "wind_resource.year": 1900.0,
-        "wind_resource_distribution": [
-            [
-                0.0
-            ]
-        ],
-        "wind_resource_filename": "WY Southern-Flat Lands.srw",
-        "wind_resource_model_choice": 0.0,
-        "wind_resource_shear": 0.14,
-        "wind_resource_turbulence_coeff": 0.1,
-        "wind_turbine_IEC_Class_from_lib": "Unknown",
-        "wind_turbine_cut_out": 25.0,
-        "wind_turbine_cutin": 4.0,
-        "wind_turbine_hub_ht": 80.0,
-        "wind_turbine_kw_rating": 100.0,
-        "wind_turbine_kw_rating_from_lib": 100.0,
-        "wind_turbine_kw_rating_input": 1500.0,
-        "wind_turbine_max_cp": 0.45,
-        "wind_turbine_powercurve_err_msg": "",
-        "wind_turbine_powercurve_hub_efficiency": [
-            0.0
-        ],
-        "wind_turbine_powercurve_powerout": [
-            0.0,
-            0.0,
-            0.5,
-            4.1,
-            10.5,
-            19.0,
-            29.4,
-            41.0,
-            54.3,
-            66.8,
-            77.7,
-            86.4,
-            92.8,
-            97.8,
-            100.0,
-            99.9,
-            99.2,
-            98.4,
-            97.5,
-            96.8,
-            96.4,
-            96.3,
-            96.8,
-            98.0,
-            99.2
-        ],
-        "wind_turbine_powercurve_powerout_from_lib": [
-            0.0,
-            0.0,
-            0.5,
-            4.1,
-            10.5,
-            19.0,
-            29.4,
-            41.0,
-            54.3,
-            66.8,
-            77.7,
-            86.4,
-            92.8,
-            97.8,
-            100.0,
-            99.9,
-            99.2,
-            98.4,
-            97.5,
-            96.8,
-            96.4,
-            96.3,
-            96.8,
-            98.0,
-            99.2
-        ],
-        "wind_turbine_powercurve_windspeeds": [
-            1.0,
-            2.0,
-            3.0,
-            4.0,
-            5.0,
-            6.0,
-            7.0,
-            8.0,
-            9.0,
-            10.0,
-            11.0,
-            12.0,
-            13.0,
-            14.0,
-            15.0,
-            16.0,
-            17.0,
-            18.0,
-            19.0,
-            20.0,
-            21.0,
-            22.0,
-            23.0,
-            24.0,
-            25.0
-        ],
-        "wind_turbine_powercurve_windspeeds_from_lib": [
-            1.0,
-            2.0,
-            3.0,
-            4.0,
-            5.0,
-            6.0,
-            7.0,
-            8.0,
-            9.0,
-            10.0,
-            11.0,
-            12.0,
-            13.0,
-            14.0,
-            15.0,
-            16.0,
-            17.0,
-            18.0,
-            19.0,
-            20.0,
-            21.0,
-            22.0,
-            23.0,
-            24.0,
-            25.0
-        ],
-        "wind_turbine_rated_wind_speed": 100.0,
-        "wind_turbine_rotor_diameter": 21.0,
-        "wind_turbine_rotor_diameter_from_lib": 21.0,
-        "wind_turbine_rotor_diameter_input": 75.0,
-        "wind_turbine_selection": "Northern Power Northwind 100",
-        "windfarm.farm.layout_angle": 0.0,
-        "windfarm.farm.layout_slider": 0.0,
-        "windfarm.farm.number_of_rows": 10.0,
-        "windfarm.farm.offset": 0.0,
-        "windfarm.farm.offset_type": 0.0,
-        "windfarm.farm.row_spacing": 8.0,
-        "windfarm.farm.shape": 0.0,
-        "windfarm.farm.turbine_spacing": 8.0,
-        "windfarm.farm.turbines_per_row": 10.0,
-        "windfarm.layout.file_or_controls": 1.0
-    },
-    "batt_salvage_percentage": 0.0
+    }
 }
