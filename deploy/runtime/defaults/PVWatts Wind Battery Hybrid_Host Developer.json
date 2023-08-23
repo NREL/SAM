@@ -51,7 +51,7 @@
             0.2,
             0.2
         ],
-        "analysis_period": 30.0,
+        "analysis_period": 25.0,
         "annual_albedo": 0.183951,
         "annual_beam": 7.33564,
         "annual_diffuse": 1.34843,
@@ -356,7 +356,7 @@
         "adjust_timeindex": [
             0.0
         ],
-        "analysis_period": 30.0,
+        "analysis_period": 25.0,
         "avail_bop_loss": 0.0,
         "avail_grid_loss": 0.0,
         "avail_loss_total": 0.0,
@@ -894,7 +894,7 @@
         "LeadAcid_qn_computed": 270.0,
         "LeadAcid_tn": 1.0,
         "add_om_num_types": 1.0,
-        "analysis_period": 30.0,
+        "analysis_period": 25.0,
         "batt_C_rate": 0.1,
         "batt_C_rate_max_charge": 0.099,
         "batt_C_rate_max_charge_input": 0.5,
@@ -20103,7 +20103,7 @@
         "ui_copy_batt_discharge_percent_6": 25.0
     },
     "Hybrid": {
-        "analysis_period": 30.0,
+        "analysis_period": 25.0,
         "analysis_period_warning": "",
         "annual_crit": 0.0,
         "annual_peak": 274.231,
