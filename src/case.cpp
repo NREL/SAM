@@ -567,7 +567,10 @@ bool Case::Read( wxInputStream &_i )
 
 bool Case::SaveDefaults(bool quiet)
 {
-	if (!m_config) return false;
+	if (!m_config)
+	{
+		return false;
+	}
 	wxString file;
 	file = SamApp::GetRuntimePath() + "/defaults/"
 		+ m_config->TechnologyFullName + "_" + m_config->Financing + ".json";
