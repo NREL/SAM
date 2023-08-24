@@ -1311,7 +1311,9 @@
         "engr_per_fckw": 0.0,
         "engr_percent": 0.0,
         "engr_total": 0.0,
-        "fc_fuel_cost": 0.0,
+        "fc_fuel_cost": [
+            10.0
+        ],
         "fuelcell_availability_schedule": [
             [
                 0.0,
@@ -1396,7 +1398,7 @@
         "fuelcell_lhv_in": 983.0,
         "fuelcell_lhv_units": 2.0,
         "fuelcell_number_of_units": 1.0,
-        "fuelcell_per_kW": 400.0,
+        "fuelcell_per_kW": 10000.0,
         "fuelcell_power_min": 60.0,
         "fuelcell_power_nameplate": 200.0,
         "fuelcell_power_total": 200.0,
@@ -1407,7 +1409,7 @@
         ],
         "fuelcell_shutdown_time": 24.0,
         "fuelcell_startup_time": 24.0,
-        "fuelcell_total": 80000.0,
+        "fuelcell_total": 2000000.0,
         "fuelcell_type": 2.0,
         "fuelcell_unit_max_power": 200.0,
         "fuelcell_unit_min_power": 60.0,
@@ -1432,12 +1434,12 @@
         "om_capacity_escal": 0.0,
         "om_fixed_escal": 0.0,
         "om_fuel_cost": [
-            0.0
+            10.37
         ],
         "om_fuel_cost_escal": 0.0,
-        "om_fuel_price_units": 1.0,
+        "om_fuel_price_units": 0.0,
         "om_fuelcell_capacity_cost": [
-            0.0
+            27.0
         ],
         "om_fuelcell_fixed_cost": [
             0.0
@@ -1457,12 +1459,12 @@
         "pv_system_capacity": 200000.0,
         "sales_tax_percent": 100.0,
         "sales_tax_rate": 5.0,
-        "sales_tax_total": 4000.0,
+        "sales_tax_total": 100000.0,
         "sales_tax_value": 5.0,
-        "subtotal_direct": 80000.0,
-        "total_direct_cost": 80000.0,
+        "subtotal_direct": 2000000.0,
+        "total_direct_cost": 2000000.0,
         "total_indirect_cost": 0.0,
-        "total_installed_cost": 84000.0,
+        "total_installed_cost": 2100000.0,
         "ui_step_minutes": 60.0
     },
     "Battery": {
@@ -11271,11 +11273,11 @@
         "batt_discharge_percent_4": 25.0,
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
-        "batt_dispatch_auto_can_gridcharge": 0.0,
+        "batt_dispatch_auto_can_gridcharge": 1.0,
         "batt_dispatch_choice": 0.0,
         "batt_dispatch_choice_ui": 3.0,
         "batt_dispatch_excl": 0.0,
-        "batt_dispatch_update_frequency_hours": 0.0,
+        "batt_dispatch_update_frequency_hours": 24.0,
         "batt_dispatch_wf_forecast_choice": 0.0,
         "batt_gridcharge_percent_1": 100.0,
         "batt_gridcharge_percent_2": 100.0,
@@ -11284,7 +11286,7 @@
         "batt_gridcharge_percent_5": 100.0,
         "batt_gridcharge_percent_6": 100.0,
         "batt_initial_SOC": 50.0,
-        "batt_look_ahead_hours": 0.0,
+        "batt_look_ahead_hours": 18.0,
         "batt_maximum_SOC": 95.0,
         "batt_minimum_SOC": 30.0,
         "batt_minimum_modetime": 10.0,
@@ -20912,7 +20914,7 @@
         "dscr_maximum_debt_fraction": 100.0,
         "dscr_reserve_months": 0.0,
         "en_batt": 1.0,
-        "en_electricity_rates": 0.0,
+        "en_electricity_rates": 1.0,
         "enable_interconnection_limit": 0.0,
         "equip1_reserve_cost": 0.1,
         "equip1_reserve_freq": 15.0,
@@ -20949,7 +20951,7 @@
         "federal_tax_rate": [
             21.0
         ],
-        "flip_target_percent": 10.0,
+        "flip_target_percent": 11.0,
         "flip_target_year": 10.0,
         "fuelcell_dispatch": [
             0.0
@@ -20962,7 +20964,7 @@
         "fuelcell_fixed_pct": 95.0,
         "fuelcell_operation_options": 1.0,
         "fuelcell_power_nameplate": 200.0,
-        "fuelcell_total_installed_cost": 84000.0,
+        "fuelcell_total_installed_cost": 2100000.0,
         "grid_curtailment": [
             1e38,
             1e38,
@@ -30492,7 +30494,7 @@
         "ppa_price_input": [
             0.051
         ],
-        "ppa_soln_mode": 1.0,
+        "ppa_soln_mode": 0.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
         "property_assessed_value": 406290000.0,
@@ -30554,7 +30556,7 @@
         "total_installed_cost": 406290000.0,
         "ui_battery_capacity": 57600.0,
         "ui_battery_cost": 0.0,
-        "ui_electricity_rate_option": 0.0,
+        "ui_electricity_rate_option": 1.0,
         "ui_hyb_pv_capacity": 181818.0,
         "ui_pv_cost": 106498000.0,
         "ui_system_nameplate_standalone": 0.0,
@@ -30660,7 +30662,7 @@
                 0.0
             ]
         ],
-        "ur_dc_is_shown": 1.0,
+        "ur_dc_is_shown": 0.0,
         "ur_dc_sched_weekday": [
             [
                 1.0,
@@ -31944,129 +31946,9 @@
             [
                 1.0,
                 1.0,
-                9.6,
-                2.0,
-                0.16756,
-                0.0
-            ],
-            [
-                1.0,
-                2.0,
-                12.48,
-                2.0,
-                0.17999,
-                0.0
-            ],
-            [
-                1.0,
-                3.0,
-                19.2,
-                2.0,
-                0.34805,
-                0.0
-            ],
-            [
-                1.0,
-                4.0,
                 1e38,
                 2.0,
-                0.45718,
-                0.0
-            ],
-            [
-                2.0,
-                1.0,
-                9.6,
-                2.0,
-                0.14747,
-                0.0
-            ],
-            [
-                2.0,
-                2.0,
-                12.48,
-                2.0,
-                0.1599,
-                0.0
-            ],
-            [
-                2.0,
-                3.0,
-                19.2,
-                2.0,
-                0.3134,
-                0.0
-            ],
-            [
-                2.0,
-                4.0,
-                1e38,
-                2.0,
-                0.34283,
-                0.0
-            ],
-            [
-                3.0,
-                1.0,
-                10.1,
-                2.0,
-                0.14982,
-                0.0
-            ],
-            [
-                3.0,
-                2.0,
-                13.13,
-                2.0,
-                0.16225,
-                0.0
-            ],
-            [
-                3.0,
-                3.0,
-                20.2,
-                2.0,
-                0.29989,
-                0.0
-            ],
-            [
-                3.0,
-                4.0,
-                1e38,
-                2.0,
-                0.35231,
-                0.0
-            ],
-            [
-                4.0,
-                1.0,
-                10.1,
-                2.0,
-                0.14747,
-                0.0
-            ],
-            [
-                4.0,
-                2.0,
-                13.13,
-                2.0,
-                0.1599,
-                0.0
-            ],
-            [
-                4.0,
-                3.0,
-                20.2,
-                2.0,
-                0.29603,
-                0.0
-            ],
-            [
-                4.0,
-                4.0,
-                1e38,
-                2.0,
-                0.34241,
+                0.04,
                 0.0
             ]
         ],

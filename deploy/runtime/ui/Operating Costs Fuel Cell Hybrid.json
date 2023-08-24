@@ -1026,13 +1026,15 @@
         },
         "fc_fuel_cost": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Fuel cell fuel cost",
             "Units": "$/MMBtu or $/MCf",
             "Group": "Operating Costs",
             "IndexLabels": "",
             "Flags": 3.0,
-            "DefaultValue": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "SchedNumeric",
             "sscVariableName": "",
             "sscVariableValue": ""
