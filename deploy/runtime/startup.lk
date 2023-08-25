@@ -2733,13 +2733,15 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
+//addpage( [[{'name'='Fuel Cell Dispatch Fixed Output', 'caption'='Fixed Output'}], [{'name'='Fuel Cell Dispatch Follow Load', 'caption'='Load Following'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='Fuel Cell Dispatch Input', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='AA Empty', 'caption'='Load Following'}], [{'name'='AA Empty', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 setup_pages_battery_life();
-addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]], { 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
+addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'} ]], { 'sidebar'='Battery Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
+addpage( [[ 'Standalone Battery Costs'/*, 'Battery Enable' set on battery dispatch automated fom*/ ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 setup_grid_limits_page();
 // single owner
