@@ -493,7 +493,7 @@ function setup_community_solar_pages()
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 }
 
-function setup_single_owner_Dispatch_pages()
+function setup_single_owner_dispatch_pages()
 {
   setting( { 'analysis_period_var'='cf_length' } );
   addpage( [[ 'Financial Analysis Parameters',
@@ -988,7 +988,7 @@ setup_etes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['ETES Capital Costs']],{'sidebar'='System Costs','help'='cc_etes'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_single_owner_Dispatch_pages();
+setup_single_owner_dispatch_pages();
 //setup_electricity_purchases();
 
 //setconfig('ETES', 'Merchant Plant');
@@ -1006,7 +1006,7 @@ setup_ptes_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['PTES Capital Costs']],{'sidebar'='Installation Costs','help'='cc_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_single_owner_Dispatch_pages();
+setup_single_owner_dispatch_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
@@ -2602,7 +2602,6 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
@@ -2661,7 +2660,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
+addpage( [[ 'Operating Costs']], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
@@ -2726,9 +2725,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -2737,19 +2734,19 @@ addpage( [[ 'Wind Losses' ]], { 'sidebar'='Wind Losses', 'help'='wind_losses', '
 addpage( [[ 'Degradation AC Single Year'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='Wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='Wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
-setup_fuel_cell_pages_hybrid();
+addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-setup_hybrid_battery_pages(FOM);
-addpage( [[ 'Standalone Battery Costs' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
+setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+setup_pages_battery_life();
+addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]], { 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Battery Incentives', 'help'='incentives', 'bin_name'='Battery' } );
+setup_grid_limits_page();
 // single owner
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
-
 setup_single_owner_pages( );
 setup_electricity_purchases();
 
@@ -2794,8 +2791,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
+addpage( [[ 'Operating Costs']], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -2804,17 +2800,19 @@ addpage( [[ 'Wind Losses' ]], { 'sidebar'='Wind Losses', 'help'='wind_losses', '
 addpage( [[ 'Degradation AC Single Year'] ], { 'sidebar'='Wind Degradation','help'='lifetime', 'bin_name'='Wind'} );
 addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='cc_wind', 'bin_name'='Wind' } );
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 //fuel cell
-setup_fuel_cell_pages_hybrid();
+addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-setup_hybrid_battery_pages(BTM);
+setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
+setup_pages_battery_life();
+//addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]], { 'sidebar'='Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true } );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ 'Fuel Cell Dispatch Manual' ], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]], { 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
-//addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Battery Incentives', 'help'='incentives', 'bin_name'='Battery' } );
-// host developer
+setup_grid_limits_page();
+setup_grid_outage_page();// host developer
 setup_host_developer_pages(LOAD_SIMPLE);
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
 
@@ -2914,7 +2912,7 @@ setup_flat_plate_pv_pages_hybrid();
 addpage( [[ 'PV Capital Costs' ],
 	[ 'PV Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land']],
 	{ 'sidebar'='Installation Costs', 'exclusive_var'='pv_capex_cost_choice','help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
@@ -3060,7 +3058,7 @@ addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'h
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
 addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC']], { 'sidebar'='PV Installation Costs', 'exclusive_var'='pv_capex_cost_choice', 'help'='cc_pv', 'bin_name'='PVWatts'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
+addpage( [[ 'Operating Costs' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );

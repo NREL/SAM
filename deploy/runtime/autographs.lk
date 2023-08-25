@@ -196,6 +196,23 @@ autographs { 'PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = define () {
 
 autographs { 'PVWatts Wind Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
+	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom', 1 );
+	agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+
+	// heatmaps
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	// losses
+	if (varinfo('wind_total_uncert')){
+		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
+		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
+	}
+	// host developer
+	host_developer_graphs();
+};
+
+autographs { 'PVWatts Wind FuelCell Battery Hybrid|Host Developer' } = define () {
+	// monthly energy
 	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
 	agraph( 'pvwatts_monthly_energy,wind_monthly_energy,monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom' );
 	// heatmaps

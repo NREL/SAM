@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 48.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -287,11 +287,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 303.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 126.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -336,7 +336,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -369,19 +369,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 303.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 153.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 640.0
+                    "Integer": 604.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -432,11 +432,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 920.0
+                    "Integer": 1022.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -564,7 +564,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 21.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -626,7 +626,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 48.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -809,31 +809,31 @@
         "{",
         "\tfile = choose_file( \"\", 'Choose a weather file', ",
         "\t\t\t'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');",
-        "\t${batt_user_specified_weather_file_peak_shaving} = file;",
+        "\tvalue('batt_user_specified_weather_file_peak_shaving', file);",
         "\trun_forecast(file);",
         "};",
         "",
         "on_change{'batt_pv_ac_forecast_peak'}=define()",
         "{",
-        "\trun_generic_forecast(${batt_pv_ac_forecast_peak});",
+        "\trun_generic_forecast(value('batt_pv_ac_forecast_peak'));",
         "};",
         "",
         "function toggle_forecast_standalone_peak() ",
         "{",
-        "\ttech = (technology() == 'Standalone Battery');",
-        "\tenable('peak_shaving_batt_dispatch_choice', tech == 0);",
+        "\tis_standalone = (technology() == 'Standalone Battery');",
+        "\tenable('peak_shaving_batt_dispatch_choice', is_standalone == 0);",
         "}",
         "",
         "function peak_shaving_choice() ",
         "{",
         "\tvalue('batt_dispatch_choice', 0);",
         "\tchoice = value('peak_shaving_batt_dispatch_choice');",
-        "\ttech = (technology() == 'Standalone Battery');",
+        "\tis_standalone = (technology() == 'Standalone Battery');",
         "\t// Turn on/off forecast input",
         "\t//toggle_forecast();",
-        "\tenable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && tech == 0);",
-        "\tenable('batt_user_specified_weather_file_peak_shaving', choice == 2 && tech == 0);",
-        "\tenable('batt_pv_ac_forecast_peak', choice == 2 && tech == 0);",
+        "\tenable('batt_select_weather_file_forecast_peak_shaving', choice == 2 && is_standalone == 0);",
+        "\tenable('batt_user_specified_weather_file_peak_shaving', choice == 2 && is_standalone == 0);",
+        "\tenable('batt_pv_ac_forecast_peak', choice == 2 && is_standalone == 0);",
         "",
         "\tvalue('batt_dispatch_wf_forecast_choice', choice);",
         "\tif (choice == 2)",
@@ -843,7 +843,7 @@
         "\t\tforecast_array = value(\"batt_pv_ac_forecast_peak\");",
         "\t\tif (#ac_forecast <= 1 || #clipping_forecast <= 1) { ",
         "\t\t\tif (technology() == 'PV Battery') {",
-        "\t\t\t\tfile = ${batt_user_specified_weather_file_peak_shaving};",
+        "\t\t\t\tfile = value('batt_user_specified_weather_file_peak_shaving');",
         "\t\t\t\tif (file != \"\") {",
         "\t\t\t\t\trun_forecast(file);",
         "\t\t\t\t}",
@@ -858,14 +858,14 @@
         "\t\t\t",
         "\t}",
         "\telse {",
-        "\t\t${batt_pv_ac_forecast} = [0];",
-        "\t\t${batt_pv_clipping_forecast} = [0];",
+        "\t\tvalue('batt_pv_ac_forecast', [0]);",
+        "\t\tvalue('batt_pv_clipping_forecast', [0]);",
         "\t}",
         "\t",
         "\tload_choice = value(\"batt_dispatch_load_forecast_choice_peak_shaving\");",
         "\tenable('load_user_forecast_data_peak_shaving', load_choice == 2);",
         "\tenable('batt_dispatch_load_escal_choice_peak', load_choice == 2);",
-        "\tenable('batt_dispatch_load_forecast_escal_peak_shaving', load_choice == 2 && ${batt_dispatch_load_escal_choice_peak} == 1);",
+        "\tenable('batt_dispatch_load_forecast_escal_peak_shaving', load_choice == 2 && value('batt_dispatch_load_escal_choice_peak') == 1);",
         "",
         "\tvalue(\"batt_dispatch_load_forecast_choice\", load_choice);",
         "\t// Updates to load forecast vars happen in equations on Battery Dispatch Options BTM",
@@ -878,16 +878,16 @@
         "\t",
         "\tif (technology() == 'Generic Battery') {",
         "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';",
-        "\t\tshow('batt_pv_ac_forecast_peak',true);",
-        "\t\tshow('batt_user_specified_weather_file_peak_shaving',false);",
-        "\t\tshow('batt_select_weather_file_forecast_peak_shaving',false);",
+        "\t\tenable('batt_pv_ac_forecast_peak',true);",
+        "\t\tenable('batt_user_specified_weather_file_peak_shaving',false);",
+        "\t\tenable('batt_select_weather_file_forecast_peak_shaving',false);",
         "",
         "\t}",
         "\telse {",
         "\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t",
-        "\t\tshow('batt_pv_ac_forecast_peak',false);",
-        "\t\tshow('batt_user_specified_weather_file_peak_shaving',true);",
-        "\t\tshow('batt_select_weather_file_forecast_peak_shaving',true);",
+        "\t\tenable('batt_pv_ac_forecast_peak',false);",
+        "\t\tenable('batt_user_specified_weather_file_peak_shaving',true);",
+        "\t\tenable('batt_select_weather_file_forecast_peak_shaving',true);",
         "",
         "\t}",
         "\t",

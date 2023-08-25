@@ -923,6 +923,18 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_energy_net_aget(SAM_table ptr, int* 
 
 
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_fuelcell_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

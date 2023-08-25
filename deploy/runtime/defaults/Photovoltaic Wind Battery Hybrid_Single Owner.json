@@ -26507,5 +26507,6 @@
         "windfarm.farm.turbines_per_row": 11.0,
         "windfarm.layout.file_or_controls": 1.0
     },
+    "batt_salvage_percentage": 0.0,
     "ui_hyb_pv_capacity": 0.0
 }

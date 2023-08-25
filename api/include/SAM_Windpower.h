@@ -611,6 +611,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
