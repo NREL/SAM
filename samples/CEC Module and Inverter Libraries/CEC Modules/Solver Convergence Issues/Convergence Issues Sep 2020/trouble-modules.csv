@@ -1,0 +1,13 @@
+Manufacturer,Name,Notes,celltype,Vmp,Imp,Voc,Isc,alpha_isc,beta_voc,gamma_pmp,Nser,Tref,Source,Result
+Sunpower,SPR-X21-335,Baseline good module,monoSi,57.3,5.8,67.9,6.2,0.002,-0.17,-0.31,96,46.4,SAM UI,ok
+Risen,RSM120-8-600BMDG,Preliminary - front side only,monoSi,34.85,17.22,41.4,18.5,0.0074,-0.11178,-0.35,120,44,Risen.Energy.Bifal.RSM120_8_580_600BMDG.IEC1500V_30mm.2020H2_1_EN.Tech.Dsht.pdf,fail
+Trina,TSM-DEG20C.20-600 Vertex,Preliminary - front side only,monoSi,34.6,17.34,41.7,18.42,0.007368,-0.10425,-0.34,120,43,Trina.Solar.Bifal.600WVertex.Tech.Dsht.pdf,fail
+Solibro,SL2 150,Number of cells not given,cigs,88.3,1.7,108.9,1.83,0.000183,-0.29403,-0.32,96,42,Solibro_datasheet_SL2_G2-3_2017-12_Rev01_EN.pdf,change celltype to multiSi
+Unknown,Unknown,Similar to  TSM-DEG19C.20,monoSi,31.7,17.29,38.1,18.39,0.0007356,-0.09525,-0.34,110,43,Meron screenshot of SAM,fail
+Trina,TSM-DEG19C.20 550 Vertex,Preliminary - front side only,monoSi,31.8,17.29,38.1,18.39,0.007356,-0.09525,-0.34,110,43,Trina Solar TSM-550.DEG19C.20.pdf,fail
+Risen,RSM120-6-350M,,monoSi,34.7,10.1,40.7,10.7,0.00535,-0.11803,-0.37,120,44,https://en.risenenergy.com/index.php?c=show&id=473,ok
+Sharp,NA-V135H1,Small Imp-Vmp ratio,amorphous,186,0.69,238,0.85,0.000935,-0.952,-0.31,270,44.2,SAM library,ok
+Atlantis,SS156LM,Large Imp-Vmp ratio,monoSi,2.75,8,3.7,8.5,0.001275,-0.010989,-0.457,6,51.2,SAM library,ok
+Trina,TSM-DEG15HC.20(II) 405 Duomax,,monoSi,40.8,9.93,50.1,10.49,0.005245,-0.14529,-0.37,144,40,EN_Datasheet_Duomax_Twin_DEG15HC.20II_201907.pdf,ok
+Trina,TSM-DEG18MC.20(II) 505 Vertex,,monoSi,43.7,11.56,51.7,12.17,0.004868,-0.030425,-0.35,150,40,MA_Datasheet_Vertex_DEG18MC.20(II)_2020A.pdf,ok
+Sunflare Co,FLEX60-175W,Could not solve sanity check failed (-33): abs((P - Pmp) / Pmp) > 0.015,cdte,28.2,6.22,36,7.42,0.000371,-0.10764,-0.031,60,25,CEC tests,fail

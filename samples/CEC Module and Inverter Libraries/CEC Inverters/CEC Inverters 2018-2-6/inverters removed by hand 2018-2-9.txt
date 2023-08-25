@@ -1,0 +1,5 @@
+Removed the following inverters with bad efficiency values in simulation test:
+
+LeadSolar Energy: LS600T [208V] 208V [CEC 2018]	75.7904	75.7904	-999	-999
+Huawei Technologies: SUN2000-45KTL-US-HV-D0 (N/A)V [CEC 2018]	96.8867	96.8867	0	0
+SMA America: SC500U [480V] 480V [CEC 2018]	52444.1	52444.1	0.974223	0.491343
