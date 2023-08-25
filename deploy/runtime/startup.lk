@@ -183,7 +183,8 @@ function setup_pages_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		      [ {'name'='Battery Dispatch Carbon Free', 'caption'='Carbon Free'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'  } );
@@ -195,7 +196,8 @@ function setup_pages_standalone_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		      [ {'name'='Battery Dispatch Carbon Free', 'caption'='Carbon Free'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'  } );
@@ -658,7 +660,8 @@ function setup_fuel_cell_pages_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], 
 		      [ 'Fuel Cell Dispatch Manual' ], 
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
+		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}],
+		      [ {'name'='Battery Dispatch Carbon Free', 'caption'='Carbon Free'} ]],
 				{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
     setup_grid_limits_page();
