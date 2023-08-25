@@ -1,0 +1,13 @@
+T.celltype = get('6par_celltech'); // monoSi, multiSi, CdTe, CIS, CIGS, Amorphous 
+T.area = get('6par_area');
+T.tnoct = get('6par_tnoct');
+T.vmp = get('6par_vmp');
+T.imp = get('6par_imp');
+T.voc = get('6par_voc');
+T.isc = get('6par_isc');
+T.beta_voc = get('6par_bvoc'); // V/C
+T.alpha_isc = get('6par_aisc'); // A/C
+T.gamma_pmp = get('6par_gpmp'); // %/C
+T.cells_in_series = get('6par_nser');
+
+outln(T);

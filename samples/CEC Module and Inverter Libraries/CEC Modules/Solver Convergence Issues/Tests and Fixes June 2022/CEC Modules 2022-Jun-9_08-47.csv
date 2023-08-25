@@ -1,0 +1,7 @@
+Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date
+Units,,,,,,m2,m,m,,A,V,A,V,A/K,V/K,C,V,A,A,Ohm,Ohm,%,%/K,,,
+[0],lib_manufacturer,cec_material,lib_is_bifacial,,,cec_area,,,cec_n_s,cec_i_sc_ref,cec_v_oc_ref,cec_i_mp_ref,cec_v_mp_ref,cec_alpha_sc,cec_beta_oc,cec_t_noct,cec_a_ref,cec_i_l_ref,cec_i_o_ref,cec_r_s,cec_r_sh_ref,cec_adjust,cec_gamma_r,,,
+Hyperion Solar HY-DH144P8-525-T,Hyperion Solar,Mono-c-Si,1,525.712,487.7,2.58,,,72,13.65,49.2,12.76,41.2,0.007644,-0.151044,43.7,1.98449,13.6631,2.28293e-10,0.152663,159.584,10.827,-0.396,N,SAM 2021.12.02,5/28/2022
+Jinko Solar Co._ Ltd JKMS260M-60B-EP,Jinko Solar Co._ Ltd,Mono-c-Si,0,260.178,236.6,1.54,,,60,9.1,37.9,8.42,30.9,0.006279,-0.116732,46.2,1.56581,9.11893,2.71782e-10,0.277642,133.445,15.6217,-0.417,N,SAM 2021.12.02,5/28/2022
+
+SunPower No Unicode SPT-305-Mono-BK,SunPower No Unicode,Mono-c-Si,0,307.664,276,1.62,,,60,9.9,40.1,9.38,32.8,0.003168,-0.115488,48.9,1.55379,9.9033,6.10165e-11,0.277959,834.198,9.29135,-0.403,N,SAM 2021.12.02,5/28/2022

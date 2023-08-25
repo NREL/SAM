@@ -1,0 +1,71 @@
+/* test inverter database
+
+ run a simulation for each inverter in database, and report peak
+ and mean inverter efficiency, along with peak and mean DC and AC output
+ note that inverters with Pnt = 0 have NaN nighttime inverter efficiency values.
+ 
+ script uses SPE module model to scale module size to match inverter.
+ 
+ Last modified 11/5/2018
+
+*/
+
+ok = yesno('Before running this script!\nMake sure you are running it from the inverter_test.sam file that scales module size to inverter size, and be sure the libraries/CEC inverters.csv file for this version of SAM is the one you want to test. If you change the library file, close SAM before you change the file and then reopen it.\n\nThis script may take a while to run.\n\nContinue?');
+if (!ok) { return; }
+
+active_case( 'test case' );
+
+path = choose_dir( cwd(), 'Choose archive folder to save test results' );
+	
+inverters = library('CEC Inverters');
+results = {};
+
+outln('Running...');
+for( i=0; i<#inverters; i++ )
+{
+	if ( mod( i,100) == 0 ) {outln(i);}
+	set('inv_snl_inverter_name',inverters[i]);
+	pdco = get('inv_snl_pdco')/1000; // convert W to kW
+	v_mppt_max = get('inv_snl_mppt_hi');
+	v_mppt_min = get('inv_snl_mppt_low');
+	v_avg = ( v_mppt_max + v_mppt_min ) / 2;
+	set( 'spe_voc', v_avg );
+	set( 'spe_vmp' , 0.85 * v_avg );
+	set( 'spe_area', pdco ); // assumes spe module efficiency is 100%
+	results.sim_msg[i] = 'ok';
+	msg = '';
+	ok = simulate( msg, false);
+	if (strlen(msg)>250) { msg=left(msg,250); }
+	msg = replace( msg, '\n', ' -- ' );
+	if ( !ok )
+	{
+		results.sim_msg[i] = '\"' + msg + '\"';
+	}
+	pdc_nameplate = get( 'nameplate_dc_rating' ); // for reference
+	eff = get('inv_eff');
+	pdc = get('dc_net');
+	pac = get('gen');
+	dcac_ratio = get('calculated_dcac_ratio');
+	results.name[i] = inverters[i];
+	results.inv_pdco[i] = pdco; 
+	results.dc_capacity[i] = pdc_nameplate;
+	results.dcac_ratio[i] = dcac_ratio;
+	results.eff_max[i] = max( eff );
+	results.eff_mean[i] = mean( eff );
+	results.pdc_max[i] = max( pdc );
+	results.pdc_mean[i] = mean( pdc );
+	results.pac_max[i] = max( pac );
+	results.pac_mean[i] = mean( pac );
+}
+
+date = split( date_time(), ' ' );
+date_str = date[4] + '-' + date[1] + '-' + date[2];
+file = path + '/inverter_simulation_test_results ' + date_str + '.csv';
+ok = csvwrite( file , results );
+if ( !ok )
+	outln('Failed to write results to file.');
+else
+{
+	outln( 'See results in ' + file );
+	browse ( file );
+}

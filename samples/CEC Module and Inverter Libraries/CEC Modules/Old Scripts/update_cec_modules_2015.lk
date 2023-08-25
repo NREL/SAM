@@ -1,0 +1,100 @@
+/*  ********************************************************
+	This script helps merge new modules in a CEC update
+	into the SAM library.
+	
+	Instructions:
+	
+	1.  Go to the CEC NSHP program website: 
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/download_calculator.php
+		
+	2.  Download the newest Module/Inverter update for CECPV Calculator Version 5.0
+	
+		for the January 16, 2015 update, this was the file:
+		http://www.gosolarcalifornia.org/tools/nshpcalculator/archive5-0/Mod5-0e-Inv5-0e.zip
+		
+	3.  Unzip the file, and extract PVModules.lkt
+	4.  Start the Engineering Equation Solver (EES) program
+	5.  From the 'Tables' menu, select 'Open Lookup Table', and open the PVModules.lkt file
+	6.  From the 'Edit' menu, click 'Select All'
+	7.  From the 'Edit' menu, click 'Copy Table with Headers'
+	8.  Start Notepad++
+	9.  Save the file as cec_latest_tabbed.txt on your disk in ascii text format.  
+		This is the file to select when prompted by the script.
+	
+	
+*/
+
+
+
+if (!yesno( 'CEC module database merge\n\nThis script assumes you have downloaded the CEC module database file from'
+ + ' the CEC website, opened the LKT file with EES, and copied the data in to Notepad++ as tab-delimited text and '
+ + ' saved a copy on disk as .txt file.  For instructions, see the comments in the script.\n\nAre you ready to continue?' )) exit;
+
+file1 = choose_file('', 'Select current SAM CEC module database library file', 'CSV Files|*.csv');
+if ( file1 == '' ) exit;
+file2 = choose_file('', 'Select newest LKT-converted CEC module tab-delimited text file', 'Text Files|*.txt');
+if ( file2 == '' ) exit;
+
+outln('Loading module databases...');
+db1 = csvread( file1 );
+outln( 'Number of modules in current SAM DB: ' + (#db1-3) );
+db2 = csvread( file2, {'skip'=2, 'delim'='\t'} );
+outln( 'Number of modules in newest CEC DB: ' + #db2 );
+
+
+
+// catalogue current SAM database
+outln('Cataloguing SAM database into internal lookup table...');
+C = {};
+for( i=3;i<#db1;i++ )
+	C{db1[i][0]} = db1[i];
+	
+
+nadded = 0;
+for( i=0;i<#db2;i++ )
+{
+	name = db2[i][0];
+	fields = db2[i];
+	fields -@ 3; // remove the 'time' field (4th column)
+	fields -@ (#fields-1); // remove the last column, the 'sort order'
+	
+	if ( !(C ?@ name) )
+	{
+		outln( 'adding ' + name);
+		nadded++;
+	}
+	
+	// use the latest field values in the newest database
+	// in case they've been updated
+	C{name} = fields;
+}
+
+// sort
+outln('sorting new database by module name...');
+
+names = @C; // keys into the hash
+stable_sort(names);
+
+outln('building new module database...');
+// copy the top three lines of header info
+for( i=0;i<3;i++ )
+	db3[i] = db1[i];
+	
+// copy the sorted data
+for( i=0;i<#names;i++ )
+	db3[i+3] = C{names[i]};
+
+
+
+outln( nadded + ' modules added to the SAM database' );
+outln( 'new size is ' + #db3 );
+
+
+file3 = path_only(file1) + '/CEC Modules Updated.csv';
+csvwrite( file3, db3 );
+msgbox('Wrote updated module database file:\n\n' + file3 + '\n\n'
++ 'Please verify manually by diff against the old database...');
+
+
+
+
