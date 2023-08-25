@@ -11275,7 +11275,7 @@
         "batt_discharge_percent_6": 25.0,
         "batt_dispatch_auto_can_gridcharge": 1.0,
         "batt_dispatch_choice": 0.0,
-        "batt_dispatch_choice_ui": 3.0,
+        "batt_dispatch_choice_ui": 0.0,
         "batt_dispatch_excl": 0.0,
         "batt_dispatch_update_frequency_hours": 24.0,
         "batt_dispatch_wf_forecast_choice": 0.0,
@@ -19621,7 +19621,7 @@
         ],
         "dispatch_manual_gridcharge": [
             0.0,
-            1.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -19635,7 +19635,6 @@
             0.0
         ],
         "dispatch_manual_percent_gridcharge": [
-            100.0,
             0.0
         ],
         "dispatch_manual_sched": [
@@ -30494,7 +30493,7 @@
         "ppa_price_input": [
             0.051
         ],
-        "ppa_soln_mode": 0.0,
+        "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
         "property_assessed_value": 406290000.0,
@@ -30514,7 +30513,7 @@
         "pv.storage.p1.gridcharge": 0.0,
         "pv.storage.p2.charge": 1.0,
         "pv.storage.p2.discharge": 0.0,
-        "pv.storage.p2.gridcharge": 1.0,
+        "pv.storage.p2.gridcharge": 0.0,
         "pv.storage.p3.charge": 1.0,
         "pv.storage.p3.discharge": 1.0,
         "pv.storage.p3.gridcharge": 0.0,
