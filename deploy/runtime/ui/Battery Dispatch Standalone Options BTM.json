@@ -118,7 +118,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast|24/7 carbon-free energy"
+                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -267,7 +267,7 @@
             "Label": "Battery dispatch choice",
             "Units": " ",
             "Group": "Battery Dispatch",
-            "IndexLabels": "Peak shaving| Input grid power targets| Input battery power targets| Manual dispatch| Price signal forecast| 24/7 carbon-free energy",
+            "IndexLabels": "Peak shaving| Input grid power targets| Input battery power targets| Manual dispatch| Price signal forecast",
             "Flags": 3.0,
             "DefaultValue": 3.0,
             "UIObject": "RadioChoice",
