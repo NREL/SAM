@@ -294,6 +294,8 @@ function setup_flat_plate_pv_pages_hybrid()
 	            'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } );
 	addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
+	addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ],
+             { 'sidebar'='Lifetime and Degradation','help'='lifetime' , 'bin_name'='Photovoltaic' } );
 }
 
 function setup_lifetime_page( degradation_mode )
