@@ -324,15 +324,6 @@ function DSPT_metrics()
 	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
-function MSLF_old_metrics()
-{
-	metric( 'annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-//	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
-}
-
 function MSLF_IPH_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
@@ -566,7 +557,6 @@ metrics{ 'ETES' } = define() { ETES_metrics(); };
 metrics{ 'PTES' } = define() { PTES_metrics(); };
 metrics{ 'ISCC' } = define() { ISCC_metrics(); };
 metrics{ 'DSPT' } = define() { DSPT_metrics(); };
-metrics{ 'MSLF_old' } = define() { MSLF_old_metrics(); };
 metrics{ 'MSLF' } = define() { MSLF_metrics(); }; 
 metrics{ 'MSLF IPH' } = define() { MSLF_IPH_metrics(); }; 
 metrics{ 'DSLF' } = define() { DSLF_metrics(); };
