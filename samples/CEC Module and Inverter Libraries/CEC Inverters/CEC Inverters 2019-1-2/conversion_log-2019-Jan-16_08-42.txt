@@ -1,0 +1,203 @@
+==========================================================================
+CEC Inverter Database Conversion Log Wed Jan 16 08:42:24 2019
+===========================================================================
+See report at bottom of file. Search for "**" to find problem inverters
+---------------------------------------------------------------------------
+Number of inverters in current SAM library: 7265
+Number of inverters in CEC database: 3080
+Adding inverters from current SAM library file to lookup table...
+Done.
+Adding inverters from CEC database file to lookup table...
+Altenergy Power System Inc : QS1 [240V] 240V [CEC 2019]
+Altenergy Power System Inc : QS1200 [240V] 240V [CEC 2019]
+American Electric Technologies: ISIS-1000-15000-60 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+American Electric Technologies: ISIS-1000-410-60 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Changzhou Nesl Solartech: DJ-230P-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-235P-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-240DA/C-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-240P-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-245DA/C-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-250DA/C-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-255D/C-ST15 [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Concept by US: Power Station PS247-15-180 [120V] 120V [CEC 2019]
+** Pso <= 0, skipping this inverter.
+Darfon Electronics Corp : G64xxxxxx [240V] 240V [CEC 2019]
+DASS tech: DSP-M33250KUS (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Enphase Energy Inc : M215-60-2LL-S2x-NA [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+Enphase Energy Inc : D380-72-2LL-S1x-NA [240V] 240V [CEC 2019]
+** Pmax <=0. Skipping this inverter.
+ETM Electromatic: 290-480-60 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** Pso <= 0, skipping this inverter.
+Hansol Technics: HSPV-A250 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Hoymiles Converter Technology Co  Ltd : MI-1200 [240V] 240V [CEC 2019]
+Hoymiles Converter Technology Co  Ltd : MI-1200T [240V] 240V [CEC 2019]
+Huawei Technologies Co  Ltd : SUN2000-45KTL-US-HV-D0 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** Pso > 0.10 Pdco, Paco < 0.75 Pdco, skipping this inverter.
+Jema Energy: JAE7140 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Jema Energy: JAE7141 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+LeadSolar Energy Co  Ltd: LS600T [208V] 208V [CEC 2019]
+** Pso > 0.10 Pdco, Paco < 0.75 Pdco, skipping this inverter.
+LG Electronics Inc : LG315E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG315E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Nidec ASI: PV800A60UNO04LNU0NN [600V] 600V [CEC 2019]
+Power Electronics: FS0560CU (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Power Electronics: FS0560PU (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+SanRex: PV-100K-48T-13 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+SanRex: PV-250K-48T-13 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+SanRex: PV-500K-48T-13 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Schneider Electric Solar Inverters USA Inc : XW4024-120/240-60 [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW4024-120/240-60 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW4548-120/240-60 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW+5548-NA (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW+5548-NA [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW6048-120-60 [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW+6848-NA (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW+6848-NA [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Schneider Electric Solar Inverters USA Inc : XW6048-120/240 (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 1500-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 1500-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 1500-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2000-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2000HF-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2000HF-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2000-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2000-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2500HF-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 2500HF-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3000-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3000-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3000-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3000HF-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3000HF-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3600 MTL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3600 MTL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 3600 MTL-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 4200 MTL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 4200 MTL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 4200 MTL-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 5000 MTL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 5000 MTL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 5000 MTL-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 7000MTLP-US [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 7600MTLP-US [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 7600MTLP-US [277V] 277V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 8000TL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 8000TL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 9000TL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 9000TL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 10000TL-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 10000 TL3-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 12000 TL3-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 11000TL-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 18000 TL3-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: Growatt 20000 TL3-US [277V] 277V [CEC 2019]
+SMA America: SC500U [480V] 480V [CEC 2019]
+** Paco < 0.75 Pdco, skipping this inverter.
+TMEIC: PVH-L2500GR-EG (N/A)V [CEC 2019]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Xantrex Technology: SW4048 [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Xantrex Technology: SW4024 [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Xantrex Technology: SW5548 [120V] 120V [CEC 2019]
+** MPPT_low > Vdco or MPPT_hi < Vdco, skipping this inverter.
+Yaskawa Solectria Solar: XGI 1500-125/125 [600V] 600V [CEC 2019]
+Yaskawa Solectria Solar: XGI 1500-125/150 [600V] 600V [CEC 2019]
+Yaskawa Solectria Solar: XGI 1500-166/166 [600V] 600V [CEC 2019]
+Sorting by inverter name.
+Building new library...
+Done.
+Writing data to CSV library file...
+Done.
+See new SAM library file
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2/CEC Inverters 2019-Jan-16_08-42.csv
+Verify manually by diff against the old file.
+Rename to CEC Inverters.csv and replace file in SAM library folder.
+---------------------------------------------------------------------------
+Old inverter library file:
+
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2\CEC Inverters 2019-Jan-16_08-40.csv
+CEC database file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2\Utility_Interactive_Inverter_List_Full_Data 2019-1-15.xlsx
+New inverter library file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2/CEC Inverters 2019-Jan-16_08-42.csv
+---------------------------------------------------------------------------
+Number of inverters in new SAM library: 7323.
+Skipped because of problems:
+  Coefficient generator calculated parameters with problems: 17
+  Pmax <= 0: 9
+  Pmax units do not match Paco units: 15
+  Coefficient generator failed: 0
+Data issues but not skipped:
+  Pnt negative converted to positive: 0
+  Paco converted from  W to kW: 0
+  Power levels converted from W to kW: 0
+  Vac missing (not used in simulations): 19
+  MPPT_high <= 0: 0
+  MPPT_low <= 0: 0
+  Vdco = 0: 0
+  Paco > Pdco: 0
+  Pac < 0.75 Pdco: 0
+  MPPT_high < vdco or MPPT_low > vdco: 0
