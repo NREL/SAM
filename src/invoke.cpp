@@ -486,6 +486,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
     bool exclusive_top = false;
 	std::vector<PageInfo> excl_header_pages;
     std::vector<PageInfo> excl_footer_pages;
+    std::vector<PageInfo> bin_summary;
 
 	if ( cxt.arg_count() > 1 )
 	{
@@ -530,6 +531,22 @@ static void fcall_addpage( lk::invoke_t &cxt )
 			}
 
 		}
+
+        if (lk::vardata_t* x = props.lookup("bin_summary"))
+        {
+            lk::vardata_t& vec = x->deref();
+            if (vec.type() == lk::vardata_t::VECTOR)
+            {
+                for (size_t i = 0; i < vec.length(); i++)
+                {
+                    PageInfo pi;
+                    pi.Name = vec.index(i)->as_string();
+                    pi.Caption = pi.Name;
+                    bin_summary.push_back(pi);
+                }
+            }
+
+        }
 
         if (lk::vardata_t* x = props.lookup("exclusive_footer_pages"))
         {

@@ -2593,8 +2593,10 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_total_installed_cost'} 
 ]);
+addpage([['Hybrid Summary']], {'sidebar'='Hybrid Summary', 'help'='hybrid_system', 'top_page'=true});
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pv
+addpage([['PVWatts Summary']], {'sidebar'='PVWatts Summary', 'help'='pvwatts_system_design'});
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='PV Degradation','help'='degradation', 'bin_name'='PVWatts' } );
@@ -2602,6 +2604,7 @@ addpage( [[ 'PV Capital Costs' ], [ 'PVWatts Capital Cost Curve', 'PV Capex Tabl
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='PVWatts'} );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='PV Incentives', 'help'='incentives', 'bin_name'='PVWatts' } );
 // wind
+addpage([['Wind Summary']], {'sidebar'='Wind Summary', 'help'='wind_farm'});
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Farm Specifications' ]], { 'sidebar'='Wind Farm', 'help'='wind_farm', 'bin_name'='Wind' } );
@@ -2612,6 +2615,7 @@ addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='o
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Wind Incentives', 'help'='incentives', 'bin_name'='Wind' } );
 // battery
 setup_hybrid_battery_pages(FOM);
+addpage([['Battery Summary']], {'sidebar'='Battery Summary', 'help'='standalone_battery'});
 addpage( [[ 'Standalone Battery Costs' ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 //addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']], { 'sidebar'='Battery Incentives', 'help'='incentives', 'bin_name'='Battery' } );

@@ -1923,7 +1923,7 @@ void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVaria
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top )
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top)
 {
 	if ( m_curConfig == 0 ) return;
 
