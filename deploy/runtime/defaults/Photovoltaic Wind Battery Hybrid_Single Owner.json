@@ -376,60 +376,7 @@
         "annual_snow": "nan",
         "annual_tdry": 21.9385,
         "annual_wspd": 1.78648,
-        "batt_calendar_choice": 0.0,
-        "batt_chem": 1.0,
-        "batt_computed_series": 0.0,
-        "batt_computed_strings": 1.0,
-        "batt_dispatch_choice": 0.0,
-        "batt_lifetime_matrix": [
-            [
-                30.0,
-                0.0,
-                100.0
-            ],
-            [
-                30.0,
-                1100.0,
-                90.0
-            ],
-            [
-                30.0,
-                1200.0,
-                50.0
-            ],
-            [
-                50.0,
-                0.0,
-                100.0
-            ],
-            [
-                50.0,
-                400.0,
-                90.0
-            ],
-            [
-                50.0,
-                500.0,
-                50.0
-            ],
-            [
-                100.0,
-                0.0,
-                100.0
-            ],
-            [
-                100.0,
-                100.0,
-                90.0
-            ],
-            [
-                100.0,
-                150.0,
-                50.0
-            ]
-        ],
         "batt_max_power": 0.0,
-        "batt_meter_position": 1.0,
         "beta_oc_calc": -0.2727,
         "bos_equip_fixed": 0.0,
         "bos_equip_perarea": 0.0,

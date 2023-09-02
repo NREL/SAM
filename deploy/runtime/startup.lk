@@ -2850,20 +2850,20 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'battery_total_installed_cost'}, 
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_lifetime_matrix', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_lifetime_matrix'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_dispatch_choice', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_dispatch_choice'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_chem', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_chem'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_computed_series', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_computed_series'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_computed_strings', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_computed_strings'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_meter_position', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_meter_position'},
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_dispatch_charge_only_system_exceeds_load', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_dispatch_charge_only_system_exceeds_load'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_lifetime_matrix', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_lifetime_matrix'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_dispatch_choice', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_dispatch_choice'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_chem', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_chem'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_computed_series', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_computed_series'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_calendar_choice', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_calendar_choice'}, 
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_computed_strings', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_computed_strings'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_meter_position', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_meter_position'},
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_dispatch_charge_only_system_exceeds_load', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_dispatch_charge_only_system_exceeds_load'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 0,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 0,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 0,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_tod_factors', 'DependentVartableIndex' = 0,'DependentVariableName' = 'dispatch_tod_factors'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_sched_weekday', 'DependentVartableIndex' = 0,'DependentVariableName' = 'dispatch_sched_weekday'}, // battery dispatch
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_sched_weekend', 'DependentVartableIndex' = 0,'DependentVariableName' = 'dispatch_sched_weekend'}, // battery dispatch
-{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_calendar_choice', 'DependentVartableIndex' = 0,'DependentVariableName' = 'batt_calendar_choice'} 
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_sched_weekend', 'DependentVartableIndex' = 0,'DependentVariableName' = 'dispatch_sched_weekend'} // battery dispatch
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pv
