@@ -12,8 +12,12 @@ import os
 parentDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(parentDir)
 
-from core import sco2_cycle_ssc as sco2_solve
-from core import sco2_plots as cy_plt
+newPath = os.path.join(parentDir, 'core')
+
+sys.path.append(newPath)
+
+import sco2_cycle_ssc as sco2_solve
+import sco2_plots as cy_plt
 
 def get_sco2_design_parameters():
 
@@ -91,6 +95,8 @@ def get_sco2_design_parameters():
     des_par["deltaP_counterHX_frac"] = 0.0054321  # [-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
 
     return des_par
+
+print("current processId:", os.getpid());
 
 "Save dictionary of design parameters from above"
 sco2_des_par_default = get_sco2_design_parameters()

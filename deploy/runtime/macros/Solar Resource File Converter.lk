@@ -14,7 +14,7 @@ the SAM CSV format.</p>
 <li><b>EPW</b> is a comma-delimited format developed for the U.S. Department
     of Energy's EnergyPlus building simulation software, and available on the
     <a href="https://energyplus.net/weather">EnergyPlus Weather Data page</>.<br></li>
-<li><b>PVsyst CSV</b> is the <a href="http://files.pvsyst.com/help/meteo_pvsyst_standard_format.htm">
+<li><b>PVsyst CSV</b> is the <a href="https://www.pvsyst.com/help/index.html?meteo_pvsyst_standard_format.htm">
     PVsyst standard format for hourly meteo data</a> used by the PVsyst software.<br></li>
 <li><b>PVGIS 5 CSV</b> is a comma-delimited format used for TMY weather files downloaded
     from the <a href="http://re.jrc.ec.europa.eu/pvg_tools/en/tools.html#TMY">Interactive
@@ -707,19 +707,30 @@ function pvsyst_csv_to_sam_csv( wf )
 		exit;
 	}
 	
-	outln('Converting file, please wait...');
+	outln('Reading data from file, please wait...');
 	str_line = '';
 	ts = 0;
 	line = 0;
+	Header = {};
+	Data = {};
 	while ( read_line( fin, str_line ) ) 
 	{
+		// use # in header line to identify file type
 		if ( line == 0 && strpos( str_line, '#') < 0 )
 		{
 				outln('Input file does not appear to be in PVsyst CSV format: First row does not contain a hashtag (#). Exiting script.\n');
 				exit;
 		}
+		// get header data
 		if ( strpos( str_line, '#') > - 1 )
 		{
+			// pvsyst weather file format supports comma or semicolon delimeters and requires dot decimal character
+			// this test does not work properly for files with comma decimal characters so check first data line for semicolons too
+			if ( strpos( str_line , 'Latitude' ) > -1 && strpos( str_line, ',' ) == -1 )
+			{
+				outln('Header row for latitude does not contain a comma. Conversion script requires a PVsyst CSV file with comma delimiters. Exiting script.');
+				exit;
+			} 
 			arr = split( str_line , ',' );
 			if ( #arr > 1 )
 			{
@@ -729,11 +740,22 @@ function pvsyst_csv_to_sam_csv( wf )
 				if ( strpos( lower(arr[0]) , 'zone' ) > -1 ) { Header{'Time Zone'} = arr[1]; }
 			}
 		}
+		// check for semicolon delimieter
+		// identify data columns
 		if ( strpos( lower(str_line), 'year' ) > -1 )
 		{
+			if ( strpos( str_line, ';' ) > -1 )
+			{
+				outln('Data row appears to use semicolon delimeter. Conversion script required a PVsyst CSV file with comma delimiters. Exiting script');
+				exit;
+			}
+			// replace pvsyst column names with SAM CSV ones
 			if ( strpos( str_line , 'WindVel' ) > -1 ) { replace( str_line, 'WindVel', 'Wspd' ); }
+			if ( strpos( str_line , 'GPI' ) > -1 ) { replace( str_line, 'GPI', 'POA' ); }
+			if ( strpos( str_line , 'SnowDepth' ) > -1 ) { replace( str_line, 'SnowDepth', 'snow depth' ); }
 			keys = split( str_line, ',' );
 		}
+		// read data, skipping units row
 		if ( strpos( lower(str_line), 'w/m2' ) == -1 && strpos( str_line, '#' ) == - 1 )
 		{
 			arr = split( str_line, ',' );
@@ -747,6 +769,7 @@ function pvsyst_csv_to_sam_csv( wf )
 	}
 	close( fin );
 
+	outln('Writing data to SAM CSV file...');
 	output_file = replace( wf, '.csv' , '_samcsv.csv' );
 	
 	fout = open( output_file, 'w' );

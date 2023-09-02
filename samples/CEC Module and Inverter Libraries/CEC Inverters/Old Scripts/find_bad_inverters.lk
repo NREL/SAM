@@ -1,0 +1,164 @@
+/*
+
+This script runs through all of the inveters in a CEC Inverters.csv library file
+and 
+
+1) creates a CSV file listing bad inverters with descriptions of problems,
+
+2) creates a new "clean" library file with bad inverters removed.
+
+Last modified 11/5/2018
+
+*/
+
+file_in = choose_file( cwd() , 'Choose Inverter Library','SAM Library CSV (*.csv)|*.csv',false,false,'CEC Inverters.csv');
+file_in_name = replace( file_only( file_in ), '.csv', '' );
+logfile = path_only( file_in ) + '/' + file_in_name + '_bad.csv';
+
+outln( 'Reading data from ' + file_in + '.' );
+inverters = csvread( file_in, {'table'=true } );
+
+vars = @inverters;
+num_inverters = #inverters{'Name'};
+
+bad_inverters = {};
+j=0;
+
+outln('Searching CEC Inverters library file with ' + num_inverters + ' inverters...');
+
+for( i=0; i<num_inverters; i++ )
+{
+	name = inverters{'Name'}[i];
+
+	if ( name != 'Units' && name != '[0]' )
+	{
+		outln(name);
+		bad = false;
+	
+		// convert from strings to numbers
+		paco = to_real(inverters.Paco[i]);
+		pdco = to_real(inverters.Pdco[i]);
+		pso = to_real(inverters.Pso[i]);
+		mppt_low = to_real(inverters.Mppt_low[i]);
+		mppt_hi = to_real(inverters.Mppt_high[i]);
+		vdco = to_real(inverters.Vdco[i]);
+		vdcmax = to_real(inverters.Vdcmax[i]);
+		idcmax = to_real(inverters.Idcmax[i]);
+	
+		if ( paco >= pdco )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Paco >= Pdco';
+		}
+		elseif ( pdco <= 0 )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Pdco <= 0 ';
+		}	
+		elseif ( paco < 0.75 * pdco )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Paco < 0.75 Pdco';
+		}	
+		elseif ( pso > 0.10 * pdco  )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Pso > 0.10 * Pdco';
+		}	
+		elseif ( pso <= 0 )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Pdco <= 0 ';
+		}	
+		elseif ( vdco <= 0 )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Vdco <= 0 ';
+		}	
+		elseif ( vdcmax <= 0 )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'Vdcmax <= 0 ';
+		}	
+		elseif ( mppt_low <= 0 || mppt_hi <= 0 )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'MPPT_low <= 0 or MPPT_hi <=0';
+		}
+		elseif ( mppt_low > vdco || mppt_hi < vdco )
+		{
+			bad = true;
+			bad_inverters.reason[j] = 'MPPT_low > Vdco or MPPT_hi < Vdco';
+		}
+	
+		if ( bad )
+		{
+			bad_inverters.name[j] = name;
+			bad_inverters.paco[j] = paco;
+			bad_inverters.pdco[j] = pdco;
+			bad_inverters.pso[j] = pso;
+			bad_inverters.mppt_low[j] = mppt_low;
+			bad_inverters.mppt_hi[j] = mppt_hi;
+			bad_inverters.vdco[j] = vdco;
+			bad_inverters.idcmax[j] = idcmax;
+			j++;
+		}
+
+/*	
+some inverters from pre 2018 library have bad Idcmax values, e.g. Shennzhen BSG 5000-U 2016
+but Idcmax is not used by the model, so no need to check for these
+	elseif ( idcmax < 0.1 * ( pdco / mppt_low ))
+	{
+		bad_inverters.name[j] = name;
+		bad_inverters.reason[j] = 'Idcmax < ( Pdco / MPPT_low)';
+		j++;
+	}
+*/
+/*
+some inverters have low Pso values, but it's not clear how to evaluate whether
+they are incorrect
+	elseif ( pso < 0.003 * pdco )
+	{
+		bad_inverters.name[j] = name;
+		bad_inverters.reason[j] = 'Pso < 0.003 Pdco';
+		j++;
+	}
+*/
+	}
+}
+
+keys = @inverters;
+if ( j>0 )
+{
+	outln('Writing to log file.');
+	ok = csvwrite( logfile, bad_inverters );
+	if ( !ok ) 
+		outln('Failed to write to file.');
+	else
+		outln('Done.');
+
+	for ( i=0; i<#bad_inverters{'name'}; i++ )
+	{
+		pos = inverters{'Name'} ?@ bad_inverters{'name'}[i];
+		if ( pos > -1 )
+		{
+			for ( k=0; k<#keys; k++ )
+				inverters{keys[k]} -@ pos;
+		}
+	}	
+	
+	file_out = path_only( file_in ) + '/' + file_in_name + '_clean.csv';
+	outln('Writing to clean library file.');
+	ok = csvwrite( file_out , inverters );
+	if ( !ok ) 
+		outln('Failed to write to marked library file.');
+	else
+		outln('Done.');
+
+	browse( path_only( logfile ) );
+
+}	
+else
+	msgbox( 'No bad inverters found in library!' );
+
+	
