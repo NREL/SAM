@@ -3565,7 +3565,6 @@
         "\t\t\tvalue( 'annual_albedo', ssc_var(obj, 'annual_albedo') );",
         "\t\t\tvalue( 'step', ssc_var(obj, 'step') );\r",
         "\t\t\t\r",
-        "\t\t\tmsgbox('step = ' + ssc_var(obj, 'step') );",
         "\t\t\trhum = ssc_var(obj, 'rhum');",
         "\t\t\trhum_ok = true;",
         "\t\t\tif ( isnan( rhum[0] ) ) { rhum_ok = false; }",
