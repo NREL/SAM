@@ -2951,7 +2951,7 @@ addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_sys
 
 //Generic System + PVWatts + Wind + Fuel Cell + Battery
 setconfig('Generic PVWatts Wind FuelCell Battery Hybrid', 'Single Owner' );
-setmodules( ['generic', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'singleowner']);
+setmodules( ['generic_system', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'singleowner']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
@@ -2993,7 +2993,10 @@ sethybridvariabledependencies([
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
-addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant', 'bin_name'='Generic' } );
+addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Generic Power Plant' , 'help'='generic_system_plant', 'bin_name'='Generic' } );
+addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='Generic Degradation','help'='degradation', 'bin_name'='Generic' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Generic Installation Costs', 'help'='cc_generic_system', 'bin_name'='Generic' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Generic Operating Costs', 'help'='oc_operating', 'bin_name'='Generic'} );
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
@@ -3027,7 +3030,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('Generic PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['generic', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['generic_system', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
@@ -3069,7 +3072,10 @@ sethybridvariabledependencies([
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
-addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant', 'bin_name'='Generic' } );
+addpage( [[ 'Generic System Plant' ]], { 'sidebar'='Generic Power Plant' , 'help'='generic_system_plant', 'bin_name'='Generic' } );
+addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='Generic Degradation','help'='degradation', 'bin_name'='Generic' } );
+addpage( [[ 'Generic System Costs']],{ 'sidebar'='Generic Installation Costs', 'help'='cc_generic_system', 'bin_name'='Generic' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Generic Operating Costs', 'help'='oc_operating', 'bin_name'='Generic'} );
 // pv
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
