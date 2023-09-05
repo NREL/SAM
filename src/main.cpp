@@ -500,7 +500,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 	// when creating a new case, at least
 	// show the first input page
-   /*
+   
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
 		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
@@ -513,7 +513,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 		else {
 			win->SwitchToInputPage(pages[0]);
 		}
-	}*/ //mp trying to not overwrite first page switch at start
+	} //mp trying to not overwrite first page switch at start
 	return win;
 }
 

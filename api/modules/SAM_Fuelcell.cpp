@@ -796,6 +796,18 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fixed_aget(SAM_table ptr, int* len
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "cf_om_fuel_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
