@@ -1,7 +1,7 @@
 {
     "Name": "PV Subhourly Clipping",
-    "Width": 1267.0,
-    "Height": 678.0,
+    "Width": 1956.0,
+    "Height": 960.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -57,7 +57,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 814.0
+                    "Integer": 1771.0
                 },
                 "Height": {
                     "Type": 3.0,
