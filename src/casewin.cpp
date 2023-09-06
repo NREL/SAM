@@ -202,11 +202,15 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szvl->Add(m_finLabel, 0, wxEXPAND | wxALL, 0);
 
 	// navigation menu sizers
-	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
+	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree, wxDefaultPosition, wxSize(100,800));
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
-	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
+    choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
+//    choice_sizer->Add(m_navigationMenu, 1, wxALIGN_LEFT, 20);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
 	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+//    m_navigationMenu->SetSizeHints(wxSize(100,50));
+        
+//    choice_sizer->SetSizeHints(m_navigationMenu);
 	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
 
 	// box for simulation and results buttons
@@ -431,6 +435,14 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         
         
     }*/
+    //m_navigationMenu->SetSizerAndFit(choice_sizer);
+
+    //m_navigationMenu->GetColumn(0)->GetRenderer()->SetAlignment(wxALIGN_LEFT);
+    //m_navigationMenu->GetExpanderColumn()->SetAlignment(wxALIGN_LEFT); // no effect on MacOS per documentation
+    //m_navigationMenu->GetExpanderColumn()->SetHidden(true); // works
+    //m_navigationMenu->GetExpanderColumn()->SetWidth(30); // does nothing
+    m_navigationMenu->GetExpanderColumn()->SetWidth(wxCOL_WIDTH_AUTOSIZE);
+    
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
@@ -743,8 +755,9 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	return false;
 }
 
-void CaseWindow::OnTechTree(wxDataViewEvent&)
+void CaseWindow::OnTechTree(wxDataViewEvent& evt)
 {
+    evt.GetValue();
     m_pageFlipper->SetSelection(0);
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
@@ -760,8 +773,9 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
             m_navigationMenu->SetCurrentItem(current_item);
             wxDataViewItem parent = m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem());
             wxString string2 = m_navigationMenu->GetItemText(parent);
-            m_navigationMenu->UnselectAll();
-            m_navigationMenu->SetCurrentItem(parent);
+ // infinite call loop
+ //           m_navigationMenu->UnselectAll();
+ //           m_navigationMenu->SetCurrentItem(parent);
             SwitchToInputPage(string2 + " Summary");
             //m_navigationMenu->Expand(m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem()));
             m_navigationMenu->Update();
