@@ -2032,6 +2032,172 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "drilling_success_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "failed_prod_flow_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "geotherm.cost.capital_total"
                 },
                 "X": {
@@ -9894,6 +10060,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "stim_success_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "total_direct_cost"
                 },
                 "X": {
@@ -10179,6 +10428,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "drilling_success_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Drilling success rate",
+            "Units": "%",
+            "Group": "Geothermal Drilling",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "engineering_ppi": {
             "Version": 4.0,
             "Type": 1.0,
@@ -10187,6 +10449,32 @@
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "exploration_wells_production": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Exploration wells used for production",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "failed_prod_flow_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Failed production well flow ratio",
+            "Units": "",
+            "Group": "Geothermal Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -11518,6 +11806,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "stim_success_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Stimulation success rate",
+            "Units": "%",
+            "Group": "Geothermal Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "system_recapitalization_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -11791,10 +12092,13 @@
         "\treturn  ${geotherm.cost.drilling.amount} + ${geotherm.cost.plant_total.amount} + ${geotherm.cost.pumping.amount}; };",
         "",
         "equations{ 'geotherm.cost.inj_wells_drilled' } = define() {",
-        "\treturn ( ${geotherm.cost.prod_req} * ${geotherm.cost.inj_prod_well_ratio} ); };",
+        "\t//return ( ${geotherm.cost.prod_req} * ${geotherm.cost.inj_prod_well_ratio} ); \r",
+        "\treturn ${num_wells_getem_inj};\r",
+        "};",
         "",
         "equations{ 'geotherm.cost.conf_total' } = define() {",
-        "\treturn  ${geotherm.cost.conf_drill} + ${geotherm.cost.conf_non_drill}; };",
+        "\treturn  ${geotherm.cost.conf_drill} + ${geotherm.cost.conf_non_drill}; \r",
+        "};",
         "",
         "equations{ 'geotherm.cost.pump_installation' } = define() {",
         "\treturn ${geotherm.cost.pump_per_foot} * ${geotherm.cost.pump_depth}; };",
@@ -11877,6 +12181,9 @@
         "\t\tssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER",
         "\t\tssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER",
         "\t\tssc_var( geothermal, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});",
+        "\t\tssc_var( geothermal, 'drilling_success_rate', ${drilling_success_rate});\r",
+        "\t\tssc_var( geothermal, 'stim_success_rate', ${stim_success_rate});\r",
+        "\t\tssc_var( geothermal, 'failed_prod_flow_ratio', ${failed_prod_flow_ratio});\r",
         "\t\t// geothermal plant and equipment\t\t    ",
         "\t\tssc_var( geothermal, 'nameplate', ${nameplate} );",
         "\t\tssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER",
@@ -11906,6 +12213,8 @@
         "\t\tssc_var( geothermal, 'inj_casing_size', ${inj_casing_size} );",
         "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );",
         "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );",
+        "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
+        "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welldiam', ${geotherm.cost.prod_cost_curve_welldiam} );\r",
         "",
         "\t\tssc_var( geothermal, 'design_temp', ${design_temp} );",
         "\t\tssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER",
@@ -11922,6 +12231,8 @@
         "\t\telse ",
         "\t\t\tssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER",
         "\t\tssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );",
+        "\t\tssc_var( geothermal, 'injectivity_index', ${injectivity_index} );\r",
+        "\t\tssc_var( geothermal, 'exploration_wells_production', ${geotherm.cost.confirm_wells_num} );\r",
         "\t\tssc_var( geothermal, 'reservoir_width', ${reservoir_width} );",
         "\t\tssc_var( geothermal, 'reservoir_height', ${reservoir_height} );",
         "\t\tssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );\t\t",
@@ -12099,6 +12410,11 @@
         "\t${turbine_ppi} = ppis[5][ppi_index];\t",
         "\t${construction_ppi} = ppis[6][ppi_index];\r",
         "\t${drilling_ppi} = ppis[7][ppi_index];\t",
+        "};\r",
+        "\r",
+        "equations{'exploration_wells_production'} = define() \r",
+        "{\r",
+        "\treturn ${geotherm.cost.confirm_wells_num};\r",
         "};",
         "",
         "",
