@@ -505,7 +505,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	if (pages.size() > 0) {
 		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
 			// TODO: hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-            for (int i = c->GetConfiguration()->Technology.size() - 1; i >= 0; i--) {
+            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
                 win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
                 //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
             }

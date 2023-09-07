@@ -403,6 +403,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         }*/
         
     }
+    
     if (m_navigationMenu->IsContainer(dvia[0])) {
         m_navigationMenu->Expand(dvia[0]);
         wxDataViewItemArray dvic;
@@ -752,6 +753,8 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         bool keep_open = false;
         wxDataViewItem current_item;
         wxString test = m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem());
+        wxString test_previous = m_navigationMenu->GetItemText(m_previousPage);
+        current_item = m_navigationMenu->GetCurrentItem();
         if (test == "") { //click arrow instead of word
             keep_open = true;
             current_item = m_previousPage;
@@ -780,8 +783,8 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         }
         if (!keep_open && m_navigationMenu->IsExpanded(m_navigationMenu->GetCurrentItem())) {
             m_navigationMenu->Collapse(m_navigationMenu->GetCurrentItem());
-            m_navigationMenu->SetCurrentItem(current_item);
-            //m_navigationMenu->Update();
+            m_navigationMenu->SetCurrentItem(m_previousPage);
+            m_navigationMenu->Update();
             return;
         }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
