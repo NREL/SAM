@@ -638,33 +638,6 @@ function setup_solar_water_heating_pages()
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='shw_system' } );
 }
 
-function setup_fuel_cell_pages_btm()
-{
-	addpage([ [{'name'='Battery None','caption'='No Battery'}],
-				  [{'name'='Battery Model', 'caption'='Enable Battery'},
-				   'Battery Bank Sizing',
-				   'Battery Current and Capacity',
-				   'Battery Configuration',
-				   'Battery Dispatch Common',
-				   'Battery Life Options',
-				   'Battery Life Cycle Calendar',
-				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
-				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
-				   { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], 
-	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
-		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], 
-		      [ 'Fuel Cell Dispatch Manual' ], 
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'}]],
-				{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			      'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-    setup_grid_limits_page();
-    setup_grid_outage_page();
-}
-
 function setup_fuel_cell_pages_hybrid()
 {
 	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
@@ -677,32 +650,6 @@ function setup_fuel_cell_pages_hybrid()
 			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell', 'exclusive_var' = 'batt_dispatch_excl',
 			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 */
-}
-
-function setup_fuel_cell_pages_fom()
-{
-	addpage([ [{'name'='Battery None','caption'='No Battery'}],
-				  [{'name'='Battery Model', 'caption'='Enable Battery'},
-				   'Battery Bank Sizing',
-				   'Battery Current and Capacity',
-				   'Battery Configuration',
-				   'Battery Dispatch Common',
-				   'Battery Life Options',
-				   'Battery Life Cycle Calendar',
-				   {'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
-				   {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-				   {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-				   {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}
-					]],
-				  { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
-	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
-		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
-		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
-			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-	setup_grid_limits_page();
 }
 
 function setup_etes_pages()
@@ -1317,33 +1264,88 @@ setconfig( 'Fuel Cell', 'Commercial');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'cashloan'] );
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts',
-            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
-            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
-            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
-setup_fuel_cell_pages_btm();
+            { 'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+            { 'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+         { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
+addpage( [[ { 'name'='Battery None', 'caption'='No Battery'}],
+	      [ { 'name'='Battery Model', 'caption'='Enable Battery'},
+			'Battery Bank Sizing',
+			'Battery Current and Capacity',
+			'Battery Configuration',
+			'Battery Life Options',
+			'Battery Life Cycle Calendar',
+			{ 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+			{ 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+			{ 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			{ 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+		 { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
+		  [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
+		  [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
+		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
+		  [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true  } );
+addpage( [[ 'Fuel Cell' ]], 
+		 {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
+addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], 
+	      [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ],
+		  [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
+		  [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ],
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+setup_grid_limits_page();
+setup_grid_outage_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
-		[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
-addpage( [[ 'Operating Costs Fuel Cell' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+		  [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
+		 { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
+addpage( [[ 'Operating Costs Fuel Cell' ]], 
+         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
-addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
-addpage( [[ 'Thermal Load' ]], {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 setconfig( 'Fuel Cell', 'Single Owner');
 setmodules( ['pvwattsv8', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'singleowner']);
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 addpage( [[ 'PVWatts',
-            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
-            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
-            { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
-setup_fuel_cell_pages_fom();
+            { 'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
+            { 'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
+         { 'sidebar'='PV System', 'help'='pvwatts_system_design' } );
+addpage( [[ { 'name'='Battery None','caption'='No Battery'}],
+		  [ { 'name'='Battery Model', 'caption'='Enable Battery'},
+		    'Battery Bank Sizing',
+		    'Battery Current and Capacity',
+		    'Battery Configuration',
+		    'Battery Life Options',
+		    'Battery Life Cycle Calendar',
+		    { 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
+		    { 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
+		    { 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+		    { 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+	     { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
+addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
+		  [ { 'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'} ],
+		  [ { 'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
+		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'} ]],
+		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
+addpage( [[ { 'name'='AA Empty', 'caption'='Fixed Output'} ], 
+	      [ { 'name'='AA Empty', 'caption'='Follow Electric Load'} ],
+		  [ { 'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
+		  [ { 'name'='AA Empty', 'caption'='Input Dispatch'}] ],
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+setup_grid_limits_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
-addpage( [[ 'Fuel Cell Costs' ],
-	[ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']], { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
-addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+addpage( [[ 'Fuel Cell Costs' ], [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
+         { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
+addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]],
+         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
-addpage( [[ 'Thermal Rate' ]], {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Rate' ]],
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'} );
 
 // Geothermal Power ////////////////////////////////////////////////////////////
 
