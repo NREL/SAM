@@ -364,15 +364,18 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
     }
     for (int j = 0; j < m_pageGroups.size(); j++) {
         bin_name = m_pageGroups[j]->BinName;
-        
+        if (m_pageGroups[j]->SideBarLabel.Contains("Summary")) {
+            continue; //Skip if summary page
+        }
+
         if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
             page_list.Add(bin_name);
             dvia[page_list.Index(bin_name) + 1] = m_navigationMenu->AppendContainer(wxDataViewItem(0), bin_name);
         }
+
         if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
             m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name) + 1], m_pageGroups[j]->SideBarLabel);
         }
-        
         else if (m_pageGroups[j]->ExclTop) {
             m_navigationMenu->AppendItem(dvia[0], m_pageGroups[j]->SideBarLabel);
         }
@@ -400,6 +403,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         }*/
         
     }
+    
     if (m_navigationMenu->IsContainer(dvia[0])) {
         m_navigationMenu->Expand(dvia[0]);
         wxDataViewItemArray dvic;
@@ -414,7 +418,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
         m_navigationMenu->SetCurrentItem(dvic[0]);
         SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
     }
-    m_previousPage = m_navigationMenu->GetCurrentItem();
+    m_previousPage = (m_navigationMenu->GetCurrentItem());
     /*for (int i = 0; i < m_pageGroups.size(); i++) {
         bin_name = m_pageGroups[i]->BinName;
         if (Ts_lower.Contains(bin_name.Lower()) && bin_name != "") {
@@ -747,22 +751,45 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
     {
         wxDataViewItemArray dvic;
         bool keep_open = false;
+        wxDataViewItem current_item;
+        wxString test = m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem());
+        wxString test_previous = m_navigationMenu->GetItemText(m_previousPage);
+        current_item = m_navigationMenu->GetCurrentItem();
+        if (test == "") { //click arrow instead of word
+            keep_open = true;
+            current_item = m_previousPage;
+            //m_navigationMenu->UnselectAll();
+            wxString string = m_navigationMenu->GetItemText(current_item);
+            m_navigationMenu->SetCurrentItem(current_item);
+            wxDataViewItem parent = m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem());
+            wxString string2 = m_navigationMenu->GetItemText(parent);
+            m_navigationMenu->UnselectAll();
+            m_navigationMenu->SetCurrentItem(parent);
+            SwitchToInputPage(string2 + " Summary");
+            //m_navigationMenu->Expand(m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem()));
+            m_navigationMenu->Update();
+            return;
+        }
         m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvic);
         int children_count = dvic.Count();
         for (int i = 0; i < dvic.Count(); i++) {
             if (dvic[i] == m_previousPage) {
                 keep_open = true;
-                m_navigationMenu->SetCurrentItem(m_previousPage);
+                current_item = dvic[i];
+                m_navigationMenu->SetCurrentItem(dvic[i]);
+                //m_navigationMenu->Update();
                 return;
             }
         }
         if (!keep_open && m_navigationMenu->IsExpanded(m_navigationMenu->GetCurrentItem())) {
             m_navigationMenu->Collapse(m_navigationMenu->GetCurrentItem());
             m_navigationMenu->SetCurrentItem(m_previousPage);
+            m_navigationMenu->Update();
             return;
         }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
         m_navigationMenu->SetCurrentItem(m_previousPage);
+        //m_navigationMenu->Update();
         //wxDataViewItemArray dvia;
 
         /*
@@ -778,10 +805,12 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         m_navigationMenu->GetModel()->GetChildren(parent, dvia);
         if (dvia.Count() > 0) {
             SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
-            m_previousPage = m_navigationMenu->GetCurrentItem();
+            m_previousPage = (m_navigationMenu->GetCurrentItem());
         }
+        m_navigationMenu->Update();
         
     }
+    //m_navigationMenu->Update();
     
 }
 

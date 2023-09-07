@@ -251,6 +251,7 @@ struct InputPageGroup
 	bool OrganizeAsExclusivePages;
 	wxString ExclusivePageVar;
 	std::vector< PageInfo > ExclusiveHeaderPages;
+    std::vector< PageInfo > BinSummary;
 	bool ExclusiveTabs;
     bool ExclusiveHide;
     bool ExclTop;

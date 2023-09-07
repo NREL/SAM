@@ -1,0 +1,84 @@
+/*
+
+Run this script from the cec_modules_test.sam file, which is set up with a
+Detailed PV / No Financial configuration with the Inverter Datasheet model.
+
+This script runs through all of the modules in the CEC module library, runs
+a simulation, and writes the module name, performance ratio, and any simulation
+messages to a CSV file.
+
+Performance ratios less than 0.70 or more than .90 may indicate a problem with
+the module parameters.
+
+Written and tested in SAM 2020.2.29, 4/30/2020
+Revised 2/23/22
+
+*/
+
+function set_inverter_params()
+{
+	pmp = get( 'cec_p_mp_ref' );
+	voc = get('cec_v_oc_ref');
+
+	paco = ceil(pmp / 0.96);
+	vmppt_max = ceil(voc * 1.1);
+	vmppt_min = floor(voc *0.25);
+	vdco = round(( vmppt_max + vmppt_min ) / 2);
+
+	set('inv_ds_paco',paco);
+	set('inv_ds_mppt_hi',vmppt_max);
+	set('inv_ds_mppt_low',vmppt_min);
+	set('inv_ds_vdco',vdco);
+	set('inv_ds_idcmax',ceil(pmp/vmppt_max));
+
+}
+
+function run()
+{
+	msg = '';
+	ok = simulate( msg, false );
+	if ( !ok ) { msg = 'Simulation failed: ' + msg; }
+	elseif ( msg == '' ) { msg = 'ok'; }
+	if (strlen(msg)>250) { msg=left(msg,250); }
+	msg = replace( msg, '\n', ' -- ' );
+	msg = '\"' + msg + '\"';
+	pr = get('performance_ratio');
+	module = get('module_name');
+	return [module, pr, msg];
+}
+
+function f_name()
+{
+	ver = samver();
+	ver = replace(ver, '.' , '-');
+	ver = replace(ver, ' ' , '-');
+	
+	date = date_time();
+	arr = split(date, ' ' );
+	date = arr[4] + '-' + arr[1] + '-' + arr[2];
+	
+	path = choose_dir( cwd(), 'Choose a folder to save results' );
+
+	return path + '/cec_modules_test_' + ver + '_' + date + '.csv';
+}
+
+modules = library( 'CEC Modules' );
+
+results = [['Module Name','Performance Ratio','Simulation Message']];
+outln('Total modules = ' + #modules);
+for ( i=1; i<#modules; i++ )
+{
+	if ( mod( i, 100 ) == 0 ) { outln(i); }
+	set( 'module_name', modules[i] );
+	set_inverter_params();
+	arr = run();
+	for ( j=0; j<#arr; j++ )
+	{
+		results[i][j] = arr[j];
+	}
+
+}
+
+outln('Done.');
+csvwrite( f_name(), results );
+browse(f_name());

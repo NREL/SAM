@@ -58592,6 +58592,7 @@
             1.0
         ]
     ],
+    "ud_is_sco2_regr": 0.0,
     "ud_m_dot_des_calc": "nan",
     "ud_m_dot_design": 1.0,
     "ud_m_dot_high_calc": "nan",

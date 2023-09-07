@@ -500,12 +500,12 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 	// when creating a new case, at least
 	// show the first input page
-   /*
+   
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
 		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
 			// TODO: hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-            for (int i = c->GetConfiguration()->Technology.size() - 1; i >= 0; i--) {
+            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
                 win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
                 //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
             }
@@ -513,7 +513,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 		else {
 			win->SwitchToInputPage(pages[0]);
 		}
-	}*/ //mp trying to not overwrite first page switch at start
+	} //mp trying to not overwrite first page switch at start
 	return win;
 }
 
@@ -1923,7 +1923,7 @@ void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVaria
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top )
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top)
 {
 	if ( m_curConfig == 0 ) return;
 
