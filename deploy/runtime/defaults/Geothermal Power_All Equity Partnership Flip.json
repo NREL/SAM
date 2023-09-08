@@ -18584,6 +18584,7 @@
     "inj_pump_cost": 50097.6,
     "inj_pump_hp": 59.8593,
     "inj_well_diam": 12.25,
+    "injectivity_index": 3000.0,
     "insurance_rate": 0.5,
     "is_advanced": 0.0,
     "is_btm": 0.0,

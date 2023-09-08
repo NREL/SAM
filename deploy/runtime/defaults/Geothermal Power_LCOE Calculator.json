@@ -8936,6 +8936,7 @@
     "inj_prod_well_distance": 1500.0,
     "inj_pump_hp": 3149.74,
     "inj_well_diam": 12.25,
+    "injectivity_index": 3000.0,
     "is_advanced": 0.0,
     "lat": 33.61,
     "library_folder_list": "x",
