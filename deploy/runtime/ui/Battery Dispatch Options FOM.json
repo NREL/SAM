@@ -1,7 +1,7 @@
 {
     "Name": "Battery Dispatch Options FOM",
-    "Width": 1053.0,
-    "Height": 169.0,
+    "Width": 1051.0,
+    "Height": 201.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 81.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -57,7 +57,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 153.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -139,7 +139,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -180,7 +180,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 87.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -233,11 +233,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 918.0
+                    "Integer": 1020.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 63.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -291,7 +291,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -361,7 +361,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 192.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -467,16 +467,24 @@
         "\tenable_charge_from_clip();",
         "\twarning_message();",
         "\twave_batt_smoothing_msg();",
-        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0 )",
-        "\t{ ",
-        "\t\tmsg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options.';",
-        "\t\tclr = 'red';",
+        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0 ) { ",
+        "\t\tmsg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options. ';",
+        "\t\tclr = 'red';\r",
+        "\t\tenable('batt_dispatch_choice_ui',false);",
         "\t}",
-        "\telse",
-        "\t{",
-        "\t\tmsg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';",
+        "\telse {",
+        "\t\tmsg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then set dispatch parameters as appropriate. ';",
         "\t\tclr = 'black';",
-        "\t}",
+        "\t}\r",
+        "\tif ( technology() == 'Fuel Cell' ) {\r",
+        "\t\tmsg = msg +  'PV smoothing is not available for systems with Fuel Cells. ';\r",
+        "\t}\r",
+        "\tif ( technology() == 'Fuel Cell' && value('batt_dispatch_choice_ui') == 3 ) {\r",
+        "\t\tif ( value('fuelcell_dispatch_choice') == 2 ) {\r",
+        "\t\t\tmsg = msg + 'Set battery charge from fuel cell schedule on Fuel Cell Dispatch page. ';\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\t",
         "\tproperty('lbl_dispatch_options','Caption',msg);",
         "\tproperty('lbl_dispatch_options','TextColour',clr);",
         "};",
@@ -487,10 +495,6 @@
         "\tenable_charge_from_clip();",
         "\tshow_hide_charge_options();",
         "\twave_batt_smoothing_msg();",
-        "\tif (  technology() == 'Fuel Cell' )",
-        "\t{",
-        "\t\tcheck_fuel_cell_dispatch(); // function defined in Fuel Cell Dispatch callback",
-        "\t}",
         "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
         "};",
         "",
@@ -518,33 +522,13 @@
         "}",
         "",
         "// hide charge options for manual dispatch",
-        "function show_hide_charge_options()",
-        "{",
+        "function show_hide_charge_options() {",
         "\tis_dc = (value('batt_ac_or_dc' ) == 0);",
         "\toption = value('batt_dispatch_choice_ui');",
-        "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0  )",
-        "\t{ ",
-        "\t\tenable('batt_dispatch_choice_ui',false);",
-        "\t\t//Automated Dispatch Inputs",
-        "\t\tenable('automated_dispatch_choice', false);",
-        "\t\tenable('batt_cycle_cost', false);",
-        "\t\tenable('batt_cycle_cost_choice',false);",
-        "\t\tenable('batt_dispatch_update_frequency_hours', false);",
-        "\t\tenable('batt_look_ahead_hours', false);",
-        "\t\tenable('batt_user_specified_weather_file', false);",
-        "\t\tenable('batt_select_weather_file_forecast', false);",
-        "\t\t",
-        "\t\t//Custom time series inputs",
-        "\t\tenable('batt_custom_dispatch', false);",
-        "\t\t",
-        "\t}",
-        "\telse",
-        "\t{",
-        "\t\tenable('batt_dispatch_auto_can_charge',option != 3);",
-        "\t\tenable('batt_dispatch_auto_can_gridcharge', option !=3 );",
-        "\t\tenable('batt_dispatch_auto_can_clipcharge', option == 0 && is_dc);",
-        "\t\tshow('batt_dispatch_auto_can_fuelcellcharge', option !=3 && technology() == 'Fuel Cell' );",
-        "\t}\t",
+        "\tenable('batt_dispatch_auto_can_charge',option != 3);",
+        "\tenable('batt_dispatch_auto_can_gridcharge', option !=3 );",
+        "\tenable('batt_dispatch_auto_can_clipcharge', option == 0 && is_dc);",
+        "\tshow('batt_dispatch_auto_can_fuelcellcharge', option !=3 && technology() == 'Fuel Cell' );",
         "\tif (option == 3) { // disable these options and set to zero for manual dispatch",
         "\t\tenable('batt_dispatch_auto_can_gridcharge', false);",
         "\t\tenable('batt_dispatch_auto_can_charge', false);",

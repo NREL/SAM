@@ -683,7 +683,7 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 				else {
 					// recalculate equations in each case for each consecutive upgrade
 					// to make sure all variables are in sync
-					if (cases[i]->RecalculateAll(true) < 0)
+					if (cases[i]->RecalculateAll(0,true) < 0)
 						GetLog().push_back(log(WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it."));
 				}
 			}

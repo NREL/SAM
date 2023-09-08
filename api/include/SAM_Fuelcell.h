@@ -95,6 +95,22 @@ extern "C"
 	//
 
 	/**
+	 * Set dispatch_manual_fuelcell_sched: Dispatch schedule for weekday
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_manual_fuelcell_sched_weekend: Dispatch schedule for weekend
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
 	 * Set dispatch_manual_fuelcellcharge: Periods 1-6 charging allowed?
 	 * options: None
 	 * constraints: None
@@ -117,22 +133,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_manual_sched: Dispatch schedule for weekday
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_manual_sched_weekend: Dispatch schedule for weekend
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set dispatch_manual_units_fc_discharge: Periods 1-6 number of fuel cell units?
@@ -390,15 +390,15 @@ extern "C"
 	 * FuelCell Getters
 	 */
 
+	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcelldischarge_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_units_fc_discharge_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -478,6 +478,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
 
