@@ -55,9 +55,8 @@ Some more examples:
 version_upgrade{'2023.7.24'} = define() {
 	const cfg = config();
 	if ( cfg.tech == 'Fuel Cell' ) {
-		message('Test upgrade script for Fuel Cell configs.');
-		/* Uncomment when upgrade script issue is fixed
-		message('Update internal variable names to use underscore instead of period.');
+		message('Fuel cell and battery dispatch inputs are now on separate pages.');
+		message('Update internal variable names for Run Fuel Cell, Fuel Cell Percent of Max Power, and Charge Battery from Fuel Cell inputs to use underscore instead of period.');
 		value('fc_p1_discharge',oldvalue('fc.p1.discharge'));
 		value('fc_p2_discharge',oldvalue('fc.p2.discharge'));
 		value('fc_p3_discharge',oldvalue('fc.p3.discharge'));
@@ -77,8 +76,7 @@ version_upgrade{'2023.7.24'} = define() {
 		value('fc_storage_p5_charge',oldvalue('fc.storage.p5.charge'));
 		value('fc_storage_p6_charge',oldvalue('fc.storage.p6.charge'));
         value('dispatch_manual_fuelcell_sched',value('dispatch_manual_sched'),'Copy battery dispatch weekday schedule to new fuel cell dispatch schedule.');
-        value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekday schedule to new fuel cell dispatch schedule.');
-        */
+        value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekend schedule to new fuel cell dispatch schedule.');
 	}
 };
 
