@@ -172,7 +172,7 @@ public:
 	// returns negative on error, or positive number indicating
 	// success of number of variables update.  shows an error
 	// message box unless 'quietly' = true
-	int RecalculateAll(size_t ndxHybrid, bool quietly = false );
+	int RecalculateAll(size_t ndxHybrid, bool quietly );
 	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );

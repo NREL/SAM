@@ -50,6 +50,18 @@ SAM_EXPORT void SAM_Fuelcell_Load_load_aset(SAM_table ptr, double* arr, int leng
 	});
 }
 
+SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_manual_fuelcell_sched", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "dispatch_manual_fuelcell_sched_weekend", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_fuelcellcharge", arr, length);
@@ -65,18 +77,6 @@ SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_fuelcelldischarge_aset(SAM
 SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_manual_percent_fc_discharge", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "dispatch_manual_sched", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_FuelCell_dispatch_manual_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "dispatch_manual_sched_weekend", mat, nrows, ncols);
 	});
 }
 
@@ -316,6 +316,30 @@ SAM_EXPORT double* SAM_Fuelcell_Load_load_aget(SAM_table ptr, int* length, SAM_e
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_manual_fuelcell_sched", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "dispatch_manual_fuelcell_sched");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "dispatch_manual_fuelcell_sched_weekend", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "dispatch_manual_fuelcell_sched_weekend");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -346,30 +370,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_ag
 	result = ssc_data_get_array(ptr, "dispatch_manual_percent_fc_discharge", length);
 	if (!result)
 		make_access_error("SAM_Fuelcell", "dispatch_manual_percent_fc_discharge");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "dispatch_manual_sched", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Fuelcell", "dispatch_manual_sched");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "dispatch_manual_sched_weekend", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Fuelcell", "dispatch_manual_sched_weekend");
 	});
 	return result;
 }

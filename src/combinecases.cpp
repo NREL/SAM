@@ -468,7 +468,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					// Update UI with results
 					m_result_code = 0;	// 0=success
 					SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-					int result = m_generic_case->RecalculateAll(0);
+					int result = m_generic_case->RecalculateAll(0,false);
 					m_generic_case_window->UpdateResults();
 					m_generic_case_window->SwitchToInputPage("Power Plant");
 					if (is_notices) {
