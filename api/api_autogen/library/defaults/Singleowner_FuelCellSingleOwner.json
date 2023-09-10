@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"construction_financing_cost": 2.00575e+06,
+			"construction_financing_cost": 3.60261e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -97,7 +97,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.06973e+08
+			"total_installed_cost": 1.92139e+08
 		},
 		"LandLease": {
 			"land_area": 650.278,
@@ -302,7 +302,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 0
+			"battery_total_cost_lcos": 8.51662e+07
 		},
 		"ChargesByMonth": {
 		},
