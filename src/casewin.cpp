@@ -204,11 +204,17 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// navigation menu sizers
 	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree, wxDefaultPosition, wxSize(100,800));
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+    m_navigationMenu->SetIndent(1);// does nothing
+    m_navigationMenu->SetImages(wxDataViewTreeCtrl::Images::NO_IMAGE);
     choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
 //    choice_sizer->Add(m_navigationMenu, 1, wxALIGN_LEFT, 20);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
 	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+    auto ind = m_navigationMenu->GetIndent();
 //    m_navigationMenu->SetSizeHints(wxSize(100,50));
+//    wxDataViewTreeCtrl::Images images;
+//    images.shrink_to_fit();
+//    m_navigationMenu->im;
         
 //    choice_sizer->SetSizeHints(m_navigationMenu);
 	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
@@ -821,6 +827,9 @@ void CaseWindow::OnTechTree(wxDataViewEvent& evt)
         m_navigationMenu->Update();
         
     }
+    
+ //   m_navigationMenu->SetIndent(1); // does nothing
+ //   m_navigationMenu->Refresh();
     //m_navigationMenu->Update();
     
 }
