@@ -9511,7 +9511,6 @@
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
     "calculated_dcac_ratio": 1.34109,
-    "calculated_num_inverter_dcac_unity": 0.0,
     "capex_table_ac_cost_per_w": 0.33,
     "capex_table_ac_inputs": [
         [
@@ -40048,6 +40047,7 @@
     "mppt_low_inverter": 545.0,
     "nominal_discount_rate": 9.06,
     "num_enabled": 1.0,
+    "num_inverters_subhourly_clipping": 133.0,
     "num_strings_total": 26869.0,
     "offset": 0.0,
     "om_capacity": [

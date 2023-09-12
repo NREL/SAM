@@ -8805,6 +8805,7 @@
     "en_snowloss": 0.0,
     "en_user_spec_losses": 0.0,
     "enable_interconnection_limit": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "gcr": 0.3,
     "grid_curtailment": [
@@ -17597,6 +17598,7 @@
     "module_type": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 1.0,
+    "pvwatts_subhourly_clipping_shown": 0.0,
     "shading": 0.0,
     "shading_3d_scene": {
         "VV_TYPE": 6,

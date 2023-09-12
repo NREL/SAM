@@ -45,7 +45,7 @@
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.27,
     "bos_equip_total": 27000000.0,
-    "capex_table_ac_cost_per_w": 0.0,
+    "capex_table_ac_cost_per_w": 0.33,
     "capex_table_ac_inputs": [
         [
             5000000.0,
@@ -76,7 +76,7 @@
             0.29
         ]
     ],
-    "capex_table_cost_per_w": 0.0,
+    "capex_table_cost_per_w": 0.69,
     "capex_table_dc_inputs": [
         [
             5000000.0,
@@ -107,8 +107,8 @@
             0.65
         ]
     ],
-    "capex_table_total_installed_ac_cost": 0.0,
-    "capex_table_total_installed_dc_cost": 0.0,
+    "capex_table_total_installed_ac_cost": 25384600.0,
+    "capex_table_total_installed_dc_cost": 69000000.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -9655,6 +9655,7 @@
     "en_snowloss": 0.0,
     "en_user_spec_losses": 0.0,
     "enable_interconnection_limit": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "engr_fixed": 0.0,
     "engr_per_watt": 0.02,
     "engr_percent": 0.0,
@@ -19298,6 +19299,7 @@
     "pv_capex_cost_choice": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
+    "pvwatts_subhourly_clipping_shown": 0.0,
     "rate_escalation": [
         0.0
     ],

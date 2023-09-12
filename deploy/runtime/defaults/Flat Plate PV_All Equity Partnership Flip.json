@@ -9511,7 +9511,7 @@
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
     "calculated_dcac_ratio": 1.34109,
-    "capex_table_ac_cost_per_w": 0.0,
+    "capex_table_ac_cost_per_w": 0.33,
     "capex_table_ac_inputs": [
         [
             5000000.0,
@@ -9542,7 +9542,7 @@
             0.29
         ]
     ],
-    "capex_table_cost_per_w": 0.0,
+    "capex_table_cost_per_w": 0.65,
     "capex_table_dc_inputs": [
         [
             5000000.0,
@@ -9588,8 +9588,8 @@
             0.0
         ]
     ],
-    "capex_table_total_installed_ac_cost": 0.0,
-    "capex_table_total_installed_dc_cost": 0.0,
+    "capex_table_total_installed_ac_cost": 24607000.0,
+    "capex_table_total_installed_dc_cost": 65000500.0,
     "capex_table_total_installed_land_cost": 0.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
@@ -28317,6 +28317,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "engr_fixed": 0.0,
     "engr_per_watt": 0.02,
     "engr_percent": 0.0,
@@ -40032,6 +40033,7 @@
     "mppt_low_inverter": 545.0,
     "nominal_discount_rate": 9.06,
     "num_enabled": 1.0,
+    "num_inverters_subhourly_clipping": 133.0,
     "num_strings_total": 26869.0,
     "offset": 0.0,
     "om_capacity": [
@@ -40111,6 +40113,7 @@
     "pv.radmode.is_shown": 0.0,
     "pv_capex_cost_choice": 0.0,
     "pv_land_area_is_shown": 0.0,
+    "pv_subhourly_clipping_shown": 0.0,
     "rate_escalation": [
         0.0
     ],

@@ -7970,19 +7970,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "calculated_num_inverter_dcac_unity": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Number of Inverters for DC/AC ratio of one",
-            "Units": "",
-            "Group": "",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "desired_dcac_ratio": {
             "Version": 4.0,
             "Type": 1.0,
@@ -8093,6 +8080,19 @@
             "Label": "Number of enabled subarrays",
             "Units": " ",
             "Group": "PV System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_inverters_subhourly_clipping": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of Inverters for DC/AC ratio of one",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -9538,7 +9538,7 @@
         "\treturn max_power;",
         "};\r",
         "\r",
-        "equations{ 'calculated_num_inverter_dcac_unity' } = define() \r",
+        "equations{ 'num_inverters_subhourly_clipping' } = define() \r",
         "{\r",
         "\tdc = ${system_capacity};\r",
         "\treturn round(dc / (?${inverter_model} \r",

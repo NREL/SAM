@@ -18800,6 +18800,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "energy_1": 752.186,
     "energy_10": 837.847,
     "energy_11": 640.379,
@@ -47327,6 +47328,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "num_enabled": 1.0,
+    "num_inverters_subhourly_clipping": 1.0,
     "num_strings_total": 3.0,
     "offset": 0.0,
     "peak_1": 1.85407,
@@ -47345,6 +47347,7 @@
     "ppa_price": 0.1,
     "pv.radmode.is_shown": 0.0,
     "pv_land_area_is_shown": 0.0,
+    "pv_subhourly_clipping_shown": 0.0,
     "rate_escalation": [
         0.0
     ],

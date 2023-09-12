@@ -11374,6 +11374,7 @@
     "mppt_hi_inverter": 820.0,
     "mppt_low_inverter": 545.0,
     "num_enabled": 1.0,
+    "num_inverters_subhourly_clipping": 133.0,
     "num_strings_total": 26869.0,
     "offset": 0.0,
     "pv.radmode.is_shown": 0.0,
