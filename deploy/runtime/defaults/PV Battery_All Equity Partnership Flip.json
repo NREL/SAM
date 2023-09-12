@@ -46962,6 +46962,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "engr_fixed": 0.0,
     "engr_per_watt": 0.06,
     "engr_percent": 0.0,
@@ -58677,7 +58678,7 @@
     "mppt_low_inverter": 545.0,
     "nominal_discount_rate": 9.06,
     "num_enabled": 1.0,
-    "num_inverters_subhourly_clipping": 133.0,
+    "num_inverter_subhourly_clipping": 133.0,
     "num_strings_total": 26869.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [

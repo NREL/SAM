@@ -229,8 +229,7 @@ function setup_pvwatts_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource' } );
 	addpage( [[ 'PVWatts',
 	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
-	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
-	            {'name'='PV Subhourly Clipping', 'caption' = 'PV Subhourly Clipping', 'collapsible'=true, 'collapsible_var'='pvwatts_subhourly_clipping_shown'} ]],
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'}]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_limits_page();
 }
@@ -257,8 +256,7 @@ function setup_flat_plate_pv_pages()
 			   {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'},
 	            'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design' } );
 	addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading' } );
-	addpage( [ ['PV Losses', 
-			   {'name'='PV Subhourly Clipping', 'caption'='PV Subhourly Clipping', 'collapsible'=true, 'collapsible_var'='pv_subhourly_clipping_shown'} ]], { 'sidebar'='Losses', 'help'='pv_losses' } );
+	addpage( [ ['PV Losses']], { 'sidebar'='Losses', 'help'='pv_losses' } );
 	setup_grid_limits_page();
 }
 

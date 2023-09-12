@@ -63806,6 +63806,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "energy_1": 57339.5,
     "energy_10": 57692.5,
     "energy_11": 51845.3,
@@ -92441,7 +92442,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "num_enabled": 1.0,
-    "num_inverters_subhourly_clipping": 8.0,
+    "num_inverter_subhourly_clipping": 8.0,
     "num_strings_total": 124.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [

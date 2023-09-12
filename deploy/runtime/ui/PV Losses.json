@@ -6671,6 +6671,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "enable_subhourly_clipping": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable subhourly clipping",
+            "Units": "0/1",
+            "Group": "PV Losses",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "subarray1_dcloss": {
             "Version": 4.0,
             "Type": 1.0,

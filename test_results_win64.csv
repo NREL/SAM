@@ -1,15 +1,15 @@
 TECHNOLOGY,FINANCING,ANNUAL_OUTPUT,LCOE_NOM,LPPA_NOM,MESSAGES
-Flat Plate PV,Residential,fail,fail,fail
-Flat Plate PV,Commercial,fail,fail,fail
-Flat Plate PV,Third Party,fail,fail,fail
-Flat Plate PV,Host Developer,fail,fail,fail
-Flat Plate PV,Single Owner,fail,fail,fail
-Flat Plate PV,Merchant Plant,fail,fail,fail
-Flat Plate PV,Leveraged Partnership Flip,fail,fail,fail
-Flat Plate PV,All Equity Partnership Flip,fail,fail,fail
-Flat Plate PV,Sale Leaseback,fail,fail,fail
-Flat Plate PV,LCOE Calculator,fail,fail,fail
-Flat Plate PV,None,fail,fail,fail
+Flat Plate PV,Residential,13256.1,7.06583,NA,; 
+Flat Plate PV,Commercial,929844,1.95693,NA,; 
+Flat Plate PV,Third Party,11330.3,NA,NA,; 
+Flat Plate PV,Host Developer,929844,10.5054,11.4553,; 
+Flat Plate PV,Single Owner,225587200,3.97511,4.32337,; 
+Flat Plate PV,Merchant Plant,225587200,4.17765,NA,; Warning: NPV is $-4.25484e+07. A negative NPV indicates project costs are higher than revenues.
+Flat Plate PV,Leveraged Partnership Flip,225587200,4.07081,4.32337,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
+Flat Plate PV,All Equity Partnership Flip,225587200,5.15239,4.32337,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.93206e+07. A negative NPV indicates project costs are higher than revenues.
+Flat Plate PV,Sale Leaseback,225587200,5.82902,4.32337,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.22062e+07. A negative NPV indicates project costs are higher than revenues.
+Flat Plate PV,LCOE Calculator,225587200,NA,NA,; 
+Flat Plate PV,None,182231248,NA,NA,; 
 PVWatts,Residential,13904.6,7.67608,NA,; 
 PVWatts,Commercial,938557,2.08583,NA,; 
 PVWatts,Third Party,11123.6,NA,NA,; 
@@ -29,15 +29,15 @@ High-X Concentrating PV,All Equity Partnership Flip,2.39082e+06,25.068,25.9389,;
 High-X Concentrating PV,Sale Leaseback,2.39082e+06,25.425,25.9389,; 
 High-X Concentrating PV,LCOE Calculator,2.39082e+06,NA,NA,; 
 High-X Concentrating PV,None,2.39082e+06,NA,NA,; 
-PV Battery,Residential,fail,fail,fail
-PV Battery,Commercial,fail,fail,fail
-PV Battery,Third Party,fail,fail,fail
-PV Battery,Host Developer,fail,fail,fail
-PV Battery,Single Owner,fail,fail,fail
-PV Battery,Merchant Plant,fail,fail,fail
-PV Battery,Leveraged Partnership Flip,fail,fail,fail
-PV Battery,All Equity Partnership Flip,fail,fail,fail
-PV Battery,Sale Leaseback,fail,fail,fail
+PV Battery,Residential,12439.5,13.0348,NA,; 
+PV Battery,Commercial,874422,7.06135,NA,; 
+PV Battery,Third Party,33948.9,NA,NA,; 
+PV Battery,Host Developer,874422,16.6675,16.21,; Warning: NPV is $-37594.5. A negative NPV indicates project costs are higher than revenues.
+PV Battery,Single Owner,206681632,8.43256,8.86258,; 
+PV Battery,Merchant Plant,206681632,9.0281,NA,; Warning: NPV is $-1.18692e+08. A negative NPV indicates project costs are higher than revenues.
+PV Battery,Leveraged Partnership Flip,206681632,6.96497,8.86258,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
+PV Battery,All Equity Partnership Flip,206681632,9.59223,8.86258,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.77608e+07. A negative NPV indicates project costs are higher than revenues.
+PV Battery,Sale Leaseback,206681632,10.3282,8.86258,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.88387e+07. A negative NPV indicates project costs are higher than revenues.
 PVWatts Battery,Residential,12975.1,16.2135,NA,; 
 PVWatts Battery,Commercial,882692,14.2723,NA,; 
 PVWatts Battery,Third Party,10447.9,NA,NA,; 
@@ -60,7 +60,7 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,81.3387,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466825024,13.3174,7.40535,; 
+ETES,Single Owner,-466755008,13.3155,7.40295,; 
 PTES,Single Owner,-197586480,16.8906,10.3673,; 
 Physical Trough,Single Owner,376952608,12.1978,12.3469,; 
 Physical Trough,Merchant Plant,376952608,12.8693,NA,; 
