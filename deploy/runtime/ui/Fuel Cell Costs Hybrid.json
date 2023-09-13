@@ -5143,9 +5143,6 @@
         "equations { 'fuelcell_total' } = define () {",
         "\treturn ${fuelcell_power_total}*${fuelcell_per_kW};\r",
         "};",
-        "",
-        "",
-        "",
         ""
     ],
     "Callbacks": []

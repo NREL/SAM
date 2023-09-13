@@ -67,29 +67,6 @@
         "bos_equip_perarea": 0.0,
         "bos_equip_perwatt": 0.36,
         "bos_equip_total": 194400.0,
-        "capex_table_ac_cost_per_w": 0.0,
-        "capex_table_ac_inputs": [
-            [
-                0.0
-            ]
-        ],
-        "capex_table_cost_per_w": 0.45,
-        "capex_table_dc_inputs": [
-            [
-                2.0,
-                0.35
-            ],
-            [
-                5.0,
-                0.4
-            ],
-            [
-                8.0,
-                0.45
-            ]
-        ],
-        "capex_table_total_installed_ac_cost": 0.0,
-        "capex_table_total_installed_dc_cost": 243000.0,
         "city": "-",
         "contingency": 29376.0,
         "contingency_percent": 4.0,
@@ -132,7 +109,6 @@
         "inverter_power": 469.565,
         "inverter_total": 32400.0,
         "inverterarray_power": 469.565,
-        "inverterarray_power_w": 469565.0,
         "is_advanced": 0.0,
         "land_area_value": 3.51186,
         "land_fixed": 0.0,
@@ -169,7 +145,6 @@
         "module_type": 0.0,
         "modulearray_area": 2842.11,
         "modulearray_power": 540.0,
-        "modulearray_power_w": 540000.0,
         "om_capacity": [
             18.0
         ],
@@ -188,7 +163,6 @@
         "permitting_per_watt": 0.03,
         "permitting_percent": 0.0,
         "permitting_total": 16200.0,
-        "pv_capex_cost_choice": 0.0,
         "pv_land_area_is_shown": 0.0,
         "pvwatts.advanced.is_shown": 0.0,
         "sales_tax_percent": 80.0,
@@ -38257,11 +38231,13 @@
         "ui_copy_batt_discharge_percent_6": 25.0
     },
     "Hybrid": {
+        "ac_nameplate": 0.0,
         "analysis_period": 25.0,
         "analysis_period_warning": "",
         "annual_crit": 0.0,
         "annual_peak": 274.231,
         "batt_minimum_outage_SOC": 10.0,
+        "batt_power_discharge_max_kwac": 312.65,
         "batt_replacement_option": 1.0,
         "batt_salvage_percentage": 0.0,
         "batt_salvage_value": 0.0,
@@ -38292,7 +38268,7 @@
         "cbi_uti_tax_fed": 1.0,
         "cbi_uti_tax_sta": 1.0,
         "chk_update_peaks": 0.0,
-        "const_per_interest1": 21133.4,
+        "const_per_interest1": 46605.1,
         "const_per_interest2": 0.0,
         "const_per_interest3": 0.0,
         "const_per_interest4": 0.0,
@@ -38302,7 +38278,7 @@
         "const_per_interest_rate3": 0.0,
         "const_per_interest_rate4": 0.0,
         "const_per_interest_rate5": 0.0,
-        "const_per_interest_total": 21133.4,
+        "const_per_interest_total": 46605.1,
         "const_per_months1": 6.0,
         "const_per_months2": 0.0,
         "const_per_months3": 0.0,
@@ -38319,13 +38295,13 @@
         "const_per_percent4": 0.0,
         "const_per_percent5": 0.0,
         "const_per_percent_total": 100.0,
-        "const_per_principal1": 2415250.0,
+        "const_per_principal1": 5326290.0,
         "const_per_principal2": 0.0,
         "const_per_principal3": 0.0,
         "const_per_principal4": 0.0,
         "const_per_principal5": 0.0,
-        "const_per_principal_total": 2415250.0,
-        "const_per_total1": 45285.9,
+        "const_per_principal_total": 5326290.0,
+        "const_per_total1": 99868.0,
         "const_per_total2": 0.0,
         "const_per_total3": 0.0,
         "const_per_total4": 0.0,
@@ -38335,7 +38311,7 @@
         "const_per_upfront_rate3": 0.0,
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
-        "construction_financing_cost": 45285.9,
+        "construction_financing_cost": 99868.0,
         "cost_debt_closing": 450000.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
@@ -65369,6 +65345,7 @@
         "flip_target_percent": 11.0,
         "flip_target_year": 20.0,
         "fuelcell_power_nameplate": 200.0,
+        "fuelcell_system_capacity": 200.0,
         "fuelcell_total_installed_cost": 2000000.0,
         "grid_curtailment": [
             1e38,
@@ -101138,7 +101115,7 @@
             33.5754
         ],
         "loan_moratorium": 0.0,
-        "mera_cost1": 41612.8,
+        "mera_cost1": 61265.0,
         "mera_cost2": 0.0,
         "mera_cost3": 0.0,
         "mera_name1": "Replacement Reserve 1",
@@ -101218,7 +101195,7 @@
         "ppa_soln_mode": 0.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 2415250.0,
+        "property_assessed_value": 5326290.0,
         "property_tax_rate": 1.0,
         "ptc_fed_amount": [
             0.0
@@ -101250,18 +101227,21 @@
         "state_tax_rate": [
             7.0
         ],
-        "system_capacity": 416.128,
+        "system_capacity": 612.65,
         "term_int_rate": 4.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 2415250.0,
+        "total_installed_cost": 5326290.0,
         "ui_annual_load": 0.0,
         "ui_battery_capacity": 312.65,
         "ui_battery_cost": 911046.0,
+        "ui_fuel_cell_capacity": 200.0,
+        "ui_fuel_cell_cost": 2000000.0,
+        "ui_generic_capacity": 0.0,
+        "ui_generic_cost": 0.0,
         "ui_hyb_pv_capacity": 3.47826,
         "ui_pv_cost": 1048130.0,
         "ui_wacc": 5.38728,
-        "ui_wind_capacity": 100.0,
         "ui_wind_cost": 456073.0,
         "ur_annual_min_charge": 0.0,
         "ur_billing_demand_is_shown": 0.0,
