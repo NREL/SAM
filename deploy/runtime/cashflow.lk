@@ -470,8 +470,8 @@ function cf_financing_activities() // all PPA models except Sale Leaseback
 	cfline('FINANCING ACTIVITIES', -1);
 	cfline( 'issuance_of_equity',0);
 	if ( is_debt_fin() ) { cfline( 'size_of_debt', 0); }
-	cfline( 'ibi_total', 0);
-	cfline( 'cbi_total', 0);
+//	cfline( 'ibi_total', 0);
+//	cfline( 'cbi_total', 0);
 	if ( is_debt_fin() )
 	{
 		cfline('minus:', -1, 0);
