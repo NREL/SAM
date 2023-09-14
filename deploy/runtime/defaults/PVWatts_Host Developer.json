@@ -47,7 +47,7 @@
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.36,
     "bos_equip_total": 194400.0,
-    "capex_table_ac_cost_per_w": 0.72,
+    "capex_table_ac_cost_per_w": 0.0,
     "capex_table_ac_inputs": [
         [
             100000.0,
@@ -86,7 +86,7 @@
             0.65
         ]
     ],
-    "capex_table_cost_per_w": 0.96,
+    "capex_table_cost_per_w": 0.0,
     "capex_table_dc_inputs": [
         [
             100000.0,
@@ -125,8 +125,8 @@
             0.94
         ]
     ],
-    "capex_table_total_installed_ac_cost": 338087.0,
-    "capex_table_total_installed_dc_cost": 518400.0,
+    "capex_table_total_installed_ac_cost": 0.0,
+    "capex_table_total_installed_dc_cost": 0.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,

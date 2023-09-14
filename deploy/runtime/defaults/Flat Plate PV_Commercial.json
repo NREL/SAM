@@ -47469,7 +47469,6 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "num_enabled": 1.0,
-    "num_inverter_subhourly_clipping": 8.0,
     "num_strings_total": 124.0,
     "offset": 0.0,
     "om_capacity": [

@@ -17925,7 +17925,7 @@
             100.0
         ]
     ],
-    "capex_table_ac_cost_per_w": 0.79,
+    "capex_table_ac_cost_per_w": 0.0,
     "capex_table_ac_inputs": [
         [
             100000.0,
@@ -17964,7 +17964,7 @@
             0.65
         ]
     ],
-    "capex_table_batt_cost_per_kw": 2167.38,
+    "capex_table_batt_cost_per_kw": 0.0,
     "capex_table_batt_cost_per_kwh": 0.0,
     "capex_table_batt_inputs": [
         [
@@ -18003,7 +18003,7 @@
             0.0
         ]
     ],
-    "capex_table_cost_per_w": 1.0,
+    "capex_table_cost_per_w": 0.0,
     "capex_table_dc_inputs": [
         [
             100000.0,
@@ -18042,7 +18042,7 @@
             0.94
         ]
     ],
-    "capex_table_fuelcell_cost_per_kw": 10000.0,
+    "capex_table_fuelcell_cost_per_kw": 0.0,
     "capex_table_fuelcell_inputs": [
         [
             1.0,
@@ -18057,10 +18057,10 @@
             10000.0
         ]
     ],
-    "capex_table_total_installed_ac_cost": 147696.0,
+    "capex_table_total_installed_ac_cost": 0.0,
     "capex_table_total_installed_batt_cost": 0.0,
-    "capex_table_total_installed_dc_cost": 215000.0,
-    "capex_table_total_installed_fuelcell_cost": 2000000.0,
+    "capex_table_total_installed_dc_cost": 0.0,
+    "capex_table_total_installed_fuelcell_cost": 0.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,

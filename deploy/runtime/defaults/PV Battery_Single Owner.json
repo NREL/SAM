@@ -27446,7 +27446,7 @@
             105.4
         ]
     ],
-    "capex_table_ac_cost_per_w": 0.33,
+    "capex_table_ac_cost_per_w": 0.0,
     "capex_table_ac_inputs": [
         [
             5000000.0,
@@ -27477,8 +27477,8 @@
             0.29
         ]
     ],
-    "capex_table_batt_cost_per_kw": 573.888,
-    "capex_table_batt_cost_per_kwh": 192.614,
+    "capex_table_batt_cost_per_kw": 0.0,
+    "capex_table_batt_cost_per_kwh": 0.0,
     "capex_table_batt_inputs": [
         [
             30000.0,
@@ -27516,7 +27516,7 @@
             192.0
         ]
     ],
-    "capex_table_cost_per_w": 0.65,
+    "capex_table_cost_per_w": 0.0,
     "capex_table_dc_inputs": [
         [
             5000000.0,
@@ -27562,9 +27562,9 @@
             0.0
         ]
     ],
-    "capex_table_total_installed_ac_cost": 24607000.0,
-    "capex_table_total_installed_batt_cost": 183960000.0,
-    "capex_table_total_installed_dc_cost": 65000500.0,
+    "capex_table_total_installed_ac_cost": 0.0,
+    "capex_table_total_installed_batt_cost": 0.0,
+    "capex_table_total_installed_dc_cost": 0.0,
     "capex_table_total_installed_land_cost": 0.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
@@ -58692,7 +58692,6 @@
     "mppt_low_inverter": 545.0,
     "nominal_discount_rate": 9.06,
     "num_enabled": 1.0,
-    "num_inverter_subhourly_clipping": 133.0,
     "num_strings_total": 26869.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [
