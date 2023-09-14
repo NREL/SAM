@@ -2079,7 +2079,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The PV Subhourly Clipping Correction calculates expected losses from inverter clipping with the Allen method. These inverter clipping losses are calculated at each timestep by indexing a matrix of DNI clearness index and Clipping Potential. The losses are only applicable for hourly timeseries weather data. The suggested matrix to use in this calculation is in the PV Subhourly Clipping dropdown below. This matrix should only be changed if you have alternative matrix values calculated for a particular site. "
+                    "String": "The PV Subhourly Clipping Correction calculates expected losses from inverter clipping with the Allen method. These inverter clipping losses are calculated at each timestep by indexing a matrix of DNI clearness index and subhourly clipping potential. The losses are only applicable for hourly timeseries weather data. "
                 },
                 "TextColour": {
                     "Type": 4.0,
