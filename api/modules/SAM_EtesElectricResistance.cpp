@@ -350,6 +350,12 @@ SAM_EXPORT void SAM_EtesElectricResistance_UserDefinedPowerCycle_ud_ind_od_mset(
 	});
 }
 
+SAM_EXPORT void SAM_EtesElectricResistance_UserDefinedPowerCycle_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ud_is_sco2_regr", number);
+	});
+}
+
 SAM_EXPORT void SAM_EtesElectricResistance_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ud_m_dot_water_cool_des", number);
@@ -1328,6 +1334,17 @@ SAM_EXPORT double* SAM_EtesElectricResistance_UserDefinedPowerCycle_ud_ind_od_mg
 	result = ssc_data_get_matrix(ptr, "ud_ind_od", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_EtesElectricResistance", "ud_ind_od");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_EtesElectricResistance_UserDefinedPowerCycle_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ud_is_sco2_regr", &result))
+		make_access_error("SAM_EtesElectricResistance", "ud_is_sco2_regr");
 	});
 	return result;
 }
