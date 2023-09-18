@@ -270,7 +270,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 133.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -282,7 +282,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast"
+                    "StringList": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast|Self-consumption"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -586,7 +586,7 @@
             "Label": "Battery dispatch options BTM",
             "Units": " ",
             "Group": "Battery Dispatch",
-            "IndexLabels": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast",
+            "IndexLabels": "Peak shaving|Input grid power targets|Input battery power targets|Manual dispatch|Price signal forecast|Self-consumption",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
