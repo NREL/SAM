@@ -1,7 +1,7 @@
 {
     "Name": "Financial Salvage Value",
-    "Width": 864.0,
-    "Height": 121.0,
+    "Width": 859.0,
+    "Height": 83.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 101.0
+                    "Integer": 77.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 48.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -369,7 +369,12 @@
         "on_load{'Financial Salvage Value'} = define() {",
         "\ttech = technology();",
         "\tbatt_replacement_tech = ( (tech=='PV Battery')",
-        "\t|| (tech=='Generic Battery') || (tech== 'PVWatts Battery'));",
+        "\t|| (tech=='Generic Battery') \r",
+        "\t|| (tech== 'PVWatts Battery')\r",
+        "\t|| (tech=='PVWatts Wind Battery Hybrid')\r",
+        "\t|| (tech=='PVWatts Wind FuelCell Battery Hybrid') \r",
+        "\t|| (tech=='Photovoltaic Wind Battery Hybrid')\r",
+        "\t|| (tech=='Generic PVWatts Wind FuelCell Battery Hybrid') );",
         "\tshow('batt_salvage_percentage',batt_replacement_tech);",
         "\tshow('batt_salvage_value',batt_replacement_tech);",
         "\trefresh();",

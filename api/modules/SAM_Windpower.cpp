@@ -962,6 +962,102 @@ SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_
 
 
 
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_battery_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_net", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_energy_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_fuelcell_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_om_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_om_fixed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_om_fuel_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_om_land_lease");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "cf_om_production");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

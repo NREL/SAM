@@ -1,7 +1,7 @@
 {
     "Name": "Battery Dispatch Automated FOM",
-    "Width": 1055.0,
-    "Height": 365.0,
+    "Width": 1052.0,
+    "Height": 388.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The automated dispatch options consider the PPA price, electricity rate, battery cycle cost, and inverter power limiting to decide when to charge and discharge, using one of the time horizon options."
+                    "String": "The automated dispatch options consider the PPA price, electricity rate, and the battery cycle degradation penalty to decide when to charge and discharge using one of the time horizon options below. For the PV Battery configuration, automated dispatch also considers inverter power limiting."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -78,7 +78,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -131,7 +131,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,11 +172,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1011.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -188,7 +188,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the  Battery Cell and System page."
+                    "String": "The controller cycles the battery only if anticipated revenue exceeds the cycle degradation penalty. A higher penalty decreases cycling, a lower penalty increases cycling and may result in more frequent battery replacements. Battery replacement inputs are on the Battery Life page."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -234,7 +234,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 243.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -432,7 +432,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "For the Look Ahead to Custom Weather File option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page."
+                    "String": ""
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -557,11 +557,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 396.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -602,11 +602,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 945.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -639,15 +639,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 396.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 698.0
+                    "Integer": 542.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -710,7 +710,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 359.0
+                    "Integer": 380.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -847,7 +847,7 @@
         "{",
         "\tfile = choose_file( \"\", 'Choose a weather file', ",
         "\t\t\t'All Weather Files (*.tm2,*.tm3,*.epw,*.smw,*.csv)|*.tm2;*.tm3;*.epw;*.smw;*.csv');",
-        "\t${batt_user_specified_weather_file} = file;",
+        "\tvalue('batt_user_specified_weather_file', file);",
         "\trun_forecast(file);",
         "};",
         "",
@@ -858,12 +858,12 @@
         "",
         "on_change{'batt_cycle_cost_choice'}=define()",
         "{",
-        "\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);",
+        "\tenable('batt_cycle_cost', value('batt_cycle_cost_choice') == 1);",
         "};",
         "",
         "on_change{'batt_pv_ac_forecast_fom_auto'}=define()",
         "{",
-        "\trun_generic_forecast(${batt_pv_ac_forecast_fom_auto});",
+        "\trun_generic_forecast(value('batt_pv_ac_forecast_fom_auto'));",
         "};",
         "",
         "function toggle_dispatch_fom_automated()",
@@ -871,19 +871,18 @@
         "",
         "\t// Turn on/off forecast input",
         "\t//toggle_forecast();",
-        "\tenable('batt_select_weather_file_forecast', ${batt_dispatch_wf_forecast_choice} == 2);",
-        "\tenable('batt_user_specified_weather_file', ${batt_dispatch_wf_forecast_choice} == 2);",
-        "\tenable('batt_pv_ac_forecast_fom_auto', ${batt_dispatch_wf_forecast_choice} == 2);",
-        "",
+        "\tenable('batt_select_weather_file_forecast', value('batt_dispatch_wf_forecast_choice') == 2);",
+        "\tenable('batt_user_specified_weather_file', value('batt_dispatch_wf_forecast_choice') == 2);",
+        "\tenable('batt_pv_ac_forecast_fom_auto', value('batt_dispatch_wf_forecast_choice') == 2);",
         "\t",
-        "\tif (${batt_dispatch_wf_forecast_choice} == 2)",
+        "\tif (value('batt_dispatch_wf_forecast_choice') == 2)",
         "\t{",
         "\t\tac_forecast = value(\"batt_pv_ac_forecast\");",
         "\t\tclipping_forecast = value(\"batt_pv_clipping_forecast\");",
         "\t\tforecast_array = value(\"batt_pv_ac_forecast_fom_auto\");",
         "\t\tif (#ac_forecast <= 1 || #clipping_forecast <= 1) { ",
         "\t\t\tif (technology() == 'PV Battery') {",
-        "\t\t\t\tfile = ${batt_user_specified_weather_file};",
+        "\t\t\t\tfile = value('batt_user_specified_weather_file');",
         "\t\t\t\tif (file != \"\") {",
         "\t\t\t\t\trun_forecast(file);",
         "\t\t\t\t}",
@@ -897,8 +896,8 @@
         "\t\t}",
         "\t}",
         "\telse {",
-        "\t\t${batt_pv_ac_forecast} = [0];",
-        "\t\t${batt_pv_clipping_forecast} = [0];",
+        "\t\tvalue('batt_pv_ac_forecast', [0]);",
+        "\t\tvalue('batt_pv_clipping_forecast', [0]);",
         "\t}",
         "",
         "\tmode = value('batt_dispatch_wf_forecast_choice');",
@@ -907,7 +906,7 @@
         "\tenable_auto_inputs_fom(true);",
         "\tenable_non_manual_inputs_fom(true);",
         "\t//toggle_cycle_cost();",
-        "\tenable('batt_cycle_cost', ${batt_cycle_cost_choice} == 1);",
+        "\tenable('batt_cycle_cost', value('batt_cycle_cost_choice') == 1);",
         "",
         "\t// look ahead options",
         "\tlook_ahead = (mode == 0 || mode == 2);",
@@ -918,7 +917,7 @@
         "",
         "function enable_auto_inputs_fom(on_off)",
         "{",
-        "\tenable('batt_auto_gridcharge_max_daily', on_off);",
+        "\t//enable('batt_auto_gridcharge_max_daily', on_off);",
         "\tenable('batt_dispatch_update_frequency_hours', on_off);",
         "\tenable('batt_look_ahead_hours', on_off);",
         "\tenable('batt_cycle_cost_choice', on_off);",
@@ -936,17 +935,26 @@
         "{",
         "\tmsg = '';",
         "\t",
-        "\tif (technology() == 'Generic Battery') {",
+        "\tif (technology() == 'Generic Battery' ) {",
         "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';",
-        "\t\tshow('batt_pv_ac_forecast_fom_auto',true);",
-        "\t\tshow('batt_user_specified_weather_file',false);",
-        "\t\tshow('batt_select_weather_file_forecast',false);",
+        "\t\tenable('batt_pv_ac_forecast_fom_auto',true);",
+        "\t\tenable('batt_user_specified_weather_file',false);",
+        "\t\tenable('batt_select_weather_file_forecast',false);",
+        "\t}\r",
+        "\telseif ( technology() == 'PVWatts Wind Battery Hybrid' \r",
+        "\t      || technology() == 'PVWatts Wind FuelCell Battery Hybrid'\r",
+        "\t      || technology() == 'Photovoltaic Wind Battery Hybrid'\r",
+        "\t      || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the combined generation of the wind and PV systems.';\r",
+        "\t\tenable('batt_pv_ac_forecast_fom_auto',false);\r",
+        "\t\tenable('batt_user_specified_weather_file',false);\r",
+        "\t\tenable('batt_select_weather_file_forecast',false);\r",
         "\t}",
         "\telse {",
         "\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t",
-        "\t\tshow('batt_pv_ac_forecast_fom_auto',false);",
-        "\t\tshow('batt_user_specified_weather_file',true);",
-        "\t\tshow('batt_select_weather_file_forecast',true);",
+        "\t\tenable('batt_pv_ac_forecast_fom_auto',false);",
+        "\t\tenable('batt_user_specified_weather_file',true);",
+        "\t\tenable('batt_select_weather_file_forecast',true);",
         "\t}",
         "\t",
         "\tproperty('batt_forecast_auto_description','Caption',msg);",
