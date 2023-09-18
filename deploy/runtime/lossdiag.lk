@@ -45,6 +45,10 @@ loss_diagram{'Flat Plate PV'} = define() {
 	
 	new_baseline( 'annual_ac_gross', 'Gross AC electricity (kWh)' );
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
+	if (value('enable_subhourly_clipping'))
+	{
+		add_loss_term('annual_subhourly_clipping_loss_percent', 'Subhourly clipping correction');
+	}
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
@@ -122,7 +126,11 @@ loss_diagram{'PV Battery'} = define() {
 	{
 		add_loss_term('annual_ac_battery_loss_percent', 'Battery loss (kWh)');
 	}
-	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
+	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );
+	if (value('enable_subhourly_clipping'))
+	{
+		add_loss_term('annual_subhourly_clipping_loss_percent', 'Subhourly clipping correction');
+	}	
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');

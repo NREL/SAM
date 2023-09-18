@@ -63806,6 +63806,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "energy_1": 57339.5,
     "energy_10": 57692.5,
     "energy_11": 51845.3,
