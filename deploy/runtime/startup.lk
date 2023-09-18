@@ -25,13 +25,16 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'MSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'MSLF', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+// Heat
+addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
-// Marine Energy
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MSLF IPH', ['None', 'LCOH Calculator']);
+// Marine Energy
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
 addconfig( 'MEwave Battery', ['Single Owner']);
 addconfig( 'MEtidal', ['LCOE Calculator', 'None']);
@@ -77,8 +80,6 @@ configopt( 'Dish Stirling', { 'tree_parent'='Retired', 'long_name'='Dish Stirlin
 configopt( 'Generic CSP System', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Generic Model', 'short_name'='Generic CSP', 'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Direct Steam', 'short_name'='Fresnel (steam)', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Molten Salt', 'short_name'='Fresnel (salt)', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'Physical Trough IPH', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough - Heat', 'short_name'='IPH Trough', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Direct Steam - Heat', 'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short_name'='Marine Wave', 'description'='Marine energy wave system' });
 configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Marine Wave Battery', 'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal', { 'tree_parent'='Marine Energy', 'long_name'='Tidal', 'short_name'='Marine Tidal', 'description'='Marine energy tidal system' });
@@ -86,6 +87,10 @@ configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'=
 configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
 configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery Hybrid', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'Physical Trough IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Parabolic Trough - Heat', 'short_name'='IPH Trough', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Direct Steam Linear Fresnel - Heat', 'short_name'='IPH Linear (steam)','description'='Industrial process heat linear Fresnel collector system' } );
+configopt( 'MSLF IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Molten Salt Linear Fresnel - Heat', 'short_name'='IPH Linear (salt)','description'='Industrial process heat linear collector system with molten salt heat transfer fluid' } );
+configopt( 'MSPT IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Molten Salt Power Tower - Heat', 'short_name'='IPH Tower (salt)','description'='Industrial process heat power tower system with molten salt heat transfer fluid' } );
 
 configopt( 'Retired', { 'tree_parent'='Retired', 'long_name'= 'Retired technology', 'short_name' = 'Retired', 'description'= 'Retired technologies' });
 
@@ -363,6 +368,13 @@ function setup_iph_lcoefcr_pages() // LCOE calculator will not work with tower m
 {
   addpage( [[ 'Financial LCOE Calc IPH Add',
 				'Financial LCOE Calculator']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
+}
+
+function setup_iph_lcoefcr_cost_pages() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
+{
+  addpage( [[ 'Financial LCOE Calc IPH Add',
+				'Financial LCOE Calc with Costs']],
            { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 }
 
@@ -1777,12 +1789,41 @@ function setup_MSPT_pages(is_grid_limits)
   	}
 }
 
+function setup_MSPT_IPH_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'MSPT IPH System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
+	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'MSPT Receiver External' ], [ 'MSPT Receiver Cavity' ]],
+			{ 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver', 'exclusive_var'='receiver_type',
+			'exclusive_header_pages' = ['MSPT Receiver']} );
+	//addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
+	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'MSPT IPH System Control' ,
+	{'name' = 'MSPT IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+}
+
 //-----------------------------------------------------
 setconfig('MSPT', 'None');
 setmodules( ['tcsmolten_salt']);
 setup_MSPT_pages(0);
 addpage( [['Sales Tax Rate Single Input','Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+
+//-----------------------------------------------------
+setconfig('MSPT IPH', 'None');
+setmodules( ['mspt_iph']);
+setup_MSPT_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+
+setconfig('MSPT IPH', 'LCOH Calculator');
+setmodules( ['mspt_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
+setup_MSPT_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setup_iph_lcoefcr_cost_pages();
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
@@ -1931,96 +1972,125 @@ setup_merchant_plant_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 
-// Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
+// NEW Molten Salt Linear Fresnel ////////////////////////////////////////////////////////////////////
 function setup_MSLF_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
-	addpage( [[ 'Molten Salt Linear Fresnel Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
+	addpage( [[ 'MSLF System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
+	addpage( [[ 'MSLF Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
 
-	addpage( [[ 'Molten Salt Linear Fresnel Collector and Receiver' ]],
-	 { 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
+	addpage( [[ 'MSLF Collector and Receiver' ]],
+		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
 
-	//addpage( [['MSLF Power Cycle Common' ,
-	//	{ 'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	//	{ 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
+	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
+		{ 'sidebar'='Power Cycle', 'help'='mslf_power_cycle', 'exclusive_var' = 'pc_config',
+		'exclusive_header_pages' = ['MSLF Power Cycle Common']} );
 
-	addpage( [[ 'Rankine Cycle and Hybrid Cooling' ], [ 'User Defined Power Cycle' ]],
-			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['MSLF Power Cycle Common']} );
+	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 
-	//addpage( [[ 'Molten Salt Linear Fresnel Power Cycle' ]], { 'sidebar'='Power Cycle', 'help'='mslf_power_cycle' } );
-
-	addpage( [[ 'Molten Salt Linear Fresnel Storage' ,
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	  { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
-	addpage( [[ 'Molten Salt Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='mslf_parasitics' } );
+	addpage( [[ 'MSLF System Control' ,
+		{'name' = 'MSLF Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='mslf_system_control' } );
+		
  	setup_grid_limits_page();
 }
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'LCOE Calculator' );
-setmodules( ['tcsMSLF', 'grid', 'lcoefcr']);
-setup_MSLF_pages();
-setup_lcoefcr_pages();
+//setconfig( 'MSLF_v2', 'LCOE Calculator' );
+//setmodules( ['fresnel_physical', 'grid', 'lcoefcr']);
+//setup_MSLF_v2_pages();
+//setup_lcoefcr_pages();
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'None' );
-setmodules( ['tcsMSLF', 'grid']);
-setup_MSLF_pages();
+//setconfig( 'MSLF_v2', 'None' );
+//setmodules( ['fresnel_physical', 'grid']);
+//setup_MSLF_v2_pages();
 
 //-----------------------------------------------------
-setconfig( 'MSLF', 'Commercial' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'cashloan']);
-setup_MSLF_pages();
-setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
+//setconfig( 'MSLF_v2', 'Commercial' );
+//setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'cashloan']);
+//setup_MSLF_v2_pages();
+//setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//addpage( [[ 'MSLF_v2 Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+//addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Leveraged Partnership Flip' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'levpartflip']);
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'levpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'All Equity Partnership Flip' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'equpartflip']);
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'equpartflip']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Sale Leaseback' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'saleleaseback']);
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Single Owner' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'singleowner']);
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'singleowner']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'MSLF', 'Merchant Plant' );
-setmodules( ['tcsMSLF', 'grid', 'utilityrate5', 'merchantplant']);
+setmodules( ['fresnel_physical', 'grid', 'utilityrate5', 'merchantplant']);
 setup_MSLF_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [[ 'Molten Salt Linear Fresnel Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage( [[ 'MSLF Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage( [[ 'Operating Costs Fuel', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
+//-----------------------------------------------------
+
+function setup_MSLF_IPH_pages()
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='lf_location_and_resource' } );
+	addpage( [[ 'MSLF IPH System Design' ]], { 'sidebar'='System Design', 'help'='mslf_system_design' } );
+	addpage( [[ 'MSLF Solar Field' ]], { 'sidebar'='Solar Field', 'help'='mslf_solar_field' } );
+
+	addpage( [[ 'MSLF Collector and Receiver' ]],
+		{ 'sidebar'='Collector and Receiver', 'help'='mslf_collector_and_receiver' } );
+
+	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
+
+	addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='mslf_iph_system_control' } );
+}
+
+//-----------------------------------------------------
+setconfig('MSLF IPH', 'None');
+setmodules( ['fresnel_physical_iph']);
+setup_MSLF_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+
+//-----------------------------------------------------
+setconfig('MSLF IPH', 'LCOH Calculator');
+setmodules( ['fresnel_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
+setup_MSLF_IPH_pages();
+addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setup_iph_lcoefcr_cost_pages();
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)

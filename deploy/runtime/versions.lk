@@ -51,10 +51,173 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-// update this date for Fall 2023 release
 version_upgrade{'2023.7.24'} = define() {
+
 	const cfg = config();
-	if ( cfg.tech == 'Fuel Cell' ) {
+
+	if(cfg.tech == 'MSLF'){
+	
+		// System Design
+		value('solar_mult_in', oldvalue('solar_mult'), 'Changed variable cmod name.');
+		value('total_Ap_in', oldvalue('a_field'), 'Added variable to cmod');
+		value('solar_mult_or_Ap', oldvalue('csp.mslf.sf.sm_or_area'), 'Added variable to cmod');
+		value('gross_net_conversion_factor', oldvalue('csp.mslf.cycle.gr_to_net'), 'Added variable to cmod');
+		
+		// Solar Field
+		value('rec_su_delay', 0.2, 'Added receiver startup delay time (s)');
+		value('rec_qf_delay', 0.25, 'Added receiver startup delay energy fraction');
+		value('p_start', 0.021, 'Added collector startup energy (kWhe/sca)');
+		value('DISP_combo_htf_type', oldvalue('csp.mslf.sf.Fluid'), 'Changed variable UI name');
+		value('field_fl_props', oldvalue('HTF_data'), 'Changed variable UI name');
+		
+		// Collector and Receiver
+		value('DISP_rec_model', oldvalue('csp.mslf.sf.rec_model'), 'Changed variable UI name.');
+		value('DISP_opt_model', oldvalue('csp.mslf.sf.opt_model'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs0', oldvalue('csp.mslf.sf.IAM_T_coefs0'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs1', oldvalue('csp.mslf.sf.IAM_T_coefs1'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs2', oldvalue('csp.mslf.sf.IAM_T_coefs2'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs3', oldvalue('csp.mslf.sf.IAM_T_coefs3'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs4', oldvalue('csp.mslf.sf.IAM_T_coefs4'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs0', oldvalue('csp.mslf.sf.IAM_L_coefs0'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs1', oldvalue('csp.mslf.sf.IAM_L_coefs1'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs2', oldvalue('csp.mslf.sf.IAM_L_coefs2'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs3', oldvalue('csp.mslf.sf.IAM_L_coefs3'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs4', oldvalue('csp.mslf.sf.IAM_L_coefs4'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs0', oldvalue('csp.mslf.sf.HL_T_coefs0'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs1', oldvalue('csp.mslf.sf.HL_T_coefs1'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs2', oldvalue('csp.mslf.sf.HL_T_coefs2'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs3', oldvalue('csp.mslf.sf.HL_T_coefs3'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs4', oldvalue('csp.mslf.sf.HL_T_coefs4'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs0', oldvalue('csp.mslf.sf.HL_w_coefs0'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs1', oldvalue('csp.mslf.sf.HL_w_coefs1'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs2', oldvalue('csp.mslf.sf.HL_w_coefs2'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs3', oldvalue('csp.mslf.sf.HL_w_coefs3'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs4', oldvalue('csp.mslf.sf.HL_w_coefs4'), 'Changed variable UI name.');
+		value('DISP_DP_coefs0', oldvalue('csp.mslf.sf.DP_coefs0'), 'Changed variable UI name.');
+		value('DISP_DP_coefs1', oldvalue('csp.mslf.sf.DP_coefs1'), 'Changed variable UI name.');
+		value('DISP_DP_coefs2', oldvalue('csp.mslf.sf.DP_coefs2'), 'Changed variable UI name.');
+		value('DISP_DP_coefs3', oldvalue('csp.mslf.sf.DP_coefs3'), 'Changed variable UI name.');
+		value('DISP_HCE_FieldFrac1', oldvalue('csp.mslf.sf.HCE_FieldFrac1'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac2', oldvalue('csp.mslf.sf.HCE_FieldFrac2'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac3', oldvalue('csp.mslf.sf.HCE_FieldFrac3'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac4', oldvalue('csp.mslf.sf.HCE_FieldFrac4'), 'Changed UI cmod name.');
+		value('DISP_alpha_abs1', oldvalue('csp.mslf.sf.alpha_abs1'), 'Changed variable UI name.');
+		value('DISP_alpha_abs2', oldvalue('csp.mslf.sf.alpha_abs2'), 'Changed variable UI name.');
+		value('DISP_alpha_abs3', oldvalue('csp.mslf.sf.alpha_abs3'), 'Changed variable UI name.');
+		value('DISP_alpha_abs4', oldvalue('csp.mslf.sf.alpha_abs4'), 'Changed variable UI name.');
+		
+		value('DISP_alpha_env1', oldvalue('csp.mslf.sf.alpha_env1'), 'Changed variable UI name.');
+		value('DISP_alpha_env2', oldvalue('csp.mslf.sf.alpha_env2'), 'Changed variable UI name.');
+		value('DISP_alpha_env3', oldvalue('csp.mslf.sf.alpha_env3'), 'Changed variable UI name.');
+		value('DISP_alpha_env4', oldvalue('csp.mslf.sf.alpha_env4'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass1', oldvalue('csp.mslf.sf.epsilon_glass1'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass2', oldvalue('csp.mslf.sf.epsilon_glass2'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass3', oldvalue('csp.mslf.sf.epsilon_glass3'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass4', oldvalue('csp.mslf.sf.epsilon_glass4'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope1', oldvalue('csp.mslf.sf.Tau_envelope1'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope2', oldvalue('csp.mslf.sf.Tau_envelope2'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope3', oldvalue('csp.mslf.sf.Tau_envelope3'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope4', oldvalue('csp.mslf.sf.Tau_envelope4'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn1', oldvalue('csp.mslf.sf.GlazingIntactIn1'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn2', oldvalue('csp.mslf.sf.GlazingIntactIn2'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn3', oldvalue('csp.mslf.sf.GlazingIntactIn3'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn4', oldvalue('csp.mslf.sf.GlazingIntactIn4'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas1', oldvalue('csp.mslf.sf.AnnulusGas1'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas2', oldvalue('csp.mslf.sf.AnnulusGas2'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas3', oldvalue('csp.mslf.sf.AnnulusGas3'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas4', oldvalue('csp.mslf.sf.AnnulusGas4'), 'Changed variable UI name.');
+		value('DISP_P_a1', oldvalue('csp.mslf.sf.P_a1'), 'Changed variable UI name.');
+		value('DISP_P_a2', oldvalue('csp.mslf.sf.P_a2'), 'Changed variable UI name.');
+		value('DISP_P_a3', oldvalue('csp.mslf.sf.P_a3'), 'Changed variable UI name.');
+		value('DISP_P_a4', oldvalue('csp.mslf.sf.P_a4'), 'Changed variable UI name.');
+		value('DISP_Design_loss1', oldvalue('csp.mslf.sf.Design_loss1'), 'Changed variable UI name.');
+		value('DISP_Design_loss2', oldvalue('csp.mslf.sf.Design_loss2'), 'Changed variable UI name.');
+		value('DISP_Design_loss3', oldvalue('csp.mslf.sf.Design_loss3'), 'Changed variable UI name.');
+		value('DISP_Design_loss4', oldvalue('csp.mslf.sf.Design_loss4'), 'Changed variable UI name.');
+		value('DISP_Shadowing1', oldvalue('csp.mslf.sf.Shadowing1'), 'Changed variable UI name.');
+		value('DISP_Shadowing2', oldvalue('csp.mslf.sf.Shadowing2'), 'Changed variable UI name.');
+		value('DISP_Shadowing3', oldvalue('csp.mslf.sf.Shadowing3'), 'Changed variable UI name.');
+		value('DISP_Shadowing4', oldvalue('csp.mslf.sf.Shadowing4'), 'Changed variable UI name.');
+		value('DISP_dirt_env1', oldvalue('csp.mslf.sf.dirt_env1'), 'Changed variable UI name.');
+		value('DISP_dirt_env2', oldvalue('csp.mslf.sf.dirt_env2'), 'Changed variable UI name.');
+		value('DISP_dirt_env3', oldvalue('csp.mslf.sf.dirt_env3'), 'Changed variable UI name.');
+		value('DISP_dirt_env4', oldvalue('csp.mslf.sf.dirt_env4'), 'Changed variable UI name.');
+		
+		value('DISP_D_abs_in', oldvalue('csp.mslf.sf.D_abs_in'), 'Changed variable UI name.');
+		value('DISP_D_abs_out', oldvalue('csp.mslf.sf.D_abs_out'), 'Changed variable UI name.');
+		value('DISP_D_glass_in', oldvalue('csp.mslf.sf.D_glass_in'), 'Changed variable UI name.');
+		value('DISP_D_glass_out', oldvalue('csp.mslf.sf.D_glass_out'), 'Changed variable UI name.');
+		value('DISP_D_plug', oldvalue('csp.mslf.sf.D_plug'), 'Changed variable UI name.');
+		value('DISP_Rough', oldvalue('csp.mslf.sf.Rough'), 'Changed variable UI name.');
+		value('DISP_Flow_type', oldvalue('csp.mslf.sf.Flow_type'), 'Changed variable UI name.');
+		value('DISP_AbsorberMaterial', oldvalue('csp.mslf.sf.AbsorberMaterial'), 'Changed variable UI name.');
+		
+		// Thermal Storage
+		value('init_hot_htf_percent', 30, 'Added Initial hot HTF percent');
+		value('hot_tank_max_heat', oldvalue('tank_max_heat'), 'New model has hot and cold tank max heat.');
+		value('cold_tank_max_heat', oldvalue('tank_max_heat'), 'New model has hot and cold tank max heat.');
+		value('DISP_store_fluid', oldvalue('csp.mslf.control.store_fluid'), 'Changed variable UI name.');
+		
+		// System Control
+		value('is_dispatch', 0, 'Added dispatch optimization.');
+		value('is_dispatch_series', 0, 'Added dispatch optimization.');
+		//value('dispatch_series', oldvalue('tank_max_heat'), 'Added dispatch optimization.');
+		value('disp_frequency', 24, 'Added dispatch optimization.');
+		value('disp_horizon', 48, 'Added dispatch optimization.');
+		value('disp_max_iter', 50000, 'Added dispatch optimizationv.');
+		value('disp_timeout', 5, 'Added dispatch optimization.');
+		value('disp_mip_gap', 0.001, 'Added dispatch optimization.');
+		value('disp_time_weighting', 0.999, 'Added dispatch optimization.');
+		value('disp_rsu_cost_rel', 1.4, 'Added dispatch optimization.');
+		value('disp_csu_cost_rel', 87, 'Added dispatch optimization.');
+		value('disp_pen_ramping', 1, 'Added dispatch optimization.');
+
+		value('SC_DISP_bop_par', oldvalue('csp.mslf.control.bop_array_mult'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_f', oldvalue('csp.mslf.control.bop_array_pf'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_0', oldvalue('csp.mslf.control.bop_array_c0'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_1', oldvalue('csp.mslf.control.bop_array_c1'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_2', oldvalue('csp.mslf.control.bop_array_c2'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par', oldvalue('csp.mslf.control.aux_array_mult'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_f', oldvalue('csp.mslf.control.aux_array_pf'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_0', oldvalue('csp.mslf.control.aux_array_c0'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_1', oldvalue('csp.mslf.control.aux_array_c1'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_2', oldvalue('csp.mslf.control.aux_array_c2'), 'Changed variable UI name.');
+		
+		value('adjust_constant', oldvalue('adjust'){'constant'}, 'Changed adjust variable type.');
+		value('adjust_en_periods', oldvalue('adjust'){'en_periods'}, 'Changed adjust variable type.');
+		value('adjust_en_timeindex', oldvalue('adjust'){'en_timeindex'}, 'Changed adjust variable type.');
+
+
+		// Financial TOD
+		value('dispatch_tod_factors', [oldvalue('dispatch_factor1'), oldvalue('dispatch_factor2'), oldvalue('dispatch_factor3'),
+									   oldvalue('dispatch_factor4'), oldvalue('dispatch_factor5'), oldvalue('dispatch_factor6'),
+									   oldvalue('dispatch_factor7'), oldvalue('dispatch_factor8'), oldvalue('dispatch_factor9')],'Combined dispatch factors into array.');
+
+		// Capital Costs
+		value('site_improvements_spec_cost', oldvalue('csp.mslf.cost.site_improvements.cost_per_m2'), 'Changed variable cmod name.');
+		value('solar_field_spec_cost', oldvalue('csp.mslf.cost.solar_field.cost_per_m2'), 'Changed variable cmod name.');
+		value('htf_system_spec_cost', oldvalue('csp.mslf.cost.htf_system.cost_per_m2'), 'Changed variable cmod name.');
+		value('storage_spec_cost', oldvalue('csp.mslf.cost.ts_per_kwht'), 'Changed variable cmod name.');
+		value('fossil_spec_cost', oldvalue('csp.mslf.cost.fossil_backup.cost_per_kwe'), 'Changed variable cmod name.');
+		value('power_plant_spec_cost', oldvalue('csp.mslf.cost.power_plant.cost_per_kwe'), 'Changed variable cmod name.');
+		value('bop_spec_cost', oldvalue('csp.mslf.cost.bop_per_kwe'), 'Changed variable cmod name.');
+		value('contingency_percent', oldvalue('csp.mslf.cost.contingency_percent'), 'Changed variable cmod name.');
+		value('epc_cost_per_acre', oldvalue('csp.mslf.cost.epc.per_acre'), 'Changed variable cmod name.');
+		value('epc_cost_percent_direct', oldvalue('csp.mslf.cost.epc.percent'), 'Changed variable cmod name.');
+		value('epc_cost_per_watt', oldvalue('csp.mslf.cost.epc.per_watt'), 'Changed variable cmod name.');
+		value('epc_cost_fixed', oldvalue('csp.mslf.cost.epc.fixed'), 'Changed variable cmod name.');
+		value('plm_cost_per_acre', oldvalue('csp.mslf.cost.plm.per_acre'), 'Changed variable cmod name.');
+		value('plm_cost_percent_direct', oldvalue('csp.mslf.cost.plm.percent'), 'Changed variable cmod name.');
+		value('plm_cost_per_watt', oldvalue('csp.mslf.cost.plm.per_watt'), 'Changed variable cmod name.');
+		value('plm_cost_fixed', oldvalue('csp.mslf.cost.plm.fixed'), 'Changed variable cmod name.');
+		value('sales_tax_percent', oldvalue('csp.mslf.cost.sales_tax.percent'), 'Changed variable cmod name.');
+
+
+		// General Warnings
+		message('The new linear fresnel model does not provide an option for fossil heating freeze protection. Simulation results will be different if fossil heating was previously used.', 'warning');
+	}
+	
+		if ( cfg.tech == 'Fuel Cell' ) {
 		message('Fuel cell and battery dispatch inputs are now on separate pages.');
 		message('Update internal variable names for Run Fuel Cell, Fuel Cell Percent of Max Power, and Charge Battery from Fuel Cell inputs to use underscore instead of period.');
 		value('fc_p1_discharge',oldvalue('fc.p1.discharge'));
@@ -79,6 +242,7 @@ version_upgrade{'2023.7.24'} = define() {
         value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekend schedule to new fuel cell dispatch schedule.');
 	}
 };
+
 
 version_upgrade{'2022.12.22'} = define() {
 

@@ -25,6 +25,9 @@ function heatmap_graphs()
 			agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 		}
 	}
+	else if(tech == "MSPT IPH" || tech == "MSLF IPH"){
+		agraph( 'annual_energy_distribution_time', 'Annual thermal energy in Year 1 (kWt)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	}
 	else {
 		agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
@@ -153,6 +156,8 @@ autographs{ 'ETES' } = define() {heatmap_graphs();};
 autographs{ 'Generic CSP System' } = define() {heatmap_graphs();};
 autographs{ 'Physical Trough IPH' } = define() {heatmap_graphs();};
 autographs{ 'DSGL IPH' } = define() {heatmap_graphs();};
+autographs{ 'MSPT IPH' } = define() {heatmap_graphs();};
+autographs{ 'MSLF IPH' } = define() {heatmap_graphs();};
 autographs{ 'Generic Battery' } = define() {heatmap_graphs();};
 
 
