@@ -64,11 +64,11 @@ public:
 
 	void SetCase( Case *cc, const wxString &name );
 
-	VarTable &GetValues();
+	VarTable &GetValues(size_t i);
 	Case &GetCase();
 	wxString GetName();
 
-	bool Invoke( lk::node_t *root, lk::env_t *parent );
+	bool Invoke( lk::node_t *root, lk::env_t *parent, size_t i );
 
 protected:
 	virtual void SetupLibraries( lk::env_t *env );
@@ -80,10 +80,12 @@ private:
 	int m_type;
 	wxArrayString m_vars;
 	wxString m_str, m_str2;
+    size_t m_ndxHybrid;
 public:
 	enum { VARS_CHANGED, CONFIG_CHANGED, VALUE_USER_INPUT, SAVE_NOTIFICATION };
 
-	CaseEvent( int type ) : m_type(type) { }
+    CaseEvent( int type ) : m_type(type) { }
+    CaseEvent( int type, size_t ndxHybrid ) : m_type(type), m_ndxHybrid(ndxHybrid) { }
 	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
 	CaseEvent( int type, const wxString &str1, const wxString &str2 ) : m_type(type), m_str(str1), m_str2(str2) { }
 	CaseEvent( int type, const wxArrayString &vars ) : m_type(type), m_vars(vars) { }
@@ -92,6 +94,7 @@ public:
 	wxString GetString() { return m_str; }
 	wxString GetString2() { return m_str2; }
 	wxArrayString &GetVars() { return m_vars; }
+    size_t GetndxHybrid() { return m_ndxHybrid; }
 };
 
 class CaseEventListener
@@ -122,38 +125,38 @@ public:
 		wxString error;
 	};
 
-	bool LoadValuesFromExternalSource(const VarTable& vt, LoadStatus* di = 0, VarTable* invalids = 0);
-	bool LoadValuesFromExternalSource( wxInputStream &in, 
-		LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
+	bool LoadValuesFromExternalSource(const VarTable& vt, size_t ndxHybrid, LoadStatus* di = 0, VarTable* invalids = 0);
+	bool LoadValuesFromExternalSource( wxInputStream &in, size_t ndxHybrid, LoadStatus *di = 0, VarTable *invalids = 0, bool binary = true );
 	bool VarTableFromInputStream(VarTable* vt, wxInputStream& in, bool binary);
 	bool VarTableFromJSONFile(VarTable* vt, const std::string& file);
+	bool VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file);
 
 	bool LoadDefaults( wxString *error_msg = 0 );
 	bool SaveDefaults(bool quiet = false);
 	bool SaveAsJSON(bool quiet, wxString fn, wxString case_name);
-	bool LoadFromJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file from SaveAsJSON (defaults)
+	//bool LoadFromJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file from SaveAsJSON (defaults)
 	bool SaveAsSSCJSON(wxString fn); // like code generator but uses RapidJSON for compatibility with tables
-	bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
+	//bool LoadFromSSCJSON(wxString fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
 	bool PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxString& fn, wxString* error_msg = 0); // Loads JSON file generated from Ctrl+F7
 
 	bool SetConfiguration( const wxString &tech, const wxString &fin, bool silent=false, wxString *message = 0 );
 	void GetConfiguration( wxString *tech, wxString *fin );	
 	ConfigInfo *GetConfiguration() { return m_config; }
-	VarTable &Values() { return m_vals; }
-	VarTable &OldValues() { return m_oldVals; }
-	VarInfoLookup &Variables();
-	EqnFastLookup &Equations();
+	VarTable &Values(size_t i) { return m_vals[i]; } // check index
+	VarTable &OldValues(size_t i) { return m_oldVals[i]; } // check index
+	VarInfoLookup &Variables(size_t i);
+	EqnFastLookup &Equations(size_t i);
 	wxString GetTechnology() const;
 	wxString GetFinancing() const;
-	lk::env_t &CallbackEnvironment();
-	lk::node_t *QueryCallback( const wxString &method, const wxString &object );
+	lk::env_t &CallbackEnvironment(size_t i_vt);
+	lk::node_t *QueryCallback( const wxString &method, const wxString &object, size_t i_vt );
 	
 	// call this method when a variable is programmatically changed,
 	// i.e. through a script callback, SamUL script, or other
 	// indirect way of changing a variable.  causes any affected
 	// variables to be recalculated, and updates any views
-	void VariableChanged( const wxString &name );
-	void VariablesChanged( const wxArrayString &list );
+	void VariableChanged( const wxString &name, size_t ndxHybrid);
+	void VariablesChanged( const wxArrayString &list, size_t ndxHybrid);
 
 	// recalculate any variables that are impacted by a changed value of 'trigger'
 	// any views are updated with the variables that are consequently updated with 
@@ -161,15 +164,15 @@ public:
 	// Note: if the 'trigger' variable is a library item (has the VF_LIBRARY flag)
 	// this will also apply all the library values and cause any affected variables
 	// to be subsequently updated
-	int Recalculate( const wxString &trigger ); 
-	int Recalculate( const wxArrayString &triggers ); 
+	int Recalculate( const wxString &trigger, size_t ndxHybrid ); 
+	int Recalculate( const wxArrayString &triggers, size_t ndxHybrid);
 
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables
 	// returns negative on error, or positive number indicating
 	// success of number of variables update.  shows an error
 	// message box unless 'quietly' = true
-	int RecalculateAll( bool quietly = false );
+	int RecalculateAll(size_t ndxHybrid, bool quietly );
 	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );
@@ -208,14 +211,14 @@ private:
 	ConfigInfo *m_config;
 	
 	// current variable values
-	VarTable m_vals;
+	std::vector<VarTable> m_vals;
 	// variables that were read in from an old project file made
 	// with a previous version of SAM that either don't exist in
 	// in the current version configuration, or are of the wrong data
 	// type
-	VarTable m_oldVals;
+	std::vector<VarTable> m_oldVals;
 	
-	lk::env_t m_cbEnv;
+	std::vector<lk::env_t> m_cbEnv;
 	Simulation m_baseCase;
 	StringHash m_properties;
 	StringHash m_notes;
@@ -236,11 +239,11 @@ class CaseEvaluator : public EqnEvaluator
 public:	
 	CaseEvaluator( Case *cc, VarTable &vars, EqnFastLookup &efl );
 	virtual void SetupEnvironment( lk::env_t &env );	
-	virtual int CalculateAll();
-	virtual int Changed( const wxArrayString &vars );
-	virtual int Changed( const wxString &trigger );
+	virtual int CalculateAll(size_t ndxHybrid);
+	virtual int Changed( const wxArrayString &vars, size_t ndxHybrid );
+	virtual int Changed( const wxString &trigger, size_t ndxHybrid );
 
-	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed );
+	bool UpdateLibrary( const wxString &trigger, wxArrayString &changed, size_t ndxHybrid );
 };
 
 

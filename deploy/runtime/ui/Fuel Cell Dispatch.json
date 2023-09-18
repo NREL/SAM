@@ -202,7 +202,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -210,7 +210,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -247,7 +247,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -288,7 +288,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 45.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -507,14 +507,12 @@
         "on_load{'Fuel Cell Dispatch'} = define() ",
         "{",
         "\tenable_fc_dispatch_options();",
-        "\tcheck_fuel_cell_dispatch();",
         "};",
         "",
         "on_change{'fuelcell_dispatch_choice'} = define()",
         "{",
         "\tenable_fc_dispatch_options();",
-        "\ttoggle_dispatch_fc(); // from Fuel Cell Dispatch Manual so manual dispatch options update",
-        "\tcheck_fuel_cell_dispatch();",
+        "\tvalue('fuelcell_dispatch_excl', value('fuelcell_dispatch_choice'));\r",
         "};",
         "",
         "function enable_fc_dispatch_options()",
@@ -523,28 +521,6 @@
         "\tenable('fuelcell_dispatch_input', value('fuelcell_dispatch_choice') == 3);",
         "\tenable('fuelcell_dispatch_input_units', value('fuelcell_dispatch_choice') == 3);",
         "}",
-        "",
-        "function check_fuel_cell_dispatch()",
-        "{",
-        "\tfix_manual_dispatch = value('fuelcell_dispatch_choice') == 2 &&",
-        "\t\t\t\t   value('batt_dispatch_choice_ui') != 3;",
-        "\tif ( fix_manual_dispatch )",
-        "\t{",
-        "\t\tok = yesno('Fuel cell manual dispatch requires battery manual dispatch.\\nThe fuel cell manual dispatch option requires that the battery dispatch option be set to manual (even if the system does not include a battery).\\n\\nWould you like SAM to automatically set the battery dispatch option to manual dispatch?');",
-        "\t\tif ( ok )",
-        "\t\t{ ",
-        "\t\t\tvalue('batt_dispatch_choice_ui',3); // 3=manual dispatch for FOM and BTM battery",
-        "\t\t}",
-        "\t\telse",
-        "\t\t{",
-        "\t\t\tmsgbox('Fuel cell manual dispatch option not available without manual battery dispatch.\\nTo enable battery manual dispatch, choose Enable Battery on the Battery Storage page, and then choose Manual Dispatch on the Dispatch page for both fuel cell and battery dispatch. If your system does not include a battery, either set the desired battery capacity (kW and kWh) to zero on the Battery Storage page, or disable the battery.\\n\\nSetting fuel cell dispatch to the Fixed Output option because the battery dispatch option is not manual dispatch.');",
-        "\t\t\tvalue('fuelcell_dispatch_choice', 0);",
-        "\t\t}",
-        "\t}\t",
-        "}",
-        "",
-        "",
-        "",
         ""
     ]
 }

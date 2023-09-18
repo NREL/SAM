@@ -216,6 +216,31 @@ version_upgrade{'2023.7.24'} = define() {
 		// General Warnings
 		message('The new linear fresnel model does not provide an option for fossil heating freeze protection. Simulation results will be different if fossil heating was previously used.', 'warning');
 	}
+	
+		if ( cfg.tech == 'Fuel Cell' ) {
+		message('Fuel cell and battery dispatch inputs are now on separate pages.');
+		message('Update internal variable names for Run Fuel Cell, Fuel Cell Percent of Max Power, and Charge Battery from Fuel Cell inputs to use underscore instead of period.');
+		value('fc_p1_discharge',oldvalue('fc.p1.discharge'));
+		value('fc_p2_discharge',oldvalue('fc.p2.discharge'));
+		value('fc_p3_discharge',oldvalue('fc.p3.discharge'));
+		value('fc_p4_discharge',oldvalue('fc.p4.discharge'));
+		value('fc_p5_discharge',oldvalue('fc.p5.discharge'));
+		value('fc_p6_discharge',oldvalue('fc.p6.discharge'));
+		value('fc_discharge_percent_1',oldvalue('fc.discharge.percent.1'));
+		value('fc_discharge_percent_2',oldvalue('fc.discharge.percent.2'));
+		value('fc_discharge_percent_3',oldvalue('fc.discharge.percent.3'));
+		value('fc_discharge_percent_4',oldvalue('fc.discharge.percent.4'));
+		value('fc_discharge_percent_5',oldvalue('fc.discharge.percent.5'));
+		value('fc_discharge_percent_6',oldvalue('fc.discharge.percent.6'));
+		value('fc_storage_p1_charge',oldvalue('fc.storage.p1.charge'));
+		value('fc_storage_p2_charge',oldvalue('fc.storage.p2.charge'));
+		value('fc_storage_p3_charge',oldvalue('fc.storage.p3.charge'));
+		value('fc_storage_p4_charge',oldvalue('fc.storage.p4.charge'));
+		value('fc_storage_p5_charge',oldvalue('fc.storage.p5.charge'));
+		value('fc_storage_p6_charge',oldvalue('fc.storage.p6.charge'));
+        value('dispatch_manual_fuelcell_sched',value('dispatch_manual_sched'),'Copy battery dispatch weekday schedule to new fuel cell dispatch schedule.');
+        value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekend schedule to new fuel cell dispatch schedule.');
+	}
 };
 
 
@@ -229,7 +254,6 @@ version_upgrade{'2022.12.22'} = define() {
 	}
 };
 
-// this is for the Fall 2022 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2022.11.21'} = define() {
 	
 	const cfg = config();

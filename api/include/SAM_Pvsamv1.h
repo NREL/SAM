@@ -4149,6 +4149,27 @@ extern "C"
 
 
 	//
+	// PVLosses parameters
+	//
+
+	/**
+	 * Set enable_subhourly_clipping: Enable subhourly clipping [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subhourly_clipping_matrix: PV Subhourly clipping correction matrix
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
 	// AdjustmentFactors parameters
 	//
 
@@ -6551,6 +6572,15 @@ extern "C"
 
 
 	/**
+	 * PVLosses Getters
+	 */
+
+	SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
 	 * AdjustmentFactors Getters
 	 */
 
@@ -7133,6 +7163,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subarray4_dc_wiring_loss_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subhourly_clipping_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subhourly_clipping_loss_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_total_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_transmission_loss_nget(SAM_table ptr, SAM_error *err);
@@ -7262,6 +7296,24 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_capacity_factor_ac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_clipping_potential_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7485,6 +7537,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_modeff_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_eff_beam_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7492,6 +7548,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_eff_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_front_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_nom_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7549,6 +7607,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_modeff_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_eff_beam_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7556,6 +7618,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_eff_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_front_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_nom_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7613,6 +7677,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_modeff_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_eff_beam_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7620,6 +7688,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_eff_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_front_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_nom_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7677,6 +7747,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_modeff_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_eff_beam_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7684,6 +7758,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_eff_diff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_front_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_nom_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7712,6 +7788,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_surf_tilt_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_voc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subhourly_clipping_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_sunpos_hour_aget(SAM_table ptr, int* length, SAM_error *err);
 
