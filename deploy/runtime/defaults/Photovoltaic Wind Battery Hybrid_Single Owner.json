@@ -385,36 +385,6 @@
         "calculate_bifacial_electrical_mismatch": 1.0,
         "calculate_rack_shading": 0.0,
         "calculated_dcac_ratio": 1.34109,
-        "capex_table_ac_cost_per_w": 0.0,
-        "capex_table_ac_inputs": [
-            [
-                0.0
-            ]
-        ],
-        "capex_table_cost_per_w": 0.45,
-        "capex_table_dc_inputs": [
-            [
-                2.0,
-                0.35
-            ],
-            [
-                5.0,
-                0.4
-            ],
-            [
-                8.0,
-                0.45
-            ]
-        ],
-        "capex_table_land_cost_per_acre": 0.0,
-        "capex_table_land_inputs": [
-            [
-                0.0
-            ]
-        ],
-        "capex_table_total_installed_ac_cost": 0.0,
-        "capex_table_total_installed_dc_cost": 45000300.0,
-        "capex_table_total_installed_land_cost": 0.0,
         "cec_a_ref": 2.57764,
         "cec_adjust": 22.9092,
         "cec_alpha_sc": 0.00373527,
@@ -1129,6 +1099,7 @@
         "en_wave_batt": 0.0,
         "enable_auto_size": 0.0,
         "enable_mismatch_vmax_calc": 0.0,
+        "enable_subhourly_clipping": 0.0,
         "engr_fixed": 0.0,
         "engr_per_watt": 0.0,
         "engr_percent": 0.0,
@@ -3067,11 +3038,9 @@
         "inverter_power": 753.2,
         "inverter_total": 0.0,
         "inverterarray_power": 0.0,
-        "inverterarray_power_w": 0.0,
         "irrad_mode": 0.0,
         "is_advanced": 0.0,
         "land_area": 0.0,
-        "land_area_capex": 649.738,
         "land_area_value": 649.738,
         "land_fixed": 0.0,
         "land_per_acre": 0.0,
@@ -3104,7 +3073,6 @@
         "module_width": 0.979496,
         "modulearray_area": 525880.0,
         "modulearray_power": 100001.0,
-        "modulearray_power_w": 100001000.0,
         "mppt_hi_inverter": 820.0,
         "mppt_low_inverter": 545.0,
         "num_enabled": 1.0,
@@ -3138,7 +3106,6 @@
             0.0
         ],
         "pv.radmode.is_shown": 0.0,
-        "pv_capex_cost_choice": 0.0,
         "pv_land_area_is_shown": 0.0,
         "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
         "sales_tax_percent": 100.0,
@@ -15950,6 +15917,7 @@
     "Hybrid": {
         "analysis_period": 25.0,
         "analysis_period_warning": "",
+        "batt_power_discharge_max_kwac": 1919.88,
         "batt_replacement_option": 1.0,
         "batt_salvage_percentage": 0.0,
         "batt_salvage_value": 0.0,
@@ -34435,7 +34403,6 @@
         ],
         "ptc_sta_escal": 0.0,
         "ptc_sta_term": 10.0,
-        "pv_system_capacity": 100001.0,
         "pv_total_installed_cost": 105001000.0,
         "rate_escalation": [
             0.0
@@ -34465,11 +34432,14 @@
         "ui_battery_capacity": 1919.88,
         "ui_battery_cost": 23998600.0,
         "ui_electricity_rate_option": 0.0,
+        "ui_fuel_cell_capacity": 0.0,
+        "ui_fuel_cell_cost": 0.0,
+        "ui_generic_capacity": 0.0,
+        "ui_generic_cost": 0.0,
         "ui_hyb_pv_capacity": 74566.8,
         "ui_pv_cost": 105001000.0,
         "ui_system_nameplate_standalone": 0.0,
         "ui_wacc": 5.9994,
-        "ui_wind_capacity": 200000.0,
         "ui_wind_cost": 229106000.0,
         "ur_annual_min_charge": 0.0,
         "ur_billing_demand_is_shown": 0.0,
@@ -35994,7 +35964,7 @@
         ],
         "ur_has_unused_items": 0.0,
         "ur_is_default": 0.0,
-        "ur_metering_option": 0.0,
+        "ur_metering_option": 4.0,
         "ur_monthly_fixed_charge": 0.0,
         "ur_monthly_min_charge": 0.0,
         "ur_name": "",

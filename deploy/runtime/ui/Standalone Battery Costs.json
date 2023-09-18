@@ -3698,7 +3698,11 @@
     ],
     "Callbacks": [
         "on_load{'Standalone Battery Costs'} = define() {\r",
-        "\tif ( technology() == 'PVWatts Wind Battery Hybrid')\r",
+        "\ttech = technology();\r",
+        "\tif ( tech == 'PVWatts Wind Battery Hybrid' \r",
+        "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
+        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
         "\t{\r",
         "\t\tbatt_name = 'Total Installed Cost of Battery Subsystem';\r",
         "\t\tbatt_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the battery subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",

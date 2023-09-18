@@ -421,7 +421,7 @@ bool Case::Read( wxInputStream &_i )
 		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
 	  }
 
-	// TODO read in the variable table(s) - test hybrid to non-hybrid and vice versa
+	// TODO: hybrids read in the variable table(s) - test hybrid to non-hybrid and vice versa
 	size_t i;
 	for (i = 0; i < m_oldVals.size(); i++)
 		m_oldVals[i].clear();
@@ -603,7 +603,7 @@ bool Case::SaveDefaults(bool quiet)
         if (m_config->Technology.size()>1) { //hybrid - write out compute module
             rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
             m_vals[i].Write_JSON(json_table, asCalculated, asIndicator);
-            wxString name = m_config->Technology[i]; // TODO: convert to compute module name - can be m_config->Simulations[i] for technologies - need name for rest
+            wxString name = m_config->Technology[i]; 
             doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
         }
         else {
@@ -676,7 +676,7 @@ bool Case::SaveAsSSCJSON(wxString filename)
 				}
 			}
 		}
-		strcpy(json_string,ssc_data_to_json(p_data)); // TODO - test this
+		strcpy(json_string,ssc_data_to_json(p_data)); 
 
 	}
 
@@ -909,7 +909,7 @@ bool Case::PreRunSSCJSON(const wxString& tech, const wxString& fin, const wxStri
 }
 
 
-/*
+/* TODO: hybrids - reinstate for loading ssc json modofications in CSP workflows, update similarly to LoadDefaults
 bool Case::LoadFromSSCJSON(wxString fn, wxString* pmsg)
 {
 	if (!m_config) return false;
@@ -1334,8 +1334,6 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 		// the parse trees of the actual function implementations
 		// are not copied - they just reference those stored in the
 		// scriptdatabase(s) that are members of inputpagedata
-//		m_cbEnv.clear_objs();
-//		m_cbEnv.clear_vars();
 		m_cbEnv[i_var].clear_objs();
 		m_cbEnv[i_var].clear_vars();
 
@@ -1377,7 +1375,6 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 
 	} // end iterating over vartables
 
-	 // TODO: update UI - check for hybrids
 	SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
 
 

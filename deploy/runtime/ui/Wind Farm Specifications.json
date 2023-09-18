@@ -509,7 +509,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,

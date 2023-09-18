@@ -34,7 +34,18 @@ function host_developer_metrics()
 	metric_row( 'ppa', {'label'='PPA price in Year 1', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
 	metric_row( 'lppa_nom', {'label'='LPPA Levelized PPA price nominal', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
 	metric_row( 'lppa_real', {'label'='LPPA Levelized PPA price real', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
-
+	metric_row( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table1' } );
+	metric_row( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table1' } );
+	metric_row( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table1' } );
+	if ( value('debt_option')==0 )
+	{
+		metric_row( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2', 'tableName'='Table1' } );
+	}
+	else
+	{
+		metric_row( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%', 'tableName'='Table1' } );
+	}
+	
 	metric_table('Table2', {'headers'='Developer Metrics, '});
 	metric_row( 'flip_actual_irr', {'label'='IRR Developer internal rate of return', 'mode'='f', 'post'='%', 'deci'='2', 'thousep'='false', 'tableName'='Table2' } );
 	metric_row( 'flip_actual_year', {'label'='Year developer IRR is achieved', 'post'=' ', 'thousep'='false', 'tableName'='Table2' } );

@@ -3026,6 +3026,18 @@ SAM_EXPORT void SAM_Pvsamv1_Load_run_resiliency_calcs_nset(SAM_table ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "enable_subhourly_clipping", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "subhourly_clipping_matrix", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "adjust_constant", number);
@@ -9539,6 +9551,29 @@ SAM_EXPORT double SAM_Pvsamv1_Load_run_resiliency_calcs_nget(SAM_table ptr, SAM_
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "enable_subhourly_clipping", &result))
+		make_access_error("SAM_Pvsamv1", "enable_subhourly_clipping");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "subhourly_clipping_matrix", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subhourly_clipping_matrix");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -12545,6 +12580,28 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subarray4_dc_wiring_loss_nget(SAM_t
 
 
 
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subhourly_clipping_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_subhourly_clipping_loss", &result))
+		make_access_error("SAM_Pvsamv1", "annual_subhourly_clipping_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_subhourly_clipping_loss_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_subhourly_clipping_loss_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_subhourly_clipping_loss_percent");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_total_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -13400,6 +13457,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_production_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "cf_om_production", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "cf_om_production");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_clipping_potential_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "clipping_potential", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "clipping_potential");
 	});
 	return result;
 }
@@ -14722,6 +14791,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_modeff_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray1_poa_beam_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_poa_beam_front_cs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray1_poa_diffuse_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_poa_diffuse_front_cs");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14764,6 +14857,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_front_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "subarray1_poa_front", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray1_poa_front");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray1_poa_ground_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray1_poa_ground_front_cs");
 	});
 	return result;
 }
@@ -15105,6 +15210,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_modeff_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray2_poa_beam_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_poa_beam_front_cs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray2_poa_diffuse_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_poa_diffuse_front_cs");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15147,6 +15276,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_front_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "subarray2_poa_front", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray2_poa_front");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray2_poa_ground_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray2_poa_ground_front_cs");
 	});
 	return result;
 }
@@ -15488,6 +15629,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_modeff_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray3_poa_beam_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_poa_beam_front_cs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray3_poa_diffuse_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_poa_diffuse_front_cs");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15530,6 +15695,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_front_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "subarray3_poa_front", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray3_poa_front");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray3_poa_ground_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray3_poa_ground_front_cs");
 	});
 	return result;
 }
@@ -15871,6 +16048,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_modeff_aget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_beam_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray4_poa_beam_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_poa_beam_front_cs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_diffuse_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray4_poa_diffuse_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_poa_diffuse_front_cs");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15913,6 +16114,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_front_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "subarray4_poa_front", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray4_poa_front");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_ground_front_cs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subarray4_poa_ground_front_cs", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subarray4_poa_ground_front_cs");
 	});
 	return result;
 }
@@ -16081,6 +16294,18 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_voc_aget(SAM_table ptr, int* le
 	result = ssc_data_get_array(ptr, "subarray4_voc", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "subarray4_voc");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_subhourly_clipping_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "subhourly_clipping_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "subhourly_clipping_loss");
 	});
 	return result;
 }

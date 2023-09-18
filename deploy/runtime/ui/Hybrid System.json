@@ -1,7 +1,7 @@
 {
     "Name": "Hybrid System",
-    "Width": 863.0,
-    "Height": 159.0,
+    "Width": 860.0,
+    "Height": 275.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -65,6 +65,156 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 385.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total Generation Capacity"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 225"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 385.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Storage Capacity"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 226"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 385.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Generation Capacity"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -86,7 +236,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 264.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -111,11 +261,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -194,11 +344,177 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 705.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_fuel_cell_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_generic_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -277,11 +593,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -356,15 +672,15 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_wind_capacity"
+                    "String": "wind_system_capacity"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -462,6 +778,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "ui_fuel_cell_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Fuel cell capacity",
+            "Units": "kWac",
+            "Group": "Hybrid System",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_generic_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Generic system capacity",
+            "Units": "kWac",
+            "Group": "Hybrid System",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "ui_hyb_pv_capacity": {
             "Version": 4.0,
             "Type": 1.0,
@@ -475,12 +817,12 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_wind_capacity": {
+        "wind_system_capacity": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Wind capacity",
+            "Label": "Wind system capacity",
             "Units": "kWac",
-            "Group": "Hybrid System",
+            "Group": "",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -490,44 +832,92 @@
         }
     },
     "Equations": [
-        "equations{ 'system_capacity' } = define() {\r",
-        "\treturn ${ui_hyb_pv_capacity} \r",
-        "\t+ ${ui_wind_capacity} \r",
-        "\t+ ${ui_battery_capacity}; \r",
-        "};\r",
-        "\r",
         "// ui_pv_capacity is used on operating costs form, so use ui_hyb_pv_capacity here\t\t\r",
         "equations{ 'ui_hyb_pv_capacity' } = define() {\r",
-        "\tif (strpos(lower(technology()), 'pvwatts') > - 1)\r",
-        "\t{\r",
-        "\t\treturn ${pv_system_capacity} / ${dc_ac_ratio};\r",
-        "\t}\r",
-        "\telse\r",
-        "\t{\r",
+        "\tif ( technology() == 'Photovoltaic Wind Battery Hybrid' ) {\r",
         "\t\treturn ${total_inverter_capacity};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn ${ac_nameplate};\r",
         "\t}\t\r",
         "};\r",
         "\r",
-        "equations{ 'ui_wind_capacity' } = define() {\r",
-        "\treturn ${wind_system_capacity};\r",
+        "equations{ 'ui_battery_capacity' } = define() {\r",
+        "\treturn ${batt_power_discharge_max_kwac};\r",
         "};\r",
         "\r",
-        "equations{ 'ui_battery_capacity' } = define() {\r",
-        "\treturn ${battery_system_capacity};\r",
-        "};"
+        "equations { 'ui_fuel_cell_capacity' } = define() { \r",
+        "\tif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${fuelcell_system_capacity};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 0;\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "equations { 'ui_generic_capacity' } = define() {\r",
+        "\tif ( technology () == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${generic_system_capacity};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 0;\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "equations{ 'system_capacity' } = define() {\r",
+        "\tif ( technology() == 'PVWatts Wind Battery Hybrid') {\r",
+        "\t\treturn ${ac_nameplate} \r",
+        "\t\t+ ${wind_system_capacity}; \r",
+        "\t}\r",
+        "\telseif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' ) { \r",
+        "\t\treturn ${ac_nameplate}\r",
+        "\t\t+ ${wind_system_capacity} \r",
+        "\t\t+ ${fuelcell_system_capacity}; \r",
+        "\t}\r",
+        "\telseif ( technology() == 'Photovoltaic Wind Battery Hybrid' ) {\r",
+        "\t\treturn ${total_inverter_capacity}\r",
+        "\t\t+ ${wind_system_capacity}; \r",
+        "\t}\r",
+        "\telseif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${generic_system_capacity} \r",
+        "\t\t+ ${ac_nameplate}\r",
+        "\t\t+ ${wind_system_capacity}\r",
+        "\t\t+ ${fuelcell_system_capacity}; \r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn null;\r",
+        "\t}\r",
+        "};\r",
+        ""
     ],
     "Callbacks": [
         "on_load{'Hybrid System'} = define() {\r",
         "\tmsg = '';\r",
-        "\tif (strpos(lower(technology()), 'pvwatts') > - 1)\r",
+        "\tif ( technology() == 'PVWatts Wind Battery Hybrid' )\r",
         "\t{\r",
         "\t\tmsg = 'The hybrid system combines generation profiles from the PVWatts and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
         "\t}\r",
-        "\telse\r",
+        "\telseif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t{\r",
+        "\t\tmsg = 'The hybrid system combines generation profiles from the PVWatts, Wind, and Fuel Cell models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
+        "\t}\r",
+        "\telseif ( technology() == 'Photovoltaic Wind Battery Hybrid' )\r",
         "\t{\r",
         "\t\tmsg = 'The hybrid system combines generation profiles from the Detailed PV and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
         "\t}\r",
+        "\telseif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t{\r",
+        "\t\tmsg = 'The hybrid system combines generation profiles from the Generic System, PVWatts, Wind, and Fuel Cell models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
+        "\t}\r",
+        "\telse\r",
+        "\t{\r",
+        "\t\tmsg = 'Unrecognized hybrid system configuration: ' + technology();\r",
+        "\t}\r",
+        "\tmsg = msg + ' The capacity of each subsystem is defined on its system design page.';\r",
         "\tproperty('lbl_hybrid_description','Caption',msg);\r",
-        "};"
+        "\tshow( 'ui_generic_capacity', technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' );\r",
+        "\tshow( 'ui_fuel_cell_capacity', ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) );\r",
+        "};\r",
+        ""
     ]
 }
