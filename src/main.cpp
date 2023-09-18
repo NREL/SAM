@@ -2898,7 +2898,7 @@ void ConfigDialog::PopulateTech()
 	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
 	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
+	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
 	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
 
@@ -2909,8 +2909,8 @@ void ConfigDialog::PopulateTech()
 	//	if ( L.IsEmpty() ) L = m_tnames[i];
 	//	if (TP.Find("PV") != wxNOT_FOUND)
 	//		m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("Heat") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_heat, L);
+	//	else if (TP.Find("Heat") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_heat, L);
 	//	else if (TP.Find("CSP") != wxNOT_FOUND )
 	//		m_pTech->AppendItem(cont_csp, L);
 	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies

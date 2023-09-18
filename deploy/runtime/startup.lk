@@ -80,8 +80,6 @@ configopt( 'Dish Stirling', { 'tree_parent'='Retired', 'long_name'='Dish Stirlin
 configopt( 'Generic CSP System', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Generic Model', 'short_name'='Generic CSP', 'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Direct Steam', 'short_name'='Fresnel (steam)', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Molten Salt', 'short_name'='Fresnel (salt)', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'Physical Trough IPH', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough - Heat', 'short_name'='IPH Trough', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
-configopt( 'DSGL IPH', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Direct Steam - Heat', 'short_name'='IPH Linear (steam)','description'='Industrial process heat linear collector system' } );
 configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short_name'='Marine Wave', 'description'='Marine energy wave system' });
 configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Marine Wave Battery', 'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal', { 'tree_parent'='Marine Energy', 'long_name'='Tidal', 'short_name'='Marine Tidal', 'description'='Marine energy tidal system' });
@@ -89,6 +87,10 @@ configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'=
 configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
 configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery Hybrid', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'Physical Trough IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Parabolic Trough - Heat', 'short_name'='IPH Trough', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
+configopt( 'DSGL IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Direct Steam Linear Fresnel - Heat', 'short_name'='IPH Linear (steam)','description'='Industrial process heat linear Fresnel collector system' } );
+configopt( 'MSLF IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Molten Salt Linear Fresnel - Heat', 'short_name'='IPH Linear (salt)','description'='Industrial process heat linear collector system with molten salt heat transfer fluid' } );
+configopt( 'MSPT IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Molten Salt Power Tower - Heat', 'short_name'='IPH Tower (salt)','description'='Industrial process heat power tower system with molten salt heat transfer fluid' } );
 
 configopt( 'Retired', { 'tree_parent'='Retired', 'long_name'= 'Retired technology', 'short_name' = 'Retired', 'description'= 'Retired technologies' });
 
