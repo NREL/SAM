@@ -737,7 +737,7 @@ static wxString InsertVariable( wxWindow *parent, bool with_curly = true )
 		}
 
 		ConfigInfo *ci = cur_cases[i]->GetConfiguration();
-		VarInfoLookup &vil = ci->Variables;
+		VarInfoLookup &vil = ci->Variables[0];
 
 		for( VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it )
 		{
@@ -949,7 +949,7 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 			if (args.find("label") != args.end()) labels = wxStringTokenize(args["label"], ",");
 			if (args.find("switch") != args.end()) swilist = wxStringTokenize(args["switch"], ",");
 
-			VarValue *v = c->Values().Get( var_name );
+			VarValue *v = c->Values(0).Get( var_name );
 			if ( !v && meta && meta->Type() == VV_TABLE )
 				v  = meta->Table().Get( var_name );
 
@@ -975,7 +975,7 @@ wxString SamReportEscapeString( const wxString &input, Case *c, VarValue *meta )
 						}
 						else
 						{
-							VarValue *swvar = c->Values().Get( swilist[idx] );
+							VarValue *swvar = c->Values(0).Get( swilist[idx] );
 							if (swvar)
 								text += swvar->AsString();
 							else
@@ -2039,7 +2039,7 @@ static void fcall_technology( lk::invoke_t &cxt )
 	if (!so) return;
 	if ( Case *c = so->GetCase() )
 		if ( ConfigInfo *ci = c->GetConfiguration() )
-			cxt.result().assign( ci->Technology );
+			cxt.result().assign( ci->TechnologyFullName );
 }
 
 static void fcall_financing( lk::invoke_t &cxt )
@@ -2054,7 +2054,7 @@ static void fcall_financing( lk::invoke_t &cxt )
 	
 VarTable *SamReportScriptObject::GetSymbols()
 {
-	if (GetCase()) return & GetCase()->Values();
+	if (GetCase()) return & GetCase()->Values(0);
 	else return 0;
 }
 

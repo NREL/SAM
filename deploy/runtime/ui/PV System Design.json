@@ -9523,7 +9523,8 @@
         "\t\tmax_power = ${batt_power_discharge_max_kwdc};",
         "\t}",
         "\treturn max_power;",
-        "};",
+        "};\r",
+        "",
         ""
     ],
     "Callbacks": [

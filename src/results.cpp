@@ -154,6 +154,15 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
             }
         }
 
+        // TODO: hybrid processing
+        if (sim->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            steps_per_hour_lt = steps_per_hour / (an_period - 1);
+            lifetime = true;
+            if (steps_per_hour_lt * 8760 * (an_period - 1) != (int)row_length)
+                steps_per_hour_lt = -1;
+        }
+
+
         // I know we do not want to start this again but wanted lifetime subhourly output
         if (sim->GetCase()->GetTechnology() == "Geothermal")
             steps_per_hour = -1; // don't report geothermal system output as minute data depending on analysis period
@@ -215,13 +224,133 @@ void PopulateSelectionList(wxDVSelectionListCtrl* sel, wxArrayString* names, Sim
         }
 
         wxSortByLabels(list, labels);
-
+        wxString hybrid_bin_name = "";
+        int as_count = 0;
+        VarValue* vv = sim->GetValue(list[0]);
         for (size_t j = 0; j < list.Count(); j++)
         {
             if (!labels[j].IsEmpty())
             {
                 // sel->AppendNoUpdate(labels[j], group);
-                sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
+                ConfigInfo* ci = sim->GetCase()->GetConfiguration();
+                wxString tech = sim->GetCase()->GetConfiguration()->TechnologyFullName;
+                auto as = wxSplit(tech, ' ');
+                if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+                    // finish setting up outputs
+                //    if ((out_var_type == SSC_OUTPUT || out_var_type == SSC_INOUT) && out_data_type == SSC_TABLE) {
+                //        // parse and flatten "output" table from ssc
+                //        ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name);
+                //        for (size_t i = 0; i < m_simlist.size(); i++) { // each vartable
+                //            const char* vartable_name;
+                //            wxString prepend_name;
+                //            if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
+                //                vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+                //                prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+                //            }
+                //            else {
+                //                vartable_name = m_simlist[i];
+                //                prepend_name = m_case->GetConfiguration()->Technology[i];
+                //            }
+                //            ssc_data_t p_vartable = ssc_data_get_table(p_outputs, vartable_name);
+                //            // prepend outputs with "Technology" names (i.e. bin_names)
+
+                //            ssc_module_t p_mod = ssc_module_create(m_simlist[i]);
+                //            int pidx = 0;
+                //            while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+                //            {
+                //                int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+                //                int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+                //                const char* name = ssc_info_name(p_inf); // assumed to be non-null
+                //                wxString label(ssc_info_label(p_inf));
+                //                wxString units(ssc_info_units(p_inf));
+                //                wxString ui_hint(ssc_info_uihint(p_inf));
+                //                //							wxString sam_output_name = prepend_name + name; // TODO: hybrid processing
+                //                wxString sam_output_name = name;
+
+                //                if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+                //                {
+                //                    ssc_number_t vval;
+                //                    if (ssc_data_get_number(p_vartable, name, &vval))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+
+                //                        m_outputList.Add(sam_output_name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_NUMBER);
+                //                        vv->Set((float)vval);
+
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+                //                    }
+                //                }
+                //                else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+                //                {
+                //                    int len;
+                //                    if (ssc_number_t* varr = ssc_data_get_array(p_vartable, name, &len))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+                //                        m_outputList.Add(name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_ARRAY);
+                //                        double* ff = new double[len];
+                //                        for (int i = 0; i < len; i++)
+                //                            ff[i] = (double)(varr[i]);
+
+                //                        vv->Set(ff, (size_t)len);
+                //                        delete[] ff;
+
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+
+                //                    }
+                //                }
+                //                else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+                //                {
+                //                    int nr, nc;
+                //                    if (ssc_number_t* varr = ssc_data_get_matrix(p_vartable, name, &nr, &nc))
+                //                    {
+                //                        if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+                //                            m_outputList.Remove(sam_output_name);
+                //                        }
+                //                        m_outputList.Add(sam_output_name);
+                //                        VarValue* vv = m_outputs.Create(sam_output_name, VV_MATRIX);
+                //                        matrix_t<double> ff(nr, nc);
+
+                //                        int count = 0;
+                //                        for (int i = 0; i < nr; i++)
+                //                        {
+                //                            for (int j = 0; j < nc; j++)
+                //                            {
+                //                                ff(i, j) = (double)(varr[count]);
+                //                                count++;
+                //                            }
+                //                        }
+                //                        vv->Set(ff);
+                //                        m_outputLabels[sam_output_name] = label;
+                //                        m_outputUnits[sam_output_name] = units;
+                //                        if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+                //                    }
+                //                }
+                //            }
+                //            ssc_module_free(p_mod);
+
+                //        }
+                //    }
+                //}
+                    vv = sim->GetValue(list[j]);
+                    if (vv->Type() == VV_TABLE) {
+                        ssc_data_t p_outputs = vv;
+                    }
+                        hybrid_bin_name = list[j];
+                    sel->AppendNoUpdate(labels[j], group_by_name[list[j]], hybrid_bin_name);
+                }
+                else {
+                    sel->AppendNoUpdate(labels[j], group_by_name[list[j]]);
+                }
                 names->Add(list[j]);
             }
         }
@@ -397,7 +526,7 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     // TODO: remove this after adding for other technologies...
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         if (tech_model == "Wind Power")
         {
             m_uncertaintiesViewer = new UncertaintiesViewer(this);
@@ -642,7 +771,7 @@ wxString ResultsViewer::GetCurrentContext() const
         // TODO: remove this when uncertainties available for all technologies
         if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
         {
-            wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+            wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
             if (tech_model == "Wind Power")
                 return "uncertainties";
             else if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
@@ -690,7 +819,7 @@ public:
         mat(0, 2) = "Value";
         for (size_t i = 0; i < summ.size(); i++)
         {
-            mat(i + 1, 0) = ci->Variables.Label(summ[i].Name);
+            mat(i + 1, 0) = ci->Variables[0].Label(summ[i].Name);
             mat(i + 1, 1) = summ[i].Range;
             mat(i + 1, 2) = summ[i].Value;
         }
@@ -736,22 +865,26 @@ void ResultsViewer::Setup(Simulation* sim)
 
 
 
-    ResultsCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
+    ResultsCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
     // Callback context uses the invoke "metric" function to add to the m_metrics collection
 
     // first try to invoke a T/F specific callback if one exists
-    if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology + "|" + cfg->Financing))
-        cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+    if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName + "|" + cfg->Financing))
+        cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
     // if no metrics were defined, run it T & F one at a time
     if (m_metrics.size() == 0)
     {
-        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology))
-            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
+            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
-        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
-            cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+        if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing)) {
+            if (cfg && cfg->Technology.size() > 1)
+                cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), cfg->Technology.size() - 1 );
+            else
+                cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
+        }
     }
 
     if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
@@ -948,11 +1081,15 @@ void ResultsViewer::Setup(Simulation* sim)
         if (lftm->Value() != 0.0f)
             use_lifetime = true;
 
+    // TODO: hybrid use_lifetime
+    if (cfg->Technology.size() > 1)
+        use_lifetime = true;
+
     // by default, no valid time shift specified so default to 0.0
     // for subhourly simulation and 0.5 for hourly simulation
     double ts_shift_hours = std::numeric_limits<double>::quiet_NaN();
     if (VarValue* ihi = sim->GetValue("ts_shift_hours"))
-        if (ihi->Value() >= 0.0 && ihi->Value() <= 1.0)
+        if (ihi && ihi->Value() >= 0.0 && ihi->Value() <= 1.0)
             ts_shift_hours = ihi->Value();
 
 
@@ -976,8 +1113,8 @@ void ResultsViewer::Setup(Simulation* sim)
     {
         if (VarValue* vv = m_sim->GetValue(vars[i]))
         {
-            //			if (vv->Type() == VV_ARRAY)
-            if ((vv->Type() == VV_ARRAY) && (!m_sim->GetLabel(vars[i]).IsEmpty()))
+            auto label = m_sim->GetLabel(vars[i]);
+            if ((vv->Type() == VV_ARRAY) && (!label.IsEmpty()))
             {
                 size_t n = 0;
                 double* p = vv->Array(&n);
@@ -1036,13 +1173,11 @@ void ResultsViewer::Setup(Simulation* sim)
                     else
                         offset = (time_step == 1.0) ? 0.5 : 0.0;
 
-                    wxLogStatus("Adding time series dataset: %d len, %lg time step, %lg offset", (int)n, time_step, offset);
-
-                    TimeSeriesData* tsd = new TimeSeriesData(p, n, time_step, offset,
-                        m_sim->GetLabel(vars[i]),
-                        m_sim->GetUnits(vars[i]));
+                     TimeSeriesData* tsd = new TimeSeriesData(p, n, time_step, offset, label, m_sim->GetUnits(vars[i]));
                     tsd->SetMetaData(vars[i]); // save the variable name in the meta field for easy lookup later
                     AddDataSet(tsd, group);
+
+                    wxLogStatus("Adding time series dataset: %s %d len, %lg time step, %lg offset", (const char*)label.c_str(), (int)n, time_step, offset);
                 }
             }
         }
@@ -1054,12 +1189,11 @@ void ResultsViewer::Setup(Simulation* sim)
     // setup graphs
     m_graphViewer->Setup(m_sim);
 
-
     // TODO: remove this after adding for other technologies...
     // TODO: update GetCurrentContext() when adding for other technologies to correctly assign help context id
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
-        wxString tech_model = cw->GetCase()->GetConfiguration()->Technology;
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         if (tech_model == "Wind Power")
         {
             VarValue* wind_uncertainty_enabled = m_sim->GetValue("en_wind_uncertainty");
@@ -1102,7 +1236,25 @@ void ResultsViewer::Setup(Simulation* sim)
                 HidePage(10);
             }
         }
-        if (cw->GetCase()->GetConfiguration()->Technology == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
+        wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+        auto as = wxSplit(tech, ' ');
+        if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+            HidePage(2);
+            HidePage(3);
+            HidePage(6);
+            HidePage(7);
+            HidePage(9);
+            //HidePage(10);
+        }
+        else {
+            ShowPage(2);
+            ShowPage(3);
+            ShowPage(6);
+            ShowPage(7);
+            ShowPage(9);
+        }
+
+        if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
@@ -1181,7 +1333,6 @@ void ResultsViewer::Setup(Simulation* sim)
             m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
         }
     }
-
     m_tables->Setup(m_sim);
 
     // build cashflow
@@ -1198,7 +1349,7 @@ void ResultsViewer::Setup(Simulation* sim)
         m_depreciationTable->ResizeGrid(20, 16);
 
         ResultsCallbackContext cc(this, "Cashflow callback: " + cfg->Financing);
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), cfg->Technology.size() - 1)) // TODO: hybrid
         {
             wxLogStatus("error running cashflow script.");
         }
@@ -1620,11 +1771,11 @@ void ResultsViewer::CreateAutoGraphs()
     }
 
     m_autographs.clear();
-    ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->Technology);
+    ResultsCallbackContext cc(this, "Create autographs callback: " + cfg->TechnologyFullName);
 
-    if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology + "|" + cfg->Financing))
+    if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->TechnologyFullName + "|" + cfg->Financing))
     {
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
         {
             wxLogStatus("error running create autographs script.");
         }
@@ -1632,9 +1783,9 @@ void ResultsViewer::CreateAutoGraphs()
 
     if (m_autographs.size() == 0)
     {
-        if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Technology))
+        if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->TechnologyFullName))
         {
-            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
             {
                 wxLogStatus("error running create autographs script.");
             }
@@ -1642,7 +1793,7 @@ void ResultsViewer::CreateAutoGraphs()
 
         if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("autographs", cfg->Financing))
         {
-            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+            if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
             {
                 wxLogStatus("error running create autographs script.");
             }
@@ -1699,7 +1850,7 @@ void ResultsViewer::ExportEqnExcel()
     if (lk::node_t* cfcb = SamApp::GlobalCallbacks().Lookup("cashflow_to_excel", cfg->Financing))
     {
         CaseCallbackContext cc(m_sim->GetCase(), "Cashflow to Excel callback: " + cfg->Financing);
-        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv()))
+        if (!cc.Invoke(cfcb, SamApp::GlobalCallbacks().GetEnv(), 0))
         {
             wxLogStatus("error running cashflow to excel script.");
         }
@@ -2183,13 +2334,20 @@ public:
                     Years = (int)vv->Value();
             }
 
+        // TODO: hybrid processing
+        if (results->GetCase()->GetConfiguration()->Technology.size() > 1) {
+            UseLifetime = true;
+            if (VarValue* vv = results->GetValue("analysis_period"))
+                Years = (int)vv->Value();
+        }
+
         MinCount = 10000000;
 
         for (size_t i = 0; i < vars.size(); i++)
         {
             if (VarValue* vv = results->GetValue(vars[i]))
             {
-                if (vv->Type() != VV_MATRIX)
+                if (vv->Type() != VV_MATRIX && vv->Type() != VV_TABLE)
                 {
                     Table.push_back(new ColData());
                     ColData& cc = *Table[Table.size() - 1];
@@ -2207,6 +2365,26 @@ public:
                     }
                     else if (vv->Type() == VV_ARRAY)
                         cc.Values = vv->Array(&cc.N);
+
+                    else if (vv->Type() == VV_TABLE) {
+                        VarTable vt = vv->Table();
+                        int size = vt.size();
+                        for (VarTable::iterator it = vt.begin(); it != vt.end(); ++it) {
+                            if (it->second->Type() == VV_NUMBER) {
+                                cc.SingleValue = vv->Value();
+                                cc.Values = &cc.SingleValue;
+                                cc.N = 1;
+                                IsSingleValues = true;
+                                MaxCount++;
+                                MinCount++;
+                            }
+                            else if (it->second->Type() == VV_ARRAY)
+                                cc.Values = vv->Array(&cc.N);
+                            else if (it->second->Type() == VV_MATRIX)
+                            {
+                            }
+                        }
+                    }
 
                     if (cc.N > MaxCount)
                         MaxCount = cc.N;

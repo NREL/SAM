@@ -152,8 +152,8 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	wxArrayString names;
 	wxArrayString labels;
 
-	for( VarInfoLookup::iterator it = cc->Variables().begin();
-		it != cc->Variables().end();
+	for( VarInfoLookup::iterator it = cc->Variables(0).begin();
+		it != cc->Variables(0).end();
 		++it )
 	{
 		VarInfo &vi = *(it->second);
@@ -204,10 +204,10 @@ void fcall_set( lk::invoke_t &cxt )
 	wxString name = cxt.arg(0).as_string();
 	if ( Case *c = CurrentCase() )
 	{
-		if ( VarValue *vv = c->Values().Get( name ) )
+		if ( VarValue *vv = c->Values(0).Get( name ) )
 		{
 			if ( vv->Read( cxt.arg(1), false ) )
-				c->VariableChanged( name );
+				c->VariableChanged( name, 0 ); // TODO: hybrids
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -225,7 +225,7 @@ void fcall_get( lk::invoke_t &cxt )
 		wxString name = cxt.arg(0).as_string();
 		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
 			vv->Write( cxt.result() );
-		else if ( VarValue *vv = c->Values().Get( name ) )
+		else if ( VarValue *vv = c->Values(0).Get( name ) ) // TODO: hybrids
 			vv->Write( cxt.result() );
 		else
 			cxt.error("variable '" + name + "' does not exist in this context" );
@@ -276,7 +276,7 @@ static void fcall_simulate( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {
@@ -324,7 +324,7 @@ static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {
@@ -514,7 +514,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 				cxt.error("error translating value for '" + name + wxString::Format("' in run [%d]", (int)i ) );
 				return;
 			}
-			sim->Override( name, value );
+			sim->Override( name, value, 0 ); // TODO: hybrids
 		}
 
 		if ( !sim->Prepare() )

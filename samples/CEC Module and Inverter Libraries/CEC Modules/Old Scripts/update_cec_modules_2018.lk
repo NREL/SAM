@@ -1,0 +1,294 @@
+/*
+	Converts CEC module data from spreadsheet to SAM CEC Modules library CSV file:
+	
+	1. Read data from CEC file.
+	
+	2. Run 6-parameter coefficient calculator to calculate CEC module model parameters
+	
+	3. Generate list of modules that calculator failed to generate results
+	
+	4. Generate CEC Modules.csv file
+	
+	Change value of version, date, and folder variables before running script.
+	
+*/
+version = 'SAM 2020.11.29';
+date = '11/20/2020';
+folder = 'CEC Modules 2020-11-20';
+
+function run_6par_gen ( T )
+{
+	R = {};
+
+	ssc = ssc_create();
+
+	ssc_var( ssc, 'celltype', T.celltype );
+	ssc_var( ssc, 'Vmp', T.vmp );
+	ssc_var( ssc, 'Imp', T.imp );
+	ssc_var( ssc, 'Voc', T.voc );
+	ssc_var( ssc, 'Isc', T.isc );
+	ssc_var( ssc, 'alpha_isc', T.alpha_isc );
+	ssc_var( ssc, 'beta_voc', T.beta_voc );
+	ssc_var( ssc, 'gamma_pmp', T.gamma_pmp );
+	ssc_var( ssc, 'Nser', T.n_ser );
+	ssc_var( ssc, 'Tref', T.t_ref ); // optional, default value is 25
+
+	result = ssc_exec( ssc, '6parsolve' );
+
+	if ( 0 == result )
+	{
+		R.a = ssc_var( ssc, 'a' );
+		R.Il = ssc_var( ssc, 'Il' );
+		R.Io = ssc_var( ssc, 'Io' );
+		outln(R.Io);
+		R.Rs = ssc_var( ssc, 'Rs' );
+		R.Rsh = ssc_var( ssc, 'Rsh' );
+		R.Adj = ssc_var( ssc, 'Adj' );
+		R.msg = 'ok';
+	}
+	else
+	{
+		R.msg = result;
+	}
+
+	ssc_free( ssc ); 
+	
+	return R;
+}
+
+// read CSV file prepared from CEC Excel file and return table of SAM library items
+function read_cec_csv ( fin )
+{
+
+	T_cec = csvread( fin , { 'table' = true } );
+	
+	for ( i=0; i<#T_cec{'Manufacturer'}; i++ )
+	{
+		T_sam{'Manufacturer'}[i] = T_cec{'Manufacturer'}[i];
+		T_sam{'Model'}[i] = T_cec{'Model Number'}[i];
+		T_sam{'BIPV'}[i] = T_cec{'BIPV'}[i];
+		T_sam{'Description'}[i] = T_cec{'Description'}[i];
+		T_sam{'T_NOCT'}[i] = to_real( T_cec{'Average NOCT'}[i] ); // C
+		T_sam{'A_c'}[i] = to_real( T_cec{'A_c'}[i] ); // m2
+		T_sam{'N_s'}[i] = to_int( T_cec{'N_s'}[i] ); // integer
+		T_sam{'I_sc_ref'}[i] = to_real( T_cec{'Nameplate Isc'}[i] ); // A
+		T_sam{'V_oc_ref'}[i] = to_real( T_cec{'Nameplate Voc'}[i] ); // V
+		T_sam{'I_mp_ref'}[i] = to_real( T_cec{'Nameplate Ipmax'}[i] ); // A
+		T_sam{'V_mp_ref'}[i] = to_real( T_cec{'Nameplate Vpmax'}[i] ); // V
+		T_sam{'PTC'}[i] = to_real( T_cec{'PTC'}[i] ); // W
+		T_sam{'Technology'}[i] = T_cec{'Technology'}[i]; // string
+		T_sam{'Length'}[i] = T_cec{'Long Side'}[i]; // m
+		T_sam{'Width'}[i] = T_cec{'Short Side'}[i]; // m
+		
+		// Temperature coefficient headings converted from Greek characters to these names
+		T_sam{'alpha_sc'}[i] = to_real( T_cec{'alphaIsc'}[i] ) * to_real( T_cec{'Nameplate Isc'}[i] ) / 100; // convert %/C to A/C
+		T_sam{'beta_oc'}[i] = to_real( T_cec{'betaVoc'}[i] ) * to_real( T_cec{'Nameplate Voc'}[i] ) / 100; // convert %/C to V/C
+		T_sam{'gamma_r'}[i] = to_real( T_cec{'gammaPmax'}[i] ); // %/C
+	}
+	
+	return T_sam;
+	
+}
+
+// read a table of sam library items and write complete SAM library file
+function sam_table_to_library ( T, path )
+{
+
+	sam_library_file = path + '/CEC Modules.csv';
+	bad_modules_file = path + '/Bad Modules.csv';
+
+	// Convert CEC technology names to SAM names. Coefficient generator uses
+	// Technology to choose initial guess conditions, so it is not critical to 
+	// have a correct value
+	//cec names (note blanks): 'CIGS','Mono-c-Si','Multi-c-Si','Thin Film',''
+	//sam names must contain: 'mono','multi','cis','cigs','cdte','amor'
+	Tech{'CIGS'} = 'cigs';
+	Tech{'Mono-c-Si'} = 'mono';
+	Tech{'Multi-c-Si'} = 'multi';
+	Tech{'Thin Film'} = 'cdte';
+	Tech{'CdTe'} = 'cdte';
+	Tech{''} = 'multi';
+
+	// units row for each column
+	Lib{'Name'}[0] = 'Units';
+	Lib{'Manufacturer'}[0] = '';
+	Lib{'Model'}[0] = '';
+	Lib{'Bifacial'}[0] = '';
+	Lib{'Description'}[0] = '';
+	Lib{'BIPV'}[0] = '';
+	Lib{'Date'}[0] = '';
+	Lib{'T_NOCT'}[0] = 'C';
+	Lib{'A_c'}[0] = 'm2';
+	Lib{'N_s'}[0] = '';
+	Lib{'I_sc_ref'}[0] = 'A';
+	Lib{'V_oc_ref'}[0] = 'V';
+	Lib{'I_mp_ref'}[0] = 'A';
+	Lib{'V_mp_ref'}[0] = 'V';
+	Lib{'alpha_sc'}[0] = 'A/K';
+	Lib{'beta_oc'}[0] = 'V/K';
+	Lib{'a_ref'}[0] = 'V';
+	Lib{'I_L_ref'}[0] = 'A';
+	Lib{'I_o_ref'}[0] = 'A';
+	Lib{'R_s'}[0] = 'Ohm';
+	Lib{'R_sh_ref'}[0] = 'Ohm';
+	Lib{'Adjust'}[0] = '%';
+	Lib{'gamma_r'}[0] = '%/K';
+	Lib{'Version'}[0] = '';
+	Lib{'PTC'}[0] = '';
+	Lib{'STC'}[0] = '';
+	Lib{'Length'}[0] = 'm';
+	Lib{'Width'}[0] = 'm';
+	Lib{'Technology'}[0] = '';
+			
+	// SAM variable name row for each column
+	Lib{'Name'}[1] = '[0]';
+	Lib{'BIPV'}[1] = '';
+	Lib{'Manufacturer'}[1] = '';
+	Lib{'Model'}[1] = '';
+	Lib{'Bifacial'}[1] = 'lib_is_bifacial';
+	Lib{'Description'}[1] = '';
+	Lib{'Date'}[1] = '';
+	Lib{'T_NOCT'}[1] = 'cec_t_noct';
+	Lib{'A_c'}[1] = 'cec_area';
+	Lib{'N_s'}[1] = 'cec_n_s';
+	Lib{'I_sc_ref'}[1] = 'cec_i_sc_ref';
+	Lib{'V_oc_ref'}[1] = 'cec_v_oc_ref';
+	Lib{'I_mp_ref'}[1] = 'cec_i_mp_ref';
+	Lib{'V_mp_ref'}[1] = 'cec_v_mp_ref';
+	Lib{'alpha_sc'}[1] = 'cec_alpha_sc';
+	Lib{'beta_oc'}[1] = 'cec_beta_oc';
+	Lib{'a_ref'}[1] = 'cec_a_ref';
+	Lib{'I_L_ref'}[1] = 'cec_i_l_ref';
+	Lib{'I_o_ref'}[1] = 'cec_i_o_ref';
+	Lib{'R_s'}[1] = 'cec_r_s';
+	Lib{'R_sh_ref'}[1] = 'cec_r_sh_ref';
+	Lib{'Adjust'}[1] = 'cec_adjust';
+	Lib{'gamma_r'}[1] = 'cec_gamma_r';
+	Lib{'Version'}[1] = '';
+	Lib{'PTC'}[1] = '';
+	Lib{'STC'}[1] = '';
+	// TO DO in SAM UI: Add length and width inputs for all module models 
+	// and make them consistent on shading and layout page.
+	Lib{'Length'}[1] = '';
+	Lib{'Width'}[1] = '';
+	Lib{'Technology'}[1] = 'cec_material';
+	
+	pb = progressbar( { 'message' = 'Converting data for ' + #T.Manufacturer + ' modules...' , 
+				      'title' = 'CEC Module Data Conversion Progress', 
+				      'cancelbutton' = true , 
+				      'time' = true , 
+				      'max' = #T.Manufacturer, 
+				      'closebutton' = false } );	
+
+	n_bad = 0; // index for list of bad modules
+	n_good = 0; // index for good modules
+	
+	// for each module in table
+	for ( i=0; i<#T.Manufacturer; i++ )
+	{
+		progressbar( pb , { 'message' = 'Converting data for ' + #T.Manufacturer + ' modules...', 'value' = i} );
+	
+		celltype = Tech{T.Technology[i]};
+
+		inputs_6par = { 'celltype' = celltype, 
+                   'vmp' = to_real( T.V_mp_ref[i] ), 
+                   'imp' = to_real( T.I_mp_ref[i] ), 
+                   'voc' = to_real( T.V_oc_ref[i] ), 
+                   'isc' = to_real( T.I_sc_ref[i] ), 
+                   'alpha_isc' = to_real( T.alpha_sc[i] ), 
+                   'beta_voc' = to_real(T.beta_oc[i] ), 
+                   'gamma_pmp' = to_real( T.gamma_r[i] ), 
+                   'n_ser' = to_int (T.N_s[i] ), 
+                   't_ref' = to_real( 25 ) }; 
+
+		outputs_6par = run_6par_gen( inputs_6par );
+		
+		if ( outputs_6par.msg != 'ok' )
+		{
+			Bad{'Manufacturer'}[n_bad] = T.Manufacturer[i];
+			Bad{'Model'}[n_bad] = T.Model[i];
+			Bad{'Technology'}[n_bad] = T.Technology[i];
+			Bad{'Message'}[n_bad] = outputs_6par.msg;
+			n_bad++;
+		}
+		else
+		{
+			// assign calculated parameters
+			Lib.a_ref[n_good+2] = outputs_6par.a;
+			Lib.I_L_ref[n_good+2] = outputs_6par.Il;
+			Lib.I_o_ref[n_good+2] = outputs_6par.Io;
+			Lib.R_s[n_good+2] = outputs_6par.Rs;
+			Lib.R_sh_ref[n_good+2] = outputs_6par.Rsh;
+			Lib.Adjust[n_good+2] = outputs_6par.Adj;
+		
+			// assign input parameters
+			Lib.Manufacturer[n_good+2] = T.Manufacturer[i];
+			Lib.Model[n_good+2] = T.Model[i];
+			Lib.BIPV[n_good+2] = T.BIPV[i];
+			Lib.Description[n_good+2] = T.Description[i];
+			Lib.T_NOCT[n_good+2] = T.T_NOCT[i];
+			Lib.A_c[n_good+2] = T.A_c[i];
+			Lib.N_s[n_good+2] = T.N_s[i];
+			Lib.I_sc_ref[n_good+2] = T.I_sc_ref[i];
+			Lib.V_oc_ref[n_good+2] = T.V_oc_ref[i];
+			Lib.I_mp_ref[n_good+2] = T.I_mp_ref[i];
+			Lib.V_mp_ref[n_good+2] = T.V_mp_ref[i];
+			Lib.alpha_sc[n_good+2] = T.alpha_sc[i];
+			Lib.beta_oc[n_good+2] = T.beta_oc[i];
+			Lib.gamma_r[n_good+2] = T.gamma_r[i];
+			Lib.PTC[n_good+2] = T.PTC[i];
+			Lib.Length[n_good+2] = T.Length[i];
+			Lib.Width[n_good+2] = T.Width[i];
+			Lib.Technology[n_good+2] = T.Technology[i];
+		
+			// add these columns
+			Lib.Version[n_good+2] = version; // used to indicate how parameters were generated 
+			Lib.Name[n_good+2] = T.Manufacturer[i] + ' ' + T.Model[i];
+			Lib.Date[n_good+2] = date; // set to date CEC database was downloaded
+			Lib.STC[n_good+2] = T.I_mp_ref[i] * T.V_mp_ref[i];
+			if ( strpos( lower(T.Description[i]) , 'bifacial' ) > -1 )
+				Lib.Bifacial[n_good+2] = true;
+			else
+				Lib.Bifacial[n_good+2] = false;
+			
+			n_good++;	
+		}
+		
+	}
+	
+	p=i;
+	progressbar( pb , { 'message' = 'Converting table to array...' , 'value' = p } );
+	// Name has to be in first column for SAM to load library file
+	// Order of other columns does not matter	
+	sorted_columns = 'Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date';
+	cols = split( sorted_columns , ',' );
+	//keys = @Lib;
+	arr[0] = cols;
+	for ( i = 0; i<#Lib.Name; i ++ )
+	{
+		for ( j=0; j<#cols; j++ )
+		{
+			arr[i+1][j] = Lib{cols[j]}[i];
+		}
+	}
+
+	progressbar( pb , { 'message' = 'Writing data to file...' , 'value' = p } );
+
+	ok = csvwrite( bad_modules_file, Bad );
+	if ( !ok )
+		outln( 'Failed to write list of bad modules to file' );
+	ok = csvwrite( sam_library_file, arr );
+
+	progressbar( pb );
+	
+	return ok;
+
+}
+
+// Main ////////////////////////////////////////////////////////////////////////
+
+cec_csv_file = choose_file( cwd() , 'Choose processed CSV file of CEC module data', 'CSV Files (*.csv)|*.csv' );
+T = read_cec_csv( cec_csv_file );
+outln( sam_table_to_library( T , path_only( cec_csv_file ) ) );
+
+

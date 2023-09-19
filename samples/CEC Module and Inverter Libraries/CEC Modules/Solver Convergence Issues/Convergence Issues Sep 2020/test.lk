@@ -1,0 +1,38 @@
+
+P = csvread( cwd() + '/trouble-modules.csv', {'table' = true } );
+
+par = ssc_create();
+
+for (i=0; i<#P.Manufacturer; i++ )
+{
+	ssc_var(par, 'celltype', P.celltype[i] );
+	ssc_var(par, 'Vmp', to_real(P.Vmp[i]) );
+	ssc_var(par, 'Imp', to_real(P.Imp[i]) );
+	ssc_var(par, 'Voc', to_real(P.Voc[i]) );
+	ssc_var(par, 'Isc', to_real(P.Isc[i]) );
+	ssc_var(par, 'beta_voc', to_real(P.beta_voc[i]) );
+	ssc_var(par, 'alpha_isc', to_real(P.alpha_isc[i]) );
+	ssc_var(par, 'gamma_pmp', to_real(P.gamma_pmp[i]) );
+	ssc_var(par, 'Nser', to_int(P.Nser[i]) );
+	ssc_var(par, 'Tref', to_real(P.Tref[i]) );
+
+	status = ssc_exec(par, '6parsolve');
+
+	outln( P.Manufacturer[i] + ' ' + P.Name[i] + ':' );
+	outln( 'Initial test result = ' + P.Result[i] );
+	if ( status == 0 )
+	{
+		R = {};
+		R.a = ssc_var(par, 'a');
+		R.Il = ssc_var(par, 'Il');
+		R.Io = ssc_var(par, 'Io');
+		R.Rs = ssc_var(par,  'Rs');
+		R.Rsh = ssc_var(par, 'Rsh');
+		R.Adj = ssc_var(par, 'Adj');
+		outln( R );
+	}
+	else { outln( status ); }
+	outln();
+}
+
+ssc_free( par );

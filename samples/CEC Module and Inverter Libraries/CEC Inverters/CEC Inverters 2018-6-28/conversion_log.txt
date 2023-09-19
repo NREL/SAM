@@ -1,0 +1,723 @@
+==========================================================================
+CEC Inverter Database Conversion Log Thu Jun 28 13:15:40 2018
+===========================================================================
+See report at bottom of file. Search for "**" to find problem inverters
+---------------------------------------------------------------------------
+Number of inverters in current SAM library: 6838
+Number of inverters in CEC database: 3365
+Adding inverters from current SAM library file to lookup table...
+Done.
+Adding inverters from CEC database file to lookup table...
+Altenergy Power System Inc : YC200-NA [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC250A [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC250I [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC500A [208V] 208V [CEC 2018]
+Altenergy Power System Inc : YC500A [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC500I [208V] 208V [CEC 2018]
+Altenergy Power System Inc : YC500I [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC600 [240V] 240V [CEC 2018]
+Altenergy Power System Inc : YC1000-3-208 [480V] 480V [CEC 2018]
+Altenergy Power System Inc : YC1000-3-480 [480V] 480V [CEC 2018]
+Altenergy Power System Inc : YC1000-3-K480 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CM-240-EC (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-245M-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-245P-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-250M-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-250P-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-255M-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-255P-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-260M-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CS6P-260P-EA (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CM-260-EC (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CM-280-EC (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CM-300-EC (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CSI-3000TL-CT [208V] 208V [CEC 2018]
+Canadian Solar Inc : CSI-3000TL-CT [240V] 240V [CEC 2018]
+Canadian Solar Inc : CSI-4000TL-CT [208V] 208V [CEC 2018]
+Canadian Solar Inc : CSI-4000TL-CT [240V] 240V [CEC 2018]
+Canadian Solar Inc : CSI-5000TL-CT [208V] 208V [CEC 2018]
+Canadian Solar Inc : CSI-5000TL-CT [240V] 240V [CEC 2018]
+Canadian Solar Inc : CSI-6000TL-CT [208V] 208V [CEC 2018]
+Canadian Solar Inc : CSI-6000TL-CT [240V] 240V [CEC 2018]
+Canadian Solar Inc : CSI-23KTL-CT [480V] 480V [CEC 2018]
+Canadian Solar Inc : CSI-28KTL-CT [480V] 480V [CEC 2018]
+Canadian Solar Inc : CSI-36KTL-CT (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Canadian Solar Inc : CSI-36KTL-CT [480V] [SI1] 480V [CEC 2018]
+Canadian Solar Inc : CSI-50KTL-CT [480V] 480V [CEC 2018]
+Canadian Solar Inc : CSI-50KTL-CT [480V] [SI1] 480V [CEC 2018]
+Canadian Solar Inc : CSI-60KTL-CT [480V] 480V [CEC 2018]
+Canadian Solar Inc : CSI-60KTL-CT [480V] [SI1] 480V [CEC 2018]
+
+
+Canadian Solar Incorporated : CSI-50KTL-GS-B [480V] [SI1] 480V [CEC 2018]
+Canadian Solar Incorporated : CSI-50KTL-GS-FLB [480V] [SI1] 480V [CEC 2018]
+Canadian Solar Incorporated : CSI-60KTL-GS-B [480V] [SI1] 480V [CEC 2018]
+Canadian Solar Incorporated : CSI-66KTL-GS-B [480V] [SI1] 480V [CEC 2018]
+Changzhou Nesl Solartech: DJ-230P-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-235P-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-240DA/C-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-240P-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-245DA/C-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-250DA/C-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Changzhou Nesl Solartech: DJ-255D/C-ST15 [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Concept by US: Power Station PS247-15-180 [120V] 120V [CEC 2018]
+** Pso <= 0 . Skipping this inverter.
+Delta Electronics Inc: DES10JB125K01 [480V] [SI1] 480V [CEC 2018]
+Enphase Energy Inc : M175-24-208-Sxx [208V] 208V [CEC 2018]
+Enphase Energy Inc : M175-24-208-Sxx-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M175-24-240-Sxx [240V] 240V [CEC 2018]
+Enphase Energy Inc : M175-24-240-Sxx-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M190-72-208-Sxx [208V] 208V [CEC 2018]
+Enphase Energy Inc : M190-72-208-Sxx-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M190-72-240-Sxx [240V] 240V [CEC 2018]
+Enphase Energy Inc : M190-72-240-Sxx-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M200-32-208-Sxx [240V] 240V [CEC 2018]
+Enphase Energy Inc : M200-32-208-Sxx-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M200-32-240-Sxx [240V] 240V [CEC 2018]
+Enphase Energy Inc : M200-32-240-Sxx-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M210-84-208-Sxx [208V] 208V [CEC 2018]
+Enphase Energy Inc : M210-84-208-Sxx-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M210-84-240-Sxx [240V] 240V [CEC 2018]
+Enphase Energy Inc : M210-84-240-Sxx-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-ZC [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-ZC [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-ZC-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-IG-ZC-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-NA [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Enphase Energy Inc : M215-60-2LL-S2x-ZC [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-ZC-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-2LL-S2x-ZC-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-ZC [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-ZC [240V] 240V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-ZC-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : M215-60-SIE-S2x-ZC-NA [240V] 240V [CEC 2018]
+Enphase Energy Inc : S230-60-LL-x [208V] 208V [CEC 2018]
+Enphase Energy Inc : S230-60-LL-x [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : S230-60-LL-x [240V] 240V [CEC 2018]
+Enphase Energy Inc : S230-60-LL-x [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ6-60-ACM-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ6-60-ACM-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ6-60-ACM-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ6-60-ACM-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ6-60-x-US [208V] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Enphase Energy Inc : IQ6-60-x-US [208V] [SI1] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Enphase Energy Inc : IQ6-60-x-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ6-60-x-US [240V] [SI1] 240V [CEC 2018]
+** Power levels converted from W to kW.
+Enphase Energy Inc : IQ7-60-ACM-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ7-60-ACM-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ7-60-ACM-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ7-60-ACM-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ7-60-x-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ7-60-x-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ7-60-x-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ7-60-x-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : M250-60-2LL-S2x (-ZC) (-NA) [208V] 208V [CEC 2018]
+Enphase Energy Inc : M250-60-2LL-S2x (-ZC) (-NA) [240V] 240V [CEC 2018]
+Enphase Energy Inc : M250-72-2LL-S2x [208V] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Enphase Energy Inc : M250-72-2LL-S2x [240V] 240V [CEC 2018]
+** Power levels converted from W to kW.
+Enphase Energy Inc : C250-72-2LN-S2 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Enphase Energy Inc : S280-60-LL-x [208V] 208V [CEC 2018]
+Enphase Energy Inc : S280-60-LL-x [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : S280-60-LL-x [240V] 240V [CEC 2018]
+Enphase Energy Inc : S280-60-LL-x [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-ACM-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-ACM-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-ACM-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-ACM-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-x-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-x-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-x-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ6PLUS-72-x-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-ACM-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-ACM-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-ACM-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-ACM-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-x-US [208V] 208V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-x-US [208V] [SI1] 208V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-x-US [240V] 240V [CEC 2018]
+Enphase Energy Inc : IQ7PLUS-72-x-US [240V] [SI1] 240V [CEC 2018]
+Enphase Energy Inc : D380-72-208-S1x [208V] 208V [CEC 2018]
+Enphase Energy Inc : D380-72-240-S1x [240V] 240V [CEC 2018]
+Enphase Energy Inc : D380-72-2LL-S1x [208V] 208V [CEC 2018]
+Enphase Energy Inc : D380-72-2LL-S1x [240V] 240V [CEC 2018]
+Enphase Energy Inc : D380-72-2LL-S1x-NA [208V] 208V [CEC 2018]
+Enphase Energy Inc : D380-72-2LL-S1x-NA [240V] 240V [CEC 2018]
+** Pmax <=0. Skipping this inverter.
+Growatt New Energy Technology Co  Ltd : Growatt 1500-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 1500-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 1500-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2000-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2000HF-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2000HF-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2000-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2000-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2500HF-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 2500HF-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3000-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3000-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3000-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3000HF-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3000HF-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3600 MTL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3600 MTL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 3600 MTL-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4200 MTL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4200 MTL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 4200 MTL-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000 MTL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000 MTL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000 MTL-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [208V] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [208V] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [277V] 277V [CEC 2018]
+** Power levels converted from W to kW.
+Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [277V] 277V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Growatt New Energy Technology Co  Ltd : Growatt 8000TL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 8000TL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 9000TL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 9000TL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 10000TL-US [208V] 208V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 10000 TL3-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 12000 TL3-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 11000TL-US [240V] 240V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 18000 TL3-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 20000 TL3-US [277V] 277V [CEC 2018]
+Growatt New Energy Technology Co  Ltd : Growatt 33000TL3-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Growatt New Energy Technology Co  Ltd : Growatt 36000TL3-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Growatt New Energy Technology Co  Ltd : Growatt 40000TL3-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Huawei Technologies Co  Ltd: SUN2000-33KTL-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Huawei Technologies Co  LTD: SUN2000-33KTL-US [480V] [SI1] 480V [CEC 2018]
+Huawei Technologies Co  Ltd: SUN2000-36KTL-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Huawei Technologies Co  LTD: SUN2000-36KTL-US [480V] [SI1] 480V [CEC 2018]
+Huawei Technologies Co  Ltd: SUN2000-40KTL-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Huawei Technologies Co  LTD: SUN2000-40KTL-US [480V] [SI1] 480V [CEC 2018]
+Huawei Technologies Co  LTD: SUN2000-45KTL-US-HV-D0 [600V] [SI1] 600V [CEC 2018]
+Jinko Solar Co Ltd : JKMS260M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS265M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS270M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS275M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS275M-60-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS280M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS280M-60-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS285M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS285M-60-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS290M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS290M-60-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS295M-60B-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS295M-60-EP [240V] [SI1] 240V [CEC 2018]
+Jinko Solar Co Ltd : JKMS300M-60-EP [240V] [SI1] 240V [CEC 2018]
+
+LG Electronics Inc : LG315E1K-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG315E1K-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG315E1K-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG315E1K-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [208V] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [208V] [SI1] 208V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [240V] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG295A1C-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG295A1W-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG300A1C-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG300A1W-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG305A1C-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG305A1W-B3 [208V] 208V [CEC 2018]
+LG Electronics Inc : LM305UE-G1 [208V] 208V [CEC 2018]
+LG Electronics Inc : LG295A1C-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LG295A1W-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LG300A1C-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LG300A1W-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LG305A1C-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LG305A1W-B3 [240V] 240V [CEC 2018]
+LG Electronics Inc : LM305UE-G1 [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co  LTD: Solis-50K-US-F [480V] [SI1] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co  LTD: Solis-50K-US-F-SW [480V] [SI1] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co  LTD: Solis-50K-US-SW [480V] [SI1] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co  LTD: Solis-50K-US [480V] [SI1] 480V [CEC 2018]
+
+
+
+
+Ningbo Ginlong Technologies Co Ltd : GCI-1K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1.5K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1.5K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1.5K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-1.5K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1.5K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1.5K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-2K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-2K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2K [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2.5K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2.5K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2.5K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-2.5K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-2.5K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-2.5K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P2.5K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P2.5K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-3K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-3K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P3K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P3K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3.6K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3.6K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3.6K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-3.6K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-3.6K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-3.6K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P3.6K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P3.6K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-4K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-4K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P4K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P4K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4.6K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4.6K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4.6K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-4.6K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-4.6K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-4.6K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P4.6K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P4.6K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-2G-H-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-2G-H-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-2G-W-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-2G-W-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-5K-2G-US [208V] 208V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-5K-2G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-DB [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : GCI-5K-W [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis 5000-DB [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P5K-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P5K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P6K2-4G-US [240V] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P6K2-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P6K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P6K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-6K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P7K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P7K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P7.6K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P7.6K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P8K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P8K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P9K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P9K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-10K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-1P10K-4G-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Ningbo Ginlong Technologies Co Ltd : Solis-1P10K-4G-US [240V] [SI1] 240V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-15K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-20K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-25K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-30K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-36K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-40K-US 480 Vac [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-40K-US-F [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-50K-US [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-50K-US-F [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-60K-US-F [480V] 480V [CEC 2018]
+Ningbo Ginlong Technologies Co Ltd : Solis-66K-US-F [480V] 480V [CEC 2018]
+OutBack Power Technologies Inc : FXR3048A [120V] [SI1] 120V [CEC 2018]
+OutBack Power Technologies Inc : VFXR3524A [120V] [SI1] 120V [CEC 2018]
+OutBack Power Technologies Inc : VFXR3648A [120V] [SI1] 120V [CEC 2018]
+OutBack Power Technologies Inc : GS4048A [240V] [SI1] 240V [CEC 2018]
+OutBack Power Technologies Inc : GS8048A [240V] [SI1] 240V [CEC 2018]
+Perfect Galaxy International Ltd : EQX0500UV320XP(N) (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Schneider Electric Solar Inverters USA Inc : Conext SmartGen CS2000-NA [575V] 575V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 4000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 5000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 6000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [208V] [SI1] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [208V] [SI1] 208V [CEC 2018]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7000MTLP-US [277V] [SI1] 277V [CEC 2018]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [208V] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [240V] [SI1] 240V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 7600MTLP-US [277V] [SI1] 277V [CEC 2018]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 90000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 9000MTLP-US [208V] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [240V] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [277V] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 8000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [208V] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [208V] [SI1] 208V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 90000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 9000MTLP-US [240V] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 90000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 9000MTLP-US [277V] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [240V] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [240V] [SI1] 240V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [277V] 277V [CEC 2018]
+Shenzhen Growatt New Energy Technology Co  Ltd : Growatt 10000MTLP-US [277V] [SI1] 277V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd: PWS2-30K-NA [480V] [SI1] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : PWS2-30K-NA [480V] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : PWS1-50K-NA [480V] [SI1] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : PWS1-100K-NA [480V] [SI1] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : PWS1-150K-NA [480V] [SI1] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : PWS1-250K-NA [480V] [SI1] 480V [CEC 2018]
+Shenzhen Sinexcel Electric Co  Ltd : Rainbow PVI-10.0-I-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Shenzhen Sinexcel Electric Co  Ltd : Rainbow PVI-12.5-I-US (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+SolarEdge Technologies Ltd : SE3000H-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3000H-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3000 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3000x [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3000 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE3000x [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE3300 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3300x [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3300 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE3300x [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800H-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800H-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800x [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE4000 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE3800x [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE4000 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000H-US [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000H-US [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000x [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000x [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000 [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000H-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE5000H-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000 [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000x [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000x [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000 [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000H-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE6000H-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE7000 [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600A-US [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600A-US [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600A-US [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600H-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600H-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600 [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600A-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE7600A-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE9K [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE9KUS [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE10K [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE10KUS [480V] [SI1] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE10000A-US [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE10000A-US [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE10000A-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE10000A-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE10000A-US [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE11400A-US [277V] 277V [CEC 2018]
+SolarEdge Technologies Ltd : SE11400A-US [240V] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE11400A-US [240V] [SI1] 240V [CEC 2018]
+SolarEdge Technologies Ltd : SE14.4KUS [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE14.4KUS [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE43.2KUS [208V] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE43.2KUS [208V] [SI1] 208V [CEC 2018]
+SolarEdge Technologies Ltd : SE20K [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE20KUS [480V] [SI1] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE30KUS [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE30KUS [480V] [SI1] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE100KUS [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE100KUS [480V] [SI1] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE33.3KUS [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE33.3KUS [480V] [SI1] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE66.6KUS [480V] 480V [CEC 2018]
+SolarEdge Technologies Ltd : SE66.6KUS [480V] [SI1] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 1800-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 1800-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 2500-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 2500-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 3000-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3000-POS-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3000S [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3000S-P [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3000-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 3000-POS-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 3000S [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3000S-P [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 3800TL [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 4000-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 4000-POS-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 4000S [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 4000S-P [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 3800TL [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 4000-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 4000-POS-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 4000S [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 4000S-P [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5000-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5000-POS-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5000S [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5000S-P [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5300-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5300-POS-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5000-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5000-POS-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5000S [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5000S-P [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5200TL [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 5200TL [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5300-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 5300-POS-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 6500-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 6500-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 6500-277 [277V] 277V [CEC 2018]
+Solectria Renewables LLC: PVI 6600TL [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 6600TL [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 7600TL [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 7500-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 7500-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 7500-277 [277V] 277V [CEC 2018]
+Solectria Renewables LLC: PVI 7600TL [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 10kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 10kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 13 kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 13 kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 14TL-208 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 15kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 15kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 20TL-480 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 23TL-480 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 28TL-480 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 36TL-480 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 36TL-480 [480V] [SI1] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 50 kW-240 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 50 kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 50TL-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 50TL-480 [480V] [SI1] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 60kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 60kW-240 (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 60kW-480 [180V] 180V [CEC 2018]
+Solectria Renewables LLC: PVI 60TL-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 60TL-480 [480V] [SI1] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 75 kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 75 kW-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 75 kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 75 kW-480PE (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 75-208-PE (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 82 kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 82 kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 85-208-PE (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: PVI 85kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 85kW-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 85kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 95kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 95kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 100 kW-208 [208V] 208V [CEC 2018]
+Solectria Renewables LLC: PVI 100 kW-240 [240V] 240V [CEC 2018]
+Solectria Renewables LLC: PVI 100 kW-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: PVI 100-208-PE (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: SGI 225-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 250-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 266-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 300-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 500XT (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: SGI 500XTM (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Solectria Renewables LLC: SGI 500-480 [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 499PE [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 500PE [480V] 480V [CEC 2018]
+Solectria Renewables LLC: SGI 750XTM (N/A)V [CEC 2018]
+** Vac missing. Keeping this inverter (Vac not used in simulations).
+Sungrow Power Supply Co  Ltd : SG 60KU-M [480V] [SI1] 480V [CEC 2018]
+Sungrow Power Supply Co  Ltd : SG125HV [600V] 600V [CEC 2018]
+Sungrow Power Supply Co  Ltd : SG125HV [600V] [SI1] 600V [CEC 2018]
+Sungrow Power Supply Co  Ltd :  SG2500U [550V] [SI1] 550V [CEC 2018]
+Sungrow Power Supply Co  Ltd : SG2500U [550V] 550V [CEC 2018]
+Tabuchi Electric Co  Ltd : EHW-S55P3B-PNUS [240V] 240V [CEC 2018]
+Tabuchi Electric Co  Ltd : THD-S55P3BB-US [240V] [SI1] 240V [CEC 2018]
+Tabuchi Electric Co  Ltd : THD-S55P3B-US [240V] [SI1] 240V [CEC 2018]
+Tabuchi Electric Co  Ltd : EPW-T250P6-US [480V] 480V [CEC 2018]
+Tabuchi Electric Co  Ltd : TPD-T250P6-US [480V] 480V [CEC 2018]
+Xiamen Kehua Hengsheng Co  Ltd : SPI50K-BHV [480V] [SI1] 480V [CEC 2018]
+Xiamen Kehua Hengsheng Co  Ltd : SPI60K-BHV [480V] [SI1] 480V [CEC 2018]
+Sorting by inverter name.
+Building new library...
+Done.
+Writing data to CSV library file...
+Done.
+See new SAM library file
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2018-6-28/CEC Inverters 2018-Jun-28.csv
+Verify manually by diff against the old file.
+Rename to CEC Inverters.csv and replace file in SAM library folder.
+---------------------------------------------------------------------------
+Old inverter library file:
+
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2018-6-28\CEC Inverters 2017-9-5r4.csv
+CEC database file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2018-6-28\Inverter_List_Full_Data_2018-2-2.xlsx
+New inverter library file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2018-6-28/CEC Inverters 2018-Jun-28.csv
+---------------------------------------------------------------------------
+Number of inverters in new SAM library: 7384.
+Skipped because of problems:
+  Coefficient generator calculated zero or negative values: 1
+  Pmax <= 0: 9
+  Pmax units do not match Paco units: 0
+  Coefficient generator failed: 0
+Data issues but not skipped:
+  Pnt negative converted to positive: 0
+  Paco converted from  W to kW: 0
+  Power levels converted from W to kW: 11
+  Vac missing (not used in simulations): 44
+  MPPT_high = 0: 0
+  MPPT_low = 0: 0
+  Vdco = 0: 0
