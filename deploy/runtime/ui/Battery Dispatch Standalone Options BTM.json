@@ -106,7 +106,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 123.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -217,7 +217,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 196.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -267,7 +267,7 @@
             "Label": "Battery dispatch choice",
             "Units": " ",
             "Group": "Battery Dispatch",
-            "IndexLabels": "",
+            "IndexLabels": "Peak shaving| Input grid power targets| Input battery power targets| Manual dispatch| Price signal forecast",
             "Flags": 3.0,
             "DefaultValue": 3.0,
             "UIObject": "RadioChoice",
