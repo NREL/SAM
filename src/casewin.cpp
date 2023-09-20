@@ -763,8 +763,8 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
             m_navigationMenu->SetCurrentItem(current_item);
             wxDataViewItem parent = m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem());
             wxString string2 = m_navigationMenu->GetItemText(parent);
-            m_navigationMenu->UnselectAll();
-            m_navigationMenu->SetCurrentItem(parent);
+//            m_navigationMenu->UnselectAll();
+//            m_navigationMenu->SetCurrentItem(parent);
             SwitchToInputPage(string2 + " Summary");
             //m_navigationMenu->Expand(m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem()));
             m_navigationMenu->Update();
