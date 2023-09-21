@@ -6156,6 +6156,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_dview,
             fcall_dview_solar_data_file,
             fcall_dview_wave_data_file,
+            fcall_dview_tidal_data_file,
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,

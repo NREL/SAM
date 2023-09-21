@@ -627,7 +627,7 @@
     ],
     "Callbacks": [
         "on_change{'btn_view_tidal_data'} = define() {\r",
-        "\tif ( dview(value('tidal_resource_filename')) )\r",
+        "\tif ( dview_tidal(value('tidal_resource_filename')) )\r",
         "\t{\tmsgbox('Failed to read file!\\nThe data viewer was not able to open the weather file:\\n' + value('wave_resource_filename_ts') ); }\r",
         "};\r",
         "\r",
