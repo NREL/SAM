@@ -2146,7 +2146,7 @@ setup_electricity_purchases();
 
 function setup_metidal_pages(lcoe_fcr)
 {
-	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource' } );
+	addpage( [[ 'Marine Tidal Resource'], ['Marine Tidal Resource File']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource', 'exclusive_header_pages'=['Marine Tidal Resource Header'],'exclusive_var'='tidal_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ {'name'='Marine Tidal Converter', 'caption'='Tidal Converter Library'}],
 			[{'name'='Marine Tidal Converter User', 'caption'='Tidal Converter Input'}],
 			[{'name'='Marine Tidal Turbine Design', 'caption'='Tidal Converter Design'}]], 

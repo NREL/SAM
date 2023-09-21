@@ -1,0 +1,733 @@
+{
+    "Name": "Marine Tidal Resource File",
+    "Width": 1068.0,
+    "Height": 557.0,
+    "FormObjects": {
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_add_remove_folders"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Add/remove weather file folders..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_refresh_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Refresh library"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btn_view_tidal_data"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 888.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 94.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "View Data"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "caption_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 855.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "SAM's default library comes with only a few weather files to help you get started. Use the download tools below to build a library of locations you frequently model. Once you build your library, it is available for all of your work in SAM."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "label_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 860.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Click a name in the list to choose a file from the library. Type a few letters of the name in the search box to filter the list."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "MultilineText": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "library_folder_list"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 588.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "List of Wave Resource library folders"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1041.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 438.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Tidal Resource"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_location"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 965.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "TidalResourceData"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Location ID,Latitude,Longitude,Year,Time Zone,Data Source,Notes"
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_resource_filename"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 684.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 128.0,
+                        "Green": 0.0,
+                        "Blue": 64.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "data_source": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Data Source",
+            "Units": "",
+            "Group": "Tidal Resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "distance_to_shore_file": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lat": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "library_folder_list": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "location_id": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lon": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "notes": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_location": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Tidal resource library",
+            "Units": "",
+            "Group": "Tidal Resource",
+            "IndexLabels": "TidalResourceData|0",
+            "Flags": 19.0,
+            "DefaultValue": "",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_resource_filename": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Tidal resource filename",
+            "Units": "",
+            "Group": "Tidal resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Label",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tidal_velocity": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Tidal velocity",
+            "Units": "m/s",
+            "Group": "Tidal resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tz": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time Zone",
+            "Units": "",
+            "Group": "Tidal Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_step_minutes": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time step",
+            "Units": "minutes",
+            "Group": "Tidal resource",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "water_depth_file": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "year": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Year",
+            "Units": "",
+            "Group": "Tidal Resource",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ 'ui_step_minutes' } = define() {\r",
+        "\tarray = ${tidal_velocity};\r",
+        "\tlen_array = #array;\r",
+        "\treturn 60 / (len_array/8760);\r",
+        "};\r",
+        ""
+    ],
+    "Callbacks": [
+        "on_change{'btn_view_tidal_data'} = define() {\r",
+        "\tif ( dview(value('tidal_resource_filename')) )\r",
+        "\t{\tmsgbox('Failed to read file!\\nThe data viewer was not able to open the weather file:\\n' + value('wave_resource_filename_ts') ); }\r",
+        "};\r",
+        "\r",
+        "\r",
+        "on_change{'btn_refresh_library'} = define() {\r",
+        "\trescanlibrary('tidal');\r",
+        "\t//update_info('on_change btn_refresh_library');\r",
+        "};\r",
+        "\r",
+        "on_change{'btn_add_remove_folders'} = define() {\r",
+        "\tif ( showsettings( 'tidal' ) )\r",
+        "\t{\r",
+        "\t\tupdate_library_folders( '' );\r",
+        "\t\t/*// if current library selection is no longer in library, change to first item listed in library CSV file\r",
+        "\t\tL = strlen( value( 'library_folder_list' ) );\r",
+        "\t\tif ( strlen( value( 'library_folder_list' ) ) < L )\r",
+        "\t\t{\r",
+        "\t\t\tif ( !solar_library(value('solar_resource_file'),false){'is_in_library'} )\r",
+        "\t\t\t{\r",
+        "\t\t\t\tfirst_item = solar_library(value('solar_resource')){'first_item_key'};\r",
+        "\t\t\t\tfirst_item = replace( file_only(first_item), '.csv', '' );\r",
+        "\t\t\t\tmsgbox( 'Selected weather file not in solar resource library!\\nThe file ' \r",
+        "\t\t\t\t\t     + value( file_only('solar_resource_file') )\r",
+        "\t\t\t\t\t     + ' is not in the solar resource library. Changing library selection to ' \r",
+        "\t\t\t\t\t     +  first_item  + '.' );\r",
+        "\t\t\t\tvalue( 'solar_resource' , first_item );\r",
+        "\t\t\t}\t\r",
+        "\t\t}*/\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "on_load{'Marine Wave Resource Time Series'} = define() {\r",
+        "\t\r",
+        "\t//rescanlibrary('wave_ts');\r",
+        "\t//enable(\"wave_resource_matrix\",false);\r",
+        "\t//on_change{'use_specific_ts_wf_wave'}();\r",
+        "\t//enable_disable_library();\r",
+        "\tupdate_library_folders(''); // refresh list of library folders\r",
+        "\t//show('wave_resource_matrix', false);\r",
+        "\trefresh();\r",
+        "};\r",
+        "\r",
+        "on_change{'tidal_location'} = define() {\r",
+        "\tfile = ${tidal_resource_filename};\r",
+        "\t//value(\"location_id\",value(\"location_ts\"));\r",
+        "\trefresh();\r",
+        "\tif (!file_exists(file))\r",
+        "\t{\r",
+        "\t\trescanlibrary( 'tidal' );\r",
+        "\t\trefresh('tidal_location');\r",
+        "\t\treturn;\r",
+        "\t}\r",
+        "\tfile = replace(file, '\\\\', '/');\r",
+        "\tfn = open(file,'r');\r",
+        "\tclose(fn);\r",
+        "\t//update_info('on_change location_ts');\r",
+        "};\r",
+        "\r",
+        "\r",
+        "function update_library_folders( new_path )\r",
+        "{\r",
+        "\t//msgbox('Hello from update_library_folders()');\r",
+        "\tx = get_settings('tidal_data_paths');\r",
+        "\t// add new path if provided and it doesn't already exist in the library\r",
+        "\tif ( new_path != '' && dir_exists( new_path ) && ( strpos( x, new_path ) < 0 ) )\r",
+        "\t{\r",
+        "\t\tif ( x != '' ) { x += ';'; }\r",
+        "\t\tx += slash_back_to_forward( new_path );\r",
+        "\t}\r",
+        "\t// list of library folders files to display on separate lines\r",
+        "\tpaths = split( x, ';' );\r",
+        "\t// put wave download folder at top of list\r",
+        "\tclean_list = '';\r",
+        "\t// remove folders in list that no longer exist\r",
+        "\tfor (i = 0; i<#paths; i++ )\r",
+        "\t{\r",
+        "\t\tif ( dir_exists( paths[i] ) )\r",
+        "\t\t{\r",
+        "\t\t\tclean_list += paths[i];\r",
+        "\t\t\tif ( i < #paths-1 ) { clean_list += ';'; }\r",
+        "\t\t}\t\r",
+        "\t}\t\t\r",
+        "\t// update solar_data_paths used by library.cpp and nsrdb.cpp to cleaned list\t\t\r",
+        "\tset_settings('tidal_data_paths', clean_list );\r",
+        "\t// update list to display\r",
+        "\tvalue( 'library_folder_list', get_settings('tidal_download_path') + '\\n' \r",
+        "\t       + replace( clean_list , ';' , '\\n' ) );\r",
+        "\trescanlibrary( 'tidal' );     \r",
+        "}\r",
+        "\r",
+        "function slash_back_to_forward( str )\r",
+        "{\r",
+        "\treturn replace( str, '\\\\', '/' );\r",
+        "}\r",
+        "\r",
+        "function file_to_key( file ) \r",
+        "{\r",
+        "\t\tkey = file_only( file );\r",
+        "\t\tkey = replace( key, '.' + ext_only( file ), '');\r",
+        "\t\treturn key;\r",
+        "}"
+    ]
+}
