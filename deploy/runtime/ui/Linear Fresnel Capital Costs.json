@@ -4607,7 +4607,7 @@
         "\tla = 0;",
         "\tif (tech == \"DSLF\")",
         "\t\tla = ${csp.lf.sf.total_land_area};",
-        "\tif (tech == \"MSLF\")",
+        "\tif (tech == \"MSLF_old\")",
         "\t\tla = ${total_land_area};",
         "\treturn la; };",
         "",

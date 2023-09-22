@@ -63,11 +63,11 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	m_generic_case = SamApp::Window()->GetCurrentCase();
 	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
 	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
-	if (m_generic_case->Values().Get("generic_degradation")) {
-		m_generic_degradation = m_generic_case->Values().Get("generic_degradation")->Array();	// name in generic-battery cases
+	if (m_generic_case->Values(0).Get("generic_degradation")) {
+		m_generic_degradation = m_generic_case->Values(0).Get("generic_degradation")->Array();	// name in generic-battery cases
 	}
-	else if (m_generic_case->Values().Get("degradation")) {
-		m_generic_degradation = m_generic_case->Values().Get("degradation")->Array();			// name in other cases, if defined
+	else if (m_generic_case->Values(0).Get("degradation")) {
+		m_generic_degradation = m_generic_case->Values(0).Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
 		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
@@ -155,12 +155,12 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					double analysis_period = 0.;
 					double inflation = 0.;
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
-						analysis_period = m_generic_case->Values().Get("c_lifetime")->Value();
-						inflation = m_generic_case->Values().Get("c_inflation")->Value();
+						analysis_period = m_generic_case->Values(0).Get("c_lifetime")->Value();
+						inflation = m_generic_case->Values(0).Get("c_inflation")->Value();
 					}
 					else if (financial_name != "None") {
-						analysis_period = m_generic_case->Values().Get("analysis_period")->Value();
-						inflation = m_generic_case->Values().Get("inflation_rate")->Value();
+						analysis_period = m_generic_case->Values(0).Get("analysis_period")->Value();
+						inflation = m_generic_case->Values(0).Get("inflation_rate")->Value();
 					}
 
 					// Allocate and initialize variables to run through the cases to combine
@@ -188,7 +188,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						VarValue* degradation_vv = nullptr;
 						std::vector<double> degradation_orig = { std::numeric_limits<double>::quiet_NaN() };
 						if (financial_name != "None" && financial_name != "LCOE Calculator" && financial_name != "LCOH Calculator") {
-							degradation_vv = current_case->Values().Get("degradation");
+							degradation_vv = current_case->Values(0).Get("degradation");
 							degradation_orig = degradation_vv->Array();
 							if (m_schnDegradation->UseSchedule()) {
 								degradation_vv->Set(m_schnDegradation->GetSchedule());
@@ -203,10 +203,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						double inflation_orig = std::numeric_limits<double>::quiet_NaN();
 						if (financial_name != "None") {
 							if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
-								inflation_vv = current_case->Values().Get("c_inflation");
+								inflation_vv = current_case->Values(0).Get("c_inflation");
 							}
 							else {
-								inflation_vv = current_case->Values().Get("inflation_rate");
+								inflation_vv = current_case->Values(0).Get("inflation_rate");
 							}
 							inflation_orig = inflation_vv->Value();
 							inflation_vv->Set(inflation);
@@ -237,7 +237,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 
 						// Add the performance parameters of this case
-						double nameplate_this = current_case->Values().Get("system_capacity")->Value();
+						double nameplate_this = current_case->Values(0).Get("system_capacity")->Value();
 						nameplate += nameplate_this;
 						matrix_t<double> hourly_energy_this(1, 1, std::numeric_limits<double>::quiet_NaN());
 						if (bcsim.GetOutput("gen")) {
@@ -259,10 +259,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// for lifetime simulation, truncate results to first 8760 values
 						double analysis_period_this = std::numeric_limits<double>::quiet_NaN();
 						if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
-							analysis_period_this = current_case->Values().Get("c_lifetime")->Value();
+							analysis_period_this = current_case->Values(0).Get("c_lifetime")->Value();
 						}
 						else if (financial_name != "None") {
-							analysis_period_this = current_case->Values().Get("analysis_period")->Value();
+							analysis_period_this = current_case->Values(0).Get("analysis_period")->Value();
 						}
 
 						// determine hourly generation profile of current case
@@ -310,10 +310,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						double total_installed_cost_this = std::numeric_limits<double>::quiet_NaN();
 						std::vector<double> om_total_this(analysis_period, std::numeric_limits<double>::quiet_NaN());
 						if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
-							total_installed_cost_this = current_case->Values().Get("capital_cost")->Value();
+							total_installed_cost_this = current_case->Values(0).Get("capital_cost")->Value();
 							total_installed_cost += total_installed_cost_this;
-							double om_fixed_this = current_case->Values().Get("fixed_operating_cost")->Value();
-							double om_variable = current_case->Values().Get("variable_operating_cost")->Value() * annual_energy;
+							double om_fixed_this = current_case->Values(0).Get("fixed_operating_cost")->Value();
+							double om_variable = current_case->Values(0).Get("variable_operating_cost")->Value() * annual_energy;
 							std::fill(om_total_this.begin(), om_total_this.end(), om_fixed_this + om_variable);
 							for (int i = 0; i < analysis_period; i++) {
 								om_fixed[i] += om_total_this[i];
@@ -324,7 +324,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							std::fill(om_total_this.begin(), om_total_this.end(), 0.);
 						}
 						else if (financial_name != "None" && analysis_period > std::numeric_limits<double>::epsilon()) {
-							total_installed_cost_this = current_case->Values().Get("total_installed_cost")->Value();
+							total_installed_cost_this = current_case->Values(0).Get("total_installed_cost")->Value();
 							total_installed_cost += total_installed_cost_this;
 							has_a_contingency = has_a_contingency || HasContingency(bcsim);
 							// O&M costs are taken from the cash flows of each system. All types of O&M costs
@@ -405,15 +405,15 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					}
 
 					// Set the generic system performance parameters
-					m_generic_case->Values().Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
+					m_generic_case->Values(0).Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
 																								//  sets the hidden 'Nameplate capacity' widget value
-					m_generic_case->Values().Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
+					m_generic_case->Values(0).Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
 																								//  'Nameplate capacity' widget that is hidden when combining cases
-					m_generic_case->Values().Get("spec_mode")->Set(2);							// specify the third radio button
-					m_generic_case->Values().Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
-					m_generic_case->Values().Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
-					m_generic_case->Values().Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
-					m_generic_case->VariableChanged("energy_output_array");						// triggers UI update
+					m_generic_case->Values(0).Get("spec_mode")->Set(2);							// specify the third radio button
+					m_generic_case->Values(0).Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
+					m_generic_case->Values(0).Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
+					m_generic_case->Values(0).Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
+					m_generic_case->VariableChanged("energy_output_array",0);						// triggers UI update
 
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
@@ -429,46 +429,46 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							return;
 						}
 						else if (overwrite_capital) {
-							m_generic_case->Values().Get("fixed_operating_cost")->Set(om_fixed);
+							m_generic_case->Values(0).Get("fixed_operating_cost")->Set(om_fixed);
 						}
 					}
 
 					// Set installation and operating costs
 					if (financial_name != "None" && financial_name != "Third Party" && overwrite_capital) {
 						// Installation Costs
-						m_generic_case->Values().Get("fixed_plant_input")->Set(total_installed_cost);
-						m_generic_case->Values().Get("genericsys.cost.per_watt")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.contingency_percent")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.epc.percent")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.epc.fixed")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.plm.percent")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.plm.fixed")->Set(0.);
-						m_generic_case->Values().Get("genericsys.cost.sales_tax.percent")->Set(0.);
+						m_generic_case->Values(0).Get("fixed_plant_input")->Set(total_installed_cost);
+						m_generic_case->Values(0).Get("genericsys.cost.per_watt")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.contingency_percent")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.epc.percent")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.epc.fixed")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.plm.percent")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.plm.fixed")->Set(0.);
+						m_generic_case->Values(0).Get("genericsys.cost.sales_tax.percent")->Set(0.);
 
 						// Operating Costs - all zero except fixed (see explanation above)
-						m_generic_case->Values().Get("om_fixed")->Set(om_fixed);
-						m_generic_case->Values().Get("om_capacity")->Set(new double[1]{0.}, 1);
-						m_generic_case->Values().Get("om_production")->Set(new double[1]{0.}, 1);
+						m_generic_case->Values(0).Get("om_fixed")->Set(om_fixed);
+						m_generic_case->Values(0).Get("om_capacity")->Set(new double[1]{0.}, 1);
+						m_generic_case->Values(0).Get("om_production")->Set(new double[1]{0.}, 1);
 						//O&M escalation rates are also zeroed because they are accounted for in the fixed O&M costs
-						m_generic_case->Values().Get("om_fixed_escal")->Set(0.);
-						m_generic_case->Values().Get("om_capacity_escal")->Set(0.);
-						m_generic_case->Values().Get("om_production_escal")->Set(0.);
+						m_generic_case->Values(0).Get("om_fixed_escal")->Set(0.);
+						m_generic_case->Values(0).Get("om_capacity_escal")->Set(0.);
+						m_generic_case->Values(0).Get("om_production_escal")->Set(0.);
 
-						if (m_generic_case->Values().Get("om_fuel_cost")) {
-							m_generic_case->Values().Get("om_fuel_cost")->Set(new double[1]{0.}, 1);
-							m_generic_case->Values().Get("om_fuel_cost_escal")->Set(0.);
+						if (m_generic_case->Values(0).Get("om_fuel_cost")) {
+							m_generic_case->Values(0).Get("om_fuel_cost")->Set(new double[1]{0.}, 1);
+							m_generic_case->Values(0).Get("om_fuel_cost_escal")->Set(0.);
 						}
 
-						if (m_generic_case->Values().Get("om_replacement_cost1")) {
-							m_generic_case->Values().Get("om_replacement_cost1")->Set(new double[1]{0.}, 1);
-							m_generic_case->Values().Get("om_replacement_cost_escal")->Set(0.);
+						if (m_generic_case->Values(0).Get("om_replacement_cost1")) {
+							m_generic_case->Values(0).Get("om_replacement_cost1")->Set(new double[1]{0.}, 1);
+							m_generic_case->Values(0).Get("om_replacement_cost_escal")->Set(0.);
 						}
 					}
 
 					// Update UI with results
 					m_result_code = 0;	// 0=success
 					SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-					int result = m_generic_case->RecalculateAll();
+					int result = m_generic_case->RecalculateAll(0,false);
 					m_generic_case_window->UpdateResults();
 					m_generic_case_window->SwitchToInputPage("Power Plant");
 					if (is_notices) {

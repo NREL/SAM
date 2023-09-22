@@ -107,6 +107,19 @@ function is_fuel_tech()
 function cf_production()
 {
 	cfline( 'ENERGY', -1);
+	if (( technology() == 'PVWatts Wind Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
+		cfline( 'pvwatts_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
+	if ( technology() == 'Photovoltaic Wind Battery Hybrid') 	{
+		cfline( 'photovoltaic_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
+	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid') 	{
+		cfline( 'generic_cf_energy_net',0);
+		cfline( 'pvwatts_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
 	if ( is_fom_fin() )
 	{
 		cfline( 'cf_energy_sales', 0);
@@ -244,6 +257,42 @@ function cf_om_expenses()
 	{
 		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
 	}
+	if ( technology() == 'PVWatts Wind Battery Hybrid') {
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+	}
+	if ( technology() == 'PVWatts Wind FuelCell Battery Hybrid'){
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'fuelcell_cf_om_fixed,fuelcell_cf_om_production,fuelcell_cf_om_capacity,fuelcell_cf_fuelcell_replacement_cost_schedule,fuelcell_cf_om_fuel_cost',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+	}
+	if ( technology() == 'Photovoltaic Wind Battery Hybrid') {
+		if (fin == 'Single Owner')
+			cfline( 'photovoltaic_cf_om_fixed,photovoltaic_cf_om_production,photovoltaic_cf_om_capacity,photovoltaic_cf_om_land_lease',0);
+		else 
+			cfline( 'photovoltaic_cf_om_fixed,photovoltaic_cf_om_production,photovoltaic_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+	}
+	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'){
+		cfline( 'generic_cf_om_fixed,generic_cf_om_production,generic_cf_om_capacity,generic_cf_om_fuel_cost',0);
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'fuelcell_cf_om_fixed,fuelcell_cf_om_production,fuelcell_cf_om_capacity,fuelcell_cf_fuelcell_replacement_cost_schedule,fuelcell_cf_om_fuel_cost',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+	}
+
 }
 
 function cf_operating_expenses()
@@ -470,8 +519,8 @@ function cf_financing_activities() // all PPA models except Sale Leaseback
 	cfline('FINANCING ACTIVITIES', -1);
 	cfline( 'issuance_of_equity',0);
 	if ( is_debt_fin() ) { cfline( 'size_of_debt', 0); }
-	cfline( 'ibi_total', 0);
-	cfline( 'cbi_total', 0);
+//	cfline( 'ibi_total', 0);
+//	cfline( 'cbi_total', 0);
 	if ( is_debt_fin() )
 	{
 		cfline('minus:', -1, 0);

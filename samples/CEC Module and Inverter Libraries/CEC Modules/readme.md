@@ -76,9 +76,11 @@ This step could be automated in Excel, but this process is a good excuse to do a
 
 2. Run `cec_modules_test.lk`.
 
-3. Review the results in `cec_modules_test.csv`.
+3. Review the results in `cec_modules_test.csv`. 
 
-4. If all is well, run `test_script_ow.lk` to make sure default PV configurations work correctly.
+4. Manually remove any modules with unrealistic performance ratios or simulation errors, and add to list of bad modules.
+
+5. If all is well, run `test_script_ow.lk` to make sure default PV configurations work correctly.
 
 ## Notes
 

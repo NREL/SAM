@@ -429,7 +429,7 @@ void DefaultsManager::OnSaveAsType(wxCommandEvent &evt)
 				auto &cfgdb = SamApp::Config();
 				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
 				if (pci != NULL) {
-					auto vil = pci->Variables;
+					auto& vil = pci->Variables[0];
 					wxArrayString asCalculated, asIndicator;
 					for (auto& var : vil) {
 						if (var.second->Flags & VF_CHANGE_MODEL) 
@@ -629,7 +629,7 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 			auto& cfgdb = SamApp::Config();
 			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
 			if (pci != NULL) {
-				auto vil = pci->Variables;
+				auto& vil = pci->Variables[0];
 				for (auto& var : vil) {
 					if (var.second->Flags & VF_CHANGE_MODEL) 
 						continue;
@@ -687,7 +687,7 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 			auto& cfgdb = SamApp::Config();
 			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
 			if (pci != NULL) {
-				auto vil = pci->Variables;
+				auto& vil = pci->Variables[0];
 				for (auto& var : vil) {
 					if (var.second->Flags & VF_CHANGE_MODEL)
 						continue;

@@ -156,6 +156,14 @@ in_array = define(item,array) {
 
 // Main ////////////////////////////////////////////////////////////////////////
 
+// check for TOD factors by time step option
+if ( get('ppa_multiplier_model') == 0 )
+{
+	show_page('Revenue');
+	msgbox('TOD Factors by Time Step Required.\nThe current option for TOD factors is \"TOD factors by schedule\". Cambium price data is time series data. Click OK and change the option to \"TOD factors by time step\" and then rerun the macro.\n\n(You can choose either option after downloading the data.)');
+	return;
+}
+
 // get available data choices from cambium
 X = get_meta_data();
 
