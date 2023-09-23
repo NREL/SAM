@@ -53971,6 +53971,8 @@
     "dc_adjust_en_timeindex": 0.0,
     "dc_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
