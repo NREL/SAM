@@ -1,0 +1,67 @@
+﻿/* Drop-down menus in page header */
+
+/* Universal components */
+
+nav#header_menu {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	background-image: url('../images/banner.png');
+	background-color: #0072c6;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	}
+
+/* Phone Version */
+
+@media only screen and (max-width: 768px) {
+	
+	/* Hidden elements in phone version */
+div#phonebutton, div#homebutton a {
+	display: none;
+}
+
+	a#atoclink {
+		display: none;
+	}
+	a#phonemenulink {
+		display: none !important;
+	}
+	
+	nav#header_menu {
+	position: fixed;
+	display: none;
+	top: 7rem; 
+	font-size: calc(0.832rem * 1.2);
+	z-index: 1000;
+	width: 100%;
+	}
+
+} /* @media */
+
+/* Desktop version */
+
+@media only screen and (min-width: 769px) {
+	
+a#phonemenulink {
+	display: none !important;
+}
+/* Company Logo */
+div#homebutton {
+  width: 394px;
+  height: 47px;
+  float: left;
+  position: relative;
+  z-index: 903;
+}
+div#homebutton a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(../images/sam-logo.png) left top no-repeat;
+  text-decoration: none;
+}
+
+} /* @media */
+	
