@@ -479,28 +479,31 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 {
 	ClearLog();
 
-	for (int i=0;i<(int)m_configList->GetCount();i++)
-	{
-		if (!m_configList->IsChecked(i)) continue;
-		
-		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
-		VarTable tab;
-#ifdef UI_BINARY
-		if ( !tab.Read( file ))		
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
-#else
-		if (!tab.Read_text(file))
-#endif
-		{
-			Log("file error: " + file);
-			continue;
-		}
+	wxString name(m_varName->GetValue());
 
-		wxString name( m_varName->GetValue() );
-		
-		if ( VarValue *vv = tab.Get( name ) )
-			Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+	for (int i = 0; i < (int)m_configList->GetCount(); i++) {
+		if (!m_configList->IsChecked(i)) continue;
+
+		// load all vartable
+		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
+		std::vector<VarTable> vt;
+		ConfigInfo* ci = SamApp::Config().Find(m_techList[i], m_finList[i]);
+		vt.resize(ci->Technology.size());
+
+		if (wxFileExists(file))	{
+			if (SamApp::VarTablesFromJSONFile(ci, vt, file.ToStdString())) {
+				for (size_t ndxHybrid = 0; ndxHybrid < vt.size(); ndxHybrid++) {
+
+					if (VarValue* vv = vt[ndxHybrid].Get(name)) {
+						// todo: decode and encode name
+						if (ci->Technology.size() > 1)
+							Log("'" + ci->Technology[ndxHybrid].Lower() + "_" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
+						else
+							Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
+					}
+				}
+			}
+		}
 	}
 }
 

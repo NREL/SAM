@@ -738,7 +738,8 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 
 }
 
-
+// call SamApp::VarTablesFromJSONFile
+/*
 bool Case::VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file)
 {
 	if (!m_config ||(vt.size() < 1) || (m_config->Technology.size()<1))
@@ -773,7 +774,7 @@ bool Case::VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& f
 		}
 	}
 }
-
+*/
 
 
 bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
@@ -1142,7 +1143,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	wxString schk = file;
 	if (wxFileExists(schk))
 	{
-		ok = VarTablesFromJSONFile(vt, file.ToStdString());
+		ok = SamApp::VarTablesFromJSONFile(m_config, vt, file.ToStdString());
 
 		for (size_t ndxHybrid = 0; ndxHybrid < vt.size(); ndxHybrid++) {
 
@@ -1232,7 +1233,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
-		VarTablesFromJSONFile(vt_defaults, file.ToStdString());
+		SamApp::VarTablesFromJSONFile(m_config, vt_defaults, file.ToStdString());
 #else 
 	if (wxFileExists(file))
 	{
