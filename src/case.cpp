@@ -615,7 +615,6 @@ bool Case::SaveDefaults(bool quiet)
 
     rapidjson::StringBuffer os;
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
-    //writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
     doc.Accept(writer);
     wxString sfn = file;
     wxFileName fn(sfn);

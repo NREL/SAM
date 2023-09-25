@@ -43,7 +43,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "main.h"
 #include "casewin.h"
 #include "defmgr.h"
- 
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+
 
 static wxString GetDefaultsFile( const wxString &t, const wxString &f )
 {	
@@ -480,6 +485,8 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 	ClearLog();
 
 	wxString name(m_varName->GetValue());
+	wxString varName = name;
+	size_t ndxHybrid = 0, ndxStart=0, ndxEnd=0;
 
 	for (int i = 0; i < (int)m_configList->GetCount(); i++) {
 		if (!m_configList->IsChecked(i)) continue;
@@ -492,14 +499,33 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 
 		if (wxFileExists(file))	{
 			if (SamApp::VarTablesFromJSONFile(ci, vt, file.ToStdString())) {
-				for (size_t ndxHybrid = 0; ndxHybrid < vt.size(); ndxHybrid++) {
+				if (ci->Technology.size() > 1) {
+					// split hybrid name and match with Technology name or use "Hybrid" for remainder
+					wxArrayString as = wxSplit(name, '_');
+					for (size_t j = 0; j < ci->Technology.size(); j++) {
+						if (ci->Technology[j].Lower() == as[0]) {
+							ndxHybrid = j;
+							varName = name.Right(name.length() - (as[0].length() + 1));
+						}
+					}
+				}
+				if (varName == name) {
+					ndxStart = 0;
+					ndxEnd = vt.size();
+				}
+				else {
+					ndxStart = ndxHybrid;
+					ndxEnd = ndxStart + 1;
+				}
 
-					if (VarValue* vv = vt[ndxHybrid].Get(name)) {
+				for (ndxHybrid = ndxStart; ndxHybrid < ndxEnd; ndxHybrid++) {
+
+					if (VarValue* vv = vt[ndxHybrid].Get(varName)) {
 						// todo: decode and encode name
 						if (ci->Technology.size() > 1)
-							Log("'" + ci->Technology[ndxHybrid].Lower() + "_" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
+							Log("'" + ci->Technology[ndxHybrid].Lower() + "_" + varName + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
 						else
-							Log("'" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
+							Log("'" + varName + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
 					}
 				}
 			}
@@ -549,104 +575,130 @@ void DefaultsManager::OnModify( wxCommandEvent & )
 	int datatype = m_value->GetType();
 	VarValue value = m_value->Get();
 
-	for (int i=0;i<(int)m_configList->GetCount();i++)
-	{
+	for (int i=0;i<(int)m_configList->GetCount();i++) {
 		if (!m_configList->IsChecked(i)) continue;
 				
 		wxString file(GetDefaultsFile(m_techList[i], m_finList[i]));
-		VarTable tab;
-#ifdef UI_BINARY
-		if (!tab.Read(file))
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
-#else
-		if (!tab.Read_text(file))
-#endif
-		{
+		std::vector<VarTable> vt;
+		ConfigInfo* ci = SamApp::Config().Find(m_techList[i], m_finList[i]);
+		vt.resize(ci->Technology.size());
+
+		if (!wxFileExists(file)) {
 			Log("file read error: " + file);
 			continue;
 		}
-
-		wxString name( m_varName->GetValue() );
-		bool needs_write = false;
 		
-		VarValue *vv = tab.Get( name );
-
-		if ( !vv && m_enableAdd->GetValue() )
-		{
-			vv = tab.Create( name, datatype );
-			Log("Created '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
-			needs_write = true;
-		}
-
-
-		if ( !vv )
-			continue;
-
-		if ( en_change && vv->Type() != datatype )
-		{
-			needs_write = true;
-			vv->SetType( datatype );
-			Log("Changed data type to " + GetTypeStr(datatype) + " for '" + name + "' in " + m_techList[i] + ", " + m_finList[i]);
-		}
-
-		if ( vv->Type() == value.Type() )
-		{
-			vv->Copy( value );
-			needs_write = true;
-
-			if ( vv->Type() == VV_NUMBER
-				|| vv->Type() == VV_STRING
-				|| vv->Type() == VV_MATRIX
-				|| vv->Type() == VV_TABLE
-				|| vv->Type() == VV_BINARY )
-			{
-				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + vv->AsString() );
+		if (SamApp::VarTablesFromJSONFile(ci, vt, file.ToStdString())) {
+			wxString name(m_varName->GetValue());
+			wxString varName = name;
+			size_t ndxHybrid = 0;
+			if (ci->Technology.size() > 1) {
+				// split hybrid name and match with Technology name or use "Hybrid" for remainder
+				wxArrayString as = wxSplit(name, '_');
+				for (size_t j = 0; j < ci->Technology.size(); j++) {
+					if (ci->Technology[j].Lower() == as[0]) {
+						ndxHybrid = j;
+						varName = name.Right(name.length() - (as[0].length() + 1));
+					}
+				}
 			}
-			else if ( vv->Type() == VV_ARRAY )
+
+			bool needs_write = false;
+
+			VarValue* vv = vt[ndxHybrid].Get(varName);
+
+			if (!vv && m_enableAdd->GetValue())
 			{
-				size_t arrlen;
-				double *arr = value.Array( & arrlen );
-				wxString s("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = ");
-				if ( arrlen > 25 )
+				vv = vt[ndxHybrid].Create(varName, datatype);
+				Log("Created '" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
+				needs_write = true;
+			}
+
+
+			if (!vv)
+				continue;
+
+			if (en_change && vv->Type() != datatype)
+			{
+				needs_write = true;
+				vv->SetType(datatype);
+				Log("Changed data type to " + GetTypeStr(datatype) + " for '" + name + "' in " + m_techList[i] + ", " + m_finList[i]);
+			}
+
+			if (vv->Type() == value.Type())
+			{
+				vv->Copy(value);
+				needs_write = true;
+
+				if (vv->Type() == VV_NUMBER
+					|| vv->Type() == VV_STRING
+					|| vv->Type() == VV_MATRIX
+					|| vv->Type() == VV_TABLE
+					|| vv->Type() == VV_BINARY)
 				{
-					s += wxString::Format("[%d]: ", (int)arrlen);
-					for( size_t j=0;j<10;j++ )
-						s += wxString::Format("%g%c", (float)arr[j], j<9?',':' ');
-					s += "...";
+					Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + vv->AsString());
 				}
-				else
-					s += vv->AsString();
+				else if (vv->Type() == VV_ARRAY) // additional log reporting
+				{
+					size_t arrlen;
+					double* arr = value.Array(&arrlen);
+					wxString s;
+					if (arrlen > 25)
+					{
+						s += wxString::Format("[%d]: ", (int)arrlen);
+						for (size_t j = 0; j < 10; j++)
+							s += wxString::Format("%g%c", (float)arr[j], j < 9 ? ',' : ' ');
+						s += "...";
+					}
+					else
+						s += vv->AsString();
 
-				Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i]  + " (" + GetTypeStr( vv->Type() ) + ") = " + s );
-
-			}
-		}
-
-		if ( needs_write )
-		{
-#ifdef UI_BINARY
-			if (!tab.Write(file))
-#elif defined(__LOAD_AS_JSON__)
-			wxArrayString asCalculated, asIndicator;
-			auto& cfgdb = SamApp::Config();
-			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
-			if (pci != NULL) {
-				auto& vil = pci->Variables[0];
-				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL) 
-						continue;
-					else if (var.second->Flags & VF_CALCULATED)
-						asCalculated.push_back(var.first);
-					else if (var.second->Flags & VF_INDICATOR)
-						asIndicator.push_back(var.first);
+					Log("Set '" + name + "' in " + m_techList[i] + ", " + m_finList[i] + " (" + GetTypeStr(vv->Type()) + ") = " + s);
 				}
 			}
-			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
-#else
-			if (!tab.Write_text(file))
-#endif
-				Log("file write error: " + file );
+
+			if (needs_write)
+			{
+				auto& cfgdb = SamApp::Config();
+				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+				if (pci != NULL) {
+					rapidjson::Document doc;
+					doc.SetObject();
+
+					for (size_t i = 0; i < pci->Technology.size(); i++) {
+						wxArrayString asCalculated, asIndicator;
+						auto& vil = pci->Variables[i];
+						for (auto& var : vil) {
+							if (var.second->Flags & VF_CHANGE_MODEL)
+								continue;
+							else if (var.second->Flags & VF_CALCULATED)
+								asCalculated.push_back(var.first);
+							else if (var.second->Flags & VF_INDICATOR)
+								asIndicator.push_back(var.first);
+						}
+
+						if (pci->Technology.size() > 1) { //hybrid - write out compute module
+							rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
+							vt[i].Write_JSON(json_table, asCalculated, asIndicator);
+							wxString name = pci->Technology[i];
+							doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+						}
+						else {
+							vt[i].Write_JSON(doc, asCalculated, asIndicator);
+						}
+					}
+
+					rapidjson::StringBuffer os;
+					rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
+					doc.Accept(writer);
+					wxString sfn = file;
+					wxFileName fn(sfn);
+					wxFFileOutputStream out(sfn);
+					out.Write(os.GetString(), os.GetSize());
+					out.Close();
+				}
+
+			}
 		}
 	}
 
@@ -666,50 +718,81 @@ void DefaultsManager::OnDeleteVar(wxCommandEvent &)
 		if (!m_configList->IsChecked(i)) continue;
 		wxString file = GetDefaultsFile(m_techList[i], m_finList[i]);
 
-		VarTable tab;
-#ifdef UI_BINARY
-		if ( !tab.Read( file ) )
-#elif defined(__LOAD_AS_JSON__)
-		if (!tab.Read_JSON(file.ToStdString()))
-#else
-		if (!tab.Read_text(file))
-#endif
-		{
-			Log("read error: " + file );
+		std::vector<VarTable> vt;
+		ConfigInfo* ci = SamApp::Config().Find(m_techList[i], m_finList[i]);
+		vt.resize(ci->Technology.size());
+
+		if (!wxFileExists(file)) {
+			Log("file read error: " + file);
 			continue;
 		}
 
-		if ( tab.Get( name ) )
-		{
-			tab.Delete( name );
-
-#ifdef UI_BINARY
-			if (!tab.Write(file))
-#elif defined(__LOAD_AS_JSON__)
-			wxArrayString asCalculated, asIndicator;
-			auto& cfgdb = SamApp::Config();
-			auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
-			if (pci != NULL) {
-				auto& vil = pci->Variables[0];
-				for (auto& var : vil) {
-					if (var.second->Flags & VF_CHANGE_MODEL)
-						continue;
-					else if (var.second->Flags & VF_CALCULATED)
-						asCalculated.push_back(var.first);
-					else if (var.second->Flags & VF_INDICATOR)
-						asIndicator.push_back(var.first);
+		if (SamApp::VarTablesFromJSONFile(ci, vt, file.ToStdString())) {
+			wxString name(m_varName->GetValue());
+			wxString varName = name;
+			size_t ndxHybrid = 0;
+			if (ci->Technology.size() > 1) {
+				// split hybrid name and match with Technology name or use "Hybrid" for remainder
+				wxArrayString as = wxSplit(name, '_');
+				for (size_t j = 0; j < ci->Technology.size(); j++) {
+					if (ci->Technology[j].Lower() == as[0]) {
+						ndxHybrid = j;
+						varName = name.Right(name.length() - (as[0].length() + 1));
+					}
 				}
 			}
-			if (!tab.Write_JSON(file.ToStdString(), asCalculated, asIndicator))
-#else
-			if (!tab.Write_text(file))
-#endif
-				Log("Error writing: " + file );
+
+			if (VarValue* vv = vt[ndxHybrid].Get(varName)) {
+
+
+				vt[ndxHybrid].Delete(varName);
+
+				wxArrayString asCalculated, asIndicator;
+				auto& cfgdb = SamApp::Config();
+				auto pci = cfgdb.Find(m_techList[i], m_finList[i]);
+				if (pci != NULL) {
+					rapidjson::Document doc;
+					doc.SetObject();
+
+					for (size_t i = 0; i < pci->Technology.size(); i++) {
+						wxArrayString asCalculated, asIndicator;
+						auto& vil = pci->Variables[i];
+						for (auto& var : vil) {
+							if (var.second->Flags & VF_CHANGE_MODEL)
+								continue;
+							else if (var.second->Flags & VF_CALCULATED)
+								asCalculated.push_back(var.first);
+							else if (var.second->Flags & VF_INDICATOR)
+								asIndicator.push_back(var.first);
+						}
+
+						if (pci->Technology.size() > 1) { //hybrid - write out compute module
+							rapidjson::Document json_table(&doc.GetAllocator()); // for table inside of json document.
+							vt[i].Write_JSON(json_table, asCalculated, asIndicator);
+							wxString name = pci->Technology[i];
+							doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+						}
+						else {
+							vt[i].Write_JSON(doc, asCalculated, asIndicator);
+						}
+					}
+
+					rapidjson::StringBuffer os;
+					rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
+					doc.Accept(writer);
+					wxString sfn = file;
+					wxFileName fn(sfn);
+					wxFFileOutputStream out(sfn);
+					out.Write(os.GetString(), os.GetSize());
+					out.Close();
+					Log("Deleted '" + name + "' from " + m_techList[i] + ", " + m_finList[i]);
+				}
+			}
 			else
-				Log("Deleted '" + name + "' from " + m_techList[i] + ", " + m_finList[i]);
+				Log("Variable '" + name + "' not found in " + m_techList[i] + ", " + m_finList[i]);
 		}
 		else
-			Log("Variable '" + name + "' not found in " + m_techList[i] + ", " + m_finList[i]);
+			Log("JSON not loaded for " + m_techList[i] + ", " + m_finList[i]);
 	}
 }
 
