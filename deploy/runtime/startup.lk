@@ -2489,7 +2489,7 @@ function setup_standalone_battery_pages(is_btm) {
 }
 
 setconfig( 'Standalone Battery', 'Residential' );
-setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(BTM);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
@@ -2503,7 +2503,7 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs'
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Standalone Battery', 'Third Party' );
-setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_standalone_battery_pages(BTM);
 setup_thirdparty_pages( LOAD_SIMPLE );
 
