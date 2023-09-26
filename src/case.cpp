@@ -1249,7 +1249,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	for (size_t i_var = 0; i_var < m_config->Technology.size(); i_var++) {
 		// erase all input variables that are no longer in the current configuration
 		wxArrayString to_remove;
-		// TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
+		// iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
 		VarInfoLookup& vars = m_config->Variables[i_var];
 
 		for (VarTable::iterator it = m_vals[i_var].begin(); it != m_vals[i_var].end(); ++it)
