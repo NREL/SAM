@@ -7,24 +7,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -37,7 +21,7 @@
         0.0,
         0.0
     ],
-   "analysis_period": 25.0,
+    "analysis_period": 25.0,
     "analysis_period_warning": "No messages.",
     "anchor": 0.0,
     "avail_bop_loss": 0.5,
