@@ -9168,6 +9168,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -9719,6 +9721,8 @@
     "dc_adjust_en_timeindex": 0.0,
     "dc_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -40391,7 +40395,7 @@
     "subarray2_land_area": 0.0,
     "subarray2_mismatch_loss": 2.0,
     "subarray2_mod_orient": 0.0,
-    "subarray2_modules_per_string": 0.0,
+    "subarray2_modules_per_string": 1.0,
     "subarray2_monthly_tilt": [
         40.0,
         40.0,
@@ -40411,7 +40415,7 @@
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
     "subarray2_nmody": 2.0,
-    "subarray2_nstrings": 0.0,
+    "subarray2_nstrings": 1.0,
     "subarray2_rack_shading": 0.0,
     "subarray2_rear_soiling_loss": 0.0,
     "subarray2_ref_nmodules": 0.0,
@@ -40476,7 +40480,7 @@
     "subarray3_land_area": 0.0,
     "subarray3_mismatch_loss": 2.0,
     "subarray3_mod_orient": 0.0,
-    "subarray3_modules_per_string": 0.0,
+    "subarray3_modules_per_string": 1.0,
     "subarray3_monthly_tilt": [
         40.0,
         40.0,
@@ -40496,7 +40500,7 @@
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
     "subarray3_nmody": 2.0,
-    "subarray3_nstrings": 0.0,
+    "subarray3_nstrings": 1.0,
     "subarray3_rack_shading": 0.0,
     "subarray3_rear_soiling_loss": 0.0,
     "subarray3_ref_nmodules": 0.0,
@@ -40561,7 +40565,7 @@
     "subarray4_land_area": 0.0,
     "subarray4_mismatch_loss": 2.0,
     "subarray4_mod_orient": 0.0,
-    "subarray4_modules_per_string": 0.0,
+    "subarray4_modules_per_string": 1.0,
     "subarray4_monthly_tilt": [
         40.0,
         40.0,
@@ -40581,7 +40585,7 @@
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,
     "subarray4_nmody": 2.0,
-    "subarray4_nstrings": 0.0,
+    "subarray4_nstrings": 1.0,
     "subarray4_rack_shading": 0.0,
     "subarray4_rear_soiling_loss": 0.0,
     "subarray4_ref_nmodules": 0.0,

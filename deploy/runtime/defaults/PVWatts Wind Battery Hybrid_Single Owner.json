@@ -7,12 +7,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
@@ -255,24 +251,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
@@ -296,7 +276,7 @@
         "bos_cost_total": 71400000.0,
         "cols": 1.0,
         "degradation": [
-            0.0
+            0.5
         ],
         "desired_farm_size": 10.0,
         "elec_eff_loss": 1.91,

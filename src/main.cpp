@@ -2582,6 +2582,43 @@ bool SamApp::WriteProxyFile( const wxString &proxy )
 }
 
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
+
+bool SamApp::VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file)
+{
+	if (!ci || (vt.size() < 1) || (ci->Technology.size() < 1))
+		return false;
+	else if (ci->Technology.size() < 2)
+		return vt[0].Read_JSON(file);
+	else { // hybrid
+		rapidjson::Document doc, table;
+		wxFileInputStream fis(file);
+
+		if (!fis.IsOk()) {
+			wxLogError(wxS("Couldn't open the file '%s'."), file);
+			return false;
+		}
+		wxStringOutputStream os;
+		fis.Read(os);
+
+		rapidjson::StringStream is(os.GetString().c_str());
+
+		doc.ParseStream(is);
+		if (doc.HasParseError()) {
+			wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+			return false;
+		}
+		else {
+			bool ret = true;
+			for (size_t i = 0; i < ci->Technology.size(); i++) {
+				table.CopyFrom(doc[ci->Technology[i].ToStdString().c_str()], doc.GetAllocator());
+				ret = ret && vt[i].Read_JSON(table);
+			}
+			return ret;
+		}
+	}
+}
+
+
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
 

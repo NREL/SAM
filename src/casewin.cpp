@@ -2079,12 +2079,17 @@ void VarSelectDialog::SetConfiguration( const wxString &tech, const wxString &fi
 	if ( ConfigInfo *ci = SamApp::Config().Find( tech, fin ) )
 	{
 		wxArrayString names, labels;
-		for( VarInfoLookup::iterator it = ci->Variables[0].begin();	it != ci->Variables[0].end();++it )
-		{
-			names.Add( it->first );
-			wxString label = PrettyPrintLabel(it->first, *(it->second));
 
-			labels.Add( label );
+		for (size_t ndxHybrid = 0; ndxHybrid < ci->Technology.size(); ndxHybrid++) {
+			for (VarInfoLookup::iterator it = ci->Variables[ndxHybrid].begin(); it != ci->Variables[ndxHybrid].end(); ++it) {
+				wxString name = it->first;
+				if (ci->Technology.size() > 1) name = ci->Technology[ndxHybrid].Lower() + "_" + name;
+				
+				names.Add(name);
+				wxString label = PrettyPrintLabel(name, *(it->second));
+
+				labels.Add(label);
+			}
 		}
 
 		wxArrayString output_names, output_labels, output_units, output_groups;
