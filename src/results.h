@@ -210,6 +210,7 @@ private:
 	wxSplitterWindow *m_cf_splitter = nullptr;
 	wxPanel *m_cf_top_panel = nullptr;
 	wxPanel *m_cf_bottom_panel = nullptr;
+	wxPanel *m_cf_panel = nullptr;
 
 	GraphViewer *m_graphViewer = nullptr;
 	UncertaintiesViewer *m_uncertaintiesViewer = nullptr;

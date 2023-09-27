@@ -324,7 +324,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	
 
 	UpdateConfiguration();
-
+/*
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
@@ -334,7 +334,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_baseCaseResults->LoadPerspective( m_case->Perspective() );
 
 	UpdateResults();
-
+*/
 }
 
 CaseWindow::~CaseWindow()
@@ -426,7 +426,10 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		if ( !silent ) {
 			UpdateResults();
 			m_pageFlipper->SetSelection( 1 );
-            m_baseCaseResults->SetSelection(i_results_page);
+			if (m_baseCaseResults->GetPage(i_results_page)->IsShown())
+				m_baseCaseResults->SetSelection(i_results_page);
+			else 
+				m_baseCaseResults->SetSelection(0);
 		}
 		return true;
 	}
@@ -1371,6 +1374,8 @@ void CaseWindow::UpdateConfiguration()
 	ConfigInfo* cfg = m_case->GetConfiguration();
 	if (!cfg) return;
 
+	m_case->BaseCase().Clear(); // reset for UpdateResults
+
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
 
 
@@ -1496,6 +1501,17 @@ void CaseWindow::UpdateConfiguration()
 	}
 	m_szsims->Layout();
 
+
+	// load graphs and perspective from case
+	std::vector<Graph> gl;
+	m_case->GetGraphs(gl);
+
+
+	m_baseCaseResults->SetGraphs(gl);
+	m_baseCaseResults->LoadPerspective(m_case->Perspective());
+
+	UpdateResults();
+/*
 	if (m_case->GetConfiguration()->TechnologyFullName == "Wind Power")
 	{
 		// testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
@@ -1509,7 +1525,7 @@ void CaseWindow::UpdateConfiguration()
 		ul.push_back(u3);
 		m_baseCaseResults->SetUncertainties(ul);
 	}
-
+*/
 	m_left_panel->Layout();
 
 	Layout();
