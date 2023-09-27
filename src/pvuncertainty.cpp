@@ -357,9 +357,10 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
             wxString weatherFile = m_folder->GetValue() + "/" + folder_files[n];
 
             Simulation *sim = new Simulation( m_case, wxString::Format("Year %d", (int)years[n]) );
+			sim->Clear(); // resets overrides and inputs based on configuration
             sims.push_back( sim );
 
-            sim->Override( "use_specific_weather_file", VarValue(true), 0 ); // TODO: hybrids
+            sim->Override( "use_specific_weather_file", VarValue(true), 0 ); // TODO: hybrids enable for multiple vartables
             sim->Override( "user_specified_weather_file", VarValue(weatherFile), 0 ); // TODO: hybrids
             sim->Override("use_specific_wf_wind", VarValue(true), 0);// TODO: hybrids
             sim->Override("user_specified_wf_wind", VarValue(weatherFile), 0); // TODO: hybrids

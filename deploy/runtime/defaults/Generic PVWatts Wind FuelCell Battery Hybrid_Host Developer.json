@@ -6,7 +6,9 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                -6.277438562204193e66
+                0.0,
+                0.0,
+                0.0
             ]
         ],
         "adjust_timeindex": [
@@ -81,24 +83,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
@@ -341,6 +327,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
