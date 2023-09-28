@@ -1567,6 +1567,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pressure_drawdown_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 840.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Pressure drawdown is the difference between the reservoir pressure and the flowing wellbore pressure, which drives fluids from the reservoir into the wellbore."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Pressure drawdown is the difference between the reservoir pressure and the flowing wellbore pressure, which drives fluids from the reservoir into the wellbore."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Pressure Drawdown"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2031,6 +2068,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_depth_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The depth below ground at which the temperature specified by the resource temperature exists."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The depth below ground at which the temperature specified by the resource temperature exists."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Resource Depth"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2114,6 +2188,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_potential_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "An estimate of the total amount of energy available in the underground thermal reservoir. This determines how many times the plant can be renewed."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "An estimate of the total amount of energy available in the underground thermal reservoir. This determines how many times the plant can be renewed."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Resource Potential"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2194,6 +2305,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 0.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_temperature_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The temperature of the reservoir at the depth given by the resource depth."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The temperature of the reservoir at the depth given by the resource depth."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Resource Temperature"
                 }
             }
         },
@@ -3131,7 +3279,6 @@
         ""
     ],
     "Callbacks": [
-        "function handle_change_to_hydrothermal()",
         "{",
         "\t// if we just changed to 'hydrothermal'",
         "\tif (${resource_type} == 0) {",
