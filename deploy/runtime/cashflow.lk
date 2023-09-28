@@ -1029,6 +1029,15 @@ function community_solar_intermediates()
 
 function create_workbook( wkbk )
 {
+
+	tech = technology();
+	
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )
+	{
+		msgbox('Send-to Excel with Equations Not Available.\nThis option is not available for ' + tech + ' configurations.');
+		exit;
+	}
+	
 	source = runtimedir() + 'spreadsheets/' + wkbk;
     fn = case_name() + '.xlsx';
 	destination = cwd();
