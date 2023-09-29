@@ -152,7 +152,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Capital Cost"
+                    "String": "Installation Cost"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -1025,7 +1025,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Hybrid fixed annual cost by capacity",
-            "Units": "$/kW-yr",
+            "Units": "$/kWac-yr",
             "Group": "Hybrid Costs",
             "IndexLabels": "",
             "Flags": 2.0,
