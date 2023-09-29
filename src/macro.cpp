@@ -422,8 +422,8 @@ public:
 			return;
 		}
 
-		for( VarInfoLookup::iterator it = cc->Variables().begin();
-			it != cc->Variables().end();
+		for( VarInfoLookup::iterator it = cc->Variables(0).begin();
+			it != cc->Variables(0).end();
 			++it )
 		{
 			VarInfo &vi = *(it->second);
@@ -493,10 +493,10 @@ public:
 
 		for( size_t i=0;i<m_names.size();i++ )
 		{
-			wxString L(cc->Variables().Label( m_names[i] ));
+			wxString L(cc->Variables(0).Label( m_names[i] ));
 			if ( L.IsEmpty() ) L = "{ " + m_names[i] + " }";
-			if ( !cc->Variables().Units( m_names[i]).IsEmpty() )
-				L += " (" +cc->Variables().Units( m_names[i]) + ")";
+			if ( !cc->Variables(0).Units( m_names[i]).IsEmpty() )
+				L += " (" +cc->Variables(0).Units( m_names[i]) + ")";
 
 			if ( m_enableMeta && !m_meta[m_names[i]].IsEmpty())
 				L += ": " + m_meta[m_names[i]];

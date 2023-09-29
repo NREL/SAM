@@ -396,6 +396,34 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 	SamApp::Config().SetModules( list );
 }
 
+
+static void fcall_sethybridvariabledependencies(lk::invoke_t& cxt)
+{
+	LK_DOC("sethybridvariabledependencies", "Sets the hybrid simulation models variable dependencies for equations and callbacks", "(table:IndependentVartableIndex,IndependentVariableName,DependentVartableIndex,DependentVariableName):none");
+
+	std::vector<HybridVariableDependencies> dependencies;
+	lk::vardata_t &vardependencies = cxt.arg(0);
+	for (size_t i = 0; i < vardependencies.length(); i++) {
+		HybridVariableDependencies hvd;
+		lk::vardata_t& item = vardependencies.index(i)->deref();
+		if (item.type() == lk::vardata_t::HASH)	{
+			if (lk::vardata_t* IndependentVartableIndex = item.lookup("IndependentVartableIndex"))
+				hvd.IndependentVariableVarTable = IndependentVartableIndex->as_integer();
+			if (lk::vardata_t* IndependentVariableName = item.lookup("IndependentVariableName"))
+				hvd.IndependentVariableName = IndependentVariableName->as_string();
+			if (lk::vardata_t* DependentVartableIndex = item.lookup("DependentVartableIndex"))
+				hvd.DependentVariableVarTable = DependentVartableIndex->as_integer();
+			if (lk::vardata_t* DependentVariableName = item.lookup("DependentVariableName"))
+				hvd.DependentVariableName = DependentVariableName->as_string();
+		}
+		if (!hvd.IndependentVariableName.IsEmpty() && !hvd.DependentVariableName.IsEmpty())
+			dependencies.push_back(hvd);
+	}
+	if (dependencies.size() == 0) return;
+
+	SamApp::Config().SetHybridVariableDependencies(dependencies);
+}
+
 static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
@@ -451,11 +479,14 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString sidebar = pages[0][0].Name;
 	wxString help = sidebar;
 	wxString exclusive_var;
+    wxString bin_name = "";
 	bool exclusive_tabs = false;
     bool exclusive_radio = false;
     bool exclusive_hide = false;
+    bool exclusive_top = false;
 	std::vector<PageInfo> excl_header_pages;
     std::vector<PageInfo> excl_footer_pages;
+    std::vector<PageInfo> bin_summary;
 
 	if ( cxt.arg_count() > 1 )
 	{
@@ -479,6 +510,12 @@ static void fcall_addpage( lk::invoke_t &cxt )
         if (lk::vardata_t* x = props.lookup("exclusive_hide"))
             exclusive_hide = x->as_boolean();
 
+        if (lk::vardata_t* x = props.lookup("bin_name"))
+            bin_name = x->as_string();
+
+        if (lk::vardata_t* x = props.lookup("top_page"))
+            exclusive_top = x->as_boolean();
+
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
 			lk::vardata_t &vec = x->deref();
@@ -494,6 +531,22 @@ static void fcall_addpage( lk::invoke_t &cxt )
 			}
 
 		}
+
+        if (lk::vardata_t* x = props.lookup("bin_summary"))
+        {
+            lk::vardata_t& vec = x->deref();
+            if (vec.type() == lk::vardata_t::VECTOR)
+            {
+                for (size_t i = 0; i < vec.length(); i++)
+                {
+                    PageInfo pi;
+                    pi.Name = vec.index(i)->as_string();
+                    pi.Caption = pi.Name;
+                    bin_summary.push_back(pi);
+                }
+            }
+
+        }
 
         if (lk::vardata_t* x = props.lookup("exclusive_footer_pages"))
         {
@@ -511,7 +564,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
         }
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide);
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide, bin_name, exclusive_top);
 }
 
 
@@ -1049,7 +1102,7 @@ static void fcall_output(lk::invoke_t &cxt)
 void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 {
 	result.nullify();
-	if (VarInfo *vi = c->Variables().Lookup( name ))
+	if (VarInfo *vi = c->Variables(0).Lookup( name ))
 	{
 		result.empty_hash();
 		result.hash_item("label").assign( vi->Label );
@@ -1104,26 +1157,31 @@ void fcall_value( lk::invoke_t &cxt )
 
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc.GetValues().Get( name ) )
-	{
-		if ( cxt.arg_count() > 1 )
+	auto& c = cc.GetCase();
+	bool found = false;
+	for (size_t ndxHybrid = 0; !found && ndxHybrid < c.GetConfiguration()->Technology.size(); ndxHybrid++) {
+		if (VarValue* vv = cc.GetValues(ndxHybrid).Get(name))
 		{
-			if ( vv->Read( cxt.arg(1), false ) ){
-			    bool trigger = true;
-			    if (cxt.arg_count() == 3 ) {
-			        trigger = cxt.arg(2).as_boolean();
-			    }
-			    if (trigger) {
-			      cc.GetCase().VariableChanged( name );
-			    }
+			found = true;
+			if (cxt.arg_count() > 1)
+			{
+				if (vv->Read(cxt.arg(1), false)) {
+					bool trigger = true;
+					if (cxt.arg_count() == 3) {
+						trigger = cxt.arg(2).as_boolean();
+					}
+					if (trigger) {
+						cc.GetCase().VariableChanged(name, ndxHybrid); 
+					}
+				}
+				else
+					cxt.error("data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " (" + wxString(cxt.arg(1).typestr()) + ")");
 			}
 			else
-				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
+				vv->Write(cxt.result());
 		}
-		else
-			vv->Write( cxt.result() );
 	}
-	else
+	if (!found)
 		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
@@ -1180,7 +1238,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 		ipage->Refresh();
         auto UIObjects = ipage->GetObjects();
         for (auto &i: UIObjects){
-            VarValue *vv = cur_case->Values().Get( i->GetName() );
+            VarValue *vv = cur_case->Values(0).Get( i->GetName() );
             if ( wxWindow *win = i->GetNative() )
                 win->Refresh();
             if ( ipage && vv )
@@ -1193,7 +1251,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 	{
 	    wxString var = cxt.arg(0).as_string();
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case->Values().Get( var );
+        VarValue *vv = cur_case->Values(0).Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
@@ -1870,7 +1928,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values().Get(name))
+						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
 						{
 							
 							if (!field.IsEmpty())
@@ -1998,7 +2056,7 @@ void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 						//						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vi = ci->Variables.Lookup(name))
+						if (auto vi = ci->Variables[0].Lookup(name))
 						{
 							auto& vv = vi->DefaultValue;
 							if (!field.IsEmpty())
@@ -2118,7 +2176,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 			if (existing_type != data_type)
 			{
-				if (VarValue *vv = sim.GetInput(name))
+				if (VarValue *vv = sim.GetInput(name, 0)) // TODO: hybrids
 				{
 					if (!field.IsEmpty())
 					{
@@ -3145,7 +3203,7 @@ void fcall_calculated_list(lk::invoke_t &cxt)
 	if (!ci) return;
 
 	wxArrayString sim_list = ci->Simulations;
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 	if (sim_list.size() == 0)
 	{
@@ -3200,8 +3258,8 @@ void fcall_group_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 		// skip calculated and indicator values
@@ -3211,7 +3269,7 @@ void fcall_group_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3244,6 +3302,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 	{
 		wxArrayString errors;
 		wxArrayString list;
+		size_t ndx = 0;
 
 		for (row = 0; row < (int)csv.NumRows(); row++)
 		{
@@ -3251,24 +3310,32 @@ void fcall_group_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				if (!VarValue::Parse(vv->Type(), value, *vv))
+
+			bool found = false;
+
+			for (size_t ndxHybrid=0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) { // TODO: hybrids - move found outside of csv file and assume all in same vartable
+
+				if (VarValue* vv = c->Values(ndxHybrid).Get(var_name))
 				{
-					errors.Add("Problem assigning " + var_name + " to " + value);
-					ret_val = false;
+					found = true;
+					ndx = ndxHybrid;
+					if (!VarValue::Parse(vv->Type(), value, *vv))
+					{
+						errors.Add("Problem assigning " + var_name + " to " + value);
+						ret_val = false;
+					}
+					else
+						list.Add(var_name);
 				}
-				else
-					list.Add(var_name);
 			}
-			else
+			if (!found)
 			{// variable not found
 				errors.Add("Problem assigning " + var_name + " missing with " + value);
 				ret_val = false;
 			}
 		}
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged(list);
+		c->VariablesChanged(list, ndx);
 	}
 	cxt.result().assign(ret_val ? 1.0 : 0.0);
 }
@@ -3289,8 +3356,8 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 //		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
@@ -3299,7 +3366,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3342,7 +3409,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name)) // TODO: hybrids - determine correct vartable
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
@@ -3521,25 +3588,25 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
 				dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
 				var_name = "ur_ec_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(ec_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_cr_tou_mat";
-				if (VarValue* vv = c->Values().Get(var_name))
+				if (VarValue* vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(cr_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_flat_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_flat_mat);
 					list.Add(var_name);
@@ -3548,7 +3615,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 		}
 
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged( list );
+		c->VariablesChanged( list, 0 ); // TODO: hybrids
 	}
 
 	cxt.result().assign( ret_val ? 1.0 : 0.0 );
@@ -3787,7 +3854,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 	cxt.result().empty_hash();
 
 	wxString name(cxt.arg(0).as_string());
-	VarValue *vv = cc.GetCase().Values().Get(name);
+	VarValue *vv = cc.GetCase().Values(0).Get(name);
 	if (!vv)
 	{
 		cxt.result().hash_item("ierr").assign(1.0);
@@ -4108,7 +4175,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 
 	wxString type(cxt.arg(0).as_string().Lower());
 	Library *reloaded = 0;
-    Library* reloaded2 = 0;
 
 	if ( type == "solar" )
 	{
@@ -4133,9 +4199,7 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
         wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
-        //WaveResourceTSData_makeJPD(wave_resource_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
-        //reloaded2 = Library::Load(wave_resource_db);
     }
 
 
@@ -4149,13 +4213,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		}
 	}
 
-    if (reloaded2 != 0)
-    {
-        std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-        for (size_t i = 0; i < objs.size(); i++)
-            if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
-                lc->ReloadLibrary();
-    }
 }
 
 void fcall_makejpdfile(lk::invoke_t& cxt)
@@ -5754,8 +5811,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     size_t length;
     ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
-    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
-    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
+    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // TODO: hybrids
+    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value()); // TODO: hybrids
     ssc_data_set_array(p_data, "gen", gen, length);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
@@ -5926,7 +5983,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
 
-    VarTable* vartable = &sam_case->Values();
+    VarTable* vartable = &sam_case->Values(0);  //TODO: hybrid update for Wind
 
     ssc_data_t landbosse_data = ssc_data_create();
 
@@ -6103,6 +6160,7 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addpage,
 		fcall_setting,
 		fcall_setmodules,
+		fcall_sethybridvariabledependencies,
 		0 };
 	return (lk::fcall_t*)vec;
 }

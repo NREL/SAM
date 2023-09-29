@@ -500,10 +500,20 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 	// when creating a new case, at least
 	// show the first input page
+   
 	wxArrayString pages = win->GetInputPages();
-	if ( pages.size() > 0 )
-		win->SwitchToInputPage( pages[0] );
-
+	if (pages.size() > 0) {
+		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
+			// hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
+            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
+                win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
+                //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
+            }
+		}
+		else {
+			win->SwitchToInputPage(pages[0]);
+		}
+	} //mp trying to not overwrite first page switch at start
 	return win;
 }
 
@@ -656,7 +666,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
 			c->SetConfiguration(tech, fin);
 			wxString error = "";
-			c->LoadFromJSON(sfn, &error);
+//			c->LoadFromJSON(sfn, &error);
 			CreateCaseWindow(c);
 			if (error.Len() > 0) wxMessageBox(error);
 		}
@@ -740,7 +750,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
 			c->SetConfiguration(tech, fin);
 			wxString error = "";
-			c->LoadFromSSCJSON(sfn, &error);
+//			c->LoadFromSSCJSON(sfn, &error);
 			CreateCaseWindow(c);
 			if (error.Len() > 0) wxMessageBox(error);
 		}
@@ -781,7 +791,7 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 					c->SetConfiguration(tech, fin); // loads defaults
 					error = "";
 					// overwrite defaults with JSON values
-					c->LoadFromSSCJSON(sfn, &error);
+//					c->LoadFromSSCJSON(sfn, &error);
 					auto* cw = CreateCaseWindow(c);
 					//cw->RunSSCBaseCase(sfn, false, &error); // optionally run base case
 					//if (error.Len() > 0) wxMessageBox(error);
@@ -812,8 +822,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			wxString case_name = m_project.GetCaseName(cases[0]);
 			col_hdrs.push_back(case_name);
 			title = "Inputs Browser"; //: " + case_name;
-			var_table_vec.push_back(cases[0]->Values());
-			var_info_lookup_vec.push_back(cases[0]->Variables());
+			var_table_vec.push_back(cases[0]->Values(0)); // TODO - handle hybrid technologies
+			var_info_lookup_vec.push_back(cases[0]->Variables(0));
 		}
 		else
 		{
@@ -823,8 +833,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			col_hdrs.Insert("Variable", 0);
 			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
 			{
-				var_table_vec.push_back((*it)->Values());
-				var_info_lookup_vec.push_back((*it)->Variables());
+				var_table_vec.push_back((*it)->Values(0));  // TODO - handle hybrid technologies
+				var_info_lookup_vec.push_back((*it)->Variables(0));
 			}
 		}
 
@@ -1347,7 +1357,8 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->LoadDefaults();
 
 			// update ui
-			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
+			for (size_t i = 0; i < c->GetConfiguration()->Technology.Count(); i++)
+				c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values(i).ListAll() ) ); // TODO - test hybrids UI update
 		}
 		break;
 	case ID_CASE_EXCELEXCH:
@@ -1827,7 +1838,9 @@ ConfigInfo::ConfigInfo()
 
 ConfigInfo::~ConfigInfo()
 {
-	for( size_t i=0;i<InputPageGroups.size();i++) delete InputPageGroups[i];
+	for( size_t i=0;i<InputPageGroups.size();i++) 
+		for (size_t j=0; j< InputPageGroups[i].size(); j++)
+			delete InputPageGroups[i][j];
 }
 
 
@@ -1862,7 +1875,25 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 		if ( !Find( tech, fin[i] ) )
 		{
 			ConfigInfo *ci = new ConfigInfo;
-			ci->Technology = tech;
+
+			size_t vector_sizes = 1;
+			// hybrid handling
+			ci->TechnologyFullName = tech;
+			auto as = wxSplit(tech, ' ');
+			if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+				vector_sizes = as.size();
+				for (size_t j = 0; j < as.size(); j++)
+					ci->Technology.push_back(as[j]);
+			}
+			else {
+				ci->Technology.push_back(tech);
+			}
+			ci->InputPageGroups.resize(vector_sizes);
+			ci->InputPages.resize(vector_sizes);
+			ci->Variables.resize(vector_sizes);
+			ci->AutoVariables.resize(vector_sizes);
+			ci->Equations.resize(vector_sizes);
+
 			ci->Financing = fin[i];
 			m_configList.push_back( ci );
 		}
@@ -1876,13 +1907,23 @@ void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 
 void ConfigDatabase::SetModules( const wxArrayString &list )
 {
-	if ( m_curConfig != 0 ) m_curConfig->Simulations = list;
+	if (m_curConfig != NULL) {
+		m_curConfig->Simulations = list;
+	}
 }
+
+void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVariableDependencies>& dependencies)
+{
+	if (m_curConfig != NULL) {
+		m_curConfig->HybridVariables = dependencies;
+	}
+}
+
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide )
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top)
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1895,41 +1936,87 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusiveHeaderPages = exclhdr_pages;
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
+    ip->BinName = bin_name;
+    ip->ExclTop = excl_top;
 
-	m_curConfig->InputPageGroups.push_back( ip );
+	int ndx = 0;
+	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
+	if (m_curConfig->Technology.size() > 1)  { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" does not end with "Hybrid"
+		ndx = m_curConfig->Technology.Index(bin_name);
+        if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology and all technologies so that vartables contain dependencies like "analysisperiod" and "salestax"
+			ndx = (int)m_curConfig->Technology.size() - 1; // TODO: check that values are updated on other forms.
+            m_curConfig->InputPageGroups[ndx].push_back(ip);
+        }
+		else if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
+			wxMessageBox("Internal error in configuration.\n\n" + m_curConfig->TechnologyFullName + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
+				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
+			return;
+		}
+		else {
+			m_curConfig->InputPageGroups[ndx].push_back(ip);
+		}
+	}
+	else { // InputPageGroups sized during Add call - non-hybrid use first element
+		m_curConfig->InputPageGroups[ndx].push_back(ip);
+	}
+	// tracks which vartable, vardatabase and eqndatabase to use - 0 for non-hybrids
+	// pagegroup
+	ip->ndxHybrid = ndx;
+	// pages
+	for (size_t i = 0; i < ip->Pages.size(); i++)
+		for (size_t j = 0; j < ip->Pages[i].size(); j++)
+			ip->Pages[i][j].ndxHybrid = ndx;
+	//exclusive header pages e.g. Utility Rate - Enable
+	for (size_t i = 0; i < ip->ExclusiveHeaderPages.size(); i++)
+			ip->ExclusiveHeaderPages[i].ndxHybrid = ndx;
+
 }
 
-void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci )
+void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t ndx )
 {
 	for( size_t i=0;i<Pages.size();i++ )
 	{
 		PageInfo &pi = Pages[i];
 		if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
 		{
-			ci->InputPages[ pi.Name ] = ipd;
+			ci->InputPages[ndx][ pi.Name ] = ipd;
 
-			ci->Equations.AddDatabase( &ipd->Equations() );
-			ci->Equations.Add( ipd->Equations().GetEquations() );
+			ci->Equations[ndx].AddDatabase(&ipd->Equations());
+			ci->Equations[ndx].Add(ipd->Equations().GetEquations());
 
 			VarDatabase &vars = ipd->Variables();
-			for( VarDatabase::iterator it = vars.begin();
-				it != vars.end();
-				++it )
-			{
-				if ( !ci->Variables.Add( it->first, it->second ) )
-				{
-					wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+			for( VarDatabase::iterator it = vars.begin();it != vars.end();++it )	{
+				if ( !ci->Variables[ndx].Add(it->first, it->second))	{
+					wxMessageBox("Internal error in configuration.\n\n" + ci->TechnologyFullName  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
+				/*
+                // TODO: hybrid additional variables - need general way to handle - in startup.lk
+				if (ci->Technology.size() > 1) { // hybrids
+					if ((it->first.Lower() == "analysis_period") || (it->first.Lower() == "sales_tax_rate")) { // in financial pages ndx==3
+						if (ci->Variables.size() > 1) ci->Variables[0].Add(it->first, it->second);// add to pvwatts
+						if (ci->Variables.size() > 2) ci->Variables[1].Add(it->first, it->second);// add to wind
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					if (it->first.Lower() == "solar_resource_file") { // in pvwatts pages ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					// cannot add now that Hybrid Summary page contains variables
+					if (it->first.Lower() == "system_capacity") { // use pvwatts initially ndx==0
+						if (ndx == 0 && ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+					if (ndx == 0 && it->first.Lower() == "total_installed_cost") { // use pvwatts initially ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+				}
+				*/
 			}
 
-			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
-			{
-				VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
-				if( vv == 0 )
-				{
-					vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
+			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )	{
+				VarInfo *vv = ci->AutoVariables[ndx].Lookup(pi.CollapsiblePageVar);
+				if( vv == 0 ){
+					vv = ci->AutoVariables[ndx].Create(pi.CollapsiblePageVar, VV_NUMBER,
 						"Current selection for " + pi.Caption );
 
 					vv->Flags |= VF_COLLAPSIBLE_PANE;
@@ -1938,7 +2025,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 				else
 					wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
 
-				ci->Variables.Add( pi.CollapsiblePageVar, vv );
+				ci->Variables[ndx].Add(pi.CollapsiblePageVar, vv);
 			}
 		}
 		else
@@ -1952,37 +2039,51 @@ void ConfigDatabase::RebuildCaches()
 		it0 != m_configList.end(); ++it0 )
 	{
 		ConfigInfo *ci = *it0;
+		size_t i;
 
-		ci->Variables.clear();
-		ci->Equations.Clear();
-		ci->AutoVariables.clear();
-		ci->InputPages.clear();
+		// all set to same size in Add method
+		for (i=0;i<ci->Variables.size(); i++)
+			ci->Variables[i].clear();
+		for (i = 0; i < ci->Equations.size(); i++)
+			ci->Equations[i].Clear();
+		for (i = 0; i < ci->AutoVariables.size(); i++)
+			ci->AutoVariables[i].clear();
+		for (i = 0; i < ci->InputPages.size(); i++)
+			ci->InputPages[i].clear();
 
-		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups.begin();
-			it1 != ci->InputPageGroups.end(); ++it1 )
-		{
-			InputPageGroup *igrp = *it1;
-			for( size_t k=0;k<igrp->Pages.size();k++ )
-				CachePagesInConfiguration( igrp->Pages[k], ci );
+		for (i = 0; i < ci->Technology.size(); i++) {
 
-			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
+			for (std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups[i].begin();
+				it1 != ci->InputPageGroups[i].end(); ++it1)
 			{
-				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
-				if ( vv == 0 )
+				InputPageGroup* igrp = *it1;
+				for (size_t k = 0; k < igrp->Pages.size(); k++)
+					CachePagesInConfiguration(igrp->Pages[k], ci, i);
+
+				if (igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty())
 				{
-					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER,
-						"Current selection for " + igrp->SideBarLabel );
+					VarInfo* vv = ci->AutoVariables[i].Lookup(igrp->ExclusivePageVar);
+					if (vv == 0)
+					{
+						vv = ci->AutoVariables[i].Create(igrp->ExclusivePageVar, VV_NUMBER,
+							"Current selection for " + igrp->SideBarLabel);
 
-					vv->Flags |= VF_EXCLUSIVE_PAGES;
-					vv->DefaultValue.Set( 0 );
+						vv->Flags |= VF_EXCLUSIVE_PAGES;
+						vv->DefaultValue.Set(0);
+					}
+					else
+						wxLogStatus("AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar);
+
+					ci->Variables[i].Add(igrp->ExclusivePageVar, vv);
 				}
-				else
-					wxLogStatus( "AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar );
 
-				ci->Variables.Add( igrp->ExclusivePageVar, vv );
+				CachePagesInConfiguration(igrp->ExclusiveHeaderPages, ci, i);
 			}
-
-			CachePagesInConfiguration( igrp->ExclusiveHeaderPages, ci );
+		}
+		// after variables are initially populated, add any hybrid dependencies, if necessary
+		for (i = 0; i < ci->HybridVariables.size(); i++) {
+			if (VarInfo* vi = ci->Variables[ci->HybridVariables[i].IndependentVariableVarTable].Lookup(ci->HybridVariables[i].IndependentVariableName))
+				ci->Variables[ci->HybridVariables[i].DependentVariableVarTable].Add(ci->HybridVariables[i].DependentVariableName, vi);
 		}
 	}
 }
@@ -2008,7 +2109,7 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
-		if ( m_configList[i]->Technology == t
+		if ( m_configList[i]->TechnologyFullName == t
 			&& m_configList[i]->Financing == f )
 			return m_configList[i];
 
@@ -2326,12 +2427,12 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 #ifdef __WXGTK__
 		if ( ! context.IsEmpty() )
-			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".htm";
+			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".html";
 		wxLaunchDefaultBrowser( url );
 		return;
 #else
 		if ( ! context.IsEmpty() )
-			url += "?" + context + ".htm";
+			url += "?" + context + ".html";
 #endif
 	}
 
@@ -2481,6 +2582,43 @@ bool SamApp::WriteProxyFile( const wxString &proxy )
 }
 
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
+
+bool SamApp::VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file)
+{
+	if (!ci || (vt.size() < 1) || (ci->Technology.size() < 1))
+		return false;
+	else if (ci->Technology.size() < 2)
+		return vt[0].Read_JSON(file);
+	else { // hybrid
+		rapidjson::Document doc, table;
+		wxFileInputStream fis(file);
+
+		if (!fis.IsOk()) {
+			wxLogError(wxS("Couldn't open the file '%s'."), file);
+			return false;
+		}
+		wxStringOutputStream os;
+		fis.Read(os);
+
+		rapidjson::StringStream is(os.GetString().c_str());
+
+		doc.ParseStream(is);
+		if (doc.HasParseError()) {
+			wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+			return false;
+		}
+		else {
+			bool ret = true;
+			for (size_t i = 0; i < ci->Technology.size(); i++) {
+				table.CopyFrom(doc[ci->Technology[i].ToStdString().c_str()], doc.GetAllocator());
+				ret = ret && vt[i].Read_JSON(table);
+			}
+			return ret;
+		}
+	}
+}
+
+
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
 
@@ -2772,29 +2910,58 @@ void ConfigDialog::PopulateTech()
 
 	m_tnames = SamApp::Config().GetTechnologies();
 
-	// Manually add groups here - eventually move to startup.lk
-	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+    wxString bin_name;
+    wxArrayString tech_list;
+    wxDataViewItemArray dvia{m_tnames.Count()};
 
-	for( size_t i=0;i<m_tnames.Count();i++)
-	{
-		wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-		wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-		if ( L.IsEmpty() ) L = m_tnames[i];
-		if (TP.Find("PV") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND )
-			m_pTech->AppendItem(cont_csp, L);
-		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-		else if (TP.Find("ME") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_batt, L);
-		else
-			m_pTech->AppendItem(wxDataViewItem(0), L);
-	}
+    for (int j = 0; j < m_tnames.Count(); j++) {
+        wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
+        wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
+        if (L.IsEmpty()) L = m_tnames[j];
+        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
+            tech_list.Add(TP);
+            dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
+        }
+        if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+        else if (tech_list.Index(TP) != wxNOT_FOUND) {
+            m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
+        }
+        else {
+            m_pTech->AppendItem(wxDataViewItem(0), L);
+        }
+    }
+
+	// Manually add groups here - eventually move to startup.lk
+	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
+	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
+	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
+	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
+	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
+
+	//for( size_t i=0;i<m_tnames.Count();i++)
+	//{
+	//	wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
+	//	wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
+	//	if ( L.IsEmpty() ) L = m_tnames[i];
+	//	if (TP.Find("PV") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_pv, L);
+	//	else if (TP.Find("Heat") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_heat, L);
+	//	else if (TP.Find("CSP") != wxNOT_FOUND )
+	//		m_pTech->AppendItem(cont_csp, L);
+	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
+	//	else if (TP.Find("ME") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_me, L);
+	//	else if (TP.Find("BATT") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_batt, L);
+	//	else if (TP.Find("Hybrid") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_hybrid, L);
+	//	else
+	//		m_pTech->AppendItem(wxDataViewItem(0), L);
+
+ //       
+	//}
 
 }
 

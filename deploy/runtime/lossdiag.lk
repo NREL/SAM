@@ -8,7 +8,8 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_poa_cover_loss_percent', 'Reflection (IAM)' );
 	//add_gain_term( 'annual_ground_incident_percent', 'Ground incident' );					// arrow too wide
 	//add_loss_term( 'annual_ground_absorbed_percent', 'Ground absorbed' );					// arrow too wide
-	if ( value('spe_is_bifacial') || value('cec_is_bifacial') || value('6par_is_bifacial') ) {
+	if ( value('spe_is_bifacial') || value('cec_is_bifacial') || value('6par_is_bifacial') ) 
+	{
 		add_gain_term( 'annual_rear_ground_reflected_percent', 'Ground reflected to rear' );
 		//add_gain_term( 'annual_rear_row_reflections_percent', 'Rear row reflections' );	// insignificant
 		//add_gain_term( 'annual_rear_direct_diffuse_percent', 'DNI and DHI to rear' );		// insignificant
@@ -30,8 +31,12 @@ loss_diagram{'Flat Plate PV'} = define() {
 	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );
 	add_loss_term( 'annual_dc_perf_adj_loss_percent', 'DC availability and curtailment' );
 	if (varinfo('system_use_lifetime_output'))
+	{
 		if (value('system_use_lifetime_output'))
+		{
 			add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses in year one' );	
+		}	
+	}
 	new_baseline( 'annual_dc_net', 'Net DC electricity (kWh)' );
 	add_loss_term( 'annual_ac_inv_clip_loss_percent', 'Inverter power clipping' );	
 	add_loss_term( 'annual_ac_inv_pso_loss_percent', 'Inverter power consumption' );	
@@ -40,17 +45,25 @@ loss_diagram{'Flat Plate PV'} = define() {
 	
 	new_baseline( 'annual_ac_gross', 'Gross AC electricity (kWh)' );
 	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
+	if (value('enable_subhourly_clipping'))
+	{
+		add_loss_term('annual_subhourly_clipping_loss_percent', 'Subhourly clipping correction');
+	}
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
-
-
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
 	if (varinfo('system_use_lifetime_output'))
+	{
 		if (value('system_use_lifetime_output'))
+		{
 			add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses in year one' );
+		}
+	}
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
-	if (varinfo('enable_interconnection_limit')){
-		if (value('enable_interconnection_limit')){
+	if (varinfo('enable_interconnection_limit'))
+	{
+		if (value('enable_interconnection_limit'))
+		{
 			add_loss_term('annual_ac_interconnect_loss_percent', 'Grid interconnection limit');	
 		}
 	}
@@ -66,7 +79,18 @@ loss_diagram{'PV Battery'} = define() {
 	add_loss_term( 'annual_poa_shading_loss_percent', 'Shading' );
 	add_loss_term( 'annual_poa_soiling_loss_percent', 'Soiling' );
 	add_loss_term( 'annual_poa_cover_loss_percent', 'Reflection (IAM)' );
-	add_gain_term( 'annual_poa_rear_gain_percent', 'Bifacial' );
+	//add_gain_term( 'annual_ground_incident_percent', 'Ground incident' );					// arrow too wide
+	//add_loss_term( 'annual_ground_absorbed_percent', 'Ground absorbed' );					// arrow too wide
+	if ( value('spe_is_bifacial') || value('cec_is_bifacial') || value('6par_is_bifacial') ) 
+	{
+		add_gain_term( 'annual_rear_ground_reflected_percent', 'Ground reflected to rear' );
+		//add_gain_term( 'annual_rear_row_reflections_percent', 'Rear row reflections' );	// insignificant
+		//add_gain_term( 'annual_rear_direct_diffuse_percent', 'DNI and DHI to rear' );		// insignificant
+		//add_loss_term( 'annual_rear_self_shaded_percent', 'Rear self shading' );			// insignificant
+		add_loss_term( 'annual_rack_shaded_percent', 'Rear rack shading' );
+		add_loss_term( 'annual_rear_soiled_percent', 'Rear soiling' );
+		add_loss_term( 'annual_bifacial_electrical_mismatch_percent', 'Bifacial electrical mismatch' );
+	}
 	
 	new_baseline( 'annual_dc_nominal', 'Nominal DC electricity (kWh)' );
 	add_loss_term( 'annual_dc_snow_loss_percent', 'Snow' );
@@ -80,9 +104,14 @@ loss_diagram{'PV Battery'} = define() {
 	add_loss_term( 'annual_dc_optimizer_loss_percent', 'DC power optimizer' );
 	add_loss_term( 'annual_dc_perf_adj_loss_percent', 'DC availability and curtailment' );
 	if (varinfo('system_use_lifetime_output'))
+	{
 		if (value('system_use_lifetime_output'))
+		{
 			add_loss_term( 'annual_dc_lifetime_loss_percent', 'DC Lifetime daily losses in year one' );	
-	if (value('batt_ac_or_dc') == 0) {
+		}
+	}
+	if (value('batt_ac_or_dc') == 0) 
+	{
 		add_loss_term( 'annual_dc_battery_loss_percent', 'Battery loss');
 	//	add_loss_term( 'annual_dc_battery_lifetime_loss_percent', 'Battery loss');
 	}
@@ -93,22 +122,30 @@ loss_diagram{'PV Battery'} = define() {
 	add_loss_term('annual_ac_inv_eff_loss_percent', 'Inverter efficiency' );	
 	
 	new_baseline( 'annual_ac_gross', 'Gross AC electricity (kWh)' );
-	if (value('batt_ac_or_dc') == 1) {
+	if (value('batt_ac_or_dc') == 1) 
+	{
 		add_loss_term('annual_ac_battery_loss_percent', 'Battery loss (kWh)');
 	}
-	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );	
+	add_loss_term('annual_ac_wiring_loss_percent', 'AC wiring' );
+	if (value('enable_subhourly_clipping'))
+	{
+		add_loss_term('annual_subhourly_clipping_loss_percent', 'Subhourly clipping correction');
+	}	
 //	add_loss_term('annual_ac_transformer_loss_percent', 'Step-up transformer' );	
-
 	add_loss_term('annual_xfmr_loss_percent', 'Transformer loss' );	
 	add_loss_term('annual_transmission_loss_percent', 'Transmission loss');
-	if (varinfo('system_use_lifetime_output')) {
-		if (value('system_use_lifetime_output')) {
+	if (varinfo('system_use_lifetime_output')) 
+	{
+		if (value('system_use_lifetime_output')) 
+		{
 			add_loss_term( 'annual_ac_lifetime_loss_percent', 'AC Lifetime daily losses in year one' );
 		}
 	}
 	add_loss_term('annual_ac_perf_adj_loss_percent', 'AC Availability and curtailment' );	
-	if (varinfo('enable_interconnection_limit')){
-		if (value('enable_interconnection_limit')){
+	if (varinfo('enable_interconnection_limit'))
+	{
+		if (value('enable_interconnection_limit'))
+		{
 			add_loss_term('annual_ac_interconnect_loss_percent', 'Grid interconnection limit');	
 		}
 	}

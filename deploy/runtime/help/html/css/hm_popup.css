@@ -1,0 +1,125 @@
+﻿/* Popups */
+
+div#unclicker {
+	display: none;
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background-image: url('../images/spacer.gif');
+	z-index: 19999;
+	}
+div#dragsurface {
+	position: absolute;
+	display: none;
+	top: 0; right: 0; bottom: 0; left: 0;
+	background-image:url("../images/spacer.gif");
+	cursor:all-scroll;
+	z-index: 100000;
+	}
+	
+div.hmpopup, p.hmpopup {
+	margin: 0; padding: 0;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+div#hmpopupbox {
+	position: absolute; 
+	display: none; 
+	border: thin solid #bfbfbf;
+	background-color: #bfbfbf;
+	top: 1rem; left: 1rem;
+	width: 20rem;
+	height: 3.6rem;
+	box-shadow: 0.125rem 0.125rem 0.500rem 0.025rem #959595;
+	z-index: 20000;
+	}
+div#hmpopuptitlebar {
+	position: absolute;
+	top: 0; left: 0; right: -2px; 
+	height: 3rem;
+	background-color: #bfbfbf;
+	padding: 0 0.3rem; 
+	color: #444444;
+	font-weight: bold;
+}
+div#hmpopuptitlebar p.hmpopup {
+	position: absolute;
+	left: 0; top: 0.2rem; bottom: 0; right: 1.5rem;
+	margin: 0; padding: 0.15rem 0.5rem 0 0.5rem;
+	font-size: 1rem;
+	text-align: center;
+	line-height: 0.8;
+	}
+div#hmpopuptitlebar  div#hmpopuptitle {
+	position: absolute;
+	left: 0; top: 0; bottom: 0; right: 1.5rem;
+	cursor: move;
+	padding-top: 0.15rem;
+}
+div#hmpopuptitlebar div#hmclosepopup {
+	position: absolute;
+	top: 0; right: 0; bottom: 0;
+	width: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+	padding-top: 0.15rem;
+}
+div#hmpopuptitlebar  div#hmclosepopup span {
+	display: block; position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	font-size: 1.2rem;
+	text-align: center;
+	}
+div#hmpopuptitlebar  div#hmclosepopup:hover {
+	color: red;
+	}
+div#hmpopuptitlelink {
+	position: absolute;
+	top: 1.6rem; left: 0; right: 0; 
+	height: 1.2rem;
+}
+p.linkheader {
+	text-align: center;
+	border-bottom: 1px solid silver;
+	margin-bottom: 1rem;
+	margin-top: 0;
+	padding: 0.2em 0;
+	position: relative;
+	font-size: 0.9rem;
+	top: 0; left: 0; right: 0;
+	background-color: white;
+	z-index: 10000;
+}
+p.linkheader a:link {
+	color: silver;
+	text-decoration: none;
+}
+p.linkheader a:visited {
+	color: silver;
+}
+p.linkheader a:hover {
+	color: #666666;
+}
+div#hmpopupbody {
+	position: absolute;
+	top: 2.6rem; left: 0; right: -2px; bottom: 0.05rem;
+	overflow: hidden;
+	padding: 0;
+	background-color: #ffffff;
+	-webkit-overflow-scrolling: touch;
+	}
+iframe#hmXPopupFrame {
+	position: absolute; 
+	top: 0; left: 0; 
+	width: 100%; height: 100%;
+	border: none;
+}
+
+@media only screen and (max-device-width:720px){
+	div#hmpopupbox {
+		height: 4.2rem;
+		max-width: 90%;
+		max-height: 90%;
+	}
+
+}

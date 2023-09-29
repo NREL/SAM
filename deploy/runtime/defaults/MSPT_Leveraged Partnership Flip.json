@@ -98,6 +98,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -56877,6 +56879,8 @@
     "sf_adjust_en_timeindex": 0.0,
     "sf_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -58592,6 +58596,7 @@
             1.0
         ]
     ],
+    "ud_is_sco2_regr": 0.0,
     "ud_m_dot_des_calc": "nan",
     "ud_m_dot_design": 1.0,
     "ud_m_dot_high_calc": "nan",
