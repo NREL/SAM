@@ -28327,6 +28327,7 @@
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
     "enable_subhourly_clipping": 0.0,
+    "enable_subinterval_distribution": 0.0,
     "engr_fixed": 0.0,
     "engr_per_watt": 0.02,
     "engr_percent": 0.0,
