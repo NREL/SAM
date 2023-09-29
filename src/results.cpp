@@ -432,11 +432,11 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     AddPage(m_graphViewer, "Graphs");
 
 
-    wxPanel* cf_panel = new wxPanel(this);
-    AddPage(cf_panel, "Cash flow");
+    m_cf_panel = new wxPanel(this);
+    AddPage(m_cf_panel, "Cash flow");
 
     wxBoxSizer* cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
-    m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
+    m_cf_splitter = new wxSplitterWindow(m_cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
     cf_main_sizer->Add(m_cf_splitter, 1, wxALL | wxEXPAND, 0);
 
 
@@ -497,8 +497,8 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     //	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
     m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_cf_bottom_panel, (int)(-200 * wxGetScreenHDScale()));
 
-    cf_panel->SetSizer(cf_main_sizer);
-    cf_main_sizer->SetSizeHints(cf_panel);
+    m_cf_panel->SetSizer(cf_main_sizer);
+    cf_main_sizer->SetSizeHints(m_cf_panel);
 
 
     m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
@@ -1075,10 +1075,14 @@ void ResultsViewer::Setup(Simulation* sim)
         m_lossDiagram->SetSize(20, 20, ldsz.x, ldsz.y);
         m_lossDiagramScroller->SetScrollbars(1, 1, ldsz.x + 40, ldsz.y + 40, 0, 0);
     }
-    if (m_lossDiagram->GetDiagram().Size() > 0)
-        ShowPage(PAGE_LOSS_DIAGRAM);
-    else
-        HidePage(PAGE_LOSS_DIAGRAM);
+    if (m_lossDiagram->GetDiagram().Size() > 0) {
+        int pn = GetPageIndex(m_lossDiagramScroller);
+        if (pn > -1) ShowPage(pn);
+    }
+    else {
+        int pn = GetPageIndex(m_lossDiagramScroller);
+        if (pn > -1) HidePage(pn);
+    }
 
     // setup time series datasets
     wxDVPlotCtrlSettings viewstate = GetDViewState();
@@ -1212,6 +1216,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 if (!m_uncertaintiesViewer) {
                     m_uncertaintiesViewer = new UncertaintiesViewer(this);
                     AddPage(m_uncertaintiesViewer, "Uncertainties");
+                }
                     // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
                     std::vector<Uncertainties> ul;
                     Uncertainties u1, u2, u3;
@@ -1222,66 +1227,75 @@ void ResultsViewer::Setup(Simulation* sim)
                     ul.push_back(u2);
                     ul.push_back(u3);
                     SetUncertainties(ul);
-                }
+                //}
                 m_uncertaintiesViewer->Setup(m_sim);
-                ShowPage(10);
+                int pn = GetPageIndex(m_uncertaintiesViewer);
+                if (pn > -1) ShowPage(pn);
             }
             else {
-                if (!m_uncertaintiesViewer) {
-                    m_uncertaintiesViewer = new UncertaintiesViewer(this);
-                    AddPage(m_uncertaintiesViewer, "Uncertainties");
-                    // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
-                    std::vector<Uncertainties> ul;
-                    Uncertainties u1, u2, u3;
-                    u1.Title = "Figure2";
-                    u2.Title = "Figure5";
-                    u3.Title = "Figure10";
-                    ul.push_back(u1);
-                    ul.push_back(u2);
-                    ul.push_back(u3);
-                    SetUncertainties(ul);
-                }
-                m_uncertaintiesViewer->Setup(m_sim);
-                HidePage(10);
+
+                int pn = GetPageIndex(m_uncertaintiesViewer);
+                if (pn > -1) HidePage(pn);
             }
+        }
+        else { // not windpower
+            int pn = GetPageIndex(m_uncertaintiesViewer);
+            if (pn > -1) HidePage(pn);
         }
         wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         auto as = wxSplit(tech, ' ');
         if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
-            HidePage(2);
-            HidePage(3);
-            HidePage(6);
-            HidePage(7);
-            HidePage(9);
-            //HidePage(10);
-        }
+            int pn = GetPageIndex(m_graphViewer);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_profilePlots);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_statTable);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_pnCdf);
+            if (pn > -1) HidePage(pn);
+        } 
         else {
-            ShowPage(2);
-            ShowPage(3);
-            ShowPage(6);
-            ShowPage(7);
-            ShowPage(9);
+            int pn = GetPageIndex(m_graphViewer);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_profilePlots);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_statTable);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_pnCdf);
+            if (pn > -1) ShowPage(pn);
         }
-
         if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
             if (wave_resource_model_choice_value != 1)
             {
-                HidePage(5);
-                HidePage(6);
-                HidePage(7);
-                HidePage(8);
-                HidePage(9);
+                int pn = GetPageIndex(m_cf_panel);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_timeSeries);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_profilePlots);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_statTable);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_dMap);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_pnCdf);
+                if (pn > -1) HidePage(pn);
             }
-            else
-            {
-                ShowPage(5);
-                ShowPage(6);
-                ShowPage(7);
-                ShowPage(8);
-                ShowPage(9);
+            else {
+                int pn = GetPageIndex(m_cf_panel);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_timeSeries);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_profilePlots);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_statTable);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_dMap);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_pnCdf);
+                if (pn > -1) ShowPage(pn);
             }
         }
         if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
@@ -1340,6 +1354,13 @@ void ResultsViewer::Setup(Simulation* sim)
             g3.XMin = -1;
             g3.XMax = -1;
             m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+
+            int pn = GetPageIndex(m_spatialLayout);
+            if (pn > -1) ShowPage(pn);
+        }
+        else {
+            int pn = GetPageIndex(m_spatialLayout);
+            if (pn > -1) HidePage(pn);
         }
     }
     m_tables->Setup(m_sim);
