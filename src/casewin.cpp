@@ -824,6 +824,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	if ( evt.GetId() == ID_SIMULATE )
 	{
 		RunBaseCase();
+		m_resultsButton->Enable(true);
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
@@ -1012,6 +1013,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED ) // calculated variable changes - like total_installed_cost
 	{
+		m_resultsButton->Enable(false);
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
 
@@ -1106,6 +1108,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
+		m_resultsButton->Enable(false);
 		wxString sel = m_inputPageList->GetStringSelection();
 		UpdateConfiguration();
 

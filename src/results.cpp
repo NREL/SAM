@@ -414,11 +414,11 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
 {
     m_summaryLayout = new wxSnapLayout(this, wxID_ANY);
     AddPage(m_summaryLayout, "Summary", true);
-    m_metricsTable = new MetricsTable(m_summaryLayout);
-    matrix_t<wxString> data(1, 2);
-    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
-    m_metricsTable->SetData(data);
-    m_summaryLayout->Add(m_metricsTable);
+//    m_metricsTable = new MetricsTable(m_summaryLayout);
+//    matrix_t<wxString> data(1, 2);
+//    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
+//    m_metricsTable->SetData(data);
+//    m_summaryLayout->Add(m_metricsTable);
 
     m_tables = new TabularBrowser(this);
     AddPage(m_tables, "Data tables");
@@ -843,7 +843,7 @@ void ResultsViewer::Setup(Simulation* sim)
     SavePerspective(viewinfo);
 
     // update metrics
-    m_metricsTable->Clear();
+//    m_metricsTable->Clear();
 
     m_metrics.clear();
     m_metricRows.clear();
@@ -1931,18 +1931,23 @@ void ResultsViewer::GetUncertainties(std::vector<Uncertainties>& ul)
 void ResultsViewer::Clear()
 {
     m_sim = 0;
-
+    m_autographs.clear();
+    /*
     if (!m_metricsTable) {
         m_metricsTable = new MetricsTable(m_summaryLayout);
         m_summaryLayout->Add(m_metricsTable);
     }
+//    else
+//        m_metricsTable->Clear();
+
 
     matrix_t<wxString> metrics(2, 1);
     metrics(0, 0) = "Metrics";
     metrics(1, 0) = "No data available.";
     m_metricsTable->SetData(metrics);
-
+    */
     RemoveAllDataSets();
+    m_summaryLayout->Refresh();
 }
 
 
