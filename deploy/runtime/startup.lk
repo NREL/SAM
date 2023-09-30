@@ -30,7 +30,7 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 //addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
-addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MSPT IPH', ['None', 'LCOH Calculator', 'Single Owner']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MSLF IPH', ['None', 'LCOH Calculator', 'Single Owner']);
@@ -1822,6 +1822,30 @@ setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
+
+setconfig('MSPT IPH', 'Single Owner');
+setmodules(['mspt_iph', 'singleowner']);
+setup_MSPT_IPH_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+		  {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+addpage( [[ 'Financial Solution Mode Single Owner ETES',
+  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
+            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
