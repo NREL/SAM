@@ -2275,19 +2275,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_operating_cost_capacity": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Operating cost",
-            "Units": "$/kW-yr",
-            "Group": "LCOE Calculator",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "ui_pfin": {
             "Version": 4.0,
             "Type": 1.0,

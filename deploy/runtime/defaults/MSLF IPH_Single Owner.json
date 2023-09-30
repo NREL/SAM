@@ -17,7 +17,7 @@
     "CC_CALC_epc_total_cost": 38041300.0,
     "CC_CALC_heat_sink_cost": 39183200.0,
     "CC_CALC_htf_system_cost": 53757200.0,
-    "CC_CALC_installed_per_capacity": 1.43714,
+    "CC_CALC_installed_per_capacity": 1437.14,
     "CC_CALC_plm_total_cost": 4522110.0,
     "CC_CALC_sales_tax_total": 13833200.0,
     "CC_CALC_site_improvements_cost": 22875400.0,
@@ -614,7 +614,7 @@
     ],
     "cp_capacity_payment_esc": 0.0,
     "cp_capacity_payment_type": 0.0,
-    "cp_system_nameplate": 279880.0,
+    "cp_system_nameplate": 279.88,
     "csp_financial_model": 8.0,
     "debt_message": "",
     "debt_option": 1.0,
@@ -9464,7 +9464,7 @@
         0.0
     ],
     "dispatch_tod_factors": [
-        1.1,
+        1.0,
         1.0,
         1.0,
         1.0,
@@ -10390,7 +10390,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.02
+        0.034
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -10456,7 +10456,7 @@
         ]
     ],
     "store_fluid": 18.0,
-    "system_capacity": 279880000.0,
+    "system_capacity": 279880.0,
     "system_use_lifetime_output": 0.0,
     "tank_pairs": 1.0,
     "tanks_in_parallel": 1.0,
