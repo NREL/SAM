@@ -1300,6 +1300,11 @@ void ResultsViewer::Setup(Simulation* sim)
         }
         if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
         {
+            if (!m_spatialLayout) {
+                m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+                AddPage(m_spatialLayout, "Spatial", true);
+            }
+
             m_spatialLayout->DeleteAll();
 
             wxString x_label;

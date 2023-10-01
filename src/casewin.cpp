@@ -642,7 +642,7 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
             current_item = m_previousPage;
             //m_navigationMenu->UnselectAll();
             wxString string = m_navigationMenu->GetItemText(current_item);
-            m_navigationMenu->SetCurrentItem(current_item);
+// MacOS failure            m_navigationMenu->SetCurrentItem(current_item);
             wxDataViewItem parent = m_navigationMenu->GetModel()->GetParent(m_navigationMenu->GetCurrentItem());
             wxString string2 = m_navigationMenu->GetItemText(parent);
 //            m_navigationMenu->UnselectAll();
@@ -665,12 +665,12 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         }
         if (!keep_open && m_navigationMenu->IsExpanded(m_navigationMenu->GetCurrentItem())) {
             m_navigationMenu->Collapse(m_navigationMenu->GetCurrentItem());
-            m_navigationMenu->SetCurrentItem(m_previousPage);
+// MacOS failure            m_navigationMenu->SetCurrentItem(m_previousPage);// MacOS failure
             m_navigationMenu->Update();
             return;
         }
         m_navigationMenu->Expand(m_navigationMenu->GetCurrentItem());
-        m_navigationMenu->SetCurrentItem(m_previousPage);
+//MacOS failure        m_navigationMenu->SetCurrentItem(m_previousPage);
         //m_navigationMenu->Update();
         //wxDataViewItemArray dvia;
 

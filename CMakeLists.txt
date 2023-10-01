@@ -306,9 +306,11 @@ if (UNIX)
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-${SAM_NAME}.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
+#            COMMAND codesign --deep 
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
             COMMAND install_name_tool -change ${SSC_NAME} @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/MacOS/${SAM_NAME}
+            COMMAND codesign --force --deep -s - ${SAM.APP}
         #    COMMAND install_name_tool -add_rpath @executable_path/../Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_NAME}  
         )
     else()
