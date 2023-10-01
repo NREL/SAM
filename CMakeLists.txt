@@ -310,7 +310,7 @@ if (UNIX)
             COMMAND cp ${SSC_SO} ${SAM_APP}/Contents/Frameworks
             COMMAND install_name_tool -id @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/Frameworks/${SSC_NAME}
             COMMAND install_name_tool -change ${SSC_NAME} @executable_path/../Frameworks/${SSC_NAME} ${SAM_APP}/Contents/MacOS/${SAM_NAME}
-            COMMAND codesign --force --deep -s - ${SAM.APP}
+#            COMMAND codesign --force --deep -s - ${SAM.APP}
         #    COMMAND install_name_tool -add_rpath @executable_path/../Frameworks/ ${SAM_APP}/Contents/MacOS/${SAM_NAME}  
         )
     else()
