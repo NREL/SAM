@@ -6721,7 +6721,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -6734,7 +6734,7 @@
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
