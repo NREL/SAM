@@ -99,7 +99,8 @@ for (t=0; t<#technologies; t++)
 		str = replace( str, '\r', '' );
 		str = replace( str, '\t', ' ' );
 		outln( annual_energy + '\t' + lcoe_nom + '\t' + lcoe_real + '\t' + str);
-		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
+//		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom + ',' + str);
+		write_line(file_num,technologies[t] + "," + financing[f] + "," + annual_energy + ',' + lcoe_nom + ',' + lppa_nom);
 	}
 	} // skip DSPT
 }
