@@ -74,6 +74,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
+			{ 2023, 10, 2 },  // 2023.10.2 ssc 284 beta release from develop with hybrids expires 1/2/2024
 			{ 2023, 9, 19 },  // 2023.9.19 ssc 283 beta release from develop with hybrids expires 12/19/2023
 			{ 2023, 7, 24 },  // 2023.7.24 Add new molten salt linear fresnel model and IPH
 			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
