@@ -615,7 +615,7 @@
     "cp_capacity_payment_esc": 0.0,
     "cp_capacity_payment_type": 0.0,
     "cp_system_nameplate": 279.88,
-    "csp_financial_model": 8.0,
+    "csp_financial_model": 1.0,
     "debt_message": "",
     "debt_option": 1.0,
     "debt_percent": 50.0,
