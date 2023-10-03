@@ -49,14 +49,15 @@ Some more examples:
 
 
 //***********************************************************************************************************************************************************
-//CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+//CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2023.7.24'} = define() {
+version_upgrade{'2023.9.19'} = define() {
 
 	const cfg = config();
 
 	// handle adjust variables conversion from table to variables
-	if ( cfg.tech == 'Biopower' || cfg.tech ==  'Empirical Trough' || cfg.tech ==  'ETES' || cfg.tech ==  'Generic CSP System' || cfg.tech ==  'Generic Battery' || cfg.tech ==  'Geothermal Power' || cfg.tech ==  'High-X Concentrating PV' || cfg.tech ==  'DSGL IPH' || cfg.tech ==  'MSLF IPH' || cfg.tech ==  'MSPT IPH' || cfg.tech ==  'MSPT' || cfg.tech ==  'DSLF' || cfg.tech ==  'Physical Trough IPH' || cfg.tech ==  'Physical Trough' || cfg.tech ==  'PV Battery' || cfg.tech ==  'Flat Plate PV' || cfg.tech ==  'Solar Water Heating' || cfg.tech ==  'Wind Power' ) {	
+	// note marine energy availability not used in any configurations in SAM 2022.11.21 so no need to handle conversion
+	if ( cfg.tech == 'Biopower' || cfg.tech ==  'Empirical Trough' || cfg.tech ==  'ETES' || cfg.tech ==  'Generic CSP System' || cfg.tech == 'Generic System' || cfg.tech ==  'Generic Battery' || cfg.tech ==  'Geothermal Power' || cfg.tech ==  'High-X Concentrating PV' || cfg.tech ==  'DSGL IPH' || cfg.tech ==  'MSLF IPH' || cfg.tech ==  'MSPT IPH' || cfg.tech ==  'MSPT' || cfg.tech ==  'DSLF' || cfg.tech ==  'Physical Trough IPH' || cfg.tech ==  'Physical Trough' || cfg.tech ==  'PV Battery' || cfg.tech ==  'Flat Plate PV' || cfg.tech ==  'Solar Water Heating' || cfg.tech ==  'Wind Power' ) {	
 		x = oldvalue('adjust');
 		message('AC Losses (availability losses) variable format changed from table to separate variables.');
 		value('adjust_constant', x.constant, 'Convert AC Losses adjust:constant to adjust_constant');
