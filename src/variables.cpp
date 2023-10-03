@@ -840,6 +840,8 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	rapidjson::Document doc;
 	Write_JSON(doc, asCalculated, asIndicator, maxdim);
 
+
+	// TODO - hybrids - write out based on compute modules similar to test input files for cmod_hybrid_test.cpp
 	rapidjson::StringBuffer os;
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
 	//writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
@@ -1541,14 +1543,14 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
 			json_val = VarValueDoubleToJSONValue(m_val(0,0));
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_ARRAY) {
 		json_val.SetArray();
 		for (size_t j = 0; j < m_val.ncols(); j++) {
 			json_val.PushBack(VarValueDoubleToJSONValue(m_val(0, j)), doc.GetAllocator());
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_MATRIX) {
 		json_val.SetArray();
@@ -1558,7 +1560,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 				json_val[(rapidjson::SizeType)i].PushBack(VarValueDoubleToJSONValue(m_val(i, j)), doc.GetAllocator());
 			}
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_STRING) {
 		x = m_str;
@@ -1568,11 +1570,11 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 			x = fn + "." + ext;
 		}
 		json_val.SetString(x.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_TABLE) {
 		m_tab.Write_JSON(json_table, asCalculated, asIndicator);
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+        doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_DATMAT || m_type == VV_DATARR) 
 		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
@@ -1580,15 +1582,15 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 		json_val.SetObject();
 		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
 		p = (const char*)m_bin.GetData();
-		json_bin_array.SetString(p, m_bin.GetDataLen());
+		json_bin_array.SetString(p, (rapidjson::SizeType)m_bin.GetDataLen());
 		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else {
 	// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
 		x = wxString::Format("ERROR: unhandled type specified in UI: %s", vv_strtypes[m_type]);
 		json_val.SetString(x.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 }
 
@@ -1784,6 +1786,7 @@ bool VarValue::AsSSCVar(ssc_var_t p_var) {
         case VV_INVALID:
             break;
         case VV_BINARY:
+			break;
         default:
             ssc_var_free(entry);
             return false;

@@ -443,11 +443,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1520,7 +1520,7 @@
                     0.0
                 ]
             ],
-            "UIObject": "Default",
+            "UIObject": "DataMatrix",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

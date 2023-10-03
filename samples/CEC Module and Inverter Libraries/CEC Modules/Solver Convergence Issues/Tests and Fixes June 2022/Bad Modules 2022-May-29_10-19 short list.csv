@@ -1,0 +1,14 @@
+Manufacturer,Model,Technology,Message,celltype,vmp,imp,voc,isc,alpha_isc,beta_voc,gamma_pmp,n_ser,t_ref
+Shanghai Aerospace Automobile Electromechanical Co._ Ltd.,HT60-18X-435,Mono-c-Si,"Could not solve, sanity check failed (-1): a < 0.05 || a > 15.0",mono,34.3,12.68,40.9,13.69,6.28371,-0.104295,-0.373,120,25
+LG Electronics Inc.,LG370M1K-A6,Mono-c-Si,"Could not solve, sanity check failed (-3): Io < 1e-16 || Io > 1e-7",mono,35.5,10.43,41.9,19.96,0.0057884,-0.10894,-0.344,60,25
+China Sunergy (Nanjing),CSUN275-60P,Multi-c-Si,"Could not solve, sanity check failed (-3): Io < 1e-16 || Io > 1e-7",multi,38,8.91,38,9.15,0.00447435,-0.125514,-0.4375,60,25
+Sunflare Co.,FLEX60-175W,Thin Film,"Could not solve, sanity check failed (-33): abs((P - Pmp) / Pmp) > 0.015",cdte,28.2,6.22,36,7.42,0.000371,-0.10764,-0.031,60,25
+Anhui Rinengzhongtian Semiconductor Development,QJM300-72,Mono-c-Si,"Could not solve, sanity check failed (-33): abs((P - Pmp) / Pmp) > 0.015",mono,36.1,8.31,44.4,8.31,0.00350233,-0.150458,-0.46757,72,25
+GCL System Integration Technology Co._ Ltd.,GCL-P6/60B260,Multi-c-Si,"Could not solve, sanity check failed (-33): abs((P - Pmp) / Pmp) > 0.015",multi,30.8,8.44,37.9,9.09,0.0060903,-0.12886,-0.443,1,25
+Upsolar,UP-M325MT,Mono-c-Si,"Could not solve, sanity check failed (-4): Rs < 0.001 || Rs > 75.0",mono,37,8.78,39.2,9.2,0.0032384,-0.133437,-0.4819,72,25
+Changzhou Nesl Solartech,DJ-240P-ST15,Multi-c-Si,"Could not solve, sanity check failed (-4): Rs < 0.001 || Rs > 75.0",multi,34.21,7.18,39.64,8.32,0.00746304,-0.157529,-0.4352,72,25
+Silfab Solar Inc.,SSG345M,Mono-c-Si,"Could not solve, sanity check failed (-44): abs(I) > 0.015 * Imp",mono,38.7,8.93,40.4,9.52,0.00258182,-0.142006,-0.4968,72,25
+Trina Solar,TSM-295DE05H(II),Mono-c-Si,"Could not solve, sanity check failed (-6): Adj < -100.0 || Adj > 100.0",mono,32.1,9.19,39.5,9.65,0.0029336,-0.00553,-0.355,40,25
+REC Solar,REC260TP,Multi-c-Si,"Could not solve, sanity check failed (-6): Adj < -100.0 || Adj > 100.0",multi,30.8,8.45,38,9.13,0.004565,-0.0114,-0.4,60,25
+Sunny International Power,SPM-220PB203,Multi-c-Si,"Could not solve, sanity check failed (-99): a < 0.05 || a > 15.0",multi,26.8,8.22,33.4,8.25,0.00690525,-0.118002,-0.442,54,25
+Heliene,60M305,Mono-c-Si,"fail(Nser, positive): 0",mono,32.51,9.03,39.49,9.45,0.0053865,-0.121234,-0.429,0,

@@ -54018,6 +54018,8 @@
     "dc_adjust_en_timeindex": 0.0,
     "dc_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -73293,6 +73295,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "energy_1": 57339.5,
     "energy_10": 57692.5,
     "energy_11": 51845.3,
@@ -84279,7 +84282,7 @@
     "inv_snl_vdco": 720.0,
     "inv_tdc_cec_cg": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -84288,7 +84291,7 @@
     ],
     "inv_tdc_cec_db": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -84297,7 +84300,7 @@
     ],
     "inv_tdc_ds": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -84306,7 +84309,7 @@
     ],
     "inv_tdc_plc": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -102974,7 +102977,7 @@
     "subarray2_land_area": 0.0,
     "subarray2_mismatch_loss": 2.0,
     "subarray2_mod_orient": 0.0,
-    "subarray2_modules_per_string": 0.0,
+    "subarray2_modules_per_string": 1.0,
     "subarray2_monthly_tilt": [
         40.0,
         40.0,
@@ -102994,7 +102997,7 @@
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
     "subarray2_nmody": 2.0,
-    "subarray2_nstrings": 0.0,
+    "subarray2_nstrings": 1.0,
     "subarray2_rack_shading": 0.0,
     "subarray2_rear_soiling_loss": 0.0,
     "subarray2_ref_nmodules": 0.0,
@@ -103059,7 +103062,7 @@
     "subarray3_land_area": 0.0,
     "subarray3_mismatch_loss": 2.0,
     "subarray3_mod_orient": 0.0,
-    "subarray3_modules_per_string": 0.0,
+    "subarray3_modules_per_string": 1.0,
     "subarray3_monthly_tilt": [
         40.0,
         40.0,
@@ -103079,7 +103082,7 @@
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
     "subarray3_nmody": 2.0,
-    "subarray3_nstrings": 0.0,
+    "subarray3_nstrings": 1.0,
     "subarray3_rack_shading": 0.0,
     "subarray3_rear_soiling_loss": 0.0,
     "subarray3_ref_nmodules": 0.0,
@@ -103144,7 +103147,7 @@
     "subarray4_land_area": 0.0,
     "subarray4_mismatch_loss": 2.0,
     "subarray4_mod_orient": 0.0,
-    "subarray4_modules_per_string": 0.0,
+    "subarray4_modules_per_string": 1.0,
     "subarray4_monthly_tilt": [
         40.0,
         40.0,
@@ -103164,7 +103167,7 @@
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,
     "subarray4_nmody": 2.0,
-    "subarray4_nstrings": 0.0,
+    "subarray4_nstrings": 1.0,
     "subarray4_rack_shading": 0.0,
     "subarray4_rear_soiling_loss": 0.0,
     "subarray4_ref_nmodules": 0.0,

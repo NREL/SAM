@@ -28,23 +28,39 @@ function third_party_metrics()
 
 function host_developer_metrics()
 {
-	metric_table('Table1', {'headers'='Project Metrics, '});
-	metric_row( 'lcoe_nom', {'label'='LCOE Levelized cost of energy nominal', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
-	metric_row( 'lcoe_real', {'label'='LCOE Levelized cost of energy real', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
-	metric_row( 'ppa', {'label'='PPA price in Year 1', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
-	metric_row( 'lppa_nom', {'label'='LPPA Levelized PPA price nominal', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
-	metric_row( 'lppa_real', {'label'='LPPA Levelized PPA price real', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='Table1' } );
+	tech = technology();
+	metric_table('TPOProjectMetrics', {'headers'='Project Metrics, '});
+	if ( tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'PVWatts Wind Battery Hybrid' )
+	{
+		  metric_row( 'annual_energy', {'label'='Total Year 1 generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='TPOProjectMetrics' } );
+	}
+	metric_row( 'lcoe_nom', {'label'='LCOE Levelized cost of energy nominal', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'lcoe_real', {'label'='LCOE Levelized cost of energy real', 'post'=' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'ppa', {'label'='PPA price in Year 1', 'post'= ' \u00A2/kWh', 'mode'='f', 'deci'='2', 'thousep'='false', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'lppa_nom', {'label'='LPPA Levelized PPA price nominal', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'lppa_real', {'label'='LPPA Levelized PPA price real', 'mode'='f', 'post'=' \u00A2/kWh', 'deci'='2', 'thousep'='false', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='TPOProjectMetrics' } );
+	metric_row( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='TPOProjectMetrics' } );
+	if ( value('debt_option')==0 )
+	{
+		metric_row( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2', 'tableName'='TPOProjectMetrics' } );
+	}
+	else
+	{
+		metric_row( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%', 'tableName'='TPOProjectMetrics' } );
+	}
+	
+	metric_table('TPODeveloperMetrics', {'headers'='Developer Metrics, '});
+	metric_row( 'flip_actual_irr', {'label'='IRR Developer internal rate of return', 'mode'='f', 'post'='%', 'deci'='2', 'thousep'='false', 'tableName'='TPODeveloperMetrics' } );
+	metric_row( 'flip_actual_year', {'label'='Year developer IRR is achieved', 'post'=' ', 'thousep'='false', 'tableName'='TPODeveloperMetrics' } );
+	metric_row( 'project_return_aftertax_npv', {'label'='NPV Developer net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='TPODeveloperMetrics' } );
 
-	metric_table('Table2', {'headers'='Developer Metrics, '});
-	metric_row( 'flip_actual_irr', {'label'='IRR Developer internal rate of return', 'mode'='f', 'post'='%', 'deci'='2', 'thousep'='false', 'tableName'='Table2' } );
-	metric_row( 'flip_actual_year', {'label'='Year developer IRR is achieved', 'post'=' ', 'thousep'='false', 'tableName'='Table2' } );
-	metric_row( 'project_return_aftertax_npv', {'label'='NPV Developer net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table2' } );
-
-	metric_table('Table3', {'headers'='Host Metrics, '});
-	metric_row( 'npv', {'label'='Host net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='Table3' } );
-	metric_row( 'year1_nte', {'label'='Host indifference point in year 1', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
-	metric_row( 'lnte_nom', {'label'='Host indifference point levelized nominal', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
-	metric_row( 'lnte_real', {'label'='Host indifference point levelized real', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='Table3' } );
+	metric_table('TPOHostMetrics', {'headers'='Host Metrics, '});
+	metric_row( 'npv', {'label'='Host net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ', 'tableName'='TPOHostMetrics' } );
+	metric_row( 'year1_nte', {'label'='Host indifference point in year 1', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='TPOHostMetrics' } );
+	metric_row( 'lnte_nom', {'label'='Host indifference point levelized nominal', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='TPOHostMetrics' } );
+	metric_row( 'lnte_real', {'label'='Host indifference point levelized real', 'mode'='f', 'deci'='2', 'thousep'='false', 'post'='\u00A2/kWh', 'tableName'='TPOHostMetrics' } );
 }
 
 function lcoefcr_metrics()
@@ -266,6 +282,14 @@ function physical_trough_iph_metrics()
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
 }
 
+function mspt_iph_metrics()
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+}
+
 function dsgl_iph_metrics()
 {
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
@@ -316,12 +340,25 @@ function DSPT_metrics()
 	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
+function MSLF_IPH_metrics()
+{
+	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-t' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+}
+
 function MSLF_metrics()
 {
-	metric( 'annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-//	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
+	//metric( 'annual_gross_energy', {'label'='Annual Gross Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
+	metric( 'annual_energy', {'label'='Annual AC Energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_thermal_consumption', {'label'='Annual Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_tes_freeze_protection', {'label'='Annual TES Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'annual_field_freeze_protection', {'label'='Annual Field Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'annual_W_cycle_gross', {'label'='Power cycle gross electrical output', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh-e' } );
+	metric( 'kwh_per_kw', {'label'='First year kWh/kW', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' -' } );
+	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
@@ -482,9 +519,6 @@ function MEwave_metrics()
 
 function MEtidal_metrics()
 {
-
-
-
 	//metric_table('Table1', {'headers'='Metric,Value'});
 	//me_lcoefcr_metrics();
 	if(value('system_capacity') > 1) {
@@ -531,11 +565,13 @@ metrics{ 'Physical Trough' } = define() { physical_trough_metrics(); };
 metrics{ 'Physical Trough IPH' } = define() { physical_trough_iph_metrics(); };
 metrics{ 'DSGL IPH' } = define() { dsgl_iph_metrics(); };
 metrics{ 'MSPT' } = define() { MSPT_metrics(); };
+metrics{ 'MSPT IPH' } = define() {mspt_iph_metrics(); };
 metrics{ 'ETES' } = define() { ETES_metrics(); };
 metrics{ 'PTES' } = define() { PTES_metrics(); };
 metrics{ 'ISCC' } = define() { ISCC_metrics(); };
 metrics{ 'DSPT' } = define() { DSPT_metrics(); };
-metrics{ 'MSLF' } = define() { MSLF_metrics(); };
+metrics{ 'MSLF' } = define() { MSLF_metrics(); }; 
+metrics{ 'MSLF IPH' } = define() { MSLF_IPH_metrics(); }; 
 metrics{ 'DSLF' } = define() { DSLF_metrics(); };
 metrics{ 'Empirical Trough' } = define() { empirical_trough_metrics(); };
 metrics{ 'Dish Stirling' } = define() { dish_stirling_metrics(); };
@@ -568,3 +604,138 @@ metrics{ 'Merchant Plant' } = define() { mp_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
+
+// hybrids
+metrics{ 'PVWatts Wind Battery Hybrid|Single Owner'}  = define() {
+	metric( 'annual_energy', {'label'='Total Year 1 generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+	so_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'PVWatts Wind Battery Hybrid|Host Developer'}  = define() {
+	host_developer_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'PVWatts Wind FuelCell Battery Hybrid|Single Owner'}  = define() {
+	metric( 'annual_energy', {'label'='Total Year 1 generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table1' } );
+	so_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'fuelcell_annual_energy', {'label'='Fuel cell', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'PVWatts Wind FuelCell Battery Hybrid|Host Developer'}  = define() {
+	host_developer_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'fuelcell_annual_energy', {'label'='Fuel cell', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'Photovoltaic Wind Battery Hybrid|Single Owner'}  = define() {
+	metric( 'annual_energy', {'label'='Total Year 1 generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table0' } );
+	so_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'photovoltaic_annual_energy', {'label'='PV', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'photovoltaic_capacity_factor', {'label'='PV DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'photovoltaic_kwh_per_kw', {'label'='PV energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'Photovoltaic Wind Battery Hybrid|Host Developer'}  = define() {
+	host_developer_metrics();
+	
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'photovoltaic_annual_energy', {'label'='PV', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'photovoltaic_capacity_factor', {'label'='PV DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'photovoltaic_kwh_per_kw', {'label'='PV energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'Generic PVWatts Wind FuelCell Battery Hybrid|Single Owner'}  = define() {
+	metric( 'annual_energy', {'label'='Total Year 1 generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='Table0' } );
+	so_metrics();
+
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'generic_annual_energy', {'label'='Generic', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'generic_capacity_factor', {'label'='Generic AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'generic_kwh_per_kw', {'label'='Generic energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'fuelcell_annual_energy', {'label'='Fuel cell', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};
+
+metrics{ 'Generic PVWatts Wind FuelCell Battery Hybrid|Host Developer'}  = define() {
+	host_developer_metrics();
+
+	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
+	metric_row( 'generic_annual_energy', {'label'='Generic', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'generic_capacity_factor', {'label'='Generic AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'generic_kwh_per_kw', {'label'='Generic energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_annual_energy', {'label'='Wind', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_capacity_factor', {'label'='Wind AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable' } );
+	metric_row( 'wind_kwh_per_kw', {'label'='Wind energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'fuelcell_annual_energy', {'label'='Fuel cell', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_annual_energy', {'label'='Battery', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'battery_average_battery_roundtrip_efficiency', {'label'='Battery roundtrip efficiency', 'mode'='f', 'deci'='2', 'post'='%', 'tableName'='SubsystemTable'  } );
+	metric_row( 'battery_batt_system_charge_percent', {'label'='Battery charge energy from system', 'mode'='f', 'deci'='1', 'thousep'='false', 'post'='%', 'tableName'='SubsystemTable'  } );
+};

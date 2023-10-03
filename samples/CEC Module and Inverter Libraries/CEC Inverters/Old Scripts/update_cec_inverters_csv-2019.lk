@@ -1,0 +1,551 @@
+/*
+
+	This script reads data from the CEC inverters Excel worksheet and adds
+	new inverters to the SAM inverter library file.
+	
+	Instructions:
+	
+	1. Create a folder to store inverter library files for this update, for 
+	   example, /CEC Inverters/CEC Inverters 2018-6-28.
+	
+	2.	Go to the CEC Inverter page: 
+		http://www.gosolarcalifornia.ca.gov/equipment/inverters.php
+		
+	3.	Download the CEC workbook "Inverters List - Full Data" XLSX file to the 
+	    folder you created in Step 1.
+		
+	// as of January 2019, skip this step //
+		Put a copy of the CEC inverter library that you are updating in the
+		the folder. You may want to append a date to the file name to keep
+		track of which version you are updating.
+	
+	4. Copy library_headers.csv file to the folder. This file contains headers
+	   for the SAM library file.
+		
+    4.	Run the script. The script reads data from the SAM inverter library
+		file and the CEC workbook, and creates a new updated library file with
+		data from both sources. It also creates a conversion log file.
+    
+    Last modified 11/5/2018 to update columns for Nov 2018 Excel workbook
+	
+*/
+
+// date_str is appended to library file name
+date = split( date_time(), ' ' );
+time = split( date[3], ':' );
+date_str = date[4] + '-' + date[1] + '-' + date[2] + '_' + time[0] + '-' + time[1];
+cec_date = 'Feb 1 2019';
+cec_db_files = ['Utility_Interactive_Inverter_List_Full_Data.xlsx','Grid_Support_Inverter_List_Full_Data.xlsx'];
+
+////////////////////////////////////////////////////////////////////////////////
+// Functions
+////////////////////////////////////////////////////////////////////////////////
+
+// Converts CEC full data inverter worksheet into format originally output from
+// LKT file by EES to avoid having to rewrite conversion code below.
+function cec_xlsx_to_db( xlsx_in, grid_support )
+{
+
+	outln('Attempting to open Excel file for conversion:\n  ' + xlsx_in );
+
+	xl = xl_create( false );
+
+	xl_open( xl, xlsx_in, false );
+
+	// these are the same for utility interactive and grid support inverters
+	first_data_row = 15; // index starts at 1 for Excel row numbers
+	first_inverter_manufacturer = xl_get( xl, 'A'+to_string(first_data_row) );
+	first_inverter_model = xl_get( xl, 'B'+to_string(first_data_row) );
+	
+	outln('File open.\nFirst inverter is ' + first_inverter_manufacturer + ': ' + first_inverter_model + '. If this is not the first inverter in the list, change the value of first_data_row to the row number of the first inverter in the CEC worksheet.');
+	outln('Reading data...');
+	i=0;
+	db=[];
+	next = xl_get( xl, 'A'+to_string(first_data_row) );
+	if ( grid_support == 0 ) // utility interactive, non-smart
+	{
+		while ( next != '' )
+		{
+			db[i][0] = xl_get( xl, 'A'+to_string(first_data_row+i) ); // manufacturer name
+			db[i][0] = replace( db[i][0] , ',' , ' ' );
+			db[i][0] = replace( db[i][0] , '.' , ' ' );
+			db[i][0] = replace( db[i][0] , '  ' , ' ' );
+			db[i][1] = xl_get( xl, 'B'+to_string(first_data_row+i) ); // model number
+			db[i][2] = xl_get( xl, 'D'+to_string(first_data_row+i) ); // power rated continuous, kW
+			db[i][3] = xl_get( xl, 'J'+to_string(first_data_row+i) ); // night tare loss, W
+			db[i][4] = ''; // power rated continuous at 40 degrees (not in XLSX version) ** THESE ARE IN THE NOV 1, 2018 VERSION
+			db[i][5] = ''; // night tare loss at 40 degrees (not in XLSX version)
+	
+			db[i][6] = xl_get( xl, 'M'+to_string(first_data_row+i) ); // voltage minimum, Vdc
+			db[i][7] = xl_get( xl, 'N'+to_string(first_data_row+i) ); // voltage nominal, Vdc
+			db[i][8] = xl_get( xl, 'O'+to_string(first_data_row+i) ); // voltage maximum, Vdc
+	
+			db[i][9] = xl_get( xl, 'P'+to_string(first_data_row+i) ); // power level 10, W
+			db[i][10] = xl_get( xl, 'Q'+to_string(first_data_row+i) ); // power level 20, W
+			db[i][11] = xl_get( xl, 'R'+to_string(first_data_row+i) ); // power level 30, W
+			db[i][12] = xl_get( xl, 'S'+to_string(first_data_row+i) ); // power level 50, W
+			db[i][13] = xl_get( xl, 'T'+to_string(first_data_row+i) ); // power level 75, W
+			db[i][14] = xl_get( xl, 'U'+to_string(first_data_row+i) ); // power level 100, W
+
+			db[i][15] = xl_get( xl, 'V'+to_string(first_data_row+i) ); // efficiency vmin 10, %
+			db[i][16] = xl_get( xl, 'W'+to_string(first_data_row+i) ); // efficiency vmin 20, %
+			db[i][17] = xl_get( xl, 'X'+to_string(first_data_row+i) ); // efficiency vmin 30, %
+			db[i][18] = xl_get( xl, 'Y'+to_string(first_data_row+i) ); // efficiency vmin 50, %
+			db[i][19] = xl_get( xl, 'Z'+to_string(first_data_row+i) ); // efficiency vmin 75, %
+			db[i][20] = xl_get( xl, 'AA'+to_string(first_data_row+i) ); // efficiency vmin 100, %
+			db[i][21] = xl_get( xl, 'AB'+to_string(first_data_row+i) ); // efficiency vmin wtd, %
+
+			db[i][22] = xl_get( xl, 'AC'+to_string(first_data_row+i) ); // efficiency vnom 10, %
+			db[i][23] = xl_get( xl, 'AD'+to_string(first_data_row+i) ); // efficiency vnom 20, %
+			db[i][24] = xl_get( xl, 'AE'+to_string(first_data_row+i) ); // efficiency vnom 30, %
+			db[i][25] = xl_get( xl, 'AF'+to_string(first_data_row+i) ); // efficiency vnom 50, %
+			db[i][26] = xl_get( xl, 'AG'+to_string(first_data_row+i) ); // efficiency vnom 75, %
+			db[i][27] = xl_get( xl, 'AH'+to_string(first_data_row+i) ); // efficiency vnom 100, %
+			db[i][28] = xl_get( xl, 'AI'+to_string(first_data_row+i) ); // efficiency vnom wtd, %
+
+			db[i][29] = xl_get( xl, 'AJ'+to_string(first_data_row+i) ); // efficiency vmax 10, %
+			db[i][30] = xl_get( xl, 'AK'+to_string(first_data_row+i) ); // efficiency vmax 20, %
+			db[i][31] = xl_get( xl, 'AL'+to_string(first_data_row+i) ); // efficiency vmax 30, %
+			db[i][32] = xl_get( xl, 'AM'+to_string(first_data_row+i) ); // efficiency vmax 50, %
+			db[i][33] = xl_get( xl, 'AN'+to_string(first_data_row+i) ); // efficiency vmax 75, %
+			db[i][34] = xl_get( xl, 'AO'+to_string(first_data_row+i) ); // efficiency vmax 100, %
+			db[i][35] = xl_get( xl, 'AP'+to_string(first_data_row+i) ); // efficiency vmax wtd, %
+
+			db[i][36] = xl_get( xl, 'F'+to_string(first_data_row+i) ); // cec eff
+			db[i][37] = xl_get( xl, 'G'+to_string(first_data_row+i) ); // built-in meter y/n
+			db[i][38] = xl_get( xl, 'H'+to_string(first_data_row+i) ); // microinverter y/n
+		
+			db[i][40] = xl_get( xl, 'E'+to_string(first_data_row+i) ); // nominal voltage Vac
+	
+			i++;
+			next = xl_get( xl, 'A'+to_string(first_data_row+i+1) );
+		}
+	}
+	else // grid support, smart
+	{
+		while ( next != '' )
+		{
+			db[i][0] = xl_get( xl, 'A'+to_string(first_data_row+i) ); // manufacturer name
+			db[i][0] = replace( db[i][0] , ',' , ' ' );
+			db[i][0] = replace( db[i][0] , '.' , ' ' );
+			db[i][0] = replace( db[i][0] , '  ' , ' ' );
+			db[i][1] = xl_get( xl, 'B'+to_string(first_data_row+i) ); // model number
+			db[i][2] = xl_get( xl, 'H'+to_string(first_data_row+i) ); // power rated continuous, kW
+			db[i][3] = xl_get( xl, 'U'+to_string(first_data_row+i) ); // night tare loss, W
+			db[i][4] = ''; // power rated continuous at 40 degrees (not in XLSX version) ** THESE ARE IN THE NOV 1, 2018 VERSION
+			db[i][5] = ''; // night tare loss at 40 degrees (not in XLSX version)
+	
+			db[i][6] = xl_get( xl, 'X'+to_string(first_data_row+i) ); // voltage minimum, Vdc
+			db[i][7] = xl_get( xl, 'Y'+to_string(first_data_row+i) ); // voltage nominal, Vdc
+			db[i][8] = xl_get( xl, 'Z'+to_string(first_data_row+i) ); // voltage maximum, Vdc
+	
+			db[i][9] = xl_get( xl, 'AA'+to_string(first_data_row+i) ); // power level 10, W
+			db[i][10] = xl_get( xl, 'AB'+to_string(first_data_row+i) ); // power level 20, W
+			db[i][11] = xl_get( xl, 'AC'+to_string(first_data_row+i) ); // power level 30, W
+			db[i][12] = xl_get( xl, 'AD'+to_string(first_data_row+i) ); // power level 50, W
+			db[i][13] = xl_get( xl, 'AE'+to_string(first_data_row+i) ); // power level 75, W
+			db[i][14] = xl_get( xl, 'AF'+to_string(first_data_row+i) ); // power level 100, W
+
+			db[i][15] = xl_get( xl, 'AG'+to_string(first_data_row+i) ); // efficiency vmin 10, %
+			db[i][16] = xl_get( xl, 'AH'+to_string(first_data_row+i) ); // efficiency vmin 20, %
+			db[i][17] = xl_get( xl, 'AI'+to_string(first_data_row+i) ); // efficiency vmin 30, %
+			db[i][18] = xl_get( xl, 'AJ'+to_string(first_data_row+i) ); // efficiency vmin 50, %
+			db[i][19] = xl_get( xl, 'AK'+to_string(first_data_row+i) ); // efficiency vmin 75, %
+			db[i][20] = xl_get( xl, 'AL'+to_string(first_data_row+i) ); // efficiency vmin 100, %
+			db[i][21] = xl_get( xl, 'AM'+to_string(first_data_row+i) ); // efficiency vmin wtd, %
+
+			db[i][22] = xl_get( xl, 'AN'+to_string(first_data_row+i) ); // efficiency vnom 10, %
+			db[i][23] = xl_get( xl, 'AO'+to_string(first_data_row+i) ); // efficiency vnom 20, %
+			db[i][24] = xl_get( xl, 'AP'+to_string(first_data_row+i) ); // efficiency vnom 30, %
+			db[i][25] = xl_get( xl, 'AQ'+to_string(first_data_row+i) ); // efficiency vnom 50, %
+			db[i][26] = xl_get( xl, 'AR'+to_string(first_data_row+i) ); // efficiency vnom 75, %
+			db[i][27] = xl_get( xl, 'AS'+to_string(first_data_row+i) ); // efficiency vnom 100, %
+			db[i][28] = xl_get( xl, 'AT'+to_string(first_data_row+i) ); // efficiency vnom wtd, %
+
+			db[i][29] = xl_get( xl, 'AU'+to_string(first_data_row+i) ); // efficiency vmax 10, %
+			db[i][30] = xl_get( xl, 'AV'+to_string(first_data_row+i) ); // efficiency vmax 20, %
+			db[i][31] = xl_get( xl, 'AW'+to_string(first_data_row+i) ); // efficiency vmax 30, %
+			db[i][32] = xl_get( xl, 'AX'+to_string(first_data_row+i) ); // efficiency vmax 50, %
+			db[i][33] = xl_get( xl, 'AY'+to_string(first_data_row+i) ); // efficiency vmax 75, %
+			db[i][34] = xl_get( xl, 'AZ'+to_string(first_data_row+i) ); // efficiency vmax 100, %
+			db[i][35] = xl_get( xl, 'BA'+to_string(first_data_row+i) ); // efficiency vmax wtd, %
+
+			db[i][36] = xl_get( xl, 'J'+to_string(first_data_row+i) ); // cec eff
+			db[i][37] = xl_get( xl, 'S'+to_string(first_data_row+i) ); // built-in meter y/n
+			db[i][38] = xl_get( xl, 'T'+to_string(first_data_row+i) ); // microinverter y/n
+		
+			db[i][40] = xl_get( xl, 'I'+to_string(first_data_row+i) ); // nominal voltage Vac
+	
+			i++;
+			next = xl_get( xl, 'A'+to_string(first_data_row+i+1) );
+		}
+	}
+
+	xl_close( xl );
+	xl_free( xl );
+
+	return db;
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Main
+////////////////////////////////////////////////////////////////////////////////
+
+path = choose_dir( cwd(), 'Choose working directory' );
+
+// initialize counters for log
+nadded = 0;
+pmax_neg_or_zero = 0;
+pmax_units_incorrect = 0;
+paco_watts = 0;
+pwrlvl_kw = 0;
+coeff_gen_results_issue = 0;
+missing_vac = 0;
+cg_failed = 0;
+pnt_negative = 0;
+mppt_high_zero = 0;
+mppt_low_zero = 0;
+vdco_zero = 0;
+paco_gt_pdco = 0;
+paco_lt_75_pdco = 0;
+mppt_vdco = 0;
+idcmax_bad = 0;
+
+// first pass is to create library with grid support inverters
+// second pass is to add utility interactive inverters to the library
+// second pass is true if inverter library file is in working directory
+second_pass = false;
+files = dir_list( path, '*' );
+for( i=0; i<#files; i++ )
+{
+	if ( strpos( files[i], 'CEC Inverters' ) > -1 ) // assume file name includes 'CEC Inverters'
+	{
+		second_pass = true;
+	}
+}
+
+// only prompt for library file to add if one exists from first pass
+file1 = '';
+if ( second_pass )
+{
+	file1 = choose_file( path, 'Choose inverter library file to add more inverters', 'CSV File (*.csv)|*.csv');
+}
+
+file2 = choose_file( path, 'Choose CEC database workbook', 'xlsx (*.xlsx)|*.xlsx');
+if ( file2 == '' ) 
+{
+	outln( 'Failed to get input file.' );
+	exit;
+}
+
+// determine which database to import
+// assume CEC workbook file names include either 'Utility_Interactive' or 'Grid_Support'
+str = lower( path_only( file2 ) );
+is_grid_support = strpos( str, 'grid_support' ) > -1; // 0=utility interactive, 1=grid support
+// for msgbox below
+if ( is_grid_support )
+{
+	this_type = 'Grid Support';
+	next_type = 'Utility Interactive';
+}
+else
+{
+	this_type = 'Utility Interactive';
+	next_type = 'Grid Support';
+}
+
+// read data from first pass or get header header data
+outln('Getting data from first library...');
+if ( file1 == '' ) // if first pass file does note exist get headers
+{
+	db1[0] = split('Name,Vac,Pso,Paco,Pdco,Vdco,C0,C2,C1,C3,Pnt,Vdcmax,Idcmax,Mppt_low,Mppt_high,CEC_Date,CEC_Type',',');
+	db1[1] = split('Units,V,W,W,W,V,1/W,1/V,1/V,1/V,W,V,A,V,V,,',',');
+	db1[2] = split('[0],inv_snl_ac_voltage,inv_snl_pso,inv_snl_paco,inv_snl_pdco,inv_snl_vdco,inv_snl_c0,inv_snl_c2,inv_snl_c1,inv_snl_c3,inv_snl_pnt,inv_snl_vdcmax,inv_snl_idcmax,inv_snl_mppt_low,inv_snl_mppt_hi,inv_cec_date,inv_cec_type',',');
+}
+else // read inverter data from first pass file
+{
+	db1 = csvread( file1 );
+
+}	
+outln('Done.');
+
+// open text file to write log
+flogname = path_only(file2) + '/conversion_log'+'-' + date_str + '.txt';
+flog = open( flogname , 'w');
+if ( flog == 0 )
+	outln('Failed to open log file for writing.');
+else	
+	outln('Log file open for writing:\n  ' + flogname );
+
+// write initial text to log
+write_line( flog , '==========================================================================');
+write_line( flog , 'CEC Inverter Database Conversion Log ' + date_time() );
+write_line( flog , '===========================================================================');
+write_line( flog , 'See report at bottom of file. Search for "**" to find problem inverters' );
+write_line( flog , '---------------------------------------------------------------------------');
+write_line( flog , file2 );
+
+db2 = cec_xlsx_to_db( file2, is_grid_support );
+
+write_line( flog ,  'Number of inverters in database: ' + #db2 );
+
+// create lookup table
+C = {};
+for( i=3;i<#db1;i++ ) { C{db1[i][0]} = db1[i]; }
+write_line( flog , 'Done.');
+
+outln('Adding data to lookup table...');	
+// fields needed Vac(V), Paco(W), Pdco(W), Vdco(V), Pso(W), C0(1/W), C1(1/V),
+// C2(1/V), C3(1/V), Pnt(W), Vdcmax(V), Idcmax(A), Mppt_low(V), Mppt_high(V)
+test_sample = alloc(18,3); // data for one test sample
+
+write_line( flog, 'Adding inverters from CEC database file to lookup table...');
+for( i=0;i<#db2;i++ )
+{
+	name = db2[i][0] + ": " + db2[i][1];
+	fields = db2[i];
+	
+	Vac = fields[40];
+			
+	name = name + ' ' +  ?(Vac=='')[Vac,'(N/A)'];
+	write_line( flog ,  name);
+
+	// Some inverters missing Vac, but not used in simulations so ok to keep
+	// Vac may appear in inverter name
+	if ( Vac == '' ) 
+	{
+		write_line( flog , '** Vac missing. Keeping this inverter (Vac not used in simulations).');
+		missing_vac++;
+	}
+
+	Paco = to_real(fields[2]); 
+	// Paco and power levels in CEC database are supposed to be in kW, 
+	// but some are incorrectly specified in W. 
+	// SAM coefficient generator expects Pac in W, and can accept
+	// power levels for test data in W or kW.
+	// All SAM library power specifications are in W.
+	// Compare Paco to max power level and then adjust if necessary.
+	w_to_kw = 1;
+	Pmax = to_real(fields[14]); // power level at 100% load
+	if(Pmax <= 0)
+	{	
+		write_line( flog , '** Pmax <=0. Skipping this inverter.');
+		pmax_neg_or_zero++;
+		continue;
+	}
+	if (Paco/Pmax == 1000) // Paco in W instead of kW 
+	{
+		Paco = Paco / 1000;
+		write_line( flog , '** Paco converted from W to kW.');
+		paco_watts++;
+	}
+	// For some inverters, part load power test data are given in W 
+	// instead of kW. This results in Pso in kW instead of the expected W.
+	// Example: Enphase IQ6Plus-72-ACM-US (208V) in Nov 15 2017 database
+	elseif (Pmax/Paco == 1000 ) 
+	{
+		w_to_kw = 0.001;
+		write_line( flog , '** Power levels converted from W to kW.');
+		pwrlvl_kw++;
+	}
+	elseif (Pmax/Paco > 100 || Paco/Pmax > 100)
+	{
+		write_line( flog , '** Pmax and Paco units inconsistent.');
+		pmax_units_incorrect++;
+		continue;
+	}	
+		
+	// convert to W for input to compute module and output to library
+	Paco = Paco * 1000.0;
+
+	for(j=0; j<6; j++)
+	{
+		// Vmin test data
+		test_sample[j][0] = to_real(fields[9+j])*w_to_kw; //Pin
+		test_sample[j][1] = fields[6]; // Vmin
+		test_sample[j][2] = fields[15+j]; // eff
+		// Vnom test data
+		test_sample[6+j][0] = to_real(fields[9+j])*w_to_kw; //Pin
+		test_sample[6+j][1] = fields[7]; // Vnom
+		test_sample[6+j][2] = fields[22+j]; // eff
+		// Vmax test data
+		test_sample[12+j][0] = to_real(fields[9+j])*w_to_kw; //Pin
+		test_sample[12+j][1] = fields[8]; // Vmax
+		test_sample[12+j][2] = fields[29+j]; // eff
+	}
+		
+	//call inv_cec_cg module
+	obj = ssc_create();
+	ssc_var(obj, 'inv_cec_cg_paco', Paco); // in W
+	ssc_var(obj, 'inv_cec_cg_sample_power_units', 1); // kW test data
+	ssc_var(obj, 'inv_cec_cg_test_samples', test_sample);
+	result= ssc_exec(obj, 'inv_cec_cg', {'show_dialog'=false, 'hold_dialog'=false} );
+	// Skip inverter when coefficient calculator fails.
+	if(result != 0)
+	{	
+		write_line('** Failed to solve for inverter coefficients. Skipping this inverter.');
+		cg_failed++;
+		continue;
+	}
+
+	Pdco = ssc_var(obj, 'Pdco');
+	Vdco = ssc_var(obj, 'Vdco');
+	Pso = ssc_var(obj, 'Pso');
+	c0 = ssc_var(obj, 'c0');
+	c1 = ssc_var(obj, 'c1');
+	c2 = ssc_var(obj, 'c2');
+	c3 = ssc_var(obj, 'c3');
+
+	ssc_free(obj);
+
+	// Skip inverter when coefficient calculator returns zero or negative values
+	// add check on high Pso value, e.g., Huawei 45KTL 11/4/2018
+	str = '';
+	if ( Pdco <= 0 ) str += 'Pdco <= 0, ';
+	if ( Vdco <= 0 ) str += 'Vdco <= 0, ';
+	if ( Pso <= 0 ) str += 'Pso <= 0, ';
+	if ( Pso > 0.10 * Pdco ) str += 'Pso > 0.10 Pdco, ';
+	// The following tests are from the find_bad_inverters.lk script
+	if ( Paco >= Pdco ) str += 'Paco >= Pdco, ';
+	if ( Paco < 0.75 * Pdco ) str += 'Paco < 0.75 Pdco, ';
+	if ( to_real(fields[6]) > Vdco || to_real(fields[8]) < Vdco ) str += 'MPPT_low > Vdco or MPPT_hi < Vdco, ';
+	if ( str != '' )
+	{
+		write_line( flog , '** ' + str + 'skipping this inverter.');
+		coeff_gen_results_issue++;
+		continue;
+	}
+
+	values = alloc(db1[0]); // first inverter in existing library
+	values[0] = name;
+	values[1] = to_real(Vac); // convert empty string to zero
+	values[2] = Paco;
+	values[3] = Pdco;
+	values[4] = Vdco;
+	values[5] = Pso;
+	values[6] = c0;
+	values[7] = c1;
+	values[8] = c2;
+	values[9] = c3;
+	values[10] = to_real(fields[3]); // Pnt
+	values[11] = cec_date;
+	values[12] = this_type;
+		
+	// This check on Pnt is a legacy check. Should be ok as of Nov 2017 data.
+	// Some Pnt values in database have negative values.
+	if (values[10] < 0) 
+	{	
+		values[10] = 0 - values[10];
+		write_line( flog , '** Pnt < 0. Converted to positive value.');
+		pnt_negative++;
+	}
+		
+	values[11] = to_real(fields[8]); // Vdcmax = Vmax input
+
+	// Some inverters may have Mppt high different than Vmax on data sheet,
+	// but here we assume Mppt high = Vmax.
+	values[14] = to_real(fields[8]); // Mppt high = Vmax
+	if ( values[14] <= 0 )
+	{
+		write_line( flog , '** MPPT_high <= 0. Skipping this inverter.');
+		mppt_high_zero++;
+		continue;
+	}	
+		
+	if (Vdco == 0)
+	{		
+		values[12] = 0;
+		write_line( flog , '** Vdco = 0. Skipping this inverter.');
+		vdco_zero++;
+		continue;
+	}
+	else
+	{ 
+		values[12] = Pdco / Vdco; // Idcmax = max input power / vdcmax (not used in simulation)
+	}	
+
+	//some inverters from pre 2018 library have bad Idcmax values, e.g. Shennzhen BSG 5000-U 2016
+	//but Idcmax is not used by the model, so no need to check for these
+	if ( values[12] < 0.1 * ( Pdco / fields[6] )) // Pdco / MPPT_low
+	{
+		values[12] = 0;
+		write_line( flog, '** Idcmax < 0.1 ( Pdco / MPPT_ow ). Setting Idcmax to zero.' );
+		idcmax_bad++;
+	}
+
+	
+	values[13] = to_real(fields[6]); // Mppt low = Vmin
+	if ( values[13] <= 0 )
+	{
+		write_line( flog , '** MPPT_low <= 0. Skipping this inverter.');
+		mppt_low_zero++;
+		continue;
+	}
+		
+	C{name} = values;
+		
+	nadded++;
+	
+}
+outln('Done.');
+outln('Processing data and writing to new library file...');
+write_line('Done adding inverters to lookup table.');
+// sort
+write_line( flog , 'Sorting by inverter name.');
+names = @C; // keys into the hash
+stable_sort(names);
+
+write_line( flog , 'Building new library...');
+// copy the top three lines of header info
+for( i=0;i<3;i++ )
+	db3[i] = db1[i];
+	
+// copy the sorted data
+for( i=0;i<#names;i++ )
+	db3[i+3] = C{names[i]};
+write_line( flog , 'Done.');
+
+write_line( flog , 'Writing data to CSV library file...');
+file3 = path_only(file2) + '/CEC Inverters ' + date_str + '.csv';
+ok = csvwrite( file3, db3 );
+if ( !ok )
+	write_line( flog, 'Failed to write data to new library file ' + file3 + '. Make sure it is not open in Excel.');	
+else
+	write_line( flog, 'Done.\nSee new SAM library file\n  ' + file3 + '\nRename to CEC Inverters.csv and replace file in SAM library folder.');
+
+write_line( flog , '---------------------------------------------------------------------------');
+write_line( flog , 'Inverter library file for appending (blank if first pass):\n' );
+write_line( flog , '  ' + file1 );
+write_line( flog , 'CEC database file:\n' );
+write_line( flog , ' ' + file2 );
+write_line( flog , 'New inverter library file:\n' );
+write_line( flog , ' ' + file3 );
+write_line( flog , '---------------------------------------------------------------------------');
+write_line( 'Number of inverters added: ' + nadded + '.' );
+write_line( flog , 'Number of inverters in new SAM library: ' + #db3 + '.');
+write_line( flog, 'Skipped because of problems:' );
+write_line( flog , '  Coefficient generator calculated parameters with problems: ' + coeff_gen_results_issue);
+write_line( flog , '  Pmax <= 0: ' + pmax_neg_or_zero);
+write_line( flog , '  Pmax units do not match Paco units: ' + pmax_units_incorrect);
+write_line( flog , '  Coefficient generator failed: ' + cg_failed );
+write_line( flog, 'Data issues but not skipped:' );
+write_line( flog , '  Pnt negative converted to positive: ' + pnt_negative);
+write_line( flog , '  Paco converted from  W to kW: ' + paco_watts);
+write_line( flog , '  Power levels converted from W to kW: ' + pwrlvl_kw);
+write_line( flog , '  Vac missing (not used in simulations): ' + missing_vac );
+write_line( flog , '  MPPT_high <= 0: ' + mppt_high_zero );
+write_line( flog , '  MPPT_low <= 0: ' + mppt_low_zero );
+write_line( flog , '  Vdco = 0: ' + vdco_zero );
+write_line( flog , '  Paco > Pdco: ' + paco_gt_pdco );
+write_line( flog , '  Pac < 0.75 Pdco: ' + paco_lt_75_pdco );
+write_line( flog , '  MPPT_high < vdco or MPPT_low > vdco: ' + mppt_vdco );
+
+close( flog);
+outln('Done.\nSee log file for details:\n  ' + flogname);
+
+if ( !second_pass ) { msg = 'Run script again to add ' + next_type + ' inverters.'; }
+else { msg = 'New inverter library file:\n' + file3 + '\n\nSee log file for details:\n' + flogname;}
+msgbox('Success!\n' + msg );
+
+browse( flogname );       

@@ -60,6 +60,8 @@ public:
 		wxString Name;
 		std::vector<VarValue> Values;
 		bool IsInput;
+		int ndxHybrid;
+		wxString varName;
 	};
 	std::vector<Var> Setup;
 	std::vector<Simulation*> Runs;
@@ -154,6 +156,7 @@ public:
 	int GetRunNumberForRowNumber(const int& rowNum);
 
 	std::vector<int> GetRowSortOrder();
+	ParametricData& GetParametricData() { return m_par; }
 
 private:
 	int m_sortColumn;
@@ -323,13 +326,12 @@ public:
 	void RefreshVariableList();
 	void RefreshValuesList();
 
-	wxString GetBaseCaseValue(const wxString &varname);
-	wxArrayString GetValuesList(const wxString &varname);
-	wxArrayString GetValuesDisplayList(const wxString &varname);
-	void SetValuesList(const wxString &varname, const wxArrayString &values);
+	wxString GetBaseCaseValue(const wxString &input_name);
+	wxArrayString GetValuesList(const wxString &input_name);
+	wxArrayString GetValuesDisplayList(const wxString &input_name);
+	void SetValuesList(const wxString &input_name, const wxArrayString &values);
 
-	bool ShowEditValuesDialog(const wxString &title,
-		wxArrayString &values, const wxString &varname);
+	bool ShowEditValuesDialog(const wxString &title, wxArrayString &values, const wxString &varname, size_t &ndxHybrid);
 	bool ShowNumericValuesDialog(const wxString &title, wxArrayString &values);
 	bool ShowFixedDomainDialog(const wxString &title,
 		const wxArrayString &names, const wxArrayString &labels, wxArrayString &list,
@@ -342,6 +344,8 @@ public:
 	size_t UpdateNumberRuns();
 	bool UpdateLinkedEnabled();
 
+	bool UpdateVarNameNdxHybrid(const wxString &input_name, wxString *var_name, size_t *ndx_hybrid);
+
 private:
 	wxListBox *lstValues;
 	wxListBox *lstVariables;
@@ -351,6 +355,7 @@ private:
 	Case *m_case;
 	wxArrayString m_input_names;
 	std::vector<wxArrayString> m_input_values;
+
 
 	DECLARE_EVENT_TABLE()
 };

@@ -457,6 +457,9 @@
 		},
 		"Load": {
 		},
+		"PVLosses": {
+			"enable_subhourly_clipping": 0
+		},
 		"AdjustmentFactors": {
 			"adjust_constant": 0,
 			"adjust_en_periods": 0,
