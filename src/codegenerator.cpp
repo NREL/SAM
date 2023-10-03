@@ -728,15 +728,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
-		{
-			// Android post processing
-			if (lang == 7)
-			{
-		        wxString fn2 = foldername + "/native-lib.cpp"; // ndk cpp file for project with c++ support
-				if (wxCopyFile(fn,fn2))	wxRemoveFile(fn);
-			}
 			wxLaunchDefaultApplication(foldername);
-		}
 		return cg->Ok();
 	}
 	else
@@ -1387,7 +1379,7 @@ bool CodeGen_csharp::RunSSCModule(wxString &)
 	fprintf(m_fp, "			int idx = 0;\n");
 	fprintf(m_fp, "			String msg;\n");
 	fprintf(m_fp, "			int type;\n");
-	fprintf(m_fp, "			float time;\n");
+	fprintf(m_fp, "			double time;\n");
 	fprintf(m_fp, "			while (module.Log(idx, out msg, out type, out time))\n");
 	fprintf(m_fp, "			{\n");
 	fprintf(m_fp, "				String stype = \"NOTICE\";\n");

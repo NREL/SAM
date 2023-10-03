@@ -615,7 +615,6 @@ bool Case::SaveDefaults(bool quiet)
 
     rapidjson::StringBuffer os;
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB
-    //writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
     doc.Accept(writer);
     wxString sfn = file;
     wxFileName fn(sfn);
@@ -738,7 +737,8 @@ bool Case::SaveAsJSON(bool quiet, wxString fn, wxString case_name)
 
 }
 
-
+// call SamApp::VarTablesFromJSONFile
+/*
 bool Case::VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& file)
 {
 	if (!m_config ||(vt.size() < 1) || (m_config->Technology.size()<1))
@@ -773,7 +773,7 @@ bool Case::VarTablesFromJSONFile(std::vector<VarTable>& vt, const std::string& f
 		}
 	}
 }
-
+*/
 
 
 bool Case::VarTableFromJSONFile(VarTable* vt, const std::string& file)
@@ -1142,7 +1142,7 @@ bool Case::LoadDefaults(wxString* pmsg)
 	wxString schk = file;
 	if (wxFileExists(schk))
 	{
-		ok = VarTablesFromJSONFile(vt, file.ToStdString());
+		ok = SamApp::VarTablesFromJSONFile(m_config, vt, file.ToStdString());
 
 		for (size_t ndxHybrid = 0; ndxHybrid < vt.size(); ndxHybrid++) {
 
@@ -1232,7 +1232,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	//schk.Replace(".json", ".zip");
 	if (wxFileExists(schk))
 	{
-		VarTablesFromJSONFile(vt_defaults, file.ToStdString());
+		SamApp::VarTablesFromJSONFile(m_config, vt_defaults, file.ToStdString());
 #else 
 	if (wxFileExists(file))
 	{
@@ -1249,7 +1249,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	for (size_t i_var = 0; i_var < m_config->Technology.size(); i_var++) {
 		// erase all input variables that are no longer in the current configuration
 		wxArrayString to_remove;
-		// TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
+		// iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
 		VarInfoLookup& vars = m_config->Variables[i_var];
 
 		for (VarTable::iterator it = m_vals[i_var].begin(); it != m_vals[i_var].end(); ++it)

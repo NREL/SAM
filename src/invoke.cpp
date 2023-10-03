@@ -1928,7 +1928,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values(0).Get(name))
+						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
 						{
 							
 							if (!field.IsEmpty())

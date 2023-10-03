@@ -6,10 +6,18 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                -6.277438562204193e66
+                0.0,
+                0.0,
+                0.0
             ]
         ],
         "adjust_timeindex": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
             0.0
         ],
         "analysis_period": 25.0,
@@ -22,32 +30,32 @@
         "energy_output_array": [
             0.0
         ],
-        "first_year_output": 79716.0,
-        "first_year_output_peak": 9.1,
+        "first_year_output": 1594320.0,
+        "first_year_output_peak": 182.0,
         "fixed_plant_input": 0.0,
-        "genericsys.cost.contingency": 0.0,
+        "genericsys.cost.contingency": 1680000.0,
         "genericsys.cost.contingency_percent": 8.4,
         "genericsys.cost.epc.fixed": 0.0,
-        "genericsys.cost.epc.nonfixed": 0.0,
+        "genericsys.cost.epc.nonfixed": 3468800.0,
         "genericsys.cost.epc.percent": 16.0,
-        "genericsys.cost.epc.total": 0.0,
-        "genericsys.cost.installed_per_capacity": 0.0,
-        "genericsys.cost.per_watt": 0.0,
+        "genericsys.cost.epc.total": 3468800.0,
+        "genericsys.cost.installed_per_capacity": 133.874,
+        "genericsys.cost.per_watt": 100.0,
         "genericsys.cost.plant": 0.0,
-        "genericsys.cost.plant_scaled": 0.0,
+        "genericsys.cost.plant_scaled": 20000000.0,
         "genericsys.cost.plm.fixed": 0.0,
-        "genericsys.cost.plm.nonfixed": 0.0,
+        "genericsys.cost.plm.nonfixed": 758800.0,
         "genericsys.cost.plm.percent": 3.5,
-        "genericsys.cost.plm.total": 0.0,
+        "genericsys.cost.plm.total": 758800.0,
         "genericsys.cost.sales_tax.percent": 80.0,
-        "genericsys.cost.sales_tax.total": 0.0,
+        "genericsys.cost.sales_tax.total": 867200.0,
         "genericsys.cost.sales_tax.value": 5.0,
         "heat_rate": 10.0,
         "import_message": "",
         "inflation_rate": 2.5,
-        "nameplate_capacity": 10.0,
+        "nameplate_capacity": 200.0,
         "om_capacity": [
-            50.0
+            43.0
         ],
         "om_capacity_escal": 0.0,
         "om_fixed": [
@@ -64,12 +72,12 @@
         "om_production_escal": 0.0,
         "sales_tax_rate": 5.0,
         "spec_mode": 0.0,
-        "system_capacity": 10.0,
+        "system_capacity": 200.0,
         "system_capacity_combined": 0.0,
         "system_use_lifetime_output": 0.0,
-        "total_direct_cost": 0.0,
-        "total_indirect_cost": 0.0,
-        "total_installed_cost": 0.0,
+        "total_direct_cost": 21680000.0,
+        "total_indirect_cost": 4227600.0,
+        "total_installed_cost": 26774800.0,
         "ui_step_minutes": 60.0,
         "user_capacity_factor": 100.0
     },
@@ -81,24 +89,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
-                0.0
-            ],
-            [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
@@ -341,6 +333,8 @@
         "adjust_en_timeindex": 0.0,
         "adjust_periods": [
             [
+                0.0,
+                0.0,
                 0.0
             ]
         ],
@@ -358,7 +352,7 @@
         "bos_cost_total": 96300.0,
         "cols": 1.0,
         "degradation": [
-            0.0
+            0.5
         ],
         "desired_farm_size": 0.0,
         "elec_eff_loss": 1.91,
@@ -12075,7 +12069,7 @@
         "cbi_uti_tax_fed": 1.0,
         "cbi_uti_tax_sta": 1.0,
         "chk_update_peaks": 0.0,
-        "const_per_interest1": 21326.0,
+        "const_per_interest1": 255606.0,
         "const_per_interest2": 0.0,
         "const_per_interest3": 0.0,
         "const_per_interest4": 0.0,
@@ -12085,7 +12079,7 @@
         "const_per_interest_rate3": 0.0,
         "const_per_interest_rate4": 0.0,
         "const_per_interest_rate5": 0.0,
-        "const_per_interest_total": 21326.0,
+        "const_per_interest_total": 255606.0,
         "const_per_months1": 6.0,
         "const_per_months2": 0.0,
         "const_per_months3": 0.0,
@@ -12102,13 +12096,13 @@
         "const_per_percent4": 0.0,
         "const_per_percent5": 0.0,
         "const_per_percent_total": 100.0,
-        "const_per_principal1": 2437260.0,
+        "const_per_principal1": 29212100.0,
         "const_per_principal2": 0.0,
         "const_per_principal3": 0.0,
         "const_per_principal4": 0.0,
         "const_per_principal5": 0.0,
-        "const_per_principal_total": 2437260.0,
-        "const_per_total1": 45698.6,
+        "const_per_principal_total": 29212100.0,
+        "const_per_total1": 547726.0,
         "const_per_total2": 0.0,
         "const_per_total3": 0.0,
         "const_per_total4": 0.0,
@@ -12118,7 +12112,7 @@
         "const_per_upfront_rate3": 0.0,
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
-        "construction_financing_cost": 45698.6,
+        "construction_financing_cost": 547726.0,
         "cost_debt_closing": 450000.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
@@ -21022,8 +21016,8 @@
         "flip_target_year": 20.0,
         "fuelcell_system_capacity": 200.0,
         "fuelcell_total_installed_cost": 84000.0,
-        "generic_system_capacity": 10.0,
-        "generic_total_installed_cost": 0.0,
+        "generic_system_capacity": 200.0,
+        "generic_total_installed_cost": 26774800.0,
         "grid_curtailment": [
             1e38,
             1e38,
@@ -48033,7 +48027,7 @@
             33.5754
         ],
         "loan_moratorium": 0.0,
-        "mera_cost1": 31000.0,
+        "mera_cost1": 50000.0,
         "mera_cost2": 0.0,
         "mera_cost3": 0.0,
         "mera_name1": "Replacement Reserve 1",
@@ -48113,7 +48107,7 @@
         "ppa_soln_mode": 0.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 2437260.0,
+        "property_assessed_value": 29212100.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -48144,19 +48138,19 @@
         "state_tax_rate": [
             7.0
         ],
-        "system_capacity": 310.0,
+        "system_capacity": 500.0,
         "term_int_rate": 7.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 2437260.0,
+        "total_installed_cost": 29212100.0,
         "ui_annual_load": 0.0,
         "ui_battery_capacity": 287.846,
         "ui_battery_cost": 884005.0,
         "ui_fuel_cell_capacity": 200.0,
         "ui_fuel_cell_cost": 84000.0,
-        "ui_generic_capacity": 10.0,
-        "ui_generic_cost": 0.0,
-        "ui_hyb_pv_capacity": 469.565,
+        "ui_generic_capacity": 200.0,
+        "ui_generic_cost": 26774800.0,
+        "ui_hyb_pv_capacity": 0.0,
         "ui_pv_cost": 1013180.0,
         "ui_wacc": 6.70974,
         "ui_wind_cost": 456073.0,
