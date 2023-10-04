@@ -2762,8 +2762,8 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
-	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
-	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pTech = new wxMetroDataViewCtrl(this, ID_TechTree);
+	m_pFin = new wxMetroDataViewCtrl(this, ID_FinTree);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );

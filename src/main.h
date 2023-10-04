@@ -408,7 +408,7 @@ DECLARE_APP( SamApp );
 class wxCheckBox;
 class wxMetroButton;
 class wxMetroListBox;
-class wxMetroDataViewTreeCtrl;
+class wxMetroDataViewCtrl;
 
 class ConfigDialog : public wxDialog
 {
@@ -434,7 +434,7 @@ private:
 
 	void UpdateFinTree();
 
-	wxMetroDataViewTreeCtrl *m_pTech, *m_pFin;
+	wxMetroDataViewCtrl *m_pTech, *m_pFin;
 	wxArrayString m_tnames, m_fnames;
 	wxString m_techname, m_finname;
 
