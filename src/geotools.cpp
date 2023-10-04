@@ -48,16 +48,21 @@ static wxString MyGet(const wxString& url)
     return curl.GetDataAsString();
 }
 
+// Geocode using Google API for non-NREL builds of SAM
 bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, double* tz, bool showprogress) {
     wxBusyCursor _curs;
 
     wxString plusaddr = address;
+    plusaddr.Replace(", ", "+");
+    plusaddr.Replace(",", "+");
     plusaddr.Replace("   ", " ");
     plusaddr.Replace("  ", " ");
     plusaddr.Replace(" ", "+");
    
     // Get lat/lon from Google geocoding API
-    wxString url = SamApp::WebApi("google_api") + "&address=" + plusaddr;
+    wxString url = SamApp::WebApi("google_geocode_api");
+    url = url + "&address=";
+    url = url + plusaddr;
     url.Replace("<GOOGLEAPIKEY>", wxString(google_api_key));
 
     wxEasyCurl curl;
@@ -109,10 +114,13 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
     else return true;
 }
 
+// Geocode using NREL Developer API (MapQuest) for NREL builds of SAM
 bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lon, double* tz, bool showprogress) {
     wxBusyCursor _curs;
 
     wxString plusaddr = address;
+    plusaddr.Replace(", ", "+");
+    plusaddr.Replace(",", "+");
     plusaddr.Replace("   ", " ");
     plusaddr.Replace("  ", " ");
     plusaddr.Replace(" ", "+");
