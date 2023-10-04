@@ -98,7 +98,7 @@
 <p>This is the first maintenance update to <a href="#2022-11-21">SAM 2022.11.21</a>.</p>
 
 <ul>
-<li>Add support to Wind Power model for wind resource file format compatible with WIND Toolkit API. (<a href="https://github.com/NREL/ssc/pull/985">SSC 985</a>)</li>
+<li>Add support to Wind Power model for wind resource file format compatible with WIND Toolkit API. The Wind model still reads wind resource files in SRW format (.srw file extension) for legacy wind resource files, but the <a href="https://samrepo.nrelcloud.org/help/weather_format_csv_wind.htm">SAM CSV format for WIND</a> is now SAM's default format for wind resource files. (<a href="https://github.com/NREL/ssc/pull/985">SSC 985</a>)</li>
 <li>Add Artic XCPC collector to Solar Water Heating collector library. (<a href="https://github.com/NREL/SAM/pull/1337">SAM 1337</a>)</li>
 <li>Fix Geothermal resource temperature input constraint on maximum value. (<a href="https://github.com/NREL/SAM/pull/1341">SAM 1341</a>, <a href="https://github.com/NREL/ssc/pull/986">SSC 986</a>)</li>
 <li>Fix issue for Geothermal resource temperature less than 150&deg;C causing capacity factor greater than 1. (<a href="https://github.com/NREL/ssc/pull/989">SSC 989</a>)</li>
