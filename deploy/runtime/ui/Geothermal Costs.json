@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Costs",
-    "Width": 826.0,
-    "Height": 2855.0,
+    "Width": 897.0,
+    "Height": 2297.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -57,7 +57,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 449.0
+                    "Integer": 500.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -94,7 +94,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -131,7 +131,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 848.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -168,7 +168,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 851.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -205,7 +205,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 848.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -242,7 +242,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 848.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -8661,6 +8661,302 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_conf_wells_prod_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 798.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Determines the number of full-size wells drilled in exploration phase to be used for geothermal field development and production. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Determines the number of full-size wells drilled in exploration phase to be used for geothermal field development and production. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Confirmation Wells Used for Production"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_confirmation_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to wells drilled in the exploration phase that have the same dimensions and specifications as a typical production well."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to wells drilled in the exploration phase that have the same dimensions and specifications as a typical production well."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Full Diameter Confirmation"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_exploration_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to slim holes, core holes, and temperature gradient wells."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to slim holes, core holes, and temperature gradient wells."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Small Diameter Exploration"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_prod_wells_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 798.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Calculated number of geothermal wells needed to meet the required geothermal flow. Eq.: Total Geothermal Flow Required / Production Well Flow Rate."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Calculated number of geothermal wells needed to meet the required geothermal flow. Eq.: Total Geothermal Flow Required / Production Well Flow Rate."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Production Wells Required"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_direct_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 798.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2199.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to the comprehensive costs associated with the exploration, development, and construction of a geothermal power plant. This includes exploration, drilling, stimulation (EGS only), power plant construction, and pumping and field gathering costs. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to the comprehensive costs associated with the exploration, development, and construction of a geothermal power plant. This includes exploration, drilling, stimulation (EGS only), power plant construction, and pumping and field gathering costs. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Direct Cost"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_indirect_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 795.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2091.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to general overhead costs incurred during plant construction. This includes engineering, home office, startup, and other activities not directly associated the plant construction. They are calculated as percentages of the direct costs.  "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to general overhead costs incurred during plant construction. This includes engineering, home office, startup, and other activities not directly associated the plant construction. They are calculated as percentages of the direct costs.  "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Indirect Cost"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_installed_capacity_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 798.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2247.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The total installed cost divided by the net power plant capacity."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The total installed cost divided by the net power plant capacity."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Installed cost per capacity"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_installed_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 798.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2223.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "This is the sum of the total direct and indirect costs."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "This is the sum of the total direct and indirect costs."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Installed Cost"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -8923,7 +9219,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 798.0
+                    "Integer": 864.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -8960,7 +9256,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -10574,7 +10870,7 @@
         "geotherm.cost.confirm_wells_num": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Number of Confirmation Wells",
+            "Label": "Number of Confirmation Wells Used for Production",
             "Units": " ",
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",

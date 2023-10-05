@@ -61,7 +61,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 803.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 803.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -135,7 +135,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 473.0
+                    "Integer": 500.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 516.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -209,7 +209,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 803.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -555,19 +555,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 324.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 612.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -583,7 +583,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -599,7 +599,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -625,7 +625,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 17.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -1573,6 +1573,413 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_binary_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Flash"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_binary_ttip15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 111.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Binary"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_excess_pressure_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 567.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "This is the additional pressure above the saturation pressure of the fluid required to keep the fluid from flashing and to prevent the exsolution of non-condensable gases between the wellhead and the power plant (binary plant heat exchangers). GETEM uses a default of 50 psi."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "This is the additional pressure above the saturation pressure of the fluid required to keep the fluid from flashing and to prevent the exsolution of non-condensable gases between the wellhead and the power plant (binary plant heat exchangers). GETEM uses a default of 50 psi."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Excess Pressure at Pump Suction"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_gross_plant_output_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Total power produced by the plant."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Total power produced by the plant."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Gross Plant Output"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_max_temp_decline_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The amount the resource temperature can decline before a new well is drilled, so long as the total resource potential has not been completely utilized."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The amount the resource temperature can decline before a new well is drilled, so long as the total resource potential has not been completely utilized."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Max Temperature Decline"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_net_plant_output_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Gross Plant Output minus pumping losses from the parasitic load. It is the same as the power sales under a PPA."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Gross Plant Output minus pumping losses from the parasitic load. It is the same as the power sales under a PPA."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Net Plant Output"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_plant_design_temp_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The working temperature of the surface power cycle. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The working temperature of the surface power cycle. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Plant Design Temperature"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_plant_efficiency_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "the net output from the plant per unit mass of produced geothermal fluid"
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "the net output from the plant per unit mass of produced geothermal fluid"
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Actual Plant Efficiency (i.e. Brine Effectiveness)"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_pressure_difference_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 489.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The pressure drop within binary plant. GETEM assumes a 40-psi pressure drop across the plant."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The pressure drop within binary plant. GETEM assumes a 40-psi pressure drop across the plant."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Pressure Difference Across Surface Equipment"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_pump_depth_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 498.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The depth at which the pump is set. This is the difference between the well depth and the point in the well where the minimum pressure occurs."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The depth at which the pump is set. This is the difference between the well depth and the point in the well where the minimum pressure occurs."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Pump Depth"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_pump_work_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The mechanical energy done by pumps to transport fluids through boreholes, flowlines, or other process equipment in the geothermal system."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The mechanical energy done by pumps to transport fluids through boreholes, flowlines, or other process equipment in the geothermal system."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Pump Work"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1665,19 +2072,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 324.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 639.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1693,7 +2100,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1709,7 +2116,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -1735,7 +2142,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 17.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -1831,19 +2238,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 594.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 666.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1859,7 +2266,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1875,7 +2282,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -1901,7 +2308,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -3033,19 +3440,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 324.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 594.0
+                    "Integer": 666.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3061,7 +3468,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -3077,7 +3484,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -3103,7 +3510,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 16.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -4087,117 +4494,121 @@
         "};"
     ],
     "Callbacks": [
-        "function update_controls()",
         "{",
-        "\tflash_message();",
-        "\tshow('geotherm_flash_message', ${conversion_type});",
-        "\t",
-        "\tbinary_message();",
-        "\tshow('geotherm_binary_message', !${conversion_type});",
-        "",
-        "\t// enable/disable all the appropriate controls on the page according to",
-        "\t// the user's selections",
-        "\tenable('plant_efficiency_input', !${conversion_type});",
-        "\tenable(\"decline_type\", ${resource_type} );",
-        "\tenable(\"nameplate\", !${analysis_type} );",
-        "\tenable(\"num_wells\", ${analysis_type} );",
-        "\tenable(\"conversion_subtype\", ${conversion_type});",
-        "\tenable(\"specified_pump_work_amount\", ${specify_pump_work} );",
-        "",
-        "\t// if this is a hydrothermal plant, set this to 'specify decline rate'",
-        "\tif (${resource_type}==0) {",
-        "\t\tvalue(\"decline_type\", 0);",
-        "\t\tenable('decline_type', false);",
+        "\t// if we just changed to 'hydrothermal'",
+        "\tif (${resource_type} == 0) {",
+        "\t\tif (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3) {",
+        "\t\t\told_setting = ${reservoir_pressure_change_type_old_setting};",
+        "\t\t\tvalue(\"reservoir_pressure_change_type\", old_setting);",
+        "\t\t}",
         "\t\t",
+        "\t\tif (${decline_type} == 1)",
+        "\t\t\tvalue(\"decline_type\",0);",
         "\t}",
         "}",
         "",
-        "function flash_message()",
-        "{",
-        "\tmessage = '';",
-        "\t",
-        "\tif (${conversion_type})",
-        "\t\tmessage = 'Flash plant efficiency calculated internally';",
-        "\t",
-        "\tproperty( 'geotherm_flash_message','Caption',message );",
-        "}",
-        "",
-        "",
-        "function binary_message()",
-        "{",
-        "\tmessage = '';",
-        "\t",
-        "\tif (!${conversion_type})",
-        "\t\tmessage = 'Plant efficiency set as percentage of max plant efficiency';",
-        "\t",
-        "\tproperty( 'geotherm_binary_message','Caption',message );",
-        "}",
-        "",
-        "",
-        "on_load{\"Geothermal Plant and Equipment\"}=define() {",
-        "\tupdate_controls();",
-        "\ton_change{'prod_well_choice'}();",
-        "\tloss_adjustment_set();",
-        "\tegs_temp_def();",
-        "\tshow('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);",
+        "on_change{'resource_type'} = define() {",
+        "\thandle_change_to_hydrothermal();",
+        "\tcheck = value('resource_type');",
         "\trefresh();",
-        "};\t",
-        "",
-        "on_change{\"conversion_type\"} = define() {",
-        "\tupdate_controls();",
-        "\tif (value('conversion_type') == 1) {",
-        "\t\tvalue('decline_type', 0);",
-        "\t\tenable('decline_type', false);",
-        "\t}",
         "};",
         "",
-        "on_change{'analysis_type'} = define() {",
-        "\tupdate_controls();",
+        "on_change{'geotherm.default_input'} = define() {",
+        "\tdefault = value('geotherm.default_input');",
+        "\tif (default == 0) get_getem_data_from_file('Greenfield_Reference_Hydrothermal_Flash.json');",
+        "\telse if (default == 1) get_getem_data_from_file('Greenfield_Reference_Hydrothermal_Binary.json');",
+        "\telse if (default == 2) get_getem_data_from_file('Greenfield_Reference_EGS_Flash.json');",
+        "\telse if (default == 3) get_getem_data_from_file('Greenfield_Reference_EGS_Binary.json');",
+        "\telse if (default == 4) get_getem_data_from_file('Greenfield_Improved_Hydrothermal_Flash.json');",
+        "\telse if (default == 5) get_getem_data_from_file('Greenfield_Improved_Hydrothermal_Binary.json');",
+        "\telse if (default == 6) get_getem_data_from_file('Greenfield_Improved_EGS_Flash.json');",
+        "\telse if (default == 7) get_getem_data_from_file('Greenfield_Improved_EGS_Binary.json');",
+        "\telse if (default == 8) get_getem_data_from_file('Brownfield_Reference_EGS_Flash.json');",
+        "\telse if (default == 9) get_getem_data_from_file('Brownfield_Reference_EGS_Binary.json');",
+        "\telse if (default == 10) get_getem_data_from_file('Brownfield_Improved_EGS_Flash.json');",
+        "\telse if (default == 11) get_getem_data_from_file('Brownfield_Improved_EGS_Binary.json');",
         "};",
         "",
-        "on_change{'specify_pump_work'} = define() {",
-        "\tupdate_controls();",
-        "};",
-        "",
-        "on_change{'prod_well_choice'} = define() {",
-        "\tif (value('prod_well_choice')==0)",
-        "\t\tenable('dt_prod_well', true);",
-        "\telse",
-        "\t\tenable('dt_prod_well', false);",
-        "};",
-        "",
-        "on_change{'decline_type'} = define() {",
-        "\ttype = value('decline_type');",
-        "\tenable('temp_decline_rate', type==0);",
-        "\tenable('temp_decline_max', type==0);",
-        "};",
-        "",
-        "function loss_adjustment_set() ",
+        "function get_getem_data_from_file(filename)",
         "{",
-        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {",
-        "\t\tif (value('system_use_lifetime_output') == 1) {",
-        "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));",
-        "\t\t}",
-        "\t\telse {",
-        "\t\t\tproperty('adjust', 'AnalysisPeriod', 1);",
-        "\t\t}",
+        "\tdefaults_dir = replace(appdir(), '\\\\', '/' ) + '/../libraries/GETEMDefaults/';",
+        "\tdefaults_dir += filename;",
+        "\tx = read_json(defaults_dir);",
+        "\tdefs = x.defaults;",
+        "\tow_def = yesno('Do you want to overwrite the case defaults with GETEM defaults from this configuration?');",
+        "\tif (ow_def)",
+        "\t\tset_getem_defaults_from_data(defs);",
+        "}",
+        "",
+        "function set_getem_defaults_from_data(defs)",
+        "{",
+        "\tgetem_params = defs.getemparams;",
+        "\t",
+        "\tvalue('analysis_period',getem_params.analysisperiod);",
+        "\t//value('geotherm.cost.prod_cost_curve_well_diam', getem_params.geotherm.cost.prod_cost_curve_well_diam);",
+        "\t//value('geotherm.cost.prod_cost_curve_well_type', getem_params.geotherm.cost.prod_cost_curve_well_type);",
+        "\tvalue('nameplate', getem_params.nameplate);",
+        "\tvalue('well_flow_rate', getem_params.well_flow_rate);",
+        "\t//value('geotherm.cost.contingency_percent', getem_params.geotherm.cost.contingency_percent);",
+        "\tvalue('excess_pressure_pump', getem_params.excess_pressure_pump);",
+        "\tvalue('well_diameter', getem_params.well_diameter);",
+        "\tvalue('geotherm.cost.pump_per_foot', getem_params.geotherm_cost_pump_per_foot);",
+        "\tvalue('geotherm.cost.pump_per_hp', getem_params.geotherm_cost_pump_per_hp);",
+        "\tvalue('delta_pressure_equip', getem_params.delta_pressure_equip);",
+        "\tvalue('reservoir_pressure_change', getem_params.reservoir_pressure_change);",
+        "\tvalue('subsurface_water_loss', getem_params.subsurface_water_loss);",
+        "\tvalue('temp_decline_rate', getem_params.temp_decline_rate);",
+        "\tvalue('conversion_type', getem_params.conversion_type);",
+        "\tvalue('resource_type', getem_params.resource_type);",
+        "\tvalue('wet_bulb_temp', getem_params.wet_bulb_temp);",
+        "\tvalue('ambient_pressure', getem_params.ambient_pressure);",
+        "\t",
+        "}",
+        "",
+        "on_change{'reservoir_pressure_change_type'} = define() {",
+        "\t// if we're not evaluating an EGS resource, alert",
+        "\tif ( (value('reservoir_pressure_change_type') == 1 || value('reservoir_pressure_change_type') == 3 ) && value('resource_type') != 1) {",
+        "\t\tmsgbox('This option is only allowed for EGS resources.');",
+        "\t\thandle_change_to_hydrothermal();",
+        "\t}",
+        "\tsave_old_pressure_change_setting();",
+        "\tcheck = value('reservoir_pressure_change_type');",
+        "\ttech_check = value('resource_type');",
+        "\tenable('reservoir_pressure_change', check==0);",
+        "\tenable('reservoir_width', check==2);",
+        "\tenable('reservoir_height', check==2);",
+        "\tenable('reservoir_permeability', check==2);",
+        "\tenable('inj_prod_well_distance', check==2);",
+        "\tenable('fracture_aperature', check==1);",
+        "\tenable('num_fractures', check==1);",
+        "\tenable('fracture_width', check==1);",
+        "\tenable('fracture_angle', check==1);",
+        "\tenable('fracture_length', check==1);",
+        "\tenable('fracture_spacing', check==1);",
+        "\tenable('rock_density', check==1);",
+        "\tenable('rock_specific_heat', check==1);",
+        "\tenable('rock_thermal_conductivity', check==1);",
+        "\tenable('subsurface_water_loss', check==1);",
+        "\tif (check==3 && tech_check==1) {",
+        "\t\tvalue('reservoir_model_inputs_shown', 1);",
         "\t}",
         "\telse {",
-        "\t\tproperty('adjust', 'AnalysisPeriod', 1);",
+        "\t\tvalue('reservoir_model_inputs_shown', 0);",
         "\t}",
-        "}",
-        "",
-        "on_change{'geotherm.egs_design_temp_autoselect'} = define() ",
-        "{",
-        "\tegs_temp_def();",
         "\t",
         "};",
         "",
-        "function egs_temp_def()",
-        "{",
-        "\tcheck = value('geotherm.egs_design_temp_autoselect');",
-        "\tresource = value('resource_type');",
-        "\tenable('geotherm.egs_design_temp_input', check == 0 && resource == 1);",
+        "on_load{'Geothermal Resource'} = define() {",
+        "\tsave_old_pressure_change_setting();",
+        "\ton_change{'reservoir_pressure_change_type'}();",
+        "\t//show('geotherm.default_input', false); //Remove while debugging default case select feature",
+        "\t//refresh();",
+        "};",
+        "",
+        "function save_old_pressure_change_setting() {",
+        "\t// save the last setting that wasn't option 1",
+        "\tif ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) ",
+        "\t\t${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};",
         "}",
         ""
     ]
