@@ -1210,6 +1210,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_default_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 657.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 700.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Default Type is not available for the LCOE Calculator or No Financial financial model option."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3143,8 +3205,9 @@
         "on_load{'Geothermal Resource'} = define() {",
         "\tsave_old_pressure_change_setting();",
         "\ton_change{'reservoir_pressure_change_type'}();",
-        "\t//show('geotherm.default_input', false); //Remove while debugging default case select feature",
-        "\t//refresh();",
+        "\tenable('geotherm.default_input', (financing()!='None' && financing()!='LCOE Calculator'));\r",
+        "\tshow('lbl_default_type',(financing()=='None' || financing()=='LCOE Calculator'));",
+        "\trefresh();\r",
         "};",
         "",
         "function save_old_pressure_change_setting() {",
