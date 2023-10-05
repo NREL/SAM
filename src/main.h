@@ -395,6 +395,8 @@ public:
 	static void InstallPython();
     static void InstallPythonPackage(const std::string& pip_name);
 
+	static bool VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file);
+
 };
 
 // provide global function version for use in mswfatal.cpp

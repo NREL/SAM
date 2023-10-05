@@ -1,0 +1,84 @@
+﻿ /* Main Help+Manual WebHelp Page Layout CSS
+	 Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+body { 
+	font-size: 100;
+	background-color: #ffffff;
+	padding: 10px;
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	text-size-adjust: none;
+	overflow: auto;
+	}
+	
+.desktop {
+	
+	}
+.tablet {
+	display: none;
+}
+.phone {
+	display: none;
+	}
+.noscript { 
+	display: none;
+	}
+.scripted {
+	display: initial;
+	}
+
+
+/* Topic Pane */	
+div#topicheader {
+	padding-bottom: 0.82rem;
+	}
+
+
+/* Topic title in topic header*/
+p#ptopic_breadcrumbs {
+	display: none;
+	color: #000000;
+	}
+p#ptopic_breadcrumbs a {
+	color: #000000;  
+	opacity: 1.0; 
+	font-style: normal; 
+	}
+h1.topictitle {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #000000;
+	margin: 0; padding: 0;
+}	
+img.dropdown-toggle-icon {
+	display: none;
+	}
+
+/* Mobile Navigation Toolbar and Buttons */	
+div#mob_toolbar_wrapper { 
+	display: none;
+	} 
+div#dragsurface {
+	display: none;
+	}
+
+.wraptext {
+	white-space: normal !important;
+	}
+
+/* Topic Footer */
+footer.topicfooter {
+	display: none;
+	}
+
+/* Special tables for info boxes */
+#callout-table, #overview-table {display:block; position:relative; top:0; left:0;}
+#callout-icon {display:block; position:absolute; top:-11px; left:-11px;}
+#callout-icon-flag {display:block; position:absolute; top:-11px; left:-8px;}
+#callout-table a {text-decoration: none; color: blue;}
+#callout-table a:visited {text-decoration: none; color: blue;}
+#overview-table a {text-decoration: none; color: #000000;}
+#overview-table a:visited {text-decoration: none; color: #000000;}
+#callout-table a:hover, #overview-table a:hover {text-decoration: underline;} 
+	

@@ -1,0 +1,12 @@
+hmLoadTopic({
+hmKeywords:"",
+hmTitle:"Select an object",
+hmDescription:"Select an object when you want to move or resize it. Selected objects appear magenta in 3D scene view, and with magenta handles in Bird\'s eye and Elevations view.",
+hmPrevLink:"3dshad-zoom-pan.html",
+hmNextLink:"3dshad-move.html",
+hmParentLink:"3dshad-how-to.html",
+hmBreadCrumbs:"<a href=\"3d_shade_calculator.html\">3D Shade Calculator<\/a> &gt; <a href=\"3dshad-how-to.html\">How-To<\/a>",
+hmTitlePath:"3D Shade Calculator > How-To > Select an object",
+hmHeader:"<h1 class=\"p_Heading1\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_Heading1\">Select an object<\/span><\/h1>\n\r",
+hmBody:"<p class=\"p_Text\"><span class=\"f_Text\">Select an object when you want to move or resize it. Selected objects appear magenta in 3D scene view, and with magenta handles in Bird\'s eye and Elevations view.<\/span><\/p>\n\r<p class=\"p_TitleProcedure\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_TitleProcedure\">To select an object<\/span><\/p>\n\r<p class=\"p_ProcedureStep\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_ProcedureStep\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_ProcedureStep\">Click the object,<\/span><\/p>\n\r<p class=\"p_ProcedureStepNoNumber\"><span class=\"f_ProcedureStepNoNumber\">or<\/span><\/p>\n\r<p class=\"p_ProcedureStepNoNumber\"><span class=\"f_ProcedureStepNoNumber\">click the object\'s name in the object list.<\/span><\/p>\n\r<p class=\"p_ProcedureStepNoNumber\"><span class=\"f_ProcedureStepNoNumber\">The selected object will be highlighted in the objects list, and will be indicated by a magenta mask or handles, depending on the view. Also, the object\'s properties appear when it is selected.<\/span><\/p>\n\r<p class=\"p_ProcedureStepNoNumber\"><span class=\"f_ProcedureStepNoNumber\">If there are multiple objects at your mouse pointer, click once for each object to cycle through the objects.<\/span><\/p>\n\r<p class=\"p_ImageCaption\"><span class=\"f_ImageCaption\">Selecting an Object<\/span><\/p>\n\r<p class=\"p_ImageCaption\"><img alt=\"ss-select\" style=\"margin:0 auto 0 auto;width:32.6875rem;height:27.3750rem;border:none\" src=\".\/images\/ss-select.png\"\/><\/p>\n\r"
+})

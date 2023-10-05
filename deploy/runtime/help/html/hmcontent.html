@@ -1,0 +1,1254 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<!-- HMSKIN FILETYPE: TOC -->
+<title>SAM Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="cache-control" content="no-cache" /> 
+<!--This is set up for self-hosted Google Fonts on your own web server with font files included in the skin. See the help for instructions on using fonts hosted by Google -->
+<link type="text/css" href="./css/GoogleFonts.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="./css/hmwebhelp_toc.css" />
+<noscript>
+<style type="text/css">
+	div#noscript {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 1rem solid grey;
+		background-color: #eaeaea;
+		}
+	h2#noscriptwarning {
+		text-align: center;
+		position: relative;
+		top: 35%;
+		color: #333333;
+	}
+</style> 
+</noscript>
+<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+		var pageName = "tocPage",
+			tocFocused = "false",
+			hmDevice = {
+		// Cookies
+		hmSetCookie: function(cname, cvalue, exdays) {
+			var expires = "";
+			if (exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				expires = "expires="+d.toGMTString();
+			}
+			document.cookie = cname + "=" + cvalue + "; " + expires;
+		},
+
+		hmGetCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		hmDeleteCookie: function(cname) {
+			var name = cname + "=";
+			document.cookie = name + "; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		},
+		
+		compilehash: (function () {
+		var outVal = 0, t="SAM HelpUser-defined Project ID";
+		for (var x = 0; x < t.length; x++) {
+			outVal = outVal + (t.charCodeAt(x)*(x+2));
+		}
+		return (outVal*697).toString(32) + "_";
+		})(),
+		mainPageInitialized: false,
+		navBarWidth: 0,
+		saveNavbarWidth: function(){
+			var $nbar = $("p#tocnavbar");
+			if ($nbar.is(":visible")) {
+				this.navBarWidth = $nbar.width();
+				var nBarWidth = this.navBarWidth + 5;
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.resizePanes", fa: nBarWidth});
+				} else {
+					this.navBarWidth = null;
+					}
+			}
+	
+	};
+
+		// Manage the logo
+		var manageLogo = function(mode) {
+			switch(mode) {
+			
+			case "hide":
+			$("div#tocHeader").css({
+			"background-image": "none"
+			});
+			$("p.tocProjectTitle").css({
+			"padding-left": "0",
+			"text-align": "center"
+			});
+			$("a#tocHeaderLink").css({
+			"pointer-events": "none"
+			});
+			break;
+			
+			case "show":
+			$("div#tocHeader").css("background-image","url('./images/sam-logo.png')");
+			$("p.tocProjectTitle").css({
+			"padding-left": "25px",
+			"text-align": "left"
+			});
+			$("a#tocHeaderLink").css({
+			"pointer-events": "initial"
+			});
+			break;
+			
+			}
+		}
+
+		// Close TOC on topic open if phone or narrow page
+		var closeTOC = function(topicleft) {
+		if (hmDevice.phone || (!hmDevice.phone && topicleft)) {
+			setTimeout(
+				function() {
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageDimensions.dragHandle"});
+				},300) 
+			}
+		},
+		checkTOC = function() { 
+			if (true) {
+			xMessage.sendObject("parent",{action: "getvalue", vn: "hmpage.topicleft", cbf: "closeTOC"});
+			}
+		};
+
+	// Session Variables
+	// Test that storage is both available and accessible (looking at you, Safari!)
+	var storageOK = (function(){
+		var gotStorage = typeof(Storage) === "object" && typeof(localStorage) === "object" && typeof(sessionStorage) === "object";
+		if (gotStorage) {
+			try {
+				localStorage.setItem('testStorage',1);
+				localStorage.removeItem('testStorage');
+				gotStorage = true;
+			}
+			catch(e) {
+			gotStorage = false;
+			}
+		}
+		return gotStorage;
+		})();
+		
+	sessionVariable = {
+		localS: storageOK,
+		
+		setPV: function(sVar,sVal) {
+			if (this.localS) {
+				localStorage.setItem(hmDevice.compilehash + sVar,sVal);
+			} else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,sVal,365);	
+		},
+		setSV: function(sVar,sVal) {
+			if (this.localS)
+				sessionStorage.setItem(hmDevice.compilehash + sVar,sVal);
+			else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,sVal,false);
+		},
+		getPV: function(sVar) {
+			if (this.localS) {
+				if (typeof(localStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return localStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		getSV: function(sVar) {
+			if (this.localS) {
+				if (typeof(sessionStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return sessionStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(sVar);
+		},
+		deletePV: function(sVar) {
+			if (this.localS)
+				localStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		},
+		deleteSV: function(sVar) {
+			if (this.localS)
+				sessionStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		}
+	};
+	/* UI Location */
+	hmDevice.page = "hmcontent";
+	hmDevice.baseFontSize = 100;
+	hmDevice.fontChangeMax = 20;
+	hmDevice.parentHome = true;
+	hmDevice.defaultTopic = "index.html";
+	
+	/* Source Checks */
+	hmDevice.agent = navigator.userAgent.toLowerCase();
+	hmDevice.embedded = false;
+	hmDevice.platform = navigator.platform.toLowerCase();
+	hmDevice.ipad = /ipad/.test(hmDevice.platform);
+	hmDevice.iphone = /iphone/.test(hmDevice.platform);
+	hmDevice.winphone7 =  (/windows phone os [7]\.\d\d??; .*?trident\/[5]\.\d\d??; iemobile\/9/.test(hmDevice.agent));
+	hmDevice.winphone = (/windows phone [89]\.\d\d??; .*?trident\/[67]\.\d\d??;.*?touch; /.test(hmDevice.agent));
+	hmDevice.w8desktop = (/windows nt 6\.[2345]/m.test(hmDevice.agent));
+	hmDevice.w8metro = (function(){var supported = true; 
+				try {new ActiveXObject("htmlfile");} catch(e) {supported = false;} 
+				return (!supported && hmDevice.w8desktop);})();
+	hmDevice.touch = /touch/.test(hmDevice.agent);
+	// Treat all Windows 8 devices as desktops unless in metro mode with touch
+	hmDevice.tb = (/tablet/.test(hmDevice.agent) && (!/trident/.test(hmDevice.agent) || (hmDevice.w8metro && hmDevice.touch)));
+	hmDevice.goodandroid = (/android.+?applewebkit\/(?:(?:537\.(?:3[6-9]|[4-9][0-9]))|(?:53[8-9]\.[0-9][0-9])|(?:54[0-9]\.[0-9][0-9]))|android.+?gecko\/[345][0-9]\.\d{1,2} firefox/.test(hmDevice.agent));
+	hmDevice.deadandroid = (/android.+?applewebkit\/(?:53[0-6]\.\d{1,2})|firefox\/[0-2]\d\.\d{1,2}/.test(hmDevice.agent));
+	hmDevice.android = (/android/.test(hmDevice.agent) && !hmDevice.deadandroid);
+	hmDevice.mb = /mobi|mobile/.test(hmDevice.agent);
+	
+	/* Main Checks */
+	hmDevice.phone = (hmDevice.mb && !hmDevice.ipad && !hmDevice.tb);
+	hmDevice.tablet = (hmDevice.ipad || hmDevice.tb || (!hmDevice.phone && hmDevice.android));
+	hmDevice.aspectRatio = (screen.height / screen.width > 1 ? screen.height / screen.width : screen.width / screen.height).toFixed(2);
+	hmDevice.narrowTablet = (hmDevice.tablet && hmDevice.aspectRatio > 1.4);
+	hmDevice.desktop = ((!hmDevice.tablet && !hmDevice.phone));
+	hmDevice.device = hmDevice.phone ? "phone" : hmDevice.tablet ? "tablet" : hmDevice.desktop ? "desktop" : "default";
+	hmDevice.fontSize = hmDevice.phone ? hmDevice.baseFontSize * 1.0 : hmDevice.tablet ? hmDevice.baseFontSize * 1.0 : hmDevice.desktop ? hmDevice.baseFontSize : hmDevice.baseFontSize;
+	hmDevice.maxFontSize = hmDevice.fontSize + hmDevice.fontChangeMax;
+	hmDevice.minFontSize = hmDevice.fontSize - hmDevice.fontChangeMax;
+</script>
+<script id="jqscript" type="text/javascript"></script>
+</head>
+<body id="pgBody">
+<div id="noscript"><h2 id="noscriptwarning">Please enable JavaScript to view this site.</h2></div>
+<div id="page_wrapper">
+<!-- HMSKIN BODY START -->
+<div id="hmpageheader" class="noscript">
+<p class="navbar noscript" id="tocnoscriptnavbar">Contents&nbsp;|&nbsp;<a href="hmkwindex.html" target="_self">Index</a>&nbsp;|&nbsp;<a href="hmftsearch.html" target="_self">Search</a></p>
+</div>
+<div id="hmpagebody">
+<div id="tocHeader"><a id="tocHeaderLink" href="https://sam.nrel.gov" title="System Advisor Model (SAM)" aria-label="System Advisor Model (SAM)" target="_blank">
+<p class="tocProjectTitle">SAM Help</p>
+</a></div> 
+<div id="hmtoctree" role="doc-toc"></div>
+</div>
+<!-- HMSKIN BODY END -->
+</div>
+<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+
+// Reset font size with preset cookie value if available
+(function(){
+	var tempFontSize = sessionVariable.getPV("hmFontSize"),
+		baseElement = document.getElementsByTagName("html")[0];
+	if (tempFontSize !== null) {
+	baseElement.style.fontSize=tempFontSize + "%";
+	} else {
+	baseElement.style.fontSize = hmDevice.baseFontSize + "%";
+	}
+	})();
+if (parent.location == self.location) document.location = "index.html";
+//** Browser capabilities object  **//
+var hmBrowser = {}; 
+	hmBrowser.addEventListener = !!window.addEventListener; //Unused
+	hmBrowser.orientation = "onorientationchange" in window;
+	// Touch browser *with* hardware support
+	hmBrowser.touch = ('ontouchstart' in window && !window.opera) || (window.DocumentTouch && document instanceof DocumentTouch) || (window.pointerEvent && navigator.maxTouchPoints > 0) || (window.MSPointerEvent && navigator.msMaxTouchPoints > 0);		
+	hmBrowser.transitions = (function(temp) {
+	  var props = ['transitionProperty', 'WebkitTransition', 'MozTransition', 'OTransition', 'msTransition'];
+	  for ( var i in props ) if (temp.style[ props[i] ] !== undefined) return true;
+	  return false;
+	})(document.createElement('rabbit'));
+	hmBrowser.Flandscape = function() {if (hmBrowser.orientation) {return (Math.abs(window.orientation)==90);} else {return (window.innerHeight < window.innerWidth);}};
+	hmBrowser.MobileFirefox = (/Android.+?Gecko.+?Firefox/i.test(navigator.userAgent));
+	hmBrowser.touchstart = (function(){ return hmDevice.desktop ? 'mousedown.startevents' : (('ontouchstart' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchstart.startevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointerdown.startevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerDown.startevents' : 'mousedown.startevents'})();
+	hmBrowser.touchmove = (function(){return (('ontouchmove' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchmove.moveevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointermove.moveevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerMove.moveevents' : 'mousemove.moveevents'})();
+	hmBrowser.touchend = (function(){return hmDevice.desktop ? 'mouseup.endevents' : (('ontouchend' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchend.endevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointerup.endevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerUp.endevents' : 'mouseup.endevents'})();
+	hmBrowser.orientationevent = typeof window.orientation == "undefined" ? "resize" : "orientationchange";
+	hmBrowser.server = /^https??:\/\//im.test(document.location);
+	hmBrowser.parenthome = true;
+	hmBrowser.intervalCounter = true;
+
+// Handler for post-loading functions from files
+function extFuncs(func, args) {		
+			if (typeof funcs != "object") funcs = {};
+			if (typeof funcs[func] == "function") {
+				funcs[func](args);
+			} else {
+				 var newScript= "./js/" + func + ".js";
+				$.getScript(newScript, function (data, textStatus) {
+				if (textStatus === "success" && typeof funcs[func] == "function") {
+					try {
+					funcs[func](args);
+					} catch(err) {
+					console.log(err);
+					}
+				} else {
+					alert("External function script " + func + ".js could not be  loaded");
+					}
+				});
+			}
+	} // extFuncs()
+
+// Timers for TOC navigation
+var timerA = new Date().getTime(),
+	timerB = new Date().getTime();
+
+// TOC Constructor
+
+function tocConstructor(toc) {
+
+   // Set header
+   if (hmDevice.phone) 
+	manageLogo("show");
+	else
+	manageLogo("hide");
+
+   // Public variables
+   this.tocTree = toc;
+   this.currentTopicItem = null;
+   this.currentNTChapterItem = null;
+   this.currentBranchTree = null;
+   this.targetAnchor = null;
+   this.tocLinkClicked = false;
+   this.lastTopic = 0;
+   this.defaultTopic = null;
+   this.nonTocTopic = false;
+   this.tocLoaded = false;
+   this.topicSelected = false;
+   
+   /* TOC handling for desktop mode only -- phone and tablet are always no full build, autoclose and no expand all */
+   this.buildall = false; // Build the entire TOC and keep branches
+   this.autoclose = true; // Close main branches when another branch is opened
+   this.expandall = false; // Expand all top level branches on start (automatically disables autoclose)
+   if (this.expandall) {
+	   this.autoclose = false;
+	   this.buildall = true;
+   }
+
+   // Local variables
+   var webLinkCounter = 0,
+	   currentTopic = null,
+	   currentBranch = null,
+	   self = this;
+
+	function getNodeType(thisItem) {
+		var nodeType = thisItem.items.length > 0 ? "chapter" : "topic";
+		if (thisItem.tp === "") nodeType += " node";
+		if (thisItem.tp == "weblink") nodeType += " web";
+		return nodeType;
+	}
+
+   function buildTocEntry(thisItem) {			
+	
+	var newItem = document.createElement("li"),
+		newItemAlink = document.createElement("a"),
+		newItemCaption = document.createTextNode(thisItem.cp),
+		nodeType = getNodeType(thisItem);
+	
+		function webLink(item) {
+			if (item.tr === "" || item.tr === "hmcontent") { 
+				window.open(item.hf, "_blank");
+				} else {
+				window.open(item.hf, item.tr);
+				}
+			}
+	
+	newItem.className = "heading lv" + thisItem.lv + " " + nodeType;
+	if (thisItem.tp === "weblink") {
+		thisItem.i0 = ".\/images\/internet.svg";
+		thisItem.i1 = ".\/images\/internet.svg";
+		}
+	newItemAlink.setAttribute("style","background-image:url('"+thisItem.i0+"')");
+	newItemAlink.setAttribute("href",thisItem.hf);
+	
+	// Store icon images for chapters without text directly in the HTML
+	if (thisItem.hf === "") {
+		newItem.setAttribute("src0", thisItem.i0);
+		newItem.setAttribute("src1", thisItem.i1);
+	}
+	newItem.setAttribute("hf", thisItem.hf);
+	newItem.setAttribute("bs", thisItem.bs);
+	if (thisItem.tr !== "") 
+		newItem.setAttribute("tg", thisItem.tr);
+	if (thisItem.tp == "topiclink") {
+		$(newItem).on("click", function(event){
+				event.preventDefault();
+				event.stopPropagation();
+			tocSource.doTopicLink(event,thisItem,this);
+		});
+
+		$(newItem).on("keydown", function(event){
+			
+			var doArrows = function($obj, kcode, shift) {
+
+			var offset;
+			
+			if (kcode == 9) {
+				offset = shift ? -1 : 1;
+			} else {
+				offset = [37, 38,].includes(kcode) ? -1 : 1;
+			}
+			
+			// Keydown bug -- fires twice on some browsers
+			timerB = new Date().getTime();
+			var diff = timerB - timerA;
+			if (diff < 100) return;
+
+			event.preventDefault();
+			var thisBS = $obj.attr("bs"),
+			nextBS, $nextItem;
+			
+			nextBS = (parseInt(thisBS) + offset)
+			if (nextBS < 0) nextBS = self.lastTopic;
+			if (nextBS > self.lastTopic) nextBS = 0;
+			$nextItem = $("li[bs='"+nextBS+"']");
+
+			while ($nextItem.length == 0 || $nextItem.is(":hidden")) {
+				nextBS = nextBS+offset;
+				if (nextBS < 0) nextBS = self.lastTopic;
+			if (nextBS > self.lastTopic) nextBS = 0;
+				$nextItem = $("li[bs='"+ (nextBS) +"']");
+			} 
+
+			if ($nextItem.length > 0) {
+				$nextItem.find("a").first().focus();
+				}
+
+			timerA = new Date().getTime();
+		}
+				
+		if ([9, 37, 38, 39, 40].includes(event.keyCode)) doArrows($(this), event.keyCode, event.shiftKey);
+			
+				if (event.type == "keydown" && ![" ", "Enter"].includes(event.key)) return;
+				event.preventDefault();
+				event.stopPropagation();
+			tocSource.doTopicLink(event,thisItem,this);
+		});
+	} else if (thisItem.tp === "" && thisItem.items.length > 0) {
+			$(newItem).on("click", function(event){
+				event.preventDefault();
+				event.stopPropagation();
+				// Find first real target 
+				var firstRealTargetFound = false,
+					firstRealTarget;
+
+				function findFirstRealTarget(item) {
+					
+					var firstRealTargetParent = item;
+
+						//firstRealTarget = item;
+
+					function doTraverse(items) {
+
+						for (var x = 0; x < items.length; x++) {
+							if (firstRealTargetFound) break;
+							firstRealTarget = items[x];
+							if (firstRealTarget.tp == "topiclink") {
+								firstRealTargetFound = true;
+								break;
+							}
+							if (firstRealTarget.items.length > 0) {
+								doTraverse(firstRealTarget.items);
+							}
+						}
+					}
+
+					doTraverse(firstRealTargetParent.items);
+
+					}
+					
+					findFirstRealTarget(thisItem);
+					
+					if (!firstRealTargetFound)
+						thisItem = firstRealTarget;
+					else if (firstRealTarget !== "fail") {
+						tocSource.doTopicLink(event,firstRealTarget,this);
+						}
+		});
+	} else if (thisItem.tp === "weblink") {
+		$(newItem).on("click", function(event){
+				event.preventDefault();
+				event.stopPropagation();
+				webLink(thisItem);
+		});
+		
+	}
+	newItemAlink.appendChild(newItemCaption);
+	newItem.appendChild(newItemAlink);	
+	return newItem;
+   }
+   
+function buildChapterNode(thisItem){
+	var thisChapterNode = document.createElement("ul");
+	thisChapterNode.setAttribute("style","display:none;");
+	thisItem.ch = thisChapterNode;
+	thisItem.st = "0";
+	return thisChapterNode;
+	}
+
+this.buildTOC = function(thisItemSet, thisItemParent, fullBuild) {
+	
+	var currentNode, 
+		currentEntry,
+		doReplace = false;
+
+	for (var x in thisItemSet) {
+		currentEntry = thisItemSet[x];
+		currentNode = buildTocEntry(currentEntry);
+		currentEntry.rf = currentNode;
+		thisItemParent.appendChild(currentNode);
+		
+		// This is only called if we are building the entire top-level tree
+		if ((currentEntry.items.length > 0) && fullBuild) {
+			var newChapterNode = buildChapterNode(currentEntry);
+			currentNode.appendChild(newChapterNode);
+			self.buildTOC(currentEntry.items, newChapterNode, fullBuild);
+			if (hmDevice.desktop && this.expandall && currentEntry.lv == "1") {
+				$(newChapterNode).show();
+				}
+		}
+
+	}
+};
+
+function buildChapter(chapterNode) {
+	
+	if (!chapterNode.items || chapterNode.items.length < 1) return;
+	
+	var buildNode,
+		currentParent = chapterNode.rf;
+	if (currentParent.children.length > 1) return;
+	buildNode = buildChapterNode(chapterNode);
+	currentParent.appendChild(buildNode);
+	currentParent = buildNode;
+	
+	for (var x in chapterNode.items) {
+		buildNode = buildTocEntry(chapterNode.items[x]);
+		chapterNode.items[x].rf = buildNode;
+		currentParent.appendChild(buildNode);
+	}
+}
+
+this.clearBranch = function(branch) {
+	if (branch.items.length < 1 || typeof branch.cp === "undefined")
+		return;
+	if (this.autoclose && (!this.buildall || !hmDevice.desktop)) {
+		branch.ch.setAttribute("style","");
+		// Prevent memory leaks before cleaning
+		function cleanUp(thisNode) {
+			if (thisNode.items.length > 0) {
+				for (var x in thisNode.items) {
+					$(thisNode.items[x].rf).off("click");
+					thisNode.items[x].rf = null;
+					if (thisNode.items[x].items.length > 0)
+						cleanUp(thisNode.items[x]);
+				}
+			}
+			
+		}
+		// Remove attached bindings
+		cleanUp(branch);		
+		
+		// Physically remove the nodes from the DOM
+		while (branch.ch.firstChild) branch.ch.removeChild(branch.ch.firstChild);
+		branch.rf.removeChild(branch.rf.lastChild);
+		branch.ch = null;
+		if (typeof branch.i0 !== "undefined") branch.rf.firstChild.setAttribute("style","background-image:url('"+branch.i0+"')");
+	} else if (this.autoclose || !hmDevice.desktop) {
+		//self.displayBranch(branch, true, false);
+		$("li[hf='"+ branch.hf +"']").find("ul").first().slideUp(50);
+	}
+};
+
+this.displayBranch = function(branch, animate, mode) {
+	var branchContents = "",
+		tCount = branch.length,
+		speed = !animate ? 0 : 50,
+		index = mode ? tCount-1 : 0,
+		targetState = "1",
+		scrolled = false;
+
+function scrollToTarget(s){
+		var $target = $("a.current"),
+			pagePos = $("div#hmtoctree")[0].offsetTop + $target.parent("li")[0].offsetTop,
+			scrollPos = $("div#hmpagebody").scrollTop(),
+			wrapperHeight = $("div#hmpagebody").height(),
+			targetHeight = Math.abs($target.parent("li").height());
+		// Only auto-scroll if the TOC has not been clicked and item is not visible
+		/*console.log("ScrollPos: "  + scrollPos);
+		console.log("Wrapper: " + wrapperHeight);
+		console.log("PPos = " + $("div#hmtoctree")[0].offsetTop + " + " + ($target.parent("li")[0].offsetTop + 20));
+		console.log("PPos: " + pagePos);
+		console.log("Scroll + Wrapper: " + (scrollPos + wrapperHeight))
+		console.log("Target height: " + targetHeight)*/
+		if (!self.tocLinkClicked) {
+		 setTimeout(function(){
+				if ($target.parent("li").attr("bs") == "0") {
+					$("div#hmpagebody").scrollTo(0,0,0);
+				} else if (pagePos < scrollPos) {
+					$("div#hmpagebody").scrollTo($target,0,{axis: 'y', offset:{top:-20}});
+					//console.log("scroll 1")
+				} else if (pagePos > (scrollPos + wrapperHeight - 10)) {
+					$("div#hmpagebody").scrollTo($target,0,{axis: 'y', offset:{top:-(wrapperHeight-(10 + targetHeight))}});
+					//console.log("scroll 2")
+				}
+			},s + 50);
+	} else {
+		self.tocLinkClicked = false;
+		}
+	} // scrollToTarget
+
+	function doIterate(){
+		var toggleSpeed = speed,
+			timeoutSpeed = (speed >  0) ? speed + 20 : 0;
+		if (!mode) { // Close open branch
+			if (branch[index].ch) {
+				$(branch[index].ch).slideUp(speed);
+				branch[index].st = "0";
+				branch[index].rf.firstChild.setAttribute("style","background-image:url('"+branch[index].i0+"')");
+			}
+			index++;
+			if (index === tCount-1) {
+				scrollToTarget(timeoutSpeed);
+			}
+			if (index < tCount-1) {
+				setTimeout(function(){doIterate();},timeoutSpeed);
+				}
+		} else  { // Open closed branch
+			if (branch[index].ch) {
+				$(branch[index].ch).slideDown(speed);
+				branch[index].st = "1";
+				branch[index].rf.firstChild.setAttribute("style","background-image:url('"+branch[index].i1+"')");
+			}
+			index--;
+			if (index === 0) {
+				scrollToTarget(timeoutSpeed);
+			}
+			if (index > -1) {
+				//setTimeout(function(){doIterate();},timeoutSpeed);
+				doIterate();
+				}
+		}
+		if (branch.length === 1) {
+			scrollToTarget(timeoutSpeed);
+			}
+	} // doIterate
+	
+	doIterate();
+};
+
+function selectTopic(topicItem,currentTree,bsSearch) {
+	$(document.activeElement).blur();
+	var targetItem = topicItem.rf,
+		treeRoot = currentTree[currentTree.length-1];
+	if (currentTopic !== null) {
+		// Remove "current" class from i and span tags
+		currentTopic.className = currentTopic.className.substr(8);
+		currentTopic.firstChild.className = "";
+		self.topicSelected = false;
+	}
+	if (targetItem) {
+		// New current topic
+		targetItem.className = "current " + targetItem.className;
+		targetItem.firstChild.className = "current";
+		targetItem.firstChild.focus();
+		tocFocused = "true";
+		currentTopic = targetItem;
+		self.currentTopicItem = topicItem;
+		xMessage.sendObject("parent",{action: "setvalue", vn: "hmWebHelp.currentBS", vv: "*" + topicItem.bs});
+		self.currentBranchTree = currentTree;
+		if (topicItem.items.length > 0) 
+			buildChapter(topicItem);
+		self.topicSelected = true;
+	}
+	else {
+		self.topicSelected = false;
+	}
+	
+	// First init or changing branch
+	if (!currentBranch || currentBranch !== treeRoot) {
+		if (currentBranch)
+			self.clearBranch(currentBranch);
+		currentBranch = treeRoot;
+	}
+	
+	// Display the tree down to the topic
+	self.displayBranch(currentTree, true, true);
+	
+} 
+
+this.buildBranch = function(tree, thisTarget) {
+	// Populate the opened chapters in the tree
+		for (var x = tree.length; x--;) {
+			buildChapter(tree[x]);
+		}
+
+	// Highlight the target item
+	selectTopic(tree[0], tree);	
+
+   }; // BuildBranch
+   
+this.findElement = function(targetRef) {
+	
+	// Filter out search and index reference terms
+	if (typeof(targetRef) == "string" && targetRef.indexOf("\?") > -1) {
+		targetRef = targetRef.substr(0,targetRef.indexOf("\?"));
+	}
+	
+	// Must set the last topic and default items before executing if they haven't been set yet
+	if (self.lastTopic === 0) { 
+		self.setLastTopic();
+		}
+	
+	if (!isNaN(targetRef))
+		targetRef = parseInt(targetRef,10);
+	var foundHrefNode = null,
+		foundTopic = false,
+		foundNodes = 0,
+		branchTree = [],
+		prevItem = null,
+		thisItem = null,
+		prevParent = null,
+		parentChain = [],
+		parentItem = hmDevice.parentHome ? null : self.defaultTopic,
+		parentitem = null,
+		nextItem = null,
+		anchorNode = null,
+		resultNodes = [],
+		breadCrumbs = [],
+		findBS = typeof targetRef == "number",
+		findByAnchor = /\#/.test(targetRef),
+		skipEmpty = false;
+		
+	function findNext(idxkey) {
+		var idx = idxkey,
+			foundNode = null,
+			checkNode = null,
+			checkTemp = null;
+		
+		function doTraverse(tree){
+			for (var x = 0; x < tree.length; x++) {
+				
+				// Break out
+				if (foundNode) {
+					foundTopic = true;
+					break;
+				}
+				checkNode = tree[x];
+				
+			if (checkNode !== null && checkNode.bs == idx) {
+			if (checkNode.hf !== "" && checkNode.tp !== "weblink") {
+					foundNode = checkNode;
+					break;
+						} else {
+					if (idx+1 <= self.lastTopic) {
+						idx = idx+1;
+						doTraverse(self.tocTree);
+						break;
+					} else {
+								foundNode = "last";
+								break;
+								}
+						}
+				}
+			// Could it be in this chapter?
+			if (checkNode.bs < idx && checkNode.items.length > 0) {
+				checkTemp = checkNode;
+				}
+			// Gone too far or last possible chapter? 
+			if (checkNode.bs > idx || (checkNode.bs < idx && x == tree.length-1)) {
+				doTraverse(checkTemp.items);
+			}	
+			
+			}
+		}
+		
+		doTraverse(self.tocTree);
+			return foundNode;
+	}
+	
+	function findAnchor(anchorRef) {
+		var foundNode = false,
+			checkNode = null,
+			thisHref = anchorRef.substr(0,anchorRef.indexOf("#")),
+			thisAnchor = anchorRef.substr(anchorRef.indexOf("#"));
+		
+		function doTraverse(tree){
+			for (var x = 0; x < tree.length; x++) {
+				// Break out
+				if (foundNode) {
+					foundTopic = true;
+					break;
+				}
+				checkNode = tree[x];
+				if (checkNode.ac === thisAnchor && checkNode.hf === thisHref) {
+					foundNode = checkNode;
+					break;
+				}
+			// Go down...
+			if (checkNode.items.length > 0) {
+				doTraverse(checkNode.items);
+				}
+			}
+		}
+		doTraverse(self.tocTree);
+			return foundNode;
+	}
+	
+	function bakeBread() {
+
+		var loaf = {action: "breadcrumbs", breadmode: (breadCrumbs.length > 0 ? "full" : "top")},
+			stop = "";
+		
+		if (breadCrumbs.length > 0)
+		for (var x in breadCrumbs) {
+			loaf[x] = breadCrumbs[x].bs + stop + breadCrumbs[x].hf + stop + breadCrumbs[x].cp;
+		}
+		return loaf;
+	}
+
+	function pushParentChain(obj) {
+		let found = false;
+		if (parentChain.length > 0) {
+			parentChain.forEach(function(item,index){
+				if (item.bs == obj.bs)
+					found = true;
+			});
+		}
+		if (!found) parentChain.unshift(obj);
+	}
+	
+	function findNode(node, thisRef) {
+		
+		/** Parent Folder Home Item and Breadcrumbs **/
+
+			// Restart on level 1 item
+			if (node.lv == 1) {
+
+				parentitem = prevParent = null;
+				parentChain = [];
+				breadCrumbs = [];
+				if (node.items.length > 0) {
+					parentitem = prevParent = node;
+					pushParentChain(parentitem);
+					// breadCrumbs.push(parentitem);
+					}
+			} else if (node.lv > 1) {
+				if (prevParent.lv == node.lv-1) {
+					pushParentChain(prevParent);
+					parentitem = prevParent;
+					if (breadCrumbs.length === 0 || breadCrumbs[breadCrumbs.length-1].bs !== parentitem.bs) {
+						breadCrumbs.push(parentitem);
+						}
+					}
+
+				if (parentitem.lv >= node.lv) {
+					for (x=0;x<parentChain.length;x++) {
+						if (parentChain[x].lv == node.lv -1) {
+							parentitem = parentChain[x];
+							break;
+						}
+					}
+				}
+
+				if (node.items.length > 0)
+					prevParent = node;
+			}
+		if (hmDevice.parentHome)
+			parentItem = parentitem;
+		
+		if (!skipEmpty && (thisItem === null || thisItem.hf !== "")) {
+			prevItem = thisItem;
+			}
+		
+		if (node.hf !== "" && node.tp !== "weblink") {
+		thisItem = node; 
+			skipEmpty = false;
+			} else {
+				if (node.bs == thisRef)
+					thisRef++;
+				skipEmpty = true;
+			}
+
+		
+	   if ((node.hf==thisRef && !findBS) || (node.bs==thisRef && findBS)) {
+		 if (node.rf !== null) {
+				foundHrefNode = node;
+			} else {
+				foundHrefNode = null;
+			}
+		 resultNodes.push(node);
+	   }
+	   else {
+		for (var k in node.items) {
+			resultNodes = findNode(node.items[k], thisRef);
+			if (resultNodes.length>0) { 
+				resultNodes.push(node);
+				break; 
+			}
+		 } 
+	   }
+	   foundNodes += resultNodes.length;
+	   return resultNodes;
+	}
+	
+	// Clean up the breadcrumbs 
+	function trimBread(lv) {
+	   var bcT = [], bcTemp = [];
+	   for (var q = breadCrumbs.length-1; q > -1; q--) {
+		   if ($.inArray(breadCrumbs[q].lv,bcT) === -1 && ((bcT.length === 0 && breadCrumbs[q].lv == lv-1) || breadCrumbs[q].lv == (bcT[bcT.length-1]-1))) {
+			   bcTemp.unshift(breadCrumbs[q]);
+			   bcT.push(breadCrumbs[q].lv);
+		   }
+	   }
+	   breadCrumbs = bcTemp;
+	   }
+	
+	function locateNodeChain() {
+	for (var i in self.tocTree ) {
+			branchTree = findNode(self.tocTree[i], targetRef);
+		 if (branchTree.length>0) {
+			if (!foundHrefNode) {
+				self.buildBranch(branchTree, targetRef);
+			} else  {
+				selectTopic(foundHrefNode,branchTree);
+				}
+			// Must skip our last topic check on the first item 
+			if (self.lastTopic === 0) { 
+				tocSource.setLastTopic();
+				}
+			nextItem = (thisItem.bs === 0 || thisItem.bs < self.lastTopic) ? findNext(thisItem.bs+1) : false;
+				var prevBS, prevHF, prevAC, homeBS, homeHF, homeAC, nextBS, nextHF, nextAC;
+				if (!prevItem) {
+					prevBS = prevHF = prevAC = "none";
+				} else {
+					prevBS = prevItem.bs;
+					prevHF = prevItem.hf;
+					prevAC = prevItem.ac;
+		}
+				if (!nextItem) {
+					nextBS = nextHF = nextAC = "none";
+				} else {
+					nextBS = nextItem.bs;
+					nextHF = nextItem.hf;
+					nextAC = nextItem.ac;
+				}
+				
+				if (!parentItem) {
+					homeBS = homeHF = homeAC = "none";
+				} else {
+					if (parentItem.bs == thisItem.bs) {
+						homeBS = homeHF = homeAC = "none";
+					} else if (typeof parentItem.bs == "number" && parentItem.hf === "") {
+						homeBS = parentItem.bs;
+						homeHF = "none";
+						homeAC = "";
+					} else {
+						homeBS = parentItem.bs;
+						homeHF = parentItem.hf;
+						homeAC = parentItem.ac;
+			}
+				}
+				// Home is default topic:
+				if (!hmBrowser.parenthome) {
+					homeHF = "index.html";
+					}
+				if (!hmDevice.phone) {
+				xMessage.sendObject("parent",{action: "setnavlinks", pbs: prevBS, phf: prevHF, pac: prevAC, hbs: homeBS, hhf: homeHF, hac: homeAC, nbs: nextBS, nhf: nextHF, nac: nextAC});
+				} else {
+				xMessage.sendObject("parent",{action: "setmobnavlinks", pbs: prevBS, phf: prevHF, pac: prevAC, hbs: homeBS, hhf: homeHF, hac: homeAC, nbs: nextBS, nhf: nextHF, nac: nextAC});
+				}
+				if (hmDevice.desktop) {
+					trimBread(foundHrefNode ? foundHrefNode.lv : tocSource.currentTopicItem.lv);
+					xMessage.sendObject(parent,bakeBread());
+					}
+			break; 
+			}
+		}
+	}
+	
+	if (findByAnchor) {
+			anchorNode = findAnchor(targetRef);
+			if (anchorNode && anchorNode.bs !== ""){
+				// If there is an anchor node in the TOC it's an anchor topic. Select and stop.
+				self.findElement(anchorNode.bs);
+				return;
+				} else {
+				// Otherwise it's an anchor in the topic, so parse out the topic href and continue.
+				findByAnchor = false;
+				targetRef = targetRef.substr(0,targetRef.indexOf("\#"));
+				locateNodeChain();
+				}
+			
+		} else {
+		
+		locateNodeChain();
+		}
+		
+	// Necessary for loading topics without TOC entries correctly
+		var foundTopic = foundHrefNode !== null;
+	// Non-TOC topic located after the TOC has loaded
+	if (foundNodes == 0 && self.tocLoaded) {
+			self.nonTocTopic = true;
+			if (hmDevice.desktop)
+				xMessage.sendObject(parent,{action: "breadcrumbs", breadmode: "notoc"});
+	// Non-TOC topic located before the TOC has loaded	
+		} else if (foundNodes == 0 && !self.tocLoaded) {			
+			self.findElement("index.html");
+			if (hmDevice.desktop)
+				xMessage.sendObject(parent,{action: "breadcrumbs", breadmode: "notoc"});
+			self.nonTocTopic = true;
+			self.tocLoaded = true;
+		}
+	// Normal topic has loaded, everything is OK
+		else if (foundTopic) {
+			self.nonTocTopic = false;
+			self.tocLoaded = true;
+		}
+	}; // this.findElement
+
+this.buildBS = function() {
+	if (typeof self.tocTree[0].bs != "undefined")
+		return;
+	var bsCounter = -1;
+	function doBuild(tree) {
+		for (var x in tree) {
+			bsCounter++;
+			tree[x].bs = bsCounter;
+			if (tree[x].items.length > 0) {
+				doBuild(tree[x].items);
+			}
+		}
+	}
+	doBuild(self.tocTree);
+	};
+
+	
+this.doTopicLink = function(event, thisItem, obj) {
+	event.preventDefault(); event.stopPropagation();
+	var anchorX = hmBrowser.server ? "\?anchor=" : "\!anchor=",
+		thisHref = thisItem.hf,
+		thisBS = thisItem.bs,
+		testHref = obj.getAttribute("hf") === "",
+		notCurrent = obj.getAttribute("class").substr(0,7) !== "current",
+		currentHref = self.currentTopicItem.hf + (self.currentTopicItem.ac === "" ? "" : anchorX + self.currentTopicItem.ac.substr(1));
+		if (thisItem.ac !== "") thisHref += (anchorX + thisItem.ac.substr(1));
+	
+	if (!self.currentTopicItem || (self.currentTopicItem.hf !== thisHref) || (self.currentTopicItem.ac !== thisItem.ac) || self.nonTocTopic) {
+		self.tocLinkClicked = true;
+		self.clickedBS = thisBS;
+		self.findElement(thisBS);
+		let doCheckTOC = "";
+		if (thisItem.items.length > 0) {
+			doCheckTOC = $("li[hf='"+thisItem.items[0].hf+"']").parent().attr("style");
+			doCheckTOC = /block/i.test(doCheckTOC) || doCheckTOC == "" ? true : false;
+		} else {
+			doCheckTOC = true;
+			}
+		xMessage.sendObject("parent",{action: "loadtopicnonav", href: thisHref, ac: thisItem.ac, bs: thisBS});
+		if (doCheckTOC) checkTOC();
+	} else if (self.currentTopicItem.hf === thisHref && notCurrent && !testHref) {
+		self.tocLinkClicked = true;
+		self.clickedBS = thisBS;
+		self.findElement(thisBS);
+	} else if (!testHref) {
+		// Chapter click -- open/close chapter with own content
+		if (self.currentTopicItem.ch && self.currentTopicItem.st === "1") {
+			$(self.currentTopicItem.ch).slideUp("fast");
+			self.currentTopicItem.rf.firstChild.setAttribute("style","background-image:url('"+self.currentTopicItem.i0+"')");
+			self.currentTopicItem.st = "0";
+		} else if (self.currentTopicItem.ch && self.currentTopicItem.st === "0") {
+			$(self.currentTopicItem.ch).slideDown("fast");
+			self.currentTopicItem.rf.firstChild.setAttribute("style","background-image:url('"+self.currentTopicItem.i1+"')");
+			self.currentTopicItem.st = "1";
+		}
+	} else {
+		// Chapter click -- open/close chapter without own content
+		var $chp = $(obj).children("ul");
+		if ($chp.length > 1) $chp = $chp[0];
+		if ($chp.is(":visible")) {
+			$chp.slideUp("fast");
+			obj.firstChild.setAttribute("style","background-image:url('"+obj.getAttribute("src0")+"')");
+		}
+		else  {
+			$chp.slideDown("fast");
+			obj.firstChild.setAttribute("style","background-image:url('"+obj.getAttribute("src1")+"')");
+		}
+	}
+	
+	}; // doTopicLink
+
+this.setLastTopic = function() {
+	
+	var currentItem,
+		lastTopic = 0,
+		defaultItem = null;
+	function doTraverse(tree) {
+		
+		// Look for default topic
+		if (!defaultItem)
+		for (var x = 0; x < tree.length; x++) {
+			if (tree[x].hf == hmDevice.defaultTopic) {
+				defaultItem = tree[x];
+				self.defaultTopic = defaultItem;
+				break;
+				}
+		}
+		
+		currentItem = tree[tree.length-1];
+		if (currentItem.items.length > 0) {
+			doTraverse(currentItem.items);
+		} else {
+			lastTopic = currentItem.bs;
+		}
+	}
+	doTraverse(self.tocTree);
+	self.lastTopic = lastTopic;
+	xMessage.sendObject("parent",{action: "setvalue", vn: "hmWebHelp.lastBS", vv: lastTopic.toString()});
+	};
+	self.buildBS();
+} // TOC Constructor
+
+function hmLoadTOC(hmTOC) {
+	var tocParams,
+	tocWrapper = document.getElementById("hmtoctree"),
+	tocObject = document.createElement("ul");
+	
+	tocObject.id = "toc";
+	tocWrapper.appendChild(tocObject);
+	tocObject = document.getElementById("toc");
+	
+	tocParams = hmTOC.items;
+	tocSource = new tocConstructor(tocParams);
+	
+	tocSource.buildTOC(tocParams, tocObject, (tocSource.buildall && hmDevice.desktop));
+    
+} 
+
+var initScripts = function() {
+
+	var scripts = ["./js/helpman_settings.js", "./js/jquery.scrollTomin.js", "./js/hmcontent.js", "./js/xmessage.js"], 
+		currentScript = 0,
+		loadScripts = function(x) {
+	$.ajaxPrefilter( "json script", function( options ) {options.crossDomain = true;});
+	// Load all necessary scripts
+		$.getScript( scripts[x], function( data, textStatus, jqxhr ) {
+		  if (currentScript < scripts.length-1) {
+		  currentScript++;
+		  loadScripts(currentScript);
+		  } else {
+			// Functions to perform after all scripts have loaded
+			
+			// Initialize the xMessage framework for frame communication
+			xMessage = new xMsg("TOC");
+			
+			hmTocLoaded = true;
+			xMessage.sendObject("parent",{action: "setvalue", vn: "hmTocLoaded", vv: "*true"});	
+			if (self.lastTopic === 0) { 
+				setTimeout(function(){tocSource.setLastTopic();},300);
+				}
+			loaded=0;
+
+			// Prevent accidental selection
+			$(window).on("click", function(){document.getSelection().removeAllRanges();});
+
+			// Close parent menus on click in TOC pane
+			$(document).on(hmBrowser.touchstart, function(event){
+				if (hmBrowser.intervalCounter) {
+					hmBrowser.intervalCounter = false;
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.closeMenus"});
+					setTimeout(function(){
+						hmBrowser.intervalCounter = true;
+					},600)
+				};
+			});
+			
+			// Keyboard control
+			$(window).on("keydown", function(event){
+			
+			switch(event.keyCode) {
+				
+				case 27:
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.closeMenus"});
+				break;
+				case 67:
+				if (event.altKey) {
+				event.preventDefault();
+				$("a[href='index.html']").focus();
+				}
+				break;
+				case 81:
+				if (event.altKey) {
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "info"});
+					event.preventDefault();
+					}
+				break;
+				case 83:
+				if (event.altKey) {
+					event.preventDefault();
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.switchNavTab", fa: "search"});
+					}
+				break;
+				case 84:
+				if (event.altKey) {
+					event.preventDefault();
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "topic"});
+					};
+				break;
+				case 72:
+				if (event.altKey) {
+					event.preventDefault();
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "header"});
+					}
+				break;
+				case 66:
+				if (event.altKey) {
+					event.preventDefault();
+					xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "body"});
+					}
+				break;
+				} // switch
+			}); // Keyboard control				
+			
+		} // Post script load functions
+		}); // getScript
+	}; // loadScripts()
+	
+	// Load jQuery first so that everything else can continue
+	var jScript = document.getElementById("jqscript");
+	jScript.src = "./js/jquery.js";
+
+	// Load the other scripts once jQuery responds positively
+	var loadCheck = setInterval(function() {
+		if (window.jQuery) {
+			clearInterval(loadCheck);
+			loadScripts(0);
+			}
+		},100);
+};
+
+if (window.addEventListener)
+window.addEventListener("load", initScripts, false);
+else if (window.attachEvent)
+window.attachEvent("onload", initScripts);
+else window.onload = initScripts;
+
+</script> 
+</body>
+</html>
