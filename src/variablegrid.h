@@ -68,7 +68,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class VariableGridData : public GridChoiceData
 {
 public:
-	VariableGridData(ProjectFile *pf, Case *c = NULL, VarTable *vt = NULL);
+//	VariableGridData(ProjectFile* pf, Case* c = NULL, VarTable* vt = NULL);
+	VariableGridData(ProjectFile* pf, Case* c = NULL, std::vector<VarTable*> *vts = nullptr);
 	~VariableGridData();
 	virtual int GetNumberRows();
 	virtual int GetNumberCols();
@@ -100,7 +101,9 @@ public:
 	VarValue* GetVarValue(int row, int col);
 	void SetVarValue(int row, int col, VarValue *vv);
 
+	Case* GetCase(int row, int col);
 
+	bool UpdateVarNameNdxHybrid(Case * c, const wxString& input_name, wxString* var_name, size_t* ndx_hybrid);
 
 private:
 	void Init();
@@ -114,9 +117,12 @@ private:
 	wxArrayString m_col_hdrs;
 	wxArrayString m_var_names;
 	wxArrayString m_var_labels;
-	std::vector<VarTable*> m_var_table_vec;
-	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
-	VarTable *m_vt;
+//	std::vector<VarTable*> m_var_table_vec;
+//	std::vector<VarInfoLookup*> m_var_info_lookup_vec;
+	std::vector<std::vector<VarTable*> > m_var_table_vec;
+	std::vector<std::vector<VarInfoLookup*> > m_var_info_lookup_vec;
+	//	VarTable* m_vt;
+	std::vector<VarTable*> *m_vts;
 };
 
 
@@ -136,7 +142,8 @@ public:
 class VariableGridFrame : public wxFrame, ProjectFileEventListener, CaseEventListener
 {
 public:
-	VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c=NULL, VarTable *vt=NULL, wxString frame_title=wxEmptyString);
+//	VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c = NULL, VarTable* vt = NULL, wxString frame_title = wxEmptyString);
+	VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c = NULL, std::vector<VarTable *> *vts=nullptr , wxString frame_title = wxEmptyString);
 	~VariableGridFrame();
 	void UpdateGrid();
 private:

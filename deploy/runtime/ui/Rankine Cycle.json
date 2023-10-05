@@ -1298,7 +1298,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ctes_cost_per_m3"
+                    "String": "ctes_cost"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3240,7 +3240,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "radiator_fluidcost_per_m3"
+                    "String": "radiator_fluidcost"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3652,19 +3652,6 @@
         }
     },
     "VarDatabase": {
-        "CT": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Condenser type",
-            "Units": " ",
-            "Group": "Power Cycle",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "D_rad_tubes": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3675,7 +3662,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.02,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "L_rad": {
@@ -3688,7 +3675,7 @@
             "Flags": 2.0,
             "DefaultValue": 100.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "L_rad_sections": {
@@ -3701,7 +3688,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "P_cond_min": {
@@ -3714,7 +3701,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.25,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "P_cond_ratio": {
@@ -3727,7 +3714,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0028,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_ITD_des": {
@@ -3740,7 +3727,7 @@
             "Flags": 2.0,
             "DefaultValue": 16.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_amb_des": {
@@ -3753,7 +3740,7 @@
             "Flags": 2.0,
             "DefaultValue": 27.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_approach": {
@@ -3766,7 +3753,7 @@
             "Flags": 2.0,
             "DefaultValue": 5.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_ctes_cold_design": {
@@ -3779,7 +3766,7 @@
             "Flags": 2.0,
             "DefaultValue": 5.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_ctes_cold_ini": {
@@ -3792,7 +3779,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_ctes_warm_design": {
@@ -3805,7 +3792,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "T_ctes_warm_ini": {
@@ -3818,7 +3805,7 @@
             "Flags": 2.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "W_rad_tubes": {
@@ -3831,7 +3818,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.05,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.pwrb.condenser_type": {
@@ -3844,8 +3831,8 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
+            "sscVariableName": "CT",
+            "sscVariableValue": "1|2|3|4"
         },
         "csp.pt.pwrb.pressure_mode": {
             "Version": 4.0,
@@ -3857,8 +3844,8 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
+            "sscVariableName": "tech_type",
+            "sscVariableValue": "1|3|5|6"
         },
         "ctes_cost": {
             "Version": 4.0,
@@ -3867,23 +3854,10 @@
             "Units": "$/L",
             "Group": "Rad cool",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 700.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "ctes_cost_per_m3": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Volumetric cost of storage tanks",
-            "Units": "$/m³",
-            "Group": "Rad cool",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.7,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ctes_field_fl": {
@@ -3896,7 +3870,7 @@
             "Flags": 2.0,
             "DefaultValue": 4.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ctes_tankpairs": {
@@ -3909,7 +3883,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ctes_tshours": {
@@ -3922,7 +3896,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ctes_type": {
@@ -3935,7 +3909,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "dT_cw_ref": {
@@ -3948,7 +3922,7 @@
             "Flags": 2.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epsilon_radHX": {
@@ -3961,7 +3935,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.8,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epsilon_radbot": {
@@ -3974,7 +3948,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.07,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epsilon_radgrnd": {
@@ -3987,7 +3961,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.9,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epsilon_radtop": {
@@ -4000,7 +3974,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.95,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "f_ctes_warm_ini": {
@@ -4013,7 +3987,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "h_ctes_tank": {
@@ -4026,7 +4000,7 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "h_ctes_tank_min": {
@@ -4039,7 +4013,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "k_panel": {
@@ -4052,7 +4026,7 @@
             "Flags": 2.0,
             "DefaultValue": 235.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "m_dot_radpanel": {
@@ -4065,7 +4039,7 @@
             "Flags": 2.0,
             "DefaultValue": 8.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_pl_inc": {
@@ -4078,7 +4052,7 @@
             "Flags": 2.0,
             "DefaultValue": 8.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_rad_tubes": {
@@ -4091,7 +4065,7 @@
             "Flags": 2.0,
             "DefaultValue": 100.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "pb_bd_frac": {
@@ -4104,7 +4078,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.013,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rad_multiplier": {
@@ -4117,7 +4091,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.5,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rad_pressuredrop": {
@@ -4130,7 +4104,7 @@
             "Flags": 2.0,
             "DefaultValue": 75.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "radfluid_vol_ratio": {
@@ -4143,7 +4117,7 @@
             "Flags": 2.0,
             "DefaultValue": 3.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "radiator_fluidcost": {
@@ -4153,23 +4127,10 @@
             "Units": "$/L",
             "Group": "Rad cool",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 0.34,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "radiator_fluidcost_per_m3": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Volumetric cost of cooling fluid",
-            "Units": "$/m³",
-            "Group": "Rad cool",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 340.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "radiator_installcost": {
@@ -4182,7 +4143,7 @@
             "Flags": 2.0,
             "DefaultValue": 22.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "radiator_unitcost": {
@@ -4195,20 +4156,7 @@
             "Flags": 2.0,
             "DefaultValue": 13.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "tech_type": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "1: Fixed (tower) 3: Sliding",
-            "Units": " ",
-            "Group": "Power Cycle",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "th_rad_panel": {
@@ -4221,7 +4169,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.002,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "u_ctes_tank": {
@@ -4234,7 +4182,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.4,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -4250,30 +4198,30 @@
         "",
         "",
         "// Just combo converter",
-        "equations{ 'CT' } = define() {",
-        "\treturn ${csp.pt.pwrb.condenser_type} + 1; };",
+        "//equations{ 'CT' } = define() {",
+        "//\treturn ${csp.pt.pwrb.condenser_type} + 1; };",
         "",
         "// Just combo converter",
-        "equations{ 'tech_type' } = define() {",
-        "\tif (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure",
-        "\t\treturn 3; // user defined",
-        "\telseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle",
-        "\t\treturn 5;",
-        "\telseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle",
-        "\t\treturn 6;",
-        "\telse // fixed pressure",
-        "\t\treturn 1; // tower",
-        "};",
+        "//equations{ 'tech_type' } = define() {",
+        "//\tif (${csp.pt.pwrb.pressure_mode} == 1) //sliding pressure",
+        "//\t\treturn 3; // user defined",
+        "//\telseif(${csp.pt.pwrb.pressure_mode}==2) //first custom cycle",
+        "//\t\treturn 5;",
+        "//\telseif(${csp.pt.pwrb.pressure_mode}==3) //second custom cycle",
+        "//\t\treturn 6;",
+        "//\telse // fixed pressure",
+        "//\t\treturn 1; // tower",
+        "//};",
         "",
         "// Just UI indicator",
-        "equations{ 'ctes_cost' } = define() {",
-        "\treturn ${ctes_cost_per_m3} / 1000;",
-        "};",
+        "//equations{ 'ctes_cost' } = define() {",
+        "//\treturn ${ctes_cost_per_m3} / 1000;",
+        "//};",
         "",
         "// Just UI indicator",
-        "equations{ 'radiator_fluidcost' } = define() {",
-        "\treturn ${radiator_fluidcost_per_m3} / 1000;",
-        "};",
+        "//equations{ 'radiator_fluidcost' } = define() {",
+        "//\treturn ${radiator_fluidcost_per_m3} / 1000;",
+        "//};",
         ""
     ],
     "Callbacks": [
@@ -4360,11 +4308,11 @@
         "\tshow(\"h_ctes_tank\", mode==3);",
         "\tshow(\"h_ctes_tank_min\", mode==3);",
         "\tshow(\"cost_divider\", mode==3);",
-        "\tshow(\"ctes_cost_per_m3\", mode==3);",
+        "\tshow(\"ctes_cost\", mode==3);",
         "\tshow(\"radiator_unitcost\", mode==3);",
         "\t",
         "\tshow(\"radiator_installcost\", mode==3);",
-        "\tshow(\"radiator_fluidcost_per_m3\", mode==3);",
+        "\tshow(\"radiator_fluidcost\", mode==3);",
         "\t",
         "\t// white rectangles to hide the dividers",
         "\t",

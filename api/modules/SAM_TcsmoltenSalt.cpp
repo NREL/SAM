@@ -398,6 +398,342 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemDesign_tshours_nset(SAM_table ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "D_rec", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "Flow_type", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "N_panels", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_pb_pump_target_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "W_dot_pb_pump_target", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_rec_target_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "W_dot_rec_target", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_height", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_passive_abs", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_passive_eps", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_span", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cav_rec_width", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "crossover_shift", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "csp.pt.rec.max_oper_frac", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "d_tube_out", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "delta_flux_hrs", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "downc_tm_mult", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "epsilon", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "eta_pump", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_rec_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "flux_max", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "h_tower", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "heat_trace_power", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hl_ffact", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_od_tube_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_calc_od_tube", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_pb_pump_coef_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_calc_pb_pump_coef", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_sm_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_calc_sm", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_rec_enforce_min_startup", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_rec_model_trans", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_rec_startup_from_T_soln", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_rec_startup_trans", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mat_tube", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "min_fill_time", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "min_preheat_time", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "n_cav_rec_panels", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "n_flux_days", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "piping_length_const", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "piping_length_mult", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "piping_loss_coefficient", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "preheat_flux", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_q_dot_rec_des_target_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "q_dot_rec_des_target", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_absorptance", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "rec_clearsky_dni", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_clearsky_fraction", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_clearsky_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_height", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_hl_perm2", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_htf", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_qf_delay", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_su_delay", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_tm_mult", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "riser_tm_mult", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "startup_ramp_time", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "startup_target_Tdiff", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "th_riser", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "th_tube", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "u_riser", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_A_sf_in_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "A_sf_in", number);
@@ -659,306 +995,6 @@ SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_washing_frequency_nset(SAM_tabl
 SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "water_usage_per_wash", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "D_rec", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "Flow_type", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "N_panels", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cav_rec_height", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cav_rec_passive_abs", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cav_rec_passive_eps", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cav_rec_span", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cav_rec_width", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "crossover_shift", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "csp.pt.rec.max_oper_frac", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "d_tube_out", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "delta_flux_hrs", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "downc_tm_mult", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "epsilon", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "eta_pump", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "f_rec_min", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "flux_max", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "h_tower", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "heat_trace_power", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "hl_ffact", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_enforce_min_startup", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_model_trans", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_startup_from_T_soln", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_rec_startup_trans", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "mat_tube", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "min_fill_time", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "min_preheat_time", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "n_cav_rec_panels", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "n_flux_days", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "piping_length_const", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "piping_length_mult", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "piping_loss_coefficient", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "preheat_flux", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_absorptance", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "rec_clearsky_dni", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_clearsky_fraction", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_clearsky_model", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_height", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_hl_perm2", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_htf", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_qf_delay", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_su_delay", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_tm_mult", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "riser_tm_mult", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "startup_ramp_time", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "startup_target_Tdiff", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "th_riser", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "th_tube", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "u_riser", number);
 	});
 }
 
@@ -1496,63 +1532,21 @@ SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ud_is_sco2_regr", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ud_m_dot_water_cool_des", number);
 	});
 }
 
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_use_net_cycle_output_as_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor1", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor2", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor3", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor4", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor5", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor6", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor7", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor8", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor9", number);
+		ssc_data_set_number(ptr, "use_net_cycle_output_as_capacity", number);
 	});
 }
 
@@ -1571,6 +1565,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_m
 SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
@@ -1763,6 +1763,66 @@ SAM_EXPORT void SAM_TcsmoltenSalt_Deprecated_disp_rsu_cost_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_TcsmoltenSalt_Deprecated_piping_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_loss", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "adjust_timeindex", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sf_adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "sf_adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "sf_adjust_timeindex", arr, length);
 	});
 }
 
@@ -2481,6 +2541,624 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemDesign_tshours_nget(SAM_table ptr, SAM
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "D_rec", &result))
+		make_access_error("SAM_TcsmoltenSalt", "D_rec");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "Flow_type", &result))
+		make_access_error("SAM_TcsmoltenSalt", "Flow_type");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "N_panels", &result))
+		make_access_error("SAM_TcsmoltenSalt", "N_panels");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_pb_pump_target_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_pb_pump_target", &result))
+		make_access_error("SAM_TcsmoltenSalt", "W_dot_pb_pump_target");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_rec_target_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_rec_target", &result))
+		make_access_error("SAM_TcsmoltenSalt", "W_dot_rec_target");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_height", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_height");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_passive_abs", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_abs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_passive_eps", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_eps");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_span", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_span");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cav_rec_width", &result))
+		make_access_error("SAM_TcsmoltenSalt", "cav_rec_width");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "crossover_shift", &result))
+		make_access_error("SAM_TcsmoltenSalt", "crossover_shift");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "csp.pt.rec.max_oper_frac", &result))
+		make_access_error("SAM_TcsmoltenSalt", "csp.pt.rec.max_oper_frac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "d_tube_out", &result))
+		make_access_error("SAM_TcsmoltenSalt", "d_tube_out");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "delta_flux_hrs", &result))
+		make_access_error("SAM_TcsmoltenSalt", "delta_flux_hrs");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "downc_tm_mult", &result))
+		make_access_error("SAM_TcsmoltenSalt", "downc_tm_mult");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "epsilon", &result))
+		make_access_error("SAM_TcsmoltenSalt", "epsilon");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "eta_pump", &result))
+		make_access_error("SAM_TcsmoltenSalt", "eta_pump");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_rec_min", &result))
+		make_access_error("SAM_TcsmoltenSalt", "f_rec_min");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "field_fl_props", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "field_fl_props");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "flux_max", &result))
+		make_access_error("SAM_TcsmoltenSalt", "flux_max");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "h_tower", &result))
+		make_access_error("SAM_TcsmoltenSalt", "h_tower");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heat_trace_power", &result))
+		make_access_error("SAM_TcsmoltenSalt", "heat_trace_power");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hl_ffact", &result))
+		make_access_error("SAM_TcsmoltenSalt", "hl_ffact");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_od_tube_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_calc_od_tube", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_calc_od_tube");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_calc_pb_pump_coef", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_calc_pb_pump_coef");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_sm_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_calc_sm", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_calc_sm");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_rec_enforce_min_startup", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_rec_enforce_min_startup");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_rec_model_trans", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_rec_model_trans");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_rec_startup_from_T_soln", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_rec_startup_from_T_soln");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_rec_startup_trans", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_rec_startup_trans");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mat_tube", &result))
+		make_access_error("SAM_TcsmoltenSalt", "mat_tube");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "min_fill_time", &result))
+		make_access_error("SAM_TcsmoltenSalt", "min_fill_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "min_preheat_time", &result))
+		make_access_error("SAM_TcsmoltenSalt", "min_preheat_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_cav_rec_panels", &result))
+		make_access_error("SAM_TcsmoltenSalt", "n_cav_rec_panels");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "n_flux_days", &result))
+		make_access_error("SAM_TcsmoltenSalt", "n_flux_days");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_length_const", &result))
+		make_access_error("SAM_TcsmoltenSalt", "piping_length_const");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_length_mult", &result))
+		make_access_error("SAM_TcsmoltenSalt", "piping_length_mult");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_loss_coefficient", &result))
+		make_access_error("SAM_TcsmoltenSalt", "piping_loss_coefficient");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "preheat_flux", &result))
+		make_access_error("SAM_TcsmoltenSalt", "preheat_flux");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_q_dot_rec_des_target_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_dot_rec_des_target", &result))
+		make_access_error("SAM_TcsmoltenSalt", "q_dot_rec_des_target");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_absorptance");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rec_clearsky_dni", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_dni");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_clearsky_fraction", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_clearsky_model", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_model");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_height", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_height");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_hl_perm2", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_hl_perm2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_htf", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_htf");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_qf_delay");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_su_delay");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_tm_mult", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_tm_mult");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "riser_tm_mult", &result))
+		make_access_error("SAM_TcsmoltenSalt", "riser_tm_mult");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "startup_ramp_time", &result))
+		make_access_error("SAM_TcsmoltenSalt", "startup_ramp_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "startup_target_Tdiff", &result))
+		make_access_error("SAM_TcsmoltenSalt", "startup_target_Tdiff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "th_riser", &result))
+		make_access_error("SAM_TcsmoltenSalt", "th_riser");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "th_tube", &result))
+		make_access_error("SAM_TcsmoltenSalt", "th_tube");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "u_riser", &result))
+		make_access_error("SAM_TcsmoltenSalt", "u_riser");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_A_sf_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2965,558 +3643,6 @@ SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_water_usage_per_wash_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "water_usage_per_wash", &result))
 		make_access_error("SAM_TcsmoltenSalt", "water_usage_per_wash");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "D_rec", &result))
-		make_access_error("SAM_TcsmoltenSalt", "D_rec");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "Flow_type", &result))
-		make_access_error("SAM_TcsmoltenSalt", "Flow_type");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "N_panels", &result))
-		make_access_error("SAM_TcsmoltenSalt", "N_panels");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cav_rec_height", &result))
-		make_access_error("SAM_TcsmoltenSalt", "cav_rec_height");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cav_rec_passive_abs", &result))
-		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_abs");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cav_rec_passive_eps", &result))
-		make_access_error("SAM_TcsmoltenSalt", "cav_rec_passive_eps");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cav_rec_span", &result))
-		make_access_error("SAM_TcsmoltenSalt", "cav_rec_span");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cav_rec_width", &result))
-		make_access_error("SAM_TcsmoltenSalt", "cav_rec_width");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "crossover_shift", &result))
-		make_access_error("SAM_TcsmoltenSalt", "crossover_shift");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "csp.pt.rec.max_oper_frac", &result))
-		make_access_error("SAM_TcsmoltenSalt", "csp.pt.rec.max_oper_frac");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "d_tube_out", &result))
-		make_access_error("SAM_TcsmoltenSalt", "d_tube_out");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "delta_flux_hrs", &result))
-		make_access_error("SAM_TcsmoltenSalt", "delta_flux_hrs");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "downc_tm_mult", &result))
-		make_access_error("SAM_TcsmoltenSalt", "downc_tm_mult");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "epsilon", &result))
-		make_access_error("SAM_TcsmoltenSalt", "epsilon");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "eta_pump", &result))
-		make_access_error("SAM_TcsmoltenSalt", "eta_pump");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "f_rec_min", &result))
-		make_access_error("SAM_TcsmoltenSalt", "f_rec_min");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "field_fl_props", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_TcsmoltenSalt", "field_fl_props");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "flux_max", &result))
-		make_access_error("SAM_TcsmoltenSalt", "flux_max");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "h_tower", &result))
-		make_access_error("SAM_TcsmoltenSalt", "h_tower");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "heat_trace_power", &result))
-		make_access_error("SAM_TcsmoltenSalt", "heat_trace_power");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "hl_ffact", &result))
-		make_access_error("SAM_TcsmoltenSalt", "hl_ffact");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_enforce_min_startup", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_rec_enforce_min_startup");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_model_trans", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_rec_model_trans");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_startup_from_T_soln", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_rec_startup_from_T_soln");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_rec_startup_trans", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_rec_startup_trans");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "mat_tube", &result))
-		make_access_error("SAM_TcsmoltenSalt", "mat_tube");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "min_fill_time", &result))
-		make_access_error("SAM_TcsmoltenSalt", "min_fill_time");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "min_preheat_time", &result))
-		make_access_error("SAM_TcsmoltenSalt", "min_preheat_time");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "n_cav_rec_panels", &result))
-		make_access_error("SAM_TcsmoltenSalt", "n_cav_rec_panels");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "n_flux_days", &result))
-		make_access_error("SAM_TcsmoltenSalt", "n_flux_days");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "piping_length_const", &result))
-		make_access_error("SAM_TcsmoltenSalt", "piping_length_const");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "piping_length_mult", &result))
-		make_access_error("SAM_TcsmoltenSalt", "piping_length_mult");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "piping_loss_coefficient", &result))
-		make_access_error("SAM_TcsmoltenSalt", "piping_loss_coefficient");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "preheat_flux", &result))
-		make_access_error("SAM_TcsmoltenSalt", "preheat_flux");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_absorptance", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_absorptance");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "rec_clearsky_dni", length);
-	if (!result)
-		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_dni");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_clearsky_fraction", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_fraction");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_clearsky_model", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_clearsky_model");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_height", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_height");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_hl_perm2", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_hl_perm2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_htf", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_htf");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_qf_delay");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_su_delay");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_tm_mult", &result))
-		make_access_error("SAM_TcsmoltenSalt", "rec_tm_mult");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "riser_tm_mult", &result))
-		make_access_error("SAM_TcsmoltenSalt", "riser_tm_mult");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "startup_ramp_time", &result))
-		make_access_error("SAM_TcsmoltenSalt", "startup_ramp_time");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "startup_target_Tdiff", &result))
-		make_access_error("SAM_TcsmoltenSalt", "startup_target_Tdiff");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "th_riser", &result))
-		make_access_error("SAM_TcsmoltenSalt", "th_riser");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "th_tube", &result))
-		make_access_error("SAM_TcsmoltenSalt", "th_tube");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "u_riser", &result))
-		make_access_error("SAM_TcsmoltenSalt", "u_riser");
 	});
 	return result;
 }
@@ -4503,6 +4629,17 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mget(SAM_ta
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ud_is_sco2_regr", &result))
+		make_access_error("SAM_TcsmoltenSalt", "ud_is_sco2_regr");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4514,99 +4651,11 @@ SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_de
 
 
 
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_use_net_cycle_output_as_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_factor9");
+	if (!ssc_data_get_number(ptr, "use_net_cycle_output_as_capacity", &result))
+		make_access_error("SAM_TcsmoltenSalt", "use_net_cycle_output_as_capacity");
 	});
 	return result;
 }
@@ -4643,6 +4692,18 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weeken
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "dispatch_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "dispatch_tod_factors");
 	});
 	return result;
 }
@@ -4997,6 +5058,120 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Deprecated_piping_loss_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_loss", &result))
 		make_access_error("SAM_TcsmoltenSalt", "piping_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_constant", &result))
+		make_access_error("SAM_TcsmoltenSalt", "adjust_constant");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_periods", &result))
+		make_access_error("SAM_TcsmoltenSalt", "adjust_en_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_timeindex", &result))
+		make_access_error("SAM_TcsmoltenSalt", "adjust_en_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "adjust_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "adjust_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_constant", &result))
+		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_constant");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_en_periods", &result))
+		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_en_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sf_adjust_en_timeindex", &result))
+		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_en_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "sf_adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "sf_adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "sf_adjust_timeindex");
 	});
 	return result;
 }
@@ -5695,6 +5870,39 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_tower_share_des_nget(
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_all_hours_electricity_sales_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "all_hours_electricity_sales", &result))
+		make_access_error("SAM_TcsmoltenSalt", "all_hours_electricity_sales");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_all_hours_revenue_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "all_hours_revenue_fraction", &result))
+		make_access_error("SAM_TcsmoltenSalt", "all_hours_revenue_fraction");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_E_tower_pump_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_E_tower_pump", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_E_tower_pump");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_W_cooling_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5728,6 +5936,18 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_energy_nget(SAM_table ptr, SA
 
 
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5750,6 +5970,39 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_incl_refl_nget(SAM
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_defocus_est_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_defocus_est", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_defocus_est");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_piping_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_piping_loss", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_piping_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_htf_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_rec_htf", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_rec_htf");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_inc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5766,6 +6019,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_loss_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_q_rec_loss", &result))
 		make_access_error("SAM_TcsmoltenSalt", "annual_q_rec_loss");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_startup_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_q_rec_startup", &result))
+		make_access_error("SAM_TcsmoltenSalt", "annual_q_rec_startup");
 	});
 	return result;
 }
@@ -5844,6 +6108,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_highest_2000_ppas_ng
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor_highest_2000_ppas", &result))
 		make_access_error("SAM_TcsmoltenSalt", "capacity_factor_highest_2000_ppas");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_warmest_100_Tambs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "capacity_factor_warmest_100_Tambs", &result))
+		make_access_error("SAM_TcsmoltenSalt", "capacity_factor_warmest_100_Tambs");
 	});
 	return result;
 }
@@ -6848,6 +7123,28 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_heliostat_area_nget(SAM_table ptr, S
 
 
 
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_electricity_sales_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hot_hours_electricity_sales", &result))
+		make_access_error("SAM_TcsmoltenSalt", "hot_hours_electricity_sales");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_revenue_fraction_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hot_hours_revenue_fraction", &result))
+		make_access_error("SAM_TcsmoltenSalt", "hot_hours_revenue_fraction");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -7247,6 +7544,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_nameplate_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nameplate", &result))
 		make_access_error("SAM_TcsmoltenSalt", "nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_od_tube_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "od_tube_calc", &result))
+		make_access_error("SAM_TcsmoltenSalt", "od_tube_calc");
 	});
 	return result;
 }
@@ -7778,6 +8086,17 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_sim_cpu_run_time_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "sim_cpu_run_time", &result))
 		make_access_error("SAM_TcsmoltenSalt", "sim_cpu_run_time");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_solar_mult_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "solar_mult_calc", &result))
+		make_access_error("SAM_TcsmoltenSalt", "solar_mult_calc");
 	});
 	return result;
 }

@@ -3,7 +3,7 @@
 This macro allows you to download siting considerations from the National Renewable Energy Laboratory's
 Wind Prospector for your potential project site. Some of the information provided by this website is intended for wind installations, 
 but much of the information it provides (such as federal land ownership) is relevant for all project types. 
-The information downloaded is for user reference only; SAM does not use this information in any simulations or calculations.<br><br>
+The information downloaded is for reference only; SAM does not use this information in any simulations or calculations.<br><br>
 
 You may visit the Wind Prospector site directly at: <a href="http://maps.nrel.gov/wind_prospector">http://maps.nrel.gov/wind_prospector</a><br><br>
 
@@ -14,7 +14,7 @@ The macro will still run for locations outside of the U.S., but it will not retu
 <ol>
 <li> Using the interface at the right, select a location to look up. You may:
 <ul>
-<li> Use the location from the weather file, if applicable.
+<li> Use the location from the weather file, if applicable. For hybrid systems, use weather file from PV Location and Resource page.
 <li> Enter a latitude and longitude using the inputs at the right.
 <li> Enter an address or city (a pop-up window will appear after you click "Run macro"). <br>
 </ul>

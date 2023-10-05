@@ -308,44 +308,36 @@ public:
 		m_scrollWin->SetBackgroundColour( *wxWHITE );
 		m_scrollWin->SetScrollRate( 50, 50 );
 
-        //m_description = new wxStaticText(m_scrollWin, wxID_ANY, "Enter descriptive text here");
         m_description = new wxStaticText(m_scrollWin, wxID_ANY, mDescriptiveText);
+		wxFont m_description_font = m_description->GetFont();
+		m_description_font.SetWeight(wxFONTWEIGHT_BOLD);
+		m_description->SetFont(m_description_font);
 		
 		m_constant = new wxNumericCtrl(m_scrollWin, wxID_ANY);
 
-        /*
-		m_enableHourly = new wxCheckBox( m_scrollWin, ID_ENABLE_HOURLY, "Enable hourly losses (%)" );
-		m_hourly = new AFDataArrayButton( m_scrollWin, wxID_ANY );
-		//m_hourly->SetMode( DATA_ARRAY_8760_ONLY );
-        m_hourly->SetMode(DATA_ARRAY_ANY);
-        */
-
-        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable time series losses (%)");
+        m_enableTimeindex = new wxCheckBox(m_scrollWin, ID_ENABLE_INDEX, "Enable time series losses");
         m_timeindex = new AFDataLifetimeArrayButton(m_scrollWin, wxID_ANY);
         m_timeindex->SetMode(DATA_LIFETIME_ARRAY_HOURLY);
         m_timeindex->SetLabel((wxString)"Edit time series losses");
+		m_timeindex->SetColumnLabel((wxString)"Loss (%)");
         m_timeindex->SetAnalysisPeriod(mAnalysisPeriod);
+		m_timeindex->SetDataLabel((wxString)"Time Series Losses");
         m_timeindex->SetShowMode(true);
         m_timeindex->SetAnnualEnabled(true);
         m_timeindex->SetWeeklyEnabled(true);
 
-		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable hourly losses with custom periods" );
+		m_enablePeriods = new wxCheckBox( m_scrollWin, ID_ENABLE_PERIODS, "Enable time series losses with custom periods" );
 		m_periods = new PeriodFactorCtrl( m_scrollWin );
 
 		wxSizer *scroll = new wxBoxSizer( wxVERTICAL );
 
         scroll->Add(m_description, 0, wxALL | wxEXPAND, 5);
+		scroll->Add(new wxStaticText(m_scrollWin, wxID_ANY, "Total loss in each time step is the combined constant, time series, and custom period loss."), 0, wxALL | wxEXPAND, 5);
         scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
 		
 		scroll->Add( new wxStaticText( m_scrollWin, wxID_ANY, "Constant loss (%)"), 0, wxALL|wxEXPAND, 5 );
 		scroll->Add(m_constant, 0, wxALL, 5);
 		scroll->Add(new wxStaticLine(m_scrollWin), 0, wxALL | wxEXPAND);
-
-        /*
-		scroll->Add( m_enableHourly, 0, wxALL|wxEXPAND, 5 );
-		scroll->Add( m_hourly, 0, wxALL, 5 );
-		scroll->Add( new wxStaticLine( m_scrollWin ), 0, wxALL|wxEXPAND );
-        */
 
         scroll->Add(m_enableTimeindex, 0, wxALL | wxEXPAND, 5);
         scroll->Add(m_timeindex, 0, wxALL, 5);
@@ -506,57 +498,72 @@ AFLossAdjustmentCtrl::AFLossAdjustmentCtrl( wxWindow *parent, int id,
 void AFLossAdjustmentCtrl::UpdateText()
 {
 	wxString txt(wxString::Format("Constant loss: %.1f %%", m_data.constant));
-
-    /*
-	float avg = 0;
-	for( size_t i=0;i<m_data.hourly.size();i++ ) avg += m_data.hourly[i];
-	if ( m_data.hourly.size() > 0 ) avg /= m_data.hourly.size();
-	else avg = 0;
-    */
+	//wxString txt(m_data.constant==0.0 ? "No constant loss" : "Constant loss specified");
 
     float life_avg = 0;
     for (size_t i = 0; i < m_data.timeindex.size(); i++) life_avg += m_data.timeindex[i];
     if (m_data.timeindex.size() > 0) life_avg /= m_data.timeindex.size();
     else life_avg = 0;
 
-	//txt += wxString("\n") + (m_data.en_hourly ? wxString::Format( "Hourly losses: Avg = %.1f %%", avg ) : "Hourly losses: None");
-    txt += wxString("\n") + (m_data.en_timeindex ? wxString::Format("Lifetime losses: Avg = %.1f %%", life_avg) : "Lifetime losses: None");
-	txt += wxString("\n") + (m_data.en_periods ? wxString::Format("Custom periods: %d", (int)m_data.periods.nrows()) : "Custom periods: None");
+    txt += wxString("\n") + (m_data.en_timeindex ? "Time series losses enabled" : "Time series losses not enabled");
+	txt += wxString("\n") + (m_data.en_periods ? "Custom periods enabled" : "Custom periods not enabled");
 	m_label->SetLabel( txt );
 }
-
+/*
 void AFLossAdjustmentCtrl::Write( VarValue *vv )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
 
 	tab.Set( "constant", VarValue( m_data.constant ));
-	//tab.Set( "en_hourly", VarValue( m_data.en_hourly ));
-	//tab.Set( "hourly", VarValue( m_data.hourly ) );
     tab.Set("en_timeindex", VarValue(m_data.en_timeindex));
     tab.Set("timeindex", VarValue(m_data.timeindex));
 	tab.Set( "en_periods", VarValue( m_data.en_periods ) );
 	tab.Set( "periods", VarValue( m_data.periods ) );
-}
 
+	/* Prototype to flatten */
+void AFLossAdjustmentCtrl::Write( Case *c )
+{
+//	m_name = name of widget accessible through property
+//	Read and Write would take case as argument
+	auto& tab = c->Values(0); // Case VarTable
+	tab.Set(m_name + "_constant", VarValue( m_data.constant ));
+	tab.Set(m_name + "_en_timeindex", VarValue(m_data.en_timeindex));
+	tab.Set(m_name + "_timeindex", VarValue(m_data.timeindex));
+	tab.Set(m_name + "_en_periods", VarValue( m_data.en_periods ) );
+	tab.Set(m_name + "_periods", VarValue( m_data.periods ) );
+	
+}
+/*
 bool AFLossAdjustmentCtrl::Read( VarValue *root )
 {
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
 		if ( VarValue *vv = tab.Get("constant") ) m_data.constant = vv->Value();
-		//if ( VarValue *vv = tab.Get("en_hourly") ) m_data.en_hourly = vv->Boolean();
-		//if ( VarValue *vv = tab.Get("hourly") ) m_data.hourly = vv->Array();
         if (VarValue* vv = tab.Get("en_timeindex")) m_data.en_timeindex = vv->Boolean();
         if (VarValue* vv = tab.Get("timeindex")) m_data.timeindex = vv->Array();
 		if ( VarValue *vv = tab.Get("en_periods") ) m_data.en_periods = vv->Boolean();
 		if ( VarValue *vv = tab.Get("periods") ) m_data.periods = vv->Matrix();
-
-		UpdateText();
-		return true;
 	}
 	else
 		return false;
+
+		/* Prototype to flatten */
+bool AFLossAdjustmentCtrl::Read( Case *c )
+{
+//	m_name = name of widget accessible through property
+//	Read and Write would take case as argument
+	auto& tab = c->Values(0); // Case VarTable
+	if ( VarValue *vv = tab.Get(m_name + "_constant") ) m_data.constant = vv->Value();
+	if (VarValue* vv = tab.Get(m_name + "_en_timeindex")) m_data.en_timeindex = vv->Boolean();
+	if (VarValue* vv = tab.Get(m_name + "_timeindex")) m_data.timeindex = vv->Array();
+	if ( VarValue *vv = tab.Get(m_name + "_en_periods") ) m_data.en_periods = vv->Boolean();
+	if ( VarValue *vv = tab.Get(m_name + "_periods") ) m_data.periods = vv->Matrix();
+		
+
+		UpdateText();
+		return true;
 }
 
 bool AFLossAdjustmentCtrl::DoEdit()

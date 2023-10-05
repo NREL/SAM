@@ -1,7 +1,7 @@
 {
     "Name": "PV Losses",
-    "Width": 853.0,
-    "Height": 1000.0,
+    "Width": 857.0,
+    "Height": 1183.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 864.0
+                    "Integer": 1026.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 77.0
+                    "Integer": 233.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 936.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1317,7 +1317,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 1047.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1450,7 +1450,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 906.0
+                    "Integer": 1068.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1704,7 +1704,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 906.0
+                    "Integer": 1068.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1765,7 +1765,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 1047.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1885,6 +1885,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "enable_subhourly_clipping"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate subhourly clipping loss correction?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1944,6 +1985,43 @@
                 },
                 "X": {
                     "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 825.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "PV Subhourly Clipping Correction"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 439"
+                },
+                "X": {
+                    "Type": 3.0,
                     "Integer": 6.0
                 },
                 "Y": {
@@ -1981,19 +2059,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 315.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 663.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 516.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 108.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2001,7 +2079,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model."
+                    "String": "The PV Subhourly Clipping Correction calculates expected losses from inverter clipping with the Allen method. These inverter clipping losses are calculated at each timestep by indexing a matrix of DNI clearness index and subhourly clipping potential. The losses are only applicable for hourly timeseries weather data. "
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2349,6 +2427,68 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "object 740"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 591.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 762"
                 },
                 "X": {
@@ -2357,7 +2497,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 669.0
+                    "Integer": 828.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2419,7 +2559,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 882.0
+                    "Integer": 1044.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2543,7 +2683,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 954.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6073,7 +6213,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 900.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6156,7 +6296,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 714.0
+                    "Integer": 873.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6239,7 +6379,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 981.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6326,13 +6466,84 @@
         },
         "adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "AC performance adjustment losses",
-            "Units": "% of AC output",
-            "Group": "Losses",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -6365,13 +6576,84 @@
         },
         "dc_adjust": {
             "Version": 4.0,
-            "Type": 5.0,
-            "Label": "DC performance adjustment losses",
-            "Units": "% of DC output",
-            "Group": "Losses",
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": {},
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "dc_adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
             "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -6382,6 +6664,19 @@
             "Label": "DC power optimizer loss",
             "Units": "% of DC output",
             "Group": "Losses",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "enable_subhourly_clipping": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable subhourly clipping",
+            "Units": "0/1",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7166,7 +7461,8 @@
         "\tpv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );",
         "\tpv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );",
         "\tloss_adjustment_set();",
-        "\tdc_loss_adjustment_set();",
+        "\tdc_loss_adjustment_set();\r",
+        "\tsubhourly_clipping_check();",
         "\t",
         "\t// Remove the following once there's a bifacial rack shading calculation",
         "\tshow('Label_bifacial_0', false);",
@@ -7251,6 +7547,22 @@
         "\telse {",
         "\t\tproperty('dc_adjust', 'AnalysisPeriod', 1);",
         "\t}",
-        "}"
+        "}\r",
+        "\r",
+        "function subhourly_clipping_check()\r",
+        "{\r",
+        "\ttimestep = value('ui_step_minutes');\r",
+        "\tif (timestep < 60) {\r",
+        "\t\tvalue('enable_subhourly_clipping', 0);\r",
+        "\t\tenable('enable_subhourly_clipping', false);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('enable_subhourly_clipping', true);\r",
+        "\t}\r",
+        "}\r",
+        "\r",
+        "on_change{'ui_step_minutes'} = define() {\r",
+        "\tsubhourly_clipping_check();\r",
+        "};"
     ]
 }

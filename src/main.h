@@ -62,8 +62,11 @@ struct smart_ptr
 #endif
 };
 
-// SAM API key to use with developer.nrel.gov services
+// API keys for web services
 extern const char *sam_api_key;
+extern const char* geocode_api_key;
+extern const char* google_api_key;
+extern const char* bing_api_key;
 
 class wxSimplebook;
 class wxPanel;
@@ -237,6 +240,7 @@ public:
 	wxString CollapsiblePageVar;
 	bool CollapsedByDefault;
 	wxString ShowHideLabel;
+	size_t ndxHybrid;
 };
 
 struct InputPageGroup
@@ -247,10 +251,22 @@ struct InputPageGroup
 	bool OrganizeAsExclusivePages;
 	wxString ExclusivePageVar;
 	std::vector< PageInfo > ExclusiveHeaderPages;
+    std::vector< PageInfo > BinSummary;
 	bool ExclusiveTabs;
     bool ExclusiveHide;
+    bool ExclTop;
+    wxString BinName;
+	size_t ndxHybrid;
 };
 
+
+struct HybridVariableDependencies
+{
+	size_t IndependentVariableVarTable;
+	wxString IndependentVariableName;
+	size_t DependentVariableVarTable;
+	wxString DependentVariableName;
+};
 
 class ConfigInfo
 {
@@ -258,13 +274,14 @@ public:
 	ConfigInfo();
 	~ConfigInfo();
 
-	wxString Technology;
+	wxString TechnologyFullName;
+	wxArrayString Technology;
 	wxString Financing;
 	wxArrayString Simulations;
-	std::vector<InputPageGroup*> InputPageGroups;
-	InputPageDataHash InputPages;
-	VarInfoLookup Variables;
-	EqnFastLookup Equations;
+	std::vector<std::vector<InputPageGroup*> > InputPageGroups;
+	std::vector<InputPageDataHash> InputPages;
+	std::vector<VarInfoLookup> Variables;
+	std::vector<EqnFastLookup> Equations;
 
 	StringHash Settings;
 
@@ -272,7 +289,11 @@ public:
 	// this variables are automatically added when the configuration
 	// cache is generated, and serve purposes like exclusive pages
 	// and collapsible panes
-	VarDatabase AutoVariables;
+	std::vector<VarDatabase> AutoVariables;
+
+	// hybrid variable dependencies across VarTables for equations and callbacks
+	std::vector<HybridVariableDependencies> HybridVariables;
+
 };
 
 struct ConfigOptions
@@ -295,12 +316,13 @@ public:
 	ConfigInfo *CurrentConfig() { return m_curConfig; }
 
 	void SetModules( const wxArrayString &list );
+	void SetHybridVariableDependencies(const std::vector<HybridVariableDependencies>& dependencies);
 	void AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages,
 		const wxString &sidebar,
 		const wxString &hlpcxt,
 		const wxString &exclvar,
 		const std::vector<PageInfo> &exclhdr_pages,
-		bool excl_tabs, bool excl_hide );
+		bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top);
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);
@@ -311,7 +333,7 @@ public:
 	EqnFastLookup &GetEquations( const wxString &tech, const wxString &financing );
 	InputPageDataHash &GetInputPages( const wxString &tech, const wxString &financing );
 */
-	void CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci );
+	void CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t i);
 	void RebuildCaches();
 
 	ConfigInfo *Find( const wxString &t, const wxString &f );
@@ -372,6 +394,8 @@ public:
 	static bool CheckPythonPackage(const std::string& pip_name);
 	static void InstallPython();
     static void InstallPythonPackage(const std::string& pip_name);
+
+	static bool VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file);
 
 };
 

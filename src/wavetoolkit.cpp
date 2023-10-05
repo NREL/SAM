@@ -49,6 +49,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/jsonreader.h>
 
 #include "wavetoolkit.h"
+#include "geotools.h"
 #include "main.h"
 
 
@@ -363,7 +364,8 @@ void WaveDownloadDialog::GetResources()
 	double lat, lon;
 	if (is_addr)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCodeDeveloper(location, &lat, &lon))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+		if (!GeoTools::GeocodeDeveloper(location, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address.\n\n" + location, "Wave Download Message", wxOK, this);
 			return;

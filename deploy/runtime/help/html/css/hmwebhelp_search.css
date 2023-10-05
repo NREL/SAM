@@ -1,0 +1,275 @@
+﻿/* Reset Styles for Consistency */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font-size: 100%;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	color: #444444;
+	background-color: transparent;
+	overflow: hidden;
+	}
+div#noscript {
+		display: none;
+	}
+	
+/* Pretty scrollbars for Webkit browsers */
+ /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a1a1a1;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #858585;
+}
+	
+div#hmpageheader {
+	position: absolute;
+	top: 0.313rem; left: 0.313rem; right: 0.313rem;
+	background-color: transparent;
+	}
+div#hmpagebody {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	/*overflow-y: auto; */
+	background-color: transparent;
+	border-style: solid;
+	border-color: transparent;
+	border-width: 1px;
+	border-radius: 0.5rem 0 0 0.5rem;
+	padding: 0.313rem 0 0.313rem 0.313rem;
+	margin: 0;
+	}
+
+/* General */
+.desktop {
+
+	}
+.tablet {
+	display: none !important;
+}
+.phone {
+	display: none !important;
+	}
+.noscript { 
+	display: none !important;
+	}
+.scripted {
+	
+	}
+.desk_tablet {
+
+}
+
+br { display: none;}
+.submit { font-size: 0.85rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.zoom_searchform { font-size: 0.95rem; }
+.highlight { background-color: #888888; color: #ffffff; }
+.searchheading { font-size: 0.85rem; margin-top: 0.5rem; margin-right: 0.3rem; font-weight: bold; border-top: thin solid #888888; padding-top: 0.3rem; }
+.summary { display: inline-block; font-size: 0.8rem; margin-top: 0.5rem; width: auto; padding-right: 0.2rem;font-style: italic; }
+.summary:focus { outline: thin dashed #000000; }
+.cat_summary { margin-top: 0.5rem; }
+.cat_summary ul { margin: 0; padding: 5px 0 8px 0; }
+.cat_summary li {font-weight: normal; display: inline; padding-right: 0.7rem;}
+.cat_summary a:link {color: #444444; text-decoration: underline;}
+.cat_summary a:visited {color: #444444;}
+.cat_summary a:hover { color: #444444; }
+.results { background-color:#ffffff;
+ top: 150px; left: 0; right: 0; bottom: 0; overflow-y: scroll; overflow-x: auto; padding-right: 5px; padding-top: 5px; padding-left: 7px;
+ border-top: thin solid #444444;
+ 	/* Pretty scrollbar for Firefox */
+	scrollbar-color: #a1a1a1 #ffffff;
+	scrollbar-width: thin;
+}
+.description { color: #000000; font-size: 0.75rem; font-style: italic; line-height: 1.2; }
+.context { font-size: 0.75rem; }
+.result_title { font-size: 0.75rem; font-weight: bold; color: #0068c3}
+.result_title a:link {font-size: 0.75rem; text-decoration: none; color: #0068c3; }
+.result_title a:visited {color: #0068c3;} 
+.result_title a:hover {text-decoration: underline;} 
+.infoline { font-size: 0.8rem; font-style: normal; color: #808080; }
+.category { font-size: 0.8rem; color: #808080; }
+.suggestion { font-size: 0.85rem; color: #444444; }
+.suggestion a:link { color: #444444; }
+.suggestion a:visited { color: #444444; }
+.suggestion a:hover { color: #444444; }
+.sorting { font-size: 0.8rem; color: #444444; padding-right: 0.2rem; padding-top: 0.25rem; }
+.sorting a:link { color: #444444; font-weight: bold;}
+.sorting a:visited { color: #444444;}
+.zoom_categories { font-size: 0.950rem; }
+.zoom_categories ul { display: inline; margin: 0; padding: 0;}
+.zoom_categories li { display: inline; margin-left: 0rem; list-style-type: none; }
+.zoom_daterange { display: block; margin-top: 0.5rem; white-space: nowrap;}
+.zoom_daterange input#zoom_datefrom, .zoom_daterange input#zoom_dateto,input[name='zoom_dateto'], input[name='zoom_datefrom'] { width: 8rem; }
+.zoom_daterange input[type='button'] { margin: 0 0.8rem 0 0.3rem; }
+div.zoom_datelabel { display: inline-block; white-space: nowrap; margin-bottom: 0.5rem;}
+.zoom_ac_item { font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-size: 0.85rem;}
+.result_image { float: left; display: block; }
+.result_image img { margin: 0; padding: 0 0.625rem 0 0; width: 5rem; border: 0; }
+.result_block { margin-top: 0; margin-bottom: 0.2rem; clear: left; }
+.result_altblock { margin-top: 0.2rem; margin-bottom: 0.2rem; clear: left; }
+.result_pages { font-size: 0.8rem; font-weight: bold; color: #444444; background-color: transparent; padding-top: 0.25rem; }
+.result_pages a:link { color: #444444;}
+.result_pages a:visited { color: #444444;}
+.result_pagescount { display: none; }
+.searchtime { display: none; } 
+.recommended {
+		background: transparent;
+		border-top: 0.063rem dotted #808080;
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+		font-size: 0.8rem;
+		clear: left;
+ }
+.recommend_image { float: left; }
+.recommended img { max-width: 5rem; margin-right: 0.3rem; }
+.recommended_heading { float: right; font-weight: bold; padding-right: 0.5rem; }
+.recommend_block { margin-top: 0.2rem; margin-bottom: 0.2rem; clear: left; }
+.recommend_title { padding: 0; margin: 0; }
+.recommend_title a:link { color: #000000; text-decoration: underline; }
+.recommend_title a:visited { color: #000000; }
+.recommend_title a:hover {  }
+.recommend_description { color: #808080; }
+.recommend_infoline { font-style: normal; color: #808080;}
+.recommend_infoline:after { display: block; clear: both; content: ""; }
+label.zoom_and_label { cursor: pointer;}
+
+ /** SEARCH FORM LAYOUT **/ 
+input.zoom_searchbox { 
+		display: inline-block;
+		width: calc(100% - 2rem) !important;
+		display: none;
+		}
+input.zoom_button { 
+	 display: inline-block;
+	 font-size: 0.850rem !important;
+	 margin-left: 0.3rem;
+	 margin-bottom: 0.5rem;
+	 cursor: pointer;
+	 }
+.zoom_results_per_page {
+	display: inline-block;
+	font-size: 0.85rem;
+	width: 30%;
+	border-right: thin solid black;
+	padding: 0 0.5rem 0.154rem 0.154rem;
+		}
+.zoom_match {
+		display: inline-block;
+		font-size: 0.85rem;
+		width: 45%;
+		padding-left: 0.3rem;
+		}
+.radio_input { 
+		display: inline-block;
+		cursor: pointer;
+		}
+#zoom_searchbox_label {
+		display: none;
+	}
+
+/* Narrow Pane */
+@media screen and (max-width: 25.999rem ) {
+
+	input.zoom_searchbox {
+		width: calc(100% - 1.15rem) !important;
+		display: none;
+		margin-bottom: 0.5rem;
+		}
+	input.zoom_button {
+		position: absolute;
+		display: block;
+		top: 0.3rem;
+		width: 150px;
+		margin-left: calc(50% - 75px);
+		}
+	label.zoom_and_label { 
+		display: block;
+		}
+.zoom_results_per_page {
+	display: block;
+	width: 100%;
+	border-right: none;
+	padding: 0 0.5rem 0.154rem 0;
+		}
+.zoom_match {
+		display: block;
+		width:100%;
+		padding-left: 0;
+		}
+.zoom_match label, .zoom_match input {
+	display: inline;
+	}
+.zoom_match input[type="radio"] {
+	vertical-align: top;
+	}
+.sorting {
+			float: none;
+			max-width: 100%;
+		}
+.result_pages {
+			float: none;
+		}
+.zoom_daterange { white-space: normal;}
+	
+	}
+
+/* Wider Pane */	
+ 	@media screen and (min-width: 26.000rem) {
+		input.zoom_searchbox {
+		width: calc(100% - 11rem) !important;
+		margin-bottom: 0.5rem;
+		display: none;
+		}
+		input.zoom_button {
+		position: absolute;
+		display: block;
+		top: 0.3rem;
+		width: 150px;
+		margin-left: calc(50% - 75px);
+		}
+		.zoom_results_per_page { 
+		}
+		.zoom_match {
+			display: inline-block;
+			width: auto;
+			vertical-align: top;
+			padding-top: 0.55rem;
+		}
+		label.zoom_and_label { 
+			display: inline-block;
+		}
+		.sorting {
+			float: right;
+			max-width: 45%;
+		}
+		.result_pages {
+			float: left;
+		}
+		.zoom_daterange { 
+			white-space: nowrap;
+		}
+	}

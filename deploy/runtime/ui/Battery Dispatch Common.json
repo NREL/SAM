@@ -508,7 +508,7 @@
             "Flags": 2.0,
             "DefaultValue": 50.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_maximum_SOC": {
@@ -521,7 +521,7 @@
             "Flags": 2.0,
             "DefaultValue": 95.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_minimum_SOC": {
@@ -534,7 +534,7 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_minimum_modetime": {
@@ -547,7 +547,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_pv_ac_forecast": {
@@ -562,7 +562,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_pv_clipping_forecast": {
@@ -577,7 +577,7 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -616,9 +616,9 @@
         "{",
         "\tlogmsg('Forecast file: ' + file);",
         "\t",
-        "\tuser_specified_weather_file_old = ${user_specified_weather_file};",
-        "\tuse_specific_weather_file_old = ${use_specific_weather_file};",
-        "\tsolar_resource_file_old = ${solar_resource_file};",
+        "\tuser_specified_weather_file_old = value('user_specified_weather_file');",
+        "\tuse_specific_weather_file_old = value('use_specific_weather_file');",
+        "\tsolar_resource_file_old = value('solar_resource_file');",
         "\t",
         "\tif ( file != '' ) {",
         "\t\tfile = replace(file, '\\\\', '/');",
@@ -642,8 +642,8 @@
         "\t}",
         "\telse",
         "\t{",
-        "\t\t${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');",
-        "\t\t${batt_pv_clipping_forecast} = ssc_var(forecast_run, 'inv_cliploss');",
+        "\t\tvalue('batt_pv_ac_forecast', ssc_var(forecast_run, 'gen'));",
+        "\t\tvalue('batt_pv_clipping_forecast', ssc_var(forecast_run, 'inv_cliploss'));",
         "\t}",
         "\tssc_free(forecast_run);",
         "}",
@@ -666,8 +666,8 @@
         "\t}",
         "\telse",
         "\t{",
-        "\t\t${batt_pv_ac_forecast} = ssc_var(forecast_run, 'gen');",
-        "\t\t${batt_pv_clipping_forecast} = [0];",
+        "\t\tvalue('batt_pv_ac_forecast', ssc_var(forecast_run, 'gen'));",
+        "\t\tvalue('batt_pv_clipping_forecast', [0]);",
         "\t}",
         "\tssc_free(forecast_run);",
         "}"

@@ -1,0 +1,133 @@
+==========================================================================
+CEC Inverter Database Conversion Log Wed Jan 16 08:40:58 2019
+===========================================================================
+See report at bottom of file. Search for "**" to find problem inverters
+---------------------------------------------------------------------------
+Number of inverters in current SAM library: 7214
+Number of inverters in CEC database: 544
+Adding inverters from current SAM library file to lookup table...
+Done.
+Adding inverters from CEC database file to lookup table...
+
+
+EPC Power Corp : HY LC12/6-7 [480V] 480V [CEC 2019]
+Huawei Technologies Co  Ltd : SUN2000-45KTL-US-HV-D0 [600V] 600V [CEC 2019]
+** Pso > 0.10 Pdco, Paco < 0.75 Pdco, skipping this inverter.
+LG Electronics Inc : LG315E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG315E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG320E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG325E1K-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG330E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [208V] 208V [CEC 2019]
+** Pmax and Paco units inconsistent.
+LG Electronics Inc : LG335E1C-A5 [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+ONE SUN MEXICO S A DE C V : 1S480-10k [480V] 480V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 4000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 4000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 4000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 5000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 5000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 5000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 6000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 6000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 6000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7000MTLP-US [208V] 208V [CEC 2019]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7600MTLP-US [208V] 208V [CEC 2019]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7000MTLP-US [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7000MTLP-US [277V] 277V [CEC 2019]
+** Power levels converted from W to kW.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 8000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7600MTLP-US [240V] 240V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 7600MTLP-US [277V] 277V [CEC 2019]
+** Pmax and Paco units inconsistent.
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 9000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 8000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 8000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 10000MTLP-US [208V] 208V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 9000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 9000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 10000MTLP-US [240V] 240V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 10000MTLP-US [277V] 277V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 33000TL3-US [480V] 480V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 36000TL3-US [480V] 480V [CEC 2019]
+Shenzhen Growatt New Energy Technology Co  Ltd: GROWATT 40000TL3-US [480V] 480V [CEC 2019]
+SMA America: STP 33-US-41 [480V] 480V [CEC 2019]
+SMA America: STP 50-US-41 [480V] 480V [CEC 2019]
+SMA America: STP 62-US-41 [480V] 480V [CEC 2019]
+SunPower: SPR-E19-320-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-E19-320-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-E20-327-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-E20-327-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X20-327-BLK-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X20-327-BLK-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X20-327-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X20-327-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X21-335-BLK-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X21-335-BLK-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X21-335-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X21-335-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X21-345-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X21-345-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X21-350-BLK-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X21-350-BLK-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X22-360-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X22-360-E-AC [240V] 240V [CEC 2019]
+SunPower: SPR-X22-370-E-AC [208V] 208V [CEC 2019]
+SunPower: SPR-X22-370-E-AC [240V] 240V [CEC 2019]
+Sorting by inverter name.
+Building new library...
+Done.
+Writing data to CSV library file...
+Done.
+See new SAM library file
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2/CEC Inverters 2019-Jan-16_08-40.csv
+Verify manually by diff against the old file.
+Rename to CEC Inverters.csv and replace file in SAM library folder.
+---------------------------------------------------------------------------
+Old inverter library file:
+
+  F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2\CEC Inverters - 2018-11-11r1.csv
+CEC database file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2\Grid_Support_Inverter_List_Full_Data 2019-1-15.xlsx
+New inverter library file:
+
+ F:\SAMDEV\sam-documentation\Developer Tools and Instructions\Module and Inverter Database Tools\CEC Inverters\CEC Inverters 2019-1-2/CEC Inverters 2019-Jan-16_08-40.csv
+---------------------------------------------------------------------------
+Number of inverters in new SAM library: 7268.
+Skipped because of problems:
+  Coefficient generator calculated parameters with problems: 1
+  Pmax <= 0: 0
+  Pmax units do not match Paco units: 15
+  Coefficient generator failed: 0
+Data issues but not skipped:
+  Pnt negative converted to positive: 0
+  Paco converted from  W to kW: 0
+  Power levels converted from W to kW: 3
+  Vac missing (not used in simulations): 0
+  MPPT_high <= 0: 0
+  MPPT_low <= 0: 0
+  Vdco = 0: 0
+  Paco > Pdco: 0
+  Pac < 0.75 Pdco: 0
+  MPPT_high < vdco or MPPT_low > vdco: 0

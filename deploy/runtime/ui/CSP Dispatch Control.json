@@ -5790,7 +5790,7 @@
         "    ${tslogic_b} = b;",
         "    ${tslogic_c} = c;",
         "  }",
-        "  if ( tech == 'MSLF' ) {",
+        "  if ( tech == 'MSLF_old' ) {",
         "    ${ffrac} = ff;",
         "    for ( i=0; i<#disp; i++ ) {",
         "      a[i] = disp[i][1]; //without solar",

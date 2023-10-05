@@ -1,0 +1,81 @@
+function run_6par_gen( T, i )
+{
+	R = {};
+
+	ssc = ssc_create();
+ 
+	ssc_var( ssc, 'celltype', T.celltype[i] );
+	ssc_var( ssc, 'Vmp', to_real(T.vmp[i]) );
+	ssc_var( ssc, 'Imp', to_real(T.imp[i]) );
+	ssc_var( ssc, 'Voc', to_real(T.voc[i]) );
+	ssc_var( ssc, 'Isc', to_real(T.isc[i]) );
+	ssc_var( ssc, 'alpha_isc', to_real(T.alpha_isc[i]) );
+	ssc_var( ssc, 'beta_voc', to_real(T.beta_voc[i]) );
+	ssc_var( ssc, 'gamma_pmp', to_real(T.gamma_pmp[i]) );
+	ssc_var( ssc, 'Nser', to_int(T.n_ser[i]) );
+	ssc_var( ssc, 'Tref', to_real(T.t_ref[i]) ); // optional, default value is 25
+
+	result = ssc_exec( ssc, '6parsolve' );
+
+	if ( 0 == result )
+	{
+		R.a = ssc_var( ssc, 'a' );
+		R.Il = ssc_var( ssc, 'Il' );
+		R.Io = ssc_var( ssc, 'Io' );
+		R.Rs = ssc_var( ssc, 'Rs' );
+		R.Rsh = ssc_var( ssc, 'Rsh' );
+		R.Adj = ssc_var( ssc, 'Adj' );
+		R.msg = 'ok';
+	}
+	else
+	{
+		R.msg = result;
+	}
+
+	ssc_free( ssc ); 
+	
+	return R;
+}
+
+// open file with test data
+fin = choose_file( cwd(), 'Choose 6parsolve Input File', 'CSV (*.csv)|*.csv');
+T = csvread( fin , { 'table' = true } );
+
+// write header to results file
+fname = cwd() + '/test-results.csv';
+fout = open( fname , 'w' );
+ok = write_line(fout, 'manufacturer,model,technology,message_original,celltype,vmp,imp,voc,isc,alpha_isc,beta_voc,gamma_pmp,n_ser,t_ref,parsolve_output');
+if (!ok) {outln('Failed to write header.');}
+close(fout);
+
+// open results file to append results data
+
+// loop through test data, run 6parsolve, and write results to results file
+for (i=0; i<#T.Manufacturer; i++ )
+{
+	fout = open(  fname, 'a' );
+	out(T.Manufacturer[i] + ', ' + T.Model[i] + ': ');
+	T.parsolve_output[i] = run_6par_gen(T,i);
+	outln(T.parsolve_output[i] );
+	line = T.Manufacturer[i] + ',' +
+		   T.Model[i] + ',' + 
+		   T.Technology[i] + ',' + 
+		   '\"' + T.Message[i] + '\",' + 
+		   T.celltype[i] + ',' + 
+		   T.vmp[i] + ',' + 
+		   T.imp[i] + ',' + 
+		   T.voc[i] + ',' + 
+		   T.isc[i] + ',' + 
+		   T.alpha_isc[i] + ',' + 
+		   T.beta_voc[i] + ',' + 
+		   T.gamma_pmp[i] + ',' + 
+		   T.n_ser[i] + ',' + 
+		   T.t_ref[i] + ',' + 
+		   '\"' + T.parsolve_output[i] + '\"';
+	ok = false;
+	ok = write_line( fout, line );
+	if (!ok) {outln('Failed to write Line ' + to_string(i+1)) + ': ' + line; }
+	close(fout);
+}
+
+// close results file

@@ -1109,7 +1109,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Salt (60% NaNO3, 40% KNO3)|Salt (46.5% LiF, 11.5% NaF, 42% KF)|User-defined...|Salt_45MgCl2_39KCl_16NaCl"
+                    "StringList": "Salt (60% NaNO3, 40% KNO3)|Salt (46.5% LiF, 11.5% NaF, 42% KF)|Salt (45% MgCl2, 39% KCl, 16% NaCl)|User-defined..."
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -3051,19 +3051,6 @@
         }
     },
     "VarDatabase": {
-        "Flow_type": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Receiver flow pattern",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "REC_COPY_Q_rec_des": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3074,7 +3061,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_T_htf_cold_des": {
@@ -3087,7 +3074,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_T_htf_hot_des": {
@@ -3100,7 +3087,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_W_dot_rec_pump_des": {
@@ -3113,7 +3100,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_W_dot_rec_pump_rec_share_des": {
@@ -3126,7 +3113,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_W_dot_rec_pump_tower_share_des": {
@@ -3139,7 +3126,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_eta_rec_therm_des_calc": {
@@ -3152,7 +3139,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_m_dot_htf_rec_des_calc": {
@@ -3165,7 +3152,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_solarm": {
@@ -3178,7 +3165,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "REC_COPY_vel_rec_tube_des": {
@@ -3191,7 +3178,7 @@
             "Flags": 8.0,
             "DefaultValue": -999.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.rec.htf_type": {
@@ -3200,12 +3187,12 @@
             "Label": "HTF type",
             "Units": " ",
             "Group": "Tower and Receiver",
-            "IndexLabels": "Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|User-defined...|Salt (45% MgCl2 39% KCl 16% NaCl)",
+            "IndexLabels": "Salt (60% NaNO3 40% KNO3)|Salt (46.5% LiF 11.5% NaF 42% KF)|Salt (45% MgCl2 39% KCl 16% NaCl)|User-defined...",
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
+            "sscVariableName": "rec_htf",
+            "sscVariableValue": "17|10|35|50"
         },
         "csp.pt.rec.material_type": {
             "Version": 4.0,
@@ -3217,8 +3204,8 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
+            "sscVariableName": "mat_tube",
+            "sscVariableValue": "2|32|33"
         },
         "csp.pt.rec.max_flow_to_rec": {
             "Version": 4.0,
@@ -3230,7 +3217,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "csp.pt.rec.max_oper_frac": {
@@ -3243,7 +3230,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.2,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "d_tube_out": {
@@ -3256,7 +3243,7 @@
             "Flags": 2.0,
             "DefaultValue": 40.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "delta_flux_hrs": {
@@ -3269,7 +3256,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "downc_tm_mult": {
@@ -3282,7 +3269,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "epsilon": {
@@ -3295,7 +3282,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.88,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "eta_pump": {
@@ -3308,7 +3295,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.85,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "f_rec_min": {
@@ -3321,7 +3308,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.25,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "field_fl_props": {
@@ -3346,7 +3333,7 @@
                 ]
             ],
             "UIObject": "MaterialProperties",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "flux_max": {
@@ -3359,7 +3346,7 @@
             "Flags": 2.0,
             "DefaultValue": 1200.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "h_tower": {
@@ -3372,7 +3359,7 @@
             "Flags": 2.0,
             "DefaultValue": 183.33,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "heat_trace_power": {
@@ -3385,7 +3372,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "hl_ffact": {
@@ -3398,7 +3385,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_iscc": {
@@ -3411,7 +3398,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_rec_enforce_min_startup": {
@@ -3424,7 +3411,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_rec_model_trans": {
@@ -3437,7 +3424,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_rec_startup_from_T_soln": {
@@ -3450,7 +3437,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "is_rec_startup_trans": {
@@ -3463,20 +3450,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "mat_tube": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Reciever material type",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "n_flux_days": {
@@ -3489,7 +3463,7 @@
             "Flags": 2.0,
             "DefaultValue": 8.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "piping_length": {
@@ -3502,7 +3476,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "piping_length_const": {
@@ -3515,7 +3489,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "piping_length_mult": {
@@ -3528,7 +3502,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "piping_loss_coefficient": {
@@ -3541,7 +3515,7 @@
             "Flags": 2.0,
             "DefaultValue": 2.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "piping_loss_tot": {
@@ -3554,7 +3528,7 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "preheat_flux": {
@@ -3567,7 +3541,7 @@
             "Flags": 2.0,
             "DefaultValue": 50.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_absorptance": {
@@ -3580,7 +3554,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.94,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_hl_perm2": {
@@ -3593,20 +3567,7 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "rec_htf": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Receiver HTF type",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_qf_delay": {
@@ -3619,7 +3580,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.25,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_su_delay": {
@@ -3632,7 +3593,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.2,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_tm_mult": {
@@ -3645,7 +3606,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "riser_tm_mult": {
@@ -3658,7 +3619,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "startup_ramp_time": {
@@ -3671,7 +3632,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "startup_target_Tdiff": {
@@ -3684,7 +3645,7 @@
             "Flags": 2.0,
             "DefaultValue": -5.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "th_riser": {
@@ -3697,7 +3658,7 @@
             "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "th_tube": {
@@ -3710,7 +3671,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.25,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "u_riser": {
@@ -3723,35 +3684,18 @@
             "Flags": 2.0,
             "DefaultValue": 4.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "user_fluid": {
-            "Version": 4.0,
-            "Type": 3.0,
-            "Label": "User fluid",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": [
-                [
-                    0.0
-                ]
-            ],
-            "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
     "Equations": [
+        "/*",
         "equations{ 'rec_htf' } = define() {",
         "\treturn ?${csp.pt.rec.htf_type}",
         "\t[",
         "\t\t17, // 17.) Salt (60% NaNO3, 40% KNO3)",
         "\t\t10, // 10.) Salt (46.5% LiF 11.5% NaF 42% KF)",
-        "\t\t50, // 50) User specified (lookup tables)",
-        "\t\t35  // 35) Salt_45MgCl2_39KCl_16NaCl",
+        "\t\t50 // 36+) User specified (lookup tables)",
         "   \t];",
         "};",
         "",
@@ -3763,14 +3707,10 @@
         "\t\t33\t// N07740",
         "   \t];",
         "};",
-        "",
-        "equations{ 'Flow_type' } = define() {",
-        "\treturn ${csp.pt.rec.flow_pattern} + 1;",
-        "};",
-        "",
-        "equations{ 'user_fluid' } = define() {",
-        "\treturn ${field_fl_props};",
-        "};",
+        "*/",
+        "//equations{ 'Flow_type' } = define() {",
+        "//\treturn ${csp.pt.rec.flow_pattern} + 1;",
+        "//};",
         "",
         "equations{ 'REC_COPY_solarm' } = define() {",
         "\treturn ${solarm}; };",

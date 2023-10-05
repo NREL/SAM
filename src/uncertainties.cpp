@@ -236,7 +236,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	else
 		return 1;
 	// sigma from Darice 
-	if (VarValue *vv = m_s->GetInput("wspd_uncert"))
+	if (VarValue *vv = m_s->GetInput("wspd_uncert",0)) // TODO: hybrids
 	{
 		sigma1 = vv->Value() / 100.0;
 		sigma1 *= mu1;
@@ -251,7 +251,7 @@ int UncertaintiesCtrl::Figure2(Simulation *sim)
 	else
 		return 1;
 
-	if (VarValue *vv = m_s->GetInput("total_uncert"))
+	if (VarValue *vv = m_s->GetInput("total_uncert", 0)) // TODO: hybrids
 	{
 		sigma2 = vv->Value() / 100.0;
 		sigma2 *= mu2;
@@ -1088,9 +1088,9 @@ void UncertaintiesViewer::DisplayProbOfExceedances() {
     std::vector<double> pXX_zscores = {-2.33, -1.64, -1.28, -1.04, -.842, -.674, -.524, -.385, -.253, -.126, 0.0};
 
     VarValue* vv_aep = m_sim->GetValue("annual_energy");
-    VarValue* vv_uncert = m_sim->GetInput("total_uncert");
-	VarValue* vv_uncert_10yr = m_sim->GetInput("total_10yr_uncert");
-    VarValue* vv_uncert_20yr = m_sim->GetInput("total_20yr_uncert");
+    VarValue* vv_uncert = m_sim->GetInput("total_uncert", 0); // TODO: hybrid
+	VarValue* vv_uncert_10yr = m_sim->GetInput("total_10yr_uncert", 0); // TODO: hybrid
+    VarValue* vv_uncert_20yr = m_sim->GetInput("total_20yr_uncert" , 0);// TODO: hybrid
 
 
     if (!vv_aep || ! vv_uncert || !vv_uncert_10yr || !vv_uncert_20yr){
@@ -1144,7 +1144,8 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 
 void UncertaintiesViewer::SetUncertainties( std::vector<Uncertainties> &gl )
 {
-	m_Uncertainties.clear();
+	if (m_Uncertainties.size() > 0)
+		m_Uncertainties.clear();
 	m_Uncertainties = gl;
 }
 

@@ -201,6 +201,7 @@ static std::unordered_map<std::string, std::string> config_to_cmod_name = {
         {"MEwaveBattery", "MEWaveBattery"},
         {"MSLF", "TcsMSLF"},
         {"MSPT", "TcsmoltenSalt"},
+        {"MSPTV2", "TcsmoltenSalt"},
         {"None", "None"},
         {"PhysicalTrough", "TroughPhysical"},
         {"PhysicalTroughIPH", "TroughPhysicalProcessHeat"},

@@ -86,11 +86,11 @@
     "batt_discharge_percent_4": 25.0,
     "batt_discharge_percent_5": 25.0,
     "batt_discharge_percent_6": 25.0,
-    "batt_dispatch_auto_can_gridcharge": 1.0,
+    "batt_dispatch_auto_can_gridcharge": 0.0,
     "batt_dispatch_choice": 3.0,
     "batt_dispatch_choice_ui": 2.0,
     "batt_dispatch_excl": 2.0,
-    "batt_dispatch_update_frequency_hours": 1.0,
+    "batt_dispatch_update_frequency_hours": 0.0,
     "batt_dispatch_wf_forecast_choice": 0.0,
     "batt_duration_choice": 0.0,
     "batt_gridcharge_percent_1": 25.0,
@@ -231,7 +231,7 @@
             46.1312
         ]
     ],
-    "batt_look_ahead_hours": 18.0,
+    "batt_look_ahead_hours": 0.0,
     "batt_loss_choice": 0.0,
     "batt_losses": [
         0.0
@@ -9274,15 +9274,6 @@
     "depr_itc_sta_sl_5": 0.0,
     "depr_stabas_method": 1.0,
     "dispatch_data_filename": "",
-    "dispatch_factor1": 1.0,
-    "dispatch_factor2": 1.5,
-    "dispatch_factor3": 1.0,
-    "dispatch_factor4": 1.0,
-    "dispatch_factor5": 1.0,
-    "dispatch_factor6": 1.0,
-    "dispatch_factor7": 1.0,
-    "dispatch_factor8": 1.0,
-    "dispatch_factor9": 1.0,
     "dispatch_factors_ts": [
         0.0,
         0.7,

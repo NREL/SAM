@@ -409,6 +409,56 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "grpTotalInstalledCost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 708.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "grpTotalInstalledCost"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "RadioChoice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -458,51 +508,125 @@
                 }
             }
         },
-        "Divider": {
+        "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 22"
+                    "String": "lblTotalInstalledCost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 393.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 708.0
+                    "Integer": 210.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 16.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Orientation": {
-                    "Type": 3.0,
-                    "Integer": 0.0
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
                 },
-                "Colour": {
+                "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 120.0,
-                        "Green": 120.0,
-                        "Blue": 120.0,
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
                         "Alpha": 255.0
                     }
                 },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lblTotalInstalledCostDescription"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 396.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total Cost"
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
                 },
                 "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -2461,12 +2585,12 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total installed cost",
-            "Units": " ",
+            "Units": "$",
             "Group": "Wind Capital Costs",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2590,7 +2714,29 @@
         "\t{",
         "\t\tshow('reference_resource_file',false);",
         "\t}",
-        "\tcheck_btm();",
+        "\tcheck_btm();\r",
+        "\t//Try modifying wind cost to fix printed total (hybrids)\r",
+        "\told_value = value('turbine_cost_fixed');\r",
+        "\tvalue('turbine_cost_fixed',1);\r",
+        "\trefresh('total_installed_cost');\r",
+        "\tvalue('turbine_cost_fixed',old_value);",
+        "\r",
+        "\ttech = technology();\r",
+        "\t\r",
+        "\tif ( tech == 'PVWatts Wind Battery Hybrid'\r",
+        "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
+        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\twind_name = 'Total Installed Cost of Wind Subsystem';\r",
+        "\t\twind_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\twind_name = 'Total installed cost';\r",
+        "\t\twind_description = 'The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t}\r",
+        "\tproperty('lblTotalInstalledCostDescription', 'Caption', wind_description );\r",
+        "\tproperty('grpTotalInstalledCost', 'Caption', wind_name );\r",
+        "\tproperty('lblTotalInstalledCost', 'Caption', wind_name );\r",
         "};",
         "",
         "on_change{'install_type'} = define()",

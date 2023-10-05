@@ -297,26 +297,30 @@ bool CodeGen_Base::PlatformFiles()
 bool CodeGen_Base::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values();
-	/* may be used in the future
-	// transfer all the values except for ones that have been 'overriden'
-	for (VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
-		++it)
-		if (0 == m_inputs.Get(it->first))
-			m_inputs.Set(it->first, *(it->second));
-*/
+
+	for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++) {
+
+		m_inputs = m_case->Values(i);
+		/* may be used in the future
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values().begin();
+			it != m_case->Values().end();
+			++it)
+			if (0 == m_inputs.Get(it->first))
+				m_inputs.Set(it->first, *(it->second));
+	*/
 	// recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
-	int n = eval.CalculateAll();
+		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(i));
+		int n = eval.CalculateAll(i);
 
-	if (n < 0)
-	{
-		wxArrayString &errs = eval.GetErrors();
-		for (size_t i = 0; i<errs.size(); i++)
-			m_errors.Add(errs[i]);
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
 
-		return false;
+			return false;
+		}
 	}
 	return true;
 }
@@ -391,45 +395,47 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue *vv = m_case->Values().Get(name))
-					{
-						if (!field.IsEmpty())
+					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
 						{
-							if (vv->Type() != VV_TABLE)
-								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-							bool do_copy_var = false;
-							if (reqd.Left(1) == "?")
+							if (!field.IsEmpty())
 							{
-								// if the SSC variable is optional, check for the 'en_<field>' element in the table
-								if (VarValue *en_flag = vv->Table().Get("en_" + field))
-									if (en_flag->Boolean())
-										do_copy_var = true;
-							}
-							else do_copy_var = true;
+								if (vv->Type() != VV_TABLE)
+									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
 
-							if (do_copy_var)
-							{
-								if (VarValue *vv_field = vv->Table().Get(field))
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
 								{
-									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-									else
-										cm_names.push_back(var_name);
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
 								}
-							}
+								else do_copy_var = true;
 
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+										else
+											cm_names.push_back(var_name);
+									}
+								}
+
+							}
+							else // no table value
+							{
+								if (!VarValueToSSC(vv, p_data, name))
+									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+								else
+									cm_names.push_back(var_name);
+							}
 						}
-						else // no table value
-						{
-							if (!VarValueToSSC(vv, p_data, name))
-								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-							else
-								cm_names.push_back(var_name);
-						}
+						//					else if (reqd == "*")
+						//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 					}
-//					else if (reqd == "*")
-//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
 				}
 			}
 			else if (var_type == SSC_OUTPUT)
@@ -518,20 +524,20 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	// outputs - metrics for case
 	m_data.clear();
-	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->Technology + ", " + cfg->Financing);
+	CodeGenCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
 	// first try to invoke a T/F specific callback if one exists
-	if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology + "|" + cfg->Financing))
-		cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+	if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName + "|" + cfg->Financing))
+		cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
 	// if no metrics were defined, run it T & F one at a time
 	if (m_data.size() == 0)
 	{
-		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Technology))
-			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
 		if (lk::node_t *metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->Financing))
-			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv());
+			cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 	}
 
 	if (!Output(p_data_output))
@@ -722,15 +728,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
-		{
-			// Android post processing
-			if (lang == 7)
-			{
-		        wxString fn2 = foldername + "/native-lib.cpp"; // ndk cpp file for project with c++ support
-				if (wxCopyFile(fn,fn2))	wxRemoveFile(fn);
-			}
 			wxLaunchDefaultApplication(foldername);
-		}
 		return cg->Ok();
 	}
 	else
@@ -1381,7 +1379,7 @@ bool CodeGen_csharp::RunSSCModule(wxString &)
 	fprintf(m_fp, "			int idx = 0;\n");
 	fprintf(m_fp, "			String msg;\n");
 	fprintf(m_fp, "			int type;\n");
-	fprintf(m_fp, "			float time;\n");
+	fprintf(m_fp, "			double time;\n");
 	fprintf(m_fp, "			while (module.Log(idx, out msg, out type, out time))\n");
 	fprintf(m_fp, "			{\n");
 	fprintf(m_fp, "				String stype = \"NOTICE\";\n");
@@ -7027,7 +7025,7 @@ bool CodeGen_ios::SupportingFiles()
 {
 	// for iOS
 	wxString url = SamApp::WebApi("ios_build");
-	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/ios/readme.html";
+	if (url.IsEmpty()) url = "https://sam.nrel.gov";
 		wxLaunchDefaultBrowser( url );
 
 #if defined(__WXMSW__)
@@ -7495,7 +7493,7 @@ bool CodeGen_android::SupportingFiles()
 	fclose(f);
 	// library files - in readme
 	wxString url = SamApp::WebApi("android_build");
-	if (url.IsEmpty()) url = "https://sam.nrel.gov/sites/default/files/content/mobile/android/readme.html";
+	if (url.IsEmpty()) url = "https://sam.nrel.gov/";
 	wxLaunchDefaultBrowser( url );
 
 #if defined(__WXMSW__)
@@ -7634,7 +7632,28 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
             else
                 fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
-		// TODO tables in future
+		break;
+	case SSC_TABLE:
+		{
+		// create table
+			auto dat = ssc_data_get_table(p_data, name); // owned by p_data - no need to free
+			fprintf(m_fp, "	\"%s\" : {\n", name);
+		// track number of table inputs - add to table to prevent read error for last entry with comma
+			int num_entries = 0;
+		// call input
+			const char* dat_name = ssc_data_first(dat);
+			while (dat_name)
+			{
+				if (!Input(dat, dat_name, m_folder, 0))
+					m_errors.Add(wxString::Format("Input %s write failed", dat_name));
+				num_entries++;
+				dat_name = ssc_data_next(dat);
+			}
+			// finish json table
+			fprintf(m_fp, " \"number table entries\" : %d\n", num_entries);
+			fprintf(m_fp, " },\n");
+		}
+		break;
 	}
 	return true;
 }
@@ -7798,41 +7817,44 @@ bool CodeGen_pySAM::GenerateCode(const int& array_matrix_threshold)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != ssc_data_type)
 				{
-					if (VarValue* vv = m_case->Values().Get(name))
-					{
-						if (!field.IsEmpty())
+					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+
+						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
 						{
-							if (vv->Type() != VV_TABLE)
-								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-							bool do_copy_var = false;
-							if (reqd.Left(1) == "?")
+							if (!field.IsEmpty())
 							{
-								// if the SSC variable is optional, check for the 'en_<field>' element in the table
-								if (VarValue* en_flag = vv->Table().Get("en_" + field))
-									if (en_flag->Boolean())
-										do_copy_var = true;
-							}
-							else do_copy_var = true;
+								if (vv->Type() != VV_TABLE)
+									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
 
-							if (do_copy_var)
-							{
-								if (VarValue* vv_field = vv->Table().Get(field))
+								bool do_copy_var = false;
+								if (reqd.Left(1) == "?")
 								{
-									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-									else
-										cm_names.push_back(var_name);
+									// if the SSC variable is optional, check for the 'en_<field>' element in the table
+									if (VarValue* en_flag = vv->Table().Get("en_" + field))
+										if (en_flag->Boolean())
+											do_copy_var = true;
 								}
-							}
+								else do_copy_var = true;
 
-						}
-						else // no table value
-						{
-							if (!VarValueToSSC(vv, p_data, name))
-								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-							else
-								cm_names.push_back(var_name);
+								if (do_copy_var)
+								{
+									if (VarValue* vv_field = vv->Table().Get(field))
+									{
+										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+										else
+											cm_names.push_back(var_name);
+									}
+								}
+
+							}
+							else // no table value
+							{
+								if (!VarValueToSSC(vv, p_data, name))
+									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+								else
+									cm_names.push_back(var_name);
+							}
 						}
 					}
 				}
@@ -8001,26 +8023,30 @@ bool CodeGen_pySAM::Input(ssc_data_t p_data, const char* name, const wxString&, 
 bool CodeGen_pySAM::Prepare()
 {
 	m_inputs.clear();
-	m_inputs = m_case->Values();
-	/* may be used in the future
-	// transfer all the values except for ones that have been 'overriden'
-	for (VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
-		++it)
-		if (0 == m_inputs.Get(it->first))
-			m_inputs.Set(it->first, *(it->second));
-*/
-// recalculate all the equations
-	CaseEvaluator eval(m_case, m_inputs, m_case->Equations());
-	int n = eval.CalculateAll();
+	for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
 
-	if (n < 0)
-	{
-		wxArrayString& errs = eval.GetErrors();
-		for (size_t i = 0; i < errs.size(); i++)
-			m_errors.Add(errs[i]);
 
-		return false;
+		m_inputs = m_case->Values(ndx_hybrid);
+		/* may be used in the future
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values().begin();
+			it != m_case->Values().end();
+			++it)
+			if (0 == m_inputs.Get(it->first))
+				m_inputs.Set(it->first, *(it->second));
+	*/
+	// recalculate all the equations
+		CaseEvaluator eval(m_case, m_inputs, m_case->Equations(ndx_hybrid));
+		int n = eval.CalculateAll(ndx_hybrid);
+
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
+
+			return false;
+		}
 	}
 	return true;
 }

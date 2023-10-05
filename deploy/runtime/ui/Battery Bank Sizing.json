@@ -1248,7 +1248,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.5,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_C_rate_max_discharge_input": {
@@ -1261,7 +1261,7 @@
             "Flags": 2.0,
             "DefaultValue": 0.5,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_duration": {
@@ -1274,7 +1274,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_ncells_serial": {
@@ -1287,7 +1287,7 @@
             "Flags": 3.0,
             "DefaultValue": 3.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_nseries_stacks": {
@@ -1300,7 +1300,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_nstrings": {
@@ -1313,7 +1313,7 @@
             "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_power": {
@@ -1326,7 +1326,7 @@
             "Flags": 2.0,
             "DefaultValue": 20.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_power_dc_ac": {
@@ -1339,7 +1339,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_size": {
@@ -1352,7 +1352,7 @@
             "Flags": 9.0,
             "DefaultValue": 3.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_size_dc_ac": {
@@ -1365,7 +1365,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_size_specify": {
@@ -1378,7 +1378,7 @@
             "Flags": 2.0,
             "DefaultValue": 100.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_bank_size_ui": {
@@ -1391,7 +1391,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_duration_choice": {
@@ -1404,7 +1404,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "batt_size_choice": {
@@ -1417,7 +1417,7 @@
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },

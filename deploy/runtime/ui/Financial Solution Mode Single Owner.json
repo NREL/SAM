@@ -577,7 +577,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "flip_target_year": {
@@ -590,7 +590,7 @@
             "Flags": 2.0,
             "DefaultValue": 10.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_escalation": {
@@ -603,7 +603,7 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_price_input": {
@@ -618,7 +618,7 @@
                 0.0
             ],
             "UIObject": "SchedNumeric",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "ppa_soln_mode": {
@@ -631,7 +631,7 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "solution_mode_message": {
@@ -644,7 +644,7 @@
             "Flags": 9.0,
             "DefaultValue": "",
             "UIObject": "MultilineText",
-            "sscVariableName": "",
+            "sscVariableName": " ",
             "sscVariableValue": ""
         }
     },
@@ -719,6 +719,20 @@
         "    enable( 'ppa_price_input', !is_specify_irr );",
         "\tshow_escalation = (#${ppa_price_input} < 2);",
         "\tenable(\"ppa_escalation\",(show_escalation || is_specify_irr));",
-        "}"
+        "}\r",
+        "\r",
+        "\r",
+        "function check_auto_ppa()\r",
+        "{\r",
+        "\tdispatch = value('batt_dispatch_choice_ui');\r",
+        "\tif (dispatch == 0 && value('en_batt') != 0 && financing() != \"Merchant Plant\") \r",
+        "\t{\r",
+        "\t\tppa_mode = value('ppa_soln_mode');\r",
+        "\t\tif (ppa_mode == 0) {\r",
+        "\t\t\tmsgbox('Specify IRR Target not available for automated dispatch.\\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\\n\\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');\r",
+        "\t\t}\r",
+        "\t}\r",
+        "}\r",
+        ""
     ]
 }
