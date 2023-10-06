@@ -1212,6 +1212,8 @@
         "\tis_fuel_cell_tech = ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) ;\r",
         "\tshow( 'ui_generic_cost',  is_generic_tech );\r",
         "\tshow( 'ui_fuel_cell_cost', is_fuel_cell_tech );\r",
+        "\tvalue('total_installed_cost', value('total_installed_cost'));\r",
+        "\trefresh('total_installed_cost');\r",
         "\trefresh();\r",
         "};"
     ]
