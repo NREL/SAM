@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Shading and Layout",
 hmDescription:"Shading and snow losses are reductions in the incident irradiance caused by shadows or snow on the photovoltaic modules in the array.",
-hmPrevLink:"pv_sizing.html",
+hmPrevLink:"pv_system_design.html",
 hmNextLink:"pv_losses.html",
 hmParentLink:"detailed_photovoltaic_model.html",
 hmBreadCrumbs:"<a href=\"detailed_photovoltaic_model.html\">Detailed Photovoltaic Model<\/a>",

@@ -2395,12 +2395,12 @@ function setup_generic_battery_pages(is_btm) {
 }
 
 setconfig( 'Generic Battery', 'Residential' );
-setmodules( ['belpe', 'generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_residential_pages( LOAD_BELPE );
+setup_residential_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Commercial' );
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
@@ -2411,10 +2411,10 @@ addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs'
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Generic Battery', 'Third Party' );
-setmodules( ['belpe', 'generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-setup_thirdparty_pages( LOAD_BELPE );
+setup_thirdparty_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -2489,11 +2489,11 @@ function setup_standalone_battery_pages(is_btm) {
 }
 
 setconfig( 'Standalone Battery', 'Residential' );
-setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(BTM);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
-setup_residential_pages( LOAD_BELPE );
+setup_residential_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
@@ -2503,9 +2503,9 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs'
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Standalone Battery', 'Third Party' );
-setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_standalone_battery_pages(BTM);
-setup_thirdparty_pages( LOAD_BELPE );
+setup_thirdparty_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -2638,7 +2638,10 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2695,7 +2698,10 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2757,7 +2763,11 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2826,7 +2836,11 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2905,19 +2919,22 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // detailed pv
-addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
-addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
-addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV DC Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
-addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='PV Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='PV Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='PV System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='PV Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
+addpage( [ ['PV Losses'] ], { 'sidebar'='PV Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
+addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
+addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='PV Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -2965,19 +2982,22 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // detailed pv
 addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
-addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
-addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV DC Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
-addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='PV Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='PV Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='PV System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='PV Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
+addpage( [ ['PV Losses'] ], { 'sidebar'='PV Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
+addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
+addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='PV Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -3034,7 +3054,12 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
@@ -3114,7 +3139,12 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 0,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 1,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 2,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'total_installed_cost'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'total_installed_cost'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
