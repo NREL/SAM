@@ -202,7 +202,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szvl->Add(m_finLabel, 0, wxEXPAND | wxALL, 0);
 
 	// navigation menu sizers
-	m_navigationMenu = new wxMetroDataViewCtrl(m_left_panel, ID_TechTree);
+	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
 	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));

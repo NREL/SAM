@@ -150,7 +150,7 @@ private:
 	wxStaticText *m_techLabel;
     wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
-	wxMetroDataViewCtrl *m_navigationMenu;
+	wxMetroDataViewTreeCtrl *m_navigationMenu;
     wxDataViewItem m_previousPage;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty

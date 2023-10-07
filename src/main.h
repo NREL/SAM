@@ -434,7 +434,7 @@ private:
 
 	void UpdateFinTree();
 
-	wxMetroDataViewCtrl *m_pTech, *m_pFin;
+	wxMetroDataViewTreeCtrl *m_pTech, *m_pFin;
 	wxArrayString m_tnames, m_fnames;
 	wxString m_techname, m_finname;
 
