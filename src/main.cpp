@@ -3039,9 +3039,8 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 {
 	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
 	{
-//		m_pTech->Expand(m_pTech->GetCurrentItem());
-//		m_techname = "";
-//		evt.Veto();
+		m_pTech->Expand(m_pTech->GetCurrentItem());
+		m_techname = "";
 		return;
 	}
 	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
