@@ -3021,6 +3021,8 @@ void ConfigDialog::UpdateFinTree()
 
 void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
 {
+	// when does this happen
+	wxString here = "yes";
 	evt.Veto();
 }
 
@@ -3033,12 +3035,13 @@ void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 }
 
 
-void ConfigDialog::OnTechTree(wxDataViewEvent &)
+void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 {
 	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
 	{
-		m_pTech->Expand(m_pTech->GetCurrentItem());
-		m_techname = "";
+//		m_pTech->Expand(m_pTech->GetCurrentItem());
+//		m_techname = "";
+//		evt.Veto();
 		return;
 	}
 	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());

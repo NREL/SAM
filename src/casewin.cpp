@@ -698,6 +698,7 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
 
 void CaseWindow::OnTreeActivated(wxDataViewEvent& evt)
 {
+	wxString here = "yes";
     evt.Veto();
 }
 
