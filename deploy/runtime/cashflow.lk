@@ -255,7 +255,12 @@ function cf_om_expenses()
 	if ( tech == 'Geothermal' ) { if (value('system_use_recapitalization')==1) { cfline ('cf_recapitalization', 0); } }
 	if ( is_fom_fin() )
 	{
-		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
+		if(tech != 'MSPT IPH') {
+			cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
+		}
+		else{
+			cfline('cf_om_elec_price_for_heat_techs', 0);
+		}
 	}
 	if ( technology() == 'PVWatts Wind Battery Hybrid') {
 		if (fin == 'Single Owner')

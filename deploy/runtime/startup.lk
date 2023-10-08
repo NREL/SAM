@@ -1828,7 +1828,7 @@ setmodules(['mspt_iph', 'singleowner']);
 setup_MSPT_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Electricity Purchases Heat Model','Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',

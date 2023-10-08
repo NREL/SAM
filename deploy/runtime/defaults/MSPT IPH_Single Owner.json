@@ -47277,15 +47277,19 @@
     "nameplate": 279.126,
     "nominal_discount_rate": 9.06,
     "om_capacity": [
-        50.0
+        26.0
     ],
     "om_capacity_escal": 0.0,
+    "om_elec_price_for_heat_techs": [
+        0.06
+    ],
+    "om_elec_price_for_heat_techs_escal": 0.0,
     "om_fixed": [
         0.0
     ],
     "om_fixed_escal": 0.0,
     "om_production": [
-        0.0
+        1.4
     ],
     "om_production_escal": 0.0,
     "opt_algorithm": 1.0,
