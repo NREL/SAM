@@ -2740,6 +2740,8 @@ enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_EDITING_STARTED(ID_TechTree, ConfigDialog::OnTreeActivated)
+EVT_DATAVIEW_ITEM_EDITING_DONE(ID_TechTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
 EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
@@ -3022,7 +3024,7 @@ void ConfigDialog::UpdateFinTree()
 void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
 {
 	// when does this happen
-	wxString here = "yes";
+	wxMessageBox("Activated");
 	evt.Veto();
 }
 
