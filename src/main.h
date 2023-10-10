@@ -427,7 +427,6 @@ public:
 private:
 	void PopulateTech();
 	bool ValidateSelections();
-//	void OnTreeActivated(wxDataViewEvent& evt);
 	void OnTechTreeCollapsing(wxDataViewEvent& evt);
 	void OnTechTree(wxDataViewEvent &);
 	void OnFinTreeCollapsing(wxDataViewEvent& evt);
