@@ -1,0 +1,12 @@
+hmLoadTopic({
+hmKeywords:"",
+hmTitle:"Electricity Rates and Load",
+hmDescription:"For projects with the residential or commercial or third party ownership financial model that buy and sell electricity at retail rates, you specify a rate structure (net...",
+hmPrevLink:"depreciation.html",
+hmNextLink:"electric_load.html",
+hmParentLink:"index.html",
+hmBreadCrumbs:"",
+hmTitlePath:"Electricity Rates and Load",
+hmHeader:"<h1 class=\"p_Heading1\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_Heading1\">Electricity Rates and Load<\/span><\/h1>\n\r",
+hmBody:"<p class=\"p_Text\"><span class=\"f_Text\">For projects with the <a href=\"fin_overview.html#rescom\" class=\"topiclink\">residential or commercial<\/a> or <a href=\"fin_overview.html#thirdparty\" class=\"topiclink\">third party ownership<\/a> financial model that buy and sell electricity at retail rates, you specify a rate structure (net metering, energy rates, demand charges, and monthly charges) on the <a href=\"electricity_rates.html\" class=\"topiclink\">Electricity Rates<\/a> page, and a building or facility load on the <a href=\"electric_load.html\" class=\"topiclink\">Electric Load<\/a> page.<\/span><\/p>\n\r<p class=\"p_List\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_List\"><a href=\"electric_load.html\" class=\"topiclink\">Electric Load<\/a><\/span><\/p>\n\r<p class=\"p_List\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_List\"><a href=\"electricity_rates.html\" class=\"topiclink\">Electricity Rates<\/a><\/span><\/p>\n\r<p class=\"p_ListLast\" style=\"text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_ListLast\"><a href=\"utility_bill_results.html\" class=\"topiclink\">Electricity Bill Results<\/a><\/span><\/p>"
+})

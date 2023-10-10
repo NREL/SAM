@@ -1998,7 +1998,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values(0).Get(name))
+						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
 						{
 							
 							if (!field.IsEmpty())
@@ -3024,7 +3024,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+        if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -3064,7 +3065,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<LAT>", wxString::Format("%lg", lat));
 	url.Replace("<LON>", wxString::Format("%lg", lon));
 	url.Replace("<INTERVAL>", interval);
-	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
+	url.Replace("<ATTRS>", attributes); // empty attributes parameter returns file with all hub heights
 
 	// make API call to download weather file
 	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
@@ -3719,6 +3720,7 @@ void fcall_geocode(lk::invoke_t& cxt)
 		"(string:address):table");
 
 	double lat = 0, lon = 0, tz = 0;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	bool ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon, &tz);
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);

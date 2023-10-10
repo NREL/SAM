@@ -504,7 +504,7 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
 		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
-			// TODO: hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
+			// hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
             for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
                 win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
                 //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
@@ -2431,12 +2431,12 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 #ifdef __WXGTK__
 		if ( ! context.IsEmpty() )
-			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".htm";
+			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".html";
 		wxLaunchDefaultBrowser( url );
 		return;
 #else
 		if ( ! context.IsEmpty() )
-			url += "?" + context + ".htm";
+			url += "?" + context + ".html";
 #endif
 	}
 
@@ -2586,6 +2586,43 @@ bool SamApp::WriteProxyFile( const wxString &proxy )
 }
 
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
+
+bool SamApp::VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file)
+{
+	if (!ci || (vt.size() < 1) || (ci->Technology.size() < 1))
+		return false;
+	else if (ci->Technology.size() < 2)
+		return vt[0].Read_JSON(file);
+	else { // hybrid
+		rapidjson::Document doc, table;
+		wxFileInputStream fis(file);
+
+		if (!fis.IsOk()) {
+			wxLogError(wxS("Couldn't open the file '%s'."), file);
+			return false;
+		}
+		wxStringOutputStream os;
+		fis.Read(os);
+
+		rapidjson::StringStream is(os.GetString().c_str());
+
+		doc.ParseStream(is);
+		if (doc.HasParseError()) {
+			wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+			return false;
+		}
+		else {
+			bool ret = true;
+			for (size_t i = 0; i < ci->Technology.size(); i++) {
+				table.CopyFrom(doc[ci->Technology[i].ToStdString().c_str()], doc.GetAllocator());
+				ret = ret && vt[i].Read_JSON(table);
+			}
+			return ret;
+		}
+	}
+}
+
+
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
 
@@ -2902,6 +2939,7 @@ void ConfigDialog::PopulateTech()
 	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
 	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
 	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
+	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
 	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
 	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
 
@@ -2912,6 +2950,8 @@ void ConfigDialog::PopulateTech()
 	//	if ( L.IsEmpty() ) L = m_tnames[i];
 	//	if (TP.Find("PV") != wxNOT_FOUND)
 	//		m_pTech->AppendItem(cont_pv, L);
+	//	else if (TP.Find("Heat") != wxNOT_FOUND)
+	//		m_pTech->AppendItem(cont_heat, L);
 	//	else if (TP.Find("CSP") != wxNOT_FOUND )
 	//		m_pTech->AppendItem(cont_csp, L);
 	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies

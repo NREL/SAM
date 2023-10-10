@@ -1,0 +1,12 @@
+hmLoadTopic({
+hmKeywords:"",
+hmTitle:"Edit Monthly Data",
+hmDescription:"Some input variables, such as soiling losses, require a value for each month of the year.",
+hmPrevLink:"edit_losses.html",
+hmNextLink:"edit_data_table_column.html",
+hmParentLink:"index.html",
+hmBreadCrumbs:"Window Reference",
+hmTitlePath:"Window Reference > Edit Monthly Data",
+hmHeader:"<h1 class=\"p_Heading1\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_Heading1\">Edit Monthly Data<\/span><\/h1>\n\r",
+hmBody:"<p class=\"p_Text\"><span class=\"f_Text\">Some input variables, such as soiling losses, require a value for each month of the year.<\/span><\/p>\n\r<p class=\"p_Text\" style=\"text-align: center;\"><img alt=\"SS_MonthyData-Table\" style=\"margin:0 auto 0 auto;width:17.6250rem;height:23.5625rem;border:none\" src=\".\/images\/ss_monthydata-table.png\"\/><\/p>\n\r<p class=\"p_Text\"><span class=\"f_Text\">Type a value in the table for each month.<\/span><\/p>\n\r<p class=\"p_Text\"><span class=\"f_Text\">To assign the same value to all months, type a value for <\/span><span class=\"f_CHInterfaceElement\">Enter single value<\/span><span class=\"f_Text\"> and click <\/span><span class=\"f_CHInterfaceElement\">Apply<\/span><span class=\"f_Text\">.<\/span><\/p>\n\r<p class=\"p_VariableName\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_VariableName\">Copy<\/span><\/p>\n\r<p class=\"p_VariableDescription\"><span class=\"f_VariableDescription\">Copy the 12 values from the table to your computer\'s clipboard.<\/span><\/p>\n\r<p class=\"p_VariableName\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_VariableName\">Paste<\/span><\/p>\n\r<p class=\"p_VariableDescription\"><span class=\"f_VariableDescription\">Paste values from your computer\'s clipboard to the table.<\/span><\/p>\n\r<p class=\"p_VariableName\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_VariableName\">Enter single value<\/span><\/p>\n\r<p class=\"p_VariableDescription\"><span class=\"f_VariableDescription\">Type a value to apply to all months.<\/span><\/p>\n\r<p class=\"p_VariableName\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_VariableName\">Apply<\/span><\/p>\n\r<p class=\"p_VariableDescription\"><span class=\"f_VariableDescription\">Apply the value in Enter single value to all months.<\/span><\/p>\n\r"
+})

@@ -3047,7 +3047,7 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			wxString varName = input_names[i];
 			// decode hybrids if necessary
 			if (m_case->GetConfiguration()->Technology.size() > 1) {
-				// TODO split hybrid name and match with Technology name or use "Hybrid" for remainder
+				// split hybrid name and match with Technology name or use "Hybrid" for remainder
 				wxArrayString as = wxSplit(input_names[i], '_');
 				for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
 					if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
