@@ -2739,13 +2739,15 @@ void SamApp::InstallPythonPackage(const std::string& pip_name) {
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_EDITING_STARTED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_EDITING_DONE(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
+	//EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
+	//EVT_DATAVIEW_ITEM_EDITING_STARTED(ID_TechTree, ConfigDialog::OnTreeActivated)
+	//EVT_DATAVIEW_ITEM_EDITING_DONE(ID_TechTree, ConfigDialog::OnTreeActivated)
+	//EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_TechTree, ConfigDialog::OnTechTreeCollapsing)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_FinTree, ConfigDialog::OnFinTreeCollapsing)
+	//EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
+	EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
@@ -2969,6 +2971,7 @@ void ConfigDialog::PopulateTech()
 
 void ConfigDialog::UpdateFinTree()
 {
+	m_finDVI = wxDataViewItem(0);
 	m_pFin->DeleteAllItems();
 	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
 
@@ -2976,20 +2979,16 @@ void ConfigDialog::UpdateFinTree()
 	wxDataViewItem cont_dist;
 	//wxDataViewItem cont_tpo; //TPO
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("PPA") != wxNOT_FOUND)
-		{
+		if (TP.Find("PPA") != wxNOT_FOUND)	{
 			cont_ppa = m_pFin->AppendContainer(wxDataViewItem(0), "Power Purchase Agreement");
 			break;
 		}
 	}
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-		{
+		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND) {
 			cont_dist = m_pFin->AppendContainer(wxDataViewItem(0), "Distributed");
 			break;
 		}
@@ -3005,8 +3004,7 @@ void ConfigDialog::UpdateFinTree()
 	}*/
 
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 		if (L.IsEmpty()) L = m_fnames[i];
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
@@ -3021,12 +3019,43 @@ void ConfigDialog::UpdateFinTree()
 	}
 }
 
+/*
 void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
 {
 	// when does this happen
 	wxMessageBox("Activated");
 	evt.Veto();
 }
+*/
+
+void ConfigDialog::OnTechTreeCollapsing(wxDataViewEvent& evt)
+{
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pTech->IsContainer(dvi)) {
+		auto selectedDVI = m_pTech->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pTech->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pTech->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
+}
+
+void ConfigDialog::OnFinTreeCollapsing(wxDataViewEvent& evt)
+{
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pFin->IsContainer(dvi)) {
+		auto selectedDVI = m_pFin->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pFin->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pFin->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
+}
+
 
 void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 {
@@ -3039,20 +3068,34 @@ void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 
 void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 {
-	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
-	{
-		m_pTech->Expand(m_pTech->GetCurrentItem());
-		m_techname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pTech->IsContainer(dvi))
+	{
+		if (m_pTech->IsExpanded(dvi))
+			m_pTech->Collapse(dvi);
+		else
+			m_pTech->Expand(dvi);
+		if (m_techDVI.IsOk()) {// keep current selection 
+			m_pTech->SetCurrentItem(m_techDVI);
+			return;
+		}
+		else {// select first child
+			m_techDVI = m_pTech->GetNthChild(dvi, 0);
+			m_pTech->SetCurrentItem(m_techDVI);
+		}
 	}
-	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+	else {
+		m_techDVI = evt.GetItem();
+	}
+	wxString title = m_pTech->GetItemText(m_techDVI);
 	if (title.empty())
 		title = "None";
 	m_techname = title;
-	for (size_t i = 0; i < m_tnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
-		{
+	for (size_t i = 0; i < m_tnames.Count(); i++) {
+		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname) {
 			m_techname = m_tnames[i];
 			break;
 		}
@@ -3061,22 +3104,36 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 	UpdateFinTree();
 }
 
-void ConfigDialog::OnFinTree(wxDataViewEvent &)
+void ConfigDialog::OnFinTree(wxDataViewEvent &evt)
 {
-	if (m_pFin->IsContainer(m_pFin->GetCurrentItem()))
-	{
-		m_pFin->Expand(m_pFin->GetCurrentItem());
-		m_finname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pFin->IsContainer(dvi))
+	{
+		if (m_pFin->IsExpanded(dvi))
+			m_pFin->Collapse(dvi);
+		else
+			m_pFin->Expand(dvi);
+		if (m_finDVI.IsOk()) {// keep current selection 
+			m_pFin->SetCurrentItem(m_finDVI);
+			return;
+		}
+		else {// select first child
+			m_finDVI = m_pFin->GetNthChild(dvi, 0);
+			m_pFin->SetCurrentItem(m_finDVI);
+		}
 	}
-	wxString title = m_pFin->GetItemText(m_pFin->GetCurrentItem());
-	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
+	else {
+		m_finDVI = evt.GetItem();
+	}
+	wxString title = m_pFin->GetItemText(m_finDVI);
+	if (title.empty())
 		title = "None";
 	m_finname = title;
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
-		{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
+		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname) {
 			m_finname = m_fnames[i];
 			break;
 		}
