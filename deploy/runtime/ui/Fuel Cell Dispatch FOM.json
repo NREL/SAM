@@ -409,6 +409,21 @@
         }
     },
     "VarDatabase": {
+        "fuelcell_dispatch": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Fuel cell dispatch",
+            "Units": "kW",
+            "Group": "Fuel Cell",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "fuelcell_dispatch_choice": {
             "Version": 4.0,
             "Type": 1.0,
