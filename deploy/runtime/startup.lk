@@ -188,7 +188,7 @@ function setup_pages_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ],
 		      [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
@@ -201,7 +201,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'  } );
