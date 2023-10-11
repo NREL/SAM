@@ -2969,6 +2969,7 @@ void ConfigDialog::UpdateFinTree()
 	m_finDVI = wxDataViewItem(0);
 	m_pFin->DeleteAllItems();
 	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
+	m_finname = "";
 
 	wxDataViewItem cont_ppa;
 	wxDataViewItem cont_dist;
@@ -3006,7 +3007,7 @@ void ConfigDialog::UpdateFinTree()
 		if (TP.Find("PPA") != wxNOT_FOUND)
 			m_pFin->AppendItem(cont_ppa, L);
 		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-				m_pFin->AppendItem(cont_dist, L);
+			m_pFin->AppendItem(cont_dist, L);
 		/*else if (TP.Find("TPO") != wxNOT_FOUND) //TPO
 			m_pFin->AppendItem(cont_tpo, L);*/
 		else
