@@ -1656,8 +1656,8 @@ bool ScanTidalResourceData(const wxString& db_file, bool show_busy)
 
                 csv(row, 0) = ff.GetName();
 
-                if (ssc_data_get_number(pdata, "location_id", &val))
-                    csv(row, 1) = wxString::Format("%g", val);
+                if ((str = ssc_data_get_string(pdata, "location_id")) != 0)
+                    csv(row, 1) = wxString(str);
 
                 if (ssc_data_get_number(pdata, "distance_to_shore_file", &val))
                     csv(row, 2) = wxString::Format("%g", val);
