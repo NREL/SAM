@@ -282,7 +282,7 @@
                     61.90605633
                 ]
             ],
-            "resistance": 0.25,
+            "resistance": 0.02,
             "voltage_choice": 1,
             "voltage_matrix":[
                 [98.56209647, 1.8373858133333334],
