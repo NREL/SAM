@@ -145,9 +145,11 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_MENU(ID_PVUNCERTAINTY, CaseWindow::OnCommand)
 	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
-    EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTechTree)
-    EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
-    EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
+    EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTree)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_TechTree, CaseWindow::OnTreeCollapsing)
+
+//    EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
+//    EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
     //EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
@@ -626,8 +628,37 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	return false;
 }
 
-void CaseWindow::OnTechTree(wxDataViewEvent&)
+void CaseWindow::OnTree(wxDataViewEvent &evt)
 {
+	m_pageFlipper->SetSelection(0);
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
+		return;
+
+	if (m_navigationMenu->IsContainer(dvi))
+	{
+		if (m_navigationMenu->IsExpanded(dvi))
+			m_navigationMenu->Collapse(dvi);
+		else
+			m_navigationMenu->Expand(dvi);
+		if (m_currentSelection.IsOk()) {// keep current selection 
+			m_navigationMenu->SetCurrentItem(m_currentSelection);
+			return;
+		}
+		else {// select first child
+			m_currentSelection = m_navigationMenu->GetNthChild(dvi, 0);
+			m_navigationMenu->SetCurrentItem(m_currentSelection);
+		}
+	}
+	else {
+		m_currentSelection = evt.GetItem();
+	}
+	wxString title = m_navigationMenu->GetItemText(m_currentSelection);
+	SwitchToInputPage(title);
+
+
+
+	/*
     m_pageFlipper->SetSelection(0);
     if (m_navigationMenu->IsContainer(m_navigationMenu->GetCurrentItem()))
     {
@@ -674,11 +705,6 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         //m_navigationMenu->Update();
         //wxDataViewItemArray dvia;
 
-        /*
-        m_navigationMenu->GetModel()->GetChildren(m_navigationMenu->GetCurrentItem(), dvia);
-        if (m_navigationMenu->GetItemText(dvia[0]) != L"")
-            SwitchToInputPage(m_navigationMenu->GetItemText(dvia[0]));
-            */
         
     }
     else {
@@ -693,13 +719,21 @@ void CaseWindow::OnTechTree(wxDataViewEvent&)
         
     }
     //m_navigationMenu->Update();
-    
+    */
 }
 
-void CaseWindow::OnTreeActivated(wxDataViewEvent& evt)
+void CaseWindow::OnTreeCollapsing(wxDataViewEvent& evt)
 {
-	wxString here = "yes";
-    evt.Veto();
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_navigationMenu->IsContainer(dvi)) {
+		auto selectedDVI = m_navigationMenu->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_navigationMenu->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_navigationMenu->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
 }
 
 void CaseWindow::OnCommand( wxCommandEvent &evt )
@@ -1482,7 +1516,7 @@ void CaseWindow::UpdateConfiguration()
 		m_navigationMenu->SetCurrentItem(dvic[0]);
 		SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
 	}
-	m_previousPage = (m_navigationMenu->GetCurrentItem());
+	m_currentSelection = (m_navigationMenu->GetCurrentItem());
     
 	// check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
