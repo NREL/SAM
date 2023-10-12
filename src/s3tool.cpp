@@ -204,6 +204,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent & )
 	wxYield();
 
 	double lat, lon, tz;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	if ( !GeoTools::GeocodeDeveloper( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
