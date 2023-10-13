@@ -572,6 +572,21 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "csp_dtr_hce_optical_effs": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "lib_AbsorberMaterial": {
             "Version": 4.0,
             "Type": 1.0,

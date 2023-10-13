@@ -5048,6 +5048,21 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "csp_dtr_hce_design_heat_losses": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "cspdtr_loop_hce_heat_loss": {
             "Version": 4.0,
             "Type": 1.0,
@@ -5811,12 +5826,12 @@
         "\treturn ${T_loop_out}; };",
         "\t",
         "// Just UI indicator",
-        "equations{ 'FIELD_COPY_nLoops' } = define() {",
-        "\treturn ${nLoops}; };",
+        "//equations{ 'FIELD_COPY_nLoops' } = define() {",
+        "//\treturn ${nLoops}; };",
         "\t",
         "// Just UI indicator",
-        "equations{ 'FIELD_COPY_solar_mult' } = define() {",
-        "\treturn ${solar_mult}; };",
+        "//equations{ 'FIELD_COPY_solar_mult' } = define() {",
+        "//\treturn ${solar_mult}; };",
         "",
         "equations{ 'defocus' } = define() {",
         "\t// setting the default and setting this value in the 'on_load' event don't",

@@ -1549,6 +1549,12 @@
     "csp_dtr_hce_design_heat_loss_2": 190.0,
     "csp_dtr_hce_design_heat_loss_3": 190.0,
     "csp_dtr_hce_design_heat_loss_4": 190.0,
+    "csp_dtr_hce_design_heat_losses": [
+        207.35,
+        190.0,
+        190.0,
+        190.0
+    ],
     "csp_dtr_hce_diam_absorber_inner_1": 0.076,
     "csp_dtr_hce_diam_absorber_inner_2": 0.076,
     "csp_dtr_hce_diam_absorber_inner_3": 0.076,
@@ -1585,6 +1591,12 @@
     "csp_dtr_hce_optical_eff_2": 0.850631,
     "csp_dtr_hce_optical_eff_3": 0.850631,
     "csp_dtr_hce_optical_eff_4": 0.850631,
+    "csp_dtr_hce_optical_effs": [
+        0.850117,
+        0.850631,
+        0.850631,
+        0.850631
+    ],
     "csp_dtr_hce_var1_abs_abs_1": 0.963,
     "csp_dtr_hce_var1_abs_abs_2": 0.963,
     "csp_dtr_hce_var1_abs_abs_3": 0.963,
@@ -1797,6 +1809,12 @@
     "csp_dtr_sca_calc_sca_eff_2": 0.848494,
     "csp_dtr_sca_calc_sca_eff_3": 0.848494,
     "csp_dtr_sca_calc_sca_eff_4": 0.848494,
+    "csp_dtr_sca_calc_sca_effs": [
+        0.848494,
+        0.848494,
+        0.848494,
+        0.848494
+    ],
     "csp_dtr_sca_calc_theta_1": 0.151418,
     "csp_dtr_sca_calc_theta_2": 0.151418,
     "csp_dtr_sca_calc_theta_3": 0.151418,

@@ -1793,7 +1793,11 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": [],
+    "Equations": [
+        "// Just UI indicator\r",
+        "equations{ 'csp_dtr_sca_calc_sca_eff_2' } = define() {\r",
+        "\treturn ${csp_dtr_sca_calc_sca_effs}[1]; };"
+    ],
     "Callbacks": [
         "on_change{'apply_collector_library_2'} = define() {",
         "    ",
