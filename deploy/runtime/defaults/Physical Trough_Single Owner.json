@@ -1777,6 +1777,11 @@
     "csp_dtr_sca_ap_length_2": 14.375,
     "csp_dtr_sca_ap_length_3": 14.375,
     "csp_dtr_sca_ap_length_4": 14.375,
+    "csp_dtr_sca_ap_lengths": [
+        [
+            0.0
+        ]
+    ],
     "csp_dtr_sca_aperture_1": 656.0,
     "csp_dtr_sca_aperture_2": 656.0,
     "csp_dtr_sca_aperture_3": 656.0,
@@ -1785,6 +1790,7 @@
     "csp_dtr_sca_ave_focal_len_2": 2.15,
     "csp_dtr_sca_ave_focal_len_3": 2.15,
     "csp_dtr_sca_ave_focal_len_4": 2.15,
+    "csp_dtr_sca_calc_costh": 0.0,
     "csp_dtr_sca_calc_costh_1": 0.988558,
     "csp_dtr_sca_calc_costh_2": 0.988558,
     "csp_dtr_sca_calc_costh_3": 0.988558,
@@ -1793,14 +1799,30 @@
     "csp_dtr_sca_calc_end_gain_2": 0.0,
     "csp_dtr_sca_calc_end_gain_3": 0.0,
     "csp_dtr_sca_calc_end_gain_4": 0.0,
+    "csp_dtr_sca_calc_end_gains": [
+        [
+            0.0
+        ]
+    ],
     "csp_dtr_sca_calc_end_loss_1": 0.999643,
     "csp_dtr_sca_calc_end_loss_2": 0.999643,
     "csp_dtr_sca_calc_end_loss_3": 0.999643,
     "csp_dtr_sca_calc_end_loss_4": 0.999643,
+    "csp_dtr_sca_calc_end_losses": [
+        [
+            0.0
+        ]
+    ],
     "csp_dtr_sca_calc_iam_1": 1.00188,
     "csp_dtr_sca_calc_iam_2": 1.00188,
     "csp_dtr_sca_calc_iam_3": 1.00188,
     "csp_dtr_sca_calc_iam_4": 1.00188,
+    "csp_dtr_sca_calc_iams": [
+        [
+            0.0
+        ]
+    ],
+    "csp_dtr_sca_calc_latitude": 0.0,
     "csp_dtr_sca_calc_latitude_1": 32.13,
     "csp_dtr_sca_calc_latitude_2": 32.13,
     "csp_dtr_sca_calc_latitude_3": 32.13,
@@ -1815,10 +1837,12 @@
         0.848494,
         0.848494
     ],
+    "csp_dtr_sca_calc_theta": 0.0,
     "csp_dtr_sca_calc_theta_1": 0.151418,
     "csp_dtr_sca_calc_theta_2": 0.151418,
     "csp_dtr_sca_calc_theta_3": 0.151418,
     "csp_dtr_sca_calc_theta_4": 0.151418,
+    "csp_dtr_sca_calc_zenith": 0.0,
     "csp_dtr_sca_calc_zenith_1": 0.150622,
     "csp_dtr_sca_calc_zenith_2": 0.150622,
     "csp_dtr_sca_calc_zenith_3": 0.150622,
