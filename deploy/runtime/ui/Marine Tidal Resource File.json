@@ -1,7 +1,7 @@
 {
     "Name": "Marine Tidal Resource File",
-    "Width": 1068.0,
-    "Height": 557.0,
+    "Width": 996.0,
+    "Height": 460.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -86,11 +86,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 888.0
+                    "Integer": 720.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 321.0
+                    "Integer": 318.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -267,7 +267,7 @@
                 },
                 "Text": {
                     "Type": 5.0,
-                    "String": "List of Wave Resource library folders"
+                    "String": "List of Tidal Resource library folders"
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -314,7 +314,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1041.0
+                    "Integer": 974.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -351,7 +351,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 965.0
+                    "Integer": 911.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -380,11 +380,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 321.0
+                    "Integer": 318.0
                 },
                 "Width": {
                     "Type": 3.0,

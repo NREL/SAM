@@ -1,7 +1,7 @@
 {
     "Name": "Marine Tidal Resource Header",
-    "Width": 1028.0,
-    "Height": 209.0,
+    "Width": 996.0,
+    "Height": 200.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1002.0
+                    "Integer": 974.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Group box"
+                    "String": "Marine Tidal Resource"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -57,7 +57,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 972.0
+                    "Integer": 870.0
                 },
                 "Height": {
                     "Type": 3.0,
