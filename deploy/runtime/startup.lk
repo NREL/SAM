@@ -57,6 +57,10 @@ addconfig('PVWatts Wind FuelCell Battery Hybrid', ['Single Owner', 'Host Develop
 addconfig('Photovoltaic Wind Battery Hybrid', ['Single Owner', 'Host Developer']);
 addconfig('Generic PVWatts Wind FuelCell Battery Hybrid', ['Single Owner', 'Host Developer']);
 
+
+// order tech and fin trees
+configopt("TechnologyTreeOrder", {'description' = 'Hybrid,Wind,Generic System,Photovoltaic,Geothermal'});
+
 // group names 'tree_parent' for performance models are defined in PopulateTech() in main.cpp
 configopt( 'Flat Plate PV', { 'tree_parent'='Photovoltaic', 'long_name'='Detailed PV Model', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts', { 'tree_parent'='Photovoltaic','long_name'='PVWatts', 'short_name'='PVWatts', 'description'='Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
@@ -188,7 +192,7 @@ function setup_pages_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ],
 		      [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
@@ -201,7 +205,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'  } );
@@ -622,20 +626,6 @@ function setup_solar_water_heating_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource' , 'help'='shw_location_and_resource' });
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='shw_system' } );
-}
-
-function setup_fuel_cell_pages_hybrid()
-{
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-	addpage( [['Fuel Cell Dispatch'],[ 'Fuel Cell Dispatch Manual' ]],
-				{ 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell'} );
-/*	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
-		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
-		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
-			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-*/
 }
 
 function setup_etes_pages()
@@ -1269,7 +1259,7 @@ addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving
 		  [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		  [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		  [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		  [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ],
 		  [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]],
 		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true  } );
 addpage( [[ 'Fuel Cell' ]], 
@@ -1278,7 +1268,7 @@ addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ],
 	      [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ],
 		  [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
 		  [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ],
-		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 setup_grid_limits_page();
 setup_grid_outage_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
@@ -1319,10 +1309,9 @@ addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
 		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 addpage( [[ { 'name'='AA Empty', 'caption'='Fixed Output'} ], 
-	      [ { 'name'='AA Empty', 'caption'='Follow Electric Load'} ],
 		  [ { 'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
 		  [ { 'name'='AA Empty', 'caption'='Input Dispatch'}] ],
-		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 setup_grid_limits_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ], [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
@@ -2786,7 +2775,7 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='AA Empty', 'caption'='Load Following'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
@@ -2859,13 +2848,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
@@ -3083,7 +3072,7 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='AA Empty', 'caption'='Load Following'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
@@ -3168,13 +3157,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
