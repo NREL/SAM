@@ -1,5 +1,5 @@
 {
-    "Name": "Fuel Cell Dispatch",
+    "Name": "Fuel Cell Dispatch BTM",
     "Width": 1052.0,
     "Height": 150.0,
     "FormObjects": {
@@ -504,7 +504,7 @@
         "};"
     ],
     "Callbacks": [
-        "on_load{'Fuel Cell Dispatch'} = define() ",
+        "on_load{'Fuel Cell Dispatch BTM'} = define() ",
         "{",
         "\tenable_fc_dispatch_options();",
         "};",
