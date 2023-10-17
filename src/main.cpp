@@ -2910,27 +2910,6 @@ void ConfigDialog::PopulateTech()
 	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
-    //wxString bin_name;
-    //wxArrayString tech_list;
-    //wxDataViewItemArray dvia{m_tnames.Count()};
-	/*
-    for (int j = 0; j < m_tnames.Count(); j++) {
-        wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-        wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-        if (L.IsEmpty()) L = m_tnames[j];
-        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-            tech_list.Add(TP);
-            dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-        }
-        if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-        else if (tech_list.Index(TP) != wxNOT_FOUND) {
-            m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
-        }
-        else {
-            m_pTech->AppendItem(wxDataViewItem(0), L);
-        }
-    }
-	*/
 	// tree containers and nodes
 	wxArrayString containers, nodes, added;
 	for (int j = 0; j < m_tnames.Count(); j++) {
@@ -2947,122 +2926,37 @@ void ConfigDialog::PopulateTech()
 
 	// order from startup.lk configopt("TechnologyTreeOrder", ...
 	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;
-	/*
-	if (TreeOrder.length() < 1) { // non-ordered
-		wxArrayString tech_list;
-		wxDataViewItemArray dvia{m_tnames.Count()};
-		
-		for (int j = 0; j < m_tnames.Count(); j++) {
-			 wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-			 wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-			 if (L.IsEmpty()) L = m_tnames[j];
-			 if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-				 tech_list.Add(TP);
-				 dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-			 }
-			 if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-			 else if (tech_list.Index(TP) != wxNOT_FOUND) {
-				 m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
-			 }
-			 else {
-				 m_pTech->AppendItem(wxDataViewItem(0), L);
-			 }
-		}
+    wxArrayString order = wxSplit(TreeOrder, ',');
+    for (auto& item : order) {
+        if (containers.Index(item) != wxNOT_FOUND)
+            dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
+        else if (nodes.Index(item) != wxNOT_FOUND)
+            m_pTech->AppendItem(wxDataViewItem(0), item);
+    }
+    // append remaining nodes to appropriate containers
+    for (auto& item : m_tnames) {
+        wxString node(SamApp::Config().Options(item).LongName);
+        wxString container(SamApp::Config().Options(item).TreeParent);
+        if (node.IsEmpty()) node = item;
+    // skip those already added
+        if (order.Index(node) != wxNOT_FOUND) continue;
+        if (order.Index(container) != wxNOT_FOUND)
+            m_pTech->AppendItem(dvia[containers.Index(container)], node);
+        else {
+            if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
+                added.Add(container);
+                dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
+            }
+            if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+            else if (containers.Index(container) != wxNOT_FOUND) {
+                m_pTech->AppendItem(dvia[containers.Index(container)], node);
+            }
+            else {
+                m_pTech->AppendItem(wxDataViewItem(0), node);
+            }
+
+        }
 	}
-	else*/ { // ordered per Description
-		wxArrayString order = wxSplit(TreeOrder, ',');
-		for (auto& item : order) {
-			if (containers.Index(item) != wxNOT_FOUND)
-				dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
-			else if (nodes.Index(item) != wxNOT_FOUND)
-				m_pTech->AppendItem(wxDataViewItem(0), item);
-		}
-		// append remaining nodes to appropriate containers
-		for (auto& item : m_tnames) {
-			wxString node(SamApp::Config().Options(item).LongName);
-			wxString container(SamApp::Config().Options(item).TreeParent);
-			if (node.IsEmpty()) node = item;
-		// skip those already added
-			if (order.Index(node) != wxNOT_FOUND) continue;
-			if (order.Index(container) != wxNOT_FOUND)
-				m_pTech->AppendItem(dvia[containers.Index(container)], node);
-			else {
-				if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
-					added.Add(container);
-					dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
-				}
-				if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-				else if (containers.Index(container) != wxNOT_FOUND) {
-					m_pTech->AppendItem(dvia[containers.Index(container)], node);
-				}
-				else {
-					m_pTech->AppendItem(wxDataViewItem(0), node);
-				}
-
-			}
-		}
-		/*
-		// TODO - handle those not specified in TreeOrder
-		wxArrayString tech_list;
-//		dvia.Clear();
-//		dvia.resize(m_tnames.Count());
-//		wxDataViewItemArray dvia{ m_tnames.Count() };
-
-		for (int j = 0; j < m_tnames.Count(); j++) {
-			wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-			wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-			if (L.IsEmpty()) L = m_tnames[j];
-			if (order.Index(TP) != wxNOT_FOUND) continue;
-			if (order.Index(L) != wxNOT_FOUND) continue;
-			if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-				tech_list.Add(TP);
-				dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-			}
-			if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-			else if (tech_list.Index(TP) != wxNOT_FOUND) {
-				m_pTech->AppendItem(dvia[tech_list.Index(TP)], L);
-			}
-			else {
-				m_pTech->AppendItem(wxDataViewItem(0), L);
-			}
-			
-		}
-	*/
-	}
-
-
-
-	// Manually add groups here - eventually move to startup.lk
-	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
-	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
-	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
-
-	//for( size_t i=0;i<m_tnames.Count();i++)
-	//{
-	//	wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-	//	wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-	//	if ( L.IsEmpty() ) L = m_tnames[i];
-	//	if (TP.Find("PV") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_pv, L);
-	//	else if (TP.Find("Heat") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_heat, L);
-	//	else if (TP.Find("CSP") != wxNOT_FOUND )
-	//		m_pTech->AppendItem(cont_csp, L);
-	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-	//	else if (TP.Find("ME") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_me, L);
-	//	else if (TP.Find("BATT") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_batt, L);
-	//	else if (TP.Find("Hybrid") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_hybrid, L);
-	//	else
-	//		m_pTech->AppendItem(wxDataViewItem(0), L);
-
- //       
-	//}
 
 }
 

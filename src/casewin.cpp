@@ -1396,15 +1396,11 @@ void CaseWindow::UpdateConfiguration()
 	wxDataViewItem cont_pv;
 	wxDataViewItemArray dvia{ m_pageGroups.size() + 1 };
 	wxArrayString bin_list;
-	//wxDataViewItemArray dvia;
 	wxArrayString page_list;
 	wxString bin_name;
 	wxString bin_name_prev;
-	int Ts_count = 0;
-	int bin_count = 0;
 	for (int i = 0; i < m_pageGroups.size(); i++) {
 		if (m_pageGroups[i]->ExclTop) {
-
 			if (bin_list.Index("Hybrid") == wxNOT_FOUND) {
 				dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid");
 			}
@@ -1438,24 +1434,20 @@ void CaseWindow::UpdateConfiguration()
 			m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
 		}
 	}
-
-	if (m_navigationMenu->IsContainer(dvia[0])) {
-		m_navigationMenu->Expand(dvia[0]);
-		wxDataViewItemArray dvic;
-		m_navigationMenu->GetModel()->GetChildren(dvia[0], dvic);
-		m_navigationMenu->SetCurrentItem(dvic[0]);
-		SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
-	}
-	else if (m_navigationMenu->IsContainer(dvia[1])) {
-		m_navigationMenu->Expand(dvia[1]);
-		wxDataViewItemArray dvic;
-		m_navigationMenu->GetModel()->GetChildren(dvia[1], dvic);
-		m_navigationMenu->SetCurrentItem(dvic[0]);
-		SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
-	}
-	m_currentSelection = (m_navigationMenu->GetCurrentItem());
     
-	// check for orphaned notes and if any found add to first page per Github issue 796
+    
+    wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+    if (m_navigationMenu->IsContainer(dvi)) {
+        dvi = m_navigationMenu->GetNthChild(dvi, 0);
+    }
+    
+    if (dvi.IsOk()) {
+        m_navigationMenu->SetCurrentItem(dvi);
+        SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+        m_currentSelection = (dvi);
+    }
+
+    // check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 
 	m_szsims->Clear(true);
