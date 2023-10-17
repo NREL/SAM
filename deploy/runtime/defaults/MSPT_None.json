@@ -93,7 +93,7 @@
     "W_dot_rec_pump_tower_share_des_calc": 3.52618,
     "W_rad_tubes": 0.05,
     "adjust": 0.0,
-    "adjust_constant": 0.0,
+    "adjust_constant": 4.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
