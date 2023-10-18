@@ -1742,7 +1742,7 @@
         "\t\t${csp_dtr_hce_design_heat_losses} = ssc_var(obj, \"csp_dtr_hce_design_heat_losses\");\r",
         "\t\t${cspdtr_loop_hce_heat_loss} = ssc_var(obj, \"cspdtr_loop_hce_heat_loss\");\r",
         "\t\t${csp_dtr_sca_calc_sca_effs} = ssc_var(obj, \"csp_dtr_sca_calc_sca_effs\");\r",
-        "\t\t${loop_optical_efficiency} = ssc_var(obj, \"single_loop_aperature\");\r",
+        "\t\t${loop_optical_efficiency} = ssc_var(obj, \"loop_optical_efficiency\");\r",
         "\t\t${csp_dtr_hce_optical_effs} = ssc_var(obj, \"csp_dtr_hce_optical_effs\");\r",
         "\t\t${SCAInfoArray} = ssc_var(obj, \"SCAInfoArray\");\r",
         "\t\t${SCADefocusArray} = ssc_var(obj, \"SCADefocusArray\");\r",
