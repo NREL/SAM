@@ -151,7 +151,7 @@ private:
     wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
 	wxMetroDataViewTreeCtrl *m_navigationMenu;
-    wxDataViewItem m_previousPage;
+    wxDataViewItem m_currentSelection;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;
@@ -169,8 +169,8 @@ private:
 	wxString m_lastPageNoteId;
 
 	void OnCommand( wxCommandEvent & );
-    void OnTechTree(wxDataViewEvent&);
-    void OnTreeActivated(wxDataViewEvent &evt );
+    void OnTree(wxDataViewEvent&);
+    void OnTreeCollapsing(wxDataViewEvent &evt );
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 
