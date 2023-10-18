@@ -222,7 +222,13 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
 	// grid for parametric buttons etc.
-    if (!m_case->GetTechnology().Contains("Hybrid")) {
+    if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")) {
+        m_szsims = new wxGridSizer(1, 0, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+    }
+    else if (!m_case->GetTechnology().Contains("Hybrid")) {
         m_szsims = new wxGridSizer(2, 0, 0);
         m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
         m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
@@ -700,6 +706,7 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
             menu.Append(ID_STOCHASTIC, "Stochastic");
             if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
                 menu.Append(ID_PVUNCERTAINTY, "Uncertainty");
+            else if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")); //do nothing
             else
                 menu.Append(ID_P50P90, "P50 / P90");
         }
@@ -1459,7 +1466,13 @@ void CaseWindow::UpdateConfiguration()
 	CheckAndUpdateNotes(inputPageHelpContext);
 
 	m_szsims->Clear(true);
-	if (!m_case->GetTechnology().Contains("Hybrid")) {
+	if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")) {
+        m_szsims->SetCols(1);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+    }
+    else if (!m_case->GetTechnology().Contains("Hybrid")) {
 		m_szsims->SetCols(2);
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
 		m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
