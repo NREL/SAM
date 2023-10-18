@@ -1757,7 +1757,7 @@
         "\t\t${solar_mult} = ssc_var(obj, \"solar_mult\");\r",
         "\t\t${fixed_land_area} = ssc_var(obj, \"fixed_land_area\");\r",
         "\t\t${total_land_area} = ssc_var(obj, \"total_land_area\");\r",
-        "\t\t${total_tracking_power} = ssc_var(obj, \"total_tracking_power\");\r",
+        "\t\t${total_tracking_power} = ssc_var(obj, \"total_tracking_power\") * 1e6;\r",
         "\t\t${K_cpnt} = ssc_var(obj, \"K_cpnt\");\r",
         "\t\t${D_cpnt} = ssc_var(obj, \"D_cpnt\");\r",
         "\t\t${L_cpnt} = ssc_var(obj, \"L_cpnt\");\r",
