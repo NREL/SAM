@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Financial Itemized",
-    "Width": 923.0,
-    "Height": 208.0,
+    "Width": 922.0,
+    "Height": 421.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 141.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -71,89 +71,6 @@
                 "Name": {
                     "Type": 5.0,
                     "String": "debt_service_reserve_account_cost"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 339.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 102.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$"
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "decommissioning_reserve_account_cost"
                 },
                 "X": {
                     "Type": 3.0,
@@ -231,6 +148,255 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "debt_service_reserve_account_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "decommissioning_reserve_account_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$"
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "decommissioning_reserve_account_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -240,11 +406,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -302,11 +468,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -364,11 +530,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 276.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 255.0
+                    "Integer": 387.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -500,6 +666,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "maintenance_reserve_account_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -521,7 +770,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 357.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -612,7 +861,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -674,7 +923,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -798,7 +1047,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -860,7 +1109,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -930,6 +1179,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "other_reserve_account_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "ToolTipCtrl": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -943,7 +1275,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -980,7 +1312,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1054,7 +1386,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1080,6 +1412,32 @@
         }
     },
     "VarDatabase": {
+        "debt_service_reserve_account_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Debt service reserve account cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Financial",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "decommissioning_reserve_account_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Decommissioning reserve account cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Financial",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "financial_override_check": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1101,6 +1459,32 @@
             "Group": "ME Costs - Financial",
             "IndexLabels": "",
             "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "maintenance_reserve_account_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maintenance reserve account cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Financial",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_reserve_account_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Other reserve accounts cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Financial",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -1135,11 +1519,13 @@
     },
     "Equations": [
         "equations {'project_contingency_budget_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${project_contingency_budget_cost_rvalue}) / log(2);\r",
         "\treturn ?${project_contingency_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${project_contingency_cost_input}*${system_capacity},",
         "\t\t\t\t${project_contingency_cost_input},",
-        "\t\t\t\t${project_contingency_cost_modeled_ui}",
+        "\t\t\t\t${project_contingency_cost_modeled_ui},\r",
+        "\t\t\t\t(${project_contingency_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -1148,16 +1534,19 @@
         "\t\t\t[",
         "\t\t\t\t0,",
         "\t\t\t\t0,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
         "equations {'insurance_during_construction_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${insurance_during_construction_cost_rvalue}) / log(2);\r",
         "\treturn ?${insurance_during_construction_method}",
         "\t\t\t[",
         "\t\t\t\t${insurance_during_construction_cost_input}*${system_capacity},",
         "\t\t\t\t${insurance_during_construction_cost_input},",
-        "\t\t\t\t${insurance_during_construction_cost_modeled_ui}",
+        "\t\t\t\t${insurance_during_construction_cost_modeled_ui},\r",
+        "\t\t\t\t(${insurance_during_construction_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -1166,7 +1555,8 @@
         "\t\t\t[",
         "\t\t\t\t0,",
         "\t\t\t\t0,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
@@ -1176,12 +1566,14 @@
         "};",
         "",
         "equations {'reserve_accounts_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${reserve_accounts_cost_rvalue}) / log(2);\r",
         "\treturn ?${reserve_accounts_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${reserve_accounts_cost_input}*${system_capacity},",
         "\t\t\t\t${reserve_accounts_cost_input},",
         "\t\t\t\t${reserve_accounts_cost_modeled_ui},",
-        "\t\t\t\t${reserve_accounts_cost_total}",
+        "\t\t\t\t${reserve_accounts_cost_total},\r",
+        "\t\t\t\t(${reserve_accounts_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -1193,7 +1585,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -1207,7 +1600,8 @@
         "\t\t\t[",
         "\t\t\t\t0,",
         "\t\t\t\t0,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
@@ -1216,11 +1610,13 @@
         "};",
         "",
         "equations {'other_financial_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${other_financial_cost_rvalue}) / log(2);\r",
         "\treturn ?${other_financial_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${other_financial_cost_input}*${system_capacity},",
         "\t\t\t\t${other_financial_cost_input},",
-        "\t\t\t\t${other_financial_cost_modeled}",
+        "\t\t\t\t${other_financial_cost_modeled}, \r",
+        "\t\t\t\t(${other_financial_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -1232,15 +1628,15 @@
     ],
     "Callbacks": [
         "on_load{'Marine Costs - Financial Itemized'} = define() {",
-        "\ton_change{'itemized_check_contingency'};",
+        "\ton_change{'itemized_check_contingency'}();",
         "\tenable_contingency();",
-        "\ton_change{'itemized_check_construction_insurance'};",
+        "\ton_change{'itemized_check_construction_insurance'}();",
         "\tenable_construction_insurance();",
-        "\ton_change{'itemized_check_reserve_accounts'};",
+        "\ton_change{'itemized_check_reserve_accounts'}();",
         "\tenable_reserve_accounts();",
-        "\ton_change{'itemized_check_other_financial'};",
+        "\ton_change{'itemized_check_other_financial'}();",
         "\tenable_other_financial();",
-        "\ton_change{'financial_override_check'};",
+        "\ton_change{'financial_override_check'}();",
         "\tcheck_override_financial();",
         "};",
         "",
@@ -1270,7 +1666,9 @@
         "function enable_contingency() ",
         "{",
         "\titemized_value = value('itemized_check_contingency');",
-        "\tenable('project_contingency_cost_input',itemized_value!=1);",
+        "\tenable('project_contingency_cost_input',itemized_value!=1);\r",
+        "\t//show('project_contingency_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('project_contingency_budget_cost_rvalue',itemized_value==3);",
         "\toverride_financial_cost();",
         "\trefresh();",
         "}",
@@ -1283,6 +1681,8 @@
         "{",
         "\titemized_value_const = value('itemized_check_construction_insurance');",
         "\tenable('insurance_during_construction_cost_input',itemized_value_const!=1);",
+        "\tenable('insurance_during_construction_cost_input',itemized_value_const==0 || itemized_value_const==3);\r",
+        "\tenable('insurance_during_construction_cost_rvalue',itemized_value_const==3);\r",
         "\toverride_financial_cost();",
         "\trefresh();",
         "}",
@@ -1294,15 +1694,20 @@
         "function enable_reserve_accounts()",
         "{",
         "\titemized_value_reserve = value('itemized_check_reserve_accounts');",
-        "\tenable('maintenance_reserve_account_cost',itemized_value_reserve==1);",
+        "\tenable('maintenance_reserve_account_cost',itemized_value_reserve==1);\r",
+        "\tenable('maintenance_reserve_account_cost_rvalue',itemized_value_reserve==1);",
         "\tenable('detailed_cost_choice_reserve_accounts',itemized_value_reserve==1);",
-        "\tenable('debt_service_reserve_account_cost',itemized_value_reserve==1);",
-        "\tenable('decommissioning_reserve_account_cost',itemized_value_reserve==1);",
-        "\tenable('other_reserve_account_cost',itemized_value_reserve==1);",
-        "\tenable('reserve_accounts_cost_input',itemized_value_reserve!=2);",
+        "\tenable('debt_service_reserve_account_cost',itemized_value_reserve==1);\r",
+        "\tenable('debt_service_reserve_account_cost_rvalue',itemized_value_reserve==1);",
+        "\tenable('decommissioning_reserve_account_cost',itemized_value_reserve==1);\r",
+        "\tenable('decommissioning_reserve_account_cost_rvalue',itemized_value_reserve==1);",
+        "\tenable('other_reserve_account_cost',itemized_value_reserve==1);\r",
+        "\tenable('other_reserve_account_cost_rvalue',itemized_value_reserve==1);",
+        "\tenable('reserve_accounts_cost_input',itemized_value_reserve!=2);\r",
+        "\tenable('reserve_accounts_cost_rvalue', itemized_value_reserve==3);",
         "\tshow('reserve_accounts_cost_total',itemized_value_reserve==1);",
         "\tshow('reserve_total_label',itemized_value_reserve==1);",
-        "\tshow('reserve_accounts_cost_input',(itemized_value_reserve==0 || itemized_value_reserve==2));",
+        "\tshow('reserve_accounts_cost_input',itemized_value_reserve!= 1);",
         "\tshow('reserve_input_label',(itemized_value_reserve==0 || itemized_value_reserve==2));",
         "\t",
         "\toverride_financial_cost();",
@@ -1316,7 +1721,8 @@
         "function enable_other_financial() ",
         "{",
         "\titemized_value_other = value('itemized_check_other_financial');",
-        "\tenable('other_financial_cost_input',itemized_value_other!=1);",
+        "\tenable('other_financial_cost_input',itemized_value_other!=1);\r",
+        "\tenable('other_financial_cost_rvalue',itemized_value_other==3);",
         "\toverride_financial_cost();",
         "\trefresh();",
         "}",

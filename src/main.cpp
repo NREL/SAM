@@ -2739,11 +2739,10 @@ void SamApp::InstallPythonPackage(const std::string& pip_name) {
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_TechTree, ConfigDialog::OnTechTreeCollapsing)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_FinTree, ConfigDialog::OnFinTreeCollapsing)
+	EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
@@ -2906,88 +2905,82 @@ void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 
 void ConfigDialog::PopulateTech()
 {
+	// clear tree
 	m_pTech->DeleteAllItems();
-
+	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
-    wxString bin_name;
-    wxArrayString tech_list;
-    wxDataViewItemArray dvia{m_tnames.Count()};
+	// tree containers and nodes
+	wxArrayString containers, nodes, added;
+	for (int j = 0; j < m_tnames.Count(); j++) {
+		wxString node(SamApp::Config().Options(m_tnames[j]).LongName);
+		wxString container(SamApp::Config().Options(m_tnames[j]).TreeParent);
+		if (node.IsEmpty()) node = m_tnames[j];
+		if (container != "" && containers.Index(container) == wxNOT_FOUND &&  container != "Retired") 
+			containers.Add(container);
+		else if (node.Find("Retired") == wxNOT_FOUND)
+			nodes.Add(node);
+	}
 
-    for (int j = 0; j < m_tnames.Count(); j++) {
-        wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-        wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-        if (L.IsEmpty()) L = m_tnames[j];
-        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-            tech_list.Add(TP);
-            dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-        }
-        if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-        else if (tech_list.Index(TP) != wxNOT_FOUND) {
-            m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
-        }
-        else {
-            m_pTech->AppendItem(wxDataViewItem(0), L);
-        }
+	wxDataViewItemArray dvia{containers.Count()};
+
+	// order from startup.lk configopt("TechnologyTreeOrder", ...
+	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;
+    wxArrayString order = wxSplit(TreeOrder, ',');
+    for (auto& item : order) {
+        if (containers.Index(item) != wxNOT_FOUND)
+            dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
+        else if (nodes.Index(item) != wxNOT_FOUND)
+            m_pTech->AppendItem(wxDataViewItem(0), item);
     }
+    // append remaining nodes to appropriate containers
+    for (auto& item : m_tnames) {
+        wxString node(SamApp::Config().Options(item).LongName);
+        wxString container(SamApp::Config().Options(item).TreeParent);
+        if (node.IsEmpty()) node = item;
+    // skip those already added
+        if (order.Index(node) != wxNOT_FOUND) continue;
+        if (order.Index(container) != wxNOT_FOUND)
+            m_pTech->AppendItem(dvia[containers.Index(container)], node);
+        else {
+            if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
+                added.Add(container);
+                dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
+            }
+            if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+            else if (containers.Index(container) != wxNOT_FOUND) {
+                m_pTech->AppendItem(dvia[containers.Index(container)], node);
+            }
+            else {
+                m_pTech->AppendItem(wxDataViewItem(0), node);
+            }
 
-	// Manually add groups here - eventually move to startup.lk
-	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
-	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
-	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
-
-	//for( size_t i=0;i<m_tnames.Count();i++)
-	//{
-	//	wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-	//	wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-	//	if ( L.IsEmpty() ) L = m_tnames[i];
-	//	if (TP.Find("PV") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_pv, L);
-	//	else if (TP.Find("Heat") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_heat, L);
-	//	else if (TP.Find("CSP") != wxNOT_FOUND )
-	//		m_pTech->AppendItem(cont_csp, L);
-	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-	//	else if (TP.Find("ME") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_me, L);
-	//	else if (TP.Find("BATT") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_batt, L);
-	//	else if (TP.Find("Hybrid") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_hybrid, L);
-	//	else
-	//		m_pTech->AppendItem(wxDataViewItem(0), L);
-
- //       
-	//}
+        }
+	}
 
 }
 
 void ConfigDialog::UpdateFinTree()
 {
+	m_finDVI = wxDataViewItem(0);
 	m_pFin->DeleteAllItems();
 	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
+	m_finname = "";
 
 	wxDataViewItem cont_ppa;
 	wxDataViewItem cont_dist;
 	//wxDataViewItem cont_tpo; //TPO
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("PPA") != wxNOT_FOUND)
-		{
+		if (TP.Find("PPA") != wxNOT_FOUND)	{
 			cont_ppa = m_pFin->AppendContainer(wxDataViewItem(0), "Power Purchase Agreement");
 			break;
 		}
 	}
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-		{
+		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND) {
 			cont_dist = m_pFin->AppendContainer(wxDataViewItem(0), "Distributed");
 			break;
 		}
@@ -3003,15 +2996,14 @@ void ConfigDialog::UpdateFinTree()
 	}*/
 
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 		if (L.IsEmpty()) L = m_fnames[i];
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
 		if (TP.Find("PPA") != wxNOT_FOUND)
 			m_pFin->AppendItem(cont_ppa, L);
 		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-				m_pFin->AppendItem(cont_dist, L);
+			m_pFin->AppendItem(cont_dist, L);
 		/*else if (TP.Find("TPO") != wxNOT_FOUND) //TPO
 			m_pFin->AppendItem(cont_tpo, L);*/
 		else
@@ -3019,10 +3011,36 @@ void ConfigDialog::UpdateFinTree()
 	}
 }
 
-void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
+
+
+void ConfigDialog::OnTechTreeCollapsing(wxDataViewEvent& evt)
 {
-	evt.Veto();
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pTech->IsContainer(dvi)) {
+		auto selectedDVI = m_pTech->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pTech->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pTech->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
 }
+
+void ConfigDialog::OnFinTreeCollapsing(wxDataViewEvent& evt)
+{
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pFin->IsContainer(dvi)) {
+		auto selectedDVI = m_pFin->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pFin->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pFin->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
+}
+
 
 void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 {
@@ -3033,22 +3051,36 @@ void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 }
 
 
-void ConfigDialog::OnTechTree(wxDataViewEvent &)
+void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 {
-	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
-	{
-		m_pTech->Expand(m_pTech->GetCurrentItem());
-		m_techname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pTech->IsContainer(dvi))
+	{
+		if (m_pTech->IsExpanded(dvi))
+			m_pTech->Collapse(dvi);
+		else
+			m_pTech->Expand(dvi);
+		if (m_techDVI.IsOk()) {// keep current selection 
+			m_pTech->SetCurrentItem(m_techDVI);
+			return;
+		}
+		else {// select first child
+			m_techDVI = m_pTech->GetNthChild(dvi, 0);
+			m_pTech->SetCurrentItem(m_techDVI);
+		}
 	}
-	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+	else {
+		m_techDVI = evt.GetItem();
+	}
+	wxString title = m_pTech->GetItemText(m_techDVI);
 	if (title.empty())
 		title = "None";
 	m_techname = title;
-	for (size_t i = 0; i < m_tnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
-		{
+	for (size_t i = 0; i < m_tnames.Count(); i++) {
+		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname) {
 			m_techname = m_tnames[i];
 			break;
 		}
@@ -3057,22 +3089,36 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &)
 	UpdateFinTree();
 }
 
-void ConfigDialog::OnFinTree(wxDataViewEvent &)
+void ConfigDialog::OnFinTree(wxDataViewEvent &evt)
 {
-	if (m_pFin->IsContainer(m_pFin->GetCurrentItem()))
-	{
-		m_pFin->Expand(m_pFin->GetCurrentItem());
-		m_finname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pFin->IsContainer(dvi))
+	{
+		if (m_pFin->IsExpanded(dvi))
+			m_pFin->Collapse(dvi);
+		else
+			m_pFin->Expand(dvi);
+		if (m_finDVI.IsOk()) {// keep current selection 
+			m_pFin->SetCurrentItem(m_finDVI);
+			return;
+		}
+		else {// select first child
+			m_finDVI = m_pFin->GetNthChild(dvi, 0);
+			m_pFin->SetCurrentItem(m_finDVI);
+		}
 	}
-	wxString title = m_pFin->GetItemText(m_pFin->GetCurrentItem());
-	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
+	else {
+		m_finDVI = evt.GetItem();
+	}
+	wxString title = m_pFin->GetItemText(m_finDVI);
+	if (title.empty())
 		title = "None";
 	m_finname = title;
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
-		{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
+		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname) {
 			m_finname = m_fnames[i];
 			break;
 		}

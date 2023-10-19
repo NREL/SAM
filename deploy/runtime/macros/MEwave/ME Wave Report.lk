@@ -1301,7 +1301,7 @@ reportCode =
      '<h2>Financials</h2>'
 	'<table>'
          '<tr>'
-            '<th colspan="2">Finacials</th>'
+            '<th colspan="2">Financials</th>'
         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
