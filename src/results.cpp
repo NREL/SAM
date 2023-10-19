@@ -1300,7 +1300,13 @@ void ResultsViewer::Setup(Simulation* sim)
         }
         if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
         {
-            m_spatialLayout->DeleteAll();
+            // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+            if (!m_spatialLayout) {
+                m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+                AddPage(m_spatialLayout, "Spatial", true);
+            }
+            else
+                m_spatialLayout->DeleteAll();
 
             wxString x_label;
             if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
