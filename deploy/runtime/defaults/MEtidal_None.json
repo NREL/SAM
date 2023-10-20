@@ -198,7 +198,7 @@
     "tidal.turbine.max_tip_speed": 0.0,
     "tidal.turbine.max_tspeed_ratio": 0.0,
     "tidal_design_excl": 0.0,
-    "tidal_location": "",
+    "tidal_location": "COD0911",
     "tidal_power_curve": [
         [
             0.0,
@@ -475,7 +475,7 @@
             0.0
         ]
     ],
-    "tidal_resource_filename": "<invalid>",
+    "tidal_resource_filename": "COD0911.csv",
     "tidal_resource_model_choice": 0.0,
     "tidal_resource_shear": 0.0,
     "tidal_turbine_cut_out": 3.3,

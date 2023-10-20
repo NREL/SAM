@@ -659,7 +659,7 @@
         "\t}\r",
         "};\r",
         "\r",
-        "on_load{'Marine Wave Resource Time Series'} = define() {\r",
+        "on_load{'Marine Tidal Resource File'} = define() {\r",
         "\t\r",
         "\t//rescanlibrary('wave_ts');\r",
         "\t//enable(\"wave_resource_matrix\",false);\r",

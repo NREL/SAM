@@ -761,7 +761,7 @@ bool ShowWaveResourceDataSettings()
     wxString dnpath;
     if (!SamApp::Settings().Read("wave_download_path", &dnpath) || dnpath.IsEmpty())
     {
-        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
         SamApp::Settings().Write("wave_download_path", dnpath);
     }
 
@@ -796,7 +796,7 @@ bool ShowTidalResourceDataSettings()
     wxString dnpath;
     if (!SamApp::Settings().Read("tidal_download_path", &dnpath) || dnpath.IsEmpty())
     {
-        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Tidal Resource Files";
+        dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
         SamApp::Settings().Write("tidal_download_path", dnpath);
     }
 
