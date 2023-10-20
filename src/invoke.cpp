@@ -5946,14 +5946,14 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
             cxt.result().hash_item("error", "<json-error> " + err);
             break;
         }
-        if (lk::vardata_t* res = cxt_result->lookup("outputs")){
-            optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
-            if (optimizing_status.find("error") != std::string::npos){
-                std::string error = res->lookup("messages")->lookup("error")->as_string().ToStdString();
-                cxt.result().hash_item("error", error);
-                break;
-            }
+
+        optimizing_status = cxt_result->lookup("status")->as_string();
+        if (optimizing_status.find("error") != std::string::npos){
+            std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
+            cxt.result().hash_item("error", error);
+            break;
         }
+
     }
     dlg.Close();
 }
