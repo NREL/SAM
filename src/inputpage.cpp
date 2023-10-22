@@ -380,11 +380,15 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 // handler(s) for child widget changes
 void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 {
+	// handle same input page in different subsystems - see SAM issue 1472
+//	if (this->m_windowId != evt.GetId())
+//		return;
+
 	wxUIObject *obj = 0;
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
-		if ( evt.GetEventObject() == objs[i]->GetNative() )
+		if ( evt.GetEventObject() == objs[i]->GetNative())// && evt.GetId() == objs[i]->GetNative()->GetId())
 		{
 			obj = objs[i];
 			break;

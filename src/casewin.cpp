@@ -1068,7 +1068,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
 		for( size_t j=0;j<m_currentGroup->Pages[i].size();j++ )
-			if ( wxUIFormData *form = m_forms.Lookup( m_currentGroup->Pages[i][j].Name ) )
+			if ( wxUIFormData *form = m_forms[m_currentGroup->ndxHybrid].Lookup(m_currentGroup->Pages[i][j].Name))
 				m_currentForms.push_back( form );
 			
 	SetupActivePage();
@@ -1136,7 +1136,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		m_currentActivePages.push_back( pds ); 
 
 
-		pds->Form = m_forms.Lookup( pi.Name );
+		pds->Form = m_forms[pi.ndxHybrid].Lookup(pi.Name);
 		if ( !pds->Form )
 			wxMessageBox( "error locating form data " + pi.Name );
 
@@ -1327,7 +1327,7 @@ void CaseWindow::LayoutPage()
 
 }
 
-void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
+void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid )
 {
 	bool found = false;
 	for (size_t j=0;j<pages.size();j++ )
@@ -1336,7 +1336,7 @@ void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pa
 		for (size_t i = 0; i < cfg->InputPages.size(); i++) {
 			InputPageDataHash::iterator it = cfg->InputPages[i].find(pages[j].Name);
 			if (it != cfg->InputPages[i].end()) {
-				m_forms.Add(pages[j].Name, it->second->Form().Duplicate());
+				m_forms[ndxHybrid].Add(pages[j].Name, it->second->Form().Duplicate());
 				found = true;
 			}
 		}
@@ -1378,7 +1378,10 @@ void CaseWindow::UpdateConfiguration()
 	}
 
 	// erase current set of forms, and rebuild the forms for this case
-	m_forms.Clear();
+	for (auto &f : m_forms)
+		f.Clear();
+
+	m_forms.resize(cfg->Technology.size());
 	
 
 	wxArrayString inputPageHelpContext; // valid ids for the current configuration
@@ -1388,9 +1391,9 @@ void CaseWindow::UpdateConfiguration()
 		InputPageGroup *group = m_pageGroups[i];
 
 		for( size_t kk=0;kk<group->Pages.size();kk++ )
-			UpdatePageListForConfiguration( group->Pages[kk], cfg );
+			UpdatePageListForConfiguration( group->Pages[kk], cfg, group->ndxHybrid );
 
-		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg );
+		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg, group->ndxHybrid );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 
