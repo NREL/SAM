@@ -485,6 +485,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 		  }
 	}
+	
 }
 
 bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period)

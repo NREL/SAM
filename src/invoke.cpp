@@ -1237,8 +1237,9 @@ void fcall_refresh( lk::invoke_t &cxt )
 	    ipage = cc.InputPage();
 		ipage->Refresh();
         auto UIObjects = ipage->GetObjects();
+		size_t ndxHybrid = ipage->GetHybridIndex();
         for (auto &i: UIObjects){
-            VarValue *vv = cur_case->Values(0).Get( i->GetName() );
+            VarValue *vv = cur_case->Values(ndxHybrid).Get( i->GetName() );
             if ( wxWindow *win = i->GetNative() )
                 win->Refresh();
             if ( ipage && vv )
@@ -1251,13 +1252,15 @@ void fcall_refresh( lk::invoke_t &cxt )
 	{
 	    wxString var = cxt.arg(0).as_string();
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case->Values(0).Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
-            if ( ipage && vv )
+            if ( ipage )
             {
-                ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+				size_t ndxHybrid = ipage->GetHybridIndex();
+				VarValue* vv = cur_case->Values(ndxHybrid).Get(var);
+				if (vv)
+					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
             }
 		}
 	}
