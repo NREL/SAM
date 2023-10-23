@@ -219,6 +219,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 
 	m_resultsButton = new wxMetroButton(m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA(graph));
+    m_resultsButton->SetToolTip(wxString("Show results without running a simulation."));
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
 	// grid for parametric buttons etc.
