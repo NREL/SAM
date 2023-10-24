@@ -688,8 +688,8 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
 		m_inputPageList->Select( -1 );
-		m_pageFlipper->SetSelection( 1 );
 		m_navigationMenu->UnselectAll();
+        m_pageFlipper->SetSelection( 1 );
 	}
 	else if ( evt.GetId() == ID_ADVANCED )
 	{
