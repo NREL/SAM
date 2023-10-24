@@ -67,6 +67,7 @@ version_upgrade{'2023.9.19'} = define() {
 		value('adjust_timeindex', x.timeindex, 'Convert AC Losses adjust:timeindex to adjust_timeindex');
 	}
 	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' ) {
+		message('The module aspect ratio input is now on the Module page instead of the Shading and Layout page. For the CEC performance model with module library, SAM now calculates the aspect ratio from the length and width data in the module library if it is avalailable.');
 		x = oldvalue('dc_adjust');
 		message('DC Losses (availability losses) variable format changed from table to separate variables.');
 		value('dc_adjust_constant', x.constant, 'Convert DC Losses dc_adjust:constant to dc_adjust_constant');
