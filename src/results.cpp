@@ -414,11 +414,11 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
 {
     m_summaryLayout = new wxSnapLayout(this, wxID_ANY);
     AddPage(m_summaryLayout, "Summary", true);
-    m_metricsTable = new MetricsTable(m_summaryLayout);
-    matrix_t<wxString> data(1, 2);
-    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
-    m_metricsTable->SetData(data);
-    m_summaryLayout->Add(m_metricsTable);
+//    m_metricsTable = new MetricsTable(m_summaryLayout);
+//    matrix_t<wxString> data(1, 2);
+//    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
+//    m_metricsTable->SetData(data);
+//    m_summaryLayout->Add(m_metricsTable);
 
     m_tables = new TabularBrowser(this);
     AddPage(m_tables, "Data tables");
@@ -432,11 +432,11 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     AddPage(m_graphViewer, "Graphs");
 
 
-    wxPanel* cf_panel = new wxPanel(this);
-    AddPage(cf_panel, "Cash flow");
+    m_cf_panel = new wxPanel(this);
+    AddPage(m_cf_panel, "Cash flow");
 
     wxBoxSizer* cf_main_sizer = new wxBoxSizer(wxHORIZONTAL);
-    m_cf_splitter = new wxSplitterWindow(cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
+    m_cf_splitter = new wxSplitterWindow(m_cf_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_NOBORDER | wxSP_LIVE_UPDATE | wxSP_3DSASH);
     cf_main_sizer->Add(m_cf_splitter, 1, wxALL | wxEXPAND, 0);
 
 
@@ -497,8 +497,8 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     //	m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_depreciationTable, -200);
     m_cf_splitter->SplitHorizontally(m_cf_top_panel, m_cf_bottom_panel, (int)(-200 * wxGetScreenHDScale()));
 
-    cf_panel->SetSizer(cf_main_sizer);
-    cf_main_sizer->SetSizeHints(cf_panel);
+    m_cf_panel->SetSizer(cf_main_sizer);
+    cf_main_sizer->SetSizeHints(m_cf_panel);
 
 
     m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
@@ -843,7 +843,7 @@ void ResultsViewer::Setup(Simulation* sim)
     SavePerspective(viewinfo);
 
     // update metrics
-    m_metricsTable->Clear();
+//    m_metricsTable->Clear();
 
     m_metrics.clear();
     m_metricRows.clear();
@@ -859,11 +859,6 @@ void ResultsViewer::Setup(Simulation* sim)
         else
             i++;
     }
-    // recreate base metric table to report if no results available
-    m_metricsTable = new MetricsTable(m_summaryLayout);
-    m_summaryLayout->Add(m_metricsTable);
-
-
 
     ResultsCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
@@ -874,7 +869,7 @@ void ResultsViewer::Setup(Simulation* sim)
         cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
     // if no metrics were defined, run it T & F one at a time
-    if (m_metrics.size() == 0)
+    if ((m_metrics.size() == 0) && (m_metricRows.size() == 0))
     {
         if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
             cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
@@ -887,50 +882,56 @@ void ResultsViewer::Setup(Simulation* sim)
         }
     }
 
-    if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
+    if ((m_metrics.size() > 0 || ((m_metricTables.size() > 0 && m_metricRows.size() > 0))) && m_sim->Outputs().size() > 0)
     {
-        matrix_t<wxString> metrics;
-        metrics.resize(m_metrics.size() + 1, 2);
-        metrics(0, 0) = "Metric";
-        metrics(0, 1) = "Value";
-        for (size_t i = 0; i < m_metrics.size(); i++)
-        {
-            MetricData& md = m_metrics[i];
-            wxString slab(md.var);
-            wxString sval("<inval>");
-
-            double value = 0.0;
-            if (VarValue* vv = m_sim->GetValue(md.var))
+        if (m_metrics.size() > 0) {
+            matrix_t<wxString> metrics;
+            metrics.resize(m_metrics.size() + 1, 2);
+            metrics(0, 0) = "Metric";
+            metrics(0, 1) = "Value";
+            for (size_t i = 0; i < m_metrics.size(); i++)
             {
+                MetricData& md = m_metrics[i];
+                wxString slab(md.var);
+                wxString sval("<inval>");
 
-                value = md.scale * (double)vv->Value();
-
-                slab = md.label;
-                if (slab.IsEmpty())
-                    slab = m_sim->GetLabel(md.var);
-
-                if (std::isnan(value))
-                    sval = vv->AsString();
-                else
+                double value = 0.0;
+                if (VarValue* vv = m_sim->GetValue(md.var))
                 {
-                    int deci = md.deci;
-                    if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
-                    else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                    else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                     wxString post = md.post;
-                    if (post.IsEmpty())
-                        post = " " + m_sim->GetUnits(md.var);
+                    value = md.scale * (double)vv->Value();
 
-                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
-                        deci, md.thousep, md.pre, post);
+                    slab = md.label;
+                    if (slab.IsEmpty())
+                        slab = m_sim->GetLabel(md.var);
+
+                    if (std::isnan(value))
+                        sval = vv->AsString();
+                    else
+                    {
+                        int deci = md.deci;
+                        if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+                        else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                        else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+
+                        wxString post = md.post;
+                        if (post.IsEmpty())
+                            post = " " + m_sim->GetUnits(md.var);
+
+                        sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                            deci, md.thousep, md.pre, post);
+                    }
                 }
+                metrics(i + 1, 0) = slab;
+                metrics(i + 1, 1) = sval;
             }
-            metrics(i + 1, 0) = slab;
-            metrics(i + 1, 1) = sval;
+            // recreate base metric table to report if no results available
+            m_metricsTable = new MetricsTable(m_summaryLayout);
+            m_summaryLayout->Add(m_metricsTable);
+
+            m_metricsTable->SetData(metrics);
         }
 
-        m_metricsTable->SetData(metrics);
 
 
         // process any additional tables and associated rows
@@ -1004,8 +1005,12 @@ void ResultsViewer::Setup(Simulation* sim)
         }
 
     }
-    else if (m_sim->Outputs().size() > 0)
+    else if (m_sim->Outputs().size() > 0) // Auto - metrics - long single value table
     {
+        // recreate base metric table to report if no results available
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+
         wxArrayString mvars;
         std::vector<double> mvals;
         wxArrayString vars = m_sim->ListOutputs();
@@ -1035,6 +1040,10 @@ void ResultsViewer::Setup(Simulation* sim)
     }
     else
     {
+        // recreate base metric table to report if no results available
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+
         matrix_t<wxString> metrics(2, 1);
         metrics(0, 0) = "No results are available.";
         metrics(1, 0) = "Click the 'Simulate' button first to run a simulation.";
@@ -1066,10 +1075,14 @@ void ResultsViewer::Setup(Simulation* sim)
         m_lossDiagram->SetSize(20, 20, ldsz.x, ldsz.y);
         m_lossDiagramScroller->SetScrollbars(1, 1, ldsz.x + 40, ldsz.y + 40, 0, 0);
     }
-    if (m_lossDiagram->GetDiagram().Size() > 0)
-        ShowPage(PAGE_LOSS_DIAGRAM);
-    else
-        HidePage(PAGE_LOSS_DIAGRAM);
+    if (m_lossDiagram->GetDiagram().Size() > 0) {
+        int pn = GetPageIndex(m_lossDiagramScroller);
+        if (pn > -1) ShowPage(pn);
+    }
+    else {
+        int pn = GetPageIndex(m_lossDiagramScroller);
+        if (pn > -1) HidePage(pn);
+    }
 
     // setup time series datasets
     wxDVPlotCtrlSettings viewstate = GetDViewState();
@@ -1203,6 +1216,7 @@ void ResultsViewer::Setup(Simulation* sim)
                 if (!m_uncertaintiesViewer) {
                     m_uncertaintiesViewer = new UncertaintiesViewer(this);
                     AddPage(m_uncertaintiesViewer, "Uncertainties");
+                }
                     // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
                     std::vector<Uncertainties> ul;
                     Uncertainties u1, u2, u3;
@@ -1213,71 +1227,86 @@ void ResultsViewer::Setup(Simulation* sim)
                     ul.push_back(u2);
                     ul.push_back(u3);
                     SetUncertainties(ul);
-                }
+                //}
                 m_uncertaintiesViewer->Setup(m_sim);
-                ShowPage(10);
+                int pn = GetPageIndex(m_uncertaintiesViewer);
+                if (pn > -1) ShowPage(pn);
             }
             else {
-                if (!m_uncertaintiesViewer) {
-                    m_uncertaintiesViewer = new UncertaintiesViewer(this);
-                    AddPage(m_uncertaintiesViewer, "Uncertainties");
-                    // testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
-                    std::vector<Uncertainties> ul;
-                    Uncertainties u1, u2, u3;
-                    u1.Title = "Figure2";
-                    u2.Title = "Figure5";
-                    u3.Title = "Figure10";
-                    ul.push_back(u1);
-                    ul.push_back(u2);
-                    ul.push_back(u3);
-                    SetUncertainties(ul);
-                }
-                m_uncertaintiesViewer->Setup(m_sim);
-                HidePage(10);
+
+                int pn = GetPageIndex(m_uncertaintiesViewer);
+                if (pn > -1) HidePage(pn);
             }
+        }
+        else { // not windpower
+            int pn = GetPageIndex(m_uncertaintiesViewer);
+            if (pn > -1) HidePage(pn);
         }
         wxString tech = cw->GetCase()->GetConfiguration()->TechnologyFullName;
         auto as = wxSplit(tech, ' ');
         if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
-            HidePage(2);
-            HidePage(3);
-            HidePage(6);
-            HidePage(7);
-            HidePage(9);
-            //HidePage(10);
-        }
+            int pn = GetPageIndex(m_graphViewer);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_profilePlots);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_statTable);
+            if (pn > -1) HidePage(pn);
+            pn = GetPageIndex(m_pnCdf);
+            if (pn > -1) HidePage(pn);
+        } 
         else {
-            ShowPage(2);
-            ShowPage(3);
-            ShowPage(6);
-            ShowPage(7);
-            ShowPage(9);
+            int pn = GetPageIndex(m_graphViewer);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_profilePlots);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_statTable);
+            if (pn > -1) ShowPage(pn);
+            pn = GetPageIndex(m_pnCdf);
+            if (pn > -1) ShowPage(pn);
         }
-
         if (cw->GetCase()->GetConfiguration()->TechnologyFullName == "MEwave" && cw->GetCase()->GetConfiguration()->Financing != "Single Owner")
         {
             VarValue* wave_resource_model_choice = m_sim->GetValue("wave_resource_model_choice");
             int wave_resource_model_choice_value = wave_resource_model_choice->Value();
             if (wave_resource_model_choice_value != 1)
             {
-                HidePage(5);
-                HidePage(6);
-                HidePage(7);
-                HidePage(8);
-                HidePage(9);
+                int pn = GetPageIndex(m_cf_panel);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_timeSeries);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_profilePlots);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_statTable);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_dMap);
+                if (pn > -1) HidePage(pn);
+                pn = GetPageIndex(m_pnCdf);
+                if (pn > -1) HidePage(pn);
             }
-            else
-            {
-                ShowPage(5);
-                ShowPage(6);
-                ShowPage(7);
-                ShowPage(8);
-                ShowPage(9);
+            else {
+                int pn = GetPageIndex(m_cf_panel);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_timeSeries);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_profilePlots);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_statTable);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_dMap);
+                if (pn > -1) ShowPage(pn);
+                pn = GetPageIndex(m_pnCdf);
+                if (pn > -1) ShowPage(pn);
             }
         }
         if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
         {
-            m_spatialLayout->DeleteAll();
+            // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+            if (!m_spatialLayout) {
+                m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+                AddPage(m_spatialLayout, "Spatial", true);
+            }
+            else
+                m_spatialLayout->DeleteAll();
 
             wxString x_label;
             if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
@@ -1331,6 +1360,13 @@ void ResultsViewer::Setup(Simulation* sim)
             g3.XMin = -1;
             g3.XMax = -1;
             m_spatialLayout->Add(new AutoGraphCtrl(m_spatialLayout, m_sim, g3));
+
+            int pn = GetPageIndex(m_spatialLayout);
+            if (pn > -1) ShowPage(pn);
+        }
+        else {
+            int pn = GetPageIndex(m_spatialLayout);
+            if (pn > -1) HidePage(pn);
         }
     }
     m_tables->Setup(m_sim);
@@ -1922,13 +1958,23 @@ void ResultsViewer::GetUncertainties(std::vector<Uncertainties>& ul)
 void ResultsViewer::Clear()
 {
     m_sim = 0;
+    m_autographs.clear();
+    /*
+    if (!m_metricsTable) {
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+    }
+//    else
+//        m_metricsTable->Clear();
+
 
     matrix_t<wxString> metrics(2, 1);
     metrics(0, 0) = "Metrics";
     metrics(1, 0) = "No data available.";
     m_metricsTable->SetData(metrics);
-
+    */
     RemoveAllDataSets();
+    m_summaryLayout->Refresh();
 }
 
 
