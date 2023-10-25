@@ -546,89 +546,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "casing_size"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 324.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 612.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1582,44 +1499,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 135.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
-                },
-                "Tips": {
-                    "Type": 5.0,
-                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
-                },
-                "TipTitle": {
-                    "Type": 5.0,
-                    "String": "Flash"
-                }
-            }
-        },
-        "ToolTipCtrl": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "geothermal_binary_ttip15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 141.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1639,11 +1519,11 @@
                 },
                 "Tips": {
                     "Type": 5.0,
-                    "String": "A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                    "String": "Binary: A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser. Flash: A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
                 },
                 "TipTitle": {
                     "Type": 5.0,
-                    "String": "Binary"
+                    "String": "Binary and Flash"
                 }
             }
         },
@@ -2068,89 +1948,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "inj_casing_size"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 324.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 639.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "inj_pump_hp"
                 },
                 "X": {
@@ -2200,89 +1997,6 @@
                 "ThousandsSep": {
                     "Type": 2.0,
                     "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "inj_well_diam"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 594.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 666.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -3436,89 +3150,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "well_diameter"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 324.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 666.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "well_flow_rate"
                 },
                 "X": {
@@ -4035,7 +3666,7 @@
             "Units": "inches",
             "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": " ",
@@ -4411,10 +4042,6 @@
         "\tssc_var( obj, 'pump_efficiency', ${pump_efficiency} );",
         "\tssc_var( obj, 'delta_pressure_equip', ${delta_pressure_equip} );",
         "\tssc_var( obj, 'excess_pressure_pump', ${excess_pressure_pump} );",
-        "\tssc_var( obj, 'well_diameter', ${well_diameter} );",
-        "\tssc_var( obj, 'casing_size', ${casing_size} );",
-        "\tssc_var( obj, 'inj_casing_size', ${inj_casing_size} );",
-        "\tssc_var( obj, 'inj_well_diam', ${inj_well_diam} );",
         "\tssc_var( obj, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );",
         "\tssc_var( obj, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );",
         "\tssc_var( obj, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
