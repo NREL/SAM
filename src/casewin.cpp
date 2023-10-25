@@ -219,6 +219,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 
 	m_resultsButton = new wxMetroButton(m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA(graph));
+    m_resultsButton->SetToolTip(wxString("Show results without running a simulation."));
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
 	// grid for parametric buttons etc.
@@ -683,13 +684,12 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	if ( evt.GetId() == ID_SIMULATE )
 	{
 		RunBaseCase();
-		m_resultsButton->Enable(true);
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
 		m_inputPageList->Select( -1 );
-		m_pageFlipper->SetSelection( 1 );
 		m_navigationMenu->UnselectAll();
+        m_pageFlipper->SetSelection( 1 );
 	}
 	else if ( evt.GetId() == ID_ADVANCED )
 	{
@@ -874,7 +874,6 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED ) // calculated variable changes - like total_installed_cost
 	{
-		m_resultsButton->Enable(false);
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
 
@@ -969,7 +968,6 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		m_resultsButton->Enable(false);
 		wxString sel = m_inputPageList->GetStringSelection();
 		UpdateConfiguration();
 
