@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"construction_financing_cost": 7.63507e+06,
+			"construction_financing_cost": 7.58703e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -78,7 +78,7 @@
 		},
 		"SystemCosts": {
 			"om_fixed": [5431320.000000],
-			"total_installed_cost": 4.07204e+08
+			"total_installed_cost": 4.04642e+08
 		},
 		"LandLease": {
 		},
@@ -274,6 +274,10 @@
 			"batt_salvage_percentage": 0
 		},
 		"ChargesByMonth": {
+		},
+		"HybridFin": {
+		},
+		"Monthly": {
 		}
 	}
 }

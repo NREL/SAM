@@ -292,7 +292,7 @@
             "DefaultValue": [
                 0.0
             ],
-            "UIObject": "Default",
+            "UIObject": "SchedNumeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

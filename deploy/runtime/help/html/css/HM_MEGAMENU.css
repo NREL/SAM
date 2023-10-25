@@ -1,0 +1,683 @@
+﻿/***  MEGA MENU DROPDOWN BANNER ICONS ***/
+/* To use, include their class in the mmicon span container, example: <span class="mmicon medium-icon help-icon">* /
+
+/* tall-icon icons 35 x 46, for 2-level entries in the 2-level banner type */
+/* These are switched to a common small icon for phones in the media query section*/
+span.product1-icon {
+	background-image: url(../images/product1-icon.png);
+}
+span.product2-icon {
+	background-image: url(../images/product2-icon.png);
+}
+
+/* medium-icon icons 42 x 32 px, for all banner types except single-row big icons */
+span.help-icon {
+	background-image: url(../images/help-icon.png);
+}
+span.community-icon {
+	background-image: url(../images/community-icon.png);
+}
+span.tutorials-icon {
+	background-image: url(../images/tutorials-icon.png);
+}
+span.training-icon {
+	background-image: url(../images/training-icon.png);
+}
+span.devices-icon {
+	background-image: url(../images/devices-icon.png);
+}
+span.compare-icon {
+	background-image: url(../images/compare-icon.png);
+}
+span.team-icon {
+	background-image: url(../images/team-icon.png);
+}
+span.templates-icon {
+	background-image: url(../images/templates-icon.png);
+}
+span.screenshots-icon {
+	background-image: url(../images/screenshots-icon.png);
+}
+span.quotes-icon {
+	background-image: url(../images/quotes-icon.png);
+}
+span.movie-icon {
+	background-image: url(../images/movie-icon.png);
+}
+
+/* Big icons 58 x 50 px for the single row mega icons banner */
+span.cart-icon-big {
+	background-image: url('../images/cart-icon-big.png')
+}
+span.mail-icon-big {
+	background-image: url('../images/mail-icon-big.png')
+}
+span.info-icon-big {
+	background-image: url('../images/info-icon-big.png')
+}
+span.blog-icon-big {
+	background-image: url('../images/blog-icon-big.png')
+}
+
+/* Main page header in desktop mode */
+
+/* Main header with its full-height entries */
+nav#main-nav {
+	font-family: "Segoe UI",Calibri,Helvetica,Arial,sans-serif;
+	position: absolute;
+	top: 0; right: 0; left:0;
+	font-size: 18px;
+	font-weight: semi-bold;
+	letter-spacing: 1px;
+	color: #3D80C6;
+	transition: top 0.5s;
+	z-index: 999;
+	background-color: #FFFFFF;
+}
+
+nav#main-nav.fixed  {
+	position: fixed;
+}
+
+div#headerwrapper {
+	background-color: #ffffff;
+}
+
+#menu-wrapper {
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+#menu-wrapper ul {
+	list-style: none;
+}
+
+#menu-wrapper li  {
+	display: inline-block;
+	margin: 12px 0px 0 0px;
+	border: 1px solid #FFFFFF;
+}
+#menu-wrapper ul#main-menu li.sidemenu {
+	display: none;
+}
+#menu-wrapper li ul li {
+	border: none;
+}	
+#menu-wrapper li a  {
+	color: #1969C3;
+	text-decoration: none;
+}
+#menu-wrapper li a:visited  {
+	color: #1969C3;
+}
+#menu-wrapper li a:hover  {
+	color: #E4641C;
+}
+#menu-wrapper li:hover  {
+	border-color: #DCDBDB;
+}
+
+/* Company logo at the left end */
+#menu-wrapper div#homebutton {
+  width: 394px;
+  height: 47px;
+  background: url('../images/sam-logo.png') left top no-repeat;
+  margin: 6px 0 0 0;
+  float: left;
+}
+
+#menu-wrapper div#homebutton a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Hover "open menu" arrow to the right of the main menu entries */
+#menu-wrapper i.arrowdown {
+  display: inline-block;
+  border: solid #3D80C6;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin: 0 0 3px 6px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);  
+  visibility: hidden;
+  opacity: 0;
+  /*transition: opacity 1.5s;*/
+}
+#menu-wrapper ul li:hover i.arrowdown {
+  visibility: visible;
+  opacity: 1;
+}
+#menu-wrapper a:hover i.arrowdown {
+  border-color: #E4641C;
+}
+
+/* Highlighted buttons in the header banner */
+#menu-wrapper li.headerbutton {
+	background-color: #61AF4D;
+	border: 1px solid #4D914D;
+	padding: 2px 5px 5px 5px;
+	margin-left: 5px;
+}
+#menu-wrapper li.headerbutton:hover {
+	background-color: #67C64C;
+}
+#menu-wrapper li.headerbutton a {
+	color: #FFFFFF;
+}
+
+/* Icon buttons and their container at the right-hand end of the main header */
+#menu-wrapper li.main-wrapper-right {
+	display: inline-block;
+	float: right;
+	line-height: 1em;
+	width: 3.5rem;
+	margin: 5px 0 0 0px;
+	text-align: center;
+	font-size: 10px;
+	border: none;
+}
+#menu-wrapper li.main-wrapper-right a, nav#main-nav #menu-wrapper li.main-wrapper-right a:visited  {
+	color: #444444;
+}
+#menu-wrapper li.main-wrapper-right svg {
+	width: 24px;
+	height: 24px;
+	stroke: none;
+	fill: #7C7C7C;
+}
+
+#menu-wrapper li.main-wrapper-right:hover svg {
+	fill: #E4641C;
+}
+#menu-wrapper li.main-wrapper-right:hover a, #menu-wrapper li.main-wrapper-right:hover a div {
+	color: #E4641C;
+}
+
+/* Phone menu link in topic header, only shown in phone mode */
+a#phonemenulink {
+    display: none;
+}
+a#phonemenulink svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	fill: #444444;
+	margin-bottom: -0.2rem;
+}
+
+/* General settings for "Mega-menu" drop-down banners */
+
+#menu-wrapper ul li ul {
+	display: none;
+    position: absolute;
+	z-index: 999998;
+    padding: 0;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+}
+#menu-wrapper ul li ul.display {
+	height: auto;
+	display: block !important;
+}
+
+#menu-wrapper div.mega-menu li {
+	border: none;
+}
+
+#menu-wrapper div.mega-entry li {
+	border: none;
+	margin: 0;
+}
+#menu-wrapper div.mega-entry li a span {
+	color: #ffffff;
+}
+#menu-wrapper div.mega-entry li a:hover span {
+	color: #ff9900;
+}
+#menu-wrapper div.mega-entry li a:hover span.mmh1 {
+	color: #ffffff;
+}
+
+/* General settings for all 3 mega menu dropdown banner types */
+#menu-wrapper div.mega-menu {
+	max-width: 100%;
+	padding: 10px 10px 20px 5px;
+	margin: 0 auto 26px auto;
+	text-align: center;
+	letter-spacing: 0;
+	font-size: 1em;
+	background-color: rgba(35,40,45,0.9);
+	box-shadow: 2px 2px 26px -4px rgba(0,0,0,0.75);
+}
+#menu-wrapper div.mega-entry { 
+	display: inline-block;
+	text-align: left;
+	vertical-align: top;
+	line-height: 1.2;
+	margin: 0 0 0 20px;
+	padding: 10px 0 0 23px;
+	width: 28%;
+	max-width: 28%;
+}
+#menu-wrapper div.mega-entry img {
+	display: block;
+	position: static;
+	padding-bottom: 10px;
+}
+/* Add a divider or a divider with a narrower column to the right of the current mega-entry. Example: <div class="mega-entry divider"> */
+#menu-wrapper div.mega-entry.divider { 
+	border-right: 1px solid #808080;
+}
+#menu-wrapper div.mega-entry.divider-narrow { 
+	width: 20%;
+	max-width: 20%;
+	border-right: 1px solid #808080;
+}
+
+#menu-wrapper ul.mega-menu li {
+	margin: 0;
+	padding: 0;
+	height: auto;
+}
+#menu-wrapper ul.mega-menu span {
+	text-transform: none;
+	font-size: 1em;
+	line-height: 1em;
+	margin: 0 0 4px 0;
+	vertical-align: middle;
+}
+#menu-wrapper ul.mega-menu span.small {
+	font-size: 0.9em;
+}
+#menu-wrapper ul.mega-menu span.large {
+	display: block;
+	font-size: 1.4em;
+	font-weight: 400;
+	margin: 0 0 10px 0;
+}
+
+/* Top-level text for 2-level entries */
+#menu-wrapper ul.mega-menu span.mmh1 { font-size: 22px; opacity: 0.8; display: block; margin-bottom: 0px }
+/* Regular text for single-level entries and 2nd level of 2-level entries */
+#menu-wrapper ul.mega-menu span.mmh2 { font-size: 18px; }
+/* Optional small text entries. Not used in example */
+#menu-wrapper ul.mega-menu span.mmsmall { font-size: 14px }
+/* Container for icon on left of entries */
+#menu-wrapper ul.mega-menu span.mmicon { float: left; }
+
+/* Container for icons spanning both levels of a 2-level entry, only in div.menu-2level banners */
+#menu-wrapper span.tall-icon {
+	position: relative;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: 35px 46px;
+    width: 47px;
+    height: 47px;
+	margin: 0 20px 0px 0;
+}
+
+/* Container for regular medium-sized icons for single-level entries */
+#menu-wrapper span.medium-icon {
+	position: relative;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 42px 32px;
+    width: 45px;
+    height: 32px;
+	margin-right: 12px;
+}
+
+/*** Top-image banner type with header images and single-level entries, "Products" in the example ***/
+
+#menu-wrapper div.menu-headerimage div.mega-entry {
+	padding-left: 0px;
+	width: 30%;
+	max-width: 30%;
+}
+
+/* Insert top space for column with no top image Example: <div class="mega-entry noheader divider-narrow"> */
+#menu-wrapper div.menu-headerimage div.mega-entry.noheader { 
+	padding: 60px 30px 0 0;
+}
+
+/* Image container at the top of the column. Configured for a horizontal image. See example. */
+#menu-wrapper div.menu-headerimage li.headerimage {
+	display: block;
+	width: 100%;
+	height: 50px;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+#menu-wrapper li.headerimage.headerimage1 {
+	background-image: url('../images/hmlogo_white.png');
+}
+#menu-wrapper li.headerimage.headerimage2 {
+	background-image: url('../images/hxlogo_white.png');
+}
+
+
+/*** Regular banner without column heading images, option for 2-level entries, "Support" in the example ***/
+
+#menu-wrapper div.menu-2level div.mega-entry { 
+	width: 28%;
+	max-width: 28%;
+	margin: 0;
+}
+#menu-wrapper div.menu-2level div.mega-entry li { 
+	display: block;
+	width: 100%;
+	margin: 5px 0 0 0;
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+#menu-wrapper div.menu-2level div.mega-entry li a { 
+	display: block;
+    text-align: left;
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+
+
+/*** Mega-icon banner with a single horizontal row of large icons ***/
+
+#menu-wrapper div.menu-megaicons div.mega-entry {
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+	text-align: center;
+}
+#menu-wrapper div.menu-megaicons a { 
+	display: block;
+    text-align: center;
+	/* Adjusting the 2nd value changes the icon spacing */
+	margin: 0 50px;
+}
+#menu-wrapper div.menu-megaicons span { 
+	display: block;
+	float: none;
+    margin: 0 auto 8px auto;
+}
+#menu-wrapper span.mmicon.mega-icon {
+	background-size: 58px 50px;
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 50px;
+}
+
+
+/* ------ end mega menus -------- */
+
+/*------ Media queries mega menus ------*/
+
+@media (max-width: 768px) {
+
+	/* ATOC and regular logo image disabled on phones */
+	a#atoclink {
+		display: none;
+	}
+	#menu-wrapper div#homebutton {
+	  display: none;
+	}
+	
+	/*** Main header components ***/
+	#menu-wrapper {
+		position: absolute;
+		height: 0px;
+	}
+	
+	/* Phone-only icon link in topic header */
+	a#phonemenulink {
+		display: inline-block;
+	}
+	/* Main menu element */
+	#menu-wrapper ul#main-menu {
+		position: fixed;
+		display: initial !important;
+		top: 0;
+		left: 100%;
+		width: 80%;
+		height: 100vH;
+		background-color: rgba(35,40,45,0.9);
+		transition: left 0.3s;
+		overflow-y: auto;
+		padding-top: 0;
+	}
+	/* Entire menu */
+	#menu-wrapper ul#main-menu.display {
+		left: 20%;
+	}
+	/* Mega menu banners */
+	#menu-wrapper div#mega-menu {
+		padding: 0 20px;
+	}
+	/* All entries in the menu */
+	#menu-wrapper li  {
+		display: block;
+		margin: 0; 
+		padding: 0 0 2px 0;
+		border: none;
+	}
+	#menu-wrapper li.buffer {
+		display: none;
+	}
+	/* Top-level menu headers */
+	#menu-wrapper li a.main-menu-entry {
+		display: block;
+		color: #FFFFFF;
+		text-decoration: none;
+		padding: 5px 5px 8px 18px;
+		font-weight: 600;
+		font-size: 20px;
+	}
+	#menu-wrapper li a.main-menu-entry:hover {
+		background-color: #F0F0F0;
+		color: #444444;
+		border: none;
+	}
+	/* Arrow icon right of main entries */
+	#menu-wrapper li a.main-menu-entry i.arrowdown {
+		border-color: #FFFFFF;
+	}
+	#menu-wrapper li a.main-menu-entry:hover i.arrowdown {
+		border-color: #444444 !important;
+	}
+	/* Sub-entries */
+	#menu-wrapper ul li ul {
+		position: relative;
+		top: 0;
+		width: 100%;
+		height: 0;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	#menu-wrapper ul li ul.display {
+		height: auto;
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
+	/* Unused buttons */
+	#menu-wrapper li.contact, #menu-wrapper li.news {
+		display: none;
+	}
+	/* Displayed buttons at the bottom of the menu, redefinition of order icon link */
+	#menu-wrapper li.headerbutton, #menu-wrapper li.order {
+		float: clear;
+		display: inline-block;
+		width: 40%;
+		line-height: 1em;
+		height: 25px;
+		margin: 1vH 2% 1vH 2%;
+		padding: 2px 5px 5px 5px;
+		font-size: 18px;
+		text-align: center;
+	}
+	#menu-wrapper li.headerbutton {
+		border: 1px solid #4D914D;
+	}
+	#menu-wrapper li.main-wrapper-right.order {
+		background-color: #C0C0C0;
+		color: #444444;
+		font-weight: 400;
+		text-align: center;
+		border: 1px solid #ADADAD;
+	}
+	#menu-wrapper li.headerbutton a, #menu-wrapper li.order a {
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		padding-top: 4px;
+	}
+	#menu-wrapper li.main-wrapper-right.order:hover !important, #menu-wrapper li.main-wrapper-right.order a:hover !important {
+		background-color: #ffffff;
+		font-weight: 600;
+		color: #888888;
+	}
+	#menu-wrapper li.main-wrapper-right div {
+		display: inline-block;
+	}	
+	li.main-wrapper-right svg {
+		display: none;
+	}
+	#menu-wrapper li.main-wrapper-right.order:hover div, #menu-wrapper li.main-wrapper-right.order:hover {
+		color: #444444;
+		font-weight: 600;
+		background-color: #ffffff;
+	}
+	
+	#menu-wrapper li.headerbutton:hover, #menu-wrapper li.headerbutton > a:hover {
+		background-color: #67C64C;
+		color: #ffffff;
+		font-weight: 600;
+	}
+	#menu-wrapper i.arrowdown {
+	  padding: 3px;
+	  margin: 0 0 1px 6px;
+	  transform: rotate(-45deg);
+	  -webkit-transform: rotate(-45deg);  
+	  visibility: visible;
+	  opacity: 1;
+	  transition: none;
+	}	
+	#menu-wrapper ul.mega-menu {
+		width: auto;
+		text-align: left;
+	}
+	#menu-wrapper div.mega-menu {
+		width: 100%;
+		margin-bottom: 0;
+		border: none;
+		box-shadow: none;
+		padding-top: 5px;
+		padding-bottom: 0;
+		padding-left: 10px;
+	}
+	#menu-wrapper div.mega-entry, #menu-wrapper div.menu-2level div.mega-entry {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#menu-wrapper div.menu-headerimage div.mega-entry, #menu-wrapper div.menu-headerimage div.mega-entry.noheader, #menu-wrapper div.mega-entry.divider-narrow, #menu-wrapper div.mega-entry.divider {
+		border: none;
+		padding-top: 0;
+		width: 95% ;
+		max-width: 95% ;
+	}
+	
+	#menu-wrapper div.menu-2level div.mega-entry li {
+		margin: 0;
+	}
+	#menu-wrapper div.menu-2level div.mega-entry li.buffer {
+		display: none;
+	}
+	#menu-wrapper div.mega-entry li {
+		width: 100%;
+		height: 28px;
+		text-align: left;
+		padding-left: 30px;
+	}
+	#menu-wrapper div.mega-entry li.headerimage {
+		height: 45px;
+		width: 50%;
+		padding-left: 0;
+		background-position: 0 0;
+	}
+	#menu-wrapper div.mega-entry a {
+		text-align: left;
+	}
+	#menu-wrapper div.mega-entry span {
+		margin: 0;
+	}
+	#menu-wrapper div.mega-entry span.mmicon.medium-icon, #menu-wrapper div.mega-entry span.mmicon.mega-icon {
+		/*display: none;*/
+		background-size: 30px 23px;
+		width: 35px;
+		height: 25px;
+	}
+	#menu-wrapper div.mega-entry span.mmicon.mega-icon {
+		background-position: 0 0;
+	}
+	span.product1-icon, span.product2-icon {
+		background-image: url('../images/docu-icon.png');
+	}
+	#menu-wrapper div.mega-entry span.mmicon.tall-icon {
+		background-size: 30px 23px;
+		width: 35px;
+		height: 25px;
+	}
+	#menu-wrapper div.mega-entry span.mmh1 {
+		display: none;
+	}
+	#menu-wrapper div.mega-entry span.mmh2 {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		font-size: 20px;
+	}
+	#menu-wrapperdiv.menu-2level a { 
+	}
+	#menu-wrapper div.menu-2level div.mega-entry { 
+		width: 95%;
+	}	
+	
+	#menu-wrapper ul#main-menu li.sidemenu {
+		display: block;
+		cursor: default;
+		padding-bottom: 20px;
+	}
+	#menu-wrapper ul#main-menu img#main-menu-logo {
+		padding-top: 10px;
+		padding-right: 10px;
+		float: right;
+	}
+	#menu-wrapper ul#main-menu img#main-menu-closer {
+		padding: 10px 0 0 10px;
+		cursor: pointer;
+	}
+	#menu-wrapper ul#main-menu li.sidemenu:hover {
+	background-color: transparent;
+	cursor: default;
+	color: #ff9900;
+	}
+	
+	#menu-wrapper div.menu-megaicons div.mega-entry {
+		text-align: left;
+	}
+	#menu-wrapper div.menu-megaicons div.mega-entry {
+		padding-left: 0;
+	}
+	#menu-wrapper div.menu-megaicons a { 
+		text-align: left;
+		margin: 0;
+	}
+
+}

@@ -1,0 +1,621 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<!-- HMSKIN FILETYPE: SEARCH -->
+<title>SAM Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" id="pageviewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="cache-control" content="no-cache" /> 
+<!--This is set up for self-hosted Google Fonts on your own web server with font files included in the skin. See the help for instructions on using fonts hosted by Google -->
+<link type="text/css" href="./css/GoogleFonts.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="./css/hmwebhelp_search.css" />
+<noscript>
+<style type="text/css">
+	div#noscript {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 1rem solid grey;
+		background-color: #eaeaea;
+		}
+	h2#noscriptwarning {
+		text-align: center;
+		position: relative;
+		top: 35%;
+		color: #333333;
+	}
+</style> 
+</noscript>
+
+<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+		var pageName = "searchPage";
+		var hmDevice = {
+		// Unique project ID
+		compilehash: (function () {
+		var outVal = 0, t="SAM HelpUser-defined Project ID";
+		for (var x = 0; x < t.length; x++) {
+			outVal = outVal + (t.charCodeAt(x)*(x+2));
+		}
+		return (outVal*697).toString(32) + "_";
+		})(),
+		// Cookies
+		hmSetCookie: function(cname, cvalue, exdays) {
+			var expires = "";
+			if (exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				expires = "expires="+d.toGMTString();
+			}
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+		},
+		hmGetCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		hmDeleteCookie: function(cname) {
+			var name = cname + "=";
+			document.cookie = name + "; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+		},
+		navBarWidth: 0,
+		saveNavbarWidth: function(){
+			var $nbar = $("p#tocnavbar");
+			if ($nbar.is(":visible")) {
+				this.navBarWidth = $nbar.width();
+				var nBarWidth = this.navBarWidth + 5;
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.resizePanes", fa: nBarWidth});
+				}  else {
+					this.navBarWidth = null;
+					}
+			},
+		mainPageInitialized: false
+	
+	};
+
+	// Session Variables
+	// Test that storage is both available and accessible (looking at you, Safari!)
+	var storageOK = (function(){
+		var gotStorage = typeof(Storage) === "object" && typeof(localStorage) === "object" && typeof(sessionStorage) === "object";
+		if (gotStorage) {
+			try {
+				localStorage.setItem('testStorage',1);
+				localStorage.removeItem('testStorage');
+				gotStorage = true;
+			}
+			catch(e) {
+			gotStorage = false;
+			}
+		}
+		return gotStorage;
+		})();
+		
+	var sessionVariable = {
+		localS: storageOK,
+		
+		setPV: function(sVar,sVal) {
+			if (this.localS) {
+				localStorage.setItem(hmDevice.compilehash + sVar,sVal);
+			} else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,sVal,365);	
+		},
+		setSV: function(sVar,sVal) {
+			if (this.localS)
+				sessionStorage.setItem(hmDevice.compilehash + sVar,sVal);
+			else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,sVal,false);
+		},
+		getPV: function(sVar) {
+			if (this.localS) {
+				if (typeof(localStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return localStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		getSV: function(sVar) {
+			if (this.localS) {
+				if (typeof(sessionStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return sessionStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(sVar);
+		},
+		deletePV: function(sVar) {
+			if (this.localS)
+				localStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		},
+		deleteSV: function(sVar) {
+			if (this.localS)
+				sessionStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		}
+	};
+	/* UI Location */
+	hmDevice.page = "hmftsearch";
+	hmDevice.baseFontSize = 100;
+	hmDevice.fontChangeMax = 20;
+		
+	/* Source Checks */
+	hmDevice.agent = navigator.userAgent.toLowerCase();
+	hmDevice.embedded = false;
+	hmDevice.platform = navigator.platform.toLowerCase();
+	hmDevice.ipad = /ipad/.test(hmDevice.platform);
+	hmDevice.iphone = /iphone/.test(hmDevice.platform);
+	hmDevice.winphone7 =  (/windows phone os [7]\.\d\d??; .*?trident\/[5]\.\d\d??; iemobile\/9/.test(hmDevice.agent));
+	hmDevice.winphone = (/windows phone [89]\.\d\d??; .*?trident\/[67]\.\d\d??;.*?touch; /.test(hmDevice.agent));
+	hmDevice.w8desktop = (/windows nt 6\.[2345]/m.test(hmDevice.agent));
+	hmDevice.w8metro = (function(){var supported = true; 
+				try {new ActiveXObject("htmlfile");} catch(e) {supported = false;} 
+				return (!supported && hmDevice.w8desktop)})();
+	hmDevice.touch = /touch/.test(hmDevice.agent);
+	// Treat all Windows 8 devices as desktops unless in metro mode with touch
+	hmDevice.tb = (/tablet/.test(hmDevice.agent) && (!/trident/.test(hmDevice.agent) || (hmDevice.w8metro && hmDevice.touch)));
+	hmDevice.goodandroid = (/android.+?applewebkit\/(?:(?:537\.(?:3[6-9]|[4-9][0-9]))|(?:53[8-9]\.[0-9][0-9])|(?:54[0-9]\.[0-9][0-9]))|android.+?gecko\/[345][0-9]\.\d{1,2} firefox/.test(hmDevice.agent));
+	hmDevice.deadandroid = (/android.+?applewebkit\/(?:53[0-6]\.\d{1,2})|firefox\/[0-2]\d\.\d{1,2}/.test(hmDevice.agent));
+	hmDevice.android = (/android/.test(hmDevice.agent) && !hmDevice.deadandroid);
+	hmDevice.mb = /mobi|mobile/.test(hmDevice.agent);
+	
+	/* Main Checks */
+	hmDevice.phone = (hmDevice.mb && !hmDevice.ipad && !hmDevice.tb);
+	hmDevice.tablet = (hmDevice.ipad || hmDevice.tb || (!hmDevice.phone && hmDevice.android));
+	hmDevice.aspectRatio = (screen.height / screen.width > 1 ? screen.height / screen.width : screen.width / screen.height).toFixed(2);
+	hmDevice.narrowTablet = (hmDevice.tablet && hmDevice.aspectRatio > 1.4);
+	hmDevice.desktop = ((!hmDevice.tablet && !hmDevice.phone));	
+	
+	hmDevice.device = hmDevice.phone ? "phone" : hmDevice.tablet ? "tablet" : hmDevice.desktop ? "desktop" : "default";
+	hmDevice.fontSize = hmDevice.phone ? hmDevice.baseFontSize * 1.0 : hmDevice.tablet ? hmDevice.baseFontSize * 1.0 : hmDevice.desktop ? hmDevice.baseFontSize : hmDevice.baseFontSize;
+	hmDevice.maxFontSize = hmDevice.fontSize + hmDevice.fontChangeMax;
+	hmDevice.minFontSize = hmDevice.fontSize - hmDevice.fontChangeMax;
+	
+	// Set cookie if it doesn't exist yet
+	if (hmDevice.desktop) {
+		if (sessionVariable.getSV("hmSearchHidden") === null)
+			sessionVariable.setSV("hmSearchHidden", "false");
+	}
+	
+	function loadSquery(v) {
+
+		$("input#zoom_searchbox").val(v);
+
+		/*var spacePos = v.lastIndexOf(" "),
+			firstSpace = v.indexOf(" "),
+			firstWord = spacePos == firstSpace && v.length > 2 && v.charAt(v.length -1) != " ",
+			currentWord = v.substr(spacePos+1),
+			lastWord = !firstWord && currentWord.length > 2 ? true : false; 
+			
+		if (firstWord || lastWord) {
+			hmDoFtSearch(v);
+			}*/
+	}
+	
+	function clearSearchField() { $("input#zoom_searchbox").val("");}
+
+if (true) document.write("<style>div.infoline{display:none;}</style>");
+</script>  
+<script id="jqscript" type="text/javascript"></script> 
+</head>
+<body>
+<div id="noscript"><h2 id="noscriptwarning">Please enable JavaScript to view this site.</h2></div>
+<div id="page_wrapper">
+<div id="hmpagebody">
+<span id="searchscript">
+<p class="submit" id="searchinstructions">Enter one or more keywords to search ('*' and '?' wildcards are supported):</p>
+  <!-- This is where the search form and results will appear -->
+  <div id="loadingmsg" align="center"><img src="./images/cicon_loadindex_ani.gif" style="border:none" alt="Loading..." /></div>
+<script type="text/javascript" src="settings.js" charset="UTF-8"></script>
+<script type="text/javascript" src="zoom_search.js"></script>
+<script type="text/javascript">ZoomSearch();</script>
+
+</span>
+<noscript>
+<p>You must have JavaScript enabled to search this documentation.</p>
+</noscript>
+</div>
+<!-- HMSKIN BODY END -->
+</div>
+<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+// Reset font size with preset cookie value if available
+(function(){
+	var tempFontSize = sessionVariable.getPV("hmFontSize"),
+		baseElement = document.getElementsByTagName("html")[0];
+	if (tempFontSize !== null) {
+	baseElement.style.fontSize=tempFontSize + "%";
+	} else {
+	baseElement.style.fontSize = hmDevice.baseFontSize + "%";
+	}
+	})();
+
+// Define the search as open the first time the file is loaded
+sessionVariable.setSV("hmSearchHidden", "false");	
+	
+// Handler for post-loading functions from files
+function extFuncs(func, args) {		
+			if (typeof funcs != "object") funcs = {};
+			if (typeof funcs[func] == "function") {
+				funcs[func](args);
+			} else {
+				 var newScript= "./js/" + func + ".js";
+				$.getScript(newScript, function (data, textStatus) {
+				if (textStatus === "success" && typeof funcs[func] == "function") {
+					try {
+					funcs[func](args);
+					} catch(err) {
+					console.log(err);
+					}
+				} else {
+					alert("External function script " + func + ".js could not be  loaded");
+					}
+				});
+			}
+	} // extFuncs()
+
+//** Browser capabilities object  **//
+var hmBrowser = {}; 
+	hmBrowser.addEventListener = !!window.addEventListener; //Unused
+	hmBrowser.orientation = "onorientationchange" in window;
+	// Touch browser *with* hardware support
+	hmBrowser.touch = ('ontouchstart' in window && !window.opera) || (window.DocumentTouch && document instanceof DocumentTouch) || (window.pointerEvent && navigator.maxTouchPoints > 0) || (window.MSPointerEvent && navigator.msMaxTouchPoints > 0);		
+	hmBrowser.transitions = (function(temp) {
+	  var props = ['transitionProperty', 'WebkitTransition', 'MozTransition', 'OTransition', 'msTransition'];
+	  for ( var i in props ) if (temp.style[ props[i] ] !== undefined) return true;
+	  return false;
+	})(document.createElement('rabbit'));
+	hmBrowser.Flandscape = function() {if (hmBrowser.orientation) {return (Math.abs(window.orientation)==90);} else {return (window.innerHeight < window.innerWidth);}};
+	hmBrowser.MobileFirefox = (/Android.+?Gecko.+?Firefox/i.test(navigator.userAgent));
+	hmBrowser.touchstart = (function(){ return hmDevice.desktop ? 'mousedown.startevents' : (('ontouchstart' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchstart.startevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointerdown.startevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerDown.startevents' : 'mousedown.startevents'})();
+	hmBrowser.touchmove = (function(){return (('ontouchmove' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchmove.moveevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointermove.moveevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerMove.moveevents' : 'mousemove.moveevents'})();
+	hmBrowser.touchend = (function(){return hmDevice.desktop ? 'mouseup.endevents' : (('ontouchend' in window && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone) || (window.DocumentTouch && document instanceof DocumentTouch && !hmDevice.w8desktop && !window.opera && !hmDevice.winphone)) ? 'touchend.endevents' : (window.pointerEvent || window.navigator.pointerEnabled) ? 'pointerup.endevents' : (window.MSPointerEvent || window.navigator.msPointerEnabled) ? 'MSPointerUp.endevents' : 'mouseup.endevents'})();
+	hmBrowser.orientationevent = typeof window.orientation == "undefined" ? "resize" : "orientationchange";
+	hmBrowser.server = /^https??:\/\//im.test(document.location);
+
+/*** SKIN FUNCTIONS ***/
+
+// Callable function for executing search remotely
+function hmDoFtSearch(searchArg) {
+	if (typeof searchArg != "undefined") {
+		$("input#zoom_searchbox").val(searchArg);
+		}
+	else
+		return;
+	$(document).find("form").submit();
+}
+// Adjust position of autocomplete list if active
+var autocomplete_position = function(){
+	var completion_list = document.getElementById("zoom_ac_dropdown");
+	if (!completion_list) {
+	return;
+	}
+	var search_input_box = document.getElementById("zoom_searchbox");
+	var left  = $(search_input_box).position().left;
+	var top   = $(search_input_box).position().top + $(search_input_box).outerHeight(false);
+	var width = $(search_input_box).outerWidth(false);
+	var button_width = $(".zoom_button").first().outerWidth(false);
+	completion_list.style.left       = left + 'px';
+	completion_list.style.top        = top + 'px';
+	completion_list.style.width      = (width-button_width-8) + 'px';  
+}
+// Staged loading of JS scripts after page has loaded, with functions to perform after all are loaded
+var initScripts = function() {
+	var scripts = ["./js/jquery.scrollTomin.js", "./js/helpman_settings.js", "./js/xmessage.js"],	
+	currentScript = 0, $headbottom, $searchbottom, $searchbox, $searchbutton, $searchpages, $inputboxes;
+
+	hmDevice.doNavbar = function(searchSession) {
+		// Only do navbar width on first load of a search session, not on subsequent Zoom reloads
+		if (!searchSession) {
+		xMessage.sendObject("parent",{action: "setvalue", vn: "hmFlags.searchSession", vv: "*true"});
+			}
+	};
+	
+	var nsh = function(){
+		var offset = $searchpages.length > 0 ? ($searchpages.height() + 10) : 10;
+			$searchbox.css({"position": "absolute", "top": ($headbottom.position().top + offset) + "px"});
+	};
+	
+	var schrollup = function(mode) {
+	var $xelements = $("p.submit, span.zoom_results_per_page, span.zoom_match, div.searchheading, div.cat_summary, span.cat_summary, span.zoom_categories, .zoom_daterange");
+	if (mode) {
+			sessionVariable.setSV("hmSearchHidden", "true");
+			// Close a date picker if present and open 
+			try { updateDateField("zoom_datefrom"); } catch(err) {}
+			$xelements.hide();
+			$("div.summary").first().css("margin-top","35px");
+			}
+		else {
+			sessionVariable.setSV("hmSearchHidden", "false");
+			$xelements.show();
+			$("div.summary").first().css("margin-top","0");
+			}
+		var offset = $searchpages.length > 0 ? ($searchpages.height()) + 10 : 10,
+			topoffset =  $searchpages.length > 0 ? 10 : 10,
+			target = $headbottom.position().top + $headbottom.outerHeight(true);
+		if ($("div.sorting").first().length > 0 && $("div.result_pages").first().length > 0 && $("div.sorting").first().css("float") == "right") {
+			target += $("div.sorting").first().outerHeight(true) - $headbottom.outerHeight(true) + 12;
+		}			
+		$searchbox.animate({
+				top: target + 12
+			},250);
+		
+		};
+	
+	var loadScripts = function() {
+		
+		// Load all necessary scripts asynchronously
+		$.ajaxPrefilter( "json script", function( options ) {options.crossDomain = true;});
+		var loaded = 0;
+		for (var scr = 0; scr < scripts.length; scr++) {
+			$.getScript( scripts[scr], function( data, textStatus, jqxhr ) {
+			loaded++;
+			if (loaded == scripts.length) {
+			
+			// Functions to perform after all scripts have loaded
+			if (!hmDevice.desktop) $("input#zoom_searchbox").removeAttr("autofocus");
+
+			// Phones and tablets mod
+			if (!hmDevice.desktop) {
+				$(".searchheading").hide();
+				$("#hmpagebody").css({"overflow-y": "scroll", "overflow-x": "hidden"});
+				$(".results").css("margin-top", "6px");
+				} 
+			if (hmDevice.phone) {
+				$(".summary, .result_pagescount, .sorting").hide();
+				}
+			
+			// Disable ENTER on iPad because of keyboard popup bug -- user must tap search button
+			$("input#zoom_searchbox").on("keydown", function(event) {
+				if (hmDevice.ipad && event.keyCode == 13) {
+				event.preventDefault();
+				}
+			});
+
+			// Clean up the date range components generated by Zoom 
+			
+			if ($("span.zoom_daterange").length > 0) {
+				if ($("link[href*='zoom_datepicker.css']").length == 0) {
+				$("head").append(
+					"<link rel=\"stylesheet\" type=\"text/css\" href=\"zoom_datepicker.css\" />")
+				}
+				
+				var getTextNodesIn = function(el) {
+					return $(el).find(":not(iframe)").addBack().contents().filter(function() {
+						return this.nodeType == 3;
+					});
+				};
+
+			if ($("label[for='zoom_datefrom']").length == 0) {
+				var srchlabels = getTextNodesIn("span.zoom_daterange");
+				
+				$(srchlabels[0]).replaceWith("<label id=\"lbl1\" for=\"zoom_datefrom\">" + srchlabels[0].data + "</label>");
+				$(srchlabels[1]).replaceWith("<label id=\"lbl2\" for=\"zoom_dateto\">" + srchlabels[1].data + "</label>");
+			} else {
+				$("label[for='zoom_datefrom']").attr("id","lbl1");
+				$("label[for='zoom_dateto']").attr("id","lbl2");
+				}
+				
+				$("label#lbl1, input[name='zoom_datefrom']").add($(" input[value='«']")[0]).wrapAll("<div class='zoom_datelabel' />");
+				$("label#lbl2, input[name='zoom_dateto']").add($(" input[value='«']")[1]).wrapAll("<div class='zoom_datelabel' />");
+			}
+			
+			// Turn off auto-capitalization and autocomplete in input field
+			$("input#zoom_searchbox").attr(
+			{autocomplete: "off",
+			autocorrect: "off",
+			autocapitalize: "none"}
+			);
+			
+			// Cross-frame communication framework
+			xMessage = new xMsg("FTSEARCH: ");
+			
+			// Adjust autocomplete dropdown list
+			autocomplete_position();
+			$(window).on("resize",autocomplete_position);
+			
+			// Close parent menus on click in search pane
+			$(document).on(hmBrowser.touchstart, function(){
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.closeMenus"});
+			});
+
+			// NS Header for desktop version
+		if (hmDevice.desktop) {
+				
+				$headbottom = $("div.result_pages").first();
+				if ($headbottom.length < 1)
+					$headbottom = $("div.sorting").first();
+				if ($headbottom.length < 1)
+					$headbottom = $("div.recommended").first();
+				if ($headbottom.length < 1)
+					$headbottom = $("div.suggestion").first();
+				if ($headbottom.length < 1)
+					$headbottom = $("div.summary").first();
+				
+				if ($headbottom.is(":visible")) {
+					$searchbottom = $("div.result_pages").first();
+					if ($searchbottom.length < 1)
+						$searchbottom = $("div.sorting").first();
+					if ($searchbottom.length < 1)
+						$searchbottom = $("input.zoom_button").first();
+					$searchbox = $("div.results").first();
+					$searchbutton = $("input.zoom_button").first();
+					$searchpages = $("div.result_pages").first();
+					$inputboxes = $("input.zoom_query, input.zoom_searchbox, input.zoom_button, p.submit");
+					nsh();
+					if (sessionVariable.getSV("hmSearchHidden") === "false") {
+						schrollup(false);
+					} else {
+						schrollup(true);
+						}
+					$(window).on("resize",nsh);
+					$searchbox.on("mouseenter", function(){
+					schrollup(true);
+					});
+					$inputboxes.on("mouseenter", function(){
+					schrollup(false);
+					});
+				}
+			}
+
+			// Initialize click handlers on search results
+			var args = ["",""];
+			$("div.result_title a, div.recommend_title a").on("click", function(event) {
+
+				// Handle normally if this is an external link
+				var thisref = $(this).attr("href"), thatref = document.location.href;
+				if (thisref.substr(0,2) != ".\/" && thisref.substr(0,thisref.lastIndexOf("\/")) !== thatref.substr(0,thatref.lastIndexOf("\/"))){
+					return;
+					}
+
+				event.preventDefault();
+				args = thisref.split("?");
+				var gaquery = "";
+				if (args[1].length > 0 && hmBrowser.server) {
+					gaquery = "\?q" + args[1].substr(args[1].indexOf("\=")).replace(/\s/,"+");
+					} 
+				else if (args[1].length < 1) {
+					args[1] = "";
+					}
+				xMessage.sendObject("parent",{action: "setvalue", vn: "hmFlags.searchHighlight", vv: "*" + args[1]});
+				xMessage.sendObject("parent",{action: "loadtopic", href: (args[0].replace(/^\.\/|^.+\//,"") + gaquery), bs: false});
+				});
+
+			xMessage.sendObject("parent",{action: "getvalue", vn: "hmFlags.searchSession", cbf: "hmDevice.doNavbar"});
+
+		// Keyboard control
+				
+		$(window).on("keydown", function(event){
+
+		if (![27,81,83,84,72,66,67].includes(event.keyCode)) return;
+		
+		switch(event.keyCode) {
+			
+			case 27:
+			xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.closeMenus"});
+			break;
+			case 83:
+			if (event.altKey) {
+				event.preventDefault();
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.switchNavTab", fa: "search"});
+				}
+			break;
+			case 81:
+			if (event.altKey) {
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "info"});
+				event.preventDefault();
+				}
+			break;
+			case 67:
+			if (event.altKey) {
+				event.preventDefault();
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.switchNavTab", fa: "contents"});
+				}
+			break;
+			case 84:
+			if (event.altKey) {
+				event.preventDefault();
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "topic"});
+				};
+			break;
+			case 72:
+			if (event.altKey) {
+				event.preventDefault();
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "header"});
+				}
+			break;
+			case 66:
+			if (event.altKey) {
+				event.preventDefault();
+				xMessage.sendObject("parent",{action: "callfunction", fn: "hmWebHelp.pageFocus", fa: "body"});
+				}
+			break;
+		}
+	}); // Keyboard control 
+			}
+			});
+		} 		
+	}; // loadScripts()
+	
+	// Load jQuery first so that everything else can continue
+	var jScript = document.getElementById("jqscript");
+	jScript.src = "./js/jquery.js";
+	
+	// Load the other scripts once jQuery responds positively
+	var loadCheck = setInterval(function() {
+		if (window.jQuery) {
+			clearInterval(loadCheck);
+			// Add aria label to the search box
+			$("input#zoom_searchbox").attr("aria-label","search").attr("required","true");
+			
+			// Accessibility additions
+			$("input#zoom_searchbox").attr("aria-label","Search").attr("required","true").attr("aria-describedby","searchinstructions");
+			$("form.zoom_searchform").first().attr("role","search");
+			$("div.result_pages").first().insertBefore(".results");
+			$("span.zoom_results_per_page").first().attr("id","zoom_results_per_page");
+			$("span.zoom_match").first().attr("role","radiogroup").attr("id","match-radio").attr("aria-labelledby","match-radio");
+			$("span.zoom_match input").attr("role","radio");
+			$("select[name='zoom_per_page']").attr("aria-describedby","zoom_results_per_page");
+			if ($("div.summary").length > 0) {
+				setTimeout(function(){
+					$("div.summary").first().attr("role","status").attr("tabindex","0").focus();
+					$(document).on(hmBrowser.touchstart + " keydown", function(event){
+						if (event.type == "keydown" && event.keyCode != 9) return;
+						$("div.summary").first().removeAttr("tabindex");
+						});
+				},500);
+				};
+			loadScripts();
+			}
+		},100);
+};
+
+if (window.addEventListener)
+window.addEventListener("load", initScripts, false);
+else if (window.attachEvent)
+window.attachEvent("onload", initScripts);
+else window.onload = initScripts;
+
+// Patch Zoom autocomplete functions for use in an iFrame
+if (typeof(ZoomAutoComplete_GetLeft) != "undefined") {
+	ZoomAutoComplete_GetLeft = function(element)
+	{
+		var curNode = element;
+		var left    = 0;
+		do
+		{
+			left += curNode.offsetLeft;
+			curNode = curNode.offsetParent;
+			
+		} while(curNode != null && curNode.tagName.toLowerCase() != 'body' && curNode.style.position != 'fixed');
+		return left;
+	}
+	ZoomAutoComplete_GetTop = function (element)
+	{
+		var curNode = element;
+		var top = 0;
+		do 
+		{
+			top += curNode.offsetTop;
+			curNode = curNode.offsetParent;
+		} while(curNode != null && curNode.tagName.toLowerCase() != 'body' && curNode.style.position != 'fixed');	
+		return top;
+	}
+}
+
+</script> 
+</body>
+</html>

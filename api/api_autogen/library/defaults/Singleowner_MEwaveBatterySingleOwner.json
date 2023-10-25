@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"construction_financing_cost": 7.79052e+06,
+			"construction_financing_cost": 7.74248e+06,
 			"cost_debt_closing": 450000,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -88,7 +88,7 @@
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 4.15494e+08
+			"total_installed_cost": 4.12932e+08
 		},
 		"LandLease": {
 		},
@@ -293,6 +293,10 @@
 			"battery_total_cost_lcos": 8.29056e+06
 		},
 		"ChargesByMonth": {
+		},
+		"HybridFin": {
+		},
+		"Monthly": {
 		}
 	}
 }

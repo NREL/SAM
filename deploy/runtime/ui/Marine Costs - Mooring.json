@@ -397,6 +397,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "ancillary_marine_systems_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "ancillary_marine_systems_cost_total"
                 },
                 "X": {
@@ -890,7 +973,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -899,15 +982,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 513.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -917,13 +1000,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -931,7 +1014,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -940,15 +1023,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 243.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -958,13 +1041,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -3150,6 +3233,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "outfitting_structure_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "outfitting_structure_cost_total"
                 },
                 "X": {
@@ -4244,6 +4410,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "ancillary_marine_systems_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Ancillary marine systems array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Mooring",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "ancillary_marine_systems_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4273,11 +4452,11 @@
         "ballast_system_mooring_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Ballast system mooring cost",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4286,11 +4465,11 @@
         "cathodic_protection_system_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Cathodic protection system cost",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4299,11 +4478,11 @@
         "condition_monitoring_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Condition monitoring cost",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4331,7 +4510,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4344,7 +4523,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4377,11 +4556,11 @@
         "ladders_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Ladders cost",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4390,11 +4569,11 @@
         "marine_coatings_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Marine coatings cost",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4517,6 +4696,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "outfitting_structure_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Outfitting structure array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Mooring",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "outfitting_structure_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4546,11 +4738,11 @@
         "personnel_access_system_mooring_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Personnel access system mooring costs",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4559,11 +4751,11 @@
         "railings_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Railings costs",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4624,11 +4816,11 @@
         "vessel_landing_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Vessel landing costs",
             "Units": " ",
             "Group": "ME Costs - Mooring",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4647,9 +4839,14 @@
         "\t{",
         "\t\treturn ${outfitting_structure_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_outfitting_structure}==1)",
         "\t{",
         "\t\treturn ${outfitting_structure_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = -log(1-${outfitting_structure_cost_rvalue})/log(2);\r",
+        "\t\treturn (${outfitting_structure_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -4665,9 +4862,14 @@
         "\t{",
         "\t\treturn ${ancillary_marine_systems_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_ancillary_marine_systems}==1)",
         "\t{",
         "\t\treturn ${ancillary_marine_systems_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = -log(1-${ancillary_marine_systems_cost_rvalue})/log(2);\r",
+        "\t\treturn (${ancillary_marine_systems_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -4687,7 +4889,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -4696,13 +4899,15 @@
         "\t}",
         "};",
         "",
-        "equations {'mooring_found_substruc_cost'} = define() {",
+        "equations {'mooring_found_substruc_cost'} = define() {\r",
+        "\tarray_scaling_b_value = -log(1-${mooring_found_substruc_cost_rvalue})/log(2);",
         "\treturn ?${mooring_found_substruc_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${mooring_found_substruc_cost_input}*${system_capacity},",
         "\t\t\t\t${mooring_found_substruc_cost_input},",
         "\t\t\t\t${mooring_found_substruc_cost_modeled},",
-        "\t\t\t\t${mooring_found_substruc_cost_total}",
+        "\t\t\t\t${mooring_found_substruc_cost_total},\r",
+        "\t\t\t\t(${mooring_found_substruc_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -4716,11 +4921,11 @@
     "Callbacks": [
         "on_load{'Marine Costs - Mooring'} = define() {",
         "\tcheck_override_mooring();",
-        "\ton_change{'mooring_override'};",
-        "\ton_change{'itemized_check_mooring'};",
+        "\ton_change{'mooring_override'}();",
+        "\ton_change{'itemized_check_mooring'}();",
         "\tenable_itemized_mooring();",
-        "\ton_change{'detailed_cost_choice_outfitting_structure'};",
-        "\ton_change{'detailed_cost_choice_ancillary_marine_systems'};",
+        "\ton_change{'detailed_cost_choice_outfitting_structure'}();",
+        "\ton_change{'detailed_cost_choice_ancillary_marine_systems'}();",
         "\tdetailed_cost_outfitting_structure();",
         "\tdetailed_cost_ancillary_marine_systems();",
         "};",
@@ -4750,16 +4955,17 @@
         "\tif (value('itemized_check_mooring')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_outfitting_structure');",
-        "\t\tenable('outfitting_structure_cost',detailed_value==0);",
-        "\t\tshow('outfitting_structure_cost',detailed_value==0);",
-        "\t\tenable('outfitting_structure_cost_total',detailed_value);",
-        "\t\tshow('outfitting_structure_cost_total',detailed_value);",
-        "\t\tenable('vessel_landing_cost',detailed_value);",
-        "\t\tenable('service_platforms_and_decks_cost',detailed_value);",
-        "\t\tenable('ladders_cost',detailed_value);",
-        "\t\tenable('railings_cost',detailed_value);",
-        "\t\tenable('marine_coatings_cost',detailed_value);",
-        "\t\tenable('other_outfitting_structure_cost',detailed_value);",
+        "\t\tenable('outfitting_structure_cost',detailed_value!=1);",
+        "\t\tshow('outfitting_structure_cost',detailed_value!=1);",
+        "\t\tenable('outfitting_structure_cost_total',detailed_value==1);",
+        "\t\tshow('outfitting_structure_cost_total',detailed_value==1);",
+        "\t\tenable('vessel_landing_cost',detailed_value==1);",
+        "\t\tenable('service_platforms_and_decks_cost',detailed_value==1);",
+        "\t\tenable('ladders_cost',detailed_value==1);",
+        "\t\tenable('railings_cost',detailed_value==1);",
+        "\t\tenable('marine_coatings_cost',detailed_value==1);",
+        "\t\tenable('other_outfitting_structure_cost',detailed_value==1);\r",
+        "\t\tenable('outfitting_structure_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -4774,15 +4980,16 @@
         "\tif (value('itemized_check_mooring')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_ancillary_marine_systems');",
-        "\t\tenable('ancillary_marine_systems_cost',detailed_value==0);",
-        "\t\tshow('ancillary_marine_systems_cost',detailed_value==0);",
-        "\t\tenable('ancillary_marine_systems_cost_total',detailed_value);",
-        "\t\tshow('ancillary_marine_systems_cost_total',detailed_value);",
-        "\t\tenable('cathodic_protection_system_cost',detailed_value);",
-        "\t\tenable('personnel_access_system_mooring_cost',detailed_value);",
-        "\t\tenable('ballast_system_mooring_cost',detailed_value);",
-        "\t\tenable('condition_monitoring_cost',detailed_value);",
-        "\t\tenable('other_ancillary_marine_system_cost',detailed_value);",
+        "\t\tenable('ancillary_marine_systems_cost',detailed_value!=1);",
+        "\t\tshow('ancillary_marine_systems_cost',detailed_value!=1);",
+        "\t\tenable('ancillary_marine_systems_cost_total',detailed_value==1);",
+        "\t\tshow('ancillary_marine_systems_cost_total',detailed_value==1);",
+        "\t\tenable('cathodic_protection_system_cost',detailed_value==1);",
+        "\t\tenable('personnel_access_system_mooring_cost',detailed_value==1);",
+        "\t\tenable('ballast_system_mooring_cost',detailed_value==1);",
+        "\t\tenable('condition_monitoring_cost',detailed_value==1);",
+        "\t\tenable('other_ancillary_marine_system_cost',detailed_value==1);\r",
+        "\t\tenable('ancillary_marine_systems_cost_rvalue',detailed_value==2);",
         "\t\t",
         "\t\trefresh();",
         "\t}",
@@ -4805,7 +5012,8 @@
         "\tenable('messenger_lines_and_buoys_cost',itemized_value==1);",
         "\tenable('scour_protection_cost',itemized_value==1);",
         "\tenable('outfitting_structure_cost',itemized_value==1);",
-        "\tenable('outfitting_structure_cost_total',itemized_value==1);",
+        "\tenable('outfitting_structure_cost_total',itemized_value==1);\r",
+        "\tenable('outfitting_structure_cost_rvalue',itemized_value==1);",
         "\tenable('vessel_landing_cost',itemized_value==1);",
         "\tenable('service_platforms_and_decks_cost',itemized_value==1);",
         "\tenable('ladders_cost',itemized_value==1);",
@@ -4813,7 +5021,8 @@
         "\tenable('marine_coatings_cost',itemized_value==1);",
         "\tenable('other_outfitting_structure_cost',itemized_value==1);",
         "\tenable('ancillary_marine_systems_cost',itemized_value==1);",
-        "\tenable('ancillary_marine_systems_cost_total',itemized_value==1);",
+        "\tenable('ancillary_marine_systems_cost_total',itemized_value==1);\r",
+        "\tenable('ancillary_marine_systems_cost_rvalue',itemized_value==1);",
         "\tenable('cathodic_protection_system_cost',itemized_value==1);",
         "\tenable('personnel_access_system_mooring_cost',itemized_value==1);",
         "\tenable('ballast_system_mooring_cost',itemized_value==1);",
@@ -4821,11 +5030,12 @@
         "\tenable('other_ancillary_marine_system_cost',itemized_value==1);",
         "\tenable('integration_assembly_testing_checkout_cost',itemized_value==1);",
         "\tenable('transportation_cost',itemized_value==1);",
-        "\tenable('other_mooring_cost',itemized_value==1);",
-        "\tenable('mooring_found_substruc_cost_input',itemized_value!=2);",
+        "\tenable('other_mooring_cost',itemized_value==1);\r",
+        "\tshow('mooring_found_substruc_cost_input',itemized_value!=1);",
+        "\tenable('mooring_found_substruc_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('mooring_found_substruc_cost_rvalue',itemized_value==3);",
         "\tshow('mooring_found_substruc_cost_total',itemized_value==1);",
         "\t//show('mooring_cost_label',itemized_value==1);",
-        "\tshow('mooring_found_substruc_cost_input',(itemized_value==0 || itemized_value==2));",
         "\t//show('mooring_input_label',(itemized_value==0 || itemized_value==2));",
         "\t",
         "\tif (itemized_value==1)",

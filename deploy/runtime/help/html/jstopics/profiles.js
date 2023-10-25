@@ -1,0 +1,12 @@
+hmLoadTopic({
+hmKeywords:"",
+hmTitle:"Profiles",
+hmDescription:"The Profile tab displays time series data as an average daily profile for each month of the year. ",
+hmPrevLink:"timeseries.html",
+hmNextLink:"statistics.html",
+hmParentLink:"results.html",
+hmBreadCrumbs:"<a href=\"results.html\">Results<\/a>",
+hmTitlePath:"Results > Profiles",
+hmHeader:"<h1 class=\"p_Heading1\" style=\"page-break-inside: avoid; page-break-after: avoid;\"><span class=\"f_Heading1\">Profiles<\/span><\/h1>\n\r",
+hmBody:"<p class=\"p_Text\"><span class=\"f_Text\">The <\/span><span class=\"f_CHInterfaceElement\">Profile<\/span><span class=\"f_Text\"> tab displays time series data as an average daily profile for each month of the year. <\/span><\/p>\n\r<p class=\"p_List\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_List\">Choose the variables to display in the graphs using the check boxes to the right of the graphs.<\/span><\/p>\n\r<p class=\"p_List\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_List\">Use the check boxes along the top to choose which months you want to appear. You can also view an annual profile, which is calculated by averaging all of the monthly profiles.<\/span><\/p>\n\r<p class=\"p_List\" style=\"text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;\"><span class=\"f_List\" style=\"font-family: Arial,\'Lucida Sans Unicode\',\'Lucida Grande\',\'Lucida Sans\';display:inline-block;width:1.5000rem;margin-left:-1.5000rem\">&#8226;<\/span><span class=\"f_List\">You can only export an image or data for a single graph at a time. To export an image of all of the graphs, you can use your computer\'s screen capture tool (Snipping Tool in Windows, Command-Shift-4 in OS X). Resizing the SAM window will resize the graphs.<\/span><\/p>\n\r<p class=\"p_Text\"><span class=\"f_Text\">&nbsp;<\/span><\/p>\n\r<p class=\"p_Text\"><img alt=\"SS_Results-Profiles\" style=\"margin:0;width:38.0625rem;height:26.3125rem;border:none\" src=\".\/images\/ss_results-profiles.png\"\/><\/p>\n\r<p class=\"p_Text\"><span class=\"f_Text\">&nbsp;<\/span><\/p>\n\r"
+})
