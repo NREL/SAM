@@ -1,5 +1,5 @@
 {
-    "Name": "Battery Dispatch Price Signal",
+    "Name": "Battery Dispatch Retail Rate",
     "Width": 1052.0,
     "Height": 520.0,
     "FormObjects": {
@@ -848,7 +848,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Price Signal Forecast"
+                    "String": "Retail Rate Dispatch"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -885,7 +885,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The price signal forecast option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step."
+                    "String": "The retail rate dispatch option operates the battery to minimize the electricity bill based on an electricity price estimate that represents the cost to the system owner of purchasing electricity from the grid in each time step."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1048,7 +1048,7 @@
     },
     "Equations": [],
     "Callbacks": [
-        "on_load{'Battery Dispatch Price Signal'}=define()",
+        "on_load{'Battery Dispatch Retail Rate'}=define()",
         "{\t",
         "\tvalue('batt_dispatch_choice', 4);",
         "\ttoggle_forecast_standalone_psd();",

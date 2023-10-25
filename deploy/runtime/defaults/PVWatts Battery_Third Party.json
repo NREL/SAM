@@ -75,7 +75,7 @@
     "YrBuilt": 1980.0,
     "ac_nameplate": 5.56522,
     "adjust": 0.0,
-    "adjust_constant": 5.0,
+    "adjust_constant": 0.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
