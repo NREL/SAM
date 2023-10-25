@@ -330,7 +330,7 @@
     "annual_peak": 274.243,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
-    "annual_twet": "nan",
+    "annual_twet": 0.0,
     "annual_wspd": 2.35368,
     "azimuth": 0.0,
     "batt_salvage_percentage": 0.0,
