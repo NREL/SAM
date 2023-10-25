@@ -8,6 +8,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "COPY_field_thermal_output"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "I_bn_des"
                 },
                 "X": {
@@ -166,89 +249,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 6.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Q_rec_des"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 246.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 213.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 3.0
                 }
             }
         },
@@ -1456,6 +1456,19 @@
         }
     },
     "VarDatabase": {
+        "COPY_field_thermal_output": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Field thermal power",
+            "Units": "MWt",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
         "I_bn_des": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1478,19 +1491,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 110.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "Q_rec_des": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Field thermal power",
-            "Units": "MWt",
-            "Group": "System Design",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
@@ -1602,14 +1602,14 @@
         "solar_mult": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Solar multiple",
-            "Units": " ",
-            "Group": "System Design",
+            "Label": "Actual Solar Multiple",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 2.0,
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": " ",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "specified_solar_multiple": {
@@ -1687,6 +1687,10 @@
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
         "//",
+        "\r",
+        "equations{ 'COPY_field_thermal_output' } = define() {\r",
+        "\treturn ${field_thermal_output}; };\r",
+        "\r",
         "",
         "equations{ 'csp_financial_model' } = define() {",
         "\tif (financing() == \"Single Owner\"){",
@@ -1735,13 +1739,13 @@
         "\t\t${q_pb_design} = ssc_var(obj, \"q_dot_cycle_des\");\r",
         "\t\t\r",
         "\t\t// Solar Field\r",
-        "\t\t${field_htf_min_operating_temp} = ssc_var(obj, \"field_htf_min_operating_temp\");\r",
-        "\t\t${field_htf_max_operating_temp} = ssc_var(obj, \"field_htf_max_operating_temp\");\r",
+        "\t\t${field_htf_min_operating_temp} = ssc_var(obj, \"field_htf_min_temp\");\r",
+        "\t\t${field_htf_max_operating_temp} = ssc_var(obj, \"field_htf_max_temp\");\r",
         "\t\t${field_htf_cp_avg} = ssc_var(obj, \"field_htf_cp_avg_des\");\r",
-        "\t\t${single_loop_aperature} = ssc_var(obj, \"single_loop_aperature\");\r",
+        "\t\t${single_loop_aperture} = ssc_var(obj, \"single_loop_aperture\");\r",
         "\t\t${min_inner_diameter} = ssc_var(obj, \"min_inner_diameter\");\r",
         "\t\t${csp_dtr_hce_design_heat_losses} = ssc_var(obj, \"csp_dtr_hce_design_heat_losses\");\r",
-        "\t\t${cspdtr_loop_hce_heat_loss} = ssc_var(obj, \"cspdtr_loop_hce_heat_loss\");\r",
+        "\t\t${csp_dtr_loop_hce_heat_loss} = ssc_var(obj, \"csp_dtr_loop_hce_heat_loss\");\r",
         "\t\t${csp_dtr_sca_calc_sca_effs} = ssc_var(obj, \"csp_dtr_sca_calc_sca_effs\");\r",
         "\t\t${loop_optical_efficiency} = ssc_var(obj, \"loop_optical_efficiency\");\r",
         "\t\t${csp_dtr_hce_optical_effs} = ssc_var(obj, \"csp_dtr_hce_optical_effs\");\r",
@@ -1792,7 +1796,13 @@
         "\t\t// System Control\r",
         "\t\t${is_wlim_series} = ssc_var(obj, \"is_wlim_series\");\r",
         "\t\t${disp_wlim_max} = ssc_var(obj, \"disp_wlim_max\");\r",
-        "\t\t${wlim_series} = ssc_var(obj, \"wlim_series\");\r",
+        "\t\t\r",
+        "\t\tflag = ${is_dispatch};\r",
+        "\t\tif (flag == 1)\r",
+        "\t\t{\r",
+        "\t\t\t${wlim_series} = ssc_var(obj, \"wlim_series\");\r",
+        "\t\t}\r",
+        "\t\t\r",
         "\t\t${csp.pt.par.calc.bop} = ssc_var(obj, \"bop_design\");\r",
         "\t\t${csp.pt.par.calc.aux} = ssc_var(obj, \"aux_design\");\r",
         "\t\t\r",
@@ -1820,6 +1830,11 @@
         "\telse\r",
         "\t{\r",
         "\t\tfail = -789;\r",
+        "\t\tfail_array = [fail, fail, fail, fail];\r",
+        "\t\tfail_matrix = [[fail,fail,fail,fail],\r",
+        "\t\t\t\t\t   [fail,fail,fail,fail],\r",
+        "\t\t\t\t\t   [fail,fail,fail,fail],\r",
+        "\t\t\t\t\t   [fail,fail,fail,fail]];\r",
         "\t\t\r",
         "\t\t// System Design\r",
         "\t\t${csp.dtr.pwrb.nameplate} = fail;\r",
@@ -1829,15 +1844,15 @@
         "\t\t${field_htf_min_operating_temp} = fail;\r",
         "\t\t${field_htf_max_operating_temp} = fail;\r",
         "\t\t${field_htf_cp_avg} = fail;\r",
-        "\t\t${single_loop_aperature} = fail;\r",
+        "\t\t${single_loop_aperture} = fail;\r",
         "\t\t${min_inner_diameter} = fail;\r",
-        "\t\t${csp_dtr_hce_design_heat_losses} = fail;\r",
-        "\t\t${cspdtr_loop_hce_heat_loss} = fail;\r",
-        "\t\t${csp_dtr_sca_calc_sca_effs} = fail;\r",
+        "\t\t${csp_dtr_hce_design_heat_losses} = fail_array;\r",
+        "\t\t${csp_dtr_loop_hce_heat_loss} = fail;\r",
+        "\t\t${csp_dtr_sca_calc_sca_effs} = fail_array;\r",
         "\t\t${loop_optical_efficiency} = fail;\r",
-        "\t\t${csp_dtr_hce_optical_effs} = fail;\r",
-        "\t\t${SCAInfoArray} = fail;\r",
-        "\t\t${SCADefocusArray} = fail;\r",
+        "\t\t${csp_dtr_hce_optical_effs} = fail_array;\r",
+        "\t\t${SCAInfoArray} = fail_matrix;\r",
+        "\t\t${SCADefocusArray} = fail_array;\r",
         "\t\t${max_field_flow_velocity} = fail;\r",
         "\t\t${min_field_flow_velocity} = fail;\r",
         "\t\t${total_loop_conversion_efficiency} = fail;\r",
@@ -1850,10 +1865,10 @@
         "\t\t${fixed_land_area} = fail;\r",
         "\t\t${total_land_area} = fail;\r",
         "\t\t${total_tracking_power} = fail;\r",
-        "\t\t${K_cpnt} = fail;\r",
-        "\t\t${D_cpnt} = fail;\r",
-        "\t\t${L_cpnt} = fail;\r",
-        "\t\t${Type_cpnt} = fail;\r",
+        "\t\t${K_cpnt} = fail_matrix;\r",
+        "\t\t${D_cpnt} = fail_matrix;\r",
+        "\t\t${L_cpnt} = fail_matrix;\r",
+        "\t\t${Type_cpnt} = fail_matrix;\r",
         "\t\t\r",
         "\t\t// Thermal Storage\r",
         "\t\t${vol_tank} = fail;\r",
@@ -1868,14 +1883,14 @@
         "\t\t${csp.dtr.tes.htf_calc_temp} = fail;\r",
         "\t\r",
         "\t\t// Collectors\r",
-        "\t\t${csp_dtr_sca_ap_lengths} = fail;\r",
+        "\t\t${csp_dtr_sca_ap_lengths} = fail_matrix;\r",
         "\t\t${csp_dtr_sca_calc_zenith} = fail;\r",
         "\t\t${csp_dtr_sca_calc_costh} = fail;\r",
         "\t\t${csp_dtr_sca_calc_theta} = fail;\r",
-        "\t\t${csp_dtr_sca_calc_end_gains} = fail;\r",
-        "\t\t${csp_dtr_sca_calc_end_losses} = fail;\r",
+        "\t\t${csp_dtr_sca_calc_end_gains} = fail_matrix;\r",
+        "\t\t${csp_dtr_sca_calc_end_losses} = fail_matrix;\r",
         "\t\t${csp_dtr_sca_calc_latitude} = fail;\r",
-        "\t\t${csp_dtr_sca_calc_iams} = fail;\r",
+        "\t\t${csp_dtr_sca_calc_iams} = fail_matrix;\r",
         "\t\r",
         "\t\t// Power Cycle\r",
         "\t\t${PB_m_dot_htf_cycle_des} = fail;\r",
@@ -1883,11 +1898,18 @@
         "\t\t// System Control\r",
         "\t\t${is_wlim_series} = fail;\r",
         "\t\t${disp_wlim_max} = fail;\r",
-        "\t\t${wlim_series} = fail;\r",
+        "\t\t\r",
+        "\t\tflag = ${is_dispatch};\r",
+        "\t\tif (flag == 1)\r",
+        "\t\t{\r",
+        "\t\t\t${wlim_series} = fail_array;\r",
+        "\t\t}\r",
+        "\t\t\r",
         "\t\t${csp.pt.par.calc.bop} = fail;\r",
         "\t\t${csp.pt.par.calc.aux} = fail;\r",
         "\t\t\r",
         "\t\t// Capital Costs\r",
+        "\t\tcsp_financial_model = ${csp_financial_model};\r",
         "\t\tif(csp_financial_model != 8)\r",
         "\t\t{\r",
         "\t\t\t${csp.dtr.cost.site_improvements} = fail;\r",

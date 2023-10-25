@@ -3529,7 +3529,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "single_loop_aperature"
+                    "String": "single_loop_aperture"
                 },
                 "X": {
                     "Type": 3.0,
@@ -4636,13 +4636,13 @@
         "FIELD_COPY_solar_mult": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Actual solar multiple",
-            "Units": " ",
-            "Group": "Physical Trough Solar Field",
+            "Label": "Solar multiple",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 2.0,
-            "UIObject": "Numeric",
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -5063,7 +5063,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cspdtr_loop_hce_heat_loss": {
+        "csp_dtr_loop_hce_heat_loss": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Loop receiver heat loss",
@@ -5593,7 +5593,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "single_loop_aperature": {
+        "single_loop_aperture": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Single loop aperture",
@@ -5824,6 +5824,10 @@
         "// Just UI indicator",
         "equations{ 'FIELD_COPY_T_loop_out' } = define() {",
         "\treturn ${T_loop_out}; };",
+        "\t\r",
+        "// Just UI indicator\r",
+        "equations{ 'FIELD_COPY_solar_mult' } = define() {\r",
+        "\treturn ${solar_mult}; };\r",
         "\t",
         "// Just UI indicator",
         "//equations{ 'FIELD_COPY_nLoops' } = define() {",
