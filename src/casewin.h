@@ -111,7 +111,7 @@ private:
 
 	InputPageList *m_inputPageList;
 	std::vector<InputPageGroup*> m_pageGroups;
-	UIFormDatabase m_forms;
+	std::vector<UIFormDatabase> m_forms;
 	InputPageGroup *m_currentGroup;
 	std::vector<wxUIFormData*> m_currentForms;
 
@@ -141,7 +141,7 @@ private:
 	wxMetroButton *m_exclPageButton;
     wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
-	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
+	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );
 	void SetupActivePage();
 	void LayoutPage();
