@@ -62,17 +62,33 @@ version_upgrade{'2023.9.19'} = define() {
 		message('AC Losses (availability losses) variable format changed from table to separate variables.');
 		value('adjust_constant', x.constant, 'Convert AC Losses adjust:constant to adjust_constant');
 		value('adjust_en_periods', x.en_periods, 'Convert AC Losses adjust:en_periods to adjust_en_periods');
-		value('adjust_periods', x.periods, 'Convert AC Losses adjust:periods to adjust_periods');
+		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
+		else { p = x.periods; }
+		value('adjust_periods', p, 'Convert AC Losses adjust:periods to adjust_periods');
 		value('adjust_en_timeindex', x.en_timeindex, 'Convert AC Losses adjust:en_timeindex to adjust_en_timeindex');
 		value('adjust_timeindex', x.timeindex, 'Convert AC Losses adjust:timeindex to adjust_timeindex');
 	}
 	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' ) {
+		if ( oldvalue('subarray2_enable') == 0 && oldvalue('subarray2_modules_per_string') == 0 && oldvalue('subarray2_nstrings') == 0 ) {
+			value('subarray2_modules_per_string', 1, 'Change default Subarray 2 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray2_nstrings', 1, 'Change default Subarray 2 strings in parallel from 0 to 1 to avoid simulation error');
+		}
+		if ( oldvalue('subarray3_enable') == 0 && oldvalue('subarray3_modules_per_string') == 0 && oldvalue('subarray3_nstrings') == 0 ) {
+			value('subarray3_modules_per_string', 1, 'Change default Subarray 3 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray3_nstrings', 1, 'Change default Subarray 3 strings in parallel from 0 to 1 to avoid simulation error');
+		}
+		if ( oldvalue('subarray4_enable') == 0 && oldvalue('subarray4_modules_per_string') == 0 && oldvalue('subarray4_nstrings') == 0 ) {
+			value('subarray4_modules_per_string', 1, 'Change default Subarray 4 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray4_nstrings', 1, 'Change default Subarray 4 strings in parallel from 0 to 1 to avoid simulation error');
+		}
 		message('The module aspect ratio input is now on the Module page instead of the Shading and Layout page. For the CEC performance model with module library, SAM now calculates the aspect ratio from the length and width data in the module library if it is avalailable.');
 		x = oldvalue('dc_adjust');
 		message('DC Losses (availability losses) variable format changed from table to separate variables.');
 		value('dc_adjust_constant', x.constant, 'Convert DC Losses dc_adjust:constant to dc_adjust_constant');
 		value('dc_adjust_en_periods', x.en_periods, 'Convert DC Losses dc_adjust:en_periods to dc_adjust_en_periods');
-		value('dc_adjust_periods', x.periods, 'Convert DC Losses dc_adjust:periods to dc_adjust_periods');
+		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
+		else { p = x.periods; }
+		value('dc_adjust_periods', p, 'Convert DC Losses dc_adjust:periods to dc_adjust_periods');
 		value('dc_adjust_en_timeindex', x.en_timeindex, 'Convert DC Losses dc_adjust:en_timeindex to dc_adjust_en_timeindex');
 		value('dc_adjust_timeindex', x.timeindex, 'Convert DC Losses dc_adjust:timeindex to dc_adjust_timeindex');
 		x = oldvalue('subarray1_shading');
@@ -143,7 +159,9 @@ version_upgrade{'2023.9.19'} = define() {
 		message('Solar Field Losses (availability losses) variable format changed from table to separate variables.');
 		value('sf_adjust_constant', x.constant, 'Convert Solar Field Losses sf_adjust:constant to sf_adjust_constant');
 		value('sf_adjust_en_periods', x.en_periods, 'Convert Solar Field Losses asf_djust:en_periods to sf_adjust_en_periods');
-		value('sf_adjust_periods', x.periods, 'Convert Solar Field Losses sf_adjust:periods to sf_adjust_periods');
+		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
+		else { p = x.periods; }
+		value('sf_adjust_periods', p, 'Convert Solar Field Losses sf_adjust:periods to sf_adjust_periods');
 		value('sf_adjust_en_timeindex', x.en_timeindex, 'Convert Solar Field Losses sf_adjust:en_timeindex to sf_adjust_en_timeindex');
 		value('sf_adjust_timeindex', x.timeindex, 'Convert Solar Field Losses sf_adjust:timeindex to sf_adjust_timeindex');
 	}
