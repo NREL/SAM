@@ -1,7 +1,7 @@
 {
     "Name": "IEC61853 Single Diode Model",
-    "Width": 1031.0,
-    "Height": 902.0,
+    "Width": 1028.0,
+    "Height": 889.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -228,7 +228,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -302,7 +302,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Additional information for parameter estimation"
+                    "String": "Additional Information for Parameter Estimation"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -319,7 +319,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -331,7 +331,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 90.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -340,6 +340,43 @@
                 "Caption": {
                     "Type": 5.0,
                     "String": "References"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 412"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Module Dimensions"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -376,7 +413,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Calculated model parameters from IEC-61853 test data"
+                    "String": "Calculated Model Parameters from IEC-61853 Test Data"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -397,7 +434,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 291.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -405,7 +442,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 75.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -413,7 +450,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Optical and spectral behavior"
+                    "String": "Optical and Spectral Behavior"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -434,7 +471,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -442,7 +479,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 99.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -450,7 +487,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Installation and thermal behavior"
+                    "String": "Thermal Behavior"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -479,7 +516,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 105.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -487,7 +524,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "STC parameters (from test data)"
+                    "String": "STC Parameters (From Test Data)"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -524,7 +561,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Module test data (according to IEC-61853)"
+                    "String": "Module Test Data (According to IEC-61853)"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -541,7 +578,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -855,7 +892,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -938,7 +975,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1021,7 +1058,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1104,7 +1141,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1187,7 +1224,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1432,11 +1469,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 633.0
+                    "Integer": 654.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1602,7 +1639,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1681,11 +1718,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 633.0
+                    "Integer": 654.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1764,11 +1801,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 633.0
+                    "Integer": 654.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1851,7 +1888,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2013,15 +2050,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 654.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2042,6 +2079,89 @@
                 "Format": {
                     "Type": 3.0,
                     "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_aspect_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 654.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -2681,7 +2801,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2847,7 +2967,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2875,6 +2995,172 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_module_length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sd11par_module_width"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2884,11 +3170,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 744.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3091,11 +3377,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 744.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 231.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3132,11 +3418,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 744.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 204.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3672,12 +3958,25 @@
         "sd11par_area": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Area",
+            "Label": "Module area",
             "Units": "m2",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.72,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_aspect_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module aspect ratio",
+            "Units": "",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -3812,6 +4111,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "sd11par_module_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module length",
+            "Units": "m",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sd11par_module_width": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module width",
+            "Units": "m",
+            "Group": "IEC-68153 PV Module Model",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "sd11par_mounting": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3918,6 +4243,14 @@
         }
     },
     "Equations": [
+        "equations{ 'sd11par_module_length' } = define() {\r",
+        "\treturn sqrt(${sd11par_area}*${sd11par_aspect_ratio});\r",
+        "};\r",
+        "\r",
+        "equations{ 'sd11par_module_width' } = define() {\r",
+        "\treturn sqrt(${sd11par_area}/${sd11par_aspect_ratio});\r",
+        "};\r",
+        "\r",
         "equations{ 'sd11par_eff' } = define() {",
         "\treturn 0.1*${sd11par_Pmp0}/${sd11par_area};",
         "};",
