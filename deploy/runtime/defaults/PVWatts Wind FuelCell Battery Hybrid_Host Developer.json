@@ -260,7 +260,7 @@
         "bos_cost_total": 96300.0,
         "cols": 1.0,
         "degradation": [
-            0.5
+            0.0
         ],
         "desired_farm_size": 5.0,
         "elec_eff_loss": 1.91,
