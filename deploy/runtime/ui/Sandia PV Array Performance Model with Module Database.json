@@ -1,7 +1,7 @@
 {
     "Name": "Sandia PV Array Performance Model with Module Database",
-    "Width": 1015.0,
-    "Height": 762.0,
+    "Width": 1017.0,
+    "Height": 770.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 609.0
+                    "Integer": 615.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 137.0
+                    "Integer": 248.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 723.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,7 +172,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -234,7 +234,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 636.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -358,7 +358,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -420,7 +420,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 636.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -428,7 +428,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 75.0
+                    "Integer": 42.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -482,7 +482,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -544,7 +544,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -606,7 +606,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -614,7 +614,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 392.0
+                    "Integer": 326.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -623,6 +623,56 @@
                 "Caption": {
                     "Type": 5.0,
                     "String": "Module Characteristics at Reference Conditions"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 471.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Module Dimensions"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -639,19 +689,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 606.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 690.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 582.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 75.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -676,11 +726,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 789.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -688,7 +738,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -755,6 +805,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "snl_aspect_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 789.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 519.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "snl_imp_temp_1"
                 },
                 "X": {
@@ -763,7 +896,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 489.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -892,6 +1025,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "snl_module_length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 789.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Library": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -942,7 +1158,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 567.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -975,15 +1191,98 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "snl_module_width"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 789.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "snl_n_cells"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 882.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1062,11 +1361,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 882.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1149,7 +1448,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1232,7 +1531,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1315,7 +1614,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1374,7 +1673,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1457,7 +1756,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1540,7 +1839,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 489.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1623,7 +1922,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 489.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1706,7 +2005,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1789,7 +2088,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1872,7 +2171,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1955,7 +2254,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2038,7 +2337,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2121,7 +2420,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2204,7 +2503,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2287,7 +2586,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2370,7 +2669,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2453,7 +2752,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2536,7 +2835,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2678,7 +2977,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2733,11 +3032,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 882.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2820,7 +3119,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2903,7 +3202,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2986,7 +3285,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3065,11 +3364,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 822.0
+                    "Integer": 123.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 717.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3152,7 +3451,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3231,19 +3530,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 612.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 705.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 318.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3251,7 +3550,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The module unit mass is used for the transient thermal model, which is only applied for weather file time steps less than or equal to 20 minutes. The default value is 11 kg/m²."
+                    "String": "Module unit mass is for the transient thermal model, which applies only for weather file time steps  less than or equal to 20 minutes. The default value is 11 kg/m²."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -3460,6 +3759,19 @@
             "Group": "PV Module (Sandia Database)",
             "IndexLabels": "",
             "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "snl_aspect_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Aspect ratio",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3816,6 +4128,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "snl_module_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module length",
+            "Units": "m",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "snl_module_name": {
             "Version": 4.0,
             "Type": 4.0,
@@ -3839,6 +4164,19 @@
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "snl_module_width": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module width",
+            "Units": "m",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3871,7 +4209,7 @@
         "snl_parallel_cells": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Number of cell strings in parallel",
+            "Label": "Cell strings in parallel",
             "Units": " ",
             "Group": "PV Module (Sandia Database)",
             "IndexLabels": "",
@@ -4144,7 +4482,7 @@
         "snl_series_cells": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Number of cells in series",
+            "Label": "Cells in series",
             "Units": " ",
             "Group": "PV Module (Sandia Database)",
             "IndexLabels": "",
@@ -4247,6 +4585,14 @@
         }
     },
     "Equations": [
+        "equations{ 'snl_module_length' } = define() {\r",
+        "\treturn sqrt(${snl_area}*${snl_aspect_ratio});\r",
+        "};\r",
+        "\r",
+        "equations{ 'snl_module_width' } = define() {\r",
+        "\treturn sqrt(${snl_area}/${snl_aspect_ratio});\r",
+        "};\r",
+        "\r",
         "equations{ '$MIMO$ sandiamod' } = define() {",
         "\t//temp coefficients depending on module structure",
         "\t//case 0= use database values",

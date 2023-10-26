@@ -870,7 +870,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 108.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1077,7 +1077,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 108.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1085,7 +1085,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 799.0
+                    "Integer": 763.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1136,11 +1136,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1207,6 +1207,68 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 21.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_default_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 657.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 700.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Default Type is not available for the No Financial Model option."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -1451,7 +1513,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 471.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1493,11 +1555,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1576,11 +1638,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1750,7 +1812,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 489.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1766,7 +1828,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter change in pressure across the reservoir in units of psi-h per 1000 lb:|Calculate the reservoir pressure change using simple fracture flow (EGS only)|Calculate the reservoir pressure change using permeability * area|User-entered reservoir model"
+                    "StringList": "Enter change in pressure across the reservoir in units of psi-h per 1000 lb|Calculate reservoir pressure change using simple fracture flow (EGS only)|Calculate reservoir pressure change using permeability * area|User-entered reservoir model"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -1791,11 +1853,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3086,6 +3148,11 @@
         "{",
         "\tgetem_params = defs.getemparams;",
         "\t",
+        "\tif ( varinfo('analysis_period') == null ) {",
+        "\t\tmsgbox('Unable to set default type.\\nSetting the default type requires a cash flow financial model to assign the value of analysis period. It is not available for the No Financial or LCOE Calculator financial model.');",
+        "\t\treturn;",
+        "\t}",
+        "\t",
         "\tvalue('analysis_period',getem_params.analysisperiod);",
         "\t//value('geotherm.cost.prod_cost_curve_well_diam', getem_params.geotherm.cost.prod_cost_curve_well_diam);",
         "\t//value('geotherm.cost.prod_cost_curve_well_type', getem_params.geotherm.cost.prod_cost_curve_well_type);",
@@ -3143,8 +3210,9 @@
         "on_load{'Geothermal Resource'} = define() {",
         "\tsave_old_pressure_change_setting();",
         "\ton_change{'reservoir_pressure_change_type'}();",
-        "\t//show('geotherm.default_input', false); //Remove while debugging default case select feature",
-        "\t//refresh();",
+        "\tenable('geotherm.default_input', (financing()!='None'));\r",
+        "\tshow('lbl_default_type',(financing()=='None'));",
+        "\trefresh();\r",
         "};",
         "",
         "function save_old_pressure_change_setting() {",
