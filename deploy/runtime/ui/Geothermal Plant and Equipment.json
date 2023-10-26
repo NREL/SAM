@@ -184,7 +184,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Ambient Conditions"
+                    "String": "Flash Technology"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -3158,11 +3158,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 291.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3178,7 +3178,7 @@
                 },
                 "State": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -3282,7 +3282,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3307,89 +3307,6 @@
                 "Format": {
                     "Type": 3.0,
                     "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 10.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "wet_bulb_temp_wf"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 651.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 378.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -4058,13 +3975,13 @@
         },
         "use_weather_file_conditions": {
             "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use weather file conditions",
-            "Units": "0/1",
-            "Group": "Geothermal Plant and Equipment",
+            "Type": 0.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
+            "Flags": 1.0,
+            "DefaultValue": "ERROR: unhandled type specified in UI: invalid",
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4102,7 +4019,7 @@
             "Units": "'C",
             "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 2.0,
             "DefaultValue": 15.0,
             "UIObject": "Numeric",
             "sscVariableName": " ",
@@ -4117,20 +4034,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "wet_bulb_temp_wf": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Wet Bulb Temperature",
-            "Units": "'C",
-            "Group": "",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         }
@@ -4274,6 +4178,17 @@
         "\tssc_free( obj );",
         "\t",
         "\treturn 0;",
+        "};\r",
+        "\r",
+        "equations{ 'wet_bulb_temp_wf'} = define() {\r",
+        "\tif (isnan(${annual_twet})) return ${annual_tdry};\r",
+        "\telse return ${annual_twet};\r",
+        "};\r",
+        "\r",
+        "equations{ 'wet_bulb_temp'} = define() {\r",
+        "\tcheck = ${use_weather_file_conditions};\r",
+        "\tif (check == 0) return ${wet_bulb_temp_input};\r",
+        "\telse return ${wet_bulb_temp_wf};\r",
         "};",
         "",
         "equations{ 'system_capacity' } = define() {",
@@ -4282,26 +4197,10 @@
         "",
         "equations{ 'pump_size_hp' } = define() {",
         "\treturn ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;",
-        "};\r",
-        "\r",
-        "equations{ 'wet_bulb_temp_wf' } = define() {\r",
-        "\tif (isnan(${annual_twet})) return ${annual_tdry};\r",
-        "\telse return ${annual_twet};\r",
-        "};\r",
-        "\r",
-        "equations{ 'wet_bulb_temp' } = define() {\r",
-        "\tif (${use_weather_file_conditions} == 0) {\r",
-        "\t\treturn ${wet_bulb_temp_input};\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\treturn ${wet_bulb_temp_wf};\r",
-        "\t}\r",
-        "};\r",
-        "\r",
-        "\t"
+        "};"
     ],
     "Callbacks": [
-        "{",
+        "function handle_change_to_hydrothermal(){",
         "\t// if we just changed to 'hydrothermal'",
         "\tif (${resource_type} == 0) {",
         "\t\tif (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3) {",
@@ -4377,24 +4276,7 @@
         "\tif ( (value('reservoir_pressure_change_type') == 1 || value('reservoir_pressure_change_type') == 3 ) && value('resource_type') != 1) {",
         "\t\tmsgbox('This option is only allowed for EGS resources.');",
         "\t\thandle_change_to_hydrothermal();",
-        "\t};",
-        "",
-        "on_load{\"Geothermal Plant and Equipment\"}=define() {",
-        "\tupdate_controls();",
-        "\ton_change{'prod_well_choice'}();",
-        "\tloss_adjustment_set();",
-        "\tegs_temp_def();\r",
-        "\ton_change{'use_weather_file_conditions'}();",
-        "\tshow('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);",
-        "\trefresh();",
-        "};\t",
-        "",
-        "on_change{\"conversion_type\"} = define() {",
-        "\tupdate_controls();",
-        "\tif (value('conversion_type') == 1) {",
-        "\t\tvalue('decline_type', 0);",
-        "\t\tenable('decline_type', false);",
-        "\t};",
+        "\t}",
         "\tsave_old_pressure_change_setting();",
         "\tcheck = value('reservoir_pressure_change_type');",
         "\ttech_check = value('resource_type');",
@@ -4420,33 +4302,39 @@
         "\t\tvalue('reservoir_model_inputs_shown', 0);",
         "\t}",
         "\t",
+        "};\r",
+        "\r",
+        "on_change{'use_weather_file_conditions'} = define() {\r",
+        "\tcheck = value('use_weather_file_conditions');\r",
+        "\tshow('wet_bulb_temp_input', check == 0);\r",
+        "\tshow('wet_bulb_temp_wf', check == 1);\r",
+        "\trefresh();\r",
+        "};\r",
+        "\r",
+        "on_load{\"Geothermal Plant and Equipment\"}=define() {\r",
+        "\tupdate_controls();\r",
+        "\ton_change{'prod_well_choice'}();\r",
+        "\tloss_adjustment_set();\r",
+        "\tegs_temp_def();\r",
+        "\ton_change{'use_weather_file_conditions'}();\r",
+        "\tshow('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);\r",
+        "\trefresh();\r",
+        "};\r",
+        "        \r",
+        "on_change{\"conversion_type\"} = define() {\r",
+        "\tupdate_controls();\r",
+        "\tif (value('conversion_type') == 1) {\r",
+        "\t\tvalue('decline_type', 0);\r",
+        "\t\tenable('decline_type', false);\r",
+        "\t}\r",
         "};",
         "",
-        "on_load{'Geothermal Resource'} = define() {",
-        "\tsave_old_pressure_change_setting();",
-        "\ton_change{'reservoir_pressure_change_type'}();",
-        "\t//show('geotherm.default_input', false); //Remove while debugging default case select feature",
-        "\t//refresh();",
-        "};",
         "",
         "function save_old_pressure_change_setting() {",
         "\t// save the last setting that wasn't option 1",
         "\tif ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) ",
         "\t\t${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};",
         "}",
-        "function egs_temp_def()",
-        "{",
-        "\tcheck = value('geotherm.egs_design_temp_autoselect');",
-        "\tresource = value('resource_type');",
-        "\tenable('geotherm.egs_design_temp_input', check == 0 && resource == 1);",
-        "}\r",
-        "\r",
-        "on_change{'use_weather_file_conditions'} = define() {\r",
-        "\tcheck = value('use_weather_file_conditions');\r",
-        "\tshow('wet_bulb_temp_input',check==0);\r",
-        "\tshow('wet_bulb_temp_wf',check==1);\r",
-        "\trefresh();\r",
-        "};",
         ""
     ]
 }
