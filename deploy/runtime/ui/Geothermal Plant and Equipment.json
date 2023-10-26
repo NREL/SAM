@@ -184,7 +184,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Flash Technology"
+                    "String": "Ambient Conditions"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -427,7 +427,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3145,6 +3145,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "use_weather_file_conditions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 528.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use wet bulb temperature from weather file"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3233,7 +3274,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "wet_bulb_temp"
+                    "String": "wet_bulb_temp_input"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3241,7 +3282,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 378.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3266,6 +3307,89 @@
                 "Format": {
                     "Type": 3.0,
                     "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wet_bulb_temp_wf"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 651.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -3932,6 +4056,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "use_weather_file_conditions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use weather file conditions",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "well_diameter": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3965,10 +4102,36 @@
             "Units": "'C",
             "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 8.0,
             "DefaultValue": 15.0,
             "UIObject": "Numeric",
             "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "wet_bulb_temp_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wet Bulb Temperature",
+            "Units": "'C",
+            "Group": "Geothermal Plant and Equipment",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wet_bulb_temp_wf": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wet Bulb Temperature",
+            "Units": "'C",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
             "sscVariableValue": ""
         }
     },
@@ -4036,7 +4199,8 @@
         "\t\tssc_var( obj, 'decline_type', 0);",
         "\tssc_var( obj, 'temp_decline_rate', ${temp_decline_rate} );",
         "\tssc_var( obj, 'temp_decline_max', ${temp_decline_max} );",
-        "\tssc_var( obj, 'wet_bulb_temp', ${wet_bulb_temp} );",
+        "\tssc_var( obj, 'wet_bulb_temp', ${wet_bulb_temp} );\r",
+        "\tssc_var( obj, 'use_weather_file_conditions', ${use_weather_file_conditions});",
         "\tssc_var( obj, 'ambient_pressure', ${ambient_pressure} );",
         "\tssc_var( obj, 'well_flow_rate', ${well_flow_rate} );",
         "\tssc_var( obj, 'pump_efficiency', ${pump_efficiency} );",
@@ -4118,7 +4282,23 @@
         "",
         "equations{ 'pump_size_hp' } = define() {",
         "\treturn ${pumpwork_prod} / (0.7457 * 1000) * ${well_flow_rate} * 7936.64;",
-        "};"
+        "};\r",
+        "\r",
+        "equations{ 'wet_bulb_temp_wf' } = define() {\r",
+        "\tif (isnan(${annual_twet})) return ${annual_tdry};\r",
+        "\telse return ${annual_twet};\r",
+        "};\r",
+        "\r",
+        "equations{ 'wet_bulb_temp' } = define() {\r",
+        "\tif (${use_weather_file_conditions} == 0) {\r",
+        "\t\treturn ${wet_bulb_temp_input};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn ${wet_bulb_temp_wf};\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "\t"
     ],
     "Callbacks": [
         "{",
@@ -4197,7 +4377,24 @@
         "\tif ( (value('reservoir_pressure_change_type') == 1 || value('reservoir_pressure_change_type') == 3 ) && value('resource_type') != 1) {",
         "\t\tmsgbox('This option is only allowed for EGS resources.');",
         "\t\thandle_change_to_hydrothermal();",
-        "\t}",
+        "\t};",
+        "",
+        "on_load{\"Geothermal Plant and Equipment\"}=define() {",
+        "\tupdate_controls();",
+        "\ton_change{'prod_well_choice'}();",
+        "\tloss_adjustment_set();",
+        "\tegs_temp_def();\r",
+        "\ton_change{'use_weather_file_conditions'}();",
+        "\tshow('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);",
+        "\trefresh();",
+        "};\t",
+        "",
+        "on_change{\"conversion_type\"} = define() {",
+        "\tupdate_controls();",
+        "\tif (value('conversion_type') == 1) {",
+        "\t\tvalue('decline_type', 0);",
+        "\t\tenable('decline_type', false);",
+        "\t};",
         "\tsave_old_pressure_change_setting();",
         "\tcheck = value('reservoir_pressure_change_type');",
         "\ttech_check = value('resource_type');",
@@ -4237,6 +4434,19 @@
         "\tif ( ${reservoir_pressure_change_type} != 1 && ${reservoir_pressure_change_type} != 3) ",
         "\t\t${reservoir_pressure_change_type_old_setting} = ${reservoir_pressure_change_type};",
         "}",
+        "function egs_temp_def()",
+        "{",
+        "\tcheck = value('geotherm.egs_design_temp_autoselect');",
+        "\tresource = value('resource_type');",
+        "\tenable('geotherm.egs_design_temp_input', check == 0 && resource == 1);",
+        "}\r",
+        "\r",
+        "on_change{'use_weather_file_conditions'} = define() {\r",
+        "\tcheck = value('use_weather_file_conditions');\r",
+        "\tshow('wet_bulb_temp_input',check==0);\r",
+        "\tshow('wet_bulb_temp_wf',check==1);\r",
+        "\trefresh();\r",
+        "};",
         ""
     ]
 }

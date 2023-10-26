@@ -182,6 +182,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_width_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.inj_cost_curve_welldiam", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "geotherm.cost.inj_cost_curve_welltype", number);
@@ -191,6 +197,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_n
 SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "geotherm.cost.inj_prod_well_ratio", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.prod_cost_curve_welldiam", number);
 	});
 }
 
@@ -479,6 +491,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_rate_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_Geothermal_GeoHourly_ui_calculations_only_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ui_calculations_only", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_use_weather_file_conditions_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "use_weather_file_conditions", number);
 	});
 }
 
@@ -839,6 +857,17 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_width_nget(SAM_table ptr, SA
 
 
 
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.inj_cost_curve_welldiam", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.inj_cost_curve_welldiam");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -855,6 +884,17 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nge
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "geotherm.cost.inj_prod_well_ratio", &result))
 		make_access_error("SAM_Geothermal", "geotherm.cost.inj_prod_well_ratio");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.prod_cost_curve_welldiam", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.prod_cost_curve_welldiam");
 	});
 	return result;
 }
@@ -1385,6 +1425,17 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_ui_calculations_only_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ui_calculations_only", &result))
 		make_access_error("SAM_Geothermal", "ui_calculations_only");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_use_weather_file_conditions_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "use_weather_file_conditions", &result))
+		make_access_error("SAM_Geothermal", "use_weather_file_conditions");
 	});
 	return result;
 }
