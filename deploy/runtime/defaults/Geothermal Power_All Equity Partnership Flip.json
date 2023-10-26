@@ -9581,6 +9581,7 @@
         1.0,
         1.0
     ],
+    "drilling_success_rate": 75.0,
     "dscr_reserve_months": 6.0,
     "dt_prod_well": 0.0,
     "elev": 82.0,

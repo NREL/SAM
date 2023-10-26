@@ -9576,6 +9576,8 @@
         1.0,
         1.0
     ],
+    "drilling_ppi": 0.319,
+    "drilling_success_rate": 75.0,
     "dscr_reserve_months": 6.0,
     "dt_prod_well": 0.0,
     "elev": 82.0,
@@ -9592,6 +9594,8 @@
     "equip_reserve_depr_sta": 0.0,
     "eta_ref": 0.17,
     "excess_pressure_pump": 50.0,
+    "exploration_wells_production": 2.0,
+    "failed_prod_flow_ratio": 0.0,
     "federal_tax_rate": [
         21.0
     ],
@@ -19848,6 +19852,7 @@
     "station_id": "258971",
     "steel_ppi": 1.12883,
     "step": 3600.0,
+    "stim_success_rate": 0.0,
     "subsurface_water_loss": 2.0,
     "system_capacity": 33122.2,
     "system_recapitalization_cost": 28681200.0,

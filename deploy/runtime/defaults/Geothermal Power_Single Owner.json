@@ -9588,7 +9588,7 @@
         1.0
     ],
     "drilling_ppi": 0.319,
-    "drilling_success_rate": 0.0,
+    "drilling_success_rate": 75.0,
     "dscr": 1.3,
     "dscr_limit_debt_fraction": 0.0,
     "dscr_maximum_debt_fraction": 100.0,
