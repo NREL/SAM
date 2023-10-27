@@ -2480,7 +2480,7 @@
             "Label": "Storage HTF fluid",
             "Units": " ",
             "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|User-defined...",
+            "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|Pressurized Water|User-defined...",
             "Flags": 2.0,
             "DefaultValue": 3.0,
             "UIObject": "Choice",

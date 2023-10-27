@@ -5118,7 +5118,7 @@
         ""
     ],
     "Callbacks": [
-        "on_load{\"DTR Capital Costs\"}=define()",
+        "on_load{\"Physical Trough IPH Capital Costs\"}=define()",
         "{",
         "\tfin = value(\"case.financing\");",
         "\t",
