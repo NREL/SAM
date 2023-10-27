@@ -9595,7 +9595,7 @@
     "eta_ref": 0.17,
     "excess_pressure_pump": 50.0,
     "exploration_wells_production": 2.0,
-    "failed_prod_flow_ratio": 0.0,
+    "failed_prod_flow_ratio": 0.3,
     "federal_tax_rate": [
         21.0
     ],

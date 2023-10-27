@@ -84,7 +84,7 @@
     "eta_ref": 0.17,
     "excess_pressure_pump": 50.0,
     "exploration_wells_production": 0.0,
-    "failed_prod_flow_ratio": 0.0,
+    "failed_prod_flow_ratio": 0.3,
     "file_name": "blythe_ca_33.617773_-114.588261_psmv3_60_tmy.csv",
     "fixed_charge_rate": 0.0837052,
     "fixed_operating_cost": 6087700.0,
