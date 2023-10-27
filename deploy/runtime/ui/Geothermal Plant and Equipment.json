@@ -1519,7 +1519,7 @@
                 },
                 "Tips": {
                     "Type": 5.0,
-                    "String": "Binary: A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser. Flash: A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser."
+                    "String": "Binary: A conversion technology in which the heat in the geothermal fluid is transferred to a secondary working fluid with a lower boiling point, which is then vaporized. Air-cooled binary plants utilize ambient air for cooling the turbine outlet working fluid within the condenser. \\nFlash: A conversion technology in which the the geothermal fluid is directly vaporized at constant temperature."
                 },
                 "TipTitle": {
                     "Type": 5.0,
