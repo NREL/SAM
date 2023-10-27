@@ -403,11 +403,14 @@ function setup_grid_limits_page()
            { 'sidebar'='Grid Limits', 'help'='grid_limits' } );
 }
 
-function setup_grid_outage_page()
+function setup_grid_outage_page(is_reopt)
 {
-	/*addpage( [[ 'Grid Interconnection', 'Grid Curtailment', 'Grid Outage']],
-           { 'sidebar'='Grid Limits', 'help'='grid_limits' } );*/
-	addpage( [[ 'Grid Outage', ]], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );           
+	if (is_reopt) {
+		addpage( [[ 'Grid Outage', 'Battery REopt Outage Sizing']], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );     
+	}
+	else {
+		addpage( [[ 'Grid Outage', ]], { 'sidebar'='Grid Outage', 'help'='grid_outage' } );   
+	}      
 }
 
 // note 'collapsed by default' does not seem to do anything. To set default behavior, set default value of collapsible_var. For example, to collapse description by default, use Defaults Manager to set ur_desc_is_shown = 0.
@@ -1270,7 +1273,7 @@ addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ],
 		  [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ],
 		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 setup_grid_limits_page();
-setup_grid_outage_page();
+setup_grid_outage_page(false);
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ],
 		  [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
@@ -2271,7 +2274,7 @@ function setup_pv_battery_pages(is_btm)
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_btm();
 		setup_grid_limits_page();
-		setup_grid_outage_page();
+		setup_grid_outage_page(true);
 	}
 	else
 	{
@@ -2375,7 +2378,7 @@ function setup_generic_battery_pages(is_btm) {
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_btm();
 		setup_grid_limits_page();
-		setup_grid_outage_page();
+		setup_grid_outage_page(false);
 	}
 	else
 	{
@@ -2469,7 +2472,7 @@ function setup_standalone_battery_pages(is_btm) {
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_btm();
 		setup_grid_limits_page();
-		setup_grid_outage_page();
+		setup_grid_outage_page(false);
 	}
 	else {
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
@@ -2589,7 +2592,7 @@ function setup_hybrid_battery_pages(is_btm) {
 		setup_pages_battery_life();
 		setup_pages_battery_dispatch_btm();
 		setup_grid_limits_page();
-		setup_grid_outage_page();
+		setup_grid_outage_page(false);
 	}
 	else
 	{
@@ -2862,7 +2865,7 @@ addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
 setup_grid_limits_page();
-setup_grid_outage_page();// host developer
+setup_grid_outage_page(false);// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
@@ -3171,7 +3174,7 @@ addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
 setup_grid_limits_page();
-setup_grid_outage_page();// host developer
+setup_grid_outage_page(false);// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});

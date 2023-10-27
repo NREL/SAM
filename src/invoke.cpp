@@ -5862,9 +5862,14 @@ static void fcall_read_json(lk::invoke_t &cxt)
 
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
-    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "[boolean:grid_outage]: table");
 
     ssc_data_t p_data = ssc_data_create();
+
+    bool grid_outage = false;
+    if (cxt.arg_count() > 0) {
+        grid_outage = cxt.arg(0).as_boolean();
+    }
 
 	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
 		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
@@ -5893,9 +5898,11 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     //
     size_t length;
     ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
-    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // TODO: hybrids
-    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value()); // TODO: hybrids
+    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // We're now providing prod factor series via gen, so REopt will ignore lat and lon
+    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value());
     ssc_data_set_array(p_data, "gen", gen, length);
+
+    ssc_data_set_number(p_data, "size_for_grid_outage", grid_outage);
 
     auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
         for (auto& i : captured_vec){
@@ -5933,7 +5940,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                                            "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
                                            "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
                                            "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC", "crit_load" };
+                                           "batt_minimum_SOC", "crit_load", "grid_outage"};
 
     if (pvsam){
         copy_vars_into_ssc_data(pvsam_vars);

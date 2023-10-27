@@ -1,7 +1,7 @@
 {
-    "Name": "Battery REopt Optimization",
-    "Width": 1053.0,
-    "Height": 112.0,
+    "Name": "Battery REopt Outage Sizing",
+    "Width": 860.0,
+    "Height": 113.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1029.0
+                    "Integer": 835.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details."
+                    "String": "Automatically size the battery bank and get a recommended PV system size using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -70,7 +70,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "call_reopt"
+                    "String": "call_reopt_outage"
                 },
                 "X": {
                     "Type": 3.0,
@@ -119,7 +119,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1042.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -131,7 +131,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Optimal Sizing and Dispatch from REopt"
+                    "String": "Optimal Sizing from REopt for Outages"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -143,7 +143,7 @@
     "VarDatabase": {},
     "Equations": [],
     "Callbacks": [
-        "on_change{'call_reopt'} = define()",
+        "on_change{'call_reopt_outage'} = define()",
         "{",
         "\t// check inputs before making REopt call",
         "\twf_len = 60 / ${ui_step_minutes} * 8760;",
@@ -209,7 +209,7 @@
         "\tvalue('batt_bank_size_ui', 0);",
         "\tvalue('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf",
         "\t",
-        "\treopt = reopt_size_battery();",
+        "\treopt = reopt_size_battery(true);",
         "",
         "\tif (reopt.error)",
         "\t{",
