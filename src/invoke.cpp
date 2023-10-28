@@ -5900,7 +5900,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
     ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // We're now providing prod factor series via gen, so REopt will ignore lat and lon
     ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value());
-    ssc_data_set_array(p_data, "gen", gen, length);
+    ssc_data_set_array(p_data, "gen_without_battery", gen, length);
 
     ssc_data_set_number(p_data, "size_for_grid_outage", grid_outage);
 
@@ -5940,7 +5940,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
                                            "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
                                            "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
                                            "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC", "crit_load", "grid_outage"};
+                                           "batt_minimum_SOC", "batt_dispatch_auto_can_gridcharge", "crit_load", "grid_outage"};
 
     if (pvsam){
         copy_vars_into_ssc_data(pvsam_vars);

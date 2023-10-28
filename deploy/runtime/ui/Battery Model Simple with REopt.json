@@ -805,7 +805,7 @@
         "\tvalue('batt_simple_kw', batt.size_kw);",
         "\tvalue('batt_simple_kwh', batt.size_kwh);",
         "\t",
-        "\tif (batt.size_kw == 0 && batt.size_kwh == 0) {",
+        "\tif ((batt.size_kw == 0 && batt.size_kwh == 0) || !apply) {",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\texit;",
         "\t}",
