@@ -143,6 +143,19 @@
     "VarDatabase": {},
     "Equations": [],
     "Callbacks": [
+        "on_load{'Battery REopt Outage Sizing'} = define()\r",
+        "{\r",
+        "\tgrid_outage = value('grid_outage');\r",
+        "\tenable('call_reopt_outage', sum(grid_outage) > 0);\r",
+        "};\r",
+        "\r",
+        "\r",
+        "on_change{'grid_outage'} = define()\r",
+        "{\r",
+        "\tgrid_outage = value('grid_outage');\r",
+        "\tenable('call_reopt_outage', sum(grid_outage) > 0);\r",
+        "};\r",
+        "\r",
         "on_change{'call_reopt_outage'} = define()\r",
         "{\r",
         "\t// check inputs before making REopt call\r",
@@ -324,6 +337,8 @@
         "\tvalue('batt_dispatch_discharge_only_load_exceeds_system', false);\r",
         "\trefresh();\r",
         "\r",
+        "\tmsgbox('REopt found an optimal PV size of ' + to_string(pv.size_kw) + ' kW\\n' +\r",
+        "\t\t\t'This will need to be applied manually.' );\r",
         "};"
     ]
 }
