@@ -21378,7 +21378,7 @@
     "well_diameter": 12.25,
     "well_flow_rate": 110.0,
     "wet_bulb_temp": 0.0,
-    "wet_bulb_temp_input": 0.0,
+    "wet_bulb_temp_input": 10.0,
     "wet_bulb_temp_wf": 24.0951,
     "wf_nrecords": 8760.0
 }
