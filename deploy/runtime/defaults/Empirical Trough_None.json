@@ -326,6 +326,7 @@
     "annual_global": 5.83819,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
+    "annual_twet": 0.0,
     "annual_wspd": 2.35368,
     "azimuth": 0.0,
     "calc_aperture_area_at_sm_1": 429384.0,
