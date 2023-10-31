@@ -1658,7 +1658,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "lbl_ptc_message"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1682,7 +1682,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Inflation does not apply to the PTC amount. In Schedule mode, use nominal (current) dollar values. See Help for details."
+                    "String": "Caption defined in UI callback"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2459,9 +2459,35 @@
         "\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));",
         "\tproperty('ptc_fed_amount','FixedLength',value('analysis_period'));",
         "\tproperty('ptc_sta_amount','FixedLength',value('analysis_period'));",
+        "\r",
+        "\tptc_grid_charge_message();\r",
         "",
-        "",
-        "};",
+        "};\r",
+        "\r",
+        "on_change{'ptc_fed_amount'} = define() { ptc_grid_charge_message(); };\r",
+        "on_change{'ptc_fed_term'} = define() { ptc_grid_charge_message(); };\r",
+        "on_change{'ptc_sta_amount'} = define() { ptc_grid_charge_message(); };\r",
+        "on_change{'ptc_sta_term'} = define() { ptc_grid_charge_message(); };\r",
+        "\r",
+        "function ptc_grid_charge_message() {\r",
+        "\tptc_enabled = ( sum(value('ptc_fed_amount')) != 0 && value('ptc_fed_term') > 0 ) || ( sum(value('ptc_sta_amount')) != 0 && value('ptc_sta_term') > 0 );\r",
+        "\tif ( varinfo('batt_dispatch_auto_can_gridcharge') == null ) {\r",
+        "\t\tmessage = 'Inflation does not apply to the PTC amount. In Schedule mode, use nominal (current) dollar values. See Help for details.';\r",
+        "\t\tcolor = 'black';\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tif ( value('batt_dispatch_auto_can_gridcharge') && ptc_enabled )  {\r",
+        "\t\t\tmessage = 'Grid charging is enabled on the Battery Dispatch page. The PTC is calculated from Electricity to Grid, which may include electricity discharged by the battery to the grid that originally came from the grid.';\r",
+        "\t\t\tcolor = 'red';\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tmessage = 'Inflation does not apply to the PTC amount. In Schedule mode, use nominal (current) dollar values. See Help for details.';\r",
+        "\t\t\tcolor = 'black';\r",
+        "\t\t}\t\r",
+        "\t}\t\r",
+        "\tproperty('lbl_ptc_message', 'Caption', message);\r",
+        "\tproperty('lbl_ptc_message', 'TextColour', color);\r",
+        "}",
         "\t\t",
         ""
     ]
