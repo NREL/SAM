@@ -60,8 +60,8 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,88.8253,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.06575e+06. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,All Equity Partnership Flip,-8397703,91.211,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.63501e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,Sale Leaseback,-8397703,92.007,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.09729e+07. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-1.09522e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466988576,13.3216,7.40328,; 
-PTES,Single Owner,-197586480,16.8906,10.3673,; 
+ETES,Single Owner,-466572064,13.3084,7.40855,; 
+PTES,Single Owner,-197595520,16.8914,10.3676,; 
 Physical Trough,Single Owner,376952608,12.1978,12.3469,; 
 Physical Trough,Merchant Plant,376952608,12.8693,NA,; 
 Physical Trough,Leveraged Partnership Flip,376952608,12.4668,12.3469,; 
@@ -129,13 +129,13 @@ Wind Power,LCOE Calculator,818888256,NA,NA,;
 Wind Power,None,201595968,NA,NA,; 
 Fuel Cell,Commercial,1.93447e+06,7.23075,NA,; 
 Fuel Cell,Single Owner,213518784,9.68564,6.53631,; Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-6.53556e+07. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,Single Owner,261293360,7.22559,8.60947,; 
-Geothermal Power,Merchant Plant,261373328,7.64495,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-8.72971e+07. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,Leveraged Partnership Flip,261293360,7.32938,8.60947,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
-Geothermal Power,All Equity Partnership Flip,261373328,8.93208,8.61272,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.46848e+07. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,Sale Leaseback,261293360,8.99708,8.60947,; Warning: NPV is $-9.62331e+06. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,LCOE Calculator,261225072,NA,NA,; 
-Geothermal Power,None,261225072,NA,NA,; 
+Geothermal Power,Single Owner,261324800,7.08898,8.61147,; Warning: IRR at end of analysis period is 56.1256%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 56.1221%. A high IRR may indicate a project with unrealistically high returns.
+Geothermal Power,Merchant Plant,261324800,7.49766,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-8.36569e+07. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,Leveraged Partnership Flip,261324800,7.19116,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs.
+Geothermal Power,All Equity Partnership Flip,261324800,8.70189,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.06778e+07. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,Sale Leaseback,261324800,8.88451,8.61147,; Warning: NPV is $-7.00895e+06. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,LCOE Calculator,261267936,NA,NA,; 
+Geothermal Power,None,261267936,NA,NA,; 
 Solar Water Heating,Residential,2252.04,28.5297,NA,; 
 Solar Water Heating,Commercial,2252.12,18.1179,NA,; 
 Solar Water Heating,LCOE Calculator,2281.61,NA,NA,; 
@@ -158,12 +158,12 @@ Generic System,All Equity Partnership Flip,756864000,29.7345,25.9936,; Warning: 
 Generic System,Sale Leaseback,756864000,29.4653,25.9936,; Warning: NPV is $-2.65502e+08. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-3.27398e+07. A negative NPV indicates project costs are higher than revenues.
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
-PVWatts Wind Battery Hybrid,Single Owner,1021826240,5.8358,6.19267,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind Battery Hybrid,Host Developer,1.33483e+06,18.7818,20.2238,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind FuelCell Battery Hybrid,Single Owner,1029889280,5.89516,4.33046,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind FuelCell Battery Hybrid,Host Developer,1.33584e+06,48.8207,51.2233,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-Photovoltaic Wind Battery Hybrid,Single Owner,1044604352,4.97264,5.95429,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
-Photovoltaic Wind Battery Hybrid,Host Developer,556256,34.1673,20.2533,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
-Generic PVWatts Wind FuelCell Battery Hybrid,Single Owner,1787537152,14.5368,4.33122,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-Generic PVWatts Wind FuelCell Battery Hybrid,Host Developer,3.13426e+06,99.6998,107.385,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind Battery Hybrid,Single Owner,1030795712,5.79703,6.03805,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind Battery Hybrid,Host Developer,1.33543e+06,18.7812,20.2237,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind FuelCell Battery Hybrid,Single Owner,1031573440,5.89337,4.33035,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind FuelCell Battery Hybrid,Host Developer,2.89743e+06,40.8547,42.3062,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+Photovoltaic Wind Battery Hybrid,Single Owner,1044608192,4.97264,5.95429,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
+Photovoltaic Wind Battery Hybrid,Host Developer,556023,34.1686,20.2533,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
+Generic PVWatts Wind FuelCell Battery Hybrid,Single Owner,1789221760,14.5341,4.33116,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+Generic PVWatts Wind FuelCell Battery Hybrid,Host Developer,4696864,91.1564,97.4707,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
 final_configuration_eof,none,NA,NA,NA,
