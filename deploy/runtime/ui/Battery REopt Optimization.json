@@ -251,7 +251,7 @@
         "\tbatt = y.outputs.ElectricStorage;",
         "\telec = y.outputs.ElectricUtility;",
         "",
-        "\tif (batt.size_kw == null && batt.size_kwh == null)",
+        "\tif (batt == null || (batt.size_kw == null && batt.size_kwh == null))",
         "\t{",
         "\t\tapply_str = 'Optimal capacity: ' + to_string(0) + ",
         "\t\t\t' kWh\\nOptimal power: ' + to_string(0) + ' kW\\n\\nApply results?';",
