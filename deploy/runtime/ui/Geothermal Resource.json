@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Resource",
-    "Width": 899.0,
-    "Height": 692.0,
+    "Width": 947.0,
+    "Height": 785.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 872.0
+                    "Integer": 923.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -49,15 +49,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 552.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 872.0
+                    "Integer": 923.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -94,11 +94,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 872.0
+                    "Integer": 923.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 371.0
+                    "Integer": 431.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -197,6 +197,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fracture_angle_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The angle at which a fracture propagates within a subsurface rock formation."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The angle at which a fracture propagates within a subsurface rock formation."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Fracture Angle"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -210,7 +247,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -277,6 +314,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 22.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fracture_aperture_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The degree of openness between the blocks on either side of the fracture. Fracture aperture is typically up to a few millimeters in width. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The degree of openness between the blocks on either side of the fracture. Fracture aperture is typically up to a few millimeters in width. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Fracture Aperture"
                 }
             }
         },
@@ -293,7 +367,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -363,6 +437,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fracture_length_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The distance between the injector and producer in a flow connected system, assuming the facture propagates optimally. It is also known as the fracture half length."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The distance between the injector and producer in a flow connected system, assuming the facture propagates optimally. It is also known as the fracture half length."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Fracture Length"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -376,7 +487,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -446,6 +557,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fracture_spacing_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 255.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The distance between two parallel fractures along a line perpendicular to the average orientation of the fracture set. Typical fracture spacing is in the range of centimeter to meter."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The distance between two parallel fractures along a line perpendicular to the average orientation of the fracture set. Typical fracture spacing is in the range of centimeter to meter."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Fracture Spacing"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -459,7 +607,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 321.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -529,6 +677,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fracture_width_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 354.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Fracture width refers to the opening width of a fracture along the normal direction."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Fracture width refers to the opening width of a fracture along the normal direction."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Fracture Width"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -538,11 +723,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 534.0
+                    "Integer": 597.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -621,11 +806,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 522.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 534.0
+                    "Integer": 597.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -704,11 +889,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 522.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -787,11 +972,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -874,7 +1059,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 693.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -911,11 +1096,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 522.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 510.0
+                    "Integer": 573.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -994,11 +1179,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 648.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 510.0
+                    "Integer": 573.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1081,7 +1266,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 663.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1210,6 +1395,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "injectivity_index"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 648.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1219,11 +1487,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 39.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 723.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1285,7 +1553,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1459,7 +1727,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 201.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1543,6 +1811,43 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pressure_drawdown_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 840.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Pressure drawdown is the difference between the reservoir pressure and the flowing wellbore pressure, which drives fluids from the reservoir into the wellbore."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Pressure drawdown is the difference between the reservoir pressure and the flowing wellbore pressure, which drives fluids from the reservoir into the wellbore."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Pressure Drawdown"
                 }
             }
         },
@@ -1733,7 +2038,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1812,7 +2117,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 462.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2010,6 +2315,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_depth_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The depth below ground at which the temperature specified by the resource temperature exists."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The depth below ground at which the temperature specified by the resource temperature exists."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Resource Depth"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2090,6 +2432,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 1.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_potential_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "An estimate of the total amount of energy available in the underground thermal reservoir. This determines how many times the plant can be renewed."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "An estimate of the total amount of energy available in the underground thermal reservoir. This determines how many times the plant can be renewed."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Resource Potential"
                 }
             }
         },
@@ -2176,6 +2555,43 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "resource_temperature_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 783.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The temperature of the reservoir at the depth given by the resource depth."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The temperature of the reservoir at the depth given by the resource depth."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Resource Temperature"
+                }
+            }
+        },
         "RadioChoice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2238,7 +2654,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 405.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2321,7 +2737,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 429.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2404,7 +2820,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 453.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2487,7 +2903,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 477.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2554,6 +2970,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 26.0
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "subsurface_water_loss_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 864.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 477.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The percentage of unintended escape of water from geothermal reservoirs or wells during the exploration, drilling, production."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The percentage of unintended escape of water from geothermal reservoirs or wells during the exploration, drilling, production."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Subsurface Water Loss"
                 }
             }
         }
@@ -2888,6 +3341,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "injectivity_index": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Injection well pressure change",
+            "Units": "lb/hr-psi",
+            "Group": "Geothermal Resource",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "num_fractures": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2930,7 +3396,7 @@
         "reservoir_pressure_change": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Pressure change",
+            "Label": "Pressure drawdown",
             "Units": "psi/(1000 lb/h)",
             "Group": "Geothermal Resource",
             "IndexLabels": "",
@@ -3097,8 +3563,7 @@
         ""
     ],
     "Callbacks": [
-        "function handle_change_to_hydrothermal()",
-        "{",
+        "function handle_change_to_hydrothermal(){",
         "\t// if we just changed to 'hydrothermal'",
         "\tif (${resource_type} == 0) {",
         "\t\tif (${reservoir_pressure_change_type} == 1 || ${reservoir_pressure_change_type} == 3) {",
@@ -3210,8 +3675,8 @@
         "on_load{'Geothermal Resource'} = define() {",
         "\tsave_old_pressure_change_setting();",
         "\ton_change{'reservoir_pressure_change_type'}();",
-        "\tenable('geotherm.default_input', (financing()!='None'));\r",
-        "\tshow('lbl_default_type',(financing()=='None'));",
+        "\tenable('geotherm.default_input', (financing() != 'None'));\r",
+        "\tshow('lbl_default_type',(financing() == 'None'));",
         "\trefresh();\r",
         "};",
         "",

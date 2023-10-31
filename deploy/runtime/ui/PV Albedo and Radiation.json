@@ -2391,7 +2391,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2404,7 +2404,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2417,7 +2417,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2430,7 +2430,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2443,7 +2443,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2456,7 +2456,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2469,7 +2469,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.2,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2834,7 +2834,7 @@
             "Label": "Weather file irradiance data",
             "Units": "0=beam&diffuse,1=total&beam,2=total&diffuse,3=poa_reference,4=poa_pyranometer",
             "Group": "Location and Resource",
-            "IndexLabels": "DNI and DHI|DNI and GHI|GHI and DHI|POA from reference cell|POA from pyranometer",
+            "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
