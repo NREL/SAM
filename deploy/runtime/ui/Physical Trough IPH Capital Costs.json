@@ -5120,9 +5120,10 @@
     "Callbacks": [
         "on_load{\"Physical Trough IPH Capital Costs\"}=define()",
         "{",
-        "\tfin = value(\"case.financing\");",
+        "\t//fin = value(\"case.financing\");",
         "\t",
-        "\tshow( \"lblFinancingCost\", ((fin!=0)&&(fin!=1)&&(fin!=2)));",
+        "\t//show( \"lblFinancingCost\", ((fin!=0)&&(fin!=1)&&(fin!=2)));\r",
+        "\tshow( \"lblFinancingCost\", false);",
         "};"
     ]
 }
