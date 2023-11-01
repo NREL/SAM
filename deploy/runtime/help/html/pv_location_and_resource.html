@@ -535,10 +535,10 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_List"><span class="f_List"><a href="weather_manage_folders.html" class="topiclink">Folders and Libraries</a></span></p>
 <p class="p_ListLast" style="page-break-inside: avoid;"><span class="f_ListLast"><a href="accessing-weather-data-from-lk.html" class="topiclink">Weather Data and LK</a></span></p>
 <p class="p_Text"><span class="f_Text">&nbsp;</span></p>
-<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
-<span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">You may want to model your system using weather data from several different sources and locations around your project site to understand how sensitive your analysis results are to the weather assumptions, and how much variation there is in the data from the different weather files.</span><br />
-<span class="f_Note">&nbsp;</span><br />
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note" style="font-family: Verdana,Geneva,Arial,sans-serif;"> </span><br />
+<span class="f_Note" style="font-family: Verdana,Geneva,Arial,sans-serif;">&nbsp;</span><br />
+<span class="f_Note" style="font-family: Verdana,Geneva,Arial,sans-serif;">You may want to model your system using weather data from several different sources and locations around your project site to understand how sensitive your analysis results are to the weather assumptions, and how much variation there is in the data from the different weather files.</span><br />
+<span class="f_Note" style="font-family: Verdana,Geneva,Arial,sans-serif;">&nbsp;</span><br />
 <span class="f_Note">You can compare results for a system using more than one weather file in a single case by using SAM's <a href="parametrics.html" class="topiclink">parametric simulation</a> option.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">For more information about weather data, including where to find data for locations outside of the United States, see <a href="https://sam.nrel.gov/weather" target="_blank" class="weblink" title="https://sam.nrel.gov/weather">Weather Data</a> on the SAM website.</span><br />
@@ -746,9 +746,9 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">Use this option if your weather file contains irradiance data measured in the plane of the array by a pyranometer. SAM uses a POA decomposition model to calculate the DNI and DHI components of the POA irradiance for angle-of-incidence effect calculations.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes about the POA input options.</span><span class="f_Note"> </span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">For a technical description of the POA option see Freeman (2016) Using Measured Plane-of-Array Data Directly in Photovoltaic Modeling: Methodology and Validation, available from <a href="https://sam.nrel.gov/photovoltaic/pv-publications" target="_blank" class="weblink">https://sam.nrel.gov/photovoltaic/pv-publications</a>.</span><br />
+<span class="f_Note">For a technical description of the POA option, see Freeman (2016) Using Measured Plane-of-Array Data Directly in Photovoltaic Modeling: Methodology and Validation, available from <a href="https://sam.nrel.gov/photovoltaic/pv-publications" target="_blank" class="weblink">https://sam.nrel.gov/photovoltaic/pv-publications</a>.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">When you choose a POA option, SAM reports calculated DNI and DHI values in the results for your reference. It only uses the calculated DNI and DHI values under the following conditions:</span><br />
+<span class="f_Note">When you choose a POA option, SAM uses an irradiance decomposition model to calculate DNI and DHI values, which it reports in the results for your reference. It only uses the calculated DNI and DHI values under the following conditions:</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note"> &nbsp; &nbsp; - With the </span><span class="f_CHInterfaceElement">POA from pyranometer</span><span class="f_Note"> option to calculate a reduction in DNI due to angle-of-incidence effects.</span><br />
 <span class="f_Note">&nbsp;</span><br />
