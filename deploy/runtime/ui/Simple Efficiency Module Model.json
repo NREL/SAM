@@ -845,6 +845,68 @@
                 },
                 "X": {
                     "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 723.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 205.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 718"
+                },
+                "X": {
+                    "Type": 3.0,
                     "Integer": 21.0
                 },
                 "Y": {
@@ -3703,14 +3765,14 @@
         "\t\tif ((i == 0 || value(\"subarray\" + i_string + \"_enable\") == 1) && value(\"spe_is_bifacial\") == 1) {\r",
         "\t\t\tif (value(\"subarray\" + i_string + \"_track_mode\") == 1) { //single axis\r",
         "\t\t\t\tmax_height = value(\"ui_subarray\" + i_string + \"_length_side\") / 2.0 * sind(value(\"subarray\" + i_string + \"_rotlim\"));\r",
-        "\t\t\t\tmsg = property('lbl_bifacial', 'Caption');\r",
+        "\t\t\t\tmsg = property('spe_lbl_bifacial', 'Caption');\r",
         "\t\t\t\tif (height < max_height) {\r",
         "\t\t\t\t\tif (msg == '')\r",
-        "\t\t\t\t\t\tproperty('lbl_bifacial', 'Caption', 'The bottom edge of the module intersects with the ground for Subarray ' + i_string + \" \" + to_string(max_height) + '. Consider raising the clearance height or reconfiguring your tracker layout.');\r",
+        "\t\t\t\t\t\tproperty('spe_lbl_bifacial', 'Caption', 'The bottom edge of the module intersects with the ground for Subarray ' + i_string + \" \" + to_string(max_height) + '. Consider raising the clearance height or reconfiguring your tracker layout.');\r",
         "\t\t\t\t\telse \r",
-        "\t\t\t\t\t\tproperty('lbl_bifacial', 'Caption', 'The bottom edge of the module intersects with the ground for multiple subarrays. Consider raising the clearance height or reconfiguring your tracker layout.');\r",
+        "\t\t\t\t\t\tproperty('spe_lbl_bifacial', 'Caption', 'The bottom edge of the module intersects with the ground for multiple subarrays. Consider raising the clearance height or reconfiguring your tracker layout.');\r",
         "\t\t\t\t\t\r",
-        "\t\t\t\t\tshow('lbl_bifacial', true);\r",
+        "\t\t\t\t\tshow('spe_lbl_bifacial', true);\r",
         "\t\t\t\t}\r",
         "\t\t\t}\r",
         "\t\t}\r",

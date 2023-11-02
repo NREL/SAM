@@ -1272,7 +1272,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -1280,7 +1280,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 }
             }
         },
