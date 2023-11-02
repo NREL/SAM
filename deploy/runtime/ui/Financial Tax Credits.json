@@ -2472,7 +2472,7 @@
         "function ptc_grid_charge_message() {\r",
         "\tptc_enabled = ( sum(value('ptc_fed_amount')) != 0 && value('ptc_fed_term') > 0 ) || ( sum(value('ptc_sta_amount')) != 0 && value('ptc_sta_term') > 0 );\r",
         "\tgridcharge_enabled = false;\r",
-        "\tif ( varinfo('batt_dispatch_choice') != null ) {\r",
+        "\tif ( is_assigned('batt_dispatch_choice') ) {\r",
         "\t\tif ( value('batt_dispatch_choice') == 3 ) { // manual dispatch\r",
         "\t\t\tgridcharge_enabled = value('pv.storage.p1.gridcharge') \r",
         "\t\t\t\t\t\t  || value('pv.storage.p2.gridcharge')\r",

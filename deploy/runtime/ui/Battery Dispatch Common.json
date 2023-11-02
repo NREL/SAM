@@ -626,7 +626,7 @@
         "\t\tgridcharge_enabled = value('batt_dispatch_auto_can_gridcharge');\r",
         "\t}\r",
         "\tptc_enabled = false;\r",
-        "\tif (varinfo('ptc_fed_amount') != null ) {\r",
+        "\tif (is_assigned('ptc_fed_amount')) {\r",
         "\t\tptc_enabled = ( sum(value('ptc_fed_amount')) != 0 && value('ptc_fed_term') > 0 ) || ( sum(value('ptc_sta_amount')) != 0 && value('ptc_sta_term') > 0 );\r",
         "\t}\r",
         "\tif ( gridcharge_enabled && ptc_enabled ) {\r",
