@@ -1256,7 +1256,7 @@
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 0.0,
+                        "Red": 255.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
@@ -3881,6 +3881,7 @@
         "",
         "\tenable_bifacial();",
         "\tenable('6par_transient_thermal_model_unit_mass',value('step') <= 1200);",
+        "\tsixpar_check_clearance_height();\r",
         "};",
         "",
         "on_change{'6par_is_bifacial'} = define(){",
@@ -4194,7 +4195,11 @@
         "\t\t}\r",
         "\t}\r",
         "\trefresh();\r",
-        "}",
+        "}\r",
+        "\r",
+        "on_change{'6par_bifacial_ground_clearance_height'} = define() {\r",
+        "\tsixpar_check_clearance_height();\r",
+        "};",
         ""
     ]
 }
