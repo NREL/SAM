@@ -3,7 +3,7 @@ hr { color: #000000 }
 body, table, tr, th /* Normal */
 {
  font-size: 100%;
- font-family: Verdana,Geneva,Arial,sans-serif;
+ font-family: 'Open Sans';
  font-style: normal;
  font-weight: normal;
  color: #000000;
@@ -140,33 +140,26 @@ span.f_Table /* Table */
 }
 span.f_TableEquationNumber /* Table Equation Number */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableHeadColumn /* Table Head Column */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TableHeadRow /* Table Head Row */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
  font-weight: bold;
 }
 span.f_TableText /* Table Text */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextCenter /* Table Text Center */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextLeft /* Table Text Left */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_TableTextRight /* Table Text Right */
 {
- font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
 }
 span.f_Term /* Term */
 {
@@ -192,10 +185,12 @@ span.f_Title /* Title */
 }
 span.f_TitleFigure /* Title Figure */
 {
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 span.f_TitleProcedure /* Title Procedure */
 {
+ font-family: Arial,Helvetica,sans-serif;
  font-weight: bold;
 }
 span.f_TitleTable /* Title Table */

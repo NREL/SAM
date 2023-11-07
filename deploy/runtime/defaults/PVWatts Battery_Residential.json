@@ -75,7 +75,7 @@
     "YrBuilt": 1980.0,
     "ac_nameplate": 6.95652,
     "adjust": 0.0,
-    "adjust_constant": 5.0,
+    "adjust_constant": 0.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
@@ -8871,6 +8871,7 @@
     "annual_peak": 4.30453,
     "annual_snow": "nan",
     "annual_tdry": 21.9385,
+    "annual_twet": 0.0,
     "annual_wspd": 1.78648,
     "array_type": 1.0,
     "azimuth": 180.0,

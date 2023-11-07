@@ -167,139 +167,192 @@ autographs{ 'Generic Battery' } = define() {heatmap_graphs();};
 
 autographs { 'PVWatts Wind Battery Hybrid|Single Owner' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
-	// heatmaps
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	
+	// after-tax cash flow
+	agraph( 'cf_project_return_aftertax', 'After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	// losses
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Annual Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
+	// wind losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// single owner
-	ppa_revenue_graphs(); ppa_financial_graphs();
 };
 
 autographs { 'PVWatts Wind Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom', 1 );
-	agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
 
-	// heatmaps
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	// after-tax cash flow and host indifference point
+	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+
+	// host developer
+	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
 	// losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// host developer
-	host_developer_graphs();
 };
 
 
 autographs { 'PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
-	// heatmaps
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	
+	// after-tax cash flow
+	agraph( 'cf_project_return_aftertax', 'After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	// losses
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Annual Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
+	// wind losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// single owner
-	ppa_revenue_graphs(); ppa_financial_graphs();
 };
 
 autographs { 'PVWatts Wind FuelCell Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'pvwatts_monthly_energy,wind_monthly_energy,monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom' );
-	// heatmaps
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+
+	// after-tax cash flow and host indifference point
+	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+
+	// host developer
+	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
 	// losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// host developer
-	host_developer_graphs();
 };
 
 
 autographs { 'Photovoltaic Wind Battery Hybrid|Single Owner' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
-	// heatmaps
+	agraph( 'photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	
+	// after-tax cash flow
+	agraph( 'cf_project_return_aftertax', 'After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
 	agraph( 'photovoltaic_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	// losses
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Annual Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
+	// wind losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// single owner
-	ppa_revenue_graphs(); ppa_financial_graphs();
 };
 
 autographs { 'Photovoltaic Wind Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'photovoltaic_monthly_energy,wind_monthly_energy,monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, true, true, 'bottom' );
-	// heatmaps
+	agraph( 'generic_monthly_energy,photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+
+	// after-tax cash flow and host indifference point
+	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
 	agraph( 'photovoltaic_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+
+	// host developer
+	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
 	// losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// host developer
-	host_developer_graphs();
 };
 
 
 autographs { 'Generic PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
-	agraph( 'generic_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
-	// heatmaps
+	agraph( 'generic_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	
+	// after-tax cash flow
+	agraph( 'cf_project_return_aftertax', 'After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
 	agraph( 'generic_annual_energy_distribution_time', 'Generic annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	// losses
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Annual Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
+	// wind losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// single owner
-	ppa_revenue_graphs(); ppa_financial_graphs();
 };
 
 autographs { 'Generic PVWatts Wind FuelCell Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	//agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
 	agraph( 'generic_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
-	// heatmaps
+
+	// after-tax cash flow and host indifference point
+	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
+	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
+
+	// heatmaps here because of slow loading for scrolling
 	agraph( 'generic_annual_energy_distribution_time', 'Generic annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
-	agraph( 'pvwatts_annual_energy_distribution_time', 'PV annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+
+	// host developer
+	agraph( 'cf_agreement_cost,annual_energy_value', 'Host Annual Agreement Cost and Electricity Savings', 'Year', '$', -1, true, true, 'bottom' );
+
+	// annual energy shows degradation
+	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+
 	// losses
 	if (varinfo('wind_total_uncert')){
 		columns = 'wind_avail_losses,wind_elec_losses,wind_env_losses,ops_losses,wind_turb_losses,wind_wake_losses';
 		agraph(columns, 'Wind energy Loss', '', '%', -1, false, true, 'right');
 	}
-	// host developer
-	host_developer_graphs();
 };
-
-
 
 
 autographs{ 'MEwave' } = define()

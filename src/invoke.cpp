@@ -164,7 +164,7 @@ struct wfvec {
 
 static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 {
-	LK_DOC("dview_wave", "Read a solar weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
+	LK_DOC("dview_wave", "Read a wave weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
 
 	wxString file( cxt.arg(0).as_string() );
 	if ( !wxFileExists( file ) ) {
@@ -231,6 +231,76 @@ static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 	dview->DisplayTabs();
 
 	frame->Show();
+}
+
+static void fcall_dview_tidal_data_file(lk::invoke_t& cxt)
+{
+    LK_DOC("dview_tidal", "Read a tidal weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    ssc_data_t pdata = ssc_data_create();
+    ssc_data_set_number(pdata, "tidal_resource_model_choice", 1);
+    ssc_data_set_string(pdata, "tidal_resource_filename", (const char*)file.c_str());
+
+    if (const char* err = ssc_module_exec_simple_nothread("tidal_file_reader", pdata))
+    {
+        wxLogStatus("error scanning '" + file + "'");
+        cxt.error(err);
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    wxFrame* frame = new wxFrame(SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxScaleSize(1000, 700),
+        (wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER));
+#ifdef __WXMSW__
+    frame->SetIcon(wxICON(appicon));
+#endif
+
+    wxDVPlotCtrl* dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
+    // this information is consistent with the variable definitions in the wfreader module
+    wfvec vars[] = {
+        { "tidal_velocity", "Tidal velocity", "m/s" },
+        { 0, 0, 0 } };
+
+    ssc_number_t start = 0;
+    ssc_number_t step = 3600 * 3; // start & step in seconds, then convert to hours
+    start /= 3600;
+    step /= 3600;
+
+    size_t i = 0;
+    while (vars[i].name != 0)
+    {
+        int len;
+        ssc_number_t* p = ssc_data_get_array(pdata, vars[i].name, &len);
+        if (p != 0 && len > 2)
+        {
+            std::vector<double> plot_data(len);
+            for (int j = 0; j < len; j++)
+                plot_data[j] = p[j];
+
+            wxDVArrayDataSet* dvset = new wxDVArrayDataSet(vars[i].label, vars[i].units, start, step, plot_data);
+            dvset->SetGroupName(wxFileNameFromPath(file));
+            dview->AddDataSet(dvset);
+        }
+
+        i++;
+    }
+
+    ssc_data_free(pdata);
+
+    dview->GetStatisticsTable()->RebuildDataViewCtrl();
+    if (i > 0)
+        dview->SelectDataIndex(0);
+
+    dview->DisplayTabs();
+
+    frame->Show();
 }
 
 static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
@@ -1237,8 +1307,9 @@ void fcall_refresh( lk::invoke_t &cxt )
 	    ipage = cc.InputPage();
 		ipage->Refresh();
         auto UIObjects = ipage->GetObjects();
+		size_t ndxHybrid = ipage->GetHybridIndex();
         for (auto &i: UIObjects){
-            VarValue *vv = cur_case->Values(0).Get( i->GetName() );
+            VarValue *vv = cur_case->Values(ndxHybrid).Get( i->GetName() );
             if ( wxWindow *win = i->GetNative() )
                 win->Refresh();
             if ( ipage && vv )
@@ -1251,13 +1322,15 @@ void fcall_refresh( lk::invoke_t &cxt )
 	{
 	    wxString var = cxt.arg(0).as_string();
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case->Values(0).Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
-            if ( ipage && vv )
+            if ( ipage )
             {
-                ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+				size_t ndxHybrid = ipage->GetHybridIndex();
+				VarValue* vv = cur_case->Values(ndxHybrid).Get(var);
+				if (vv)
+					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
             }
 		}
 	}
@@ -2954,7 +3027,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+        if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -2994,7 +3068,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<LAT>", wxString::Format("%lg", lat));
 	url.Replace("<LON>", wxString::Format("%lg", lon));
 	url.Replace("<INTERVAL>", interval);
-	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
+	url.Replace("<ATTRS>", attributes); // empty attributes parameter returns file with all hub heights
 
 	// make API call to download weather file
 	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
@@ -3649,6 +3723,7 @@ void fcall_geocode(lk::invoke_t& cxt)
 		"(string:address):table");
 
 	double lat = 0, lon = 0, tz = 0;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	bool ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon, &tz);
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);
@@ -4166,6 +4241,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
     if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wave") cxt.result().assign(ShowWaveResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "tidal") cxt.result().assign(ShowTidalResourceDataSettings() ? 1.0 : 0.0);
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
@@ -4200,6 +4276,12 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
+    }
+    else if (type == "tidal")
+    {
+        wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+        ScanTidalResourceData(tidal_resource_db, true);
+        reloaded = Library::Load(tidal_resource_db);
     }
 
 
@@ -6079,6 +6161,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_dview,
             fcall_dview_solar_data_file,
             fcall_dview_wave_data_file,
+            fcall_dview_tidal_data_file,
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,

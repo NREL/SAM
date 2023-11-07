@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - O&M",
-    "Width": 919.0,
-    "Height": 362.0,
+    "Width": 960.0,
+    "Height": 364.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 789.0
+                    "Integer": 885.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -74,7 +74,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 789.0
+                    "Integer": 885.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -322,7 +322,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -414,6 +414,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "maintenance_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 690.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
                 }
             }
         },
@@ -571,15 +654,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 813.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 129.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -629,7 +712,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 945.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -720,11 +803,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 429.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -968,7 +1051,69 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 672.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Array scaling R-value"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 732218"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1092,11 +1237,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1175,11 +1320,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 606.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1216,7 +1361,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1402,7 +1547,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1502,6 +1647,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "operations_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 690.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "operations_cost_total"
                 },
                 "X": {
@@ -1589,11 +1817,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 825.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1665,6 +1893,19 @@
         }
     },
     "VarDatabase": {
+        "maintenance_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maintenance cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Operation Maintenance",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "om_cost_input": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1702,6 +1943,19 @@
             "DefaultValue": [
                 0.0
             ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "operations_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Operations cost scaling value",
+            "Units": "",
+            "Group": "ME Costs - Operation Maintenance",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -1816,6 +2070,16 @@
         "",
         "equations {'om_fixed'} = define() {",
         "\treturn [${total_operating_cost}];",
+        "};\r",
+        "\r",
+        "equations {'opex_we_shown'} = define() {\r",
+        "\tif (${operations_cost_method} == 3) return true;\r",
+        "\telse return false;\r",
+        "};\r",
+        "\r",
+        "equations {'maintenance_we_shown'} = define() {\r",
+        "\tif (${maintenance_cost_method} == 3) return true;\r",
+        "\telse return false;\r",
         "};",
         "",
         "",
@@ -1835,14 +2099,16 @@
         "\t//Operations",
         "\tshow('operations_cost_total',value('operations_cost_method')==3);",
         "\tshow('operations_cost_input',value('operations_cost_method')!=3);",
-        "\tenable('operations_cost_input',value('operations_cost_method')!=2);",
+        "\tenable('operations_cost_input',value('operations_cost_method')!=2);\r",
+        "\tenable('operations_cost_rvalue',value('operations_cost_method')==3);",
         "\t",
         "\t//Maintenance",
         "\tshow('maintenance_cost_total',value('maintenance_cost_method')==3);",
         "\tshow('maintenance_cost_input',value('maintenance_cost_method')!=3);",
-        "\tenable('maintenance_cost_input',value('maintenance_cost_method')!=2);",
+        "\tenable('maintenance_cost_input',value('maintenance_cost_method')!=2);\r",
+        "\tenable('maintenance_cost_rvalue',value('maintenance_cost_method')==3);",
         "\t",
-        "\ton_change{'om_cost_override'};",
+        "\ton_change{'om_cost_override'}();",
         "\toverride_om_cost();",
         "\t",
         "\trefresh();",
