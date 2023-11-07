@@ -116,7 +116,7 @@ public:
 	VarInfo* GetVarInfo(int row, int col);
 	void SetVarInfo(int row, int col, VarInfo *vi);
 	VarValue* GetVarValue(int row, int col);
-	Case* GetCase(int row, int col) { return m_case; }
+	Case* GetCase(int , int ) { return m_case; }
 	int GetColumnForName(const wxString &name);
 	void SetVarValue(int row, int col, VarValue *vv);
 	void Init();
