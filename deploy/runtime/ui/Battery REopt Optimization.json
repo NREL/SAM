@@ -1,7 +1,7 @@
 {
     "Name": "Battery REopt Optimization",
-    "Width": 1053.0,
-    "Height": 112.0,
+    "Width": 1052.0,
+    "Height": 127.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -74,11 +74,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -123,7 +123,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 117.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -138,13 +138,75 @@
                     "Boolean": 1.0
                 }
             }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "reopt_consider_outage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 351.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Consider grid outage in REopt optimization"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
         }
     },
-    "VarDatabase": {},
+    "VarDatabase": {
+        "reopt_consider_outage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Consider grid outage in REopt optimization",
+            "Units": "",
+            "Group": "Battery REopt Optimization",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
     "Equations": [],
     "Callbacks": [
-        "on_change{'call_reopt'} = define()",
-        "{",
+        "on_load{'Battery REopt Optimization'} = define() {",
+        "\tenable_consider_grid_outage();",
+        "};",
+        "",
+        "on_change{'reopt_consider_outage'} = define() {",
+        "\tenable_consider_grid_outage();",
+        "};",
+        "",
+        "on_change{'call_reopt'} = define() {",
         "\t// check inputs before making REopt call",
         "\twf_len = 60 / ${ui_step_minutes} * 8760;",
         "\tload_len = #(${load});",
@@ -186,12 +248,13 @@
         "\t\t\texit;",
         "\t\t}",
         "\t}\r",
-        "\t\r",
-        "\tgrid_outage = value('grid_outage');\r",
-        "\tsize_outage = false;\r",
-        "\tif (sum(grid_outage) > 0) {\r",
-        "\t\tsize_outage = yesno('Outage steps are present. Should REopt size the battery to include the outage (yes) or size for economics alone (no)?');\r",
+        "\t",
+        "\tsize_outage = false;",
+        "\t// is_crit() and is_grid_outage() defined on Grid Outage form",
+        "\tif ( is_crit() && is_grid_outage() ) {",
+        "\t\tsize_outage = value('reopt_consider_outage');",
         "\t}",
+        "\tif ( size_outage ) {msgbox('howdy doody');}",
         "\t",
         "\tbatt_kw_original = value('batt_bank_power');",
         "\tbatt_kwh_original = value('batt_bank_size_ui');",
@@ -335,6 +398,10 @@
         "\t\t\t'This will need to be applied manually.' );\r",
         "\t}",
         "",
-        "};"
+        "};",
+        "",
+        "function enable_consider_grid_outage() {",
+        "\tenable('reopt_consider_outage', is_crit() && is_grid_outage() );",
+        "}"
     ]
 }

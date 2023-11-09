@@ -92576,6 +92576,7 @@
     ],
     "real_discount_rate": 6.4,
     "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
+    "reopt_consider_outage": 0.0,
     "run_resiliency_calcs": 0.0,
     "sales_tax_percent": 100.0,
     "sales_tax_rate": 5.0,
