@@ -950,6 +950,7 @@ class C_sco2_TS_PH_overlay_plot:
         self.dict_cycle_data2 = dict_cycle_data2
         
         self.is_save_plot = False
+        self.file_dir = ""
         
     def plot_new_figure(self):
          
@@ -994,7 +995,7 @@ class C_sco2_TS_PH_overlay_plot:
     
             txt_label_2 = cycle_label(self.dict_cycle_data2, False, True)
             
-            file_name = txt_label_1 + "__vs__" + txt_label_2 + ".png"
+            file_name = self.file_dir + txt_label_1 + "__vs__" + txt_label_2 + ".png"
             
             fig1.savefig(file_name)
             
