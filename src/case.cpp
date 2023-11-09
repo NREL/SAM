@@ -416,10 +416,10 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 	wxArrayString techary = wxSplit(tech, ' ');
 
-	if ( !SetConfiguration( tech, fin ) )
-	  {
+	if ( !SetConfiguration( tech, fin ) )  {
 		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
-	  }
+		return false;
+	}
 
 	size_t i;
 	for (i = 0; i < m_oldVals.size(); i++)
@@ -1193,7 +1193,8 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	m_config = SamApp::Config().Find(tech, fin);
 
 	if (!m_config) {
-		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
+//		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
+		m_lastError = "Case error: could not find configuration " + tech + ", " + fin;
 		return false;
 	}
 
