@@ -98,6 +98,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -56061,7 +56063,7 @@
     ],
     "k_panel": 235.0,
     "land_area": 2079.29,
-    "land_area_base": 1847.04,
+    "land_area_base": 2034.29,
     "land_area_base_calc": 2034.29,
     "land_max": 9.5,
     "land_max_abs_calc": 1845.16,
@@ -56877,6 +56879,8 @@
     "sf_adjust_en_timeindex": 0.0,
     "sf_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -58592,6 +58596,7 @@
             1.0
         ]
     ],
+    "ud_is_sco2_regr": 0.0,
     "ud_m_dot_des_calc": "nan",
     "ud_m_dot_design": 1.0,
     "ud_m_dot_high_calc": "nan",

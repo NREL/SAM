@@ -106,15 +106,21 @@ static void read_array_string( wxDataInputStream &in, wxArrayString &list )
 
 void Simulation::Write( wxOutputStream &os )
 {
+	size_t i;
 	wxDataOutputStream out( os );
 	out.Write8( 0x9c );
-	out.Write8( 3 ); // version
+	out.Write8( 4 ); // version - update to 4 for hybrids m_inputs and m_overrides
 
 	out.WriteString( m_name );
 
-	write_array_string( out, m_overrides );
+	out.Write8(m_overrides.size());
+	for (i = 0; i < m_overrides.size(); i++)
+		write_array_string( out, m_overrides[i]);
 
-	m_inputs.Write( os );
+	out.Write8(m_inputs.size());
+	for (i=0; i < m_inputs.size(); i++)
+		m_inputs[i].Write(os);
+
 	m_outputs.Write( os, SamApp::Project().GetSaveHourlyData() ? 0 : 1024 );
 	
 	write_array_string( out, m_errors );
@@ -128,19 +134,33 @@ void Simulation::Write( wxOutputStream &os )
 	out.Write8( 0x9c );
 }
 
-bool Simulation::Read( wxInputStream &is )
+bool Simulation::Read(wxInputStream& is)
 {
+	size_t i;
 	Clear();
-	wxDataInputStream in( is );
+	wxDataInputStream in(is);
 
 	wxUint8 code = in.Read8(); // code
 	wxUint8 ver = in.Read8(); // ver
 
 	m_name = in.ReadString();
 
-	read_array_string( in, m_overrides );
-
-	m_inputs.Read( is );
+	if (ver > 3) {
+		size_t n = in.Read8();
+		m_overrides.resize(n);
+		for (i = 0; i < m_overrides.size(); i++)
+			read_array_string(in, m_overrides[i]);
+		n = in.Read8();
+		m_inputs.resize(n);
+		for (i = 0; i < m_inputs.size(); i++)
+			m_inputs[i].Read(is);
+	}
+	else {
+		m_overrides.resize(1);
+		read_array_string(in, m_overrides[0]);
+		m_inputs.resize(1);
+		m_inputs[0].Read(is);
+	}
 	m_outputs.Read(is);
 
 	read_array_string( in, m_errors );
@@ -173,7 +193,12 @@ void Simulation::Copy( const Simulation &rh )
 
 void Simulation::Clear()
 {
+	size_t i;
+	for (i = 0; i < m_overrides.size(); i++)
+		m_overrides[i].clear();
 	m_overrides.clear();
+	for (i = 0; i < m_inputs.size(); i++)
+		m_inputs[i].clear();
 	m_inputs.clear();
 	m_outputList.clear();
 	m_outputs.clear();
@@ -183,29 +208,31 @@ void Simulation::Clear()
 	m_outputLabels.clear();
 	m_outputUnits.clear();
 	m_uiHints.clear();
+	
+	Setup(); // resize after clearing
 }
 
-void Simulation::Override( const wxString &name, const VarValue &val )
+void Simulation::Override( const wxString &name, const VarValue &val, size_t ndxHybrid)
 {
-	if ( VarValue *vv = m_inputs.Create( name, val.Type() ) )
+	if ( VarValue *vv = m_inputs[ndxHybrid].Create(name, val.Type()))
 	{
-		m_overrides.Add( name );
+		m_overrides[ndxHybrid].Add(name);
 		vv->Copy( val );
 	}
 }
 
 
-wxString Simulation::GetOverridesLabel( bool with_labels )
+wxString Simulation::GetOverridesLabel(size_t ndxHybrid, bool with_labels )
 {
 	wxString tag;
-	for( size_t i=0;i<m_overrides.size();i++ )
+	for( size_t i=0;i<m_overrides[ndxHybrid].size(); i++)
 	{
-		if ( VarValue *vv = m_inputs.Get( m_overrides[i] ) )
+		if ( VarValue *vv = m_inputs[ndxHybrid].Get(m_overrides[ndxHybrid][i]))
 		{
-			wxString label = m_overrides[i];
+			wxString label = m_overrides[ndxHybrid][i];
 			
 			if ( with_labels )
-				if ( VarInfo *vi = m_case->Variables().Lookup( m_overrides[i] ) )
+				if ( VarInfo *vi = m_case->Variables(ndxHybrid).Lookup( m_overrides[ndxHybrid][i] ) )
 					if ( !vi->Label.IsEmpty() )
 						label = vi->Label;
 			
@@ -218,12 +245,14 @@ wxString Simulation::GetOverridesLabel( bool with_labels )
 	return tag;
 }
 
-VarValue *Simulation::GetInput( const wxString &name )
+VarValue *Simulation::GetInput( const wxString &name, size_t ndxHybrid)
 {
-	if ( VarValue *val = m_inputs.Get( name ) )
+	if ( VarValue *val = m_inputs[ndxHybrid].Get(name))
+		return val;
+	if (VarValue* val = m_case->Values(ndxHybrid).Get(name))
 		return val;
 
-	return m_case->Values().Get( name );
+	return NULL;
 }
 
 void Simulation::SetInput(const wxString & , lk::vardata_t) {
@@ -283,24 +312,53 @@ VarValue *Simulation::GetOutput( const wxString &var )
 
 VarValue *Simulation::GetValue( const wxString &name )
 {
-	if ( VarValue *vv = Outputs().Get( name ) ) return vv;
-	else return GetInput( name );
+	if ( VarValue *vv = Outputs().Get( name ) ) 
+		return vv;
+	else {
+		bool found = false;
+		for (int i = m_inputs.size() - 1; i>=0 && !found; i--) {
+			if (vv = GetInput(name, i))
+				found = true;
+		}
+		if (!found) {
+			for (int i = m_case->GetConfiguration()->Technology.size() - 1; i >= 0 && !found; i--) {
+				if (vv = m_case->Values(i).Get(name))
+					found = true;
+			}
+		}
+		return vv;
+	}
 }
 
 wxString Simulation::GetLabel( const wxString &var )
 {
 	if ( m_outputLabels.find( var ) != m_outputLabels.end() )
 		return m_outputLabels[ var ];
-	else
-		return m_case->Variables().Label( var );
+	else {
+		bool found = false;
+		wxString label = wxEmptyString;
+		for (int i = m_inputs.size() - 1; i >= 0 && !found; i--) {
+			label = m_case->Variables(i).Label(var);
+			found = (label.Left(11) != "<not found:");
+		}
+		return label;
+	}
 }
 
 wxString Simulation::GetUnits( const wxString &var )
 {
 	if ( m_outputUnits.find( var ) != m_outputUnits.end() )
 		return m_outputUnits[ var ];
-	else
-		return m_case->Variables().Units( var );
+	else {
+		bool found = false;
+		wxString units = wxEmptyString;
+		for (int i = m_inputs.size() - 1; i >= 0 && !found; i--) {
+			units = m_case->Variables(i).Units(var);
+			found = (units != wxEmptyString);
+		}
+		return units;
+	}
+
 }
 StringHash Simulation::GetUIHints(const wxString &var)
 {
@@ -492,6 +550,23 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	return ok;
 }
 
+bool Simulation::Setup()
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+
+	// resize vectors
+	size_t nHybrids = cfg->Technology.size();
+	m_inputs.resize(nHybrids);
+	m_overrides.resize(nHybrids);
+
+	return true;
+}
+
 bool Simulation::Prepare()
 {	
 	ConfigInfo *cfg = m_case->GetConfiguration();
@@ -508,28 +583,32 @@ bool Simulation::Prepare()
 	m_outputUnits.clear();
 	m_uiHints.clear();
 
-	// transfer all the values except for ones that have been 'overriden'
-	for( VarTableBase::const_iterator it = m_case->Values().begin();
-		it != m_case->Values().end();
-		++it )
-		if ( 0 == m_inputs.Get( it->first ) )
-			m_inputs.Set( it->first, *(it->second) );
+	size_t nHybrids = cfg->Technology.size();
 
-	// recalculate all the equations
-	CaseEvaluator eval( m_case, m_inputs, m_case->Equations() );
-	int n = eval.CalculateAll();
+	for (size_t ndx_hybrid = 0; ndx_hybrid < nHybrids; ndx_hybrid++) {
 
-	if ( n < 0 )
-	{
-		wxArrayString &errs = eval.GetErrors();
-		for( size_t i=0;i<errs.size();i++ )
-			m_errors.Add( errs[i] );
+		// transfer all the values except for ones that have been 'overriden'
+		for (VarTableBase::const_iterator it = m_case->Values(ndx_hybrid).begin();
+			it != m_case->Values(ndx_hybrid).end();
+			++it)
+			if (0 == m_inputs[ndx_hybrid].Get(it->first))
+				m_inputs[ndx_hybrid].Set(it->first, *(it->second));
 
-		return false;
+		// recalculate all the equations
+		CaseEvaluator eval(m_case, m_inputs[ndx_hybrid], m_case->Equations(ndx_hybrid));// update m_inputs for hybrids
+		int n = eval.CalculateAll(ndx_hybrid);
+
+		if (n < 0)
+		{
+			wxArrayString& errs = eval.GetErrors();
+			for (size_t i = 0; i < errs.size(); i++)
+				m_errors.Add(errs[i]);
+
+			return false;
+		}
+
+		//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
 	}
-	
-	//wxLogStatus("Simulation preparation time: %d copy, %d eval", (int)time_copy, (int)time_eval);
-
 	return true;
 }
 
@@ -669,7 +748,7 @@ bool Simulation::Generate_lk(FILE *fp)
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 				if (existing_type != data_type)
 				{
-					if (VarValue *vv = GetInput(name))
+					if (VarValue *vv = GetInput(name, 0)) // TODO: hybrid update
 					{
 						if (!field.IsEmpty())
 						{
@@ -730,7 +809,7 @@ bool Simulation::WriteSSCTestInputs(wxString& cmod_name, ssc_module_t p_mod, ssc
 
     
     wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-	wxString tech = cfg->Technology;
+	wxString tech = cfg->TechnologyFullName;
 	tech.Replace(" ", "_");
 	wxString fin = cfg->Financing;
 	fin.Replace(" ", "_");
@@ -769,7 +848,7 @@ bool Simulation::WriteSSCTestOutputs(wxString& cmod_name, ssc_module_t p_mod, ss
     wxString casename = SamApp::Project().GetCaseName( m_case );
 
   	wxString fn = m_sSscTestsJSONFolder; //SamApp::GetUserLocalDataDir();
-	wxString tech = cfg->Technology;
+	wxString tech = cfg->TechnologyFullName;
 	tech.Replace(" ", "_");
 	wxString fin = cfg->Financing;
 	fin.Replace(" ", "_");
@@ -830,7 +909,7 @@ bool Simulation::CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data) {
 
             int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
             if (existing_type != data_type) {
-                if (VarValue *vv = GetInput(name)) {
+                if (VarValue *vv = GetInput(name, 0)) { // TODO:hybrids
                     if (!field.IsEmpty()) {
                         if (vv->Type() != VV_TABLE) {
                             wxString err = "SSC variable has table:field specification, but '" + name +
@@ -1058,126 +1137,294 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 	if ( m_simlist.size() == 0 )
 		ih->Error("No simulation compute modules defined for this configuration.");
 
-
-
-	for( size_t kk=0;kk<m_simlist.size();kk++ )
-	{
-        ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
-        if (!p_mod) {
-            wxString err = "could not create ssc module: " + m_simlist[kk];
-            ssc_data_set_string(p_data, "error", err.c_str());
-            return false;
-        }
-
-		if (!CmodInputsToSSCData(p_mod, p_data)){
-		    ih->Error(ssc_data_get_string(p_data, "error"));
+	// hybrids (already gone through equations in Prepare)
+	if (m_case->GetConfiguration()->Technology.size() > 1) {
+		// set "input" table
+		ssc_data_t p_input = ssc_data_create();
+		// set "compute_modules"
+		ssc_var_t p_compute_modules[10];  // only constant allowed here - assumes m_simlist.size() < 10
+		for (size_t i = 0; i < m_simlist.size() && i<10; i++) {
+			p_compute_modules[i] = ssc_var_create();
+			ssc_var_set_string(p_compute_modules[i], m_simlist[i].c_str());
 		}
+		ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], (int)m_simlist.size());
+		for (size_t i = 0; i < m_simlist.size() && i < 10; i++)
+			ssc_var_free(p_compute_modules[i]);
 
-        if (m_bSscTestsGeneration)
-            WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
-
-		// optionally write a debug input file if the ISimulationHandler defines it
-		wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
-		ih->WriteDebugFile( fn, p_mod, p_data );
-		//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
-		
+		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < m_simlist.size(); i++) { // each vartable
+			ssc_data_t p_val = ssc_data_create();
+//			m_case->Values(i).AsSSCData(p_val); // skips overrides
+			m_inputs[i].AsSSCData(p_val); // includes overrides
+			if (i == m_case->GetConfiguration()->Technology.size() - 1) // "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
+				ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i].c_str(), p_val);
+			else
+				ssc_data_set_table(p_input, m_simlist[i].c_str(), p_val);
+			ssc_data_free(p_val);
+		}
+		// set "input" SSC_TABLE
+		ssc_data_set_table(p_data, "input", p_input);
+		ssc_data_free(p_input); // after deep copy above
+		// invoke "hybrid" compute module
+		ssc_module_t p_modhybrid = ssc_module_create("hybrid");
+		if (!p_modhybrid) {
+			wxString err = "could not create ssc module: hybrid";
+			ssc_data_set_string(p_data, "error", err.c_str());
+			return false;
+		}
 		wxStopWatch ssctime;
-		ssc_bool_t ok = ssc_module_exec_with_handler( p_mod, p_data, ssc_invoke_handler, ih );
+		ssc_bool_t ok = ssc_module_exec_with_handler(p_modhybrid, p_data, ssc_invoke_handler, ih);
 		m_sscElapsedMsec += (int)ssctime.Time();
-
-		if ( !ok )
-		{
-			ih->Error( "Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0,  nullptr, nullptr) );
+		// process "output" table
+		if (!ok) {
+			ih->Error("Simulation " + m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1] + " failed :" + ssc_module_log(p_modhybrid, 0, nullptr, nullptr));
 		}
-		else
-		{
-			int pidx = 0;
-			while( const ssc_info_t p_inf = ssc_module_var_info( p_mod, pidx++ ) )
+		else {
+			int poutidx = 0;
+			while (const ssc_info_t p_outinf = ssc_module_var_info(p_modhybrid, poutidx++))
 			{
-				int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-				int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
-				const char *name = ssc_info_name( p_inf ); // assumed to be non-null
-				wxString label( ssc_info_label( p_inf ) );
-				wxString units( ssc_info_units( p_inf ) );
-				wxString ui_hint(ssc_info_uihint(p_inf));
-				
+				int out_var_type = ssc_info_var_type(p_outinf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				int out_data_type = ssc_info_data_type(p_outinf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+				const char* out_name = ssc_info_name(p_outinf); // assumed to be non-null
 
-				if ( (var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_NUMBER )
-				{
-					ssc_number_t vval;
-					if ( ssc_data_get_number( p_data, name, &vval ) )
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
+				// finish setting up outputs
+				if ((out_var_type == SSC_OUTPUT || out_var_type == SSC_INOUT) && out_data_type == SSC_TABLE) {
+					// parse and flatten "output" table from ssc
+					ssc_data_t p_outputs = ssc_data_get_table(p_data, out_name); // every variable in "output" is an output - do not need to check type below
+					for (size_t i = 0; i < m_simlist.size(); i++) { // each vartable
+						const char* vartable_name;
+						wxString prepend_name, prepend_label;
+						if (i >= m_case->GetConfiguration()->Technology.size() - 1) {
+							vartable_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1].c_str();
+//							prepend_name = m_case->GetConfiguration()->Technology[m_case->GetConfiguration()->Technology.size() - 1];
+							prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
+							prepend_label = ""; // change "Hybrid" to nothing for normal metric processing
 						}
-
-						m_outputList.Add( name );
-						VarValue *vv = m_outputs.Create( name, VV_NUMBER );
-						vv->Set( (float) vval );
-						
-						m_outputLabels[ name ] = label;
-						m_outputUnits[ name ] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
-					}
-				}
-				else if ( ( var_type == SSC_OUTPUT || var_type == SSC_INOUT ) && data_type == SSC_ARRAY )
-				{
-					int len;
-					if ( ssc_number_t *varr = ssc_data_get_array( p_data, name, &len ) )
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
+						else {
+							vartable_name = m_simlist[i].c_str();
+							prepend_name = m_case->GetConfiguration()->Technology[i].Lower() + "_";
+							prepend_label = m_case->GetConfiguration()->Technology[i] + " ";
 						}
-						m_outputList.Add( name );
-						VarValue *vv = m_outputs.Create( name, VV_ARRAY );
-						double *ff = new double[len];
-						for( int i=0;i<len;i++ )
-							ff[i] = (double)(varr[i]);
+						ssc_data_t p_vartable = ssc_data_get_table(p_outputs, vartable_name);
+						// prepend outputs with "Technology" names (i.e. bin_names)
 
-						vv->Set( ff, (size_t)len );
-						delete [] ff;
-						
-						m_outputLabels[ name ] = label;
-						m_outputUnits[ name ] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
-
-					}		
-				}
-				else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
-				{
-					int nr, nc;
-					if (ssc_number_t *varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
-					{
-						if (m_outputList.Index(name) != wxNOT_FOUND) {
-							m_outputList.Remove(name);
-						}
-						m_outputList.Add(name);
-						VarValue *vv = m_outputs.Create(name, VV_MATRIX);
-						matrix_t<double> ff(nr, nc);
-
-						int count = 0;
-						for (int i = 0; i < nr; i++)
+						ssc_module_t p_mod = ssc_module_create(m_simlist[i].c_str());
+						int pidx = 0;
+						while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
 						{
-							for (int j = 0; j < nc; j++)
+							//int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+							int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+							const char* name = ssc_info_name(p_inf); // assumed to be non-null
+							wxString label(ssc_info_label(p_inf));
+							wxString units(ssc_info_units(p_inf));
+							wxString ui_hint(ssc_info_uihint(p_inf));
+							wxString sam_output_name = prepend_name + name; // hybrid processing
+							wxString label_no_space = label;
+							label_no_space.Replace(" ", "");
+							if (((prepend_name.Len() > 0) && (label.Len() > prepend_name.Len()))
+								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())  // check for "Battery Battery..."
+								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label_no_space.Left(prepend_name.length() - 1).Lower()))  {// check for "FuelCell fuel cell..."
+								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
+									label = prepend_label + label;
+								else
+									label = prepend_label + label.Left(1).Lower() + label.Right(label.length()-1);
+							}
+
+							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
 							{
-								ff(i, j) = (double)(varr[count]);
-								count++;
+								ssc_number_t vval;
+								if (ssc_data_get_number(p_vartable, name, &vval))
+								{
+									if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+										m_outputList.Remove(sam_output_name);
+									}
+
+									m_outputList.Add(sam_output_name);
+									VarValue* vv = m_outputs.Create(sam_output_name, VV_NUMBER);
+									vv->Set((float)vval);
+
+									m_outputLabels[sam_output_name] = label;
+									m_outputUnits[sam_output_name] = units;
+									if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+								}
+							}
+							else if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_ARRAY)
+							{
+								int len;
+								if (ssc_number_t* varr = ssc_data_get_array(p_vartable, name, &len))
+								{
+									if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+										m_outputList.Remove(sam_output_name);
+									}
+									m_outputList.Add(sam_output_name);
+									VarValue* vv = m_outputs.Create(sam_output_name, VV_ARRAY);
+									double* ff = new double[len];
+									for (int i = 0; i < len; i++)
+										ff[i] = (double)(varr[i]);
+
+									vv->Set(ff, (size_t)len);
+									delete[] ff;
+
+									m_outputLabels[sam_output_name] = label;
+									m_outputUnits[sam_output_name] = units;
+									if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+
+								}
+							}
+							else if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) && */data_type == SSC_MATRIX)
+							{
+								int nr, nc;
+								if (ssc_number_t* varr = ssc_data_get_matrix(p_vartable, name, &nr, &nc))
+								{
+									if (m_outputList.Index(sam_output_name) != wxNOT_FOUND) {
+										m_outputList.Remove(sam_output_name);
+									}
+									m_outputList.Add(sam_output_name);
+									VarValue* vv = m_outputs.Create(sam_output_name, VV_MATRIX);
+									matrix_t<double> ff(nr, nc);
+
+									int count = 0;
+									for (int i = 0; i < nr; i++)
+									{
+										for (int j = 0; j < nc; j++)
+										{
+											ff(i, j) = (double)(varr[count]);
+											count++;
+										}
+									}
+									vv->Set(ff);
+									m_outputLabels[sam_output_name] = label;
+									m_outputUnits[sam_output_name] = units;
+									if (!ui_hint.IsEmpty()) m_uiHints[sam_output_name] = ui_hint;
+								}
 							}
 						}
-						vv->Set(ff);
-						m_outputLabels[name] = label;
-						m_outputUnits[name] = units;
-						if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+						ssc_module_free(p_mod);
 					}
 				}
 			}
 		}
+		ssc_module_free(p_modhybrid);
+	}
+	else { // previous Tech/Fin processing
+		for (size_t kk = 0; kk < m_simlist.size(); kk++)
+		{
+			ssc_module_t p_mod = ssc_module_create(m_simlist[kk].c_str());
+			if (!p_mod) {
+				wxString err = "could not create ssc module: " + m_simlist[kk];
+				ssc_data_set_string(p_data, "error", err.c_str());
+				return false;
+			}
 
-        if (m_bSscTestsGeneration)
-            WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+			if (!CmodInputsToSSCData(p_mod, p_data)) {
+				ih->Error(ssc_data_get_string(p_data, "error"));
+			}
 
-        
-        ssc_module_free( p_mod );
+			if (m_bSscTestsGeneration)
+				WriteSSCTestInputs(m_simlist[kk], p_mod, p_data);
+
+			// optionally write a debug input file if the ISimulationHandler defines it
+			wxString fn = folder + "/ssc-" + m_simlist[kk] + ".lk";
+			ih->WriteDebugFile(fn, p_mod, p_data);
+			//ih->WriteDebugFile( m_simlist[kk], p_mod, p_data );
+
+			wxStopWatch ssctime;
+			ssc_bool_t ok = ssc_module_exec_with_handler(p_mod, p_data, ssc_invoke_handler, ih);
+			m_sscElapsedMsec += (int)ssctime.Time();
+
+			if (!ok)
+			{
+				ih->Error("Simulation " + m_simlist[kk] + " failed :" + ssc_module_log(p_mod, 0, nullptr, nullptr));
+			}
+			else
+			{
+				int pidx = 0;
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+				{
+					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+					int data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX		
+					const char* name = ssc_info_name(p_inf); // assumed to be non-null
+					wxString label(ssc_info_label(p_inf));
+					wxString units(ssc_info_units(p_inf));
+					wxString ui_hint(ssc_info_uihint(p_inf));
+
+
+					if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_NUMBER)
+					{
+						ssc_number_t vval;
+						if (ssc_data_get_number(p_data, name, &vval))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_NUMBER);
+							vv->Set((float)vval);
+
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+						}
+					}
+					else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_ARRAY)
+					{
+						int len;
+						if (ssc_number_t* varr = ssc_data_get_array(p_data, name, &len))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_ARRAY);
+							double* ff = new double[len];
+							for (int i = 0; i < len; i++)
+								ff[i] = (double)(varr[i]);
+
+							vv->Set(ff, (size_t)len);
+							delete[] ff;
+
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+
+						}
+					}
+					else if ((var_type == SSC_OUTPUT || var_type == SSC_INOUT) && data_type == SSC_MATRIX)
+					{
+						int nr, nc;
+						if (ssc_number_t* varr = ssc_data_get_matrix(p_data, name, &nr, &nc))
+						{
+							if (m_outputList.Index(name) != wxNOT_FOUND) {
+								m_outputList.Remove(name);
+							}
+							m_outputList.Add(name);
+							VarValue* vv = m_outputs.Create(name, VV_MATRIX);
+							matrix_t<double> ff(nr, nc);
+
+							int count = 0;
+							for (int i = 0; i < nr; i++)
+							{
+								for (int j = 0; j < nc; j++)
+								{
+									ff(i, j) = (double)(varr[count]);
+									count++;
+								}
+							}
+							vv->Set(ff);
+							m_outputLabels[name] = label;
+							m_outputUnits[name] = units;
+							if (!ui_hint.IsEmpty()) m_uiHints[name] = ui_hint;
+						}
+					}
+				}
+			}
+
+			if (m_bSscTestsGeneration)
+				WriteSSCTestOutputs(m_simlist[kk], p_mod, p_data);
+
+
+			ssc_module_free(p_mod);
+		}
 	}
 
 	ssc_data_free( p_data );
@@ -1250,6 +1497,11 @@ void Simulation::ListByCount( size_t nr, size_t nc, wxArrayString &list )
 			nrows = it->second->Rows();
 			ncols = it->second->Columns();
 		}
+        else if (it->second->Type() == VV_TABLE)
+        {
+            nrows = it->second->Rows();
+            ncols = it->second->Columns();
+        }
 
 		if ( nr == nrows && nc == ncols )
 			list.Add( it->first );
@@ -1316,12 +1568,23 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
 	wxArrayString *units, 
 	wxArrayString *groups,
 	wxArrayString* types,
-	bool single_values )
+	bool single_values )  // TODO: hybrids
 {
 	if ( !cfg ) return false;
 
 	for( size_t kk=0;kk<cfg->Simulations.size();kk++ )
 	{
+		wxString prepend_name, prepend_label;
+		if (kk >= cfg->Technology.size() - 1) {
+			prepend_name = ""; // change "Hybrid" to nothing for normal metric processing
+			prepend_label = ""; // change "Hybrid" to nothing for normal metric processing
+		}
+		else {
+			prepend_name = cfg->Technology[kk].Lower() + "_";
+			prepend_label = cfg->Technology[kk] + " ";
+		}
+
+
 		ssc_module_t p_mod = ssc_module_create( cfg->Simulations[kk].c_str() );
 		if ( !p_mod )
 			return false;
@@ -1343,14 +1606,14 @@ bool Simulation::ListAllOutputs( ConfigInfo *cfg,
                     if (names) {
                         auto ndx = names->Index(strName);
                         if (ndx == wxNOT_FOUND) {
-                            if (names) names->Add(wxString(ssc_info_name(p_inf)));
-                            if (labels) labels->Add(wxString(ssc_info_label(p_inf)));
+                            if (names) names->Add(prepend_name + wxString(ssc_info_name(p_inf)));
+                            if (labels) labels->Add(prepend_label + wxString(ssc_info_label(p_inf)));
                             if (units) units->Add(wxString(ssc_info_units(p_inf)));
                             if (groups) groups->Add(wxString(ssc_info_group(p_inf)));
                             if (types) types->Add(wxString::Format(wxT("%i"), data_type));
                         }
                         else {
-                            if (labels) labels->Item(ndx) = wxString(ssc_info_label(p_inf));
+                            if (labels) labels->Item(ndx) = prepend_label + wxString(ssc_info_label(p_inf));
                             if (units) units->Item(ndx) = wxString(ssc_info_units(p_inf));
                             if (groups) groups->Item(ndx) = wxString(ssc_info_group(p_inf));
                             if (types) types->Item(ndx) = wxString::Format(wxT("%i"), data_type);

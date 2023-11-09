@@ -3,6 +3,7 @@
     "6par_aisc_display": 0.00373527,
     "6par_aisc_units": 0.0,
     "6par_area": 1.631,
+    "6par_aspect_ratio": 1.49,
     "6par_bifacial_ground_clearance_height": 1.0,
     "6par_bifacial_transmission_factor": 0.013,
     "6par_bifaciality": 0.7,
@@ -15,7 +16,9 @@
     "6par_imp": 5.67,
     "6par_is_bifacial": 0.0,
     "6par_isc": 6.05,
+    "6par_module_length": 1.559,
     "6par_module_name": "SunPower SPR-E19-310-COM",
+    "6par_module_width": 1.046,
     "6par_mounting": 0.0,
     "6par_mpeff": 19.0159,
     "6par_nser": 96.0,
@@ -38,6 +41,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -401,6 +406,7 @@
     "cec_area": 1.631,
     "cec_array_cols": 10.0,
     "cec_array_rows": 1.0,
+    "cec_aspect_ratio": 1.49,
     "cec_backside_temp": 20.0,
     "cec_beta_oc": -0.175619,
     "cec_bifacial_ground_clearance_height": 1.0,
@@ -439,6 +445,8 @@
     "dc_adjust_en_timeindex": 0.0,
     "dc_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -455,6 +463,7 @@
     "enable_auto_size": 0.0,
     "enable_interconnection_limit": 0.0,
     "enable_mismatch_vmax_calc": 0.0,
+    "enable_subhourly_clipping": 0.0,
     "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "fixed_charge_rate": 0.0816026,
     "fixed_operating_cost": 1300010.0,
@@ -11341,7 +11350,7 @@
     "inv_snl_vdco": 615.0,
     "inv_tdc_cec_cg": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -11350,7 +11359,7 @@
     ],
     "inv_tdc_cec_db": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -11359,7 +11368,7 @@
     ],
     "inv_tdc_ds": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -11368,7 +11377,7 @@
     ],
     "inv_tdc_plc": [
         [
-            1300.0,
+            1500.0,
             50.0,
             -0.02,
             53.0,
@@ -11383,7 +11392,9 @@
     "layout_warning": "No system sizing messages.",
     "lbl_bifacial": "",
     "lib_is_bifacial": 0.0,
+    "lib_length": 1.559,
     "lib_manufacturer": "SunPower",
+    "lib_width": 1.046,
     "library_folder_list": "x",
     "library_paths": "",
     "lon": -111.98,
@@ -11417,6 +11428,7 @@
     "sd11par_Voc0": 70.2144,
     "sd11par_alphaIsc": 0.00144911,
     "sd11par_area": 1.68,
+    "sd11par_aspect_ratio": 1.7,
     "sd11par_betaVoc": -0.169816,
     "sd11par_c1": 386.03,
     "sd11par_c2": 451.442,
@@ -11427,6 +11439,8 @@
     "sd11par_eff": 19.1848,
     "sd11par_gammaPmp": -0.29628,
     "sd11par_glass": 0.0,
+    "sd11par_module_length": 1.69,
+    "sd11par_module_width": 0.994,
     "sd11par_mounting": 0.0,
     "sd11par_n": 1.01273,
     "sd11par_nser": 96.0,
@@ -11448,6 +11462,7 @@
     "snl_aimp": -0.00038,
     "snl_aisc": 0.00059,
     "snl_area": 1.631,
+    "snl_aspect_ratio": 1.7,
     "snl_b": -0.075,
     "snl_b0": 1.0,
     "snl_b1": -0.002438,
@@ -11475,8 +11490,10 @@
     "snl_material": "c-Si",
     "snl_mbvmp": 0.0,
     "snl_mbvoc": 0.0,
+    "snl_module_length": 1.665,
     "snl_module_name": "SunPower SPR-305-WHT [2007 (E)]",
     "snl_module_structure": 0.0,
+    "snl_module_width": 0.979,
     "snl_n": 1.131,
     "snl_n_cells": 96.0,
     "snl_parallel_cells": 1.0,
@@ -11515,6 +11532,7 @@
     "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "spe_a": -3.56,
     "spe_area": 0.74074,
+    "spe_aspect_ratio": 1.7,
     "spe_b": -0.075,
     "spe_bifacial_ground_clearance_height": 1.0,
     "spe_bifacial_transmission_factor": 0.013,
@@ -11528,7 +11546,9 @@
     "spe_eff4": 19.0,
     "spe_fd": 1.0,
     "spe_is_bifacial": 0.0,
+    "spe_module_length": 1.122,
     "spe_module_structure": 0.0,
+    "spe_module_width": 0.66,
     "spe_power": 140.741,
     "spe_rad0": 200.0,
     "spe_rad1": 400.0,
@@ -11642,7 +11662,7 @@
     "subarray2_land_area": 0.0,
     "subarray2_mismatch_loss": 2.0,
     "subarray2_mod_orient": 0.0,
-    "subarray2_modules_per_string": 0.0,
+    "subarray2_modules_per_string": 1.0,
     "subarray2_monthly_tilt": [
         40.0,
         40.0,
@@ -11662,7 +11682,7 @@
     "subarray2_nmodules": 0.0,
     "subarray2_nmodx": 9.0,
     "subarray2_nmody": 2.0,
-    "subarray2_nstrings": 0.0,
+    "subarray2_nstrings": 1.0,
     "subarray2_rack_shading": 0.0,
     "subarray2_rear_soiling_loss": 0.0,
     "subarray2_ref_nmodules": 0.0,
@@ -11727,7 +11747,7 @@
     "subarray3_land_area": 0.0,
     "subarray3_mismatch_loss": 2.0,
     "subarray3_mod_orient": 0.0,
-    "subarray3_modules_per_string": 0.0,
+    "subarray3_modules_per_string": 1.0,
     "subarray3_monthly_tilt": [
         40.0,
         40.0,
@@ -11747,7 +11767,7 @@
     "subarray3_nmodules": 0.0,
     "subarray3_nmodx": 9.0,
     "subarray3_nmody": 2.0,
-    "subarray3_nstrings": 0.0,
+    "subarray3_nstrings": 1.0,
     "subarray3_rack_shading": 0.0,
     "subarray3_rear_soiling_loss": 0.0,
     "subarray3_ref_nmodules": 0.0,
@@ -11812,7 +11832,7 @@
     "subarray4_land_area": 0.0,
     "subarray4_mismatch_loss": 2.0,
     "subarray4_mod_orient": 0.0,
-    "subarray4_modules_per_string": 0.0,
+    "subarray4_modules_per_string": 1.0,
     "subarray4_monthly_tilt": [
         40.0,
         40.0,
@@ -11832,7 +11852,7 @@
     "subarray4_nmodules": 0.0,
     "subarray4_nmodx": 9.0,
     "subarray4_nmody": 2.0,
-    "subarray4_nstrings": 0.0,
+    "subarray4_nstrings": 1.0,
     "subarray4_rack_shading": 0.0,
     "subarray4_rear_soiling_loss": 0.0,
     "subarray4_ref_nmodules": 0.0,
@@ -11899,6 +11919,7 @@
     "ui_array_land_area_acres": 649.738,
     "ui_array_land_area_ha": 262.94,
     "ui_array_land_area_multiplier": 1.0,
+    "ui_aspect_ratio": 1.7,
     "ui_capital_cost_capacity": 1040.0,
     "ui_capital_cost_fixed": 53455000.0,
     "ui_cfin": 1.01249,

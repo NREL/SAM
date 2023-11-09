@@ -1,0 +1,797 @@
+/* Text Styles */
+hr { color: #000000 }
+body, table, tr, th /* Normal */
+{
+ font-size: 100%;
+ font-family: 'Open Sans';
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+table, tr, th
+{
+ font-size: 100%;
+}
+span.f_CHCode /* CH Code */
+{
+ font-size: 1.20rem;
+ font-family: Consolas;
+}
+span.f_CHEquationVariable /* CH Equation Variable */
+{
+ font-size: 1.10rem;
+ font-family: 'Times New Roman',Times,Georgia,serif;
+ font-style: italic;
+}
+span.f_CHFileName /* CH File Name */
+{
+ font-style: italic;
+}
+span.f_CHInterfaceElement /* CH Interface Element */
+{
+ font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
+ font-weight: bold;
+}
+span.f_CHNote /* CH Note */
+{
+ font-weight: bold;
+}
+span.f_CHVariableSubscript /* CH Variable Subscript */
+{
+ font-size: 0.80rem;
+ font-family: 'Times New Roman',Times,Georgia,serif;
+ vertical-align: sub;
+}
+span.f_Character /* Character */
+{
+}
+span.f_CodeExample /* Code Example */
+{
+ font-size: 1.20rem;
+ font-family: Consolas;
+}
+span.f_Comment /* Comment */
+{
+}
+span.f_Construction /* Construction */
+{
+ font-size: 1.60rem;
+ font-weight: bold;
+ color: #feeada;
+}
+span.f_Definition /* Definition */
+{
+}
+span.f_Emphasis /* Emphasis */
+{
+ font-style: italic;
+}
+span.f_Equation /* Equation */
+{
+}
+span.f_EquationExcel /* Equation Excel */
+{
+ font-style: italic;
+}
+span.f_Footnote /* Footnote */
+{
+}
+span.f_Heading1 /* Heading1 */
+{
+ font-size: 2.40rem;
+ font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;
+ color: #ffffff;
+ background-color: #0072c6;
+}
+span.f_Heading2_atoc_ /* Heading2_atoc_ */
+{
+ font-size: 1.40rem;
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+ color: #0072c6;
+}
+span.f_Heading3_atocs_ /* Heading3_atocs_ */
+{
+ font-size: 1.40rem;
+ font-family: Arial,Helvetica,sans-serif;
+ color: #0072c6;
+}
+span.f_Heading4 /* Heading4 */
+{
+ font-size: 1.20rem;
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+span.f_ImageCaption /* Image Caption */
+{
+}
+span.f_List /* List */
+{
+}
+span.f_ListLast /* List Last */
+{
+}
+span.f_ListNoNumber /* List No Number */
+{
+}
+span.f_Note /* Note */
+{
+}
+span.f_Notes /* Notes */
+{
+}
+span.f_ProcedureStep /* Procedure Step */
+{
+}
+span.f_ProcedureStepLast /* Procedure Step Last */
+{
+}
+span.f_ProcedureStepNoNumber /* Procedure Step No Number */
+{
+}
+span.f_Superscript /* Superscript */
+{
+ font-size: 0.80rem;
+ vertical-align: super;
+}
+span.f_Table /* Table */
+{
+}
+span.f_TableEquationNumber /* Table Equation Number */
+{
+}
+span.f_TableHeadColumn /* Table Head Column */
+{
+ font-weight: bold;
+}
+span.f_TableHeadRow /* Table Head Row */
+{
+ font-weight: bold;
+}
+span.f_TableText /* Table Text */
+{
+}
+span.f_TableTextCenter /* Table Text Center */
+{
+}
+span.f_TableTextLeft /* Table Text Left */
+{
+}
+span.f_TableTextRight /* Table Text Right */
+{
+}
+span.f_Term /* Term */
+{
+ font-weight: bold;
+}
+span.f_Text /* Text */
+{
+}
+span.f_TextCenter /* Text Center */
+{
+}
+span.f_TextCode /* Text Code */
+{
+ font-family: Courier,monospace;
+}
+span.f_Tip /* Tip */
+{
+}
+span.f_Title /* Title */
+{
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+span.f_TitleFigure /* Title Figure */
+{
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+span.f_TitleProcedure /* Title Procedure */
+{
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+span.f_TitleTable /* Title Table */
+{
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+span.f_TopicTOCHeading /* Topic TOC Heading */
+{
+ font-weight: bold;
+}
+span.f_TopicTOClist /* Topic TOC list */
+{
+}
+span.f_VariableDescription /* Variable Description */
+{
+}
+span.f_VariableName /* Variable Name */
+{
+ font-weight: bold;
+}
+span.f_Video /* Video */
+{
+}
+span.f_VideoLibraryTitle /* Video Library Title */
+{
+ font-size: 1.20rem;
+ font-family: Arial,Helvetica,sans-serif;
+ font-weight: bold;
+}
+/* Paragraph styles */
+p, p.p_Normal, div.p_Normal, li.p_Normal /* Normal */
+{
+ text-align: left;
+ text-indent: 0;
+ padding: 0 0 0 0;
+ margin: 0 0 0 0;
+}
+.p_CHCode /* CH Code */
+{
+ font-size: 1.20rem;
+}
+.p_CHEquationVariable /* CH Equation Variable */
+{
+ font-size: 1.10rem;
+}
+.p_CHFileName /* CH File Name */
+{
+ font-size: 1.00rem;
+}
+.p_CHInterfaceElement /* CH Interface Element */
+{
+ font-size: 1.00rem;
+}
+.p_CHNote /* CH Note */
+{
+ font-size: 1.00rem;
+ border-color: #000000;
+ border-style: solid;
+ border-width: thin;
+ background: #ffffc4;
+ padding: 0.3125rem 0.3125rem 0.3125rem 0.3125rem;
+ margin: 0.0625rem 2.6875rem 0.4375rem 2.6875rem;
+}
+.p_CHVariableSubscript /* CH Variable Subscript */
+{
+ font-size: 0.80rem;
+}
+.p_Character /* Character */
+{
+ font-size: 1.00rem;
+}
+.p_CodeExample /* Code Example */
+{
+ font-size: 1.20rem;
+ line-height: 1.0;
+ white-space: nowrap;
+ page-break-inside: avoid;
+ margin: 0.3750rem 0 0.7500rem 1.5000rem;
+}
+.p_Comment /* Comment */
+{
+ font-size: 1.00rem;
+}
+.p_Construction /* Construction */
+{
+ font-size: 1.60rem;
+ text-align: center;
+}
+.p_Definition /* Definition */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.3750rem 1.5000rem;
+}
+.p_Emphasis /* Emphasis */
+{
+ font-size: 1.00rem;
+}
+.p_Equation /* Equation */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ margin: 0 0 0.3750rem 0;
+}
+.p_EquationExcel /* Equation Excel */
+{
+ font-size: 1.00rem;
+ text-indent: -1.5000rem;
+ margin: 0 0 0.3750rem 4.5000rem;
+}
+.p_Footnote /* Footnote */
+{
+ font-size: 1.00rem;
+ text-indent: -0.5625rem;
+ margin: 0 0 0 0.7500rem;
+}
+.p_Heading1 /* Heading1 */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: center;
+ text-indent: 0;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ background: #0072c6;
+ padding: 0 0 0 0;
+ margin: 0 0 0 0;
+}
+.p_Heading2_atoc_ /* Heading2_atoc_ */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: -1.1875rem;
+ border-color: #0072c6;
+ border-style: solid;
+ border-width: thin;
+ background: #ebebeb;
+ padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem;
+ margin: 0.0625rem 0 0.0625rem 1.0625rem;
+}
+.p_Heading3_atocs_ /* Heading3_atocs_ */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: 0;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ border-color: #0072c6;
+ border-style: solid;
+ border-width: 0.1250rem;
+ border-top: none;
+ border-right: none;
+ border-left: none;
+ padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem;
+ margin: 0.0625rem 0 0.6250rem 0;
+}
+.p_Heading4 /* Heading4 */
+{
+ font-size: 100%;
+ font-weight: normal;
+ text-align: left;
+ text-indent: -1.1875rem;
+ padding: 0 0 0 0;
+ margin: 0.3750rem 0 0.3750rem 1.1875rem;
+}
+.p_ImageCaption /* Image Caption */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ margin: 0.1250rem 0 0.3750rem 0;
+}
+.p_List /* List */
+{
+ font-size: 1.00rem;
+ text-indent: -1.5000rem;
+ margin: 0 0 0.1875rem 3.0000rem;
+}
+.p_ListLast /* List Last */
+{
+ font-size: 1.00rem;
+ text-indent: -1.5000rem;
+ page-break-inside: avoid;
+ margin: 0 0 0.3750rem 3.0000rem;
+}
+.p_ListNoNumber /* List No Number */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.1875rem 3.0000rem;
+}
+.p_Note /* Note */
+{
+ font-size: 1.00rem;
+ border-color: #000000;
+ border-style: solid;
+ border-width: thin;
+ background: #ffffc4;
+ padding: 0.3125rem 0.3125rem 0.3125rem 0.3125rem;
+ margin: 0.0625rem 2.6875rem 0.4375rem 2.6875rem;
+}
+.p_Notes /* Notes */
+{
+ font-size: 1.00rem;
+}
+.p_ProcedureStep /* Procedure Step */
+{
+ font-size: 1.00rem;
+ text-indent: -1.5000rem;
+ margin: 0 0 0.1875rem 3.0000rem;
+}
+.p_ProcedureStepLast /* Procedure Step Last */
+{
+ font-size: 1.00rem;
+ text-indent: -1.5000rem;
+ margin: 0 0 0.3750rem 3.0000rem;
+}
+.p_ProcedureStepNoNumber /* Procedure Step No Number */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.1875rem 3.0000rem;
+}
+.p_Superscript /* Superscript */
+{
+ font-size: 0.80rem;
+}
+.p_Table /* Table */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ margin: 0 0 0.7500rem 0;
+}
+.p_TableEquationNumber /* Table Equation Number */
+{
+ font-size: 1.00rem;
+ text-align: right;
+ page-break-inside: avoid;
+}
+.p_TableHeadColumn /* Table Head Column */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ page-break-inside: avoid;
+}
+.p_TableHeadRow /* Table Head Row */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+}
+.p_TableText /* Table Text */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+}
+.p_TableTextCenter /* Table Text Center */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ page-break-inside: avoid;
+}
+.p_TableTextLeft /* Table Text Left */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+}
+.p_TableTextRight /* Table Text Right */
+{
+ font-size: 1.00rem;
+ text-align: right;
+ page-break-inside: avoid;
+}
+.p_Term /* Term */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0.3750rem 0 0 0;
+}
+.p_Text /* Text */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.3750rem 0;
+}
+.p_TextCenter /* Text Center */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ margin: 0 0 0.3750rem 0;
+}
+.p_TextCode /* Text Code */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.3750rem 1.5000rem;
+}
+.p_Tip /* Tip */
+{
+ font-size: 1.00rem;
+ border-color: #000000;
+ border-style: double;
+ border-width: 0.1250rem;
+ padding: 0.3125rem 0.3125rem 0.3125rem 0.3125rem;
+ margin: 0.4375rem 5.6875rem 0.4375rem 5.6875rem;
+}
+.p_Title /* Title */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0 0 0.3750rem 0;
+}
+.p_TitleFigure /* Title Figure */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0.7500rem 0 0.7500rem 0;
+}
+.p_TitleProcedure /* Title Procedure */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0.7500rem 0 0.3750rem 0;
+}
+.p_TitleTable /* Title Table */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0.3750rem 0 0.0625rem 0;
+}
+.p_TopicTOCHeading /* Topic TOC Heading */
+{
+ font-size: 1.00rem;
+ margin: 0.3750rem 0 0.3750rem 0.3125rem;
+}
+.p_TopicTOClist /* Topic TOC list */
+{
+ font-size: 1.00rem;
+ margin: 0.1875rem 2.6875rem 0.1875rem 1.1875rem;
+}
+.p_VariableDescription /* Variable Description */
+{
+ font-size: 1.00rem;
+ margin: 0 0 0.3750rem 1.5000rem;
+}
+.p_VariableName /* Variable Name */
+{
+ font-size: 1.00rem;
+ page-break-inside: avoid;
+ page-break-after: avoid;
+ margin: 0 0 0.3750rem 0.7500rem;
+}
+.p_Video /* Video */
+{
+ font-size: 1.00rem;
+ text-align: center;
+ margin: 0.7500rem 0 0.7500rem 0;
+}
+.p_VideoLibraryTitle /* Video Library Title */
+{
+ font-size: 1.20rem;
+ margin: 0 0 0.7500rem 0;
+}
+/* Table styles */
+table.DefaultNoBorder {
+ width: 100%;
+ border: none;
+ border-spacing: 0;
+}
+table.DefaultNoBorder tr.DefaultNoBorder {
+ text-align: left;
+}
+table.DefaultNoBorder th.DefaultNoBorder, table.DefaultNoBorder td.DefaultNoBorder {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: none;
+}
+table.DefaultShadedRows {
+ width: 100%;
+ border: solid 0.1250rem #C0C0C0;
+ border-spacing: 0;
+ border-collapse: collapse;
+}
+table.DefaultShadedRows tr.DefaultShadedRows {
+ text-align: left;
+}
+table.DefaultShadedRows th.DefaultShadedRows, table.DefaultShadedRows td.DefaultShadedRows {
+ vertical-align: top;
+ padding: 0.2500rem;
+ border: solid thin #C0C0C0;
+}
+table.TopicStatusTable {
+ border: none;
+ border-spacing: 0;
+ border-collapse: collapse;
+}
+table.TopicStatusTable tr.TopicStatusTable {
+ text-align: left;
+}
+table.TopicStatusTable th.TopicStatusTable, table.TopicStatusTable td.TopicStatusTable {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: solid thin;
+}
+table.EquationTable {
+ border: none;
+ border-spacing: 0;
+ border-collapse: collapse;
+}
+table.EquationTable tr.EquationTable {
+ text-align: left;
+}
+table.EquationTable th.EquationTable, table.EquationTable td.EquationTable {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: solid thin;
+}
+table.MetricsTable {
+ border: none;
+ border-spacing: 0;
+ border-collapse: collapse;
+}
+table.MetricsTable tr.MetricsTable {
+ text-align: left;
+}
+table.MetricsTable th.MetricsTable, table.MetricsTable td.MetricsTable {
+ vertical-align: top;
+ padding: 0;
+ border: solid thin;
+}
+table.MetricsTable th.MetricsTable {
+ background-color:#808080;
+}
+table.TableStyles2 {
+ border: none;
+ border-spacing: 0;
+}
+table.TableStyles2 tr.TableStyles2 {
+ text-align: left;
+}
+table.TableStyles2 th.TableStyles2, table.TableStyles2 td.TableStyles2 {
+ vertical-align: top;
+ padding: 0;
+ border: none;
+}
+table.ToggleContentTable {
+ width: 100%;
+ border: none;
+ border-spacing: 0;
+}
+table.ToggleContentTable tr.ToggleContentTable {
+ text-align: left;
+}
+table.ToggleContentTable th.ToggleContentTable, table.ToggleContentTable td.ToggleContentTable {
+ vertical-align: top;
+ padding: 0;
+ border: none;
+}
+table.TopicSummaryTable {
+ width: 100%;
+ border: none;
+ border-spacing: 0;
+}
+table.TopicSummaryTable tr.TopicSummaryTable {
+ text-align: left;
+}
+table.TopicSummaryTable th.TopicSummaryTable, table.TopicSummaryTable td.TopicSummaryTable {
+ vertical-align: top;
+ padding: 0;
+ border: none;
+}
+table.TopicTOCTable {
+ width: 90%;
+ background-color: #EBF2DE;
+ border: solid thin;
+ border-spacing: 0;
+}
+table.TopicTOCTable tr.TopicTOCTable {
+ text-align: left;
+}
+table.TopicTOCTable th.TopicTOCTable, table.TopicTOCTable td.TopicTOCTable {
+ vertical-align: top;
+ padding: 0;
+ border: none;
+}
+table.TopicTOCTable th.TopicTOCTable {
+ background-color:#9bbb59;
+}
+table.UIGroupTable {
+ border: none;
+ border-spacing: 0.6250rem;
+}
+table.UIGroupTable tr.UIGroupTable {
+ text-align: left;
+}
+table.UIGroupTable th.UIGroupTable, table.UIGroupTable td.UIGroupTable {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: solid thin #999999;
+}
+table.VariableDescriptionsTable {
+ width: 95%;
+ border: solid 0.1250rem;
+ border-spacing: 0;
+ border-collapse: collapse;
+}
+table.VariableDescriptionsTable tr.VariableDescriptionsTable {
+ text-align: left;
+}
+table.VariableDescriptionsTable th.VariableDescriptionsTable, table.VariableDescriptionsTable td.VariableDescriptionsTable {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: solid thin;
+}
+table.VariableListSortable {
+ border: none;
+ border-spacing: 0;
+}
+table.VariableListSortable tr.VariableListSortable {
+ text-align: left;
+}
+table.VariableListSortable th.VariableListSortable, table.VariableListSortable td.VariableListSortable {
+ vertical-align: top;
+ padding: 0;
+ border: none;
+}
+table.VariableListSortable th.VariableListSortable {
+ background-color:#999999;
+}
+table.WhereTable {
+ border: none;
+ border-spacing: 0;
+}
+table.WhereTable tr.WhereTable {
+ text-align: left;
+}
+table.WhereTable th.WhereTable, table.WhereTable td.WhereTable {
+ vertical-align: top;
+ padding: 0.1250rem;
+ border: none;
+}
+div.hmrotate90  { display:inline-block; -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; }
+div.hmrotate270 { display:inline-block; -webkit-writing-mode: vertical-rl; -ms-writing-mode: tb-rl; writing-mode: vertical-rl; transform: rotate(180deg); }
+
+a.imagetogglelink {
+  position: relative;
+  display: inline-block;
+}
+svg.image-toggle-magnifier { /* Magnifier icon for image toggles */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 40pt;
+  height: 40pt;
+  max-width: 80%;
+  max-height: 80%;
+  fill: #FFFFFF;
+  stroke: #808080;
+  stroke-width: 0.5pt;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+img.image-toggle:hover + svg.image-toggle-magnifier, svg.image-toggle-magnifier:hover {
+  opacity: 1;
+}
+
+
+
+#hmlightbox /* image lightbox */
+{
+  border: none;
+  padding: 8px;
+  background: #FFF;
+  font-size: 110%;
+  font-weight: bold;
+  color: #777;
+  box-shadow: 5px 5px 5px #888;
+}
+
+a.dropdown-toggle /* dropdown toggle caption */
+{
+  cursor: pointer;
+}
+a.inline-toggle /* inline toggle caption */
+{
+  cursor: pointer;
+}
+img.dropdown-toggle-icon /* toggle icon */
+{
+  cursor: pointer;
+}
+/* CSS for responsive image maps */
+
+.hmImageMap a.hmHotspotRect { display:block; position:absolute; border: 1px solid transparent; background:#000; opacity:0.01 }
+.hmImageMap a.hmHotspotEllipse { display:block; position:absolute; border-radius:50%; border: 1px solid transparent; background:#000; opacity:0.01 }
+.hmImageMap:hover a.hmHotspotRect {opacity:0.3 }
+.hmImageMap:hover a.hmHotspotEllipse { opacity:0.3 }
+a.hmHotspotRect:hover { border:1px solid #000; background:#FFF; opacity:0.3 }
+a.hmHotspotEllipse:hover { border:1px solid #000; background:#FFF; opacity:0.3 }

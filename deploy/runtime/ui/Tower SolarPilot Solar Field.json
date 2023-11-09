@@ -4772,6 +4772,10 @@
         "",
         "equations{ 'land_min_calc' } = define() {",
         "\treturn ${land_min_abs_calc};",
+        "};\r",
+        "\r",
+        "equations{ 'land_area_base' } = define() {\r",
+        "\treturn ${land_area_base_calc};\r",
         "};"
     ],
     "Callbacks": [
@@ -5005,7 +5009,7 @@
         "",
         "function sf_loss_adjustment_set() ",
         "{",
-        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\" && financing() != \"LCOH Calculator\") {",
         "\t\tif (value('system_use_lifetime_output') == 1) {",
         "\t\t\tproperty('sf_adjust', 'AnalysisPeriod', value('analysis_period'));",
         "\t\t}",

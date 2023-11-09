@@ -1,0 +1,363 @@
+/*
+
+	This script reads data from the prepared CEC inverter data CSV file 
+	described in the readme.md file and creates a SAM inverter library file
+	and a log file listing inverters with potential data problems.
+	
+	Last modified and tested February 2019.
+	
+*/
+
+// inverter data file uses 'empty' string for empty cells
+empty_flag = 'empty';
+
+// date_str is appended to library file name
+date = split( date_time(), ' ' );
+time = split( date[3], ':' );
+date_str = date[4] + '-' + date[1] + '-' + date[2] + '_' + time[0] + '-' + time[1];
+
+// open inverter data CSV file
+db_file = choose_file( cwd(), 'Choose Inverter Data CSV File', 'CSV Files (*.csv)|*csv' );
+
+// path for working directory
+path = path_only( db_file );
+
+// open text file to write log
+flogname = path + '/conversion_log'+'-' + date_str + '.md';
+flog = open( flogname , 'w');
+if ( flog == 0 ) { outln('Failed to open log file for writing.'); }
+else { outln('Log file open for writing:\n  ' + flogname ); }
+
+// write initial text to log
+write_line( flog , '# CEC Inverter Database Conversion Log ' + date_time()  + '\n');
+write_line( flog , 'See report at bottom of file.\n' );
+
+// initialize counters for log
+nadded = 0;
+pmax_neg_or_zero = 0;
+pmax_units_incorrect = 0;
+paco_watts = 0;
+pwrlvl_kw = 0;
+coeff_gen_results_issue = 0;
+cg_failed = 0;
+pnt_lte_zero = 0;
+pnt_missing = 0;
+mppt_high_zero = 0;
+mppt_low_zero = 0;
+mppt_high_missing = 0;
+mppt_low_missing = 0;
+vac_missing = 0;
+vdco_zero = 0;
+//paco_gt_pdco = 0;
+//paco_lt_75_pdco = 0;
+//mppt_vdco = 0;
+
+// header rows for inverter library file
+sam_library_headers[0] = split('Name,Vac,Pso,Paco,Pdco,Vdco,C0,C1,C2,C3,Pnt,Vdcmax,Idcmax,Mppt_low,Mppt_high,CEC_Date,CEC_hybrid',',');
+sam_library_headers[1] = split('Units,V,W,W,W,V,1/W,1/V,1/V,1/V,W,V,A,V,V,,,',',');
+sam_library_headers[2] = split('[0],inv_snl_ac_voltage,inv_snl_pso,inv_snl_paco,inv_snl_pdco,inv_snl_vdco,inv_snl_c0,inv_snl_c1,inv_snl_c2,inv_snl_c3,inv_snl_pnt,inv_snl_vdcmax,inv_snl_idcmax,inv_snl_mppt_low,inv_snl_mppt_hi,inv_cec_date,inv_cec_hybrid',',');
+
+// create table for sam library data, initialize with header data
+C = {};
+for( i=3;i<#sam_library_headers;i++ ) { C{sam_library_headers[i][0]} = sam_library_headers[i]; }
+
+write_line( flog , db_file + '\n');
+
+outln('Reading data from ' + file_only( db_file ) + '...');	
+	
+D = csvread( db_file, { 'skip' = 0, 'table' = true } );
+
+n_inverters = #D.manufacturer;
+
+outln('Writing data for ' + n_inverters + ' inverters to data table...');
+write_line( flog ,  'Number of inverters in database: ' + n_inverters + '\n');
+
+// fields needed Vac(V), Paco(W), Pdco(W), Vdco(V), Pso(W), C0(1/W), C1(1/V),
+// C2(1/V), C3(1/V), Pnt(W), Vdcmax(V), Idcmax(A), Mppt_low(V), Mppt_high(V)
+test_sample = alloc(18,3); // data for one test sample
+
+for( i=0;i<n_inverters;i++ )
+{
+
+	if ( mod(i,100) == 0 ) { outln(i);}
+	name = D.manufacturer[i] + ": " + D.model[i];
+	write_line( flog ,  to_string( i+1 ) + ': ' + name + '\n');
+
+	Vac = D.vaco[i];
+	// Some inverters missing Vac, but not used in simulations so ok to keep
+	if ( Vac == empty_flag ) 
+	{
+		Vac = '0';
+		write_line( flog , '* Vac missing, set to zero. (Not used in simulations.)\n');
+		vac_missing++;
+	}
+
+	Paco = to_real( D.paco[i] ); 
+	// Paco and power levels in CEC database are supposed to be in kW, 
+	// but some are incorrectly specified in W. 
+	// SAM coefficient generator expects Pac in W, and can accept
+	// power levels for test data in W or kW.
+	// All SAM library power specifications are in W.
+	// Compare Paco to max power level and then adjust if necessary.
+	w_to_kw = 1;
+	Pmax = to_real( D.p100[i] ); // power level at 100% load
+	if(Pmax <= 0)
+	{	
+		write_line( flog , '* Pmax <=0. Skipping this inverter.\n');
+		pmax_neg_or_zero++;
+		continue;
+	}
+	if (Paco/Pmax == 1000) // Paco in W instead of kW 
+	{
+		Paco = Paco / 1000;
+		write_line( flog , '* Paco converted from W to kW.\n');
+		paco_watts++;
+	}
+	// For some inverters, part load power test data are given in W 
+	// instead of kW. This results in Pso in kW instead of the expected W.
+	// Example: Enphase IQ6Plus-72-ACM-US (208V) in Nov 15 2017 database
+	elseif (Pmax/Paco == 1000 ) 
+	{
+		w_to_kw = 0.001;
+		write_line( flog , '* Power levels converted from W to kW.\n');
+		pwrlvl_kw++;
+	}
+	elseif (Pmax/Paco > 100 || Paco/Pmax > 100)
+	{
+		write_line( flog , '* Pmax and Paco units inconsistent.\n');
+		pmax_units_incorrect++;
+		continue;
+	}
+
+	// convert to W for input to compute module and output to library
+	Paco = Paco * 1000.0;
+
+	// test data
+	pwr = [D.p10[i],D.p20[i],D.p30[i],D.p50[i],D.p75[i],D.p100[i]]; //P
+	vmin = [D.vmin[i],D.vmin[i],D.vmin[i],D.vmin[i],D.vmin[i],D.vmin[i]]; // Vmin
+	effvmin = [D.effvmin10[i],D.effvmin20[i],D.effvmin30[i],D.effvmin50[i],D.effvmin75[i],D.effvmin100[i]]; // eff
+	vnom = [D.vnom[i],D.vnom[i],D.vnom[i],D.vnom[i],D.vnom[i],D.vnom[i]]; // Vnom
+	effvnom = [D.effvnom10[i],D.effvnom20[i],D.effvnom30[i],D.effvnom50[i],D.effvnom75[i],D.effvnom100[i]]; // eff
+	vmax = [D.vmax[i],D.vmax[i],D.vmax[i],D.vmax[i],D.vmax[i],D.vmax[i]]; // Vmax
+	effvmax = [D.effvmax10[i],D.effvmax20[i],D.effvmax30[i],D.effvmax50[i],D.effvmax75[i],D.effvmax100[i]]; // eff
+
+	n_pwr_lvls = #pwr; // has been 6 levels at 10, 20, 30, 50, 75, and 100% load
+	// test sample array for coefficient generator
+	for ( j=0; j<n_pwr_lvls; j++ )
+	{
+		test_sample[j][0] = to_real( pwr[j] ) * w_to_kw; //P
+		test_sample[j][1] = to_real( vmin[j] ); // Vmin
+		test_sample[j][2] = to_real( effvmin[j] ); // eff
+		test_sample[n_pwr_lvls+j][0] = to_real( pwr[j] ) * w_to_kw; //P
+		test_sample[n_pwr_lvls+j][1] = to_real( vnom[j] ); // Vnom
+		test_sample[n_pwr_lvls+j][2] = to_real( effvnom[j] ); // eff
+		test_sample[2*n_pwr_lvls+j][0] = to_real( pwr[j] ) * w_to_kw; //P
+		test_sample[2*n_pwr_lvls+j][1] = to_real( vmax[j] ); // Vmax
+		test_sample[2*n_pwr_lvls+j][2] = to_real( effvmax[j] ); // eff
+	}
+	//call inv_cec_cg module
+	obj = ssc_create();
+	ssc_var(obj, 'inv_cec_cg_paco', Paco); // in W
+	ssc_var(obj, 'inv_cec_cg_sample_power_units', 1); // 0=W, 1=kW
+	ssc_var(obj, 'inv_cec_cg_test_samples', test_sample);
+	result= ssc_exec(obj, 'inv_cec_cg', {'show_dialog'=false, 'hold_dialog'=false} );
+	// if running script on test data with one inverter, generate test data
+	// to display and write to file for importing to SAM UI Inverter CEC Coefficient Generator
+	// for testing
+	if ( n_inverters == 1 )
+	{
+		outln( 'D = ' + D );
+		outln( 'test_sample = ' + test_sample );
+		csvwrite( path + '/single_inverter_test_data.csv', test_sample );
+		outln( 'result = ' + result );
+		outln( 'Pdco = ' + ssc_var(obj, 'Pdco') );
+		outln( 'Vdco = ' + ssc_var(obj, 'Vdco') );
+		outln( 'Pso = ' + ssc_var(obj, 'Pso') );
+		outln( 'c0 = ' + ssc_var(obj, 'c0') );
+		outln( 'c1 = ' + ssc_var(obj, 'c1') );
+		outln( 'c2 = ' + ssc_var(obj, 'c2') );
+		outln( 'c3 = ' + ssc_var(obj, 'c3') );
+	} 
+	// Skip inverter when coefficient calculator fails.
+	if(result != 0)
+	{	
+		write_line('* Coefficient generateor failed to solve: ' + result + '. Skipping this inverter.\n');
+		cg_failed++;
+		continue;
+	}
+
+	Pdco = ssc_var(obj, 'Pdco');
+	Vdco = ssc_var(obj, 'Vdco');
+	Pso = ssc_var(obj, 'Pso');
+	c0 = ssc_var(obj, 'c0');
+	c1 = ssc_var(obj, 'c1');
+	c2 = ssc_var(obj, 'c2');
+	c3 = ssc_var(obj, 'c3');
+
+	ssc_free(obj);
+
+	// Skip inverter when coefficient calculator returns zero or negative values
+	// add check on high Pso value, e.g., Huawei 45KTL 11/4/2018
+	str = '';
+	if ( Pdco <= 0 ) str += 'Pdco <= 0, ';
+	if ( Vdco <= 0 ) str += 'Vdco <= 0, ';
+	if ( Pso <= 0 ) str += 'Pso <= 0, ';
+	if ( Pso > 0.10 * Pdco ) str += 'Pso > 0.10 Pdco, ';
+	// The following tests are from the find_bad_inverters.lk script
+	if ( Paco >= Pdco ) str += 'Paco >= Pdco, ';
+	if ( Paco < 0.75 * Pdco ) str += 'Paco < 0.75 Pdco, ';
+	if ( to_real(D.vmin[i]) > Vdco || to_real(D.vmax[i]) < Vdco ) str += 'MPPT_low > Vdco or MPPT_hi < Vdco, ';
+	if ( str != '' )
+	{
+		write_line( flog , '* Coefficient generator calculated parameters have problems: ' + str + 'skipping this inverter.\n');
+		coeff_gen_results_issue++;
+		continue;
+	}
+
+	values = [];
+	values[0] = name;
+	values[1] = Vac;
+	values[2] = Pso;
+	values[3] = Paco;
+	values[4] = Pdco;
+	values[5] = Vdco;
+	values[6] = c0;
+	values[7] = c1;
+	values[8] = c2;
+	values[9] = c3;
+
+	// if Pnt not in database, calculate from Paco. Multiplier based on average
+	// ratio of Pnt to Paco for inverters with Pnt in data February 2019 database
+	pnt_estimate = Paco * 0.0003;
+	if ( D.pnt[i] == empty_flag ) 
+	{
+		D.pnt[i] = pnt_estimate;
+		write_line( flog , '* Pnt missing. Converted to estimate of 0.0003 * Paco = ' + pnt_estimate + '.\n');
+		pnt_missing++;
+
+	}
+	// This check on Pnt is a legacy check. Should be ok as of Nov 2017 data.
+	// Some Pnt values in database have negative values.
+	elseif ( to_real( D.pnt[i] ) <= 0) 
+	{	
+		D.pnt[i] = pnt_estimate;
+		write_line( flog , '* Pnt <= 0. Converted to estimate of 0.0003 * Paco = ' + pnt_estimate + '.\n');
+		pnt_lte_zero++;
+	}
+	values[10] = D.pnt[i]; // Pnt
+	
+	values[11] = D.vmax[i]; // Vdcmax = Vmax input
+
+	if (Vdco == 0)
+	{		
+		write_line( flog , '* Vdco = 0. Skipping this inverter.\n');
+		vdco_zero++;
+		continue;
+	}
+	values[12] = Pdco / Vdco; // Idcmax = max input power / vdcmax (not used in simulation)
+
+	if ( D.vmin[i] == empty_flag)  // Mppt low = Vmin
+	{
+		write_line( flog , '* MPPT_low missing. Skipping this inverter.\n');
+		mppt_low_missing++;
+		continue;
+		
+	}
+	elseif ( to_real( D.vmin[i] ) <= 0 ) 
+	{
+		write_line( flog, '* MPPT_low <= 0. Skipping this inverter.\n');
+		mppt_low_zero++;
+		continue;
+	}
+	values[13] = D.vmin[i];
+	
+	// Some inverters may have Mppt high different than Vmax on data sheet,
+	// but here we assume Mppt high = Vmax.
+	if ( D.vmax[i] == empty_flag)
+	{
+		write_line( flog , '* MPPT_high missing. Skipping this inverter.\n');
+		mppt_high_missing++;
+		continue;
+		
+	}
+	elseif ( to_real( D.vmax[i] ) <= 0 ) // Mppt high = Vmax
+	{
+		write_line( flog , '* MPPT_high <= 0. Skipping this inverter.\n');
+		mppt_high_zero++;
+		continue;
+	}
+	values[14] = D.vmax[i];
+	
+	str = D.date[i];
+	if ( str == empty_flag ) { str = 'n/a'; } 
+	values[15] = str; // date
+	values[16] = D.hybrid[i]; //hybrid inverter
+
+	C{name} = values;
+		
+	nadded++;
+
+}
+
+outln('Done.');
+outln('Processing data and writing to new library file.');
+// sort
+outln('Sorting by inverter name.');
+names = @C; // keys into the hash
+stable_sort(names);
+
+outln('Building new library.');
+// copy the top three lines of header info
+for( i=0;i<3;i++ )
+{
+	sam_library[i] = sam_library_headers[i];
+}
+	
+// copy the sorted data
+for( i=0;i<#names;i++ )
+{
+	sam_library[i+3] = C{names[i]};
+}
+outln( 'Done.');
+
+outln( 'Writing data to CSV library file.' );
+sam_library_file = path + '/CEC Inverters ' + date_str + '.csv';
+ok = csvwrite( sam_library_file, sam_library );
+if ( !ok )
+{
+	outln( 'Failed to write data to new library file ' + sam_library_file + '. Make sure it is not open in Excel.');	
+}
+else
+{
+	outln('Done.\nSee new SAM library file\n  ' + sam_library_file + '\nRename to CEC Inverters.csv and replace file in SAM library folder.');
+}
+
+write_line( flog, '## SAM Inverter Library\n');
+write_line( flog, 'New inverter library file:\n' );
+write_line( flog, sam_library_file + '\n');
+write_line( 'Number of inverters added: ' + nadded + '.\n' );
+write_line( flog, '### Number of inverters in new SAM library: ' + to_string(#sam_library - 3) + '.');
+write_line( flog, '\nSkipped because of problems:\n' );
+write_line( flog, '* Coefficient generator calculated parameters with problems: ' + coeff_gen_results_issue);
+write_line( flog, '* Pmax <= 0: ' + pmax_neg_or_zero);
+write_line( flog, '* Pmax units do not match Paco units: ' + pmax_units_incorrect);
+write_line( flog, '* Coefficient generator failed: ' + cg_failed );
+write_line( flog, '\n### Data issues but not skipped:\n' );
+write_line( flog, '* Pnt negative converted to positive: ' + pnt_lte_zero);
+write_line( flog, '* Pnt missing converted to 0.0003 * Paco: ' + pnt_missing);
+write_line( flog, '* Paco converted from  W to kW: ' + paco_watts);
+write_line( flog, '* Power levels converted from W to kW: ' + pwrlvl_kw);
+write_line( flog, '* Vac missing and set to zero (not used in simulations): ' + vac_missing );
+write_line( flog, '* MPPT_high missing: ' + mppt_high_missing );
+write_line( flog, '* MPPT_low missing: ' + mppt_low_missing );
+write_line( flog, '* MPPT_high <= 0: ' + mppt_high_zero );
+write_line( flog, '* MPPT_low <= 0: ' + mppt_low_zero );
+//write_line( flog, '* MPPT_high < vdco or MPPT_low > vdco: ' + mppt_vdco );
+write_line( flog, '* Vdco = 0: ' + vdco_zero );
+//write_line( flog, '* Paco > Pdco: ' + paco_gt_pdco );
+//write_line( flog, '* Pac < 0.75 Pdco: ' + paco_lt_75_pdco );
+
+close( flog);
+outln('Done.\nSee log file for details:\n  ' + flogname);
+
+browse( path );       

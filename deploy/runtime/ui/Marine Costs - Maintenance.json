@@ -355,7 +355,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -364,15 +364,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -382,13 +382,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -396,7 +396,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -405,15 +405,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 477.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -423,13 +423,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1866,6 +1866,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "scheduled_maintenance_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "scheduled_maintenance_cost_total"
                 },
                 "X": {
@@ -2263,6 +2346,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "unscheduled_maintenance_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "unscheduled_maintenance_cost_total"
                 },
                 "X": {
@@ -2346,11 +2512,11 @@
         "balance_of_system_scheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of system scheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2359,11 +2525,11 @@
         "balance_of_system_unscheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of system unscheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2378,7 +2544,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2391,7 +2557,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2489,11 +2655,11 @@
         "marine_energy_converter_scheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Marine energy converter scheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2502,11 +2668,11 @@
         "marine_energy_converter_unscheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Marine energy converter unscheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2528,11 +2694,11 @@
         "other_scheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Other scheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2541,11 +2707,11 @@
         "other_unscheduled_maintenance_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Other unscheduled maintenance costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2559,6 +2725,19 @@
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "scheduled_maintenance_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Scheduled maintenance array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Maintenance",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2593,11 +2772,11 @@
         "unscheduled_maintenance_contingency_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Unscheduled maintenance contingency costs",
             "Units": " ",
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2611,6 +2790,19 @@
             "Group": "ME Costs - Maintenance",
             "IndexLabels": "",
             "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "unscheduled_maintenance_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Unscheduled maintenance array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Maintenance",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2655,9 +2847,14 @@
         "\t{",
         "\t\treturn ${scheduled_maintenance_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_scheduled_maintenance}==1)",
         "\t{",
         "\t\treturn ${scheduled_maintenance_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = -log(1-${scheduled_maintenance_cost_rvalue})/log(2);\r",
+        "\t\treturn (${scheduled_maintenance_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -2673,9 +2870,14 @@
         "\t{",
         "\t\treturn ${unscheduled_maintenance_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_unscheduled_maintenance}==1)",
         "\t{",
         "\t\treturn ${unscheduled_maintenance_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tb = -log(1-${unscheduled_maintenance_cost_rvalue})/log(2);\r",
+        "\t\treturn (${unscheduled_maintenance_cost}*pow(${number_devices},-b))*${number_devices};\r",
+        "\r",
         "\t}",
         "};",
         "",
@@ -2690,17 +2892,20 @@
         "\t\t\t\t0,",
         "\t\t\t\t0,",
         "\t\t\t\t2,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
         "equations {'maintenance_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${maintenance_cost_rvalue}) / log(2);\r",
         "\treturn ?${maintenance_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${maintenance_cost_input}*${system_capacity},",
         "\t\t\t\t${maintenance_cost_input},",
         "\t\t\t\t${maintenance_cost_modeled},",
-        "\t\t\t\t${maintenance_cost_total}",
+        "\t\t\t\t${maintenance_cost_total},\r",
+        "\t\t\t\t(${maintenance_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -2713,13 +2918,13 @@
     ],
     "Callbacks": [
         "on_load{'Marine Costs - Maintenance'} = define() {",
-        "\ton_change{'detailed_cost_choice_scheduled_maintenance'};",
+        "\ton_change{'detailed_cost_choice_scheduled_maintenance'}();",
         "\tdetailed_cost_scheduled_maintenance();",
-        "\ton_change{'detailed_cost_choice_unscheduled_maintenance'};",
+        "\ton_change{'detailed_cost_choice_unscheduled_maintenance'}();",
         "\tdetailed_cost_unscheduled_maintenance();",
-        "\ton_change{'itemized_check_maintenance'};",
+        "\ton_change{'itemized_check_maintenance'}();",
         "\tenable_itemized_maintenance();",
-        "\ton_change{'maintenance_override_check'};",
+        "\ton_change{'maintenance_override_check'}();",
         "\tcheck_override_maintenance();",
         "};",
         "",
@@ -2746,14 +2951,14 @@
         "\tif (value('itemized_check_maintenance')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_scheduled_maintenance');",
-        "\t\tenable('scheduled_maintenance_cost',detailed_value==0);",
-        "\t\tshow('scheduled_maintenance_cost',detailed_value==0);",
-        "\t\tenable('scheduled_maintenance_cost_total',detailed_value);",
-        "\t\tshow('scheduled_maintenance_cost_total',detailed_value);",
-        "\t\tenable('marine_energy_converter_scheduled_maintenance_cost',detailed_value);",
-        "\t\tenable('balance_of_system_scheduled_maintenance_cost',detailed_value);",
-        "\t\tenable('other_scheduled_maintenance_cost',detailed_value);",
-        "\t\t",
+        "\t\tenable('scheduled_maintenance_cost',detailed_value!=1);",
+        "\t\tshow('scheduled_maintenance_cost',detailed_value!=1);",
+        "\t\tenable('scheduled_maintenance_cost_total',detailed_value==1);",
+        "\t\tshow('scheduled_maintenance_cost_total',detailed_value==1);",
+        "\t\tenable('marine_energy_converter_scheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('balance_of_system_scheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('other_scheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('scheduled_maintenance_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -2767,15 +2972,15 @@
         "\tif (value('itemized_check_maintenance')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_unscheduled_maintenance');",
-        "\t\tenable('unscheduled_maintenance_cost',detailed_value==0);",
-        "\t\tshow('unscheduled_maintenance_cost',detailed_value==0);",
-        "\t\tenable('unscheduled_maintenance_cost_total',detailed_value);",
-        "\t\tshow('unscheduled_maintenance_cost_total',detailed_value);",
-        "\t\tenable('marine_energy_converter_unscheduled_maintenance_cost',detailed_value);",
-        "\t\tenable('balance_of_system_unscheduled_maintenance_cost',detailed_value);",
-        "\t\tenable('unscheduled_maintenance_contingency_cost',detailed_value);",
-        "\t\tenable('other_unscheduled_maintenance_cost',detailed_value);",
-        "\t\t",
+        "\t\tenable('unscheduled_maintenance_cost',detailed_value!=1);",
+        "\t\tshow('unscheduled_maintenance_cost',detailed_value!=1);",
+        "\t\tenable('unscheduled_maintenance_cost_total',detailed_value==1);",
+        "\t\tshow('unscheduled_maintenance_cost_total',detailed_value==1);",
+        "\t\tenable('marine_energy_converter_unscheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('balance_of_system_unscheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('unscheduled_maintenance_contingency_cost',detailed_value==1);",
+        "\t\tenable('other_unscheduled_maintenance_cost',detailed_value==1);",
+        "\t\tenable('unscheduled_maintenance_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -2791,21 +2996,24 @@
         "\tenable('scheduled_maintenance_cost',itemized_value==1);",
         "\tenable('scheduled_maintenance_cost_total',itemized_value==1);",
         "\tenable('detailed_cost_choice_scheduled_maintenance',itemized_value==1);",
+        "\tenable('scheduled_maintenance_cost_rvalue',itemized_value==1);\r",
         "\tenable('marine_energy_converter_scheduled_maintenance_cost',itemized_value==1);",
         "\tenable('balance_of_system_scheduled_maintenance_cost',itemized_value==1);",
         "\tenable('other_scheduled_maintenance_cost',itemized_value==1);",
         "\tenable('unscheduled_maintenance_cost',itemized_value==1);",
         "\tenable('unscheduled_maintenance_cost_total',itemized_value==1);",
         "\tenable('detailed_cost_choice_unscheduled_maintenance',itemized_value==1);",
+        "\tenable('unscheduled_maintenance_cost_rvalue',itemized_value==1);\r",
         "\tenable('marine_energy_converter_unscheduled_maintenance_cost',itemized_value==1);",
         "\tenable('balance_of_system_unscheduled_maintenance_cost',itemized_value==1);",
         "\tenable('unscheduled_maintenance_contingency_cost',itemized_value==1);",
         "\tenable('other_unscheduled_maintenance_cost',itemized_value==1);",
         "\tenable('other_maintenance_cost',itemized_value==1);",
-        "\tenable('maintenance_cost_input',itemized_value!=2);",
+        "\tenable('maintenance_cost_input',itemized_value!=2);\r",
+        "\tenable('maintenance_cost_rvalue',itemized_value==3);",
         "\tshow('maintenance_cost_total',itemized_value==1);",
         "\tshow('maintenance_level_total_label',itemized_value==1);",
-        "\tshow('maintenance_cost_input',(itemized_value==0 || itemized_value==2));",
+        "\tshow('maintenance_cost_input',itemized_value!=1);",
         "\tif (itemized_value==1)",
         "\t{",
         "\t\tdetailed_cost_scheduled_maintenance();",

@@ -1,0 +1,13 @@
+fname = cwd() + '/test-results.csv';
+fout = open( fname , 'w' );
+ok = write_line(fout, 'Manufacturer,Model,Technology,Message,celltype,vmp,imp,voc,isc,alpha_isc,beta_voc,gamma_pmp,n_ser,t_ref,6parsolve_output');
+if (!ok) {outln('Failed to write header.');}
+close(fout);
+
+fout = open(  fname, 'a' );
+for (i=0; i<5; i++ )
+{
+	line = 'line ' + i;
+	ok = write_line( fout, line );
+}
+close(fout);
