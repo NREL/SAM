@@ -661,6 +661,7 @@ void CaseWindow::OnTree(wxDataViewEvent &evt)
 		m_currentSelection = evt.GetItem();
 	}
 	wxString title = m_navigationMenu->GetItemText(m_currentSelection);
+	m_navigationMenu->SetFocus();
 	SwitchToInputPage(title);
 
 }

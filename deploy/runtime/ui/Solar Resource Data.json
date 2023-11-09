@@ -2875,19 +2875,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "annual_twet": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Average wet bulb temperature",
-            "Units": "°C",
-            "Group": "Location and Resource",
-            "IndexLabels": "",
-            "Flags": 4.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "annual_wspd": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3573,7 +3560,6 @@
         "\t\t\tvalue( 'annual_beam', ssc_var(obj, 'annual_beam') );",
         "\t\t\tvalue( 'annual_diffuse', ssc_var(obj, 'annual_diff') );",
         "\t\t\tvalue( 'annual_tdry', ssc_var(obj, 'annual_tdry') );\r",
-        "\t\t\tvalue( 'annual_twet', ssc_var(obj, 'annual_twet') );",
         "\t\t\tvalue( 'annual_wspd', ssc_var(obj, 'annual_wspd') );",
         "\t\t\tvalue( 'annual_snow', ssc_var(obj, 'annual_snow') );",
         "\t\t\tvalue( 'annual_albedo', ssc_var(obj, 'annual_albedo') );",
@@ -3594,7 +3580,6 @@
         "\t\t\tvalue( 'annual_beam', nan() );",
         "\t\t\tvalue( 'annual_diffuse', nan() );",
         "\t\t\tvalue( 'annual_tdry', nan() );\r",
-        "\t\t\tvalue( 'annual_twet', nan() );",
         "\t\t\tvalue( 'annual_wspd', nan() );",
         "\t\t\tvalue( 'annual_snow', nan() );",
         "\t\t\tvalue( 'annual_albedo', nan() );",
