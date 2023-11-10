@@ -400,13 +400,7 @@
         "};",
         "",
         "function enable_consider_grid_outage() {\r",
-        "\toutage_setup = is_crit() && is_grid_outage();",
         "\tenable('reopt_consider_outage',  outage_setup);\r",
-        "\t// Turn off size outage variable if outage is not set\r",
-        "\tsize_outage = value('reopt_consider_outage');\r",
-        "\tif (!outage_setup && size_outage) {\r",
-        "\t\tvalue('reopt_consider_outage', false);\r",
-        "\t}\r",
         "}"
     ]
 }
