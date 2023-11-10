@@ -399,8 +399,8 @@
         "",
         "};",
         "",
-        "function enable_consider_grid_outage() {\r",
-        "\tenable('reopt_consider_outage',  outage_setup);\r",
+        "function enable_consider_grid_outage() {",
+        "\tenable('reopt_consider_outage',  is_crit() && is_grid_outage());\r",
         "}"
     ]
 }
