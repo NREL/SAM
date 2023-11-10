@@ -2046,7 +2046,7 @@
         "install_margin_fixed": 0.0,
         "install_margin_perarea": 0.0,
         "install_margin_total": 0.0,
-        "installed_per_capacity": 0.0,
+        "installed_per_capacity": 10.5,
         "land_area_value": 0.0,
         "modulearray_area": 0.0,
         "om_capacity_escal": 0.0,
