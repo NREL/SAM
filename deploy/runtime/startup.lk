@@ -1276,7 +1276,7 @@ addpage( [[ 'Fuel Cell Costs' ],
 		  [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
 		 { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], 
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
@@ -1306,7 +1306,7 @@ addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
 		  [ { 'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'} ],
 		  [ { 'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'} ]],
-		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 addpage( [[ { 'name'='AA Empty', 'caption'='Fixed Output'} ], 
 		  [ { 'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
@@ -1317,7 +1317,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ], [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
          { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]],
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 addpage( [[ 'Thermal Rate' ]],
