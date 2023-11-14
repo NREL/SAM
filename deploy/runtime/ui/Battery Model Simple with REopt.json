@@ -1,7 +1,7 @@
 {
     "Name": "Battery Model Simple with REopt",
-    "Width": 885.0,
-    "Height": 333.0,
+    "Width": 886.0,
+    "Height": 288.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -424,7 +424,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "This option sends information about the system design, costs, electricity rates, and load to the online REopt API, which calculates an optimal battery capacity and custom dispatch to minimize the project net present value."
+                    "String": "This option sends information about the system design, costs, electricity rates, and load to the online REopt API, which calculates an optimal battery capacity and custom dispatch to maximize the project net present value."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -470,7 +470,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 246.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -507,7 +507,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 246.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -606,7 +606,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 109.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -617,68 +617,6 @@
                     "String": "Optimal Sizing and Dispatch from REopt"
                 },
                 "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 243.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 822.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "REopt uses the latitude and longitude from SAM to access its own weather file, which may be different from the one SAM uses for simulations."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -826,7 +764,7 @@
         "\t\texit;",
         "\t}",
         "",
-        "\tif (y.outputs == null || y.outputs.Scenario == null){",
+        "\tif (y.outputs == null){",
         "\t\tmsgbox(\"Error in REopt response. Try again later or try another system design.\");",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
@@ -834,11 +772,11 @@
         "\t\texit;",
         "\t}",
         "\t",
-        "\tpv = y.outputs.Scenario.Site.PV;",
-        "\tbatt = y.outputs.Scenario.Site.Storage;",
-        "\telec = y.outputs.Scenario.Site.ElectricTariff;",
+        "\tpv = y.outputs.PV;",
+        "\tbatt = y.outputs.ElectricStorage;",
+        "\telec = y.outputs.ElectricUtility;",
         "",
-        "\tif (batt.size_kw == null && batt.size_kwh == null){",
+        "\tif (batt == null || (batt.size_kw == null && batt.size_kwh == null)){",
         "\t\tapply_str = \"Apply results?\\nOptimal capacity (kWh): \" + to_string(0) + ",
         "\t\t\t\"\\nOptimal power (kW): \" + to_string(0) + \"\\n\\nReplace \" + ",
         "\t\t\t\"'Battery capacity' and 'Battery power' with results from REopt?\";",
@@ -867,7 +805,7 @@
         "\tvalue('batt_simple_kw', batt.size_kw);",
         "\tvalue('batt_simple_kwh', batt.size_kwh);",
         "\t",
-        "\tif (batt.size_kw == 0 && batt.size_kwh == 0) {",
+        "\tif ((batt.size_kw == 0 && batt.size_kwh == 0) || !apply) {",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\texit;",
         "\t}",
@@ -875,9 +813,9 @@
         "\tbatt_to_grid = null;",
         "\tif (batt.year_one_to_grid_series_kw)",
         "\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;",
-        "\tbatt_to_load = batt.year_one_to_load_series_kw;",
-        "\tpv_charge = pv.year_one_to_battery_series_kw;",
-        "\tgrid_charge = elec.year_one_to_battery_series_kw;",
+        "\tbatt_to_load = batt.storage_to_load_series_kw;",
+        "\tpv_charge = pv.electric_to_storage_series_kw;",
+        "\tgrid_charge = elec.electric_to_storage_series_kw;",
         "",
         "",
         "\tvalue('batt_simple_dispatch', 2);",

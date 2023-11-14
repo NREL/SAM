@@ -503,16 +503,19 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
    
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
-		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
-			// hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
-                win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
-                //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
-            }
-		}
-		else {
+		win->Freeze();
+		// go through and load all pages to trigger on-load events - addresses SAM issue 1520 and other requests
+		for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
+			for (int j=0; j< c->GetConfiguration()->InputPageGroups[i].size(); j++)
+	            win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][j]->SideBarLabel);
+        }
+		// load first page of hybrid and non-hybrid configurations
+		if (c->GetConfiguration()->Technology.size() > 1) // hybrid	
+			win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[c->GetConfiguration()->Technology.size() - 1][0]->SideBarLabel);
+		else
 			win->SwitchToInputPage(pages[0]);
-		}
+
+		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
 	return win;
 }
@@ -1081,8 +1084,11 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	ProjectFile pf;
 	// tell user to save and check file if issue
-	if (!pf.ReadArchive(file))
-		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+	if (!pf.ReadArchive(file)) {
+//		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%s.", file, pf.GetLastError()));
+		return false;
+	}
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
