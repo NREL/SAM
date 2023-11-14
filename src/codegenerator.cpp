@@ -7816,12 +7816,12 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 		break;
 	case SSC_TABLE:
 		{
-		// create table
+			// create table
 			auto dat = ssc_data_get_table(p_data, name); // owned by p_data - no need to free
 			fprintf(m_fp, "	\"%s\" : {\n", name);
-		// track number of table inputs - add to table to prevent read error for last entry with comma
+			// track number of table inputs - add to table to prevent read error for last entry with comma
 			int num_entries = 0;
-		// call input
+			// call input
 			const char* dat_name = ssc_data_first(dat);
 			while (dat_name)
 			{
@@ -7833,6 +7833,32 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			// finish json table
 			fprintf(m_fp, " \"number table entries\" : %d\n", num_entries);
 			fprintf(m_fp, " },\n");
+		}
+		break;
+	case SSC_DATARR:
+		{
+			int n;
+			ssc_var_t data_arr = ssc_data_get_data_array(p_data, name, &n);
+			fprintf(m_fp, "	\"%s\" : [", name);
+			for (int i = 0; i < n - 1; i++)
+			{
+				ssc_var_t var = ssc_var_get_var_array(data_arr, i);
+				switch (ssc_var_query(var)) {
+				case SSC_STRING:
+					fprintf(m_fp, "\"%s\",", ssc_var_get_string(var));
+					break;
+				case SSC_NUMBER:
+					fprintf(m_fp, "%.17g,", ssc_var_get_number(var));
+				}
+			}
+			ssc_var_t var = ssc_var_get_var_array(data_arr, n - 1);
+			switch (ssc_var_query(var)) {
+			case SSC_STRING:
+				fprintf(m_fp, "\"%s\"],\n", ssc_var_get_string(var));
+				break;
+			case SSC_NUMBER:
+				fprintf(m_fp, "%.17g],\n", ssc_var_get_number(var));
+			}
 		}
 		break;
 	}
