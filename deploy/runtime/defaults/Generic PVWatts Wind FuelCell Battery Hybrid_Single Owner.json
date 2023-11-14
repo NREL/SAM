@@ -118,6 +118,7 @@
         "annual_global": 5.79476,
         "annual_snow": "nan",
         "annual_tdry": 21.9385,
+        "annual_twet": 0.0,
         "annual_wspd": 1.78648,
         "array_type": 2.0,
         "azimuth": 180.0,
@@ -133,7 +134,7 @@
         "country": "-",
         "dc_ac_ratio": 1.3,
         "degradation": [
-            0.0
+            0.5
         ],
         "elev": 358.0,
         "en_snowloss": 0.0,
@@ -346,7 +347,7 @@
         "bos_cost_total": 71400000.0,
         "cols": 1.0,
         "degradation": [
-            0.5
+            0.0
         ],
         "desired_farm_size": 100.0,
         "elec_eff_loss": 1.91,
@@ -2009,6 +2010,7 @@
             0.0
         ],
         "fuelcell_dispatch_choice": 0.0,
+        "fuelcell_dispatch_choice_fom": 0.0,
         "fuelcell_dispatch_excl": 0.0,
         "fuelcell_dispatch_input": [
             0.0
@@ -2120,7 +2122,7 @@
         "install_margin_fixed": 0.0,
         "install_margin_perarea": 0.0,
         "install_margin_total": 0.0,
-        "installed_per_capacity": 0.0,
+        "installed_per_capacity": 10.5,
         "land_area_value": 0.0,
         "modulearray_area": 0.0,
         "om_capacity_escal": 0.0,

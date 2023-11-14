@@ -414,11 +414,11 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
 {
     m_summaryLayout = new wxSnapLayout(this, wxID_ANY);
     AddPage(m_summaryLayout, "Summary", true);
-    m_metricsTable = new MetricsTable(m_summaryLayout);
-    matrix_t<wxString> data(1, 2);
-    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
-    m_metricsTable->SetData(data);
-    m_summaryLayout->Add(m_metricsTable);
+//    m_metricsTable = new MetricsTable(m_summaryLayout);
+//    matrix_t<wxString> data(1, 2);
+//    data.at(0, 0) = "Metric"; data.at(0, 1) = "Value";
+//    m_metricsTable->SetData(data);
+//    m_summaryLayout->Add(m_metricsTable);
 
     m_tables = new TabularBrowser(this);
     AddPage(m_tables, "Data tables");
@@ -843,7 +843,7 @@ void ResultsViewer::Setup(Simulation* sim)
     SavePerspective(viewinfo);
 
     // update metrics
-    m_metricsTable->Clear();
+//    m_metricsTable->Clear();
 
     m_metrics.clear();
     m_metricRows.clear();
@@ -859,11 +859,6 @@ void ResultsViewer::Setup(Simulation* sim)
         else
             i++;
     }
-    // recreate base metric table to report if no results available
-    m_metricsTable = new MetricsTable(m_summaryLayout);
-    m_summaryLayout->Add(m_metricsTable);
-
-
 
     ResultsCallbackContext cc(this, "Metrics callback: " + cfg->TechnologyFullName + ", " + cfg->Financing);
 
@@ -874,7 +869,7 @@ void ResultsViewer::Setup(Simulation* sim)
         cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
 
     // if no metrics were defined, run it T & F one at a time
-    if (m_metrics.size() == 0)
+    if ((m_metrics.size() == 0) && (m_metricRows.size() == 0))
     {
         if (lk::node_t* metricscb = SamApp::GlobalCallbacks().Lookup("metrics", cfg->TechnologyFullName))
             cc.Invoke(metricscb, SamApp::GlobalCallbacks().GetEnv(), 0);
@@ -887,50 +882,56 @@ void ResultsViewer::Setup(Simulation* sim)
         }
     }
 
-    if (m_metrics.size() > 0 && m_sim->Outputs().size() > 0)
+    if ((m_metrics.size() > 0 || ((m_metricTables.size() > 0 && m_metricRows.size() > 0))) && m_sim->Outputs().size() > 0)
     {
-        matrix_t<wxString> metrics;
-        metrics.resize(m_metrics.size() + 1, 2);
-        metrics(0, 0) = "Metric";
-        metrics(0, 1) = "Value";
-        for (size_t i = 0; i < m_metrics.size(); i++)
-        {
-            MetricData& md = m_metrics[i];
-            wxString slab(md.var);
-            wxString sval("<inval>");
-
-            double value = 0.0;
-            if (VarValue* vv = m_sim->GetValue(md.var))
+        if (m_metrics.size() > 0) {
+            matrix_t<wxString> metrics;
+            metrics.resize(m_metrics.size() + 1, 2);
+            metrics(0, 0) = "Metric";
+            metrics(0, 1) = "Value";
+            for (size_t i = 0; i < m_metrics.size(); i++)
             {
+                MetricData& md = m_metrics[i];
+                wxString slab(md.var);
+                wxString sval("<inval>");
 
-                value = md.scale * (double)vv->Value();
-
-                slab = md.label;
-                if (slab.IsEmpty())
-                    slab = m_sim->GetLabel(md.var);
-
-                if (std::isnan(value))
-                    sval = vv->AsString();
-                else
+                double value = 0.0;
+                if (VarValue* vv = m_sim->GetValue(md.var))
                 {
-                    int deci = md.deci;
-                    if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
-                    else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
-                    else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
 
-                     wxString post = md.post;
-                    if (post.IsEmpty())
-                        post = " " + m_sim->GetUnits(md.var);
+                    value = md.scale * (double)vv->Value();
 
-                    sval = wxNumericFormat(value, wxNUMERIC_REAL,
-                        deci, md.thousep, md.pre, post);
+                    slab = md.label;
+                    if (slab.IsEmpty())
+                        slab = m_sim->GetLabel(md.var);
+
+                    if (std::isnan(value))
+                        sval = vv->AsString();
+                    else
+                    {
+                        int deci = md.deci;
+                        if (md.mode == 'g') deci = wxNUMERIC_GENERIC;
+                        else if (md.mode == 'e') deci = wxNUMERIC_EXPONENTIAL;
+                        else if (md.mode == 'h') deci = wxNUMERIC_HEXADECIMAL;
+
+                        wxString post = md.post;
+                        if (post.IsEmpty())
+                            post = " " + m_sim->GetUnits(md.var);
+
+                        sval = wxNumericFormat(value, wxNUMERIC_REAL,
+                            deci, md.thousep, md.pre, post);
+                    }
                 }
+                metrics(i + 1, 0) = slab;
+                metrics(i + 1, 1) = sval;
             }
-            metrics(i + 1, 0) = slab;
-            metrics(i + 1, 1) = sval;
+            // recreate base metric table to report if no results available
+            m_metricsTable = new MetricsTable(m_summaryLayout);
+            m_summaryLayout->Add(m_metricsTable);
+
+            m_metricsTable->SetData(metrics);
         }
 
-        m_metricsTable->SetData(metrics);
 
 
         // process any additional tables and associated rows
@@ -1004,8 +1005,12 @@ void ResultsViewer::Setup(Simulation* sim)
         }
 
     }
-    else if (m_sim->Outputs().size() > 0)
+    else if (m_sim->Outputs().size() > 0) // Auto - metrics - long single value table
     {
+        // recreate base metric table to report if no results available
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+
         wxArrayString mvars;
         std::vector<double> mvals;
         wxArrayString vars = m_sim->ListOutputs();
@@ -1035,6 +1040,10 @@ void ResultsViewer::Setup(Simulation* sim)
     }
     else
     {
+        // recreate base metric table to report if no results available
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+
         matrix_t<wxString> metrics(2, 1);
         metrics(0, 0) = "No results are available.";
         metrics(1, 0) = "Click the 'Simulate' button first to run a simulation.";
@@ -1291,7 +1300,13 @@ void ResultsViewer::Setup(Simulation* sim)
         }
         if (tech_model == "Flat Plate PV" || tech_model == "PV Battery")
         {
-            m_spatialLayout->DeleteAll();
+            // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
+            if (!m_spatialLayout) {
+                m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
+                AddPage(m_spatialLayout, "Spatial", true);
+            }
+            else
+                m_spatialLayout->DeleteAll();
 
             wxString x_label;
             if (m_sim->GetValue("subarray1_track_mode")->Value() == 1) {        // 0=fixed, 1=1-axis, 2=2-axis, 3=azimuth-axis, 4=seasonal
@@ -1943,13 +1958,23 @@ void ResultsViewer::GetUncertainties(std::vector<Uncertainties>& ul)
 void ResultsViewer::Clear()
 {
     m_sim = 0;
+    m_autographs.clear();
+    /*
+    if (!m_metricsTable) {
+        m_metricsTable = new MetricsTable(m_summaryLayout);
+        m_summaryLayout->Add(m_metricsTable);
+    }
+//    else
+//        m_metricsTable->Clear();
+
 
     matrix_t<wxString> metrics(2, 1);
     metrics(0, 0) = "Metrics";
     metrics(1, 0) = "No data available.";
     m_metricsTable->SetData(metrics);
-
+    */
     RemoveAllDataSets();
+    m_summaryLayout->Refresh();
 }
 
 

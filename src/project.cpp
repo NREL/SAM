@@ -300,9 +300,16 @@ bool ProjectFile::Read( wxInputStream &input )
 	if ( ver > 2 )
 		m_verPatch = (int)in.Read16();
 
-	if ( !m_properties.Read( input ) ) m_lastError += "Project properties error.\n";
-	if (!m_cases.Read(input)) m_lastError += "Case data error: " + m_cases.GetLastError() + "\n";
-	if ( !m_objects.Read( input ) ) m_lastError += "Objects data error: " + m_objects.GetLastError() + "\n";
+	if (!m_properties.Read(input)) {
+		m_lastError += "Project properties error.\n";
+	}
+	if (!m_cases.Read(input)) {
+		m_lastError += "Case data error: " + m_cases.GetLastError() + "\n";
+	}
+	if (!m_objects.Read(input)) {
+		if (m_objects.GetLastError().length() > 0)
+			m_lastError += "Objects data error: " + m_objects.GetLastError() + "\n";
+	}
 
 	m_modified = false;
 

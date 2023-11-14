@@ -16,7 +16,11 @@ configs = 0;
 technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
-	if ((technologies[t] != "DSPT") )
+	if ((technologies[t] != "DSPT") 
+	&& (technologies[t] != "Dish Stirling")
+	&& (technologies[t] != "ISCC")
+	&& (technologies[t] != "Retired")
+	&& (technologies[t] != "MSPTV2"))
 	{
 		//Loop through all financing options for that technology
 		financing = list_financing(technologies[t]);

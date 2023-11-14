@@ -42,6 +42,7 @@
         "annual_global": 5.79476,
         "annual_snow": "nan",
         "annual_tdry": 21.9385,
+        "annual_twet": 0.0,
         "annual_wspd": 1.78648,
         "array_type": 2.0,
         "azimuth": 180.0,
@@ -276,7 +277,7 @@
         "bos_cost_total": 71400000.0,
         "cols": 1.0,
         "degradation": [
-            0.5
+            0.0
         ],
         "desired_farm_size": 10.0,
         "elec_eff_loss": 1.91,
