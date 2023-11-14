@@ -2288,7 +2288,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
@@ -2297,7 +2297,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
@@ -2312,7 +2312,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
@@ -2321,7 +2321,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_single_owner_pages( );
 setup_electricity_purchases();
 
@@ -2331,7 +2331,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
 
@@ -2341,7 +2341,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2351,7 +2351,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2361,7 +2361,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
 
