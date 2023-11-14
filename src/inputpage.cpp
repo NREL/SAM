@@ -274,7 +274,7 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange(m_case, objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period);
+				DataExchange(m_case, objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period, m_ndxHybrid);
 		}
 	}
 
@@ -418,7 +418,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 		if (obj->GetName() == "analysis_period")
 			m_case->m_analysis_period_old = vval->Integer();
 
-		if ( DataExchange(m_case, obj, *vval, OBJ_TO_VAR ) )
+		if ( DataExchange(m_case, obj, *vval, OBJ_TO_VAR, m_case->m_analysis_period, m_ndxHybrid ) )
 		{
 			wxLogStatus("Variable " + obj->GetName() + " changed by user interaction, case notified.");
 
@@ -488,7 +488,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	
 }
 
-bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period)
+bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period, size_t ndxHybrid)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -658,8 +658,8 @@ bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, Ddx
 		//if (dir == VAR_TO_OBJ) la->Read(&val);
 		//else la->Write(&val);
 		// Protype to flatten 
-		if (dir == VAR_TO_OBJ) la->Read(c);
-		else la->Write(c);
+		if (dir == VAR_TO_OBJ) la->Read(c, ndxHybrid);
+		else la->Write(c, ndxHybrid);
 		}
 	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{

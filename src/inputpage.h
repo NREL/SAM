@@ -104,8 +104,8 @@ public:
 	
 	// data exchange from UI object to data value and vice versa
 	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };
-	// static for parametri
-	static bool DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0);
+	// static for parametric
+	static bool DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0, size_t ndxHybrid=0);
 
 protected:
 	

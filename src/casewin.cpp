@@ -893,7 +893,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
             }
                 
 			if ( ipage && obj && vv ) {
-				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
+				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period, ndxHybrid);
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), ndxHybrid) )	{

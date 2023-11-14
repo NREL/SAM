@@ -2708,7 +2708,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": "/Wdc"
+                    "String": "/Wac"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -5142,7 +5142,10 @@
         "",
         "equations { 'fuelcell_total' } = define () {",
         "\treturn ${fuelcell_power_total}*${fuelcell_per_kW};\r",
-        "};",
+        "};\r",
+        "\r",
+        "equations{ 'installed_per_capacity' } = define() {\r",
+        "\treturn 0.001*${total_installed_cost}/${fuelcell_power_total}; };",
         ""
     ],
     "Callbacks": []
