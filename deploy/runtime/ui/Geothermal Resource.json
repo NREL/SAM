@@ -1404,7 +1404,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1823,7 +1823,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 864.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2026,7 +2026,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3344,7 +3344,7 @@
         "injectivity_index": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Injection well pressure change",
+            "Label": "Injectivity index",
             "Units": "lb/hr-psi",
             "Group": "Geothermal Resource",
             "IndexLabels": "",
@@ -3396,8 +3396,8 @@
         "reservoir_pressure_change": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Pressure drawdown",
-            "Units": "psi/(1000 lb/h)",
+            "Label": "Productivity index",
+            "Units": "lb/hr-psi",
             "Group": "Geothermal Resource",
             "IndexLabels": "",
             "Flags": 2.0,
