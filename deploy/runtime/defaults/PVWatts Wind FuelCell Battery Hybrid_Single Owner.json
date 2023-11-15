@@ -2177,7 +2177,7 @@
         "batt_dispatch_choice": 3.0,
         "batt_dispatch_choice_ui": 2.0,
         "batt_dispatch_excl": 2.0,
-        "batt_dispatch_update_frequency_hours": 0.0,
+        "batt_dispatch_update_frequency_hours": 1.0,
         "batt_dispatch_wf_forecast_choice": 0.0,
         "batt_duration_choice": 0.0,
         "batt_gridcharge_percent_1": 100.0,
@@ -2318,7 +2318,7 @@
                 46.1312
             ]
         ],
-        "batt_look_ahead_hours": 0.0,
+        "batt_look_ahead_hours": 18.0,
         "batt_loss_choice": 0.0,
         "batt_losses": [
             0.0
