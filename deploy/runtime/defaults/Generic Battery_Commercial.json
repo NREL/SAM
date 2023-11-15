@@ -71427,7 +71427,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
-        10.0
+        6.28
     ],
     "om_batt_fixed_cost": [
         0.0

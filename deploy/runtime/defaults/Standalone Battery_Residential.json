@@ -9162,8 +9162,8 @@
     "battery_energy": 12.8102,
     "battery_indirect_cost_percent": 0.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 545.48,
-    "battery_per_kWh": 706.24,
+    "battery_per_kW": 675.0,
+    "battery_per_kWh": 590.76,
     "battery_power": 5.1241,
     "battery_thermal_shown": 0.0,
     "battery_total": 11842.2,
@@ -18701,7 +18701,7 @@
     ],
     "genericsys.cost.contingency": 0.0,
     "genericsys.cost.contingency_percent": 0.0,
-    "genericsys.cost.epc.fixed": 6549.0,
+    "genericsys.cost.epc.fixed": 7575.0,
     "genericsys.cost.epc.nonfixed": 0.0,
     "genericsys.cost.epc.percent": 0.0,
     "genericsys.cost.epc.total": 6549.0,
@@ -18709,7 +18709,7 @@
     "genericsys.cost.per_watt": 6.0,
     "genericsys.cost.plm.fixed": 0.0,
     "genericsys.cost.plm.nonfixed": 710.532,
-    "genericsys.cost.plm.percent": 6.0,
+    "genericsys.cost.plm.percent": 0.0,
     "genericsys.cost.plm.total": 710.532,
     "genericsys.cost.sales_tax.percent": 100.0,
     "genericsys.cost.sales_tax.total": 592.11,
@@ -45117,7 +45117,7 @@
     ],
     "om_batt_nameplate": 12.8102,
     "om_batt_replacement_cost": [
-        273.52
+        590.76
     ],
     "om_batt_variable_cost": [
         0.0

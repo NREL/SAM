@@ -92496,7 +92496,7 @@
     "num_strings_total": 3.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [
-        10.0
+        9.68
     ],
     "om_batt_fixed_cost": [
         0.0
@@ -92509,7 +92509,7 @@
         0.0
     ],
     "om_capacity": [
-        31.0
+        28.78
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [

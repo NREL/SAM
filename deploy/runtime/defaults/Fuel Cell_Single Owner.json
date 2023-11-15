@@ -9100,8 +9100,8 @@
     "battery_energy": 240000.0,
     "battery_energy_kwh": 240000.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 233.17,
-    "battery_per_kWh": 282.0,
+    "battery_per_kW": 236.0,
+    "battery_per_kWh": 323.0,
     "battery_power": 57600.1,
     "battery_power_kw": 57600.1,
     "battery_replacements_shown": 0.0,
@@ -47418,7 +47418,7 @@
     ],
     "om_batt_nameplate": 240000.0,
     "om_batt_replacement_cost": [
-        282.0
+        323.0
     ],
     "om_batt_variable_cost": [
         0.0

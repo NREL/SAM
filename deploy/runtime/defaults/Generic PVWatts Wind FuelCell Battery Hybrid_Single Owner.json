@@ -49,7 +49,7 @@
         "inflation_rate": 2.5,
         "nameplate_capacity": 100000.0,
         "om_capacity": [
-            25.0
+            40.0
         ],
         "om_capacity_escal": 0.0,
         "om_fixed": [
@@ -342,7 +342,7 @@
         "avail_loss_total": 5.50117,
         "avail_turb_loss": 3.58,
         "bos_cost_fixed": 0.0,
-        "bos_cost_per_kw": 357.0,
+        "bos_cost_per_kw": 347.76,
         "bos_cost_per_turbine": 0.0,
         "bos_cost_total": 71400000.0,
         "cols": 1.0,
@@ -363,7 +363,7 @@
         "inflation_rate": 2.5,
         "install_type": 0.0,
         "om_capacity": [
-            43.0
+            40.0
         ],
         "om_capacity_escal": 0.0,
         "om_fixed": [
@@ -400,7 +400,7 @@
         "turb_perf_loss": 1.1,
         "turb_specific_loss": 0.81,
         "turbine_cost_fixed": 100.0,
-        "turbine_cost_per_kw": 1141.96,
+        "turbine_cost_per_kw": 1112.4,
         "turbine_cost_per_turbine": 0.0,
         "turbine_cost_total": 228392000.0,
         "use_specific_wf_wind": 0.0,
@@ -11274,8 +11274,8 @@
         "battery_energy": 240000.0,
         "battery_indirect_cost_percent": 0.0,
         "battery_losses_shown": 0.0,
-        "battery_per_kW": 233.17,
-        "battery_per_kWh": 282.0,
+        "battery_per_kW": 236.0,
+        "battery_per_kWh": 323.0,
         "battery_power": 60000.0,
         "battery_thermal_shown": 0.0,
         "battery_total": 81670100.0,
@@ -12631,14 +12631,14 @@
         "grid_interconnection_limit_kwac": 20000.0,
         "inflation_rate": 2.5,
         "om_batt_capacity_cost": [
-            15.0
+            5.3
         ],
         "om_batt_fixed_cost": [
             0.0
         ],
         "om_batt_nameplate": 240000.0,
         "om_batt_replacement_cost": [
-            282.0
+            323.0
         ],
         "om_batt_variable_cost": [
             0.0

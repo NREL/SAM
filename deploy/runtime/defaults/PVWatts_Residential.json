@@ -26727,7 +26727,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
-        31.0
+        28.78
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -26809,7 +26809,7 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "sales_tax_percent": 49,
+    "sales_tax_percent": 49.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 535.08,
     "sales_tax_value": 5.0,

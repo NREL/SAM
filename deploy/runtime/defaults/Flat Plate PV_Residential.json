@@ -47559,7 +47559,7 @@
     "num_strings_total": 3.0,
     "offset": 0.0,
     "om_capacity": [
-        31.0
+        28.78
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -47642,7 +47642,7 @@
     ],
     "real_discount_rate": 6.4,
     "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
-    "sales_tax_percent": 49,
+    "sales_tax_percent": 49.0,
     "sales_tax_rate": 5.0,
     "sales_tax_total": 470.824,
     "sales_tax_value": 5.0,
