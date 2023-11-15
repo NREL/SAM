@@ -1322,10 +1322,36 @@
         "batt_discharge_percent_4": 25.0,
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
+        "batt_dispatch_auto_can_charge": 0.0,
+        "batt_dispatch_auto_can_clipcharge": 0.0,
+        "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
         "batt_dispatch_choice": 3.0,
         "batt_dispatch_choice_ui": 2.0,
         "batt_dispatch_excl": 2.0,
+        "batt_dispatch_pvs_ac_lb": -0.1,
+        "batt_dispatch_pvs_ac_lb_enable": 0.0,
+        "batt_dispatch_pvs_ac_ub": 1.05,
+        "batt_dispatch_pvs_ac_ub_enable": 0.0,
+        "batt_dispatch_pvs_battery_energy": 0.0,
+        "batt_dispatch_pvs_battery_power": 0.0,
+        "batt_dispatch_pvs_battery_rte": 0.0,
+        "batt_dispatch_pvs_curtail_as_control": 0.0,
+        "batt_dispatch_pvs_curtail_if_violation": 0.0,
+        "batt_dispatch_pvs_forecast_shift_periods": 3.0,
+        "batt_dispatch_pvs_interconnection_limit": 0.0,
+        "batt_dispatch_pvs_kf": 0.3,
+        "batt_dispatch_pvs_ki": 1.8,
+        "batt_dispatch_pvs_kp": 1.2,
+        "batt_dispatch_pvs_max_ramp": 10.0,
+        "batt_dispatch_pvs_nameplate": 0.0,
+        "batt_dispatch_pvs_nameplate_ac": 0.0,
+        "batt_dispatch_pvs_ramp_interval": 10.0,
+        "batt_dispatch_pvs_short_forecast_enable": 0.0,
+        "batt_dispatch_pvs_soc_rest": 50.0,
+        "batt_dispatch_pvs_timestep_multiplier": 3.0,
+        "batt_dispatch_pvs_wf_forecast_choice": 0.0,
+        "batt_dispatch_pvs_wf_timestep": 60.0,
         "batt_dispatch_update_frequency_hours": 0.0,
         "batt_dispatch_wf_forecast_choice": 0.0,
         "batt_duration_choice": 0.0,
@@ -1533,6 +1559,10 @@
         "batt_pv_clipping_forecast": [
             0.0
         ],
+        "batt_pvs_pv_ac_forecast": [
+            0.0
+        ],
+        "batt_pvs_user_specified_weather_file": "",
         "batt_replacement_capacity": 50.0,
         "batt_replacement_option": 1.0,
         "batt_replacement_schedule_percent": [
@@ -10376,9 +10406,6 @@
             ]
         ],
         "compute_as_cube": 0.0,
-        "degradation": [
-            0.0
-        ],
         "dispatch_manual_btm_discharge_to_grid": [
             0.0,
             0.0,
@@ -11686,7 +11713,6 @@
             1.0,
             1.0
         ],
-        "en_batt": 1.0,
         "en_standalone_batt": 0.0,
         "genericsys.cost.contingency": 2450100.0,
         "genericsys.cost.contingency_percent": 3.0,
@@ -11755,7 +11781,6 @@
         "sales_tax_rate": 5.0,
         "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
         "system_capacity": 57600.0,
-        "system_use_lifetime_output": 1.0,
         "total_direct_cost": 84120300.0,
         "total_indirect_cost": 11356200.0,
         "total_installed_cost": 99682500.0,
