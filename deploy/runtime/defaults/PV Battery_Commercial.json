@@ -36171,7 +36171,7 @@
     ],
     "batt_thermal_choice": 0.0,
     "batt_time_capacity": 4.0,
-    "batt_type": 8.0,
+    "batt_type": 5.0,
     "batt_ui_bank_voltage": 500.4,
     "batt_ui_cell_voltage": 3.6,
     "batt_ui_inverter_eff": 98.2262,
@@ -92415,7 +92415,7 @@
     "load_user_forecast_data_psd": [
         0.0
     ],
-    "loan_rate": 4.0,
+    "loan_rate": 7.0,
     "loan_term": 25.0,
     "lon": -111.98,
     "mismatch_shown": 0.0,
@@ -93107,7 +93107,7 @@
     "ui_array_land_area_ha": 1.31459,
     "ui_array_land_area_multiplier": 1.0,
     "ui_aspect_ratio": 1.7,
-    "ui_batt_life_model": 1.0,
+    "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
     "ui_copy_batt_discharge_percent_2": 25.0,
     "ui_copy_batt_discharge_percent_3": 25.0,

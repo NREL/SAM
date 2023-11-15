@@ -1152,7 +1152,7 @@
     "c_equity_return": 0.0,
     "c_inflation": 2.5,
     "c_lifetime": 10.0,
-    "c_nominal_interest_rate": 4.0,
+    "c_nominal_interest_rate": 7.0,
     "c_tax_rate": 28.0,
     "calc_design_pipe_vals": 1.0,
     "capital_cost": 7263070.0,

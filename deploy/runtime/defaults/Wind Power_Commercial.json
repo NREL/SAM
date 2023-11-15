@@ -28120,7 +28120,7 @@
         33.5754,
         33.5754
     ],
-    "loan_rate": 4.0,
+    "loan_rate": 7.0,
     "loan_term": 25.0,
     "meas_atm_uncert": 0.3,
     "meas_data_uncert": 0.3,
