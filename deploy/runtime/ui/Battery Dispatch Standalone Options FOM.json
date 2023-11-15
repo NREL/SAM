@@ -1,49 +1,8 @@
 {
     "Name": "Battery Dispatch Standalone Options FOM",
-    "Width": 1089.0,
-    "Height": 399.0,
+    "Width": 1053.0,
+    "Height": 158.0,
     "FormObjects": {
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "batt_dispatch_auto_can_fuelcellcharge"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 306.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 84.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 346.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Battery can charge from fuel cell"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 8.0
-                }
-            }
-        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -297,19 +256,6 @@
         }
     },
     "VarDatabase": {
-        "batt_dispatch_auto_can_fuelcellcharge": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Battery can charge from fuelcell",
-            "Units": "0/1",
-            "Group": "Battery Dispatch",
-            "IndexLabels": "",
-            "Flags": 3.0,
-            "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "batt_dispatch_auto_can_gridcharge": {
             "Version": 4.0,
             "Type": 1.0,
@@ -454,9 +400,7 @@
         "\tif (option == 2) ",
         "\t{",
         "\t\tvalue('batt_dispatch_auto_can_gridcharge', false);",
-        "\t\tshow('batt_dispatch_auto_can_gridcharge', false);\r",
-        "\t\tshow('batt_dispatch_auto_can_fuelcellcharge', false);\r",
-        "\t\tvalue('batt_dispatch_auto_can_fuelcell_charge', false);",
+        "\t\tshow('batt_dispatch_auto_can_gridcharge', false);",
         "\t\trefresh();",
         "\t}",
         "\telse ",
