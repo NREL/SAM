@@ -1596,7 +1596,7 @@ function set_taxes_insurance(xl)
 
 }
 
-function set_analysis_period()
+function check_analysis_period()
 {
 	N = value('analysis_period');
 	if ( N>40 ) msgbox('The Excel workbook only shows cash flow values for a 40-year analysis period or less. Your analysis is for ' + N + ' years.');
@@ -2130,7 +2130,7 @@ cashflow_to_excel{ 'Commercial' } = define()
 cashflow_to_excel{ 'Merchant Plant'} = define()
 {
 	xl = create_workbook( 'merchant_plant.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
 	xl_set_value( xl, 'mp_enable_energy_market_revenue' );
@@ -2155,7 +2155,7 @@ cashflow_to_excel{ 'Merchant Plant'} = define()
 cashflow_to_excel{ 'Single Owner' } = define()
 {
 	xl = create_workbook( 'single_owner.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
 	set_lcos( xl );
@@ -2176,7 +2176,7 @@ cashflow_to_excel{ 'Single Owner' } = define()
 cashflow_to_excel{ 'Community Solar' } = define()
 {
 	xl = create_workbook( 'community_solar.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
 	//set_lcos( xl );
@@ -2303,7 +2303,7 @@ cashflow_to_excel{ 'Community Solar' } = define()
 cashflow_to_excel{ 'Host Developer' } = define()
 {
 	xl = create_workbook( 'host_developer.xlsx' );
-  	set_analysis_period();
+  	check_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
 	set_solution_mode( xl );
@@ -2330,7 +2330,7 @@ cashflow_to_excel{ 'Host Developer' } = define()
 cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 {
 	xl = create_workbook( 'partnership_flip.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_debt_parameters( xl );
 	set_annual_values( xl );
 	set_lcos( xl );
@@ -2353,7 +2353,7 @@ cashflow_to_excel{ 'Leveraged Partnership Flip' } = define()
 cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 {
 	xl = create_workbook( 'partnership_flip.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_debt_parameters_na( xl );
 	set_annual_values( xl );
 	set_lcos( xl );
@@ -2376,7 +2376,7 @@ cashflow_to_excel{ 'All Equity Partnership Flip' } = define()
 cashflow_to_excel{ 'Sale Leaseback' } = define()
 {
 	xl = create_workbook( 'sale_leaseback.xlsx' );
- 	set_analysis_period();
+ 	check_analysis_period();
 	set_annual_values( xl );
 	set_lcos( xl );
 	set_solution_mode( xl );
