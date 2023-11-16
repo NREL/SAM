@@ -1,0 +1,38 @@
+{
+	"defaults": {
+		"Resource": {
+			"wind_resource_model_choice": 0
+		},
+		"Turbine": {
+			"wind_resource_shear": 0,
+			"wind_turbine_hub_ht": 0,
+			"wind_turbine_powercurve_powerout": [0],
+			"wind_turbine_powercurve_windspeeds": [0],
+			"wind_turbine_rotor_diameter": 0
+		},
+		"Farm": {
+			"system_capacity": 612.65,
+			"wind_farm_wake_model": 0,
+			"wind_farm_xCoordinates": [0],
+			"wind_farm_yCoordinates": [0],
+			"wind_resource_turbulence_coeff": 0
+		},
+		"Losses": {
+		},
+		"AdjustmentFactors": {
+			"adjust_constant": 0
+		},
+		"Uncertainty": {
+		},
+		"HybridTech": {
+			"degradation": [0],
+			"om_capacity": [],
+			"om_capacity_escal": 0,
+			"om_fixed": [],
+			"om_fixed_escal": 0,
+			"om_production": [],
+			"om_production_escal": 0,
+			"total_installed_cost": 5.32629e+06
+		}
+	}
+}

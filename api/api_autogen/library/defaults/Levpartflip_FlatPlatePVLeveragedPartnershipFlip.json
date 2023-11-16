@@ -288,6 +288,8 @@
 		"BatterySystem": {
 			"en_batt": 0,
 			"en_wave_batt": 0
+		},
+		"FuelCell": {
 		}
 	}
 }

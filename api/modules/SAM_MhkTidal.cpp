@@ -92,6 +92,18 @@ SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_resource_mset(SAM_table ptr, double*
 	});
 }
 
+SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tidal_resource_model_choice", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_velocity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "tidal_velocity", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_MhkTidal_MHKTidal_total_operating_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_operating_cost", number);
@@ -243,6 +255,29 @@ SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_resource_mget(SAM_table ptr, int*
 
 
 
+SAM_EXPORT double SAM_MhkTidal_MHKTidal_tidal_resource_model_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tidal_resource_model_choice", &result))
+		make_access_error("SAM_MhkTidal", "tidal_resource_model_choice");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_velocity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tidal_velocity", length);
+	if (!result)
+		make_access_error("SAM_MhkTidal", "tidal_velocity");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_MhkTidal_MHKTidal_total_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -316,6 +351,18 @@ SAM_EXPORT double SAM_MhkTidal_Outputs_device_rated_capacity_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "device_rated_capacity", &result))
 		make_access_error("SAM_MhkTidal", "device_rated_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_MhkTidal_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen", length);
+	if (!result)
+		make_access_error("SAM_MhkTidal", "gen");
 	});
 	return result;
 }

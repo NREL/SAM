@@ -119,8 +119,10 @@ bool startup_extractor::load_startup_script(const std::string script_file){
         if ( tree ) delete tree;
 
         if ( !ok )
-            for( size_t i=0;i<e.error_count();i++ )
+            for( size_t i=0;i<e.error_count();i++ ){
                 errors.push_back( e.get_error(i).ToStdString());
+                std::cerr << errors.back() << "\n";
+            }
 
         return ok;
     }

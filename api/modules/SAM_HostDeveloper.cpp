@@ -326,12 +326,6 @@ SAM_EXPORT void SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aset(SA
 	});
 }
 
-SAM_EXPORT void SAM_HostDeveloper_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_HostDeveloper_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
@@ -1760,6 +1754,24 @@ SAM_EXPORT void SAM_HostDeveloper_Monthly_monthly_energy_aset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_HostDeveloper_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_HostDeveloper_FuelCell_fuelcell_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_replacement", arr, length);
+	});
+}
+
 SAM_EXPORT double* SAM_HostDeveloper_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2334,18 +2346,6 @@ SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aget
 	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "annual_fuel_usage_lifetime");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "fuelcell_annual_energy_discharged");
 	});
 	return result;
 }
@@ -5038,6 +5038,42 @@ SAM_EXPORT double* SAM_HostDeveloper_Monthly_monthly_energy_aget(SAM_table ptr, 
 
 
 
+SAM_EXPORT double* SAM_HostDeveloper_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "fuelcell_annual_energy_discharged");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_FuelCell_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_replacement", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "fuelcell_replacement");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_HostDeveloper_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5472,366 +5508,6 @@ SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_aget(SAM_table ptr, i
 
 
 
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_apr", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_apr");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_aug", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_aug");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dec", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dec");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch1", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch2", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch3", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch4", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch5", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch6", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch7", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch8", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_dispatch9", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_dispatch9");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_feb", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_feb");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_jan", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_jan");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_jul", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_jul");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_jun", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_jun");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_mar", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_mar");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_may_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_may", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_may");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD1", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD1");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD2", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD2");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD3", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD3");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD4", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD5", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD6", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD7", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD8", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_monthly_firstyear_TOD9", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_monthly_firstyear_TOD9");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_nov", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_nov");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_oct", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_oct");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_energy_net_sep", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_energy_net_sep");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5850,6 +5526,366 @@ SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_aget(SAM_table ptr,
 	result = ssc_data_get_array(ptr, "cf_energy_sales", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "cf_energy_sales");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_apr_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_apr", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_apr");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_aug_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_aug", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_aug");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dec_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dec", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dec");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch1", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch2", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch3", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch4", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch5", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch6", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch6");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch7", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch7");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch8", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch8");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_dispatch9", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_dispatch9");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_feb_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_feb", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_feb");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jan_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_jan", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_jan");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jul_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_jul", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_jul");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jun_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_jun", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_jun");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_mar_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_mar", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_mar");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_may_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_may", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_may");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD1", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD2", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD3", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD4", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD5", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD6", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD6");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD7", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD7");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD8", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD8");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_monthly_firstyear_TOD9", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_monthly_firstyear_TOD9");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_nov_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_nov", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_nov");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_oct_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_oct", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_oct");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_sep_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_sales_sep", length);
+	if (!result)
+		make_access_error("SAM_HostDeveloper", "cf_energy_sales_sep");
 	});
 	return result;
 }
@@ -6917,18 +6953,6 @@ SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_ptc_sta_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "cf_ptc_sta", length);
 	if (!result)
 		make_access_error("SAM_HostDeveloper", "cf_ptc_sta");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_ptc_total", length);
-	if (!result)
-		make_access_error("SAM_HostDeveloper", "cf_ptc_total");
 	});
 	return result;
 }

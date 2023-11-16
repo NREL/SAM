@@ -4636,6 +4636,28 @@ SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_load_aget(SAM_table ptr
 
 
 
+SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "num_ts_load_met_by_system_lifetime", &result))
+		make_access_error("SAM_Battery", "num_ts_load_met_by_system_lifetime");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "num_ts_load_met_by_system_yr1", &result))
+		make_access_error("SAM_Battery", "num_ts_load_met_by_system_yr1");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4666,6 +4688,28 @@ SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "pdf_of_surviving", length);
 	if (!result)
 		make_access_error("SAM_Battery", "pdf_of_surviving");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "percent_ts_load_met_by_system_lifetime", &result))
+		make_access_error("SAM_Battery", "percent_ts_load_met_by_system_lifetime");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "percent_ts_load_met_by_system_yr1", &result))
+		make_access_error("SAM_Battery", "percent_ts_load_met_by_system_yr1");
 	});
 	return result;
 }

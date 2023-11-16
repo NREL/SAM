@@ -100,6 +100,12 @@ static void fcall_setmodules( lk::invoke_t &cxt )
     SAM_config_to_primary_modules[active_config] = list;
 }
 
+static void fcall_sethybridvariabledependencies( lk::invoke_t &cxt )
+{
+    LK_DOC( "sethybridvariabledependencies", "", "");
+    // nothing to do
+}
+
 static void fcall_addpage( lk::invoke_t &cxt )
 {
     LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
@@ -172,6 +178,7 @@ static lk::fcall_t* export_config_funcs() {
             fcall_addpage,
             fcall_setting,
             fcall_setmodules,
+            fcall_sethybridvariabledependencies,
             0 };
     return (lk::fcall_t*)vec;
 }

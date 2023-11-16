@@ -197,14 +197,6 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
 	 * options: None
 	 * constraints: None
@@ -1459,12 +1451,28 @@ extern "C"
 	//
 
 	/**
+	 * Set annual_fuel_usage_lifetime: Annual Fuel Usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set en_fuelcell: Enable fuel cell storage model [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Cashloan_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set fuelcell_computed_bank_capacity: Fuel cell capacity [kWh]
@@ -1908,8 +1916,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2246,7 +2252,11 @@ extern "C"
 	 * FuelCell Getters
 	 */
 
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err);
 
@@ -2548,8 +2558,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 

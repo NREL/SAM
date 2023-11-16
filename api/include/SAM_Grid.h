@@ -115,6 +115,19 @@ extern "C"
 
 
 	//
+	// Monthly parameters
+	//
+
+	/**
+	 * Set monthly_energy: AC energy (year 1) [kWh/mo]
+	 * options: None
+	 * constraints: LENGTH=12
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Grid_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// GridLimits parameters
 	//
 
@@ -174,6 +187,13 @@ extern "C"
 	SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Monthly Getters
+	 */
+
+	SAM_EXPORT double* SAM_Grid_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

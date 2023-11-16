@@ -271,7 +271,10 @@ int main(int argc, char *argv[]){
     std::string content = static_cast<std::stringstream const&>(std::stringstream() << ifs.rdbuf()).str();
 
     startup_extractor su_e;
-    su_e.load_startup_script(content);
+    if (!su_e.load_startup_script(content)){
+        std::cerr << "Startup script error\n";
+        return 1;
+    }
     std::vector<std::string> unique_ui_form_names = su_e.get_unique_ui_forms();
 
     // get all the SSC_INPUT & SSC_INOUT for all used compute_modules

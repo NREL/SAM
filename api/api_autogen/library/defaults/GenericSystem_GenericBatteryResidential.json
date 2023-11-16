@@ -15,7 +15,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 5,
+			"adjust_constant": 0,
 			"adjust_en_periods": 0,
 			"adjust_en_timeindex": 0,
 			"adjust_periods": [

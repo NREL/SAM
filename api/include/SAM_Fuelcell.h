@@ -461,6 +461,8 @@ extern "C"
 	 * Outputs Getters
 	 */
 
+	SAM_EXPORT double SAM_Fuelcell_Outputs_annual_energy_discharged_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_fc_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);

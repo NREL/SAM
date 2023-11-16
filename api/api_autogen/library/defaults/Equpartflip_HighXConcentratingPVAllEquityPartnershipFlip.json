@@ -272,6 +272,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
+		},
+		"FuelCell": {
 		}
 	}
 }

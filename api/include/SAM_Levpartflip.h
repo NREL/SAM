@@ -466,14 +466,6 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Levpartflip_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
 	 * options: None
 	 * constraints: None
@@ -2394,6 +2386,35 @@ extern "C"
 	SAM_EXPORT void SAM_Levpartflip_BatterySystem_en_wave_batt_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// FuelCell parameters
+	//
+
+	/**
+	 * Set annual_fuel_usage_lifetime: Annual Fuel Usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Levpartflip_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Levpartflip_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set fuelcell_replacement: Fuel cell replacements per year [number/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Levpartflip_FuelCell_fuelcell_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * Revenue Getters
 	 */
@@ -2513,8 +2534,6 @@ extern "C"
 	SAM_EXPORT double SAM_Levpartflip_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3058,6 +3077,17 @@ extern "C"
 
 
 	/**
+	 * FuelCell Getters
+	 */
+
+	SAM_EXPORT double* SAM_Levpartflip_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_FuelCell_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -3127,69 +3157,69 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_may_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_apr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_aug_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dec_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_feb_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_jan_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_jul_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_jun_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_mar_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_may_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_nov_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_oct_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_sales_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3360,8 +3390,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Levpartflip_Outputs_cf_pv_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err);
 

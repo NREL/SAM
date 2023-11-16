@@ -260,12 +260,6 @@ SAM_EXPORT void SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aset(SA
 	});
 }
 
-SAM_EXPORT void SAM_Merchantplant_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_Merchantplant_SystemCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_batt_capacity_cost", arr, length);
@@ -1676,9 +1670,21 @@ SAM_EXPORT void SAM_Merchantplant_Lifetime_system_use_lifetime_output_nset(SAM_t
 	});
 }
 
+SAM_EXPORT void SAM_Merchantplant_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Merchantplant_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "en_fuelcell", number);
+	});
+}
+
+SAM_EXPORT void SAM_Merchantplant_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "fuelcell_annual_energy_discharged", arr, length);
 	});
 }
 
@@ -2316,18 +2322,6 @@ SAM_EXPORT double* SAM_Merchantplant_SystemCosts_annual_fuel_usage_lifetime_aget
 	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "annual_fuel_usage_lifetime");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "fuelcell_annual_energy_discharged");
 	});
 	return result;
 }
@@ -4970,11 +4964,35 @@ SAM_EXPORT double SAM_Merchantplant_Lifetime_system_use_lifetime_output_nget(SAM
 
 
 
+SAM_EXPORT double* SAM_Merchantplant_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_Merchantplant_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_fuelcell", &result))
 		make_access_error("SAM_Merchantplant", "en_fuelcell");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Merchantplant_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_annual_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Merchantplant", "fuelcell_annual_energy_discharged");
 	});
 	return result;
 }
@@ -6874,18 +6892,6 @@ SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_sta_aget(SAM_table ptr, int*
 	result = ssc_data_get_array(ptr, "cf_ptc_sta", length);
 	if (!result)
 		make_access_error("SAM_Merchantplant", "cf_ptc_sta");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Merchantplant_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_ptc_total", length);
-	if (!result)
-		make_access_error("SAM_Merchantplant", "cf_ptc_total");
 	});
 	return result;
 }

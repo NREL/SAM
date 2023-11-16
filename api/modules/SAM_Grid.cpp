@@ -68,6 +68,12 @@ SAM_EXPORT void SAM_Grid_Load_load_escalation_aset(SAM_table ptr, double* arr, i
 	});
 }
 
+SAM_EXPORT void SAM_Grid_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_energy", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
@@ -185,6 +191,18 @@ SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length
 	result = ssc_data_get_array(ptr, "load_escalation", length);
 	if (!result)
 		make_access_error("SAM_Grid", "load_escalation");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Grid_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy", length);
+	if (!result)
+		make_access_error("SAM_Grid", "monthly_energy");
 	});
 	return result;
 }

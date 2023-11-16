@@ -1,0 +1,30 @@
+{
+	"defaults": {
+		"SolarResource": {
+		},
+		"Lifetime": {
+			"analysis_period": 25
+		},
+		"SystemDesign": {
+			"array_type": 0,
+			"dc_ac_ratio": 1.15,
+			"losses": 0,
+			"system_capacity": 500
+		},
+		"Shading": {
+		},
+		"AdjustmentFactors": {
+			"adjust_constant": 0
+		},
+		"HybridTech": {
+			"degradation": [0],
+			"om_capacity": [],
+			"om_capacity_escal": 0,
+			"om_fixed": [],
+			"om_fixed_escal": 0,
+			"om_production": [],
+			"om_production_escal": 0,
+			"total_installed_cost": 2.92121e+07
+		}
+	}
+}

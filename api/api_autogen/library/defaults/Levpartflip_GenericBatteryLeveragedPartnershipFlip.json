@@ -300,6 +300,8 @@
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 0
+		},
+		"FuelCell": {
 		}
 	}
 }

@@ -864,8 +864,8 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
-	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=PriceSignalForecast if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
+	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4/5]
+	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=RetailRateDispatch,5=SelfConsumption if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
 	 * constraints: None
 	 * required if: en_batt=1
 	 */
@@ -2383,11 +2383,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 

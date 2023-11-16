@@ -1,0 +1,28 @@
+{
+	"defaults": {
+		"Plant": {
+			"conv_eff": 0,
+			"derate": 0,
+			"heat_rate": 0,
+			"spec_mode": 0,
+			"system_capacity": 500,
+			"user_capacity_factor": 0
+		},
+		"Lifetime": {
+			"analysis_period": 25
+		},
+		"AdjustmentFactors": {
+			"adjust_constant": 0
+		},
+		"HybridTech": {
+			"degradation": [0],
+			"om_capacity": [],
+			"om_capacity_escal": 0,
+			"om_fixed": [],
+			"om_fixed_escal": 0,
+			"om_production": [],
+			"om_production_escal": 0,
+			"total_installed_cost": 2.92121e+07
+		}
+	}
+}
