@@ -39346,7 +39346,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -40113,7 +40113,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.04
+        0.043
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -40121,9 +40121,9 @@
     "property_assessed_value": 106499000.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
-        0.0
+        0.0275
     ],
-    "ptc_fed_escal": 0.0,
+    "ptc_fed_escal": 2.5,
     "ptc_fed_term": 10.0,
     "ptc_sta_amount": [
         0.0
