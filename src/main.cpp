@@ -2920,6 +2920,12 @@ void ConfigDialog::PopulateTech()
 {
 	// clear tree
 	m_pTech->DeleteAllItems();
+
+	// TODO set width to fit longest collapsed label
+	int tech_width = 400;
+	int tech_height = m_pTech->GetBestHeight(tech_width);
+	m_pTech->SetMinSize(wxSize(tech_width, tech_height));
+	
 	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
