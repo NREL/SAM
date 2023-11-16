@@ -58767,7 +58767,7 @@
     "pbi_uti_tax_sta": 1.0,
     "pbi_uti_term": 10.0,
     "per_inverter": 0.05,
-    "per_module": 0.37,
+    "per_module": 0.39,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.01,
     "permitting_percent": 0.0,
