@@ -31,7 +31,6 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
 addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
-addconfig( 'Physical Trough IPH OLD', ['None', 'LCOH Calculator']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MSLF IPH', ['None', 'LCOH Calculator']);
@@ -88,7 +87,6 @@ configopt( 'Empirical Trough', { 'tree_parent'='Concentrating Solar Power', 'lon
 configopt( 'Generic CSP System', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Generic Solar Model', 'short_name'='CSP Generic Model', 'description'='CSP power system with solar field modeled using a table of optical efficiency values' } );
 configopt( 'DSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Direct Steam', 'short_name'='CSP Linear Fresnel Direct Steam', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
 configopt( 'MSLF', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Linear Fresnel Molten Salt', 'short_name'='CSP Linear Fresnel Molten Salt', 'description'='CSP power system that uses long small mirrors to line focus sunlight on fixed receiver tubes mounted above them.' } );
-configopt( 'Physical Trough IPH OLD', { 'tree_parent'='Industrial Process Heat', 'long_name'='Parabolic Trough OLD', 'short_name'='IPH Trough OLD', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Parabolic Trough', 'short_name'='IPH Trough', 'description'='Industrial process heat parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'DSGL IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Linear Direct Steam', 'short_name'='IPH Linear Fresnel Direct Steam','description'='Industrial process heat linear Fresnel collector system' } );
 configopt( 'MSLF IPH', { 'tree_parent'='Industrial Process Heat', 'long_name'='Linear Molten Salt', 'short_name'='IPH Linear Fresnel Molten Salt','description'='Industrial process heat linear collector system with molten salt heat transfer fluid' } );
@@ -694,29 +692,6 @@ function setup_csp_physical_trough_pages()
 	setup_grid_limits_page();
 }
 
-function setup_cst_physical_trough_pages_OLD()
-{
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_trough-location_and_resource' } );
-	addpage( [[ 'Phys Trough System Design' ]], { 'sidebar'='System Design', 'help'='iph_trough-system_design' } );
-	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_trough-solar_field' } );
-	addpage( [[ 'Physical Trough Collector Header',
-	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
-	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
-	 {'name'='Physical Trough Collector Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
-	 {'name'='Physical Trough Collector Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
-	 { 'sidebar'='Collectors (SCAs)', 'help'='iph_trough-collectors' } );
-	addpage( [[ 'Physical Trough Receiver Header',
-	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=false, 'collapsible_var'='hce_1_is_shown'},
-	 {'name'='Physical Trough Receiver Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
-	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
-	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
-	 { 'sidebar'='Receivers (HCEs)', 'help'='iph_trough-receivers' } );
-	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_trough-tes' } );
-	 addpage( [[ 'Phys Trough System Control' ,
-	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	  { 'sidebar'='System Control', 'help'='iph_trough-system_control' } );
-}
-
 function setup_cst_physical_trough_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_mslf_location_and_resource' } );
@@ -965,16 +940,6 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['PTES Capital Costs']],{'sidebar'='Installation Costs','help'='cc_system_costs'});
 addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_dispatch_pages();
-
-// CSThermal - Physical Trough OLD ////////////////////////////////
-setconfig( 'Physical Trough IPH OLD', 'None' );
-setmodules( ['trough_physical_process_heat']);
-setup_cst_physical_trough_pages_OLD();
-
-setconfig( 'Physical Trough IPH OLD', 'LCOH Calculator' );
-setmodules( ['trough_physical_process_heat', 'iph_to_lcoefcr', 'lcoefcr']);
-setup_cst_physical_trough_pages_OLD();
-setup_iph_lcoefcr_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
