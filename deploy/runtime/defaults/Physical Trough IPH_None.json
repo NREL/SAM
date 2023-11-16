@@ -63,7 +63,7 @@
         2.15,
         2.15
     ],
-    "COPY_field_thermal_output": 13.8889,
+    "COPY_field_thermal_output": 14.8055,
     "COPY_total_aperture": 20992.0,
     "ColperSCA": [
         8.0,
@@ -1936,7 +1936,7 @@
     "field_htf_cp_avg": 5.20446,
     "field_htf_max_operating_temp": 220.0,
     "field_htf_min_operating_temp": 10.0,
-    "field_thermal_output": 13.8889,
+    "field_thermal_output": 14.8055,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "fixed_land_area": 12.9678,
     "fluid_dens_inlet_temp": 965.937,
@@ -2100,6 +2100,7 @@
     "nHCEt": 4.0,
     "nLoops": 8.0,
     "nSCA": 4.0,
+    "nameplate": 5.19,
     "nodes": 2000.0,
     "non_solar_field_land_area_multiplier": 1.1,
     "northsouth_field_sep": 20.0,
