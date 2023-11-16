@@ -22526,10 +22526,10 @@
     "shaft_assembly_cost": 0.0,
     "shortterm_energy_storage_cost": 0.0,
     "shortterm_energy_storage_cost_total": 0.0,
-    "show_CapitalCostSO": 0.0,
+    "show_CapitalCostSO": 1.0,
     "show_DebtConstDSCR": 1.0,
-    "show_ReserveAccounts": 0.0,
-    "show_construction_period": 0.0,
+    "show_ReserveAccounts": 1.0,
+    "show_construction_period": 1.0,
     "significant_wave_height": [
         3.21103,
         3.13325,
@@ -25644,7 +25644,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,

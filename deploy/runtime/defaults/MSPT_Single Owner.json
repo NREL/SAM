@@ -56873,7 +56873,7 @@
     "receiver_type": 0.0,
     "refl_image_error_calc": 4.32749,
     "reserves_interest": 1.75,
-    "revenue_TOD_is_shown": 1.0,
+    "revenue_TOD_is_shown": 0.0,
     "revenue_capacity_payments_is_shown": 0.0,
     "revenue_curtailment_is_shown": 0.0,
     "riser_tm_mult": 1.0,
@@ -58774,7 +58774,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,

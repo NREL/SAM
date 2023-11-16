@@ -28661,7 +28661,7 @@
     "rec_su_delay": 0.2,
     "reflectivity": 0.935,
     "reserves_interest": 1.75,
-    "revenue_TOD_is_shown": 1.0,
+    "revenue_TOD_is_shown": 0.0,
     "revenue_capacity_payments_is_shown": 0.0,
     "revenue_curtailment_is_shown": 0.0,
     "sales_tax_percent": 80.0,
