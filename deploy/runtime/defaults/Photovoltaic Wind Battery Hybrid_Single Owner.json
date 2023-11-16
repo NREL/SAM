@@ -3991,6 +3991,7 @@
         "sales_tax_total": 0.0,
         "sizing_warning": 0.0,
         "specify_label": 1.0,
+        "step": 0.0,
         "system_capacity": 200000.0,
         "system_use_lifetime_output": 0.0,
         "total_installed_cost": 229106000.0,
@@ -4004,6 +4005,7 @@
         "turbine_cost_per_kw": 1141.96,
         "turbine_cost_per_turbine": 0.0,
         "turbine_cost_total": 228392000.0,
+        "ui_step_minutes": 0.0,
         "use_specific_wf_wind": 0.0,
         "user_specified_wf_wind": " ",
         "wake_ext_loss": 1.1,
@@ -16149,6 +16151,7 @@
         "genericsys.cost.sales_tax.total": 0.0,
         "genericsys.cost.sales_tax.value": 5.0,
         "grid_interconnection_limit_kwac": 20000.0,
+        "hybrid_system_capacity": 0.0,
         "inflation_rate": 2.5,
         "om_batt_capacity_cost": [
             100.0
@@ -16196,7 +16199,7 @@
         "pv.storage.p6.discharge": 0.0,
         "pv.storage.p6.dischargetogrid": 0.0,
         "pv.storage.p6.gridcharge": 0.0,
-        "pv_system_capacity": 100001.0,
+        "pv_ui_step_minutes": 0.0,
         "sales_tax_rate": 5.0,
         "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
         "system_capacity": 1919.88,
@@ -16210,7 +16213,7 @@
         "ui_copy_batt_discharge_percent_4": 25.0,
         "ui_copy_batt_discharge_percent_5": 25.0,
         "ui_copy_batt_discharge_percent_6": 25.0,
-        "ui_step_minutes": 60.0
+        "wind_ui_step_minutes": 0.0
     },
     "Hybrid": {
         "analysis_period": 25.0,

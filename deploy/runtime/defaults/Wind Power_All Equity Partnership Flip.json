@@ -21056,6 +21056,7 @@
     "state_tax_rate": [
         7.0
     ],
+    "step": 0.0,
     "substructCont": 30.0,
     "substructure": 0.0,
     "system_capacity": 200000.0,
@@ -21119,6 +21120,7 @@
     "turbine_rating_MW": 2.5,
     "turbine_spacing_rotor_diameters": 8.0,
     "ui_electricity_rate_option": 0.0,
+    "ui_step_minutes": 60.0,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [

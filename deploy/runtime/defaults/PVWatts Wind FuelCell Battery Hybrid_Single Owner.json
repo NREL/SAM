@@ -314,6 +314,7 @@
         "sales_tax_total": 0.0,
         "sizing_warning": 0.0,
         "specify_label": 1.0,
+        "step": 0.0,
         "system_capacity": 200000.0,
         "system_use_lifetime_output": 0.0,
         "total_installed_cost": 299792000.0,
@@ -327,6 +328,7 @@
         "turbine_cost_per_kw": 1141.96,
         "turbine_cost_per_turbine": 0.0,
         "turbine_cost_total": 228392000.0,
+        "ui_step_minutes": 0.0,
         "use_specific_wf_wind": 0.0,
         "user_specified_wf_wind": " ",
         "wake_ext_loss": 1.1,
@@ -2075,7 +2077,7 @@
         "permitting_per_fckw": 0.0,
         "permitting_percent": 0.0,
         "permitting_total": 0.0,
-        "pv_system_capacity": 100000.0,
+        "pv_ui_step_minutes": 0.0,
         "sales_tax_percent": 100.0,
         "sales_tax_rate": 5.0,
         "sales_tax_total": 100000.0,
@@ -2084,7 +2086,7 @@
         "total_direct_cost": 2000000.0,
         "total_indirect_cost": 0.0,
         "total_installed_cost": 2100000.0,
-        "ui_step_minutes": 60.0
+        "wind_ui_step_minutes": 0.0
     },
     "Battery": {
         "LeadAcid_q10": 93.0,
@@ -12582,6 +12584,7 @@
         "genericsys.cost.sales_tax.total": 4401840.0,
         "genericsys.cost.sales_tax.value": 5.0,
         "grid_interconnection_limit_kwac": 20000.0,
+        "hybrid_system_capacity": 0.0,
         "inflation_rate": 2.5,
         "om_batt_capacity_cost": [
             15.0
