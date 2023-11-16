@@ -2075,7 +2075,6 @@
         "permitting_per_fckw": 0.0,
         "permitting_percent": 0.0,
         "permitting_total": 0.0,
-        "pv_system_capacity": 100000.0,
         "sales_tax_percent": 100.0,
         "sales_tax_rate": 5.0,
         "sales_tax_total": 100000.0,
@@ -2083,8 +2082,7 @@
         "subtotal_direct": 2000000.0,
         "total_direct_cost": 2000000.0,
         "total_indirect_cost": 0.0,
-        "total_installed_cost": 2100000.0,
-        "ui_step_minutes": 60.0
+        "total_installed_cost": 2100000.0
     },
     "Battery": {
         "LeadAcid_q10": 93.0,
@@ -12629,6 +12627,7 @@
         "pv.storage.p6.discharge": 0.0,
         "pv.storage.p6.dischargetogrid": 0.0,
         "pv.storage.p6.gridcharge": 0.0,
+        "pv_system_capacity": 4.0,
         "sales_tax_rate": 5.0,
         "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
         "system_capacity": 57600.0,
@@ -12641,7 +12640,8 @@
         "ui_copy_batt_discharge_percent_3": 25.0,
         "ui_copy_batt_discharge_percent_4": 25.0,
         "ui_copy_batt_discharge_percent_5": 25.0,
-        "ui_copy_batt_discharge_percent_6": 25.0
+        "ui_copy_batt_discharge_percent_6": 25.0,
+        "ui_step_minutes": 0.0
     },
     "Hybrid": {
         "ac_nameplate": 71428.6,

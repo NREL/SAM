@@ -2718,9 +2718,9 @@ setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityra
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 3,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_total_installed_cost'},
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
