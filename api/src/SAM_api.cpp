@@ -484,7 +484,6 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
         if(verbosity == 0){
             ssc_module_exec_set_print(0);
         }
-	    printf("data %lu\n", (void*)data);
 
         if (!ssc_module_exec( cm, data )){
             std::string str = std::string(cmod) + " execution error.\n";

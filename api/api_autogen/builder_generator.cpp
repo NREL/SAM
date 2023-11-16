@@ -462,11 +462,11 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
             }
             else{
                 vv = SAM_config_to_defaults[config_name][v.name];
-            }
 
-            // if it's a battery configuration, turn on battery by default
-            if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))
-                vv->Set(1);
+                // if it's a battery configuration, turn on battery by default. Hybrid techs don't need this because cmod_hybrid does it
+                if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))
+                    vv->Set(1);
+            }
 
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
