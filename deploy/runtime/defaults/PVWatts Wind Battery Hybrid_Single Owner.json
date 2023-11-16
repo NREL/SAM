@@ -29481,7 +29481,7 @@
         ],
         "grid_curtailment_price_esc": 0.0,
         "grid_interconnection_limit_kwac": 20000.0,
-        "hybrid_capital_cost": 100000.0,
+        "hybrid_capital_cost": 0.0,
         "ibi_fed_amount": 0.0,
         "ibi_fed_amount_deprbas_fed": 0.0,
         "ibi_fed_amount_deprbas_sta": 0.0,
@@ -30202,9 +30202,9 @@
         "months_receivables_reserve": 0.0,
         "months_working_reserve": 6.0,
         "nominal_discount_rate": 9.06,
-        "om_capacity": 1.0,
-        "om_fixed": 100.0,
-        "om_production": 0.1,
+        "om_capacity": 0.0,
+        "om_fixed": 0.0,
+        "om_production": 0.0,
         "payment_option": 0.0,
         "pbi_fed_amount": [
             0.0

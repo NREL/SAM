@@ -28837,7 +28837,7 @@
         ],
         "host_nominal_discount_rate": 9.06,
         "host_real_discount_rate": 6.4,
-        "hybrid_capital_cost": 50000.0,
+        "hybrid_capital_cost": 0.0,
         "ibi_fed_amount": 0.0,
         "ibi_fed_amount_deprbas_fed": 0.0,
         "ibi_fed_amount_deprbas_sta": 0.0,
@@ -47102,9 +47102,9 @@
         ],
         "nominal_discount_rate": 9.06,
         "normalize_to_utility_bill": 0.0,
-        "om_capacity": 1.0,
-        "om_fixed": 100.0,
-        "om_production": 0.1,
+        "om_capacity": 0.0,
+        "om_fixed": 0.0,
+        "om_production": 0.0,
         "payment_option": 0.0,
         "pbi_fed_amount": [
             0.0
