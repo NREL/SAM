@@ -67,7 +67,8 @@ void check_dll_loaded(void *handle){
 }
 
 #define CHECK_FUNC_LOADED() \
-    if (!func) {throw std::runtime_error( "Cannot load function " + funcName );}
+    std::string msg = std::string(cmod_symbol) + " error accessing variable " + std::string(var_name); \
+    if (!func) {throw std::runtime_error(msg);}
 
 SAM_EXPORT void *SAM_load_library(const char *filepath, SAM_error *err) {
     void *handle;
@@ -483,6 +484,7 @@ SAM_EXPORT int SAM_module_exec(const char* cmod, void* data, int verbosity, SAM_
         if(verbosity == 0){
             ssc_module_exec_set_print(0);
         }
+	    printf("data %lu\n", (void*)data);
 
         if (!ssc_module_exec( cm, data )){
             std::string str = std::string(cmod) + " execution error.\n";

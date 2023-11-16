@@ -30,11 +30,14 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <ssc/core.h>
 
 #include "config_extractor.h"
 #include "ui_form_extractor.h"
 #include "callback_extractor.h"
 #include "data_structures.h"
+
+extern var_info vtab_hybrid_tech_om_inputs[];
 
 std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
 std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
@@ -72,6 +75,15 @@ bool config_extractor::load_defaults_for_config(){
     {
         std::cout << "Error reading inputs from external source " << file <<"\n";
         return false;
+    }
+
+    // convert technology name keys to lowercase
+    if (config_name.find("Hybrid") != std::string::npos){
+        wxArrayString keys = vt.ListAll();
+        for(size_t i = 0; i < keys.size(); i++){
+            auto name = keys[i];
+            vt.Rename(name, util::lower_case(name));
+        }
     }
 
     SAM_config_to_defaults.insert({active_config, vt});

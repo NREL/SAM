@@ -41,6 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
+#include <ssc/core.h>
 
 #include "lk_env.h"
 #include "lk_eval.h"
@@ -53,6 +54,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "builder_generator_helper.h"
 #include "builder_C_API.h"
 #include "builder_PySAM.h"
+
+extern var_info vtab_hybrid_tech_om_inputs[];
 
 std::unordered_map<std::string, bool> SAM_completed_cmods;
 
@@ -80,8 +83,12 @@ builder_generator::builder_generator(config_extractor *ce){
     for (size_t i = 0; i < cmods.size(); i++){
         std::string cmod_name = cmods[i];
         ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
-        ssc_module_objects.insert({cmod_name, p_mod});
 
+        if (config_name.find("Hybrid") != std::string::npos) {
+            compute_module* cmod = static_cast<compute_module*>(p_mod);
+            cmod->add_var_info(vtab_hybrid_tech_om_inputs);
+        }
+        ssc_module_objects.insert({cmod_name, p_mod});
     }
 }
 
@@ -122,6 +129,12 @@ void builder_generator::select_ui_variables(std::string ui_name, std::map<std::s
 
 void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
+
+    // hybrid technology compute modules have extra financial variables that need to be exported to defaults
+    if (active_config.find("Hybrid") != std::string::npos) {
+        compute_module* cmod = static_cast<compute_module*>(p_mod);
+        cmod->add_var_info(vtab_hybrid_tech_om_inputs);
+    }
 
     digraph* graph = nullptr;
     if (SAM_config_to_variable_graph.find(active_config) != SAM_config_to_variable_graph.end())
@@ -440,7 +453,16 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
                     continue;
             }
             else
- */               vv = SAM_config_to_defaults[config_name][v.name];
+ */             
+            if (config_name.find("Hybrid") != std::string::npos){
+                VarValue* vt = SAM_config_to_defaults[config_name].Get(cmod);
+                if (!vt)
+                    vt = SAM_config_to_defaults[config_name].Get("hybrid");
+                vv = vt->Table()[v.name];
+            }
+            else{
+                vv = SAM_config_to_defaults[config_name][v.name];
+            }
 
             // if it's a battery configuration, turn on battery by default
             if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))
