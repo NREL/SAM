@@ -183,7 +183,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// navigation menu objects
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
-	m_left_panel->SetMinSize(wxSize(250, 28)); // TODO size based on longest input page label
+	m_left_panel->SetMinSize(wxSize(275, 28)); // TODO size based on longest input page label
 
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
     m_inputPageList->Show(false);

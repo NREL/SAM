@@ -1,7 +1,7 @@
 {
     "Name": "Operating Costs Land Lease",
-    "Width": 825.0,
-    "Height": 163.0,
+    "Width": 824.0,
+    "Height": 181.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 158.0
+                    "Integer": 176.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -206,7 +206,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -256,11 +256,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -268,7 +268,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -351,7 +351,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -422,11 +422,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 372.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -434,7 +434,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -463,11 +463,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -475,7 +475,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
