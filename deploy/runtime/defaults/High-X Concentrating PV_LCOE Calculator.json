@@ -8778,6 +8778,7 @@
     "annual_global": 5.87918,
     "annual_snow": "inf",
     "annual_tdry": 22.8356,
+    "annual_twet": "nan",
     "annual_wspd": 1.86986,
     "array_ac_wiring_loss": 0.99,
     "array_dc_mismatch_loss": 0.97,
