@@ -8,11 +8,11 @@ This document explains how to build the SAM CEC module library file from the CEC
 
 ### Step 1: Download full list of PV modules from CEC website
 
-1. Create a new working folder for this version of the module library in [Developer Tools and Instructions/Module and Inverter Database Tools/CEC Modules](https://github.com/NREL/SAM-documentation/tree/master/Developer%20Tools%20and%20Instructions/Module%20and%20Inverter%20Database%20Tools/CEC%20Modules/), like `CEC Modules yyyy-m-d` with today's date in the folder name.
+1. Create a new working folder for this version of the module library in [SAM/Samples/CEC Modlue and Inverter Libraries/CEC Modules](https://github.com/NREL/SAM/tree/develop/samples/CEC%20Module%20and%20Inverter%20Libraries/CEC%20Modules), like `CEC Modules yyyy-m-d` with today's date in the folder name.
 
 2. Go to https://solarequipment.energy.ca.gov/Home/PVModuleList and click the **Download Excel file** link to the working folder.
 
-3. Change the Excel file name with the last CEC update date in the file name `PV_Module_List_Full_Data-yyyy-m-d.xlsx`.
+3. Change the Excel file name with the last CEC update date in the file name `PV_Module_List_Full_Data_ADA-yyyy-m-d.xlsx`.
 
 ### Step 2: Manually process CEC xlsx file
 
