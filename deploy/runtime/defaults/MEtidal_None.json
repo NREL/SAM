@@ -2,7 +2,7 @@
     "array_sizing_mode": 0.0,
     "cable_length_option": 0.0,
     "cable_system_overbuild": 10.0,
-    "data_source": "<invalid>",
+    "data_source": "CMIST",
     "desired_array_size": 0.0,
     "device_foundation": "Bottom Fixed: Pile Foundation",
     "device_mass": 265.9,
@@ -30,7 +30,7 @@
     "inter_array_cable_voltage": 7.2,
     "inter_array_cable_voltage_calculated": 7.2,
     "inter_array_cable_voltage_option": 0.0,
-    "lat": 0.0,
+    "lat": 41.5193,
     "lib_tidal_device": "RM1",
     "lib_tidal_power_curve": [
         [
@@ -174,15 +174,15 @@
     "library_or_input_tidal": 0.0,
     "load_grid_voltage": 8.0,
     "load_grid_voltage_options": 0.0,
-    "location_id": "",
-    "lon": 0.0,
+    "location_id": "COD0911",
+    "lon": -70.6829,
     "loss_additional": 0.0,
     "loss_array_spacing": 0.0,
     "loss_downtime": 2.0,
     "loss_resource_overprediction": 0.0,
     "loss_total": 7.0,
     "loss_transmission": 5.0,
-    "notes": "<invalid>",
+    "notes": "-",
     "number_devices": 1.0,
     "number_rows": 1.0,
     "offshore_substation_choice": 0.0,
@@ -569,7 +569,7 @@
         0.0
     ],
     "tidal_velocity_power_law_fit": 0.0,
-    "tz": 0.0,
+    "tz": -10.0,
     "ui_step_minutes": 525600.0,
     "ui_tidal_resource_model_choice": 0.0,
     "use_offshore_substation_calc": 0.0,
@@ -719,7 +719,7 @@
         ]
     ],
     "water_depth": 50.0,
-    "water_depth_file": 0.0,
+    "water_depth_file": 6.4,
     "water_depth_input": 50.0,
     "year": 0.0
 }

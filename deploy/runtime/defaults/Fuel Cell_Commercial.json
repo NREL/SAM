@@ -17891,7 +17891,7 @@
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.35,
-    "bos_equip_total": 77400.0,
+    "bos_equip_total": 75250.0,
     "cap_vs_temp": [
         [
             -10.0,
@@ -17910,7 +17910,7 @@
             100.0
         ]
     ],
-    "capex_table_ac_cost_per_w": 0.0,
+    "capex_table_ac_cost_per_w": 0.79,
     "capex_table_ac_inputs": [
         [
             100000.0,
@@ -17988,7 +17988,7 @@
             0.0
         ]
     ],
-    "capex_table_cost_per_w": 0.0,
+    "capex_table_cost_per_w": 1.0,
     "capex_table_dc_inputs": [
         [
             100000.0,
@@ -18027,7 +18027,7 @@
             0.94
         ]
     ],
-    "capex_table_fuelcell_cost_per_kw": 0.0,
+    "capex_table_fuelcell_cost_per_kw": 10000.0,
     "capex_table_fuelcell_inputs": [
         [
             1.0,
@@ -18042,10 +18042,10 @@
             10000.0
         ]
     ],
-    "capex_table_total_installed_ac_cost": 0.0,
+    "capex_table_total_installed_ac_cost": 147696.0,
     "capex_table_total_installed_batt_cost": 849964.0,
-    "capex_table_total_installed_dc_cost": 0.0,
-    "capex_table_total_installed_fuelcell_cost": 0.0,
+    "capex_table_total_installed_dc_cost": 215000.0,
+    "capex_table_total_installed_fuelcell_cost": 2000000.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -18073,7 +18073,7 @@
     "chk_update_peaks": 1.0,
     "city": "-",
     "compute_as_cube": 0.0,
-    "contingency": 8772.0,
+    "contingency": 10836.0,
     "contingency_percent": 4.0,
     "country": "-",
     "crit_1": 0.0,
@@ -28218,7 +28218,7 @@
     "engr_per_fckw": 0.0,
     "engr_per_watt": 0.3,
     "engr_percent": 0.0,
-    "engr_total": 94600.0,
+    "engr_total": 64500.0,
     "escal_belpe": [
         0.0
     ],
@@ -54691,7 +54691,7 @@
     "grid_per_fckw": 0.0,
     "grid_per_watt": 0.05,
     "grid_percent": 0.0,
-    "grid_total": 12900.0,
+    "grid_total": 10750.0,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
     "ibi_fed_amount_deprbas_sta": 0.0,
@@ -54747,20 +54747,20 @@
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
     "install_labor_perwatt": 0.18,
-    "install_labor_total": 34400.0,
+    "install_labor_total": 38700.0,
     "install_margin_battperkw": 0.0,
     "install_margin_fcperkw": 0.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
     "install_margin_perwatt": 0.25,
-    "install_margin_total": 66650.0,
-    "installed_per_capacity": 13.658,
+    "install_margin_total": 53750.0,
+    "installed_per_capacity": 13.4131,
     "insurance_rate": 0.0,
     "inv_eff": 96.0,
     "inverter_costunits": 1.0,
     "inverter_num_units": 1.0,
     "inverter_power": 186.957,
-    "inverter_total": 12900.0,
+    "inverter_total": 10750.0,
     "inverterarray_power": 186.957,
     "inverterarray_power_w": 186957.0,
     "is_advanced": 0.0,
@@ -72363,7 +72363,7 @@
     "module_is_bifacial": 0.0,
     "module_num_units": 1.0,
     "module_power": 215.0,
-    "module_total": 101050.0,
+    "module_total": 92450.0,
     "module_type": 0.0,
     "modulearray_area": 0.0,
     "modulearray_power": 215.0,
@@ -72484,7 +72484,7 @@
     "permitting_total": 6450.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 2936470.0,
+    "property_assessed_value": 2883810.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -72530,7 +72530,7 @@
     "run_resiliency_calcs": 0.0,
     "sales_tax_percent": 100.0,
     "sales_tax_rate": 5.0,
-    "sales_tax_total": 134406.0,
+    "sales_tax_total": 133434.0,
     "sales_tax_value": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
@@ -72589,7 +72589,7 @@
     ],
     "station_id": "78208",
     "step": 3600.0,
-    "subtotal_direct": 2679340.0,
+    "subtotal_direct": 2657840.0,
     "system_capacity": 215.0,
     "system_use_lifetime_output": 1.0,
     "thermal_1": 493721.0,
@@ -125219,12 +125219,12 @@
     ],
     "tilt": 20.0,
     "total_battery_indirect_cost": 0.0,
-    "total_direct_cost": 2688110.0,
-    "total_indirect_cost": 113950.0,
-    "total_installed_cost": 2936470.0,
+    "total_direct_cost": 2668680.0,
+    "total_indirect_cost": 81700.0,
+    "total_installed_cost": 2883810.0,
     "total_land_area": 1.39886,
     "total_module_area": 1131.58,
-    "total_system_indirect_cost": 113950.0,
+    "total_system_indirect_cost": 81700.0,
     "tz": -7.0,
     "ui_ac_capacity": 0.186957,
     "ui_annual_load": 0.0,
@@ -125241,8 +125241,8 @@
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
     "ui_land_area_per_mw": 0.0,
-    "ui_loan_amount": 2936470.0,
-    "ui_net_capital_cost": 2936470.0,
+    "ui_loan_amount": 2883810.0,
+    "ui_net_capital_cost": 2883810.0,
     "ui_pv_capacity": 215.0,
     "ui_step_minutes": 60.0,
     "ui_total_land_area_ha": 0.5661,
@@ -125250,7 +125250,7 @@
     "ui_total_module_area_acres": 0.279619,
     "ui_total_module_area_ha": 0.113158,
     "ui_use_acre_per_mw": 0.0,
-    "ui_wacc": 2.9388,
+    "ui_wacc": 5.1429,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
