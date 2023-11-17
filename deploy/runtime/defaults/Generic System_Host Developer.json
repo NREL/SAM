@@ -36749,9 +36749,9 @@
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "scale_factor": 1.0,
-    "show_CapitalCostSO": 0.0,
-    "show_DebtConstDSCR": 0.0,
-    "show_ReserveAccounts": 0.0,
+    "show_CapitalCostSO": 1.0,
+    "show_DebtConstDSCR": 1.0,
+    "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
     "solution_mode_message": "",
     "spec_mode": 0.0,
@@ -37249,7 +37249,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             2.0,

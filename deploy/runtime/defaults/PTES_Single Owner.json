@@ -10485,7 +10485,7 @@
     "q_sby_frac": 0.2,
     "real_discount_rate": 6.4,
     "reserves_interest": 1.75,
-    "revenue_TOD_is_shown": 0.0,
+    "revenue_TOD_is_shown": 1.0,
     "revenue_capacity_payments_is_shown": 1.0,
     "rte_net": -789.0,
     "rte_thermo": -789.0,

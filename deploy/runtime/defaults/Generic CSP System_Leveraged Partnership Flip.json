@@ -19805,10 +19805,10 @@
         0.002526,
         0.0
     ],
-    "show_CapitalCostSO": 0.0,
-    "show_DebtConstDSCR": 0.0,
-    "show_ReserveAccounts": 0.0,
-    "show_construction_period": 0.0,
+    "show_CapitalCostSO": 1.0,
+    "show_DebtConstDSCR": 1.0,
+    "show_ReserveAccounts": 1.0,
+    "show_construction_period": 1.0,
     "solar_data_file_name": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv",
     "solar_data_file_name_load": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
@@ -20056,7 +20056,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,

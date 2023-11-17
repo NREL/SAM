@@ -56912,7 +56912,7 @@
         "ui_fuel_cell_cost": 84000.0,
         "ui_generic_capacity": 200.0,
         "ui_generic_cost": 26774800.0,
-        "ui_hyb_pv_capacity": 0.0,
+        "ui_hyb_pv_capacity": 469.56,
         "ui_pv_cost": 1013180.0,
         "ui_wacc": 6.70974,
         "ui_wind_cost": 456073.0,
