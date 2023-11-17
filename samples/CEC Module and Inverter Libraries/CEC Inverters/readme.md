@@ -24,7 +24,7 @@ The "SAM library" is the text file the SAM user interface reads to populate the 
 
 	As of January 2019, we will not include legacy data in the SAM library.
 
-2. Go to the Grid Support Solar/Battery Inverters page at https://solarequipment.energy.ca.gov/Home/InvertersList and click **Download Excel File** to download the "Full Data" version of inverter list and save them to the folder with the CEC update date appended to the file name, for example `Inverter_List_Full_Data_2019-1-15.xlsm`:
+2. Go to the Grid Support Solar/Battery Inverters page at https://solarequipment.energy.ca.gov/Home/InvertersList and click **Download Excel File** to download the "Full Data" version of inverter list and save them to the folder with the CEC update date appended to the file name, for example `Grid_Support_Inverter_List_Full_Data_ADA_2023-11-17.xlsm`:
 
 ## 2. Process files
 
