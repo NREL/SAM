@@ -14,7 +14,7 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [LK](https://github.com/nrel/lk) is a scripting language that is integrated into SAM. SAM's user interface uses LK to calculate values to display on input pages. The user interface includes a script editor that allows users to write their own scripts from the user interface.
 
-* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript). The current version of SAM uses wxWidgets 3.1.5.
+* [wxWidgets](https://www.wxwidgets.org/) is a cross-platform graphical user interface platform used for SAM's user interface, and for the development tools included with SSC (SDKtool) and LK (LKscript).
 
 * [WEX](https://github.com/nrel/wex) is a set of extensions to wxWidgets for custom user-interface elements developed specifically for SAM, LK script, and DView.
 
@@ -28,38 +28,13 @@ This repository, **SAM**, contains the code for SAM's user interface that assign
 
 The SAM repository also includes [two libraries](https://github.com/NREL/SAM/tree/develop/Sandia) from Sandia National Laboratories, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
-# Quick Steps for Building SAM
+# Building SAM
 
-For detailed build instructions see the [wiki](https://github.com/NREL/SAM/wiki) with specific instructions for:
+For build instructions see the [wiki](https://github.com/NREL/SAM/wiki) with specific instructions for:
 
   * [Windows](https://github.com/NREL/SAM/wiki/Windows-Build-Instructions)
   * [Mac](https://github.com/NREL/SAM/wiki/Mac-Build-Instructions)
   * [Linux](https://github.com/NREL/SAM/wiki/Linux-Build-Instructions)
-
-These are the general quick steps you need to follow to set up your computer for developing SAM:
-
-1. Set up your development tools:
-
-    * Windows: Visual Studio 2019 Community or other editions available at https://www.visualstudio.com/.
-    * Mac: Apple Command Line Tools, available at https://developer.apple.com/download/more/ (requires Apple ID and password).
-    * Linux: g++ compiler available at [https://gcc.gnu.org](https://gcc.gnu.org/) or installed via your Linux distribution.
-
-2. Download the wxWidgets 3.1.5 source code for your operating system from https://www.wxwidgets.org/downloads/.
-
-3. Build wxWidgets.
-
-5. In Windows, create the WXMSW3 environment variable on your computer to point to the wxWidgets installation folder, or in MacOS and Linux, create the dynamic link `/usr/<USERNAME>/local/bin/wx-config-3` to point to `/path/to/wxWidgets/bin/wx-config`.
-
-6. As you did for wxWidgets, for each of the following projects, clone (download) the repository, build the project, and then (Windows only) create an environment variable pointing to the project folder. Build the projects in the following order, and assign the environment variable for each project before you build the next one:
-
-<table>
-<tr><th>Project</th><th>Repository URL</th><th>Windows Environment Variable</th></tr>
-<tr><td>LK</td><td>https://github.com/NREL/lk</td><td>LKDIR</td></tr>
-<tr><td>WEX</td><td>https://github.com/NREL/wex</td><td>WEXDIR</td></tr>
-<tr><td>SSC</td><td>https://github.com/NREL/ssc</td><td>SSCDIR</td></tr>
-<tr><td>SAM</td><td>https://github.com/NREL/SAM</td><td>SAMNTDIR</td></tr>
-<tr><td>Google Test</td><td>https://github.com/google/googletest</td><td>GTEST</td></tr>
-</table>
 
 # Contributing
 
