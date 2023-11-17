@@ -4790,6 +4790,19 @@
         }
     },
     "VarDatabase": {
+        "capital_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Variable for LCOE Financial Model",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "csp.dtr.cost.bop": {
             "Version": 4.0,
             "Type": 1.0,
@@ -5374,6 +5387,9 @@
         "",
         "",
         "// All of the below are just UI indicators:",
+        "\r",
+        "equations{'capital_cost'} = define() {\r",
+        "\treturn ${total_installed_cost}; };\r",
         "",
         "equations{ 'csp.dtr.cost.power_plant.mwe' } = define() {",
         "\treturn ${P_ref}; };",

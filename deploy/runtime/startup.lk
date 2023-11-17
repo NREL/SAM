@@ -960,7 +960,7 @@ setconfig( 'Physical Trough', 'LCOE Calculator' );
 setmodules( ['trough_physical', 'grid', 'lcoefcr']);
 setup_csp_physical_trough_pages();
 addpage( [['Sales Tax Rate Single Input','Physical Trough Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-setup_lcoefcr_pages();
+addpage( [[ 'Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'Physical Trough', 'None' );
 setmodules( ['trough_physical', 'grid']);
