@@ -8900,7 +8900,7 @@
     "bos_equip_perarea": 0.0,
     "bos_equip_perwatt": 0.99,
     "bos_equip_total": 7920.0,
-    "capex_table_ac_cost_per_w": 0.0,
+    "capex_table_ac_cost_per_w": 1.28,
     "capex_table_ac_inputs": [
         [
             1.0,
@@ -8923,8 +8923,8 @@
             0.79
         ]
     ],
-    "capex_table_batt_cost_per_kw": 0.0,
-    "capex_table_batt_cost_per_kwh": 0.0,
+    "capex_table_batt_cost_per_kw": 3371.46,
+    "capex_table_batt_cost_per_kwh": 213.786,
     "capex_table_batt_inputs": [
         [
             1.0,
@@ -8942,7 +8942,7 @@
             172.0
         ]
     ],
-    "capex_table_cost_per_w": 0.0,
+    "capex_table_cost_per_w": 1.07,
     "capex_table_dc_inputs": [
         [
             1.0,
@@ -8965,9 +8965,9 @@
             1.07
         ]
     ],
-    "capex_table_total_installed_ac_cost": 0.0,
-    "capex_table_total_installed_batt_cost": 0.0,
-    "capex_table_total_installed_dc_cost": 0.0,
+    "capex_table_total_installed_ac_cost": 8904.35,
+    "capex_table_total_installed_batt_cost": 44815.6,
+    "capex_table_total_installed_dc_cost": 8560.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -35694,7 +35694,7 @@
     "ui_total_module_area_acres": 0.0104044,
     "ui_total_module_area_ha": 0.00421053,
     "ui_use_acre_per_mw": 0.0,
-    "ui_wacc": 3.9525,
+    "ui_wacc": 5.5335,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
