@@ -201,39 +201,39 @@ bool ShadingInputData::load( const std::vector<double> &data )
 	}
 }
 
-void ShadingInputData::write( VarValue *vv )
+void ShadingInputData::write( VarValue *vv, wxString name )
 {
 	vv->SetType( VV_TABLE );
 	VarTable &tab = vv->Table();
 	tab.Set("en_string_option", VarValue(true)); // to enable optional values
 	if (!en_timestep) string_option = -1;
-	tab.Set("string_option", VarValue((int)string_option));
-	tab.Set("en_timestep", VarValue((bool)en_timestep));
-	tab.Set("timestep", VarValue(timestep));
+	tab.Set(name + "_string_option", VarValue((int)string_option));
+	tab.Set(name + "_en_timestep", VarValue((bool)en_timestep));
+	tab.Set(name + "_timestep", VarValue(timestep));
 
-	tab.Set("en_mxh", VarValue((bool)en_mxh));
-	tab.Set( "mxh", VarValue( mxh ) );
-	tab.Set( "en_azal", VarValue( (bool)en_azal ) );
-	tab.Set( "azal", VarValue( azal ) );
-	tab.Set( "en_diff", VarValue( (bool)en_diff ) );
-	tab.Set( "diff", VarValue( (float)diff ) );
+	tab.Set(name + "_en_mxh", VarValue((bool)en_mxh));
+	tab.Set( name + "_mxh", VarValue( mxh ) );
+	tab.Set( name + "_en_azal", VarValue( (bool)en_azal ) );
+	tab.Set( name + "_azal", VarValue( azal ) );
+	tab.Set( name + "_en_diff", VarValue( (bool)en_diff ) );
+	tab.Set( name + "_diff", VarValue( (float)diff ) );
 }
 
-bool ShadingInputData::read( VarValue *root )
+bool ShadingInputData::read( VarValue *root, wxString name )
 {
 	clear();
 	if ( root->Type() == VV_TABLE )
 	{
 		VarTable &tab = root->Table();
-		if (VarValue *vv = tab.Get("string_option")) string_option = vv->Integer();
-		if (VarValue *vv = tab.Get("en_timestep")) en_timestep = vv->Boolean();
-		if (VarValue *vv = tab.Get("timestep")) timestep = vv->Matrix();
-		if (VarValue *vv = tab.Get("en_mxh")) en_mxh = vv->Boolean();
-		if ( VarValue *vv = tab.Get("mxh") ) mxh = vv->Matrix();
-		if ( VarValue *vv = tab.Get("en_azal") ) en_azal = vv->Boolean();
-		if ( VarValue *vv = tab.Get("azal") ) azal = vv->Matrix();
-		if ( VarValue *vv = tab.Get("en_diff") ) en_diff = vv->Boolean();
-		if ( VarValue *vv = tab.Get("diff") ) diff = vv->Value();
+		if (VarValue *vv = tab.Get(name + "_string_option")) string_option = vv->Integer();
+		if (VarValue *vv = tab.Get(name + "_en_timestep")) en_timestep = vv->Boolean();
+		if (VarValue *vv = tab.Get(name + "_timestep")) timestep = vv->Matrix();
+		if (VarValue *vv = tab.Get(name + "_en_mxh")) en_mxh = vv->Boolean();
+		if ( VarValue *vv = tab.Get(name + "_mxh") ) mxh = vv->Matrix();
+		if ( VarValue *vv = tab.Get(name + "_en_azal") ) en_azal = vv->Boolean();
+		if ( VarValue *vv = tab.Get(name + "_azal") ) azal = vv->Matrix();
+		if ( VarValue *vv = tab.Get(name + "_en_diff") ) en_diff = vv->Boolean();
+		if ( VarValue *vv = tab.Get(name + "_diff") ) diff = vv->Value();
 		return true;
 	}
 	else
@@ -565,12 +565,12 @@ ShadingButtonCtrl::ShadingButtonCtrl(wxWindow *parent, int id, bool show_db_opti
 
 void ShadingButtonCtrl::Write( VarValue *vv )
 {
-	m_shad.write( vv );
+	m_shad.write( vv, m_name );
 }
 
 bool ShadingButtonCtrl::Read( VarValue *vv )
 {
-	return m_shad.read( vv );
+	return m_shad.read( vv, m_name );
 }
 
 void ShadingButtonCtrl::OnPressed(wxCommandEvent &evt)
