@@ -60,10 +60,10 @@ Standalone Battery,Merchant Plant,-8397703,25.7208,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,88.8253,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.06575e+06. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,All Equity Partnership Flip,-8397703,91.211,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.63501e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,Sale Leaseback,-8397703,92.007,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-2.09729e+07. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-1.09522e+08. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466554912,13.3212,7.4034,; 
-PTES,Single Owner,-197586480,16.8906,10.3673,; 
+ETES,Single Owner,-466162080,13.3303,7.40205,; 
+PTES,Single Owner,-197701008,16.889,10.3633,; 
 Physical Trough,Single Owner,376952608,12.1978,12.3469,; 
-Physical Trough,Merchant Plant,376952608,12.8693,NA,; 
+Physical Trough,Merchant Plant,376952608,8.23835,NA,; 
 Physical Trough,Leveraged Partnership Flip,376952608,12.4668,12.3469,; 
 Physical Trough,All Equity Partnership Flip,376952608,15.5132,12.3469,; 
 Physical Trough,Sale Leaseback,376952608,15.8667,12.3469,; 
