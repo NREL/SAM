@@ -3109,7 +3109,7 @@
         "\t\tshow('btn_est_bos_cost', false);\r",
         "\t\tshow('reference_resource_file', false);\r",
         "\t\twind_name = 'Total Installed Cost of Wind Subsystem';\r",
-        "\t\twind_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t\twind_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the Wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
         "\t}\r",
         "\telse {\r",
         "\t\twind_name = 'Total installed cost';\r",

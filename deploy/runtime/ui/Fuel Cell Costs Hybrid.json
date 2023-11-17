@@ -2771,7 +2771,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page."
+                    "String": "See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the Fuel Cell subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page."
                 },
                 "TextColour": {
                     "Type": 4.0,

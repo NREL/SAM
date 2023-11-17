@@ -1,7 +1,7 @@
 {
     "Name": "MSLF System Control",
-    "Width": 921.0,
-    "Height": 441.0,
+    "Width": 909.0,
+    "Height": 431.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2233,7 +2233,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2270,7 +2270,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
