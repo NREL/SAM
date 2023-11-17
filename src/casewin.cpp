@@ -183,6 +183,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// navigation menu objects
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
+	m_left_panel->SetMinSize(wxSize(275, 28)); // TODO size based on longest input page label
 
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
     m_inputPageList->Show(false);
@@ -191,11 +192,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* szvl = new wxBoxSizer(wxVERTICAL);
 
 	m_techLabel = new wxStaticText(m_left_panel, wxID_ANY, "-technology-");
-	m_techLabel->SetBackgroundColour(tech_color); // TODO want this to apply color to tech panel background, not just label background
+	m_techLabel->SetBackgroundColour(tech_color);
 	m_techLabel->SetForegroundColour(config_font_color);
 	m_techLabel->SetFont(lafont);
 	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
-
 
 	m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
 	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
@@ -208,7 +208,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
 	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
-	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 12));
 	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
 
 	// box for simulation and results buttons
@@ -1358,9 +1358,8 @@ void CaseWindow::UpdateConfiguration()
 	m_case->BaseCase().Clear(); // reset for UpdateResults
 
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
-
-
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
+
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 
