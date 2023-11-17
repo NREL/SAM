@@ -1,5 +1,5 @@
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-CMIST,PIR0705,b'Memorial Bridge',43.07938,-70.75208,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,17.5,-
+CMIST,PIR0705,Memorial Bridge,43.07938,-70.75208,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,17.5,-
 Year,Month,Day,Hour,Minute,Speed,,,,,,,,,,,,,,
 2008,1,1,0,30,0.94634366,,,,,,,,,,,,,,
 2008,1,1,1,30,1.360505,,,,,,,,,,,,,,
