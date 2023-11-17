@@ -1324,7 +1324,7 @@
         "batt_discharge_percent_4": 25.0,
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
-        "batt_dispatch_auto_can_charge": 0.0,
+        "batt_dispatch_auto_can_charge": 1.0,
         "batt_dispatch_auto_can_clipcharge": 0.0,
         "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
@@ -1354,7 +1354,7 @@
         "batt_dispatch_pvs_timestep_multiplier": 3.0,
         "batt_dispatch_pvs_wf_forecast_choice": 0.0,
         "batt_dispatch_pvs_wf_timestep": 60.0,
-        "batt_dispatch_update_frequency_hours": 0.0,
+        "batt_dispatch_update_frequency_hours": 1.0,
         "batt_dispatch_wf_forecast_choice": 0.0,
         "batt_duration_choice": 0.0,
         "batt_gridcharge_percent_1": 100.0,
@@ -1495,7 +1495,7 @@
                 46.1312
             ]
         ],
-        "batt_look_ahead_hours": 0.0,
+        "batt_look_ahead_hours": 18.0,
         "batt_loss_choice": 0.0,
         "batt_losses": [
             0.0
@@ -11831,7 +11831,7 @@
         "cbi_uti_tax_fed": 1.0,
         "cbi_uti_tax_sta": 1.0,
         "chk_update_peaks": 0.0,
-        "const_per_interest1": 4427260.0,
+        "const_per_interest1": 4428130.0,
         "const_per_interest2": 0.0,
         "const_per_interest3": 0.0,
         "const_per_interest4": 0.0,
@@ -11841,7 +11841,7 @@
         "const_per_interest_rate3": 0.0,
         "const_per_interest_rate4": 0.0,
         "const_per_interest_rate5": 0.0,
-        "const_per_interest_total": 4427260.0,
+        "const_per_interest_total": 4428130.0,
         "const_per_months1": 6.0,
         "const_per_months2": 0.0,
         "const_per_months3": 0.0,
@@ -11858,13 +11858,13 @@
         "const_per_percent4": 0.0,
         "const_per_percent5": 0.0,
         "const_per_percent_total": 100.0,
-        "const_per_principal1": 505973000.0,
+        "const_per_principal1": 506073000.0,
         "const_per_principal2": 0.0,
         "const_per_principal3": 0.0,
         "const_per_principal4": 0.0,
         "const_per_principal5": 0.0,
-        "const_per_principal_total": 505973000.0,
-        "const_per_total1": 9486980.0,
+        "const_per_principal_total": 506073000.0,
+        "const_per_total1": 9488860.0,
         "const_per_total2": 0.0,
         "const_per_total3": 0.0,
         "const_per_total4": 0.0,
@@ -11874,7 +11874,7 @@
         "const_per_upfront_rate3": 0.0,
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
-        "construction_financing_cost": 9486980.0,
+        "construction_financing_cost": 9488860.0,
         "cost_debt_closing": 450000.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
@@ -11887,7 +11887,7 @@
         ],
         "cp_capacity_payment_esc": 0.0,
         "cp_capacity_payment_type": 0.0,
-        "cp_system_nameplate": 334.523,
+        "cp_system_nameplate": 276.923,
         "debt_message": "",
         "debt_option": 1.0,
         "debt_percent": 60.0,
@@ -30221,7 +30221,7 @@
             ]
         ],
         "loan_moratorium": 0.0,
-        "mera_cost1": 33452300.0,
+        "mera_cost1": 27692300.0,
         "mera_cost2": 0.0,
         "mera_cost3": 0.0,
         "mera_name1": "Replacement Reserve 1",
@@ -30274,7 +30274,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 505973000.0,
+        "property_assessed_value": 506073000.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -30306,11 +30306,13 @@
         "state_tax_rate": [
             7.0
         ],
+==== BASE ====
         "system_capacity": 334523.0,
-        "term_int_rate": 7.0,
+        "term_int_rate": 4.0,
+==== BASE ====
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 505973000.0,
+        "total_installed_cost": 506073000.0,
         "ui_battery_capacity": 57600.0,
         "ui_battery_cost": 99682500.0,
         "ui_electricity_rate_option": 1.0,
