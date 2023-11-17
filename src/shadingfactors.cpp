@@ -219,6 +219,23 @@ void ShadingInputData::write( VarValue *vv, wxString name )
 	tab.Set( name + "_diff", VarValue( (float)diff ) );
 }
 
+void ShadingInputData::write(Case* c, size_t ndxHybrid, wxString name)
+{
+    auto& tab = c->Values(ndxHybrid); // Case VarTable
+    tab.Set(name + "_en_string_option", VarValue(true)); // to enable optional values
+    if (!en_timestep) string_option = -1;
+    tab.Set(name + "_string_option", VarValue((int)string_option));
+    tab.Set(name + "_en_timestep", VarValue((bool)en_timestep));
+    tab.Set(name + "_timestep", VarValue(timestep));
+
+    tab.Set(name + "_en_mxh", VarValue((bool)en_mxh));
+    tab.Set(name + "_mxh", VarValue(mxh));
+    tab.Set(name + "_en_azal", VarValue((bool)en_azal));
+    tab.Set(name + "_azal", VarValue(azal));
+    tab.Set(name + "_en_diff", VarValue((bool)en_diff));
+    tab.Set(name + "_diff", VarValue((float)diff));
+}
+
 bool ShadingInputData::read( VarValue *root, wxString name )
 {
 	clear();
@@ -238,6 +255,24 @@ bool ShadingInputData::read( VarValue *root, wxString name )
 	}
 	else
 		return false;
+}
+
+bool ShadingInputData::read(Case *c, size_t ndxHybrid, wxString name)
+{
+    clear();
+    auto& tab = c->Values(ndxHybrid); // Case VarTable
+    
+    if (VarValue* vv = tab.Get(name + "_string_option")) string_option = vv->Integer();
+    if (VarValue* vv = tab.Get(name + "_en_timestep")) en_timestep = vv->Boolean();
+    if (VarValue* vv = tab.Get(name + "_timestep")) timestep = vv->Matrix();
+    if (VarValue* vv = tab.Get(name + "_en_mxh")) en_mxh = vv->Boolean();
+    if (VarValue* vv = tab.Get(name + "_mxh")) mxh = vv->Matrix();
+    if (VarValue* vv = tab.Get(name + "_en_azal")) en_azal = vv->Boolean();
+    if (VarValue* vv = tab.Get(name + "_azal")) azal = vv->Matrix();
+    if (VarValue* vv = tab.Get(name + "_en_diff")) en_diff = vv->Boolean();
+    if (VarValue* vv = tab.Get(name + "_diff")) diff = vv->Value();
+    return true;
+ 
 }
 
 
@@ -568,9 +603,19 @@ void ShadingButtonCtrl::Write( VarValue *vv )
 	m_shad.write( vv, m_name );
 }
 
+void ShadingButtonCtrl::Write(Case *c, size_t ndxHybrid)
+{
+    m_shad.write(c, ndxHybrid, m_name);
+}
+
 bool ShadingButtonCtrl::Read( VarValue *vv )
 {
 	return m_shad.read( vv, m_name );
+}
+
+bool ShadingButtonCtrl::Read(Case *c, size_t ndxHybrid)
+{
+    return m_shad.read(c, ndxHybrid, m_name);
 }
 
 void ShadingButtonCtrl::OnPressed(wxCommandEvent &evt)
