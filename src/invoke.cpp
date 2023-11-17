@@ -1314,7 +1314,7 @@ void fcall_refresh( lk::invoke_t &cxt )
                 win->Refresh();
             if ( ipage && vv )
             {
-                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ );
+                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid );
             }
         }
 	}
@@ -1330,7 +1330,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 				size_t ndxHybrid = ipage->GetHybridIndex();
 				VarValue* vv = cur_case->Values(ndxHybrid).Get(var);
 				if (vv)
-					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid);
             }
 		}
 	}
