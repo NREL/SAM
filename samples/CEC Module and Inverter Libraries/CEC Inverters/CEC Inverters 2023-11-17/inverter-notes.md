@@ -1,0 +1,6 @@
+inv_cec_name
+inverter_count
+subarray1_modules_per_string
+subarray1_nstrings
+
+LCOE Calclulator and No Financial same as single owner

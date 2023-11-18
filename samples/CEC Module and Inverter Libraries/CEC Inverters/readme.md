@@ -46,7 +46,7 @@ This manual process could be done automatically, but the manual conversion is us
 	
 	c. Replace LF space `\n ` with LF `\n`.
 
-6. Replace comma `,` with space hyphen space ` - `.
+6. Replace comma `,` with hyphen space `- `.
 
 7. Replace double quotes `"` with empty string.
 
@@ -72,7 +72,7 @@ This manual process could be done automatically, but the manual conversion is us
 
 2. Run the `generate_inverter_library_file.lk` script on `inverter_data.csv` to convert the file to a SAM CEC inverter library file. This should go quickly, if the script gets stuck, stop the script, open the `inverter_data.csv` file to see if there are any hidden characters in the file (use the "show all characters" option in Notepad++ to see them.)
 
-3. Review the CEC Inverter Update Log files to identify any potential problems with inverters added from the new database.
+3. Review the CEC Inverter Conversion Log files to identify any potential problems with inverters added from the new database.
 
 ## 4. Run library test script
 
