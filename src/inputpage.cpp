@@ -626,8 +626,8 @@ bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, Ddx
 	}
 	else if ( ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>() )
 	{
-		if ( dir == VAR_TO_OBJ ) sb->Read( &val );
-		else sb->Write( &val );
+		if ( dir == VAR_TO_OBJ ) sb->Read( c, ndxHybrid );
+		else sb->Write( c, ndxHybrid );
 	}
 	else if ( AFValueMatrixButton *vm = obj->GetNative<AFValueMatrixButton>() )
 	{
