@@ -1562,6 +1562,14 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 
 }
 
+int Case::EvaluateEquations()
+{
+	int n = 0;
+	for (size_t ndxHybrid = 0; ndxHybrid < GetConfiguration()->Technology.size(); ndxHybrid++)
+		n += RecalculateAll(ndxHybrid, true);
+	return n;
+}
+
 int Case::RecalculateAll(size_t ndxHybrid, bool quietly )
 {
 	if ( !m_config )
