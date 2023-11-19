@@ -403,8 +403,10 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 {
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->SaveDefaults( true ) );
+	if (Case* c = CurrentCase()) {
+		int n = c->EvaluateEquations();
+		cxt.result().assign(c->SaveDefaults(true));
+	}
 	else cxt.error("no active case");
 }
 

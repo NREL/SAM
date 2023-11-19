@@ -173,6 +173,9 @@ public:
 	// success of number of variables update.  shows an error
 	// message box unless 'quietly' = true
 	int RecalculateAll(size_t ndxHybrid, bool quietly );
+
+	// evaluates all equations in a case
+	int EvaluateEquations();
 	
 	StringHash &Properties() { return m_properties; }
 	wxString GetProperty( const wxString &id );
