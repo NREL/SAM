@@ -387,8 +387,9 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
-		if ( c->LoadDefaults( &err ) )
-			cxt.result().assign( 1.0 );
+		if (c->LoadDefaults(&err)) {
+			cxt.result().assign(1.0);
+		}
 		else
 		{
 			if ( cxt.arg_count() == 1 )

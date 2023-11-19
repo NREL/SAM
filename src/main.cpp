@@ -517,8 +517,6 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 		// reevaluate all equations address SAM #1583
 		c->EvaluateEquations();
-		//for (size_t ndxHybrid = 0; ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++)
-		//	c->RecalculateAll(ndxHybrid, true);
 
 		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
