@@ -85,10 +85,12 @@ public:
 	enum { VARS_CHANGED, CONFIG_CHANGED, VALUE_USER_INPUT, SAVE_NOTIFICATION };
 
     CaseEvent( int type ) : m_type(type) { }
-    CaseEvent( int type, size_t ndxHybrid ) : m_type(type), m_ndxHybrid(ndxHybrid) { }
-	CaseEvent( int type, const wxString &str ) : m_type(type), m_str(str) { }
+    CaseEvent( int type, const size_t& ndxHybrid ) : m_type(type), m_ndxHybrid(ndxHybrid) { }
+	CaseEvent(int type, const wxString& str) : m_type(type), m_str(str) { }
+	CaseEvent(int type, const wxString& str, const size_t& ndxHybrid) : m_type(type), m_str(str), m_ndxHybrid(ndxHybrid) { }
 	CaseEvent( int type, const wxString &str1, const wxString &str2 ) : m_type(type), m_str(str1), m_str2(str2) { }
-	CaseEvent( int type, const wxArrayString &vars ) : m_type(type), m_vars(vars) { }
+	CaseEvent(int type, const wxArrayString& vars) : m_type(type), m_vars(vars) { }
+	CaseEvent(int type, const wxArrayString& vars, const size_t& ndxHybrid) : m_type(type), m_vars(vars), m_ndxHybrid(ndxHybrid) { }
 
 	int GetType() { return m_type; }
 	wxString GetString() { return m_str; }
