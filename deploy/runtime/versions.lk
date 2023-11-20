@@ -51,6 +51,17 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+version_upgrade{'2023.11.18'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough')
+	{
+		message('The solar multiple calculation has changed, resulting in different annual results. Additionally, the field thermal output UI calculation has been improved.', 'warning');
+	}
+};
+
 version_upgrade{'2023.9.19'} = define() {
 
 	const cfg = config();
