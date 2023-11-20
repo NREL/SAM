@@ -68,8 +68,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('Availability losses variable format changed from table to separate variables.');
 		value('adjust_constant', x.constant, 'Rename availability losses variable from adjust:constant to adjust_constant');
 		value('adjust_en_periods', x.en_periods, 'Rename availability losses variable from adjust:en_periods to adjust_en_periods');
-		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
-		else { p = x.periods; }
+		p = x.periods; //this logic works for both blank period arrays and for completed ones
 		value('adjust_periods', p, 'Rename availability losses variable from adjust:periods to adjust_periods');
 		value('adjust_en_timeindex', x.en_timeindex, 'Rename availability losses variable from adjust:en_timeindex to adjust_en_timeindex');
 		value('adjust_timeindex', x.timeindex, 'Rename availability losses variable from adjust:timeindex to adjust_timeindex');
@@ -97,8 +96,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('DC Losses variable format changed from table to separate variables.');
 		value('dc_adjust_constant', x.constant, 'Rename DC Losses variable from dc_adjust:constant to dc_adjust_constant');
 		value('dc_adjust_en_periods', x.en_periods, 'Rename DC Losses variable from dc_adjust:en_periods to dc_adjust_en_periods');
-		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
-		else { p = x.periods; }
+		p = x.periods; //this logic works for both blank period arrays and for completed ones
 		value('dc_adjust_periods', p, 'Rename DC Losses variable from dc_adjust:periods to dc_adjust_periods');
 		value('dc_adjust_en_timeindex', x.en_timeindex, 'Rename DC Losses variable from dc_adjust:en_timeindex to dc_adjust_en_timeindex');
 		value('dc_adjust_timeindex', x.timeindex, 'Rename DC Losses variable from dc_adjust:timeindex to dc_adjust_timeindex');
@@ -108,8 +106,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('AC losses variable format changed from table to separate variables.');
 		value('adjust_constant', x.constant, 'Rename AC losses variable from adjust:constant to adjust_constant');
 		value('adjust_en_periods', x.en_periods, 'Rename AC losses variable from adjust:en_periods to adjust_en_periods');
-		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
-		else { p = x.periods; }
+		p = x.periods; //this logic works for both blank period arrays and for completed ones
 		value('adjust_periods', p, 'Rename AC losses variable from adjust:periods to adjust_periods');
 		value('adjust_en_timeindex', x.en_timeindex, 'Rename AC losses variable from adjust:en_timeindex to adjust_en_timeindex');
 		value('adjust_timeindex', x.timeindex, 'Rename AC losses variable from adjust:timeindex to adjust_timeindex');
@@ -184,8 +181,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('Solar Field Losses (availability losses) variable format changed from table to separate variables.');
 		value('sf_adjust_constant', x.constant, 'Convert Solar Field Losses sf_adjust:constant to sf_adjust_constant');
 		value('sf_adjust_en_periods', x.en_periods, 'Convert Solar Field Losses asf_djust:en_periods to sf_adjust_en_periods');
-		if ( #x.periods < 3 ) { p = [[0,0,0]]; }
-		else { p = x.periods; }
+		p = x.periods; //this logic works for both blank period arrays and for completed ones
 		value('sf_adjust_periods', p, 'Convert Solar Field Losses sf_adjust:periods to sf_adjust_periods');
 		value('sf_adjust_en_timeindex', x.en_timeindex, 'Convert Solar Field Losses sf_adjust:en_timeindex to sf_adjust_en_timeindex');
 		value('sf_adjust_timeindex', x.timeindex, 'Convert Solar Field Losses sf_adjust:timeindex to sf_adjust_timeindex');
