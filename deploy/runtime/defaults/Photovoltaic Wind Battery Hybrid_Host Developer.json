@@ -22929,7 +22929,7 @@
         "cbi_uti_tax_fed": 1.0,
         "cbi_uti_tax_sta": 1.0,
         "chk_update_peaks": 0.0,
-        "const_per_interest1": 23747.4,
+        "const_per_interest1": 17435.0,
         "const_per_interest2": 0.0,
         "const_per_interest3": 0.0,
         "const_per_interest4": 0.0,
@@ -22939,7 +22939,7 @@
         "const_per_interest_rate3": 0.0,
         "const_per_interest_rate4": 0.0,
         "const_per_interest_rate5": 0.0,
-        "const_per_interest_total": 23747.4,
+        "const_per_interest_total": 17435.0,
         "const_per_months1": 6.0,
         "const_per_months2": 0.0,
         "const_per_months3": 0.0,
@@ -22956,13 +22956,13 @@
         "const_per_percent4": 0.0,
         "const_per_percent5": 0.0,
         "const_per_percent_total": 100.0,
-        "const_per_principal1": 1461380.0,
+        "const_per_principal1": 1072920.0,
         "const_per_principal2": 0.0,
         "const_per_principal3": 0.0,
         "const_per_principal4": 0.0,
         "const_per_principal5": 0.0,
-        "const_per_principal_total": 1461380.0,
-        "const_per_total1": 38361.2,
+        "const_per_principal_total": 1072920.0,
+        "const_per_total1": 28164.2,
         "const_per_total2": 0.0,
         "const_per_total3": 0.0,
         "const_per_total4": 0.0,
@@ -22972,7 +22972,7 @@
         "const_per_upfront_rate3": 0.0,
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
-        "construction_financing_cost": 38361.2,
+        "construction_financing_cost": 28164.2,
         "cost_debt_closing": 450000.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
@@ -58962,7 +58962,7 @@
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
         "prop_tax_cost_assessed_percent": 100.0,
-        "property_assessed_value": 1461380.0,
+        "property_assessed_value": 1072920.0,
         "property_tax_rate": 0.0,
         "ptc_fed_amount": [
             0.0
@@ -58975,7 +58975,7 @@
         "ptc_sta_escal": 0.0,
         "ptc_sta_term": 10.0,
         "pv_system_capacity": 99.2477,
-        "pv_total_installed_cost": 571472.0,
+        "pv_total_installed_cost": 174271.0,
         "rate_escalation": [
             0.0
         ],
@@ -58998,7 +58998,7 @@
         "term_int_rate": 7.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
-        "total_installed_cost": 1461380.0,
+        "total_installed_cost": 1072920.0,
         "total_inverter_capacity": 90.0,
         "ui_annual_load": 0.0,
         "ui_battery_capacity": 287.846,
@@ -59008,9 +59008,9 @@
         "ui_generic_capacity": 0.0,
         "ui_generic_cost": 0.0,
         "ui_hyb_pv_capacity": 90.0,
-        "ui_pv_cost": 571472.0,
+        "ui_pv_cost": 174271.0,
         "ui_wacc": 6.70974,
-        "ui_wind_cost": 478877.0,
+        "ui_wind_cost": 487620.0,
         "ur_annual_min_charge": 0.0,
         "ur_billing_demand_is_shown": 0.0,
         "ur_billing_demand_lookback_percentages": [
@@ -60482,6 +60482,6 @@
             300.0
         ],
         "wind_system_capacity": 100.0,
-        "wind_total_installed_cost": 478877.0
+        "wind_total_installed_cost": 487620.0
     }
 }
