@@ -65,13 +65,13 @@ version_upgrade{'2023.9.19'} = define() {
 	    || cfg.tech == 'Biopower' || cfg.tech == 'Generic System' || cfg.tech ==  'MSLF IPH' || cfg.tech ==  'MSPT IPH' ) 
 	{	
 		x = oldvalue('adjust');
-		message('Availability losses variable format changed from table to separate variables.');
-		value('adjust_constant', x.constant, 'Rename availability losses variable from adjust:constant to adjust_constant');
-		value('adjust_en_periods', x.en_periods, 'Rename availability losses variable from adjust:en_periods to adjust_en_periods');
+		message('Availability losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
+		value('adjust_constant', x.constant);
+		value('adjust_en_periods', x.en_periods);
 		p = x.periods; //this logic works for both blank period arrays and for completed ones
-		value('adjust_periods', p, 'Rename availability losses variable from adjust:periods to adjust_periods');
-		value('adjust_en_timeindex', x.en_timeindex, 'Rename availability losses variable from adjust:en_timeindex to adjust_en_timeindex');
-		value('adjust_timeindex', x.timeindex, 'Rename availability losses variable from adjust:timeindex to adjust_timeindex');
+		value('adjust_periods', p);
+		value('adjust_en_timeindex', x.en_timeindex);
+		value('adjust_timeindex', x.timeindex);
 	}
 	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' ) {
 		//change in default subarray modules per string
@@ -93,88 +93,88 @@ version_upgrade{'2023.9.19'} = define() {
 		
 		//DC adjust factor
 		x = oldvalue('dc_adjust');
-		message('DC Losses variable format changed from table to separate variables.');
-		value('dc_adjust_constant', x.constant, 'Rename DC Losses variable from dc_adjust:constant to dc_adjust_constant');
-		value('dc_adjust_en_periods', x.en_periods, 'Rename DC Losses variable from dc_adjust:en_periods to dc_adjust_en_periods');
+		message('DC Losses variable format changed from single table ("dc_adjust") to separate variables: dc_adjust_constant (number), dc_adjust_en_timeindex (number), dc_adjust_timeindex (array), dc_adjust_en_periods (number), dc_adjust_periods (array).');
+		value('dc_adjust_constant', x.constant);
+		value('dc_adjust_en_periods', x.en_periods);
 		p = x.periods; //this logic works for both blank period arrays and for completed ones
-		value('dc_adjust_periods', p, 'Rename DC Losses variable from dc_adjust:periods to dc_adjust_periods');
-		value('dc_adjust_en_timeindex', x.en_timeindex, 'Rename DC Losses variable from dc_adjust:en_timeindex to dc_adjust_en_timeindex');
-		value('dc_adjust_timeindex', x.timeindex, 'Rename DC Losses variable from dc_adjust:timeindex to dc_adjust_timeindex');
+		value('dc_adjust_periods', p);
+		value('dc_adjust_en_timeindex', x.en_timeindex);
+		value('dc_adjust_timeindex', x.timeindex);
 		
 		//AC adjust factor
 		x = oldvalue('adjust');
-		message('AC losses variable format changed from table to separate variables.');
-		value('adjust_constant', x.constant, 'Rename AC losses variable from adjust:constant to adjust_constant');
-		value('adjust_en_periods', x.en_periods, 'Rename AC losses variable from adjust:en_periods to adjust_en_periods');
+		message('AC losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
+		value('adjust_constant', x.constant);
+		value('adjust_en_periods', x.en_periods);
 		p = x.periods; //this logic works for both blank period arrays and for completed ones
-		value('adjust_periods', p, 'Rename AC losses variable from adjust:periods to adjust_periods');
-		value('adjust_en_timeindex', x.en_timeindex, 'Rename AC losses variable from adjust:en_timeindex to adjust_en_timeindex');
-		value('adjust_timeindex', x.timeindex, 'Rename AC losses variable from adjust:timeindex to adjust_timeindex');
+		value('adjust_periods', p);
+		value('adjust_en_timeindex', x.en_timeindex);
+		value('adjust_timeindex', x.timeindex);
 		
 		//shading variable renaming
 		x = oldvalue('subarray1_shading');
 		message('Subarray 1 Shading variable format changed from table to separate variables.');
-		value('subarray1_shading_en_azal', x.en_azal,'Rename shading variable from subarray1_shading:en_azal to subarray1_shading_en_azal'); 
-		value('subarray1_shading_azal', x.azal,'Rename shading variable from subarray1_shading:azal to subarray1_shading_azal');
-		value('subarray1_shading_en_diff', x.en_diff,'Rename shading variable from subarray1_shading:en_diff to subarray1_shading_en_diff');
-		value('subarray1_shading_diff', x.diff,'Rename shading variable from subarray1_shading:diff to subarray1_shading_diff');
-		value('subarray1_shading_en_mxh', x.en_mxh,'Rename shading variable from subarray1_shading:en_mxh to ssubarray1_hading_en_mxh');
-		value('subarray1_shading_mxh', x.mxh,'Rename shading variable from subarray1_shading:mxh to subarray1_shading_mxh');
-		value('subarray1_shading_en_string_option', x.en_string_option,'Rename shading variable from subarray1_shading:en_string_option to subarray1_shading_en_string_option');
-		value('subarray1_shading_string_option', x.string_option,'Rename shading variable from subarray1_shading:string_option to subarray1_shading_string_option');
-		value('subarray1_shading_en_timestep', x.en_timestep,'Rename shading variable from subarray1_shading:en_timestep to subarray1_shading_en_timestep');
-		value('subarray1_shading_timestep', x.timestep,'Rename shading variable from subarray1_shading:timestep to subarray1_shading_timestep');
+		value('subarray1_shading_en_azal', x.en_azal); 
+		value('subarray1_shading_azal', x.azal);
+		value('subarray1_shading_en_diff', x.en_diff);
+		value('subarray1_shading_diff', x.diff);
+		value('subarray1_shading_en_mxh', x.en_mxh);
+		value('subarray1_shading_mxh', x.mxh);
+		value('subarray1_shading_en_string_option', x.en_string_option);
+		value('subarray1_shading_string_option', x.string_option);
+		value('subarray1_shading_en_timestep', x.en_timestep);
+		value('subarray1_shading_timestep', x.timestep);
 		x = oldvalue('subarray2_shading');
 		message('Subarray 2 Shading variable format changed from table to separate variables.');
-		value('subarray2_shading_en_azal', x.en_azal,'Rename shading variable from subarray2_shading:en_azal to subarray2_shading_en_azal'); 
-		value('subarray2_shading_azal', x.azal,'Rename shading variable from subarray2_shading:azal to subarray2_shading_azal');
-		value('subarray2_shading_en_diff', x.en_diff,'Rename shading variable from subarray2_shading:en_diff to subarray2_shading_en_diff');
-		value('subarray2_shading_diff', x.diff,'Rename shading variable from subarray2_shading:diff to subarray2_shading_diff');
-		value('subarray2_shading_en_mxh', x.en_mxh,'Rename shading variable from subarray2_shading:en_mxh to subarray2_shading_en_mxh');
-		value('subarray2_shading_mxh', x.mxh,'Rename shading variable from subarray2_shading:mxh to subarray2_shading_mxh');
-		value('subarray2_shading_en_string_option', x.en_string_option,'Rename shading variable from subarray2_shading:en_string_option to subarray2_shading_en_string_option');
-		value('subarray2_shading_string_option', x.string_option,'Rename shading variable from subarray2_shading:string_option to subarray2_shading_string_option');
-		value('subarray2_shading_en_timestep', x.en_timestep,'Rename shading variable from subarray2_shading:en_timestep to subarray2_shading_en_timestep');
-		value('subarray2_shading_timestep', x.timestep,'Rename shading variable from subarray2_shading:timestep to subarray2_shading_timestep');
+		value('subarray2_shading_en_azal', x.en_azal); 
+		value('subarray2_shading_azal', x.azal);
+		value('subarray2_shading_en_diff', x.en_diff);
+		value('subarray2_shading_diff', x.diff);
+		value('subarray2_shading_en_mxh', x.en_mxh);
+		value('subarray2_shading_mxh', x.mxh);
+		value('subarray2_shading_en_string_option', x.en_string_option);
+		value('subarray2_shading_string_option', x.string_option);
+		value('subarray2_shading_en_timestep', x.en_timestep);
+		value('subarray2_shading_timestep', x.timestep);
 		x = oldvalue('subarray3_shading');
 		message('Subarray 3 Shading variable format changed from table to separate variables.');
-		value('subarray3_shading_en_azal', x.en_azal,'Rename shading variable from subarray3_shading:en_azal to subarray3_shading_en_azal'); 
-		value('subarray3_shading_azal', x.azal,'Rename shading variable from subarray3_shading:azal to subarray3_shading_azal');
-		value('subarray3_shading_en_diff', x.en_diff,'Rename shading variable from subarray3_shading:en_diff to subarray3_shading_en_diff');
-		value('subarray3_shading_diff', x.diff,'Rename shading variable from subarray3_shading:diff to subarray3_shading_diff');
-		value('subarray3_shading_en_mxh', x.en_mxh,'Rename shading variable from subarray3_shading:en_mxh to subarray3_shading_en_mxh');
-		value('subarray3_shading_mxh', x.mxh,'Rename shading variable from subarray3_shading:mxh to subarray3_shading_mxh');
-		value('subarray3_shading_en_string_option', x.en_string_option,'Rename shading variable from subarray3_shading:en_string_option to subarray3_shading_en_string_option');
-		value('subarray3_shading_string_option', x.string_option,'Rename shading variable from subarray3_shading:string_option to subarray3_shading_string_option');
-		value('subarray3_shading_en_timestep', x.en_timestep,'Rename shading variable from subarray3_shading:en_timestep to subarray3_shading_en_timestep');
-		value('subarray3_shading_timestep', x.timestep,'Rename shading variable from subarray3_shading:timestep to subarray3_shading_timestep');
+		value('subarray3_shading_en_azal', x.en_azal); 
+		value('subarray3_shading_azal', x.azal);
+		value('subarray3_shading_en_diff', x.en_diff);
+		value('subarray3_shading_diff', x.diff);
+		value('subarray3_shading_en_mxh', x.en_mxh);
+		value('subarray3_shading_mxh', x.mxh);
+		value('subarray3_shading_en_string_option', x.en_string_option);
+		value('subarray3_shading_string_option', x.string_option);
+		value('subarray3_shading_en_timestep', x.en_timestep);
+		value('subarray3_shading_timestep', x.timestep);
 		x = oldvalue('subarray4_shading');
 		message('Subarray 4 Shading variable format changed from table to separate variables.');
-		value('subarray4_shading_en_azal', x.en_azal,'Rename shading variable from subarray4_shading:en_azal to subarray4_shading_en_azal'); 
-		value('subarray4_shading_azal', x.azal,'Rename shading variable from subarray4_shading:azal to subarray4_shading_azal');
-		value('subarray4_shading_en_diff', x.en_diff,'Rename shading variable from subarray4_shading:en_diff to subarray4_shading_en_diff');
-		value('subarray4_shading_diff', x.diff,'Rename shading variable from subarray4_shading:diff to subarray4_shading_diff');
-		value('subarray4_shading_en_mxh', x.en_mxh,'Rename shading variable from subarray4_shading:en_mxh to subarray4_shading_en_mxh');
-		value('subarray4_shading_mxh', x.mxh,'Rename shading variable from subarray4_shading:mxh to subarray4_shading_mxh');
-		value('subarray4_shading_en_string_option', x.en_string_option,'Rename shading variable from subarray4_shading:en_string_option to subarray4_shading_en_string_option');
-		value('subarray4_shading_string_option', x.string_option,'Rename shading variable from subarray4_shading:string_option to subarray4_shading_string_option');
-		value('subarray4_shading_en_timestep', x.en_timestep,'Rename shading variable from subarray4_shading:en_timestep to subarray4_shading_en_timestep');
-		value('subarray4_shading_timestep', x.timestep,'Rename shading variable from subarray4_shading:timestep to subarray4_shading_timestep');
+		value('subarray4_shading_en_azal', x.en_azal); 
+		value('subarray4_shading_azal', x.azal);
+		value('subarray4_shading_en_diff', x.en_diff);
+		value('subarray4_shading_diff', x.diff);
+		value('subarray4_shading_en_mxh', x.en_mxh);
+		value('subarray4_shading_mxh', x.mxh);
+		value('subarray4_shading_en_string_option', x.en_string_option);
+		value('subarray4_shading_string_option', x.string_option);
+		value('subarray4_shading_en_timestep', x.en_timestep);
+		value('subarray4_shading_timestep', x.timestep);
 	}
 	if ( cfg.tech == 'PVWatts' ) {
 		//shading variable renaming
 		x = oldvalue('shading');
 		message('Shading variable format changed from table to separate variables.');
-		value('shading_en_azal', x.en_azal,'Rename shading variable from shading:en_azal to shading_en_azal'); 
-		value('shading_azal', x.azal,'Rename shading variable from shading:azal to shading_azal');
-		value('shading_en_diff', x.en_diff,'Rename shading variable from shading:en_diff to shading_en_diff');
-		value('shading_diff', x.diff,'Rename shading variable from shading:diff to shading_diff');
-		value('shading_en_mxh', x.en_mxh,'Rename shading variable from shading:en_mxh to shading_en_mxh');
-		value('shading_mxh', x.mxh,'Rename shading variable from shading:mxh to shading_mxh');
-		value('shading_en_string_option', x.en_string_option,'Rename shading variable from shading:en_string_option to shading_en_string_option');
-		value('shading_string_option', x.string_option,'Rename shading variable from shading:string_option to shading_string_option');
-		value('shading_en_timestep', x.en_timestep,'Rename shading variable from shading:en_timestep to shading_en_timestep');
-		value('shading_timestep', x.timestep,'Rename shading variable from shading:timestep to shading_timestep');
+		value('shading_en_azal', x.en_azal); 
+		value('shading_azal', x.azal);
+		value('shading_en_diff', x.en_diff);
+		value('shading_diff', x.diff);
+		value('shading_en_mxh', x.en_mxh);
+		value('shading_mxh', x.mxh);
+		value('shading_en_string_option', x.en_string_option);
+		value('shading_string_option', x.string_option);
+		value('shading_en_timestep', x.en_timestep);
+		value('shading_timestep', x.timestep);
 	}
 	if ( cfg.tech ==  'Generic CSP System' || cfg.tech ==  'MSPT') {	
 		x = oldvalue('sf_adjust');
