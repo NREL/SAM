@@ -82,7 +82,7 @@ bool config_extractor::load_defaults_for_config(){
         wxArrayString keys = vt.ListAll();
         for(size_t i = 0; i < keys.size(); i++){
             auto name = keys[i];
-            vt.Rename(name, util::lower_case(name));
+            vt.Rename(name, util::lower_case(name.ToStdString()));
         }
     }
 
