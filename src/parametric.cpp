@@ -1029,6 +1029,7 @@ bool ParametricViewer::ImportAsTable(wxString& vals, VarValue& vv) {
 	return true;
 }
 
+/* Values are rows and variables or labels are columns
 void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	wxArrayString inputNames, outputNames;
 	bool inputcol = true;
@@ -1067,9 +1068,10 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		
 		// if not input or already listed as input, see if output
 		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
-			bool found = false;
-            
-			for (size_t i = 0; i < allOutputNames.size(); i++)
+//			bool found = false;
+			bool found = name.Lower()== "run";
+
+			for (size_t i = 0; i < allOutputNames.size() && !found; i++)
 			{
 				if (name.IsSameAs(allOutputNames[i], false)) {
 					outputNames.push_back(allOutputNames[i]);
@@ -1155,6 +1157,138 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	m_num_runs_ctrl->SetValue(row - 1);
 	m_grid_data->UpdateNumberRows(row-1);
 }
+*/
+
+void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
+	wxArrayString inputNames, outputNames;
+	bool inputrow = true;
+	wxArrayString allOutputNames, allOutputLabels;
+	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
+	VarInfoLookup& vil = m_case->GetConfiguration()->Variables[0];  // TODO: hybrids
+
+
+	for (int r = 0; r < row; r++) {
+		if (vals[r * col].Len() == 0)
+			continue;
+		// get the VarInfo corresponding to column header
+		wxArrayString splitUnit = wxSplit(vals[r], '(');
+		wxString name = splitUnit[0]; // fails to get "(year 1)" values
+		if (splitUnit.size() > 2)
+			name = name + "(" + splitUnit[1];
+		name = name.Trim();
+		VarInfo* vi = vil.Lookup(name);
+		inputrow = true;
+
+		// if not name is not of variable, see if it's a label
+		if (!vi) {
+			wxString vn = vil.LookupByLabel(name);
+			if (vn.Len() > 0) {
+				vi = vil.Lookup(vn);
+				// calculated variables are not inputs
+				if (vi->Flags & VF_CALCULATED) {
+					// issue with "Total installed cost" label is both SSC_INPUT total_installed_cost and SSC_OUTPUT total_cost
+					inputrow = false;
+					vi = NULL;
+				}
+				else
+					name = vn;
+			}
+		}
+
+		// if not input or already listed as input, see if output
+		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
+			//			bool found = false;
+			bool found = name.Lower() == "run";
+
+			for (size_t i = 0; i < allOutputNames.size() && !found; i++)
+			{
+				if (name.IsSameAs(allOutputNames[i], false)) {
+					outputNames.push_back(allOutputNames[i]);
+					inputrow = false;
+					found = true;
+					break;
+				}
+				else if (name.IsSameAs(allOutputLabels[i].Trim(), false)) {
+					outputNames.push_back(allOutputNames[i]);
+					inputrow = false;
+					found = true;
+					break;
+				}
+			}
+			if (found) continue;
+			wxMessageBox("Error: could not identify parametric variable " + vals[r * col]);
+			continue;
+		}
+		if (inputrow && !((vi->Flags & VF_PARAMETRIC) && !(vi->Flags & VF_INDICATOR) && !(vi->Flags & VF_CALCULATED))) {
+			wxMessageBox("Error: " + name + " cannot be parametrized.");
+			continue;
+		}
+
+		// import column values
+		std::vector<VarValue> vvv;
+		ParametricData::Var pv;
+		int type = vi->Type;
+		for (int c = 1; c < col; c++) {
+			VarValue vv;
+			if (vals[c * row + r].Len() == 0) {
+				vv = vi->DefaultValue;
+				vvv.push_back(vv);
+				continue;
+			}
+			switch (type) {
+			case VV_NUMBER:
+				if (ImportAsNumber(vals[c * row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_ARRAY:
+				if (ImportAsArray(vals[c * row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_MATRIX:
+				if (ImportAsMatrix(vals[c * row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_STRING:
+				vv.Set(vals[c * row + r]);
+				vvv.push_back(vv);
+				break;
+			case VV_TABLE:
+				if (ImportAsTable(vals[c * row + r], vv))
+					vvv.push_back(vv);
+				break;
+			case VV_BINARY:
+			case VV_INVALID:
+			default:
+				break;
+			}
+
+		}
+		pv.Values = vvv;
+		pv.Name = name;
+		pv.varName = name; // TODO: hybrids
+		pv.IsInput = inputrow;
+		pv.ndxHybrid = 0;// TODO hybrids
+		if (!m_grid_data->IsValid(pv)) {
+			wxString typeS = m_case->BaseCase().GetInput(pv.Name, 0)->TypeAsString(); // TODO: hybrids
+			wxString typeS2 = pv.Values[0].TypeAsString();
+			wxString errorStr = "Import Error: Value type of " + vals[r * col] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
+			// some variables listed as {array} but can be single-value number
+			if (typeS == "array" && typeS2 == "number") {
+				errorStr += "\nTip: Insert ';' after a number to convert it to a single-entry array.";
+			}
+			wxMessageBox(errorStr);
+		}
+		m_grid_data->AddSetup(pv);
+		inputNames.push_back(name);
+	}
+	m_input_names = inputNames;
+	m_output_names = outputNames;
+	m_grid_data->UpdateInputs(inputNames);
+	m_grid_data->UpdateOutputs(outputNames);
+	m_num_runs_ctrl->SetValue(col - 1);
+	m_grid_data->UpdateNumberRows(col - 1);
+}
+
 
 void ParametricViewer::CopyToClipboard()
 {
@@ -2542,6 +2676,7 @@ void ParametricGridData::DeleteSetup(ParametricData::Var &var)
 		// reset simulation input to base case input
 		for (int row = 0; row < m_rows; row++)
 		{
+			m_par.Runs[row]->Clear(); // resets simulation private members
 			if (VarValue *vv = m_case->BaseCase().GetInput(var.Name,0))// TODO: hybrids
 			{
 				m_par.Runs[row]->Override(var.Name, *vv,0);// TODO: hybrids
