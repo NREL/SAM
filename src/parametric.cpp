@@ -174,6 +174,10 @@ bool ParametricData::Read( wxInputStream &_I )
 			x.varName = in.ReadString();
 			x.ndxHybrid = in.Read8();
 		}
+		else {
+			x.varName = x.Name;
+			x.ndxHybrid = 0;
+		}
 		size_t m = in.Read32();
 		for( size_t k=0;k<m;k++ )
 		{
