@@ -68,7 +68,7 @@ Physical Trough,Leveraged Partnership Flip,376801376,12.472,12.3469,;
 Physical Trough,All Equity Partnership Flip,376801376,15.5179,12.3469,; 
 Physical Trough,Sale Leaseback,376801376,15.8716,12.3469,; 
 Physical Trough,LCOE Calculator,376801376,NA,NA,; 
-Physical Trough,None,376801376,NA,NA,;
+Physical Trough,None,376801376,NA,NA,; 
 Physical Trough IPH,None,24117408,NA,NA,; 
 Physical Trough IPH,LCOH Calculator,24110532,NA,NA,; 
 Empirical Trough,Commercial,345244672,5.42028,NA,; Warning: time 9738000.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit Warning: time 23788800.00 { Test Trough 2 }:\ Warning - Empirical trough (805) model exceeded interal iteration limit
