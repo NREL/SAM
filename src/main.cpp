@@ -515,6 +515,9 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 		else
 			win->SwitchToInputPage(pages[0]);
 
+		// reevaluate all equations address SAM #1583
+		c->EvaluateEquations();
+
 		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
 	return win;
