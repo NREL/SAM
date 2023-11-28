@@ -1276,7 +1276,7 @@ addpage( [[ 'Fuel Cell Costs' ],
 		  [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
 		 { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], 
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
@@ -1306,7 +1306,7 @@ addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
 		  [ { 'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'} ],
 		  [ { 'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'} ]],
-		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 addpage( [[ { 'name'='AA Empty', 'caption'='Fixed Output'} ], 
 		  [ { 'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
@@ -1317,7 +1317,7 @@ setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ], [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
          { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]],
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 addpage( [[ 'Thermal Rate' ]],
@@ -2288,7 +2288,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
@@ -2297,7 +2297,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
@@ -2312,7 +2312,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
@@ -2321,7 +2321,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_single_owner_pages( );
 setup_electricity_purchases();
 
@@ -2331,7 +2331,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
 
@@ -2341,7 +2341,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2351,7 +2351,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2361,7 +2361,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
 
@@ -2683,6 +2683,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -3105,6 +3106,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch

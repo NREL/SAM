@@ -1557,7 +1557,7 @@
         "\r",
         "\t//#ssc_auto_exec(obj, 'fresnel_physical_iph', 2);\r",
         "\t\r",
-        "\tret_d = ssc_dump(obj, 'mslf_iph_mimo_ssc_auto_exec.lk');\r",
+        "\t//ret_d = ssc_dump(obj, 'mslf_iph_mimo_ssc_auto_exec.lk');\r",
         "\tret = ssc_exec(obj, 'fresnel_physical_iph');\r",
         "\r",
         "\tif(ret == 0)\r",
