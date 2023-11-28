@@ -387,8 +387,9 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
-		if ( c->LoadDefaults( &err ) )
-			cxt.result().assign( 1.0 );
+		if (c->LoadDefaults(&err)) {
+			cxt.result().assign(1.0);
+		}
 		else
 		{
 			if ( cxt.arg_count() == 1 )
@@ -403,8 +404,10 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 {
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->SaveDefaults( true ) );
+	if (Case* c = CurrentCase()) {
+		int n = c->EvaluateEquations();
+		cxt.result().assign(c->SaveDefaults(true));
+	}
 	else cxt.error("no active case");
 }
 

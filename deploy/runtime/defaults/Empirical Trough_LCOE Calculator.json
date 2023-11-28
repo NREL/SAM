@@ -348,7 +348,7 @@
     "c_equity_return": 13.0,
     "c_inflation": 2.5,
     "c_lifetime": 20.0,
-    "c_nominal_interest_rate": 4.0,
+    "c_nominal_interest_rate": 7.0,
     "c_tax_rate": 28.0,
     "calc_aperture_area_at_sm_1": 429384.0,
     "calc_col_factor": 0.883478,
