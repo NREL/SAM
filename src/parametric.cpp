@@ -1164,23 +1164,42 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 	bool inputrow = true;
 	wxArrayString allOutputNames, allOutputLabels;
 	Simulation::ListAllOutputs(m_case->GetConfiguration(), &allOutputNames, &allOutputLabels, NULL, NULL, NULL);
-	VarInfoLookup& vil = m_case->GetConfiguration()->Variables[0];  // TODO: hybrids
+//	VarInfoLookup& vil = m_case->GetConfiguration()->Variables[0];  // TODO: hybrids
 
 
 	for (int r = 0; r < row; r++) {
 		if (vals[r * col].Len() == 0)
 			continue;
-		// get the VarInfo corresponding to column header
-		wxArrayString splitUnit = wxSplit(vals[r], '(');
-		wxString name = splitUnit[0]; // fails to get "(year 1)" values
-		if (splitUnit.size() > 2)
-			name = name + "(" + splitUnit[1];
-		name = name.Trim();
-		VarInfo* vi = vil.Lookup(name);
-		inputrow = true;
+		VarInfo* vi = NULL;
+		// split into Label | ndxHybrid | variable name
+		wxString name, varName;
+		int ndxHybrid = 0;
+		wxArrayString splLabelNdxHybridVarName = wxSplit(vals[r], '|');
+		if (splLabelNdxHybridVarName.size() == 3) {
+			// get the VarInfo corresponding to row header
+			wxArrayString splitUnit = wxSplit(splLabelNdxHybridVarName[0], '(');
+			name = splitUnit[0]; // fails to get "(year 1)" values
+			if (splitUnit.size() > 2)
+				name = name + "(" + splitUnit[1];
+			name = name.Trim();
+			if (!splLabelNdxHybridVarName[1].Trim().ToInt(&ndxHybrid))
+				continue;
+			VarInfoLookup& vil = m_case->GetConfiguration()->Variables[ndxHybrid];
 
+			varName = splLabelNdxHybridVarName[2].Trim();
+			varName = varName.Trim(false);
+			vi = vil.Lookup(varName);
+		}
+		else {
+			name = vals[r];
+			varName = name;
+		}
+
+		inputrow = true;
+		/*
 		// if not name is not of variable, see if it's a label
-		if (!vi) {
+		if (!vi) 
+		{
 			wxString vn = vil.LookupByLabel(name);
 			if (vn.Len() > 0) {
 				vi = vil.Lookup(vn);
@@ -1194,7 +1213,7 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 					name = vn;
 			}
 		}
-
+		*/
 		// if not input or already listed as input, see if output
 		if (!vi || (inputNames.Index(name) != wxNOT_FOUND)) {
 			//			bool found = false;
@@ -1265,11 +1284,11 @@ void ParametricViewer::ImportData(wxArrayString& vals, int& row, int& col) {
 		}
 		pv.Values = vvv;
 		pv.Name = name;
-		pv.varName = name; // TODO: hybrids
+		pv.varName = varName; 
 		pv.IsInput = inputrow;
-		pv.ndxHybrid = 0;// TODO hybrids
+		pv.ndxHybrid = ndxHybrid;
 		if (!m_grid_data->IsValid(pv)) {
-			wxString typeS = m_case->BaseCase().GetInput(pv.Name, 0)->TypeAsString(); // TODO: hybrids
+			wxString typeS = m_case->BaseCase().GetInput(pv.varName, ndxHybrid)->TypeAsString(); 
 			wxString typeS2 = pv.Values[0].TypeAsString();
 			wxString errorStr = "Import Error: Value type of " + vals[r * col] + " is {" + typeS2 + "}, should be {" + typeS + "}.";
 			// some variables listed as {array} but can be single-value number
@@ -1403,9 +1422,12 @@ void ParametricViewer::SaveToCSV()
 
 	for (int col = 0; col < m_grid_data->GetNumberCols(); col++) {
 		if (VarValue* vv = m_grid_data->GetVarValue(0, col)) {
+			wxString title = m_grid_data->GetColLabelValue(col) + wxString::Format(" | %d | ", m_grid_data->GetNdxHybrid(0, col)) + m_grid_data->GetVarName(0, col);
+
 			wxString dat;
 			if (vv->Type() == VV_STRING) {
-				dat = '"' + m_grid_data->GetColLabelValue(col) + '"';
+//				dat = '"' + m_grid_data->GetColLabelValue(col) + '"';
+				dat = '"' + title + '"';
 
 				for (int row = 0; row < m_grid_data->GetNumberRows(); row++)
 					dat += "," + m_grid_data->GetValue(row, col);
@@ -1422,7 +1444,8 @@ void ParametricViewer::SaveToCSV()
 					values_vec.push_back(vec);
 					labels.push_back(wxString::Format("Run %d", row + 1));
 				}
-				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+//				ArrayPopupDialog apd(this, m_grid_data->GetColLabelValue(col).ToAscii(' '), labels, values_vec);
+				ArrayPopupDialog apd(this, title.ToAscii(' '), labels, values_vec);
 
 				apd.GetParametricTextData(dat, ',');
 			}
@@ -2231,7 +2254,7 @@ wxString ParametricGridData::GetColLabelValue(int col)
 }
 
 bool ParametricGridData::IsValid(const ParametricData::Var& pv) {
-	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.Name,pv.ndxHybrid);
+	VarValue* vv = m_par.GetCase()->BaseCase().GetInput(pv.varName,pv.ndxHybrid);
 	if (vv == nullptr) {
 		return false;
 	}
@@ -2836,14 +2859,28 @@ wxString ParametricGridData::GetUnits(int col)
 
 wxString ParametricGridData::GetVarName(int row, int col)
 {
-	wxString  ret_val=wxEmptyString;
+	wxString  ret_val = wxEmptyString;
 	if ((col > -1) && (col < (int)m_var_names.Count()) && (row > -1) && (row < m_rows))
 	{
-//		ret_val = m_var_names[col];
 		if (IsInput(col))
 			ret_val = m_par.Setup[col].varName;
 		else
 			ret_val = m_var_names[col];
+	}
+	return ret_val;
+}
+
+int ParametricGridData::GetNdxHybrid(int row, int col)
+{
+	int  ret_val = 0;
+	if ((col > -1) && (col < (int)m_var_names.Count()) && (row > -1) && (row < m_rows))
+	{
+		if (IsInput(col))
+			ret_val = m_par.Setup[col].ndxHybrid;
+		else {
+			if (m_case->GetConfiguration()->Technology.size() > 1)
+				ret_val = (int)m_case->GetConfiguration()->Technology.size() - 1;
+		}
 	}
 	return ret_val;
 }
