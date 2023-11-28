@@ -17597,7 +17597,7 @@
     "module_is_bifacial": 0.0,
     "module_type": 0.0,
     "pv_land_area_is_shown": 0.0,
-    "pvwatts.advanced.is_shown": 1.0,
+    "pvwatts.advanced.is_shown": 0.0,
     "shading": 0.0,
     "shading_3d_scene": {
         "VV_TYPE": 6,

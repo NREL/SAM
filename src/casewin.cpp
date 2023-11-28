@@ -1357,6 +1357,9 @@ void CaseWindow::UpdateConfiguration()
 
 	m_case->BaseCase().Clear(); // reset for UpdateResults
 
+	// Testing for #1600
+	m_case->LoadDefaults();
+
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
 
