@@ -22153,6 +22153,7 @@
     "load_grid_voltage_options": 0.0,
     "loan_moratorium": 0.0,
     "location_id": 596791.0,
+    "location_name": "<invalid>",
     "location_ts": "lat40.84_lon-124.25__2010",
     "lon": -124.25,
     "long_term_service_agreement_cost": 0.0,

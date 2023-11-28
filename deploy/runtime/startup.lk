@@ -2230,12 +2230,12 @@ function setup_metidal_pages(lcoe_fcr)
 	}
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
-setmodules( ['mhk_tidal', 'lcoefcr']);
+setmodules( ['tidal_file_reader', 'mhk_tidal', 'lcoefcr']);
 setup_metidal_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'MEtidal', 'None' );
-setmodules( ['mhk_tidal'] );
+setmodules( ['tidal_file_reader', 'mhk_tidal'] );
 setup_metidal_pages(0);
 
 // Battery /////////////////////////////////////////////////////////////////////

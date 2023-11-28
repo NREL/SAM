@@ -19814,7 +19814,7 @@
     ],
     "reservoir_model_inputs_shown": 0.0,
     "reservoir_permeability": 0.05,
-    "reservoir_pressure_change": 0.4,
+    "reservoir_pressure_change": 2500.0,
     "reservoir_pressure_change_type": 0.0,
     "reservoir_pressure_change_type_old_setting": 0.0,
     "reservoir_width": 500.0,
