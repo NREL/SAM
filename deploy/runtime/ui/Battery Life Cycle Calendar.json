@@ -57,7 +57,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 117.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -73,7 +73,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "No calendar degradation|Empirical|Custom"
+                    "StringList": "None|Empirical|Custom"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -515,7 +515,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 201.0
+                    "Integer": 162.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -523,7 +523,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 384.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -577,15 +577,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 201.0
+                    "Integer": 162.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 414.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 384.0
                 },
                 "Height": {
                     "Type": 3.0,

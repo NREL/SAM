@@ -771,7 +771,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 139.0
+                    "Integer": 163.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -924,11 +924,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 507.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1011,7 +1011,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 561.0
+                    "Integer": 546.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1052,11 +1052,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 363.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1135,11 +1135,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1218,15 +1218,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 139.0
+                    "Integer": 196.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1259,11 +1259,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1342,15 +1342,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 387.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 208.0
+                    "Integer": 196.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1383,11 +1383,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1466,11 +1466,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 147.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 339.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1602,15 +1602,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 591.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 302.0
+                    "Integer": 320.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 129.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

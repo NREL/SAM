@@ -238,9 +238,9 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pvwatts_location_and_resource' } );
 	addpage( [[ 'PVWatts',
+	            'Battery Model Simple with REopt',
 	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
-	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
-	            'Battery Model Simple with REopt' ]],
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_limits_page();
 }
@@ -2230,12 +2230,12 @@ function setup_metidal_pages(lcoe_fcr)
 	}
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
-setmodules( ['mhk_tidal', 'lcoefcr']);
+setmodules( ['tidal_file_reader', 'mhk_tidal', 'lcoefcr']);
 setup_metidal_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'MEtidal', 'None' );
-setmodules( ['mhk_tidal'] );
+setmodules( ['tidal_file_reader', 'mhk_tidal'] );
 setup_metidal_pages(0);
 
 // Battery /////////////////////////////////////////////////////////////////////
@@ -2683,6 +2683,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -3105,6 +3106,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch

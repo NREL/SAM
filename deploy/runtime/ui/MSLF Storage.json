@@ -1,7 +1,7 @@
 {
     "Name": "MSLF Storage",
-    "Width": 959.0,
-    "Height": 573.0,
+    "Width": 916.0,
+    "Height": 545.0,
     "FormObjects": {
         "Choice": {
             "Visible": 1.0,
@@ -2073,7 +2073,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 429.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2110,19 +2110,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 39.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 345.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 81.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

@@ -1,7 +1,7 @@
 {
     "Name": "Sandia PV Array Performance Model with Module Database",
     "Width": 1017.0,
-    "Height": 770.0,
+    "Height": 778.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 149.0
+                    "Integer": 158.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -420,7 +420,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -428,7 +428,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 51.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -614,7 +614,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 326.0
+                    "Integer": 329.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -701,7 +701,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 75.0
+                    "Integer": 84.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3534,7 +3534,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 705.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3542,7 +3542,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
