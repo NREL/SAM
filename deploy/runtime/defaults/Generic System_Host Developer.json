@@ -56,7 +56,7 @@
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
@@ -36744,14 +36744,14 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "reserves_interest": 1.25,
+    "reserves_interest": 1.75,
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "scale_factor": 1.0,
-    "show_CapitalCostSO": 0.0,
-    "show_DebtConstDSCR": 0.0,
-    "show_ReserveAccounts": 0.0,
+    "show_CapitalCostSO": 1.0,
+    "show_DebtConstDSCR": 1.0,
+    "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
     "solution_mode_message": "",
     "spec_mode": 0.0,
@@ -36761,7 +36761,7 @@
     "system_capacity": 9707.12,
     "system_capacity_combined": 0.0,
     "system_use_lifetime_output": 0.0,
-    "term_int_rate": 4.0,
+    "term_int_rate": 7.0,
     "term_tenor": 0.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 0.0,
@@ -36769,7 +36769,7 @@
     "total_installed_cost": 0.0,
     "ui_annual_load": 0.0,
     "ui_step_minutes": 60.0,
-    "ui_wacc": 5.9994,
+    "ui_wacc": 7.10145,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
@@ -37249,7 +37249,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             2.0,
