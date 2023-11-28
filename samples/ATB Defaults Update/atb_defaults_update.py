@@ -18,8 +18,8 @@ tech_models = {"Flat Plate PV" : {"Utility" : BasePVUpdater("UtilityPV"),
                                   "Residential" : BasePVUpdater("ResPV")},
                "PVWatts" : {"Utility" : BasePVUpdater("UtilityPV"),
                                   "Commercial" : BasePVUpdater("CommPV"),
-                                  "Residential" : BasePVUpdater("ResPV")},                                 
-                "Wind Power" : {"Utility" : WindUpdater("LandbasedWind")} # Distributed wind does not provide CAPEX breakdowns, do these by hand
+                                  "Residential" : BasePVUpdater("ResPV")}                                 
+                # "Wind Power" : {"Utility" : WindUpdater("LandbasedWind")} # Distributed wind does not provide CAPEX breakdowns, do these by hand
                 }
 
 def update_defaults_file(file_name, atb_data):
@@ -46,9 +46,9 @@ def update_defaults_file(file_name, atb_data):
     return atb_data
 
 ## TODO: download parameters.csv from OEDI w/ URL
-## Note: for 2022 we will be reading in multiple files - just comment stuff out or iterate over multiple?
+## Note: for 2023 ATB no longer provides a CAPEX breakdown for wind. Will have to do this one manually
 
-atb_file_name = "C:\\Users\\bmirletz\\source\\repos\\SAM-documentation\\Defaults References and Tools\\Fall 2022\\PV.csv"
+atb_file_name = "C:\\Users\\bmirletz\\source\\repos\\SAM-documentation\\Defaults References and Tools\\Fall 2023\\2023 v1 Model Parameters Original 6-28-2022.csv.csv"
 atb_parameter_data = pd.read_csv(atb_file_name )
 
 printed = False
