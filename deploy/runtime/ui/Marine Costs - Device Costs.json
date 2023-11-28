@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Device Costs",
-    "Width": 992.0,
-    "Height": 434.0,
+    "Width": 1057.0,
+    "Height": 432.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 903.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -157,7 +157,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 804.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -198,7 +198,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 903.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -467,7 +467,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 903.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -757,7 +757,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 780.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -923,7 +923,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 849.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -981,7 +981,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1032.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1196,7 +1196,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 852.0
+                    "Integer": 894.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1444,7 +1444,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 690.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1506,7 +1506,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 903.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1796,7 +1796,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 780.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1962,7 +1962,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 720.0
+                    "Integer": 735.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1970,7 +1970,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 147.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2086,7 +2086,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 903.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2376,7 +2376,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 780.0
                 },
                 "Y": {
                     "Type": 3.0,

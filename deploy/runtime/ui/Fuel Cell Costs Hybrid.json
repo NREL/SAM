@@ -2755,7 +2755,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2771,7 +2771,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page."
+                    "String": "See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the Fuel Cell subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -3075,7 +3075,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 498.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3083,7 +3083,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 279.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3095,7 +3095,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total installed cost"
+                    "String": "Total installed cost of fuel cell subsystem"
                 },
                 "TextColour": {
                     "Type": 4.0,

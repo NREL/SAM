@@ -1,7 +1,7 @@
 {
     "Name": "Molten Salt Tower Power Block Common",
     "Width": 907.0,
-    "Height": 307.0,
+    "Height": 317.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 164.0
+                    "Integer": 170.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
