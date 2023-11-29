@@ -392,6 +392,7 @@
     "annual_global": 5.83819,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
+    "annual_twet": "nan",
     "annual_wspd": 2.35368,
     "aux_array": [
         0.023,
@@ -704,7 +705,7 @@
     "c_equity_return": 13.0,
     "c_inflation": 2.5,
     "c_lifetime": 20.0,
-    "c_nominal_interest_rate": 4.0,
+    "c_nominal_interest_rate": 7.0,
     "c_tax_rate": 28.0,
     "capital_cost": 374661000.0,
     "city": "-",

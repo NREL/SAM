@@ -408,7 +408,7 @@ void AFSchedNumeric::OnNumChanged(wxCommandEvent &evt)
 {
 	wxCommandEvent copyevt(evt);
 	copyevt.SetEventObject(this);
-	copyevt.SetId( this->GetId() );
+	copyevt.SetId(this->GetId());
 	GetEventHandler()->ProcessEvent(copyevt);
 }
 

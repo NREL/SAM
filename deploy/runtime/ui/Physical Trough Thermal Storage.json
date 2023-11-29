@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough Thermal Storage",
-    "Width": 910.0,
-    "Height": 437.0,
+    "Width": 911.0,
+    "Height": 461.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 326.0
+                    "Integer": 350.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1903,11 +1903,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 282.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 366.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2027,19 +2027,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 54.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 396.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 324.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
