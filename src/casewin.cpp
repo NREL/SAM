@@ -970,6 +970,10 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
 		wxString sel = m_inputPageList->GetStringSelection();
+
+		// #1600 and #1608
+		m_case->LoadDefaults();
+
 		UpdateConfiguration();
 
 //		if (!sel.empty()) 
@@ -1356,9 +1360,6 @@ void CaseWindow::UpdateConfiguration()
 	if (!cfg) return;
 
 	m_case->BaseCase().Clear(); // reset for UpdateResults
-
-	// Testing for #1600
-	m_case->LoadDefaults();
 
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
