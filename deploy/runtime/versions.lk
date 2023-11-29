@@ -51,9 +51,37 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-version_upgrade{'2023.9.19'} = define() {
+version_upgrade{'2023.10.31'} = define() {
 
 	const cfg = config();
+
+	// SAM 2022.11.21 default inverters are not in new CEC inverters library
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' || cfg.tech == 'High-X Concentrating PV' ) 
+	{
+		old_inverter = value( 'inv_snl_inverter_name' );
+		str = runtimedir();
+		if ( strpos( str, '/' ) > -1 ) { slash = '/'; }
+		else { slash = '\\'; }
+		arr = split ( str, slash );
+		lib_file = '';
+		for (i=0; i<#arr-1; i++) { lib_file += arr[i] + '/'; }
+		lib_file += 'libraries/CEC Inverters.csv';
+		new_inverters = csvread( lib_file, { 'table' = true } );
+		inverter_names = new_inverters{'Name'};
+		new_inverters = {};
+		inverter_names -@ 0;
+		inverter_names -@ 0;
+		if ( inverter_names ?@ old_inverter < 0 )
+		{
+			stable_sort( lower(inverter_names) );
+			msg = 'The inverter in the file you are opening is from an out-of-date library.\n\n';
+			inv = '';
+			inv = choose_from_list( inverter_names, msg + 'Inverter from old library is:\n  ' + old_inverter +'\nChoose an inverter from the new library:', 'Choose Inverter' );
+			if ( inv == '' ) { inv = inverter_names[0] ; }
+			value( 'inv_snl_inverter_name', inv, 'Inverter updated from ' + old_inverter + ' to ' + inv + '.');
+		}	
+		message('We updated the CEC module and inverter libraries from the CEC data available in November, 2023.'); 
+	}
 
 	// handle adjust variables conversion from table to variables
 	// note marine energy availability not used in any configurations in SAM 2022.11.21 so no need to handle conversion
