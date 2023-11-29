@@ -69,9 +69,10 @@ version_upgrade{'2023.9.19'} = define() {
 		value('adjust_constant', x.constant);
 		value('adjust_en_periods', x.en_periods);
 		p = x.periods; 
+		//value('adjust_periods', p); - this no longer works
 		//x.periods will be [[x, y, z]] if periods are set, and [1] if not, therefore, need to test for the type of the first array element to properly set the loss in the upgrade
 		p1 = x.periods[0];
-		if (typeof(p1) == 'array') {value('adjust_periods', p1);}
+		if (typeof(p1) == 'array') {value('adjust_periods', p1);} //[[13, 15, 17]]); hard-coded test was strange also
 		else {value('adjust_periods',p);}
 		msgbox(cfg.tech + ' x.periods=' + x.periods + ' p=' + p + typeof(p) + ' p1=' + p1 + typeof(p1) + ' adjust_periods=' + value('adjust_periods'));// + typeof(adjust_periods));
 		value('adjust_en_timeindex', x.en_timeindex);
