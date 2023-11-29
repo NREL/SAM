@@ -103,28 +103,28 @@ for( i=0;i<n_inverters;i++ )
 	Pmax = to_real( D.p100[i] ); // power level at 100% load
 	if(Pmax <= 0)
 	{	
-		write_line( flog , '* Pmax <=0. Skipping this inverter.\n');
+		write_line( flog , '* Pmax <=0. Skipping this inverter: Pmax = ' + to_string(Pmax) + '.\n');
 		pmax_neg_or_zero++;
 		continue;
 	}
-	if (Paco/Pmax == 1000) // Paco in W instead of kW 
+	if (Paco/Pmax > 999 && Paco/Pmax < 1001 )  // Paco in W instead of kW 
 	{
 		Paco = Paco / 1000;
-		write_line( flog , '* Paco converted from W to kW.\n');
+		write_line( flog , '* Paco converted from W to kW: Converted Paco = ' + to_string(Paco) + '.\n');
 		paco_watts++;
 	}
 	// For some inverters, part load power test data are given in W 
 	// instead of kW. This results in Pso in kW instead of the expected W.
 	// Example: Enphase IQ6Plus-72-ACM-US (208V) in Nov 15 2017 database
-	elseif (Pmax/Paco == 1000 ) 
+	elseif (Pmax/Paco > 999 && Paco/Pmax < 1001 ) 
 	{
 		w_to_kw = 0.001;
-		write_line( flog , '* Power levels converted from W to kW.\n');
+		write_line( flog , '* Power levels converted from W to kW: Converted Pmax = ' + to_string(Pmax*w_to_kw) + '.\n');
 		pwrlvl_kw++;
 	}
 	elseif (Pmax/Paco > 100 || Paco/Pmax > 100)
 	{
-		write_line( flog , '* Pmax and Paco units inconsistent.\n');
+		write_line( flog , '* Pmax and Paco units inconsistent: Pmax / Paco = ' + to_string(Pmax/Paco) + '.\n');
 		pmax_units_incorrect++;
 		continue;
 	}
@@ -335,7 +335,8 @@ else
 write_line( flog, '## SAM Inverter Library\n');
 write_line( flog, 'New inverter library file:\n' );
 write_line( flog, sam_library_file + '\n');
-write_line( 'Number of inverters added: ' + nadded + '.\n' );
+write_line( flog, 'Number of inverters in CEC database: ' + n_inverters + '\n');
+write_line( flog, 'Number of inverters in SAM library: ' + nadded + '.\n' );
 write_line( flog, '### Number of inverters in new SAM library: ' + to_string(#sam_library - 3) + '.');
 write_line( flog, '\nSkipped because of problems:\n' );
 write_line( flog, '* Coefficient generator calculated parameters with problems: ' + coeff_gen_results_issue);
