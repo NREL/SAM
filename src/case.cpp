@@ -448,7 +448,7 @@ bool Case::Read( wxInputStream &_i )
 			if (di.wrong_type.size() > 0) {
 				wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
 			}
-			if (m_vals.size() > m_oldVals.size()) {
+			if (m_vals[i].size() > m_oldVals[i].size()) {
 				for (auto& newVal : m_vals[i]) {
 					if (!m_oldVals[i].Get(newVal.first))
 						wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
