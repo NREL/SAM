@@ -315,6 +315,7 @@ VarValue *Simulation::GetValue( const wxString &name )
 	if ( VarValue *vv = Outputs().Get( name ) ) 
 		return vv;
 	else {
+		// search from last to first vartable for hybrids i=ndxHybrid and name is variable name in vorrect vartable - may report incorrect value for same names in different vartables
 		bool found = false;
 		for (int i = m_inputs.size() - 1; i>=0 && !found; i--) {
 			if (vv = GetInput(name, i))
