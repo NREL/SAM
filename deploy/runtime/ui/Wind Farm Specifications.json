@@ -196,7 +196,7 @@
                 },
                 "AnalysisPeriod": {
                     "Type": 3.0,
-                    "Integer": 25.0
+                    "Integer": 1.0
                 },
                 "ShowMode": {
                     "Type": 2.0,
