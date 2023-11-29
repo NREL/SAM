@@ -9099,7 +9099,7 @@
         1e38
     ],
     "grid_interconnection_limit_kwac": 20000.0,
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "|||",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,

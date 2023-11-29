@@ -109,6 +109,7 @@ public:
 	int GetMaxChoice(int row, int col);
 	wxString GetChoice(int row, int col); // actual string choice
 	wxString GetVarName(int row, int col);
+	int GetNdxHybrid(int row, int col);
 
 	bool IsInput(int col);
 	bool IsInput(ParametricData::Var &var);

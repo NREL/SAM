@@ -515,6 +515,9 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 		else
 			win->SwitchToInputPage(pages[0]);
 
+		// reevaluate all equations address SAM #1583
+		c->EvaluateEquations();
+
 		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
 	return win;
@@ -2771,8 +2774,12 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
+	wxFont font(wxMetroTheme::Font(wxMT_NORMAL, 12));
+
 	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
-	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pTech->SetFont(font);
+ 	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pFin->SetFont(font);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2780,7 +2787,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
 		"Choose a performance model, and then choose from the available financial models." );
-	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
@@ -2917,6 +2923,12 @@ void ConfigDialog::PopulateTech()
 {
 	// clear tree
 	m_pTech->DeleteAllItems();
+
+	// TODO set width to fit longest collapsed label
+	int tech_width = 400;
+	int tech_height = m_pTech->GetBestHeight(tech_width);
+	m_pTech->SetMinSize(wxSize(tech_width, tech_height));
+	
 	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 

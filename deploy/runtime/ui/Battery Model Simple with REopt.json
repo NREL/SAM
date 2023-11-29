@@ -1,7 +1,7 @@
 {
     "Name": "Battery Model Simple with REopt",
     "Width": 886.0,
-    "Height": 288.0,
+    "Height": 296.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 294.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 141.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -94,11 +94,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 39.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 93.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -106,7 +106,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 44.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -548,11 +548,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 837.0
                 },
                 "Height": {
                     "Type": 3.0,

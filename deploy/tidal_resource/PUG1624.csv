@@ -1,5 +1,5 @@
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-CMIST,PUG1624,b'1.6 miles NE of Point Wilson',48.1569,-122.726,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,52.4,-
+CMIST,PUG1624,1.6 miles NE of Point Wilson,48.1569,-122.726,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,52.4,-
 Year,Month,Day,Hour,Minute,Speed,,,,,,,,,,,,,,
 2008,1,1,0,30,0.6227883,,,,,,,,,,,,,,
 2008,1,1,1,30,0.24960111,,,,,,,,,,,,,,

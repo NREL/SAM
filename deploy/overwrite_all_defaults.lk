@@ -26,11 +26,12 @@ for (t=0; t<#technologies; t++)
 		financing = list_financing(technologies[t]);
 		for(f=0; f<#financing; f++)
 		{	
-			out( technologies[t] + '\t' + financing[f] + '\t' );
+			out( technologies[t] + '\t' + financing[f] + '\n' );
 			active_case( 'test_case' );
 			configuration( technologies[t], financing[f]) ;
 			load_defaults("");
 			overwrite_defaults();
+			configs++;
 		}
 	}
 }

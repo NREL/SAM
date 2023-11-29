@@ -26468,7 +26468,7 @@
     "ibi_uti_percent_maxvalue": 1e38,
     "ibi_uti_percent_tax_fed": 1.0,
     "ibi_uti_percent_tax_sta": 1.0,
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
@@ -44038,7 +44038,7 @@
         33.5754,
         33.5754
     ],
-    "loan_rate": 4.0,
+    "loan_rate": 7.0,
     "loan_term": 25.0,
     "lon": -110.94,
     "mdot": 0.091056,
@@ -52983,7 +52983,7 @@
     "ui_loan_amount": 4835.88,
     "ui_net_capital_cost": 8059.8,
     "ui_step_minutes": 60.0,
-    "ui_wacc": 5.38728,
+    "ui_wacc": 6.70974,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [

@@ -1,7 +1,7 @@
 {
     "Name": "Wind Farm Costs",
     "Width": 826.0,
-    "Height": 471.0,
+    "Height": 496.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 534.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 381.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -517,7 +517,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 384.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -525,7 +525,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 291.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -587,11 +587,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 348.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 87.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -641,7 +641,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 99.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -703,7 +703,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 294.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -765,7 +765,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 84.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -827,7 +827,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 381.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -835,7 +835,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 132.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -872,7 +872,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -889,7 +889,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 159.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -951,7 +951,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 534.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -959,7 +959,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 117.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -996,7 +996,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -1013,7 +1013,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 369.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1075,7 +1075,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 519.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1137,7 +1137,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 585.0
+                    "Integer": 657.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1199,7 +1199,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 612.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1207,7 +1207,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 123.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1244,7 +1244,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -1261,7 +1261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1269,7 +1269,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 114.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1306,7 +1306,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -1323,7 +1323,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 246.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1406,7 +1406,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 504.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1548,7 +1548,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 594.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1631,7 +1631,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1714,7 +1714,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1797,7 +1797,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1880,7 +1880,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1963,7 +1963,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 534.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2046,7 +2046,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2129,7 +2129,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 381.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2212,7 +2212,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2742,11 +2742,11 @@
         "on_change{'btn_est_turbine_cost'} = define() ",
         "{",
         "\t// Average 2017 costs in $/kW",
-        "\t//Updated for utility, offshore 11/16/22",
-        "\toffshore_turbine_cost = 1442.41;",
-        "\tland_utility_turbine_cost = 1141.96;",
-        "\tland_commercial_turbine_cost = 3597.73;",
-        "\tland_small_turbine_cost = 4000;",
+        "\t//Updated for utility, offshore 11/15/23",
+        "\toffshore_turbine_cost = 1405.08;",
+        "\tland_utility_turbine_cost = 1112.4;",
+        "\tland_commercial_turbine_cost = 2732.4;",
+        "\tland_small_turbine_cost = 2781;",
         "\t",
         "\tturbine_cost = 0;",
         "\tturbine_type = '';",
@@ -2796,7 +2796,7 @@
         "\t{",
         "\t\tif (value('reference_number_turbines') == 1)",
         "\t\t{",
-        "\t\t\tvalue('bos_cost_per_kw', 2200); //Updated 11/23/21",
+        "\t\t\tvalue('bos_cost_per_kw', 2015.28); //Updated 11/15/22",
         "\t\t\tvalue('turbine_cost_per_turbine', 0);",
         "\t\t\tvalue('turbine_cost_fixed', 0);",
         "\t\t\tvalue('sales_tax_basis', 0);",
@@ -2825,32 +2825,32 @@
         "\t\tkw_rating = value('wind_turbine_kw_rating');",
         "\t\tif (kw_rating >= 1000) //utility turbine, small system",
         "\t\t{",
-        "\t\t\tvalue('bos_cost_per_kw', 338); //Updated 11/23/21",
+        "\t\t\tvalue('bos_cost_per_kw', 347.76); //Updated 11/15/23",
         "\t\t\tvalue('bos_cost_per_turbine', 0);",
         "\t\t\tvalue('bos_cost_fixed', 0);",
         "\t\t\tvalue('sales_tax_basis', 0);",
         "\t\t\tmsg = msg +'Warning: this Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
-        "\t\t\t\t+'Average 2017 installed balance of system costs for land-based utility scale turbines (1 MW or greater) have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+'Average 2021 installed balance of system costs for land-based utility scale turbines (1 MW or greater) have been applied to the balance of system cost inputs. '",
         "\t\t\t\t+'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
         "\t\t}",
         "\t\telse if ( kw_rating >= 100) // commercial scale turbine, 100kW-1MW",
         "\t\t{",
-        "\t\t\tvalue('bos_cost_per_kw', 2996);",
+        "\t\t\tvalue('bos_cost_per_kw', 1911.6);",
         "\t\t\tvalue('bos_cost_per_turbine', 0);",
         "\t\t\tvalue('bos_cost_fixed', 0);",
         "\t\t\tvalue('sales_tax_basis', 0);",
         "\t\t\tmsg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
-        "\t\t\t\t+'Average 2017 installed balance of system costs for commercial scale land-based turbines have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+'Average 2021 installed balance of system costs for commercial scale land-based turbines have been applied to the balance of system cost inputs. '",
         "\t\t\t\t+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
         "\t\t}",
         "\t\telse",
         "\t\t{",
-        "\t\t\tvalue('bos_cost_per_kw', 7543);",
+        "\t\t\tvalue('bos_cost_per_kw', 3348);",
         "\t\t\tvalue('bos_cost_per_turbine', 0);",
         "\t\t\tvalue('bos_cost_fixed', 0);",
         "\t\t\tvalue('sales_tax_basis', 0);",
         "\t\t\tmsg = msg + 'Warning: This Balance of System model is intended for systems that are 20MW or greater. The model may estimate higher BOS costs than are actually likely. '",
-        "\t\t\t\t+'Average 2017 installed balance of system costs for small land-based turbines have been applied to the balance of system cost inputs. '",
+        "\t\t\t\t+'Average 2021 installed balance of system costs for small land-based turbines have been applied to the balance of system cost inputs. '",
         "\t\t\t\t+ 'To use these numbers in your analysis, click Ok and ignore the instructions below. Otherwise, ';",
         "\t\t}",
         "\t}",
@@ -3109,7 +3109,7 @@
         "\t\tshow('btn_est_bos_cost', false);\r",
         "\t\tshow('reference_resource_file', false);\r",
         "\t\twind_name = 'Total Installed Cost of Wind Subsystem';\r",
-        "\t\twind_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t\twind_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the Wind subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
         "\t}\r",
         "\telse {\r",
         "\t\twind_name = 'Total installed cost';\r",
