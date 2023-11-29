@@ -62,11 +62,11 @@ Standalone Battery,All Equity Partnership Flip,-8397703,85.2731,88.6283,; Warnin
 Standalone Battery,Sale Leaseback,-8397703,86.2847,88.6283,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.09395e+08. A negative NPV indicates project costs are higher than revenues.
 ETES,Single Owner,-466572064,13.3084,7.40855,; 
 PTES,Single Owner,-197595520,16.8914,10.3676,; 
-Physical Trough,Single Owner,376801376,12.2029,12.3469,; 
-Physical Trough,Merchant Plant,376801376,12.8744,NA,; 
-Physical Trough,Leveraged Partnership Flip,376801376,12.472,12.3469,; 
-Physical Trough,All Equity Partnership Flip,376801376,15.5179,12.3469,; 
-Physical Trough,Sale Leaseback,376801376,15.8716,12.3469,; 
+Physical Trough,Single Owner,376801376,14.1121,12.3469,; 
+Physical Trough,Merchant Plant,376801376,13.1938,NA,; 
+Physical Trough,Leveraged Partnership Flip,376801376,14.3812,12.3469,; 
+Physical Trough,All Equity Partnership Flip,376801376,15.7756,12.3469,; 
+Physical Trough,Sale Leaseback,376801376,16.1292,12.3469,; 
 Physical Trough,LCOE Calculator,376801376,NA,NA,; 
 Physical Trough,None,376801376,NA,NA,; 
 Physical Trough IPH,None,24117408,NA,NA,; 
