@@ -58,7 +58,14 @@ for( i=0; i<#inverters; i++ )
 	results.pdc_mean[i] = mean( pdc );
 	results.pac_max[i] = max( pac );
 	results.pac_mean[i] = mean( pac );
+	results.v_mppt_min[i] = v_mppt_min;
+	results.v_mppt_max[i] = v_mppt_max;
+	results.v_oc[i] = v_avg;
+	results.v_mp[i] = 0.85*v_avg;
+	results.power_limiting_kwh[i] = get('annual_inv_cliploss');
+	results.voltage_clipping_kwh[i] = get('annual_dc_invmppt_loss');
 }
+
 
 date = split( date_time(), ' ' );
 date_str = date[4] + '-' + date[1] + '-' + date[2];
