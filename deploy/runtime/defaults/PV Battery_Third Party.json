@@ -73054,7 +73054,7 @@
     "inv_cec_cg_vdco": 398.497,
     "inv_cec_date": "10/15/2018",
     "inv_cec_hybrid": "N",
-    "inv_cec_name": "SolarEdge Technologies Ltd : SE6000x [208V]",
+    "inv_cec_name": "SolarEdge Technologies Ltd : SE6000H-US [240V]",
     "inv_cec_type": "Utility Interactive",
     "inv_ds_ac_voltage": 240.0,
     "inv_ds_data_filename": "",
@@ -74655,7 +74655,7 @@
             -0.47
         ]
     ],
-    "inverter_count": 4.0,
+    "inverter_count": 1.0,
     "inverter_model": 0.0,
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
@@ -92482,7 +92482,7 @@
     "subarray1_nmodules": 56.0,
     "subarray1_nmodx": 7.0,
     "subarray1_nmody": 2.0,
-    "subarray1_nstrings": 8.0,
+    "subarray1_nstrings": 3.0,
     "subarray1_rack_shading": 4.0,
     "subarray1_rear_soiling_loss": 0.0,
     "subarray1_ref_nmodules": 56.0,
