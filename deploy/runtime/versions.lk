@@ -52,8 +52,68 @@ Some more examples:
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
 version_upgrade{'2023.10.31'} = define() {
-
+	
 	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough')
+	{
+		message('The solar multiple calculation has changed, resulting in different annual results. Additionally, the field thermal output UI calculation has been improved.', 'warning');
+	
+		if(cfg.fin == 'LCOE Calculator' || cfg.fin == 'None')
+		{
+			value('csp.dtr.cost.site_improvements.cost_per_m2', 25, 'Installation costs default.');
+			value('csp.dtr.cost.solar_field.cost_per_m2', 150, 'Installation costs default.');
+			value('csp.dtr.cost.htf_system.cost_per_m2', 60, 'Installation costs default.');
+			value('csp.dtr.cost.storage.cost_per_kwht', 62, 'Installation costs default.');
+			value('csp.dtr.cost.fossil_backup.cost_per_kwe', 0, 'Installation costs default.');
+			value('csp.dtr.cost.power_plant.cost_per_kwe', 910, 'Installation costs default.');
+			value('csp.dtr.cost.bop_per_kwe', 90, 'Installation costs default.');
+			
+			value('csp.dtr.cost.contingency_percent', 7, 'Installation costs default.');
+			value('csp.dtr.cost.epc.per_acre', 0, 'Installation costs default.');
+			value('csp.dtr.cost.epc.percent', 11, 'Installation costs default.');
+			value('csp.dtr.cost.epc.per_watt', 0, 'Installation costs default.');
+			value('csp.dtr.cost.epc.fixed', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.per_acre', 10000, 'Installation costs default.');
+			value('csp.dtr.cost.plm.percent', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.per_watt', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.fixed', 0, 'Installation costs default.');
+			value('csp.dtr.cost.sales_tax.percent', 80, 'Installation costs default.');
+			value('sales_tax_rate', 5, 'Installation costs default.');
+		}
+	
+	}
+	
+	// Physical Trough IPH Model Changes
+	if(cfg.tech == 'Physical Trough IPH')
+	{
+		message('The field thermal output UI calculation has been improved.', 'warning');
+		value('use_solar_mult_or_aperture_area', 0, 'Previous model used solar multiple to size system');
+		value('specified_total_aperture', 20000, 'Default value for specified total aperture');
+		value('tes_pump_coef', oldvalue('pb_pump_coef'), 'Previous model did not have independent TES pumping power');
+		value('eta_tes_htr', oldvalue('csp.pt.tes.heater_eff'), 'Variable name change.');
+		
+		value('csp.dtr.cost.site_improvements.cost_per_m2', 25, 'Installation costs default.');
+		value('csp.dtr.cost.solar_field.cost_per_m2', 150, 'Installation costs default.');
+		value('csp.dtr.cost.htf_system.cost_per_m2', 60, 'Installation costs default.');
+		value('csp.dtr.cost.storage.cost_per_kwht', 62, 'Installation costs default.');
+		value('csp.dtr.cost.heat_sink.cost_per_kwe', 120, 'Installation costs default.');
+		value('csp.dtr.cost.bop_per_kwe', 90, 'Installation costs default.');
+		value('csp.dtr.cost.contingency_percent', 7, 'Installation costs default.');
+		value('csp.dtr.cost.epc.per_acre', 0, 'Installation costs default.');
+		value('csp.dtr.cost.epc.percent', 11, 'Installation costs default.');
+		value('csp.dtr.cost.epc.per_watt', 0, 'Installation costs default.');
+		value('csp.dtr.cost.epc.fixed', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.per_acre', 10000, 'Installation costs default.');
+		value('csp.dtr.cost.plm.percent', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.per_watt', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.fixed', 0, 'Installation costs default.');
+		value('csp.dtr.cost.sales_tax.percent', 80, 'Installation costs default.');
+		value('sales_tax_rate', 5, 'Installation costs default.');
+	}
+
+
 
 	// SAM 2022.11.21 default inverters are not in new CEC inverters library
 	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' || cfg.tech == 'High-X Concentrating PV' ) 

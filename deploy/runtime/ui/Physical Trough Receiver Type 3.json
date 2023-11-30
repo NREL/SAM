@@ -6726,7 +6726,15 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": [],
+    "Equations": [
+        "// Just UI indicator\r",
+        "equations{ 'csp_dtr_hce_design_heat_loss_3' } = define() {\r",
+        "\treturn ${csp_dtr_hce_design_heat_losses}[2];\r",
+        "\t};\r",
+        "\t\r",
+        "equations{ 'csp_dtr_hce_optical_eff_3' } = define() {\r",
+        "\treturn ${csp_dtr_hce_optical_effs}[2]; };"
+    ],
     "Callbacks": [
         "on_change{'apply_receiver_library_3'} = define() {",
         "",
