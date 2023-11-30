@@ -28860,23 +28860,23 @@
         ],
         "dispatch_manual_charge": [
             1.0,
-            1.0,
-            1.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_discharge": [
             0.0,
-            0.0,
             1.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_gridcharge": [
             0.0,
-            1.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -28887,7 +28887,6 @@
             0.0
         ],
         "dispatch_manual_percent_gridcharge": [
-            100.0,
             0.0
         ],
         "dispatch_manual_sched": [

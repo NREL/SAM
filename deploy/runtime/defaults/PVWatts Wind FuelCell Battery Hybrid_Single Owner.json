@@ -1234,7 +1234,7 @@
     "FuelCell": {
         "add_om_num_types": 2.0,
         "analysis_period": 25.0,
-        "batt_dispatch_choice_ui": 2.0,
+        "batt_dispatch_choice_ui": 3.0,
         "battery_total_cost_lcos": 0.0,
         "bos_equip_fcperkw": 0.0,
         "bos_equip_fixed": 0.0,
@@ -28785,23 +28785,23 @@
         ],
         "dispatch_manual_charge": [
             1.0,
-            1.0,
-            1.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_discharge": [
             0.0,
-            0.0,
             1.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_gridcharge": [
             0.0,
-            1.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -28812,7 +28812,6 @@
             0.0
         ],
         "dispatch_manual_percent_gridcharge": [
-            100.0,
             0.0
         ],
         "dispatch_manual_sched": [
