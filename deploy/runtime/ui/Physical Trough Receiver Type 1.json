@@ -6735,7 +6735,13 @@
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
         "//",
-        ""
+        "\r",
+        "// Just UI indicator\r",
+        "equations{ 'csp_dtr_hce_design_heat_loss_1' } = define() {\r",
+        "\treturn ${csp_dtr_hce_design_heat_losses}[0]; };\r",
+        "\r",
+        "equations{ 'csp_dtr_hce_optical_eff_1' } = define() {\r",
+        "\treturn ${csp_dtr_hce_optical_effs}[0]; };"
     ],
     "Callbacks": [
         "on_change{'apply_receiver_library_1'} = define() {",
