@@ -68,13 +68,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('Availability losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
 		value('adjust_constant', x.constant);
 		value('adjust_en_periods', x.en_periods);
-		p = x.periods; 
-		//value('adjust_periods', p); - this no longer works
-		//x.periods will be [[x, y, z]] if periods are set, and [1] if not, therefore, need to test for the type of the first array element to properly set the loss in the upgrade
-		p1 = x.periods[0];
-		if (typeof(p1) == 'array') {value('adjust_periods', p1);} //[[13, 15, 17]]); hard-coded test was strange also
-		else {value('adjust_periods',p);}
-		msgbox(cfg.tech + ' x.periods=' + x.periods + ' p=' + p + typeof(p) + ' p1=' + p1 + typeof(p1) + ' adjust_periods=' + value('adjust_periods'));// + typeof(adjust_periods));
+		value('adjust_periods', x.periods); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
 	}
@@ -101,8 +95,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('DC Losses variable format changed from single table ("dc_adjust") to separate variables: dc_adjust_constant (number), dc_adjust_en_timeindex (number), dc_adjust_timeindex (array), dc_adjust_en_periods (number), dc_adjust_periods (array).');
 		value('dc_adjust_constant', x.constant);
 		value('dc_adjust_en_periods', x.en_periods);
-		p = x.periods; //this logic works for both blank period arrays and for completed ones
-		value('dc_adjust_periods', p);
+		value('dc_adjust_periods', x.periods);
 		value('dc_adjust_en_timeindex', x.en_timeindex);
 		value('dc_adjust_timeindex', x.timeindex);
 		
@@ -111,8 +104,7 @@ version_upgrade{'2023.9.19'} = define() {
 		message('AC losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
 		value('adjust_constant', x.constant);
 		value('adjust_en_periods', x.en_periods);
-		p = x.periods; //this logic works for both blank period arrays and for completed ones
-		value('adjust_periods', p);
+		value('adjust_periods', x.periods);
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
 		
