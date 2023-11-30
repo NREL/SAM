@@ -68,7 +68,11 @@ version_upgrade{'2023.9.19'} = define() {
 		message('Availability losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
 		value('adjust_constant', x.constant);
 		value('adjust_en_periods', x.en_periods);
-		value('adjust_periods', x.periods); 
+		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
 	}
@@ -95,7 +99,11 @@ version_upgrade{'2023.9.19'} = define() {
 		message('DC Losses variable format changed from single table ("dc_adjust") to separate variables: dc_adjust_constant (number), dc_adjust_en_timeindex (number), dc_adjust_timeindex (array), dc_adjust_en_periods (number), dc_adjust_periods (array).');
 		value('dc_adjust_constant', x.constant);
 		value('dc_adjust_en_periods', x.en_periods);
-		value('dc_adjust_periods', x.periods);
+		//assigned periods from previous versions are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [[0,0,0]] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		value('dc_adjust_periods', p); 
 		value('dc_adjust_en_timeindex', x.en_timeindex);
 		value('dc_adjust_timeindex', x.timeindex);
 		
@@ -104,7 +112,11 @@ version_upgrade{'2023.9.19'} = define() {
 		message('AC losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
 		value('adjust_constant', x.constant);
 		value('adjust_en_periods', x.en_periods);
-		value('adjust_periods', x.periods);
+		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
 		
