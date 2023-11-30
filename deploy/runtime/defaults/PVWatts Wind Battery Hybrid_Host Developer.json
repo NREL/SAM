@@ -19809,7 +19809,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.187
+            0.153
         ],
         "pv.storage.p1.charge": 1.0,
         "pv.storage.p1.discharge": 0.0,
@@ -19819,12 +19819,12 @@
         "pv.storage.p2.discharge": 0.0,
         "pv.storage.p2.dischargetogrid": 0.0,
         "pv.storage.p2.gridcharge": 1.0,
-        "pv.storage.p3.charge": 1.0,
+        "pv.storage.p3.charge": 0.0,
         "pv.storage.p3.discharge": 1.0,
         "pv.storage.p3.dischargetogrid": 0.0,
         "pv.storage.p3.gridcharge": 0.0,
         "pv.storage.p4.charge": 0.0,
-        "pv.storage.p4.discharge": 0.0,
+        "pv.storage.p4.discharge": 1.0,
         "pv.storage.p4.dischargetogrid": 0.0,
         "pv.storage.p4.gridcharge": 0.0,
         "pv.storage.p5.charge": 0.0,
@@ -19933,7 +19933,7 @@
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
         "construction_financing_cost": 47358.4,
-        "cost_debt_closing": 450000.0,
+        "cost_debt_closing": 0.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
         "crit_1": 0.0,
@@ -55917,7 +55917,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.187
+            0.153
         ],
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,

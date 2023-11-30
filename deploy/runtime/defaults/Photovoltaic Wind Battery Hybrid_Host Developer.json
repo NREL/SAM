@@ -459,8 +459,8 @@
         "degradation": [
             0.0
         ],
-        "desired_dcac_ratio": 1.1,
-        "desired_size": 100.0,
+        "desired_dcac_ratio": 1.2,
+        "desired_size": 500.0,
         "elev": 358.0,
         "en_ac_lifetime_losses": 0.0,
         "en_batt": 1.0,
@@ -3650,7 +3650,7 @@
         "batt_discharge_percent_5": 25.0,
         "batt_discharge_percent_6": 25.0,
         "batt_dispatch_auto_btm_can_discharge_to_grid": 0.0,
-        "batt_dispatch_auto_can_charge": 0.0,
+        "batt_dispatch_auto_can_charge": 1.0,
         "batt_dispatch_auto_can_clipcharge": 0.0,
         "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
@@ -22852,7 +22852,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.187
+            0.153
         ],
         "pv.storage.p1.charge": 1.0,
         "pv.storage.p1.discharge": 0.0,
@@ -22862,12 +22862,12 @@
         "pv.storage.p2.discharge": 0.0,
         "pv.storage.p2.dischargetogrid": 0.0,
         "pv.storage.p2.gridcharge": 1.0,
-        "pv.storage.p3.charge": 1.0,
+        "pv.storage.p3.charge": 0.0,
         "pv.storage.p3.discharge": 1.0,
         "pv.storage.p3.dischargetogrid": 0.0,
         "pv.storage.p3.gridcharge": 0.0,
         "pv.storage.p4.charge": 0.0,
-        "pv.storage.p4.discharge": 0.0,
+        "pv.storage.p4.discharge": 1.0,
         "pv.storage.p4.dischargetogrid": 0.0,
         "pv.storage.p4.gridcharge": 0.0,
         "pv.storage.p5.charge": 0.0,
@@ -22973,7 +22973,7 @@
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
         "construction_financing_cost": 28164.2,
-        "cost_debt_closing": 450000.0,
+        "cost_debt_closing": 0.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
         "crit_1": 0.0,
@@ -58957,7 +58957,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.187
+            0.153
         ],
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
