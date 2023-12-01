@@ -151,7 +151,8 @@ void VariableGridData::Init()
 			ConfigInfo* ci = m_cases[iCase]->GetConfiguration();
 			for (size_t iVarTable = 0; iVarTable < m_var_info_lookup_vec[iCase].size(); iVarTable++) {
 				// iterate over case vartables
-				wxString prepend = ci->Technology[iVarTable].Lower() + "_";
+//				wxString prepend = ci->Technology[iVarTable].Lower() + "_";
+				wxString prepend = ci->Simulations[iVarTable].Lower() + "_";
 
 				wxArrayString as = m_var_info_lookup_vec[iCase][iVarTable]->ListAll();
 				for (size_t i = 0; i < as.Count(); i++) {
@@ -170,7 +171,15 @@ void VariableGridData::Init()
 				var_names.insert(as[i]);
 		}
 */
+		int row_change = (int)var_names.size() - m_rows;
+		if (m_rows > 0) {
+			if (row_change > 0)
+				AppendRows(row_change);
+			else if (row_change < 0)
+				DeleteRows(0,-row_change);
+		}
 		m_rows = var_names.size();
+
 		for (int row = 0; row < m_rows; row++)
 			m_sorted_index.Add(row);
 
@@ -187,7 +196,8 @@ void VariableGridData::Init()
 					if (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name)) {
 						found = true;
 						wxString prepend = "";
-						if (ci->Technology.size() > 1) prepend = ci->Technology[ndx_hybrid] + " ";
+//						if (ci->Technology.size() > 1) prepend = ci->Technology[ndx_hybrid] + " ";
+						if (ci->Technology.size() > 1) prepend = ci->Simulations[ndx_hybrid] + " ";
 						str_label = m_var_info_lookup_vec[iCase][ndx_hybrid]->Label(var_name);
 						if (str_label.length() > 0) str_label = prepend + str_label;
 					}
@@ -220,7 +230,8 @@ bool VariableGridData::UpdateVarNameNdxHybrid(Case *c, const wxString& input_nam
 		// split hybrid name and match with Technology name or use "Hybrid" for remainder
 		wxArrayString as = wxSplit(input_name, '_');
 		for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
-			if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
+//			if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
+			if (c->GetConfiguration()->Simulations[j].Lower() == as[0]) {
 				*ndx_hybrid = j;
 				*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
 			}
@@ -262,7 +273,7 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
-	if (col <= (int)m_col_hdrs.size())
+	if (col < (int)m_col_hdrs.size())
 		return m_col_hdrs[col];
 	else
 		return wxEmptyString;
@@ -529,7 +540,7 @@ wxString VariableGridData::GetTypeName(int row, int col)
 		Case* c = GetCase(row, col);
 		wxString var_name;
 		size_t ndx_hybrid;
-		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+		if (lookup_row < m_var_names.size() && UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
 			if (VarInfo* var_info = m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name))
 			{ // TODO - better control list maintenance here and in UIEditorPanel
 				wxString type = var_info->UIObject;
@@ -673,12 +684,13 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		bool calculated = false;
 		int lookup_row = row;
 		if ((row < (int)m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
+
 		// calculated = calculated in any case!
 		for (size_t iCase = 0; iCase < m_cases.size(); iCase++) {
 			Case* c = m_cases[iCase]; 
 			wxString var_name;
 			size_t ndx_hybrid;
-			if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			if (lookup_row < m_var_names.size() && UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
 				if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name))) {
 					VarInfo* vi = m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name);
 					if (vi)
@@ -720,15 +732,34 @@ bool VariableGridData::DeleteCols(size_t pos, size_t numCols)
 	return true;
 }
 
+
+bool VariableGridData::DeleteRows(size_t pos, size_t numRows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+			pos,
+			numRows);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
 bool VariableGridData::AddCase(Case *c)
 {
 	std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
 	if (it == m_cases.end())
 	{
 		m_cases.push_back(c);
-		Init();
-		AppendCols();
-		return true;
+
+		if (c->GetConfiguration()) {
+			Init();
+			AppendCols();
+			return true;
+		}
 	}
 	return false;
 }
@@ -741,6 +772,20 @@ bool VariableGridData::AppendCols(size_t numCols)
 		wxGridTableMessage msg(this,
 			wxGRIDTABLE_NOTIFY_COLS_APPENDED,
 			numCols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+bool VariableGridData::AppendRows(size_t numRows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+			numRows);
 
 		GetView()->ProcessTableMessage(msg);
 	}
@@ -1105,6 +1150,7 @@ void VariableGridFrame::SizeColumns()
 void VariableGridFrame::UpdateGrid()
 {
 	wxString filter(m_filter->GetValue().Lower());
+//	m_grid->SetTable(m_griddata);
 	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
@@ -1124,7 +1170,6 @@ void VariableGridFrame::UpdateGrid()
 			m_grid->HideRow(row);
 	}
 	m_grid->Thaw();
-	m_grid->ForceRefresh();
 }
 
 void VariableGridFrame::OnCommand(wxCommandEvent &evt)
@@ -1211,6 +1256,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 			m_griddata->DeleteCase(c);
 			m_grid->Refresh();
 			UpdateGrid();
+			m_grid->ForceRefresh();
 		}
 	}
 	else if (evt.GetType() == ProjectFileEvent::CASE_ADDED)
@@ -1221,8 +1267,12 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 		{
 			m_cases.push_back(c);
 			m_griddata->AddCase(c);
-			m_grid->Refresh();
-			UpdateGrid();
+			if (c->GetConfiguration()) {
+
+				m_grid->Refresh();
+				UpdateGrid();
+				m_grid->ForceRefresh();
+			}
 		}
 	}
 	else if (evt.GetType() == ProjectFileEvent::CASE_RENAMED)

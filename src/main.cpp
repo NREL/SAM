@@ -472,9 +472,11 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	if ( m_topBook->GetSelection() != 1 )
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
-	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	//	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	Case* c = new Case;
 	c->SetConfiguration( tech, fin );
 	c->LoadDefaults();
+	m_project.AddCase(GetUniqueCaseName(_name), c);
 	CreateCaseWindow( c );
 	return true;
 }
@@ -2944,7 +2946,7 @@ void ConfigDialog::PopulateTech()
 			nodes.Add(node);
 	}
 
-	wxDataViewItemArray dvia{containers.Count()};
+	wxDataViewItemArray dvia(containers.Count());
 
 	// order from startup.lk configopt("TechnologyTreeOrder", ...
 	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;
