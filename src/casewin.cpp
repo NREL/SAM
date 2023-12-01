@@ -1406,7 +1406,7 @@ void CaseWindow::UpdateConfiguration()
 	wxString Ts_lower = Ts.Lower();
 	wxArrayString Ts_split = wxSplit(Ts, '-');
 	wxDataViewItem cont_pv;
-	wxDataViewItemArray dvia{ m_pageGroups.size() + 1 };
+	wxDataViewItemArray dvia( m_pageGroups.size() + 1 );
 	wxArrayString bin_list;
 	wxArrayString page_list;
 	wxString bin_name;
