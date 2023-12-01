@@ -336,7 +336,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 153.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -879,18 +879,19 @@
         "\t",
         "\tif (technology() == 'Generic Battery' || is_hybrid()) {",
         "\t\tmsg = 'For the Custom Forecast option, choose a generation profile at the simulation timestep to use for the dispatch forecast instead of the profile on the Power Plant page.';",
-        "\t\tenable('batt_pv_ac_forecast_peak',true);",
-        "\t\tenable('batt_user_specified_weather_file_peak_shaving',false);",
-        "\t\tenable('batt_select_weather_file_forecast_peak_shaving',false);",
+        "\t\tshow('batt_pv_ac_forecast_peak',true);",
+        "\t\tshow('batt_user_specified_weather_file_peak_shaving',false);",
+        "\t\tshow('batt_select_weather_file_forecast_peak_shaving',false);",
         "",
         "\t}",
         "\telse {",
         "\t\tmsg = 'For the Custom Forecast option, choose a weather file in the SAM CSV format to use for the dispatch forecast instead of the weather file on the Location and Resource page.';\t",
-        "\t\tenable('batt_pv_ac_forecast_peak',false);",
-        "\t\tenable('batt_user_specified_weather_file_peak_shaving',true);",
-        "\t\tenable('batt_select_weather_file_forecast_peak_shaving',true);",
+        "\t\tshow('batt_pv_ac_forecast_peak',false);",
+        "\t\tshow('batt_user_specified_weather_file_peak_shaving',true);",
+        "\t\tshow('batt_select_weather_file_forecast_peak_shaving',true);",
         "",
-        "\t}",
+        "\t}\r",
+        "\trefresh();",
         "\t",
         "\tproperty('batt_custom_weather_file_description','Caption',msg);",
         "}"
