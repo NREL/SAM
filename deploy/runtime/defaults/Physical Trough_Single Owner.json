@@ -63,6 +63,8 @@
         2.15,
         2.15
     ],
+    "COPY_field_thermal_output": 522.668,
+    "COPY_total_aperture": 949888.0,
     "CT": 2.0,
     "ColperSCA": [
         8.0,
@@ -474,7 +476,7 @@
     "FIELD_COPY_T_loop_in_des": 293.0,
     "FIELD_COPY_T_loop_out": 391.0,
     "FIELD_COPY_nLoops": 181.0,
-    "FIELD_COPY_solar_mult": 2.0,
+    "FIELD_COPY_solar_mult": 2.00774,
     "F_wc": [
         0.0,
         0.0,
@@ -931,9 +933,9 @@
     "PB_COPY_P_ref": 111.0,
     "PB_COPY_eta_ref": 0.356,
     "PB_COPY_gross_net_conversion_factor": 0.9,
-    "PB_COPY_htf_cp_avg": 2.45489,
+    "PB_COPY_htf_cp_avg": 3.3429,
     "PB_COPY_q_pb_design": 311.798,
-    "PB_m_dot_htf_cycle_des": 1296.03,
+    "PB_m_dot_htf_cycle_des": 1295.71,
     "P_a": [
         [
             0.0001,
@@ -964,7 +966,6 @@
     "P_cond_ratio": 1.0028,
     "P_ref": 111.0,
     "Pipe_hl_coef": 0.45,
-    "Q_rec_des": 623.596,
     "Q_tes": 1870.79,
     "Rho_mirror_clean": [
         0.93,
@@ -1397,6 +1398,7 @@
     "bop_par_2": 0.0,
     "bop_par_f": 1.0,
     "calc_design_pipe_vals": 1.0,
+    "capital_cost": 562202000.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -1550,6 +1552,12 @@
     "csp_dtr_hce_design_heat_loss_2": 190.0,
     "csp_dtr_hce_design_heat_loss_3": 190.0,
     "csp_dtr_hce_design_heat_loss_4": 190.0,
+    "csp_dtr_hce_design_heat_losses": [
+        207.35,
+        190.0,
+        190.0,
+        190.0
+    ],
     "csp_dtr_hce_diam_absorber_inner_1": 0.076,
     "csp_dtr_hce_diam_absorber_inner_2": 0.076,
     "csp_dtr_hce_diam_absorber_inner_3": 0.076,
@@ -1586,6 +1594,12 @@
     "csp_dtr_hce_optical_eff_2": 0.850631,
     "csp_dtr_hce_optical_eff_3": 0.850631,
     "csp_dtr_hce_optical_eff_4": 0.850631,
+    "csp_dtr_hce_optical_effs": [
+        0.850117,
+        0.850631,
+        0.850631,
+        0.850631
+    ],
     "csp_dtr_hce_var1_abs_abs_1": 0.963,
     "csp_dtr_hce_var1_abs_abs_2": 0.963,
     "csp_dtr_hce_var1_abs_abs_3": 0.963,
@@ -1762,10 +1776,19 @@
     "csp_dtr_hce_var4_rated_heat_loss_2": 0.0,
     "csp_dtr_hce_var4_rated_heat_loss_3": 0.0,
     "csp_dtr_hce_var4_rated_heat_loss_4": 0.0,
+    "csp_dtr_loop_hce_heat_loss": 0.961737,
     "csp_dtr_sca_ap_length_1": 14.375,
     "csp_dtr_sca_ap_length_2": 14.375,
     "csp_dtr_sca_ap_length_3": 14.375,
     "csp_dtr_sca_ap_length_4": 14.375,
+    "csp_dtr_sca_ap_lengths": [
+        [
+            14.375,
+            14.375,
+            14.375,
+            14.375
+        ]
+    ],
     "csp_dtr_sca_aperture_1": 656.0,
     "csp_dtr_sca_aperture_2": 656.0,
     "csp_dtr_sca_aperture_3": 656.0,
@@ -1774,6 +1797,7 @@
     "csp_dtr_sca_ave_focal_len_2": 2.15,
     "csp_dtr_sca_ave_focal_len_3": 2.15,
     "csp_dtr_sca_ave_focal_len_4": 2.15,
+    "csp_dtr_sca_calc_costh": 0.988558,
     "csp_dtr_sca_calc_costh_1": 0.988558,
     "csp_dtr_sca_calc_costh_2": 0.988558,
     "csp_dtr_sca_calc_costh_3": 0.988558,
@@ -1782,14 +1806,39 @@
     "csp_dtr_sca_calc_end_gain_2": 0.0,
     "csp_dtr_sca_calc_end_gain_3": 0.0,
     "csp_dtr_sca_calc_end_gain_4": 0.0,
+    "csp_dtr_sca_calc_end_gains": [
+        [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
     "csp_dtr_sca_calc_end_loss_1": 0.999643,
     "csp_dtr_sca_calc_end_loss_2": 0.999643,
     "csp_dtr_sca_calc_end_loss_3": 0.999643,
     "csp_dtr_sca_calc_end_loss_4": 0.999643,
+    "csp_dtr_sca_calc_end_losses": [
+        [
+            0.999643,
+            0.999643,
+            0.999643,
+            0.999643
+        ]
+    ],
     "csp_dtr_sca_calc_iam_1": 1.00188,
     "csp_dtr_sca_calc_iam_2": 1.00188,
     "csp_dtr_sca_calc_iam_3": 1.00188,
     "csp_dtr_sca_calc_iam_4": 1.00188,
+    "csp_dtr_sca_calc_iams": [
+        [
+            1.00188,
+            1.00188,
+            1.00188,
+            1.00188
+        ]
+    ],
+    "csp_dtr_sca_calc_latitude": 32.13,
     "csp_dtr_sca_calc_latitude_1": 32.13,
     "csp_dtr_sca_calc_latitude_2": 32.13,
     "csp_dtr_sca_calc_latitude_3": 32.13,
@@ -1798,10 +1847,18 @@
     "csp_dtr_sca_calc_sca_eff_2": 0.848494,
     "csp_dtr_sca_calc_sca_eff_3": 0.848494,
     "csp_dtr_sca_calc_sca_eff_4": 0.848494,
+    "csp_dtr_sca_calc_sca_effs": [
+        0.848494,
+        0.848494,
+        0.848494,
+        0.848494
+    ],
+    "csp_dtr_sca_calc_theta": 0.151418,
     "csp_dtr_sca_calc_theta_1": 0.151418,
     "csp_dtr_sca_calc_theta_2": 0.151418,
     "csp_dtr_sca_calc_theta_3": 0.151418,
     "csp_dtr_sca_calc_theta_4": 0.151418,
+    "csp_dtr_sca_calc_zenith": 0.150622,
     "csp_dtr_sca_calc_zenith_1": 0.150622,
     "csp_dtr_sca_calc_zenith_2": 0.150622,
     "csp_dtr_sca_calc_zenith_3": 0.150622,
@@ -1847,7 +1904,6 @@
     "csp_dtr_sca_w_profile_3": 6.0,
     "csp_dtr_sca_w_profile_4": 6.0,
     "csp_financial_model": 1.0,
-    "cspdtr_loop_hce_heat_loss": 0.961737,
     "ctes_cost": 0.7,
     "ctes_field_fl": 4.0,
     "ctes_tankpairs": 1.0,
@@ -11582,10 +11638,10 @@
             0.0
         ]
     ],
-    "field_htf_cp_avg": 2.45489,
+    "field_htf_cp_avg": 3.3429,
     "field_htf_max_operating_temp": 400.0,
     "field_htf_min_operating_temp": 12.0,
-    "field_thermal_output": 626.008,
+    "field_thermal_output": 522.668,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "fixed_land_area": 586.793,
     "flip_target_percent": 7.0,
@@ -21400,11 +21456,11 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
-    "single_loop_aperature": 5248.0,
+    "single_loop_aperture": 5248.0,
     "solar_data_file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solar_data_file_name_load": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
-    "solar_mult": 2.0,
+    "solar_mult": 2.00774,
     "solar_resource": "tucson_az_32.116521_-110.933042_psmv3_60_tmy",
     "solar_resource_file": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solution_mode_message": "",

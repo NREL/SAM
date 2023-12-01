@@ -1234,7 +1234,7 @@
     "FuelCell": {
         "add_om_num_types": 2.0,
         "analysis_period": 25.0,
-        "batt_dispatch_choice_ui": 2.0,
+        "batt_dispatch_choice_ui": 3.0,
         "battery_total_cost_lcos": 0.0,
         "bos_equip_fcperkw": 0.0,
         "bos_equip_fixed": 0.0,
@@ -19696,8 +19696,8 @@
         "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
         "batt_dispatch_choice": 3.0,
-        "batt_dispatch_choice_ui": 2.0,
-        "batt_dispatch_excl": 2.0,
+        "batt_dispatch_choice_ui": 3.0,
+        "batt_dispatch_excl": 3.0,
         "batt_dispatch_pvs_ac_lb": -0.1,
         "batt_dispatch_pvs_ac_lb_enable": 0.0,
         "batt_dispatch_pvs_ac_ub": 1.05,
@@ -28785,23 +28785,23 @@
         ],
         "dispatch_manual_charge": [
             1.0,
-            1.0,
-            1.0,
+            0.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_discharge": [
             0.0,
-            0.0,
             1.0,
+            0.0,
             0.0,
             0.0,
             0.0
         ],
         "dispatch_manual_gridcharge": [
             0.0,
-            1.0,
+            0.0,
             0.0,
             0.0,
             0.0,
@@ -28812,7 +28812,6 @@
             0.0
         ],
         "dispatch_manual_percent_gridcharge": [
-            100.0,
             0.0
         ],
         "dispatch_manual_sched": [
@@ -30122,18 +30121,18 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.04
+            0.05
         ],
         "pv.storage.p1.charge": 1.0,
         "pv.storage.p1.discharge": 0.0,
         "pv.storage.p1.dischargetogrid": 0.0,
         "pv.storage.p1.gridcharge": 0.0,
-        "pv.storage.p2.charge": 1.0,
-        "pv.storage.p2.discharge": 0.0,
+        "pv.storage.p2.charge": 0.0,
+        "pv.storage.p2.discharge": 1.0,
         "pv.storage.p2.dischargetogrid": 0.0,
-        "pv.storage.p2.gridcharge": 1.0,
-        "pv.storage.p3.charge": 1.0,
-        "pv.storage.p3.discharge": 1.0,
+        "pv.storage.p2.gridcharge": 0.0,
+        "pv.storage.p3.charge": 0.0,
+        "pv.storage.p3.discharge": 0.0,
         "pv.storage.p3.dischargetogrid": 0.0,
         "pv.storage.p3.gridcharge": 0.0,
         "pv.storage.p4.charge": 0.0,
@@ -30243,7 +30242,7 @@
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
         "construction_financing_cost": 16082900.0,
-        "cost_debt_closing": 450000.0,
+        "cost_debt_closing": 0.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
         "cp_battery_nameplate": 0.0,
@@ -48640,7 +48639,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.04
+            0.05
         ],
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,

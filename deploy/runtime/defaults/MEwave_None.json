@@ -3471,7 +3471,7 @@
     "load_grid_voltage_options": 0.0,
     "location": "Humboldt Bay - DOE Reference",
     "location_id": 596791.0,
-    "location_name": "<invalid>",
+    "location_name": "Humboldt Bay",
     "location_ts": "lat40.84_lon-124.25__2010",
     "lon": -124.25,
     "loss_additional": 0.0,

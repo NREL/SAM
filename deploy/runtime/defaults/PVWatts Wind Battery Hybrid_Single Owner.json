@@ -1322,9 +1322,9 @@
         "batt_dispatch_auto_can_clipcharge": 0.0,
         "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
-        "batt_dispatch_choice": 2.0,
-        "batt_dispatch_choice_ui": 2.0,
-        "batt_dispatch_excl": 2.0,
+        "batt_dispatch_choice": 3.0,
+        "batt_dispatch_choice_ui": 3.0,
+        "batt_dispatch_excl": 3.0,
         "batt_dispatch_pvs_ac_lb": -0.1,
         "batt_dispatch_pvs_ac_lb_enable": 0.0,
         "batt_dispatch_pvs_ac_ub": 1.05,
@@ -11748,7 +11748,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.051
+            0.05
         ],
         "pv.storage.p1.charge": 1.0,
         "pv.storage.p1.discharge": 0.0,
@@ -11869,7 +11869,7 @@
         "const_per_upfront_rate4": 0.0,
         "const_per_upfront_rate5": 0.0,
         "construction_financing_cost": 13658600.0,
-        "cost_debt_closing": 450000.0,
+        "cost_debt_closing": 0.0,
         "cost_debt_fee": 2.75,
         "cost_other_financing": 0.0,
         "cp_battery_nameplate": 0.0,
@@ -30263,7 +30263,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.051
+            0.05
         ],
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
