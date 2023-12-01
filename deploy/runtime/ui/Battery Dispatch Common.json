@@ -693,6 +693,18 @@
         "\t\tvalue('batt_pv_clipping_forecast', [0]);",
         "\t}",
         "\tssc_free(forecast_run);",
+        "}\r",
+        "\r",
+        "function is_hybrid() \r",
+        "{\r",
+        "\thybrid = false;\r",
+        "\ttech = technology();\r",
+        "\tif ( tech == 'PVWatts Wind Battery Hybrid' \r",
+        "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
+        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t{ hybrid = true; }\r",
+        "\treturn hybrid;\r",
         "}"
     ]
 }
