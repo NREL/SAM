@@ -70,6 +70,7 @@
 <li>New hybrid power models with different combinations of the photovoltaic (PVWatts and Detailed PV), Wind Power, Fuel Cell, and Generic System models with battery storage for the Single Owner and Third Party Host / Developer financial models.</li>
 <li>New concentrating solar power (CSP) and industrial process heat (IPH) model for molten salt linear Fresnel systems.</li>
 <li>Update REopt for PV-battery optimization to REopt API V3.</li>
+<li>New self-consumption dispatch option for behind-the-meter batteries.</li>
 <li>Geothermal model updates.</li>
 <li>Marine Energy model updates.</li>
 <li>Update defaults.</li>
@@ -83,7 +84,7 @@
 
 <p>This major new feature adds configurations for hybrid power systems. (<a href="https://github.com/NREL/SAM/pull/1448">SAM 1448</a> and <a href="https://github.com/NREL/SAM/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2023+Release%22+label%3A%22dev+bug%22+is%3Aclosed">multiple subsequent pull requests</a>, <a href="https://github.com/NREL/ssc/pull/1051">SSC 1051</a>)</p>
 
-<p>Hybrid power systems combine photovoltaic (PVWatts or Detailed PV), Wind Power, Fuel Cell, and Generic System models for power generation with the Standalone Battery model for electricity storage. Battery dispatch responds to the sum of power from the PV, wind, fuel cell and/or generic systems in each time step. The hybrid system performance models are availailabe with either the Single Owner for front-of-meter applications or the Third Party Host / Developer financial model for behind-the-meter applications. As is the case for all of SAM's models, SAM assumes the hybrid system is connected to the grid. The new hybrid configurations are available for the following combinations of performance models:</p>
+<p>Hybrid power systems combine photovoltaic (PVWatts or Detailed PV), Wind Power, Fuel Cell, and Generic System models for power generation with the Standalone Battery model for electricity storage. Battery dispatch responds to the sum of power from the PV, wind, fuel cell and/or generic systems in each time step. The hybrid system performance models are available with either the Single Owner for front-of-meter applications or the Third Party Host / Developer financial model for behind-the-meter applications. As is the case for all of SAM's models, SAM assumes the hybrid system is connected to the grid. The new hybrid configurations are available for the following combinations of performance models:</p>
 
 <ul>
 <li>PVWatts, Wind Power, Battery Storage</li>
@@ -152,8 +153,8 @@
 <li>Set default values of all availability loss inputs to zero for battery configurations. (<a href="https://github.com/NREL/SAM/pull/1463">SAM 1463</a>)</li>
 <li>Show rear irradiance values in loss diagram for PV-battery configurations. (<a href="https://github.com/NREL/SAM/pull/1422">SAM 1422</a>)</li>
 <li>Fix issue for PV-smoothing dispatch that caused discrepancy between PV-smoothing and battery state of charge values. (<a href="https://github.com/NREL/ssc/pull/1085">SSC 1085</a>)
-<li>Fix battery does not discharge for peak shaving dispatch for small batteries. (<a href="https://github.com/NREL/ssc/pull/1208">SSC 1208</a>)</li>
-<li>Fix battery discharge in excess of critical load when AC losses are present. (<a href="https://github.com/NREL/ssc/pull/1061">SSC 1061</a>)</li>
+<li>Fix battery not discharging for peak shaving dispatch for small batteries. (<a href="https://github.com/NREL/ssc/pull/1208">SSC 1208</a>)</li>
+<li>Fix battery discharging in excess of critical load when AC losses are present. (<a href="https://github.com/NREL/ssc/pull/1061">SSC 1061</a>)</li>
 </ul>
 
 <h2>Concentrating Solar Power (2023.12.xx)</h2>
