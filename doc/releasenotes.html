@@ -59,6 +59,124 @@
 
 -->
 
+<h1 id="2023-11-xx">SAM 2023.11.xx, SSC xxx: November xx, 2023</h1>
+
+<p>This new version introduces a set of new hybrid power system models and a new molten salt linear Fresnel model for electric power generation and industrial process heat applications. For a complete list of code revisions associated with this version, see the <a href="https://github.com/NREL/SAM/issues?q=milestone%3A%22SAM+Fall+2023+Release%22+is%3Aclosed">SAM</a> and <a href="https://github.com/NREL/ssc/issues?q=milestone%3A%22SAM+Fall+2023+Release%22+is%3Aclosed">SSC</a> GitHub repositories.  Highlights include:</p>
+
+<ul>
+<li>New SAM logo and icon.</li>
+<li>New hybrid power models with different combinations of the photovoltaic (PVWatts and Detailed PV), Wind Power, Fuel Cell, and Generic System models with battery storage for the Single Owner and Third Party Host / Developer financial models.</li>
+<li>New concentrating solar power and industria process heat model for molten salt linear Fresnel systems.</li>
+<li>Update REopt for PV-battery optimization to REopt API V3.</li>
+<li>Geothermal model updates.</li>
+<li>Marine Energy model updates.</li>
+<li>Update defaults and photovoltaic module and inverter libraries.</li>
+<li>Revise and update Help.</li>
+</ul>
+
+<p>We are working to fix known <a href="https://github.com/NREL/SAM/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22SAM+Fall+2023+Release%22">SAM issues</a> and <a href="https://github.com/NREL/ssc/issues?q=is%3Aopen+is%3Aissue+milestone%3A%22SAM+Fall+2023+Release%22">SSC issues</a> for an update to this version in early 2024. Please <a href="mailto:sam.support@nrel.gov">let us know</a> if you find any other problems.</p>
+
+<h2>Hybrid Power Systems</h2>
+
+<p>This major new feature adds configurations for hybrid power systems. (<a href="https://github.com/NREL/SAM/pull/1448">SAM 1448</a> and <a href="https://github.com/NREL/SAM/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2023+Release%22+label%3A%22dev+bug%22+is%3Aclosed">multiple subsequent pull requests</a>)</p>
+
+<p>Hybrid power systems combine photovoltaic (PVWatts or Detailed PV), Wind Power, Fuel Cell, and Generic System models for power generation with the Standalone Battery model for electricity storage. Battery dispatch responds to the sum of power from the PV, wind, fuel cell and/or generic systems in each time step. The hybrid system performance models are availailabe with either the Single Owner for front-of-meter applications or the Third Party Host / Developer financial model for behind-the-meter applications. As is the case for all of SAM's models, SAM assumes the hybrid system is connected to the grid. The new hybrid configurations are available for the following combinations of performance models:</p>
+
+<ul>
+<li>PVWatts, Wind Power, Battery Storage</li>
+<li>PVWatts, Wind Power, Fuel Cell, Battery Storage</li>
+<li>Detailed PV, Wind Power, Battery Storage</li>
+<li>Generic System, PVWatts, Wind Power, Fuel Cell, Battery Storage</li>
+</ul>
+
+<h2>General (2023.11.xx)</h2>
+
+<ul>
+<li>Update National Solar Radiation Database (NSRDB) downloads from Location and Resource input page to NSRDB PSM V3.2.2 to include latest data from 2022. (<a href="https://github.com/NREL/SAM/pull/1559">SAM 1559</a>), also update NSRDB download sample LK script. (<a href="https://github.com/NREL/SAM/pull/1499">SAM 1499</a>)</li>
+<li>Update defaults to align with <a href="https://atb.nrel.gov/electricity/2023/index">2023 NREL Annual Technology Baseline (ATB)</a>, for new hybrid configurations, and to result in positive net present value (NPV) where possible. (<a href="https://github.com/NREL/SAM/pull/1581">SAM 1581</a>)</li>
+<li>Fix layout issues for Mac and Linux versions. (<a href="https://github.com/NREL/SAM/pull/1580">SAM 1580</a>)</li>
+<li>Change format of "adjust" variable used for availability and other time-varying losses from table to separate variables for "constant", "time series" and "periods." This internal change only affects LK scripts and code for the Software Development Kit (SDK) and PySAM. (<a href="https://github.com/NREL/SAM/pull/1468">SAM 1468</a>)</li>
+</ul>
+
+<h2>Financial Models (2023.11.xx)</h2>
+
+<ul>
+<li>Update Send-to-Excel with Equations (Windows only) for battery and fuel cell / residential and commercial configurations to properly account for battery and fuel cell operating costs. (<a href="https://github.com/NREL/SAM/pull/1545">SAM 1545</a>)</li>
+<li>Update Send-to-Excel with Equations (Windows only) for front-of-meter (FOM) financial models to calculate production based incentive (PBI), production-based O&M costs, and production tax credit (PTC) from correct annual energy value. (<a href="https://github.com/NREL/SAM/pull/1501">SAM 1501</a>)</li>
+<li>Add user interfaced warning messages for systems with battery storage and a production tax credit (PTC) when battery is allowed to charge from the grid. (<a href="https://github.com/NREL/SAM/pull/1542">SAM 1542</a>)</li>
+</ul>
+
+<h2>Detailed Photovoltaic (2023.11.xx)</h2>
+
+<ul>
+<li>Update module and inverter libraries from 11/17/2023 CEC workbooks. (<a href="https://github.com/NREL/SAM/pull/1607">SAM 1607</a>, (<a href="https://github.com/NREL/SAM/pull/1606">SAM 1606</a>))</li>
+<li>Change default inverters based on market share. (<a href="https://github.com/NREL/SAM/pull/1607">SAM 1607</a>)</li>
+<li>Fix issue with availability and shading losses shown on PDF report. (<a href="https://github.com/NREL/SAM/pull/1579">SAM 1579</a>)</li>
+<li>Add user interface check and warning for bifacial ground clearance height input values that result in modules being too close to the ground. (<a href="https://github.com/NREL/SAM/pull/1544">SAM 1544</a>)</li>
+<li>Move module dimension inputs from Shading and Layout page to Module page. (<a href="https://github.com/NREL/SAM/pull/1519">SAM 1519</a>)</LI>
+<li>Change default inverter temperature derating curve maximum voltage to 1500 VDC so it works with full range of inverters in the library. (<a href="https://github.com/NREL/SAM/pull/1460">SAM 1460</a>)</li>
+</ul>
+
+<h2>PVWatts (2023.11.xx)</h2>
+
+<ul>
+<li>Fix issue with Edit Shading Data window for advanced "Shading by Nearby Objects". (<a href="https://github.com/NREL/SAM/pull/1593">SAM 1593</a>) </li>
+</ul>
+
+<h2>Battery Storage (2023.11.xx)</h2>
+
+<ul>
+<li>Update REopt API call to Version 3, pass grid outage data to API, and fix conversion efficiency values. (<a href="https://github.com/NREL/SAM/pull/1527">SAM 1527</a>)</li>
+<li>Rename "price signals dispatch" to "retail rate dispatch" for behind-the-meter battery dispatch options. (<a href="https://github.com/NREL/SAM/pull/1495">SAM 1495</a>)</li>
+<li>Fix problem with automatic battery sizing when desired size is specified in AC units. (<a href="https://github.com/NREL/SAM/pull/1469">SAM 1469</a>)</li>
+<li>Change default resistance for lead acid battery types to more realistic value. (<a href="https://github.com/NREL/SAM/pull/1493">SAM 1493</a>)</li>
+<li>Remove "Calculate Load Data" option from Electric Load page for Standalone Battery / Residential configurations because it requires solar resource data that is not available. (<a href="https://github.com/NREL/SAM/pull/1467">SAM 1467</a>)</li>
+<li>Set default values of all availability loss inputs to zero for battery configurations. (<a href="https://github.com/NREL/SAM/pull/1463">SAM 1463</a>)</li>
+</ul>
+
+<h2>Concentrating Solar Power (2023.11.xx)</h2>
+
+<ul>
+<li>Update Physical Trough model user interface implementation to match power tower and linear Fresnel models. This behind-the-scenes update streamlines the user interface to improve <a href="https://sam.nrel.gov/lk-script.html">LK script</a> interactions with the model. (SAM <a href="https://github.com/NREL/SAM/pull/1613">1613</a>)</li>
+<li>New model for parabolic trough industrial process heat (IPH) applications based on updated Physical Trough model. (SAM <a href="https://github.com/NREL/SAM/pull/1613">1613</a>)</li>
+<li>Fix Molten Salt Linear Fresnel "Placeholder Variable" in total installed cost label in user interface. (<a href="https://github.com/NREL/SAM/pull/1530">SAM 1530</a>)</li>
+</ul>
+
+<h2>Wind Power (2023.11.xx)</h2>
+
+<ul>
+<li>Add system availability loss to wind power model. <a href="https://github.com/NREL/SAM/pull/1612">SAM 1612</a></li>
+</ul>
+
+<h2>Marine Energy (2023.11.xx)</h2>
+
+<ul>
+<li>New option for Tidal resource time series data with new example resource files. (<a href="https://github.com/NREL/SAM/pull/1510">SAM 1510</a>)</li>
+<li>Fix user interface layout issues for Mac, and issues with showing and hiding inputs on cost pages cost based on selection of options. (<a href="https://github.com/NREL/SAM/pull/1591">SAM 1591</a>)</li>
+<li>Update Wave resource libraries and example files. (<a href="https://github.com/NREL/SAM/pull/1591">SAM 1591</a>)</li>
+<li>Fix issue with tidal resource data shown on PDF report. (<a href="https://github.com/NREL/SAM/pull/1579">SAM 1579</a>)</li>
+</ul>
+
+<h2>Wind Power (2023.11.xx)</h2>
+
+<ul>
+<li>Fix WIND Toolkit downloads to correctly download data at different measurement heights. (<a href="https://github.com/NREL/SAM/pull/1483">SAM 1483</a>)</li>
+</ul>
+
+<h2>Geothermal Power (2023.11.xx)</h2>
+
+<ul>
+<li>Fix reservoir pressure change units. (<a href="https://github.com/NREL/SAM/pull/1591">SAM 1591</a>)</li>
+<li>Add inputs for more precise well count calculations, new tooltips for input variable descriptions, and option to read wet bulb temperature from weather file. (<a href="https://github.com/NREL/SAM/pull/1524">SAM 1524</a>)</li>
+<li>Disable Default Type options on Geothermal Resource page for configurations with LCOE Calculator or No Financial that have no analysis period defined to avoid user interface "callback" error. (<a href="https://github.com/NREL/SAM/pull/1517">SAM 1517</a>, (<a href="https://github.com/NREL/SAM/pull/1488">SAM 1488</a>)) 
+</ul>
+
+<h2>Fuel Cell (2023.11.xx)</h2>
+
+<ul>
+<li>Create new input page for fuel cell dispatch options that is separate from battery dispatch, and remove options not appropriate for fuel cell. (<a href="https://github.com/NREL/SAM/pull/1492">SAM 1492</a>)</li>
+</ul>
+
 <h1 id="2022-11-21-r3">SAM 2022.11.21 r3, SSC 280: June 3, 2023</h1>
 
 <p>This is the third maintenance update to <a href="2022-11-21">SAM 2022.11.21</a>.</p>
