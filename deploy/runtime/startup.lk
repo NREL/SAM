@@ -2693,6 +2693,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -2824,6 +2825,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 3,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 3,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -2966,6 +2968,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -3116,6 +3119,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch

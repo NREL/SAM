@@ -22826,6 +22826,9 @@
             33.5754,
             33.5754
         ],
+        "load_escalation": [
+            0.0
+        ],
         "load_user_forecast_data_peak_shaving": [
             0.0
         ],
