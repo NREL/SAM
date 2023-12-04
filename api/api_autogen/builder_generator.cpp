@@ -55,7 +55,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "builder_C_API.h"
 #include "builder_PySAM.h"
 
-extern var_info vtab_hybrid_tech_om_inputs[];
 
 std::unordered_map<std::string, bool> SAM_completed_cmods;
 
@@ -85,8 +84,7 @@ builder_generator::builder_generator(config_extractor *ce){
         ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
 
         if (config_name.find("Hybrid") != std::string::npos) {
-            compute_module* cmod = static_cast<compute_module*>(p_mod);
-            cmod->add_var_info(vtab_hybrid_tech_om_inputs);
+            ssc_module_hybridize(p_mod);
         }
         ssc_module_objects.insert({cmod_name, p_mod});
     }
@@ -132,8 +130,7 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
 
     // hybrid technology compute modules have extra financial variables that need to be exported to defaults
     if (active_config.find("Hybrid") != std::string::npos) {
-        compute_module* cmod = static_cast<compute_module*>(p_mod);
-        cmod->add_var_info(vtab_hybrid_tech_om_inputs);
+        ssc_module_hybridize(p_mod);
     }
 
     digraph* graph = nullptr;
