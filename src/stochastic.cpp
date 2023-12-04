@@ -2288,6 +2288,8 @@ void StochasticPanel::Simulate()
 	{
 		Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
 		m_sims.push_back(s);
+        
+        s->Clear(); // resizes inputs for Override to work
 
 		for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)
 		{
@@ -2299,12 +2301,12 @@ void StochasticPanel::Simulate()
 				if (!GetWeatherFileForSum(m_input_data(i, j), &weather_file))
 					continue;
 				weather_file = m_folder->GetValue() + "/" + weather_file;
-				s->Override("use_specific_weather_file", VarValue(true), 0); // TODO:hybrids
+				s->Override("use_specific_weather_file", VarValue(true), 0); // TODO:hybrids NOT currently supported
 				s->Override("user_specified_weather_file", VarValue(weather_file), 0);
 				s->Override("use_specific_wf_wind", VarValue(true), 0);
 				s->Override("user_specified_wf_wind", VarValue(weather_file), 0);
 			}
-			else if (m_case->Values(0).Get(iname)->Length() == 1)
+			else if (m_case->Values(0).Get(iname)->Length() == 1)// hybrids
 			{
 				double val[1];
 				val[0] = (double)m_input_data(i, j);

@@ -3006,8 +3006,7 @@ bool ParametricGridData::RunSimulations_multi()
 					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
 						// set for simulation
-//						m_par.Runs[i]->Override(m_var_names[col], *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
-						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
+						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid);
 					}
 				}
 			}
