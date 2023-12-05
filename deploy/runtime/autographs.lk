@@ -282,7 +282,7 @@ autographs { 'Photovoltaic Wind Battery Hybrid|Single Owner' } = define () {
 
 autographs { 'Photovoltaic Wind Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	agraph( 'generic_monthly_energy,photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	agraph( 'photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
 
 	// after-tax cash flow and host indifference point
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
