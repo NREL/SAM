@@ -1647,7 +1647,7 @@
         "\t\t${required_number_of_loops_for_SM1} = ssc_var(obj, \"required_number_of_loops_for_SM1\");\r",
         "\t\t${nLoops} = ssc_var(obj, \"nLoops\");\r",
         "\t\t${total_aperture} = ssc_var(obj, \"total_aperture\");\r",
-        "\t\t${field_thermal_output} = ssc_var(obj, \"field_thermal_output\");\r",
+        "\t\t${field_thermal_output} = ssc_var(obj, \"field_thermal_output_actual\");\r",
         "\t\t${solar_mult} = ssc_var(obj, \"solar_mult\");\r",
         "\t\t${fixed_land_area} = ssc_var(obj, \"fixed_land_area\");\r",
         "\t\t${total_land_area} = ssc_var(obj, \"total_land_area\");\r",
