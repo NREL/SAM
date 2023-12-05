@@ -1,5 +1,5 @@
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-CMIST,PUG1527,b'The Narrows 0.3 miles North of Bridge',47.27432,-122.54532,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,42.9,-
+CMIST,PUG1527,The Narrows 0.3 miles North of Bridge,47.27432,-122.54532,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,42.9,-
 Year,Month,Day,Hour,Minute,Speed,,,,,,,,,,,,,,
 2008,1,1,0,30,0.91814244,,,,,,,,,,,,,,
 2008,1,1,1,30,0.276233,,,,,,,,,,,,,,

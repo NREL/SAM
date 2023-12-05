@@ -1,5 +1,5 @@
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-CMIST,COI0501,b'West Foreland',60.72198,-151.6469,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,19.4,-
+CMIST,COI0501,West Foreland,60.72198,-151.6469,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,19.4,-
 Year,Month,Day,Hour,Minute,Speed,,,,,,,,,,,,,,
 2008,1,1,0,30,2.038051,,,,,,,,,,,,,,
 2008,1,1,1,30,1.5651659,,,,,,,,,,,,,,

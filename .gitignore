@@ -387,3 +387,7 @@ src/googletest-release-1.8.0/googlemock/gtest/CMakeFiles/gtest_main.dir/
 src/googletest-release-1.8.0/googlemock/gtest/
 
 deploy/mslf_iph_mimo_ssc_auto_exec.lk
+
+deploy/physical_trough_v2_mimo_ssc_auto_exec.lk
+
+deploy/physical_trough_IPH_v2_mimo_ssc_auto_exec.lk

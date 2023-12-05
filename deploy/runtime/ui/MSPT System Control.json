@@ -1,7 +1,7 @@
 {
     "Name": "MSPT System Control",
-    "Width": 841.0,
-    "Height": 470.0,
+    "Width": 913.0,
+    "Height": 466.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1354,7 +1354,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1437,7 +1437,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1520,7 +1520,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1603,7 +1603,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1686,7 +1686,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1769,7 +1769,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1852,7 +1852,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1935,7 +1935,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2018,7 +2018,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2101,7 +2101,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2184,7 +2184,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2267,7 +2267,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 351.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2316,7 +2316,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2353,7 +2353,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2394,7 +2394,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2536,9 +2536,9 @@
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2549,9 +2549,9 @@
         "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2562,9 +2562,9 @@
         "adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2575,9 +2575,9 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -2592,9 +2592,9 @@
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [

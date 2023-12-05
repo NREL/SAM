@@ -4821,7 +4821,7 @@
         "total_installed_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " Placeholder Variable used by Financial Parameters",
+            "Label": "Total installed cost",
             "Units": " ",
             "Group": "MSLF Capital Costs",
             "IndexLabels": "",
