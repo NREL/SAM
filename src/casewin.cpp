@@ -1451,10 +1451,10 @@ void CaseWindow::UpdateConfiguration()
 		}
 	}
     
-	if (m_currentSelection.IsOk()) {
-		m_navigationMenu->SetCurrentItem(m_currentSelection);
-	}
-	else {
+//	if (m_currentSelection.IsOk()) {
+//		m_navigationMenu->SetCurrentItem(m_currentSelection);
+//	}
+//	else {
 		wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
 		if (m_navigationMenu->IsContainer(dvi)) {
 			dvi = m_navigationMenu->GetNthChild(dvi, 0);
@@ -1465,7 +1465,7 @@ void CaseWindow::UpdateConfiguration()
 			//       SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
 			m_currentSelection = (dvi);
 		}
-	}
+//	}
     // check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 
