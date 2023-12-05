@@ -1227,7 +1227,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
 									label = prepend_label + label;
 								else
-									label = prepend_label + label.Left(1).Lower() + label.Right(label.length()-1);
+									label = prepend_label + label.Left(1) + label.Right(label.length()-1);
 							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)
