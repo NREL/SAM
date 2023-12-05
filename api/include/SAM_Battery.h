@@ -1042,7 +1042,7 @@ extern "C"
 	/**
 	 * Set batt_look_ahead_hours: Hours to look ahead in automated dispatch [hours]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=1
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);

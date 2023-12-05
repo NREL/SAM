@@ -103,6 +103,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT const char* SAM_WaveFileReader_Outputs_location_name_sget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_WaveFileReader_Outputs_minute_aget(SAM_table ptr, int* length, SAM_error *err);

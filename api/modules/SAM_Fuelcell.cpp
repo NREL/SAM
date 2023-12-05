@@ -879,6 +879,18 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_t
 
 
 
+SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_monthly_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "fuelcell_monthly_energy_discharged", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "fuelcell_monthly_energy_discharged");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_percent_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

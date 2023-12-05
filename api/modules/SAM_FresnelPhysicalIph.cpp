@@ -614,108 +614,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Storage_u_tank_nset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "aux_array", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "bop_array", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_csu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_csu_cost_rel", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_frequency", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_horizon", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_max_iter", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_mip_gap", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_pen_ramping_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_pen_ramping", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_rsu_cost_rel", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_time_weighting", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_timeout", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "dispatch_series", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_dispatch", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_dispatch_series", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "pb_fixed_par", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
-	});
-}
-
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ampl_data_dir", str);
@@ -725,12 +623,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, con
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ampl_exec_call", str);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "can_cycle_use_standby", number);
 	});
 }
 
@@ -818,15 +710,99 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_timestep_load_fractions_aset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "aux_array", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "bop_array", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_frequency", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_horizon", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_max_iter", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_mip_gap", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_rsu_cost_rel", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_time_weighting", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "disp_timeout", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_dispatch", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pb_fixed_par", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "weekday_schedule", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "csp_financial_model", number);
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "en_electricity_rates", number);
+		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppa_soln_mode", number);
 	});
 }
 
@@ -845,24 +821,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_week
 SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ppa_soln_mode", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "mp_energy_market_revenue", mat, nrows, ncols);
 	});
 }
 
@@ -965,6 +923,126 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_CapitalCosts_solar_field_spec_cost_nset(S
 SAM_EXPORT void SAM_FresnelPhysicalIph_CapitalCosts_storage_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "storage_spec_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate5", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months1", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months2", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months3", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months4", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months5", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent1", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent2", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent3", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent4", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent5", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate5", number);
 	});
 }
 
@@ -2130,198 +2208,6 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Storage_u_tank_nget(SAM_table ptr, SAM_
 
 
 
-SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_aux_array_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "aux_array", length);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "aux_array");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_bop_array_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "bop_array", length);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "bop_array");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_csu_cost_rel_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_csu_cost_rel", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_csu_cost_rel");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_frequency_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_frequency", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_frequency");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_horizon_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_horizon", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_horizon");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_max_iter", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_max_iter");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_mip_gap", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_mip_gap");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_pen_ramping_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_pen_ramping", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_pen_ramping");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_rsu_cost_rel", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_rsu_cost_rel");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_time_weighting", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_time_weighting");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_timeout", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "disp_timeout");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "dispatch_series", length);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "dispatch_series");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_dispatch", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "is_dispatch");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "is_dispatch_series");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "pb_fixed_par");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "weekday_schedule", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "weekday_schedule");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "weekend_schedule");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2340,17 +2226,6 @@ SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sget(SAM_table 
 	result = ssc_data_get_string(ptr, "ampl_exec_call");
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "ampl_exec_call");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "can_cycle_use_standby", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "can_cycle_use_standby");
 	});
 	return result;
 }
@@ -2514,6 +2389,153 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_timestep_load_fractions_aget(SAM_t
 
 
 
+SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_aux_array_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "aux_array", length);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "aux_array");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_bop_array_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "bop_array", length);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "bop_array");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_frequency_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_frequency", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_frequency");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_horizon_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_horizon", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_horizon");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_max_iter", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_max_iter");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_mip_gap", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_mip_gap");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_rsu_cost_rel", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_rsu_cost_rel");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_time_weighting", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_time_weighting");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "disp_timeout", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "disp_timeout");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_dispatch", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "is_dispatch");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "pb_fixed_par");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "weekday_schedule", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "weekday_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "weekend_schedule");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2525,11 +2547,23 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialModel_csp_financial_model_nget
 
 
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "ppa_price_input");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "en_electricity_rates", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "en_electricity_rates");
+	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "ppa_soln_mode");
 	});
 	return result;
 }
@@ -2566,41 +2600,6 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_fac
 	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "dispatch_tod_factors");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_price_input", length);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "ppa_price_input");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ppa_soln_mode", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "ppa_soln_mode");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_FresnelPhysicalIph_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "mp_energy_market_revenue");
 	});
 	return result;
 }
@@ -2788,6 +2787,226 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_CapitalCosts_storage_spec_cost_nget(SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "storage_spec_cost", &result))
 		make_access_error("SAM_FresnelPhysicalIph", "storage_spec_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_rate1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_rate2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_rate3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_rate4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_rate5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_months1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_months2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_months3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_months4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_months5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_upfront_rate1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_upfront_rate2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_upfront_rate3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_upfront_rate4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_upfront_rate5");
 	});
 	return result;
 }
@@ -3364,11 +3583,242 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_capacity_factor_nget(SAM_table 
 
 
 
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_interest_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_total", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_interest_total");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent_total", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_percent_total");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_principal_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal_total", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_principal_total");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_total1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total1", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_total1");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_total2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total2", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_total2");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_total3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total3", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_total3");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_total4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total4", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_total4");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_const_per_total5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total5", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "const_per_total5");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "construction_financing_cost");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_contingency_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "contingency_cost", &result))
 		make_access_error("SAM_FresnelPhysicalIph", "contingency_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "cp_battery_nameplate");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "cp_system_nameplate");
 	});
 	return result;
 }
@@ -4134,17 +4584,6 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr,
 
 
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "nameplate", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "nameplate");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4762,6 +5201,17 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_solzen_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "solzen", length);
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "solzen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "system_capacity");
 	});
 	return result;
 }

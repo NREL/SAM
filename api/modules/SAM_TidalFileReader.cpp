@@ -171,6 +171,18 @@ SAM_EXPORT double SAM_TidalFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error 
 
 
 
+SAM_EXPORT const char* SAM_TidalFileReader_Outputs_location_sget(SAM_table ptr, SAM_error *err){
+	const char* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_string(ptr, "location");
+	if (!result)
+		make_access_error("SAM_TidalFileReader", "location");
+	});
+	return result;
+}
+
+
+
 SAM_EXPORT const char* SAM_TidalFileReader_Outputs_location_id_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{

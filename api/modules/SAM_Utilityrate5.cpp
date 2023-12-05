@@ -218,6 +218,12 @@ SAM_EXPORT void SAM_Utilityrate5_SystemOutput_gen_aset(SAM_table ptr, double* ar
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_Load_grid_outage_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "grid_outage", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_Load_load_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "load", arr, length);
@@ -613,6 +619,18 @@ SAM_EXPORT double* SAM_Utilityrate5_SystemOutput_gen_aget(SAM_table ptr, int* le
 	result = ssc_data_get_array(ptr, "gen", length);
 	if (!result)
 		make_access_error("SAM_Utilityrate5", "gen");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Utilityrate5_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "grid_outage", length);
+	if (!result)
+		make_access_error("SAM_Utilityrate5", "grid_outage");
 	});
 	return result;
 }

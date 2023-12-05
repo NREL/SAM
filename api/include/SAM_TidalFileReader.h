@@ -89,6 +89,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TidalFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT const char* SAM_TidalFileReader_Outputs_location_sget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT const char* SAM_TidalFileReader_Outputs_location_id_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TidalFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err);

@@ -1637,7 +1637,7 @@ extern "C"
 	/**
 	 * Set spe_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1874,7 +1874,7 @@ extern "C"
 	/**
 	 * Set cec_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1914,7 +1914,7 @@ extern "C"
 	/**
 	 * Set cec_ground_clearance_height: Module ground clearance height for heat transfer coefficient [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: cec_lacunarity_enable=1&cec_temp_corr_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2119,7 +2119,7 @@ extern "C"
 	/**
 	 * Set 6par_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3198,7 +3198,7 @@ extern "C"
 	/**
 	 * Set mlm_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -4906,7 +4906,7 @@ extern "C"
 	/**
 	 * Set batt_look_ahead_hours: Hours to look ahead in automated dispatch [hours]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=1
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);
