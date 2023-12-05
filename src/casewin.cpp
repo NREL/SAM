@@ -969,25 +969,28 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		wxString sel = m_inputPageList->GetStringSelection();
+	//	wxString sel = m_inputPageList->GetStringSelection();
 
 		// #1600 and #1608
-		m_case->LoadDefaults();
+		//m_case->LoadDefaults(); // fails per 1618
 
 		UpdateConfiguration();
 
-//		if (!sel.empty()) 
-//			SwitchToInputPage( sel );
-//		else
+/*
+		if (!sel.empty()) 
+			m_pageFlipper->SetSelection(isel);
+		//			SwitchToInputPage(sel);
+		else
 			m_pageFlipper->SetSelection(0);
-
+*/
+/*
 		// make sure at least the first input page is selected
 		// if nothing else
 		if ( m_pageFlipper->GetSelection() == 0
 			&& m_currentGroup == 0 
 			&& m_pageGroups.size() > 0 )
 			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
-		
+*/		
 		m_baseCaseResults->Clear();
 
 		m_macros->ConfigurationChanged();
@@ -1079,8 +1082,9 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 //	m_inputPagePanel->Thaw();
 
-	if ( m_inputPageList->GetStringSelection() != name )
-		m_inputPageList->Select( m_inputPageList->Find( name ) );
+//	if ( m_inputPageList->GetStringSelection() != name )
+	int p = m_inputPageList->Find(name);
+	m_inputPageList->Select( p );
 
 	return true;
 }
@@ -1447,18 +1451,21 @@ void CaseWindow::UpdateConfiguration()
 		}
 	}
     
-    
-    wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
-    if (m_navigationMenu->IsContainer(dvi)) {
-        dvi = m_navigationMenu->GetNthChild(dvi, 0);
-    }
-    
-    if (dvi.IsOk()) {
-        m_navigationMenu->SetCurrentItem(dvi);
-        SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
-        m_currentSelection = (dvi);
-    }
+	if (m_currentSelection.IsOk()) {
+		m_navigationMenu->SetCurrentItem(m_currentSelection);
+	}
+	else {
+		wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+		if (m_navigationMenu->IsContainer(dvi)) {
+			dvi = m_navigationMenu->GetNthChild(dvi, 0);
+		}
 
+		if (dvi.IsOk()) {
+			m_navigationMenu->SetCurrentItem(dvi);
+			//       SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+			m_currentSelection = (dvi);
+		}
+	}
     // check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 

@@ -1310,9 +1310,20 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, NULL )
-				&& (t2 != tech || f2 != fin) )
-				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
+			wxString sel = cw->GetInputPage();
+			if (ShowConfigurationDialog(this, &t2, &f2, NULL)
+				&& (t2 != tech || f2 != fin)) {
+				c->SetConfiguration(t2, f2); // this will cause case window to update accordingly
+				cw = GetCaseWindow(c); // after update
+				if (!sel.empty()) {
+					cw->SwitchToInputPage(sel);
+				}
+				else {
+					auto as = cw->GetInputPages();
+					if (as.Count() > 0)
+						cw->SwitchToInputPage(as[0]);
+				}
+			}
 		}
 		break;
 	case ID_CASE_RENAME:
