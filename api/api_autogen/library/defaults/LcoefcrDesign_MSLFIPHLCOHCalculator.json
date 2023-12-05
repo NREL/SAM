@@ -10,7 +10,7 @@
 			"c_equity_return": 13,
 			"c_inflation": 2.5,
 			"c_lifetime": 20,
-			"c_nominal_interest_rate": 4,
+			"c_nominal_interest_rate": 7,
 			"c_tax_rate": 28,
 			"fixed_operating_cost": 0,
 			"ui_fcr_input_option": 1,

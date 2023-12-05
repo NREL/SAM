@@ -5,7 +5,7 @@
 			"derate": 0,
 			"heat_rate": 0,
 			"spec_mode": 0,
-			"system_capacity": 500,
+			"system_capacity": 969.565,
 			"user_capacity_factor": 0
 		},
 		"Lifetime": {
@@ -15,14 +15,10 @@
 			"adjust_constant": 0
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 2.92121e+07
+			"total_installed_cost": 2.91445e+07
 		}
 	}
 }

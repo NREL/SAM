@@ -35,13 +35,13 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.068000],
+			"ppa_price_input": [0.075000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 3.72797e+06,
-			"cost_debt_closing": 450000,
+			"construction_financing_cost": 5.75889e+06,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -69,19 +69,19 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 100001,
-			"term_int_rate": 4,
+			"system_capacity": 100003,
+			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [10.000000],
+			"om_batt_capacity_cost": [5.300000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
-			"om_batt_replacement_cost": [282.000000],
+			"om_batt_replacement_cost": [323.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [15.000000],
 			"om_capacity_escal": 0,
@@ -90,10 +90,10 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.98825e+08
+			"total_installed_cost": 2.19386e+08
 		},
 		"LandLease": {
-			"land_area": 649.738,
+			"land_area": 649.75,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -260,7 +260,7 @@
 			"batt_meter_position": 1,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 282,
+			"battery_per_kWh": 323,
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 0
@@ -272,7 +272,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 100001
+			"system_capacity": 100003
 		},
 		"UtilityBill": {
 		},
@@ -287,7 +287,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 100.001
+			"cp_system_nameplate": 100.003
 		},
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
@@ -295,7 +295,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 8.79537e+07
+			"battery_total_cost_lcos": 9.8464e+07
 		},
 		"ChargesByMonth": {
 		},

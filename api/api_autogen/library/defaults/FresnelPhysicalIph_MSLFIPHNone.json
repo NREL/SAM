@@ -142,21 +142,21 @@
 			"tes_pump_coef": 0.15,
 			"u_tank": 0.4
 		},
+		"Tou": {
+			"f_turb_tou_periods": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
+			"is_tod_pc_target_also_pc_max": 0
+		},
 		"SysControl": {
 			"aux_array": [0.022730, 1.000000, 0.483000, 0.517000, 0.000000],
 			"bop_array": [0.000000, 1.000000, 0.483000, 0.517000, 0.000000],
-			"disp_csu_cost_rel": 87,
 			"disp_frequency": 24,
 			"disp_horizon": 48,
 			"disp_max_iter": 50000,
 			"disp_mip_gap": 0.001,
-			"disp_pen_ramping": 1,
 			"disp_rsu_cost_rel": 1.4,
 			"disp_time_weighting": 0.999,
 			"disp_timeout": 5,
-			"dispatch_series": [0.000000],
 			"is_dispatch": 0,
-			"is_dispatch_series": 0,
 			"pb_fixed_par": 0.0055,
 			"weekday_schedule": [
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
@@ -187,20 +187,12 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			]
 		},
-		"Tou": {
-			"f_turb_tou_periods": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
-			"is_tod_pc_target_also_pc_max": 0
-		},
 		"FinancialModel": {
 			"csp_financial_model": 8
 		},
-		"ElectricityRates": {
-		},
-		"TimeOfDeliveryFactors": {
-		},
 		"FinancialSolutionMode": {
 		},
-		"Revenue": {
+		"TimeOfDeliveryFactors": {
 		},
 		"CapitalCosts": {
 			"bop_spec_cost": 340,
@@ -220,6 +212,28 @@
 			"site_improvements_spec_cost": 20,
 			"solar_field_spec_cost": 150,
 			"storage_spec_cost": 32
+		},
+		"FinancialParameters": {
+			"const_per_interest_rate1": 6.5,
+			"const_per_interest_rate2": 0,
+			"const_per_interest_rate3": 0,
+			"const_per_interest_rate4": 0,
+			"const_per_interest_rate5": 0,
+			"const_per_months1": 24,
+			"const_per_months2": 0,
+			"const_per_months3": 0,
+			"const_per_months4": 0,
+			"const_per_months5": 0,
+			"const_per_percent1": 100,
+			"const_per_percent2": 0,
+			"const_per_percent3": 0,
+			"const_per_percent4": 0,
+			"const_per_percent5": 0,
+			"const_per_upfront_rate1": 1,
+			"const_per_upfront_rate2": 0,
+			"const_per_upfront_rate3": 0,
+			"const_per_upfront_rate4": 0,
+			"const_per_upfront_rate5": 0
 		},
 		"AdjustmentFactors": {
 			"adjust_constant": 4,

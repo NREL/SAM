@@ -24,7 +24,7 @@
 			"inverter_count": 0,
 			"subarray1_modules_per_string": 0,
 			"subarray1_track_mode": 0,
-			"system_capacity": 190
+			"system_capacity": 553.994
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0
@@ -122,7 +122,7 @@
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.187000]
+			"ppa_price_input": [0.153000]
 		},
 		"Revenue": {
 		},
@@ -237,14 +237,10 @@
 			"grid_interconnection_limit_kwac": 20000
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 1.46138e+06
+			"total_installed_cost": 1.7809e+06
 		}
 	}
 }

@@ -9829,7 +9829,7 @@
 			"ppa_price_input": [0.084000]
 		},
 		"FinancialParameters": {
-			"const_per_interest_rate1": 3.5,
+			"const_per_interest_rate1": 6.5,
 			"const_per_interest_rate2": 0,
 			"const_per_interest_rate3": 0,
 			"const_per_interest_rate4": 0,

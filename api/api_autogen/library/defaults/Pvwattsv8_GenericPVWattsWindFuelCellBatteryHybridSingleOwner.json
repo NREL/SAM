@@ -16,14 +16,10 @@
 			"adjust_constant": 0
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 1.62871e+09
+			"total_installed_cost": 1.63843e+09
 		}
 	}
 }

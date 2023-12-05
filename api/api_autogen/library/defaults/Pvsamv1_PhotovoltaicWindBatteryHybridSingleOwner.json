@@ -24,7 +24,7 @@
 			"inverter_count": 0,
 			"subarray1_modules_per_string": 0,
 			"subarray1_track_mode": 0,
-			"system_capacity": 274567
+			"system_capacity": 275216
 		},
 		"Shading": {
 			"subarray1_shade_mode": 0
@@ -243,14 +243,10 @@
 			"grid_interconnection_limit_kwac": 20000
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 3.58105e+08
+			"total_installed_cost": 4.11485e+08
 		}
 	}
 }

@@ -40,8 +40,8 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"construction_financing_cost": 7.74248e+06,
-			"cost_debt_closing": 450000,
+			"construction_financing_cost": 1.08395e+07,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -73,7 +73,7 @@
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 28600,
-			"term_int_rate": 4,
+			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {

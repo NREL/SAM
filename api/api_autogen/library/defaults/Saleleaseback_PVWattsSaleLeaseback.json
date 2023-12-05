@@ -33,7 +33,7 @@
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.040000],
+			"ppa_price_input": [0.043000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
@@ -53,7 +53,7 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 100000
 		},
@@ -74,7 +74,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [30.000000],
+			"itc_fed_percent": [0.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -85,8 +85,8 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
-			"ptc_fed_amount": [0.000000],
-			"ptc_fed_escal": 0,
+			"ptc_fed_amount": [0.027500],
+			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
@@ -232,7 +232,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.99684e+06,
+			"construction_financing_cost": 3.05536e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -245,7 +245,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.06498e+08
+			"total_installed_cost": 1.16394e+08
 		},
 		"UtilityBill": {
 		},

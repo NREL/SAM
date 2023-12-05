@@ -178,7 +178,7 @@
 			"dispatch_manual_system_charge_first": 0
 		},
 		"SystemCosts": {
-			"om_batt_replacement_cost": [225.060000],
+			"om_batt_replacement_cost": [260.280000],
 			"om_batt_variable_cost": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0

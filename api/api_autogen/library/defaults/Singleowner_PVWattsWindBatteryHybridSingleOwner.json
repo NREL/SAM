@@ -35,13 +35,13 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.051000],
+			"ppa_price_input": [0.050000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 9.48698e+06,
-			"cost_debt_closing": 450000,
+			"construction_financing_cost": 1.36586e+07,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -72,7 +72,7 @@
 			"reserves_interest": 1.25,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 334523,
+			"system_capacity": 276923,
 			"term_int_rate": 4,
 			"term_tenor": 18
 		},
@@ -80,7 +80,7 @@
 			"om_capacity": [],
 			"om_fixed": [],
 			"om_production": [],
-			"total_installed_cost": 5.05973e+08
+			"total_installed_cost": 5.20326e+08
 		},
 		"LandLease": {
 		},
@@ -91,14 +91,14 @@
 			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
-			"itc_fed_percent_maxvalue": [1.000000],
+			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"itc_sta_amount": [0.000000],
 			"itc_sta_amount_deprbas_fed": 0,
 			"itc_sta_amount_deprbas_sta": 0,
 			"itc_sta_percent": [0.000000],
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
-			"itc_sta_percent_maxvalue": [1.000000],
+			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
 			"ptc_fed_term": 10,
@@ -251,7 +251,7 @@
 		},
 		"SystemOutput": {
 			"gen": [0],
-			"system_capacity": 334523
+			"system_capacity": 276923
 		},
 		"UtilityBill": {
 		},
@@ -266,7 +266,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 334.523
+			"cp_system_nameplate": 276.923
 		},
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],
@@ -282,14 +282,10 @@
 		"Monthly": {
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 5.05973e+08
+			"total_installed_cost": 5.20326e+08
 		}
 	}
 }

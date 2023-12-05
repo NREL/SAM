@@ -8,7 +8,7 @@
 		"SystemDesign": {
 			"array_type": 0,
 			"losses": 0,
-			"system_capacity": 329229
+			"system_capacity": 271629
 		},
 		"Shading": {
 		},
@@ -16,14 +16,10 @@
 			"adjust_constant": 0
 		},
 		"HybridTech": {
-			"degradation": [0],
 			"om_capacity": [],
-			"om_capacity_escal": 0,
 			"om_fixed": [],
-			"om_fixed_escal": 0,
 			"om_production": [],
-			"om_production_escal": 0,
-			"total_installed_cost": 5.93267e+08
+			"total_installed_cost": 6.12681e+08
 		}
 	}
 }

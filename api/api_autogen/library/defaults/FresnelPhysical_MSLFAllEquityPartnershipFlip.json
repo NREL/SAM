@@ -462,6 +462,28 @@
 			"solar_field_spec_cost": 150,
 			"storage_spec_cost": 32
 		},
+		"FinancialParameters": {
+			"const_per_interest_rate1": 6.5,
+			"const_per_interest_rate2": 0,
+			"const_per_interest_rate3": 0,
+			"const_per_interest_rate4": 0,
+			"const_per_interest_rate5": 0,
+			"const_per_months1": 24,
+			"const_per_months2": 0,
+			"const_per_months3": 0,
+			"const_per_months4": 0,
+			"const_per_months5": 0,
+			"const_per_percent1": 100,
+			"const_per_percent2": 0,
+			"const_per_percent3": 0,
+			"const_per_percent4": 0,
+			"const_per_percent5": 0,
+			"const_per_upfront_rate1": 1,
+			"const_per_upfront_rate2": 0,
+			"const_per_upfront_rate3": 0,
+			"const_per_upfront_rate4": 0,
+			"const_per_upfront_rate5": 0
+		},
 		"AdjustmentFactors": {
 			"adjust_constant": 4,
 			"adjust_en_periods": 0,
