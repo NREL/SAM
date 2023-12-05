@@ -11727,11 +11727,11 @@
         "DISP_opt_model": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Optical model type",
             "Units": " ",
             "Group": "MSLF Collector and Receiver",
             "IndexLabels": "Solar position|Collector incidence table|IAM polys",
-            "Flags": 2.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
