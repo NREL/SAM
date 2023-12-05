@@ -68,7 +68,8 @@
 <ul>
 <li>New SAM logo and icon.</li>
 <li>New hybrid power models with different combinations of the photovoltaic (PVWatts and Detailed PV), Wind Power, Fuel Cell, and Generic System models with battery storage for the Single Owner and Third Party Host / Developer financial models.</li>
-<li>New concentrating solar power (CSP) and industrial process heat (IPH) model for molten salt linear Fresnel systems.</li>
+<li>New industrial process heat (IPH) models for molten salt power tower and molten salt linear Fresnel systems.</li>
+<li>Improved molten salt linear Fresnel concentrating solar power (CSP) model.</li>
 <li>Update REopt for PV-battery optimization to REopt API V3.</li>
 <li>New self-consumption dispatch option for behind-the-meter batteries.</li>
 <li>Geothermal model updates.</li>
@@ -160,6 +161,7 @@
 <h2>Concentrating Solar Power (2023.12.xx)</h2>
 
 <ul>
+<li>Update molten salt linear Fresnel CSP model to use plant controller and numerical solver used by power tower and trough models. This framework improves mass and energy balances, especially during timeperiods when the field, TES, and cycle are all operating. </li>
 <li>Update Physical Trough model user interface implementation to match power tower and linear Fresnel models. This behind-the-scenes update streamlines the user interface to improve <a href="https://sam.nrel.gov/lk-script.html">LK script</a> interactions with the model. (SAM <a href="https://github.com/NREL/SAM/pull/1613">SAM 1613</a>)</li>
 <li>New model for parabolic trough industrial process heat (IPH) applications based on updated Physical Trough model. (SAM <a href="https://github.com/NREL/SAM/pull/1613">SAM 1613</a>, <a href="https://github.com/NREL/SAM/pull/1444">SAM 1444</a>, <a href="https://github.com/NREL/ssc/pull/1098">SSC 1098</a>, <a href="https://github.com/NREL/ssc/pull/1046">SSC 1046</a>)</li>
 <li>Fix Molten Salt Linear Fresnel "Placeholder Variable" in total installed cost label in user interface. (<a href="https://github.com/NREL/SAM/pull/1530">SAM 1530</a>, <a href="https://github.com/NREL/ssc/pull/1082">SSC 1082</a>)</li>
