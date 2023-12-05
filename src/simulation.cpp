@@ -1221,7 +1221,7 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString sam_output_name = prepend_name + name; // hybrid processing
 							wxString label_no_space = label;
 							label_no_space.Replace(" ", "");
-							if (((prepend_name.Len() > 0) && (label.Len() > prepend_name.Len()))
+							if (((prepend_name.Len() > 0))
 								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())  // check for "Battery Battery..."
 								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label_no_space.Left(prepend_name.length() - 1).Lower()))  {// check for "FuelCell fuel cell..."
 								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
