@@ -159,6 +159,8 @@ public:
 	std::vector<int> GetRowSortOrder();
 	ParametricData& GetParametricData() { return m_par; }
 
+	bool UpdateVarNameNdxHybrid(const wxString& input_name, wxString* var_name, size_t* ndx_hybrid);
+
 private:
 	int m_sortColumn;
 	std::vector< std::pair<double, int> > m_rowSortOrder;
