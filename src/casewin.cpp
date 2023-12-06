@@ -976,21 +976,6 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 
 		UpdateConfiguration();
 
-/*
-		if (!sel.empty()) 
-			m_pageFlipper->SetSelection(isel);
-		//			SwitchToInputPage(sel);
-		else
-			m_pageFlipper->SetSelection(0);
-*/
-/*
-		// make sure at least the first input page is selected
-		// if nothing else
-		if ( m_pageFlipper->GetSelection() == 0
-			&& m_currentGroup == 0 
-			&& m_pageGroups.size() > 0 )
-			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
-*/		
 		m_baseCaseResults->Clear();
 
 		m_macros->ConfigurationChanged();
@@ -1055,6 +1040,36 @@ wxArrayString CaseWindow::GetInputPages()
 		list.Add( m_pageGroups[i]->SideBarLabel );
 	return list;
 }
+
+
+bool CaseWindow::SwitchToNavigationMenu(const wxString& name)
+{
+	// iterate over menu tree items and match "name" or select first item (SAM issue 1618)
+	wxDataViewItem dvi;// = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	bool found = false;
+	int count = m_navigationMenu->GetChildCount(wxDataViewItem(0));
+	for (int i = 0; i < count && !found; i++) {
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), i);
+		if (dvi.IsOk() && m_navigationMenu->GetItemText(dvi) == name)
+			found = true;
+	}
+	// first item if not found
+	if (!found)
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
+	if (dvi.IsOk()) {
+		m_navigationMenu->SetCurrentItem(dvi);
+		m_currentSelection = (dvi);
+		SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+	}
+
+
+	return true;
+}
+
 
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
@@ -1451,22 +1466,17 @@ void CaseWindow::UpdateConfiguration()
 		}
 	}
     
-//	if (m_currentSelection.IsOk()) {
-//		m_navigationMenu->SetCurrentItem(m_currentSelection);
-//	}
-//	else {
-		wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
-		if (m_navigationMenu->IsContainer(dvi)) {
-			dvi = m_navigationMenu->GetNthChild(dvi, 0);
-		}
+	wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
 
-		if (dvi.IsOk()) {
-			m_navigationMenu->SetCurrentItem(dvi);
-			//       SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
-			m_currentSelection = (dvi);
-		}
-//	}
-    // check for orphaned notes and if any found add to first page per Github issue 796
+	if (dvi.IsOk()) {
+		m_navigationMenu->SetCurrentItem(dvi);
+		m_currentSelection = (dvi);
+	}
+
+	// check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 
 	m_szsims->Clear(true);

@@ -1313,16 +1313,10 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString sel = cw->GetInputPage();
 			if (ShowConfigurationDialog(this, &t2, &f2, NULL)
 				&& (t2 != tech || f2 != fin)) {
-				c->SetConfiguration(t2, f2); // this will cause case window to update accordingly
-				cw = GetCaseWindow(c); // after update
-				if (!sel.empty()) {
-					cw->SwitchToInputPage(sel);
-				}
-				else {
-					auto as = cw->GetInputPages();
-					if (as.Count() > 0)
-						cw->SwitchToInputPage(as[0]);
-				}
+				// updates CaseWindow through OnCaseEvetn
+				c->SetConfiguration(t2, f2); 
+				// manually set tree navigation - selects current selection or first item
+				cw->SwitchToNavigationMenu(sel);
 			}
 		}
 		break;
