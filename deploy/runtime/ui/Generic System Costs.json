@@ -1,7 +1,7 @@
 {
     "Name": "Generic System Costs",
-    "Width": 826.0,
-    "Height": 473.0,
+    "Width": 823.0,
+    "Height": 505.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -70,43 +70,6 @@
                 "Caption": {
                     "Type": 5.0,
                     "String": "Indirect Capital Costs"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "GroupBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "GroupBox311"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 6.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 375.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 812.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 89.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Total Installed Costs"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -1794,28 +1757,28 @@
                 }
             }
         },
-        "Label": {
+        "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "lblFinancingCost"
+                    "String": "grpTotalInstalledCost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 375.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 302.0
+                    "Integer": 812.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 125.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1823,7 +1786,106 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total Installed Cost excludes financing costs (if any, see Financial Parameters Page)"
+                    "String": "grpTotalInstalledCost"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lblTotalInstalledCost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Set by callback"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lblTotalInstalledCostDescription"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 335.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Set by callback"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2313,68 +2375,6 @@
                 "WordWrap": {
                     "Type": 2.0,
                     "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 732"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 468.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 399.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 171.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Total installed cost"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -3531,11 +3531,21 @@
         ""
     ],
     "Callbacks": [
-        "//on_load{\"Generic Systems Costs\"}=define()",
-        "//{",
-        "//\tfin = value(\"case.financing\");",
-        "//\t",
-        "//\tshow( \"lblFinancingCost\", ((fin!=0)&&(fin!=1)&&(fin!=2)));",
-        "//};"
+        "on_load{'Generic System Costs'} = define() {",
+        "\ttech = technology();",
+        "\tif ( tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )",
+        "\t{",
+        "\t\tgs_total_cost_name = 'Total Installed Cost of Generic Subsystem';",
+        "\t\tgs_total_cost_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the Generic subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';",
+        "\t}",
+        "\telse",
+        "\t{",
+        "\t\tgs_total_cost_name = 'Total Installed Cost';",
+        "\t\tgs_total_cost_description = 'The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';",
+        "\t}",
+        "\tproperty('lblTotalInstalledCostDescription', 'Caption', gs_total_cost_description );",
+        "\tproperty('grpTotalInstalledCost', 'Caption', gs_total_cost_name );",
+        "\tproperty('lblTotalInstalledCost', 'Caption', gs_total_cost_name );",
+        "};"
     ]
 }

@@ -25,7 +25,7 @@ function heatmap_graphs()
 			agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 		}
 	}
-	else if(tech == "MSPT IPH" || tech == "MSLF IPH"){
+	else if(tech == "MSPT IPH" || tech == "MSLF IPH" || tech == "Physical Trough IPH"){
 		agraph( 'annual_energy_distribution_time', 'Annual thermal energy in Year 1 (kWt)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
 	else {
@@ -282,7 +282,7 @@ autographs { 'Photovoltaic Wind Battery Hybrid|Single Owner' } = define () {
 
 autographs { 'Photovoltaic Wind Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	agraph( 'generic_monthly_energy,photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	agraph( 'photovoltaic_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
 
 	// after-tax cash flow and host indifference point
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );

@@ -1,7 +1,7 @@
 {
     "Name": "MSLF Dispatch Control",
-    "Width": 844.0,
-    "Height": 710.0,
+    "Width": 909.0,
+    "Height": 707.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -136,19 +136,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 255.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 524.0
+                    "Integer": 620.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -181,7 +181,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -206,7 +206,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -235,7 +235,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -272,7 +272,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3121,7 +3121,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 351.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3166,7 +3166,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 351.0
                 },
                 "Y": {
                     "Type": 3.0,

@@ -1539,11 +1539,6 @@
         "\t",
         "equations{ 'PB_COPY_htf_cp_avg' } = define(){",
         "\treturn ${field_htf_cp_avg}; };",
-        "\t",
-        "equations{ 'PB_m_dot_htf_cycle_des' } = define(){",
-        "\treturn ${PB_COPY_q_pb_design}*1000.0",
-        "\t\t/(${PB_COPY_htf_cp_avg}",
-        "\t\t*(${T_htf_hot_des}-${T_htf_cold_des})); };",
         "\t\t",
         "equations{ 'system_capacity' } = define() {",
         "\treturn ${nameplate}*1000; };//MWh to kWh"

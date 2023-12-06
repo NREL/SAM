@@ -1,0 +1,41 @@
+////////////////////////////////////////////////////////////////////////////////
+/*
+
+	This script downloads a TMY file from the NSRDB PSM V3.2.2 TMY
+	API endpoint given a latitude and longitude value.
+	
+	It uses SAM's built-in NREL Developer API key, so must run from
+	an registered NREL version of SAM, or a version of SAM with valid
+	API keys in private.h.
+	
+	Tested in SAM 2022.11.21 r3
+
+*/
+////////////////////////////////////////////////////////////////////////////////
+
+// latitude and longitude
+// script will fail if location is outside area covered by the NSRDB PSM V3.2.2 API
+lat = 45;
+lon = -120;
+
+// base url for PSM V3.2.2 TMY
+// documentation at https://developer.nrel.gov/docs/solar/nsrdb/psm3-2-2-tmy-download/
+url = 'https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-2-2-tmy-download.<FORMAT>?names=<NAMES>&wkt=POINT%28<LON>+<LAT>%29&utc=<UTC>&api_key=<APIKEY>&email=<EMAIL>';
+
+url = replace( url, '<FORMAT>', 'csv' );
+url = replace( url, '<NAMES>', 'tmy' );
+url = replace( url, '<LAT>', lat );
+url = replace( url, '<LON>', lon );
+url = replace( url, '<UTC>', 'false' );
+url = replace( url, '<APIKEY>' , '<SAMAPIKEY>' ); // SAM's built-in Developer API key
+url = replace( url, '<EMAIL>', '<USEREMAIL>'); // Email address used to register SAM
+
+// download file from the NSRDB to the scripts current working directory
+ok = curl( url, { 'file' = cwd() + '/test-nsrdb.csv' } );
+
+// open the downladed CSV file in the default application
+if ( ok ) { browse( cwd() + '/test-nsrdb.csv' ); }
+
+outln(url);
+
+

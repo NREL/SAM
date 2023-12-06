@@ -80,7 +80,9 @@ public:
 	virtual void SetColLabelValue(int col, const wxString &label);
 	virtual wxString GetTypeName(int row, int col);
 	virtual bool DeleteCols(size_t pos = 0, size_t	numCols = 1);
+	virtual bool DeleteRows(size_t pos = 0, size_t numRows = 1);
 	virtual bool AppendCols(size_t numCols = 1);
+	virtual bool AppendRows(size_t numRows = 1);
 	// set cell background based on input and output status
 	virtual wxGridCellAttr *GetAttr(int row, int col, wxGridCellAttr::wxAttrKind kind);
 

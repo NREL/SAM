@@ -183,6 +183,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// navigation menu objects
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
+	m_left_panel->SetMinSize(wxSize(275, 28)); // TODO size based on longest input page label
 
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
     m_inputPageList->Show(false);
@@ -191,11 +192,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* szvl = new wxBoxSizer(wxVERTICAL);
 
 	m_techLabel = new wxStaticText(m_left_panel, wxID_ANY, "-technology-");
-	m_techLabel->SetBackgroundColour(tech_color); // TODO want this to apply color to tech panel background, not just label background
+	m_techLabel->SetBackgroundColour(tech_color);
 	m_techLabel->SetForegroundColour(config_font_color);
 	m_techLabel->SetFont(lafont);
 	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
-
 
 	m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
 	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
@@ -208,7 +208,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
 	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
-	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 12));
 	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
 
 	// box for simulation and results buttons
@@ -219,6 +219,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
 
 	m_resultsButton = new wxMetroButton(m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA(graph));
+    m_resultsButton->SetToolTip(wxString("Show results without running a simulation."));
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
 	// grid for parametric buttons etc.
@@ -660,6 +661,7 @@ void CaseWindow::OnTree(wxDataViewEvent &evt)
 		m_currentSelection = evt.GetItem();
 	}
 	wxString title = m_navigationMenu->GetItemText(m_currentSelection);
+	m_navigationMenu->SetFocus();
 	SwitchToInputPage(title);
 
 }
@@ -683,13 +685,12 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	if ( evt.GetId() == ID_SIMULATE )
 	{
 		RunBaseCase();
-		m_resultsButton->Enable(true);
 	}
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
 		m_inputPageList->Select( -1 );
-		m_pageFlipper->SetSelection( 1 );
 		m_navigationMenu->UnselectAll();
+        m_pageFlipper->SetSelection( 1 );
 	}
 	else if ( evt.GetId() == ID_ADVANCED )
 	{
@@ -874,7 +875,6 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
 	if ( evt.GetType() == CaseEvent::VARS_CHANGED ) // calculated variable changes - like total_installed_cost
 	{
-		m_resultsButton->Enable(false);
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
 
@@ -893,7 +893,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
             }
                 
 			if ( ipage && obj && vv ) {
-				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
+				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period, ndxHybrid);
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), ndxHybrid) )	{
@@ -969,8 +969,11 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		m_resultsButton->Enable(false);
 		wxString sel = m_inputPageList->GetStringSelection();
+
+		// #1600 and #1608
+		m_case->LoadDefaults();
+
 		UpdateConfiguration();
 
 //		if (!sel.empty()) 
@@ -1068,7 +1071,7 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
 		for( size_t j=0;j<m_currentGroup->Pages[i].size();j++ )
-			if ( wxUIFormData *form = m_forms.Lookup( m_currentGroup->Pages[i][j].Name ) )
+			if ( wxUIFormData *form = m_forms[m_currentGroup->ndxHybrid].Lookup(m_currentGroup->Pages[i][j].Name))
 				m_currentForms.push_back( form );
 			
 	SetupActivePage();
@@ -1136,7 +1139,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		m_currentActivePages.push_back( pds ); 
 
 
-		pds->Form = m_forms.Lookup( pi.Name );
+		pds->Form = m_forms[pi.ndxHybrid].Lookup(pi.Name);
 		if ( !pds->Form )
 			wxMessageBox( "error locating form data " + pi.Name );
 
@@ -1327,7 +1330,7 @@ void CaseWindow::LayoutPage()
 
 }
 
-void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
+void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid )
 {
 	bool found = false;
 	for (size_t j=0;j<pages.size();j++ )
@@ -1336,7 +1339,7 @@ void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pa
 		for (size_t i = 0; i < cfg->InputPages.size(); i++) {
 			InputPageDataHash::iterator it = cfg->InputPages[i].find(pages[j].Name);
 			if (it != cfg->InputPages[i].end()) {
-				m_forms.Add(pages[j].Name, it->second->Form().Duplicate());
+				m_forms[ndxHybrid].Add(pages[j].Name, it->second->Form().Duplicate());
 				found = true;
 			}
 		}
@@ -1359,9 +1362,8 @@ void CaseWindow::UpdateConfiguration()
 	m_case->BaseCase().Clear(); // reset for UpdateResults
 
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
-
-
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
+
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 
@@ -1378,7 +1380,10 @@ void CaseWindow::UpdateConfiguration()
 	}
 
 	// erase current set of forms, and rebuild the forms for this case
-	m_forms.Clear();
+	for (auto &f : m_forms)
+		f.Clear();
+
+	m_forms.resize(cfg->Technology.size());
 	
 
 	wxArrayString inputPageHelpContext; // valid ids for the current configuration
@@ -1388,9 +1393,9 @@ void CaseWindow::UpdateConfiguration()
 		InputPageGroup *group = m_pageGroups[i];
 
 		for( size_t kk=0;kk<group->Pages.size();kk++ )
-			UpdatePageListForConfiguration( group->Pages[kk], cfg );
+			UpdatePageListForConfiguration( group->Pages[kk], cfg, group->ndxHybrid );
 
-		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg );
+		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg, group->ndxHybrid );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 
@@ -1401,17 +1406,13 @@ void CaseWindow::UpdateConfiguration()
 	wxString Ts_lower = Ts.Lower();
 	wxArrayString Ts_split = wxSplit(Ts, '-');
 	wxDataViewItem cont_pv;
-	wxDataViewItemArray dvia{ m_pageGroups.size() + 1 };
+	wxDataViewItemArray dvia( m_pageGroups.size() + 1 );
 	wxArrayString bin_list;
-	//wxDataViewItemArray dvia;
 	wxArrayString page_list;
 	wxString bin_name;
 	wxString bin_name_prev;
-	int Ts_count = 0;
-	int bin_count = 0;
 	for (int i = 0; i < m_pageGroups.size(); i++) {
 		if (m_pageGroups[i]->ExclTop) {
-
 			if (bin_list.Index("Hybrid") == wxNOT_FOUND) {
 				dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid");
 			}
@@ -1445,24 +1446,20 @@ void CaseWindow::UpdateConfiguration()
 			m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
 		}
 	}
-
-	if (m_navigationMenu->IsContainer(dvia[0])) {
-		m_navigationMenu->Expand(dvia[0]);
-		wxDataViewItemArray dvic;
-		m_navigationMenu->GetModel()->GetChildren(dvia[0], dvic);
-		m_navigationMenu->SetCurrentItem(dvic[0]);
-		SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
-	}
-	else if (m_navigationMenu->IsContainer(dvia[1])) {
-		m_navigationMenu->Expand(dvia[1]);
-		wxDataViewItemArray dvic;
-		m_navigationMenu->GetModel()->GetChildren(dvia[1], dvic);
-		m_navigationMenu->SetCurrentItem(dvic[0]);
-		SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
-	}
-	m_currentSelection = (m_navigationMenu->GetCurrentItem());
     
-	// check for orphaned notes and if any found add to first page per Github issue 796
+    
+    wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+    if (m_navigationMenu->IsContainer(dvi)) {
+        dvi = m_navigationMenu->GetNthChild(dvi, 0);
+    }
+    
+    if (dvi.IsOk()) {
+        m_navigationMenu->SetCurrentItem(dvi);
+        SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+        m_currentSelection = (dvi);
+    }
+
+    // check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 
 	m_szsims->Clear(true);

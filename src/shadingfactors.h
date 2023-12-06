@@ -48,6 +48,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class VarValue;
 class AFMonthByHourFactorCtrl;
+class Case;
 
 /* utility class to save/load shading data */
 struct ShadingInputData
@@ -79,8 +80,10 @@ struct ShadingInputData
 	void save( std::vector<double> &data );
 	bool load( const std::vector<double> &data );
 
-	void write( VarValue *vv );
-	bool read( VarValue *vv );
+	void write( VarValue *vv, wxString name );
+    void write(Case* c, size_t ndxHybrid, wxString name);
+	bool read( VarValue *vv, wxString name );
+    bool read(Case* c, size_t ndxHybrid, wxString name);
 
 	
 };
@@ -93,14 +96,19 @@ public:
 		const wxPoint &pos=wxDefaultPosition, const wxSize &size=wxDefaultSize);
 
 	void Write( VarValue * );
+    void Write(Case* c, size_t ndxHybrid);
 	bool Read( VarValue * );
+    bool Read(Case* c, size_t ndxHybrid);
 	void SetDescription( const wxString &s ) { m_descText = s; }
 	void OnPressed(wxCommandEvent &evt);
+    void SetName(const wxString& _name) { m_name = _name; }
+    wxString GetName() { return m_name; }
 
 private:
 	bool m_show_db_options;
 	ShadingInputData m_shad;
 	wxString m_descText;
+    wxString m_name;
 	DECLARE_EVENT_TABLE();
 };
 

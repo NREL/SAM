@@ -472,9 +472,11 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	if ( m_topBook->GetSelection() != 1 )
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
-	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	//	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	Case* c = new Case;
 	c->SetConfiguration( tech, fin );
 	c->LoadDefaults();
+	m_project.AddCase(GetUniqueCaseName(_name), c);
 	CreateCaseWindow( c );
 	return true;
 }
@@ -503,16 +505,22 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
    
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
-		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
-			// hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
-                win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
-                //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
-            }
-		}
-		else {
+		win->Freeze();
+		// go through and load all pages to trigger on-load events - addresses SAM issue 1520 and other requests
+		for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
+			for (int j=0; j< c->GetConfiguration()->InputPageGroups[i].size(); j++)
+	            win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][j]->SideBarLabel);
+        }
+		// load first page of hybrid and non-hybrid configurations
+		if (c->GetConfiguration()->Technology.size() > 1) // hybrid	
+			win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[c->GetConfiguration()->Technology.size() - 1][0]->SideBarLabel);
+		else
 			win->SwitchToInputPage(pages[0]);
-		}
+
+		// reevaluate all equations address SAM #1583
+		c->EvaluateEquations();
+
+		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
 	return win;
 }
@@ -1081,8 +1089,11 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	ProjectFile pf;
 	// tell user to save and check file if issue
-	if (!pf.ReadArchive(file))
-		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+	if (!pf.ReadArchive(file)) {
+//		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%s.", file, pf.GetLastError()));
+		return false;
+	}
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
@@ -2336,6 +2347,10 @@ void SamApp::Restart()
     wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
     if (!wxFileExists(wave_resource_ts_db)) ScanWaveResourceTSData(wave_resource_ts_db);
     Library::Load(wave_resource_ts_db);
+
+    wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+    if (!wxFileExists(tidal_resource_db)) ScanTidalResourceData(tidal_resource_db);
+    Library::Load(tidal_resource_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )
@@ -2761,8 +2776,12 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
+	wxFont font(wxMetroTheme::Font(wxMT_NORMAL, 12));
+
 	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
-	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pTech->SetFont(font);
+ 	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pFin->SetFont(font);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2770,7 +2789,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
 		"Choose a performance model, and then choose from the available financial models." );
-	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
@@ -2907,30 +2925,15 @@ void ConfigDialog::PopulateTech()
 {
 	// clear tree
 	m_pTech->DeleteAllItems();
+
+	// TODO set width to fit longest collapsed label
+	int tech_width = 400;
+	int tech_height = m_pTech->GetBestHeight(tech_width);
+	m_pTech->SetMinSize(wxSize(tech_width, tech_height));
+	
 	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
-    //wxString bin_name;
-    //wxArrayString tech_list;
-    //wxDataViewItemArray dvia{m_tnames.Count()};
-	/*
-    for (int j = 0; j < m_tnames.Count(); j++) {
-        wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-        wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-        if (L.IsEmpty()) L = m_tnames[j];
-        if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-            tech_list.Add(TP);
-            dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-        }
-        if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-        else if (tech_list.Index(TP) != wxNOT_FOUND) {
-            m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
-        }
-        else {
-            m_pTech->AppendItem(wxDataViewItem(0), L);
-        }
-    }
-	*/
 	// tree containers and nodes
 	wxArrayString containers, nodes, added;
 	for (int j = 0; j < m_tnames.Count(); j++) {
@@ -2943,126 +2946,41 @@ void ConfigDialog::PopulateTech()
 			nodes.Add(node);
 	}
 
-	wxDataViewItemArray dvia{containers.Count()};
+	wxDataViewItemArray dvia(containers.Count());
 
 	// order from startup.lk configopt("TechnologyTreeOrder", ...
 	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;
-	/*
-	if (TreeOrder.length() < 1) { // non-ordered
-		wxArrayString tech_list;
-		wxDataViewItemArray dvia{m_tnames.Count()};
-		
-		for (int j = 0; j < m_tnames.Count(); j++) {
-			 wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-			 wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-			 if (L.IsEmpty()) L = m_tnames[j];
-			 if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-				 tech_list.Add(TP);
-				 dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-			 }
-			 if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-			 else if (tech_list.Index(TP) != wxNOT_FOUND) {
-				 m_pTech->AppendItem(dvia[tech_list.Index(TP)],L);
-			 }
-			 else {
-				 m_pTech->AppendItem(wxDataViewItem(0), L);
-			 }
-		}
+    wxArrayString order = wxSplit(TreeOrder, ',');
+    for (auto& item : order) {
+        if (containers.Index(item) != wxNOT_FOUND)
+            dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
+        else if (nodes.Index(item) != wxNOT_FOUND)
+            m_pTech->AppendItem(wxDataViewItem(0), item);
+    }
+    // append remaining nodes to appropriate containers
+    for (auto& item : m_tnames) {
+        wxString node(SamApp::Config().Options(item).LongName);
+        wxString container(SamApp::Config().Options(item).TreeParent);
+        if (node.IsEmpty()) node = item;
+    // skip those already added
+        if (order.Index(node) != wxNOT_FOUND) continue;
+        if (order.Index(container) != wxNOT_FOUND)
+            m_pTech->AppendItem(dvia[containers.Index(container)], node);
+        else {
+            if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
+                added.Add(container);
+                dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
+            }
+            if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+            else if (containers.Index(container) != wxNOT_FOUND) {
+                m_pTech->AppendItem(dvia[containers.Index(container)], node);
+            }
+            else {
+                m_pTech->AppendItem(wxDataViewItem(0), node);
+            }
+
+        }
 	}
-	else*/ { // ordered per Description
-		wxArrayString order = wxSplit(TreeOrder, ',');
-		for (auto& item : order) {
-			if (containers.Index(item) != wxNOT_FOUND)
-				dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
-			else if (nodes.Index(item) != wxNOT_FOUND)
-				m_pTech->AppendItem(wxDataViewItem(0), item);
-		}
-		// append remaining nodes to appropriate containers
-		for (auto& item : m_tnames) {
-			wxString node(SamApp::Config().Options(item).LongName);
-			wxString container(SamApp::Config().Options(item).TreeParent);
-			if (node.IsEmpty()) node = item;
-		// skip those already added
-			if (order.Index(node) != wxNOT_FOUND) continue;
-			if (order.Index(container) != wxNOT_FOUND)
-				m_pTech->AppendItem(dvia[containers.Index(container)], node);
-			else {
-				if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
-					added.Add(container);
-					dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
-				}
-				if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-				else if (containers.Index(container) != wxNOT_FOUND) {
-					m_pTech->AppendItem(dvia[containers.Index(container)], node);
-				}
-				else {
-					m_pTech->AppendItem(wxDataViewItem(0), node);
-				}
-
-			}
-		}
-		/*
-		// TODO - handle those not specified in TreeOrder
-		wxArrayString tech_list;
-//		dvia.Clear();
-//		dvia.resize(m_tnames.Count());
-//		wxDataViewItemArray dvia{ m_tnames.Count() };
-
-		for (int j = 0; j < m_tnames.Count(); j++) {
-			wxString L(SamApp::Config().Options(m_tnames[j]).LongName);
-			wxString TP(SamApp::Config().Options(m_tnames[j]).TreeParent);
-			if (L.IsEmpty()) L = m_tnames[j];
-			if (order.Index(TP) != wxNOT_FOUND) continue;
-			if (order.Index(L) != wxNOT_FOUND) continue;
-			if (tech_list.Index(TP) == wxNOT_FOUND && TP != "" && TP != "Retired") {
-				tech_list.Add(TP);
-				dvia[tech_list.Index(TP)] = m_pTech->AppendContainer(wxDataViewItem(0), TP);
-			}
-			if (TP.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
-			else if (tech_list.Index(TP) != wxNOT_FOUND) {
-				m_pTech->AppendItem(dvia[tech_list.Index(TP)], L);
-			}
-			else {
-				m_pTech->AppendItem(wxDataViewItem(0), L);
-			}
-			
-		}
-	*/
-	}
-
-
-
-	// Manually add groups here - eventually move to startup.lk
-	//wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	//wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	//wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	//wxDataViewItem cont_heat = m_pTech->AppendContainer(wxDataViewItem(0), "Heat");
-	//wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
-	//wxDataViewItem cont_hybrid = m_pTech->AppendContainer(wxDataViewItem(0), "Hybrid Power");
-
-	//for( size_t i=0;i<m_tnames.Count();i++)
-	//{
-	//	wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-	//	wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-	//	if ( L.IsEmpty() ) L = m_tnames[i];
-	//	if (TP.Find("PV") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_pv, L);
-	//	else if (TP.Find("Heat") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_heat, L);
-	//	else if (TP.Find("CSP") != wxNOT_FOUND )
-	//		m_pTech->AppendItem(cont_csp, L);
-	//	else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-	//	else if (TP.Find("ME") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_me, L);
-	//	else if (TP.Find("BATT") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_batt, L);
-	//	else if (TP.Find("Hybrid") != wxNOT_FOUND)
-	//		m_pTech->AppendItem(cont_hybrid, L);
-	//	else
-	//		m_pTech->AppendItem(wxDataViewItem(0), L);
-
- //       
-	//}
 
 }
 
