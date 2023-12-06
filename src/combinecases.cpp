@@ -274,7 +274,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						else if (hourly_energy_this.ncells() == 8760 * analysis_period_this) {
 							lifetime = true;				// TODO: Report this somewhere?: "Model runs the simulation over the analysis period. Only Year 1 data will be combined with other cases."
 						}
-						else if (hourly_energy_this > 8760 * analysis_period_this) {
+						else if (hourly_energy_this.ncells() > 8760 * analysis_period_this) {
 							m_result_code = 1;
 							m_generic_case_window->UpdateResults();
 							SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
