@@ -602,11 +602,12 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 	wxArrayString ynames, xnames;
 	int ndata = -1;
 
+	std::vector<double> xv, yv;
+	//check if the contour plot is possible
 	if (m_g.Type == Graph::CONTOUR)
 	{// TODO ensure m_g.X.count == 2 m_g.Y.count == 1
 		if (m_g.X.size() == 2 && m_g.Y.size() == 1) {
 			// determine matrix size x[0] x x[1] = num sims
-			std::vector<double> xv, yv;
 			for (size_t i = 0; i < sims.size(); i++) {
 				double x = sims[i]->GetValue(m_g.X[0])->Value();
 				double y = sims[i]->GetValue(m_g.X[1])->Value();
@@ -617,51 +618,53 @@ int GraphCtrl::DisplayParametrics(std::vector<Simulation*> sims, Graph& g)
 				if (ity == yv.end())
 					yv.push_back(y);
 			}
-			// check for valid setup
-			if (xv.size() == 1 || yv.size() == 1) {
-				SetTitle("Contour plot is not available when one independent variable has only one value.");
-				return -1;
+			// check for valid setup, revert to a regular bar plot if the contour plot isn't possible
+			if (xv.size() == 1 || yv.size() == 1) { //Contour plot is not available when one independent variable has only one value
+				m_g.Type = Graph::BAR;
 			}
-			if (xv.size() * yv.size() != sims.size()) {
-				SetTitle("Contour plot is not available when the number of runs is not equal to the product of number values of each variable.");
-				return -1;
+			if (xv.size() * yv.size() != sims.size()) { //Contour plot is not available when the number of runs is not equal to the product of number values of each variable
+				m_g.Type = Graph::BAR;
 			}
-
-			double zmin = 1e99, zmax = -1e99;
-			wxMatrix<double> XX, YY, ZZ;
-			size_t nx = xv.size(), ny = yv.size();
-			XX.Resize(ny , nx );
-			YY.Resize(ny,  nx);
-			ZZ.Resize(ny , nx );
-			for (size_t j = 0; j < ny; j++)
-			{
-				for (size_t i = 0; i < nx; i++)
-				{
-					XX.At(j , i ) = sims[i]->GetValue(m_g.X[0])->Value();
-					YY.At(j , i ) = sims[j*nx+i]->GetValue(m_g.X[1])->Value();
-					ZZ.At(j , i ) = sims[j * nx + i]->GetValue(m_g.Y[0])->Value();
-					if (ZZ.At(j , i ) < zmin) zmin = ZZ.At(j , i );
-					if (ZZ.At(j , i ) > zmax) zmax = ZZ.At(j , i );
-				}
-			}
-			wxPLContourPlot* plot = 0;
-			wxPLColourMap* jet = new wxPLParulaColourMap(zmin, zmax);
-			plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
-			SetTitle(m_g.Title);
-			if (plot != 0)
-			{
-				AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
-				SetSideWidget(jet);
-			}
-			//GetYAxis1()->SetReversed(true); // need setting
-			GetYAxis1()->SetLabel(m_g.YLabel);
-			GetXAxis1()->SetLabel(m_g.XLabel);
-			
 		}
-		ndata = sims.size();
-		return 0;
-
 	}
+	
+	//build the contour plot
+	if (m_g.Type == Graph::CONTOUR)
+	{
+		double zmin = 1e99, zmax = -1e99;
+		wxMatrix<double> XX, YY, ZZ;
+		size_t nx = xv.size(), ny = yv.size();
+		XX.Resize(ny , nx );
+		YY.Resize(ny,  nx);
+		ZZ.Resize(ny , nx );
+		for (size_t j = 0; j < ny; j++)
+		{
+			for (size_t i = 0; i < nx; i++)
+			{
+				XX.At(j , i ) = sims[i]->GetValue(m_g.X[0])->Value();
+				YY.At(j , i ) = sims[j*nx+i]->GetValue(m_g.X[1])->Value();
+				ZZ.At(j , i ) = sims[j * nx + i]->GetValue(m_g.Y[0])->Value();
+				if (ZZ.At(j , i ) < zmin) zmin = ZZ.At(j , i );
+				if (ZZ.At(j , i ) > zmax) zmax = ZZ.At(j , i );
+			}
+		}
+		wxPLContourPlot* plot = 0;
+		wxPLColourMap* jet = new wxPLParulaColourMap(zmin, zmax);
+		plot = new wxPLContourPlot(XX, YY, ZZ, true, wxEmptyString, 24, jet);
+		SetTitle(m_g.Title);
+		if (plot != 0)
+		{
+			AddPlot(plot, wxPLPlotCtrl::X_BOTTOM, wxPLPlotCtrl::Y_LEFT, wxPLPlotCtrl::PLOT_TOP, false);
+			SetSideWidget(jet);
+		}
+		//GetYAxis1()->SetReversed(true); // need setting
+		GetYAxis1()->SetLabel(m_g.YLabel);
+		GetXAxis1()->SetLabel(m_g.XLabel);
+
+		ndata = sims.size();
+		return 0;			
+	}
+	//otherwise build a bar plot
 	else
 	{ // TODO ensure m_g.X.count == 1 m_g.Y.count == 1
 		if (m_g.X.size() == 1 && m_g.Y.size() == 1) {
