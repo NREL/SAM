@@ -64,6 +64,7 @@
         2.15
     ],
     "COPY_field_thermal_output": 522.668,
+    "COPY_field_thermal_output_ideal": 667.132,
     "COPY_total_aperture": 949888.0,
     "CT": 2.0,
     "ColperSCA": [
@@ -11642,6 +11643,7 @@
     "field_htf_max_operating_temp": 400.0,
     "field_htf_min_operating_temp": 12.0,
     "field_thermal_output": 522.668,
+    "field_thermal_output_ideal": 667.132,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "fixed_land_area": 586.793,
     "flip_target_percent": 7.0,
