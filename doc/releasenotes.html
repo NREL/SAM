@@ -59,7 +59,7 @@
 
 -->
 
-<h1 id="2023-12-xx">SAM 2023.12.xx, SSC xxx: December xx, 2023</h1>
+<h1 id="2023-12-17">SAM 2023.12.17, SSC 287: December 17, 2023</h1>
 
 <p>This version introduces a set of new hybrid power system models and a new molten salt linear Fresnel models for electric power generation and industrial process heat (IPH) applications.</p>
 
@@ -69,7 +69,7 @@
 <li>New SAM logo and icon.</li>
 <li>New hybrid power models with different combinations of the photovoltaic (PVWatts and Detailed PV), Wind Power, Fuel Cell, and Generic System models with battery storage for the Single Owner and Third Party Host / Developer financial models.</li>
 <li>New industrial process heat (IPH) models for molten salt power tower and molten salt linear Fresnel systems.</li>
-<li>Improved molten salt linear Fresnel concentrating solar power (CSP) model.</li>
+<li>Improve molten salt linear Fresnel concentrating solar power (CSP) model.</li>
 <li>Update REopt for PV-battery optimization to REopt API V3.</li>
 <li>New self-consumption dispatch option for behind-the-meter batteries.</li>
 <li>Geothermal model updates.</li>
@@ -94,7 +94,7 @@
 <li>Generic System, PVWatts, Wind Power, Fuel Cell, Battery Storage</li>
 </ul>
 
-<h2>General (2023.12.xx)</h2>
+<h2>General (2023.12.17)</h2>
 
 <ul>
 <li>New System Advisor Model logo and icon. Icon is implemented for Windows and Mac, not Linux. (<a href="https://github.com/NREL/SAM/pull/1514">SAM 1514</a>)
@@ -105,7 +105,7 @@
 <li>Fix issue with time series availability losses. (<a href="https://github.com/NREL/ssc/pull/1093">SSC 1093</a>)
 </ul>
 
-<h2>Financial Models (2023.12.xx)</h2>
+<h2>Financial Models (2023.12.17)</h2>
 
 <ul>
 <li>Fix investment-based incentive (IBI) and capacity-based incentive (CBI) double-counting in cash flow (<a href="https://github.com/NREL/SAM/pull/1445">SAM 1445</a>, <a href="https://github.com/NREL/ssc/pull/1048">SSC 1048</a>)</li>
@@ -119,7 +119,7 @@
 <li>Rename internal cash flow variables from "net" to "sales" to make it clear these are for energy to grid outputs. (<a href="https://github.com/NREL/ssc/pull/1060">SSC 1060</a>)
 </ul>
 
-<h2>Detailed Photovoltaic (2023.12.xx)</h2>
+<h2>Detailed Photovoltaic (2023.12.17)</h2>
 
 <ul>
 <li>New subhourly clipping correction for AC loss calculation. (<a href="https://github.com/NREL/SAM/pull/1447">SAM 1447</a>, <a href="https://github.com/NREL/ssc/pull/1077">SSC 1077</a>, <a href="https://github.com/NREL/ssc/pull/1050">SSC 1050</a>)</li>
@@ -136,13 +136,13 @@
 <li>New input for time series one-axis tracker rotation axis. This is implemented for SSC only so available in the SAM Software Development Kit (SDK) including PySAM, but not available in the SAM user interface. (<a href="https://github.com/NREL/ssc/pull/1071">SSC 1071</a>)
 </ul>
 
-<h2>PVWatts (2023.12.xx)</h2>
+<h2>PVWatts (2023.12.17)</h2>
 
 <ul>
 <li>Fix issue with Edit Shading Data window for advanced "Shading by Nearby Objects". (<a href="https://github.com/NREL/SAM/pull/1593">SAM 1593</a>) </li>
 </ul>
 
-<h2>Battery Storage (2023.12.xx)</h2>
+<h2>Battery Storage (2023.12.17)</h2>
 
 <ul>
 <li>New behind-the-meter self-consumption battery dispatch option that minimizes use of grid power (<a href="https://github.com/NREL/SAM/pull/1446">SAM 1446</a>, <a href="https://github.com/NREL/ssc/pull/1057">SSC 1057</a>, <a href="https://github.com/NREL/ssc/pull/1049">SSC 1049</a>)</li>	
@@ -158,7 +158,7 @@
 <li>Fix battery discharging in excess of critical load when AC losses are present. (<a href="https://github.com/NREL/ssc/pull/1061">SSC 1061</a>)</li>
 </ul>
 
-<h2>Concentrating Solar Power (2023.12.xx)</h2>
+<h2>Concentrating Solar Power (2023.12.17)</h2>
 
 <ul>
 <li>Update molten salt linear Fresnel CSP model to use plant controller and numerical solver used by power tower and trough models. This framework improves mass and energy balances, especially during timeperiods when the field, TES, and cycle are all operating. This implementation also enables dispatch optimization. Note that the fossil backup option was removed as part of this work.</li>
@@ -169,14 +169,14 @@
 <li>Fix molten salt power tower cavity receiver estimated net output at design calculation. (<a href="https://github.com/NREL/ssc/pull/1067">SSC 1067</a>)
 </ul>
 
-<h2>Wind Power (2023.12.xx)</h2>
+<h2>Wind Power (2023.12.17)</h2>
 
 <ul>
 <li>Add system availability loss to wind power model. <a href="https://github.com/NREL/SAM/pull/1612">SAM 1612</a></li>
 <li>Fix WIND Toolkit downloads to correctly download data at different measurement heights. (<a href="https://github.com/NREL/SAM/pull/1483">SAM 1483</a>)</li>
 </ul>
 
-<h2>Marine Energy (2023.12.xx)</h2>
+<h2>Marine Energy (2023.12.17)</h2>
 
 <ul>
 <li>New array cable voltage and array cost scaling calculations. (<a href="https://github.com/NREL/SAM/pull/1423">SAM 1423</a>, <a href="https://github.com/NREL/SAM/pull/1350">SAM 1350</a>, <a href="https://github.com/NREL/ssc/pull/1038">SSC 1038</a>, <a href="https://github.com/NREL/ssc/pull/990">SSC 990</a>)</li>
@@ -193,7 +193,7 @@
 <li>Limit tank cold node temperature to realistic range of values. (<a href="https://github.com/NREL/ssc/pull/1011">SSC 1011</a>)</li>
 </ul>
 
-<h2>Geothermal Power (2023.12.xx)</h2>
+<h2>Geothermal Power (2023.12.17)</h2>
 
 <ul>
 <li>Fix reservoir pressure change units. (<a href="https://github.com/NREL/SAM/pull/1591">SAM 1591</a>, <a href="https://github.com/NREL/ssc/pull/1095">SSC 1095</a>)</li>
@@ -201,7 +201,7 @@
 <li>Disable Default Type options on Geothermal Resource page for configurations with LCOE Calculator or No Financial that have no analysis period defined to avoid user interface "callback" error. (<a href="https://github.com/NREL/SAM/pull/1517">SAM 1517</a>, <a href="https://github.com/NREL/SAM/pull/1488">SAM 1488</a>) 
 </ul>
 
-<h2>Fuel Cell (2023.12.xx)</h2>
+<h2>Fuel Cell (2023.12.17)</h2>
 
 <ul>
 <li>Create new input page for fuel cell dispatch options that is separate from battery dispatch, and remove options not appropriate for fuel cell. (<a href="https://github.com/NREL/SAM/pull/1492">SAM 1492</a>)</li>
