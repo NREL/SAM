@@ -81,6 +81,7 @@ void VariableGridData::Init()
 	m_col_hdrs.Clear();
 	m_var_names.Clear();
 	m_var_labels.Clear();
+//	m_vsVariableData.clear();
 	m_var_info_lookup_vec.clear();
 	m_var_table_vec.clear();
 	VarInfoLookup vi_not_calculated;
@@ -152,7 +153,7 @@ void VariableGridData::Init()
 			for (size_t iVarTable = 0; iVarTable < m_var_info_lookup_vec[iCase].size(); iVarTable++) {
 				// iterate over case vartables
 //				wxString prepend = ci->Technology[iVarTable].Lower() + "_";
-				wxString prepend = ci->Simulations[iVarTable].Lower() + "_";
+				wxString prepend = ci->Simulations[iVarTable].Lower() + ":";
 
 				wxArrayString as = m_var_info_lookup_vec[iCase][iVarTable]->ListAll();
 				for (size_t i = 0; i < as.Count(); i++) {
@@ -228,7 +229,7 @@ bool VariableGridData::UpdateVarNameNdxHybrid(Case *c, const wxString& input_nam
 	// decode if necessary for hybrids varname for unsorted index
 //	if (c->GetConfiguration()->Technology.size() > 1) {
 		// split hybrid name and match with Technology name or use "Hybrid" for remainder
-		wxArrayString as = wxSplit(input_name, '_');
+		wxArrayString as = wxSplit(input_name, ':');
 		for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
 //			if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
 			if (c->GetConfiguration()->Simulations[j].Lower() == as[0]) {
