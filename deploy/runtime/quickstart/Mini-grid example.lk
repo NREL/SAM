@@ -168,13 +168,15 @@ keys= @csv;
 iBankPower = -1;
 iModules = -1;
 iInverters = -1;
-for(i=0;i<#keys;i++) {
-	if (strpos(keys[i], "Desired bank power")>=0)
-		iBankPower = i;
-	if (strpos(keys[i], "Number of parallel strings 1")>=0)
-		iModules = i;
-	if (strpos(keys[i], "Number of inverters")>=0)
-		iInverters = i;
+
+iBankPower = keys ?@ 'Desired bank power (kW)';
+iModules = keys ?@ 'Number of parallel strings 1';
+iInverters = keys ?@ 'Number of inverters';
+
+if (iBankPower == -1 || iModules == -1 || iInverters == -1)
+{
+	msgbox('Failed to find parametric variables, exiting script.');
+	return;
 }
 
 maxBankPower = scale_factor * 4756.15 / 1630; // number of participants * annual load per participant / energy yield of base case
