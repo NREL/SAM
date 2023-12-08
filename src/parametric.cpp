@@ -2696,18 +2696,40 @@ void ParametricGridData::DeleteSetup(ParametricData::Var &var)
 	if (m_par.RemoveSetup(var.Name, var.IsInput))
 	{
 		DeleteCols();
+
+		wxString varname;
+		size_t ndxHybrid;
+		UpdateVarNameNdxHybrid(var.Name, &varname, &ndxHybrid);
+
 		// reset simulation input to base case input
 		for (int row = 0; row < m_rows; row++)
 		{
 			m_par.Runs[row]->Clear(); // resets simulation private members
-			if (VarValue *vv = m_case->BaseCase().GetInput(var.Name,0))// TODO: hybrids
+			if (VarValue *vv = m_case->BaseCase().GetInput(var.Name,ndxHybrid))
 			{
-				m_par.Runs[row]->Override(var.Name, *vv,0);// TODO: hybrids
+				m_par.Runs[row]->Override(varname, *vv,ndxHybrid);
 				m_valid_run[row] = false;
 			}
 		}
 		// TODO invalidated results.
 	}
+}
+
+
+bool ParametricGridData::UpdateVarNameNdxHybrid(const wxString& input_name, wxString* var_name, size_t* ndx_hybrid)
+{
+	*ndx_hybrid = 0;
+	*var_name = input_name;
+	if (!m_case) return false;
+	// decode if necessary for hybrids varname for unsorted index
+	wxArrayString as = wxSplit(input_name, '_');
+	for (size_t j = 0; j < m_case->GetConfiguration()->Technology.size(); j++) {
+		if (m_case->GetConfiguration()->Technology[j].Lower() == as[0]) {
+			*ndx_hybrid = j;
+			*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+		}
+	}
+	return true;
 }
 
 void ParametricGridData::UpdateNumberRows(int rows)
@@ -2726,7 +2748,10 @@ void ParametricGridData::UpdateNumberRows(int rows)
 				{
 					while ((int)m_par.Setup[i].Values.size() < rows)
 					{ // inputs
-						if (VarValue *vv = m_case->Values(0).Get(m_var_names[i]))
+						wxString varname;
+						size_t ndxHybrid;
+						UpdateVarNameNdxHybrid(m_var_names[i], &varname, &ndxHybrid);
+						if (VarValue *vv = m_case->Values(ndxHybrid).Get(varname))
 							m_par.Setup[i].Values.push_back(*vv);
 					}
 				}
@@ -3007,7 +3032,7 @@ bool ParametricGridData::RunSimulations_multi()
 					{
 						// set for simulation
 //						m_par.Runs[i]->Override(m_var_names[col], *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
-						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid); // TODO: hybrids
+						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid); 
 					}
 				}
 			}
@@ -3015,7 +3040,7 @@ bool ParametricGridData::RunSimulations_multi()
 			ExcelExchange &ex = m_case->ExcelExch();
 			if (ex.Enabled) {
 				for (size_t ndxHybrids = 0; ndxHybrids < m_case->GetConfiguration()->Technology.size(); ndxHybrids++)
-				ExcelExchange::RunExcelExchange(ex, m_case->Values(ndxHybrids), m_par.Runs[i]);// TODO: hybrids
+				ExcelExchange::RunExcelExchange(ex, m_case->Values(ndxHybrids), m_par.Runs[i]);
 			}
 
 			if (!m_par.Runs[i]->Prepare())
@@ -3100,7 +3125,7 @@ bool ParametricGridData::RunSimulations_single()
 					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
 						// set for simulation
-						m_par.Runs[i]->Override(m_var_names[col], *vv, 0);// TODO: hybrids
+						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid);
 					}
 				}
 			}
@@ -3171,7 +3196,7 @@ bool ParametricGridData::Generate_lk()
 					if (VarValue *vv = &m_par.Setup[col].Values[i])
 					{
 						// set for simulation
-						m_par.Runs[i]->Override(m_var_names[col], *vv,0);// TODO: hybrids
+						m_par.Runs[i]->Override(m_par.Setup[col].varName, *vv, m_par.Setup[col].ndxHybrid);
 					}
 				}
 			}
@@ -3222,6 +3247,8 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 			size_t ndxHybrid = 0;
 			wxString varName = input_names[i];
 			// decode hybrids if necessary
+			UpdateVarNameNdxHybrid(input_names[i], &varName, &ndxHybrid);
+			/*
 			if (m_case->GetConfiguration()->Technology.size() > 1) {
 				// split hybrid name and match with Technology name or use "Hybrid" for remainder
 				wxArrayString as = wxSplit(input_names[i], '_');
@@ -3234,8 +3261,8 @@ void ParametricGridData::UpdateInputs(wxArrayString &input_names)
 /*				// if "Hybrids" then no prepending was added
 				if (varName == input_names[i])
 					ndxHybrid = m_case->GetConfiguration()->Technology.size() - 1;
-*/			}
-
+			}
+*/
 			std::vector<VarValue> vvv;
 			ParametricData::Var pv;
 			for (int num_run = 0; num_run < m_rows; num_run++)

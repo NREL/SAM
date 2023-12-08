@@ -1310,9 +1310,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, NULL )
-				&& (t2 != tech || f2 != fin) )
-				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
+			wxString sel = cw->GetInputPage();
+			if (ShowConfigurationDialog(this, &t2, &f2, NULL)
+				&& (t2 != tech || f2 != fin)) {
+				// updates CaseWindow through OnCaseEvetn
+				c->SetConfiguration(t2, f2); 
+				// manually set tree navigation - selects current selection or first item
+				cw->SwitchToNavigationMenu(sel);
+			}
 		}
 		break;
 	case ID_CASE_RENAME:
