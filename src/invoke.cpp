@@ -5862,7 +5862,7 @@ static void fcall_read_json(lk::invoke_t &cxt)
 
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
-    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "[boolean:grid_outage]: table");
+    LK_DOC("reopt_size_battery", "Makes a call to the REopt API using inputs from the current behind-the-meter battery case and returns optimum battery size and dispatch. Set the grid outage parameter to True to consider outages, False for no outages.", "[boolean:grid_outage]: table");
 
     ssc_data_t p_data = ssc_data_create();
 

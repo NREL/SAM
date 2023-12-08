@@ -6095,11 +6095,11 @@
         "field_fl_props": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": " ",
+            "Label": "User htf properties",
             "Units": " ",
             "Group": "MSLF Solar Field",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 9.0,
             "DefaultValue": [
                 [
                     1.0,
