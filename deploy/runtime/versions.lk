@@ -132,7 +132,15 @@ version_upgrade{'2023.10.31'} = define() {
 		new_inverters = {};
 		inverter_names -@ 0;
 		inverter_names -@ 0;
-		if ( inverter_names ?@ old_inverter < 0 )
+		check = 0;
+		i = 0;
+		while (check == 0 && i < #inverter_names) {
+			if (inverter_names[i] == old_inverter) {
+				check = 1;
+			}
+			i++;
+		}
+		if ( check == 0 )
 		{
 			stable_sort( lower(inverter_names) );
 			msg = 'The inverter in the file you are opening is from an out-of-date library.\n\n';
