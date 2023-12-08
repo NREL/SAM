@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough System Design",
-    "Width": 887.0,
-    "Height": 1013.0,
+    "Width": 1068.0,
+    "Height": 957.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 369.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -186,7 +186,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 79.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -593,7 +593,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -676,7 +676,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -759,7 +759,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -842,7 +842,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -962,7 +962,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1012,7 +1012,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1070,7 +1070,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 456.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1120,7 +1120,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 855.0
+                    "Integer": 906.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1157,7 +1157,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 831.0
+                    "Integer": 876.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1219,7 +1219,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 855.0
+                    "Integer": 906.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1248,7 +1248,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1331,7 +1331,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 369.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1339,7 +1339,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 79.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1414,7 +1414,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1422,7 +1422,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 79.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1497,7 +1497,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1505,7 +1505,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 79.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1580,7 +1580,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 726.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1708,7 +1708,7 @@
         "COPY_field_thermal_output": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal power w/ mass flow limit",
+            "Label": "Field thermal power w/ no defocus constraints",
             "Units": "MWt",
             "Group": "System Design",
             "IndexLabels": "",
@@ -1721,7 +1721,7 @@
         "COPY_field_thermal_output_ideal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal power w/o mass flow limit",
+            "Label": "Actual field thermal power",
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",

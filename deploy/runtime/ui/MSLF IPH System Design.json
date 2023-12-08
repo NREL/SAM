@@ -1,7 +1,7 @@
 {
     "Name": "MSLF IPH System Design",
-    "Width": 921.0,
-    "Height": 908.0,
+    "Width": 923.0,
+    "Height": 374.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 375.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 375.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -593,7 +593,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -676,7 +676,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -726,7 +726,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -834,7 +834,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 867.0
+                    "Integer": 906.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -871,7 +871,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 831.0
+                    "Integer": 867.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -925,7 +925,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 729.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1008,7 +1008,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 729.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1091,7 +1091,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1223,7 +1223,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1306,7 +1306,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 729.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1450,7 +1450,7 @@
         "SD_COPY_q_field_des": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal output w/ mass flow limit",
+            "Label": "Actual field thermal power",
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",
@@ -1463,7 +1463,7 @@
         "SD_COPY_q_field_des_ideal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal output w/o mass flow limit",
+            "Label": "Field thermal power w/ no defocus constraints",
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",
