@@ -1821,7 +1821,7 @@
         ]
     ],
     "eta_pump": 0.85,
-    "eta_tes_htr": 0.99,
+    "eta_tes_htr": 0.98,
     "f_tc_cold": 2.0,
     "f_turb_tou_periods": [
         1.0,
