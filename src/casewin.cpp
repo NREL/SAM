@@ -1472,7 +1472,7 @@ void CaseWindow::UpdateConfiguration()
 	}
 
 	if (dvi.IsOk()) {
-		m_navigationMenu->SetCurrentItem(dvi);
+//		m_navigationMenu->SetCurrentItem(dvi); // triggers OnTree on MacOS only
 		m_currentSelection = (dvi);
 	}
 
