@@ -154,7 +154,6 @@ void VariableGridData::Init()
 			for (size_t iVarTable = 0; iVarTable < m_var_info_lookup_vec[iCase].size(); iVarTable++) {
 				// iterate over case vartables
 				wxString prepend = ci->Technology[iVarTable].Lower() + ":";
-//				wxString prepend = ci->Simulations[iVarTable].Lower() + ":";
 
 				wxArrayString as = m_var_info_lookup_vec[iCase][iVarTable]->ListAll();
 				for (size_t i = 0; i < as.Count(); i++) {
@@ -168,10 +167,12 @@ void VariableGridData::Init()
 						else { // hybrid
 							// if dependent variable then skip
 							bool dependentVariable = false;
-							for (auto& hv : m_cases[i]->GetConfiguration()->HybridVariables) {
+							for (auto& hv : m_cases[iCase]->GetConfiguration()->HybridVariables) {
 								if (hv.DependentVariableVarTable == iVarTable && hv.DependentVariableName == as[i])
 									dependentVariable = true;
 							}
+							// do not prepend "Hybrid" vartable
+							if (iVarTable == ci->Technology.size() - 1) prepend = "";
 							if (!dependentVariable)
 								var_names.insert(prepend + as[i]); // e.g. "pvwatts_tilt" for hybrid - currently will not compare to "tilt" in non-hybrid configurations
 						}
@@ -212,8 +213,8 @@ void VariableGridData::Init()
 					if (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name)) {
 						found = true;
 						wxString prepend = "";
-						if (ci->Technology.size() > 1) prepend = ci->Technology[ndx_hybrid] + " ";
-//						if (ci->Technology.size() > 1) prepend = ci->Simulations[ndx_hybrid] + " ";
+						// prepend to Label to hybrid subsystems and not general financial parameters
+						if (ci->Technology.size() > 1 && ndx_hybrid < ci->Technology.size() - 1) prepend = ci->Technology[ndx_hybrid] + " ";
 						str_label = m_var_info_lookup_vec[iCase][ndx_hybrid]->Label(var_name);
 						if (str_label.length() > 0) str_label = prepend + str_label;
 					}
@@ -238,18 +239,20 @@ int VariableGridData::GetNumberCols()
 
 bool VariableGridData::UpdateVarNameNdxHybrid(Case *c, const wxString& input_name, wxString* var_name, size_t* ndx_hybrid)
 {
-	*ndx_hybrid = 0;
-	*var_name = input_name;
 	if (!c) return false;
+	*ndx_hybrid = c->GetConfiguration()->Technology.size() - 1; // size always >=1
+	*var_name = input_name;
 	// decode if necessary for hybrids varname for unsorted index
 //	if (c->GetConfiguration()->Technology.size() > 1) {
 		// split hybrid name and match with Technology name or use "Hybrid" for remainder
 		wxArrayString as = wxSplit(input_name, ':');
-		for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
-//			if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
-			if (c->GetConfiguration()->Simulations[j].Lower() == as[0]) {
-				*ndx_hybrid = j;
-				*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+		if (as.size() > 1) {
+			for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
+				if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
+					//			if (c->GetConfiguration()->Simulations[j].Lower() == as[0]) {
+					*ndx_hybrid = j;
+					*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+				}
 			}
 		}
 //	}
