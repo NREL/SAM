@@ -58,7 +58,9 @@ version_upgrade{'2023.10.31'} = define() {
 	// Physical Trough Model Changes
 	if(cfg.tech == 'Physical Trough')
 	{
-		//message('The solar multiple calculation has changed, resulting in different annual results. Additionally, the field thermal output UI calculation has been improved.', 'warning');
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
 	
 		if(cfg.fin == 'LCOE Calculator' || cfg.fin == 'None')
 		{
@@ -88,7 +90,9 @@ version_upgrade{'2023.10.31'} = define() {
 	// Physical Trough IPH Model Changes
 	if(cfg.tech == 'Physical Trough IPH')
 	{
-		//message('The field thermal output UI calculation has been improved.', 'warning');
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
 		
 		value('use_solar_mult_or_aperture_area', 0, 'Previous model used solar multiple to size system');
 		value('specified_total_aperture', 20000, 'Default value for specified total aperture');
@@ -132,7 +136,15 @@ version_upgrade{'2023.10.31'} = define() {
 		new_inverters = {};
 		inverter_names -@ 0;
 		inverter_names -@ 0;
-		if ( inverter_names ?@ old_inverter < 0 )
+		check = 0;
+		i = 0;
+		while (check == 0 && i < #inverter_names) {
+			if (inverter_names[i] == old_inverter) {
+				check = 1;
+			}
+			i++;
+		}
+		if ( check == 0 )
 		{
 			stable_sort( lower(inverter_names) );
 			msg = 'The inverter in the file you are opening is from an out-of-date library.\n\n';
@@ -291,6 +303,9 @@ version_upgrade{'2023.10.31'} = define() {
 		// General Warnings
 		message('We improved this model to use the numerical solver and plant controller that the power tower and Physical trough use. This framework improves mass and energy balances and system control.'
 		' The new implementation requires moving or renaming many inputs from your old file. Please carefully review the new input pages and results.', 'warning');
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
 		message('The new linear fresnel model does not provide an option for fossil backup. Simulation results will be different if fossil heating was previously used.', 'warning');
 	
 		// System Design
