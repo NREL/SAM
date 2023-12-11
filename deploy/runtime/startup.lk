@@ -25,12 +25,14 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
+addconfig( 'Particle Tower', ['Single Owner', /*'LCOE Calculator',*/ 'None']); 
 addconfig( 'MSLF', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 //addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
 addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
+// TODO: Add particle tower
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MSLF IPH', ['None', 'LCOH Calculator']);
@@ -85,6 +87,7 @@ configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'lo
 configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery Hybrid', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'MSPT', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Power Tower Molten Salt', 'short_name'='CSP Tower Molten Salt', 'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
+configopt( 'Particle Tower', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Power Tower Particle', 'short_name'='CSP Tower Particle', 'description'='CSP particle power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough Physical Model', 'short_name'='CSP Trough (Physical Model)', 'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough Empirical Model', 'short_name'='CSP Trough (Emprical Model)', 'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
 //configopt( 'Dish Stirling', { 'tree_parent'='Retired', 'long_name'='CSP Dish Stirling', 'short_name'='Dish Stirling', 'description'='Dish Stirling model with parameters for SES and WGA-ADDS systems' } );
@@ -1866,6 +1869,54 @@ addpage( [[ 'Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs'
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
+
+// Particle Power Tower ////////////////////////////////////////////////////////////////////
+// TODO: Update Help documentation
+function setup_particle_tower_pages(is_grid_limits)
+{
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
+	addpage( [[ 'Particle Tower - System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
+	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
+	addpage( [[ 'Particle Tower Receiver', 'Particle Tower Free-falling' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
+	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User-Defined Power Cycle' ]],
+			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
+			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
+	addpage( [[ 'TES Direct Two Tank']], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'MSPT System Control' ,
+	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+  	if(is_grid_limits == 1){
+		setup_grid_limits_page();
+  	}
+}
+
+//-----------------------------------------------------
+setconfig( 'Particle Tower', 'Single Owner' );
+setmodules( ['csp_tower_particle', 'grid', 'utilityrate5', 'singleowner']);
+setup_particle_tower_pages(1);
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_single_owner_pages();
+setup_electricity_purchases();
+
+//-----------------------------------------------------
+//setconfig( 'Particle Tower', 'LCOE Calculator' );
+//setmodules( ['csp_tower_particle', 'grid', 'lcoefcr']);
+//setup_particle_tower_pages(0);
+//addpage( [['Sales Tax Rate Single Input', 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+//addpage( [['Analysis Period Single Input',  'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
+//setup_lcoefcr_pages();
+
+//-----------------------------------------------------
+setconfig('Particle Tower', 'None');
+setmodules( ['csp_tower_particle']);
+setup_particle_tower_pages(0);
+addpage( [['Sales Tax Rate Single Input','Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Analysis Period Single Input', 'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
 
 // Direct Steam Linear IPH ////////////
 function setup_DSGL_IPH_pages()

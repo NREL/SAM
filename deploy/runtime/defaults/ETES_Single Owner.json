@@ -10434,6 +10434,7 @@
         3.5
     ],
     "om_production_escal": 0.0,
+    "packed_vol_frac": -789.0,
     "payment_option": 0.0,
     "pb_bd_frac": 0.02,
     "pb_fixed_par": 0.0055,

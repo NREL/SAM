@@ -153,6 +153,7 @@ autographs{ 'MSLF' } = define() {heatmap_graphs();};
 autographs{ 'DSLF' } = define() {heatmap_graphs();};
 autographs{ 'PTES' } = define() {heatmap_graphs();};
 autographs{ 'ETES' } = define() {heatmap_graphs();};
+autographs{ 'Particle Tower' } = define() {heatmap_graphs();};
 autographs{ 'Generic CSP System' } = define() {heatmap_graphs();};
 autographs{ 'Physical Trough IPH' } = define() {heatmap_graphs();};
 autographs{ 'DSGL IPH' } = define() {heatmap_graphs();};
