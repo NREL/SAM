@@ -1,7 +1,7 @@
 {
     "Name": "Standalone Battery Costs",
-    "Width": 824.0,
-    "Height": 459.0,
+    "Width": 826.0,
+    "Height": 488.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -1861,7 +1861,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 89.0
+                    "Integer": 119.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1886,7 +1886,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 375.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1894,7 +1894,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 270.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1956,11 +1956,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 392.0
+                    "Integer": 350.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 93.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

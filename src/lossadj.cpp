@@ -522,11 +522,11 @@ void AFLossAdjustmentCtrl::Write( VarValue *vv )
 	tab.Set( "periods", VarValue( m_data.periods ) );
 
 	/* Prototype to flatten */
-void AFLossAdjustmentCtrl::Write( Case *c )
+void AFLossAdjustmentCtrl::Write( Case *c, size_t ndxHybrid )
 {
 //	m_name = name of widget accessible through property
 //	Read and Write would take case as argument
-	auto& tab = c->Values(0); // Case VarTable
+	auto& tab = c->Values(ndxHybrid); // Case VarTable
 	tab.Set(m_name + "_constant", VarValue( m_data.constant ));
 	tab.Set(m_name + "_en_timeindex", VarValue(m_data.en_timeindex));
 	tab.Set(m_name + "_timeindex", VarValue(m_data.timeindex));
@@ -550,11 +550,11 @@ bool AFLossAdjustmentCtrl::Read( VarValue *root )
 		return false;
 
 		/* Prototype to flatten */
-bool AFLossAdjustmentCtrl::Read( Case *c )
+bool AFLossAdjustmentCtrl::Read( Case *c, size_t ndxHybrid)
 {
 //	m_name = name of widget accessible through property
 //	Read and Write would take case as argument
-	auto& tab = c->Values(0); // Case VarTable
+	auto& tab = c->Values(ndxHybrid); // Case VarTable
 	if ( VarValue *vv = tab.Get(m_name + "_constant") ) m_data.constant = vv->Value();
 	if (VarValue* vv = tab.Get(m_name + "_en_timeindex")) m_data.en_timeindex = vv->Boolean();
 	if (VarValue* vv = tab.Get(m_name + "_timeindex")) m_data.timeindex = vv->Array();

@@ -1,7 +1,7 @@
 {
     "Name": "MSLF IPH Dispatch Control",
     "Width": 844.0,
-    "Height": 710.0,
+    "Height": 719.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The turbine output fraction scales the turbine thermal input relative to design for the corresponding time-of-delivery period."
+                    "String": "The heat sink output fraction scales the heat sink input relative to design for the corresponding time-of-delivery period."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -74,19 +74,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 72.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 524.0
+                    "Integer": 512.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 701.0
+                    "Integer": 713.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 402.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -251,7 +251,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -313,7 +313,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -375,7 +375,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -437,7 +437,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -499,7 +499,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -561,7 +561,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 282.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -623,7 +623,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -685,7 +685,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -747,7 +747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -763,7 +763,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Turbine output fraction"
+                    "String": "Heat sink output fraction"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -809,7 +809,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -858,28 +858,28 @@
                 }
             }
         },
-        "Button": {
+        "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "copy_schedule"
+                    "String": "is_timestep_load_fractions"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 15.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 186.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -887,7 +887,11 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Copy schedule from TOD Factors page"
+                    "String": "Use hourly heat sink fraction?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -912,7 +916,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 340.0
+                    "Integer": 268.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -936,6 +940,51 @@
                 }
             }
         },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -949,7 +998,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1032,7 +1081,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1115,7 +1164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1198,7 +1247,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 162.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1281,7 +1330,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1364,7 +1413,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1447,7 +1496,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1530,7 +1579,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1613,7 +1662,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 282.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1696,7 +1745,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1741,7 +1790,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 423.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1780,7 +1829,7 @@
             "Type": 2.0,
             "Label": "Turbine output fraction TOU periods",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": [
@@ -1790,16 +1839,44 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "is_timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "is_tod_pc_target_also_pc_max": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Use turbine output fraction as maximum cycle output",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly heat sink fractions",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1808,7 +1885,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 1",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.1,
@@ -1821,7 +1898,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 2",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1834,7 +1911,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 3",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1847,7 +1924,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 4",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1860,7 +1937,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 5",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1873,7 +1950,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 6",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1886,7 +1963,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 7",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1899,7 +1976,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 8",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1912,7 +1989,7 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 9",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -1925,7 +2002,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekday schedule matrix",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -2251,7 +2328,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekend schedule matrix",
             "Units": " ",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -2574,49 +2651,57 @@
         }
     },
     "Equations": [
-        "//",
-        "//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND",
-        "//  INPUT AGGREGATOR EQUATIONS BELOW!",
-        "//",
-        "//   If the equations change an input value",
-        "//   modify the below main MIMO or add one,",
-        "//   referencing in ssc_equations.h",
-        "//",
-        "",
-        "",
-        "// Just UI input aggregators",
-        "equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {",
-        "",
-        "  //turbine output fraction (,3)",
-        "  disp[0] = ${ui_disp_1_turbout};",
-        "  disp[1] = ${ui_disp_2_turbout};",
-        "  disp[2] = ${ui_disp_3_turbout};",
-        "  disp[3] = ${ui_disp_4_turbout};",
-        "  disp[4] = ${ui_disp_5_turbout};",
-        "  disp[5] = ${ui_disp_6_turbout};",
-        "  disp[6] = ${ui_disp_7_turbout};",
-        "  disp[7] = ${ui_disp_8_turbout};",
-        "  disp[8] = ${ui_disp_9_turbout};",
-        "",
-        "  ${f_turb_tou_periods} = disp;  ",
-        "",
-        "",
+        "//\r",
+        "//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND\r",
+        "//  INPUT AGGREGATOR EQUATIONS BELOW!\r",
+        "//\r",
+        "//   If the equations change an input value\r",
+        "//   modify the below main MIMO or add one,\r",
+        "//   referencing in ssc_equations.h\r",
+        "//\r",
+        "\r",
+        "\r",
+        "// Just UI input aggregators\r",
+        "equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {\r",
+        "\r",
+        "  //turbine output fraction (,3)\r",
+        "  disp[0] = ${ui_disp_1_turbout};\r",
+        "  disp[1] = ${ui_disp_2_turbout};\r",
+        "  disp[2] = ${ui_disp_3_turbout};\r",
+        "  disp[3] = ${ui_disp_4_turbout};\r",
+        "  disp[4] = ${ui_disp_5_turbout};\r",
+        "  disp[5] = ${ui_disp_6_turbout};\r",
+        "  disp[6] = ${ui_disp_7_turbout};\r",
+        "  disp[7] = ${ui_disp_8_turbout};\r",
+        "  disp[8] = ${ui_disp_9_turbout};\r",
+        "\r",
+        "  ${f_turb_tou_periods} = disp;  \r",
+        "\r",
+        "\r",
         "};",
         ""
     ],
     "Callbacks": [
         "on_load{ 'MSLF IPH Dispatch Control' } = define() {",
-        "",
-        "  fin = financing();",
-        "  if ( fin == \"Commercial\" || fin == \"None\") ",
-        "    show( 'copy_schedule', false );",
+        "\r",
+        "\ton_change{\"is_timestep_load_fractions\"}();\r",
         "};",
-        "\t",
-        "on_change{ 'copy_schedule' } = define() {",
-        "",
-        "    value( 'weekday_schedule' , value ( 'dispatch_sched_weekday' ) );",
-        "    value( 'weekend_schedule' , value ( 'dispatch_sched_weekend' ) );",
-        "",
-        "};"
+        "\r",
+        "on_change{\"is_timestep_load_fractions\"}=define(){\r",
+        "\tmode = value(\"is_timestep_load_fractions\");\r",
+        "\tenable(\"timestep_load_fractions\",mode==1);\r",
+        "\tenable(\"ui_disp_1_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_2_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_3_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_4_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_5_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_6_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_7_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_8_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_9_turbout\",mode==0);\r",
+        "\tenable(\"weekday_schedule\",mode==0);\r",
+        "\tenable(\"weekend_schedule\",mode==0);\r",
+        "};\r",
+        ""
     ]
 }

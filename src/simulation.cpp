@@ -315,6 +315,7 @@ VarValue *Simulation::GetValue( const wxString &name )
 	if ( VarValue *vv = Outputs().Get( name ) ) 
 		return vv;
 	else {
+		// search from last to first vartable for hybrids i=ndxHybrid and name is variable name in vorrect vartable - may report incorrect value for same names in different vartables
 		bool found = false;
 		for (int i = m_inputs.size() - 1; i>=0 && !found; i--) {
 			if (vv = GetInput(name, i))
@@ -1220,13 +1221,13 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString sam_output_name = prepend_name + name; // hybrid processing
 							wxString label_no_space = label;
 							label_no_space.Replace(" ", "");
-							if (((prepend_name.Len() > 0) && (label.Len() > prepend_name.Len()))
+							if (((prepend_name.Len() > 0))
 								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())  // check for "Battery Battery..."
 								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label_no_space.Left(prepend_name.length() - 1).Lower()))  {// check for "FuelCell fuel cell..."
 								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
 									label = prepend_label + label;
 								else
-									label = prepend_label + label.Left(1).Lower() + label.Right(label.length()-1);
+									label = prepend_label + label.Left(1) + label.Right(label.length()-1);
 							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)

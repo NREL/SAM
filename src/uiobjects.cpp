@@ -785,6 +785,7 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		ShadingButtonCtrl *sb = new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean());
 		sb->SetDescription(Property("Description").GetString());
+        sb->SetName(Property("Name").GetString());
 		return AssignNative(sb);
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )

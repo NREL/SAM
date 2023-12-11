@@ -1,5 +1,5 @@
 Source,Location ID,Jurisdiction,Latitude,Longitude,Time Zone,Local Time Zone,Distance to Shore,Directionality Coefficient,Energy Period,Maximum Energy Direction,Mean Absolute Period,Mean Wave Direction,Mean Zero-Crossing Period,Omni-Directional Wave Power,Peak Period,Significant Wave Height,Spectral Width,Water Depth,Version
-CMIST,NYH1924,b'Hell Gate',40.7783,-73.9383,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,9.8,-
+CMIST,NYH1924,Hell Gate,40.7783,-73.9383,0,-10,0,-,s,deg,s,deg,s,W/m,s,m,-,9.8,-
 Year,Month,Day,Hour,Minute,Speed,,,,,,,,,,,,,,
 2008,1,1,0,30,1.5326515,,,,,,,,,,,,,,
 2008,1,1,1,30,1.2374793,,,,,,,,,,,,,,
