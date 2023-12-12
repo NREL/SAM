@@ -1,7 +1,7 @@
 {
     "Name": "Particle Tower Receiver",
-    "Width": 882.0,
-    "Height": 491.0,
+    "Width": 878.0,
+    "Height": 438.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 190.0
+                    "Integer": 166.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -135,7 +135,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 143.0
+                    "Integer": 95.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -143,7 +143,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Piping Losses"
+                    "String": "Particle Transport"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -475,7 +475,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -558,7 +558,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 288.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -641,7 +641,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 264.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -724,7 +724,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -807,7 +807,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 339.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1014,7 +1014,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 363.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1259,11 +1259,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 714.0
+                    "Integer": 258.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1287,7 +1287,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 1.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1329,7 +1329,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 13.0
+                    "Integer": 0.0
                 }
             }
         },
@@ -1582,7 +1582,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1748,7 +1748,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 222.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1806,421 +1806,6 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "piping_length"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "piping_length_const"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 168.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "piping_length_mult"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 192.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "piping_loss_coefficient"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 144.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "piping_loss_tot"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 258.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 240.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
                 }
             }
         },
@@ -2470,6 +2055,172 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "transport_deltaT_cold"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "transport_deltaT_hot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
@@ -2760,19 +2511,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "hl_ffact": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Heat loss factor",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "is_iscc": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2847,58 +2585,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 8.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "piping_length": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Piping length",
-            "Units": "m",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "piping_length_const": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Piping length constant",
-            "Units": "m",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "piping_length_mult": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Piping length multiplier",
-            "Units": " ",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "piping_loss_coefficient": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Piping heat loss coefficient",
-            "Units": "Wt/m²-K",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 2.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
@@ -3046,17 +2732,30 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "u_riser": {
+        "transport_deltaT_cold": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Design point HTF velocity in riser",
-            "Units": "m/s",
+            "Label": "Temperature loss for cold particle transport",
+            "Units": "K",
             "Group": "Tower and Receiver",
-            "IndexLabels": "-",
+            "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 4.0,
+            "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": " ",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "transport_deltaT_hot": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Temperature loss for hot particle transport",
+            "Units": "K",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
             "sscVariableValue": ""
         }
     },
@@ -3073,9 +2772,6 @@
         "equations{ 'REC_COPY_T_htf_cold_des' } = define() {",
         "\treturn ${T_htf_cold_des}; };",
         "",
-        "equations{ 'piping_length' } = define() {",
-        "\treturn ${L_tower_piping_calc}; };",
-        "\t",
         "equations{ 'piping_loss_tot' } = define() {",
         "\treturn ${q_dot_piping_loss_des_calc}*1.E3; };",
         "\t",
@@ -3114,15 +2810,6 @@
         "    bUserDefined = (value(\"csp.pt.rec.htf_type\") == 1);",
         "    enable(\"field_fl_props\", bUserDefined);",
         "}",
-        "",
-        "/*",
-        "${W_dot_rec_pump_des_calc} = ssc_var(obj, \"W_dot_rec_pump_des\"); ",
-        "\t\t${W_dot_rec_pump_tower_share_des_calc} = ssc_var(obj, \"W_dot_rec_pump_tower_share_des\");",
-        "\t\t${W_dot_rec_pump_rec_share_des_calc} = ssc_var(obj, \"W_dot_rec_pump_rec_share_des\");",
-        "\t\t${m_dot_htf_rec_des_calc} = ssc_var(obj, \"m_dot_htf_rec_des\");     ",
-        "\t\t${m_dot_htf_rec_max_calc} = ssc_var(obj, \"m_dot_htf_rec_max\");",
-        "",
-        "\t\t",
-        "\t\t*/"
+        ""
     ]
 }
