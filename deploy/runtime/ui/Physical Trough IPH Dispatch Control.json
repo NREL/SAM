@@ -916,7 +916,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 268.0
+                    "Integer": 286.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -928,7 +928,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use output fraction as maximum cycle output"
+                    "String": "Use output fraction as maximum heat sink output?"
                 },
                 "State": {
                     "Type": 2.0,

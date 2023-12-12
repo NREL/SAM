@@ -300,13 +300,20 @@ version_upgrade{'2023.10.31'} = define() {
 	// new variables for MSLF
 	if(cfg.tech == 'MSLF'){
 	
+		old_fp_mode = value( 'fp_mode' );
+		if(old_fp_mode != 1){
+			message('Your file uses fossil backup for freeze protection (dropdown on Thermal Storage page). We removed this option for this release'
+			' and switched to using electricity that is deducted from the total plant output. Your annual energy will decrease, and the difference'
+			' will depend on the amount of freeze protection required. For reference, the annual energy in the default case decreases by around 12%.', 'warning');
+		}
+	
 		// General Warnings
 		message('We improved this model to use the numerical solver and plant controller that the power tower and Physical trough use. This framework improves mass and energy balances and system control.'
 		' The new implementation requires moving or renaming many inputs from your old file. Please carefully review the new input pages and results.', 'warning');
 		message('We improved the calculations that size the field to achieve to a target solar multiple.'
 		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
 		' Please review the calculated solar field area when you open your case.', 'warning');
-		message('The new linear fresnel model does not provide an option for fossil backup. Simulation results will be different if fossil heating was previously used.', 'warning');
+		
 	
 		// System Design
 		value('solar_mult_in', oldvalue('solar_mult'), 'Changed variable cmod name.');
