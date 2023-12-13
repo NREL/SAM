@@ -2755,7 +2755,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_fixed_land_area_nget(SAM_table ptr, SAM_error *err);
 

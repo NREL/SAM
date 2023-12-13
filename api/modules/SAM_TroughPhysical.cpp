@@ -5237,11 +5237,22 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_min_temp_nget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "field_thermal_output", &result))
-		make_access_error("SAM_TroughPhysical", "field_thermal_output");
+	if (!ssc_data_get_number(ptr, "field_thermal_output_actual", &result))
+		make_access_error("SAM_TroughPhysical", "field_thermal_output_actual");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "field_thermal_output_ideal", &result))
+		make_access_error("SAM_TroughPhysical", "field_thermal_output_ideal");
 	});
 	return result;
 }

@@ -2639,13 +2639,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_q_dot_rec_abs_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysical_Outputs_q_dot_rec_des_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_q_dot_rec_thermal_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysical_Outputs_q_field_des_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_q_field_des_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_q_field_des_ideal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_q_inc_sf_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 

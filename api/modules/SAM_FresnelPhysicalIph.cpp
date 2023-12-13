@@ -674,6 +674,12 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_timestep_load_fractions", number);
+	});
+}
+
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
@@ -2316,6 +2322,17 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_ampl_engine", &result))
 		make_access_error("SAM_FresnelPhysicalIph", "is_ampl_engine");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_timestep_load_fractions", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "is_timestep_load_fractions");
 	});
 	return result;
 }
@@ -4988,17 +5005,6 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_q_dot_rec_abs_aget(SAM_table p
 
 
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_q_dot_rec_des_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "q_dot_rec_des", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "q_dot_rec_des");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5035,11 +5041,22 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_q_dot_to_heat_sink_aget(SAM_ta
 
 
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_q_field_des_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_q_field_des_actual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "q_field_des", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "q_field_des");
+	if (!ssc_data_get_number(ptr, "q_field_des_actual", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "q_field_des_actual");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_q_field_des_ideal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_field_des_ideal", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "q_field_des_ideal");
 	});
 	return result;
 }
