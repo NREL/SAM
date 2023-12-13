@@ -25,7 +25,7 @@ addconfig( 'PTES', ['Single Owner']);
 addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
-addconfig( 'Particle Tower', ['Single Owner', /*'LCOE Calculator',*/ 'None']); 
+addconfig( 'Particle Tower', ['Single Owner', 'LCOE Calculator', 'None']); 
 addconfig( 'MSLF', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
 addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 //addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
@@ -1902,20 +1902,20 @@ setup_single_owner_pages();
 setup_electricity_purchases();
 
 //-----------------------------------------------------
-//setconfig( 'Particle Tower', 'LCOE Calculator' );
-//setmodules( ['csp_tower_particle', 'grid', 'lcoefcr']);
-//setup_particle_tower_pages(0);
-//addpage( [['Sales Tax Rate Single Input', 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-//addpage( [['Analysis Period Single Input',  'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
-//setup_lcoefcr_pages();
+setconfig( 'Particle Tower', 'LCOE Calculator' );
+setmodules( ['csp_tower_particle', 'lcoefcr_design']);
+setup_particle_tower_pages(0);
+addpage( [['Sales Tax Rate Single Input', 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
+addpage( [['Particle Lost Operating Costs', 'Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoh'});
+
 
 //-----------------------------------------------------
 setconfig('Particle Tower', 'None');
 setmodules( ['csp_tower_particle']);
 setup_particle_tower_pages(0);
 addpage( [['Sales Tax Rate Single Input','Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Analysis Period Single Input', 'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [['Particle Lost Operating Costs']], {'sidebar' = 'Particle Loss', 'help'='oc_operating'} );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
 
 // Direct Steam Linear IPH ////////////
