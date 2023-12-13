@@ -806,6 +806,12 @@ SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_dispatch_series_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_timestep_load_fractions", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
@@ -2804,6 +2810,17 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table pt
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
 		make_access_error("SAM_TroughPhysicalIph", "is_dispatch_series");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_timestep_load_fractions", &result))
+		make_access_error("SAM_TroughPhysicalIph", "is_timestep_load_fractions");
 	});
 	return result;
 }
@@ -4814,11 +4831,22 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_min_temp_nget(SAM_tabl
 
 
 
-SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "field_thermal_output", &result))
-		make_access_error("SAM_TroughPhysicalIph", "field_thermal_output");
+	if (!ssc_data_get_number(ptr, "field_thermal_output_actual", &result))
+		make_access_error("SAM_TroughPhysicalIph", "field_thermal_output_actual");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "field_thermal_output_ideal", &result))
+		make_access_error("SAM_TroughPhysicalIph", "field_thermal_output_ideal");
 	});
 	return result;
 }

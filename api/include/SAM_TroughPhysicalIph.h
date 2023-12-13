@@ -1118,6 +1118,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
 	 * options: None
 	 * constraints: None
@@ -2129,6 +2137,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
@@ -2553,7 +2563,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_fixed_land_area_nget(SAM_table ptr, SAM_error *err);
 

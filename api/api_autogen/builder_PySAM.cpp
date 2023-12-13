@@ -612,6 +612,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "\tPyObject_Del(self);\n"
                "}\n\n\n";
+    fx_file << "static PyObject *\n"
+                "" << tech_symbol << "_get_data_ptr(" << object_type << " *self, PyObject *args)\n"
+                "{\n\tPyObject* ptr = PyLong_FromVoidPtr((void*)self->data_ptr);\n"
+                "\treturn ptr;\n}\n\n\n";
 
     if (stateful) {
         fx_file << "static PyObject *\n"
@@ -633,10 +637,6 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                    "\treturn Py_None;\n}\n\n\n";
     }
     else {
-        fx_file << "static PyObject *\n"
-                    "" << tech_symbol << "_get_data_ptr(" << object_type << " *self, PyObject *args)\n"
-                    "{\n\tPyObject* ptr = PyLong_FromVoidPtr((void*)self->data_ptr);\n"
-                    "\treturn ptr;\n}\n\n\n";
         fx_file << "static PyObject *\n"
                    "" << tech_symbol << "_execute(" << object_type << " *self, PyObject *args)\n"
                    "{\n\tint verbosity = 0;\n\n"

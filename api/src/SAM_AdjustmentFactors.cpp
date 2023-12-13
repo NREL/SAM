@@ -148,7 +148,6 @@ SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_hourly_nset(void* ptr, double
     });
 }
 
-
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_periods_nset(void* ptr, double num, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_number(ptr, "sf_adjust_en_periods", num);

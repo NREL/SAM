@@ -9826,7 +9826,7 @@
 			"en_electricity_rates": 0
 		},
 		"Revenue": {
-			"ppa_price_input": [0.084000]
+			"ppa_price_input": [0.095000]
 		},
 		"FinancialParameters": {
 			"const_per_interest_rate1": 6.5,
