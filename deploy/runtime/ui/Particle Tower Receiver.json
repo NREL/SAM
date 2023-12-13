@@ -1,7 +1,7 @@
 {
     "Name": "Particle Tower Receiver",
     "Width": 878.0,
-    "Height": 438.0,
+    "Height": 412.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 318.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -218,6 +218,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "REC_COPY_P_tower_lift_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "REC_COPY_Q_rec_des"
                 },
                 "X": {
@@ -255,6 +338,89 @@
                 "Decimals": {
                     "Type": 3.0,
                     "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "REC_COPY_Q_transport_loss_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -421,255 +587,6 @@
                 "Decimals": {
                     "Type": 3.0,
                     "Integer": 1.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "REC_COPY_W_dot_rec_pump_des"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 282.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 312.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "REC_COPY_W_dot_rec_pump_rec_share_des"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 282.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 288.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "REC_COPY_W_dot_rec_pump_tower_share_des"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 282.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 264.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -1582,7 +1499,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 375.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1756,7 +1673,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 94.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2226,11 +2143,37 @@
         }
     },
     "VarDatabase": {
+        "REC_COPY_P_tower_lift_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Design tower lift power",
+            "Units": "MWe",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
         "REC_COPY_Q_rec_des": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Receiver thermal power",
             "Units": "MWt",
+            "Group": "Tower and Receiver",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "REC_COPY_Q_transport_loss_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total particle transport loss",
+            "Units": "kWt",
             "Group": "Tower and Receiver",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -2261,45 +2204,6 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "REC_COPY_W_dot_rec_pump_des": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Design total HTF pump power",
-            "Units": "MWe",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": -999.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "REC_COPY_W_dot_rec_pump_rec_share_des": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Design HTF pump power due to receiver",
-            "Units": "MWe",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": -999.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "REC_COPY_W_dot_rec_pump_tower_share_des": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Design HTF pump power due to tower height",
-            "Units": "MWe",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": -999.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
@@ -2589,19 +2493,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "piping_loss_tot": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Total piping loss",
-            "Units": "kWt",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "preheat_flux": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2772,8 +2663,8 @@
         "equations{ 'REC_COPY_T_htf_cold_des' } = define() {",
         "\treturn ${T_htf_cold_des}; };",
         "",
-        "equations{ 'piping_loss_tot' } = define() {",
-        "\treturn ${q_dot_piping_loss_des_calc}*1.E3; };",
+        "equations{ 'REC_COPY_Q_transport_loss_des' } = define() {",
+        "\treturn ${Q_transport_loss_des_calc}*1.E3; };",
         "\t",
         "equations{ 'csp.pt.rec.max_flow_to_rec' } = define() {",
         "\treturn ${m_dot_htf_rec_max_calc}; };",
@@ -2781,17 +2672,8 @@
         "equations{ 'REC_COPY_eta_rec_therm_des_calc' } = define() {",
         "\treturn ${eta_rec_thermal_des_calc}*100; };",
         "\t",
-        "equations{ 'REC_COPY_vel_rec_tube_des' } = define() {",
-        "\treturn ${vel_rec_htf_des_calc}; };",
-        "\t",
-        "equations{ 'REC_COPY_W_dot_rec_pump_tower_share_des' } = define() {",
-        "\treturn ${W_dot_rec_pump_tower_share_des_calc}; };",
-        "",
-        "equations{ 'REC_COPY_W_dot_rec_pump_rec_share_des' } = define() {",
-        "\treturn ${W_dot_rec_pump_rec_share_des_calc}; };",
-        "\t",
-        "equations{ 'REC_COPY_W_dot_rec_pump_des' } = define() {",
-        "\treturn ${W_dot_rec_pump_des_calc}; };",
+        "equations{ 'REC_COPY_P_tower_lift_des' } = define() {",
+        "\treturn ${P_tower_lift_des_calc}; };",
         "\t",
         "equations{ 'REC_COPY_m_dot_htf_rec_des_calc' } = define() {",
         "\treturn ${m_dot_htf_rec_des_calc}; };",
