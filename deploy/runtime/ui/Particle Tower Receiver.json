@@ -254,7 +254,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 2.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -420,7 +420,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 2.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -752,7 +752,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 2.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -2173,7 +2173,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total particle transport loss",
-            "Units": "kWt",
+            "Units": "MWt",
             "Group": "Tower and Receiver",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -2664,7 +2664,7 @@
         "\treturn ${T_htf_cold_des}; };",
         "",
         "equations{ 'REC_COPY_Q_transport_loss_des' } = define() {",
-        "\treturn ${Q_transport_loss_des_calc}*1.E3; };",
+        "\treturn ${Q_transport_loss_des_calc}; };",
         "\t",
         "equations{ 'csp.pt.rec.max_flow_to_rec' } = define() {",
         "\treturn ${m_dot_htf_rec_max_calc}; };",
