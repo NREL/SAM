@@ -115,8 +115,10 @@ public:
 	DECLARE_EVENT_TABLE();
 };
 
+
 wxBitmap CollapsePaneCtrl::m_bitMinus;
 wxBitmap CollapsePaneCtrl::m_bitPlus;
+
 
 BEGIN_EVENT_TABLE( CollapsePaneCtrl, wxPanel )
 	EVT_BUTTON( wxID_ANY, CollapsePaneCtrl::OnButton )
@@ -126,7 +128,7 @@ END_EVENT_TABLE()
 enum { ID_INPUTPAGELIST = wxID_HIGHEST + 142,
 	ID_SIMULATE, ID_RESULTSPAGE, ID_ADVANCED, ID_PARAMETRICS, ID_STOCHASTIC, ID_P50P90, ID_PVUNCERTAINTY, ID_MACRO,
 	ID_COLLAPSE,ID_EXCL_BUTTON, ID_EXCL_RADIO, ID_EXCL_TABLIST, ID_EXCL_OPTION, ID_EXCL_OPTION_MAX=ID_EXCL_OPTION+25,
-	ID_PAGES, ID_BASECASE_PAGES };
+	ID_PAGES, ID_BASECASE_PAGES, ID_FinTree, ID_TechTree};
 
 BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_BUTTON( ID_SIMULATE, CaseWindow::OnCommand )
@@ -143,6 +145,12 @@ BEGIN_EVENT_TABLE( CaseWindow, wxSplitterWindow )
 	EVT_MENU(ID_PVUNCERTAINTY, CaseWindow::OnCommand)
 	EVT_MENU( ID_MACRO, CaseWindow::OnCommand )
 	EVT_LISTBOX( ID_INPUTPAGELIST, CaseWindow::OnCommand )
+    EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, CaseWindow::OnTree)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_TechTree, CaseWindow::OnTreeCollapsing)
+
+//    EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, CaseWindow::OnTreeActivated)
+//    EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, CaseWindow::OnTreeActivated)
+    //EVT_LISTBOX( ID_TechTree, CaseWindow::OnCommand)
 	EVT_BUTTON( ID_EXCL_BUTTON, CaseWindow::OnCommand )
     EVT_LISTBOX( ID_EXCL_RADIO, CaseWindow::OnCommand)
 	EVT_CHECKBOX( ID_COLLAPSE, CaseWindow::OnCommand )
@@ -161,85 +169,89 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 {
 	m_case->AddListener( this );
 
+	// colors and fonts
+	wxColour config_font_color(255,255,255);
+	wxColour tech_color(0, 149, 255);
+	wxColour fin_color(128, 202, 255);
+
+	wxFont lafont(*wxNORMAL_FONT);
+	lafont.SetWeight(wxFONTWEIGHT_BOLD);
+
 	m_pageNote = 0;
 	m_currentGroup = 0;
 
-	wxColour lafore( *wxWHITE ), laback( 100,100,100 );
-
+	// navigation menu objects
 	m_left_panel = new wxPanel(this);
-	m_left_panel->SetBackgroundColour( laback );
-	
+	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
+	m_left_panel->SetMinSize(wxSize(275, 28)); // TODO size based on longest input page label
+
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
-	m_inputPageList->SetCaseWindow( this );
-	m_inputPageList->SetBackgroundColour( wxColour(243,243,243) );
+    m_inputPageList->Show(false);
 
-	wxFont lafont( *wxNORMAL_FONT );
-	lafont.SetWeight( wxFONTWEIGHT_BOLD );
-	m_configLabel = new wxStaticText( m_left_panel, wxID_ANY, "-technology-" );
-	m_configLabel->SetBackgroundColour( laback );
-	m_configLabel->SetForegroundColour( lafore );
-	m_configLabel->SetFont( lafont );
-	
+	// box for left panel
+	wxBoxSizer* szvl = new wxBoxSizer(wxVERTICAL);
 
-	
-	m_simButton = new wxMetroButton( m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW );
-	m_simButton->SetFont( wxMetroTheme::Font( wxMT_NORMAL, 14) );
-	m_resultsButton = new wxMetroButton( m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA( graph ) );
+	m_techLabel = new wxStaticText(m_left_panel, wxID_ANY, "-technology-");
+	m_techLabel->SetBackgroundColour(tech_color);
+	m_techLabel->SetForegroundColour(config_font_color);
+	m_techLabel->SetFont(lafont);
+	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
 
+	m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
+	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
+	m_finLabel->SetForegroundColour(config_font_color);
+	m_finLabel->SetFont(lafont);
+	szvl->Add(m_finLabel, 0, wxEXPAND | wxALL, 0);
+
+	// navigation menu sizers
+	m_navigationMenu = new wxMetroDataViewTreeCtrl(m_left_panel, ID_TechTree);
+	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
+	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
+	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
+	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 12));
+	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
+
+	// box for simulation and results buttons
 	wxBoxSizer *szhl = new wxBoxSizer( wxHORIZONTAL );
+
+	m_simButton = new wxMetroButton(m_left_panel, ID_SIMULATE, "Simulate", wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxMB_RIGHTARROW);
+	m_simButton->SetFont(wxMetroTheme::Font(wxMT_NORMAL, 14));
 	szhl->Add( m_simButton, 1, wxALL|wxEXPAND, 0 );
+
+	m_resultsButton = new wxMetroButton(m_left_panel, ID_RESULTSPAGE, wxEmptyString, wxBITMAP_PNG_FROM_DATA(graph));
+    m_resultsButton->SetToolTip(wxString("Show results without running a simulation."));
 	szhl->Add( m_resultsButton, 0, wxALL|wxEXPAND, 0 );
 
-	m_szsims = new wxGridSizer(2, 0, 0);
-	m_szsims->Add( new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" ), 0, wxALL|wxEXPAND, 0 );
-	m_szsims->Add( new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" ), 0, wxALL|wxEXPAND, 0 );
-	// select based on technology
-	if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV"))
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
-	else
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
-	m_szsims->Add( new wxMetroButton(m_left_panel, ID_MACRO, "Macros" ), 0, wxALL|wxEXPAND, 0 );
-
-	/*
-	wxSizer* szsims = new wxGridSizer(2, 0, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
-	// select based on technology
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-		szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
-	else
-		szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
-	szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
-
-
-    m_parametricsButton = new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics" );
-    m_stochasticButton = new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic" );
-    m_pvuncertaintyButton = new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty");
-    m_p50p90Button = new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90");
-    m_macrosButton = new wxMetroButton(m_left_panel, ID_MACRO, "Macros" );
-    
-    m_szsims = new wxGridSizer(2, 0, 0);
-    m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
-    m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
-    // select based on technology
-    if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV")) {
-        m_szsims->Add(m_pvuncertaintyButton, 0, wxALL | wxEXPAND, 0);
-        m_p50p90Button->Hide();
+	// grid for parametric buttons etc.
+    if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")) {
+        m_szsims = new wxGridSizer(1, 0, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
     }
-    else {
-        m_szsims->Add(m_p50p90Button, 0, wxALL | wxEXPAND, 0);
-        m_pvuncertaintyButton->Hide();
+    else if (!m_case->GetTechnology().Contains("Hybrid")) {
+        m_szsims = new wxGridSizer(2, 0, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+        if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
+            m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
+        else
+            m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
     }
-    m_szsims->Add( m_macrosButton, 0, wxALL|wxEXPAND, 0 );
-*/
-    
-	wxBoxSizer *szvl = new wxBoxSizer( wxVERTICAL );
-	szvl->Add( m_configLabel, 0, wxALIGN_CENTER|wxTOP|wxBOTTOM, 3 );
-	szvl->Add( m_inputPageList, 1, wxALL|wxEXPAND, 0 );
+    else { //Remove Stochastic and P50/P90 buttons for hybrid technologies
+        m_szsims = new wxGridSizer(1, 0, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+    }
+
 	szvl->Add( szhl, 0, wxALL|wxEXPAND, 0 );
+	
 	szvl->Add( m_szsims, 0, wxALL|wxEXPAND, 0 );
+
 	m_left_panel->SetSizer( szvl );
 
+	// input and results page objects
 	m_pageFlipper = new wxSimplebook( this, ID_PAGES, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE );
 	
 	m_inputPageScrollWin = new wxScrolledWindow( m_pageFlipper );
@@ -260,7 +272,6 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_exclPanel->SetSizer( m_exclPanelSizer );
 		
 	m_pageFlipper->AddPage( m_inputPageScrollWin, "Input Pages", true );
-
 	
 	m_baseCaseResults = new ResultsViewer( m_pageFlipper, ID_BASECASE_PAGES );
 	m_pageFlipper->AddPage( m_baseCaseResults, "Base Case" );
@@ -270,20 +281,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 
 	m_stochastic = new StochasticPanel( m_pageFlipper, m_case );
 	m_pageFlipper->AddPage( m_stochastic, "Stochastic", false );
-/*
-	// create based on technology
-    m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
-    m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
-    
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
-		m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
-        m_p50p90->Hide();
-	}
-	else {
-		m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
-		m_pvuncertainty->Hide();
-	}
-*/
+
 	m_p50p90 = new P50P90Form(m_pageFlipper, m_case);
 	m_pageFlipper->AddPage(m_p50p90, "P50/P90", false);
 
@@ -293,13 +291,11 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	m_pvuncertainty = new PVUncertaintyForm(m_pageFlipper, m_case);
 	m_pageFlipper->AddPage(m_pvuncertainty, "Uncertainty", false);
 
-
 	double xScale, yScale;
 	wxDevicePPIToScale( wxClientDC(this).GetPPI(), &xScale, &yScale );
 	
 	SetMinimumPaneSize( 50 );
 	SplitVertically( m_left_panel, m_pageFlipper, (int)(210*xScale) );
-	
 	
 	m_pageNote = new PageNote( this );
  
@@ -337,31 +333,17 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	
 
 	UpdateConfiguration();
-
+/*
 	// load graphs and perspective from case
 	std::vector<Graph> gl;
 	m_case->GetGraphs( gl );
 	
-	
-	if (m_case->GetConfiguration()->Technology == "Wind Power")
-	{
-		// testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
-		std::vector<Uncertainties> ul;
-		Uncertainties u1, u2, u3;
-		u1.Title = "Figure2";
-		u2.Title = "Figure5";
-		u3.Title = "Figure10";
-		ul.push_back(u1);
-		ul.push_back(u2);
-		ul.push_back(u3);
-		m_baseCaseResults->SetUncertainties(ul);
-	}
 
 	m_baseCaseResults->SetGraphs( gl );
 	m_baseCaseResults->LoadPerspective( m_case->Perspective() );
 
 	UpdateResults();
-
+*/
 }
 
 CaseWindow::~CaseWindow()
@@ -401,7 +383,20 @@ void CaseWindow::SaveCurrentViewProperties()
 bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 {
 	Simulation &bcsim = m_case->BaseCase();
-	m_inputPageList->Select( -1 );	
+	m_inputPageList->Select( -1 );
+    //m_navigationMenu->SetCurrentItem(wxDataViewItem(0));
+    
+ //   wxDataViewItemArray dvia;
+    m_navigationMenu->UnselectAll();
+    /*
+    m_navigationMenu->GetModel()->GetChildren(wxDataViewItem(0), dvia);
+    wxDataViewItem dvi = dvia[0];
+    m_navigationMenu->GetModel()->GetChildren(dvi, dvia);
+    m_navigationMenu->SetCurrentItem(dvia[0]);
+    m_navigationMenu->Collapse(dvi);
+    */
+    //m_navigationMenu->Expand(dvi);
+    
 
     int i_results_page = m_baseCaseResults->GetSelection();
     m_baseCaseResults->SetSelection(0);
@@ -409,8 +404,10 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
     bcsim.Clear();
     
 	ExcelExchange &ex = m_case->ExcelExch();
-	if ( ex.Enabled )
-		ExcelExchange::RunExcelExchange( ex, m_case->Values(), &bcsim );
+	if (ex.Enabled) {
+		for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size(); i++)
+			ExcelExchange::RunExcelExchange(ex, m_case->Values(i), &bcsim);
+	}
 
 	SimulationDialog tpd( "Simulating...", 1 );
 
@@ -438,7 +435,10 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		if ( !silent ) {
 			UpdateResults();
 			m_pageFlipper->SetSelection( 1 );
-            m_baseCaseResults->SetSelection(i_results_page);
+			if (m_baseCaseResults->GetPage(i_results_page)->IsShown())
+				m_baseCaseResults->SetSelection(i_results_page);
+			else 
+				m_baseCaseResults->SetSelection(0);
 		}
 		return true;
 	}
@@ -452,6 +452,53 @@ bool CaseWindow::RunBaseCase( bool silent, wxString *messages )
 		return false;
 	}
 }
+
+bool CaseWindow::RunSSCBaseCase(wxString& fn, bool silent, wxString* messages)
+{
+	Simulation& bcsim = m_case->BaseCase();
+	m_inputPageList->Select(-1);
+
+	int i_results_page = m_baseCaseResults->GetSelection();
+	m_baseCaseResults->SetSelection(0);
+
+	bcsim.Clear();
+	bcsim.SetModels();
+
+	SimulationDialog tpd("Simulating...", 1);
+
+	int nok = 0;
+
+//	bool ok = bcsim.InvokeSSC(silent, fn);
+	std::vector<Simulation*> list;
+	list.push_back(&bcsim);
+	nok += Simulation::DispatchThreads(tpd, list, 1);
+
+	if (!silent) tpd.Finalize(nok == 0
+		? "Simulation failed."
+		: "Simulation finished with warnings.");
+
+	if (messages) *messages = tpd.Dialog().GetMessages();
+
+	if (nok == 1)
+	{
+		if (!silent) {
+			UpdateResults();
+			m_pageFlipper->SetSelection(1);
+			m_baseCaseResults->SetSelection(i_results_page);
+		}
+		return true;
+	}
+	else
+	{
+		wxArrayString err;
+		m_case->BaseCase().Clear(); // clear notices 3/27/17
+		err.Add("Last simulation failed.");
+		bcsim.SetErrors(err);
+		UpdateResults(); // clear notices 3/27/17
+		return false;
+	}
+}
+
 
 void CaseWindow::UpdateResults()
 {
@@ -493,7 +540,7 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	wxString tech, fin;
 	if ( ConfigInfo *ci = m_case->GetConfiguration() )
 	{
-		tech = ci->Technology;
+		tech = ci->TechnologyFullName;
 		fin = ci->Financing;
 	}
 	else
@@ -588,6 +635,51 @@ bool CaseWindow::GenerateReport( wxString pdffile, wxString templfile, VarValue 
 	return false;
 }
 
+void CaseWindow::OnTree(wxDataViewEvent &evt)
+{
+	m_pageFlipper->SetSelection(0);
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
+		return;
+
+	if (m_navigationMenu->IsContainer(dvi))
+	{
+		if (m_navigationMenu->IsExpanded(dvi))
+			m_navigationMenu->Collapse(dvi);
+		else
+			m_navigationMenu->Expand(dvi);
+		if (m_currentSelection.IsOk()) {// keep current selection 
+			m_navigationMenu->SetCurrentItem(m_currentSelection);
+			return;
+		}
+		else {// select first child
+			m_currentSelection = m_navigationMenu->GetNthChild(dvi, 0);
+			m_navigationMenu->SetCurrentItem(m_currentSelection);
+		}
+	}
+	else {
+		m_currentSelection = evt.GetItem();
+	}
+	wxString title = m_navigationMenu->GetItemText(m_currentSelection);
+	m_navigationMenu->SetFocus();
+	SwitchToInputPage(title);
+
+}
+
+void CaseWindow::OnTreeCollapsing(wxDataViewEvent& evt)
+{
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_navigationMenu->IsContainer(dvi)) {
+		auto selectedDVI = m_navigationMenu->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_navigationMenu->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_navigationMenu->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
+}
+
 void CaseWindow::OnCommand( wxCommandEvent &evt )
 {
 	if ( evt.GetId() == ID_SIMULATE )
@@ -597,7 +689,8 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 	else if (evt.GetId() == ID_RESULTSPAGE )
 	{
 		m_inputPageList->Select( -1 );
-		m_pageFlipper->SetSelection( 1 );
+		m_navigationMenu->UnselectAll();
+        m_pageFlipper->SetSelection( 1 );
 	}
 	else if ( evt.GetId() == ID_ADVANCED )
 	{
@@ -610,11 +703,14 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
  
 		wxMetroPopupMenu menu;
 		menu.Append( ID_PARAMETRICS, "Parametrics" );
-		menu.Append( ID_STOCHASTIC, "Stochastic" );
-		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-			menu.Append(ID_PVUNCERTAINTY, "Uncertainty");
-		else
-			menu.Append(ID_P50P90, "P50 / P90");
+        if (!m_case->GetTechnology().Contains("Hybrid")) {
+            menu.Append(ID_STOCHASTIC, "Stochastic");
+            if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
+                menu.Append(ID_PVUNCERTAINTY, "Uncertainty");
+            else if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")); //do nothing
+            else
+                menu.Append(ID_P50P90, "P50 / P90");
+        }
 		menu.Append( ID_MACRO, "Scripting" );
 		
 		menu.Popup( this, pos, wxBOTTOM|wxRIGHT );
@@ -649,11 +745,16 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		m_pageFlipper->SetSelection( 0 );
 		SwitchToInputPage( m_inputPageList->GetStringSelection() );
 	}
+    else if (evt.GetId() == ID_TechTree)
+    {
+        m_pageFlipper->SetSelection(0);
+        SwitchToInputPage(m_navigationMenu->GetItemText(m_navigationMenu->GetCurrentItem()));
+    }
 	else if ( evt.GetId() == ID_EXCL_BUTTON )
 	{
 		if ( m_currentGroup && m_currentGroup->OrganizeAsExclusivePages )
 		{
-			VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+			VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 			if ( !vv ) return;
 			int sel = vv->Integer();
 			
@@ -676,12 +777,12 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 
         int sel = (evt.GetId() == ID_EXCL_RADIO) ? m_exclRadioButton->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-        VarValue* vv = m_case->Values().Get(m_currentGroup->ExclusivePageVar);
+        VarValue* vv = m_case->Values(m_currentGroup->ndxHybrid).Get(m_currentGroup->ExclusivePageVar);
         if (vv != 0 && sel != vv->Integer())
         {
             wxBusyCursor wait;
             vv->Set(sel);
-            m_case->VariableChanged(m_currentGroup->ExclusivePageVar); // this will redo the view
+            m_case->VariableChanged(m_currentGroup->ExclusivePageVar, m_currentGroup->ndxHybrid); // this will redo the view
         }
         /*
         if (m_currentGroup && m_currentGroup->OrganizeAsExclusivePages)
@@ -714,8 +815,8 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 			wxBusyCursor wait;
 //			m_inputPageScrollWin->Freeze();
 			
-			m_case->Values().Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
-			m_case->VariableChanged( pds->CollapsibleVar ); // this will re-layout the page
+			m_case->Values(pds->ndxHybrid).Set( pds->CollapsibleVar, VarValue( pds->CollapseCheck->GetValue() ) );
+			m_case->VariableChanged( pds->CollapsibleVar, pds->ndxHybrid ); // this will re-layout the page
 			
 //			m_inputPageScrollWin->Thaw();
 		}
@@ -727,12 +828,12 @@ void CaseWindow::OnCommand( wxCommandEvent &evt )
 		
 		int sel = (evt.GetId()==ID_EXCL_TABLIST) ? m_exclPageTabList->GetSelection() : evt.GetId() - ID_EXCL_OPTION;
 
-		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 		if ( vv != 0 && sel != vv->Integer() )
 		{
 			wxBusyCursor wait;			
 			vv->Set( sel );
-			m_case->VariableChanged( m_currentGroup->ExclusivePageVar ); // this will redo the view
+			m_case->VariableChanged( m_currentGroup->ExclusivePageVar, m_currentGroup->ndxHybrid ); // this will redo the view
 		}
 	}
 }
@@ -772,69 +873,55 @@ wxUIObject *CaseWindow::FindActiveObject( const wxString &name, ActiveInputPage 
 
 void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 {
-	if ( evt.GetType() == CaseEvent::VARS_CHANGED )
+	if ( evt.GetType() == CaseEvent::VARS_CHANGED ) // calculated variable changes - like total_installed_cost
 	{
 		// update UI objects for the ones that changed
 		wxArrayString &list = evt.GetVars();
-
-		/* Recursion error
-		// test to update objects and then variables when generating code without reopening objects
-		// if analysis period has changed then update analysis dependent ui objects and variables
-		if (m_case->m_oldAnalysisPeriod > 0 && m_case->m_oldAnalysisPeriod != analysis_period) {
-			//FindObjectsOfType("DataLifetimeMatrix");
-
-
-			for (size_t i = 0; i < m_pageGroups.size(); i++) {
-				m_currentGroup = m_pageGroups[i];
-				for (size_t i = 0; i < m_currentGroup->Pages.size(); i++)
-					for (size_t j = 0; j < m_currentGroup->Pages[i].size(); j++)
-						if (wxUIFormData* form = m_forms.Lookup(m_currentGroup->Pages[i][j].Name)) {
-							auto vpobj = form->GetObjects();
-							for (auto pobj : vpobj) {
-								if (pobj->GetTypeName() == "DataLifetimeMatrix") {
-									//										list.Add(pobj->GetName());
-									VarValue* vv = m_case->Values().Get(pobj->GetName());
-									if (pobj && vv) {
-										if (SwitchToInputPage(m_currentGroup->SideBarLabel)) {
-
-											//ActiveInputPage::DataExchange(pobj, *vv, ActiveInputPage::VAR_TO_OBJ, analysis_period, m_case->m_oldAnalysisPeriod);
-											ActiveInputPage* ipage = 0;
-											wxUIObject* obj = FindActiveObject(pobj->GetName(), &ipage); // sets object value in initialize
-											if (ipage && obj && vv)
-												ipage->DataExchange(obj, *vv, ActiveInputPage::OBJ_TO_VAR, analysis_period, m_case->m_oldAnalysisPeriod);
-										}
-									}
-								}
-							}
-						}
-			}
-		}
-*/
 
 		for( size_t i=0;i<list.size();i++ )
 		{
 			ActiveInputPage *ipage = 0;
 			wxUIObject *obj = FindActiveObject( list[i], &ipage );
-			VarValue *vv = m_case->Values().Get( list[i] );
-			if ( ipage && obj && vv )
-			{
-				ipage->DataExchange( obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
+			VarValue* vv = NULL;
+			size_t ndxHybrid = 0;
+			if (ipage) {
+				ndxHybrid = ipage->GetHybridIndex();
+				vv = m_case->Values(ndxHybrid).Get(list[i]);
+			}
+            else {
+                ndxHybrid = evt.GetndxHybrid();
+            }
+                
+			if ( ipage && obj && vv ) {
+				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period, ndxHybrid);
 			
 				// lookup and run any callback functions.
-				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
-				{
+				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), ndxHybrid) )	{
 					UICallbackContext cbcxt( ipage, obj->GetName() + "->on_change" );
-					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
-					  {
+					if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(ndxHybrid), ndxHybrid) )					  {
 						wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
-					  }
+					}
 				}
+				/* Here causes stack overflow
+				// hybrid updating across VarTables using HybridVariableDependencies
+				// at this point vv is updated and corresponding object is updated
+				// check through dependencies for obj->GetNatme()
+				for (auto& hvd : m_case->GetConfiguration()->HybridVariables) {
+					if (ndxHybrid == hvd.IndependentVariableVarTable && obj->GetName() == hvd.IndependentVariableName) {
+						// update dependent variable and equations 
+						if (VarValue* depVar = m_case->Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+							depVar->Copy(*vv); // update dependent variable value
+							m_case->Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+						}
+					}
+				}
+				*/
 			}
 
 
 			// update views if the variable controls an
 			// exclusive set of input pages or a collapsible pane
-			if( VarInfo *info = m_case->Variables().Lookup( list[i] ) )
+			if( VarInfo *info = m_case->Variables(ndxHybrid).Lookup( list[i] ) )
 			{
 				if ( info->Flags & VF_COLLAPSIBLE_PANE )
 				{
@@ -844,12 +931,12 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 						PageDisplayState *pds = m_currentActivePages[j];
 						if ( pds->CollapsibleVar == list[i] )
 						{
-							VarValue *vv = m_case->Values().Get( pds->CollapsibleVar );
+							VarValue *vv = m_case->Values(ndxHybrid).Get( pds->CollapsibleVar );
 							if( vv && vv->Boolean() )
 							{
 								if( pds->ActivePage == 0 ) 
 								{
-									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+									pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this, ndxHybrid);
 									pds->ActivePage->Initialize();
 								}
 								pds->CollapseCheck->SetValue( true );
@@ -882,21 +969,13 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		wxString sel = m_inputPageList->GetStringSelection();
+	//	wxString sel = m_inputPageList->GetStringSelection();
+
+		// #1600 and #1608
+		//m_case->LoadDefaults(); // fails per 1618
+
 		UpdateConfiguration();
 
-		if (!sel.empty()) 
-			SwitchToInputPage( sel );
-		else
-			m_pageFlipper->SetSelection(0);
-
-		// make sure at least the first input page is selected
-		// if nothing else
-		if ( m_pageFlipper->GetSelection() == 0
-			&& m_currentGroup == 0 
-			&& m_pageGroups.size() > 0 )
-			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
-		
 		m_baseCaseResults->Clear();
 
 		m_macros->ConfigurationChanged();
@@ -962,12 +1041,42 @@ wxArrayString CaseWindow::GetInputPages()
 	return list;
 }
 
+
+bool CaseWindow::SwitchToNavigationMenu(const wxString& name)
+{
+	// iterate over menu tree items and match "name" or select first item (SAM issue 1618)
+	wxDataViewItem dvi;// = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	bool found = false;
+	int count = m_navigationMenu->GetChildCount(wxDataViewItem(0));
+	for (int i = 0; i < count && !found; i++) {
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), i);
+		if (dvi.IsOk() && m_navigationMenu->GetItemText(dvi) == name)
+			found = true;
+	}
+	// first item if not found
+	if (!found)
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
+	if (dvi.IsOk()) {
+		m_navigationMenu->SetCurrentItem(dvi);
+		m_currentSelection = (dvi);
+		SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+	}
+
+
+	return true;
+}
+
+
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
 	wxBusyCursor wait;
 //	m_inputPagePanel->Freeze();
 
-	DetachCurrentInputPage();
+	//DetachCurrentInputPage();
 
 	m_currentGroup = 0;
 	for( size_t i=0;i<m_pageGroups.size();i++ )
@@ -976,9 +1085,11 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 	if ( !m_currentGroup ) return false;
 
+    DetachCurrentInputPage();
+
 	for( size_t i=0;i<m_currentGroup->Pages.size();i++ )
 		for( size_t j=0;j<m_currentGroup->Pages[i].size();j++ )
-			if ( wxUIFormData *form = m_forms.Lookup( m_currentGroup->Pages[i][j].Name ) )
+			if ( wxUIFormData *form = m_forms[m_currentGroup->ndxHybrid].Lookup(m_currentGroup->Pages[i][j].Name))
 				m_currentForms.push_back( form );
 			
 	SetupActivePage();
@@ -986,8 +1097,9 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 //	m_inputPagePanel->Thaw();
 
-	if ( m_inputPageList->GetStringSelection() != name )
-		m_inputPageList->Select( m_inputPageList->Find( name ) );
+//	if ( m_inputPageList->GetStringSelection() != name )
+	int p = m_inputPageList->Find(name);
+	m_inputPageList->Select( p );
 
 	return true;
 }
@@ -1038,6 +1150,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		const PageInfo &pi = list[ii];
 
 		PageDisplayState *pds = new PageDisplayState;
+		pds->ndxHybrid = pi.ndxHybrid;
 
 		// must register the PDS here so that the case knows 
 		// about it when the ActiveInputPages are initialized.
@@ -1045,7 +1158,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		m_currentActivePages.push_back( pds ); 
 
 
-		pds->Form = m_forms.Lookup( pi.Name );
+		pds->Form = m_forms[pi.ndxHybrid].Lookup(pi.Name);
 		if ( !pds->Form )
 			wxMessageBox( "error locating form data " + pi.Name );
 
@@ -1061,7 +1174,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 			if( !pi.ShowHideLabel.IsEmpty() ) label = pi.ShowHideLabel;
 			pds->CollapseCheck = new CollapsePaneCtrl( m_inputPageScrollWin, ID_COLLAPSE, label );
 
-			if ( VarValue *vv = m_case->Values().Get( pds->CollapsibleVar ) )
+			if ( VarValue *vv = m_case->Values(pi.ndxHybrid).Get( pds->CollapsibleVar ) )
 			{
 				load_page = vv->Boolean();
 				pds->CollapseCheck->SetValue( load_page );
@@ -1070,7 +1183,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 		
 		if( load_page && pds->Form != 0 )
 		{
-			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this );
+			pds->ActivePage = new ActiveInputPage( m_inputPageScrollWin, pds->Form, this, pi.ndxHybrid);
 			pds->ActivePage->Initialize();
 		}
 
@@ -1089,7 +1202,7 @@ void CaseWindow::SetupActivePage()
 	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
 		size_t excl_idx = 9999;
-		VarValue *vv = m_case->Values().Get( m_currentGroup->ExclusivePageVar );
+		VarValue *vv = m_case->Values(m_currentGroup->ndxHybrid).Get( m_currentGroup->ExclusivePageVar );
 		if ( !vv )
 		{
 			wxMessageBox( "could not locate exclusive page variable " + m_currentGroup->ExclusivePageVar );
@@ -1236,14 +1349,20 @@ void CaseWindow::LayoutPage()
 
 }
 
-void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg )
+void CaseWindow::UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid )
 {
+	bool found = false;
 	for (size_t j=0;j<pages.size();j++ )
 	{
-		InputPageDataHash::iterator it = cfg->InputPages.find( pages[j].Name );
-		if ( it != cfg->InputPages.end() )
-			m_forms.Add( pages[j].Name, it->second->Form().Duplicate() );
-		else
+		found = false;
+		for (size_t i = 0; i < cfg->InputPages.size(); i++) {
+			InputPageDataHash::iterator it = cfg->InputPages[i].find(pages[j].Name);
+			if (it != cfg->InputPages[i].end()) {
+				m_forms[ndxHybrid].Add(pages[j].Name, it->second->Form().Duplicate());
+				found = true;
+			}
+		}
+		if (!found)
 			wxMessageBox("Could not locate form data for " + pages[j].Name );			
 	}
 }
@@ -1253,23 +1372,37 @@ void CaseWindow::UpdateConfiguration()
 	DetachCurrentInputPage();
 	m_currentGroup = 0;
 	m_inputPageList->ClearItems();
+	m_pageGroups.clear();
+	m_navigationMenu->DeleteAllItems();
 
-	ConfigInfo *cfg = m_case->GetConfiguration();
-	if ( !cfg ) return;
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg) return;
 
-	wxString Ts( SamApp::Config().Options( cfg->Technology ).ShortName );
-	if ( Ts.IsEmpty() ) Ts = cfg->Technology;
+	m_case->BaseCase().Clear(); // reset for UpdateResults
+
+	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
+	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
+
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
-	
 
-	m_configLabel->SetLabel( Ts + ", " + Fs );
-	
+	// configuration labels for navigation menu
+	// use spaces to set left margin
+    m_techLabel->SetLabel("  " + Ts);
+	m_techLabel->SetToolTip(cfg->TechnologyFullName + " Performance Model");
+	m_finLabel->SetLabel("  " + Fs);
+	m_finLabel->SetToolTip(cfg->Financing + " Financial Model");
+
 	// update current set of input pages
-	m_pageGroups = cfg->InputPageGroups;
+	for (size_t i = 0; i < cfg->InputPageGroups.size(); i++) {
+		m_pageGroups.insert(m_pageGroups.end(), cfg->InputPageGroups[i].begin(), cfg->InputPageGroups[i].end());
+	}
 
 	// erase current set of forms, and rebuild the forms for this case
-	m_forms.Clear();
+	for (auto &f : m_forms)
+		f.Clear();
+
+	m_forms.resize(cfg->Technology.size());
 	
 
 	wxArrayString inputPageHelpContext; // valid ids for the current configuration
@@ -1279,72 +1412,123 @@ void CaseWindow::UpdateConfiguration()
 		InputPageGroup *group = m_pageGroups[i];
 
 		for( size_t kk=0;kk<group->Pages.size();kk++ )
-			UpdatePageListForConfiguration( group->Pages[kk], cfg );
+			UpdatePageListForConfiguration( group->Pages[kk], cfg, group->ndxHybrid );
 
-		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg );
+		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg, group->ndxHybrid );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 
 		inputPageHelpContext.push_back(m_pageGroups[i]->HelpContext);
 	}
 
-	/*
-    // update either P50/P90 or Uncertainty
-    m_szsims->Clear();
-    m_szsims->Add( m_parametricsButton, 0, wxALL|wxEXPAND, 0 );
-    m_szsims->Add( m_stochasticButton, 0, wxALL|wxEXPAND, 0 );
-    // select based on technology
-    if ((m_case->GetTechnology()=="PVWatts") || (m_case->GetTechnology()=="Flat Plate PV")) {
-        m_szsims->Add(m_pvuncertaintyButton, 0, wxALL | wxEXPAND, 0);
-        m_p50p90Button->Hide();
-        m_pvuncertaintyButton->Show();
-    }
-    else {
-        m_szsims->Add(m_p50p90Button, 0, wxALL | wxEXPAND, 0);
-        m_pvuncertaintyButton->Hide();
-        m_p50p90Button->Show();
-    }
-    m_szsims->Add( m_macrosButton, 0, wxALL|wxEXPAND, 0 );
-	*/
 
-	m_szsims->Clear(true);
-	m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
-	m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
-	// select based on technology
-	if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
-	else
-		m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
-	m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+	wxString Ts_lower = Ts.Lower();
+	wxArrayString Ts_split = wxSplit(Ts, '-');
+	wxDataViewItem cont_pv;
+	wxDataViewItemArray dvia( m_pageGroups.size() + 1 );
+	wxArrayString bin_list;
+	wxArrayString page_list;
+	wxString bin_name;
+	wxString bin_name_prev;
+	for (int i = 0; i < m_pageGroups.size(); i++) {
+		if (m_pageGroups[i]->ExclTop) {
+			if (bin_list.Index("Hybrid") == wxNOT_FOUND) {
+				dvia[0] = m_navigationMenu->AppendContainer(wxDataViewItem(0), "Hybrid");
+			}
+			bin_list.Add("Hybrid");
+		}
+		else if (m_pageGroups[i]->BinName != "") {
+			bin_list.Add(m_pageGroups[i]->BinName);
+		}
+		else {
+			bin_list.Add("");
+		}
+	}
+	for (int j = 0; j < m_pageGroups.size(); j++) {
+		bin_name = m_pageGroups[j]->BinName;
+		if (m_pageGroups[j]->SideBarLabel.Contains("Summary")) {
+			continue; //Skip if summary page
+		}
 
+		if (page_list.Index(bin_name) == wxNOT_FOUND && bin_name != "") {
+			page_list.Add(bin_name);
+			dvia[page_list.Index(bin_name) + 1] = m_navigationMenu->AppendContainer(wxDataViewItem(0), bin_name);
+		}
 
-	/*
-    int ipagePVUncertainty = m_pageFlipper->FindPage(m_pvuncertainty);
-    int ipageP50P90 =m_pageFlipper->FindPage(m_p50p90);
+		if (bin_name != "" && page_list.Index(bin_name) != wxNOT_FOUND) {
+			m_navigationMenu->AppendItem(dvia[page_list.Index(bin_name) + 1], m_pageGroups[j]->SideBarLabel);
+		}
+		else if (m_pageGroups[j]->ExclTop) {
+			m_navigationMenu->AppendItem(dvia[0], m_pageGroups[j]->SideBarLabel);
+		}
+		else {
+			m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
+		}
+	}
     
-    if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV")) {
-        if (ipagePVUncertainty == wxNOT_FOUND) {
-            m_pageFlipper->RemovePage(ipageP50P90);
-            m_pageFlipper->InsertPage(ipageP50P90, m_pvuncertainty, "Uncertainty", false);
-//            m_pvuncertainty->Show();
-            m_p50p90->Hide();
-            m_pvuncertainty->Reset();
-        }
-    }
-    else {
-        if (ipageP50P90 == wxNOT_FOUND) {
-            m_pageFlipper->RemovePage(ipagePVUncertainty);
-            m_pageFlipper->InsertPage(ipagePVUncertainty, m_p50p90, "Uncertainty", false);
-            m_pvuncertainty->Hide();
-            //m_p50p90->Show();
-            // mp50p90->Reset();
-        }
-    }
-	*/
-    
-    
+	wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
+
+	if (dvi.IsOk()) {
+//		m_navigationMenu->SetCurrentItem(dvi); // triggers OnTree on MacOS only
+		m_currentSelection = (dvi);
+	}
+
 	// check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
+
+	m_szsims->Clear(true);
+	if (m_case->GetTechnology().Contains("wave") || m_case->GetTechnology().Contains("tidal")) {
+        m_szsims->SetCols(1);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+        m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+    }
+    else if (!m_case->GetTechnology().Contains("Hybrid")) {
+		m_szsims->SetCols(2);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_STOCHASTIC, "Stochastic"), 0, wxALL | wxEXPAND, 0);
+		if ((m_case->GetTechnology() == "PVWatts") || (m_case->GetTechnology() == "Flat Plate PV"))
+			m_szsims->Add(new wxMetroButton(m_left_panel, ID_PVUNCERTAINTY, "Uncertainty"), 0, wxALL | wxEXPAND, 0);
+		else
+			m_szsims->Add(new wxMetroButton(m_left_panel, ID_P50P90, "P50 / P90"), 0, wxALL | wxEXPAND, 0);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+	}
+	else { //Remove Stochastic and P50/P90 buttons for hybrid technologies
+		m_szsims->SetCols(1);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_PARAMETRICS, "Parametrics"), 0, wxALL | wxEXPAND, 0);
+		m_szsims->Add(new wxMetroButton(m_left_panel, ID_MACRO, "Macros"), 0, wxALL | wxEXPAND, 0);
+	}
+	m_szsims->Layout();
+
+
+	// load graphs and perspective from case
+	std::vector<Graph> gl;
+	m_case->GetGraphs(gl);
+
+
+	m_baseCaseResults->SetGraphs(gl);
+	m_baseCaseResults->LoadPerspective(m_case->Perspective());
+
+	UpdateResults();
+/*
+	if (m_case->GetConfiguration()->TechnologyFullName == "Wind Power")
+	{
+		// testing Uncertainties - remove after added for other technologies and add to uncertainties.lk (like autographs.lk)
+		std::vector<Uncertainties> ul;
+		Uncertainties u1, u2, u3;
+		u1.Title = "Figure2";
+		u2.Title = "Figure5";
+		u3.Title = "Figure10";
+		ul.push_back(u1);
+		ul.push_back(u2);
+		ul.push_back(u3);
+		m_baseCaseResults->SetUncertainties(ul);
+	}
+*/
+	m_left_panel->Layout();
 
 	Layout();
 
@@ -1729,13 +1913,23 @@ void SelectVariableDialog::SetCheckedNames(const wxArrayString &list)
 wxArrayString SelectVariableDialog::GetCheckedNames()
 {
 	wxArrayString list;
-	for (size_t i=0;i<m_items.size();i++)
-		if ( m_items[i].checked )
-			list.Add( m_items[i].name );
+	for (size_t i = 0; i < m_items.size(); i++)
+		if (m_items[i].checked)
+			list.Add(m_items[i].name);
 
 	return list;
 }
-	
+
+wxArrayInt SelectVariableDialog::GetCheckedIndices()
+{
+	wxArrayInt list;
+	for (size_t i = 0; i < m_items.size(); i++)
+		if (m_items[i].checked)
+			list.Add(i);
+
+	return list;
+}
+
 void SelectVariableDialog::OnExpandAll(wxCommandEvent &)
 {
 	tree->ExpandAll();
@@ -1763,23 +1957,23 @@ bool SelectVariableDialog::Run( const wxString &title,
 
 	if (dlg.ShowModal() == wxID_OK)
 	{
-		wxArrayString names = dlg.GetCheckedNames();
+		wxArrayString checked_names = dlg.GetCheckedNames();
 		
 		// remove any from list
 		int i=0;
 		while (i<(int)list.Count())
 		{
-			if (names.Index( list[i] ) < 0)
+			if (checked_names.Index( list[i] ) < 0)
 				list.RemoveAt(i);
 			else
 				i++;
 		}
 
 		// append any new ones
-		for (i=0;i<(int)names.Count();i++)
+		for (i=0;i<(int)checked_names.Count();i++)
 		{
-			if (list.Index( names[i] ) < 0)
-				list.Add( names[i] );
+			if (list.Index( checked_names[i] ) < 0)
+				list.Add( checked_names[i] );
 		}
 
 
@@ -1827,14 +2021,17 @@ void VarSelectDialog::SetConfiguration( const wxString &tech, const wxString &fi
 	if ( ConfigInfo *ci = SamApp::Config().Find( tech, fin ) )
 	{
 		wxArrayString names, labels;
-		for( VarInfoLookup::iterator it = ci->Variables.begin();
-			it != ci->Variables.end();
-			++it )
-		{
-			names.Add( it->first );
-			wxString label = PrettyPrintLabel(it->first, *(it->second));
 
-			labels.Add( label );
+		for (size_t ndxHybrid = 0; ndxHybrid < ci->Technology.size(); ndxHybrid++) {
+			for (VarInfoLookup::iterator it = ci->Variables[ndxHybrid].begin(); it != ci->Variables[ndxHybrid].end(); ++it) {
+				wxString name = it->first;
+				if (ci->Technology.size() > 1) name = ci->Technology[ndxHybrid].Lower() + "_" + name;
+				
+				names.Add(name);
+				wxString label = PrettyPrintLabel(name, *(it->second));
+
+				labels.Add(label);
+			}
 		}
 
 		wxArrayString output_names, output_labels, output_units, output_groups;

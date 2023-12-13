@@ -1,0 +1,2085 @@
+{
+    "Name": "Wind Turbine Design",
+    "Width": 961.0,
+    "Height": 688.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 950.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 671.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wind Turbine"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.blade_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 199.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Baseline|Advanced Design"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.drive_train"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 199.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "3 Stage Planetary|Single Stage - Low Speed Generator|Multi-Generator|Direct Drive"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.elevation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.max_tip_speed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 80.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m/s"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.max_tspeed_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 345.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 8.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.radio_list_or_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 347.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 50.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Select a turbine from the library|Define turbine design characteristics"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind.turbine.tower_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 199.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Baseline|Advanced Design"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_resource_shear"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.14
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_cut_out"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 25.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m/s"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_cutin"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 4.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m/s"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_hub_ht"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 80.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_hub_ht_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 531.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 335.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Error messages"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_kw_rating"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1500.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " kW"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_kw_rating_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1500.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " kW"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_max_cp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.45
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_power_curve_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 414.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_powercurve_err_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 335.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_rotor_diameter"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 75.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_rotor_diameter_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 75.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " m"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_turbine_selection"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 201.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "Wind Turbines"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,KW Rating"
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "a_error_test_number": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 17.345,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "a_error_test_string": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "\"default err msg\"",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "resource_definition_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.blade_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Blade design",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "Baseline|Advanced Design",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.drive_train": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Drive train design",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "3 Stage Planetary|Single Stage - Low Speed Generator|Multi-Generator|Direct Drive",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.dummy": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.elevation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine elevation (above sea level)",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.max_tip_speed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum tip speed",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 80.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.max_tspeed_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum tip-speed ratio",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 8.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.name_only": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "0",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.radio_list_or_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "Select a turbine from the library|Define turbine design characteristics",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.region2nhalf_slope": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 5.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind.turbine.tower_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tower design",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "Baseline|Advanced Design",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_resource_shear": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Shear coefficient",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.14,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_IEC_Class_from_lib": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "3",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_cut_out": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cut-out wind speed",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 25.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_cutin": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cut-in wind speed",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 4.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_hub_ht": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Hub height",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 80.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_kw_rating": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Rated output",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1500.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_kw_rating_from_lib": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1800.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_kw_rating_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "User-defined rated output",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1500.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_max_cp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum Cp",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.45,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_err_msg": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_hub_efficiency": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_powerout": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_powerout_from_lib": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_windspeeds": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_powercurve_windspeeds_from_lib": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_rated_wind_speed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_rotor_diameter": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Rotor diameter",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 75.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_rotor_diameter_from_lib": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 80.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_rotor_diameter_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "User-defined rotor diameter",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 75.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_turbine_selection": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Wind turbine selection",
+            "Units": " ",
+            "Group": "Wind Turbine",
+            "IndexLabels": "Wind Turbines|0",
+            "Flags": 19.0,
+            "DefaultValue": "Bergey BWC XL.1",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "// 'wind_turbine_rotor_diameter' is the SSC input",
+        "equations{ 'wind_turbine_rotor_diameter' } = define() {",
+        "\tif ( ${wind.turbine.radio_list_or_design} == 0)",
+        "\t\treturn ${wind_turbine_rotor_diameter_from_lib};",
+        "\telse",
+        "\t\treturn ${wind_turbine_rotor_diameter_input};",
+        "};",
+        "",
+        "// 'wind_turbine_kw_rating' is not used by SSC model, but it is used",
+        "// to calculate the nameplate capacity on the wind farm page",
+        "equations{ 'wind_turbine_kw_rating' } = define() {",
+        "\tif ( ${wind.turbine.radio_list_or_design} == 0)",
+        "\t\treturn  ${wind_turbine_kw_rating_from_lib};",
+        "\telse",
+        "\t\treturn ${wind_turbine_kw_rating_input};",
+        "};",
+        "",
+        "equations{ '$MIMO$ windturbinemod' } = define() {",
+        "\t// reset the error message",
+        "",
+        "\t// if we don't need to calculate the curve, get it from library and get out",
+        "\tif (${wind.turbine.radio_list_or_design} == 0) {",
+        "\t\t${wind_turbine_powercurve_windspeeds} = ${wind_turbine_powercurve_windspeeds_from_lib};",
+        "\t\t${wind_turbine_powercurve_powerout} = ${wind_turbine_powercurve_powerout_from_lib};",
+        "\t\t${wind_turbine_rated_wind_speed} = ${wind_turbine_kw_rating_from_lib}; // used for estimating a cost",
+        "\t\t${wind_turbine_powercurve_err_msg} = \"\";",
+        "",
+        "\t\treturn 0;",
+        "\t}",
+        "\t",
+        "\t// make sure error msg starts empty",
+        "\t//errmsg = \"\";",
+        "",
+        "\t// If user defined turbine, get user inputs, otherwise get values for kW rating and rotor diameter from the library for the (non-generic) turbine chosen in the drop-down",
+        "\tdata.turbine_size = ${wind_turbine_kw_rating_input};",
+        "\tdata.wind_turbine_rotor_diameter = ${wind_turbine_rotor_diameter_input};",
+        "\thubht = ${wind_turbine_hub_ht};",
+        "\tfarmElevation = ${wind.turbine.elevation}; \t// The elevation will be used to change the turbine power curve, which will be passed into the SSC",
+        "",
+        "\t// NOTE: April 2014, the last version of SAMwx did NOT account for hubht for air density calculation",
+        "\t// in this equation.  So, calculations with user defined turbines would create",
+        "\t// slightly different results.",
+        "\t// NOTE 2: Power curve is corrected by HUB HEIGHT air density from the weather file in SSC. ",
+        "\t// Therefore, only correct for elevation if using Weibull wind characteristics. Added 7/16/14 by JMF.",
+        "\tif(${wind_resource_model_choice} != 0) ",
+        "\t{",
+        "\t\tdata.elevation = farmElevation + hubht;",
+        "\t}",
+        "\telse ",
+        "\t{",
+        "\t\tdata.elevation = ${wind_resource.elev} + hubht;",
+        "\t}",
+        "\t",
+        "",
+        "\tdata.wind_turbine_max_cp = ${wind_turbine_max_cp};",
+        "\tdata.max_tip_speed = ${wind.turbine.max_tip_speed};",
+        "\tdata.max_tip_sp_ratio = ${wind.turbine.max_tspeed_ratio};",
+        "\tdata.cut_in = ${wind_turbine_cutin};",
+        "\tdata.cut_out = ${wind_turbine_cut_out};",
+        "\tdata.drive_train = ${wind.turbine.drive_train};",
+        "\t",
+        "\tsuccess = ssc_eqn(\"Turbine_calculate_powercurve\", data);",
+        "\t/*",
+        "\tif (!success){",
+        "\t\tmsgbox(data.error);",
+        "\t\treturn 0;",
+        "\t}*/",
+        "\tif (strlen(data.error) >4) {",
+        "\t\t${wind_turbine_powercurve_err_msg} = data.error;",
+        "\t\t${wind_turbine_powercurve_windspeeds} = [0]; //Show that equation failed so no plot",
+        "\t\t${wind_turbine_powercurve_powerout} = [0]; //Show that equation failed so no plot",
+        "\t\t${wind_turbine_powercurve_hub_efficiency} = [0]; //Show that equation failed so no plot",
+        "\t\tmsgbox(data.error);",
+        "\t\treturn 0;",
+        "\t}",
+        "\t",
+        "\tws = data.wind_turbine_powercurve_windspeeds;",
+        "\tpower = data.wind_turbine_powercurve_powerout;",
+        "\teff = data.hub_efficiency;",
+        "\t${wind_turbine_powercurve_err_msg} = data.error;",
+        "\t${wind_turbine_powercurve_windspeeds} = ws;",
+        "\t${wind_turbine_powercurve_powerout} = power;",
+        "\t${wind_turbine_powercurve_hub_efficiency} = eff;  // used to show values in Weibull graph",
+        "",
+        "\t// other outputs",
+        "\t${wind_turbine_rated_wind_speed} = data.rated_wind_speed; // used for estimating a cost",
+        "\treturn 0;",
+        "};",
+        "",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "function plot_turbine_curve()",
+        "{",
+        "\tsetplot('wind_turbine_power_curve_plot');",
+        "\tclearplot('wind_turbine_power_curve_plot');",
+        "\tplotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );",
+        "\t",
+        "\tws = ${wind_turbine_powercurve_windspeeds};",
+        "\tpc = ${wind_turbine_powercurve_powerout};",
+        "\tplot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});",
+        "\t",
+        "\thigh = max( ws );",
+        "\tlow = min( ws );",
+        "\tpad = (high - low) * 0.05;",
+        "\taxis( 'x1', {'label'='Wind Speed (m/s)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });",
+        "\t",
+        "\thigh = max( pc );",
+        "\tlow = min( pc );",
+        "\tpad = (high - low) * 0.05;",
+        "\taxis( 'y1', {'label'='Turbine Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });",
+        "\t",
+        "\t// show any error messages",
+        "\tset_error_msg();",
+        "}",
+        "",
+        "function set_error_msg()",
+        "{\t",
+        "\t// Start with a fresh error message",
+        "\terrmsg = '';",
+        "",
+        "\t// Check hub height compared to rotor diameter",
+        "\trotor_diameter = ${wind_turbine_rotor_diameter};",
+        "\thubht = ${wind_turbine_hub_ht};",
+        "\tif (hubht <  (rotor_diameter/2)+10) ",
+        "\t\terrmsg += 'Turbine hub height is too low for rotor diameter. ';",
+        "\t",
+        "\t// Check resource height compared to hub height- not for weibull",
+        "\tif(${wind_resource_model_choice} != 1) ",
+        "\t{",
+        "\t\tssc = ssc_create();",
+        "\t\tssc_var( ssc, 'file_name', ${wind_resource_filename});\t",
+        "\t\tssc_var(ssc, 'scan_header_only', 1);",
+        "\t\tssc_var(ssc, 'requested_ht', hubht);",
+        "\t\terr = ssc_exec(ssc, 'wind_file_reader');",
+        "\t\tif (err != 0) //file didn't run successfully",
+        "\t\t{",
+        "\t\t\tmsgbox('Could not check hub height compared to resource height. This may indicate a problem with your weather file.');",
+        "\t\t\treturn;",
+        "\t\t}",
+        "\t\tclosest_ht = ssc_var(ssc, 'closest_speed_meas_ht');",
+        "\t\tssc_free(ssc);",
+        "\t\tif (hubht > closest_ht + 35) errmsg += 'Turbine hub height is more than 35 meters taller than the measured resource data. ';",
+        "\t\tif (hubht < closest_ht - 35) errmsg += 'Turbine hub height is more than 35 meters shorter than the measured resource data. ';",
+        "\t}",
+        "\t",
+        "\t// Check for negative values in power curve",
+        "\tpc = ${wind_turbine_powercurve_powerout};",
+        "\tfor (i=0; i<#pc; i++)",
+        "\t{",
+        "\t\tif (pc[i] < 0) //negative power curve value",
+        "\t\t{",
+        "\t\t\terrmsg += 'Turbine power curve contains negative values. Please check your inputs. ';",
+        "\t\t\tbreak;",
+        "\t\t}",
+        "\t}",
+        "\t",
+        "\t//assign error message",
+        "\tproperty('wind_turbine_hub_ht_msg', 'Caption', errmsg );",
+        "}",
+        "",
+        "on_change{'wind.turbine.radio_list_or_design'} = define()",
+        "{",
+        "\tturbine_definition_type = value('wind.turbine.radio_list_or_design');",
+        "\tbDesign = (turbine_definition_type == 1);",
+        "\tbWeibull = (${wind_resource_model_choice} != 0);",
+        "",
+        "\tshow('wind_turbine_selection', !bDesign);",
+        "\t",
+        "\tshow('wind_turbine_kw_rating_input', bDesign);",
+        "\tshow('wind_turbine_rotor_diameter_input', bDesign);",
+        "\tshow('wind_turbine_max_cp', bDesign);",
+        "\tshow('wind.turbine.max_tip_speed', bDesign);",
+        "\tshow('wind.turbine.max_tspeed_ratio', bDesign);",
+        "\tshow('wind_turbine_cutin', bDesign);",
+        "\tshow('wind_turbine_cut_out', bDesign);",
+        "\tshow('wind.turbine.drive_train', bDesign);",
+        "\tshow('wind.turbine.blade_design', bDesign);",
+        "\tshow('wind.turbine.tower_design', bDesign);",
+        "\t\t",
+        "\tshow('wind.turbine.elevation',false);",
+        "\tif (bDesign == true)  // define turbine design characteristics",
+        "\t  show('wind.turbine.elevation',bWeibull);",
+        "\t",
+        "\tplot_turbine_curve();",
+        "",
+        "};",
+        "",
+        "on_load{'Wind Turbine Design'}=define()",
+        "{",
+        "\ton_change{'wind.turbine.radio_list_or_design'}();",
+        "};",
+        "",
+        "on_change{'wind_turbine_selection'} = define() {",
+        "\t// user can only change this when ${wind.turbine.radio_list_or_design} == 0",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_kw_rating_input'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_rotor_diameter_input'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_max_cp'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind.turbine.max_tip_speed'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind.turbine.max_tspeed_ratio'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_cutin'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_cut_out'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind.turbine.drive_train'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_hub_ht'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        "on_change{'wind_turbine_powercurve_err_msg'} = define() {",
+        "\tplot_turbine_curve();",
+        "};",
+        "",
+        ""
+    ]
+}

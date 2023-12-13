@@ -1,0 +1,2405 @@
+{
+    "Name": "Wind Farm Specifications",
+    "Width": 808.0,
+    "Height": 749.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 420.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 374.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 122.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "System Availability"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 401.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 122.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wake Effects"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox222"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 788.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 110.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "System Sizing"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 788.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 497.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Turbine Layout"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "LossAdjustment": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "adjust"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 70.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "btnOpenTurbineLocationFile"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 423.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 188.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Import turbine layout file..."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "desired_farm_size"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sizing_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "It is not possible to reach the desired farm size exactly with the currently selected turbine."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "specify_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 165.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Please specify the number of turbines using the Turbine Layout options below."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "system_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " "
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wake_loss"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_farm_num_turbines"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_farm_sizing_mode"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Use a single turbine|Specify desired farm size|Specify number of turbines"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_farm_wake_model"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 163.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Simple Wake Model|Park (WAsP)|Eddy-Viscosity|Constant Loss"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wind_resource_turbulence_coeff"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 168.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.compass_rose"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 726.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 252.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 52.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 55.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "Wind Farm Specifications.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.layout_angle"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 507.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Slider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.layout_slider"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 226.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                },
+                "Min": {
+                    "Type": 3.0,
+                    "Integer": -180.0
+                },
+                "Max": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.number_of_rows"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.offset"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.offset_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 196.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Every Other Row|Each Row"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.row_spacing"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 435.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.shape"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 196.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Square / Rectangle / Parallelogram|Triangle / Trapezoid"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.turbine_spacing"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.farm.turbines_per_row"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.layout.file_or_controls"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 404.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 50.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Import wind turbine location data file|Define wind farm using layout generator (below)"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm.layout_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 591.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 320.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Error messages"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Plot": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "windfarm_plot"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 400.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 400.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "adjust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cols": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Internal variable for plotting on the wind farm page",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "desired_farm_size": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Desired farm size",
+            "Units": "kW",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Internal variable for plotting on the wind farm page",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sizing_warning": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "specify_label": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "System nameplate capacity",
+            "Units": "kW",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wake_loss": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Constant loss",
+            "Units": "%",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_num_turbines": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of turbines in farm",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_sizing_mode": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_wake_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Wake model",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "Simple Wake Model|Park (WAsP)|Eddy-Viscosity|Constant Loss",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_xCoord_file": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_xCoordinates": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_yCoord_file": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 4.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_farm_yCoordinates": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "wind_resource_turbulence_coeff": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbulence coefficient",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.1,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.layout_angle": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row orientation",
+            "Units": "deg",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.layout_slider": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Slider",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.number_of_rows": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of rows",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 4.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.offset": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Offset for rows",
+            "Units": "rotor diameters",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 250.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.offset_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Offset type",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "Every Other Row|Each Row",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.row_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Row spacing",
+            "Units": "rotor diameters",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 750.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.shape": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Shape",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.turbine_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbine spacing",
+            "Units": "rotor diameters",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 500.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.farm.turbines_per_row": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Turbines per row",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 8.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "windfarm.layout.file_or_controls": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Wind Farm",
+            "IndexLabels": "Import wind turbine location data file|Define wind farm using layout generator (below)",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "//calculates number of turbines, xCoordinates, and yCoordinates",
+        "equations{ '$MIMO$ WindFarmCoordinates' } = define() {",
+        "\t//CASE 1: layout from file",
+        "\tif (${wind_farm_sizing_mode} == 2 && ${windfarm.layout.file_or_controls} == 0)",
+        "\t{",
+        "\t\t${wind_farm_num_turbines} = #${wind_farm_xCoord_file};",
+        "\t\t${wind_farm_xCoordinates} = ${wind_farm_xCoord_file};",
+        "\t\t${wind_farm_yCoordinates} = ${wind_farm_yCoord_file};",
+        "\t\treturn;",
+        "\t}",
+        "\t",
+        "\t//CASE 2: automatic farm layout",
+        "\tif (${wind_farm_sizing_mode} != 2)",
+        "\t{",
+        "\t\tnum_turbines = 0;",
+        "\t\tif (${wind_farm_sizing_mode} == 0) //single turbine",
+        "\t\t\tnum_turbines = 1;",
+        "\t\telse //auto-sized",
+        "\t\t{",
+        "\t\t\tnum = floor(${desired_farm_size} / ${wind_turbine_kw_rating});",
+        "\t\t\tif (num <=1) num = 1;",
+        "\t\t\tnum_turbines = num;",
+        "\t\t}",
+        "\t\t${wind_farm_num_turbines} = num_turbines;",
+        "\t\t",
+        "\t\tx = alloc(num_turbines); ",
+        "\t\ty = alloc(num_turbines);",
+        "\t\t//assume they are laid out in roughly a square",
+        "\t\trows = floor(sqrt(num_turbines));",
+        "\t\tcols = num_turbines/rows;",
+        "\t\twhile (rows * floor(cols) != num_turbines) //if not evenly divisible",
+        "\t\t{",
+        "\t\t\trows -=1; //decrease the number of rows until it does divide evenly ",
+        "\t\t\t// if num_turbines is prime, this will continue until rows = 1",
+        "\t\t\tcols = num_turbines/rows;",
+        "\t\t}",
+        "\t\t//use default spacing assumptions, in multiples of rotor diameters",
+        "\t\tspacing_x = 8 * ${wind_turbine_rotor_diameter};",
+        "\t\tspacing_y = 8 * ${wind_turbine_rotor_diameter};",
+        "\t\tx[0] = 0; y[0] = 0; //first turbine placement",
+        "\t\tfor (i = 1; i < num_turbines; i++) //remainder of turbines",
+        "\t\t{",
+        "\t\t\tx[i] = (i - cols * floor(i/cols)) *spacing_x;",
+        "\t\t\ty[i] = floor(i/cols) * spacing_y;",
+        "\t\t}\t",
+        "\t\t${wind_farm_xCoordinates} = x;",
+        "\t\t${wind_farm_yCoordinates} = y;",
+        "\t\t${rows} = rows;",
+        "\t\t${cols} = cols;",
+        "\t\treturn;",
+        "\t}",
+        "\t",
+        "\t//CASE 3: input farm layout",
+        "\tshape = ${windfarm.farm.shape};",
+        "\tturbines_per_row = ${windfarm.farm.turbines_per_row};",
+        "\trow_count = ${windfarm.farm.number_of_rows};",
+        "\trow_offset = ${windfarm.farm.offset} * ${wind_turbine_rotor_diameter};",
+        "\toffset_type = ${windfarm.farm.offset_type};",
+        "\tangle = pi() * ${windfarm.farm.layout_angle} / 180;",
+        "\tpoints = 0;",
+        "\tturbine_spacing = ${windfarm.farm.turbine_spacing} * ${wind_turbine_rotor_diameter};",
+        "\trow_spacing = ${windfarm.farm.row_spacing} * ${wind_turbine_rotor_diameter};",
+        "\tturbines_this_row = 0;",
+        "",
+        "\tfor ( i=0; i<row_count; i++)",
+        "\t{",
+        "\t\tif (offset_type == 0)",
+        "\t\t\toffset = (mod(i,2) == 0) ? 0 : row_offset;",
+        "\t\telse",
+        "\t\t\toffset = row_offset * i;",
+        "",
+        "\t\tif (shape)",
+        "\t\t\tturbines_this_row = turbines_per_row - i;",
+        "\t\telse",
+        "\t\t\tturbines_this_row = turbines_per_row;",
+        "",
+        "\t\tfor (j=0; j<turbines_this_row; j++)",
+        "\t\t{",
+        "\t\t\txCoordinates[points] = ((j * turbine_spacing) + offset);",
+        "\t\t\tyCoordinates[points] = (i * row_spacing);",
+        "\t\t\tpoints++;",
+        "\t\t}",
+        "\t}",
+        "",
+        "\t// account for orientation of rows",
+        "\tfor (k=0; k<#xCoordinates; k++)",
+        "\t{",
+        "\t\tnewx = (xCoordinates[k] * cos(angle)) - (yCoordinates[k] * sin(angle));",
+        "\t\tnewy = (xCoordinates[k] * sin(angle)) + (yCoordinates[k] * cos(angle));",
+        "\t\txCoordinates[k] = newx;",
+        "\t\tyCoordinates[k] = newy;",
+        "\t}",
+        "\t${wind_farm_xCoordinates} = xCoordinates;",
+        "\t${wind_farm_yCoordinates} = yCoordinates;",
+        "\t${wind_farm_num_turbines} = #xCoordinates;",
+        "\treturn;\t",
+        "};",
+        "",
+        "equations{ 'system_capacity' } = define() {",
+        "\treturn ${wind_farm_num_turbines} * ${wind_turbine_kw_rating};",
+        "};",
+        "",
+        "equations{ 'sizing_warning' } = define() {",
+        "\tif (${wind_farm_sizing_mode} == 1 && ${desired_farm_size} != ${system_capacity})",
+        "\t\treturn 1;",
+        "\telse",
+        "\t\treturn 0;",
+        "};",
+        "",
+        "equations{ 'specify_label' } = define() {",
+        "\tif (${wind_farm_sizing_mode} == 2)",
+        "\t\treturn 1;",
+        "\telse",
+        "\t\treturn 0;",
+        "};"
+    ],
+    "Callbacks": [
+        "function update_farm_layout_controls()",
+        "{",
+        "\tweibull = (${wind_resource_model_choice} == 1);",
+        "\tsingle = (${wind_farm_sizing_mode} == 0);",
+        "\tdesired = (${wind_farm_sizing_mode} == 1);",
+        "\tspecify = (${wind_farm_sizing_mode} == 2);",
+        "\tdesign = (specify && ${windfarm.layout.file_or_controls} == 1);",
+        "\tfile_import = (specify && ${windfarm.layout.file_or_controls} == 0);",
+        "\t",
+        "\tenable('wind_resource_turbulence_coeff', !weibull);",
+        "\tenable('wind_farm_wake_model', !single && !weibull);",
+        "\tenable('windfarm.layout.file_or_controls', specify);",
+        "\tenable('btnOpenTurbineLocationFile', file_import);",
+        "    enable(\"windfarm.farm.shape\", design);",
+        "    enable(\"windfarm.farm.turbines_per_row\", design);",
+        "    enable(\"windfarm.farm.number_of_rows\", design);",
+        "    enable(\"windfarm.farm.number_of_turbines\", design);",
+        "    enable(\"windfarm.farm.turbine_spacing\", design);",
+        "    enable(\"windfarm.farm.row_spacing\", design);",
+        "    enable(\"windfarm.farm.offset\", design);",
+        "    enable(\"windfarm.farm.offset_type\", design);",
+        "    enable(\"windfarm.farm.layout_angle\", design);",
+        "    enable(\"windfarm.farm.layout_slider\", design);",
+        "}",
+        "",
+        "function plot_wind_farm()",
+        "{",
+        "\tsetplot(\"windfarm_plot\");",
+        "\tclearplot('windfarm_plot');",
+        "\tplotopt( {\"title\"=\"Turbine Layout Map\",\"backcolor\"=[255,255,255], \"popup\"=true, \"legend\"=false}  );",
+        "",
+        "\txCoordinates = ${wind_farm_xCoordinates};",
+        "\tyCoordinates = ${wind_farm_yCoordinates};",
+        "",
+        "\tplot( xCoordinates, yCoordinates,  {\"thick\"=2, \"type\"=\"scatter\", \"scale\"=true});",
+        "",
+        "\twidth = property( 'windfarm_plot', 'width' );",
+        "\theight = property( 'windfarm_plot', 'height' );",
+        "\t",
+        "\txmax = max( xCoordinates );",
+        "\txmin = min( xCoordinates );",
+        "\tymax = max( yCoordinates );",
+        "\tymin = min( yCoordinates );",
+        "\t\r",
+        "\t// use equal axis convention to show aspect ratio \r",
+        "\txmax = max(xmax,ymax);\r",
+        "\tymax = xmax;\r",
+        "\txmin = min(xmin,ymin);\r",
+        "\tymin = xmin;\r",
+        "\r",
+        "\tratio = width/height;",
+        "\txspan = xmax - xmin;",
+        "\tyspan = ymax - ymin;",
+        "",
+        "\tpadx = max(xspan * 0.05, 3);",
+        "\tpady = max(yspan * 0.05, 3);\t",
+        "\t",
+        "\taxis( 'x1', {'label'='meters', 'min'=floor(xmin-padx), 'max'=ceil(xmin+xspan+padx) });",
+        "\taxis( 'y1', {'label'='meters', 'min'=floor(ymin-pady), 'max'=ceil(ymin+yspan+pady) });",
+        "\t",
+        "\treturn 0;",
+        "}",
+        "",
+        "on_change{'btnOpenTurbineLocationFile'} = define() {",
+        "\tfile = choose_file( '', 'Choose a turbine layout file', 'CSV Files (*.txt,*.csv)|*.txt;*.csv');",
+        "\tif ( file != '' ) {",
+        "\t\tfile = replace(file, '\\\\', '/');",
+        "\t\tfn = open(file,'r');",
+        "\t\t",
+        "\t\tif (!fn) {",
+        "\t\t\tmsgbox('SAM could not open the file.');",
+        "\t\t\treturn 0;",
+        "\t\t}",
+        "\t\t",
+        "\t\tline=\"\";",
+        "\t\ti=0;",
+        "\t\twhile (read_line(fn,line)) {",
+        "\t\t\taline = split(line,',');",
+        "\t\t\t// look for rows with 2 or more comma separated values, where the ",
+        "\t\t\t// first char of the first value is a digit OR A NEGATIVE SIGN!!",
+        "\t\t\tfirstdig = ch(aline[0],0);",
+        "\t\t\tif ( (isdigit(firstdig) || firstdig == '-') && #aline>1 )",
+        "\t\t\t{",
+        "\t\t\t\treplace(line,',',' ');",
+        "\t\t\t\tpt = real_array(line);",
+        "\t\t\t\tif (#pt>1) {",
+        "\t\t\t\t\txCoordinates[i] = pt[0];",
+        "\t\t\t\t\tyCoordinates[i] = pt[1];",
+        "\t\t\t\t\ti++;\t\t\t",
+        "\t\t\t\t}",
+        " \t\t\t}",
+        "\t\t}",
+        "\t\tclose(fn);",
+        "\t\t",
+        "\t\tif (i>0) {",
+        "\t\t\tvalue('wind_farm_xCoord_file', xCoordinates);",
+        "\t\t\tvalue('wind_farm_yCoord_file', yCoordinates);",
+        "\t\t\tproperty('windfarm.layout_message', 'Caption', \"Successfully imported \" + i + \" coordinate pairs from the file.\");",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\tmsgbox(\"SAM did not find any valid coordinates in the file.\" );",
+        "\t\t\treturn;",
+        "\t\t}",
+        "\t}",
+        "\telse {",
+        "\t\tmsgbox(\"SAM could not read the turbine layout file.\" );",
+        "\t}",
+        "};",
+        "",
+        "on_load{\"Wind Farm Specifications\"}=define()",
+        "{",
+        "\tproperty('windfarm.layout_message', 'Caption', \"\" );",
+        "",
+        "\t//show or hide desired farm size",
+        "\tbEnableDesiredFarm = (${wind_farm_sizing_mode} == 1);",
+        "\tshow('desired_farm_size', bEnableDesiredFarm);",
+        "\t//update all other inputs",
+        "\tupdate_farm_layout_controls();",
+        "\tshow('sizing_warning', ${sizing_warning});",
+        "\tshow('specify_label', ${specify_label});",
+        "\t//plot turbine locations (created in an equation)",
+        "\tplot_wind_farm();",
+        "\t",
+        "\tconstant_loss = (${wind_farm_wake_model} != 3);",
+        "\tenable( \"wind_resource_turbulence_coeff\", constant_loss);",
+        "\tenable( \"wake_loss\", !constant_loss);",
+        "};",
+        "",
+        "on_change{\"windfarm.layout.file_or_controls\"} = define()",
+        "{",
+        "\tupdate_farm_layout_controls();",
+        "};",
+        "",
+        "on_change{\"wind_farm_sizing_mode\"} = define()",
+        "{",
+        "\t//enable desired farm size only for option 1",
+        "\tbEnableDesiredFarm = (${wind_farm_sizing_mode} == 1);",
+        "\tshow('desired_farm_size', bEnableDesiredFarm);",
+        "\tif (bEnableDesiredFarm) // if this option was just selected",
+        "\t{",
+        "\t\t//apply calculated values to inputs",
+        "\t\tvalue('windfarm.farm.turbines_per_row', ${cols});",
+        "\t\tvalue('windfarm.farm.number_of_rows', ${rows});",
+        "\t\tvalue('windfarm.farm.shape', 0);",
+        "\t\tvalue('windfarm.farm.turbine_spacing', 8);",
+        "\t\tvalue('windfarm.farm.row_spacing', 8);",
+        "\t\tvalue('windfarm.farm.offset', 0);",
+        "\t\tvalue('windfarm.farm.offset_type', 0);",
+        "\t\tvalue('windfarm.farm.layout_angle', 0);",
+        "\t}",
+        "\trefresh();",
+        "\tupdate_farm_layout_controls();",
+        "};",
+        "",
+        "on_change{'wind_farm_num_turbines'} = define() {",
+        "\tplot_wind_farm();",
+        "};",
+        "",
+        "on_change{'windfarm.farm.layout_slider'} = define() {",
+        "\tangle = ${windfarm.farm.layout_slider};",
+        "\tvalue('windfarm.farm.layout_angle', angle );",
+        "\tplot_wind_farm();",
+        "};",
+        "",
+        "on_change{'desired_farm_size'} = define() {",
+        "\tvalue('windfarm.farm.turbines_per_row', ${cols});",
+        "\tvalue('windfarm.farm.number_of_rows', ${rows});",
+        "};",
+        "",
+        "on_change{'sizing_warning'} = define() {",
+        "\tshow('sizing_warning', ${sizing_warning});",
+        "\trefresh();",
+        "};",
+        "",
+        "on_change{'specify_label'} = define() {",
+        "\tshow('specify_label', ${specify_label});",
+        "};",
+        "",
+        "on_change{'wind_farm_wake_model'} = define() {",
+        "\tconstant_loss = (${wind_farm_wake_model} != 3);",
+        "\tenable( \"wind_resource_turbulence_coeff\", constant_loss);",
+        "\tenable( \"wake_loss\", !constant_loss);",
+        "};"
+    ]
+}

@@ -52,7 +52,7 @@ class wxStaticText;
 class wxListBox;
 class wxExtGridCtrl;
 class AFDataMatrixTable;
-
+class AFDataArrayTable;
 /*
 // move to wex/metro.h
 static wxColour UIColorIndicatorFore(60, 60, 60);
@@ -437,114 +437,8 @@ private:
 
 
 class wxExtGridCtrl;
- 
-/*
-BEGIN_DECLARE_EVENT_TYPES()
-DECLARE_EVENT_TYPE( wxEVT_AFDataMatrixCtrl_CHANGE, 0 )
-END_DECLARE_EVENT_TYPES()
-
-#define EVT_DATAMATRIX(id, func)  EVT_COMMAND(id, wxEVT_AFDataMatrixCtrl_CHANGE, func)
-
-class AFDataMatrixCtrl : public wxPanel
-{
-public:
-	AFDataMatrixCtrl( wxWindow *parent, int id, 
-		const wxPoint &pos=wxDefaultPosition,
-		const wxSize &sz=wxDefaultSize, 
-		bool sidebuttons = false);
-
-	void SetData( const matrix_t<float> &mat);
-	void GetData( matrix_t<float> &mat );
-	matrix_t<float> GetData() const { return m_data; }
-
-	void SetValueLimits( float min=0.0, float max=0.0 );
-	void GetValueLimits( float *min, float *max );
-
-	bool Export(const wxString &file);
-	bool Import(const wxString &file);
-
-	// '#' = y2*(i/n) + y1*i + y0
-	void SetRowLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 );
-	void SetColLabelFormat( const wxString &val_fmt, double y2, double y1, double y0 );
-
-	void SetCaption(const wxString &cap);
-	wxString GetCaption();
-
-	void ShowRows(bool b);
-	bool ShowRows();
-
-	void ShowRowLabels(bool b);
-	bool ShowRowLabels();
-
-	void SetRowLabels(const wxString &rowLabels);
-	wxString GetRowLabels();
-
-	void ShadeR0C0(bool b);
-	bool ShadeR0C0();
-
-	void ShadeC0(bool b);
-	bool ShadeC0();
-
-	void ShowCols(bool b);
-	bool ShowCols();
-
-	void ShowColLabels(bool b);
-	bool ShowColLabels();
-
-	void SetColLabels(const wxString &colLabels);
-	wxString GetColLabels();
-
-	void SetNumRowsLabel(const wxString &numRowsLabel);
-	wxString GetNumRowsLabel();
-
-	void SetNumColsLabel(const wxString &numColsLabel);
-	wxString GetNumColsLabel();
-
-	void PasteAppendRows(bool b);
-	bool PasteAppendRows();
-
-private:
-
-	wxString m_rowFormat;
-	double m_rowY2, m_rowY1, m_rowY0;
-	wxString m_colFormat;
-	double m_colY2, m_colY1, m_colY0;
-
-	matrix_t<float> m_data;
-	float m_minVal, m_maxVal;
-	wxNumericCtrl *m_numRows, *m_numCols;
-	wxExtGridCtrl *m_grid;
-	wxStaticText *m_caption, *m_labelCols, *m_labelRows;
-	wxButton *m_btnImport, *m_btnExport, *m_btnCopy, *m_btnPaste;
-	bool m_showrows;
-	bool m_showRowLabels;
-	wxString m_rowLabels;
-	bool m_shadeR0C0;
-	bool m_shadeC0;
-	bool m_showcols;
-	bool m_showColLabels;
-	wxString m_colLabels;
-	wxString m_numRowsLabel;
-	wxString m_numColsLabel;
-	bool m_pasteappendrows;
-
-	void NormalizeToLimits();
-
-	void OnCellChange(wxGridEvent &evt);
-	void OnRowsColsChange(wxCommandEvent &evt);
-	void OnCommand(wxCommandEvent &evt);
-
-
-	void MatrixToGrid();
-
-	DECLARE_EVENT_TABLE();
-};
-
-*/
-
 
 /* Extended Data Matrix Control */
-
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_EVENT_TYPE(wxEVT_AFDataMatrixCtrl_CHANGE, 0)
 END_DECLARE_EVENT_TYPES()
@@ -568,7 +462,6 @@ public:
 
 	void SetData(const matrix_t<double> &mat);
 	void GetData(matrix_t<double> &mat);
-//	matrix_t<double> GetData() const;
 	matrix_t<double> GetData() const { return m_data; }
 
 	void SetValueLimits(float min = 0.0, float max = 0.0);
@@ -686,6 +579,145 @@ private:
 
 
 	void MatrixToGrid();
+
+	DECLARE_EVENT_TABLE();
+};
+
+
+/* Data Array Table */
+BEGIN_DECLARE_EVENT_TYPES()
+DECLARE_EVENT_TYPE(wxEVT_AFDataArrayTableCtrl_CHANGE, 0)
+END_DECLARE_EVENT_TYPES()
+
+
+#define EVT_DATAARRAYTABLE(id, func)  EVT_COMMAND(id, wxEVT_AFDataArrayTableCtrl_CHANGE, func)
+
+class AFDataArrayTableCtrl : public wxPanel
+{
+public:
+	AFDataArrayTableCtrl(wxWindow* parent, int id,
+		const wxPoint& pos = wxDefaultPosition,
+		const wxSize& sz = wxDefaultSize,
+		bool sidebuttons = false,
+		const wxString& collabels = wxEmptyString,
+		const wxString& rowlabels = wxEmptyString,
+		const wxString& choices = wxEmptyString,
+		bool bottombuttons = false,
+		const wxString& horizontalLabel = wxEmptyString,
+		const wxString& vericalLabel = wxEmptyString);
+
+	void SetData(const std::vector<double>& ary);
+	void GetData(std::vector<double>& ary);
+	std::vector<double> GetData() const { return m_data; }
+
+	void SetValueLimits(float min = 0.0, float max = 0.0);
+	void GetValueLimits(float* min, float* max);
+
+	bool Export(const wxString& file);
+	bool Import(const wxString& file);
+
+	// '#' = y2*(i/n) + y1*i + y0
+	void SetRowLabelFormat(const wxString& val_fmt, double y2, double y1, double y0);
+	void SetColLabelFormat(const wxString& val_fmt, double y2, double y1, double y0);
+
+	void SetCaption(const wxString& cap);
+	wxString GetCaption();
+
+	void ShowRows(bool b);
+	bool ShowRows();
+
+	void ShowButtons(bool b);
+	bool ShowButtons();
+
+	void ShowRowLabels(bool b);
+	bool ShowRowLabels();
+
+	void SetRowLabels(const wxString& rowLabels);
+	wxString GetRowLabels();
+
+
+	void ShadeR0C0(bool b);
+	bool ShadeR0C0();
+
+	void ShadeC0(bool b);
+	bool ShadeC0();
+
+	void ShowCols(bool b);
+	bool ShowCols();
+
+	void ShowColLabels(bool b);
+	bool ShowColLabels();
+
+	void SetColLabels(const wxString& colLabels);
+	wxString GetColLabels();
+
+	void SetNumRowsLabel(const wxString& numRowsLabel);
+	wxString GetNumRowsLabel();
+
+	void SetNumColsLabel(const wxString& numColsLabel);
+	wxString GetNumColsLabel();
+
+	void SetR0C0Label(const wxString& R0C0Label);
+	wxString GetR0C0Label();
+
+	void PasteAppendRows(bool b);
+	bool PasteAppendRows();
+
+	void PasteAppendCols(bool b);
+	bool PasteAppendCols();
+
+	void SetChoices(const wxString& choices);
+	wxString GetChoices();
+
+	void SetChoiceColumn(const int& choiceColumn);
+	int GetChoiceColumn();
+
+	void SetColReadOnly(const int& col, bool readonly);
+	void SetRowReadOnly(const int& row, bool readonly);
+
+	void ShowCol(const int& col, bool show);
+	void ShowRow(const int& row, bool show);
+
+private:
+
+	wxString m_choices;
+	AFDataArrayTable* m_gridTable;
+
+	wxString m_rowFormat;
+	double m_rowY2, m_rowY1, m_rowY0;
+	wxString m_colFormat;
+	double m_colY2, m_colY1, m_colY0;
+
+	std::vector<double> m_data;
+	float m_minVal, m_maxVal;
+	wxNumericCtrl* m_numRows;
+	wxExtGridCtrl* m_grid;
+	wxStaticText* m_caption,  * m_labelRows;
+	wxHorizontalLabel* m_horizontalLabel;
+	wxVerticalLabel* m_verticalLabel;
+	wxButton* m_btnImport, * m_btnExport, * m_btnCopy, * m_btnPaste;
+	bool m_showButtons;
+	bool m_showrows;
+	bool m_showRowLabels;
+	bool m_showcols;
+	bool m_showColLabels;
+	wxString m_rowLabels;
+	wxString m_colLabels;
+	bool m_shadeR0C0;
+	bool m_shadeC0;
+	wxString m_numRowsLabel;
+	wxString m_numColsLabel;
+	bool m_pasteappendrows;
+	bool m_pasteappendcols;
+
+	void NormalizeToLimits();
+
+	void OnCellChange(wxGridEvent& evt);
+	void OnRowsColsChange(wxCommandEvent& evt);
+	void OnCommand(wxCommandEvent& evt);
+
+
+	void ArrayToGrid();
 
 	DECLARE_EVENT_TABLE();
 };

@@ -691,6 +691,83 @@ public:
 
 
 
+class wxUIDataArrayTableObject : public wxUIObject
+{
+public:
+	wxUIDataArrayTableObject() {
+		AddProperty("PasteAppendRows", new wxUIProperty(false));
+		AddProperty("PasteAppendCols", new wxUIProperty(false));
+		AddProperty("ShowButtons", new wxUIProperty(true));
+		AddProperty("ShowRows", new wxUIProperty(true));
+		AddProperty("ShowRowLabels", new wxUIProperty(false));
+		AddProperty("RowLabels", new wxUIProperty(wxString("")));
+		AddProperty("ShadeR0C0", new wxUIProperty(false));
+		AddProperty("VerticalLabel", new wxUIProperty(wxString("")));
+		AddProperty("HorizontalLabel", new wxUIProperty(wxString("")));
+		AddProperty("ShadeC0", new wxUIProperty(false));
+		AddProperty("ShowCols", new wxUIProperty(true));
+		AddProperty("ShowColLabels", new wxUIProperty(true));
+		AddProperty("ColLabels", new wxUIProperty(wxString("")));
+		AddProperty("NumRowsLabel", new wxUIProperty(wxString("Rows:")));
+		AddProperty("NumColsLabel", new wxUIProperty(wxString("Cols:")));
+		AddProperty("Layout", new wxUIProperty(0, "Buttons on top,Buttons on side"));
+		AddProperty("Choices", new wxUIProperty(wxString("Choice1,Choice2")));
+		AddProperty("HideColumn", new wxUIProperty(-1));
+		AddProperty("ShowColumn", new wxUIProperty(-1));
+
+		Property("Width").Set(400);
+		Property("Height").Set(300);
+	}
+	virtual wxString GetTypeName() { return "DataArrayTable"; }
+	virtual wxUIObject* Duplicate() { wxUIObject* o = new wxUIDataArrayTableObject; o->Copy(this); return o; }
+	virtual bool IsNativeObject() { return true; }
+	virtual wxWindow* CreateNative(wxWindow* parent) {
+		AFDataArrayTableCtrl* dm = new AFDataArrayTableCtrl(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, Property("Layout").GetInteger() == 1, Property("ColLabels").GetString(), Property("RowLabels").GetString(), Property("Choices").GetString(), false, Property("HorizontalLabel").GetString(), Property("VerticalLabel").GetString());
+		dm->PasteAppendRows(Property("PasteAppendRows").GetBoolean());
+		dm->PasteAppendCols(Property("PasteAppendCols").GetBoolean());
+		dm->ShowButtons(Property("ShowButtons").GetBoolean());
+		dm->ShowRows(Property("ShowRows").GetBoolean());
+		dm->ShowRowLabels(Property("ShowRowLabels").GetBoolean());
+		dm->SetRowLabels(Property("RowLabels").GetString());
+		dm->ShadeR0C0(Property("ShadeR0C0").GetBoolean());
+		dm->SetR0C0Label(Property("LeftSideLabel").GetString());
+		dm->ShadeC0(Property("ShadeC0").GetBoolean());
+		dm->ShowCols(Property("ShowCols").GetBoolean());
+		dm->ShowColLabels(Property("ShowColLabels").GetBoolean());
+		dm->SetColLabels(Property("ColLabels").GetString());
+		dm->SetNumRowsLabel(Property("NumRowsLabel").GetString());
+		dm->SetNumColsLabel(Property("NumColsLabel").GetString());
+		dm->ShowCol(Property("ShowColumn").GetInteger(), true);
+		dm->ShowCol(Property("HideColumn").GetInteger(), false);
+		return AssignNative(dm);
+	}
+	virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
+	{
+		if (AFDataArrayTableCtrl* dm = GetNative<AFDataArrayTableCtrl>())
+		{
+			if (id == "PasteAppendRows") dm->PasteAppendRows(p->GetBoolean());
+			if (id == "PasteAppendCols") dm->PasteAppendCols(p->GetBoolean());
+			if (id == "ShadeR0C0") dm->ShadeR0C0(p->GetBoolean());
+			if (id == "LeftSideLabel") dm->SetR0C0Label(p->GetString());
+			if (id == "ShadeC0") dm->ShadeC0(p->GetBoolean());
+			if (id == "ShowButtons") dm->ShowButtons(p->GetBoolean());
+			if (id == "ShowCols") dm->ShowCols(p->GetBoolean());
+			if (id == "ShowRows") dm->ShowRows(p->GetBoolean());
+			if (id == "ShowRowLabels") dm->ShowRowLabels(p->GetBoolean());
+			if (id == "ShowColLabels") dm->ShowColLabels(p->GetBoolean());
+			//			if (id == "ColLabels") dm->SetColLabels(p->GetString());
+			if (id == "NumRowsLabel") dm->SetNumRowsLabel(p->GetString());
+			if (id == "NumColsLabel") dm->SetNumColsLabel(p->GetString());
+			if (id == "ShowColumn") dm->ShowCol(p->GetInteger(), true);
+			if (id == "HideColumn") dm->ShowCol(p->GetInteger(), false);
+		}
+	}
+
+};
+
+
+
+
 
 
 class wxUIShadingFactorsObject : public wxUIObject 
@@ -708,6 +785,7 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		ShadingButtonCtrl *sb = new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean());
 		sb->SetDescription(Property("Description").GetString());
+        sb->SetName(Property("Name").GetString());
 		return AssignNative(sb);
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
@@ -915,6 +993,7 @@ public:
 	virtual bool DrawDottedOutline() { return false; }
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
         AFLossAdjustmentCtrl *la = new AFLossAdjustmentCtrl(parent, wxID_ANY);
+		la->SetName(Property("Name").GetString());
         la->SetDescription(Property("Description").GetString());
         la->SetMode(Property("Mode").GetInteger());
         la->SetShowMode(Property("ShowMode").GetBoolean());
@@ -939,15 +1018,15 @@ public:
 		//int yc = geom.y+geom.height/2;
 		dc.DrawText( label, geom.x + button.x/2-x/2, geom.y + button.y/2-y/2/*-y/2*/ );
 		dc.SetTextForeground( wxColour(29,80,173) );
-		dc.DrawText( "Constant loss: n.nn", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
-		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
-		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
+		dc.DrawText( "Constant loss: None", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
+		dc.DrawText( "Time series losses: None", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
+		dc.DrawText( "Custom period losses: None", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
     virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
     {
         if (AFLossAdjustmentCtrl *la= GetNative<AFLossAdjustmentCtrl>())
         {
-            
+			if (id == "Name") la->SetName(p->GetString());
             if (id == "Label") la->SetDataLabel(p->GetString());
             if (id == "Description") la->SetDescription(p->GetString());
             if (id == "Mode") la->SetMode(p->GetInteger());
@@ -989,6 +1068,7 @@ void RegisterUIObjectsForSAM()
 	wxUIObjectTypeProvider::Register(new wxUIDataLifetimeMatrixObject);
 	wxUIObjectTypeProvider::Register(new wxUIStringArrayObject);
 	wxUIObjectTypeProvider::Register(new wxUIDataMatrixObject);
+	wxUIObjectTypeProvider::Register(new wxUIDataArrayTableObject);
 	wxUIObjectTypeProvider::Register(new wxUIShadingFactorsObject);
 	wxUIObjectTypeProvider::Register( new wxUIValueMatrixObject );
 	wxUIObjectTypeProvider::Register( new wxUIMonthByHourFactorCtrl );

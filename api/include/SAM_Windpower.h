@@ -400,6 +400,51 @@ extern "C"
 
 
 	//
+	// AdjustmentFactors parameters
+	//
+
+	/**
+	 * Set adjust_constant: Constant loss adjustment [%]
+	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: MAX=100
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_periods: Enable period-based adjustment factors [0/1]
+	 * options: 'adjust' and 'en_periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_timeindex: Enable lifetime adjustment factors [0/1]
+	 * options: 'adjust' and 'en_timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_periods: Period-based adjustment factors [%]
+	 * options: Syntax: n x 3 matrix [ start, end, loss ]; Version upgrade: 'adjust' and 'periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: COLS=3
+	 * required if: adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set adjust_timeindex: Lifetime adjustment factors [%]
+	 * options: 'adjust' and 'timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: None
+	 * required if: adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// Uncertainty parameters
 	//
 
@@ -521,6 +566,21 @@ extern "C"
 
 
 	/**
+	 * AdjustmentFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_Windpower_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * Uncertainty Getters
 	 */
 
@@ -546,6 +606,22 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err);
 

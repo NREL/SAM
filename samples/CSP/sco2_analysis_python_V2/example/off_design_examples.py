@@ -1,11 +1,7 @@
 ##################################################
 ## Set relative file paths ##
-import csv
-
 import sys
 import os
-import numpy as np
-import json
 
 absFilePath = os.path.abspath(__file__)
 fileDir = os.path.dirname(os.path.abspath(__file__))
@@ -15,7 +11,6 @@ newPath = os.path.join(parentDir, 'core')
 sys.path.append(newPath)
 
 import sco2_cycle_ssc as sco2_solve
-
 import sco2_plots as cy_plt
 
 ##################################################

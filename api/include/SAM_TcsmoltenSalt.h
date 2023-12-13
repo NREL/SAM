@@ -560,6 +560,459 @@ extern "C"
 
 
 	//
+	// TowerAndReceiver parameters
+	//
+
+	/**
+	 * Set D_rec: The overall outer diameter of the receiver - in [m]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set Flow_type: Receiver flow pattern: see figure on SAM Receiver page
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set N_panels: Number of individual panels on the receiver
+	 * options: None
+	 * constraints: INTEGER
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set W_dot_pb_pump_target: Target HTF pumping power loss through cycle primary heat exchanger [MWe]
+	 * options: None
+	 * constraints: None
+	 * required if: is_calc_pb_pump_coef=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_pb_pump_target_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set W_dot_rec_target: Target pumping power loss through receiver (not including riser/downcomer) [MWe]
+	 * options: None
+	 * constraints: None
+	 * required if: is_calc_od_tube=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_rec_target_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_height: Cavity receiver height - in [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_passive_abs: Cavity receiver passive surface solar absorptance
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_passive_eps: Cavity receiver passive surface thermal emissivity
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_span: Cavity receiver span angle [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cav_rec_width: Cavity receiver aperture width - in [m]
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set crossover_shift: Number of panels shift in receiver crossover position
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.pt.rec.max_oper_frac: Maximum receiver mass flow rate fraction
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set d_tube_out: The outer diameter of an individual receiver tube [mm]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set downc_tm_mult: Downcomer thermal mass multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set epsilon: The emissivity of the receiver surface coating
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set eta_pump: Receiver HTF pump efficiency
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set field_fl_props: User defined field fluid property data [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set flux_max: Maximum allowable flux
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1000
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set h_tower: Tower height - in [m]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heat_trace_power: Riser/downcomer heat trace power during startup [kW/m]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=500.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor)
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_calc_od_tube: False (default): use input d_tube_output, True: calc OD tube to achieve W_dot_rec_target
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_od_tube_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_calc_pb_pump_coef: False (default): use input pb_pump_coef, True: calc pb_pump_coef to achieve W_dot_pb_pump_target
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_pb_pump_coef_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_calc_sm: False (default): use input solarm, True: calc solar multiple to achieve q_dot_rec_des_target
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_sm_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_rec_enforce_min_startup: Always enforce minimum startup time
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_rec_model_trans: Formulate receiver model as transient?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_rec_startup_from_T_soln: Begin receiver startup from solved temperature profiles?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_rec_startup_trans: Formulate receiver startup model as transient?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set mat_tube: Receiver tube material, 2=Stainless AISI316
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set min_fill_time: Startup time delay for filling the receiver/piping [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.1333
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set min_preheat_time: Minimum time required in preheat startup stage [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set n_cav_rec_panels: Cavity receiver number of panels
+	 * options: None
+	 * constraints: None
+	 * required if: receiver_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set n_flux_days: Number of days in flux map lookup
+	 * options: None
+	 * constraints: None
+	 * required if: ?=8
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set piping_length_const: Piping constant length [m]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set piping_length_mult: Piping length multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set piping_loss_coefficient: Thermal loss per meter of piping [Wt/m2-K]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set preheat_flux: Tube absorbed solar flux during preheat [kW/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=50.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_dot_rec_des_target: Target design receiver thermal power [MWe]
+	 * options: None
+	 * constraints: None
+	 * required if: is_calc_sm=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_q_dot_rec_des_target_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_absorptance: Receiver absorptance
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_clearsky_dni: User-defined clear-sky DNI [W/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: rec_clearsky_model=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set rec_clearsky_fraction: Weighting fraction on clear-sky DNI for receiver flow control
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_clearsky_model: Clearsky model: None = -1, User-defined data = 0, Meinel = 1; Hottel = 2; Allen = 3; Moon = 4
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_height: Receiver height - in [m]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_hl_perm2: Receiver design heatloss [kW/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_htf: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power)
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_tm_mult: Receiver thermal mass multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set riser_tm_mult: Riser thermal mass multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set startup_ramp_time: Time required to reach full flux during receiver startup [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.1333
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set startup_target_Tdiff: Target HTF T at end of startup - steady state hot HTF temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-5.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set th_riser: Riser or downcomer tube wall thickness [mm]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=15.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set th_tube: The wall thickness of a single receiver tube [mm]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set u_riser: Design point HTF velocity in riser [m/s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=4.0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// HeliostatField parameters
 	//
 
@@ -914,411 +1367,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// TowerAndReceiver parameters
-	//
-
-	/**
-	 * Set D_rec: The overall outer diameter of the receiver - in [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set Flow_type: Receiver flow pattern: see figure on SAM Receiver page
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set N_panels: Number of individual panels on the receiver
-	 * options: None
-	 * constraints: INTEGER
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cav_rec_height: Cavity receiver height - in [m]
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cav_rec_passive_abs: Cavity receiver passive surface solar absorptance
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cav_rec_passive_eps: Cavity receiver passive surface thermal emissivity
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cav_rec_span: Cavity receiver span angle [deg]
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cav_rec_width: Cavity receiver aperture width - in [m]
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set crossover_shift: Number of panels shift in receiver crossover position
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set csp.pt.rec.max_oper_frac: Maximum receiver mass flow rate fraction
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set d_tube_out: The outer diameter of an individual receiver tube [mm]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set delta_flux_hrs: Hourly frequency in flux map lookup
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set downc_tm_mult: Downcomer thermal mass multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set epsilon: The emissivity of the receiver surface coating
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set eta_pump: Receiver HTF pump efficiency
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set f_rec_min: Minimum receiver mass flow rate turn down fraction
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set field_fl_props: User defined field fluid property data [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set flux_max: Maximum allowable flux
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1000
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set h_tower: Tower height - in [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set heat_trace_power: Riser/downcomer heat trace power during startup [kW/m]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=500.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set hl_ffact: The heat loss factor (thermal loss fudge factor)
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_rec_enforce_min_startup: Always enforce minimum startup time
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_rec_model_trans: Formulate receiver model as transient?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_rec_startup_from_T_soln: Begin receiver startup from solved temperature profiles?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_rec_startup_trans: Formulate receiver startup model as transient?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set mat_tube: Receiver tube material, 2=Stainless AISI316
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set min_fill_time: Startup time delay for filling the receiver/piping [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.1333
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set min_preheat_time: Minimum time required in preheat startup stage [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set n_cav_rec_panels: Cavity receiver number of panels
-	 * options: None
-	 * constraints: None
-	 * required if: receiver_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set n_flux_days: Number of days in flux map lookup
-	 * options: None
-	 * constraints: None
-	 * required if: ?=8
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set piping_length_const: Piping constant length [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set piping_length_mult: Piping length multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set piping_loss_coefficient: Thermal loss per meter of piping [Wt/m2-K]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set preheat_flux: Tube absorbed solar flux during preheat [kW/m2]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=50.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_absorptance: Receiver absorptance
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_clearsky_dni: User-defined clear-sky DNI [W/m2]
-	 * options: None
-	 * constraints: None
-	 * required if: rec_clearsky_model=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set rec_clearsky_fraction: Weighting fraction on clear-sky DNI for receiver flow control
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_clearsky_model: Clearsky model: None = -1, User-defined data = 0, Meinel = 1; Hottel = 2; Allen = 3; Moon = 4
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_height: Receiver height - in [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_hl_perm2: Receiver design heatloss [kW/m2]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_htf: Receiver HTF, 17=Salt (60% NaNO3, 40% KNO3) 10=Salt (46.5% LiF 11.5% NaF 42% KF) 50=Lookup tables
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power)
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_tm_mult: Receiver thermal mass multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set riser_tm_mult: Riser thermal mass multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set startup_ramp_time: Time required to reach full flux during receiver startup [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.1333
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set startup_target_Tdiff: Target HTF T at end of startup - steady state hot HTF temperature [C]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-5.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set th_riser: Riser or downcomer tube wall thickness [mm]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=15.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set th_tube: The wall thickness of a single receiver tube [mm]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set u_riser: Design point HTF velocity in riser [m/s]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=4.0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2068,6 +2116,14 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set ud_is_sco2_regr: False: default, base udpc interpolation, True: use sco2 heuristic regression
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ud_m_dot_water_cool_des: Mass flow rate of water required at user-defined power cycle design point [kg/s]
 	 * options: None
 	 * constraints: None
@@ -2075,82 +2131,18 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set use_net_cycle_output_as_capacity: False: default, use net calculation including system parasitics, True: for UDPC only, set as cycle output less cooling power
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_use_net_cycle_output_as_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// TimeOfDeliveryFactors parameters
 	//
-
-	/**
-	 * Set dispatch_factor1: Dispatch payment factor 1
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor2: Dispatch payment factor 2
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor3: Dispatch payment factor 3
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor4: Dispatch payment factor 4
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor5: Dispatch payment factor 5
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor6: Dispatch payment factor 6
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor7: Dispatch payment factor 7
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor8: Dispatch payment factor 8
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factor9: Dispatch payment factor 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set dispatch_factors_ts: Dispatch payment factor array
@@ -2175,6 +2167,14 @@ extern "C"
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
@@ -2458,6 +2458,91 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_Deprecated_piping_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// AdjustmentFactors parameters
+	//
+
+	/**
+	 * Set adjust_constant: Constant loss adjustment [%]
+	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: MAX=100
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_periods: Enable period-based adjustment factors [0/1]
+	 * options: 'adjust' and 'en_periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_en_timeindex: Enable lifetime adjustment factors [0/1]
+	 * options: 'adjust' and 'en_timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set adjust_periods: Period-based adjustment factors [%]
+	 * options: Syntax: n x 3 matrix [ start, end, loss ]; Version upgrade: 'adjust' and 'periods' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: COLS=3
+	 * required if: adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set adjust_timeindex: Lifetime adjustment factors [%]
+	 * options: 'adjust' and 'timeindex' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: None
+	 * required if: adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set sf_adjust_constant: SF Constant loss adjustment [%]
+	 * options: 'sf_adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
+	 * constraints: MAX=100
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sf_adjust_en_periods: Enable period-based adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sf_adjust_en_timeindex: Enable lifetime adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sf_adjust_periods: SF Period-based Adjustment Factors [%]
+	 * options: n x 3 matrix [ start, end, loss ]
+	 * constraints: COLS=3
+	 * required if: sf_adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set sf_adjust_timeindex: SF Lifetime Adjustment Factors [%]
+	 * options: None
+	 * constraints: None
+	 * required if: sf_adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
 	/**
 	 * SolarResource Getters
 	 */
@@ -2607,6 +2692,123 @@ extern "C"
 
 
 	/**
+	 * TowerAndReceiver Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_pb_pump_target_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_W_dot_rec_target_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_od_tube_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_pb_pump_coef_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_calc_sm_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_q_dot_rec_des_target_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * HeliostatField Getters
 	 */
 
@@ -2697,111 +2899,6 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_washing_frequency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_HeliostatField_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * TowerAndReceiver Getters
-	 */
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_Flow_type_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_height_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_abs_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_passive_eps_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_span_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_cav_rec_width_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_d_tube_out_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_delta_flux_hrs_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_downc_tm_mult_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_epsilon_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_eta_pump_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_f_rec_min_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_flux_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_heat_trace_power_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_hl_ffact_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_enforce_min_startup_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_model_trans_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_from_T_soln_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_is_rec_startup_trans_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_fill_time_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_min_preheat_time_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_cav_rec_panels_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_n_flux_days_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_const_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_length_mult_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_preheat_flux_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_absorptance_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_dni_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_clearsky_model_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_height_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_hl_perm2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_htf_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_rec_tm_mult_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_riser_tm_mult_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_ramp_time_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_startup_target_Tdiff_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_th_tube_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TowerAndReceiver_u_riser_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -3016,36 +3113,24 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_UserDefinedPowerCycle_use_net_cycle_output_as_capacity_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
 	 * TimeOfDeliveryFactors Getters
 	 */
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factor9_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
@@ -3135,6 +3220,31 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_Deprecated_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Deprecated_piping_loss_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * AdjustmentFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3261,19 +3371,35 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_W_dot_rec_pump_tower_share_des_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_all_hours_electricity_sales_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_all_hours_revenue_fraction_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_E_tower_pump_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_W_cooling_tower_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_W_cycle_gross_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_eta_rec_th_incl_refl_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_defocus_est_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_piping_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_htf_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_inc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_q_rec_startup_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err);
 
@@ -3288,6 +3414,8 @@ extern "C"
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_highest_1000_ppas_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_highest_2000_ppas_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_capacity_factor_warmest_100_Tambs_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cav_panel_width_nget(SAM_table ptr, SAM_error *err);
 
@@ -3341,9 +3469,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_battery_capacity_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_system_capacity_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_bop_nget(SAM_table ptr, SAM_error *err);
 
@@ -3465,6 +3593,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_heliostat_area_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_electricity_sales_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_revenue_fraction_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_pc_sb_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3534,6 +3666,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_od_tube_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3624,6 +3758,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_sf_adjust_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_solar_mult_calc_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_solaz_aget(SAM_table ptr, int* length, SAM_error *err);
 

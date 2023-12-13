@@ -49,6 +49,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/jsonreader.h>
 
 #include "wavetoolkit.h"
+#include "geotools.h"
 #include "main.h"
 
 
@@ -77,7 +78,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	 : wxDialog( parent, wxID_ANY, title,  wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER )
 {
 	wxString dnpath;
-    dnpath = ::wxGetHomeDir() + "/SAM Downloaded Wave Resource Files";
+    dnpath = ::wxGetHomeDir() + "/SAM Downloaded Weather Files";
 	m_txtFolder = new wxTextCtrl(this, ID_txtFolder, dnpath, wxDefaultPosition, wxDefaultSize, 0);// , wxDefaultPosition, wxSize(500, 30));
 	m_txtFolder->SetValue(dnpath);
     m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
@@ -123,7 +124,7 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
 	wxString msg = "Use this window to list all weather files available from the USWave dataset for a given location, and choose files to download and add to your wave resource library.\n";
 	msg += "Type a latitude and longtitude, for example, \"40.842,-124.25\", and click Find to list available files.\n";
 	msg += "When the list appears, select the file or files you want to download, or use the filter and auto-select buttons to find and select files.\n";
-	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Wave Resource Files folder.\n";
+	msg += "Choose the download folder where you want SAM to save files, or use the default SAM Downloaded Weather Files folder.\n";
 	msg += "SAM automatically adds the folder to the list of folders it uses to populate your wave resource library.\n";
 	msg += "Click OK to download the selected files and add them to your wave resource library.";
 
@@ -363,7 +364,8 @@ void WaveDownloadDialog::GetResources()
 	double lat, lon;
 	if (is_addr)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCodeDeveloper(location, &lat, &lon))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+		if (!GeoTools::GeocodeDeveloper(location, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address.\n\n" + location, "Wave Download Message", wxOK, this);
 			return;

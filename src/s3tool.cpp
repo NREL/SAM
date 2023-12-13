@@ -89,6 +89,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/icons/down_arrow_13.cpng>
 
 #include "widgets.h"
+#include "geotools.h"
 
 #include "s3tool.h"
 #include "s3view.h"
@@ -203,7 +204,8 @@ void LocationSetup::OnAddressChange( wxCommandEvent & )
 	wxYield();
 
 	double lat, lon, tz;
-	if ( !wxEasyCurl::GeoCodeDeveloper( m_address->GetValue(), &lat, &lon, &tz ) )
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+	if ( !GeoTools::GeocodeDeveloper( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");
 		return;
@@ -223,7 +225,7 @@ void LocationSetup::OnGetMap( wxCommandEvent & )
 
 void LocationSetup::DownloadMap(  )
 {
-	m_bitmap = wxEasyCurl::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, wxEasyCurl::BING_MAPS );
+	m_bitmap = GeoTools::StaticMap( m_lat->Value(), m_lon->Value(), m_zoomLevel, GeoTools::BING_MAPS );
 	if (!m_bitmap.IsOk())
 	{
 		wxMessageBox("Invalid image data file");

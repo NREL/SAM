@@ -1,0 +1,1207 @@
+{
+    "Name": "Physical Trough Collector Header",
+    "Width": 800.0,
+    "Height": 252.0,
+    "FormObjects": {
+        "Library": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "collector_library"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 768.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 147.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Library": {
+                    "Type": 5.0,
+                    "String": "Physical Trough Collectors"
+                },
+                "Fields": {
+                    "Type": 5.0,
+                    "String": "Name,Reflective aperture area,Aperture width  total structure,Length of collector assembly,Number of modules per assembly,Average surface to focus path length,Piping distance between assemblies,IAM F0,IAM F1,IAM F2,IAM F3,Tracking error,Geometry effects,Mirror reflectance,Dirt on mirror,General optical error"
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "collectors_in_field"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "header_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 175.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Collector Type 1"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 791.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Collector Library"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "A_aperture": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Reflective aperture area array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                470.3,
+                470.3,
+                470.3,
+                470.3
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Ave_Focal_Length": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Average focal length array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                1.8,
+                1.8,
+                1.8,
+                1.8
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ColperSCA": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Number of modules per assembly array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                12.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Dirt_mirror": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Dirt on mirror array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.95,
+                0.95,
+                0.95,
+                0.95
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Distance_SCA": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Piping distance between assemblies array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                1.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Error": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "General optical error array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.99,
+                0.99,
+                0.99,
+                0.99
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "GeomEffects": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Geometry effects array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.98,
+                0.98,
+                0.98,
+                0.98
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "IAM_matrix": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "L_SCA": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Length of collector assembly array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                100.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "L_aperture": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Length of single module array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                8.5
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "Rho_mirror_clean": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Mirror reflectance array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.935,
+                0.935,
+                0.935,
+                0.935
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "TrackingError": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Tracking error array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.994,
+                0.994,
+                0.994,
+                0.994
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "W_aperture": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Aperature width array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                5.0,
+                5.0,
+                5.0,
+                5.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "arr_collectors_in_loop": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Collector types in loop array",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "collector_library": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Collector library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "Physical Trough Collectors|0",
+            "Flags": 17.0,
+            "DefaultValue": "Solargenix SGX-1",
+            "UIObject": "Library",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "collectors_in_field": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Collector types in loop configuration ",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "0",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_ap_lengths": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_costh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_end_gains": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_end_losses": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_iams": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_latitude": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_sca_effs": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_theta": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_zenith": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_A_aperture": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Aperture area from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Ave_Focal_Length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average focal length from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_ColperSCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of modules per assembly from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Dirt_mirror": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Dirt on mirror from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Distance_SCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Piping distance between assemblies from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Error": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "General optical error from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_GeomEffects": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Geometry effects from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F0 from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F1 from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F2 from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_IamF3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F3 from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_L_SCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of collector assembly from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_Rho_mirror_clean": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mirror reflectance from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_TrackingError": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tracking error from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_W_aperture": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Aperature width from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_collector_description": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Collector type description from library",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "max_collector_width": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Width of widest collector in loop",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "nColt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of collector types",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 13.0,
+            "DefaultValue": 4.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_A_aperture": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "ui_A_aperture",
+            "Units": "Aperture area UI variable",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_Ave_Focal_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Average focal length UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_ColperSCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of modules per assembly UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_Dirt_mirror": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Dirt on mirror UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_Distance_SCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Piping distance between assemblies",
+            "Units": "m",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_Error": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "General optical error UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_GeomEffects": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Geometry effects UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_IamF0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F0 UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_IamF1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F1 UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_IamF2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F2 UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_IamF3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Incidence angle modifier coef F2 UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_L_SCA": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Length of collector assembly UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_Rho_mirror_clean": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Mirror reflectance UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_TrackingError": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tracking error UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_W_aperture": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Aperature width UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_collector_description": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "Collector type description UI variable",
+            "Units": " ",
+            "Group": "Physical Trough Collector Library",
+            "IndexLabels": "",
+            "Flags": 12.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "//",
+        "//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND",
+        "//  INPUT AGGREGATOR EQUATIONS BELOW!",
+        "//",
+        "//   If the equations change an input value",
+        "//   modify the below main MIMO or add one,",
+        "//   referencing in ssc_equations.h",
+        "//",
+        "",
+        "",
+        "",
+        "",
+        "// Just input aggregator",
+        "equations{ 'IAM_matrix' } = define() {",
+        "\tbase_matrix[0] = ${IAMs_1};",
+        "\tbase_matrix[1] = ${IAMs_2};",
+        "\tbase_matrix[2] = ${IAMs_3};",
+        "\tbase_matrix[3] = ${IAMs_4};",
+        "\t",
+        "\t// #array for length of array",
+        "\t// #matrix[0] for length of 1st array in ",
+        "\t",
+        "\treturn base_matrix;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'W_aperture' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_w_profile_1};",
+        "\tacollector[1] = ${csp_dtr_sca_w_profile_2};",
+        "\tacollector[2] = ${csp_dtr_sca_w_profile_3};",
+        "\tacollector[3] = ${csp_dtr_sca_w_profile_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'A_aperture' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_aperture_1};",
+        "\tacollector[1] = ${csp_dtr_sca_aperture_2};",
+        "\tacollector[2] = ${csp_dtr_sca_aperture_3};",
+        "\tacollector[3] = ${csp_dtr_sca_aperture_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'TrackingError' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_tracking_error_1};",
+        "\tacollector[1] = ${csp_dtr_sca_tracking_error_2};",
+        "\tacollector[2] = ${csp_dtr_sca_tracking_error_3};",
+        "\tacollector[3] = ${csp_dtr_sca_tracking_error_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'GeomEffects' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_geometry_effects_1};",
+        "\tacollector[1] = ${csp_dtr_sca_geometry_effects_2};",
+        "\tacollector[2] = ${csp_dtr_sca_geometry_effects_3};",
+        "\tacollector[3] = ${csp_dtr_sca_geometry_effects_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'Rho_mirror_clean' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_clean_reflectivity_1};",
+        "\tacollector[1] = ${csp_dtr_sca_clean_reflectivity_2};",
+        "\tacollector[2] = ${csp_dtr_sca_clean_reflectivity_3};",
+        "\tacollector[3] = ${csp_dtr_sca_clean_reflectivity_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'Dirt_mirror' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_mirror_dirt_1};",
+        "\tacollector[1] = ${csp_dtr_sca_mirror_dirt_2};",
+        "\tacollector[2] = ${csp_dtr_sca_mirror_dirt_3};",
+        "\tacollector[3] = ${csp_dtr_sca_mirror_dirt_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'Error' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_general_error_1};",
+        "\tacollector[1] = ${csp_dtr_sca_general_error_2};",
+        "\tacollector[2] = ${csp_dtr_sca_general_error_3};",
+        "\tacollector[3] = ${csp_dtr_sca_general_error_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'Ave_Focal_Length' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_ave_focal_len_1};",
+        "\tacollector[1] = ${csp_dtr_sca_ave_focal_len_2};",
+        "\tacollector[2] = ${csp_dtr_sca_ave_focal_len_3};",
+        "\tacollector[3] = ${csp_dtr_sca_ave_focal_len_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'L_SCA' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_length_1};",
+        "\tacollector[1] = ${csp_dtr_sca_length_2};",
+        "\tacollector[2] = ${csp_dtr_sca_length_3};",
+        "\tacollector[3] = ${csp_dtr_sca_length_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "//equations{ 'L_aperture' } = define() {",
+        "//\tacollector[0] = ${csp_dtr_sca_ap_length_1};",
+        "//\tacollector[1] = ${csp_dtr_sca_ap_length_2};",
+        "//\tacollector[2] = ${csp_dtr_sca_ap_length_3};",
+        "//\tacollector[3] = ${csp_dtr_sca_ap_length_4};",
+        "//\treturn acollector;",
+        "//};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'ColperSCA' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_ncol_per_sca_1};",
+        "\tacollector[1] = ${csp_dtr_sca_ncol_per_sca_2};",
+        "\tacollector[2] = ${csp_dtr_sca_ncol_per_sca_3};",
+        "\tacollector[3] = ${csp_dtr_sca_ncol_per_sca_4};",
+        "\treturn acollector;",
+        "};",
+        "",
+        "// Just input aggregator",
+        "equations{ 'Distance_SCA' } = define() {",
+        "\tacollector[0] = ${csp_dtr_sca_piping_dist_1};",
+        "\tacollector[1] = ${csp_dtr_sca_piping_dist_2};",
+        "\tacollector[2] = ${csp_dtr_sca_piping_dist_3};",
+        "\tacollector[3] = ${csp_dtr_sca_piping_dist_4};",
+        "\treturn acollector;",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{ 'Physical Trough Collector Header' } = define() {",
+        "\ton_change{ 'collector_library' }();",
+        "};",
+        "",
+        "on_change{'collector_library'} = define() {",
+        "    ",
+        "    value( 'ui_collector_description', value('lib_collector_description') );",
+        "    value( 'ui_A_aperture', value('lib_A_aperture') );",
+        "    value( 'ui_W_aperture', value('lib_W_aperture') );",
+        "    value( 'ui_L_SCA', value('lib_L_SCA') );",
+        "    value( 'ui_ColperSCA', value('lib_ColperSCA') );",
+        "    value( 'ui_Ave_Focal_length', value('lib_Ave_Focal_Length') );",
+        "    value( 'ui_Distance_SCA', value('lib_Distance_SCA') );",
+        "\t",
+        "    value( 'ui_IamF0', value('lib_IamF0') );",
+        "    value( 'ui_IamF1', value('lib_IamF1') );",
+        "    value( 'ui_IamF2', value('lib_IamF2') );",
+        "    value( 'ui_IamF3', value('lib_IamF3') );",
+        "    value( 'ui_TrackingError', value('lib_TrackingError') );",
+        "    value( 'ui_GeomEffects', value('lib_GeomEffects') );",
+        "    value( 'ui_Rho_mirror_clean', value('lib_Rho_mirror_clean') );",
+        "    value( 'ui_Dirt_mirror', value('lib_Dirt_mirror') );",
+        "    value( 'ui_Error', value('lib_Error') );",
+        "    ",
+        "};",
+        "",
+        ""
+    ]
+}

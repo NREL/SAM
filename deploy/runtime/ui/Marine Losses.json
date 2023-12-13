@@ -1,0 +1,1367 @@
+{
+    "Name": "Marine Losses",
+    "Width": 595.0,
+    "Height": 817.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 681.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox119"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Transmission Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox120"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 144.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Resource Overprediction Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox121"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Array Spacing Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox14"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Additional Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "downtime_group"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 576.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Array/Device Downtime Losses"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_additional"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_array_spacing"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_downtime"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_resource_overprediction"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 762.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "loss_transmission"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 297.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 71"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 702.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 52.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Total loss applied to the annual output of the array."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 716"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 52.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Availability losses which reduce the system output during system outages, operations and maintenance activities, or other events."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 717"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 61.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Related to the efficiency of the electrical infrastructure for the array, such as inter-device cabling, export cabling, substations, and onshore transmission up to grid interconnection."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 718"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 61.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Reduction from resource uncertainty associated with installing the device in waters at a depth or distance outside parameters of resource file (e.g. shallow waters close to shore, large distance from measuring buoy). "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 722"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 52.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Losses associated with interactions of devices due to spacing."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wave_add_loss"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 539.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 52.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Miscellaneous losses which would decrease the power output from the device to the grid."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "loss_additional": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Additional losses",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loss_array_spacing": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Array spacing",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loss_downtime": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Array or device downtime",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loss_resource_overprediction": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Resource overprediction",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loss_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total losses",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "loss_transmission": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Transmission losses",
+            "Units": "%",
+            "Group": "ME Wave Losses",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 5.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{\"loss_total\"} = define() {",
+        "\treturn ${loss_array_spacing} ",
+        "\t\t+ ${loss_resource_overprediction} ",
+        "\t\t+ ${loss_transmission} ",
+        "\t\t+ ${loss_downtime} ",
+        "\t\t+ ${loss_additional};",
+        "};",
+        "",
+        "/*equations{ '$MIMO$ mhk modeled wave performance calculations' } = define() {",
+        "",
+        "\ttech = technology();",
+        "\tobj = ssc_create();",
+        "\t",
+        "\tif (tech == 'MEwave') ",
+        "\t{",
+        "\t\t",
+        "\t\t",
+        "\t\tssc_var(obj,'wave_resource_matrix', ${wave_resource_matrix});",
+        "\t\tssc_var(obj,'wave_power_matrix', ${wave_power_matrix});",
+        "\t\tssc_var(obj,'number_devices', ${number_devices});",
+        "\t\tssc_var(obj,'system_capacity', ${system_capacity});",
+        "\t\t//ssc_var(obj,'devices_per_row', ${devices_per_row});",
+        "\t\tssc_var(obj,'device_rated_power', ${device_rated_power});",
+        "\t",
+        "\t",
+        "\t",
+        "\t\tssc_var(obj,'loss_array_spacing', ${loss_array_spacing});",
+        "\t\tssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});",
+        "\t\tssc_var(obj,'loss_transmission', ${loss_transmission});",
+        "\t\tssc_var(obj,'loss_downtime', ${loss_downtime});",
+        "\t\tssc_var(obj,'loss_additional', ${loss_additional});",
+        "\t",
+        "",
+        "\t\tsuccess = ssc_exec(obj, 'mhk_wave');",
+        "\t\t//msgbox(success);",
+        "\t",
+        "\t\t${device_average_power} = ssc_var( obj, 'device_average_power' );",
+        "\t\t${annual_energy} = ssc_var( obj, 'annual_energy' );",
+        "\t\t${capacity_factor} = ssc_var( obj, 'capacity_factor' );",
+        "\t\t${annual_energy_distribution} = ssc_var( obj, 'annual_energy_distribution' );",
+        "\t\t${wave_resource_start_height} = ssc_var( obj, 'wave_resource_start_height');",
+        "\t\t${wave_resource_start_period} = ssc_var( obj, 'wave_resource_start_period');",
+        "\t\t${wave_resource_end_height} = ssc_var( obj, 'wave_resource_end_height');",
+        "\t\t${wave_resource_end_period} = ssc_var( obj, 'wave_resource_end_period');",
+        "\t\t${wave_power_start_height} = ssc_var( obj, 'wave_power_start_height');",
+        "\t\t${wave_power_start_period} = ssc_var( obj, 'wave_power_start_period');",
+        "\t\t${wave_power_end_height} = ssc_var( obj, 'wave_power_end_height');",
+        "\t\t${wave_power_end_period} = ssc_var( obj, 'wave_power_end_period');",
+        "\t\t",
+        "\t\tssc_free(obj);",
+        "\t}",
+        "\t",
+        "};*/",
+        "",
+        "/*equations {'$MIMO$ mhk tidal performance calculations'} = define() {",
+        "\t",
+        "\tobj = ssc_create();",
+        "\ttech = technology();",
+        "\t",
+        "\tif (tech == \"MEtidal\") ",
+        "\t{",
+        "\t\tssc_var(obj,'tidal_power_curve', ${tidal_power_curve});",
+        "\t\tssc_var(obj,'tidal_resource', ${tidal_resource_calc});",
+        "\t\t",
+        "\t\tssc_var(obj,'number_devices', ${number_devices});",
+        "\t\t",
+        "\t",
+        "\t\tssc_var(obj,'loss_array_spacing', ${loss_array_spacing});",
+        "\t\tssc_var(obj,'loss_resource_overprediction', ${loss_resource_overprediction});",
+        "\t\tssc_var(obj,'loss_transmission', ${loss_transmission});",
+        "\t\tssc_var(obj,'loss_downtime', ${loss_downtime});",
+        "\t\tssc_var(obj,'loss_additional', ${loss_additional});",
+        "\t\t",
+        "\t\tsuccess = ssc_exec(obj, 'mhk_tidal');",
+        "\t\t//msgbox(success);",
+        "\t\t",
+        "\t\t${deviced_rated_capacity} = ssc_var(obj, 'device_rated_capacity');",
+        "\t\t${device_average_power} = ssc_var( obj, 'device_average_power' );",
+        "\t\t${annual_energy} = ssc_var( obj, 'annual_energy' );",
+        "\t\t${capacity_factor} = ssc_var( obj, 'capacity_factor' );",
+        "\t\t${annual_energy_distribution_tidal} = ssc_var( obj, 'annual_energy_distribution' );",
+        "\t\t${annual_cumulative_energy_distribution} = ssc_var( obj, 'annual_cumulative_energy_distribution' );",
+        "\t\t${tidal_resource_start_velocity} = ssc_var(obj, 'tidal_resource_start_velocity');",
+        "\t\t${tidal_resource_end_velocity} = ssc_var( obj, 'tidal_resource_end_velocity');",
+        "\t\t${tidal_power_start_velocity} = ssc_var( obj, 'tidal_power_start_velocity');",
+        "\t\t${tidal_power_end_velocity} = ssc_var(obj, 'tidal_power_end_velocity');",
+        "\t\t",
+        "\t\t",
+        "\t\tssc_free(obj);",
+        "\t}",
+        "};*/",
+        "",
+        ""
+    ],
+    "Callbacks": [
+        "function check_mhk_losses(widget_name)",
+        "{",
+        "\ttotal_loss = to_real(value(\"loss_additional\"))",
+        "\t+to_real(value(\"loss_downtime\"))",
+        "\t+to_real(value(\"loss_transmission\"))",
+        "\t+to_real(value(\"loss_resource_overprediction\"))",
+        "\t+to_real(value(\"loss_array_spacing\"));",
+        "\tx = to_real(value(widget_name));",
+        "\tif (x < 0.0)",
+        "\t{ ",
+        "\t\tx=0.0;",
+        "\t\tmsgbox(\"Loss must be greater to or equal to zero.\");",
+        "\t}",
+        "\telse if (total_loss > 100.0)",
+        "\t{",
+        "\t\tx = 100.0*x/total_loss;",
+        "\t\tif (widget_name != \"loss_additional\")",
+        "\t\t{",
+        "\t\t\ty= to_real(value(\"loss_additional\"));",
+        "\t\t\ty=100.0*y/total_loss;",
+        "\t\t\tvalue(\"loss_additional\",y, false);",
+        "\t\t\trefresh(\"loss_additional\");",
+        "\t\t}",
+        "\t\tif (widget_name != \"loss_downtime\")",
+        "\t\t{",
+        "\t\t\ty= to_real(value(\"loss_downtime\"));",
+        "\t\t\ty=100.0*y/total_loss;",
+        "\t\t\tvalue(\"loss_downtime\",y, false);",
+        "\t\t\trefresh(\"loss_downtime\");",
+        "\t\t}",
+        "\t\tif (widget_name != \"loss_transmission\")",
+        "\t\t{",
+        "\t\t\ty= to_real(value(\"loss_transmission\"));",
+        "\t\t\ty=100.0*y/total_loss;",
+        "\t\t\tvalue(\"loss_transmission\",y, false);",
+        "\t\t\trefresh(\"loss_transmission\");",
+        "\t\t}",
+        "\t\tif (widget_name != \"loss_resource_overprediction\")",
+        "\t\t{",
+        "\t\t\ty= to_real(value(\"loss_resource_overprediction\"));",
+        "\t\t\ty=100.0*y/total_loss;",
+        "\t\t\tvalue(\"loss_resource_overprediction\",y, false);",
+        "\t\t\trefresh(\"loss_resource_overprediction\");",
+        "\t\t}",
+        "\t\tif (widget_name != \"loss_array_spacing\")",
+        "\t\t{",
+        "\t\t\ty= to_real(value(\"loss_array_spacing\"));",
+        "\t\t\ty=100.0*y/total_loss;",
+        "\t\t\tvalue(\"loss_array_spacing\",y, false);",
+        "\t\t\trefresh(\"loss_array_spacing\");",
+        "\t\t}",
+        "\t\tmsgbox(\"Total loss > 100%, so losses scaled so that total is 100%.\");",
+        "\t}",
+        "\tvalue(widget_name, x, false);",
+        "\trefresh(widget_name);",
+        "\ttotal_loss = to_real(value(\"loss_additional\"))",
+        "\t+to_real(value(\"loss_downtime\"))",
+        "\t+to_real(value(\"loss_transmission\"))",
+        "\t+to_real(value(\"loss_resource_overprediction\"))",
+        "\t+to_real(value(\"loss_array_spacing\"));",
+        "\tvalue(\"loss_total\", total_loss,false);",
+        "\trefresh(\"loss_total\");",
+        "}",
+        "",
+        "on_change{'loss_additional'}=define()",
+        "{",
+        "\tcheck_mhk_losses(\"loss_additional\");",
+        "};",
+        "",
+        "",
+        "on_change{'loss_downtime'}=define()",
+        "{",
+        "\tcheck_mhk_losses('loss_downtime');",
+        "};",
+        "",
+        "on_change{'loss_transmission'}=define()",
+        "{",
+        "\tcheck_mhk_losses('loss_transmission');",
+        "};",
+        "",
+        "on_change{'loss_resource_overprediction'}=define()",
+        "{",
+        "\tcheck_mhk_losses('loss_resource_overprediction');",
+        "};",
+        "",
+        "on_change{'loss_array_spacing'}=define()",
+        "{",
+        "\tcheck_mhk_losses('loss_array_spacing');",
+        "};",
+        "",
+        ""
+    ]
+}

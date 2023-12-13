@@ -61,7 +61,7 @@ protected:
 class ActiveInputPage : public wxPanel
 {
 public:
-	ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw,
+	ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw, size_t ndx_hybrid,
 		int id = wxID_ANY, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize );
 	virtual ~ActiveInputPage();
 	
@@ -77,11 +77,13 @@ public:
 	wxString GetName() const { return m_formData->GetName(); }
 
 	std::vector<wxUIObject*> GetObjects();
-	VarInfoLookup &GetVariables();
-	EqnFastLookup &GetEquations();
-	VarTable &GetValues();
+	VarInfoLookup &GetVariables(size_t i);
+	EqnFastLookup &GetEquations(size_t i);
+	VarTable &GetValues(size_t i);
 	Case *GetCase();
 	CaseWindow *GetCaseWindow();	
+
+	size_t GetHybridIndex() { return m_ndxHybrid; }
 
 	// This one is called when a UI event occurs, 
 	// as when a user changes the value in an input control.
@@ -102,7 +104,8 @@ public:
 	
 	// data exchange from UI object to data value and vice versa
 	enum DdxDir { OBJ_TO_VAR, VAR_TO_OBJ };
-	static bool DataExchange( wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0);
+	// static for parametric
+	static bool DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period = 0, size_t ndxHybrid=0);
 
 protected:
 	
@@ -123,8 +126,10 @@ protected:
 	wxSize ScaleSize( const wxSize &s );
 	wxRect ScaleRect( const wxRect &r );
 
+private:
 	CaseWindow *m_cwin;
 	Case *m_case;
+	size_t m_ndxHybrid; // hybrid index for variables, varinfos and equations
 	
 	DECLARE_EVENT_TABLE();
 };

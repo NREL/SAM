@@ -50,6 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "nsrdb.h"
 #include "main.h"
+#include "geotools.h"
 
 
 enum {
@@ -503,7 +504,8 @@ void NSRDBDialog::GetResources()
 	double lat, lon;
 	if (is_addr)	//entered an address instead of a lat/long
 	{
-		if (!wxEasyCurl::GeoCodeDeveloper(location, &lat, &lon))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+		if (!GeoTools::GeocodeDeveloper(location, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address.\n\n" + location, "NSRDB Download Message", wxOK, this);
 			return;

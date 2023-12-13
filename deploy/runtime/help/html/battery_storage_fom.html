@@ -1,0 +1,1188 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+	<!-- Help+Manual Premium Pack 5.1.0 (c) 2015-2023 by Tim Green. All rights reserved. -->
+	<title>Battery Storage: Front of Meter</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" id="pageviewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="cache-control" content="no-cache" />	
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta name="generator" content="Help+Manual" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="The Battery Cell and System page displays inputs describing the battery's performance characteristics. For inputs that determine how the system dispatches the battery, see..." />
+	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
+	<meta name="author" content="National Renewable Energy Laboratory" />
+	<meta name="msapplication-tap-highlight" content="no" />
+<link rel="shortcut icon" href="favicon.ico" /> 
+<!--This is set up for self-hosted Google Fonts on your own web server with font files included in the skin. See the help for instructions on using fonts hosted by Google -->
+<link type="text/css" href="./css/GoogleFonts.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmprojectstyles.css" rel="stylesheet" />
+	<link id="customstylesheet" type="text/css" href="./css/custom_topic_styles.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmwebhelp_main.css" rel="stylesheet" />
+	<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+		var pageName = "mainPage";
+
+		
+		var hmDevice = {
+		
+		mobileSleepReload: true,
+		// Unique project ID
+		compilehash: (function () {
+		var outVal = 0, t="SAM HelpUser-defined Project ID";
+		for (var x = 0; x < t.length; x++) {
+			outVal = outVal + (t.charCodeAt(x)*(x+2));
+		}
+		return (outVal*697).toString(32) + "_";
+		})(),
+		
+		// Cookies
+		hmSetCookie: function(cname, cvalue, exdays) {
+			var expires = "";
+			if (exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				expires = "expires="+d.toGMTString();
+			}
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+		},
+
+		hmGetCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		hmDeleteCookie: function(cname) {
+			var name = cname + "=";
+			document.cookie = name + "; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+		}
+	
+	};
+	// Session Variables
+	// Test that storage is both available and accessible (looking at you, Safari!)
+	var storageOK = (function(){
+		var gotStorage = typeof(Storage) === "object" && typeof(localStorage) === "object" && typeof(sessionStorage) === "object";
+		if (gotStorage) {
+			try {
+				localStorage.setItem('testStorage',1);
+				localStorage.removeItem('testStorage');
+				gotStorage = true;
+			}
+			catch(e) {
+			gotStorage = false;
+			}
+		}
+		return gotStorage;
+		})();
+		
+	var sessionVariable = {
+		localS: storageOK,
+		
+		fxVal: function(v) {
+			return decodeURIComponent(v);
+		},
+		
+		setPV: function(sVar,sVal) {
+			if (this.localS) {
+				localStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			} else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),365);	
+		},
+		setSV: function(sVar,sVal) {
+			if (this.localS)
+				sessionStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),false);
+		},
+		getPV: function(sVar) {
+			if (this.localS) {
+				if (typeof(localStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return localStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		getSV: function(sVar) {
+			if (this.localS) {
+				if (typeof(sessionStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return sessionStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		deletePV: function(sVar) {
+			if (this.localS)
+				localStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		},
+		deleteSV: function(sVar) {
+			if (this.localS)
+				sessionStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		}
+	},
+	hmFlags = {
+		skinType: "flat"
+	};	
+	
+	/* UI Location */
+	hmDevice.page = "topicpage";
+	hmDevice.baseFontSize = 100;
+	hmDevice.fontChangeMax = 20;
+	
+	/* GA Active */
+	hmDevice.GAactive = true;
+	
+	/* Source Checks */
+	hmDevice.agent = navigator.userAgent.toLowerCase();
+	hmDevice.embedded = (self != top);
+	hmDevice.Xdomain = (function(){try { return parent.location.hostname.length < 0 } catch(err) { return true;}})();
+	hmDevice.platform = navigator.platform.toLowerCase();
+	hmDevice.ipad = /ipad/.test(hmDevice.platform);
+	hmDevice.iphone = /iphone/.test(hmDevice.platform);
+	hmDevice.winphone7 =  (/windows phone os [7]\.\d\d??; .*?trident\/[5]\.\d\d??; iemobile\/9/.test(hmDevice.agent));
+	hmDevice.winphone = (/windows phone [89]\.\d\d??; .*?trident\/[67]\.\d\d??;.*?touch; /.test(hmDevice.agent));
+	hmDevice.w8desktop = (/windows nt 6\.[2345]|windows nt 10\.[0123456]/m.test(hmDevice.agent));
+	hmDevice.msBrowser = (/edge|trident/m.test(hmDevice.agent));
+	hmDevice.w8metro = (function(){var supported = true; 
+				try {new ActiveXObject("htmlfile");} catch(e) {supported = false;} 
+				return (!supported && hmDevice.w8desktop && hmDevice.msBrowser)})();
+	hmDevice.touch = !!(('ontouchstart' in window && !window.opera) || ('msmaxtouchppoints' in window.navigator) || ('maxtouchppoints' in window.navigator) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+	// Treat all Windows 8 devices as desktops unless in metro mode with touch
+	hmDevice.tb = (/tablet/.test(hmDevice.agent) && (!/trident/.test(hmDevice.agent) || (hmDevice.w8metro && hmDevice.touch)));
+	hmDevice.goodandroid = (/android.+?applewebkit\/(?:(?:537\.(?:3[6-9]|[4-9][0-9]))|(?:53[8-9]\.[0-9][0-9])|(?:54[0-9]\.[0-9][0-9]))|android.+?gecko\/[345][0-9]\.\d{1,2} firefox/.test(hmDevice.agent));
+	hmDevice.deadandroid = (/android.+?applewebkit\/(?:53[0-6]\.\d{1,2})|firefox\/[0-2]\d\.\d{1,2}/.test(hmDevice.agent));
+	hmDevice.android = (/android/.test(hmDevice.agent) && !hmDevice.deadandroid);
+	hmDevice.mb = /mobi|mobile/.test(hmDevice.agent);
+	
+	/* Main Checks */
+	hmDevice.phone = (hmDevice.mb && !hmDevice.ipad && !hmDevice.tb);
+	hmDevice.tablet = (hmDevice.ipad || hmDevice.tb || (!hmDevice.phone && hmDevice.android));
+	hmDevice.aspectRatio = (screen.height / screen.width > 1 ? screen.height / screen.width : screen.width / screen.height).toFixed(2);
+	hmDevice.narrowTablet = (hmDevice.tablet && hmDevice.aspectRatio > 1.4);
+	hmDevice.desktop = ((!hmDevice.tablet && !hmDevice.phone));
+	hmDevice.device = hmDevice.phone ? "phone" : hmDevice.tablet ? "tablet" : hmDevice.desktop ? "desktop" : "default";
+	hmDevice.fontSize = hmDevice.phone ? hmDevice.baseFontSize * 1.0 : hmDevice.tablet ? hmDevice.baseFontSize * 1.0 : hmDevice.desktop ? hmDevice.baseFontSize : hmDevice.baseFontSize;
+	hmDevice.maxFontSize = hmDevice.fontSize + hmDevice.fontChangeMax;
+	hmDevice.minFontSize = hmDevice.fontSize - hmDevice.fontChangeMax;
+	if (hmDevice.device !== sessionVariable.getPV("hmDevice")) {
+		sessionVariable.setPV("hmDevice", hmDevice.device);
+		sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		} else {
+			var tempSize = sessionVariable.getPV("hmFontSize");
+			if (tempSize !== null)
+				hmDevice.fontSize = parseInt(tempSize,10);
+			else
+				sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		}
+
+	// Expand to full width of container frame if help is embedded in another page
+	if (hmDevice.embedded && hmDevice.desktop) {
+		let embedStyle = document.createElement("style");
+			embedStyle.type = "text/css";
+			embedStyle.appendChild(document.createTextNode("div#helpwrapper {max-width: 100% !important}"));
+			document.getElementsByTagName("head")[0].appendChild(embedStyle);
+	}
+hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
+	var hmSearchActive = true,
+		hmIndexActive = false;
+	</script>
+	<style id="livestyles" type="text/css"></style>
+	<noscript><style type="text/css">
+	div#pagewrapper {display: none;}
+	div#fouc {display: none;}
+	div#noscript {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 1rem solid grey;
+		background-color: #eaeaea;
+		}
+	h2#noscriptwarning {
+		text-align: center;
+		position: relative;
+		top: 35%;
+		color: #333333;
+	}
+	</style>
+	</noscript>
+	<link rel="canonical" href="https://sam.nrel.gov/help/battery_storage_fom.html" />
+	<script id="jqscript" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="./css/HM_CLASSICMENU.css" />
+</head>
+<body>
+<!--ZOOMSTOP-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<defs>
+<g class="svgsprite" id="th-list" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.152 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h5.696q0.704 0 1.216 0.48t0.512 1.216zM9.152 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-5.696q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h17.12q0.736 0 1.216 0.48t0.512 1.216zM9.152 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-17.12q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216zM32 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216z"></path>
+	</g>	
+<g class="svgsprite" id="key-inv" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.256 1.696q3.68 0 6.304 2.624t2.592 6.304-2.592 6.304-6.336 2.624q-0.896 0-1.632-0.16l-0.16 0.16v3.584h-3.584v3.552h-3.552v3.616h-10.72v-7.168l10.88-10.88q-0.16-0.736-0.16-1.664 0-3.68 2.624-6.272t6.336-2.624zM20.256 12.416q0.704 0 1.248-0.512t0.512-1.312-0.512-1.248-1.28-0.512q-0.768 0-1.28 0.544t-0.512 1.216q0 0.768 0.544 1.312t1.28 0.512z"></path>
+	</g>
+<g class="svgsprite" id="search" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.576 14.848q0-3.296-2.368-5.632t-5.632-2.368-5.664 2.368-2.336 5.632 2.336 5.664 5.664 2.336 5.632-2.336 2.368-5.664zM29.728 29.728q0 0.928-0.704 1.6t-1.6 0.672q-0.96 0-1.6-0.672l-6.112-6.112q-3.2 2.208-7.136 2.208-2.56 0-4.896-0.992t-4-2.688-2.688-4-0.992-4.896 0.992-4.864 2.688-4.032 4-2.688 4.896-0.992 4.864 0.992 4.032 2.688 2.688 4.032 0.992 4.864q0 3.936-2.208 7.136l6.112 6.112q0.672 0.672 0.672 1.632z"></path>
+	</g>
+<g class="svgsprite" id="draghandle_r" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M10,6L8.59,7.41,13.17,12l-4.58,4.59L10,18l6,-6z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_l" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M15.41,7.41L14,6l-6,6,6,6,1.41,-1.41L10.83,12z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_rm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_lm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_updown_icon" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M17.038,8.518h-4.977v8.879l-7.084-0.002V8.518H0L8.519,0L17.038,8.518z M22.2,30l8.519-8.518h-4.977v-8.877l-7.084-0.002
+	v8.879h-4.977L22.2,30z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_close" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M16.295 15.705C16.295 15.705 17.705 14.295 17.705 14.295C17.705 14.295 11.705 8.295 11.705 8.295C11.705 8.295 5.705 14.295 5.705 14.295C5.705 14.295 7.115 15.705 7.115 15.705C7.115 15.705 11.705 11.125 11.705 11.125C11.705 11.125 16.295 15.705 16.295 15.705"></path>
+  </g>
+<g class="svgsprite" id="toolbar_open" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M7.115 8.295C7.115 8.295 5.705 9.705 5.705 9.705C5.705 9.705 11.705 15.705 11.705 15.705C11.705 15.705 17.705 9.705 17.705 9.705C17.705 9.705 16.295 8.295 16.295 8.295C16.295 8.295 11.705 12.875 11.705 12.875C11.705 12.875 7.115 8.295 7.115 8.295"></path>
+  </g>
+<g class="svgsprite" id="angle-circled-left" width="27" height="32" viewBox="0 0 27 32">
+<path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-up" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.8 20.352l1.824-1.824q0.352-0.352 0.352-0.8t-0.352-0.832l-8.096-8.096q-0.352-0.32-0.8-0.32t-0.832 0.32l-8.096 8.096q-0.32 0.352-0.32 0.832t0.32 0.8l1.824 1.824q0.352 0.32 0.8 0.32t0.8-0.32l5.504-5.504 5.472 5.504q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-right" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="menu" width="27" height="32" viewBox="0 0 27 32">
+    <path d="M27.424 24v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.8t0.8-0.352h25.12q0.48 0 0.832 0.352t0.32 0.8zM27.424 14.848v2.304q0 0.448-0.32 0.8t-0.832 0.32h-25.12q-0.48 0-0.8-0.32t-0.352-0.8v-2.304q0-0.448 0.352-0.8t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.8zM27.424 5.728v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.832t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.832z"></path>
+  </g>
+<g class="svgsprite" id="weblink" width="32" height="32" viewBox="0 0 27 32">
+ <path d="M11.99,2C6.47,2,2,6.48,2,12s4.47,10,9.99,10C17.52,22,22,17.52,22,12S17.52,2,11.99,2zm6.93,6h-2.95c-0.32,-1.25,-0.78,-2.45,-1.38,-3.56,1.84,0.63,3.37,1.91,4.33,3.56zM12,4.04c0.83,1.2,1.48,2.53,1.91,3.96h-3.82c0.43,-1.43,1.08,-2.76,1.91,-3.96zM4.26,14C4.1,13.36,4,12.69,4,12s0.1,-1.36,0.26,-2h3.38c-0.08,0.66,-0.14,1.32,-0.14,2,0,0.68,0.06,1.34,0.14,2H4.26zm0.82,2h2.95c0.32,1.25,0.78,2.45,1.38,3.56,-1.84,-0.63,-3.37,-1.9,-4.33,-3.56zm2.95,-8H5.08c0.96,-1.66,2.49,-2.93,4.33,-3.56C8.81,5.55,8.35,6.75,8.03,8zM12,19.96c-0.83,-1.2,-1.48,-2.53,-1.91,-3.96h3.82c-0.43,1.43,-1.08,2.76,-1.91,3.96zM14.34,14H9.66c-0.09,-0.66,-0.16,-1.32,-0.16,-2,0,-0.68,0.07,-1.35,0.16,-2h4.68c0.09,0.65,0.16,1.32,0.16,2,0,0.68,-0.07,1.34,-0.16,2zm0.25,5.56c0.6,-1.11,1.06,-2.31,1.38,-3.56h2.95c-0.96,1.65,-2.49,2.93,-4.33,3.56zM16.36,14c0.08,-0.66,0.14,-1.32,0.14,-2,0,-0.68,-0.06,-1.34,-0.14,-2h3.38c0.16,0.64,0.26,1.31,0.26,2s-0.1,1.36,-0.26,2h-3.38z"></path>
+ </g>
+<g class="svgsprite" id="collapse" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 19.936q-0.32 0.64-1.024 0.64h-11.424q-0.704 0-1.024-0.64-0.32-0.608 0.096-1.184l5.728-8q0.32-0.48 0.928-0.48t0.928 0.48l5.696 8q0.416 0.576 0.096 1.184zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="expand" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 12.064q0.32 0.608-0.096 1.152l-5.696 8q-0.352 0.512-0.928 0.512t-0.928-0.512l-5.728-8q-0.416-0.544-0.096-1.152 0.32-0.64 1.024-0.64h11.424q0.704 0 1.024 0.64zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="eye" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.728 17.152q-2.72-4.224-6.816-6.304 1.088 1.856 1.088 4 0 3.328-2.336 5.664t-5.664 2.336-5.664-2.336-2.336-5.664q0-2.144 1.088-4-4.096 2.080-6.816 6.304 2.4 3.648 5.984 5.824t7.744 2.176 7.744-2.176 5.984-5.824zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM32 17.152q0 0.608-0.352 1.216-2.496 4.128-6.72 6.592t-8.928 2.464-8.928-2.464-6.72-6.592q-0.352-0.608-0.352-1.216t0.352-1.248q2.496-4.096 6.72-6.56t8.928-2.496 8.928 2.496 6.72 6.56q0.352 0.64 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="eye-off" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.92 23.84l1.376-2.528q-1.536-1.12-2.432-2.816t-0.864-3.648q0-2.144 1.088-4-4.096 2.080-6.816 6.304 3.008 4.608 7.648 6.688zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM23.328 6.88q0 0.128 0 0.16-1.888 3.36-5.632 10.112t-5.632 10.112l-0.896 1.6q-0.16 0.288-0.48 0.288-0.224 0-2.4-1.248-0.288-0.192-0.288-0.512 0-0.224 0.8-1.568-2.56-1.152-4.704-3.072t-3.744-4.384q-0.352-0.544-0.352-1.216t0.352-1.248q2.752-4.192 6.784-6.624t8.864-2.432q1.6 0 3.2 0.32l0.992-1.728q0.16-0.288 0.48-0.288 0.096 0 0.32 0.096t0.576 0.288 0.576 0.32 0.576 0.32 0.32 0.224q0.288 0.16 0.288 0.48zM24 14.848q0 2.496-1.408 4.544t-3.744 2.944l5.024-8.992q0.128 0.832 0.128 1.504zM32 17.152q0 0.608-0.352 1.216-0.704 1.152-1.952 2.592-2.688 3.072-6.208 4.768t-7.488 1.696l1.312-2.368q3.808-0.32 7.008-2.432t5.408-5.472q-2.080-3.2-5.056-5.248l1.12-2.016q1.696 1.152 3.264 2.752t2.592 3.264q0.352 0.608 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="link" width="30" height="32" viewBox="0 0 30 32">
+<path d="M25.984 21.728q0-0.736-0.48-1.216l-3.712-3.712q-0.512-0.512-1.216-0.512-0.768 0-1.28 0.576 0.032 0.032 0.32 0.32t0.384 0.384 0.288 0.352 0.224 0.448 0.064 0.48q0 0.736-0.512 1.216t-1.216 0.512q-0.256 0-0.48-0.064t-0.448-0.224-0.352-0.288-0.384-0.384-0.32-0.32q-0.608 0.544-0.608 1.28t0.512 1.216l3.68 3.712q0.48 0.48 1.216 0.48 0.704 0 1.216-0.48l2.624-2.592q0.48-0.512 0.48-1.184zM13.44 9.12q0-0.704-0.48-1.216l-3.68-3.68q-0.512-0.512-1.216-0.512t-1.216 0.48l-2.624 2.624q-0.512 0.48-0.512 1.184t0.512 1.216l3.712 3.712q0.48 0.48 1.216 0.48t1.28-0.544q-0.064-0.064-0.352-0.352t-0.384-0.384-0.256-0.32-0.224-0.448-0.064-0.512q0-0.704 0.48-1.216t1.216-0.48q0.288 0 0.512 0.064t0.448 0.224 0.32 0.256 0.384 0.384 0.352 0.352q0.576-0.544 0.576-1.312zM29.44 21.728q0 2.144-1.536 3.616l-2.624 2.592q-1.472 1.504-3.616 1.504-2.176 0-3.648-1.536l-3.68-3.68q-1.472-1.504-1.472-3.648 0-2.176 1.568-3.712l-1.568-1.568q-1.536 1.568-3.712 1.568-2.144 0-3.648-1.504l-3.712-3.712q-1.504-1.504-1.504-3.648t1.504-3.616l2.624-2.624q1.504-1.472 3.648-1.472t3.648 1.504l3.648 3.712q1.504 1.472 1.504 3.616 0 2.208-1.568 3.744l1.568 1.568q1.536-1.568 3.712-1.568 2.144 0 3.648 1.504l3.712 3.712q1.504 1.504 1.504 3.648z"></path>
+	</g>
+<g class="svgsprite" id="mail-alt" width="32" height="32" viewBox="0 0 32 32">
+<path d="M32 12.672v14.176q0 1.184-0.832 2.016t-2.016 0.864h-26.304q-1.152 0-2.016-0.864t-0.832-2.016v-14.176q0.8 0.896 1.792 1.568 6.464 4.384 8.896 6.144 1.024 0.768 1.632 1.184t1.696 0.864 1.952 0.416h0.064q0.896 0 1.952-0.416t1.696-0.864 1.632-1.184q3.040-2.176 8.896-6.144 1.024-0.704 1.792-1.568zM32 7.424q0 1.408-0.864 2.688t-2.176 2.208q-6.72 4.672-8.384 5.792-0.16 0.128-0.736 0.544t-0.96 0.704-0.928 0.576-1.056 0.48-0.864 0.16h-0.064q-0.384 0-0.864-0.16t-1.056-0.48-0.928-0.576-0.96-0.704-0.736-0.544q-1.632-1.12-4.704-3.232t-3.648-2.56q-1.12-0.736-2.080-2.048t-0.992-2.464q0-1.376 0.736-2.304t2.112-0.928h26.304q1.152 0 1.984 0.832t0.864 2.016z"></path>
+	</g>
+<g class="svgsprite" id="print" width="30" height="32" viewBox="0 0 30 32">
+<path d="M6.848 27.424h16v-4.576h-16v4.576zM6.848 16h16v-6.848h-2.848q-0.704 0-1.216-0.512t-0.512-1.216v-2.848h-11.424v11.424zM27.424 17.152q0-0.48-0.32-0.8t-0.832-0.352-0.8 0.352-0.32 0.8 0.32 0.8 0.8 0.32 0.832-0.32 0.32-0.8zM29.728 17.152v7.424q0 0.224-0.192 0.384t-0.384 0.192h-4v2.848q0 0.704-0.512 1.216t-1.216 0.512h-17.152q-0.704 0-1.184-0.512t-0.512-1.216v-2.848h-4q-0.224 0-0.416-0.192t-0.16-0.384v-7.424q0-1.408 1.024-2.432t2.4-0.992h1.152v-9.728q0-0.704 0.512-1.216t1.184-0.512h12q0.736 0 1.6 0.384t1.344 0.832l2.72 2.72q0.48 0.512 0.864 1.376t0.352 1.568v4.576h1.12q1.44 0 2.432 0.992t1.024 2.432z"></path>
+	</g>
+<g class="svgsprite" id="resize-full" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.472 18.848q0 0.256-0.16 0.416l-5.92 5.92 2.56 2.592q0.32 0.32 0.32 0.8t-0.32 0.8-0.8 0.352h-8q-0.48 0-0.8-0.352t-0.352-0.8v-8q0-0.48 0.352-0.8t0.8-0.352 0.8 0.352l2.56 2.56 5.92-5.92q0.192-0.192 0.416-0.192t0.416 0.192l2.048 2.016q0.16 0.192 0.16 0.416zM27.424 3.424v8q0 0.48-0.32 0.8t-0.832 0.352-0.8-0.352l-2.56-2.56-5.92 5.92q-0.192 0.192-0.416 0.192t-0.416-0.192l-2.048-2.016q-0.16-0.192-0.16-0.416t0.16-0.416l5.952-5.92-2.592-2.592q-0.32-0.32-0.32-0.8t0.32-0.8 0.8-0.352h8q0.48 0 0.832 0.352t0.32 0.8z"></path>
+	</g>
+<g class="svgsprite" id="resize-small" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.728 17.152v8q0 0.448-0.352 0.8t-0.8 0.32-0.8-0.32l-2.592-2.592-5.92 5.952q-0.16 0.16-0.416 0.16t-0.416-0.16l-2.016-2.048q-0.192-0.16-0.192-0.416t0.192-0.416l5.92-5.92-2.56-2.56q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h8q0.448 0 0.8 0.352t0.352 0.8zM27.2 5.152q0 0.224-0.192 0.416l-5.92 5.92 2.56 2.56q0.352 0.352 0.352 0.8t-0.352 0.8-0.8 0.352h-8q-0.448 0-0.8-0.352t-0.32-0.8v-8q0-0.448 0.32-0.8t0.8-0.32 0.8 0.32l2.592 2.592 5.92-5.952q0.192-0.16 0.416-0.16t0.416 0.16l2.016 2.048q0.192 0.16 0.192 0.416z"></path>
+	</g>
+<g class="svgsprite" id="share" width="27" height="32" viewBox="0 0 27 32">
+<path d="M21.728 18.272q2.368 0 4.032 1.696t1.664 4.032-1.664 4.032-4.032 1.696-4.064-1.696-1.664-4.032q0-0.224 0.032-0.608l-6.432-3.2q-1.632 1.536-3.872 1.536-2.4 0-4.064-1.696t-1.664-4.032 1.664-4.032 4.064-1.696q2.24 0 3.872 1.536l6.432-3.2q-0.032-0.384-0.032-0.608 0-2.368 1.664-4.032t4.064-1.696 4.032 1.696 1.664 4.032-1.664 4.032-4.032 1.696q-2.272 0-3.904-1.536l-6.432 3.2q0.032 0.384 0.032 0.608t-0.032 0.608l6.432 3.2q1.632-1.536 3.904-1.536z"></path>
+	</g>
+<g class="svgsprite" id="text-height" width="32" height="32" viewBox="0 0 32 32">
+<path d="M31.136 25.152q0.608 0 0.768 0.32t-0.192 0.8l-2.272 2.88q-0.352 0.48-0.864 0.48t-0.864-0.48l-2.272-2.88q-0.352-0.48-0.192-0.8t0.736-0.32h1.44v-18.304h-1.44q-0.576 0-0.736-0.32t0.192-0.8l2.272-2.88q0.352-0.48 0.864-0.48t0.864 0.48l2.272 2.88q0.352 0.48 0.192 0.8t-0.768 0.32h-1.408v18.304h1.408zM1.44 2.304l0.96 0.48q0.224 0.096 3.776 0.096 0.8 0 2.368-0.032t2.336-0.032q0.672 0 1.92 0t1.92 0h5.248q0.096 0 0.384 0t0.352 0 0.288-0.032 0.32-0.16 0.256-0.32l0.768-0.032q0.064 0 0.224 0.032t0.256 0q0.032 1.984 0.032 5.984 0 1.44-0.064 1.952-0.704 0.256-1.216 0.32-0.448-0.768-0.992-2.272-0.032-0.16-0.192-0.864t-0.256-1.312-0.128-0.64q-0.096-0.128-0.224-0.224t-0.256-0.096-0.256-0.032-0.32-0.032-0.288 0.032q-0.288 0-1.184-0.032t-1.344 0-1.12 0.032-1.28 0.128q-0.16 1.44-0.128 2.4 0 1.696 0.032 6.944t0.032 8.128q0 0.288-0.032 1.28t0 1.632 0.224 1.216q0.704 0.384 2.208 0.768t2.144 0.672q0.064 0.704 0.064 0.896 0 0.256-0.032 0.512l-0.608 0.032q-1.376 0.032-3.904-0.16t-3.68-0.16q-0.896 0-2.72 0.16t-2.688 0.16q-0.064-0.928-0.064-0.928v-0.16q0.288-0.48 1.088-0.768t1.76-0.544 1.408-0.48q0.32-0.736 0.32-6.816 0-1.824-0.032-5.44t-0.064-5.408v-2.080q0-0.032 0-0.288t0.032-0.448-0.032-0.448-0.064-0.416-0.096-0.256q-0.192-0.224-2.88-0.224-0.576 0-1.664 0.224t-1.408 0.48q-0.352 0.224-0.608 1.28t-0.576 1.984-0.768 0.96q-0.736-0.48-0.992-0.8v-6.816z"></path>
+	</g>
+<g class="svgsprite" id="list-bullet" width="32" height="32" viewBox="0 0 32 32">
+<path d="M6.848 25.152q0 1.408-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM6.848 16q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 23.424v3.424q0 0.224-0.16 0.416t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.416v-3.424q0-0.224 0.16-0.384t0.416-0.192h21.696q0.224 0 0.416 0.192t0.16 0.384zM6.848 6.848q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 14.272v3.456q0 0.224-0.16 0.384t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.384v-3.456q0-0.224 0.16-0.384t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.384zM32 5.152v3.424q0 0.224-0.16 0.384t-0.416 0.192h-21.696q-0.256 0-0.416-0.192t-0.16-0.384v-3.424q0-0.256 0.16-0.416t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.416z"></path>
+	</g>
+<g class="svgsprite" id="ok" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.824 10.112q0 0.704-0.48 1.216l-15.36 15.36q-0.512 0.48-1.216 0.48t-1.216-0.48l-8.896-8.896q-0.48-0.512-0.48-1.216t0.48-1.216l2.432-2.432q0.512-0.512 1.216-0.512t1.216 0.512l5.248 5.28 11.712-11.744q0.512-0.512 1.216-0.512t1.216 0.512l2.432 2.432q0.48 0.512 0.48 1.216z"></path>
+	</g>
+<g class="svgsprite" id="ok-squared" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.224 23.2l10.976-10.976q0.32-0.32 0.32-0.8t-0.32-0.8l-1.824-1.824q-0.352-0.32-0.8-0.32t-0.8 0.32l-8.352 8.352-3.776-3.776q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.824q-0.32 0.32-0.32 0.8t0.32 0.8l6.4 6.4q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<symbol class="svgsprite" id="menu-closed" viewBox="0 0 24 24">
+<path d="M2.99999995 23.9999998C2.99999995 23.9999998 21.0123147 12.01849265 21.0123147 12.01849265C21.0123147 12.01849265 3.02464845 1.28000000075e-05 3.02464845 1.28000000075e-05C3.02464845 1.28000000075e-05 2.99999995 23.9999998 2.99999995 23.9999998"></path>
+  </symbol>
+<symbol class="svgsprite" id="menu-open" viewBox="0 0 24 24">
+    <path d="M0.0 3.0C0.0 3.0 12.0 21.0 12.0 21.0C12.0 21.0 24.0 3.0 24.0 3.0C24.0 3.0 0.0 3.0 0.0 3.0"></path>
+  </symbol>
+<symbol class="svgsprite" id="close-search" viewBox="0 0 72 72">
+	<path d="M57 19.23L52.77 15 36 31.77 19.23 15 15 19.23 31.77 36 15 52.77 19.23 57 36 40.23 52.77 57 57 52.77 40.23 36 57 19.23z"></path>
+	</symbol>
+</defs>
+</svg>
+<div id="fouc" style="background:#ffffff;position:absolute;top:0;right:0;bottom:0;left:0;z-index:100001;"></div><div id="noscript"><h2 id="noscriptwarning">Please enable JavaScript to view this site.</h2></div>
+	<div id="helpwrapper">
+	<!--<div id="pagewrapper">-->
+	<div id="toolbar_updown" class="toolwrapper phone">
+	<svg id="toolbar_updown_button" alt="Show/Hide Toolbars" viewBox="0 0 30 30"><use xlink:href="#toolbar_updown_icon"></use></svg>
+	</div>
+	<header id="headerbox_wrapper">
+	<div id="headerbox">
+	<div id="headerwrapper">
+<html>
+	<head></head>
+	<body>
+		<nav id="header_menu">
+			
+				<div id="homebutton">
+					<a id="homebuttonlink" href="https://sam.nrel.gov" alt="System Advisor Model (SAM)" title="System Advisor Model (SAM)" aria-label="System Advisor Model (SAM)"></a>
+				</div>
+			
+			<ul id="topnav" class="topnav" role="tablist">
+				<span>
+					<li class="desk_tablet headerlink logo">
+						<a href="https://sam.nrel.gov/" target="_blank" class="extralink" title="SAM Website" aria-label="SAM Website">
+							<svg class="submenu_icon" alt="SAM Website" viewBox="0 0 32 32">
+								<use xlink:href="#weblink"></use>
+							</svg>
+							<span>SAM Website</span>
+						</a>
+					</li>
+					<li class="header last" role="tab">
+						<a title="LK Script" aria-label="LK Script" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>LK Script</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">LK Script</p>
+									<li>
+										<a href="#macros.html" target="_parent" title="Scripting and Macros Instructions" aria-label="Scripting and Macros Instructions">
+											<span>Basic Instructions</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/images/web_page_files/lk_guide.pdf" target="_blank" title="Download LK reference manual" aria-label="Download LK reference manual">
+											<span>LK Reference Manual (PDF)</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://github.com/NREL/SAM/tree/develop/samples/LK%20Scripts%20for%20SAM" target="_blank" title="LK sample scripts on GitHub.com" aria-label="LK sample scripts on GitHub.com">
+											<span>Sample Scripts</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="Contact" aria-label="Contact" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>Contact</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">Contact</p>
+									<li>
+										<a href="https://sam.nrel.gov/forum" target="_blank" title="SAM Forum" aria-label="SAM Forum">
+											<span>Forum</span>
+										</a>
+									</li>
+									<li>
+										<a href="mailto:sam.support@nrel.gov?subject=Email%20from%20SAM%20Help" target="_blank" title="Email SAM support" aria-label="Email SAM support">
+											<span>Email</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="About" aria-label="About" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>About</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">About</p>
+									<li>
+										<a href="https://nrel.github.io/SAM/doc/releasenotes.html" target="_blank" title="Release Notes" aria-label="Release Notes">
+											<span>Release Notes</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/" target="_blank" title="SAM Website" aria-label="SAM Website">
+											<span>Website</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="desktop tablet"></li>
+				</span>
+			</ul>
+		</nav>
+	</body>
+</html> 
+	</div>
+	</div>
+	</header>
+	<div id="navigationmenu">
+	<ul id="hamburgermenu" role="menu" aria-labelledby="hamburgerlink">
+	<li id="toggle_fullscreen" class="desktop" role="menuitem">
+	<svg id="fullscreen_toggle" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#resize-full"></use></svg>
+	<a onclick='hmWebHelp.doFullEmbedWindow(this)' tabindex="0" title="Zoom window">
+	<span>Zoom Window Out</span></a>
+	</li>
+	<li role="menuitem" id="changefontsize">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#text-height"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('fontSize',[true,'global']);" id="increaseFont" title="Increase Font Size" href="javascript:void(0);"> 
+		<span>Larger Text</span></a>&nbsp;|&nbsp;<a onclick="hmWebHelp.extFuncs('fontSize',[false,'global']);" id="decreaseFont" title="Decrease Font Size" href="javascript:void(0);"><span>Smaller Text</span></a>
+	</li>
+	<li class="desktop" id="showhide_pageheader" role="menuitem">
+		<svg id="showhide_header_icon" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#collapse"></use></svg>
+		<a title="Hide Page Header" href="javascript:void(0);">
+		<span>Hide Page Header</span></a>
+	</li>
+	<li class="toggles" id="showhide_toggles" role="menuitem">
+		<svg id="showhide_toggles_icon" class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#eye"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
+		<span>Show Expanding Text</span></a>
+	</li>
+	<li id="hm_printable_version" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
+		<a id="hm_printable_link" href="_hm_print_window.htm?battery_storage_fom.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
+		<span>Print Topic</span></a>
+	</li>
+	<li id="mailfeedback" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
+		<span>Send Mail Feedback</span></a>
+	</li>
+	<li class="desktop server" id="savepermalink" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<a href="javascript:hmWebHelp.hamburgerMenu()" data-target="_hmpermalink.html" data-path="./" data-title="Save Topic Permalink" class="popuplink" title="Copy URL of current topic" href="javascript:void(0);">
+		<span>Save Permalink URL</span></a>
+	</li> 	
+	</ul>
+	</div>
+	<!-- TOPIC CONTENT -->
+	<main id="topicbox">
+	<div id="autoTocWrapper" class=""></div>
+	<div id="topicbody">
+	<!-- HMSKIN BODY START -->
+	<nav id="hmpageheader" role="navigation" aria-label="Topic Navigation">
+	<table id="topicheadertable">
+	  <tr>
+		<td id="topicheadercell">
+		  <div id="topicheaderwrapper">
+		  <p id="ptopic_breadcrumbs" class="topic_breadcrumbs">Navigation: <a href="battery_storage.html">Battery Storage</a></p> 
+		  <h1 class="topictitle" title="Battery Storage: Front of Meter">Battery Storage: Front of Meter<h1>
+		  </div>
+		</td>
+		<td id="topicnavcell"><span>
+		<a id="phonemenulink" class="topicnavlink" href="javascript:void(0)" title="Links to other pages">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<span >Links</span>
+		</a>
+		<a id="atoclink" class="topicnavlink" href="javascript:void(0);" title="Contents of this topic">
+		<svg class="navicon" viewBox="0 0 32 32"><use xlink:href="#list-bullet"></use></svg>
+		<span>Topic Contents</span></a>
+		 <a id="hamburgerlink" class="topicnavlink" href="javascript:void(0);" title="Additional Functions Menu">
+		 <svg class="navicon" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg>
+		 <span>Menu</span></a>
+		 </span>
+		 </td>
+	  </tr>
+	</table>
+	</nav>
+	<div id="hmpagebody">
+	<div id="hmpagebody_scroller">
+<!--ZOOMRESTART--> 
+	<p class="p_Text"><span class="f_Text">The Battery Cell and System page displays inputs describing the battery's performance characteristics. For inputs that determine how the system dispatches the battery, see <a href="battery_dispatch_fom.html" class="topiclink">Battery Dispatch</a>. Use the following list to find information about the Battery Cell and System page inputs:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#fom" class="topiclink">Front-of-meter (FOM) Batteries</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#chemistry" class="topiclink">Chemistry</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#sizing" class="topiclink">Battery Bank Sizing</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#currentcapacity" class="topiclink">Current and Capacity</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#powerconverters" class="topiclink">Power Converters</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#voltage" class="topiclink">Battery Voltage</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="battery_storage_fom.html#losses" class="topiclink">Battery Losses</a></span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast"><a href="battery_storage_fom.html#thermal" class="topiclink">Battery Thermal</a></span></p>
+<p class="p_Text"><span class="f_Text">For a list of publications about SAM's battery model, see <a href="https://sam.nrel.gov/battery-storage/battery-publications.html" target="_blank" class="weblink" title="https://sam.nrel.gov/battery-storage/battery-publications.html">https://sam.nrel.gov/battery-storage/battery-publications.html</a>.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="fom" class="hmanchor"></a><span class="f_Heading3_atocs_">Front of Meter (FOM) Batteries</span></h3>
+<p class="p_Text"><span class="f_Text">The front-of-meter (FOM) battery model assumes that the battery is used to maximize revenue for a power generation project. The battery in a PV-battery front-of-meter application may be connected either to the AC or DC side of the inverter Figure 1.</span></p>
+<p class="p_Text" style="text-align: center;"><img alt="IMG_Batt-FOM-configurations" style="margin:0 auto 0 auto;width:37.5000rem;height:22.6250rem;border:none" src="./images/img_batt-fom-configurations.png"/></p>
+<p class="p_TitleFigure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleFigure">Figure 1: Front-of-meter Battery Configurations. &nbsp;Standalone battery is the same as Generic System but with no system.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="chemistry" class="hmanchor"></a><span class="f_Heading3_atocs_">Chemistry</span></h3>
+<p class="p_Text"><span class="f_Text">The battery type defines the battery chemistry for (lithium ion, lead acid, or flow battery), and the type of battery for each chemistry. When you choose a battery type, SAM automatically changes the battery property input variables to default values for that type. These default values were drawn from DiOrio (2015) &quot;</span><span class="f_List">Technoeconomic Modeling of Battery Energy Storage in SAM&quot;</span><span class="f_Text"> available <a href="https://sam.nrel.gov/battery-storage/battery-publications.html" target="_blank" class="weblink" title="https://sam.nrel.gov/battery-storage/battery-publications.html">here</a>, which also includes more details on how SAM calculates battery capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery type</span></p>
+<p class="p_VariableDescription"><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">Choose the battery chemistry and battery type for the batteries in your system.</span></p>
+<p class="p_VariableDescription"><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">When you choose a battery type, SAM replaces the values of </span><span class="f_CHInterfaceElement">Voltage Properties</span><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;"> and </span><span class="f_CHInterfaceElement">Current and Capacity</span><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;"> input variables as appropriate with values for each battery type.</span></p>
+<p class="p_VariableDescription"><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">When you choose a custom battery type for either the lead acid or lithium ion chemistry, SAM does not replace the input variable values.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;"> </span><br />
+<span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">&nbsp;</span><br />
+<span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">To model a battery type not included in the list, choose either </span><span class="f_CHInterfaceElement">Lead Acid: Custom</span><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;"> or </span><span class="f_CHInterfaceElement">Lithium Ion: Custom</span><span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">, and specify your voltage, current, and capacity properties appropriate for the battery.</span><br />
+<span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">&nbsp;</span><br />
+<span style="font-family: 'Segoe UI',Tahoma,Verdana,Arial,sans-serif;">When you choose the custom lead acid battery type, SAM retains the capacity and discharge rate values from the table below from the previous state. For example, if you change the battery type from flooded lead acid to custom lead acid, SAM will apply the capacity/discharge rate table for flooded batteries to your custom battery.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1250rem"><img id="toggle0186a1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:0.5625rem;height:0.5625rem;border:none" src="./images/hmtoggle_arrow0.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a id="toggle0186a1_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a1_ICON" data-src0="./images/hmtoggle_arrow0.gif" data-src1="./images/hmtoggle_arrow1.gif">Lead Acid</a></span></td></tr></table></div>
+<div id="toggle0186a1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The three lead acid battery types use the lead acid battery capacity model described in DiOrio (2015), cited above:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Flooded lead acid batteries with a liquid electrolyte.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Valve Regulated (VRLA) batteries are sealed, and the electrolyte is bound in a gel.</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">VRLA Absorptive Glass Mat (AGM) batteries are sealed, and the electrolyte is immobilized in porous separators.</span></p>
+<p class="p_Text"><span class="f_Text">Lead acid battery capacity is dependent on the discharge rate. When you choose different lead-acid battery types from the list, SAM changes internal variable values that define the relationship between capacity and discharge rate as shown in the table below. It is not possible to change these values from the Battery Storage input page. These values are based on analysis of information for batteries from different manufacturers. SAM considers the 20-hour discharge rate to be the nominal capacity of a lead-acid battery and scales the capacity at faster discharge rates as a percent of the that 20-hour capacity.</span></p>
+<div style="text-align: center; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;"><table class="DefaultShadedRows" >
+<thead>
+<tr class="DefaultShadedRows">
+<th class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">&nbsp;</span></p>
+</th>
+<th class="DefaultShadedRows" colspan="3"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Capacity %</span></p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Discharge Rate</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">Flooded</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">VRLA Gel</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableHeadColumn" style="page-break-inside: avoid;"><span class="f_TableHeadColumn">VRLA AGM</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">20-hr ( 0.05 C )</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">100</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">10-hr ( 0.1C )</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">87</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">84.9</span></p>
+</td>
+<td class="DefaultShadedRows"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">93.2</span></p>
+</td>
+</tr>
+<tr class="DefaultShadedRows">
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">1-hr ( C )</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">47</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">63.1</span></p>
+</td>
+<td class="DefaultShadedRows" style="background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">58.1</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1250rem"><img id="toggle0186a2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:0.5625rem;height:0.5625rem;border:none" src="./images/hmtoggle_arrow0.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a id="toggle0186a2_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a2_ICON" data-src0="./images/hmtoggle_arrow0.gif" data-src1="./images/hmtoggle_arrow1.gif">Lithium Ion</a></span></td></tr></table></div>
+<div id="toggle0186a2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The six lithium ion battery types use of the lithium-ion battery capacity model described in DiOrio (2015) &quot;Technoeconomic Modeling of Battery Energy Storage in SAM&quot; cited above:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">LMO: Lithium Manganese Oxide (<img alt="EQ_BATT_lmo" style="margin:0;width:3.1250rem;height:1.0000rem;border:none" src="./images/eq_batt_lmo.png"/>) – An inexpensive high-voltage cathode material with high power capabilities but potentially lower lifespan.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">LFP: Lithium Iron Phosphate (<img alt="EQ_BATT_lfp" style="margin:0;width:3.3750rem;height:1.0000rem;border:none" src="./images/eq_batt_lfp.png"/> – A lower voltage cathode material with excellent safety properties but lower volumetric energy.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">LCO: Lithium Cobalt Oxide (<img alt="EQ_BATT_lco" style="margin:0;width:2.9375rem;height:1.0000rem;border:none" src="./images/eq_batt_lco.png"/> – Among the first and still a common cathode material with high specific energy, but potentially costly and toxic.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">LTO: Lithium Titanate (<img alt="EQ_BATT_lto" style="margin:0;width:3.8125rem;height:1.0000rem;border:none" src="./images/eq_batt_lto.png"/> – A promising anode material with excellent lifetime properties but lower specific capacity and important cost considerations.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">NMC: Nickel Manganese Cobalt (<img alt="EQ_BATT_nmc" style="margin:0;width:5.0000rem;height:1.0000rem;border:none" src="./images/eq_batt_nmc.png"/> – A less expensive cathode material than LCO with potentially improved safety characteristics</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">NCA: Nickel Cobalt Aluminum (<img alt="EQ_BATT_nca" style="margin:0;width:4.5625rem;height:1.0000rem;border:none" src="./images/eq_batt_nca.png"/> – Similar in respects to NMC as a cathode material with high specific energy</span></p>
+<p class="p_Text"><span class="f_Text">When you choose a lithium ion battery, SAM assigns values to voltage, lifetime, and thermal properties as appropriate from Reddy (2011), available <a href="https://sam.nrel.gov/battery-storage/battery-publications.html" target="_blank" class="weblink" title="https://sam.nrel.gov/battery-storage/battery-publications.html">here</a>, and from manufacturer data sheets. SAM does not change any internal variables or calculations.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1250rem"><img id="toggle0186a3_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:0.5625rem;height:0.5625rem;border:none" src="./images/hmtoggle_arrow0.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a id="toggle0186a3_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a3_ICON" data-src0="./images/hmtoggle_arrow0.gif" data-src1="./images/hmtoggle_arrow1.gif">Flow Batteries</a></span></td></tr></table></div>
+<div id="toggle0186a3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">Flow battery designers can decouple power output (kW) from energy capacity (kWh) when sizing systems. Flow batteries may be able to cycle more deeply and operate for more total cycles than lithium ion or lead acid batteries, but flow batteries also have pumps, which should be considered when calculating </span><span class="f_CHInterfaceElement">Ancillary Equipment Losses</span><span class="f_Text">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Vanadium Redox Flow</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The vanadium redox flow battery model available in SAM comes from R. D’Agnostino et. al, (2014) &quot;A Vanadium-Redox Flow-Battery Model for Evaluation of Distributed Storage Implementation in Residential Energy Systems&quot;</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">VRFB: Vanadium Redox Flow (V</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">2+</span><span class="f_VariableDescription">,V</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">3+</span><span class="f_VariableDescription"> </span><span class="f_Emphasis">anolyte</span><span class="f_VariableDescription">), (VO</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">2+</span><span class="f_VariableDescription">, VO</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">2+</span><span class="f_VariableDescription">, </span><span class="f_Emphasis">catholyte</span><span class="f_VariableDescription">) </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">All Iron Redox Flow</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The all iron redox flow battery model available in SAM shares the same input field framework as the vanadium flow battery, but relies on tabular voltage vs. depth-of-discharge in place of a voltage model. Default iron flow battery values are based on preliminary manufacturer data and feedback for an all-iron hybrid-redox flow battery.</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">AIFB: All Iron Redox Flow (Fe</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">2+</span><span class="f_VariableDescription">, Fe</span><span class="f_VariableDescription" style="font-size: 0.70rem; vertical-align: super;">3+</span><span class="f_VariableDescription">)</span></p></td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="sizing" class="hmanchor"></a><span class="f_Heading3_atocs_">Battery Bank Sizing</span></h3>
+<p class="p_Text"><span class="f_VariableDescription">The two battery bank sizing options allow you to either automatically size the battery bank based on desired size, or to manually specify the number of cells per string and strings in parallel.</span></p>
+<p class="p_Text"><span class="f_VariableDescription">The automatic option uses the basic equations described below to determine numbers of cells and strings or stacks, which may not always result in realistic values. If you use the automatic sizing option, be sure to check the </span><span class="f_CHInterfaceElement">Computed Properties</span><span class="f_VariableDescription"> values to be sure they are what you expect.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Set Desired Bank Size: Automatic Sizing</span></h4>
+<p class="p_Text"><span class="f_Text">For automatic sizing choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_Text">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Desired bank power, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery's maximum discharge rate in kW. Compare this to </span><span class="f_CHInterfaceElement">Maximum discharge power</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Computed Properties</span><span class="f_VariableDescription"> to verify that SAM calculated a discharge power close enough to the desired value to meet your requirements.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The desired bank power can be in either DC kW or AC kW depending on whether you choose </span><span class="f_CHInterfaceElement">DC units</span><span class="f_VariableDescription"> or </span><span class="f_CHInterfaceElement">AC units</span><span class="f_VariableDescription">. If you use AC units, SAM calculates the nominal bank power in DC kW using the appropriate conversion efficiency from the </span><span class="f_CHInterfaceElement">Power Converters</span><span class="f_VariableDescription"> section for either an AC- or DC-connected battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Desired bank capacity, h or kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal size of the battery bank. Choose </span><span class="f_TableHeadColumn">h</span><span class="f_VariableDescription"> to specify the size in hours of storage at the nominal discharge rate, or choose </span><span class="f_TableHeadColumn">kWh</span><span class="f_VariableDescription"> to specify the size in kWh of available energy. Compare this to </span><span class="f_CHInterfaceElement">Nominal bank capacity</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Computed Properties</span><span class="f_VariableDescription"> to verify that SAM calculated a nominal value close enough to the desired value to meet your requirements.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Some battery data sheets provide both a nominal battery capacity and an available or usable battery capacity that is less than the nominal capacity. Use the higher nominal capacity value for the desired bank size, and then use the inputs under </span><span class="f_CHInterfaceElement">Charge Limits and Priority</span><span class="f_Note"> on the Battery Dispatch page to limit the battery to the available capacity. This will ensure that SAM calculates costs in $/kWh based on the nominal capacity.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Specify Cells: Manual Sizing</span></h4>
+<p class="p_Text"><span class="f_Text">For manual sizing choose </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_Text">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of cells in series</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of cells in series in each string of the battery bank. The number of cells in series determines the maximum discharge power and the nominal bank voltage.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of strings in parallel</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of strings of cells in parallel in the battery bank. The number of strings in parallel determines the nominal bank capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max C-rate of charge, per/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum charge rate as a fraction of the battery bank capacity. For example, a 10 kWh battery with C-rate of charge of 0.5 can charge at a maximum rate 10 kWh × 0.5/h = 5 kW.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max C-rate of discharge, per/hour</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum discharge rate as a fraction of the battery bank capacity. For example, a 10 kWh battery with C-rate of discharge of 0.5 can discharge at a maximum rate 10 kWh × 0.5/h = 5 kW.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For flow batteries, the capacity and power are decoupled so the the C-rate is a calculated value rather than an input.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1250rem"><a id="sizeauto" class="hmanchor"></a><img id="toggle0186a4_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:0.5625rem;height:0.5625rem;border:none" src="./images/hmtoggle_arrow0.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a id="toggle0186a4_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a4_ICON" data-src0="./images/hmtoggle_arrow0.gif" data-src1="./images/hmtoggle_arrow1.gif">Calculations for Automatic Bank Sizing</a></span></td></tr></table></div>
+<div id="toggle0186a4" class="dropdown-toggle-body" style="text-align: left; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 1.1250rem;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">SAM's bank sizing calculations use basic equations using the cell property information you specify. The calculated values are designed to help you get started with your system design. They do not account for many real-life design factors. You should use these values for an initial preliminary analysis and then use </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_Text"> for conventional batteries or </span><span class="f_CHInterfaceElement">Specify capacity and stack configuration</span><span class="f_Text"> for flow batteries to refine your analysis.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of cells in series, Number of cells per stack</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates a number of cells in series for a conventional battery, or cells per stack for a flow battery assuming one stack, that either meets exactly or slightly exceeds the desired bank voltage based on the cell nominal voltage. For example, for a desired bank voltage of 24 V with a nominal cell voltage of 3.6 V, SAM calculates </span><span class="f_Emphasis">24 V ÷ 3.6 V/cell = 6.7</span><span class="f_VariableDescription">, or 7 cells in series. The actual nominal bank voltage is </span><span class="f_Emphasis">3.6 V/cell × 7 cells = 25.2</span><span class="f_VariableDescription"> V. SAM displays the actual battery bank properties as calculated values under Current and Capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number Strings in parallel (Lithium-ion and Lead-acid Batteries)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the bank capacity by determining the number of strings of cells in parallel required to ensure that the actual capacity is as close as possible to the desired value given the cell capacity that you specify under </span><span class="f_CHInterfaceElement">Current and Capacity</span><span class="f_VariableDescription">. For the example above, if the desired bank capacity is 3 kWh, and the cell capacity is 1.5 Ah, the calculated bank voltage would be 25.2 V, and one string of cells has a capacity of </span><span class="f_Emphasis">25.2 V × 1.5 Ah = 37.8 Wh</span><span class="f_VariableDescription">, or 0.0378 kWh. To reach the desired bank capacity of 3 kWh: </span><span class="f_Emphasis">3 kWh ÷ 0.0378 kWh/string = 79.4</span><span class="f_VariableDescription">, or 80 strings.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The calculated C-rates of charge and discharge are the desired bank power divided by the computed bank capacity.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity and Stack Configuration (Flow Batteries)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For flow batteries, the capacity is independent of the power block and can be specified exactly by the amount of electrolyte in the tanks. SAM sets nominal bank capacity to the desired capacity you specify. SAM calculates the nominal power ratings using the desired stack (bank) voltage and other properties in the </span><span class="f_CHInterfaceElement">Current and Capacity</span><span class="f_VariableDescription"> group. The number of stacks in parallel is depends on whether the cells are power limited or current limited.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Power limited</span><span class="f_VariableDescription"> option, the number of stacks in parallel is the ceiling of the desired bank power divided by the product of </span><span class="f_CHInterfaceElement">Cell max power discharge</span><span class="f_VariableDescription"> and the number of cells in the stack (assuming one stack in series). For example, consider &nbsp;a flow battery with a desired bank capacity of 100 kWh, bank power of 50 kW, and bank voltage of 48V with 1.4V cells and a cell power discharge max of 2W. The number of cells in the stack is </span><span class="f_Emphasis">ceiling(48V ÷ 1.4V/cell) = ceiling(34.2 cells) = 35 cells</span><span class="f_VariableDescription">. The bank voltage is </span><span class="f_Emphasis">35 cells × 1.4V/cell = 49V</span><span class="f_VariableDescription">. To achieve 50KW with limitations of 2W/cell, there must be </span><span class="f_Emphasis">ceiling(50 kW / (0.002 kW/cell * 35 cells)) = 715 stacks in parallel</span><span class="f_VariableDescription">. &nbsp;</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Current limited</span><span class="f_VariableDescription"> option, the number of stacks in parallel is the ceiling of the desired bank power divided by the product of the battery bank voltage and </span><span class="f_CHInterfaceElement">Cell max current discharge</span><span class="f_VariableDescription">. In the example above, if all properties are the same except the battery is current limited with 10A per cell (and consequently per stack), the number of stacks in parallel must be: </span><span class="f_Emphasis">ceiling(50 kW / (49V * 10 A * 0.001) ) = 103 stacks in parallel</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Limit both current and power</span><span class="f_VariableDescription"> option, the stacks are sized by using the current limit, and within the model at each time step the current and power through the cells are checked and reduced if necessary.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="currentcapacity" class="hmanchor"></a><span class="f_Heading3_atocs_">Current and Capacity</span></h3>
+<p class="p_Text"><span class="f_Text">The Current and Capacity parameters depend on the battery chemistry:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">For lead acid and Lithium-ion batteries, you specify a cell capacity value, and SAM displays the computed properties based on the battery bank sizing parameters.</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">For flow batteries, you choose whether the battery is power- or current-limited and specify minimum and maximum rates.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Lead Acid and Lithium-ion Battery Parameters</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Desired bank voltage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery bank voltage you are trying to achieve in your design. This input is only enabled when you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription">. SAM calculates the number of cells in series based on the desired bank voltage and cell nominal voltage: </span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Number of Cells in Series = ROUND UP ( Desired Bank Voltage ÷ Cell Nominal Voltage )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cell nominal voltage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The reference voltage of a single, fully charged cell in the battery as reported by the manufacturer. The typical nominal voltage for a lead acid cell is 2 V, and for lithium ion cell is 3.7 V. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the nominal voltage to size the battery bank and compute the battery bank's nominal voltage.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cell capacity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The capacity of a single cell when the battery is fully charged. SAM sets this value to a default value when you choose a battery chemistry, but you can change its value.</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0.3750rem 0 0.3750rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1250rem"><img id="toggle0186a5_ICON" class="dropdown-toggle-icon" alt="hmtoggle_arrow0" style="margin:0;width:0.5625rem;height:0.5625rem;border:none" src="./images/hmtoggle_arrow0.gif"/></td><td style="border:none;padding:0"><span class="f_Heading4"><a id="toggle0186a5_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #000000; background-color: transparent; text-decoration: none;" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a5_ICON" data-src0="./images/hmtoggle_arrow0.gif" data-src1="./images/hmtoggle_arrow1.gif">Flow Battery Parameters</a></span></td></tr></table></div>
+<div id="toggle0186a5" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Desired bank voltage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery bank voltage you are trying to achieve in your design. This input is only enabled when you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription">. SAM calculates the number of cells in series based on the desired bank voltage and cell nominal voltage: </span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Number of Cells in Series = ROUND UP ( Desired Bank Voltage ÷ Cell Nominal Voltage )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cell nominal voltage</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The reference voltage of a single, fully charged cell in the battery as reported by the manufacturer.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the nominal voltage to size the battery bank and compute the battery bank's nominal voltage.</span><span class="f_VariableName">Power limited with Cell max power charge and discharge</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Limit the maximum charge and discharge power.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Current limited with Cell max current charge and discharge</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Limit the maximum charge and discharge current.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Limit both current and power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Limit both the charge limits by both power and current.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h4 class="p_Heading4"><span class="f_Heading4">Computed Properties</span></h4>
+<p class="p_Text"><span class="f_Text">The computed properties are a summary of the battery bank system design. The values may either be ones that you specify or that SAM calculates depending on whether you choose the </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_Text"> or </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_Text"> option.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal bank capacity, DC kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal size of the battery. SAM uses this value in battery cost calculations with $/kWh units, and to determine the battery state of charge and capacity reduction over the battery life.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Nominal Bank Capacity (DC kWh) = Cell Capacity (Ah) × Cell Voltage (VDC) × Total Number of Cells</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cell voltage is shown under </span><span class="f_CHInterfaceElement">Battery Voltage</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal bank power, DC kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal maximum discharge power in DC kW. SAM uses this value in battery cost calculations with $/kW units.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time at maximum power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of hours the battery could discharge continuously at its maximum discharge power. This is either the input value you provide under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">, or calculated as:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Time at Maximum Power (h) = Nominal Bank Capacity (kWh) ÷ Maximum Discharge Power (kW)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal bank voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal voltage of the battery bank.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Nominal Bank Voltage (VDC) = Cell Voltage (VDC) × Cells in Series</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total number of cells</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The product of cells (stacks) in series and strings (stacks) in parallel.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cells in series / Cells per stack</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of cells in series in each string. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Cells in Series = Nominal Bank Voltage (VDC) ÷ Nominal Cell Voltage (VDC)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_VariableDescription">, then this is the value you entered for </span><span class="f_CHInterfaceElement">Number of cells in series</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Strings in parallel / Stacks in parallel</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of strings of battery cells in series in the battery bank. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Strings in Parallel = Nominal Bank Capacity (kWh) ÷ ( Cell Capacity (Ah) × Nominal Cell Voltage (VDC) )</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_VariableDescription">, then this is the value you entered for </span><span class="f_CHInterfaceElement">Number of strings in parallel</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Stacks in series</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For flow batteries, the number of stacks in series.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max C-rate of discharge, per/h</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">, SAM calculates the value as:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Max C-rate of Discharge (per/h) = Maximum Discharge Power (DC kW) ÷ Nominal Bank Capacity (DC kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_VariableDescription">, then this is the value you entered for </span><span class="f_CHInterfaceElement">Max C-rate of discharge</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max C-rate of charge, per/h</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">, SAM calculates the value as:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Max C-rate of Charge (per/h) = Maximum Charge Power (DC kW) ÷ Nominal Bank Capacity (DC kWh)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">If you choose </span><span class="f_CHInterfaceElement">Specify cells</span><span class="f_VariableDescription">, then this is the value you entered for </span><span class="f_CHInterfaceElement">Max C-rate of charge</span><span class="f_VariableDescription"> under </span><span class="f_CHInterfaceElement">Battery Bank Sizing</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum discharge current, A</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery's maximum discharge current. The battery may discharge at a rate up to the maximum.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Current (A) = Nominal Bank Capacity (DC kWh) ÷ Nominal Bank Voltage (VDC) × Max C-rate of Discharge (1/h) × 1000 Wh/kWh</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum charge current, A</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery's maximum charge current. The battery may charge at a rate up to the maximum.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Current (A) = Nominal Bank Capacity (DC kWh) ÷ Nominal Bank Voltage (VDC) × Max C-rate of Charge (1/h) × 1000 Wh/kWh</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum discharge power, DC kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery can discharge at up to the maximum discharge power. The maximum discharge power is also the nominal DC power of the battery bank used for $/kW-based battery cost calculations.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the units for </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> are DC kW:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Power (DC kW) = Cell Capacity (Ah) × Cell Nominal Voltage (VDC) × Max C-rate of Discharge (1/h) × Total Number of Cells ÷ 1000 W/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the units for </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> are AC kW, the discharge power in DC kW depends on whether the battery is AC-connected or DC-connected.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">AC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Power (DC kW) = Desired Bank Power (AC kW) ÷ DC to AC Conversion Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">DC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Power (DC kW) = Desired Bank Power (AC kW) ÷ ( DC to AC Conversion Efficiency × Inverter Nominal Efficiency )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum charge power, DC kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum charge power, calculated from the nominal bank capacity and maximum C-rate of charge.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the units for </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> are DC kW:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Charge Power (DC kW) = Cell Capacity (Ah) × Cell Nominal Voltage (VDC) × Max C-rate of Charge (1/h) × Total Number of Cells ÷ 1000 W/kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">When the units for </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> are AC kW, the discharge power in DC kW depends on whether the battery is AC- or DC-connected.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">AC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Charge Power (DC kW) = Desired Bank Power (AC kW) ÷ DC to AC Conversion Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">DC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Charge Power (DC kW) = Desired Bank Power (AC kW) ÷ ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum discharge power, AC kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The AC equivalent of the discharge power in DC kW.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> option, if the </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> units are AC kW, SAM sets the maximum discharge power to the desired value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Otherwise, it is calculated from the DC value:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">AC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Power (AC kW) = Maximum Discharge Power (DC kW) × DC to AC Conversion Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">DC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Discharge Power (AC kW) = Maximum Discharge Power (DC kW) × ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum charge power, AC kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The AC equivalent of the charge power in DC kW.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Set desired bank size</span><span class="f_VariableDescription"> option, if the </span><span class="f_CHInterfaceElement">Desired bank power</span><span class="f_VariableDescription"> units are AC kW, SAM sets the maximum charge power to the desired value.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Otherwise, it is calculated from the DC value:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">AC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Charge Power (AC kW) = Maximum Charge Power (DC kW) × DC to AC Conversion Efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">DC-connected:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Maximum Charge Power (AC kW) = Maximum Charge Power (DC kW) × ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="powerconverters" class="hmanchor"></a><span class="f_Heading3_atocs_">Power Converters</span></h3>
+<p class="p_Text"><span class="f_Text">For photovoltaic-battery systems, SAM can model a battery that is connected to either the DC or AC side of the photovoltaic inverter.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">The DC connected option is only available with the PV Battery configuration. The Standalone and Generic Battery configurations assume that the battery is the only DC component in the system.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The Power Converters conversion efficiency inputs account for electrical losses associated with any battery power converter equipment except for the photovoltaic inverter. SAM models each battery converter as a fixed conversion efficiency.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The photovoltaic inverter is a separate component from the battery power converters specified here and uses a more sophisticated model with an efficiency curve that varies with the inverter load. You specify the photovoltaic inverter model and parameters on the <a href="pv_inverter.html" class="topiclink">Inverter</a> page. SAM models the inverter as a hybrid inverter with inputs for both a photovoltaic array and battery, regardless of whether the inverter you choose is actually a hybrid inverter. You can use the cec_hybrid column in the inverter library to find inverters that are specified as hybrid inverters.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">DC Connected (PV Battery Only)</span></h4>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">DC Connected</span><span class="f_VariableDescription"> for a battery connected to the DC side of a hybrid photovoltaic inverter as shown in the diagram above.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">To account for electrical losses from a DC-DC converter between the photovoltaic array and inverter, be sure to assign an appropriate value to the </span><span class="f_CHInterfaceElement">DC power optimizer loss</span><span class="f_VariableDescription"> on the <a href="pv_losses.html" class="topiclink">Losses</a> page.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For a DC-connected battery, during time steps when the total power from the photovoltaic array and battery is greater than the inverter's nameplate capacity, the inverter limits its output power to the nameplate capacity. For the dispatch options with </span><span class="f_CHInterfaceElement">Battery can charge from clipped system power</span><span class="f_VariableDescription"> enabled on the Battery Dispatch page, if the battery is not fully charged and is not discharging, the array power in excess of the inverter's nominal capacity charges the battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DC to DC conversion efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the DC-connected option, the electrical conversion efficiency of the battery management system (BMS). SAM applies this loss to power into or out of the battery to account for power consumed by the BMS. SAM disables this input for the AC Connected option.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inverter efficiency cutoff, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the DC-connected option, the inverter efficiency cutoff is the photovoltaic inverter operating efficiency threshold below which the battery is not allowed to charge or discharge. SAM reports the inverter operating efficiency in the time series results.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">AC Connected</span></h4>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">AC Connected</span><span class="f_VariableDescription"> for a battery connected to the grid interconnection point as shown in the diagram above. Power conversion equipment is required to convert DC power from the battery to AC power before it can serve the load or be sent to the grid, and to convert AC power from the grid or pvhotovoltaic inverter before it can charge the battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">AC to DC conversion efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the AC-connected option, the electrical conversion efficiency associated with the equipment that converts AC power from either the photovoltaic inverter output or grid to DC power for the battery. SAM disables this input for the DC Connected option.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">DC to AC conversion efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the AC-connected option, the electrical conversion efficiency associated with the equipment that converts DC power from the battery to AC power for either the AC load or grid, or both. SAM disables this input for the DC Connected option.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="chargelimits" class="hmanchor"></a><span class="f_Heading3_atocs_">Charge Limits and Priority</span></h3>
+<p class="p_Text"><span class="f_Text">The Charge Limits and Priority inputs are constraints on the battery dispatch calculations.</span></p>
+<p class="p_Text"><span class="f_Text">The limits on minimum and maximum state of charge affect both the amount of energy available for battery dispatch calculations, and the depth of charge-discharge cycles for battery life calculations. Choose values appropriate for the type of battery you are modeling. The default values state of charge range of 15% to 95% is reasonable for most Li-ion battery types.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A limit on the quantity of energy that can be drained from the battery as a percentage of available capacity. For example, a value of 15% would prevent the battery from discharging below 15% of the battery's available capacity in a given time step.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The minimum and maximum state of charge are both as a percentage of available battery capacity, which changes over time as the batteries degrade and are replaced. The available capacity in a given time step is likely to be less than the battery's nominal capacity shown on the Battery Cell and System page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A limit on the quantity of energy that can be sent to the battery as a percentage of available capacity. For example a value of 95% would prevent the battery from charging above 95% state of charge.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Initial state of charge, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The state of charge of the battery at the beginning of the simulation. A value of 100% would be for a fully charged battery, 0% would be for a fully discharged battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Minimum time at charge state, min</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">There may be periods of time where the photovoltaic or other power system output varies above and below the load causing rapid cycling of the battery. Rapid cycling may also result for dispatch options that respond to power prices when prices change rapidly from time step to time step. This kind of cycling, especially if the cycles are deep, may degrade battery performance over time. The minimum time at charge state prevents the battery from changing between charging and discharging within the number of minutes that you specify.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="voltage" class="hmanchor"></a><span class="f_Heading3_atocs_">Battery Voltage</span></h3>
+<p class="p_Text"><span class="f_Text">The voltage properties are technical specifications available on most battery manufacturer data sheets.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> When you change the battery type, SAM changes the voltage properties inputs to default values appropriate for the battery chemistry you selected. You can use these default values unless you have better information from a manufacturer's data sheet or other source.</span></p>
+<p class="p_Text"><span class="f_Text">Battery voltage varies with state of charge as the internal open circuit potential decreases or increases. Voltage variations in charging and discharging affect the battery's round-trip efficiency reported in the results. During charging, voltage increases, requiring more power to charge the cell. During discharge the voltage decreases and less power can be extracted. The round-trip efficiency is computed as the net amount of energy discharged from a cell divided by how much energy it took to charge the cell.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cell Internal resistance, Ohm</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cell internal resistance for each cell in the battery in Ohms. SAM assumes that this is a constant value and uses it in voltage and thermal calculations by scaling the cell internal resistance to a total battery resistance based on the cell configuration.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal bank voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery bank voltage from the </span><span class="f_CHInterfaceElement">Computed Properties</span><span class="f_VariableDescription"> on the Battery Cell and System page.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal cell voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal voltage of a single cell from the </span><span class="f_CHInterfaceElement">Current and Capacity</span><span class="f_VariableDescription"> inputs on the Battery Cell and System page.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Electrochemical Model</span></h4>
+<p class="p_Text"><span class="f_Text">The electrochemical voltage model can be used for Lithium-ion and lead acid batteries and provides a way to characterize the battery's voltage curve using data provided on some battery manufacturer data sheets. It is disabled for flow batteries. The model is described in Section 2.1 of <a href="https://sam.nrel.gov/battery-storage/battery-publications.html" target="_blank" class="weblink" title="https://sam.nrel.gov/battery-storage/battery-publications.html">DiOrio (2015) Technoeconomic Modeling of Battery Energy Storage in SAM</a>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">C-rate of discharge curve</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery manufacturer data sheets typically include a set of curves like the one below that show cell voltage as a function of charge removed for different discharge rates. The &quot;C-rate&quot; is the current used to discharge the battery. It is defined as the current divided by the rated capacity.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">In this example, if the discharge current is given at the 20-hour discharge rate, the C-rate would be </span><span class="f_CHEquationVariable">I</span><span class="f_CHEquationVariable" style="font-size: 0.70rem; vertical-align: sub;">20</span><span class="f_CHEquationVariable"> ÷ q</span><span class="f_CHEquationVariable" style="font-size: 0.70rem; vertical-align: sub;">20</span><span class="f_CHEquationVariable"> × C = 0.05 × C (C/20)</span><span class="f_VariableDescription">.</span></p>
+<p style="text-align: center; margin: 0 0 0.3750rem 0;"><img alt="IMG_BATT-DischargeCurve" style="margin:0 auto 0 auto;width:17.5625rem;height:13.9375rem;border:none" src="./images/img_batt-dischargecurve.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cutoff cell voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowed cell voltage.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Nominal zone cell voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cell voltage (Vnom) at the end of the nominal zone, as shown in the Nominal Current Discharge Characteristic graph below.. The cell charge removed at this point is <img alt="EQ_BATT_Nominal" style="margin:0;width:3.3750rem;height:1.2500rem;border:none" src="./images/eq_batt_nominal.png"/>.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Exponential zone cell voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cell voltage (Vexp) at the end of the exponential zone, as shown in the Nominal Current Discharge Characteristic graph below. The cell charge removed at this point is </span><img alt="EQ_BATT_Exponential" style="margin:0;width:3.3750rem;height:1.2500rem;border:none" src="./images/eq_batt_exponential.png"/><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fully charged cell voltage, VDC</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cell voltage (Vfull) at the given C-rate when a cell is at its maximum charge.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The voltage inputs must satisfy Vfull &gt; Vexp &gt; Vnom.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Charge removed at exponential and nominal point</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Voltage vs discharge curves show that cell-voltage typically undergoes several distinct regions depending on charge. </span></p>
+<p class="p_TextCenter"><img alt="IMG_BATT-NominalDischargeCharacteristic" style="margin:0 auto 0 auto;width:21.1250rem;height:12.8750rem;border:none" src="./images/img_batt-nominaldischargecharacteristic.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">C-rate of discharge curve</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">This parameter determines the shape of the voltage curve between the end of the nominal zone and 100% discharge.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Voltage Table</span></h4>
+<p class="p_Text"><span class="f_Text">The voltage table option defines the voltage curve using data from the voltage table. It can be used for any type of battery, but requires data not often provided on manufacturer data sheets.</span></p>
+<p class="p_Text"><span class="f_Text">SAM uses linear interpolation with an adjustment for cell internal resistance for cell voltage calculations during simulations. Each row in the table must have a different voltage value.</span></p>
+<p class="p_Text"><span class="f_Text">The voltage table must contain at least two values, and must include cell voltage values less than and greater than the cell nominal voltage. </span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To use the voltage table to define the voltage curve:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_ProcedureStep">Choose </span><span class="f_CHInterfaceElement">Voltage table</span><span class="f_ProcedureStep">.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">2.</span><span class="f_ProcedureStep">For </span><span class="f_CHInterfaceElement">Rows</span><span class="f_ProcedureStep">, type the number of pairs of voltage - depth of discharge pairs you want to use to define the voltage. The table will expand to the number of rows you type.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">You can also click Import to import data from a text file. Try clicking Export to create a template file to see what the text format should be.</span></p>
+<p class="p_ProcedureStepLast" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">3.</span><span class="f_ProcedureStepLast">Type values in the depth of discharge and cell voltage columns. The Voltage Discharge graph will update as you type.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="losses" class="hmanchor"></a><span class="f_Heading3_atocs_">Battery Losses</span></h3>
+<p class="p_Text"><span class="f_Text">Some battery systems have losses that are not accounted for by the conversion losses specified under Power Converters above. You can use the ancillary equipment losses to account for these additional losses. By default, these losses are set to zero, which is appropriate for most analyses.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Ancillary Equipment Losses</span></h4>
+<p class="p_Text"><span class="f_Text">These are losses to account for electrical losses or consumption by equipment in the battery system such as for heaters and pumps for temperature control equipment.</span></p>
+<p class="p_Text"><span class="f_Text">For DC-connected batteries, the losses are applied the system's DC power. For AC-connected systems, they are applied to the AC power.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Losses by operating mode</span></h4>
+<p class="p_Text"><span class="f_Text">Choose this option to specify losses by month that apply when the battery is charging, discharging, or idle.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Charging mode losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Losses that apply when the battery is charging.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit values</span><span class="f_VariableDescription"> to specify the loss in kW by month. SAM applies the loss in each time step of the month. For example, if the expected loss in January is 500 W, enter 0.5 for January, and SAM will reduce the available power by 0.5 kW for each time step in January.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Discharging mode losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Losses that apply when the battery is discharging.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Idle mode losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Losses that apply when the battery is neither charging, nor discharging.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Time series losses</span></h4>
+<p class="p_Text"><span class="f_Text">Choose this option to specify hourly or subhourly time series losses.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> to enter or import kW loss values for each time step of the simulation.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><a id="thermal" class="hmanchor"></a><span class="f_Heading3_atocs_">Battery Thermal</span></h3>
+<p class="p_Text"><span class="f_Text">The battery thermal model calculates the battery temperature in each simulation time step. Battery temperature affects battery capacity and degradation. The model's two main heat-transfer terms are transfer between the battery and its environment, and energy generated by resistive heating inside the battery. The cell internal resistance input is under Battery Voltage.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">To verify that the battery thermal model is working as you expect, look at the </span><span class="f_CHInterfaceElement">Battery temperature</span><span class="f_Note"> output variable in the time series results to make sure it is within a reasonable range. If the temperature is higher or lower than you expect, you may need to adjust the thermal or physical properties inputs.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Thermal Properties</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specific heat Cp, J/kg-K</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Estimated specific heat capacity for the battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heat transfer coefficient h, W/m²-K</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Estimated heat transfer coefficient for heat transfer from the battery to the room.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The default value for smaller batteries assumed for behind-the-meter applications is 7.5 W/m²-K. For larger batteries in front-of-meter applications, the default is 15 W/m²-K.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Environment temp option</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose how to represent the temperature of the battery's environment.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_Battery-TempOption" style="margin:0 auto 0 auto;width:24.3125rem;height:3.3750rem;border:none" src="./images/ss_battery-tempoption.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter single fixed temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to model the battery environment temperature as a single constant value throughout the year.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enter time series temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to provide your own time series temperature data for the battery environment.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Single environment temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the Enter Single Fixed Temperature option, the temperature of the battery environment in degrees Celsius. This is disabled for the Enter Time Series Temperature option.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series environment temperature</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the Enter Time Series Temperature option, click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> to enter or import hourly or subhourly temperature data in degrees Celsius. Note that the number of time steps must match the simulation time step determined by the weather file. This is disabled for the Enter Single Fixed Temperature option.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For a battery in a conditioned space, be sure to account for power required for heating or cooling equipment under </span><span class="f_CHInterfaceElement">Battery Losses</span><span class="f_Note">. SAM does not explicitly model battery heating or cooling equipment, so you should set the battery environment temperature inputs to the temperature of the conditioned space.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Capacity Fade with Temperature</span></h4>
+<p class="p_Text"><span class="f_Text">The manufacturer data sheet may include battery capacity versus temperature data showing how the battery's capacity decreases with ambient temperature. The Capacity Fade curve must have at least two rows of data.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Temp, °C</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery environment temperature in degrees Celsius.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Capacity, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Battery discharge capacity as a percentage of rated capacity at the given temperature.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Physical Properties</span></h4>
+<p class="p_Text"><span class="f_Text">The physical properties inputs are designed to scale with battery size so you don't have to change them each time you change the size of the battery bank. These values should be reasonable estimates of the battery bank or individual battery's actual dimensions. They do not need to be exact.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specific energy per mass (Wh/kg)</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Energy content per unit mass. SAM uses this value to calculate the battery bank's mass based on its rated capacity in kWh. If you know the battery bank mass, you can calculate the specific energy by dividing the battery bank's rated capacity in DC Watt-hours by its mass in kilograms.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery mass, kg</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An estimate of the battery bank's mass.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Battery Mass (kg) = Nominal Bank Capacity (DC kWh) × 1,000 (Wh/kWh) ÷ Specific Energy per Mass (Wh/kg)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Compute battery surface area as cube</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option to represent the battery bank as a cube for temperature calculation purposes. This option works better for smaller batteries than larger ones. Disable the option to represent the battery as a single battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Specific energy per volume, Wh/L</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The battery bank's energy content per unit volume. If you know the battery bank's volume, you can calculate the specific energy by dividing the battery bank's rated capacity in DC Watt-hours by its volume in liters. This option is enabled with </span><span class="f_CHInterfaceElement">Compute battery surface area as cube</span><span class="f_VariableDescription">.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery volume, m³</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For the </span><span class="f_CHInterfaceElement">Compute battery surface area as cube</span><span class="f_VariableDescription"> option, an estimate the volume of the battery bank, represented as a cube.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Battery Volume (m³) = Nominal Bank Capacity (DC kWh) ÷ Specific Energy per Volume (Wh/L)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Energy capacity of one module, kWh</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nominal capacity of a single battery when </span><span class="f_CHInterfaceElement">Compute battery surface area as cube</span><span class="f_VariableDescription"> is disabled. This value is only used for battery temperature calculations, so the value should be reasonably close to the actual capacity of a single battery but does not need to be exact.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Surface area of one module, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The surface area of a single battery when </span><span class="f_CHInterfaceElement">Compute battery surface area as cube</span><span class="f_VariableDescription"> is disabled. You can calculate this value by multiplying the battery's length, width, and height measurements.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery surface area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">An estimate of the surface area of a single battery when </span><span class="f_CHInterfaceElement">Compute battery surface area as cube</span><span class="f_VariableDescription"> is disabled.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Battery Surface Area (m²) = Nominal Bank Capacity (DC kWh) ÷ Energy Capacity of One Module (DC kWh) × Surface Area of One Module (m²)</span></p>
+
+	<footer class="topicfooter">
+<p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>
+</footer>
+	</div> <!-- hmpagebody_scroller -->
+	</div> <!-- hmpagebody -->
+	</div> <!-- topicbody-->
+	</main><!-- topicbox -->
+	<div id="navwrapper">
+	<div id="toolbutton_wrapper" class="toolwrapper desk_tablet" tabindex="0" role="button" aria-label="Hide Page Header">
+	<div id="toolbutton">
+	<svg id="toolbar_updown_close" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_close"></use></svg>
+	<svg id="toolbar_updown_open" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_open"></use></svg>
+	</div></div>
+	<div id="dragwrapper" class="toolwrapper" tabindex="0" role="button" aria-label="Hide Navigation Pane">
+	<div id="dragbutton">
+	<svg id="draghandleicon_r" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_r"></use></svg>
+	<svg id="draghandleicon_l" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_l"></use></svg>
+	</div></div>
+	<div id="navsplitbar"></div>
+	<img id="leftright" src="./images/leftright.png" alt="resize nav pane" width="150" height="45" border="0" />
+	<nav id="navcontainer" role="navigation" aria-label="Main Navigation">
+	<!-- NAV TABS START -->
+	<div id="main_searchbox">
+	<div class="search_input_wrapper">
+	<a id="searchlink" title="Search" aria-label="Search" href="hmftsearch.html"><svg class="tocicon" viewBox="0 0 30 32"><use xlink:href="#search"></use></svg></a>
+	<input type="text" name="search_input" id="search_input" size="100%" autocorrect="off" autocapitalize="none" spellcheck="false" />&nbsp;
+	<svg class="searchicon" id="clear_search_button" alt="Close Search" viewBox="0 0 30 30"><use xlink:href="#close-search"></use></svg>
+	<div id="contents_link_wrapper" title="Contents" aria-label="Contents"><a id="contentslink" title="Contents" aria-label="Contents" href="hmcontent.html" target="hmnavigation"><svg class="searchicon" id="contents_button" title="Contents" aria-label="Contents" alt="Contents" viewBox="0 0 30 30"><use xlink:href="#angle-circled-left"></use></svg></a></div>
+	</div>
+	</div>
+	<!-- NAV TABS END -->	
+	<div id="contentsbox" class="navbox on">
+	<iframe name="hmnavigation" id="hmnavigation" class="navframe" src="hmcontent.html" scrolling="no" seamless="seamless" title="Contents" frameborder="0"></iframe>
+	</div>
+	<div id="searchbox" class="navbox off">
+	<iframe name="hmsearch" id="hmsearch" class="navframe" src="" scrolling="no" seamless="seamless" title="Search" frameborder="0"></iframe>
+	</div>
+	</nav><!-- navcontainer -->
+	</div><!-- navwrapper -->
+	<div id="mob_toolbar_wrapper" data="open">
+	<div id="mob_toolbar" class="mtoolbar">
+		<table id="mob_tb_table" class="mobtoolbar" border="0" width="100%"><tr>
+			<td width="22"></td> 
+			<td id="mob_tb_home" align="center" valign="middle"><div id="mobnavhome" class="mobnav home"></div></td>
+			<td id="mob_tb_toc" align="center" valign="middle"><div id="mobnavtoc" class="mobnav toc"></div></td>
+			<td id="mob_tb_textplus" align="center" valign="middle"><div id="mobnavtextplus" class="mobnav textplus"></div></td>
+			<td id="mob_tb_textminus" align="center" valign="middle"><div id="mobnavtextminus" class="mobnav textminus"></div></td>
+			<td id="mob_tb_previous" align="center" valign="middle"><div id="mobnavprevious" class="mobnav previous"></div></td>
+			<td id="mob_tb_next" align="center" valign="middle"><div id="mobnavnext" class="mobnav next"></div></td>
+			<td>&nbsp;&nbsp;</td>
+			<td id="mob_tb_hamburger" class="mob_hamburger" align="right" valign="top"><div id="phone_mobnav_hamburger_icon" class="mobnav phone"><svg id="phonetb_hamburger_mobnav" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg></div></td>
+			</tr></table>
+	</div></div>
+	 <!-- </div> pagewrapper -->
+	</div> <!-- helpwrapper -->
+	<div id="dragsurface"></div>
+<script type="text/javascript" src="./js/xmessage.js"></script> 
+<script id="hmPageInitScript" type="text/javascript">
+var fouc=document.getElementById("fouc");
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+// Reset font size with preset cookie value if available
+(function(){
+	var tempFontSize = sessionVariable.getPV("hmFontSize"),
+		baseElement = document.getElementsByTagName("html")[0];
+	if (tempFontSize !== null) {
+	baseElement.style.fontSize=tempFontSize + "%";
+	} else {
+	baseElement.style.fontSize = hmDevice.baseFontSize + "%";
+	}
+	})();
+/*** TOGGLE INIT PLACEHOLDER ***/
+
+	var moveCheck = null, hmTocLoaded = false, hmTocWidth = 0, xMessage = new xMsg("LANDING TOPIC");
+
+	// Post-loading scripts function
+	function initScripts() {
+	hmPopupsObject = {};
+	hmFlags.isHmTopic = true;
+	hmFlags.idxLoaded = false;
+	hmFlags.schLoaded = false;
+	hmFlags.searchSession = false;
+	hmFlags.tocClicked = false;
+	hmFlags.layoutTable = false;
+	hmFlags.searchHighlight = "";
+	hmFlags.tocInitWidth = 0;
+	hmFlags.jumpHighlight = false;
+	hmFlags.hmMainPage = "index.html";
+	hmFlags.hmTrackHost = "https://sam.nrel.gov/help/";
+	hmFlags.hmProject = "SAM Help";
+	hmFlags.hmDefaultPage = "index.html";
+	hmFlags.hmCurrentPage = "battery_storage_fom.html";
+	hmFlags.hmTOC = "hmcontent.html";
+	hmFlags.hmSearchPage = "hmftsearch.html";
+	hmFlags.hmIndexPage = "hmkwindex.html";
+	hmFlags.thisTopic = "battery_storage_fom.html";
+	hmFlags.lastTopic = "index.html";
+	hmFlags.isEWriter = false;
+	hmFlags.topicExt = ".html";
+	hmFlags.defaultExt = ".html";
+	hmFlags.projName = "SAMhelp";
+	hmFlags.tDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	hmFlags.tKeywords = "";
+	hmFlags.hdFormat = false;
+	hmFlags.contextID = (function(){
+		var cntxMatch;
+		if (/^https??:\/\//im.test(document.location)) {
+			cntxMatch = /contextid=\d*/.exec(window.location.search.substring(1));
+		} else {
+			cntxMatch = /contextid=\d*/.exec(window.location.hash.substring(1));
+			}
+		return cntxMatch != null ? cntxMatch[0] : false;
+		})();	
+	
+	function loadScripts(x) {
+	$.getScript( scripts[x], function( data, textStatus, jqxhr ) {
+	  if (currentScript < scripts.length-1) {
+	  currentScript++;
+	  loadScripts(currentScript);
+	  } else {
+	  hmpage.defaulttopic = "index.html";
+	hmpage.breadcrumbs = !false;
+	hmpage.parenthome = true;
+	  //hmWebHelp.hmMainPageInit();
+	  hmpage.hmDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	  hmpage.hmPicture = "" === "" ? "" : "./images/";
+	  hmpage.topicfooter = $("footer.topicfooter")[0].outerHTML;
+	  
+	  $("input#search_input").on("keyup", function(event) {
+		
+		var searchQ = $(this).val();
+	  
+		if (event.which == 13 && searchQ.length > 2) {
+			xMessage.sendObject("hmsearch",{action: "callfunction",fn: "hmDoFtSearch", fa: searchQ});
+			return;
+		};
+		if (event.which == 27) {
+			searchQ = "";
+			$(this).val("");
+			return;
+		}
+		
+		$(this).attr("placeholder", "");
+		
+		xMessage.sendObject("hmsearch",{action: "callfunction",fn: "loadSquery", fa: searchQ});
+	  });
+	  
+	hmWebHelp.hmMainPageInit();
+	  }
+	}); // $getScript
+	}  // loadScripts()
+	
+	// Force HTML4 mode in History framework for local WebHelp (required for Chrome, use globally for consistency)
+	if (document.location.protocol.substr(0,4) !== "http") {
+		window.History = {options: {html4Mode: true} };
+	}
+	var currentScript = 0;
+	var scripts = ["./js/helpman_settings.js", "./js/jquery.scrollTomin.js", "./js/jquery.history.js", "./js/hm_webhelp.js", "./js/HM_CLASSICMENU.js" ];
+	if (hmFlags.contextID) scripts.unshift("./js/hmcontextids.js");
+ 
+	var jScript = document.getElementById("jqscript");
+	jScript.src = "./js/jquery.js";
+	
+	var loadCheck = setInterval(function() {
+		if (window.jQuery) {
+			clearInterval(loadCheck);
+			$.ajaxPrefilter( "json script", function(options) {options.crossDomain = true;});
+			if (hmDevice.embedded && hmDevice.desktop) $("li#toggle_fullscreen").show();
+			loadScripts(0);
+			
+			/* Title Bar Text */
+			var titleBarText = "Battery Storage: Front of Meter";
+			switch ("topic") {
+				case "project":
+				titleBarText = "SAM Help";
+				break;
+				
+				case "project_topic":
+				titleBarText = "SAM Help" + " \> " + "Battery Storage: Front of Meter"; 
+				break;
+				}
+			titleBarText = $("<textarea/>").html(titleBarText).text();
+			$("title").text(titleBarText);
+			
+			}
+		},100);
+	}
+	if (window.addEventListener)
+	window.addEventListener("load", initScripts, false);
+	else if (window.attachEvent)
+	window.attachEvent("onload", initScripts);
+	else window.onload = initScripts;
+helpman_mailrecipient = 'sam.support@nrel.gov';
+hmGetUrlParams = function() {/*! 
+* Enter code to save URL parameters to session variables inside the if clause below.
+* This will be executed when your WebHelp is first opened and the session variables
+* you save here will then be available. See the session variables documentation in
+* the V3 Responsive Skins chapter of the help for detailed instructions.
+*/
+if (hmWebHelp.userParams && hmWebHelp.userParams.paramsCount > 0) {
+
+}
+}
+/*! 
+* Enter the JS function/s you want to be able to call after the main page 
+* or individual topics load in this file. The functions are made available 
+* by this file but called by the POSTLOAD_TOPICFUNC and POSTLOAD_PAGEFUNC
+* variables. 
+*  
+* Nothing in this file should be executed on loading! All execution is
+* initiated with a single statement stored in the POSTLOAD_PAGEFUNC and
+* POSTLOAD_TOPICFUNC variables, in the General Settings variables group. 
+*
+* POSTLOAD_PAGEFUNC: Statement to be executed ONCE on loading the main page.
+* POSTLOAD_TOPICFUNC: Statement to be executed on EVERY page load
+* 
+* The statement/s you enter POSTLOAD_PAGEFUNC will be executed after 
+* all page components and assets have loaded, including images.
+* 
+* The statement/s in POSTLOAD_TOPICFUNC are executed after topic content
+* has been dynamically replaced in the page when the user browses to a new
+* topic.
+*/
+
+</script>
+<div id="keyboardinfo"> 
+<h1 id="keynavtitle">Keyboard Navigation</h1>
+<p>F7 for caret browsing</br> 
+Hold ALT and press letter</p> 
+<table border="0">
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('info')" title="Display this popup">This Info:</a></td>
+		<td class="c2">ALT+q</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('header');" title="Go to main page header">Page Header:</a></td>
+		<td class="c2">ALT+h</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('topic');" title="Go to topic navigation header">Topic Header:</a></td>
+		<td class="c2">ALT+t</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('body');" title="Go to top of topic body">Topic Body:</a></td>
+		<td class="c2">ALT+b</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('contents');" title="Go to table of contents">Contents:</a></td>
+		<td class="c2">ALT+c</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('search');" title="Go to search">Search:</a></td> 
+		<td class="c2">ALT+s</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.closeMenus()" title="Exit a menu or go up">Exit Menu/Up:</a></td>
+		<td class="c2">ESC</td> 
+	</tr>
+</table>
+</div> 
+</body>
+</html>

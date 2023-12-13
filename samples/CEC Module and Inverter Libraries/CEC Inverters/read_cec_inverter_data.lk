@@ -1,0 +1,231 @@
+/*
+This script provides functions for reading a cleaned CEC inverter data file and 
+and returning either a 2-D array or a table of inverter data.
+*/
+
+// return true if str1 exists in str2, otherwise return false
+function find_in( str1, str2 )
+{
+	if ( strpos( lower(str1), str2 ) > -1 ) { return true; }
+	else { return false; }
+}
+
+// strip brackets and extra spaces from an array row that was converted to a string
+function clean_line ( str )
+{
+	str = replace( str, '[ ', '' );
+	str = replace( str, ' ]', '' );
+	str = replace( str, ', ', ',' ); 
+	return str;
+}
+
+// read a cleaned CEC inverter data file and return either a 2-D array or table
+// of inverter data
+function read_cec_inverter_file( file )
+{
+
+	fin = open( file, 'r' );
+	if ( !fin ) { outln( 'Failed to open file: ' + file ); }
+	str = '';
+	n = 0;
+	
+	// get header positions
+	read_line( fin , str );
+	header_str1 = str;
+	read_line( fin , str );
+	header_str2 = str;
+	
+	h1 = split( header_str1, ',' ); // label
+	h2 = split( header_str2, ',' ); // units
+
+	if ( #h1 != #h2 ) { outln( 'Header rows have different lengths! Row 1 = ' + #h1 + ', Row 2 = ' + #h2 ); }
+	
+	for( i=0; i<#h1; i++ )
+	{
+		if ( find_in( h1[i], 'manufacturer' ) ) { i_manufacturer = i; }
+		if ( find_in( h1[i], 'model' ) ) { i_model = i; }
+		if ( find_in( h1[i], 'hybrid inverter' )) {i_hybrid = i; }
+		if ( find_in( h1[i], 'last update' ) ) { i_date = i; }
+		if ( find_in( h1[i], 'output power' ) ) { i_paco = i; }
+		if ( find_in( h1[i], 'nominal voltage' ) && find_in( h2[i], 'vac' ) ) { i_vaco = i; }
+		if ( find_in( h1[i], 'weighted efficiency' ) ) { i_effwtd = i; }
+		if ( find_in( h1[i], 'microinverter' ) ) { i_micro = i; } 
+		if ( find_in( h1[i], 'meter' ) ) { i_meter = i; }
+		if ( find_in( h1[i], 'night' ) && !find_in(h1[i], '40') ) { i_pnt = i; } // two columns have night tare loss data
+		if ( find_in( h1[i], 'output power' ) ) { i_paco = i; }
+		if ( find_in( h1[i], 'voltage minimum' ) ) { i_vmin = i; }
+		if ( find_in( h1[i], 'voltage nominal' ) ) { i_vnom = i; }
+		if ( find_in( h1[i], 'voltage maximum' ) ) { i_vmax = i; }
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '10%' ) ) 
+		{
+			i_p10 = i;
+			if ( !find_in( h2[i], 'kW' ) ) { outln('Check power units: ' + h2[i] ); }
+		}
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '20%' ) ) { i_p20 = i; }
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '30%' ) ) { i_p30 = i; }
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '50%' ) ) { i_p50 = i; }
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '75%' ) ) { i_p75 = i; }
+		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '100%' ) ) { i_p100 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '10%' ) ) { i_effvmin10 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '20%' ) ) { i_effvmin20 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '30%' ) ) { i_effvmin30 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '50%' ) ) { i_effvmin50 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '75%' ) ) { i_effvmin75 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], '100%' ) ) { i_effvmin100 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmin' ) && find_in( h2[i], 'wtd' ) ) { i_effvminwtd = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '10%' ) ) { i_effvnom10 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '20%' ) ) { i_effvnom20 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '30%' ) ) { i_effvnom30 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '50%' ) ) { i_effvnom50 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '75%' ) ) { i_effvnom75 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], '100%' ) ) { i_effvnom100 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vnom' ) && find_in( h2[i], 'wtd' ) ) { i_effvnomwtd = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '10%' ) ) { i_effvmax10 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '20%' ) ) { i_effvmax20 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '30%' ) ) { i_effvmax30 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '50%' ) ) { i_effvmax50 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '75%' ) ) { i_effvmax75 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], '100%' ) ) { i_effvmax100 = i; }
+		if ( find_in( h1[i], 'efficiency' ) && find_in( h1[i], 'vmax' ) && find_in( h2[i], 'wtd' ) ) { i_effvmaxwtd = i; }
+		if ( find_in( h1[i], 'last update' ) ) { i_date = i; }
+	}
+	
+
+	while ( read_line( fin, str) )
+	{
+
+		data = split( str, ',' );
+		outln( data[i_manufacturer] + ', ' + data[i_model] );
+		db[n][0] = data[i_manufacturer]; // manufacturer name
+		db[n][0] = replace( db[n][0] , ',' , ' ' );
+		db[n][0] = replace( db[n][0] , '.' , ' ' );
+		db[n][0] = replace( db[n][0] , '  ' , ' ' );
+		db[n][1] = data[i_model]; // model number
+		db[n][2] = data[i_hybrid]; //hybrid inverter Y or N
+		db[n][3] = data[i_paco]; // power rated continuous, kW
+		db[n][4] = data[i_pnt]; // night tare loss, W
+		db[n][5] = 'empty'; // power rated continuous at 40 degrees (not in XLSX version) ** PLACEHOLDER IN CASE WE DECIDE TO USE THIS DATA
+		db[n][6] = 'empty'; // night tare loss at 40 degrees (not in XLSX version)
+		db[n][7] = data[i_vmin]; // voltage minimum, Vdc
+		db[n][8] = data[i_vnom]; // voltage nominal, Vdc
+		db[n][9] = data[i_vmax]; // voltage maximum, Vdc
+		db[n][10] = data[i_p10]; // power level 10, kW
+		db[n][11] = data[i_p20]; // power level 20, kW
+		db[n][12] = data[i_p30]; // power level 30, kW
+		db[n][13] = data[i_p50]; // power level 50, kW
+		db[n][14] = data[i_p75]; // power level 75, kW
+		db[n][15] = data[i_p100]; // power level 100, kW
+		db[n][16] = data[i_effvmin10]; // efficiency vmin 10, %
+		db[n][17] = data[i_effvmin20]; // efficiency vmin 20, %
+		db[n][18] = data[i_effvmin30]; // efficiency vmin 30, %
+		db[n][19] = data[i_effvmin50]; // efficiency vmin 50, %
+		db[n][20] = data[i_effvmin75]; // efficiency vmin 75, %
+		db[n][21] = data[i_effvmin100]; // efficiency vmin 100, %
+		db[n][22] = data[i_effvminwtd]; // efficiency vmin wtd, %
+		db[n][23] = data[i_effvnom10]; // efficiency vnom 10, %
+		db[n][24] = data[i_effvnom20]; // efficiency vnom 20, %
+		db[n][25] = data[i_effvnom30]; // efficiency vnom 30, %
+		db[n][26] = data[i_effvnom50]; // efficiency vnom 50, %
+		db[n][27] = data[i_effvnom75]; // efficiency vnom 75, %
+		db[n][28] = data[i_effvnom100]; // efficiency vnom 100, %
+		db[n][29] = data[i_effvnomwtd]; // efficiency vnom wtd, %
+		db[n][30] = data[i_effvmax10]; // efficiency vmax 10, %
+		db[n][31] = data[i_effvmax20]; // efficiency vmax 20, %
+		db[n][32] = data[i_effvmax30]; // efficiency vmax 30, %
+		db[n][33] = data[i_effvmax50]; // efficiency vmax 50, %
+		db[n][34] = data[i_effvmax75]; // efficiency vmax 75, %
+		db[n][35] = data[i_effvmax100]; // efficiency vmax 100, %
+		db[n][36] = data[i_effvmaxwtd]; // efficiency vmax wtd, %
+		db[n][37] = data[i_effwtd]; // cec eff
+		db[n][38] = data[i_meter]; // built-in meter y/n
+		db[n][39] = data[i_micro]; // microinverter y/n
+		db[n][40] = data[i_vaco]; // nominal voltage Vac
+		db[n][41] = data[i_date]; // cec last update date
+
+		// new table approach for testing
+		/*str = data[i_manufacturer]; // manufacturer name
+		str = replace( str , ',' , ' ' );
+		str = replace( str , '.' , ' ' );
+		str = replace( str , '  ' , ' ' );
+		T.manufacturer[n] = str;
+		T.model[n] = data[i_model]; // model number
+		T.hybrid[n] = data[i_hybrid];
+		T.paco[n] = data[i_paco]; // power rated continuous, kW
+		T.pnt[n] = data[i_pnt]; // night tare loss, W
+		T.paco_40[n] = ''; // power rated continuous at 40 degrees (not in XLSX version) ** PLACEHOLDER IN CASE WE DECIDE TO USE THIS DATA
+		T.pnt_40[n] = ''; // night tare loss at 40 degrees (not in XLSX version)
+		T.vmin[n] = data[i_vmin]; // voltage minimum, Vdc
+		T.vnom[n] = data[i_vnom]; // voltage nominal, Vdc
+		T.vmax[n] = data[i_vmax]; // voltage maximum, Vdc
+		T.p10[n] = data[i_p10]; // power level 10, kW
+		T.p20[n] = data[i_p20]; // power level 20, kW
+		T.p30[n] = data[i_p30]; // power level 30, kW
+		T.p50[n] = data[i_p50]; // power level 50, kW
+		T.p75[n] = data[i_p75]; // power level 75, kW
+		T.p100[n] = data[i_p100]; // power level 100, kW
+		T.effvmin[n] = [ data[i_effvmin10], data[i_effvmin20], data[i_effvmin30], data[i_effvmin50], data[i_effvmin75], data[i_effvmin100], data[i_effvminwtd] ]; // efficiency vmin, %
+		T.effvnom[n] = [ data[i_effvnom10], data[i_effvnom20], data[i_effvnom30], data[i_effvnom50], data[i_effvnom75], data[i_effvnom100], data[i_effvnomwtd] ]; // efficiency vnom, %
+		T.effvmax[n] = [ data[i_effvmax10], data[i_effvmax20], data[i_effvmax30], data[i_effvmax50], data[i_effvmax75], data[i_effvmax100], data[i_effvmaxwtd] ]; // efficiency vmax, %
+		T.effcec[n] = data[i_effwtd]; // cec eff
+		T.meter[n] = data[i_meter]; // built-in meter y/n
+		T.microinverter[n] = data[i_micro]; // microinverter y/n
+		T.vaco[n] = data[i_vaco]; // nominal voltage Vac
+		T.date = data[i_date]; // cec last update date*/
+
+		n++;
+	}
+	
+	close( fin );
+	return db; // return db or T
+}
+
+// read data as array from cleaned grid support and utility interactive files 
+// and write to a single csv with a header row
+hdr = 'manufacturer,model,hybrid,paco,pnt,paco_40,pnt_40,vmin,vnom,vmax,p10,p20,p30,p50,p75,p100,effvmin10,effvmin20,effvmin30,effvmin50,effvmin75,effvmin100,effvminwtd,effvnom10,effvnom20,effvnom30,effvnom50,effvnom75,effvnom100,effvnomwtd,effvmax10,effvmax20,effvmax30,effvmax50,effvmax75,effvmax100,effvmaxwtd,effwtd,meter,microinverter,vaco,date';
+data = [];
+gs_input_file = choose_file( cwd(), 'Choose Cleaned Solar Inverters File', '(*.csv)|*.csv' );
+outln( 'Reading data file from ' + gs_input_file );
+data = read_cec_inverter_file( gs_input_file );
+outln( 'Done.');
+
+working_folder = path_only( gs_input_file );
+output_file = working_folder + '/inverter_data.csv';
+
+fout = open( output_file, 'w' );
+if ( fout )
+{
+	outln( 'Writing data to ' + output_file );
+	write_line( fout, hdr );
+	for( i=0; i<#data; i++ ) { write_line( fout, clean_line( data[i] ) ); }
+	outln( 'Done' );
+
+}
+else
+{
+	outln( 'Failed to open ' + output_file + ' for writing.' );
+}
+close( fout );
+
+data = [];
+ui_input_file = choose_file( cwd(), 'Choose Cleaned Battery Inverters File', '(*.csv)|*.csv' );
+outln( 'Reading data file from ' + ui_input_file );
+data = read_cec_inverter_file( ui_input_file );
+outln( 'Done.');
+
+fout = open( output_file, 'a' );
+if ( fout )
+{
+	outln( 'Writing data to ' + output_file );
+	for( i=0; i<#data; i++ ) { write_line( fout, clean_line( data[i] ) ); }
+	outln( 'Done' );
+}
+else
+{
+	outln( 'Failed to open ' + output_file + ' for appending.' );
+}
+close( fout );
+
+//csvwrite( path_only( input_file ) + '/data_test.csv' , test_data );
+
+
+

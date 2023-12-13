@@ -107,7 +107,23 @@ function is_fuel_tech()
 function cf_production()
 {
 	cfline( 'ENERGY', -1);
-	if ( is_fom_fin() )
+	if (( technology() == 'PVWatts Wind Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
+		cfline( 'pvwatts_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
+	if ( technology() == 'Photovoltaic Wind Battery Hybrid') 	{
+		cfline( 'photovoltaic_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
+	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid') 	{
+		cfline( 'generic_cf_energy_net',0);
+		cfline( 'pvwatts_cf_energy_net',0);
+		cfline( 'wind_cf_energy_net',0);
+	}
+	if (( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
+		cfline( 'fuelcell_fuelcell_annual_energy_discharged',0);
+	}
+	if ( is_fom_fin() || financing() == 'Community Solar' )
 	{
 		cfline( 'cf_energy_sales', 0);
 		cfline( 'cf_energy_purchases', 0);
@@ -223,6 +239,10 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )
+	{
+		cfline( 'System Costs', -1, 0 );
+	}
 	if ( tech != 'Standalone Battery' )
 	{
 		cfline( 'cf_om_fixed_expense,cf_om_production_expense,cf_om_capacity_expense', 0);
@@ -244,6 +264,51 @@ function cf_om_expenses()
 	{
 		cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
 	}
+	if ( technology() == 'PVWatts Wind Battery Hybrid') 
+	{
+		cfline( 'Subsystem Costs', -1, 0 );
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+		cfline( 'Project Costs', -1, 0 );
+	}
+	if ( technology() == 'PVWatts Wind FuelCell Battery Hybrid'){
+		cfline( 'Subsystem Costs', -1, 0 );
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'fuelcell_cf_om_fixed,fuelcell_cf_om_production,fuelcell_cf_om_capacity,fuelcell_cf_fuelcell_replacement_cost_schedule,fuelcell_cf_om_fuel_cost',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+		cfline( 'Project Costs', -1, 0 );
+	}
+	if ( technology() == 'Photovoltaic Wind Battery Hybrid') {
+		cfline( 'Subsystem Costs', -1, 0 );
+		if (fin == 'Single Owner')
+			cfline( 'photovoltaic_cf_om_fixed,photovoltaic_cf_om_production,photovoltaic_cf_om_capacity,photovoltaic_cf_om_land_lease',0);
+		else 
+			cfline( 'photovoltaic_cf_om_fixed,photovoltaic_cf_om_production,photovoltaic_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+		cfline( 'Project Costs', -1, 0 );
+	}
+	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'){
+		cfline( 'Subsystem Costs', -1, 0 );
+		cfline( 'generic_cf_om_fixed,generic_cf_om_production,generic_cf_om_capacity,generic_cf_om_fuel_cost',0);
+		if (fin == 'Single Owner')
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
+		else 
+			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity',0);
+		cfline( 'wind_cf_om_fixed,wind_cf_om_production,wind_cf_om_capacity',0);
+		cfline( 'fuelcell_cf_om_fixed,fuelcell_cf_om_production,fuelcell_cf_om_capacity,fuelcell_cf_fuelcell_replacement_cost_schedule,fuelcell_cf_om_fuel_cost',0);
+		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
+		cfline( 'Project Costs', -1, 0 );
+	}
+
 }
 
 function cf_operating_expenses()
@@ -345,7 +410,9 @@ function cf_incentives()
 	cfline( 'TAX CREDITS', -1);
 	cfline( 'cf_ptc_fed,cf_ptc_sta' );
 	cfline( '' );
-	cfline( 'cf_itc_fed,cf_itc_sta');
+	cfline( 'cf_itc_fed_amount,cf_itc_fed_percent_amount,cf_itc_fed');
+	cfline( '' );
+	cfline( 'cf_itc_sta_amount,cf_itc_sta_percent_amount,cf_itc_sta');
 	cfline( '' );
 }
 
@@ -468,8 +535,8 @@ function cf_financing_activities() // all PPA models except Sale Leaseback
 	cfline('FINANCING ACTIVITIES', -1);
 	cfline( 'issuance_of_equity',0);
 	if ( is_debt_fin() ) { cfline( 'size_of_debt', 0); }
-	cfline( 'ibi_total', 0);
-	cfline( 'cbi_total', 0);
+//	cfline( 'ibi_total', 0);
+//	cfline( 'cbi_total', 0);
 	if ( is_debt_fin() )
 	{
 		cfline('minus:', -1, 0);
@@ -888,7 +955,7 @@ function cf_reserves()
 
 function depreciation_tables()
 {
-	cfrow('% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC\nAmount,ITC Basis\nDisallowance,ITC\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction',-2);
+	cfrow('% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC as Percent\nAmount,ITC Basis\nDisallowance,ITC as Fixed\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction',-2);
 	cfrow('DEPRECIATION AND ITC: STATE',-1);
 	cfrow('MACRS 5-yr,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5' );
 	cfrow('MACRS 15-yr,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15' );
@@ -978,6 +1045,15 @@ function community_solar_intermediates()
 
 function create_workbook( wkbk )
 {
+
+	tech = technology();
+	
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )
+	{
+		msgbox('Send-to Excel with Equations Not Available.\nThis option is not available for ' + tech + ' configurations.');
+		exit;
+	}
+	
 	source = runtimedir() + 'spreadsheets/' + wkbk;
     fn = case_name() + '.xlsx';
 	destination = cwd();
@@ -992,6 +1068,27 @@ function create_workbook( wkbk )
 
 	xl_obj = xl_create( destination );
 	return xl_obj;
+}
+
+// convert single value array inputs into array of length n_years
+// for value/schedule inputs like itc_fed_amount
+function val_sched( x, n_years, ismax ) 
+{
+	if (#x == 1) // input is one-year array
+	{
+		a = alloc(n_years);
+		a[0] = x[0];
+		for (i=1; i<n_years; i++)
+		{
+			if (ismax) { a[i] = x[0]; } // percent max value applies to all years
+			else { a[i] = 0; } // amount or percent only apply to year 1
+		}
+		return a;
+	}
+	else // input is multi-year array
+	{
+		return x;
+	}
 }
 
 // functions to set excel values with a check that sam variable exists to avoid sam crashes
@@ -1111,20 +1208,36 @@ function set_fuel(xl)
 
 function set_incentives(xl)
 {
-	a = [ value('itc_fed_percent'),
-	value('itc_sta_percent'),
-	value('itc_fed_amount'),
-	value('itc_sta_amount'),
-	value('itc_fed_percent_maxvalue'),
-	value('itc_sta_percent_maxvalue') ];
-	for (i=0; i<#a; i++)
+	/*
+	if ( financing() == 'Single Owner' ||
+	     financing() == 'Merchant Plant' ||
+	     financing() == 'Sale Leaseback' || 
+	     financing() == 'Leveraged Partnership Flip' ||
+	     financing() == 'All Equity Partnership Flip' || 
+	     financing() == 'Host Developer' ||
+	     financing() == 'Community Solar' ) 
 	{
-		if (#a[i]>1)
+		is_sum_itc = false;
+	}     
+	else
+	{
+		is_sum_itc = true;
+		a = [ value('itc_fed_percent'),
+		value('itc_sta_percent'),
+		value('itc_fed_amount'),
+		value('itc_sta_amount'),
+		value('itc_fed_percent_maxvalue'),
+		value('itc_sta_percent_maxvalue') ];
+		for (i=0; i<#a; i++)
 		{
-			msgbox('Investment Tax Credit as Array\nYou specified a state or federal investment tax credit (ITC) spread over multiple years. Send-to-Excel with Equations only supports ITC in Year 1. Setting ITC in Excel to sum of annual values in SAM, so the ITC calculations in Excel will not exactly match the values in SAM.\n\nWe will fix this in an update to ' + samver() + '.');
-			i=#a;
-		} 
-	}
+			if (#a[i]>1)
+			{
+				msgbox('Investment Tax Credit as Array\nYou specified a state or federal investment tax credit (ITC) spread over multiple years. Send-to-Excel with Equations only supports ITC in Year 1. Setting ITC in Excel to sum of annual values in SAM, so the ITC calculations in Excel will not exactly match the values in SAM.\n\nWe will fix this in an update to ' + samver() + '.');
+				i=#a;
+			} 
+		}
+	}	
+	*/
 	
 	xl_set_value(       xl, 'ibi_fed_amount');
 	xl_set_value_yesno( xl, 'ibi_fed_amount_deprbas_fed');
@@ -1194,6 +1307,7 @@ function set_incentives(xl)
 	xl_set_value(       xl, 'cbi_oth_maxvalue');
 	xl_set_value_yesno( xl, 'cbi_oth_tax_fed');
 	xl_set_value_yesno( xl, 'cbi_oth_tax_sta');
+	
 	// Note PBI available for debt service is handled with debt-related inputs
 	// rather than here
 	pbi = value('pbi_fed_amount');
@@ -1241,25 +1355,49 @@ function set_incentives(xl)
 	xl_set_value_yesno( xl, 'pbi_oth_tax_sta');
 	xl_set_value(       xl, 'pbi_oth_term');
 
-	xl_set_value(       xl, 'itc_fed_amount');
+	// temporary until ITC as array is fully supported
+	/*if (is_sum_itc == true )
+	{
+		x = value('itc_fed_amount');
+		xl_set( xl, sum(x), 'itc_fed_amount' );
+		x = value('itc_fed_percent');
+		xl_set( xl, sum(x), 'itc_fed_percent' );
+		x = value('itc_fed_percent_maxvalue');
+		xl_set( xl, sum(x), 'itc_fed_percent_maxvalue' );
+		x = value('itc_sta_amount');
+		xl_set( xl, sum(x), 'itc_sta_amount' );
+		x = value('itc_sta_percent');
+		xl_set( xl, sum(x), 'itc_sta_percent' );
+		x = value('itc_sta_percent_maxvalue');
+		xl_set( xl, sum(x), 'itc_sta_percent_maxvalue' );
+	}
+	else
+	{
+		n_yrs = value('analysis_period');
+		xl_set( xl, val_sched(value('itc_fed_amount'),n_yrs,false), 'itc_fed_amount' );
+		xl_set( xl, val_sched(value('itc_fed_percent'),n_yrs,false), 'itc_fed_percent' );
+		xl_set( xl, val_sched(value('itc_sta_amount'),n_yrs,false), 'itc_sta_amount' );
+		xl_set( xl, val_sched(value('itc_sta_percent'),n_yrs,false), 'itc_sta_percent' );
+		xl_set( xl, val_sched(value('itc_sta_percent_maxvalue'),n_yrs,true), 'itc_sta_percent_maxvalue' );
+		xl_set( xl, val_sched(value('itc_fed_percent_maxvalue'),n_yrs,true), 'itc_fed_percent_maxvalue' );
+	}*/
+
+	n_yrs = value('analysis_period');
+	xl_set( xl, val_sched(value('itc_fed_amount'),n_yrs,false), 'itc_fed_amount' );
+	xl_set( xl, val_sched(value('itc_fed_percent'),n_yrs,false), 'itc_fed_percent' );
+	xl_set( xl, val_sched(value('itc_sta_amount'),n_yrs,false), 'itc_sta_amount' );
+	xl_set( xl, val_sched(value('itc_sta_percent'),n_yrs,false), 'itc_sta_percent' );
+	xl_set( xl, val_sched(value('itc_sta_percent_maxvalue'),n_yrs,true), 'itc_sta_percent_maxvalue' );
+	xl_set( xl, val_sched(value('itc_fed_percent_maxvalue'),n_yrs,true), 'itc_fed_percent_maxvalue' );
+	
 	xl_set_value_yesno( xl, 'itc_fed_amount_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_fed_amount_deprbas_sta');
-	x = value('itc_fed_percent');
-	xl_set( xl, sum(x), 'itc_fed_percent' );
 	xl_set_value_yesno( xl, 'itc_fed_percent_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_fed_percent_deprbas_sta');
-	x = value('itc_fed_percent_maxvalue');
-	xl_set( xl, sum(x), 'itc_fed_percent_maxvalue' );
-	x = value('itc_sta_amount');
-	xl_set( xl, sum(x), 'itc_sta_amount' );
 	xl_set_value_yesno( xl, 'itc_sta_amount_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_sta_amount_deprbas_sta');
-	x = value('itc_sta_percent');
-	xl_set( xl, sum(x), 'itc_sta_percent' );
 	xl_set_value_yesno( xl, 'itc_sta_percent_deprbas_fed');
 	xl_set_value_yesno( xl, 'itc_sta_percent_deprbas_sta');
-	x = value('itc_sta_percent_maxvalue');
-	xl_set( xl, sum(x), 'itc_sta_percent_maxvalue' );
 
 	ptc = value('ptc_fed_amount');
 	if ( #ptc == 1 ) xl_set_value( xl, 'ptc_fed_amount');
@@ -1831,7 +1969,7 @@ cashflow{ 'Single Owner' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
-	//depreciation_tables();
+	depreciation_tables(); // cpg remove
 
 };
 
@@ -1851,7 +1989,7 @@ cashflow{ 'Community Solar' } = define()
 	cf_debt_sizing();
     cf_reserves();
 	community_solar_intermediates();
-	//depreciation_tables();
+	depreciation_tables();
 };
 
 cashflow{ 'Merchant Plant' } = define()
@@ -1869,7 +2007,7 @@ cashflow{ 'Merchant Plant' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
-	//depreciation_tables();
+	depreciation_tables();
 
 };
 
@@ -1892,7 +2030,7 @@ cashflow{ 'Host Developer' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
     cf_reserves();
- 	//depreciation_tables();
+ 	depreciation_tables();
 };
 
 cashflow{ 'Leveraged Partnership Flip' } = define()
@@ -1909,7 +2047,7 @@ cashflow{ 'Leveraged Partnership Flip' } = define()
 	cf_debt_repayment();
 	cf_debt_sizing();
 	cf_reserves();
-	//depreciation_tables();
+	depreciation_tables();
 };
 
 cashflow{ 'All Equity Partnership Flip' } = define()
@@ -1924,7 +2062,7 @@ cashflow{ 'All Equity Partnership Flip' } = define()
 	cf_income_tax();
 	cf_incentives();
 	cf_reserves();
-	//depreciation_tables();
+	depreciation_tables();
 };
 
 cashflow{ 'Sale Leaseback' } = define()
@@ -1939,7 +2077,7 @@ cashflow{ 'Sale Leaseback' } = define()
 	cf_income_tax();
  	cf_incentives();
 	cf_reserves();
-	//depreciation_tables();
+	depreciation_tables();
 };
 
 // end of tables for cash flow tab

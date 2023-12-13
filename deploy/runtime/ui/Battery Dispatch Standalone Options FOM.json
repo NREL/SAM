@@ -1,0 +1,434 @@
+{
+    "Name": "Battery Dispatch Standalone Options FOM",
+    "Width": 1053.0,
+    "Height": 158.0,
+    "FormObjects": {
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_gridcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from grid"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_dispatch_choice_ui"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 88.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Automated dispatch|Dispatch to custom time series|Manual dispatch"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_dispatch_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 918.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_fom_warning_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 657.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 381.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 83.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Front-of-meter (FOM) Storage Dispatch Options"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_dispatch_auto_can_gridcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can charge from grid",
+            "Units": "0/1",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch option",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_choice_ui": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery dispatch options FOM",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "degradation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "en_batt": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable battery model",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_use_lifetime_output": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'batt_dispatch_choice'} = define() {",
+        "\t// 1 is pv smoothing, skip for standalone battery\r",
+        "\tif (${batt_dispatch_choice_ui} == 0)",
+        "\t\treturn ${batt_dispatch_choice_ui};",
+        "\telse",
+        "\t\treturn ${batt_dispatch_choice_ui} + 1;",
+        "};",
+        "",
+        "equations{'system_use_lifetime_output'} = define() {",
+        "\treturn 1;",
+        "};",
+        "",
+        "equations {'degradation'} = define() {",
+        "\treturn [0];",
+        "};",
+        "",
+        "equations {'en_batt'} = define() {",
+        "\treturn 1;",
+        "};"
+    ],
+    "Callbacks": [
+        "on_load{'Battery Dispatch Standalone Options FOM'} = define() ",
+        "{",
+        "\tshow_hide_charge_options();",
+        "\tcheck_auto_ppa();",
+        "\twarning_message();",
+        "\tmsg = 'The storage dispatch options determine how and when the battery charges and discharges. Choose an option below and then provide the dispatch details as appropriate.';",
+        "\tclr = 'black';",
+        "\tproperty('lbl_dispatch_options','Caption',msg);",
+        "\tproperty('lbl_dispatch_options','TextColour',clr);",
+        "};",
+        "\r",
+        "on_change{'batt_dispatch_auto_can_gridcharge'} = define() {ptc_with_grid_charging_message();};\r",
+        "",
+        "on_change{'batt_dispatch_choice_ui'} = define() ",
+        "{",
+        "\tshow_hide_charge_options();",
+        "\tcheck_auto_ppa();\r",
+        "\tptc_with_grid_charging_message();\t\r",
+        "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
+        "};",
+        "\r",
+        "function check_auto_ppa()",
+        "{",
+        "\tdispatch = value('batt_dispatch_choice_ui');",
+        "\tif (dispatch == 0 && financing() != 'Merchant Plant') ",
+        "\t{",
+        "\t\tppa_mode = value('ppa_soln_mode');",
+        "\t\tif (ppa_mode == 0) ",
+        "\t\t{",
+        "\t\t\tmsgbox('Specify IRR Target not available for automated dispatch.\\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\\n\\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');",
+        "\t\t}",
+        "\t}",
+        "}",
+        "",
+        "// hide charge options for manual dispatch",
+        "function show_hide_charge_options()",
+        "{",
+        "\toption = value('batt_dispatch_choice_ui');",
+        "\tif (option == 2) ",
+        "\t{",
+        "\t\tvalue('batt_dispatch_auto_can_gridcharge', false);",
+        "\t\tshow('batt_dispatch_auto_can_gridcharge', false);",
+        "\t\trefresh();",
+        "\t}",
+        "\telse ",
+        "\t{",
+        "\t\tvalue('batt_dispatch_auto_can_gridcharge', true);",
+        "\t\tenable('batt_dispatch_auto_can_gridcharge', false);",
+        "\t}",
+        "}",
+        "",
+        "function warning_message() ",
+        "{",
+        "\tis_dc = (value('batt_ac_or_dc' ) == 0);",
+        "\tcolor = 'black';",
+        "\tif ( is_dc )",
+        "\t{",
+        "\t\tmsg = 'Battery is DC-connected.'; ",
+        "\t}",
+        "\telse",
+        "\t{ ",
+        "\t\tmsg = 'Battery is AC-connected.'; ",
+        "\t}",
+        "\tif ( value('batt_dispatch_choice_ui') == 2 ) ",
+        "\t{",
+        "\t\tmsg = ''; ",
+        "\t}",
+        "\tproperty('lbl_fom_warning_message','Caption',msg);",
+        "\tproperty('lbl_fom_warning_message','TextColour',color);",
+        "}",
+        ""
+    ]
+}

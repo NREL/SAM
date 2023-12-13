@@ -1,0 +1,1108 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+	<!-- Help+Manual Premium Pack 5.1.0 (c) 2015-2023 by Tim Green. All rights reserved. -->
+	<title>Tower Heliostat Field</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" id="pageviewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="cache-control" content="no-cache" />	
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta name="generator" content="Help+Manual" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="The Heliostat Field page displays the variables that specify the position of the heliostats in the solar field along with the heliostat geometry and optical properties. Unlike..." />
+	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
+	<meta name="author" content="National Renewable Energy Laboratory" />
+	<meta name="msapplication-tap-highlight" content="no" />
+<link rel="shortcut icon" href="favicon.ico" /> 
+<!--This is set up for self-hosted Google Fonts on your own web server with font files included in the skin. See the help for instructions on using fonts hosted by Google -->
+<link type="text/css" href="./css/GoogleFonts.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmprojectstyles.css" rel="stylesheet" />
+	<link id="customstylesheet" type="text/css" href="./css/custom_topic_styles.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmwebhelp_main.css" rel="stylesheet" />
+	<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+		var pageName = "mainPage";
+
+		
+		var hmDevice = {
+		
+		mobileSleepReload: true,
+		// Unique project ID
+		compilehash: (function () {
+		var outVal = 0, t="SAM HelpUser-defined Project ID";
+		for (var x = 0; x < t.length; x++) {
+			outVal = outVal + (t.charCodeAt(x)*(x+2));
+		}
+		return (outVal*697).toString(32) + "_";
+		})(),
+		
+		// Cookies
+		hmSetCookie: function(cname, cvalue, exdays) {
+			var expires = "";
+			if (exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				expires = "expires="+d.toGMTString();
+			}
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+		},
+
+		hmGetCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		hmDeleteCookie: function(cname) {
+			var name = cname + "=";
+			document.cookie = name + "; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+		}
+	
+	};
+	// Session Variables
+	// Test that storage is both available and accessible (looking at you, Safari!)
+	var storageOK = (function(){
+		var gotStorage = typeof(Storage) === "object" && typeof(localStorage) === "object" && typeof(sessionStorage) === "object";
+		if (gotStorage) {
+			try {
+				localStorage.setItem('testStorage',1);
+				localStorage.removeItem('testStorage');
+				gotStorage = true;
+			}
+			catch(e) {
+			gotStorage = false;
+			}
+		}
+		return gotStorage;
+		})();
+		
+	var sessionVariable = {
+		localS: storageOK,
+		
+		fxVal: function(v) {
+			return decodeURIComponent(v);
+		},
+		
+		setPV: function(sVar,sVal) {
+			if (this.localS) {
+				localStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			} else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),365);	
+		},
+		setSV: function(sVar,sVal) {
+			if (this.localS)
+				sessionStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),false);
+		},
+		getPV: function(sVar) {
+			if (this.localS) {
+				if (typeof(localStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return localStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		getSV: function(sVar) {
+			if (this.localS) {
+				if (typeof(sessionStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return sessionStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		deletePV: function(sVar) {
+			if (this.localS)
+				localStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		},
+		deleteSV: function(sVar) {
+			if (this.localS)
+				sessionStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		}
+	},
+	hmFlags = {
+		skinType: "flat"
+	};	
+	
+	/* UI Location */
+	hmDevice.page = "topicpage";
+	hmDevice.baseFontSize = 100;
+	hmDevice.fontChangeMax = 20;
+	
+	/* GA Active */
+	hmDevice.GAactive = true;
+	
+	/* Source Checks */
+	hmDevice.agent = navigator.userAgent.toLowerCase();
+	hmDevice.embedded = (self != top);
+	hmDevice.Xdomain = (function(){try { return parent.location.hostname.length < 0 } catch(err) { return true;}})();
+	hmDevice.platform = navigator.platform.toLowerCase();
+	hmDevice.ipad = /ipad/.test(hmDevice.platform);
+	hmDevice.iphone = /iphone/.test(hmDevice.platform);
+	hmDevice.winphone7 =  (/windows phone os [7]\.\d\d??; .*?trident\/[5]\.\d\d??; iemobile\/9/.test(hmDevice.agent));
+	hmDevice.winphone = (/windows phone [89]\.\d\d??; .*?trident\/[67]\.\d\d??;.*?touch; /.test(hmDevice.agent));
+	hmDevice.w8desktop = (/windows nt 6\.[2345]|windows nt 10\.[0123456]/m.test(hmDevice.agent));
+	hmDevice.msBrowser = (/edge|trident/m.test(hmDevice.agent));
+	hmDevice.w8metro = (function(){var supported = true; 
+				try {new ActiveXObject("htmlfile");} catch(e) {supported = false;} 
+				return (!supported && hmDevice.w8desktop && hmDevice.msBrowser)})();
+	hmDevice.touch = !!(('ontouchstart' in window && !window.opera) || ('msmaxtouchppoints' in window.navigator) || ('maxtouchppoints' in window.navigator) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+	// Treat all Windows 8 devices as desktops unless in metro mode with touch
+	hmDevice.tb = (/tablet/.test(hmDevice.agent) && (!/trident/.test(hmDevice.agent) || (hmDevice.w8metro && hmDevice.touch)));
+	hmDevice.goodandroid = (/android.+?applewebkit\/(?:(?:537\.(?:3[6-9]|[4-9][0-9]))|(?:53[8-9]\.[0-9][0-9])|(?:54[0-9]\.[0-9][0-9]))|android.+?gecko\/[345][0-9]\.\d{1,2} firefox/.test(hmDevice.agent));
+	hmDevice.deadandroid = (/android.+?applewebkit\/(?:53[0-6]\.\d{1,2})|firefox\/[0-2]\d\.\d{1,2}/.test(hmDevice.agent));
+	hmDevice.android = (/android/.test(hmDevice.agent) && !hmDevice.deadandroid);
+	hmDevice.mb = /mobi|mobile/.test(hmDevice.agent);
+	
+	/* Main Checks */
+	hmDevice.phone = (hmDevice.mb && !hmDevice.ipad && !hmDevice.tb);
+	hmDevice.tablet = (hmDevice.ipad || hmDevice.tb || (!hmDevice.phone && hmDevice.android));
+	hmDevice.aspectRatio = (screen.height / screen.width > 1 ? screen.height / screen.width : screen.width / screen.height).toFixed(2);
+	hmDevice.narrowTablet = (hmDevice.tablet && hmDevice.aspectRatio > 1.4);
+	hmDevice.desktop = ((!hmDevice.tablet && !hmDevice.phone));
+	hmDevice.device = hmDevice.phone ? "phone" : hmDevice.tablet ? "tablet" : hmDevice.desktop ? "desktop" : "default";
+	hmDevice.fontSize = hmDevice.phone ? hmDevice.baseFontSize * 1.0 : hmDevice.tablet ? hmDevice.baseFontSize * 1.0 : hmDevice.desktop ? hmDevice.baseFontSize : hmDevice.baseFontSize;
+	hmDevice.maxFontSize = hmDevice.fontSize + hmDevice.fontChangeMax;
+	hmDevice.minFontSize = hmDevice.fontSize - hmDevice.fontChangeMax;
+	if (hmDevice.device !== sessionVariable.getPV("hmDevice")) {
+		sessionVariable.setPV("hmDevice", hmDevice.device);
+		sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		} else {
+			var tempSize = sessionVariable.getPV("hmFontSize");
+			if (tempSize !== null)
+				hmDevice.fontSize = parseInt(tempSize,10);
+			else
+				sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		}
+
+	// Expand to full width of container frame if help is embedded in another page
+	if (hmDevice.embedded && hmDevice.desktop) {
+		let embedStyle = document.createElement("style");
+			embedStyle.type = "text/css";
+			embedStyle.appendChild(document.createTextNode("div#helpwrapper {max-width: 100% !important}"));
+			document.getElementsByTagName("head")[0].appendChild(embedStyle);
+	}
+hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
+	var hmSearchActive = true,
+		hmIndexActive = false;
+	</script>
+	<style id="livestyles" type="text/css"></style>
+	<noscript><style type="text/css">
+	div#pagewrapper {display: none;}
+	div#fouc {display: none;}
+	div#noscript {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 1rem solid grey;
+		background-color: #eaeaea;
+		}
+	h2#noscriptwarning {
+		text-align: center;
+		position: relative;
+		top: 35%;
+		color: #333333;
+	}
+	</style>
+	</noscript>
+	<link rel="canonical" href="https://sam.nrel.gov/help/mspt_heliostat_field.html" />
+	<script id="jqscript" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="./css/HM_CLASSICMENU.css" />
+</head>
+<body>
+<!--ZOOMSTOP-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<defs>
+<g class="svgsprite" id="th-list" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.152 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h5.696q0.704 0 1.216 0.48t0.512 1.216zM9.152 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-5.696q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h17.12q0.736 0 1.216 0.48t0.512 1.216zM9.152 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-17.12q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216zM32 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216z"></path>
+	</g>	
+<g class="svgsprite" id="key-inv" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.256 1.696q3.68 0 6.304 2.624t2.592 6.304-2.592 6.304-6.336 2.624q-0.896 0-1.632-0.16l-0.16 0.16v3.584h-3.584v3.552h-3.552v3.616h-10.72v-7.168l10.88-10.88q-0.16-0.736-0.16-1.664 0-3.68 2.624-6.272t6.336-2.624zM20.256 12.416q0.704 0 1.248-0.512t0.512-1.312-0.512-1.248-1.28-0.512q-0.768 0-1.28 0.544t-0.512 1.216q0 0.768 0.544 1.312t1.28 0.512z"></path>
+	</g>
+<g class="svgsprite" id="search" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.576 14.848q0-3.296-2.368-5.632t-5.632-2.368-5.664 2.368-2.336 5.632 2.336 5.664 5.664 2.336 5.632-2.336 2.368-5.664zM29.728 29.728q0 0.928-0.704 1.6t-1.6 0.672q-0.96 0-1.6-0.672l-6.112-6.112q-3.2 2.208-7.136 2.208-2.56 0-4.896-0.992t-4-2.688-2.688-4-0.992-4.896 0.992-4.864 2.688-4.032 4-2.688 4.896-0.992 4.864 0.992 4.032 2.688 2.688 4.032 0.992 4.864q0 3.936-2.208 7.136l6.112 6.112q0.672 0.672 0.672 1.632z"></path>
+	</g>
+<g class="svgsprite" id="draghandle_r" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M10,6L8.59,7.41,13.17,12l-4.58,4.59L10,18l6,-6z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_l" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M15.41,7.41L14,6l-6,6,6,6,1.41,-1.41L10.83,12z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_rm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_lm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_updown_icon" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M17.038,8.518h-4.977v8.879l-7.084-0.002V8.518H0L8.519,0L17.038,8.518z M22.2,30l8.519-8.518h-4.977v-8.877l-7.084-0.002
+	v8.879h-4.977L22.2,30z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_close" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M16.295 15.705C16.295 15.705 17.705 14.295 17.705 14.295C17.705 14.295 11.705 8.295 11.705 8.295C11.705 8.295 5.705 14.295 5.705 14.295C5.705 14.295 7.115 15.705 7.115 15.705C7.115 15.705 11.705 11.125 11.705 11.125C11.705 11.125 16.295 15.705 16.295 15.705"></path>
+  </g>
+<g class="svgsprite" id="toolbar_open" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M7.115 8.295C7.115 8.295 5.705 9.705 5.705 9.705C5.705 9.705 11.705 15.705 11.705 15.705C11.705 15.705 17.705 9.705 17.705 9.705C17.705 9.705 16.295 8.295 16.295 8.295C16.295 8.295 11.705 12.875 11.705 12.875C11.705 12.875 7.115 8.295 7.115 8.295"></path>
+  </g>
+<g class="svgsprite" id="angle-circled-left" width="27" height="32" viewBox="0 0 27 32">
+<path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-up" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.8 20.352l1.824-1.824q0.352-0.352 0.352-0.8t-0.352-0.832l-8.096-8.096q-0.352-0.32-0.8-0.32t-0.832 0.32l-8.096 8.096q-0.32 0.352-0.32 0.832t0.32 0.8l1.824 1.824q0.352 0.32 0.8 0.32t0.8-0.32l5.504-5.504 5.472 5.504q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-right" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="menu" width="27" height="32" viewBox="0 0 27 32">
+    <path d="M27.424 24v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.8t0.8-0.352h25.12q0.48 0 0.832 0.352t0.32 0.8zM27.424 14.848v2.304q0 0.448-0.32 0.8t-0.832 0.32h-25.12q-0.48 0-0.8-0.32t-0.352-0.8v-2.304q0-0.448 0.352-0.8t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.8zM27.424 5.728v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.832t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.832z"></path>
+  </g>
+<g class="svgsprite" id="weblink" width="32" height="32" viewBox="0 0 27 32">
+ <path d="M11.99,2C6.47,2,2,6.48,2,12s4.47,10,9.99,10C17.52,22,22,17.52,22,12S17.52,2,11.99,2zm6.93,6h-2.95c-0.32,-1.25,-0.78,-2.45,-1.38,-3.56,1.84,0.63,3.37,1.91,4.33,3.56zM12,4.04c0.83,1.2,1.48,2.53,1.91,3.96h-3.82c0.43,-1.43,1.08,-2.76,1.91,-3.96zM4.26,14C4.1,13.36,4,12.69,4,12s0.1,-1.36,0.26,-2h3.38c-0.08,0.66,-0.14,1.32,-0.14,2,0,0.68,0.06,1.34,0.14,2H4.26zm0.82,2h2.95c0.32,1.25,0.78,2.45,1.38,3.56,-1.84,-0.63,-3.37,-1.9,-4.33,-3.56zm2.95,-8H5.08c0.96,-1.66,2.49,-2.93,4.33,-3.56C8.81,5.55,8.35,6.75,8.03,8zM12,19.96c-0.83,-1.2,-1.48,-2.53,-1.91,-3.96h3.82c-0.43,1.43,-1.08,2.76,-1.91,3.96zM14.34,14H9.66c-0.09,-0.66,-0.16,-1.32,-0.16,-2,0,-0.68,0.07,-1.35,0.16,-2h4.68c0.09,0.65,0.16,1.32,0.16,2,0,0.68,-0.07,1.34,-0.16,2zm0.25,5.56c0.6,-1.11,1.06,-2.31,1.38,-3.56h2.95c-0.96,1.65,-2.49,2.93,-4.33,3.56zM16.36,14c0.08,-0.66,0.14,-1.32,0.14,-2,0,-0.68,-0.06,-1.34,-0.14,-2h3.38c0.16,0.64,0.26,1.31,0.26,2s-0.1,1.36,-0.26,2h-3.38z"></path>
+ </g>
+<g class="svgsprite" id="collapse" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 19.936q-0.32 0.64-1.024 0.64h-11.424q-0.704 0-1.024-0.64-0.32-0.608 0.096-1.184l5.728-8q0.32-0.48 0.928-0.48t0.928 0.48l5.696 8q0.416 0.576 0.096 1.184zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="expand" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 12.064q0.32 0.608-0.096 1.152l-5.696 8q-0.352 0.512-0.928 0.512t-0.928-0.512l-5.728-8q-0.416-0.544-0.096-1.152 0.32-0.64 1.024-0.64h11.424q0.704 0 1.024 0.64zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="eye" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.728 17.152q-2.72-4.224-6.816-6.304 1.088 1.856 1.088 4 0 3.328-2.336 5.664t-5.664 2.336-5.664-2.336-2.336-5.664q0-2.144 1.088-4-4.096 2.080-6.816 6.304 2.4 3.648 5.984 5.824t7.744 2.176 7.744-2.176 5.984-5.824zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM32 17.152q0 0.608-0.352 1.216-2.496 4.128-6.72 6.592t-8.928 2.464-8.928-2.464-6.72-6.592q-0.352-0.608-0.352-1.216t0.352-1.248q2.496-4.096 6.72-6.56t8.928-2.496 8.928 2.496 6.72 6.56q0.352 0.64 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="eye-off" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.92 23.84l1.376-2.528q-1.536-1.12-2.432-2.816t-0.864-3.648q0-2.144 1.088-4-4.096 2.080-6.816 6.304 3.008 4.608 7.648 6.688zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM23.328 6.88q0 0.128 0 0.16-1.888 3.36-5.632 10.112t-5.632 10.112l-0.896 1.6q-0.16 0.288-0.48 0.288-0.224 0-2.4-1.248-0.288-0.192-0.288-0.512 0-0.224 0.8-1.568-2.56-1.152-4.704-3.072t-3.744-4.384q-0.352-0.544-0.352-1.216t0.352-1.248q2.752-4.192 6.784-6.624t8.864-2.432q1.6 0 3.2 0.32l0.992-1.728q0.16-0.288 0.48-0.288 0.096 0 0.32 0.096t0.576 0.288 0.576 0.32 0.576 0.32 0.32 0.224q0.288 0.16 0.288 0.48zM24 14.848q0 2.496-1.408 4.544t-3.744 2.944l5.024-8.992q0.128 0.832 0.128 1.504zM32 17.152q0 0.608-0.352 1.216-0.704 1.152-1.952 2.592-2.688 3.072-6.208 4.768t-7.488 1.696l1.312-2.368q3.808-0.32 7.008-2.432t5.408-5.472q-2.080-3.2-5.056-5.248l1.12-2.016q1.696 1.152 3.264 2.752t2.592 3.264q0.352 0.608 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="link" width="30" height="32" viewBox="0 0 30 32">
+<path d="M25.984 21.728q0-0.736-0.48-1.216l-3.712-3.712q-0.512-0.512-1.216-0.512-0.768 0-1.28 0.576 0.032 0.032 0.32 0.32t0.384 0.384 0.288 0.352 0.224 0.448 0.064 0.48q0 0.736-0.512 1.216t-1.216 0.512q-0.256 0-0.48-0.064t-0.448-0.224-0.352-0.288-0.384-0.384-0.32-0.32q-0.608 0.544-0.608 1.28t0.512 1.216l3.68 3.712q0.48 0.48 1.216 0.48 0.704 0 1.216-0.48l2.624-2.592q0.48-0.512 0.48-1.184zM13.44 9.12q0-0.704-0.48-1.216l-3.68-3.68q-0.512-0.512-1.216-0.512t-1.216 0.48l-2.624 2.624q-0.512 0.48-0.512 1.184t0.512 1.216l3.712 3.712q0.48 0.48 1.216 0.48t1.28-0.544q-0.064-0.064-0.352-0.352t-0.384-0.384-0.256-0.32-0.224-0.448-0.064-0.512q0-0.704 0.48-1.216t1.216-0.48q0.288 0 0.512 0.064t0.448 0.224 0.32 0.256 0.384 0.384 0.352 0.352q0.576-0.544 0.576-1.312zM29.44 21.728q0 2.144-1.536 3.616l-2.624 2.592q-1.472 1.504-3.616 1.504-2.176 0-3.648-1.536l-3.68-3.68q-1.472-1.504-1.472-3.648 0-2.176 1.568-3.712l-1.568-1.568q-1.536 1.568-3.712 1.568-2.144 0-3.648-1.504l-3.712-3.712q-1.504-1.504-1.504-3.648t1.504-3.616l2.624-2.624q1.504-1.472 3.648-1.472t3.648 1.504l3.648 3.712q1.504 1.472 1.504 3.616 0 2.208-1.568 3.744l1.568 1.568q1.536-1.568 3.712-1.568 2.144 0 3.648 1.504l3.712 3.712q1.504 1.504 1.504 3.648z"></path>
+	</g>
+<g class="svgsprite" id="mail-alt" width="32" height="32" viewBox="0 0 32 32">
+<path d="M32 12.672v14.176q0 1.184-0.832 2.016t-2.016 0.864h-26.304q-1.152 0-2.016-0.864t-0.832-2.016v-14.176q0.8 0.896 1.792 1.568 6.464 4.384 8.896 6.144 1.024 0.768 1.632 1.184t1.696 0.864 1.952 0.416h0.064q0.896 0 1.952-0.416t1.696-0.864 1.632-1.184q3.040-2.176 8.896-6.144 1.024-0.704 1.792-1.568zM32 7.424q0 1.408-0.864 2.688t-2.176 2.208q-6.72 4.672-8.384 5.792-0.16 0.128-0.736 0.544t-0.96 0.704-0.928 0.576-1.056 0.48-0.864 0.16h-0.064q-0.384 0-0.864-0.16t-1.056-0.48-0.928-0.576-0.96-0.704-0.736-0.544q-1.632-1.12-4.704-3.232t-3.648-2.56q-1.12-0.736-2.080-2.048t-0.992-2.464q0-1.376 0.736-2.304t2.112-0.928h26.304q1.152 0 1.984 0.832t0.864 2.016z"></path>
+	</g>
+<g class="svgsprite" id="print" width="30" height="32" viewBox="0 0 30 32">
+<path d="M6.848 27.424h16v-4.576h-16v4.576zM6.848 16h16v-6.848h-2.848q-0.704 0-1.216-0.512t-0.512-1.216v-2.848h-11.424v11.424zM27.424 17.152q0-0.48-0.32-0.8t-0.832-0.352-0.8 0.352-0.32 0.8 0.32 0.8 0.8 0.32 0.832-0.32 0.32-0.8zM29.728 17.152v7.424q0 0.224-0.192 0.384t-0.384 0.192h-4v2.848q0 0.704-0.512 1.216t-1.216 0.512h-17.152q-0.704 0-1.184-0.512t-0.512-1.216v-2.848h-4q-0.224 0-0.416-0.192t-0.16-0.384v-7.424q0-1.408 1.024-2.432t2.4-0.992h1.152v-9.728q0-0.704 0.512-1.216t1.184-0.512h12q0.736 0 1.6 0.384t1.344 0.832l2.72 2.72q0.48 0.512 0.864 1.376t0.352 1.568v4.576h1.12q1.44 0 2.432 0.992t1.024 2.432z"></path>
+	</g>
+<g class="svgsprite" id="resize-full" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.472 18.848q0 0.256-0.16 0.416l-5.92 5.92 2.56 2.592q0.32 0.32 0.32 0.8t-0.32 0.8-0.8 0.352h-8q-0.48 0-0.8-0.352t-0.352-0.8v-8q0-0.48 0.352-0.8t0.8-0.352 0.8 0.352l2.56 2.56 5.92-5.92q0.192-0.192 0.416-0.192t0.416 0.192l2.048 2.016q0.16 0.192 0.16 0.416zM27.424 3.424v8q0 0.48-0.32 0.8t-0.832 0.352-0.8-0.352l-2.56-2.56-5.92 5.92q-0.192 0.192-0.416 0.192t-0.416-0.192l-2.048-2.016q-0.16-0.192-0.16-0.416t0.16-0.416l5.952-5.92-2.592-2.592q-0.32-0.32-0.32-0.8t0.32-0.8 0.8-0.352h8q0.48 0 0.832 0.352t0.32 0.8z"></path>
+	</g>
+<g class="svgsprite" id="resize-small" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.728 17.152v8q0 0.448-0.352 0.8t-0.8 0.32-0.8-0.32l-2.592-2.592-5.92 5.952q-0.16 0.16-0.416 0.16t-0.416-0.16l-2.016-2.048q-0.192-0.16-0.192-0.416t0.192-0.416l5.92-5.92-2.56-2.56q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h8q0.448 0 0.8 0.352t0.352 0.8zM27.2 5.152q0 0.224-0.192 0.416l-5.92 5.92 2.56 2.56q0.352 0.352 0.352 0.8t-0.352 0.8-0.8 0.352h-8q-0.448 0-0.8-0.352t-0.32-0.8v-8q0-0.448 0.32-0.8t0.8-0.32 0.8 0.32l2.592 2.592 5.92-5.952q0.192-0.16 0.416-0.16t0.416 0.16l2.016 2.048q0.192 0.16 0.192 0.416z"></path>
+	</g>
+<g class="svgsprite" id="share" width="27" height="32" viewBox="0 0 27 32">
+<path d="M21.728 18.272q2.368 0 4.032 1.696t1.664 4.032-1.664 4.032-4.032 1.696-4.064-1.696-1.664-4.032q0-0.224 0.032-0.608l-6.432-3.2q-1.632 1.536-3.872 1.536-2.4 0-4.064-1.696t-1.664-4.032 1.664-4.032 4.064-1.696q2.24 0 3.872 1.536l6.432-3.2q-0.032-0.384-0.032-0.608 0-2.368 1.664-4.032t4.064-1.696 4.032 1.696 1.664 4.032-1.664 4.032-4.032 1.696q-2.272 0-3.904-1.536l-6.432 3.2q0.032 0.384 0.032 0.608t-0.032 0.608l6.432 3.2q1.632-1.536 3.904-1.536z"></path>
+	</g>
+<g class="svgsprite" id="text-height" width="32" height="32" viewBox="0 0 32 32">
+<path d="M31.136 25.152q0.608 0 0.768 0.32t-0.192 0.8l-2.272 2.88q-0.352 0.48-0.864 0.48t-0.864-0.48l-2.272-2.88q-0.352-0.48-0.192-0.8t0.736-0.32h1.44v-18.304h-1.44q-0.576 0-0.736-0.32t0.192-0.8l2.272-2.88q0.352-0.48 0.864-0.48t0.864 0.48l2.272 2.88q0.352 0.48 0.192 0.8t-0.768 0.32h-1.408v18.304h1.408zM1.44 2.304l0.96 0.48q0.224 0.096 3.776 0.096 0.8 0 2.368-0.032t2.336-0.032q0.672 0 1.92 0t1.92 0h5.248q0.096 0 0.384 0t0.352 0 0.288-0.032 0.32-0.16 0.256-0.32l0.768-0.032q0.064 0 0.224 0.032t0.256 0q0.032 1.984 0.032 5.984 0 1.44-0.064 1.952-0.704 0.256-1.216 0.32-0.448-0.768-0.992-2.272-0.032-0.16-0.192-0.864t-0.256-1.312-0.128-0.64q-0.096-0.128-0.224-0.224t-0.256-0.096-0.256-0.032-0.32-0.032-0.288 0.032q-0.288 0-1.184-0.032t-1.344 0-1.12 0.032-1.28 0.128q-0.16 1.44-0.128 2.4 0 1.696 0.032 6.944t0.032 8.128q0 0.288-0.032 1.28t0 1.632 0.224 1.216q0.704 0.384 2.208 0.768t2.144 0.672q0.064 0.704 0.064 0.896 0 0.256-0.032 0.512l-0.608 0.032q-1.376 0.032-3.904-0.16t-3.68-0.16q-0.896 0-2.72 0.16t-2.688 0.16q-0.064-0.928-0.064-0.928v-0.16q0.288-0.48 1.088-0.768t1.76-0.544 1.408-0.48q0.32-0.736 0.32-6.816 0-1.824-0.032-5.44t-0.064-5.408v-2.080q0-0.032 0-0.288t0.032-0.448-0.032-0.448-0.064-0.416-0.096-0.256q-0.192-0.224-2.88-0.224-0.576 0-1.664 0.224t-1.408 0.48q-0.352 0.224-0.608 1.28t-0.576 1.984-0.768 0.96q-0.736-0.48-0.992-0.8v-6.816z"></path>
+	</g>
+<g class="svgsprite" id="list-bullet" width="32" height="32" viewBox="0 0 32 32">
+<path d="M6.848 25.152q0 1.408-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM6.848 16q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 23.424v3.424q0 0.224-0.16 0.416t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.416v-3.424q0-0.224 0.16-0.384t0.416-0.192h21.696q0.224 0 0.416 0.192t0.16 0.384zM6.848 6.848q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 14.272v3.456q0 0.224-0.16 0.384t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.384v-3.456q0-0.224 0.16-0.384t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.384zM32 5.152v3.424q0 0.224-0.16 0.384t-0.416 0.192h-21.696q-0.256 0-0.416-0.192t-0.16-0.384v-3.424q0-0.256 0.16-0.416t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.416z"></path>
+	</g>
+<g class="svgsprite" id="ok" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.824 10.112q0 0.704-0.48 1.216l-15.36 15.36q-0.512 0.48-1.216 0.48t-1.216-0.48l-8.896-8.896q-0.48-0.512-0.48-1.216t0.48-1.216l2.432-2.432q0.512-0.512 1.216-0.512t1.216 0.512l5.248 5.28 11.712-11.744q0.512-0.512 1.216-0.512t1.216 0.512l2.432 2.432q0.48 0.512 0.48 1.216z"></path>
+	</g>
+<g class="svgsprite" id="ok-squared" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.224 23.2l10.976-10.976q0.32-0.32 0.32-0.8t-0.32-0.8l-1.824-1.824q-0.352-0.32-0.8-0.32t-0.8 0.32l-8.352 8.352-3.776-3.776q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.824q-0.32 0.32-0.32 0.8t0.32 0.8l6.4 6.4q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<symbol class="svgsprite" id="menu-closed" viewBox="0 0 24 24">
+<path d="M2.99999995 23.9999998C2.99999995 23.9999998 21.0123147 12.01849265 21.0123147 12.01849265C21.0123147 12.01849265 3.02464845 1.28000000075e-05 3.02464845 1.28000000075e-05C3.02464845 1.28000000075e-05 2.99999995 23.9999998 2.99999995 23.9999998"></path>
+  </symbol>
+<symbol class="svgsprite" id="menu-open" viewBox="0 0 24 24">
+    <path d="M0.0 3.0C0.0 3.0 12.0 21.0 12.0 21.0C12.0 21.0 24.0 3.0 24.0 3.0C24.0 3.0 0.0 3.0 0.0 3.0"></path>
+  </symbol>
+<symbol class="svgsprite" id="close-search" viewBox="0 0 72 72">
+	<path d="M57 19.23L52.77 15 36 31.77 19.23 15 15 19.23 31.77 36 15 52.77 19.23 57 36 40.23 52.77 57 57 52.77 40.23 36 57 19.23z"></path>
+	</symbol>
+</defs>
+</svg>
+<div id="fouc" style="background:#ffffff;position:absolute;top:0;right:0;bottom:0;left:0;z-index:100001;"></div><div id="noscript"><h2 id="noscriptwarning">Please enable JavaScript to view this site.</h2></div>
+	<div id="helpwrapper">
+	<!--<div id="pagewrapper">-->
+	<div id="toolbar_updown" class="toolwrapper phone">
+	<svg id="toolbar_updown_button" alt="Show/Hide Toolbars" viewBox="0 0 30 30"><use xlink:href="#toolbar_updown_icon"></use></svg>
+	</div>
+	<header id="headerbox_wrapper">
+	<div id="headerbox">
+	<div id="headerwrapper">
+<html>
+	<head></head>
+	<body>
+		<nav id="header_menu">
+			
+				<div id="homebutton">
+					<a id="homebuttonlink" href="https://sam.nrel.gov" alt="System Advisor Model (SAM)" title="System Advisor Model (SAM)" aria-label="System Advisor Model (SAM)"></a>
+				</div>
+			
+			<ul id="topnav" class="topnav" role="tablist">
+				<span>
+					<li class="desk_tablet headerlink logo">
+						<a href="https://sam.nrel.gov/" target="_blank" class="extralink" title="SAM Website" aria-label="SAM Website">
+							<svg class="submenu_icon" alt="SAM Website" viewBox="0 0 32 32">
+								<use xlink:href="#weblink"></use>
+							</svg>
+							<span>SAM Website</span>
+						</a>
+					</li>
+					<li class="header last" role="tab">
+						<a title="LK Script" aria-label="LK Script" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>LK Script</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">LK Script</p>
+									<li>
+										<a href="#macros.html" target="_parent" title="Scripting and Macros Instructions" aria-label="Scripting and Macros Instructions">
+											<span>Basic Instructions</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/images/web_page_files/lk_guide.pdf" target="_blank" title="Download LK reference manual" aria-label="Download LK reference manual">
+											<span>LK Reference Manual (PDF)</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://github.com/NREL/SAM/tree/develop/samples/LK%20Scripts%20for%20SAM" target="_blank" title="LK sample scripts on GitHub.com" aria-label="LK sample scripts on GitHub.com">
+											<span>Sample Scripts</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="Contact" aria-label="Contact" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>Contact</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">Contact</p>
+									<li>
+										<a href="https://sam.nrel.gov/forum" target="_blank" title="SAM Forum" aria-label="SAM Forum">
+											<span>Forum</span>
+										</a>
+									</li>
+									<li>
+										<a href="mailto:sam.support@nrel.gov?subject=Email%20from%20SAM%20Help" target="_blank" title="Email SAM support" aria-label="Email SAM support">
+											<span>Email</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="About" aria-label="About" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>About</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">About</p>
+									<li>
+										<a href="https://nrel.github.io/SAM/doc/releasenotes.html" target="_blank" title="Release Notes" aria-label="Release Notes">
+											<span>Release Notes</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/" target="_blank" title="SAM Website" aria-label="SAM Website">
+											<span>Website</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="desktop tablet"></li>
+				</span>
+			</ul>
+		</nav>
+	</body>
+</html> 
+	</div>
+	</div>
+	</header>
+	<div id="navigationmenu">
+	<ul id="hamburgermenu" role="menu" aria-labelledby="hamburgerlink">
+	<li id="toggle_fullscreen" class="desktop" role="menuitem">
+	<svg id="fullscreen_toggle" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#resize-full"></use></svg>
+	<a onclick='hmWebHelp.doFullEmbedWindow(this)' tabindex="0" title="Zoom window">
+	<span>Zoom Window Out</span></a>
+	</li>
+	<li role="menuitem" id="changefontsize">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#text-height"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('fontSize',[true,'global']);" id="increaseFont" title="Increase Font Size" href="javascript:void(0);"> 
+		<span>Larger Text</span></a>&nbsp;|&nbsp;<a onclick="hmWebHelp.extFuncs('fontSize',[false,'global']);" id="decreaseFont" title="Decrease Font Size" href="javascript:void(0);"><span>Smaller Text</span></a>
+	</li>
+	<li class="desktop" id="showhide_pageheader" role="menuitem">
+		<svg id="showhide_header_icon" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#collapse"></use></svg>
+		<a title="Hide Page Header" href="javascript:void(0);">
+		<span>Hide Page Header</span></a>
+	</li>
+	<li class="toggles" id="showhide_toggles" role="menuitem">
+		<svg id="showhide_toggles_icon" class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#eye"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
+		<span>Show Expanding Text</span></a>
+	</li>
+	<li id="hm_printable_version" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
+		<a id="hm_printable_link" href="_hm_print_window.htm?mspt_heliostat_field.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
+		<span>Print Topic</span></a>
+	</li>
+	<li id="mailfeedback" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
+		<span>Send Mail Feedback</span></a>
+	</li>
+	<li class="desktop server" id="savepermalink" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<a href="javascript:hmWebHelp.hamburgerMenu()" data-target="_hmpermalink.html" data-path="./" data-title="Save Topic Permalink" class="popuplink" title="Copy URL of current topic" href="javascript:void(0);">
+		<span>Save Permalink URL</span></a>
+	</li> 	
+	</ul>
+	</div>
+	<!-- TOPIC CONTENT -->
+	<main id="topicbox">
+	<div id="autoTocWrapper" class=""></div>
+	<div id="topicbody">
+	<!-- HMSKIN BODY START -->
+	<nav id="hmpageheader" role="navigation" aria-label="Topic Navigation">
+	<table id="topicheadertable">
+	  <tr>
+		<td id="topicheadercell">
+		  <div id="topicheaderwrapper">
+		  <p id="ptopic_breadcrumbs" class="topic_breadcrumbs">Navigation: <a href="power_tower_systems.html">CSP Power Tower Molten Salt</a></p> 
+		  <h1 class="topictitle" title="Heliostat Field">Heliostat Field<h1>
+		  </div>
+		</td>
+		<td id="topicnavcell"><span>
+		<a id="phonemenulink" class="topicnavlink" href="javascript:void(0)" title="Links to other pages">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<span >Links</span>
+		</a>
+		<a id="atoclink" class="topicnavlink" href="javascript:void(0);" title="Contents of this topic">
+		<svg class="navicon" viewBox="0 0 32 32"><use xlink:href="#list-bullet"></use></svg>
+		<span>Topic Contents</span></a>
+		 <a id="hamburgerlink" class="topicnavlink" href="javascript:void(0);" title="Additional Functions Menu">
+		 <svg class="navicon" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg>
+		 <span>Menu</span></a>
+		 </span>
+		 </td>
+	  </tr>
+	</table>
+	</nav>
+	<div id="hmpagebody">
+	<div id="hmpagebody_scroller">
+<!--ZOOMRESTART--> 
+	<p class="p_Text"><span class="f_Text">The Heliostat Field page displays the variables that specify the position of the heliostats in the solar field along with the heliostat geometry and optical properties. Unlike parabolic trough and dish system designs, which can be based on modular designs of individual components, power tower system designs typically require optimization of the tower height, receiver geometry, and distribution of heliostats around the receiver as a complete system.</span></p>
+<p class="p_Text"><span class="f_Text">Page numbers relevant to this section from references cited with download links under &quot;Power Tower&quot; on the <a href="https://sam.nrel.gov/concentrating-solar-power/csp-publications" target="_blank" class="weblink" title="https://sam.nrel.gov/concentrating-solar-power/csp-publications">CSP Publications</a> page of the SAM website:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Wagner (2008) p 10, 23-42, 49</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">SolarPILOT documentation (forthcoming): Layout Setup, Heliostats</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Kistler (1986) p 25-37, 39-47, 74-75</span></p>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a1_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a1_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a1_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Heliostat Field</a></span></td></tr></table></div>
+<div id="toggle0186a1" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The heliostat field inputs determine the position of heliostats in the field and define optimization settings for the <a href="mspt_heliostat_field.html#solarpilot" class="topiclink">SolarPILOT optimization algorithm</a>. When you optimize the heliostat layout and tower dimensions in SAM, it runs SolarPILOT to automatically calculate heliostat positions and optimal values for the tower height, receiver height, and receiver diameter. The optimization algorithm considers the system's projected cost of energy by running a simulation for several time steps that represent a range of weather conditions using data from the weather file specified on the <a href="pt_location_and_resource.html" class="topiclink">Location and Resource</a> page and costs from the <a href="cc_tower.html" class="topiclink">Installation Costs</a> and <a href="oc_operating.html" class="topiclink">Operating Costs</a> pages. The algorithm modifies the receiver dimensions, tower height, and field layout to based on the optimization settings to find the values that minimize the system's cost of energy. The optimization objective is penalized in the cases where either the maximum flux on the receiver exceeds the specified limit, or when the power delivered from the receiver after estimated surface and piping losses does not meet the design-point value.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat Field Table</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The heliostat field table lists the x-y coordinates (</span><span class="f_CHInterfaceElement">X Position</span><span class="f_VariableDescription">, </span><span class="f_CHInterfaceElement">Y Position</span><span class="f_VariableDescription"> in the table) of each heliostat in the field, where the point (0,0) is the position of the tower. You can either <a href="mspt_heliostat_field.html#importdata" class="topiclink">import heliostat position data</a> from a text file, paste it from your computer's clipboard, or optimize the field to calculate heliostat position coordinates and optimize the field geometry automatically.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">You can also export the x-y coordinates from the table to a text file, or paste them to your computer's clipboard.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The two-dimensional map of the heliostat field &nbsp;shows the position of each heliostat in the table. The vertical axis is north-south, and the horizontal axis is east-west. Each row in the table represents a single heliostat position. The top of the map is north of the bottom of the map.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostats</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total number of individual heliostats in the field, equal to the number of rows in the heliostat layout table. SAM automatically populates the field when you import heliostat position data from a file or optimize the field layout.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Generate heliostat layout using tower dimensions</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Run SolarPILOT to generate values for the table of heliostat x-y positions appropriate for the receiver height, receiver height, and receiver diameter values that you specify on the Tower and Receiver page, taking into consideration the location and other design parameters and system costs.</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Check the box to automatically generate the heliostat layout each time you run a simulation or run parametric simulations. This option calculates heliostat positions for the simulation, but does not update the data in the heliostat field table or map.</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Calculate</span><span class="f_VariableDescription"> to generate the heliostat layout now without running a complete simulation. This option updates the data in the heliostat field table and map.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Optimize heliostat layout and tower dimensions</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Run SolarPILOT to both generate values for the table of heliostat x-y positions and calculate optimal tower height, receiver height, and receiver width values. This option uses the inputs under </span><span class="f_CHInterfaceElement">Optimization Settings</span><span class="f_VariableDescription"> in addition to considering the location and other design parameters and system costs.</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Check the box to automatically calculate optimal tower height, receiver height, and receiver diameter values and generate the optimal heliostat layout each time you run a simulation or run parametric simulations. This option calculates heliostat positions, tower height, receiver height, and receiver width for the simulation, but does not update the data in the heliostat field table or map or change the value of the tower height, receiver height, and receiver width on the Tower and Receiver or Installation costs input pages.</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Calculate</span><span class="f_VariableDescription"> to generate the heliostat layout now without running a complete simulation. This option updates the data in the heliostat field table and map along with the tower height, receiver height, and receiver width values on the Tower and Receiver and Installation Costs input pages.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note. </span><span class="f_Note">The optimal receiver design depends on the maximum receiver flux value on the Tower and Receiver page. The optimization algorithm seeks to minimize the cost of energy given the maximum receiver flux. If the flux at the reference point exceeds the maximum value, the algorithm considers increasing the receiver surface area to avoid exceeding the maximum flux in spite of the higher cost. </span><span class="f_VariableDescription">See <a href="mspt_heliostat_field.html#solarpilot" class="topiclink">SolarPILOT Field Layout and Optimization</a> for details.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Optimization Settings</span></h4>
+<p class="p_Text"><span class="f_Text">The optimization settings allow you to control aspects of the SolarPILOT optimization algorithm. The local derivative free (DFO) algorithm used in SAM is implemented in the <a href="http://ab-initio.mit.edu/wiki/index.php/NLopt" target="_blank" class="weblink" title="http://ab-initio.mit.edu/wiki/index.php/NLopt">NLopt package</a>, provided for free online by MIT. This open-source code is implemented in C++, and can be readily incorporated into existing simulation frameworks such as SAM. A number of algorithms are provided in the NLOpt package, and gradient-based, global, and local derivative-free algorithms are all represented. Because this application is particularly interested in DFO without specified upper or lower bounds on variables and with a maximum flux constraint, only a one algorithm is used. The Bounded Optimization BY Quadratic Approximation (BOBYQA) routine optimizes the objective by iteratively constructing an objective function model based on a quadratic surface approximation (M. Powell, 2009). The stopping criteria for this algorithm was modified for the NLopt library. As described in the reference, most iterative changes to the variable set represent a solution to the quadratic problem within the current trust region, which can change from iteration to iteration. This algorithm (along with its predecessor NEWUOA) is somewhat unique among the NLopt library in its application of a quadratic response surface model. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Initial optimization step size</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The normalized step size used by SAM’s optimization algorithms to take the first step away from the initial design point. The step size represents the total fractional departure in any and all optimization variables. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For example, if the initial design to be optimized includes a tower height </span><img alt="EQ_HF_h-tower" style="margin:0;width:5.3750rem;height:1.6250rem;border:none" src="./images/eq_hf_h-tower.png"/><span class="f_VariableDescription">, receiver height of </span><img alt="EQ_HF_h-rec" style="margin:0;width:4.1875rem;height:1.6250rem;border:none" src="./images/eq_hf_h-rec.png"/><span class="f_VariableDescription">, and receiver aspect ratio </span><img alt="EQ_HF_alpha" style="margin:0;width:2.6875rem;height:1.6250rem;border:none" src="./images/eq_hf_alpha.png"/><span class="f_VariableDescription">, all variables are first normalized by their initial value:</span></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_h-tower0" style="margin:0;width:4.2500rem;height:1.7500rem;border:none" src="./images/eq_hf_h-tower0.png"/></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_h-rec0" style="margin:0;width:3.4375rem;height:1.7500rem;border:none" src="./images/eq_hf_h-rec0.png"/></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_alpha0" style="margin:0;width:2.4375rem;height:1.6250rem;border:none" src="./images/eq_hf_alpha0.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Next, the optimization algorithm chooses a search “direction” and takes a step by manipulating the normalized variable values. The step taken must fall within the initial optimization step size. Assuming a step size of 0.02, one such step may result in the values:</span></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_h-tower-norm" style="margin:0;width:4.8750rem;height:1.6875rem;border:none" src="./images/eq_hf_h-tower-norm.png"/></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_h-rec-norm" style="margin:0;width:4.5625rem;height:1.6875rem;border:none" src="./images/eq_hf_h-rec-norm.png"/></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_alpha-norm" style="margin:0;width:3.6250rem;height:1.6250rem;border:none" src="./images/eq_hf_alpha-norm.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Examining the step distances, we see that:</span></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_init-step-size" style="margin:0;width:21.1250rem;height:2.6875rem;border:none" src="./images/eq_hf_init-step-size.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum optimization iterations</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum number of iterations (field layouts) allowed during optimization. The algorithm may satisfy convergence criteria before reaching the iteration limit and terminate. If the algorithm reaches the maximum number of iterations without converging, SAM will use the layout with the best objective function observed during iteration. &nbsp;</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Optimization convergence tolerance</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The normalized tolerance that determines whether the algorithm has converged. Convergence may be obtained by the algorithm taking a normalized step size that is less in magnitude than the tolerance, or by the objective function (normalized) value ceasing to change by at least the tolerance value from iteration to iteration. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Increasing the tolerance value will generally result in fewer optimization steps taken, but may lead to lesser improvement in the objective function before convergence. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Note that the algorithms have different procedures for algorithm termination, and the tolerance value is usually one of several criteria. For more detailed information on algorithm behavior, refer to the <a href="http://ab-initio.mit.edu/wiki/index.php/NLopt" target="_blank" class="weblink" title="http://ab-initio.mit.edu/wiki/index.php/NLopt">NLOpt documentation</a>.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a2_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a2_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a2_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Heliostat Properties</a></span></td></tr></table></div>
+<div id="toggle0186a2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The heliostat properties define the area of a single heliostat mirrored surface, focusing and canting properties, and the optical error characteristics of the heliostat. Note that SAM assumes that each heliostat employs a two-axis drive system with a pivot at the center of the mirrored surface. Heliostats are also assumed to be rectangular in shape. Individual facets are modeled to be adjacent with no gaps in between.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat width, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The width of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat height, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The height of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts or slots.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Ratio of reflective area to profile</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The fraction of the area defined by the heliostat width and height that actually reflects sunlight. This value determines the ratio of reflective area on each heliostat to the total projected area of the heliostat on a plane normal to the heliostat surface. The ratio accounts for non-reflective area on the heliostat that may cause shading of neighboring heliostats. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Single heliostat area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The area of the heliostat mirrored area, equal to the product of the heliostat width and height and the ratio of reflective area to heliostat profile.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Image error (slope,single axis), mrad</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A measure of the deviation of the actual heliostat image on the receiver from the expected or ideal image that helps determine the overall shape and distribution of the reflected solar flux on the receiver. This value specifies the total conical error distribution for each heliostat at one standard deviation in radians. The Image Error term describes the “slope” error of the reflector surface, or equivalently the error distribution in which a normal vector to the heliostat may lie. The error term lies along a single axis in heliostat coordinates. SAM assumes that the orthogonal axis shares the same image error. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM applies the value to each heliostat in the field regardless of its distance from the tower. The image error accounts for all error sources, including tracking imprecision, foundation motion, mirror waviness, panel alignment problems, atmospheric refraction and tower sway.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Reflected image conical error, mrad</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The equivalent conical error distribution about the reflected image vector, given the Image Error input. The total conical error is calculated as the root sum square of twice each individual-axis error component, though SAM assumes both error terms are equal.</span></p>
+<p class="p_VariableDescription"><img alt="EQ_HF_image-conical-error" style="margin:0;width:7.5625rem;height:1.8750rem;border:none" src="./images/eq_hf_image-conical-error.png"/><span class="f_VariableDescription"> </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Here, <img alt="EQ_HF_image-conical-error1" style="margin:0;width:1.7500rem;height:1.6875rem;border:none" src="./images/eq_hf_image-conical-error1.png"/> is the reflected image conical error (mrad), and <img alt="EQ_HF_image-conical-error2" style="margin:0;width:1.5000rem;height:1.6250rem;border:none" src="./images/eq_hf_image-conical-error2.png"/> is the Image Error (slope, single axis) input. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of heliostat facets – X</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of heliostat facets (also known as “canting” panels) in the X direction. As shown in the following diagram, there are 5 facets in the X direction.</span></p>
+<p style="text-align: center; page-break-inside: avoid; page-break-after: avoid; margin: 0.5000rem 0 0.3750rem 1.5000rem;"><img alt="IMG_HF_heliostat-facets" style="margin:0 auto 0 auto;width:10.6875rem;height:9.8125rem;border:none" src="./images/img_hf_heliostat-facets.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of heliostat facets –Y </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of heliostat facets (also known as “canting” panels) in the Y direction. As shown in the diagram above, there are 3 facets in the Y direction. </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat focusing method</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The method used to determine the focal point for the heliostat (facet) surface(s). If multiple facets are used, the method applies to each facet individually. </span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Ideal</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Each heliostat is focused using a parabolic shape where the focal length is equal to the distance between the heliostat centroid and the receiver image plane. The vector defining the focal point is collinear with the normal vector from the surface of the heliostat.</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Flat</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">The heliostat is not focused and assumed to be planar. Flat heliostats facets may still be canted into a semi-focused shape.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat canting method</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The method used to determine the focal point for the facets (if multiple facets are used). The focal point of the facets may differ from the focal point of the mirror surfaces. Canting is achieved by mounting individual mirror facets such that their normal vector differs from the heliostat aiming vector. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Individual facets may be canted and either flat or focused. Canting of flat facets achieves some degree of focusing, and performance of canted heliostats is maximized when sun position matches most closely that at which the panels were canted. As sun position deviates from the canting design point, additional optical aberration occurs and may degrade heliostat performance.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The canting process involves first choosing the heliostat aim point (determining the heliostat aiming vector) then modifying the aiming vector of each individual facet to achieve the best possible concentration ratio on the receiver given the heliostat’s aiming position.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Facet aiming vectors may differ from the heliostat aiming vector after canting because of the displacement of each facet away from the centroid of the receiver (the origin of the receiver aiming vector). </span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">None</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Heliostats are not canted and all facets are mounted such that their surface normal vector as the same directionality as the heliostat aiming vector.</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">On-axis</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Heliostats facets are mounted such that their normal vector intercepts the receiver focal point while the heliostat aiming vector also points to the receiver focal point. The heliostat facets are perfectly focused in the case where the sun position lies along the extrapolated heliostat aiming vector (in other words, when the heliostat is directly in the receiver shadow!).</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Equinox</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its equinox position (noon on March 20th or September 20th). </span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Summer solstice</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its summer solstice position (noon on June 21st).</span></p>
+<p class="p_VariableDescription"><span class="f_CHInterfaceElement">Winter solstice</span><span class="f_VariableDescription"> </span><br />
+<span class="f_VariableDescription">Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its winter solstice position (noon on December 21st).</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Mirror Reflectance and Soiling</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The mirror reflectance input is the solar weighted specular reflectance. The solar-weighted specular reflectance is the fraction of incident solar radiation reflected into a given solid angle about the specular reflection direction. The appropriate choice for the solid angle is that subtended by the receiver as viewed from the point on the mirror surface from which the ray is being reflected. For parabolic troughs, typical values for solar mirrors are 0.923 (4-mm glass), 0.945 (1-mm or laminated glass), 0.906 (silvered polymer), 0.836 (enhanced anodized aluminum), and 0.957 (silvered front surface).</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a3_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a3_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a3_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Heliostat Operation</a></span></td></tr></table></div>
+<div id="toggle0186a3" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat stow/deploy angle, degrees</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Solar elevation angle below which the heliostat field will not operate.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Wind stow speed, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Wind velocity from the weather file at which the heliostats defocus and go into stowed position. At wind speeds above the stow speed, SAM assumes that the heliostats move into stow position to protect the mirror surface and support structure from wind damage. SAM accounts for the parasitic tracking power required to stow the heliostats, and to reposition them when the wind speed falls below the stow speed.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat startup energy, kWe-hr</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The energy required to bring a single heliostat out of stow position to begin operation. Heliostat startup energy is applied during time steps when the field first operates after inactivity. &nbsp;</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat tracking energy, kWe</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The power required to operate a single heliostat. The tracking energy is applied during each time step in which a heliostat provides power to the receiver.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design-point DNI, W/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The direct normal irradiation (beam normal) available at the reference design point. The power delivered to the receiver by the field when SAM determines the solar field layout depends on the Design-point DNI value that you specify. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Increasing this value indicates that fewer heliostats are needed to achieve the reference condition power, while decreasing this value has the opposite effect. The design-point DNI value should represent the DNI at which your plant should achieve the specified thermal rating, including thermal and piping losses </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The Design-point DNI value is applied at the summer solstice noon sun position. </span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a4_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a4_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a4_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Atmospheric Attenuation</a></span></td></tr></table></div>
+<div id="toggle0186a4" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">Atmospheric attenuation is the optical loss applied to each heliostat due to scattering and distortion of light as it travels the distance between the heliostat and receiver. Attenuation loss depends strongly on the site air content and weather conditions, and attenuation increases as the distance between the heliostat and receiver increases. </span></p>
+<p class="p_Text"><span class="f_Text">You can define attenuation loss using a polynomial equation that calculates the fraction of loss as a function of the distance that the reflected light travels (also known as slant range). </span></p>
+<p class="p_Text"><span class="f_Text">The polynomial equation takes the following form, assuming polynomial coefficients <img alt="EQ_HF_atm_atten_coeffs" style="margin:0;width:2.3750rem;height:1.6250rem;border:none" src="./images/eq_hf_atm_atten_coeffs.png"/>:</span></p>
+<p class="p_Text"><img alt="EQ_HF_atm_atten" style="margin:0;width:6.7500rem;height:2.8750rem;border:none" src="./images/eq_hf_atm_atten.png"/></p>
+<p class="p_Text"><span class="f_Text">Where:</span></p>
+<p class="p_Text"><img alt="EQ_HF_atm_atten_s" style="margin:0;width:11.2500rem;height:2.6875rem;border:none" src="./images/eq_hf_atm_atten_s.png"/></p>
+<p class="p_Text"><span class="f_Text">The heliostat x-y position <img alt="EQ_HF_x-y" style="margin:0;width:2.8125rem;height:1.8125rem;border:none" src="./images/eq_hf_x-y.png"/> and the tower height <img alt="EQ_HF_h-tower-var" style="margin:0;width:2.1875rem;height:1.6250rem;border:none" src="./images/eq_hf_h-tower-var.png"/> determine the slant range <img alt="EQ_HF_slant-range" style="margin:0;width:0.3750rem;height:1.6250rem;border:none" src="./images/eq_hf_slant-range.png"/> in kilometers.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Polynomial coefficient 0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The constant term <img alt="EQ_HF_atm_atten_C0" style="margin:0;width:0.7500rem;height:1.6250rem;border:none" src="./images/eq_hf_atm_atten_c0.png"/> in the atmospheric attenuation polynomial equation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Polynomial coefficient 1</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The linear term <img alt="EQ_HF_atm_atten_C1" style="margin:0;width:0.6875rem;height:1.6250rem;border:none" src="./images/eq_hf_atm_atten_c1.png"/> in the atmospheric attenuation polynomial equation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Polynomial coefficient 2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The quadratic term <img alt="EQ_HF_atm_atten_C2" style="margin:0;width:0.7500rem;height:1.6250rem;border:none" src="./images/eq_hf_atm_atten_c2.png"/> in the atmospheric attenuation polynomial equation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Polynomial coefficient 3</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cubic term <img alt="EQ_HF_atm_atten_C3" style="margin:0;width:0.7500rem;height:1.6250rem;border:none" src="./images/eq_hf_atm_atten_c3.png"/> in the atmospheric attenuation polynomial equation.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Average attenuation loss, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the average attenuation loss for the current field layout. This calculated value is the average attenuation loss evaluated according to the attenuation loss polynomial over all heliostat positions specified in the layout table.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a5_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a5_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a5_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Solar Field Layout Constraints</a></span></td></tr></table></div>
+<div id="toggle0186a5" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max Heliostat Distance to Tower Height Ratio and Min Heliostat Distance to Tower Height Ratio</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum and minimum ratio of the distance from the heliostat furthest and closest from the tower to the tower height.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tower Height, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The height of the tower in meters, from the heliostat pivot points to the vertical center of the receiver panels. Specify this value on the Tower and Receiver page. Note that the tower height value may be automatically populated by the <a href="mspt_heliostat_field.html#solarpilot" class="topiclink">SolarPILOT</a> optimization algorithm.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Max Distance to Tower and Min Distance from Tower, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum and minimum allowable radial distances in meters between the center of the tower base and heliostats furthest from the tower. Under certain conditions, SAM uses this value to calculate the radial step size. (See radial step size variable description below.)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><a id="importdata" class="hmanchor"></a><img id="toggle0186a6_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a6_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a6_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Importing Heliostat Position Data</a></span></td></tr></table></div>
+<div id="toggle0186a6" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The heliostat positions in the field are determined by the table of x-y coordinates for each heliostat in the field. You can either generate data for the table automatically using <a href="mspt_heliostat_field.html#solarpilot" class="topiclink">SolarPILOT</a>, or import the data from a text file. This section explains how to import the data from a text file.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> You can also paste data into the table from your computer's clipboard as rows of tab-delimited values.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Using the Layout Table with External Data</span></h4>
+<p class="p_Text"><span class="f_Text">SAM can model a wide variety of heliostat field layouts originating from any kind of layout method. You can model field layouts generated outside of SAM by importing the heliostat positions into the table on the Heliostat Field page. You can either import a text file of x-y heliostat coordinates or copy and paste the data into the table from a spreadsheet program or text editor.</span></p>
+<p class="p_Text"><span class="f_Text">After you import the data, you can use the diagram of the field to verify that it imported correctly.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes. </span><br />
+<span class="f_CHNote">&nbsp;</span><br />
+<span class="f_Note">If you use your own field position data, you should make sure that the tower height, receiver height, receiver diameter, and other input values are appropriate for your field layout.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">If you click </span><span class="f_CHInterfaceElement">Generate heliostat layout</span><span class="f_Note"> or </span><span class="f_CHInterfaceElement">Optimize solar field geometry</span><span class="f_Note"> after importing heliostat position data, </span><span class="f_Emphasis">SAM will overwrite your data</span><span class="f_Note"> with values calculated by SolarPILOT. It will also overwrite the table as part of the simulation if you check </span><span class="f_CHInterfaceElement">Always layout automatically</span><span class="f_Note"> or </span><span class="f_CHInterfaceElement">Always optimize</span><span class="f_Note">.</span></p>
+<p class="p_Text"><span class="f_Text">Each row specifies the position of an individual heliostat relative to the tower. The first column in the table specifies the x-coordinate along the east-west axis of the field, with negative values indicating positions west of the tower, and positive values indicating positions east of the tower. The second column specifies the y-coordinate along the north-south axis, with positive values indicating positions north of the tower, and negative values indicating positions south of the tower. The tower is assumed to be at 0,0. Note that this convention also applies to systems in the southern hemisphere. SAM allows input of any field layout with no restrictions on heliostat positioning, field symmetry, etc. Use negative values for positions west and south of the tower. The heliostat coordinates do not have to be in a particular order in the file. Each column in the file should be separated by a tab or comma, and each row by a new line. A file with the following contents would describe a solar field with three heliostats at (x = 0.0, y = 75.0), (x = 7.5, y = 70.0), and (x = 15.0, y = 65.0):</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">0.0 75.0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">7.5 70.0</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">15.0 65.0</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a7_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a7_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a7_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Land Area</a></span></td></tr></table></div>
+<div id="toggle0186a7" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">SAM uses the land area to calculate land-related costs on the <a href="cc_tower.html" class="topiclink">Installation Costs</a> page when you specify costs in $/acre.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Non-solar field land area, acres</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The land area occupied by the system, not including the heliostat field and tower.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Solar field land area multiplier</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The ratio of the land area occupied by the solar field to the base land area. Use this multiplier to account for any land required for the solar field in excess of the convex hull defined by the base land area.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Base land area, acres</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The land area contained within a convex polygon that tightly bounds the heliostat field. The base land area includes any region contained within the heliostat field boundary, including the base of the tower. </span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM calculates the base land area by constructing a “convex hull” around the heliostat field layout and calculating the total area of that shape. The following figure illustrates a heliostat field layout and the convex hull shape determined by SAM. The convex hull is a polygon with vertices overlapping the set of most distant heliostat positions at any given azimuthal angle.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="IMG_HF_layout" style="margin:0 auto 0 auto;width:28.1250rem;height:23.4375rem;border:none" src="./images/img_hf_layout.png"/><span class="f_VariableDescription"> </span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total land area, acres</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The land area required for the entire system, including the heliostat field, tower, power plant, piping, storage tanks, buildings, etc.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Land Area (acres) = Non-Solar Field Area (acres) + Base Land Area (acres) × Solar Field Land Area Multiplier</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The total land area appears on the <a href="cc_tower.html" class="topiclink">Installation Costs</a> page, where you can specify land costs in dollars per acre.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total heliostat reflective area, m²</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Total mirrored area of the heliostat field, equal to the heliostat reflective area multiplied by the number of heliostats. SAM uses the total reflective area to calculate the site improvements and heliostat costs expressed in dollars per square meter on the <a href="cc_tower.html" class="topiclink">Installation Costs</a> page.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><img id="toggle0186a8_ICON" class="dropdown-toggle-icon" alt="Click to expand or contract" title="Click to expand or contract" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a8_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or contract" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a8_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">Heliostat Field Availability</a></span></td></tr></table></div>
+<div id="toggle0186a8" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The heliostat field availability losses account for losses due to soiling, field component outages, or other events that affect the performance of equipment in the solar field.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time Series Performance Losses</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The time series performance losses apply during the performance simulation.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_VariableDescription"> to specify constant, hourly, or hourly block schedules to alter the solar field output over time. The loss affects the solar field optical efficiency by increasing or decreasing the efficiency proportionally based on the value(s) that you specify for availability. This input may be useful in characterizing heliostat downtime, washing schedules, or other effects where field production may not match the ideal calculation.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The default value of 1% for the constant loss is to account for heliostat availability losses due to downtime of some heliostats in the field for maintenance and repair.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Design-point availability</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The design-point availability is an input to the SolarPilot optimization. It is not used during the performance simulation. Use this value to ensure that the optimization accounts for availability losses you are including the performance simulation.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<div style="text-align: left; text-indent: 0; border-color: #0072c6; border-style: solid; border-width: thin; background: #ebebeb; padding: 0.1250rem 0.1250rem 0.1250rem 0.1250rem; margin: 0.1875rem 0 0.1875rem 0;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.1875rem"><a id="solarpilot" class="hmanchor"></a><img id="toggle0186a9_ICON" class="dropdown-toggle-icon" alt="Click to expand or collapse" title="Click to expand or collapse" style="margin:0;width:1.0000rem;height:1.0000rem;border:none" src="./images/ico-plus-16x16.png"/></td><td style="border:none;padding:0"><span class="f_Heading2_atoc_"><a id="toggle0186a9_LINK" class="dropdown-toggle" style="font-style: normal; font-weight: bold; color: #0072c6; background-color: transparent; text-decoration: none;" title="Click to expand or collapse" href="javascript:void(0)" data-type="dropdown" data-state="0" data-icon="toggle0186a9_ICON" data-src0="./images/ico-plus-16x16.png" data-src1="./images/ico-minus-16x16.png">SolarPILOT Field Layout and Geometry Optimization</a></span></td></tr></table></div>
+<div id="toggle0186a9" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
+<tr class="ToggleContentTable">
+<td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">SolarPILOT™ simplifies the task of choosing values for the relatively large number of input parameters required to specify the power tower solar field and receiver. Because the heliostat field is typically the most capital intensive part of a power tower project, often accounting for 30-40% of the total installation cost, optimizing the heliostat field size is a critical step in minimizing overall project cost.</span></p>
+<p class="p_Text"><span class="f_Text">The SolarPILOT optimization algorithm searches for a set of optimal system design values, where the optimal system is defined as the one that results in the lowest levelized cost of energy. Note that the optimization process is separate from the simulation process. When you run SolarPILOT, it populates some of the input variables in the SAM input pages (listed below) with optimal values. Before running simulations, you can choose to either keep the values generated by the algorithm or modify them.</span></p>
+<p class="p_Text"><span class="f_Text">SolarPILOT was developed by NREL and generates field layouts and characterizes optical performance of the solar field using an analytical technique derived from the Hermite polynomial approach used in DELSOL3 and elsewhere (Dellin, 1979; Kistler, 1986; Lipps &amp; Vant-Hull, 1978; Walzel, Lipps, &amp; Vant-Hull, 1977). More information on SolarPILOT is available in the SolarPILOT technical documentation. </span></p>
+<p class="p_Text"><span class="f_Text">The DELSOL3 code from Sandia National Laboratories is available at http://energy.sandia.gov/?page_id=6530, and was implemented in SAM 2014.1.14 and older versions through the PTGen program described in the thesis </span><span class="f_Text" style="font-style: italic;">Simulation and Predictive Performance Modeling of Utility-Scale Central Receiver System Power Plants</span><span class="f_Text"> (Wagner 2008) (<a href="http://sel.me.wisc.edu/publications/theses/wagner08.zip" target="_blank" class="weblink" title="http://sel.me.wisc.edu/publications/theses/wagner08.zip">PDF 33 MB</a>). </span></p>
+<p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To use SolarPILOT for optimization:</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_ProcedureStep">On the <a href="installation_costs.html" class="topiclink">Installation Costs</a> page, enter values for the capital costs.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">2.</span><span class="f_ProcedureStep">On the <a href="mspt_heliostat_field.html" class="topiclink">Heliostat Field</a>, <a href="mspt_power_cycle.html" class="topiclink">Power Cycle</a>, and <a href="mspt_tower_and_receiver.html" class="topiclink">Tower and Receiver</a> pages, enter values defining geometry and optical parameters. </span><br />
+<span class="f_ProcedureStep">The optimization algorithm works by exploring the design near the initial guess values, so be sure to enter your best guess for tower height, receiver diameter, and receiver height based on the system you are simulating.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">3.</span><span class="f_ProcedureStep">On the Heliostat Field page, enter values to define the parameters of the optimization.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">4.</span><span class="f_ProcedureStep">On the Heliostat Field page, click </span><span class="f_CHInterfaceElement">Optimize Solar Field Geometry</span><span class="f_ProcedureStep">.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">As the optimization progresses, SAM displays a table showing the tower height (THT), receiver height to diameter ratio (Aspect), receiver height (RecHeight), along with the objective function (Obj) and peak flux intensity on the receiver (Flux). </span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The objective function value is a surrogate for cost of energy, but includes penalties for flux exceeding the maximum allowable value or power falling below the target design-point value. The objective function value is not the same as the levelized cost of energy, and is only useful in the context of the optimization.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">5.</span><span class="f_ProcedureStep">After SolarPILOT finishes the optimization, SAM displays the the optimization results in the Optimization Summary table.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">To replace the inputs for receiver height, receiver diameter, tower height, and heliostat layout in SAM with the optimal values in the table, click </span><span class="f_CHInterfaceElement">Yes</span><span class="f_ProcedureStepNoNumber">. To discard the optimization results without changing the SAM inputs, click </span><span class="f_CHInterfaceElement">No</span><span class="f_ProcedureStepNoNumber">.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">6.</span><span class="f_ProcedureStep">Review the variables on the input pages. Modify any values as needed, and then configure and run simulations to simulate the system(s) and display annual production, levelized cost of energy, and other results on the <a href="results_page.html" class="topiclink">Results</a> page.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Geometry Optimization</span></h3>
+<p class="p_Text"><span class="f_Text">Optimizing the solar field reduces the system's cost of energy by exploring the design space around the initial guess values for tower height, receiver height, and receiver aspect ratio. SolarPILOT uses the optimization algorithm that you specify on the Heliostat Field page to manipulate the design. The algorithm is constructed to seek the minimum cost of energy for the system subject to maximum flux and minimum power constraints. Each step in the optimization process consists of a full layout and performance simulation performed by SolarPILOT. Optimization accounts for the weather data in the file that you select, capital costs, optical performance, and approximate thermal performance. </span></p>
+<p class="p_Text"><span class="f_Text">The optimization algorithm uses the solar multiple and the estimated receiver and piping thermal losses to calculate the receiver's thermal rating, which is calculated as follows:</span></p>
+<p class="p_Text"><img alt="EQ_HF_q-des" style="margin:0;width:10.6875rem;height:1.7500rem;border:none" src="./images/eq_hf_q-des.png"/></p>
+<p class="p_Text"><span class="f_Text">Here, </span><img alt="EQ_qdotdesign" style="margin:0;width:1.4375rem;height:1.6250rem;border:none" src="./images/eq_qdotdesign.png"/><span class="f_Text"> is the receiver design-point thermal power output that is displayed as Receiver Design Thermal Power (MWt) on the Tower and Receiver page, <img alt="EQ_HF_rho" style="margin:0;width:0.5000rem;height:1.6250rem;border:none" src="./images/eq_hf_rho.png"/> is the Coating Absorptance value from the Tower and Receiver page, <img alt="EQ_HF_q-hl" style="margin:0;width:1.0625rem;height:1.6250rem;border:none" src="./images/eq_hf_q-hl.png"/> is the Estimated Receiver Heat Loss (kWt/m2) value from the Tower and Receiver page, <img alt="EQ_HF_A-rec" style="margin:0;width:1.5000rem;height:1.6250rem;border:none" src="./images/eq_hf_a-rec.png"/> is the calculated Receiver Area value displayed on the Installation Costs page, and <img alt="EQ_HF_Q-dot-pipe" style="margin:0;width:1.7500rem;height:1.7500rem;border:none" src="./images/eq_hf_q-dot-pipe.png"/> is the Total Piping Loss (converted to MWt) displayed on the Parasitics page.</span></p>
+<p class="p_Text"><span class="f_Text">The algorithm holds the following variables constant as it searches for the optimal system:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Solar Multiple on the Tower and Receiver page.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Nameplate Capacity on the Power Cycle page.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Heliostat Width on the Heliostat Field page.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Heliostat Height on the Heliostat Field page.</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Maximum Receiver Flux (boiler, superheater, and reheater fluxes for the direct steam tower model) on the Tower and Receiver page.</span></p>
+<p class="p_Text"><span class="f_Text">The algorithm searches to find optimal values of the following variables on the Tower and Receiver page. When SolarPILOT finishes running, SAM optionally populates the variables with the optimal values.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver Diameter</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver Height (calculated as a function of the receiver height to the receiver diameter ratio)</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">For the direct steam tower model, boiler, superheater, and reheater height. The sum of these three heights is the receiver height.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Tower Height</span></p>
+<p class="p_Text"><span class="f_Text">SAM also populates the following variables on the Heliostat Field page with values from SolarPILOT:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Field layout table</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Total Reflective Area</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Number of Heliostats</span></p>
+<p class="p_Text"><span class="f_Text">The optimization algorithm uses the following values from the input pages, but does not change their values.</span></p>
+<p class="p_Text"><span class="f_Text">From the Heliostat Field page:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Heliostat Width</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Heliostat Height</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Ratio of Reflective Area to Profile</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Mirror Reflectivity and Soiling</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Max Distance from Tower</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Min Distance from tower</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Image Error</span></p>
+<p class="p_Text"><span class="f_Text">For the molten salt tower model, from the Tower and Receiver page:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Coating Absorptivity</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Max Receiver Flux</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Estimated receiver heat loss</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Receiver flux map resolution</span></p>
+<p class="p_Text"><span class="f_Text">For the direct steam tower model, from the Tower and Receiver page:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Coating Absorptivity</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Max Boiler Flux</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Max Superheater Flux</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Superheater Outlet Temperature Set Point</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Reference Superheater Efficiency</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Max Reheater Flux</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Reheater Outlet Temperature Set Point</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Reference Reheater Efficiency</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Estimated receiver heat loss</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Receiver flux map resolution</span></p>
+<p class="p_Text"><span class="f_Text">From the Power Cycle page:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Nameplate Capacity</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Rated Cycle Conversion Efficiency</span></p>
+<p class="p_Text"><span class="f_Text">Since the optimization algorithm uses derivative-free nonlinear algorithms, it is impossible to guarantee that the solution identified by SAM is optimal. The success of the optimization algorithm depends on the initial guess values (the values entered for receiver height, diameter, and tower height) when the optimization process begins and on the optimization settings on the Heliostat Field page. It is possible that the algorithm will converge to a solution that is not optimal, or to a solution that does not satisfy the flux or power requirements that you specify. &nbsp;</span></p>
+<p class="p_Text"><span class="f_Text">Finding an optimal set of input parameters is often an iterative process that may require you to run the optimization algorithm and adjust guess values or settings several times until the algorithm finds a reasonable field layout for your analysis. You may find more consistent success by successively reducing the Initial Optimization Step Size, decreasing the Optimization Convergence Tolerance, or starting the simulation using randomized starting values for the receiver height, diameter, and tower height. </span></p>
+<p class="p_Text"><span class="f_Text">Keep in mind that because the algorithm uses capital costs from the Installation Costs page in the optimization process, unreasonable cost values may also prevent the algorithm from finding an optimal field layout. </span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Guidelines for Choosing Variable Ranges for Optimization</span></h4>
+<p class="p_Text"><span class="f_Text">The optimization algorithm does its best to find parameter values for an optimal system within the search ranges you specify on the SolarPILOT input tabs. Because the algorithm searches a discrete number of values within the range for each parameter, defining too broad of a range increases the chances that the optimal value lies between the values included in the search. On the other hand, defining too narrow a range increases the chances that the optimal value lies outside of the search range.</span></p>
+<p class="p_Text"><span class="f_Text">The ability of the optimization algorithm to find an optimal system is sensitive to the following variable ranges:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver diameter range, defined by Minimum Receiver Diameter and Maximum Receiver Diameter.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver height to diameter ratio range, defined by Minimum Receiver Height/Diameter Ratio and Maximum Receiver Height/Diameter Ratio.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Tower height range, defined by Minimum Tower Height and Maximum Tower Height.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Heliostat distance from tower range, defined by Maximum Distance from Tower and Minimum Distance from Tower values on the Heliostat Field page.</span></p>
+<p class="p_Text"><span class="f_Text">The following rules of thumb may be helpful in choosing search ranges for these variables, although they may not apply to some systems.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Tower height: The tower height typically falls between 15 m for very small systems (5 MWe) and 300 m for very large systems (150 MWe). For example, a reasonable range for a 30 MWe system with a solar multiple of 1.0 would be between 40 m and 120 m.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver diameter: The optimization algorithm searches for a receiver diameter value that maximizes absorbed radiation from the heliostat field within the flux limit defined by the maximum value on the Receiver/Tower page. Like the tower height, the receiver area typically scales with system's design thermal power. For very small systems, the optimal receiver diameter is typically between 1 m and 3 m, while very large systems may require a diameter of 25 m.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Receiver height to diameter ratio: This ratio should generally fall between 0.5 and 2.0. </span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Heliostat distance from tower: If the minimum distance is too small, the inner zones in the heliostat will contain no heliostats (the first rows in the field layout table on the Heliostat Field page contain zeros), which will cause the simulation to fail. If the maximum distance is too large, the outer zones will contain no heliostats. On the other hand, if the maximum distance is too small, all of the outer zones will contain heliostats. For very small systems, the maximum distance might be set to 300 m, and for very large systems, a distance of 2000 m might be appropriate.</span></p>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Field Layout</span></h3>
+<p class="p_Text"><span class="f_Text">The heliostat field layout is managed by NREL’s SolarPILOT™ software. SolarPILOT replaces DELSOL3 in SAM 2014.1.14 and older versions. SolarPILOT evaluates the heliostat field layout by characterizing each potential heliostat position individually. This approach replaces DELSOL3’s zonal simplification. This approach allows much greater flexibility in the types of heliostat field layouts that SAM can model, although improved flexibility comes with a greater computational burden for optical characterization. </span></p>
+<p class="p_Text"><span class="f_Text">SolarPILOT is <a href="https://www.nrel.gov/csp/solarpilot.html" target="_blank" class="weblink" title="https://www.nrel.gov/csp/solarpilot.html">available as stand-alone software</a>, and is integrated with SAM using its application programming interface (API) SAM.</span></p>
+<p class="p_Text"><span class="f_Text">SAM offers two options for designing the heliostat field:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">You can design the field outside of SAM and import the layout as a table of heliostat positions with Cartesian x and y coordinates with respect to the tower at position (0,0).</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">You can use SAM to run SolarPILOT and automatically generate heliostat positions given a tower height, heliostat geometry and optical properties, and receiver geometry and optical properties.</span></p>
+<p class="p_Text"><span class="f_Text">SAM uses the following process to choose which heliostat positions will be included in the final layout:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_List" style="font-weight: bold;">Collect user-specified information</span><span class="f_List"> on receiver geometry, heliostat geometry, system optical properties, tower height, plant location and weather data, atmospheric conditions, and field layout constraints. Choose each input in this group carefully, as the layout algorithm incorporates all of this information in identifying the most productive heliostat positions.</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">2.</span><span class="f_ListLast" style="font-weight: bold;">Generate a set of potential heliostat positions</span><span class="f_ListLast"> using the &quot;radial stagger&quot; layout method. All positions within the minimum and maximum land bounds are initially included in the list of potential heliostats. </span></p>
+<p class="p_ListNoNumber"><span class="f_ListNoNumber">The radial stagger layout method places heliostats in rows of constant radius (iso-radial lines) where the center of the tower base is the center point and along lines of constant azimuth angle (aso-azimuthal lines):</span></p>
+<p class="p_ListNoNumber" style="text-align: center;"><img alt="IMG_Tower-solar-pilot-radial-stagger-layout" style="margin:0 auto 0 auto;width:15.0625rem;height:18.7500rem;border:none" src="./images/img_tower-solar-pilot-radial-stagger-layout.png"/></p>
+<p class="p_ListNoNumber"><span class="f_ListNoNumber">The initial spacing between heliostats in a row is a distance twice the width of a heliostat. As the radial position of the rows increases, so too does the spacing between heliostats as they maintain their position along an azimuthal line. Spacing continues to increase until the distance between heliostats meets or exceeds 2 ⅔ times the heliostat width. Spacing then resets to the original factor of 2 times the width. </span></p>
+<p class="p_ListNoNumber"><span class="f_ListNoNumber">The radial spacing between rows depends on the distance of each row from the tower. Row positions are determined to ensure that heliostats that lie directly behind a closer row (every other row in the layout) has sufficient space to eliminate blocking of reflected light:</span></p>
+<p class="p_ListNoNumber"><span class="f_ListNoNumber">&nbsp;</span></p>
+<p class="p_ListNoNumber" style="text-align: center;"><img alt="IMG_Tower-solar-pilot-eliminate-blocking" style="margin:0 auto 0 auto;width:21.5625rem;height:13.1250rem;border:none" src="./images/img_tower-solar-pilot-eliminate-blocking.png"/></p>
+<p class="p_ListNoNumber" style="text-align: center;"><span class="f_ListNoNumber">&nbsp;</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">3.</span><span class="f_List" style="font-weight: bold;">Evaluate the available heliostat positions</span><span class="f_List"> from step (2) to determine estimated annual performance for each heliostat. A set of approximately 25 time steps are simulated throughout the year using averaged weather profiles for each simulation. The time steps compose 4 daily profiles with simulations every other hour. Each hour in the time step contains averaged weather data for the quarter of the year surrounding that day at the same hour of the day. In this way, SAM predicts the amount of power delivered by each heliostat position. </span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The simulations evaluate the optical efficiency of each heliostat and include cosine, attenuation, intercept factor, reflectance and soiling, and blocking effects. </span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Note that all heliostats are aimed at the centerpoint of the receiver during layout calculations. This approach is known as simple aim point strategy, where heliostats aim their reflection at the vertical centerline of the receiver in the region nearest the heliostat.</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Note that shadowing is not considered during layout simulations for several reasons:</span></p>
+<p class="p_ProcedureStepNoNumber" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 3.0000rem;"><span class="f_ProcedureStepNoNumber" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_ProcedureStepNoNumber">Blocking and shadowing simulations result in similar efficiency trends over the year, so inclusion of blocking is typically sufficient to remove problematic heliostats.</span></p>
+<p class="p_ProcedureStepNoNumber" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 3.0000rem;"><span class="f_ProcedureStepNoNumber" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_ProcedureStepNoNumber">The number of heliostats within range for shadowing from a given heliostat depends on the elevation angle of the sun, and low-elevation scenarios can result in comparison of a very large number of heliostats, significantly slowing down simulation speed.</span></p>
+<p class="p_ProcedureStepNoNumber" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 3.0000rem;"><span class="f_ProcedureStepNoNumber" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_ProcedureStepNoNumber">The final layout is not significantly impacted by shadowing, given the blocking consideration mentioned above.</span></p>
+<p class="p_ProcedureStepNoNumber" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 3.0000rem;"><span class="f_ProcedureStepNoNumber" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_ProcedureStepNoNumber">Inclusion of shadowing can lead to “cascaded” efficiency loss, where heliostats that would normally be omitted due to blocking shadow neighboring heliostats and cause subsequent removal of otherwise productive heliostats.</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">4.</span><span class="f_List" style="font-weight: bold;">Collect simulation</span><span class="f_List"> results for each heliostat and ranks each heliostat according to its simulated annual productivity. </span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">5.</span><span class="f_List" style="font-weight: bold;">Run a reference-point simulation</span><span class="f_List"> that determines the energy delivered by the solar field to the receiver at a reference condition. </span><span class="f_ListNoNumber">The reference condition is the summer solstice at solar noon.</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">6.</span><span class="f_ListLast" style="font-weight: bold;">Remove the worst-performing heliostats</span><span class="f_ListLast"> from the layout in order beginning with the poorest heliostat. Removal continues while the total power delivered to the receiver exceeds the design-point thermal power plus estimated thermal losses from the receiver surface and from runner piping. Once the delivered power falls below the design threshold, the resulting list of heliostats comprises the final field layout.</span></p>
+<p class="p_Text"><span class="f_Text">Heliostat layout generation assumes a constant receiver height and diameter and a constant tower height. SAM can optimize these variable values using the optimization tool. More information on solar field geometry optimization is provided in the Optimization section below.</span></p>
+</td>
+</tr>
+</table>
+</div>
+
+	<footer class="topicfooter">
+<p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>
+</footer>
+	</div> <!-- hmpagebody_scroller -->
+	</div> <!-- hmpagebody -->
+	</div> <!-- topicbody-->
+	</main><!-- topicbox -->
+	<div id="navwrapper">
+	<div id="toolbutton_wrapper" class="toolwrapper desk_tablet" tabindex="0" role="button" aria-label="Hide Page Header">
+	<div id="toolbutton">
+	<svg id="toolbar_updown_close" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_close"></use></svg>
+	<svg id="toolbar_updown_open" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_open"></use></svg>
+	</div></div>
+	<div id="dragwrapper" class="toolwrapper" tabindex="0" role="button" aria-label="Hide Navigation Pane">
+	<div id="dragbutton">
+	<svg id="draghandleicon_r" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_r"></use></svg>
+	<svg id="draghandleicon_l" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_l"></use></svg>
+	</div></div>
+	<div id="navsplitbar"></div>
+	<img id="leftright" src="./images/leftright.png" alt="resize nav pane" width="150" height="45" border="0" />
+	<nav id="navcontainer" role="navigation" aria-label="Main Navigation">
+	<!-- NAV TABS START -->
+	<div id="main_searchbox">
+	<div class="search_input_wrapper">
+	<a id="searchlink" title="Search" aria-label="Search" href="hmftsearch.html"><svg class="tocicon" viewBox="0 0 30 32"><use xlink:href="#search"></use></svg></a>
+	<input type="text" name="search_input" id="search_input" size="100%" autocorrect="off" autocapitalize="none" spellcheck="false" />&nbsp;
+	<svg class="searchicon" id="clear_search_button" alt="Close Search" viewBox="0 0 30 30"><use xlink:href="#close-search"></use></svg>
+	<div id="contents_link_wrapper" title="Contents" aria-label="Contents"><a id="contentslink" title="Contents" aria-label="Contents" href="hmcontent.html" target="hmnavigation"><svg class="searchicon" id="contents_button" title="Contents" aria-label="Contents" alt="Contents" viewBox="0 0 30 30"><use xlink:href="#angle-circled-left"></use></svg></a></div>
+	</div>
+	</div>
+	<!-- NAV TABS END -->	
+	<div id="contentsbox" class="navbox on">
+	<iframe name="hmnavigation" id="hmnavigation" class="navframe" src="hmcontent.html" scrolling="no" seamless="seamless" title="Contents" frameborder="0"></iframe>
+	</div>
+	<div id="searchbox" class="navbox off">
+	<iframe name="hmsearch" id="hmsearch" class="navframe" src="" scrolling="no" seamless="seamless" title="Search" frameborder="0"></iframe>
+	</div>
+	</nav><!-- navcontainer -->
+	</div><!-- navwrapper -->
+	<div id="mob_toolbar_wrapper" data="open">
+	<div id="mob_toolbar" class="mtoolbar">
+		<table id="mob_tb_table" class="mobtoolbar" border="0" width="100%"><tr>
+			<td width="22"></td> 
+			<td id="mob_tb_home" align="center" valign="middle"><div id="mobnavhome" class="mobnav home"></div></td>
+			<td id="mob_tb_toc" align="center" valign="middle"><div id="mobnavtoc" class="mobnav toc"></div></td>
+			<td id="mob_tb_textplus" align="center" valign="middle"><div id="mobnavtextplus" class="mobnav textplus"></div></td>
+			<td id="mob_tb_textminus" align="center" valign="middle"><div id="mobnavtextminus" class="mobnav textminus"></div></td>
+			<td id="mob_tb_previous" align="center" valign="middle"><div id="mobnavprevious" class="mobnav previous"></div></td>
+			<td id="mob_tb_next" align="center" valign="middle"><div id="mobnavnext" class="mobnav next"></div></td>
+			<td>&nbsp;&nbsp;</td>
+			<td id="mob_tb_hamburger" class="mob_hamburger" align="right" valign="top"><div id="phone_mobnav_hamburger_icon" class="mobnav phone"><svg id="phonetb_hamburger_mobnav" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg></div></td>
+			</tr></table>
+	</div></div>
+	 <!-- </div> pagewrapper -->
+	</div> <!-- helpwrapper -->
+	<div id="dragsurface"></div>
+<script type="text/javascript" src="./js/xmessage.js"></script> 
+<script id="hmPageInitScript" type="text/javascript">
+var fouc=document.getElementById("fouc");
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+// Reset font size with preset cookie value if available
+(function(){
+	var tempFontSize = sessionVariable.getPV("hmFontSize"),
+		baseElement = document.getElementsByTagName("html")[0];
+	if (tempFontSize !== null) {
+	baseElement.style.fontSize=tempFontSize + "%";
+	} else {
+	baseElement.style.fontSize = hmDevice.baseFontSize + "%";
+	}
+	})();
+/*** TOGGLE INIT PLACEHOLDER ***/
+
+	var moveCheck = null, hmTocLoaded = false, hmTocWidth = 0, xMessage = new xMsg("LANDING TOPIC");
+
+	// Post-loading scripts function
+	function initScripts() {
+	hmPopupsObject = {};
+	hmFlags.isHmTopic = true;
+	hmFlags.idxLoaded = false;
+	hmFlags.schLoaded = false;
+	hmFlags.searchSession = false;
+	hmFlags.tocClicked = false;
+	hmFlags.layoutTable = false;
+	hmFlags.searchHighlight = "";
+	hmFlags.tocInitWidth = 0;
+	hmFlags.jumpHighlight = false;
+	hmFlags.hmMainPage = "index.html";
+	hmFlags.hmTrackHost = "https://sam.nrel.gov/help/";
+	hmFlags.hmProject = "SAM Help";
+	hmFlags.hmDefaultPage = "index.html";
+	hmFlags.hmCurrentPage = "mspt_heliostat_field.html";
+	hmFlags.hmTOC = "hmcontent.html";
+	hmFlags.hmSearchPage = "hmftsearch.html";
+	hmFlags.hmIndexPage = "hmkwindex.html";
+	hmFlags.thisTopic = "mspt_heliostat_field.html";
+	hmFlags.lastTopic = "index.html";
+	hmFlags.isEWriter = false;
+	hmFlags.topicExt = ".html";
+	hmFlags.defaultExt = ".html";
+	hmFlags.projName = "SAMhelp";
+	hmFlags.tDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	hmFlags.tKeywords = "";
+	hmFlags.hdFormat = false;
+	hmFlags.contextID = (function(){
+		var cntxMatch;
+		if (/^https??:\/\//im.test(document.location)) {
+			cntxMatch = /contextid=\d*/.exec(window.location.search.substring(1));
+		} else {
+			cntxMatch = /contextid=\d*/.exec(window.location.hash.substring(1));
+			}
+		return cntxMatch != null ? cntxMatch[0] : false;
+		})();	
+	
+	function loadScripts(x) {
+	$.getScript( scripts[x], function( data, textStatus, jqxhr ) {
+	  if (currentScript < scripts.length-1) {
+	  currentScript++;
+	  loadScripts(currentScript);
+	  } else {
+	  hmpage.defaulttopic = "index.html";
+	hmpage.breadcrumbs = !false;
+	hmpage.parenthome = true;
+	  //hmWebHelp.hmMainPageInit();
+	  hmpage.hmDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	  hmpage.hmPicture = "" === "" ? "" : "./images/";
+	  hmpage.topicfooter = $("footer.topicfooter")[0].outerHTML;
+	  
+	  $("input#search_input").on("keyup", function(event) {
+		
+		var searchQ = $(this).val();
+	  
+		if (event.which == 13 && searchQ.length > 2) {
+			xMessage.sendObject("hmsearch",{action: "callfunction",fn: "hmDoFtSearch", fa: searchQ});
+			return;
+		};
+		if (event.which == 27) {
+			searchQ = "";
+			$(this).val("");
+			return;
+		}
+		
+		$(this).attr("placeholder", "");
+		
+		xMessage.sendObject("hmsearch",{action: "callfunction",fn: "loadSquery", fa: searchQ});
+	  });
+	  
+	hmWebHelp.hmMainPageInit();
+	  }
+	}); // $getScript
+	}  // loadScripts()
+	
+	// Force HTML4 mode in History framework for local WebHelp (required for Chrome, use globally for consistency)
+	if (document.location.protocol.substr(0,4) !== "http") {
+		window.History = {options: {html4Mode: true} };
+	}
+	var currentScript = 0;
+	var scripts = ["./js/helpman_settings.js", "./js/jquery.scrollTomin.js", "./js/jquery.history.js", "./js/hm_webhelp.js", "./js/HM_CLASSICMENU.js" ];
+	if (hmFlags.contextID) scripts.unshift("./js/hmcontextids.js");
+ 
+	var jScript = document.getElementById("jqscript");
+	jScript.src = "./js/jquery.js";
+	
+	var loadCheck = setInterval(function() {
+		if (window.jQuery) {
+			clearInterval(loadCheck);
+			$.ajaxPrefilter( "json script", function(options) {options.crossDomain = true;});
+			if (hmDevice.embedded && hmDevice.desktop) $("li#toggle_fullscreen").show();
+			loadScripts(0);
+			
+			/* Title Bar Text */
+			var titleBarText = "Tower Heliostat Field";
+			switch ("topic") {
+				case "project":
+				titleBarText = "SAM Help";
+				break;
+				
+				case "project_topic":
+				titleBarText = "SAM Help" + " \> " + "Tower Heliostat Field"; 
+				break;
+				}
+			titleBarText = $("<textarea/>").html(titleBarText).text();
+			$("title").text(titleBarText);
+			
+			}
+		},100);
+	}
+	if (window.addEventListener)
+	window.addEventListener("load", initScripts, false);
+	else if (window.attachEvent)
+	window.attachEvent("onload", initScripts);
+	else window.onload = initScripts;
+helpman_mailrecipient = 'sam.support@nrel.gov';
+hmGetUrlParams = function() {/*! 
+* Enter code to save URL parameters to session variables inside the if clause below.
+* This will be executed when your WebHelp is first opened and the session variables
+* you save here will then be available. See the session variables documentation in
+* the V3 Responsive Skins chapter of the help for detailed instructions.
+*/
+if (hmWebHelp.userParams && hmWebHelp.userParams.paramsCount > 0) {
+
+}
+}
+/*! 
+* Enter the JS function/s you want to be able to call after the main page 
+* or individual topics load in this file. The functions are made available 
+* by this file but called by the POSTLOAD_TOPICFUNC and POSTLOAD_PAGEFUNC
+* variables. 
+*  
+* Nothing in this file should be executed on loading! All execution is
+* initiated with a single statement stored in the POSTLOAD_PAGEFUNC and
+* POSTLOAD_TOPICFUNC variables, in the General Settings variables group. 
+*
+* POSTLOAD_PAGEFUNC: Statement to be executed ONCE on loading the main page.
+* POSTLOAD_TOPICFUNC: Statement to be executed on EVERY page load
+* 
+* The statement/s you enter POSTLOAD_PAGEFUNC will be executed after 
+* all page components and assets have loaded, including images.
+* 
+* The statement/s in POSTLOAD_TOPICFUNC are executed after topic content
+* has been dynamically replaced in the page when the user browses to a new
+* topic.
+*/
+
+</script>
+<div id="keyboardinfo"> 
+<h1 id="keynavtitle">Keyboard Navigation</h1>
+<p>F7 for caret browsing</br> 
+Hold ALT and press letter</p> 
+<table border="0">
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('info')" title="Display this popup">This Info:</a></td>
+		<td class="c2">ALT+q</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('header');" title="Go to main page header">Page Header:</a></td>
+		<td class="c2">ALT+h</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('topic');" title="Go to topic navigation header">Topic Header:</a></td>
+		<td class="c2">ALT+t</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('body');" title="Go to top of topic body">Topic Body:</a></td>
+		<td class="c2">ALT+b</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('contents');" title="Go to table of contents">Contents:</a></td>
+		<td class="c2">ALT+c</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('search');" title="Go to search">Search:</a></td> 
+		<td class="c2">ALT+s</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.closeMenus()" title="Exit a menu or go up">Exit Menu/Up:</a></td>
+		<td class="c2">ESC</td> 
+	</tr>
+</table>
+</div> 
+</body>
+</html>

@@ -6,19 +6,15 @@ Created on Tue Mar 13 13:52:53 2018
 """
 
 import csv
-
+import enum
 import time
-
 import json
-
+import copy
 import math
-
 import numpy as np
-
 import pandas as pd
 
 import sco2_plots as cy_plt
-
 import ssc_inout_v2 as ssc_sim
 
 class C_des_od_label_unit_info:
@@ -383,28 +379,28 @@ def mod_dict_for_cycle_config(dict_in, cycle_config_str):
 def get_default_sco2_dict():
     
     des_par = {}
-    des_par["htf"] = 17;                   #[-] Solar salt
-    des_par["T_htf_hot_des"] = 670.0;      #[C] HTF design hot temperature (PHX inlet)
-    des_par["dT_PHX_hot_approach"] = 20.0; #[C/K] Temperature difference between hot HTF and turbine inlet       
-    des_par["T_amb_des"] = 35.0;           #[C] Ambient temperature at design 
-    des_par["dT_mc_approach"] = 5.0;       #[C] Temperature difference between main compressor CO2 inlet and ambient air
-    des_par["site_elevation"] = 300;       #[m] Used to size air cooler...
-    des_par["W_dot_net_des"] = 115.0;      #[MWe] Design cycle power output (no cooling parasitics)
+    des_par["htf"] = 17                   #[-] Solar salt
+    des_par["T_htf_hot_des"] = 670.0      #[C] HTF design hot temperature (PHX inlet)
+    des_par["dT_PHX_hot_approach"] = 20.0 #[C/K] Temperature difference between hot HTF and turbine inlet       
+    des_par["T_amb_des"] = 35.0           #[C] Ambient temperature at design 
+    des_par["dT_mc_approach"] = 5.0       #[C] Temperature difference between main compressor CO2 inlet and ambient air
+    des_par["site_elevation"] = 300       #[m] Used to size air cooler...
+    des_par["W_dot_net_des"] = 115.0      #[MWe] Design cycle power output (no cooling parasitics)
     
-    des_par["design_method"] = 2;          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
-    des_par["eta_thermal_des"] = 0.46;     #[-] Power cycle thermal efficiency
+    des_par["design_method"] = 2          #[-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
+    des_par["eta_thermal_des"] = 0.46     #[-] Power cycle thermal efficiency
     des_par["UA_recup_tot_des"] = 30000/115.0*des_par["W_dot_net_des"]   #[kW/K] Total recuperator conductance
     
     des_par["cycle_config"] = 1            #[1] = RC, [2] = PC
            
-    des_par["is_recomp_ok"] = 1;           #[-] 1 = Yes, 0 = simple cycle only
-    des_par["is_P_high_fixed"] = 0;        #[-] 0 = No, optimize. 1 = Yes
-    des_par["is_PR_fixed"] = 0;            #[-] 0 = No, >0 = Yes
-    des_par["is_IP_fixed"] = 0;
+    des_par["is_recomp_ok"] = 1           #[-] 1 = Yes, 0 = simple cycle only
+    des_par["is_P_high_fixed"] = 0        #[-] 0 = No, optimize. 1 = Yes
+    des_par["is_PR_fixed"] = 0            #[-] 0 = No, >0 = Yes
+    des_par["is_IP_fixed"] = 0
 	
-    des_par["des_objective"] = 1;          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
-    des_par["min_phx_deltaT"] = 1000;      #[C] Min allowable deltaT across PHX
-    des_par["rel_tol"] = 3;                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
+    des_par["des_objective"] = 1          #[-] 2 = hit min deltaT then max efficiency, != 2 = max efficiency
+    des_par["min_phx_deltaT"] = 1000      #[C] Min allowable deltaT across PHX
+    des_par["rel_tol"] = 3                #[-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
            
     # Weiland & Thimsen 2016
     # In most studies, 85% is an accepted isentropic efficiency for either the main or recompression compressors, and is the recommended assumption.
@@ -588,7 +584,7 @@ class C_sco2_sim:
             print("min_deltaT = ", self.m_solve_dict["min_phx_deltaT"])
             print("UA = ", self.m_solve_dict["UA_recup_tot_des"])
             print("The calculated cycle efficiency is = ", self.m_solve_dict["eta_thermal_calc"])
-            print("The recompression fraction is = ", self.m_solve_dict["recomp_frac"]);
+            print("The recompression fraction is = ", self.m_solve_dict["recomp_frac"])
             print("The LTR effectiveness is = ", self.m_solve_dict["eff_LTR"])
             print("The LTR NTU is = ", self.m_solve_dict["NTU_LTR"])
             print("The HTR effectiveness is = ", self.m_solve_dict["eff_HTR"])
@@ -767,7 +763,7 @@ def create_and_save__eta_vs_UA_vs_config(RC_des_solved, PC_des_solved):
         c_sco2_overlay = cy_plt.C_sco2_TS_PH_overlay_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i))
         c_sco2_overlay.is_save_plot = True
         c_sco2_overlay.plot_new_figure()
-        #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i), True);
+        #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i), True)
         
         c_sco2_ts_ph_RC = cy_plt.C_sco2_TS_PH_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i))
         c_sco2_ts_ph_RC.is_save_plot = True
@@ -784,7 +780,7 @@ def create_and_save__eta_vs_UA_vs_config(RC_des_solved, PC_des_solved):
             c_sco2_overlay = cy_plt.C_sco2_TS_PH_overlay_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1))
             c_sco2_overlay.is_save_plot = True
             c_sco2_overlay.plot_new_figure()
-            #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1), True);
+            #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i-1), True)
 
 def sim_data__create_and_save__eta_vs_UA_vs_config(UA_par_in, is_save_data = False, file_name = ""):
     
@@ -1768,6 +1764,14 @@ def get_single_value_data_type(val_in):
     else:
         return "unknown"
 
+def get_single_or_first_in_list(data_in):
+
+    length_type, data_type = get_entry_data_type(data_in)    
+    
+    if(length_type == "single"):
+        return data_in
+    else:
+        return data_in[0]
 
 def get_entry_data_type(data_in):
     
@@ -1936,54 +1940,110 @@ def compare_dict_files(baseline, mod):
                             o_str = o_str + "The modified value is " + str(mod[key][i][j]) + "\n\n"
                             print(o_str)
 
+class C_process_and_plot_udpc:
+
+    class C_settings:
+
+        def __init__(self):
+            self.desc = ""
+            self.is_six_plots = False
+            self.is_test_udpc = False
+            self.is_plot_regression = True
+            self.is_plot_interp = True
+            self.LT_udpc_table_m_dot_sweep = ""
+            self.HT_udpc_table_m_dot_sweep = ""
+
+    def __init__(self, solved_dict, settings):
+        self.solved_dict = solved_dict
+        self.settings = settings
+
+    def update_settings(self, settings):
+        self.settings = settings
+
+    def process_and_plot(self):
+
+        udpc_data = self.solved_dict["udpc_table"]
+
+        T_htf_hot_des = get_single_or_first_in_list(self.solved_dict["T_htf_hot_des"])
+        T_htf_cold_des = get_single_or_first_in_list(self.solved_dict["T_htf_cold_des"])
+        T_co2_PHX_in = get_single_or_first_in_list(self.solved_dict["T_co2_PHX_in"])
+        P_co2_PHX_in = get_single_or_first_in_list(self.solved_dict["P_co2_PHX_in"])
+        T_turb_in = get_single_or_first_in_list(self.solved_dict["T_turb_in"])
+        t_P_in_des = get_single_or_first_in_list(self.solved_dict["t_P_in_des"])
+        eta_thermal_calc = get_single_or_first_in_list(self.solved_dict["eta_thermal_calc"])
+        T_amb_des = get_single_or_first_in_list(self.solved_dict["T_amb_des"])
+        fan_power_frac = get_single_or_first_in_list(self.solved_dict["fan_power_frac"])
+        W_dot_gross_des = get_single_or_first_in_list(self.solved_dict["W_dot_net_des"])
+        W_dot_parasitic_des = get_single_or_first_in_list(self.solved_dict["cooler_tot_W_dot_fan"])
+
+        # Try to call UDPC cmod to use m_dot_ND_max vs T_amb routine
+        if(self.settings.is_test_udpc):
+            udpc_check_dict_in = dict()
+            udpc_check_dict_in["ud_ind_od"] = udpc_data
+            udpc_check_dict_in["T_htf_des_in"] = T_htf_hot_des
+            udpc_check_dict_in["T_htf_cold_des"] = T_htf_cold_des
+            udpc_check_dict_in["is_calc_m_dot_vs_T_amb"] = 1
+            udpc_check_dict_in["W_dot_net_des"] = W_dot_gross_des
+            udpc_check_dict_in["cooler_tot_W_dot_fan"] = W_dot_parasitic_des
+            udpc_check_dict = ssc_sim.cmod_ui_udpc_checks(udpc_check_dict_in)
+            print("Was udpc test successful?", udpc_check_dict["cmod_success"])
+            udpc_check_dict["plot_udpc_tests"] = True
+        else:
+            udpc_check_dict = ""
+
+        HTF_cold_str = "HTF cold design = " + str(T_htf_cold_des) + " C"
+        T_co2_in_str = "CO2 PHX in Temp design = " + str(T_co2_PHX_in) + " C"
+        P_co2_in_str = "CO2 PHX in Pressure design = " + str(P_co2_PHX_in) + " MPa"
+        T_turb_str = "CO2 Turbine in Temp design = " + str(T_turb_in) + " C"
+        P_turb_str = "CO2 Turbine in Pressure design = " + str(t_P_in_des) + " MPa"
+        eta_str = "Cycle Thermal Efficiency (Design page) = " + str(eta_thermal_calc) + " -"
+        T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(T_amb_des) + " C"
+        W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(fan_power_frac) + " -"
+
+        #SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
+        with open(self.settings.desc + "_udpc_outputs" + '.csv', 'w', newline='') as f:
+            w = csv.writer(f)
+            w.writerows(self.solved_dict["udpc_table"])
+        f.close()
+
+        n_T_htf = int(self.solved_dict["udpc_n_T_htf"])
+        n_T_amb = int(self.solved_dict["udpc_n_T_amb"])
+        n_m_dot_htf = int(self.solved_dict["udpc_n_m_dot_htf"])
+
+        s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
+                    + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
+                    + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
+
+        plot_settings = cy_plt.C_plot_udpc_results.C_settings()
+        plot_settings.plot_pre_str = self.settings.desc
+        plot_settings.cycle_des_str = s_cycle_des
+        plot_settings.is_T_t_in_set = False
+        plot_settings.is_six_plots =  self.settings.is_six_plots
+        plot_settings.is_plot_regression = self.settings.is_plot_regression
+        plot_settings.is_plot_interp = self.settings.is_plot_interp
+        plot_settings.udpc_check_dict = udpc_check_dict
+        plot_settings.LT_udpc_table_m_dot_sweep = self.settings.LT_udpc_table_m_dot_sweep
+        plot_settings.HT_udpc_table_m_dot_sweep = self.settings.HT_udpc_table_m_dot_sweep
+            
+        c_plot_udpc = cy_plt.C_plot_udpc_results(copy.deepcopy(udpc_data), n_T_htf, n_T_amb, n_m_dot_htf, plot_settings)
+
+        return c_plot_udpc.make_udpc_plots()
+            
+
 def process_sco2_udpc_dict(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION"):
 
-    udpc_data = solved_dict["udpc_table"]
+    process_sco2_udpc_dict__row_option(solved_dict, desc)
 
-    if(type(solved_dict["T_htf_cold_des"]) == list):
-        T_htf_cold_des = solved_dict["T_htf_cold_des"][0]
-        T_co2_PHX_in = solved_dict["T_co2_PHX_in"][0]
-        P_co2_PHX_in = solved_dict["P_co2_PHX_in"][0]
-        T_turb_in = solved_dict["T_turb_in"][0]
-        t_P_in_des = solved_dict["t_P_in_des"][0]
-        eta_thermal_calc = solved_dict["eta_thermal_calc"][0]
-        T_amb_des = solved_dict["T_amb_des"][0]
-        fan_power_frac = solved_dict["fan_power_frac"][0]
-    else:
-        T_htf_cold_des = solved_dict["T_htf_cold_des"]
-        T_co2_PHX_in = solved_dict["T_co2_PHX_in"]
-        P_co2_PHX_in = solved_dict["P_co2_PHX_in"]
-        T_turb_in = solved_dict["T_turb_in"]
-        t_P_in_des = solved_dict["t_P_in_des"]
-        eta_thermal_calc = solved_dict["eta_thermal_calc"]
-        T_amb_des = solved_dict["T_amb_des"]
-        fan_power_frac = solved_dict["fan_power_frac"]
+def process_sco2_udpc_dict__row_option(solved_dict, desc = "DEFAULT_SCO2_DESIGN_DESCRIPTION", is_six_plots = False, is_test_udpc = False):
 
-    HTF_cold_str = "HTF cold design = " + str(T_htf_cold_des) + " C"
-    T_co2_in_str = "CO2 PHX in Temp design = " + str(T_co2_PHX_in) + " C"
-    P_co2_in_str = "CO2 PHX in Pressure design = " + str(P_co2_PHX_in) + " MPa"
-    T_turb_str = "CO2 Turbine in Temp design = " + str(T_turb_in) + " C"
-    P_turb_str = "CO2 Turbine in Pressure design = " + str(t_P_in_des) + " MPa"
-    eta_str = "Cycle Thermal Efficiency (Design page) = " + str(eta_thermal_calc) + " -"
-    T_amb_str = "Ambient Temperature (Power Cycle page) = " + str(T_amb_des) + " C"
-    W_dot_cool_str = "Cooling Parasitic (Power Cycle page) = " + str(fan_power_frac) + " -"
+    settings = C_process_and_plot_udpc.C_settings()
+    settings.desc = desc
+    settings.is_six_plots = is_six_plots
+    settings.is_test_udpc = is_test_udpc
 
-    #SSC_OUTPUT, SSC_MATRIX,  "udpc_table",  "Columns (7): HTF Temp [C], HTF ND mass flow [-], Ambient Temp [C], ND Power, ND Heat In, ND Fan Power, ND Water. Rows = runs"
-    with open(desc + "_udpc_outputs" + '.csv', 'w', newline='') as f:
-        w = csv.writer(f)
-        w.writerows(solved_dict["udpc_table"])
-    f.close()
+    c_udpc_post = C_process_and_plot_udpc(copy.deepcopy(solved_dict), settings)
+    c_udpc_post.process_and_plot()
 
-    n_T_htf = int(solved_dict["udpc_n_T_htf"])
-    n_T_amb = int(solved_dict["udpc_n_T_amb"])
-    n_m_dot_htf = int(solved_dict["udpc_n_m_dot_htf"])
-
-    s_cycle_des = HTF_cold_str + "\n" + T_co2_in_str + "\n"\
-                + P_co2_in_str+ "\n" + T_turb_str + "\n" + P_turb_str + "\n"\
-                + eta_str + "\n" + T_amb_str + "\n" + W_dot_cool_str +"\n"
-
-    cy_plt.plot_udpc_results(udpc_data, n_T_htf, n_T_amb, n_m_dot_htf, desc + "_updc_", s_cycle_des)
- 
 def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
             T_htf_delta_cold, T_htf_delta_hot, T_htf_hot_des, n_T_htf_hot,
             T_amb_low, T_amb_high, T_amb_des, n_T_amb,
@@ -2028,7 +2088,100 @@ def generate_udpc_inputs(m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, 
 
     return udpc_od_cases
 
+class C_updc_sparse:
 
+    def __init__(self):
+
+        self.delta_T_amb = 1
+
+        self.n_T_htf_hot_levels = -1
+        self.n_T_amb_levels = -1
+        self.n_m_dot_levels = -1
+
+        self.n_T_amb_par = -1
+        self.n_m_dot_par = -1
+
+        self.T_htf_levels = -1
+
+    def generate_udpc_inputs_sparse(self, m_dot_htf_ND_low, m_dot_htf_ND_high, m_dot_htf_ND_des, n_m_dot_htf_ND,
+                T_htf_delta_cold, T_htf_hot_des,
+                T_amb_low, T_amb_low_parametric, T_amb_high, T_amb_des,
+                f_N_rc, f_N_mc):
+
+        self.n_m_dot_par = n_m_dot_htf_ND
+
+        m_dot_htf_ND_par_start = m_dot_htf_ND_low
+        m_dot_htf_ND_par_end = m_dot_htf_ND_high
+        delta_m_dot_htf_ND = (m_dot_htf_ND_par_end - m_dot_htf_ND_par_start)/float(n_m_dot_htf_ND-1)
+        m_dot_htf_ND_levels = [m_dot_htf_ND_low, m_dot_htf_ND_des, m_dot_htf_ND_high]
+        self.n_m_dot_levels = len(m_dot_htf_ND_levels)
+
+        # Only use 2 HTF levels: design and cold
+        T_htf_low = T_htf_hot_des - T_htf_delta_cold
+        self.T_htf_levels = [T_htf_low, T_htf_hot_des]
+        self.n_T_htf_hot_levels = len(self.T_htf_levels)
+
+        T_amb_par_start = T_amb_low_parametric
+        T_amb_levels = [T_amb_low, T_amb_des, T_amb_high]
+        self.n_T_amb_levels = len(T_amb_levels)
+        self.n_T_amb_par = T_amb_high - T_amb_low_parametric + 1
+
+        n_total_runs = self.n_T_htf_hot_levels*self.n_m_dot_levels + (self.n_T_amb_par+1)*self.n_T_htf_hot_levels + self.n_T_amb_levels*self.n_m_dot_par
+
+        udpc_od_cases = []
+        
+        for i in range(self.n_m_dot_levels):
+            for j, T_htf_hot_j in enumerate(self.T_htf_levels):
+                udpc_od_cases.append([T_htf_hot_j, m_dot_htf_ND_levels[i], T_amb_des, f_N_rc, f_N_mc])
+
+        for i, i_T_htf_level in enumerate(self.T_htf_levels):
+            # Solve at lower bound
+            udpc_od_cases.append([i_T_htf_level, m_dot_htf_ND_des, T_amb_low, f_N_rc, f_N_mc])
+            for j in range(self.n_T_amb_par):
+                T_amb_j = T_amb_par_start + self.delta_T_amb * j
+                udpc_od_cases.append([i_T_htf_level, m_dot_htf_ND_des, T_amb_j, f_N_rc, f_N_mc])
+
+        for i in range(self.n_T_amb_levels):
+            for j in range(self.n_m_dot_par):
+                m_dot_j = m_dot_htf_ND_par_start + delta_m_dot_htf_ND * j
+                udpc_od_cases.append([T_htf_hot_des, m_dot_j, T_amb_levels[i], f_N_rc, f_N_mc])
+
+
+        return udpc_od_cases
+
+
+    def udpc_sparse_expand(self, udpc_sparse):
+
+        udpc_new = []
+        
+        n_total_runs = self.n_T_htf_hot_levels*self.n_m_dot_levels + (self.n_T_amb_par+1)*self.n_T_htf_hot_levels + self.n_T_amb_levels*self.n_m_dot_par
+
+        ii = 0
+        for i in range(self.n_m_dot_levels):
+            for j, T_htf_hot_j in enumerate(self.T_htf_levels):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+            l_temp = [udpc_sparse[ii-1][0]+1]
+            l_temp[1:] = udpc_sparse[ii-1][1:]
+            udpc_new.append(l_temp)
+
+        for i, i_T_htf_level in enumerate(self.T_htf_levels):
+            for j in range(self.n_T_amb_par + 1):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+
+        # Now add entire T amb sweep at design T_htf for new high T_htf
+        for j in range(self.n_T_amb_par + 1):
+            l_temp = [udpc_sparse[ii - 1 - (self.n_T_amb_par) + j][0]+1]
+            l_temp[1:] = udpc_sparse[ii - 1 - (self.n_T_amb_par) + j][1:]
+            udpc_new.append(l_temp)
+
+        for i in range(self.n_T_amb_levels):
+            for j in range(self.n_m_dot_par):
+                udpc_new.append(udpc_sparse[ii])
+                ii = ii + 1
+
+        return udpc_new, self.n_T_amb_par + 1, 3
 
 
 

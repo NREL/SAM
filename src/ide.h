@@ -103,8 +103,10 @@ public:
 	
 	bool Write(const wxString &name);
 	bool Load(const wxString &name);
-	bool Write_text(const wxString &name);
-	bool Load_text(const wxString &name);
+	bool Write_text(const wxString& name);
+	bool Load_text(const wxString& name);
+	bool Write_JSON(const wxString& name);
+	bool Load_JSON(const wxString& name);
 	void LoadFormList( const wxString &sel = wxEmptyString );
 	void LoadVarList( const wxString &sel = wxEmptyString );
 	wxUIFormDesigner *GetDesigner() { return m_uiFormEditor; }
@@ -132,7 +134,7 @@ private:
 	wxExtTextCtrl *m_varName;
 	wxChoice *m_varType;
 	wxChoice *m_varUIObject;
-	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue;
+	wxExtTextCtrl *m_varLabel, *m_varUnits, *m_varGroup, *m_varIndexLabels, *m_varDefaultValue, *m_varSSCName, *m_varSSCValue;
 	wxCheckBox *m_varFlagHideLabels, *m_varFlagParametric, *m_varFlagIndicator, 
 		*m_varFlagCalculated, *m_varFlagLibrary, *m_varFlagChangeModel;
 

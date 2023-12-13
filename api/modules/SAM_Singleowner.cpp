@@ -14,60 +14,6 @@ SAM_EXPORT int SAM_Singleowner_execute(SAM_table data, int verbosity, SAM_error*
 	return SAM_module_exec("singleowner", data, verbosity, err);
 }
 
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor1_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor1", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor2_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor2", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor3_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor3", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor4_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor4", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor5", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor6_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor6", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor7_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor7", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor8_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor8", number);
-	});
-}
-
-SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factor9_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dispatch_factor9", number);
-	});
-}
-
 SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "dispatch_factors_ts", arr, length);
@@ -83,6 +29,12 @@ SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekday_mset(SAM_table pt
 SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "dispatch_sched_weekend", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_Revenue_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "dispatch_tod_factors", arr, length);
 	});
 }
 
@@ -1826,104 +1778,23 @@ SAM_EXPORT void SAM_Singleowner_ChargesByMonth_nm_dollars_applied_ym_mset(SAM_ta
 	});
 }
 
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor1_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT void SAM_Singleowner_HybridFin_cf_hybrid_om_sum_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor1", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor1");
+		ssc_data_set_array(ptr, "cf_hybrid_om_sum", arr, length);
 	});
-	return result;
 }
 
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor2_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT void SAM_Singleowner_HybridFin_is_hybrid_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor2", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor2");
+		ssc_data_set_number(ptr, "is_hybrid", number);
 	});
-	return result;
 }
 
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor3_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT void SAM_Singleowner_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor3", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor3");
+		ssc_data_set_array(ptr, "monthly_energy", arr, length);
 	});
-	return result;
 }
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor4_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor4", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor4");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor5", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor5");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor6_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor6", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor6");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor7_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor7", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor7");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor8_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor8", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor8");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Singleowner_Revenue_dispatch_factor9_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dispatch_factor9", &result))
-		make_access_error("SAM_Singleowner", "dispatch_factor9");
-	});
-	return result;
-}
-
-
 
 SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1955,6 +1826,18 @@ SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_sched_weekend_mget(SAM_table
 	result = ssc_data_get_matrix(ptr, "dispatch_sched_weekend", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Singleowner", "dispatch_sched_weekend");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Revenue_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "dispatch_tod_factors", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "dispatch_tod_factors");
 	});
 	return result;
 }
@@ -5211,6 +5094,41 @@ SAM_EXPORT double* SAM_Singleowner_ChargesByMonth_nm_dollars_applied_ym_mget(SAM
 	result = ssc_data_get_matrix(ptr, "nm_dollars_applied_ym", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Singleowner", "nm_dollars_applied_ym");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_HybridFin_cf_hybrid_om_sum_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_hybrid_om_sum", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_hybrid_om_sum");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Singleowner_HybridFin_is_hybrid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_hybrid", &result))
+		make_access_error("SAM_Singleowner", "is_hybrid");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Singleowner_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "monthly_energy");
 	});
 	return result;
 }

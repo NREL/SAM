@@ -40,6 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/minifram.h>
 #include <wx/notebook.h>
 #include <wx/treectrl.h>
+#include <wx/dataview.h>
 
 #include "case.h"
 #include "inputpage.h"
@@ -75,7 +76,8 @@ public:
 
 	void UpdateConfiguration();
 
-	bool SwitchToInputPage( const wxString &name );
+	bool SwitchToInputPage(const wxString& name);
+	bool SwitchToNavigationMenu(const wxString& name);
 	wxString GetInputPage();
 	wxArrayString GetInputPages();
 	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);
@@ -95,6 +97,8 @@ public:
 	bool RunBaseCase( bool silent = false, wxString *messages = 0 );
 	void UpdateResults();
 
+	bool RunSSCBaseCase(wxString& fn, bool silent = false, wxString* messages = 0);
+
 	bool GenerateReport( 
 		wxString pdffile = wxEmptyString, 
 		wxString templfile = wxEmptyString,
@@ -108,7 +112,7 @@ private:
 
 	InputPageList *m_inputPageList;
 	std::vector<InputPageGroup*> m_pageGroups;
-	UIFormDatabase m_forms;
+	std::vector<UIFormDatabase> m_forms;
 	InputPageGroup *m_currentGroup;
 	std::vector<wxUIFormData*> m_currentForms;
 
@@ -119,6 +123,7 @@ private:
 			CollapseCheck = 0;
 			Collapsible = false;
 			HeaderPage = false;
+			ndxHybrid = 0;
 		}
 
 		wxUIFormData *Form;
@@ -127,6 +132,7 @@ private:
 		wxString CollapsibleVar;
 		CollapsePaneCtrl *CollapseCheck;
 		bool HeaderPage;
+		size_t ndxHybrid;
 	};
 
 	std::vector<PageDisplayState*> m_currentActivePages;
@@ -136,14 +142,17 @@ private:
 	wxMetroButton *m_exclPageButton;
     wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
-	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
+	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );
 	void SetupActivePage();
 	void LayoutPage();
 	void DetachCurrentInputPage();
 
-	wxStaticText *m_configLabel;
+	wxStaticText *m_techLabel;
+    wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
+	wxMetroDataViewTreeCtrl *m_navigationMenu;
+    wxDataViewItem m_currentSelection;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;
@@ -160,7 +169,9 @@ private:
 	PageNote *m_pageNote;
 	wxString m_lastPageNoteId;
 
-	void OnCommand( wxCommandEvent & );	
+	void OnCommand( wxCommandEvent & );
+    void OnTree(wxDataViewEvent&);
+    void OnTreeCollapsing(wxDataViewEvent &evt );
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 
@@ -200,6 +211,7 @@ public:
 	void SetItems(const wxArrayString &names, const wxArrayString &labels);
 	void SetCheckedNames(const wxArrayString &list);
 	wxArrayString GetCheckedNames();
+	wxArrayInt GetCheckedIndices();
 	void ShowAllItems();
 	void UpdateTree();
 

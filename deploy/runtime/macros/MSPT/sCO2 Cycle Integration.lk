@@ -68,6 +68,7 @@ old_eta_thermal_des = get("design_eff");
 old_fan_power_perc = get("ud_f_W_dot_cool_des");
 old_m_dot_water_cooling = get("ud_m_dot_water_cool_des");
 old_udpc_table = get("ud_ind_od");
+old_ud_is_sco2_regr = get("ud_is_sco2_regr");
 
 // Get from imported json the sco2 design parameters required for MSPT model
 //   then set MSPT UI variable
@@ -98,6 +99,11 @@ var_txt = var_txt + "Gross power consumed by cooling system from " + to_string(o
 m_dot_water_cooling = 0.0;		//[kg/s]
 var_txt = var_txt + "Cooling system water usage from " + to_string(old_m_dot_water_cooling) + " to " + to_string(m_dot_water_cooling) + " kg/s";
 
+if(old_ud_is_sco2_regr == 0)
+{
+	var_txt = var_txt + "\nApply sCO2 heuristic to interpolation? from False to True";
+}
+
 udpc_table = json_in{"udpc_table"};			// matrix
 
 update_var_txt = "Change variables in the user interface?\n" + var_txt;
@@ -112,6 +118,7 @@ if(update_ui_vars)
 	set("design_eff", eta_thermal_des);
 	set("ud_f_W_dot_cool_des", fan_power_perc);
 	set("ud_m_dot_water_cool_des", m_dot_water_cooling);
+	set("ud_is_sco2_regr", 1);
 	set("ud_ind_od", udpc_table);
 	
 	outln("Inputs set by this macro:");

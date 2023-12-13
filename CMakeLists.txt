@@ -32,7 +32,7 @@ if (SAMAPI_EXPORT)
 	add_subdirectory(api)
 endif()
 
-include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} ../tcs )
+include_directories(src $ENV{WEXDIR}/include $ENV{LKDIR}/include $ENV{SSCDIR} $ENV{RAPIDJSONDIR} ../tcs )
 
 set(SAM_SRC src/private.h
     src/main_add.h
@@ -84,7 +84,9 @@ set(SAM_SRC src/private.h
 	src/materials.cpp      src/materials.h
 	src/codegenerator.cpp  src/codegenerator.h
 	src/pythonhandler.cpp src/pythonhandler.h
-	src/combinecases.cpp src/combinecases.h)
+	src/combinecases.cpp src/combinecases.h
+    src/ptesdesignptdialog.cpp src/ptesdesignptdialog.h
+    src/geotools.cpp       src/geotools.h)
 
 
 #####################################################################################################################

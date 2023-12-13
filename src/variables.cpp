@@ -50,6 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/sstream.h>
 #include <wx/filename.h>
 #include <wex/exttextstream.h>
+#include <wex/utils.h>
 #include <lk/stdlib.h>
 #include <lk/eval.h>
 #include <rapidjson/writer.h>
@@ -839,6 +840,8 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	rapidjson::Document doc;
 	Write_JSON(doc, asCalculated, asIndicator, maxdim);
 
+
+	// TODO - hybrids - write out based on compute modules similar to test input files for cmod_hybrid_test.cpp
 	rapidjson::StringBuffer os;
 	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os); // MSPT/MP 64MB JSON, 6.7MB txt, JSON Zip 242kB 
 	//writer.SetMaxDecimalPlaces(6); // sets small values (e.g. 2.3e-8 to zero so cannot use
@@ -855,8 +858,6 @@ bool VarTable::Write_JSON(const std::string& file, const wxArrayString& asCalcul
 	zip.Write(os.GetString(), os.GetSize());
 	zip.Close();
      */
-
-
 	return true;
 }
 
@@ -1542,14 +1543,14 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 		if (m_val.nrows() == 1 && m_val.ncols() == 1) {
 			json_val = VarValueDoubleToJSONValue(m_val(0,0));
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_ARRAY) {
 		json_val.SetArray();
 		for (size_t j = 0; j < m_val.ncols(); j++) {
 			json_val.PushBack(VarValueDoubleToJSONValue(m_val(0, j)), doc.GetAllocator());
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_MATRIX) {
 		json_val.SetArray();
@@ -1559,7 +1560,7 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 				json_val[(rapidjson::SizeType)i].PushBack(VarValueDoubleToJSONValue(m_val(i, j)), doc.GetAllocator());
 			}
 		}
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_STRING) {
 		x = m_str;
@@ -1569,11 +1570,11 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 			x = fn + "." + ext;
 		}
 		json_val.SetString(x.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_TABLE) {
 		m_tab.Write_JSON(json_table, asCalculated, asIndicator);
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
+        doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_table.Move(), doc.GetAllocator());
 	}
 	else if (m_type == VV_DATMAT || m_type == VV_DATARR) 
 		throw(std::runtime_error("Function not implemented for VV_DATARR AND VV_DATMAT"));
@@ -1581,15 +1582,15 @@ void VarValue::Write_JSON(rapidjson::Document& doc, const wxString& name, const 
 		json_val.SetObject();
 		json_val.AddMember("VV_TYPE", rapidjson::Value(VV_BINARY), doc.GetAllocator());
 		p = (const char*)m_bin.GetData();
-		json_bin_array.SetString(p, m_bin.GetDataLen());
+		json_bin_array.SetString(p, (rapidjson::SizeType)m_bin.GetDataLen());
 		json_val.AddMember("DATA", json_bin_array.Move(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 	else {
 	// uncomment for production	throw(std::runtime_error("Function not implemented for " + m_type));
 		x = wxString::Format("ERROR: unhandled type specified in UI: %s", vv_strtypes[m_type]);
 		json_val.SetString(x.c_str(), doc.GetAllocator());
-		doc.AddMember(rapidjson::Value(name.c_str(), name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
+		doc.AddMember(rapidjson::Value(name.c_str(), (rapidjson::SizeType)name.size(), doc.GetAllocator()).Move(), json_val.Move(), doc.GetAllocator());
 	}
 }
 
@@ -1785,6 +1786,7 @@ bool VarValue::AsSSCVar(ssc_var_t p_var) {
         case VV_INVALID:
             break;
         case VV_BINARY:
+			break;
         default:
             ssc_var_free(entry);
             return false;
@@ -2348,7 +2350,8 @@ void VarInfo::Write(wxOutputStream &os)
 	wxDataOutputStream out(os);
 	out.Write8(0xe1);
 	//	out.Write8(2);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 3 after wxString "UIObject" field added
 
 	out.Write32( Type );
 	out.WriteString( Label );
@@ -2358,7 +2361,8 @@ void VarInfo::Write(wxOutputStream &os)
 	out.Write32( Flags );
 	DefaultValue.Write( os );
 	out.WriteString(UIObject);
-
+	out.WriteString(sscVariableName);
+	out.WriteString(wxJoin(sscVariableValue, '|'));
 	out.Write8(0xe1);
 }
 
@@ -2381,7 +2385,14 @@ bool VarInfo::Read(wxInputStream &is)
 	if (ver < 3)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
-		UIObject = in.ReadString();
+		UIObject = in.ReadString();	
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadString();
+		sscVariableValue = wxSplit(in.ReadString(), '|');
+	}
 	wxUint8 lastcode = in.Read8();
 	return  lastcode == code && valok;
 }
@@ -2389,7 +2400,8 @@ bool VarInfo::Read(wxInputStream &is)
 void VarInfo::Write_text(wxOutputStream &os)
 {
 	wxExtTextOutputStream out(os, wxEOL_UNIX);
-	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+//	out.Write8(3); // change to version 3 after wxString "UIObject" field added
+	out.Write8(4); // change to version 4 after ssc variable translation added
 	out.PutChar('\n');
 	out.Write32(Type);
 	out.PutChar('\n');
@@ -2452,6 +2464,30 @@ void VarInfo::Write_text(wxOutputStream &os)
 	else
 		out.WriteString(" ");
 	out.PutChar('\n');
+	// added for version 4 and ssc variable translation
+	if (sscVariableName.Len() > 0)
+		out.WriteString(sscVariableName);
+	else
+		out.WriteString(" ");
+	out.PutChar('\n');
+	wxString sscval = "";
+	if (sscVariableValue.Count() > 0)
+	{
+		sscval = wxJoin(sscVariableValue, '|');
+	}
+	size_t nval = sscval.Len();
+	out.Write32((wxUint32)nval);
+	if (nval > 0)
+	{
+		out.PutChar('\n');
+		for (size_t i = 0; i < nval; i++)
+		{
+			out.PutChar(sscval[i]);
+		}
+	}
+	out.PutChar('\n');
+
+
 }
 
 bool VarInfo::Read_text(wxInputStream &is)
@@ -2482,8 +2518,111 @@ bool VarInfo::Read_text(wxInputStream &is)
 		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
 	else
 		UIObject = in.ReadWord();
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = in.ReadWord();
+		n = in.Read32();
+		if (n > 0)
+		{
+			wxString x;
+			for (size_t i = 0; i < n; i++)
+				x.Append(in.GetChar());
+			sscVariableValue = wxSplit(x, '|');
+		}
+	}
+
 	return  ok;
 }
+
+void VarInfo::Write_JSON(rapidjson::Document& doc)
+{
+	// version
+	Write_JSON_value(doc, "Version", 4);
+	// Type
+	Write_JSON_value(doc, "Type", Type);
+	// Label
+	Write_JSON_value(doc, "Label", Label);
+	// Units
+	Write_JSON_value(doc, "Units", Units);
+	// Group
+	Write_JSON_value(doc, "Group", Group);
+	// IndexLabels
+	/* Handle multiline equations in IndexLabels
+		e.g. PV system Design
+		Numeric
+		subarray1_nstrings
+		3
+		1
+		Number of parallel strings 1
+
+		PV System Design
+		=${pv.array.strings_in_parallel}
+		- ?${pv.subarray2.enable}[0|${pv.subarray2.num_strings}]
+		- ?${pv.subarray3.enable}[0|${pv.subarray3.num_strings}]
+		- ?${pv.subarray4.enable}[0|${pv.subarray4.num_strings}]
+		9
+		1
+		1
+		1
+		1
+		0.000000
+	*/
+	Write_JSON_value(doc, "IndexLabels", IndexLabels);
+	// Flags - careful with longs...
+	Write_JSON_value(doc, "Flags", Flags);
+	// Default Value
+	DefaultValue.Write_JSON(doc,"DefaultValue", wxArrayString(), wxArrayString());
+	// UIObject
+	Write_JSON_value(doc, "UIObject", UIObject);
+
+	// added for version 4 and ssc variable translation
+	// sscVariableName
+	Write_JSON_value(doc, "sscVariableName", sscVariableName);
+	// sscVariableValue
+	Write_JSON_value(doc, "sscVariableValue", sscVariableValue);
+}
+
+bool VarInfo::Read_JSON(const rapidjson::Value& doc)
+{
+	int ver = (int)doc["Version"].GetDouble(); // ver
+
+	bool ok = true;
+
+	Type = (int)doc["Type"].GetDouble();
+	Label = Read_JSON_value(doc, "Label");
+	Units = Read_JSON_value(doc, "Units");
+	Group = Read_JSON_value(doc, "Group");
+
+	IndexLabels.Clear();
+	IndexLabels = wxSplit(Read_JSON_value(doc, "IndexLabels"),'|');
+
+	// check long and Int64
+	Flags = (long)doc["Flags"].GetDouble();
+
+	//Default value
+	ok = ok && DefaultValue.Read_JSON(doc["DefaultValue"]);
+
+	if (ver < 3)
+		UIObject = VUIOBJ_NONE; // wxUIObject associated with variable
+	else
+		UIObject = Read_JSON_value(doc, "UIObject");
+
+	if (ver < 4) {
+		sscVariableName = "";
+	}
+	else {
+		sscVariableName = Read_JSON_value(doc, "sscVariableName");
+		sscVariableValue.Clear();
+		sscVariableValue = wxSplit(Read_JSON_value(doc, "sscVariableValue"), '|');
+	}
+
+	return  ok;
+}
+
+
 
 VarDatabase::VarDatabase()
 {
@@ -2577,6 +2716,49 @@ void VarDatabase::Write_text(wxOutputStream &os)
 		}
 	}
 }
+
+void VarDatabase::Write_JSON(rapidjson::Document& doc)
+{
+	rapidjson::Document json_vardatabase(&doc.GetAllocator()); // for table inside of json document.
+	json_vardatabase.SetObject();
+	VarInfo* v;
+	wxArrayString as = ListAll();
+	as.Sort();
+	for (size_t i = 0; i < as.Count(); i++)	{
+		v = Lookup(as[i]);
+		if (v != NULL)	{
+			rapidjson::Document json_varinfo(&json_vardatabase.GetAllocator()); // for table inside of json document.
+			json_varinfo.SetObject();
+			v->Write_JSON(json_varinfo);
+			json_vardatabase.AddMember(rapidjson::Value(as[i].c_str(), (unsigned int)as[i].size(), json_vardatabase.GetAllocator()).Move(), json_varinfo.Move(), json_vardatabase.GetAllocator());
+		}
+	}
+    wxString name = "VarDatabase";
+    doc.AddMember(rapidjson::Value(name.c_str(), (unsigned int)name.size(), doc.GetAllocator()).Move(), json_vardatabase.Move(), doc.GetAllocator());
+}
+
+
+bool VarDatabase::Read_JSON(const rapidjson::Document& doc)
+{
+	bool ok = true;
+	auto json_vardatabase = doc["VarDatabase"].GetObject();
+
+	for (rapidjson::Value::ConstMemberIterator itr = json_vardatabase.MemberBegin(); itr != json_vardatabase.MemberEnd(); ++itr) {
+		VarInfo* vi = 0;
+		wxString name = itr->name.GetString();
+		VarInfoHash::iterator it = find(name);
+		if (it != end())
+			vi = it->second;
+		else
+			vi = new VarInfo;
+
+		ok = ok && vi->Read_JSON(itr->value);
+
+		(*this)[name] = vi;
+	}
+	return ok;
+}
+
 
 bool VarDatabase::Read_text(wxInputStream &is, const wxString &page)
 {

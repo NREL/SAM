@@ -146,30 +146,6 @@ SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_rotlim_nset(SAM_table ptr, double num
 	});
 }
 
-SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "shading:azal", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "shading:diff", number);
-	});
-}
-
-SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "shading:mxh", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "shading:timestep", mat, nrows, ncols);
-	});
-}
-
 SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_soiling_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "soiling", arr, length);
@@ -209,6 +185,96 @@ SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_xfmr_ll_nset(SAM_table ptr, double nu
 SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_xfmr_nll_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "xfmr_nll", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_azal_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_azal", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_azal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_azal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_diff_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_diff", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_mxh_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_mxh", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_en_timestep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_en_timestep", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_mxh_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_mxh", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_string_option_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "shading_string_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_Shading_shading_timestep_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "shading_timestep", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "adjust_timeindex", arr, length);
 	});
 }
 
@@ -458,53 +524,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_rotlim_nget(SAM_table ptr, SAM_erro
 
 
 
-SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "shading:azal", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Pvwattsv8", "shading:azal");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_shading_diff_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "shading:diff", &result))
-		make_access_error("SAM_Pvwattsv8", "shading:diff");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "shading:mxh", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Pvwattsv8", "shading:mxh");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "shading:timestep", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_Pvwattsv8", "shading:timestep");
-	});
-	return result;
-}
-
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_soiling_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -577,6 +596,176 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_nll_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "xfmr_nll", &result))
 		make_access_error("SAM_Pvwattsv8", "xfmr_nll");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_azal", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "shading_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_diff", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_azal", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_en_azal");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_diff", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_en_diff");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_mxh", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_en_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_string_option", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_en_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_en_timestep", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_en_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_mxh", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "shading_mxh");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_string_option_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "shading_string_option", &result))
+		make_access_error("SAM_Pvwattsv8", "shading_string_option");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "shading_timestep", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "shading_timestep");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_constant", &result))
+		make_access_error("SAM_Pvwattsv8", "adjust_constant");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_periods", &result))
+		make_access_error("SAM_Pvwattsv8", "adjust_en_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_timeindex", &result))
+		make_access_error("SAM_Pvwattsv8", "adjust_en_timeindex");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "adjust_periods");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "adjust_timeindex");
 	});
 	return result;
 }
@@ -704,6 +893,102 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor_ac", &result))
 		make_access_error("SAM_Pvwattsv8", "capacity_factor_ac");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_battery_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_net", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_energy_net");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_fuelcell_replacement_cost_schedule");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_capacity");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_fixed");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_fuel_cost");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_land_lease");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_production");
 	});
 	return result;
 }

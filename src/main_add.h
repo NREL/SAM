@@ -74,7 +74,14 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-			{ 2022, 11, 21 }, // 2022.11.21 ssc 276 release candidate beta
+			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023
+			{ 2023, 12, 1 },  // 2023.12.1 ssc 287 2023 release candidate from develop expires 12/17/2023
+			{ 2023, 10, 31 },  // 2023.10.31 ssc 286 public beta release from develop expires 11/30/2023
+			{ 2023, 10, 6 },  // 2023.10.6 ssc 285 beta release from develop with hybrids expires 1/6/2024
+			{ 2023, 10, 2 },  // 2023.10.2 ssc 284 beta release from develop with hybrids expires 1/2/2024
+			{ 2023, 9, 19 },  // 2023.9.19 ssc 283 beta release from develop with hybrids expires 12/19/2023
+			{ 2023, 7, 24 },  // 2023.7.24 Add new molten salt linear fresnel model and IPH
+			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
 			{ 2021, 12, 02 }, // 2021.12.02 ssc 267 public release
 			{ 2021, 11, 30 }, // 2021.11.30 ssc 265 release candidate beta expires 11/30/2022
 			{ 2021, 11, 27 }, // 2021.11.27 ssc 264 release candidate beta expires 11/27/2022
@@ -247,7 +254,8 @@ public:
 		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
 		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		//dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
-		dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		//dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
 
 		dc.Clear();
 
@@ -358,8 +366,14 @@ extern void RegisterReportObjectTypes();
 
 
 	wxEasyCurl::Initialize();
-	wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
-	wxEasyCurl::SetUrlEscape( "<SAMAPIKEY>", wxString(sam_api_key) );
+	//wxEasyCurl::SetApiKeys( GOOGLE_API_KEY, BING_API_KEY, DEVELOPER_API_KEY );
+	wxEasyCurl::SetUrlEscape("<SAMAPIKEY>", wxString(sam_api_key));
+	wxEasyCurl::SetUrlEscape("<GEOCODEAPIKEY>", wxString(geocode_api_key));
+	wxEasyCurl::SetUrlEscape("<BINGAPIKEY>", wxString(bing_api_key));
+	wxEasyCurl::SetUrlEscape("<GOOGLEAPIKEY>", wxString(google_api_key));
+
+	wxEasyCurl::SetUrlEscape("<USEREMAIL>", wxString(user_email));
+
 
 	wxPLPlot::AddPdfFontDir( GetRuntimePath() + "/pdffonts" );
 	wxPLPlot::SetPdfDefaultFont( "ComputerModernSansSerif" );
@@ -477,15 +491,15 @@ public:
 #endif
 
 		wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-#if defined(__WXMSW__)||defined(__WXOSX__)
-		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
-#endif
+//#if defined(__WXMSW__)||defined(__WXOSX__)
+//		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
+//#endif
 		tools->Add( new wxMetroButton( this, ID_HOME, "Home" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
 		tools->AddStretchSpacer();
 		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 );
@@ -503,7 +517,7 @@ public:
 	void CreateAboutHtml()
 	{
 
-		wxString proxy( wxEasyCurl::GetProxyForURL( "https://sam.nrel.gov" ) );
+		wxString proxy( wxEasyCurl::GetProxyForURL( SamApp::WebApi("website") ));
 		if ( proxy.IsEmpty() ) proxy = "default";
 		else proxy = "proxy: " + proxy;
 

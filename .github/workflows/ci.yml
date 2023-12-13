@@ -9,11 +9,11 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build-ubuntu-1804:
+  build-ubuntu:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
         matrix:
             python-version: [ 3.7 ]
@@ -34,12 +34,14 @@ jobs:
         echo "WEXDIR=$WEXDIR" >> $GITHUB_ENV
         SSCDIR=$GITHUB_WORKSPACE/ssc
         echo "SSCDIR=$SSCDIR" >> $GITHUB_ENV
+        RAPIDJSONDIR=$GITHUB_WORKSPACE/ssc
+        echo "RAPIDJSONDIR=$RAPIDJSONDIR" >> $GITHUB_ENV
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
 
     - name: Install Dependencies
       run: |
-        sudo apt-get update
+        sudo apt-get update --fix-missing
         sudo apt-get install -y \
           freeglut3-dev \
           libcurl4-openssl-dev \
@@ -73,17 +75,17 @@ jobs:
 
     - name: Install wxWidgets
       run: |
-           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
-           tar jxf wxWidgets-3.2.0.tar.bz2
-           cd wxWidgets-3.2.0
-           ./configure --prefix=$HOME/wx-3.2.0 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
+           tar jxf wxWidgets-3.2.3.tar.bz2
+           cd wxWidgets-3.2.3
+           ./configure --prefix=$HOME/wx-3.2.3 --enable-shared=no --enable-stl=yes --enable-debug=no --with-gtk=2 --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin --without-libjbig --without-liblzma --without-gtkprint --with-libnotify=no --with-libmspack=no --with-gnomevfs=no --with-opengl=yes --with-sdl=no --with-cxx=11
            make -j2 all install
-           sudo ln -s $HOME/wx-3.2.0/bin/wx-config /usr/local/bin/wx-config-3
-           ls $HOME/wx-3.2.0/bin
+           sudo ln -s $HOME/wx-3.2.3/bin/wx-config /usr/local/bin/wx-config-3
+           ls $HOME/wx-3.2.3/bin
            wx-config-3 --cflags
            
     - name: Add wxWidgets to path
-      run: echo ${HOME}/wx-3.2.0/bin >> $GITHUB_PATH
+      run: echo ${HOME}/wx-3.2.3/bin >> $GITHUB_PATH
     
     - name: Checkout lk     
       uses: actions/checkout@v2
@@ -193,6 +195,8 @@ jobs:
         echo "WEXDIR=$WEXDIR" >> $GITHUB_ENV
         SSCDIR=$GITHUB_WORKSPACE/ssc
         echo "SSCDIR=$SSCDIR" >> $GITHUB_ENV
+        RAPIDJSONDIR=$GITHUB_WORKSPACE/ssc
+        echo "RAPIDJSONDIR=$RAPIDJSONDIR" >> $GITHUB_ENV
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
@@ -215,14 +219,14 @@ jobs:
     
     - name: Install wxWidgets
       run: |
-           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.0/wxWidgets-3.2.0.tar.bz2
-           tar jxf wxWidgets-3.2.0.tar.bz2
-           cd wxWidgets-3.2.0
-           ./configure --prefix=$HOME/local/wx-3.2.0/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
+           wget -q https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
+           tar jxf wxWidgets-3.2.3.tar.bz2
+           cd wxWidgets-3.2.3
+           ./configure --prefix=$HOME/local/wx-3.2.3/Release --enable-stl=yes --enable-shared=no --disable-debug_flag --with-cocoa --enable-universal_binary=x86_64,arm64 --enable-unicode --enable-webview --disable-mediactrl --with-cxx=11 --with-macosx-version-min=10.15  --with-libjpeg=builtin --with-libpng=builtin --with-regex=builtin --with-libtiff=builtin --with-zlib=builtin --with-expat=builtin
            make clean
            make -j4
            make install
-           ln -s $HOME/local/wx-3.2.0/Release/bin/wx-config /usr/local/bin/wx-config-3
+           ln -s $HOME/local/wx-3.2.3/Release/bin/wx-config /usr/local/bin/wx-config-3
            wx-config-3 --cflags
 
     - name: Checkout lk

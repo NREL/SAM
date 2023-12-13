@@ -152,8 +152,8 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	wxArrayString names;
 	wxArrayString labels;
 
-	for( VarInfoLookup::iterator it = cc->Variables().begin();
-		it != cc->Variables().end();
+	for( VarInfoLookup::iterator it = cc->Variables(0).begin();
+		it != cc->Variables(0).end();
 		++it )
 	{
 		VarInfo &vi = *(it->second);
@@ -204,10 +204,10 @@ void fcall_set( lk::invoke_t &cxt )
 	wxString name = cxt.arg(0).as_string();
 	if ( Case *c = CurrentCase() )
 	{
-		if ( VarValue *vv = c->Values().Get( name ) )
+		if ( VarValue *vv = c->Values(0).Get( name ) )
 		{
 			if ( vv->Read( cxt.arg(1), false ) )
-				c->VariableChanged( name );
+				c->VariableChanged( name, 0 ); // TODO: hybrids
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -225,7 +225,7 @@ void fcall_get( lk::invoke_t &cxt )
 		wxString name = cxt.arg(0).as_string();
 		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
 			vv->Write( cxt.result() );
-		else if ( VarValue *vv = c->Values().Get( name ) )
+		else if ( VarValue *vv = c->Values(0).Get( name ) ) // TODO: hybrids
 			vv->Write( cxt.result() );
 		else
 			cxt.error("variable '" + name + "' does not exist in this context" );
@@ -276,7 +276,7 @@ static void fcall_simulate( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {
@@ -324,7 +324,7 @@ static void fcall_simulate_ssc_tests( lk::invoke_t &cxt )
 
         ExcelExchange &ex = c->ExcelExch();
         if ( ex.Enabled )
-            ExcelExchange::RunExcelExchange( ex, c->Values(), &bcsim );
+            ExcelExchange::RunExcelExchange( ex, c->Values(0), &bcsim );
 
         if ( !bcsim.Prepare() )
         {
@@ -387,8 +387,9 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
-		if ( c->LoadDefaults( &err ) )
-			cxt.result().assign( 1.0 );
+		if (c->LoadDefaults(&err)) {
+			cxt.result().assign(1.0);
+		}
 		else
 		{
 			if ( cxt.arg_count() == 1 )
@@ -403,8 +404,10 @@ static void fcall_load_defaults( lk::invoke_t &cxt )
 static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 {
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
-	if ( Case *c = CurrentCase() )
-		cxt.result().assign( c->SaveDefaults( true ) );
+	if (Case* c = CurrentCase()) {
+		int n = c->EvaluateEquations();
+		cxt.result().assign(c->SaveDefaults(true));
+	}
 	else cxt.error("no active case");
 }
 
@@ -514,7 +517,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 				cxt.error("error translating value for '" + name + wxString::Format("' in run [%d]", (int)i ) );
 				return;
 			}
-			sim->Override( name, value );
+			sim->Override( name, value, 0 ); // TODO: hybrids
 		}
 
 		if ( !sim->Prepare() )
@@ -612,6 +615,7 @@ extern void fcall_group_write(lk::invoke_t &);
 extern void fcall_calculated_list(lk::invoke_t &);
 extern void fcall_urdb_read(lk::invoke_t &);
 extern void fcall_urdb_write(lk::invoke_t &);
+extern void fcall_geocode(lk::invoke_t&);
 extern void fcall_urdb_get(lk::invoke_t &);
 extern void fcall_urdb_list_utilities(lk::invoke_t &);
 extern void fcall_urdb_list_utilities_by_zip_code(lk::invoke_t &);
@@ -648,6 +652,7 @@ lk::fcall_t *sam_functions() {
 		fcall_group_write,
 		fcall_urdb_read,
 		fcall_urdb_write,
+		fcall_geocode,
 		fcall_urdb_get,
 		fcall_urdb_list_utilities,
 		fcall_urdb_list_utilities_by_zip_code,

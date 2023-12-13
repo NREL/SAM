@@ -37,6 +37,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/wx.h>
 #include <wx/frame.h>
 #include <wx/stc/stc.h>
+#include <fstream>
 
 #if defined(__WXMSW__)||defined(__WXOSX__)
 #include <wx/webview.h>
@@ -77,6 +78,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ssc/sscapi.h>
 
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/prettywriter.h> // for stringify JSON
+#include <rapidjson/filereadstream.h>
+#include <rapidjson/filewritestream.h>
+#include <rapidjson/istreamwrapper.h>
+
+
 //#include "private.h"
 //#include "welcome.h"
 #include "main.h"
@@ -93,6 +102,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#include "main_add.h"
 #include <../src/main_add.h>
 
+#define __SAVE_AS_JSON__ 1
+#define __LOAD_AS_JSON__ 1
 
 static PythonConfig pythonConfig;
 
@@ -120,7 +131,8 @@ enum { __idFirst = wxID_HIGHEST+592,
 	__idCaseMenuLast,
 	__idInternalFirst,
 		ID_INTERNAL_IDE, ID_INTERNAL_RESTART, ID_INTERNAL_SHOWLOG, ID_INTERNAL_SEGFAULT,
-		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_INTERNAL_INVOKE_SSC_DEBUG,
+		ID_INTERNAL_DATAFOLDER, ID_INTERNAL_CASE_VALUES, ID_SAVE_CASE_DEFAULTS, ID_SAVE_CASE_AS_JSON, ID_LOAD_CASE_FROM_JSON, 
+		ID_SAVE_CASE_AS_SSC_JSON, ID_LOAD_CASE_FROM_SSC_JSON, ID_LOAD_RUN_CASE_FROM_SSC_JSON, ID_INTERNAL_INVOKE_SSC_DEBUG,
 	__idInternalLast
 };
 
@@ -238,26 +250,31 @@ MainWindow::MainWindow()
 	m_topBook->SetSelection( 0 );
 
 	std::vector<wxAcceleratorEntry> entries;
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4, ID_INTERNAL_SHOWLOG));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F5,  ID_INTERNAL_INVOKE_SSC_DEBUG ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F7,  ID_INTERNAL_IDE ) ) ;
 	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F8,  ID_INTERNAL_RESTART ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F4,  ID_INTERNAL_SHOWLOG ) );
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
-	entries.push_back(wxAcceleratorEntry(wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F9, ID_INTERNAL_DATAFOLDER));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F10, ID_SAVE_CASE_DEFAULTS));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F11, ID_RUN_ALL_CASES));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_SHIFT, WXK_F12, ID_INTERNAL_CASE_VALUES));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1, ID_INTERNAL_SEGFAULT));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F5, ID_SAVE_CASE_AS_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F6, ID_LOAD_CASE_FROM_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F7, ID_SAVE_CASE_AS_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F8, ID_LOAD_CASE_FROM_SSC_JSON));
+	entries.push_back(wxAcceleratorEntry(wxACCEL_CTRL, WXK_F9, ID_LOAD_RUN_CASE_FROM_SSC_JSON));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F10, ID_CASE_DUPLICATE));
+	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F11, ID_BROWSE_INPUTS));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'n', ID_NEW_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'o', wxID_OPEN ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL | wxACCEL_SHIFT, 'o', ID_OPEN_SCRIPT ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 's', wxID_SAVE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, 'w', wxID_CLOSE ) );
+	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP));
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F2, ID_CASE_RENAME ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F5, ID_CASE_SIMULATE ) );
 	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F6, ID_CASE_REPORT ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_NORMAL, WXK_F1, wxID_HELP ) );
-	entries.push_back( wxAcceleratorEntry( wxACCEL_CTRL, WXK_F1,  ID_INTERNAL_SEGFAULT ) ) ;
 	SetAcceleratorTable( wxAcceleratorTable( entries.size(), &entries[0] ) );
 }
 
@@ -455,9 +472,11 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	if ( m_topBook->GetSelection() != 1 )
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
-	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	//	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	Case* c = new Case;
 	c->SetConfiguration( tech, fin );
 	c->LoadDefaults();
+	m_project.AddCase(GetUniqueCaseName(_name), c);
 	CreateCaseWindow( c );
 	return true;
 }
@@ -483,10 +502,26 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
 
 	// when creating a new case, at least
 	// show the first input page
+   
 	wxArrayString pages = win->GetInputPages();
-	if ( pages.size() > 0 )
-		win->SwitchToInputPage( pages[0] );
+	if (pages.size() > 0) {
+		win->Freeze();
+		// go through and load all pages to trigger on-load events - addresses SAM issue 1520 and other requests
+		for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
+			for (int j=0; j< c->GetConfiguration()->InputPageGroups[i].size(); j++)
+	            win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][j]->SideBarLabel);
+        }
+		// load first page of hybrid and non-hybrid configurations
+		if (c->GetConfiguration()->Technology.size() > 1) // hybrid	
+			win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[c->GetConfiguration()->Technology.size() - 1][0]->SideBarLabel);
+		else
+			win->SwitchToInputPage(pages[0]);
 
+		// reevaluate all equations address SAM #1583
+		c->EvaluateEquations();
+
+		win->Thaw();
+	} //mp trying to not overwrite first page switch at start
 	return win;
 }
 
@@ -568,12 +603,216 @@ void MainWindow::OnInternalCommand( wxCommandEvent &evt )
 		}
 		break;
 	case ID_SAVE_CASE_DEFAULTS:
-		if (Case *cc = GetCurrentCase())
+		if (Case* cc = GetCurrentCase())
 		{
 			cc->SaveDefaults();
 		}
 		break;
+	case ID_SAVE_CASE_AS_JSON:
+		if (Case* cc = GetCurrentCase())
+		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
+			wxFileDialog fdlg(this, "Save the active case as a JSON file", wxEmptyString,
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+			if (fdlg.ShowModal() == wxID_OK) {
+				cc->SaveAsJSON(true, fdlg.GetPath(), case_name);
+			}
+		}
+		break;
+	case ID_LOAD_CASE_FROM_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load a case from a JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			rapidjson::Document doc;
+
+			wxString sfn = fdlg.GetPath();
+			wxFileName fn(sfn);
+			wxFileInputStream fis(sfn);
+
+			if (!fis.IsOk()) {
+				wxLogError(wxS("Couldn't open the file '%s'."), sfn);
+				break;
+			}
+			wxStringOutputStream os;
+
+			wxString case_name, tech, fin;
+
+			fis.Read(os);
+			rapidjson::StringStream is(os.GetString().c_str());
+			doc.ParseStream(is);
+			if (doc.HasParseError()) {
+				wxLogError(wxS("Could not read the json file string conversion '%s'."), sfn);
+				break;
+			}
+			else {
+				for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+					// can search for more efficiency
+					wxString str_name = itr->name.GetString();
+					if (str_name == "Case_name")
+						case_name = itr->value.GetString();
+					else if (str_name == "Technology")
+						tech = itr->value.GetString();
+					else if (str_name == "Financing")
+						fin = itr->value.GetString();
+				}
+			}
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+			c->SetConfiguration(tech, fin);
+			wxString error = "";
+//			c->LoadFromJSON(sfn, &error);
+			CreateCaseWindow(c);
+			if (error.Len() > 0) wxMessageBox(error);
+		}
 	}
+		break;
+	case ID_SAVE_CASE_AS_SSC_JSON:
+		if (Case* cc = GetCurrentCase())
+		{
+			size_t tab_sel = m_caseTabList->GetSelection();
+			wxString case_name = m_caseTabList->GetLabel(tab_sel);
+
+			wxFileDialog fdlg(this, "Save the active case as a SSC JSON file", wxEmptyString,
+				case_name + ".json", "JSON (*.json)|*.json", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+			if (fdlg.ShowModal() == wxID_OK) {
+				cc->SaveAsSSCJSON(fdlg.GetPath());
+			}
+		}
+		break;
+	case ID_LOAD_CASE_FROM_SSC_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load a case from a ssc JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			wxString case_name, tech, fin;
+
+
+			wxString sfn = fdlg.GetPath();
+
+			/* For reading in "Case_name", "Technology", and "Financing"
+			rapidjson::Document doc;
+
+			wxFileName fn(sfn);
+			wxFileInputStream fis(sfn);
+
+			if (!fis.IsOk()) {
+				wxLogError(wxS("Couldn't open the file '%s'."), sfn);
+				break;
+			}
+			wxStringOutputStream os;
+
+
+			fis.Read(os);
+			rapidjson::StringStream is(os.GetString().c_str());
+			doc.ParseStream(is);
+			if (doc.HasParseError()) {
+				wxLogError(wxS("Could not read the json file string conversion '%s'."), sfn);
+				break;
+			}
+			else {
+				for (rapidjson::Value::ConstMemberIterator itr = doc.MemberBegin(); itr != doc.MemberEnd(); ++itr) {
+					// can search for more efficiency
+					wxString str_name = itr->name.GetString();
+					if (str_name == "Case_name")
+						case_name = itr->value.GetString();
+					else if (str_name == "Technology")
+						tech = itr->value.GetString();
+					else if (str_name == "Financing")
+						fin = itr->value.GetString();
+				}
+			}
+			*/
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC inputs";
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+			c->SetConfiguration(tech, fin);
+			wxString error = "";
+//			c->LoadFromSSCJSON(sfn, &error);
+			CreateCaseWindow(c);
+			if (error.Len() > 0) wxMessageBox(error);
+		}
+	}
+	break;
+
+	case ID_LOAD_RUN_CASE_FROM_SSC_JSON:
+	{
+		// Read JSON file and get case_name and config_info
+		wxFileDialog fdlg(this, "Load and run a case from a ssc JSON file", wxEmptyString,
+			".json", "JSON (*.json)|*.json", wxFD_OPEN);
+
+		if (fdlg.ShowModal() == wxID_OK) {
+			wxString case_name, tech, fin;
+
+			wxString sfn = fdlg.GetPath();
+
+			// present configuraiton selection dialog to set technology and financing (reads directly from JSON for Inputs code generation file)
+			bool reset = false;
+			if (!ShowConfigurationDialog(this, &tech, &fin, &reset))
+				break;
+
+			case_name = "SSC run inputs";
+
+			if (0 == SamApp::Config().Find(tech, fin)) {
+				wxMessageBox("Internal error: could not locate configuration information for " + tech + "/" + fin);
+				break;
+			}
+
+			if (m_topBook->GetSelection() != 1)
+				m_topBook->SetSelection(1); // switch to cases view if currently in welcome window
+
+			Case* c = m_project.AddCase(GetUniqueCaseName(case_name));
+
+			wxString error = "";
+			if (c->PreRunSSCJSON(tech, fin, sfn, &error)) {
+				if (wxMessageBox("Continue and create case loading any missing defaults?", "Create Case", wxYES_NO) == wxYES) {
+					c->SetConfiguration(tech, fin); // loads defaults
+					error = "";
+					// overwrite defaults with JSON values
+//					c->LoadFromSSCJSON(sfn, &error);
+					auto* cw = CreateCaseWindow(c);
+					//cw->RunSSCBaseCase(sfn, false, &error); // optionally run base case
+					//if (error.Len() > 0) wxMessageBox(error);
+				}
+			}
+			else {
+				if (error.Len() > 0) wxMessageBox(error);
+			}
+		}
+	}
+	break;
+	}
+
 }
 
 void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
@@ -591,8 +830,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			wxString case_name = m_project.GetCaseName(cases[0]);
 			col_hdrs.push_back(case_name);
 			title = "Inputs Browser"; //: " + case_name;
-			var_table_vec.push_back(cases[0]->Values());
-			var_info_lookup_vec.push_back(cases[0]->Variables());
+			var_table_vec.push_back(cases[0]->Values(0)); // TODO - handle hybrid technologies
+			var_info_lookup_vec.push_back(cases[0]->Variables(0));
 		}
 		else
 		{
@@ -602,8 +841,8 @@ void MainWindow::CaseVarGrid(std::vector<Case*> &cases)
 			col_hdrs.Insert("Variable", 0);
 			for (std::vector<Case*>::iterator it = cases.begin(); it != cases.end(); ++it)
 			{
-				var_table_vec.push_back((*it)->Values());
-				var_info_lookup_vec.push_back((*it)->Variables());
+				var_table_vec.push_back((*it)->Values(0));  // TODO - handle hybrid technologies
+				var_info_lookup_vec.push_back((*it)->Variables(0));
 			}
 		}
 
@@ -850,8 +1089,11 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	ProjectFile pf;
 	// tell user to save and check file if issue
-	if (!pf.ReadArchive(file))
-		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+	if (!pf.ReadArchive(file)) {
+//		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%s.", file, pf.GetLastError()));
+		return false;
+	}
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
@@ -1068,9 +1310,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, NULL )
-				&& (t2 != tech || f2 != fin) )
-				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
+			wxString sel = cw->GetInputPage();
+			if (ShowConfigurationDialog(this, &t2, &f2, NULL)
+				&& (t2 != tech || f2 != fin)) {
+				// updates CaseWindow through OnCaseEvetn
+				c->SetConfiguration(t2, f2); 
+				// manually set tree navigation - selects current selection or first item
+				cw->SwitchToNavigationMenu(sel);
+			}
 		}
 		break;
 	case ID_CASE_RENAME:
@@ -1126,7 +1373,8 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			c->LoadDefaults();
 
 			// update ui
-			c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values().ListAll() ) );
+			for (size_t i = 0; i < c->GetConfiguration()->Technology.Count(); i++)
+				c->SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, c->Values(i).ListAll() ) ); // TODO - test hybrids UI update
 		}
 		break;
 	case ID_CASE_EXCELEXCH:
@@ -1398,6 +1646,68 @@ bool InputPageData::Read_text(wxInputStream &is, wxString &ui_path)
 	return ok;
 }
 
+bool InputPageData::Write_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+	Write_JSON(doc, ui_path);
+
+	rapidjson::StringBuffer os;
+	rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(os);
+	doc.Accept(writer);
+
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
+		return false;
+	}
+
+	wxFFileOutputStream out(file);
+	out.Write(os.GetString(), os.GetSize());
+	out.Close();
+	return true;
+}
+
+void InputPageData::Write_JSON(rapidjson::Document& doc, wxString& ui_path)
+{
+	doc.SetObject();
+
+	m_form.Write_JSON(doc, ui_path); 
+	m_vars.Write_JSON(doc); 
+	Write_JSON_multiline_value(doc, "Equations", m_eqnScript);
+	Write_JSON_multiline_value(doc, "Callbacks", m_cbScript);
+}
+
+bool InputPageData::Read_JSON(const std::string& file, wxString& ui_path)
+{
+	rapidjson::Document doc;
+	std::ifstream ifs(file);
+	rapidjson::IStreamWrapper is(ifs);
+
+	doc.ParseStream(is);
+
+	if (doc.HasParseError()) {
+		wxLogError(wxS("Could not read the json file '%s'.\nError: %d"), file.c_str(), doc.GetParseError());
+		return false;
+	}
+	else {
+		Read_JSON(doc, ui_path);
+		return true;
+	}
+}
+
+bool InputPageData::Read_JSON(const rapidjson::Document& doc, wxString& ui_path)
+{
+	bool ok = true;
+	ok = ok && m_form.Read_JSON(doc, ui_path);
+	ok = ok && m_vars.Read_JSON(doc);
+    m_eqnScript.Clear();
+	m_eqnScript = Read_JSON_multiline_value(doc, "Equations");
+	m_cbScript.Clear();
+	m_cbScript = Read_JSON_multiline_value(doc, "Callbacks");
+	return ok;
+}
+
+
+
 bool InputPageData::BuildDatabases()
 {
 	m_eqns.Clear();
@@ -1491,6 +1801,33 @@ bool InputPageDatabase::LoadFileText(const wxString &file)
 }
 
 
+bool InputPageDatabase::LoadFileJSON(const wxString& file)
+{
+	wxFileName ff(file);
+	wxString name(ff.GetName());
+
+	InputPageData* pd = new InputPageData;
+	wxString ui_path = SamApp::GetRuntimePath() + "/ui/";
+	bool ok = true;
+	bool bread = pd->Read_JSON(file.ToStdString(), ui_path);
+	if (!bread)
+		ok = false;
+
+	pd->Form().SetName(name);
+
+	if (ok) Add(name, pd);
+	else delete pd;
+
+	if (!pd->BuildDatabases())
+	{
+		wxLogStatus("failed to build equation and script databases for: " + name);
+		ok = false;
+	}
+
+	return ok;
+}
+
+
 void InputPageDatabase::Add( const wxString &name, InputPageData *ui )
 {
 	InputPageDataHash::iterator it = m_hash.find( name );
@@ -1517,7 +1854,9 @@ ConfigInfo::ConfigInfo()
 
 ConfigInfo::~ConfigInfo()
 {
-	for( size_t i=0;i<InputPageGroups.size();i++) delete InputPageGroups[i];
+	for( size_t i=0;i<InputPageGroups.size();i++) 
+		for (size_t j=0; j< InputPageGroups[i].size(); j++)
+			delete InputPageGroups[i][j];
 }
 
 
@@ -1552,7 +1891,25 @@ void ConfigDatabase::Add( const wxString &tech, const wxArrayString &fin )
 		if ( !Find( tech, fin[i] ) )
 		{
 			ConfigInfo *ci = new ConfigInfo;
-			ci->Technology = tech;
+
+			size_t vector_sizes = 1;
+			// hybrid handling
+			ci->TechnologyFullName = tech;
+			auto as = wxSplit(tech, ' ');
+			if (as.Count() > 1 && as[as.size() - 1].Lower() == "hybrid") {
+				vector_sizes = as.size();
+				for (size_t j = 0; j < as.size(); j++)
+					ci->Technology.push_back(as[j]);
+			}
+			else {
+				ci->Technology.push_back(tech);
+			}
+			ci->InputPageGroups.resize(vector_sizes);
+			ci->InputPages.resize(vector_sizes);
+			ci->Variables.resize(vector_sizes);
+			ci->AutoVariables.resize(vector_sizes);
+			ci->Equations.resize(vector_sizes);
+
 			ci->Financing = fin[i];
 			m_configList.push_back( ci );
 		}
@@ -1566,13 +1923,23 @@ void ConfigDatabase::SetConfig( const wxString &t, const wxString &f )
 
 void ConfigDatabase::SetModules( const wxArrayString &list )
 {
-	if ( m_curConfig != 0 ) m_curConfig->Simulations = list;
+	if (m_curConfig != NULL) {
+		m_curConfig->Simulations = list;
+	}
 }
+
+void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVariableDependencies>& dependencies)
+{
+	if (m_curConfig != NULL) {
+		m_curConfig->HybridVariables = dependencies;
+	}
+}
+
 
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide )
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top)
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1585,41 +1952,87 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->ExclusiveHeaderPages = exclhdr_pages;
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
+    ip->BinName = bin_name;
+    ip->ExclTop = excl_top;
 
-	m_curConfig->InputPageGroups.push_back( ip );
+	int ndx = 0;
+	// assumption is that bin_name is one of hybrid techs, e.g. for "PVWatts Wind Battery Hybrid" technology, the bin_name = PVWatts, Wind or Battery
+	if (m_curConfig->Technology.size() > 1)  { // do not process for m_curConfig.Technology.size() == 1 e.g. "PV Battery" does not end with "Hybrid"
+		ndx = m_curConfig->Technology.Index(bin_name);
+        if (ndx == wxNOT_FOUND) { // no bin name - place in "Hybrid" technology and all technologies so that vartables contain dependencies like "analysisperiod" and "salestax"
+			ndx = (int)m_curConfig->Technology.size() - 1; // TODO: check that values are updated on other forms.
+            m_curConfig->InputPageGroups[ndx].push_back(ip);
+        }
+		else if (ndx < 0 || ndx >(int)m_curConfig->InputPageGroups.size()) {
+			wxMessageBox("Internal error in configuration.\n\n" + m_curConfig->TechnologyFullName + ", " + m_curConfig->Financing + "   [ " + ip->BinName + " ]\n\n"
+				"An error occurred when attempting to add input pages.", "sam-engine", wxICON_ERROR | wxOK);
+			return;
+		}
+		else {
+			m_curConfig->InputPageGroups[ndx].push_back(ip);
+		}
+	}
+	else { // InputPageGroups sized during Add call - non-hybrid use first element
+		m_curConfig->InputPageGroups[ndx].push_back(ip);
+	}
+	// tracks which vartable, vardatabase and eqndatabase to use - 0 for non-hybrids
+	// pagegroup
+	ip->ndxHybrid = ndx;
+	// pages
+	for (size_t i = 0; i < ip->Pages.size(); i++)
+		for (size_t j = 0; j < ip->Pages[i].size(); j++)
+			ip->Pages[i][j].ndxHybrid = ndx;
+	//exclusive header pages e.g. Utility Rate - Enable
+	for (size_t i = 0; i < ip->ExclusiveHeaderPages.size(); i++)
+			ip->ExclusiveHeaderPages[i].ndxHybrid = ndx;
+
 }
 
-void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci )
+void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, ConfigInfo *ci, size_t ndx )
 {
 	for( size_t i=0;i<Pages.size();i++ )
 	{
 		PageInfo &pi = Pages[i];
 		if ( InputPageData *ipd = SamApp::InputPages().Lookup( pi.Name ) )
 		{
-			ci->InputPages[ pi.Name ] = ipd;
+			ci->InputPages[ndx][ pi.Name ] = ipd;
 
-			ci->Equations.AddDatabase( &ipd->Equations() );
-			ci->Equations.Add( ipd->Equations().GetEquations() );
+			ci->Equations[ndx].AddDatabase(&ipd->Equations());
+			ci->Equations[ndx].Add(ipd->Equations().GetEquations());
 
 			VarDatabase &vars = ipd->Variables();
-			for( VarDatabase::iterator it = vars.begin();
-				it != vars.end();
-				++it )
-			{
-				if ( !ci->Variables.Add( it->first, it->second ) )
-				{
-					wxMessageBox("Internal error in configuration.\n\n" + ci->Technology + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
+			for( VarDatabase::iterator it = vars.begin();it != vars.end();++it )	{
+				if ( !ci->Variables[ndx].Add(it->first, it->second))	{
+					wxMessageBox("Internal error in configuration.\n\n" + ci->TechnologyFullName  + ", " + ci->Financing + "   [ " + pi.Name + " ]\n\n"
 						"An error occurred when attempting to instantiate variable: '" + it->first + "'\n"
 						"Duplicate variables within a configuration are not allowed.", "sam-engine", wxICON_ERROR|wxOK );
 				}
+				/*
+                // TODO: hybrid additional variables - need general way to handle - in startup.lk
+				if (ci->Technology.size() > 1) { // hybrids
+					if ((it->first.Lower() == "analysis_period") || (it->first.Lower() == "sales_tax_rate")) { // in financial pages ndx==3
+						if (ci->Variables.size() > 1) ci->Variables[0].Add(it->first, it->second);// add to pvwatts
+						if (ci->Variables.size() > 2) ci->Variables[1].Add(it->first, it->second);// add to wind
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					if (it->first.Lower() == "solar_resource_file") { // in pvwatts pages ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[2].Add(it->first, it->second);// add to battery
+					}
+					// cannot add now that Hybrid Summary page contains variables
+					if (it->first.Lower() == "system_capacity") { // use pvwatts initially ndx==0
+						if (ndx == 0 && ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+					if (ndx == 0 && it->first.Lower() == "total_installed_cost") { // use pvwatts initially ndx==0
+						if (ci->Variables.size() > 3) ci->Variables[3].Add(it->first, it->second);// add to financials
+					}
+				}
+				*/
 			}
 
-			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )
-			{
-				VarInfo *vv = ci->AutoVariables.Lookup( pi.CollapsiblePageVar );
-				if( vv == 0 )
-				{
-					vv = ci->AutoVariables.Create( pi.CollapsiblePageVar, VV_NUMBER,
+			if ( pi.Collapsible && !pi.CollapsiblePageVar.IsEmpty() )	{
+				VarInfo *vv = ci->AutoVariables[ndx].Lookup(pi.CollapsiblePageVar);
+				if( vv == 0 ){
+					vv = ci->AutoVariables[ndx].Create(pi.CollapsiblePageVar, VV_NUMBER,
 						"Current selection for " + pi.Caption );
 
 					vv->Flags |= VF_COLLAPSIBLE_PANE;
@@ -1628,7 +2041,7 @@ void ConfigDatabase::CachePagesInConfiguration( std::vector<PageInfo> &Pages, Co
 				else
 					wxLogStatus( "AutoVariable error: collapsible page variable already exists in configuration: " + pi.CollapsiblePageVar );
 
-				ci->Variables.Add( pi.CollapsiblePageVar, vv );
+				ci->Variables[ndx].Add(pi.CollapsiblePageVar, vv);
 			}
 		}
 		else
@@ -1642,37 +2055,51 @@ void ConfigDatabase::RebuildCaches()
 		it0 != m_configList.end(); ++it0 )
 	{
 		ConfigInfo *ci = *it0;
+		size_t i;
 
-		ci->Variables.clear();
-		ci->Equations.Clear();
-		ci->AutoVariables.clear();
-		ci->InputPages.clear();
+		// all set to same size in Add method
+		for (i=0;i<ci->Variables.size(); i++)
+			ci->Variables[i].clear();
+		for (i = 0; i < ci->Equations.size(); i++)
+			ci->Equations[i].Clear();
+		for (i = 0; i < ci->AutoVariables.size(); i++)
+			ci->AutoVariables[i].clear();
+		for (i = 0; i < ci->InputPages.size(); i++)
+			ci->InputPages[i].clear();
 
-		for( std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups.begin();
-			it1 != ci->InputPageGroups.end(); ++it1 )
-		{
-			InputPageGroup *igrp = *it1;
-			for( size_t k=0;k<igrp->Pages.size();k++ )
-				CachePagesInConfiguration( igrp->Pages[k], ci );
+		for (i = 0; i < ci->Technology.size(); i++) {
 
-			if ( igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty() )
+			for (std::vector<InputPageGroup*>::iterator it1 = ci->InputPageGroups[i].begin();
+				it1 != ci->InputPageGroups[i].end(); ++it1)
 			{
-				VarInfo *vv = ci->AutoVariables.Lookup( igrp->ExclusivePageVar );
-				if ( vv == 0 )
+				InputPageGroup* igrp = *it1;
+				for (size_t k = 0; k < igrp->Pages.size(); k++)
+					CachePagesInConfiguration(igrp->Pages[k], ci, i);
+
+				if (igrp->OrganizeAsExclusivePages && !igrp->ExclusivePageVar.IsEmpty())
 				{
-					vv = ci->AutoVariables.Create( igrp->ExclusivePageVar, VV_NUMBER,
-						"Current selection for " + igrp->SideBarLabel );
+					VarInfo* vv = ci->AutoVariables[i].Lookup(igrp->ExclusivePageVar);
+					if (vv == 0)
+					{
+						vv = ci->AutoVariables[i].Create(igrp->ExclusivePageVar, VV_NUMBER,
+							"Current selection for " + igrp->SideBarLabel);
 
-					vv->Flags |= VF_EXCLUSIVE_PAGES;
-					vv->DefaultValue.Set( 0 );
+						vv->Flags |= VF_EXCLUSIVE_PAGES;
+						vv->DefaultValue.Set(0);
+					}
+					else
+						wxLogStatus("AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar);
+
+					ci->Variables[i].Add(igrp->ExclusivePageVar, vv);
 				}
-				else
-					wxLogStatus( "AutoVariable error: exclusive page variable already exists in configuration: " + igrp->ExclusivePageVar );
 
-				ci->Variables.Add( igrp->ExclusivePageVar, vv );
+				CachePagesInConfiguration(igrp->ExclusiveHeaderPages, ci, i);
 			}
-
-			CachePagesInConfiguration( igrp->ExclusiveHeaderPages, ci );
+		}
+		// after variables are initially populated, add any hybrid dependencies, if necessary
+		for (i = 0; i < ci->HybridVariables.size(); i++) {
+			if (VarInfo* vi = ci->Variables[ci->HybridVariables[i].IndependentVariableVarTable].Lookup(ci->HybridVariables[i].IndependentVariableName))
+				ci->Variables[ci->HybridVariables[i].DependentVariableVarTable].Add(ci->HybridVariables[i].DependentVariableName, vi);
 		}
 	}
 }
@@ -1698,7 +2125,7 @@ wxArrayString ConfigDatabase::GetFinancingForTech(const wxString &tech)
 ConfigInfo *ConfigDatabase::Find( const wxString &t, const wxString &f )
 {
 	for( size_t i=0;i<m_configList.size();i++ )
-		if ( m_configList[i]->Technology == t
+		if ( m_configList[i]->TechnologyFullName == t
 			&& m_configList[i]->Financing == f )
 			return m_configList[i];
 
@@ -1772,7 +2199,7 @@ public:
 
 		wxHyperlinkCtrl *hyp2 = new wxHyperlinkCtrl( this, wxID_ANY,
 			"Email feedback directly to the SAM team...",
-			"mailto:sam.support@nrel.gov?subject=SAM Beta Feedback" );
+			SamApp::WebApi("support_email") + "?subject=SAM Beta Feedback" );
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
 		sizer->Add( text, 0, wxALIGN_CENTER|wxALL, 10 );
@@ -1820,6 +2247,8 @@ void SamApp::Restart()
 		wxString file;
 #ifdef UI_BINARY
 		bool has_more = dir.GetFirst(&file, "*.ui", wxDIR_FILES);
+#elif defined(__LOAD_AS_JSON__)
+		bool has_more = dir.GetFirst(&file, "*.json", wxDIR_FILES);
 #else
 		bool has_more = dir.GetFirst(&file, "*.txt", wxDIR_FILES);
 #endif // UI_BINARY
@@ -1829,6 +2258,10 @@ void SamApp::Restart()
 //			wxLogStatus("loading .ui: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFile(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
+#elif defined(__LOAD_AS_JSON__)
+			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
+			if (!SamApp::InputPages().LoadFileJSON(SamApp::GetRuntimePath() + "/ui/" + file))
+				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else
 //			wxLogStatus("loading .txt: " + wxFileName(file).GetName());
 			if (!SamApp::InputPages().LoadFileText(SamApp::GetRuntimePath() + "/ui/" + file))
@@ -1919,6 +2352,10 @@ void SamApp::Restart()
     wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
     if (!wxFileExists(wave_resource_ts_db)) ScanWaveResourceTSData(wave_resource_ts_db);
     Library::Load(wave_resource_ts_db);
+
+    wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+    if (!wxFileExists(tidal_resource_db)) ScanTidalResourceData(tidal_resource_db);
+    Library::Load(tidal_resource_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )
@@ -2010,12 +2447,12 @@ void SamApp::ShowHelp( const wxString &context )
 		url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + "index.html";
 #ifdef __WXGTK__
 		if ( ! context.IsEmpty() )
-			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".htm";
+			url = "file:///" + fn.GetFullPath( wxPATH_NATIVE ) + context + ".html";
 		wxLaunchDefaultBrowser( url );
 		return;
 #else
 		if ( ! context.IsEmpty() )
-			url += "?" + context + ".htm";
+			url += "?" + context + ".html";
 #endif
 	}
 
@@ -2165,6 +2602,43 @@ bool SamApp::WriteProxyFile( const wxString &proxy )
 }
 
 ConfigDatabase &SamApp::Config() { return g_cfgDatabase; }
+
+bool SamApp::VarTablesFromJSONFile(ConfigInfo* ci, std::vector<VarTable>& vt, const std::string& file)
+{
+	if (!ci || (vt.size() < 1) || (ci->Technology.size() < 1))
+		return false;
+	else if (ci->Technology.size() < 2)
+		return vt[0].Read_JSON(file);
+	else { // hybrid
+		rapidjson::Document doc, table;
+		wxFileInputStream fis(file);
+
+		if (!fis.IsOk()) {
+			wxLogError(wxS("Couldn't open the file '%s'."), file);
+			return false;
+		}
+		wxStringOutputStream os;
+		fis.Read(os);
+
+		rapidjson::StringStream is(os.GetString().c_str());
+
+		doc.ParseStream(is);
+		if (doc.HasParseError()) {
+			wxLogError(wxS("Could not read the json file string conversion '%s'."), file);
+			return false;
+		}
+		else {
+			bool ret = true;
+			for (size_t i = 0; i < ci->Technology.size(); i++) {
+				table.CopyFrom(doc[ci->Technology[i].ToStdString().c_str()], doc.GetAllocator());
+				ret = ret && vt[i].Read_JSON(table);
+			}
+			return ret;
+		}
+	}
+}
+
+
 InputPageDatabase &SamApp::InputPages() { return g_uiDatabase; }
 ScriptDatabase &SamApp::GlobalCallbacks() { return g_globalCallbacks; }
 
@@ -2285,11 +2759,10 @@ void SamApp::InstallPythonPackage(const std::string& pip_name) {
 enum { ID_TechTree = wxID_HIGHEST+98, ID_FinTree };
 
 BEGIN_EVENT_TABLE(ConfigDialog, wxDialog)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_START_EDITING(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_TechTree, ConfigDialog::OnTreeActivated)
-EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
-EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_TechTree, ConfigDialog::OnTechTreeCollapsing)
+	EVT_DATAVIEW_ITEM_COLLAPSING(ID_FinTree, ConfigDialog::OnFinTreeCollapsing)
+	EVT_DATAVIEW_ITEM_ACTIVATED(ID_FinTree, ConfigDialog::OnFinTreeDoubleClick)
+	EVT_DATAVIEW_SELECTION_CHANGED(ID_TechTree, ConfigDialog::OnTechTree)
 	EVT_DATAVIEW_SELECTION_CHANGED(ID_FinTree, ConfigDialog::OnFinTree)
 	EVT_BUTTON( wxID_HELP, ConfigDialog::OnHelp )
 	EVT_BUTTON( wxID_OK, ConfigDialog::OnOk )
@@ -2308,8 +2781,12 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
+	wxFont font(wxMetroTheme::Font(wxMT_NORMAL, 12));
+
 	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
-	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pTech->SetFont(font);
+ 	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pFin->SetFont(font);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2317,7 +2794,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
 		"Choose a performance model, and then choose from the available financial models." );
-	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
@@ -2452,59 +2928,88 @@ void ConfigDialog::GetConfiguration(wxString &t, wxString &f)
 
 void ConfigDialog::PopulateTech()
 {
+	// clear tree
 	m_pTech->DeleteAllItems();
 
+	// TODO set width to fit longest collapsed label
+	int tech_width = 400;
+	int tech_height = m_pTech->GetBestHeight(tech_width);
+	m_pTech->SetMinSize(wxSize(tech_width, tech_height));
+	
+	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
-	// Manually add groups here - eventually move to startup.lk
-	wxDataViewItem cont_pv = m_pTech->AppendContainer(wxDataViewItem(0), "Photovoltaic");
-	wxDataViewItem cont_batt = m_pTech->AppendContainer(wxDataViewItem(0), "Energy Storage");
-	wxDataViewItem cont_csp = m_pTech->AppendContainer(wxDataViewItem(0), "Concentrating Solar Power");
-	wxDataViewItem cont_me = m_pTech->AppendContainer(wxDataViewItem(0), "Marine Energy");
+	// tree containers and nodes
+	wxArrayString containers, nodes, added;
+	for (int j = 0; j < m_tnames.Count(); j++) {
+		wxString node(SamApp::Config().Options(m_tnames[j]).LongName);
+		wxString container(SamApp::Config().Options(m_tnames[j]).TreeParent);
+		if (node.IsEmpty()) node = m_tnames[j];
+		if (container != "" && containers.Index(container) == wxNOT_FOUND &&  container != "Retired") 
+			containers.Add(container);
+		else if (node.Find("Retired") == wxNOT_FOUND)
+			nodes.Add(node);
+	}
 
-	for( size_t i=0;i<m_tnames.Count();i++)
-	{
-		wxString L(SamApp::Config().Options(m_tnames[i]).LongName);
-		wxString TP(SamApp::Config().Options(m_tnames[i]).TreeParent);
-		if ( L.IsEmpty() ) L = m_tnames[i];
-		if (TP.Find("PV") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_pv, L);
-		else if (TP.Find("CSP") != wxNOT_FOUND )
-			m_pTech->AppendItem(cont_csp, L);
-		else if (TP.Find("Retired") != wxNOT_FOUND); //Remove dish stirling, direct steam power tower from the list of selectable technologies
-		else if (TP.Find("ME") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_me, L);
-		else if (TP.Find("BATT") != wxNOT_FOUND)
-			m_pTech->AppendItem(cont_batt, L);
-		else
-			m_pTech->AppendItem(wxDataViewItem(0), L);
+	wxDataViewItemArray dvia(containers.Count());
+
+	// order from startup.lk configopt("TechnologyTreeOrder", ...
+	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;
+    wxArrayString order = wxSplit(TreeOrder, ',');
+    for (auto& item : order) {
+        if (containers.Index(item) != wxNOT_FOUND)
+            dvia[containers.Index(item)] = m_pTech->AppendContainer(wxDataViewItem(0), item);
+        else if (nodes.Index(item) != wxNOT_FOUND)
+            m_pTech->AppendItem(wxDataViewItem(0), item);
+    }
+    // append remaining nodes to appropriate containers
+    for (auto& item : m_tnames) {
+        wxString node(SamApp::Config().Options(item).LongName);
+        wxString container(SamApp::Config().Options(item).TreeParent);
+        if (node.IsEmpty()) node = item;
+    // skip those already added
+        if (order.Index(node) != wxNOT_FOUND) continue;
+        if (order.Index(container) != wxNOT_FOUND)
+            m_pTech->AppendItem(dvia[containers.Index(container)], node);
+        else {
+            if (added.Index(container) == wxNOT_FOUND && container != "" && container != "Retired") {
+                added.Add(container);
+                dvia[containers.Index(container)] = m_pTech->AppendContainer(wxDataViewItem(0), container);
+            }
+            if (container.Find("Retired") != wxNOT_FOUND); //do nothing for Retired technologies
+            else if (containers.Index(container) != wxNOT_FOUND) {
+                m_pTech->AppendItem(dvia[containers.Index(container)], node);
+            }
+            else {
+                m_pTech->AppendItem(wxDataViewItem(0), node);
+            }
+
+        }
 	}
 
 }
 
 void ConfigDialog::UpdateFinTree()
 {
+	m_finDVI = wxDataViewItem(0);
 	m_pFin->DeleteAllItems();
 	m_fnames = SamApp::Config().GetFinancingForTech(m_techname);
+	m_finname = "";
 
 	wxDataViewItem cont_ppa;
 	wxDataViewItem cont_dist;
 	//wxDataViewItem cont_tpo; //TPO
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("PPA") != wxNOT_FOUND)
-		{
+		if (TP.Find("PPA") != wxNOT_FOUND)	{
 			cont_ppa = m_pFin->AppendContainer(wxDataViewItem(0), "Power Purchase Agreement");
 			break;
 		}
 	}
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
-		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-		{
+		if (TP.Find("DISTRIBUTED") != wxNOT_FOUND) {
 			cont_dist = m_pFin->AppendContainer(wxDataViewItem(0), "Distributed");
 			break;
 		}
@@ -2520,15 +3025,14 @@ void ConfigDialog::UpdateFinTree()
 	}*/
 
 
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
 		wxString L(SamApp::Config().Options(m_fnames[i]).LongName);
 		if (L.IsEmpty()) L = m_fnames[i];
 		wxString TP(SamApp::Config().Options(m_fnames[i]).TreeParent);
 		if (TP.Find("PPA") != wxNOT_FOUND)
 			m_pFin->AppendItem(cont_ppa, L);
 		else if (TP.Find("DISTRIBUTED") != wxNOT_FOUND)
-				m_pFin->AppendItem(cont_dist, L);
+			m_pFin->AppendItem(cont_dist, L);
 		/*else if (TP.Find("TPO") != wxNOT_FOUND) //TPO
 			m_pFin->AppendItem(cont_tpo, L);*/
 		else
@@ -2536,10 +3040,36 @@ void ConfigDialog::UpdateFinTree()
 	}
 }
 
-void ConfigDialog::OnTreeActivated(wxDataViewEvent &evt)
+
+
+void ConfigDialog::OnTechTreeCollapsing(wxDataViewEvent& evt)
 {
-	evt.Veto();
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pTech->IsContainer(dvi)) {
+		auto selectedDVI = m_pTech->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pTech->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pTech->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
 }
+
+void ConfigDialog::OnFinTreeCollapsing(wxDataViewEvent& evt)
+{
+	wxDataViewItem dvi = evt.GetItem();
+	if (dvi.IsOk() && m_pFin->IsContainer(dvi)) {
+		auto selectedDVI = m_pFin->GetCurrentItem();
+		if (selectedDVI.IsOk()) {
+			for (size_t i = 0; i < m_pFin->GetChildCount(dvi); i++) {
+				if (selectedDVI == m_pFin->GetNthChild(dvi, i))
+					evt.Veto();
+			}
+		}
+	}
+}
+
 
 void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 {
@@ -2550,22 +3080,36 @@ void ConfigDialog::OnFinTreeDoubleClick(wxDataViewEvent &evt)
 }
 
 
-void ConfigDialog::OnTechTree(wxDataViewEvent &)
+void ConfigDialog::OnTechTree(wxDataViewEvent &evt)
 {
-	if (m_pTech->IsContainer(m_pTech->GetCurrentItem()))
-	{
-		m_pTech->Expand(m_pTech->GetCurrentItem());
-		m_techname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pTech->IsContainer(dvi))
+	{
+		if (m_pTech->IsExpanded(dvi))
+			m_pTech->Collapse(dvi);
+		else
+			m_pTech->Expand(dvi);
+		if (m_techDVI.IsOk()) {// keep current selection 
+			m_pTech->SetCurrentItem(m_techDVI);
+			return;
+		}
+		else {// select first child
+			m_techDVI = m_pTech->GetNthChild(dvi, 0);
+			m_pTech->SetCurrentItem(m_techDVI);
+		}
 	}
-	wxString title = m_pTech->GetItemText(m_pTech->GetCurrentItem());
+	else {
+		m_techDVI = evt.GetItem();
+	}
+	wxString title = m_pTech->GetItemText(m_techDVI);
 	if (title.empty())
 		title = "None";
 	m_techname = title;
-	for (size_t i = 0; i < m_tnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname)
-		{
+	for (size_t i = 0; i < m_tnames.Count(); i++) {
+		if (SamApp::Config().Options(m_tnames[i]).LongName == m_techname) {
 			m_techname = m_tnames[i];
 			break;
 		}
@@ -2574,22 +3118,36 @@ void ConfigDialog::OnTechTree(wxDataViewEvent &)
 	UpdateFinTree();
 }
 
-void ConfigDialog::OnFinTree(wxDataViewEvent &)
+void ConfigDialog::OnFinTree(wxDataViewEvent &evt)
 {
-	if (m_pFin->IsContainer(m_pFin->GetCurrentItem()))
-	{
-		m_pFin->Expand(m_pFin->GetCurrentItem());
-		m_finname = "";
+	wxDataViewItem dvi = evt.GetItem();
+	if (!dvi.IsOk())
 		return;
+
+	if (m_pFin->IsContainer(dvi))
+	{
+		if (m_pFin->IsExpanded(dvi))
+			m_pFin->Collapse(dvi);
+		else
+			m_pFin->Expand(dvi);
+		if (m_finDVI.IsOk()) {// keep current selection 
+			m_pFin->SetCurrentItem(m_finDVI);
+			return;
+		}
+		else {// select first child
+			m_finDVI = m_pFin->GetNthChild(dvi, 0);
+			m_pFin->SetCurrentItem(m_finDVI);
+		}
 	}
-	wxString title = m_pFin->GetItemText(m_pFin->GetCurrentItem());
-	if (title.empty() || m_pFin->IsContainer(m_pFin->GetCurrentItem()))
+	else {
+		m_finDVI = evt.GetItem();
+	}
+	wxString title = m_pFin->GetItemText(m_finDVI);
+	if (title.empty())
 		title = "None";
 	m_finname = title;
-	for (size_t i = 0; i < m_fnames.Count(); i++)
-	{
-		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname)
-		{
+	for (size_t i = 0; i < m_fnames.Count(); i++) {
+		if (SamApp::Config().Options(m_fnames[i]).LongName == m_finname) {
 			m_finname = m_fnames[i];
 			break;
 		}

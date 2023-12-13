@@ -1,0 +1,3344 @@
+{
+    "Name": "Battery Current and Capacity",
+    "Width": 1050.0,
+    "Height": 479.0,
+    "FormObjects": {
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Current and Capacity "
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 448.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Current and Capacity "
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_C_rate_max_charge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_C_rate_max_discharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 17.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_Qfull"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 126.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_Vnom_default"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_bank_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cell_current_charge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 786.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cell_current_discharge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 786.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cell_power_charge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 786.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_cell_power_discharge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 786.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_bank_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_cells_series_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cells in series"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_parallel_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Strings in parallel"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_series"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_stacks_series"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 420.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_strings"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_computed_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_current_charge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_current_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Power limited|Current limited|Limit both current and power"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_current_discharge_max"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 23.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_num_cells"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_power_charge_max_kwac"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_power_charge_max_kwdc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_power_discharge_max_kwac"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_power_discharge_max_kwdc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_size_warning"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 600.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_time_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_ui_nominal_bank_power"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1020.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Computed Properties"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 861.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use default nominal cell voltage and capacity for the battery chemistry if data is not available from another source. Check the computed properties to verify the battery is sized correctly. "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 710"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 762.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "kW"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 711"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Maximum discharge power"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 712"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Maximum charge power"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 730"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "AC"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 77"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 573.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "DC"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 79"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 762.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 393.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "kW"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "batt_C_rate_max_charge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Max C-rate of charge",
+            "Units": "per/hour",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_C_rate_max_discharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Max C-rate of discharge",
+            "Units": "per/hour",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_Qfull": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell capacity",
+            "Units": "Ah",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 5.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_Qfull_flow": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell capacity",
+            "Units": "Ah",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_Vnom_default": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell nominal voltage",
+            "Units": "Vdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 3.2,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_bank_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Desired bank voltage ",
+            "Units": "Vdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 450.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_cell_current_charge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell max current charge",
+            "Units": "A",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 10.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_cell_current_discharge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell max current discharge",
+            "Units": "A",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 10.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_cell_power_charge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell max power charge",
+            "Units": "Wdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_cell_power_discharge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cell max power discharge",
+            "Units": "Wdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_computed_bank_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal bank capacity",
+            "Units": "kWhdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_computed_series": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cells in series",
+            "Units": " ",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_computed_stacks_series": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Stacks in series",
+            "Units": " ",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_computed_strings": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Strings in parallel",
+            "Units": " ",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_computed_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal bank voltage",
+            "Units": "Vdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_current_charge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum charge current",
+            "Units": "A",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_current_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Flow battery current or power limited",
+            "Units": " ",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "Power limited|Current Limited| Limit both current and power",
+            "Flags": 1.0,
+            "DefaultValue": 1.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_current_discharge_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum discharge current",
+            "Units": "A",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_num_cells": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total number of cells",
+            "Units": " ",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_power_charge_max_kwac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum charge power (AC)",
+            "Units": "kWac",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_power_charge_max_kwdc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum charge power (DC)",
+            "Units": "kWdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_power_discharge_max_kwac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum discharge power (AC)",
+            "Units": "kWac",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_power_discharge_max_kwdc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum discharge power (DC)",
+            "Units": "kWdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_time_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Time at maximum power",
+            "Units": "h",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Default",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "batt_ui_nominal_bank_power": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal bank power",
+            "Units": "kWdc",
+            "Group": "Battery Current and Capacity",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations { 'batt_ui_nominal_bank_power' } = define() { return ${batt_power_discharge_max_kwdc}; };",
+        "",
+        "equations{ '$MIMO$ batt_bank_computed' } = define() {",
+        "",
+        "\tchoice = ${batt_size_choice};",
+        "\tisflow = ${batt_chem} == 2 || ${batt_chem} == 3;",
+        "\t",
+        "\t// if user input AC quantities, convert to DC",
+        "\tbatt_bank_power = ${batt_bank_power};",
+        "\tbatt_bank_capacity = ${batt_bank_size};",
+        "\tinv_eff = 96;",
+        "\t",
+        "\tif ((batt_bank_power == 0 || batt_bank_capacity == 0) && choice == 0)",
+        "\t{",
+        "\t\t${batt_current_charge_max} = 0;",
+        "\t\t${batt_current_discharge_max} = 0;",
+        "\t\t${batt_computed_voltage} = 0;",
+        "\t\t${batt_computed_series} = 0;",
+        "\t\t${batt_computed_strings} = 0;",
+        "\t\t${batt_computed_stacks_series} = 0;",
+        "\t\t${batt_num_cells} = 0;",
+        "\t\t${batt_computed_bank_capacity} = 0;",
+        "\t\t${batt_power_discharge_max_kwdc} = 0;",
+        "\t\t${batt_power_charge_max_kwdc} = 0;",
+        "\t\t${batt_time_capacity} = 0;",
+        "\t\t${batt_C_rate_max_charge} = 0;",
+        "\t\t${batt_C_rate_max_discharge} = 0;",
+        "\t\t${batt_power_charge_max_kwac} = 0;",
+        "\t\t${batt_power_discharge_max_kwac} = 0;",
+        "\t\treturn;",
+        "\t}",
+        "\t",
+        "\t// AC-coupled - nothing to do",
+        "",
+        "\t// DC-coupled",
+        "\tif (${batt_ac_or_dc} == 0)",
+        "\t{ ",
+        "\t\tinv_model = ${inverter_model};",
+        "\t\tif (inv_model == 0){",
+        "\t\t\tinv_eff = ${inv_snl_eff_cec};",
+        "\t\t}",
+        "\t\telse if (inv_model == 1){",
+        "\t\t\tinv_eff = ${inv_ds_eff};",
+        "\t\t}",
+        "\t\telse if (inv_model == 2){",
+        "\t\t\tinv_eff = ${inv_pd_eff};",
+        "\t\t}",
+        "\t\telse if (inv_model == 3){",
+        "\t\t\tinv_eff = ${inv_cec_cg_eff_cec};",
+        "\t\t}",
+        "\t\tinv_eff *= ${batt_dc_dc_efficiency} * 0.01 * 0.01;",
+        "\t\t",
+        "\t}",
+        "\t",
+        "\t",
+        "\t// conventional battery",
+        "\tif (!isflow)",
+        "\t{",
+        "        batt_C_rate_max_discharge = 0;",
+        "        batt_C_rate_max_charge = 0;",
+        "        string_current = 0;",
+        "        bank_desired_voltage = 0;",
+        "        num_strings = 0;",
+        "        num_series = 0;",
+        "        num_parallel = 0;",
+        "    ",
+        "\t\t// auto-sizing",
+        "\t\tif (choice==0)",
+        "\t\t{",
+        "\t\t\tbatt_C_rate_max_discharge = batt_bank_power / batt_bank_capacity;",
+        "\t\t\tbatt_C_rate_max_charge = batt_C_rate_max_discharge;",
+        "\t\t\tstring_current = ${batt_Qfull}*batt_C_rate_max_discharge;",
+        "\t\t\tbank_desired_voltage = ${batt_bank_voltage};",
+        "\t\t\tnum_series = ceil(bank_desired_voltage / ${batt_Vnom_default});",
+        "\t\t\tnum_strings = round(batt_bank_capacity * 1000 / (${batt_Qfull} * ${batt_Vnom_default}*num_series));\t",
+        "\t\t}",
+        "\t\t// manual sizing",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tnum_series = ${batt_bank_ncells_serial};",
+        "\t\t\tnum_strings = ${batt_bank_nstrings};",
+        "\t\t\tbatt_C_rate_max_discharge = ${batt_C_rate_max_discharge_input};",
+        "\t\t\tbatt_C_rate_max_charge = ${batt_C_rate_max_charge_input};",
+        "\t\t}",
+        "\t\t",
+        "\t\tbatt_computed_voltage = ${batt_Vnom_default}*num_series;",
+        "\t\tbank_capacity = ${batt_Qfull} *batt_computed_voltage* num_strings * 0.001;",
+        "\t\tbank_power =  bank_capacity*batt_C_rate_max_discharge;",
+        "\t\tbank_power_charge = bank_capacity*batt_C_rate_max_charge;",
+        "\t\t",
+        "\t\t${batt_computed_voltage} = batt_computed_voltage;",
+        "\t\t${batt_computed_series} = num_series;",
+        "\t\t${batt_computed_strings} = num_strings; ",
+        "\t\t${batt_num_cells} = num_series * num_strings;",
+        "\t\t${batt_computed_bank_capacity} = bank_capacity;",
+        "\t\t${batt_power_discharge_max_kwdc} = bank_power;",
+        "\t\t${batt_power_charge_max_kwdc} = bank_power_charge;",
+        "\t\t${batt_time_capacity} = bank_capacity/bank_power;",
+        "\t\t${batt_C_rate_max_charge} = batt_C_rate_max_charge;",
+        "\t\t${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;",
+        "\t\t${batt_current_charge_max} =  ${batt_Qfull} * num_strings * batt_C_rate_max_charge;",
+        "\t\t${batt_current_discharge_max} =  ${batt_Qfull} * num_strings * batt_C_rate_max_discharge;",
+        "\t}",
+        "    // flow battery",
+        "\telse ",
+        "\t{",
+        "\t\tpower_limited = ${batt_current_choice} == 0;",
+        "\t\tcurrent_limited = !power_limited;",
+        "        num_series = 0;",
+        "        num_stacks_parallel = 0;",
+        "        num_stacks_series = 1;",
+        "        batt_computed_voltage = 0;",
+        "        bank_capacity = 0;",
+        "        bank_current_discharge = 0;",
+        "        bank_current_charge = 0;",
+        "\t\tbank_power_discharge = 0;",
+        "        bank_power_charge = 0;",
+        "\t\t",
+        "\t\t// auto-sizing",
+        "\t\tif (choice==0)",
+        "\t\t{",
+        "\t\t\t// flow battery capacity is always exactly defined by electrolyte in tank",
+        "\t\t\tbank_capacity = batt_bank_capacity;",
+        "\t\t\tnum_series = ceil(${batt_bank_voltage} / (num_stacks_series * ${batt_Vnom_default}));",
+        "\t\t\tbatt_computed_voltage = ${batt_Vnom_default}*num_series * num_stacks_series;",
+        "\t\t\t",
+        "\t\t\tif (power_limited)",
+        "\t\t\t\tnum_stacks_parallel = ceil(batt_bank_power/(${batt_cell_power_discharge_max}*num_series*num_stacks_series*0.001));",
+        "\t\t\telse if (current_limited)",
+        "\t\t\t\tnum_stacks_parallel = ceil(batt_bank_power/(batt_computed_voltage * ${batt_cell_current_discharge_max} * 0.001));",
+        "",
+        "\t\t}",
+        "\t\t// manual sizing",
+        "\t\telse",
+        "\t\t{",
+        "\t\t\tnum_series = ${batt_bank_ncells_serial};",
+        "\t\t\tnum_stacks_parallel = ${batt_bank_nstrings};",
+        "\t\t\tnum_stacks_series = ${batt_bank_nseries_stacks};",
+        "\t\t\tbank_capacity = ${batt_bank_size_specify};",
+        "\t\t\tbatt_computed_voltage = ${batt_Vnom_default}*num_series * num_stacks_series;",
+        "\t\t}",
+        "",
+        "\t\tif (power_limited)",
+        "\t\t{",
+        "\t\t\tbank_power_discharge =  ${batt_cell_power_discharge_max} * 0.001 * num_series * num_stacks_series * num_stacks_parallel;",
+        "\t\t\tbank_power_charge =  ${batt_cell_power_charge_max} * 0.001 * num_series * num_stacks_series * num_stacks_parallel;",
+        "\t\t\tbank_current_discharge = bank_power_discharge * 1000 / batt_computed_voltage;",
+        "\t\t\tbank_current_charge = bank_power_charge * 1000 / batt_computed_voltage;",
+        "\t\t}",
+        "\t\telse if (current_limited)",
+        "\t\t{",
+        "\t\t\tbank_current_discharge = num_stacks_parallel *  ${batt_cell_current_discharge_max};",
+        "\t\t\tbank_current_charge = num_stacks_parallel *  ${batt_cell_current_charge_max};",
+        "\t\t\tbank_power_discharge =  batt_computed_voltage * bank_current_discharge * 0.001;",
+        "\t\t\tbank_power_charge =  batt_computed_voltage * bank_current_charge * 0.001;",
+        "\t\t}",
+        "",
+        "\t\t// C-rates are derived.  Flow battery power/energy is fully decoupled",
+        "\t\tbatt_C_rate_max_discharge = bank_power_charge / bank_capacity;",
+        "\t\tbatt_C_rate_max_charge = bank_power_discharge / bank_capacity;",
+        "\t\t",
+        "\t\t${batt_current_charge_max} = bank_current_charge;",
+        "\t\t${batt_current_discharge_max} = bank_current_discharge;",
+        "\t\t${batt_computed_voltage} = batt_computed_voltage;",
+        "\t\t${batt_computed_series} = num_series;",
+        "\t\t${batt_computed_strings} = num_stacks_parallel;",
+        "\t\t${batt_computed_stacks_series} = num_stacks_series;",
+        "\t\t${batt_num_cells} = num_series * num_stacks_series * num_stacks_parallel;",
+        "\t\t${batt_computed_bank_capacity} = bank_capacity;",
+        "\t\t${batt_power_discharge_max_kwdc} = bank_power_discharge;",
+        "\t\t${batt_power_charge_max_kwdc} = bank_power_charge;",
+        "\t\t${batt_time_capacity} = bank_capacity/bank_power_discharge;",
+        "\t\t${batt_C_rate_max_charge} = batt_C_rate_max_charge;",
+        "\t\t${batt_C_rate_max_discharge} = batt_C_rate_max_discharge;",
+        "\t}",
+        "\t",
+        "\t// Calculate AC charge and discharge power",
+        "\tbatt_bank_power_discharge_ac = 0;",
+        "\tbatt_bank_power_charge_ac = 0;",
+        "\tif (isflow) // flow batteries",
+        "\t{",
+        "\t\tp_discharge = bank_power_discharge;",
+        "        p_charge = bank_power_charge;",
+        "\t}",
+        "\telse // chemical batteries",
+        "\t{",
+        "\t\tif ( choice == 0 ) // Set bank capacity",
+        "\t\t{",
+        "\t\t\tp_discharge = bank_power;",
+        "\t\t\tp_charge = bank_power_charge;",
+        "\t\t}",
+        "\t\telse // specify cells",
+        "\t\t{",
+        "\t\t\tp_discharge = bank_power;",
+        "\t\t\tp_charge = bank_power_charge;",
+        "\t\t}\t",
+        "\t}",
+        "\tif ( choice == 0 ) // Set desired bank size",
+        "\t{",
+        "\t\tif (${batt_ac_or_dc} == 1) // AC-connected",
+        "\t\t{",
+        "\t\t\tif ( ${batt_bank_power_dc_ac} == 1 ) // Bank power units in AC kW",
+        "\t\t\t{",
+        "\t\t\t\tbatt_bank_power_discharge_ac = p_discharge;",
+        "\t\t\t\tbatt_bank_power_charge_ac = p_charge;",
+        "\t\t\t\tbatt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (${batt_dc_ac_efficiency}*0.01);",
+        "\t\t\t\tbatt_bank_power_charge_dc = batt_bank_power_charge_ac * (${batt_ac_dc_efficiency}*0.01);",
+        "\t\t\t\t${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;",
+        "\t\t\t\t${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;",
+        "\t\t\t\t${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;",
+        "\t\t\t\t${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;",
+        "\t\t\t\t${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;",
+        "\t\t\t\t${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;",
+        "\t\t\t\t",
+        "\t\t\t}",
+        "\t\t\telse // Bank power units in DC kW",
+        "\t\t\t{",
+        "\t\t\t\tbatt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);",
+        "\t\t\t\tbatt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);",
+        "\t\t\t\t",
+        "\t\t\t\t",
+        "\t\t\t\t//batt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff*0.01);",
+        "\t\t\t\t//batt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff*0.01);",
+        "\t\t\t\t//${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;",
+        "\t\t\t\t//${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;",
+        "\t\t\t}",
+        "\t\t\t",
+        "\t\t}",
+        "\t\telse // DC-connected",
+        "\t\t{",
+        "\t\t\tif ( ${batt_bank_power_dc_ac} == 1) // Bank power units in AC kW",
+        "\t\t\t{",
+        "\t\t\t\tbatt_bank_power_discharge_ac = p_discharge;",
+        "\t\t\t\tbatt_bank_power_charge_ac = p_charge;",
+        "\t\t\t\tbatt_bank_power_discharge_dc = batt_bank_power_discharge_ac / (inv_eff);",
+        "\t\t\t\tbatt_bank_power_charge_dc = batt_bank_power_charge_ac * (inv_eff);",
+        "\t\t\t\t${batt_power_charge_max_kwdc} = batt_bank_power_charge_dc;",
+        "\t\t\t\t${batt_power_discharge_max_kwdc} = batt_bank_power_discharge_dc;",
+        "\t\t\t\t${batt_current_charge_max} = batt_bank_power_charge_dc*1000/batt_computed_voltage;",
+        "\t\t\t\t${batt_current_discharge_max} = batt_bank_power_discharge_dc*1000/batt_computed_voltage;",
+        "\t\t\t\t${batt_C_rate_max_discharge} = batt_bank_power_discharge_dc/bank_capacity;",
+        "\t\t\t\t${batt_C_rate_max_charge} = batt_bank_power_charge_dc/bank_capacity;",
+        "\t\t\t\t",
+        "\t\t\t}",
+        "\t\t\telse // Bank power units in DC kW",
+        "\t\t\t{",
+        "\t\t\t\tbatt_bank_power_discharge_ac = p_discharge * inv_eff;",
+        "\t\t\t\tbatt_bank_power_charge_ac =  p_charge / inv_eff;",
+        "\t\t\t}",
+        "\t\t}",
+        "\t}",
+        "\telse // Specify cells",
+        "\t{",
+        "\t\tif (${batt_ac_or_dc} == 1) // AC-connected",
+        "\t\t{",
+        "\t\t\tbatt_bank_power_discharge_ac = p_discharge * (${batt_dc_ac_efficiency}*0.01);",
+        "\t\t\tbatt_bank_power_charge_ac =  p_charge / (${batt_ac_dc_efficiency}*0.01);",
+        "\t\t}",
+        "\t\telse // DC-connected",
+        "\t\t{",
+        "\t\t\tbatt_bank_power_discharge_ac = p_discharge * inv_eff;",
+        "\t\t\tbatt_bank_power_charge_ac =  p_charge / inv_eff;",
+        "",
+        "\t\t}",
+        "\t}",
+        "",
+        "\t${batt_power_charge_max_kwac} = batt_bank_power_charge_ac;",
+        "\t${batt_power_discharge_max_kwac} = batt_bank_power_discharge_ac;",
+        "\t//${batt_current_discharge_max} = batt_bank_power_discharge_dc/${batt_computed_voltage}*1000;",
+        "\t//${batt_current_charge_max} = batt_bank_power_charge_dc/${batt_computed_voltage}*1000;",
+        "};",
+        "",
+        "equations{ '$MIMO$ batt_lead_acid_computed' } = define() {",
+        "\t${LeadAcid_q10_computed} = ${batt_computed_strings}*${LeadAcid_q10}*${batt_Qfull}/100;",
+        "\t${LeadAcid_q20_computed} = ${batt_computed_strings}*${LeadAcid_q20}*${batt_Qfull}/100;",
+        "\t${LeadAcid_qn_computed} = ${batt_computed_strings}*${LeadAcid_qn}*${batt_Qfull}/100;",
+        "};",
+        "",
+        "equations{ '$MIMO$ batt_capacity'} = define(){",
+        "\t${batt_Qexp} = ${batt_Qexp_percent}*${batt_Qfull}*0.01;",
+        "\t${batt_Qnom} = ${batt_Qnom_percent}*${batt_Qfull}*0.01;",
+        "\t${batt_Qfull_flow} =  ${batt_computed_bank_capacity} * 1000 / ${batt_computed_voltage};",
+        "};",
+        ""
+    ],
+    "Callbacks": [
+        "on_load{'Battery Current and Capacity'} = define()",
+        "{",
+        "\ton_change{'batt_Qfull'};",
+        "\ton_change{'batt_current_choice'};",
+        "\ton_change{'batt_Vnom_default'};",
+        "\tset_current_and_capacity();",
+        "};",
+        "",
+        "on_change{'batt_Qfull'} = define() { battsize_warning_check(); };",
+        "on_change{'batt_Vnom_default'} = define() { battsize_warning_check(); };",
+        "on_change{'batt_current_choice'} = define() { set_current_and_capacity(); };",
+        "",
+        "function battsize_warning_check()",
+        "{",
+        "\tmessage = '';",
+        "\tcolor = 'black';",
+        "\t// if computed bank voltage is more than 1.5x desired, display",
+        "\tif ( value('batt_chem') == 2 )",
+        "\t{",
+        "\t\tmessage = 'For vanadium redox batteries, set the nominal voltage to the voltage at 50% SOC.\\n';",
+        "\t}",
+        "\tif ((${batt_computed_bank_capacity} > 1.25*${batt_bank_size} ||",
+        "\t\t ${batt_computed_bank_capacity} < 0.75*${batt_bank_size} ) &&",
+        "\t     ${batt_size_choice} == 0)",
+        "\t{",
+        "\t\tmessage += 'Unable to achieve desired bank capacity and power for the given battery bank voltage, cell voltage, and cell capacity.';",
+        "\t\tcolor = 'red';",
+        "\t\t//logmsg('desired: ' + ${batt_bank_size} + ' computed: ' + ${batt_computed_bank_capacity});",
+        "\t\t//logmsg('Qfull: ' + ${batt_Qfull} + ' n: ' + ${batt_num_cells} + ' Vbatt: ' + ${batt_computed_voltage});",
+        "\t}",
+        "\tproperty( 'batt_size_warning','Caption', message );",
+        "\tproperty( 'batt_size_warning','TextColour', color );",
+        "}",
+        "",
+        "function set_current_and_capacity()",
+        "{",
+        "\tcurrent_choice = value('batt_current_choice');",
+        "\tisflow = is_flow(); // is_flow() defined on Battery Model form",
+        "\t// nominal voltage not input for iron flow, but is for vanadium flow",
+        "\tis_vnom_input = value('batt_chem') == 0 || value('batt_chem') == 1 || value('batt_chem') == 2;",
+        "\tcurrent_limited = current_choice == 1 || current_choice == 2;",
+        "\tpower_limited = current_choice == 0 || current_choice == 2;",
+        "",
+        "\tshow('batt_Qfull', !isflow);",
+        "\tshow('batt_Vnom_default', is_vnom_input );",
+        "\tshow('batt_cell_current_charge_max', isflow);",
+        "\tshow('batt_cell_current_discharge_max', isflow);",
+        "\tshow('batt_cell_power_charge_max', isflow);",
+        "\tshow('batt_cell_power_discharge_max', isflow);",
+        "\tshow('batt_computed_stacks_series', isflow);",
+        "\tshow('batt_current_choice', isflow);",
+        "\t",
+        "\tenable('batt_cell_current_charge_max', current_limited);",
+        "\tenable('batt_cell_current_discharge_max', current_limited);",
+        "\tenable('batt_cell_power_charge_max', power_limited);",
+        "\tenable('batt_cell_power_discharge_max', power_limited);",
+        "}"
+    ]
+}

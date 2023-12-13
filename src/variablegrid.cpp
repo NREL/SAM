@@ -55,7 +55,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define COMPARE_SHOW_SAME 2
 
 
-VariableGridData::VariableGridData(ProjectFile *pf, Case *c, VarTable *vt) : m_pf(pf), m_vt(vt)
+//VariableGridData::VariableGridData(ProjectFile* pf, Case* c, VarTable* vt) : m_pf(pf), m_vt(vt)
+VariableGridData::VariableGridData(ProjectFile* pf, Case* c, std::vector<VarTable*> *vts) : m_pf(pf), m_vts(vts)
 {
 	m_attr_for_calculated = new wxGridCellAttr;
 	m_attr_for_calculated->SetBackgroundColour(UIColorCalculatedBack);
@@ -80,11 +81,12 @@ void VariableGridData::Init()
 	m_col_hdrs.Clear();
 	m_var_names.Clear();
 	m_var_labels.Clear();
+//	m_vsVariableData.clear();
 	m_var_info_lookup_vec.clear();
 	m_var_table_vec.clear();
 	VarInfoLookup vi_not_calculated;
 	VarTable vt_not_calculated;
-
+	size_t i, n;
 
 	if (m_cases.size() > 0)
 	{
@@ -93,36 +95,90 @@ void VariableGridData::Init()
 		if (m_cases.size() == 1)
 		{
 			m_col_hdrs.push_back(m_pf->GetCaseName(m_cases[0]));
-			if (m_vt)
-				m_var_table_vec.push_back(m_vt); // for parametric simulation
-			else
-				m_var_table_vec.push_back(&m_cases[0]->Values());
-			m_var_info_lookup_vec.push_back(&m_cases[0]->Variables());
+//			if (m_vt)
+//			m_var_table_vec.push_back(m_vt); // for parametric simulation
+//		else
+//			m_var_table_vec.push_back(&m_cases[0]->Values(0));// TODO: hybrids
+			ConfigInfo* ci = m_cases[0]->GetConfiguration();
+			if (!ci) return; // throw error?
+			n = ci->Technology.size();
+			if (m_vts) {
+				m_var_table_vec.push_back(*m_vts); // for parametric simulation
+			}
+			else {
+				std::vector<VarTable*> pvt;
+				for (i = 0; i < n; i++)
+					pvt.push_back(&m_cases[0]->Values(i));
+				m_var_table_vec.push_back(pvt);
+			}
+			std::vector<VarInfoLookup*> pvil;
+			for (i = 0; i < n; i++)
+				pvil.push_back(&m_cases[0]->Variables(i));
+			m_var_info_lookup_vec.push_back(pvil);
 		}
 		else
 		{
 			for (std::vector<Case*>::iterator it = m_cases.begin(); it != m_cases.end(); ++it)
 			{
 				m_col_hdrs.push_back(m_pf->GetCaseName(*it));
-				m_var_table_vec.push_back(&(*it)->Values());
-				m_var_info_lookup_vec.push_back(&(*it)->Variables());
+
+				ConfigInfo* ci = (*it)->GetConfiguration();
+				if (!ci) return; // throw error?
+				n = ci->Technology.size();
+
+				std::vector<VarTable*> pvt;
+				for (i = 0; i < n; i++)
+					pvt.push_back(&(*it)->Values(i));
+				m_var_table_vec.push_back(pvt);
+
+				std::vector<VarInfoLookup*> pvil;
+				for (i = 0; i < n; i++)
+					pvil.push_back(&(*it)->Variables(i));
+				m_var_info_lookup_vec.push_back(pvil);
+
+//				m_var_table_vec.push_back(&(*it)->Values(0));// TODO: hybrids
+//				m_var_info_lookup_vec.push_back(&(*it)->Variables(0));// TODO: hybrids
 			}
 		}
 
 
 		m_cols = m_col_hdrs.Count();
 
-		std::set<wxString> var_names;
+		std::set<wxString> var_names; // set - unique names
 		// variable names
 		//		skip calculated
-		for (std::vector<VarInfoLookup*>::iterator it = m_var_info_lookup_vec.begin(); it != m_var_info_lookup_vec.end(); ++it)
-		{
-			wxArrayString as = (*it)->ListAll();
-			for (size_t i = 0; i < as.Count(); i++)
-//				if ((!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED)) &&
-//					(!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR)))
-				if (!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR))
-						var_names.insert(as[i]);
+		// iterate over cases
+		for (size_t iCase = 0; iCase < m_cases.size(); iCase++) {
+			ConfigInfo* ci = m_cases[iCase]->GetConfiguration();
+			// loop through all vartables inside a case (non-hybrid has one vartable, hybrids have one vartable for each generator, fuel cell and battery, and remainder of system)
+			for (size_t iVarTable = 0; iVarTable < m_var_info_lookup_vec[iCase].size(); iVarTable++) {
+				// iterate over case vartables
+				wxString prepend = ci->Technology[iVarTable].Lower() + ":";
+
+				wxArrayString as = m_var_info_lookup_vec[iCase][iVarTable]->ListAll();
+				for (size_t i = 0; i < as.Count(); i++) {
+					//				if ((!((*it)->Lookup(as[i])->Flags  & VF_CALCULATED)) &&
+					//					(!((*it)->Lookup(as[i])->Flags  & VF_INDICATOR)))
+					if (!(m_var_info_lookup_vec[iCase][iVarTable]->Lookup(as[i])->Flags & VF_INDICATOR)) {
+						// check to see if name in set
+						if (ci->Technology.size() == 1) {// non-hybrid
+							var_names.insert(as[i]);
+						}
+						else { // hybrid
+							// if dependent variable then skip
+							bool dependentVariable = false;
+							for (auto& hv : m_cases[iCase]->GetConfiguration()->HybridVariables) {
+								if (hv.DependentVariableVarTable == iVarTable && hv.DependentVariableName == as[i])
+									dependentVariable = true;
+							}
+							// do not prepend "Hybrid" vartable
+							if (iVarTable == ci->Technology.size() - 1) prepend = "";
+							if (!dependentVariable)
+								var_names.insert(prepend + as[i]); // e.g. "pvwatts_tilt" for hybrid - currently will not compare to "tilt" in non-hybrid configurations
+						}
+					}
+				}
+			}
 		}
 /*		all
 		for (std::vector<VarTable*>::iterator it = m_var_table_vec.begin(); it != m_var_table_vec.end(); ++it)
@@ -132,18 +188,37 @@ void VariableGridData::Init()
 				var_names.insert(as[i]);
 		}
 */
+		int row_change = (int)var_names.size() - m_rows;
+		if (m_rows > 0) {
+			if (row_change > 0)
+				AppendRows(row_change);
+			else if (row_change < 0)
+				DeleteRows(0,-row_change);
+		}
 		m_rows = var_names.size();
+
 		for (int row = 0; row < m_rows; row++)
 			m_sorted_index.Add(row);
 
-		// variable labels
-		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)
-		{
+		// variable labels after determining which variables to display in var_names
+		for (std::set<wxString>::iterator idx = var_names.begin(); idx != var_names.end(); ++idx)	{
 			wxString str_label = " ";
-			for (std::vector<VarInfoLookup*>::iterator it = m_var_info_lookup_vec.begin(); it != m_var_info_lookup_vec.end(); ++it)
-			{
-				if ((*it)->Lookup(*idx))
-					str_label = (*it)->Label(*idx);
+			bool found = false;
+			for (size_t iCase = 0; iCase < m_cases.size() && !found; iCase++) {
+				ConfigInfo* ci = m_cases[iCase]->GetConfiguration();
+				Case* c = m_cases[iCase];
+				wxString var_name;
+				size_t ndx_hybrid;
+				if (UpdateVarNameNdxHybrid(c, *idx, &var_name, &ndx_hybrid)) {
+					if (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name)) {
+						found = true;
+						wxString prepend = "";
+						// prepend to Label to hybrid subsystems and not general financial parameters
+						if (ci->Technology.size() > 1 && ndx_hybrid < ci->Technology.size() - 1) prepend = ci->Technology[ndx_hybrid] + " ";
+						str_label = m_var_info_lookup_vec[iCase][ndx_hybrid]->Label(var_name);
+						if (str_label.length() > 0) str_label = prepend + str_label;
+					}
+				}
 			}
 			m_var_labels.push_back(str_label);
 			m_var_names.push_back(*idx);
@@ -162,6 +237,28 @@ int VariableGridData::GetNumberCols()
 	return m_cols;
 }
 
+bool VariableGridData::UpdateVarNameNdxHybrid(Case *c, const wxString& input_name, wxString* var_name, size_t* ndx_hybrid)
+{
+	if (!c) return false;
+	*ndx_hybrid = c->GetConfiguration()->Technology.size() - 1; // size always >=1
+	*var_name = input_name;
+	// decode if necessary for hybrids varname for unsorted index
+//	if (c->GetConfiguration()->Technology.size() > 1) {
+		// split hybrid name and match with Technology name or use "Hybrid" for remainder
+		wxArrayString as = wxSplit(input_name, ':');
+		if (as.size() > 1) {
+			for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
+				if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
+					//			if (c->GetConfiguration()->Simulations[j].Lower() == as[0]) {
+					*ndx_hybrid = j;
+					*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+				}
+			}
+		}
+//	}
+	return true;
+}
+
 bool VariableGridData::IsEmptyCell(int row, int col)
 {
 	if (!GetView()->GetParent()->IsShown()) return true;
@@ -173,22 +270,29 @@ bool VariableGridData::IsEmptyCell(int row, int col)
 	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
-		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-		{
-			if ((col - 2) >= (int)m_var_table_vec.size())
-				return true;
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (!UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid))
+			return false;
+		else {
+			if (m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name))
+			{
+				if ((col - 2) >= (int)m_var_table_vec.size())
+					return true;
+				else
+					return (m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name)->AsString() == wxEmptyString);
+			}
 			else
-				return (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString() == wxEmptyString);
+				return true;
 		}
-		else
-			return true;
 	}
 }
 
 
 wxString VariableGridData::GetColLabelValue(int col)
 {
-	if (col <= (int)m_col_hdrs.size())
+	if (col < (int)m_col_hdrs.size())
 		return m_col_hdrs[col];
 	else
 		return wxEmptyString;
@@ -206,6 +310,14 @@ wxString VariableGridData::GetVarName(int row, int col)
 	return ret_val;
 }
 
+Case* VariableGridData::GetCase(int row, int col)
+{
+	Case* c = NULL;
+	int lookup_col = col - 2; // skip variable and label columns
+	if (lookup_col > -1 && lookup_col < (int)m_cases.size())
+		c = m_cases[lookup_col];
+	return c;
+}
 
 
 VarInfo* VariableGridData::GetVarInfo(int row, int col)
@@ -213,9 +325,12 @@ VarInfo* VariableGridData::GetVarInfo(int row, int col)
 	VarInfo* vi = NULL;
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  (int)m_var_info_lookup_vec.size()))
-	{
-		vi = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]);
+	if ((col > 1) && ((col - 2) <  (int)m_var_info_lookup_vec.size()))	{
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid))
+			vi = m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name);
 	}
 	return vi;
 }
@@ -224,10 +339,14 @@ void VariableGridData::SetVarInfo(int row, int col, VarInfo *vi)
 {
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) < (int)m_var_info_lookup_vec.size()))
-	{
-		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-			var_info = vi;
+	if ((col > 1) && ((col - 2) < (int)m_var_info_lookup_vec.size())) {
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			if (VarInfo* var_info = m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name))
+				var_info = vi;
+		}
 	}
 }
 
@@ -236,9 +355,13 @@ VarValue* VariableGridData::GetVarValue(int row, int col)
 	VarValue* vv = NULL;
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
-	{
-		vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
+	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size())) {
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			vv = m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name);
+		}
 	}
 	return vv;
 
@@ -248,10 +371,14 @@ void VariableGridData::SetVarValue(int row, int col, VarValue *vv)
 {
 	int lookup_row = row;
 	if (m_sorted) lookup_row = m_sorted_index[row];
-	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size()))
-	{
-		if (VarValue *var_value = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-			var_value = vv;
+	if ((col > 1) && ((col - 2) <  (int)m_var_table_vec.size())) {
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			if (VarValue* var_value = m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name))
+				var_value = vv;
+		}
 	}
 }
 
@@ -295,16 +422,18 @@ wxString VariableGridData::GetChoices(int row, int col)
 	if (m_sorted) lookup_row = m_sorted_index[row];
 	if ( col >= 2 ) // get var table and value
 	{
-		if ((col - 2) < (int)m_var_info_lookup_vec.size())
-		{
-			if (m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-			{
-				wxArrayString as = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row])->IndexLabels;
-				if (as.Count() > 0)
-				{
-					for (int i = 0; i < (int)as.Count() - 1; i++)
-						ret_str += as[i] + ",";
-					ret_str += as[as.Count() - 1];
+		if ((col - 2) < (int)m_var_info_lookup_vec.size())	{
+			Case* c = GetCase(row, col);
+			wxString var_name;
+			size_t ndx_hybrid;
+			if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+				if (m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name))	{
+					wxArrayString as = m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name)->IndexLabels;
+					if (as.Count() > 0)	{
+						for (int i = 0; i < (int)as.Count() - 1; i++)
+							ret_str += as[i] + ",";
+						ret_str += as[as.Count() - 1];
+					}
 				}
 			}
 		}
@@ -320,16 +449,19 @@ wxString VariableGridData::GetValue(int row, int col)
 		return m_var_names[lookup_row];
 	else if (col == 1) // variable label
 		return m_var_labels[lookup_row];
-	else // get var table and value
-	{
+	else { // get var table and value
 		if ((col - 2) >= (int)m_var_table_vec.size())
 			return wxEmptyString;
-		else
-		{
-			if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-				return m_var_table_vec[col - 2]->Get(m_var_names[lookup_row])->AsString();
-			else
-				return wxEmptyString;
+		else {
+			Case* c = GetCase(row, col);
+			wxString var_name;
+			size_t ndx_hybrid;
+			if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+				if (m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name))
+					return m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name)->AsString();
+				else
+					return wxEmptyString;
+			}
 		}
 	}
 }
@@ -340,18 +472,20 @@ void VariableGridData::SetValue(int row, int col, const wxString& value)
 		return; // no updating of variable name allowed here!
 	else if (col == 1)
 		return; // no updating of variable label allowed here!
-	else if ((col > 1) && (col < (int)(m_cases.size() + 2)))
-	{
+	else if ((col > 1) && (col < (int)(m_cases.size() + 2))) {
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
-		if (m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]))
-		{
-			VarValue *vv = m_var_table_vec[col - 2]->Get(m_var_names[lookup_row]);
-			if (vv) 
-			{
-				VarValue::Parse(vv->Type(), value, *vv);
-				// updates ui from grid
-				m_cases[col - 2]->VariableChanged(m_var_names[lookup_row]);
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			if (m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name)) {
+				VarValue* vv = m_var_table_vec[col - 2][ndx_hybrid]->Get(var_name);
+				if (vv) {
+					VarValue::Parse(vv->Type(), value, *vv);
+					// updates ui from grid
+					m_cases[col - 2]->VariableChanged(var_name, ndx_hybrid); 
+				}
 			}
 		}
 	}
@@ -419,70 +553,76 @@ wxString VariableGridData::GetTypeName(int row, int col)
 {
 	if ((col > -1) && (col < 2))
 		return wxGRID_VALUE_STRING;
-	else if (col < m_cols)
-	{
+	else if (col < m_cols)	{
 		int lookup_row = row;
 		if (m_sorted) lookup_row = m_sorted_index[row];
-		if (VarInfo *var_info = m_var_info_lookup_vec[col - 2]->Lookup(m_var_names[lookup_row]))
-		{ // TODO - better control list maintenance here and in UIEditorPanel
-			wxString type = var_info->UIObject;
-			bool calculated = (var_info->Flags   & VF_CALCULATED) > 0;
-			if (calculated)
-				return "GridCellCalculated";
-			else if (type == "Numeric")
-				return wxGRID_VALUE_STRING;
-			else if (type == "Choice")
-				return "GridCellChoice";
-			else if (type == "ListBox")
-				return "GridCellVarValue";
-			else if (type == "RadioChoice")
-				return "GridCellVarValue";
-			else if (type == "TextEntry")
-				return wxGRID_VALUE_STRING;
-			else if (type == "MultilineText")
-				return wxGRID_VALUE_STRING;
-			else if (type == "Slider")
-				return "GridCellVarValue";
-			else if (type == "CheckBox")
-				return "GridCellCheckBox";
-			else if (type == "SchedNumeric")
-				return "GridCellVarValue";
-			else if (type == "TOUSchedule")
-				return "GridCellVarValue";
-			else if (type == "PTLayout")
-				return "GridCellVarValue";
-			else if (type == "MaterialProperties")
-				return "GridCellVarValue";
-			else if (type == "TroughLoop")
-				return "GridCellVarValue";
-			else if (type == "MonthlyFactor")
-				return "GridCellVarValue";
-			else if (type == "SearchListBox")
-				return "GridCellVarValue";
-			else if (type == "DataArray")
-				return "GridCellVarValue";
-			else if (type == "DataLifetimeArray")
-				return "GridCellVarValue";
-			else if (type == "StringArray")
-				return "GridCellVarValue";
-			else if (type == "DataMatrix")
-				return "GridCellVarValue";
-			else if (type == "DataLifetimeMatrix")
-				return "GridCellVarValue";
-			else if (type == "ShadingFactors")
-				return "GridCellVarValue";
-			else if (type == "ValueMatrix")
-				return "GridCellVarValue";
-			else if (type == "MonthByHourFactors")
-				return "GridCellVarValue";
-			else if (type == "Library")
-				return "GridCellVarValue";
-			else if (type == "LossAdjustment")
-				return "GridCellVarValue";
-			else if (type == "DiurnalPeriod")
-				return "GridCellVarValue";
-			else if (var_info->UIObject == VUIOBJ_NONE)
-				return wxGRID_VALUE_STRING;
+		Case* c = GetCase(row, col);
+		wxString var_name;
+		size_t ndx_hybrid;
+		if (lookup_row < m_var_names.size() && UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+			if (VarInfo* var_info = m_var_info_lookup_vec[col - 2][ndx_hybrid]->Lookup(var_name))
+			{ // TODO - better control list maintenance here and in UIEditorPanel
+				wxString type = var_info->UIObject;
+				bool calculated = (var_info->Flags & VF_CALCULATED) > 0;
+				if (calculated)
+					return "GridCellCalculated";
+				else if (type == "Numeric")
+					return wxGRID_VALUE_STRING;
+				else if (type == "Choice")
+					return "GridCellChoice";
+				else if (type == "ListBox")
+					return "GridCellVarValue";
+				else if (type == "RadioChoice")
+					return "GridCellVarValue";
+				else if (type == "TextEntry")
+					return wxGRID_VALUE_STRING;
+				else if (type == "MultilineText")
+					return wxGRID_VALUE_STRING;
+				else if (type == "Slider")
+					return "GridCellVarValue";
+				else if (type == "CheckBox")
+					return "GridCellCheckBox";
+				else if (type == "SchedNumeric")
+					return "GridCellVarValue";
+				else if (type == "TOUSchedule")
+					return "GridCellVarValue";
+				else if (type == "PTLayout")
+					return "GridCellVarValue";
+				else if (type == "MaterialProperties")
+					return "GridCellVarValue";
+				else if (type == "TroughLoop")
+					return "GridCellVarValue";
+				else if (type == "MonthlyFactor")
+					return "GridCellVarValue";
+				else if (type == "SearchListBox")
+					return "GridCellVarValue";
+				else if (type == "DataArray")
+					return "GridCellVarValue";
+				else if (type == "DataLifetimeArray")
+					return "GridCellVarValue";
+				else if (type == "StringArray")
+					return "GridCellVarValue";
+				else if (type == "DataMatrix")
+					return "GridCellVarValue";
+				else if (type == "DataLifetimeMatrix")
+					return "GridCellVarValue";
+				else if (type == "ShadingFactors")
+					return "GridCellVarValue";
+				else if (type == "ValueMatrix")
+					return "GridCellVarValue";
+				else if (type == "MonthByHourFactors")
+					return "GridCellVarValue";
+				else if (type == "Library")
+					return "GridCellVarValue";
+				else if (type == "LossAdjustment")
+					return "GridCellVarValue";
+				else if (type == "DiurnalPeriod")
+					return "GridCellVarValue";
+				else if (var_info->UIObject == VUIOBJ_NONE)
+					return wxGRID_VALUE_STRING;
+				else
+					return wxGRID_VALUE_STRING;
+			}
 			else
 				return wxGRID_VALUE_STRING;
 		}
@@ -502,40 +642,56 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		{
 		case COMPARE_SHOW_DIFFERENT:
 		case COMPARE_SHOW_SAME:
-		{
-				int lookup_row = row;
-				if (m_sorted) lookup_row = m_sorted_index[row];
-				if (m_var_table_vec[0]->Get(m_var_names[lookup_row]))
-				{
-					VarValue *vv = m_var_table_vec[0]->Get(m_var_names[lookup_row]);
-					bool row_varvalues_same = true;
-					for (int col = 1; col < (int)m_cases.size(); col++)
-					{
-						if (m_var_table_vec[col]->Get(m_var_names[lookup_row]))
-						{
-							VarValue *vv_new = m_var_table_vec[col]->Get(m_var_names[lookup_row]);
-							if (vv->Type() == vv_new->Type())
-								row_varvalues_same = (row_varvalues_same && (vv->ValueEqual(*vv_new)));
-							else
-							{
-								show = false; // different variable type in row - should not happen
+		{ // note that the comparison starts with first case and then check other cases if variable exists - ORDER DEPENDENT
+			int lookup_row = row;
+			if (m_sorted) lookup_row = m_sorted_index[row];
+			Case* c = m_cases[0];
+			wxString var_name;
+			size_t ndx_hybrid;
+			if (m_var_names.size() > 0) {
+				if (UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+					if (m_var_table_vec[0][ndx_hybrid]->Get(var_name)) {
+						VarValue* vv = m_var_table_vec[0][ndx_hybrid]->Get(var_name);
+						bool row_varvalues_same = true;
+						for (int col = 1; col < (int)m_cases.size(); col++)	{
+							// decode and key off of m_var_names[lookup_row]
+							wxString col_var_name;
+							size_t col_ndx_hybrid;
+							if (UpdateVarNameNdxHybrid(m_cases[col], m_var_names[lookup_row], &col_var_name, &col_ndx_hybrid)) {
+
+								if (m_var_table_vec[col][col_ndx_hybrid]->Get(col_var_name)) {
+									VarValue* vv_new = m_var_table_vec[col][col_ndx_hybrid]->Get(col_var_name);
+									if (vv->Type() == vv_new->Type())
+										row_varvalues_same = (row_varvalues_same && (vv->ValueEqual(*vv_new)));
+									else {
+										show = false; // different variable type in row - should not happen
+										continue;
+									}
+								}
+								else {
+									show = false; // no variable value for (row, col)
+									continue;
+								}
+							}
+							else {
+								show = false; // no m_var_names[lookup_row] value for (row, col)
 								continue;
 							}
 						}
+						if (comparison_type == COMPARE_SHOW_DIFFERENT)
+							show = (show && !row_varvalues_same);
 						else
-						{
-							show = false; // no variable value for (row, col)
-							continue;
-						}
+							show = (show && row_varvalues_same);
 					}
-					if (comparison_type == COMPARE_SHOW_DIFFERENT)
-						show = (show && !row_varvalues_same);
 					else
-						show = (show && row_varvalues_same);
+						show = false; // no variable in first case
 				}
 				else
 					show = false; // no variable value for (row, col=0)
 			}
+			else
+				show = false; // no var name for (row, col=0)
+		}
 			break;
 		case COMPARE_SHOW_ALL:
 		default:
@@ -543,18 +699,25 @@ bool VariableGridData::ShowRow(int row, int comparison_type, bool show_calculate
 		}
 	}
 	// check for calculated inputs
-	if (show)
-	{
+	if (show)	{
 		bool calculated = false;
 		int lookup_row = row;
 		if ((row < (int)m_sorted_index.Count()) && (m_sorted)) lookup_row = m_sorted_index[row];
-		if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row])))
-		{
-			VarInfo *vi = m_var_info_lookup_vec[0]->Lookup(m_var_names[lookup_row]);
-			if (vi)
-				calculated = (vi->Flags & VF_CALCULATED) > 0 ;
-			if (calculated) show = show && show_calculated;
+
+		// calculated = calculated in any case!
+		for (size_t iCase = 0; iCase < m_cases.size(); iCase++) {
+			Case* c = m_cases[iCase]; 
+			wxString var_name;
+			size_t ndx_hybrid;
+			if (lookup_row < m_var_names.size() && UpdateVarNameNdxHybrid(c, m_var_names[lookup_row], &var_name, &ndx_hybrid)) {
+				if ((lookup_row < (int)m_var_names.Count()) && (m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name))) {
+					VarInfo* vi = m_var_info_lookup_vec[iCase][ndx_hybrid]->Lookup(var_name);
+					if (vi)
+						calculated = calculated || (vi->Flags & VF_CALCULATED) > 0;
+				}
+			}
 		}
+		if (calculated) show = show && show_calculated;
 	}
 	return show;
 }
@@ -588,15 +751,34 @@ bool VariableGridData::DeleteCols(size_t pos, size_t numCols)
 	return true;
 }
 
+
+bool VariableGridData::DeleteRows(size_t pos, size_t numRows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_DELETED,
+			pos,
+			numRows);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
 bool VariableGridData::AddCase(Case *c)
 {
 	std::vector<Case*>::iterator it = std::find(m_cases.begin(), m_cases.end(), c);
 	if (it == m_cases.end())
 	{
 		m_cases.push_back(c);
-		Init();
-		AppendCols();
-		return true;
+
+		if (c->GetConfiguration()) {
+			Init();
+			AppendCols();
+			return true;
+		}
 	}
 	return false;
 }
@@ -609,6 +791,20 @@ bool VariableGridData::AppendCols(size_t numCols)
 		wxGridTableMessage msg(this,
 			wxGRIDTABLE_NOTIFY_COLS_APPENDED,
 			numCols);
+
+		GetView()->ProcessTableMessage(msg);
+	}
+
+	return true;
+}
+
+bool VariableGridData::AppendRows(size_t numRows)
+{
+	if (GetView())
+	{
+		wxGridTableMessage msg(this,
+			wxGRIDTABLE_NOTIFY_ROWS_APPENDED,
+			numRows);
 
 		GetView()->ProcessTableMessage(msg);
 	}
@@ -683,15 +879,18 @@ BEGIN_EVENT_TABLE(VariableGridFrame, wxFrame)
 //	EVT_SHOW(VariableGridFrame::OnShow)
 END_EVENT_TABLE()
 
-VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c, VarTable *vt, wxString frame_title) 
+VariableGridFrame::VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c, std::vector<VarTable*>* vts, wxString frame_title)
 	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxScaleSize(800, 700)), m_pf(pf)
+//	VariableGridFrame::VariableGridFrame(wxWindow* parent, ProjectFile* pf, Case* c, VarTable* vt, wxString frame_title)
+//	: wxFrame(parent, wxID_ANY, "Variable Grid", wxDefaultPosition, wxScaleSize(800, 700)), m_pf(pf)
 {
 	m_show_calculated = false;
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 
 	if (!m_pf) return;
 
-	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
+//	if (!vt) m_pf->AddListener(this); // no listeners when using parametric var tables
+	if (!vts) m_pf->AddListener(this); // no listeners when using parametric var tables
 
 	if (c)
 	{
@@ -706,7 +905,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 	if (m_cases.size() > 0)
 	{
-		if (!vt)
+//		if (!vt)
+		if (!vts)
 		{
 			for (size_t i = 0; i < m_cases.size(); i++)
 				m_cases[i]->AddListener(this);
@@ -723,7 +923,8 @@ VariableGridFrame::VariableGridFrame(wxWindow *parent, ProjectFile *pf, Case *c,
 
 		SetTitle(title);
 
-		m_griddata = new VariableGridData(m_pf, c, vt);
+//		m_griddata = new VariableGridData(m_pf, c, vt);
+		m_griddata = new VariableGridData(m_pf, c, vts);
 
 		m_grid = new VariableGrid(this, wxID_ANY);
 
@@ -968,6 +1169,7 @@ void VariableGridFrame::SizeColumns()
 void VariableGridFrame::UpdateGrid()
 {
 	wxString filter(m_filter->GetValue().Lower());
+//	m_grid->SetTable(m_griddata);
 	m_grid->Freeze();
 	for (int row = 0; row < m_grid->GetNumberRows(); row++)
 	{
@@ -987,7 +1189,6 @@ void VariableGridFrame::UpdateGrid()
 			m_grid->HideRow(row);
 	}
 	m_grid->Thaw();
-	m_grid->ForceRefresh();
 }
 
 void VariableGridFrame::OnCommand(wxCommandEvent &evt)
@@ -1074,6 +1275,7 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 			m_griddata->DeleteCase(c);
 			m_grid->Refresh();
 			UpdateGrid();
+			m_grid->ForceRefresh();
 		}
 	}
 	else if (evt.GetType() == ProjectFileEvent::CASE_ADDED)
@@ -1084,8 +1286,12 @@ void VariableGridFrame::OnProjectFileEvent(ProjectFile* WXUNUSED(p), ProjectFile
 		{
 			m_cases.push_back(c);
 			m_griddata->AddCase(c);
-			m_grid->Refresh();
-			UpdateGrid();
+			if (c->GetConfiguration()) {
+
+				m_grid->Refresh();
+				UpdateGrid();
+				m_grid->ForceRefresh();
+			}
 		}
 	}
 	else if (evt.GetType() == ProjectFileEvent::CASE_RENAMED)

@@ -300,9 +300,16 @@ bool ProjectFile::Read( wxInputStream &input )
 	if ( ver > 2 )
 		m_verPatch = (int)in.Read16();
 
-	if ( !m_properties.Read( input ) ) m_lastError += "Project properties error.\n";
-	if (!m_cases.Read(input)) m_lastError += "Case data error: " + m_cases.GetLastError() + "\n";
-	if ( !m_objects.Read( input ) ) m_lastError += "Objects data error: " + m_objects.GetLastError() + "\n";
+	if (!m_properties.Read(input)) {
+		m_lastError += "Project properties error.\n";
+	}
+	if (!m_cases.Read(input)) {
+		m_lastError += "Case data error: " + m_cases.GetLastError() + "\n";
+	}
+	if (!m_objects.Read(input)) {
+		if (m_objects.GetLastError().length() > 0)
+			m_lastError += "Objects data error: " + m_objects.GetLastError() + "\n";
+	}
 
 	m_modified = false;
 
@@ -403,11 +410,11 @@ static void fcall_vuc_config_update_with_old_values(lk::invoke_t& cxt)
 	LK_DOC("config_update_with_old_values", "Update current case with old values", "(none):table");
 	if (VersionUpgrade* vuc = static_cast<VersionUpgrade*>(cxt.user_data()))
 	{
-		VarTable& vt_old = vuc->GetCase()->OldValues();
+		VarTable& vt_old = vuc->GetCase()->OldValues(0);
 		cxt.result().empty_hash();
 		for (VarTable::iterator it = vt_old.begin(); it != vt_old.end(); ++it)
 		{
-			if (VarValue* vv = vuc->GetCase()->Values().Get(it->first))
+			if (VarValue* vv = vuc->GetCase()->Values(0).Get(it->first))
 			{
 				if (vv->Type() == (it->second)->Type()) // only update if old variable is of same type
 				{
@@ -456,7 +463,7 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
 	{
 		wxString name( cxt.arg(0).as_string() );
-		VarTable &vt = vuc->GetCase()->Values();
+		VarTable &vt = vuc->GetCase()->Values(0);
 		if ( cxt.arg_count() == 1 )
 		{
 			if ( VarValue *vv = vt.Get( name ) )
@@ -479,8 +486,8 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 			if ( cxt.arg_count() > 2 ) reason = cxt.arg(2).as_string();
 
 			wxString label( name );
-			if ( 0 != vuc->GetCase()->Variables().Lookup( name ) )
-				label = vuc->GetCase()->Variables().Label(name);
+			if ( 0 != vuc->GetCase()->Variables(0).Lookup( name ) )
+				label = vuc->GetCase()->Variables(0).Label(name);
 
 			wxString valstr(  vv->AsString( ',', '|' ) );
 			if ( valstr.Len() > 100 )
@@ -512,7 +519,7 @@ static void fcall_vuc_oldvalue( lk::invoke_t &cxt )
 	LK_DOC( "oldvalue", "Retrieve a variable value from the project file that is no longer valid in the current case configuration, either due to wrong type or name change.", "(string:name):variant" );
 	if ( VersionUpgrade *vuc = static_cast<VersionUpgrade*>(cxt.user_data()) )
 	{
-		VarTable &vt = vuc->GetCase()->OldValues();
+		VarTable &vt = vuc->GetCase()->OldValues(0);
 		if ( VarValue *vv = vt.Get( cxt.arg(0).as_string() ) )
 			vv->Write( cxt.result() );
 	}
@@ -683,7 +690,7 @@ bool VersionUpgrade::Run( ProjectFile &pf )
 				else {
 					// recalculate equations in each case for each consecutive upgrade
 					// to make sure all variables are in sync
-					if (cases[i]->RecalculateAll(true) < 0)
+					if (cases[i]->RecalculateAll(0,true) < 0)
 						GetLog().push_back(log(WARNING, "Error updating calculated values in '" + pf.GetCaseName(cases[i]) + "' during upgrade process.  Please resolve any errors, save the project file, and reopen it."));
 				}
 			}

@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Case;
 class ConfigInfo;
 
-bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname);
+bool VarValueToSSC(VarValue *vv, ssc_data_t pdata, const wxString &sscname, bool match_case = false);
 
 class ISimulationHandler
 {
@@ -83,6 +83,8 @@ public:
 class wxThreadProgressDialog;
 class SimulationDialog;
 
+
+
 class Simulation
 {
 public:
@@ -101,11 +103,11 @@ public:
 	static bool WriteDebugFile( const wxString &file, ssc_data_t p_data );
 
 	// setting up the simulation
-	void Override( const wxString &name, const VarValue &val );
-	wxString GetOverridesLabel( bool with_labels = true );
+	void Override( const wxString &name, const VarValue &val, size_t ndxHybrid);
+	wxString GetOverridesLabel(size_t ndxHybrid, bool with_labels = true );
 	void SetName( const wxString &s ) { m_name = s; }
 	wxString GetName() { return m_name; }
-	VarValue *GetInput( const wxString &name );
+	VarValue *GetInput( const wxString &name, size_t ndxHybrid);
 	void SetInput(const wxString & name, lk::vardata_t val);
 
 	// generate code
@@ -124,7 +126,9 @@ public:
 	// returns an output or input, outputs have precedence
 	VarValue *GetValue( const wxString &name );
 
-	VarTable *GetInputVarTable() { return &m_inputs; }
+	VarTable *GetInputVarTable(size_t ndxHybrid) { return &m_inputs[ndxHybrid]; }
+
+	bool JSONInputsToSSCData(wxString& fn, ssc_data_t p_data);
 
 	bool CmodInputsToSSCData(ssc_module_t p_mod, ssc_data_t p_data);
 	bool GetInputsSSCData(ssc_data_t p_data);
@@ -140,7 +144,11 @@ public:
 	bool Invoke(bool silent=false, bool prepare=true, wxString folder=wxEmptyString);
 	
 	bool Prepare(); // not threadable, but must be called before below
+	bool Setup(); // not threadable, but must be called before below
 	bool InvokeWithHandler(ISimulationHandler *ih, wxString folder = wxEmptyString); // updates elapsed time
+
+	bool InvokeSSC(bool silent, const wxString& fn);
+	bool InvokeSSCWithHandler(ISimulationHandler* ih, ssc_data_t data); 
 
 	// results and messages if it succeeded
 	bool Ok();
@@ -158,12 +166,19 @@ public:
 		wxArrayString* types,
 		bool single_values = false );
 
-	static int DispatchThreads( wxThreadProgressDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
-	static int DispatchThreads( SimulationDialog &tpd, 
-		std::vector<Simulation*> &sims, 
-		int nthread );
+	static int DispatchThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+	static int DispatchThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread);
+
+	static int DispatchSSCThreads(SimulationDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, wxString& fn);
+	static int DispatchSSCThreads(wxThreadProgressDialog& tpd,
+		std::vector<Simulation*>& sims,
+		int nthread, ssc_data_t data);
 
 	// total time for creating data container, model, setting inputs, running simulation
 	int GetTotalElapsedTime() { return m_totalElapsedMsec; }
@@ -171,6 +186,7 @@ public:
 	int GetSSCElapsedTime() { return m_sscElapsedMsec; }
 
 	wxArrayString GetModels() { return m_simlist; }
+	bool SetModels(); // sets m_simlist - also done in Prepare
 
     // move to public access functions?
     bool m_bSscTestsGeneration;
@@ -181,10 +197,10 @@ protected:
 	Case *m_case;
 	wxArrayString m_simlist;
 	wxString m_name;
-	wxArrayString m_overrides;
-	VarTable m_inputs;
+	std::vector<wxArrayString> m_overrides; // one or more vartables (more than one for hybrids) see case.h m_vals
+	std::vector<VarTable> m_inputs; // one or more vartables (more than one for hybrids) see case.h m_vals
 	wxArrayString m_outputList;
-	VarTable m_outputs;
+	VarTable m_outputs; // single vartable for all outputs including hybrids
 	wxArrayString m_errors, m_warnings, m_notices;
 
 	StringHash m_outputLabels, m_outputUnits, m_uiHints;
@@ -221,5 +237,6 @@ private:
 	wxThreadProgressDialog *m_tpd;
 	wxFrame *m_transp;
 };
+
 
 #endif
