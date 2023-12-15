@@ -37759,7 +37759,6 @@
     "opt_max_iter": 200.0,
     "p_start": 0.025,
     "p_track": 0.055,
-    "packed_vol_frac": -789.0,
     "pb_bd_frac": 0.02,
     "pb_fixed_par": 0.0055,
     "pb_pump_coef": 0.55,

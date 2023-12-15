@@ -1,7 +1,7 @@
 {
     "Name": "TES Direct Two Tank",
-    "Width": 912.0,
-    "Height": 352.0,
+    "Width": 910.0,
+    "Height": 331.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 239.0
+                    "Integer": 221.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1410,89 +1410,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "packed_vol_frac"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 684.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 315.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.6
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "tank_pairs"
                 },
                 "X": {
@@ -1988,19 +1905,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "packed_vol_frac": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Particle packed volume fraction",
-            "Units": "",
-            "Group": "Thermal Energy Storage",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.6,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "tank_pairs": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2094,9 +1998,6 @@
         "\t\tshow(\"tanks_in_parallel\", false);",
         "\t}",
         "\r",
-        "\tif ( technology() != 'Particle Tower' ){\r",
-        "\t\tshow(\"packed_vol_frac\", false);\r",
-        "\t}",
         "\treturn;",
         "};",
         "",

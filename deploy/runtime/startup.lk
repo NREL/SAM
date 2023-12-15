@@ -1877,15 +1877,13 @@ function setup_particle_tower_pages(is_grid_limits)
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'Particle Tower - System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
 	addpage( [[ 'Tower SolarPilot Solar Field' ]], { 'sidebar'='Heliostat Field', 'help'='mspt_heliostat_field' } );
-	addpage( [[ 'Particle Tower Receiver', 'Particle Tower Free-falling' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
+	addpage( [[ 'Particle Tower Receiver', 'Particle Tower Free-falling', 'Particle Lost Operating Costs' ]], { 'sidebar'='Tower and Receiver', 'help'='mspt_tower_and_receiver' } );
 	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User-Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
-	addpage( [[ 'TES Direct Two Tank']], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
-	addpage( [[ 'MSPT System Control' ,
-	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
+	addpage( [[ 'TES Direct Particle Two Bin']], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
+	addpage( [[ 'MSPT System Control' , 'Particle Tower Dispatch Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control' } );
   	if(is_grid_limits == 1){
 		setup_grid_limits_page();
   	}
@@ -1893,11 +1891,11 @@ function setup_particle_tower_pages(is_grid_limits)
 
 //-----------------------------------------------------
 setconfig( 'Particle Tower', 'Single Owner' );
-setmodules( ['csp_tower_particle', 'grid', 'utilityrate5', 'singleowner']);
-setup_particle_tower_pages(1);
+setmodules( ['csp_tower_particle', 'utilityrate5', 'singleowner']);
+setup_particle_tower_pages(0);
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [[ 'Operating Costs', 'Particle Lost Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 
@@ -1907,7 +1905,7 @@ setmodules( ['csp_tower_particle', 'lcoefcr_design']);
 setup_particle_tower_pages(0);
 addpage( [['Sales Tax Rate Single Input', 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
-addpage( [['Particle Lost Operating Costs', 'Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoh'});
+addpage( [['Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoh'});
 
 
 //-----------------------------------------------------
@@ -1915,7 +1913,6 @@ setconfig('Particle Tower', 'None');
 setmodules( ['csp_tower_particle']);
 setup_particle_tower_pages(0);
 addpage( [['Sales Tax Rate Single Input','Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Particle Lost Operating Costs']], {'sidebar' = 'Particle Loss', 'help'='oc_operating'} );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
 
 // Direct Steam Linear IPH ////////////
@@ -1948,7 +1945,7 @@ function setup_DSLF_pages()
 	 {'name'='Linear Fresnel Boiler Geometry', 'caption'='Boiler Geometry', 'collapsible'=true, 'collapsible_var'='boiler_is_shown'},
 	 {'name'='Linear Fresnel Superheater Geometry', 'caption'='Superheater Geometry', 'collapsible'=true, 'collapsible_var'='superheater_is_shown'} ]],
 	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
-	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
+	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS C', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
  	setup_grid_limits_page();
 }

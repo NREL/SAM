@@ -2950,7 +2950,7 @@
         "\t",
         "\t//#ssc_auto_exec(obj, 'csp_tower_particle', 2);",
         "",
-        "\tret_d = ssc_dump(obj, 'particle_tower_system_des_mimo_ssc_auto_exec.lk');",
+        "\t//ret_d = ssc_dump(obj, 'particle_tower_system_des_mimo_ssc_auto_exec.lk');",
         "",
         "\tret = ssc_exec(obj, 'csp_tower_particle');",
         "",

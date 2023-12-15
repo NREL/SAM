@@ -1,7 +1,7 @@
 {
     "Name": "Particle Tower Free-falling",
-    "Width": 873.0,
-    "Height": 451.0,
+    "Width": 867.0,
+    "Height": 442.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -551,7 +551,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -634,7 +634,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -717,7 +717,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -788,43 +788,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 3.0
-                }
-            }
-        },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 12"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 581.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 23.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 276.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 144.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "Particle Tower Free-falling.png"
-                },
-                "Centered": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
                 }
             }
         },
@@ -1441,7 +1404,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1648,7 +1611,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1731,7 +1694,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1814,7 +1777,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1897,7 +1860,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1980,7 +1943,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,

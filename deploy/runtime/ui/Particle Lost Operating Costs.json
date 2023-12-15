@@ -1,6 +1,6 @@
 {
     "Name": "Particle Lost Operating Costs",
-    "Width": 818.0,
+    "Width": 878.0,
     "Height": 62.0,
     "FormObjects": {
         "Numeric": {
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 432.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -40,11 +40,11 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 0.0
+                    "Integer": 2.0
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 5.0
+                    "Integer": 2.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -103,11 +103,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 806.0
+                    "Integer": 858.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 50.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -132,7 +132,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 513.0
+                    "Integer": 552.0
                 },
                 "Y": {
                     "Type": 3.0,
