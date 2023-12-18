@@ -12,7 +12,6 @@
 			"analysis_period": 25
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 0
 		},
 		"HybridTech": {
 			"om_capacity": [],

@@ -77,8 +77,6 @@
 		"PVLosses": {
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 0,
-			"dc_adjust_constant": 0
 		},
 		"BatteryCell": {
 			"batt_minimum_outage_SOC": 10
