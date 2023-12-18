@@ -106,6 +106,9 @@ Generic CSP System,LCOE Calculator,592360448,NA,NA,; Notice: time 0.00 { Generic
 Generic CSP System,None,592360448,NA,NA,; Notice: time 0.00 { Generic solar model 2 }:\ The interpolation code must be 1 (interpolate) or 2 (nearest neighbor)The input value was 0, so it was reset to 1
 MSPT IPH,None,1550245888,NA,NA,; 
 MSPT IPH,LCOH Calculator,1550245888,NA,NA,; 
+Particle Tower,Single Owner,704759168,6.76242,7.10294,; Notice: Outputs                       Inputs         UDPC\ Gross power [MWe]             111.1          110.7\ Heat input [MWt]              229.0          228.3\ Cooling power [MWe]           2.2            2.1\ Water user [kg/s]             0.0            0.0\ Gross efficiency              0.485          0.485\ HTF cold temp [C]             555.0          555.7\ 
+Particle Tower,LCOE Calculator,704759168,NA,NA,; Notice: Outputs                       Inputs         UDPC\ Gross power [MWe]             111.1          110.7\ Heat input [MWt]              229.0          228.3\ Cooling power [MWe]           2.2            2.1\ Water user [kg/s]             0.0            0.0\ Gross efficiency              0.485          0.485\ HTF cold temp [C]             555.0          555.7\ 
+Particle Tower,None,704759168,NA,NA,; Notice: Outputs                       Inputs         UDPC\ Gross power [MWe]             111.1          110.7\ Heat input [MWt]              229.0          228.3\ Cooling power [MWe]           2.2            2.1\ Water user [kg/s]             0.0            0.0\ Gross efficiency              0.485          0.485\ HTF cold temp [C]             555.0          555.7\ 
 Physical Trough IPH,None,24057538,NA,NA,; 
 Physical Trough IPH,LCOH Calculator,24050810,NA,NA,; 
 DSGL IPH,None,10833103,NA,NA,; 
