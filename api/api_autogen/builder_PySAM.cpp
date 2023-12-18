@@ -173,11 +173,13 @@ void builder_PySAM::all_options_of_cmod(const std::string &cmod) {
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
-    std::string tech_symbol = cmod_symbol;
     if (cmod_symbol == "6parsolve")
-        tech_symbol = "SixParsolve";
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
-        tech_symbol += "Model";
+        cmod_symbol += "Model";
+    std::string tech_symbol = cmod_symbol;
 
     std::ofstream fx_file;
     fx_file.open(file_dir + "/modules/" + tech_symbol + ".c");
@@ -185,7 +187,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "#include <Python.h>\n"
                "\n"
-               "#include <SAM_" << cmod_symbol << ".h>\n"
+               "#include <SAM_" << tech_symbol << ".h>\n"
                "#include <SAM_api.h>\n"
                "\n"
                "#include \"PySAM_utils.h\"\n\n";

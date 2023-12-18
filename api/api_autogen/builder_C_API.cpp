@@ -39,6 +39,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 void builder_C_API::create_SAM_headers(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
+    if (cmod_symbol == "6parsolve")
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
+    else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
+        cmod_symbol += "Model";
+
     std::ofstream fx_file;
     fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".h");
     assert(fx_file.is_open());
@@ -192,6 +199,13 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
 
 void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
+
+    if (cmod_symbol == "6parsolve")
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
+    else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
+        cmod_symbol += "Model";
 
     std::ofstream fx_file;
     fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".cpp");
