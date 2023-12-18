@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough Thermal Storage",
-    "Width": 910.0,
-    "Height": 437.0,
+    "Width": 919.0,
+    "Height": 514.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 326.0
+                    "Integer": 386.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2163,6 +2163,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2980,11 +3021,11 @@
         "tes_type": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "TES type (1=two-tank, 2=thermocline)",
+            "Label": "Is NT HeatTrap?",
             "Units": " ",
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
-            "Flags": 9.0,
+            "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
