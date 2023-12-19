@@ -364,7 +364,7 @@ int main(int argc, char *argv[]){
             if (c != ' ' && c != '-') cfg += c; 
 
         snprintf(buffer, sizeof(buffer),
-            "%s\n-----------------------------------------------------------------------\n\n"
+            "%s\n---------------------------------------------------------------------------------\n\n"
             "      %s\n\n"
             "      Configuration name for defaults: *\"%s\"*\n\n"
             "      %s\n\n",

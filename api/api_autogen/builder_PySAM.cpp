@@ -1108,8 +1108,17 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
             fx_file << "-";
         fx_file << "-\n\n";
 
-        fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
-        fx_file << "\t:members:\n\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << ".. autoclass:: PySAM.AdjustmentFactors.AdjustmentFactors\n";
+        }
+        else {
+            fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
+        }
+        fx_file << "\t:members:\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << "\t:noindex:\n";
+        }
+        fx_file << "\n";
     }
 
     fx_file.close();
@@ -1167,14 +1176,26 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                        "\t\t\tpass\n"
                        "\t\n"
                        "\t\tconstant = float\n"
-                       "\t\tdc_constant = float\n"
-                       "\t\tdc_hourly = tuple\n"
-                       "\t\tdc_periods = tuple\n"
+                       "\t\ten_hourly = float\n"
+                       "\t\ten_periods = float\n"
+                       "\t\ten_timeindex = float\n"
                        "\t\thourly = tuple\n"
                        "\t\tperiods = tuple\n"
+                       "\t\timeindex = tuple\n"
+                       "\t\tdc_constant = float\n"
+                       "\t\tdc_en_hourly = float\n"
+                       "\t\tdc_en_periods = float\n"
+                       "\t\tdc_en_timeindex = float\n"
+                       "\t\tdc_hourly = tuple\n"
+                       "\t\tdc_periods = tuple\n"
+                       "\t\tdc_imeindex = tuple\n"
                        "\t\tsf_constant = float\n"
+                       "\t\tsf_en_hourly = float\n"
+                       "\t\tsf_en_periods = float\n"
+                       "\t\tsf_en_timeindex = float\n"
                        "\t\tsf_hourly = tuple\n"
-                       "\t\tsf_periods = tuple\n\n";
+                       "\t\tsf_periods = tuple\n"
+                       "\t\tsf_timeindex = tuple\n\n";
             continue;
         }
 
