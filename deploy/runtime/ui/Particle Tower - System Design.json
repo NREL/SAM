@@ -1704,7 +1704,69 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 87.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_msg_HTF_temp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 447.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2899,6 +2961,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "ui_msg_HTF_temp": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "System design message",
+            "Units": "",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": "",
+            "UIObject": "Label",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "vel_rec_htf_des_calc": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3151,15 +3226,29 @@
         "\t\t         v == 'design_eff' ) m = 'receiver thermal power at the design point';",
         "\t\tv_info = varinfo(v);",
         "\t\tif ( value('field_model_type') != 0 )",
-        "\t\t\tmsg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';",
+        "\t\t\tmsg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';\r",
         "\t}",
         "\tproperty('ui_msg','Caption',msg);",
         "}\r",
+        "\r",
+        "function HTF_hot_change_msg ( v ) {\r",
+        "\tmsg = '';\r",
+        "\tm = 'NOT DEFINED';\r",
+        "\tv_info = varinfo(v);\r",
+        "\tif (v == 'T_htf_hot_des') {\r",
+        "\t\tif (value('T_htf_hot_des') != ${T_htf_ref_sysdes} && value('pc_config') == 1) {\r",
+        "\t\t\tmsg = 'You changed the value of ' + v_info.label + ' to a value that is inconsistent with the user-defined power cycle parameter. You should update the user-defined power cycle design HTF temperature to be consistent.';\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\tproperty('ui_msg_HTF_temp','Caption',msg);\r",
+        "}\r",
+        "\r",
         "\r",
         "on_load{'Particle Tower - System Design'} = define() \r",
         "{ \t\r",
         "\tchange_msg('');\r",
         "\ton_change{'is_parallel_htr'}();\r",
+        "\tHTF_hot_change_msg('T_htf_hot_des');\r",
         "};\r",
         "",
         "on_change{'dni_des'} = define()",
@@ -3172,7 +3261,10 @@
         "\t{ change_msg('design_eff'); };",
         "//on_change{'tshours'} = define() { var_change_msg('tshours'); };",
         "on_change{'sf_excess'} = define()",
-        "\t{ change_msg('sf_excess'); };",
+        "\t{ change_msg('sf_excess'); };\r",
+        "\t\r",
+        "on_change{'T_htf_hot_des'} = define()\r",
+        "\t{ HTF_hot_change_msg('T_htf_hot_des'); };",
         "",
         "on_change{'is_parallel_htr'} = define()\r",
         "{ \tis_htr = value('is_parallel_htr') == 1;\r",

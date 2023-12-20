@@ -18871,6 +18871,7 @@
     "ui_ireal": 0.0,
     "ui_lbl_cff_msg": "",
     "ui_msg": "",
+    "ui_msg_HTF_temp": "",
     "ui_operating_cost_capacity": 0.0,
     "ui_particle_cost": 1.0,
     "ui_pfin": 1.07509,
