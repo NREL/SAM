@@ -1881,7 +1881,7 @@ function setup_particle_tower_pages(is_grid_limits)
 	addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'Rankine Cycle Air or Evaporative Cooling' ], [ 'User-Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='etes_power_cycle', 'exclusive_var' = 'pc_config',
-			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
+			  'exclusive_header_pages' = ['Particle Tower Power Block Common']} );
 	addpage( [[ 'TES Direct Particle Two Bin']], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
 	addpage( [[ 'MSPT System Control' , 'Particle Tower Dispatch Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control' } );
   	if(is_grid_limits == 1){

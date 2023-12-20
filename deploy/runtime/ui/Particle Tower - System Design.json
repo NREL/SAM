@@ -2054,7 +2054,7 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "W_dot_cycle_pump_des_calc": {
+        "W_dot_cycle_lift_des_calc": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": " ",
@@ -2990,7 +2990,7 @@
         "\t\t// Cycle",
         "\t\t${m_dot_htf_cycle_des_calc} = ssc_var(obj, \"m_dot_htf_cycle_des\");\r",
         "\t\t${q_pb_design} = ssc_var(obj, \"q_dot_cycle_des\");  ",
-        "\t\t${W_dot_cycle_pump_des_calc} = ssc_var(obj, \"W_dot_cycle_pump_des\");",
+        "\t\t${W_dot_cycle_lift_des_calc} = ssc_var(obj, \"W_dot_cycle_lift_des\");\r",
         "\t\t${W_dot_cycle_cooling_des_calc} = ssc_var(obj, \"W_dot_cycle_cooling_des\");",
         "\t\t// UDPC",
         "\t\t${n_T_htf_pars_sysdes}= ssc_var(obj, \"n_T_htf_pars_calc\"); ",
@@ -3084,7 +3084,7 @@
         "\t    ",
         "\t    ${m_dot_htf_cycle_des_calc} = fail;",
         "\t\t${q_pb_design} = fail;",
-        "\t\t${W_dot_cycle_pump_des_calc} = fail;",
+        "\t\t${W_dot_cycle_lift_des_calc} = fail;",
         "\t\t${W_dot_cycle_cooling_des_calc} = fail;",
         "\t    //UDPC",
         "\t    ${n_T_htf_pars_sysdes}= fail;",

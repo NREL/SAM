@@ -1,5 +1,5 @@
 {
-    "Name": "Molten Salt Tower Power Block Common",
+    "Name": "Particle Tower Power Block Common",
     "Width": 907.0,
     "Height": 317.0,
     "FormObjects": {
@@ -377,7 +377,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "PB_COPY_W_dot_pc_HTF_pump"
+                    "String": "PB_COPY_W_dot_pc_HTF_lift"
                 },
                 "X": {
                     "Type": 3.0,
@@ -995,7 +995,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pb_pump_coef"
+                    "String": "phx_height"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1043,7 +1043,7 @@
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "Editable": {
                     "Type": 2.0,
@@ -1069,7 +1069,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 16.0
                 }
             }
         },
@@ -1376,10 +1376,10 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "PB_COPY_W_dot_pc_HTF_pump": {
+        "PB_COPY_W_dot_pc_HTF_lift": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Cycle design HTF pump power",
+            "Label": "Cycle design HTF lift power",
             "Units": "MWe",
             "Group": " ",
             "IndexLabels": "",
@@ -1467,15 +1467,15 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "pb_pump_coef": {
+        "phx_height": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Pumping power for HTF through power block",
-            "Units": "kW/kg/s",
+            "Label": "Height from hot TES outlet to PHX inlet",
+            "Units": "m",
             "Group": "Power Cycle",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 0.55,
+            "DefaultValue": 10.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -1563,8 +1563,8 @@
         "equations{ 'PB_COPY_W_dot_cooling_par' } = define(){",
         "\treturn ${W_dot_cycle_cooling_des_calc}; };",
         "\t",
-        "equations{ 'PB_COPY_W_dot_pc_HTF_pump' } = define(){",
-        "\treturn ${W_dot_cycle_pump_des_calc}; };",
+        "equations{ 'PB_COPY_W_dot_pc_HTF_lift' } = define(){",
+        "\treturn ${W_dot_cycle_lift_des_calc}; };",
         "",
         ""
     ],
