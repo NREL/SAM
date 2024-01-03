@@ -673,14 +673,8 @@ function setup_csp_physical_trough_pages()
 	addpage( [[ 'Rankine Cycle' ], [ 'User Defined Power Cycle' ]],
 			{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
-
-	//addpage( [[ 'Physical Trough Power Block Common' ,
-	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-	addpage( [[ 'Physical Trough System Control' ,
-	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'Physical Trough System Control' , 'Physical Trough Dispatch Control' ]],
 	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
 	setup_grid_limits_page();
 }
@@ -703,11 +697,8 @@ function setup_cst_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
-
 	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-
-	addpage( [[ 'Physical Trough IPH System Control' ,
-		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'Physical Trough IPH System Control' , 'Physical Trough IPH Dispatch Control']],
 		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 
@@ -718,8 +709,7 @@ function setup_csp_empirical_trough_pages()
 	addpage( [[ 'Empirical Trough SCA' ]], { 'sidebar'='Collectors (SCAs)', 'help'='troughempirical_collectors_scas' } );
 	addpage( [[ 'Empirical Trough HCE' ]], { 'sidebar'='Receivers (HCEs)', 'help'='troughempirical_receivers_hces' } );
 	addpage( [[ 'Empirical Trough Power Block' ]], { 'sidebar'='Power Block', 'help'='troughempirical_power_block' } );
-	addpage( [[ 'Empirical Trough Thermal Storage',
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'Empirical Trough Thermal Storage', 'CSP Dispatch Control' ]],
 	  { 'sidebar'='Thermal Storage', 'help'='troughempirical_thermal_storage' } );
 	addpage( [[ 'Empirical Trough Parasitics' ]], { 'sidebar'='Parasitics', 'help'='troughempirical_parasitics' } );
 	setup_grid_limits_page();
@@ -1496,8 +1486,7 @@ function setup_generic_csp_pages()
 	addpage( [[ 'Generic CSP Solar Field' ]], { 'sidebar'='Solar Field', 'help'='gss_solar_field' } );
 	addpage( [[ 'Generic CSP Power Block' ]], { 'sidebar'='Power Block', 'help'='gss_power_block' } );
 //	addpage( [[ 'Generic CSP Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
-	addpage( [[ 'Generic CSP Thermal Storage' ,
-	  {'name' = 'CSP Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'Generic CSP Thermal Storage' , 'CSP Dispatch Control' ]], 
 	  { 'sidebar'='Thermal Storage', 'help'='gss_thermal_storage' } );
  	setup_grid_limits_page();
 }
@@ -1780,8 +1769,7 @@ function setup_MSPT_pages(is_grid_limits)
 			{ 'sidebar'='Power Cycle', 'help'='mspt_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Molten Salt Tower Power Block Common']} );
 	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
-	addpage( [[ 'MSPT System Control' ,
-	  {'name' = 'MSPT Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'MSPT System Control' , 'MSPT Dispatch Control' ]],
 	  { 'sidebar'='System Control', 'help'='mspt_system_control' } );
   	if(is_grid_limits == 1){
 		setup_grid_limits_page();
@@ -1798,8 +1786,7 @@ function setup_MSPT_IPH_pages()
 			'exclusive_header_pages' = ['MSPT Receiver']} );
 	//addpage( [[ 'MSPT Parallel Heater' ]], { 'sidebar'='Electric HTF Heater', 'help' = 'mspt_electric_htf_heater' } );
 	addpage( [[ 'TES Direct Two Tank' ]], { 'sidebar'='Thermal Storage', 'help'='iph_mspt_thermal_storage' } );
-	addpage( [[ 'MSPT IPH System Control' ,
-	{'name' = 'MSPT IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'MSPT IPH System Control' , 'MSPT IPH Dispatch Control' ]],
 	  { 'sidebar'='System Control', 'help'='iph_mspt_system_control' } );
 }
 
@@ -1945,7 +1932,7 @@ function setup_DSLF_pages()
 	 {'name'='Linear Fresnel Boiler Geometry', 'caption'='Boiler Geometry', 'collapsible'=true, 'collapsible_var'='boiler_is_shown'},
 	 {'name'='Linear Fresnel Superheater Geometry', 'caption'='Superheater Geometry', 'collapsible'=true, 'collapsible_var'='superheater_is_shown'} ]],
 	 { 'sidebar'='Collector and Receiver', 'help'='dslf_collector_and_receiver' } );
-	addpage( [[ 'PBNS Power Block', {'name' = 'CSP PBNS C', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'}  ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
+	addpage( [[ 'PBNS Power Block',  'CSP PBNS Dispatch Control' ]], { 'sidebar'='Power Cycle', 'help'='dslf_power_cycle' } );
 	addpage( [[ 'Linear Fresnel Parasitics' ]], { 'sidebar'='Parasitics', 'help'='dslf_parasitics' } );
  	setup_grid_limits_page();
 }
@@ -2032,8 +2019,7 @@ function setup_MSLF_pages()
 
 	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='mslf_thermal_storage' } );
 
-	addpage( [[ 'MSLF System Control' ,
-		{'name' = 'MSLF Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'MSLF System Control' , 'MSLF Dispatch Control' ]],
 		{ 'sidebar'='System Control', 'help'='mslf_system_control' } );
 		
  	setup_grid_limits_page();
@@ -2110,14 +2096,10 @@ function setup_MSLF_IPH_pages()
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_mslf_location_and_resource' } );
 	addpage( [[ 'MSLF IPH System Design' ]], { 'sidebar'='System Design', 'help'='iph_mslf_system_design' } );
 	addpage( [[ 'MSLF Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_mslf_solar_field' } );
-
 	addpage( [[ 'MSLF Collector and Receiver' ]],
 		{ 'sidebar'='Collector and Receiver', 'help'='iph_mslf_collector_receiver' } );
-
 	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_mslf_thermal_storage' } );
-
-	addpage( [[ 'MSLF IPH System Control' ,
-		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+	addpage( [[ 'MSLF IPH System Control' , 'MSLF IPH Dispatch Control' ]],
 		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 

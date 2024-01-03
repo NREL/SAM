@@ -323,7 +323,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Dispatch Control"
+                    "String": "Turbine Fraction Control Hueristic"
                 },
                 "Bold": {
                     "Type": 2.0,
