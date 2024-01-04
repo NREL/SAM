@@ -323,7 +323,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Turbine Fraction Control Hueristic"
+                    "String": "Turbine Fraction Control Heuristic"
                 },
                 "Bold": {
                     "Type": 2.0,
