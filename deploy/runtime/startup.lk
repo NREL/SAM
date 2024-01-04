@@ -1859,7 +1859,7 @@ setup_electricity_purchases();
 
 // Particle Power Tower ////////////////////////////////////////////////////////////////////
 // TODO: Update Help documentation
-function setup_particle_tower_pages(is_grid_limits)
+function setup_particle_tower_pages()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pt_location_and_resource' } );
 	addpage( [[ 'Particle Tower - System Design' ]], { 'sidebar'='System Design', 'help'='mspt_system_design' } );
@@ -1871,15 +1871,12 @@ function setup_particle_tower_pages(is_grid_limits)
 			  'exclusive_header_pages' = ['Particle Tower Power Block Common']} );
 	addpage( [[ 'TES Direct Particle Two Bin']], { 'sidebar'='Thermal Storage', 'help'='mspt_thermal_storage' } );
 	addpage( [[ 'MSPT System Control' , 'Particle Tower Dispatch Control' ]], { 'sidebar'='System Control', 'help'='mspt_system_control' } );
-  	if(is_grid_limits == 1){
-		setup_grid_limits_page();
-  	}
 }
 
 //-----------------------------------------------------
 setconfig( 'Particle Tower', 'Single Owner' );
 setmodules( ['csp_tower_particle', 'utilityrate5', 'singleowner']);
-setup_particle_tower_pages(0);
+setup_particle_tower_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1889,7 +1886,7 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Particle Tower', 'LCOE Calculator' );
 setmodules( ['csp_tower_particle', 'lcoefcr_design']);
-setup_particle_tower_pages(0);
+setup_particle_tower_pages();
 addpage( [['Sales Tax Rate Single Input', 'Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
 addpage( [['Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoh'});
@@ -1898,7 +1895,7 @@ addpage( [['Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters'
 //-----------------------------------------------------
 setconfig('Particle Tower', 'None');
 setmodules( ['csp_tower_particle']);
-setup_particle_tower_pages(0);
+setup_particle_tower_pages();
 addpage( [['Sales Tax Rate Single Input','Particle Tower SolarPilot Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'});
 
