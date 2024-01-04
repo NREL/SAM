@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Tower and Receiver Dimensions"
+                    "String": "Tower Dimensions"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -180,7 +180,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Solar field geometry optimization on the Heliostat Field page calculates new values for tower height, receiver height, and receiver diameter."
+                    "String": "Solar field geometry optimization on the Heliostat Field page calculates new values for tower height, aperture height, and aperture width."
                 },
                 "TextColour": {
                     "Type": 4.0,
