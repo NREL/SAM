@@ -21491,6 +21491,17 @@
     "tech_type": 1.0,
     "term_int_rate": 4.0,
     "term_tenor": 18.0,
+    "tes_NT_nstep": 1.0,
+    "tes_NT_piston_loss_poly": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "tes_NT_piston_loss_poly_0": 0.0,
+    "tes_NT_piston_loss_poly_1": 0.0,
+    "tes_NT_piston_loss_poly_2": 0.0,
+    "tes_NT_piston_loss_poly_3": 0.0,
     "tes_avail_vol": 480.686,
     "tes_diams": [
         [
