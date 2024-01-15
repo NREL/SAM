@@ -5914,8 +5914,8 @@
         "\tif (#aLoopCtl != aLoopCtl[0]*3+1)",
         "\t\tmsgbox('Array from loop control has inconsistent values. (#values != array[0]*3+1)');",
         "\t\r",
-        "\tif(${nSCA} != aLoopCtl[0])\r",
-        "\t\t${nSCA} = aLoopCtl[0];\r",
+        "\t//if(${nSCA} != aLoopCtl[0])\r",
+        "\t//\t${nSCA} = aLoopCtl[0];\r",
         "\t//value('nSCA',aLoopCtl[0]);",
         "};"
     ]
