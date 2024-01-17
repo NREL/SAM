@@ -6732,7 +6732,7 @@
             "Units": "0/1",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
