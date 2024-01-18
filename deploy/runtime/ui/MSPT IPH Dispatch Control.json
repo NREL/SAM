@@ -1,7 +1,7 @@
 {
     "Name": "MSPT IPH Dispatch Control",
-    "Width": 1591.0,
-    "Height": 753.0,
+    "Width": 851.0,
+    "Height": 742.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The turbine output fraction scales the turbine thermal input relative to design for the corresponding time-of-delivery period."
+                    "String": "The heat sink output fraction scales the heat sink input relative to design for the corresponding time-of-delivery period."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -74,19 +74,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 297.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 524.0
+                    "Integer": 497.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 21.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 701.0
+                    "Integer": 728.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -251,7 +251,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 69.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,6 +385,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "is_timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 183.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use hourly heat sink fraction?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "is_tod_pc_target_also_pc_max"
                 },
                 "X": {
@@ -397,7 +438,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 260.0
+                    "Integer": 290.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -409,11 +450,56 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use output fraction as maximum cycle output"
+                    "String": "Use output fraction as maximum heat sink output?"
                 },
                 "State": {
                     "Type": 2.0,
                     "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 465.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -434,7 +520,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -479,7 +565,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -516,7 +602,7 @@
         "f_turb_tou_periods": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Turbine output fraction",
+            "Label": "Heat sink output fraction",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
@@ -536,6 +622,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "is_timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use hourly heat sink fraction?",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "is_tod_pc_target_also_pc_max": {
             "Version": 4.0,
             "Type": 1.0,
@@ -547,6 +646,21 @@
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly heat sink fractions",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "weekday_schedule": {
@@ -1204,14 +1318,25 @@
     },
     "Equations": [],
     "Callbacks": [
-        "on_load{ 'MSPT Dispatch Control' } = define() {",
+        "on_load{ 'MSPT IPH Dispatch Control' } = define() {",
         "",
         "  fin = financing();",
-        "  if ( fin == \"Commercial\" || fin == \"None\") ",
+        "  if ( fin == \"Commercial\" || fin == \"None\" || fin == \"LCOH Calculator\") ",
         "    show( 'copy_schedule', false );",
+        "\r",
+        "\ton_change{\"is_timestep_load_fractions\"}();\r",
         "",
         "};",
-        "\t",
+        "\r",
+        "on_change{ 'is_timestep_load_fractions' }= define(){\r",
+        "\tmode = value(\"is_timestep_load_fractions\");\r",
+        "\tenable(\"timestep_load_fractions\",mode==1);\r",
+        "\tenable(\"f_turb_tou_periods\",mode==0);\r",
+        "\tenable(\"copy_schedule\",mode==0);\r",
+        "\tenable(\"weekday_schedule\",mode==0);\r",
+        "\tenable(\"weekend_schedule\",mode==0);\r",
+        "};\r",
+        "",
         "on_change{ 'copy_schedule' } = define() {",
         "",
         "    value( 'weekday_schedule' , value ( 'dispatch_sched_weekday' ) );",

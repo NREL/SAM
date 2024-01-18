@@ -5179,6 +5179,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "field_thermal_output_ideal": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Field thermal output ideal",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "fixed_land_area": {
             "Version": 4.0,
             "Type": 1.0,
@@ -5901,8 +5914,8 @@
         "\tif (#aLoopCtl != aLoopCtl[0]*3+1)",
         "\t\tmsgbox('Array from loop control has inconsistent values. (#values != array[0]*3+1)');",
         "\t\r",
-        "\tif(${nSCA} != aLoopCtl[0])\r",
-        "\t\t${nSCA} = aLoopCtl[0];\r",
+        "\t//if(${nSCA} != aLoopCtl[0])\r",
+        "\t//\t${nSCA} = aLoopCtl[0];\r",
         "\t//value('nSCA',aLoopCtl[0]);",
         "};"
     ]
