@@ -4401,8 +4401,10 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
 
         if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
         {
-            wxLogStatus("error scanning '" + wf + "'");
-            wxLogStatus("\t%s", err);
+            //wxLogStatus("error scanning '" + wf + "'");
+            //cxt.error(err);
+            cxt.result().assign(err);
+            return;
         }
         else
         {
@@ -4495,8 +4497,8 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
     }
     //csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
     csv.WriteFile(final_file);
-    wxString name = WaveResourceTSData_makeJPD(final_file, true);
-    cxt.result().assign(name); //return name for library indexing
+    wxString err = WaveResourceTSData_makeJPD(final_file, true);
+    cxt.result().assign(err); //return name for library indexing
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
     //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
@@ -4510,6 +4512,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                     lc->ReloadLibrary();
         }
     }
+    return;
 }
 
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
