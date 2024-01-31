@@ -5,24 +5,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -41,6 +25,7 @@
     "annual_global": 3.84577,
     "annual_snow": 23.0,
     "annual_tdry": 5.47658,
+    "annual_twet": 2.88032,
     "annual_wspd": 5.37725,
     "biopwr.emissions.avoided_cred": 1.0,
     "biopwr.emissions.collection_fuel": 0.0,
@@ -366,7 +351,7 @@
     "c_equity_return": 13.0,
     "c_inflation": 2.5,
     "c_lifetime": 20.0,
-    "c_nominal_interest_rate": 4.0,
+    "c_nominal_interest_rate": 8.0,
     "c_tax_rate": 28.0,
     "capital_cost": 193851000.0,
     "city": "Fargo",
@@ -374,7 +359,7 @@
     "elev": 274.0,
     "enable_interconnection_limit": 0.0,
     "file_name": "fargo_nd_46.9_-96.8_mts1_60_tmy.csv",
-    "fixed_charge_rate": 0.0837052,
+    "fixed_charge_rate": 0.09769,
     "fixed_operating_cost": 5193310.0,
     "grid_curtailment": [
         1e38,
@@ -9139,7 +9124,7 @@
         1e38
     ],
     "grid_interconnection_limit_kwac": 20000.0,
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "|||",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
@@ -9163,18 +9148,18 @@
     "ui_capital_cost_fixed": 0.0,
     "ui_cfin": 1.03858,
     "ui_cost_input_option": 1.0,
-    "ui_crf": 0.0756818,
+    "ui_crf": 0.087226,
     "ui_fcr_input_option": 1.0,
     "ui_fixed_charge_rate": 0.098,
-    "ui_ireal": 0.0146341,
+    "ui_ireal": 0.0536585,
     "ui_lbl_cff_msg": "",
     "ui_operating_cost_capacity": 107.0,
     "ui_operating_cost_fixed": 0.0,
-    "ui_pfin": 1.06493,
+    "ui_pfin": 1.07836,
     "ui_step_minutes": 60.0,
     "ui_system_capacity": 48535.6,
     "ui_variable_operating_cost": 0.05,
-    "ui_wacc": 0.0432,
+    "ui_wacc": 0.0600585,
     "use_specific_weather_file": 0.0,
     "user_specified_weather_file": "",
     "variable_operating_cost": 0.05,

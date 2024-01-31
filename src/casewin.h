@@ -76,7 +76,8 @@ public:
 
 	void UpdateConfiguration();
 
-	bool SwitchToInputPage( const wxString &name );
+	bool SwitchToInputPage(const wxString& name);
+	bool SwitchToNavigationMenu(const wxString& name);
 	wxString GetInputPage();
 	wxArrayString GetInputPages();
 	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);
@@ -111,7 +112,7 @@ private:
 
 	InputPageList *m_inputPageList;
 	std::vector<InputPageGroup*> m_pageGroups;
-	UIFormDatabase m_forms;
+	std::vector<UIFormDatabase> m_forms;
 	InputPageGroup *m_currentGroup;
 	std::vector<wxUIFormData*> m_currentForms;
 
@@ -141,7 +142,7 @@ private:
 	wxMetroButton *m_exclPageButton;
     wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
-	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg );
+	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid );
 	void LoadPageList( const std::vector<PageInfo> &list, bool header );
 	void SetupActivePage();
 	void LayoutPage();
@@ -151,7 +152,7 @@ private:
     wxStaticText* m_finLabel;
 	wxMetroButton *m_simButton, *m_resultsButton;
 	wxMetroDataViewTreeCtrl *m_navigationMenu;
-    wxDataViewItem m_previousPage;
+    wxDataViewItem m_currentSelection;
     
     // to allow switching case configurations with P50/P90 and PVUncertainty
     wxGridSizer *m_szsims;
@@ -169,8 +170,8 @@ private:
 	wxString m_lastPageNoteId;
 
 	void OnCommand( wxCommandEvent & );
-    void OnTechTree(wxDataViewEvent&);
-    void OnTreeActivated(wxDataViewEvent &evt );
+    void OnTree(wxDataViewEvent&);
+    void OnTreeCollapsing(wxDataViewEvent &evt );
 	virtual void OnCaseEvent( Case *, CaseEvent & );
 	void OnSubNotebookPageChanged( wxNotebookEvent &evt );
 

@@ -74,6 +74,11 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
+			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023
+			{ 2023, 12, 1 },  // 2023.12.1 ssc 287 2023 release candidate from develop expires 12/17/2023
+			{ 2023, 10, 31 },  // 2023.10.31 ssc 286 public beta release from develop expires 11/30/2023
+			{ 2023, 10, 6 },  // 2023.10.6 ssc 285 beta release from develop with hybrids expires 1/6/2024
+			{ 2023, 10, 2 },  // 2023.10.2 ssc 284 beta release from develop with hybrids expires 1/2/2024
 			{ 2023, 9, 19 },  // 2023.9.19 ssc 283 beta release from develop with hybrids expires 12/19/2023
 			{ 2023, 7, 24 },  // 2023.7.24 Add new molten salt linear fresnel model and IPH
 			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
@@ -249,7 +254,8 @@ public:
 		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
 		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		//dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
-		dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		//dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
 
 		dc.Clear();
 

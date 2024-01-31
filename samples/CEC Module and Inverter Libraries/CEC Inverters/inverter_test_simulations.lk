@@ -23,8 +23,9 @@ results = {};
 outln('Running...');
 for( i=0; i<#inverters; i++ )
 {
-	if ( mod( i,100) == 0 ) {outln(i);}
-	set('inv_snl_inverter_name',inverters[i]);
+	if ( mod( i,100) == 0 ) {outln(i + ' of ' + #inverters);}
+	set('inv_cec_name',inverters[i]);
+	//outln(inverters[i]);
 	pdco = get('inv_snl_pdco')/1000; // convert W to kW
 	v_mppt_max = get('inv_snl_mppt_hi');
 	v_mppt_min = get('inv_snl_mppt_low');
@@ -43,6 +44,7 @@ for( i=0; i<#inverters; i++ )
 	}
 	pdc_nameplate = get( 'nameplate_dc_rating' ); // for reference
 	eff = get('inv_eff');
+	//outln(max(eff));
 	pdc = get('dc_net');
 	pac = get('gen');
 	dcac_ratio = get('calculated_dcac_ratio');
@@ -56,7 +58,14 @@ for( i=0; i<#inverters; i++ )
 	results.pdc_mean[i] = mean( pdc );
 	results.pac_max[i] = max( pac );
 	results.pac_mean[i] = mean( pac );
+	results.v_mppt_min[i] = v_mppt_min;
+	results.v_mppt_max[i] = v_mppt_max;
+	results.v_oc[i] = v_avg;
+	results.v_mp[i] = 0.85*v_avg;
+	results.power_limiting_kwh[i] = get('annual_inv_cliploss');
+	results.voltage_clipping_kwh[i] = get('annual_dc_invmppt_loss');
 }
+
 
 date = split( date_time(), ' ' );
 date_str = date[4] + '-' + date[1] + '-' + date[2];

@@ -416,12 +416,11 @@ bool Case::Read( wxInputStream &_i )
 	wxString fin = in.ReadString();
 	wxArrayString techary = wxSplit(tech, ' ');
 
-	if ( !SetConfiguration( tech, fin ) )
-	  {
+	if ( !SetConfiguration( tech, fin ) )  {
 		wxLogStatus( "Notice: errors occurred while setting configuration during project file read.  Continuing...\n\n" + tech + "/" + fin);
-	  }
+		return false;
+	}
 
-	// TODO: hybrids read in the variable table(s) - test hybrid to non-hybrid and vice versa
 	size_t i;
 	for (i = 0; i < m_oldVals.size(); i++)
 		m_oldVals[i].clear();
@@ -449,7 +448,7 @@ bool Case::Read( wxInputStream &_i )
 			if (di.wrong_type.size() > 0) {
 				wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
 			}
-			if (m_vals.size() > m_oldVals.size()) {
+			if (m_vals[i].size() > m_oldVals[i].size()) {
 				for (auto& newVal : m_vals[i]) {
 					if (!m_oldVals[i].Get(newVal.first))
 						wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
@@ -1194,7 +1193,8 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	m_config = SamApp::Config().Find(tech, fin);
 
 	if (!m_config) {
-		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
+//		notices.Add("Case error: could not find configuration " + tech + ", " + fin);
+		m_lastError = "Case error: could not find configuration " + tech + ", " + fin;
 		return false;
 	}
 
@@ -1249,7 +1249,7 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 	for (size_t i_var = 0; i_var < m_config->Technology.size(); i_var++) {
 		// erase all input variables that are no longer in the current configuration
 		wxArrayString to_remove;
-		// TODO: iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
+		// iterate over all technologies and remaining variables to set update m_values - read in defaults first to vector of VarTable similarly to SaveDefaults
 		VarInfoLookup& vars = m_config->Variables[i_var];
 
 		for (VarTable::iterator it = m_vals[i_var].begin(); it != m_vals[i_var].end(); ++it)
@@ -1317,7 +1317,8 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 			}
 		}
 
-
+// May make optional when loading - see SAM issue 1456
+/*
 		// reevaluate all equations
 		CaseEvaluator eval(this, m_vals[i_var], m_config->Equations[i_var]);
 		int n = eval.CalculateAll(i_var);
@@ -1326,6 +1327,8 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 			for (size_t i = 0; i < eval.GetErrors().size(); i++)
 				notices.Add(eval.GetErrors()[i]);
 		}
+*/
+
 
 		// setup the local callback environment
 		// by merging all the functions defined
@@ -1494,7 +1497,7 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( trigger, ndxHybrid);
 	if (n > 0) {
-		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated()));
+		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid));
 		// hybrid updating across VarTables using HybridVariableDependencies
 // at this point vv is updated and corresponding object is updated
 // check through dependencies for obj->GetNatme()
@@ -1532,7 +1535,7 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( triggers, ndxHybrid);
 	if (n > 0) {
-		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated()));
+		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid));
 		// hybrid updating across VarTables using HybridVariableDependencies
 // at this point vv is updated and corresponding object is updated
 // check through dependencies for obj->GetNatme()
@@ -1559,17 +1562,41 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 
 }
 
+int Case::EvaluateEquations()
+{
+	if (!m_config) {
+		wxLogStatus("cannot recalculate all, no valid configuration information");
+		return -1;
+	}
+	for (size_t ndxHybrid = 0; ndxHybrid < GetConfiguration()->Technology.size(); ndxHybrid++) {
+		for (auto& hvd : GetConfiguration()->HybridVariables) {
+			if (ndxHybrid == hvd.IndependentVariableVarTable) {
+				// update dependent variable and equations 
+				if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+					if (VarValue* vv = Values(ndxHybrid).Get(hvd.IndependentVariableName)) {
+						depVar->Copy(*vv); // update dependent variable value
+						Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+					}
+				}
+			}
+		}
+	}
+	int n = 0;
+	for (size_t ndxHybrid = 0; ndxHybrid < GetConfiguration()->Technology.size(); ndxHybrid++)
+		n += RecalculateAll(ndxHybrid, true);
+	return n;
+}
+
 int Case::RecalculateAll(size_t ndxHybrid, bool quietly )
 {
-	if ( !m_config )
-	{
+	if ( !m_config ) {
 		wxLogStatus( "cannot recalculate all, no valid configuration information" );
 		return -1;
 	}
 
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.CalculateAll(ndxHybrid);
-	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid ) );
 	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 
 	return n;

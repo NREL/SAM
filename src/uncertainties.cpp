@@ -1144,7 +1144,8 @@ UncertaintiesViewer::UncertaintiesViewer(wxWindow *parent) : wxPanel(parent, wxI
 
 void UncertaintiesViewer::SetUncertainties( std::vector<Uncertainties> &gl )
 {
-	m_Uncertainties.clear();
+	if (m_Uncertainties.size() > 0)
+		m_Uncertainties.clear();
 	m_Uncertainties = gl;
 }
 

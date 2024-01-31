@@ -351,6 +351,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -393,6 +395,7 @@
     "annual_global": 5.83819,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
+    "annual_twet": "nan",
     "annual_wspd": 2.35368,
     "aux_array": [
         0.023,
@@ -714,17 +717,17 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
     "city": "-",
-    "const_per_interest1": 13108400.0,
+    "const_per_interest1": 24344200.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 13108400.0,
+    "const_per_interest_total": 24344200.0,
     "const_per_months1": 24.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -747,7 +750,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 374527000.0,
-    "const_per_total1": 16853700.0,
+    "const_per_total1": 28089500.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -757,7 +760,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 16853700.0,
+    "construction_financing_cost": 28089500.0,
     "cost_dev_fee_percent": 3.0,
     "cost_dev_fee_tax_liability": 2980860.0,
     "cost_dev_fee_value": 11235800.0,
@@ -20628,7 +20631,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.127
+        0.148
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -20653,7 +20656,7 @@
     ],
     "real_discount_rate": 6.4,
     "relhum": 0.25,
-    "reserves_interest": 1.25,
+    "reserves_interest": 1.75,
     "rh_frac_ref": 0.0,
     "rho_mirror_clean": [
         [
@@ -21114,7 +21117,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,

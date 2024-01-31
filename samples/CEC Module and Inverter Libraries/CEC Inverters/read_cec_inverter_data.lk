@@ -58,7 +58,7 @@ function read_cec_inverter_file( file )
 		if ( find_in( h1[i], 'voltage maximum' ) ) { i_vmax = i; }
 		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '10%' ) ) 
 		{
-			i_p10 = i; 
+			i_p10 = i;
 			if ( !find_in( h2[i], 'kW' ) ) { outln('Check power units: ' + h2[i] ); }
 		}
 		if ( find_in( h1[i], 'power level' ) && find_in( h2[i], '20%' ) ) { i_p20 = i; }
@@ -95,7 +95,7 @@ function read_cec_inverter_file( file )
 	{
 
 		data = split( str, ',' );
-
+		outln( data[i_manufacturer] + ', ' + data[i_model] );
 		db[n][0] = data[i_manufacturer]; // manufacturer name
 		db[n][0] = replace( db[n][0] , ',' , ' ' );
 		db[n][0] = replace( db[n][0] , '.' , ' ' );

@@ -57,6 +57,10 @@ addconfig('PVWatts Wind FuelCell Battery Hybrid', ['Single Owner', 'Host Develop
 addconfig('Photovoltaic Wind Battery Hybrid', ['Single Owner', 'Host Developer']);
 addconfig('Generic PVWatts Wind FuelCell Battery Hybrid', ['Single Owner', 'Host Developer']);
 
+
+// order tech and fin trees
+configopt("TechnologyTreeOrder", {'description' = 'Photovoltaic,Energy Storage,Hybrid,Concentrating Solar Power,Industrial Process Heat,Marine Energy,Wind,Fuel Cell - PV - Battery, Geothermal, Solar Water Heating, Biomass Combustion, Generic System'});
+
 // group names 'tree_parent' for performance models are defined in PopulateTech() in main.cpp
 configopt( 'Flat Plate PV', { 'tree_parent'='Photovoltaic', 'long_name'='Detailed PV Model', 'short_name'='Photovoltaic', 'description'='Photovoltaic system using detailed photovoltaic model with separate module and inverter component models' } );
 configopt( 'PVWatts', { 'tree_parent'='Photovoltaic','long_name'='PVWatts', 'short_name'='PVWatts', 'description'='Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1.' } );
@@ -188,7 +192,7 @@ function setup_pages_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ],
 		      [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
@@ -201,7 +205,7 @@ function setup_pages_standalone_battery_dispatch_btm()
 	          [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		      [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		      [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		      [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]],
+		      [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ]],
 			    { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm',
 			      'exclusive_var' = 'batt_dispatch_excl',
 			      'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'  } );
@@ -234,9 +238,9 @@ function setup_pvwatts_battery_pages_behind_the_meter()
 {
 	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='pvwatts_location_and_resource' } );
 	addpage( [[ 'PVWatts',
+	            'Battery Model Simple with REopt',
 	            {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'},
-	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'},
-	            'Battery Model Simple with REopt' ]],
+	            {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]],
 	            { 'sidebar'='System Design', 'help'='pvwatts_system_design' } );
 	setup_grid_limits_page();
 }
@@ -624,20 +628,6 @@ function setup_solar_water_heating_pages()
 	addpage( [[ 'Solar Water Heating' ]], { 'sidebar'='Solar Water Heating', 'help'='shw_system' } );
 }
 
-function setup_fuel_cell_pages_hybrid()
-{
-	addpage([['Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-	addpage( [['Fuel Cell Dispatch'],[ 'Fuel Cell Dispatch Manual' ]],
-				{ 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell'} );
-/*	addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
-		[{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}],
-		[ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
-		[{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}]],
-			{ 'sidebar'='Dispatch', 'help'='fuelcell_dispatch', 'bin_name'='FuelCell', 'exclusive_var' = 'batt_dispatch_excl',
-			  'exclusive_header_pages' = ['Fuel Cell Dispatch', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
-*/
-}
-
 function setup_etes_pages()
 {
 	addpage( [['Solar Resource Data']], { 'sidebar'='Location and Resource', 'help'='etes_location_and_resource' } );
@@ -694,25 +684,28 @@ function setup_csp_physical_trough_pages()
 
 function setup_cst_physical_trough_pages()
 {
-	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_trough-location_and_resource' } );
-	addpage( [[ 'Phys Trough System Design' ]], { 'sidebar'='System Design', 'help'='iph_trough-system_design' } );
-	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_trough-solar_field' } );
+	addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='Location and Resource', 'help'='iph_mslf_location_and_resource' } );
+	addpage( [[ 'Physical Trough IPH System Design' ]], { 'sidebar'='System Design', 'help'='iph_mslf_system_design' } );
+	addpage( [[ 'Physical Trough Solar Field' ]], { 'sidebar'='Solar Field', 'help'='iph_mslf_solar_field' } );
+
 	addpage( [[ 'Physical Trough Collector Header',
 	 {'name'='Physical Trough Collector Type 1', 'caption'='Collector Type 1', 'collapsible'=false, 'collapsible_var'='sca_1_is_shown'},
 	 {'name'='Physical Trough Collector Type 2', 'caption'='Collector Type 2', 'collapsible'=true, 'collapsible_var'='sca_2_is_shown'},
 	 {'name'='Physical Trough Collector Type 3', 'caption'='Collector Type 3', 'collapsible'=true, 'collapsible_var'='sca_3_is_shown'},
 	 {'name'='Physical Trough Collector Type 4', 'caption'='Collector Type 4', 'collapsible'=true, 'collapsible_var'='sca_4_is_shown'} ]],
-	 { 'sidebar'='Collectors (SCAs)', 'help'='iph_trough-collectors' } );
+	 { 'sidebar'='Collectors (SCAs)', 'help'='troughphysical_collectors_scas' } );
 	addpage( [[ 'Physical Trough Receiver Header',
 	 {'name'='Physical Trough Receiver Type 1', 'caption'='Receiver Type 1', 'collapsible'=false, 'collapsible_var'='hce_1_is_shown'},
 	 {'name'='Physical Trough Receiver Type 2', 'caption'='Receiver Type 2', 'collapsible'=true, 'collapsible_var'='hce_2_is_shown'},
 	 {'name'='Physical Trough Receiver Type 3', 'caption'='Receiver Type 3', 'collapsible'=true, 'collapsible_var'='hce_3_is_shown'},
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
-	 { 'sidebar'='Receivers (HCEs)', 'help'='iph_trough-receivers' } );
-	 addpage( [[ 'Phys Trough Direct Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_trough-tes' } );
-	 addpage( [[ 'Phys Trough System Control' ,
-	  {'name' = 'Phys Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-	  { 'sidebar'='System Control', 'help'='iph_trough-system_control' } );
+	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
+
+	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+
+	addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 
 function setup_csp_empirical_trough_pages()
@@ -940,23 +933,29 @@ setup_single_owner_dispatch_pages();
 
 // CSThermal - Physical Trough ////////////////////////////////
 setconfig( 'Physical Trough IPH', 'None' );
-setmodules( ['trough_physical_process_heat']);
+setmodules( ['trough_physical_iph']);
 setup_cst_physical_trough_pages();
+addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
-setconfig( 'Physical Trough IPH', 'LCOH Calculator' );
-setmodules( ['trough_physical_process_heat', 'iph_to_lcoefcr', 'lcoefcr']);
+setconfig('Physical Trough IPH', 'LCOH Calculator');
+setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
-setup_iph_lcoefcr_pages();
+addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setup_iph_lcoefcr_cost_pages();
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
 setmodules( ['trough_physical', 'grid', 'lcoefcr']);
 setup_csp_physical_trough_pages();
-setup_lcoefcr_pages();
+addpage( [['Sales Tax Rate Single Input','Physical Trough Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [[ 'Financial LCOE Calc with Costs']],{ 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'Physical Trough', 'None' );
 setmodules( ['trough_physical', 'grid']);
 setup_csp_physical_trough_pages();
+addpage( [['Sales Tax Rate Single Input','Physical Trough Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 
 //-----------------------------------------------------
 setconfig( 'Physical Trough', 'Leveraged Partnership Flip' );
@@ -1269,7 +1268,7 @@ addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving
 		  [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
 		  [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}],
 		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}],
-		  [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ],
+		  [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ],
 		  [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]],
 		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true  } );
 addpage( [[ 'Fuel Cell' ]], 
@@ -1278,7 +1277,7 @@ addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ],
 	      [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ],
 		  [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
 		  [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ],
-		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 setup_grid_limits_page();
 setup_grid_outage_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
@@ -1286,7 +1285,7 @@ addpage( [[ 'Fuel Cell Costs' ],
 		  [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
 		 { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell' ]], 
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 addpage( [[ 'Thermal Rate' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
@@ -1316,19 +1315,18 @@ addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ],
 		  [ { 'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'} ],
 		  [ { 'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ],
 		  [ {'name'='Battery Dispatch Manual', 'caption'='Manual'} ]],
-		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell'});
 addpage( [[ { 'name'='AA Empty', 'caption'='Fixed Output'} ], 
-	      [ { 'name'='AA Empty', 'caption'='Follow Electric Load'} ],
 		  [ { 'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], 
 		  [ { 'name'='AA Empty', 'caption'='Input Dispatch'}] ],
-		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
+		 { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true} );
 setup_grid_limits_page();
 setup_lifetime_page( DEGRADATION_DC_LIFETIME );
 addpage( [[ 'Fuel Cell Costs' ], [ 'PVWatts Battery FuelCell Capital Cost Curve', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Battery', 'PV Capex Fuel Cell']],
          { 'sidebar'='Installation Costs', 'exclusive_var' = 'pv_capex_cost_choice','help'='cc_fuel_cell' } );
 addpage( [[ 'Operating Costs Fuel Cell', 'Operating Costs Land Lease' ]],
-         {'sidebar' = 'Operating Costs', 'help'='oc_operating_cell'} );
+         {'sidebar' = 'Operating Costs', 'help'='oc_fuel_cell'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 addpage( [[ 'Thermal Rate' ]],
@@ -1379,8 +1377,8 @@ setup_electricity_purchases();
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
 setup_geothermal_power_pages();
-addpage( [['Geothermal Drilling' ]], { 'sidebar'='Well Drilling', 'help'='cc_geothermal' } );
-setup_lcoefcr_pages();
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
+addpage( [[ 'Financial LCOE Calc with Capex Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'Geothermal Power', 'None' );
 setmodules( ['geothermal', 'grid',]);
@@ -2214,8 +2212,11 @@ setup_electricity_purchases();
 
 function setup_metidal_pages(lcoe_fcr)
 {
-	addpage( [[ 'Marine Tidal Resource']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource' } );
-	addpage( [[ 'Marine Tidal Converter' ]], { 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter' } );
+	addpage( [[ 'Marine Tidal Resource'], ['Marine Tidal Resource File']], { 'sidebar'='Tidal Resource', 'help'='me_tidal_resource', 'exclusive_header_pages'=['Marine Tidal Resource Header'],'exclusive_var'='tidal_resource_model_choice', 'exclusive_hide' = true } );
+	addpage( [[ {'name'='Marine Tidal Converter', 'caption'='Tidal Converter Library'}],
+			[{'name'='Marine Tidal Converter User', 'caption'='Tidal Converter Input'}],
+			[{'name'='Marine Tidal Turbine Design', 'caption'='Tidal Converter Design'}]], 
+		{ 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter', 'exclusive_var'='tidal_design_excl','exclusive_tab'=true, 'exclusive_hide'=true, 'exclusive_header_pages'=['Marine Tidal Converter Header'] } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
 	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
 	if (lcoe_fcr == 1) {
@@ -2238,12 +2239,12 @@ function setup_metidal_pages(lcoe_fcr)
 	}
 }
 setconfig( 'MEtidal', 'LCOE Calculator' );
-setmodules( ['mhk_tidal', 'lcoefcr']);
+setmodules( ['tidal_file_reader', 'mhk_tidal', 'lcoefcr']);
 setup_metidal_pages(1);
 addpage( [[ 'Financial LCOE Calc with Costs Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'MEtidal', 'None' );
-setmodules( ['mhk_tidal'] );
+setmodules( ['tidal_file_reader', 'mhk_tidal'] );
 setup_metidal_pages(0);
 
 // Battery /////////////////////////////////////////////////////////////////////
@@ -2296,7 +2297,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_residential_pages( LOAD_BELPE ); //includes building load calculator
 
 setconfig( 'PV Battery', 'Commercial' );
@@ -2305,7 +2306,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 	[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_commercial_pages( LOAD_SIMPLE ); //belpe not valid for commercial
 
 setconfig( 'PV Battery', 'Third Party' );
@@ -2320,7 +2321,7 @@ setup_pv_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 setconfig( 'PV Battery', 'Single Owner' );
@@ -2329,7 +2330,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_single_owner_pages( );
 setup_electricity_purchases();
 
@@ -2339,7 +2340,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
 
@@ -2349,7 +2350,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2359,7 +2360,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
 
@@ -2369,7 +2370,7 @@ setup_pv_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_PVSAM );
 addpage( [[ 'PV Battery Capital Costs' ],
 		[ 'PV Battery Capital Cost Curves', 'PV Capex Table', 'PV Capex Table AC', 'PV Capex Table Land', 'PV Capex Table Battery']], { 'sidebar'='Installation Costs', 'help'='cc_pv','exclusive_var'='pv_capex_cost_choice' } );
-addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
+addpage( [[ 'Operating Costs PV Battery', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_pv-battery'} );
 setup_sale_leaseback_pages( );
 setup_electricity_purchases();
 
@@ -2395,12 +2396,12 @@ function setup_generic_battery_pages(is_btm) {
 }
 
 setconfig( 'Generic Battery', 'Residential' );
-setmodules( ['belpe', 'generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
 addpage( [[ 'Generic System Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
 addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
-setup_residential_pages( LOAD_BELPE );
+setup_residential_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Commercial' );
 setmodules( ['generic_system', 'battery',  'grid', 'utilityrate5', 'cashloan']);
@@ -2411,10 +2412,10 @@ addpage( [[ 'Operating Costs Generic Battery' ]], {'sidebar' = 'Operating Costs'
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Generic Battery', 'Third Party' );
-setmodules( ['belpe', 'generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-setup_thirdparty_pages( LOAD_BELPE );
+setup_thirdparty_pages( LOAD_SIMPLE );
 
 setconfig( 'Generic Battery', 'Host Developer' );
 setmodules( ['generic_system', 'battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -2489,11 +2490,11 @@ function setup_standalone_battery_pages(is_btm) {
 }
 
 setconfig( 'Standalone Battery', 'Residential' );
-setmodules( ['belpe', 'battery',  'grid', 'utilityrate5', 'cashloan']);
+setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_standalone_battery_pages(BTM);
 addpage( [[ 'Standalone Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_standalone_battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs', 'help'='oc_battery' } );
-setup_residential_pages( LOAD_BELPE );
+setup_residential_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Commercial' );
 setmodules( ['battery',  'grid', 'utilityrate5', 'cashloan']);
@@ -2503,9 +2504,9 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Operating Costs'
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 setconfig( 'Standalone Battery', 'Third Party' );
-setmodules( ['belpe', 'battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
+setmodules( ['battery', 'grid', 'utilityrate5', 'thirdpartyownership']);
 setup_standalone_battery_pages(BTM);
-setup_thirdparty_pages( LOAD_BELPE );
+setup_thirdparty_pages( LOAD_SIMPLE );
 
 setconfig( 'Standalone Battery', 'Host Developer' );
 setmodules( ['battery', 'grid', 'utilityrate5', 'host_developer']);
@@ -2603,7 +2604,7 @@ function setup_hybrid_battery_pages(is_btm) {
 	{
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
-		setup_pages_standalone_battery_dispatch_fom();
+		setup_pages_pv_battery_dispatch_fom();
 		setup_grid_limits_page();
 	}
 }
@@ -2614,9 +2615,9 @@ setmodules( ['pvwattsv8', 'windpower', 'battery', 'grid', 'utilityrate5', 'singl
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 2,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_total_installed_cost'},
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'wind_ui_step_minutes'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_power_discharge_max_kwac', 'DependentVartableIndex' = 3,'DependentVariableName' = 'batt_power_discharge_max_kwac'}, 
@@ -2638,7 +2639,8 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'hybrid_system_capacity'}
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2690,6 +2692,8 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -2726,9 +2730,9 @@ setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityra
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 3,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_total_installed_cost'},
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_ui_step_minutes'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
@@ -2757,7 +2761,8 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'hybrid_system_capacity'} // pv smoothing dispatch
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // pvwatts
@@ -2776,13 +2781,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='AA Empty', 'caption'='Load Following'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
+addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [{'name'='Battery Dispatch PV Smoothing', 'caption'='System Smoothing'}], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
 addpage( [[ 'Standalone Battery Costs'/*, 'Battery Enable' set on battery dispatch automated fom*/ ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
@@ -2820,6 +2825,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 3,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 3,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 4,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 3,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -2845,13 +2851,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
@@ -2866,10 +2872,10 @@ setconfig('Photovoltaic Wind Battery Hybrid', 'Single Owner' );
 setmodules( ['pvsamv1', 'windpower', 'battery', 'grid', 'utilityrate5', 'singleowner']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 2,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'pv_total_installed_cost'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_inverter_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'total_inverter_capacity'},
-{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'pv_ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 2,'DependentVariableName' = 'wind_ui_step_minutes'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 3,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'batt_power_discharge_max_kwac', 'DependentVartableIndex' = 3,'DependentVariableName' = 'batt_power_discharge_max_kwac'},
@@ -2905,19 +2911,21 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 2,'DependentVariableName' = 'hybrid_system_capacity'} // pv smoothing dispatch
+
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // detailed pv
-addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
-addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
-addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV DC Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
-addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='PV Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='PV Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='PV Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='PV System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='PV Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
+addpage( [ ['PV Losses'] ], { 'sidebar'='PV Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
+addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
+addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='PV Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -2960,6 +2968,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 2,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -2970,14 +2979,14 @@ sethybridvariabledependencies([
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 // detailed pv
 addpage( [[ 'Solar Resource Data', {'name'='PV Albedo and Radiation', 'caption' = 'Albedo - Sky Diffuse Model - Irradiance Data (Advanced)', 'collapsible'=true, 'collapsible_var'='pv.radmode.is_shown'} ]], { 'sidebar'='Location and Resource', 'help'='pv_location_and_resource', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
-addpage( [ ['PV Shading'] ], { 'sidebar'='Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
-addpage( [ ['PV Losses'] ], { 'sidebar'='Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
-addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV DC Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
-addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
-addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
+addpage( [ ['Simple Efficiency Module Model'], ['CEC Performance Model with Module Database'], ['CEC Performance Model with User Entered Specifications'], ['Sandia PV Array Performance Model with Module Database'], ['IEC61853 Single Diode Model'] ], { 'sidebar'='PV Module', 'help'='pv_module', 'exclusive_var'='module_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['Inverter CEC Database', 'Inverter Temp Derate CEC DB'], ['Inverter Datasheet', 'Inverter Temp Derate DS'], ['Inverter Part Load Curve', 'Inverter Temp Derate PLC'], ['Inverter CEC Coefficient Generator', 'Inverter Temp Derate CEC CG'] ], { 'sidebar'='PV Inverter', 'help'='pv_inverter', 'exclusive_var'='inverter_model', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV System Design', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PV Subarray Voltage Mismatch', 'collapsible'=true, 'collapsible_var' = 'mismatch_shown'}, 'Battery Enable'] ], { 'sidebar'='PV System Design', 'help'='pv_system_design', 'bin_name'='Photovoltaic' } );
+addpage( [ ['PV Shading'] ], { 'sidebar'='PV Shading and Layout', 'help'='pv_shading', 'bin_name'='Photovoltaic' } ); 
+addpage( [ ['PV Losses'] ], { 'sidebar'='PV Losses', 'help'='pv_losses', 'bin_name'='Photovoltaic' } );
+addpage( [ [ 'Degradation DC Lifetime', 'Degradation AC DC Lifetime Daily', 'Degradation Lifetime Variables'], ], { 'sidebar'='PV Degradation','help'='degradation_dc' , 'bin_name'='Photovoltaic' } );
+addpage( [[ 'PV Capital Costs' ]], { 'sidebar'='PV Installation Costs', 'help'='cc_pv', 'bin_name'='Photovoltaic'} );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'PV Operating Costs', 'help'='oc_operating', 'bin_name'='Photovoltaic'} );
 // wind
 addpage( [[ 'Wind Resource File'], [ 'Wind Speed Weibull Distribution'], [ 'Wind Resource Probability Table']], { 'sidebar'='Wind Resource', 'exclusive_var'='wind_resource_model_choice', 'help'='wind_resource', 'bin_name'='Wind' } );
 addpage( [[ 'Wind Turbine Design' ]], { 'sidebar'='Wind Turbine', 'help'='wind_turbine', 'bin_name'='Wind' } );
@@ -3002,9 +3011,10 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'generic_total_installed_cost'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 5,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 4,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
-{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_system_capacity'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'pv_total_installed_cost'},
-{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 4,'DependentVariableName' = 'generic_ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 4,'DependentVariableName' = 'pv_ui_step_minutes'}, // pv smoothing dispatch
+{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'ui_step_minutes', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_ui_step_minutes'}, // pv smoothing dispatch
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 5,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 5,'DependentVariableName' = 'fuelcell_system_capacity'},
@@ -3034,7 +3044,8 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'sales_tax_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'hybrid_system_capacity'},
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
@@ -3058,13 +3069,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='AA Empty', 'caption'='Load Following'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell Dispatch Manual', 'caption'='Manual'}], [{'name'='AA Empty', 'caption'='Input Dispatch'}]], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Standalone Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
+addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
 addpage( [[ 'Standalone Battery Costs'/*, 'Battery Enable' set on battery dispatch automated fom*/ ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']], { 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid
@@ -3107,6 +3118,8 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 3,'DependentVariableName' = 'inflation_rate'},
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'inflation_rate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'inflation_rate'},
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load'}, // battery dispatch
+{ 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'load_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'load_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_escalation', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_escalation'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_multiplier_model', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_multiplier_model'}, // battery dispatch
 { 'IndependentVartableIndex' = 5,'IndependentVariableName' = 'ppa_price_input', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ppa_price_input'}, // battery dispatch
@@ -3138,13 +3151,13 @@ addpage( [[ 'Wind Farm Costs']], { 'sidebar'='Wind Installation Costs', 'help'='
 addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Wind Operating Costs', 'help'='oc_operating', 'bin_name'='Wind'} );
 //fuel cell
 addpage( [[ 'Fuel Cell']], {'sidebar'='Fuel Cell', 'help'='fuelcell_fuel_cell', 'bin_name'='FuelCell'});
-addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
+addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty', 'caption'='Follow Electric Load'} ], [ {'name'='Fuel Cell Dispatch Manual', 'caption'='Manual Dispatch'} ], [ {'name'='AA Empty', 'caption'='Input Dispatch'}] ], { 'sidebar'='Fuel Cell Dispatch', 'help'='fuelcell_dispatch', 'exclusive_var' = 'fuelcell_dispatch_excl', 'exclusive_header_pages' = ['Fuel Cell Dispatch BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='FuelCell'} );
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
 addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
-addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Price Signal', 'caption'='Price Signal'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
+addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
 addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operating Costs', 'help'='oc_battery', 'bin_name'='Battery' } );
 // grid

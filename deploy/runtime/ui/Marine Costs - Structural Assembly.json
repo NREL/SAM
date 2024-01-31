@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Structural Assembly",
-    "Width": 919.0,
-    "Height": 603.0,
+    "Width": 918.0,
+    "Height": 601.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -542,7 +542,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -551,15 +551,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 501.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -569,13 +569,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -583,7 +583,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -592,15 +592,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 501.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 69.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 171.0
+                    "Integer": 177.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -610,13 +610,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Enter detailed costs"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Enter cost|Enter itemized costs|Array scaling costs"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -911,6 +911,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "marine_systems_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 339.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2488,6 +2571,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "prime_mover_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 492.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "prime_mover_cost_total"
                 },
                 "X": {
@@ -3365,7 +3531,7 @@
             "Label": " ",
             "Units": "$ ",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -3390,7 +3556,7 @@
             "Type": 1.0,
             "Label": "Assembly and install cost input ",
             "Units": "$, $/kW ",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -3403,8 +3569,8 @@
             "Type": 1.0,
             "Label": "Assembly and install cost method",
             "Units": "$",
-            "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Group": "ME Costs - Assembly Installation",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -3416,7 +3582,7 @@
             "Type": 1.0,
             "Label": " ",
             "Units": "$",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Assembly Installation",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3485,7 +3651,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3498,7 +3664,7 @@
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "CheckBox",
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3507,7 +3673,7 @@
             "Type": 1.0,
             "Label": "Development cost input",
             "Units": "$, $/kW",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Development",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -3520,8 +3686,8 @@
             "Type": 1.0,
             "Label": "Development cost method",
             "Units": " ",
-            "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Group": "ME Costs - Development",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -3533,7 +3699,7 @@
             "Type": 1.0,
             "Label": " ",
             "Units": "$ ",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Development",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3560,7 +3726,7 @@
             "Label": "E&M cost method",
             "Units": " ",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -3599,7 +3765,7 @@
             "Label": " ",
             "Units": " ",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)",
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -3710,6 +3876,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "marine_systems_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Marine systems array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "marine_systems_cost_total": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3741,7 +3920,7 @@
             "Type": 1.0,
             "Label": "Mooring cost input ",
             "Units": "$, $/kW ",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Mooring",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -3754,8 +3933,8 @@
             "Type": 1.0,
             "Label": "Mooring cost method",
             "Units": " ",
-            "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Group": "ME Costs - Mooring",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -3767,7 +3946,7 @@
             "Type": 1.0,
             "Label": " ",
             "Units": "$",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Mooring",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3807,7 +3986,7 @@
             "Label": " ",
             "Units": "$",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -3846,7 +4025,7 @@
             "Label": " ",
             "Units": "$",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -3871,7 +4050,7 @@
             "Type": 1.0,
             "Label": " ",
             "Units": " ",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Operations",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3924,7 +4103,7 @@
             "Label": " ",
             "Units": "$",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -3963,7 +4142,7 @@
             "Label": "Other infrastructure cost method",
             "Units": "$",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -4053,7 +4232,7 @@
             "Type": 1.0,
             "Label": "PTO cost input ",
             "Units": "$, $/kW",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -4066,8 +4245,8 @@
             "Type": 1.0,
             "Label": "PTO cost method",
             "Units": "$",
-            "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "Group": "ME Costs - Power Take-off",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -4079,7 +4258,7 @@
             "Type": 1.0,
             "Label": " ",
             "Units": "$",
-            "Group": "ME Costs - Structural Assembly",
+            "Group": "ME Costs - Power Take-off",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -4110,6 +4289,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prime_mover_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Prime mover array scaling R-value",
+            "Units": "",
+            "Group": "ME Costs - Structural Assembly",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4249,7 +4441,7 @@
             "Label": "Structural assembly cost method ",
             "Units": " ",
             "Group": "ME Costs - Structural Assembly",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -4478,24 +4670,32 @@
         "};",
         "",
         "equations {'prime_mover_cost_total_check'} = define() {",
+        "\tb = -log(1-${prime_mover_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_struct_assem}==0)",
         "\t{",
         "\t\treturn ${prime_mover_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_struct_assem}==1)",
         "\t{",
         "\t\treturn ${prime_mover_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn (${prime_mover_cost}*pow(${number_devices},-b))*${number_devices};\r",
         "\t}",
         "};",
         "",
         "equations {'marine_system_cost_total_check'} = define() {",
+        "\tb = -log(1-${marine_systems_cost_rvalue})/log(2);\r",
         "\tif (${detailed_cost_choice_marine_systems}==0)",
         "\t{",
         "\t\treturn ${marine_systems_cost};",
         "\t}",
-        "\telse",
+        "\telse if (${detailed_cost_choice_marine_systems}==1)",
         "\t{",
         "\t\treturn ${marine_systems_cost_total};",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn (${marine_systems_cost}*pow(${number_devices},-b))*${number_devices};\r",
         "\t}",
         "};",
         "",
@@ -4575,10 +4775,10 @@
         "\t${assembly_and_install_cost_modeled} = ssc_var( obj, 'assembly_and_install_cost_modeled' );",
         "\t${other_infrastructure_cost_modeled} = ssc_var( obj, 'other_infrastructure_cost_modeled' );",
         "",
-        "\t${array_cable_system_cost_modeled} = ssc_var( obj, 'array_cable_system_cost_modeled' );",
-        "\t${export_cable_system_cost_modeled} = ssc_var( obj, 'export_cable_system_cost_modeled' );",
-        "\t${onshore_substation_cost_modeled} = ssc_var( obj, 'onshore_substation_cost_modeled' );",
-        "\t${offshore_substation_cost_modeled} = ssc_var( obj, 'offshore_substation_cost_modeled' );",
+        "\t//${array_cable_system_cost_modeled} = ssc_var( obj, 'array_cable_system_cost_modeled' );",
+        "\t//${export_cable_system_cost_modeled} = ssc_var( obj, 'export_cable_system_cost_modeled' );",
+        "\t//${onshore_substation_cost_modeled} = ssc_var( obj, 'onshore_substation_cost_modeled' );",
+        "\t//${offshore_substation_cost_modeled} = ssc_var( obj, 'offshore_substation_cost_modeled' );",
         "\t${other_elec_infra_cost_modeled} = ssc_var( obj, 'other_elec_infra_cost_modeled' );",
         "",
         "\t${project_contingency_modeled} = ssc_var( obj, 'project_contingency' );",
@@ -4614,7 +4814,8 @@
         "\t\t\t\t\t0,",
         "\t\t\t\t\t0,",
         "\t\t\t\t\t2,",
-        "\t\t\t\t\t1",
+        "\t\t\t\t\t1,\r",
+        "\t\t\t\t\t3",
         "\t\t\t\t];",
         "\t}",
         "\telse",
@@ -4624,12 +4825,14 @@
         "};",
         "",
         "equations {'structural_assembly_cost'} = define() {",
+        "\tarray_scaling_b_value = -log(1-${structural_assembly_cost_rvalue})/log(2);\r",
         "\treturn ?${structural_assembly_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${structural_assembly_cost_input}*${system_capacity},",
         "\t\t\t\t${structural_assembly_cost_input},",
         "\t\t\t\t${structural_assembly_cost_modeled_formatted},",
-        "\t\t\t\t${structural_assembly_cost_total}",
+        "\t\t\t\t${structural_assembly_cost_total},\r",
+        "\t\t\t\t(${structural_assembly_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -4643,7 +4846,8 @@
         "\t\t\t0,",
         "\t\t\t1,",
         "\t\t\t2,",
-        "\t\t\t3",
+        "\t\t\t3,\r",
+        "\t\t\t4",
         "\t\t];",
         "};",
         "",
@@ -4720,16 +4924,16 @@
     "Callbacks": [
         "on_load{'Marine Costs - Structural Assembly'} = define() {",
         "\tcheck_override_structural();",
-        "\ton_change{'struct_override'};",
-        "\ton_change{'itemized_check_structural'};",
+        "\ton_change{'struct_override'}();",
+        "\ton_change{'itemized_check_structural'}();",
         "\t//on_change{'variable_marine_systems'};",
         "\t//on_change{'variable_prime_mover'};",
         "\tenable_itemized_structural();",
         "\t//show_marine_system_warning();",
         "\t//show_prime_mover_warning();",
-        "\ton_change{'detailed_cost_choice_struct_assem'};",
+        "\ton_change{'detailed_cost_choice_struct_assem'}();",
         "\tdetailed_cost_structural();",
-        "\ton_change{'detailed_cost_choice_marine_systems'};",
+        "\ton_change{'detailed_cost_choice_marine_systems'}();",
         "\tdetailed_cost_marine_systems();",
         "\t",
         "};",
@@ -4785,21 +4989,19 @@
         "\tif (value('itemized_check_structural')==1)",
         "\t{",
         "\t\tdetailed_value = value('detailed_cost_choice_struct_assem');",
-        "\t\tenable('prime_mover_cost',detailed_value==0);",
-        "\t\tshow('prime_mover_cost',detailed_value==0);",
+        "\t\tenable('prime_mover_cost',detailed_value!=1);",
+        "\t\tshow('prime_mover_cost',detailed_value!=1);",
         "\t\t//show('level_4_total_prime',detailed_value==0);",
-        "\t\tenable('prime_mover_cost_total',detailed_value);",
-        "\t\tshow('prime_mover_cost_total',detailed_value);",
+        "\t\tenable('prime_mover_cost_total',detailed_value==1);",
+        "\t\tshow('prime_mover_cost_total',detailed_value==1);",
         "\t\t//show('level_5_total_prime',detailed_value);",
-        "\t\tenable('primary_struct_assem_cost',detailed_value);",
-        "\t\tenable('buoyancy_chamber_cost',detailed_value);",
-        "\t\tenable('external_ballast_chambers_cost',detailed_value);",
-        "\t\tenable('active_structure_cost',detailed_value);",
-        "\t\tenable('other_prime_mover_cost',detailed_value);",
-        "\t\tenable('prime_mover_cost_total',detailed_value);",
-        "\t\t",
-        "\t\t",
-        "\t",
+        "\t\tenable('primary_struct_assem_cost',detailed_value==1);",
+        "\t\tenable('buoyancy_chamber_cost',detailed_value==1);",
+        "\t\tenable('external_ballast_chambers_cost',detailed_value==1);",
+        "\t\tenable('active_structure_cost',detailed_value==1);",
+        "\t\tenable('other_prime_mover_cost',detailed_value==1);",
+        "\t\tenable('prime_mover_cost_total',detailed_value==1);\r",
+        "\t\tenable('prime_mover_cost_rvalue',detailed_value==2);",
         "\t\trefresh();",
         "\t}",
         "}",
@@ -4813,14 +5015,15 @@
         "\tif (value('itemized_check_structural')==1)",
         "\t{",
         "\t\tdetailed_value_marine = value('detailed_cost_choice_marine_systems');",
-        "\t\tenable('marine_systems_cost',detailed_value_marine==0);",
-        "\t\tshow('marine_systems_cost',detailed_value_marine==0);",
-        "\t\tshow('marine_systems_cost_total',detailed_value_marine);",
-        "\t\tenable('marine_systems_cost_total',detailed_value_marine);",
-        "\t\tenable('personnel_access_system_cost',detailed_value_marine);",
-        "\t\tenable('ballast_system_cost',detailed_value_marine);",
-        "\t\tenable('navigation_lighting_cost',detailed_value_marine);",
-        "\t\tenable('other_marine_system_cost',detailed_value_marine);",
+        "\t\tenable('marine_systems_cost',detailed_value_marine!=1);",
+        "\t\tshow('marine_systems_cost',detailed_value_marine!=1);",
+        "\t\tshow('marine_systems_cost_total',detailed_value_marine==1);",
+        "\t\tenable('marine_systems_cost_total',detailed_value_marine==1);",
+        "\t\tenable('personnel_access_system_cost',detailed_value_marine==1);",
+        "\t\tenable('ballast_system_cost',detailed_value_marine==1);",
+        "\t\tenable('navigation_lighting_cost',detailed_value_marine==1);",
+        "\t\tenable('other_marine_system_cost',detailed_value_marine==1);\r",
+        "\t\tenable('marine_systems_cost_rvalue',detailed_value_marine==2);",
         "\t\tshow('warning_marine_systems',detailed_value_marine==2);",
         "\t\t",
         "\t\trefresh();",
@@ -4831,7 +5034,8 @@
         "{",
         "\titemized_value = value('itemized_check_structural');",
         "\tenable('prime_mover_cost',itemized_value==1);",
-        "\tenable('detailed_cost_choice_struct_assem',itemized_value==1);",
+        "\tenable('detailed_cost_choice_struct_assem',itemized_value==1);\r",
+        "\tenable('prime_mover_cost_rvalue', itemized_value==1);",
         "\tenable('primary_struct_assem_cost',itemized_value==1);",
         "\tenable('buoyancy_chamber_cost',itemized_value==1);",
         "\tenable('external_ballast_chambers_cost',itemized_value==1);",
@@ -4839,7 +5043,8 @@
         "\tenable('other_prime_mover_cost',itemized_value==1);",
         "\tenable('additional_structural_components_cost',itemized_value==1);",
         "\tenable('marine_systems_cost',itemized_value==1);",
-        "\tenable('detailed_cost_choice_marine_systems',itemized_value==1);",
+        "\tenable('detailed_cost_choice_marine_systems',itemized_value==1);\r",
+        "\tenable('marine_systems_cost_rvalue', itemized_value==1);",
         "\tenable('personnel_access_system_cost',itemized_value==1);",
         "\tenable('ballast_system_cost',itemized_value==1);",
         "\tenable('navigation_lighting_cost',itemized_value==1);",
@@ -4853,10 +5058,11 @@
         "\tenable('coatings_cost_total',itemized_value==1);",
         "\tenable('transport_structure_cost_total',itemized_value==1);",
         "\tenable('other_cost_total',itemized_value==1);",
-        "\tenable('structural_assembly_cost_input',itemized_value!=2);",
-        "\tshow('structural_assembly_cost_total',itemized_value==1);",
+        "\tenable('structural_assembly_cost_input',itemized_value==0 || itemized_value==3);\r",
+        "\tenable('structural_assembly_cost_rvalue',itemized_value==3);",
+        "\tshow('structural_assembly_cost_total',itemized_value==1);\r",
+        "\tshow('structural_assembly_cost_input',itemized_value!=1);",
         "\t//show('struct_level_total_label',itemized_value==1);",
-        "\tshow('structural_assembly_cost_input',(itemized_value==0 || itemized_value==2));",
         "\t//show('struct_user_input_label',(itemized_value==0 || itemized_value==2));",
         "\tshow('warning_prime_mover',itemized_value==4);",
         "\tshow('warning_marine_systems',itemized_value==4);",

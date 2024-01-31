@@ -7,24 +7,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -10471,6 +10455,7 @@
     "sensitivity_uncert": 1.8,
     "sizing_warning": 0.0,
     "specify_label": 1.0,
+    "step": 0.0,
     "system_capacity": 48000.0,
     "total_10yr_uncert": 12.0852,
     "total_20yr_uncert": 12.0852,
@@ -10485,6 +10470,7 @@
     "turb_specific_uncert": 1.2,
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
+    "ui_step_minutes": 60.0,
     "use_specific_wf_wind": 0.0,
     "user_specified_wf_wind": " ",
     "vextrap_comp_uncert": 0.0,
