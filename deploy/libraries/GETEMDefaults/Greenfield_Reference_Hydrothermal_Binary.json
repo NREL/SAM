@@ -14,6 +14,7 @@
             "delta_pressure_equip": 40,
             "reservoir_pressure_change": 2500,
             "injectivity_index": 3000,
+            "geotherm_cost_stim_per_well": 0,
             "subsurface_water_loss": 0,
             "temp_decline_rate": 0.5,
             "temp_decline_max": 35.1,
