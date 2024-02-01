@@ -603,6 +603,7 @@ metrics{ 'Merchant Plant' } = define() { mp_metrics(); };
 metrics{ 'All Equity Partnership Flip' } = define() { aepf_metrics(); };
 metrics{ 'Leveraged Partnership Flip' } = define() { lpf_metrics(); };
 metrics{ 'Sale Leaseback' } = define() { sl_metrics(); };
+metrics{ 'Distributed Commercial' } = define() {rescom_metrics();};
 
 // hybrids
 metrics{ 'PVWatts Wind Battery Hybrid|Single Owner'}  = define() {

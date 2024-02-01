@@ -472,3 +472,5 @@ autographs{ 'All Equity Partnership Flip' } = define() { ppa_financial_graphs();
 autographs{ 'Leveraged Partnership Flip' } = define() { ppa_financial_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Sale Leaseback' } = define() { ppa_sale_leaseback_graphs(); ppa_partnership_graphs(); };
 autographs{ 'Community Solar' } = define() { cs_graphs(); ppa_financial_graphs(); };
+
+autographs{ 'Distributed Commercial' } = define() { rescom_financial_graphs(); };
