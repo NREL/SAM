@@ -1,7 +1,7 @@
 {
     "Name": "PV Shading",
-    "Width": 1043.0,
-    "Height": 874.0,
+    "Width": 1036.0,
+    "Height": 845.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -747,7 +747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1372,11 +1372,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 1011.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1426,19 +1426,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 642.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 367.0
+                    "Integer": 735.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 118.0
+                    "Integer": 108.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1625,7 +1625,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 72.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1683,7 +1683,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "object 732"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1983,43 +1983,6 @@
                     "Boolean": 0.0
                 },
                 "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "self_shading_diagram"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 288.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 636.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 367.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 118.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "PV Shading.png"
-                },
-                "Centered": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -3916,7 +3879,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3929,7 +3892,7 @@
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
+                        "Red": 0.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
@@ -3945,7 +3908,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -3970,7 +3933,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6535,9 +6498,6 @@
         "function input_enabling()",
         "{\r",
         "",
-        "\tmsg='';",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
-        "\t",
         "\t//enable_module_area = false;",
         "\t",
         "\tmsg_snow = '';",
@@ -6545,7 +6505,8 @@
         "\t\tmsg_snow = 'Weather file has no snow data. Simulation will fail.';",
         "\t}",
         "\tproperty('ui_msg_snow','Caption',msg_snow);",
-        "",
+        "\r",
+        "\tmsg='';\r",
         "\tfor(i=1; i<=4; i++)",
         "\t{",
         "\t\tprefix = 'subarray' + i + '_';",
@@ -6578,14 +6539,14 @@
         "\t\t//or there is only one row",
         "\t\tif (en3 == true ) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row.\\n';",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row. ';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//display message if snow model is enabled and nrows is not an integer",
         "\t\tif (en4 == true  && en3 == false) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//now enable all the inputs",
@@ -6603,7 +6564,8 @@
         "\t}",
         "\t//enable('module_area', enable_module_area);",
         "    if (msg!=\"\") msg = msg + 'Adjust the number of modules to correct the problem.'; ",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
+        "\tproperty('ui_msg_selfshad','Caption',msg);\r",
+        "\tproperty('ui_msg_selfshad','TextColour','red');",
         "}",
         "\r",
         "on_load{'PV Shading'} = define() { \r",
