@@ -1060,7 +1060,7 @@
         "\t\tif (file != '') {",
         "\t\t\terr = make_jpd_multiyear(folder, slash_back_to_forward(file));",
         "\t\t\tif (err != \"\")  {\r",
-        "\t\t\t\tmsgbox(err);\r",
+        "\t\t\t\tmsgbox(\"Error reading file: \" + err);\r",
         "\t\t\t\treturn;\r",
         "\t\t\t}\r",
         "\t\t\tfile_path = path_only(file);",
