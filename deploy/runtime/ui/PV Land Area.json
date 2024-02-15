@@ -94,7 +94,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total array area projected onto ground"
+                    "String": "Ground area occupied by array"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1496,7 +1496,7 @@
         "ui_array_land_area_acres": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Array land area",
+            "Label": "Ground area occupied by array",
             "Units": "acres",
             "Group": "PV Land Area",
             "IndexLabels": "",
