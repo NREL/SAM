@@ -173,8 +173,9 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
+			bool bRequired = (reqd.Length() > 0); // SAM issue 1634
 
-			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
 
 				// handle ssc variable names
