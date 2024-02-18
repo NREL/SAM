@@ -1908,7 +1908,7 @@ void UIEditorPanel::OnCommand( wxCommandEvent &evt )
 		{
 			wxArrayString errors;
 			EqnDatabase db;
-			bool ok = db.LoadScript(m_ipd.Variables(), m_equationScript->GetText(), &errors );
+			bool ok = db.LoadScript( m_equationScript->GetText(), &errors );
 
 			wxString text;
 			if ( ok )

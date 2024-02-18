@@ -118,7 +118,7 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 	else return false;
 }
 
-bool EqnDatabase::PreProcessScript( VarDatabase &vdb, wxString *text, wxArrayString* errors)
+bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 {
 	// check text for preprocessing setup for design point calculations SAM issue #634
 	// prototype to be refactored if more equations added for preprocessing
@@ -180,10 +180,10 @@ bool EqnDatabase::PreProcessScript( VarDatabase &vdb, wxString *text, wxArrayStr
 			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
-//			bool bRequired = (reqd.Length() > 0); // SAM issue 1634 - works for MSPT and fails for MSLF
+			bool bRequired = (reqd.Length() > 0); // SAM issue 1634 - works for MSPT and fails for MSLF - until missing required values updated REQUIRED_IF
 
-//			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
-			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+//			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
 
 				// handle ssc variable names
@@ -195,15 +195,18 @@ bool EqnDatabase::PreProcessScript( VarDatabase &vdb, wxString *text, wxArrayStr
 					field = name.Mid(pos + 1);
 					name = name.Left(pos);
 				}
+				/*
 				// SAM 1634 - check for variable in UI and required_if non-blank - no access to case or config
-				bool bInUI = (vdb.Lookup(name) != NULL);
-				/*for (size_t ndxHybrid = 0; ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
-					bInUI |= (c->Variables(ndxHybrid).Lookup(name) != NULL);
+				bool bInUI = true; // (vdb.Lookup(name) != NULL);
+				if (c) {
+					bInUI = false;
+					for (size_t ndxHybrid = 0; !bInUI && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
+						bInUI |= (c->Variables(ndxHybrid).Lookup(name) != NULL);
+					}
 				}
 				*/
-
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if ((existing_type != data_type) && bInUI)
+				if (existing_type != data_type)// && bInUI)
 				{
 					wxString ssc_var_name = name;
 					wxString lk_var_name = "${" + name + "}";
@@ -238,11 +241,11 @@ bool EqnDatabase::PreProcessScript( VarDatabase &vdb, wxString *text, wxArrayStr
 
 
 
-bool EqnDatabase::LoadScript( VarDatabase& vdb, const wxString &text, wxArrayString *errors )
+bool EqnDatabase::LoadScript(  const wxString &text, wxArrayString *errors )
 {
 // check text for preprocessing setup for design point calculations SAM issue #634
 	wxString txtPreprocess(text);
-	if (PreProcessScript(vdb, &txtPreprocess, errors)) {
+	if (PreProcessScript( &txtPreprocess, errors)) {
 		//	lk::input_string in(text);
 		lk::input_string in(txtPreprocess);
 		if (Parse(in, errors)) return true;
