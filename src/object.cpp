@@ -203,7 +203,9 @@ bool ObjectCollection::Read( wxInputStream &input )
 
 		if (obj != 0)
 		{
-			if (!obj->Read(input)) m_lastError += "Could not read " + type + " : " + name + "\n" + obj->GetLastError();
+			if (!obj->Read(input)) {
+				m_lastError += "Could not read " + type + " : " + name + "\n" + obj->GetLastError();
+			}
 			Add(name, obj);
 		}
 

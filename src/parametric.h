@@ -109,6 +109,7 @@ public:
 	int GetMaxChoice(int row, int col);
 	wxString GetChoice(int row, int col); // actual string choice
 	wxString GetVarName(int row, int col);
+	int GetNdxHybrid(int row, int col);
 
 	bool IsInput(int col);
 	bool IsInput(ParametricData::Var &var);
@@ -157,6 +158,8 @@ public:
 
 	std::vector<int> GetRowSortOrder();
 	ParametricData& GetParametricData() { return m_par; }
+
+	bool UpdateVarNameNdxHybrid(const wxString& input_name, wxString* var_name, size_t* ndx_hybrid);
 
 private:
 	int m_sortColumn;

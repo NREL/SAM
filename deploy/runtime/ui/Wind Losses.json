@@ -3086,7 +3086,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total wake losses",
-            "Units": " %",
+            "Units": "%",
             "Group": "Losses",
             "IndexLabels": "",
             "Flags": 8.0,

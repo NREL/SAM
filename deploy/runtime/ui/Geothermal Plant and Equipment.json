@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Plant and Equipment",
-    "Width": 846.0,
-    "Height": 746.0,
+    "Width": 844.0,
+    "Height": 697.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -65,7 +65,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 245.0
+                    "Integer": 233.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -94,7 +94,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 246.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -102,7 +102,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 101.0
+                    "Integer": 89.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -131,15 +131,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 500.0
+                    "Integer": 449.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 113.0
+                    "Integer": 137.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -164,19 +164,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 462.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 323.0
+                    "Integer": 377.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 113.0
+                    "Integer": 137.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -205,7 +205,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -213,7 +213,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 227.0
+                    "Integer": 179.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -362,11 +362,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -423,15 +423,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 661.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 435.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -645,15 +645,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 311.0
+                    "Integer": 263.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1150,15 +1150,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 87.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 708.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 745.0
+                    "Integer": 754.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1610,11 +1610,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 444.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1799,7 +1799,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1836,7 +1836,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1857,6 +1857,43 @@
                 "TipTitle": {
                     "Type": 5.0,
                     "String": "Pump Work"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_wet_bulb_temp_wf_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "If the weather file selected on the Ambient Conditions page includes wet-bulb temperature, check \"Use wet bulb temperature from weather file\"\\nto use the annual average value from the weather file. \"NaN\" indicates the weather file does not contain wet-bulb temperature data."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Wet-bulb Temp from Weather File"
                 }
             }
         },
@@ -2288,7 +2325,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 264.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2296,7 +2333,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 48.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2346,11 +2383,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 399.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2988,11 +3025,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 297.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 444.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3071,11 +3108,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 297.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3154,11 +3191,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 528.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 381.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3278,15 +3315,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 661.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3361,15 +3398,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3446,16 +3483,16 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -3466,9 +3503,9 @@
         "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -3479,9 +3516,9 @@
         "adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -3492,9 +3529,9 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -3509,9 +3546,9 @@
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -4124,7 +4161,7 @@
         "wet_bulb_temp_wf": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Wet Bulb Temperature",
+            "Label": "Wet-bulb Temp from Weather File",
             "Units": "'C",
             "Group": "Geothermal Plant and Equipment",
             "IndexLabels": "",
@@ -4277,14 +4314,44 @@
         "};\r",
         "\r",
         "equations{ 'wet_bulb_temp_wf'} = define() {\r",
-        "\tif (isnan(${annual_twet})) return ${annual_tdry};\r",
-        "\telse return ${annual_twet};\r",
+        "\tann_twet = nan();\r",
+        "\tif (file_exists(${solar_resource_file}))\r",
+        "\t{\r",
+        "\t\twfread = ssc_create();\r",
+        "\t\tssc_var(wfread, \"file_name\", ${solar_resource_file});\r",
+        "\t\tssc_var(wfread, \"header_only\", 0);\r",
+        "\t\tresult = ssc_exec(wfread, \"wfreader\");\r",
+        "\t\tif (0 == result) {\r",
+        "\t\t\tif ( !isnan(ssc_var(wfread, 'annual_twet')) ) {\r",
+        "\t\t\t\tann_twet = ssc_var(wfread, 'annual_twet');\r",
+        "\t\t\t}\r",
+        "\t\t\telse {\r",
+        "\t\t\t\tif ( ${use_weather_file_conditions} ) {\r",
+        "\t\t\t\t\tmsgbox('Failed to read wet-bulb temperature from weather file.\\nClear the \\\"Use wet bulb temperature from weather file\\\" checkbox, or use a weather file with valid wet-bulb temperature data.');\r",
+        "\t\t\t\t}\t\r",
+        "\t\t\t}\r",
+        "\t\t\tssc_free(wfread);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse { // unknown, perhaps solar resource callback isn't complete\r",
+        "\t\tif ( ${use_weather_file_conditions} ) {\r",
+        "\t\t\tmsgbox('Unable to read weather file.\\nClear the \\\"Use wet bulb temperature from weather file\\\" checkbox, or use a weather file with valid wet-bulb temperature data.\\n\\n' + ${solar_resource_file});\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\treturn ann_twet;\r",
         "};\r",
         "\r",
         "equations{ 'wet_bulb_temp'} = define() {\r",
         "\tcheck = ${use_weather_file_conditions};\r",
-        "\tif (check == 0) return ${wet_bulb_temp_input};\r",
-        "\telse return ${wet_bulb_temp_wf};\r",
+        "\tif (check == 0) {\r",
+        "\t\treturn ${wet_bulb_temp_input};\r",
+        "\t}\r",
+        "\telseif ( isnan(${wet_bulb_temp_wf}) ) {\r",
+        "\t\treturn ${annual_tdry}; // from Solar Resource Data form\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn ${wet_bulb_temp_wf}; // annual twet\r",
+        "\t}\r",
         "};",
         "",
         "equations{ 'system_capacity' } = define() {",
@@ -4413,8 +4480,8 @@
         "on_change{'use_weather_file_conditions'} = define()\r",
         "{\r",
         "\tcheck = value('use_weather_file_conditions');\r",
-        "\tshow('wet_bulb_temp_input', check == 0);\r",
-        "\tshow('wet_bulb_temp_wf', check == 1);\r",
+        "\tenable('wet_bulb_temp_input', check == 0);\r",
+        "\tenable('wet_bulb_temp_wf', check == 1);\r",
         "\trefresh();\r",
         "};"
     ]

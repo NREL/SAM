@@ -168,42 +168,46 @@ keys= @csv;
 iBankPower = -1;
 iModules = -1;
 iInverters = -1;
-for(i=0;i<#keys;i++) {
-	if (strpos(keys[i], "Desired bank power")>=0)
-		iBankPower = i;
-	if (strpos(keys[i], "Number of parallel strings 1")>=0)
-		iModules = i;
-	if (strpos(keys[i], "Number of inverters")>=0)
-		iInverters = i;
+
+iBankPower = keys ?@ 'Desired bank power (kW)';
+iModules = keys ?@ 'Number of parallel strings 1';
+iInverters = keys ?@ 'Number of inverters';
+
+if (iBankPower == -1 || iModules == -1 || iInverters == -1)
+{
+	msgbox('Failed to find parametric variables, exiting script.');
+	return;
 }
 
 maxBankPower = scale_factor * 4756.15 / 1630; // number of participants * annual load per participant / energy yield of base case
 maxModules = maxBankPower * 1.31 / 0.38; // array power * dc/ac ratio / dc power of selected module
 
-for (r=0; r<#csv{keys[iBankPower]}; r++) {
+for (r=0; r<#csv{keys[iBankPower]}; r++) { //r is number of rows in the parametrics. example file is set up with 27 rows, and since other things are hard-coded, let's assume that will stay here.
 	bp =mod( r, 9);
+	//set battery bank power
 	if ( bp < 3)
-		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.5);
+		parametric_set('batt_bank_power', r, to_int(maxBankPower * 0.5)); //csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.5);
 	else if (bp < 6)
-		csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.75);
+		parametric_set('batt_bank_power', r, to_int(maxBankPower * 0.75)); //csv{keys[iBankPower]}[r] = to_int(maxBankPower * 0.75);
 	else
-		csv{keys[iBankPower]}[r] = to_int(maxBankPower);
+		parametric_set('batt_bank_power', r, to_int(maxBankPower)); //csv{keys[iBankPower]}[r] = to_int(maxBankPower);
+	//set system size
 	if (r < 9) {
-		csv{keys[iModules]}[r] = to_int(maxModules * 0.8);
-		csv{keys[iInverters]}[r]  = to_int(maxModules * 0.8);
+		parametric_set('subarray1_nstrings', r, to_int(maxModules * 0.8)); //csv{keys[iModules]}[r] = to_int(maxModules * 0.8);
+		parametric_set('inverter_count', r, to_int(maxModules * 0.8)); //csv{keys[iInverters]}[r]  = to_int(maxModules * 0.8);
 	}
 	else if (r < 18) {
-		csv{keys[iModules]}[r] = to_int(maxModules * 0.9);
-		csv{keys[iInverters]}[r] = to_int(maxModules * 0.9);
+		parametric_set('subarray1_nstrings', r, to_int(maxModules * 0.9)); //csv{keys[iModules]}[r] = to_int(maxModules * 0.9);
+		parametric_set('inverter_count', r, to_int(maxModules * 0.9)); //csv{keys[iInverters]}[r] = to_int(maxModules * 0.9);
 	}
 	else {
-		csv{keys[iModules]}[r]  = to_int(maxModules);
-		csv{keys[iInverters]}[r] = to_int(maxModules);
+		parametric_set('subarray1_nstrings', r, to_int(maxModules)); //csv{keys[iModules]}[r]  = to_int(maxModules);
+		parametric_set('inverter_count', r, to_int(maxModules)); //csv{keys[iInverters]}[r] = to_int(maxModules);
 	}
 }
 
-csvwrite(exportFile, csv, {'table'=true});
-parametric_import(exportFile);
+//csvwrite(exportFile, csv, {'table'=true});
+//parametric_import(exportFile);
 show_page("Parametrics");
 
 // show user parametrics table setup based on number of mini grid participants

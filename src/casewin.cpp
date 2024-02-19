@@ -183,6 +183,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	// navigation menu objects
 	m_left_panel = new wxPanel(this);
 	m_left_panel->SetBackgroundColour( wxColour(100,100,100) );
+	m_left_panel->SetMinSize(wxSize(275, 28)); // TODO size based on longest input page label
 
 	m_inputPageList = new InputPageList( m_left_panel, ID_INPUTPAGELIST );
     m_inputPageList->Show(false);
@@ -191,11 +192,10 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* szvl = new wxBoxSizer(wxVERTICAL);
 
 	m_techLabel = new wxStaticText(m_left_panel, wxID_ANY, "-technology-");
-	m_techLabel->SetBackgroundColour(tech_color); // TODO want this to apply color to tech panel background, not just label background
+	m_techLabel->SetBackgroundColour(tech_color);
 	m_techLabel->SetForegroundColour(config_font_color);
 	m_techLabel->SetFont(lafont);
 	szvl->Add(m_techLabel, 0, wxEXPAND | wxALL, 0);
-
 
 	m_finLabel = new wxStaticText(m_left_panel, wxID_ANY, "-financial-");
 	m_finLabel->SetBackgroundColour(fin_color); // TODO want this to apply color to fin panel background, not just label background
@@ -208,7 +208,7 @@ CaseWindow::CaseWindow( wxWindow *parent, Case *c )
 	wxBoxSizer* choice_sizer = new wxBoxSizer(wxHORIZONTAL);
 	choice_sizer->Add(m_navigationMenu, 1, wxALL | wxEXPAND, 0);
 	m_navigationMenu->SetBackgroundColour(wxColour(243, 243, 243));
-	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 13));
+	m_navigationMenu->SetFont(wxMetroTheme::Font(wxMT_LIGHT, 12));
 	szvl->Add(choice_sizer, 1, wxALL | wxEXPAND, 0);
 
 	// box for simulation and results buttons
@@ -661,6 +661,7 @@ void CaseWindow::OnTree(wxDataViewEvent &evt)
 		m_currentSelection = evt.GetItem();
 	}
 	wxString title = m_navigationMenu->GetItemText(m_currentSelection);
+	m_navigationMenu->SetFocus();
 	SwitchToInputPage(title);
 
 }
@@ -892,7 +893,7 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
             }
                 
 			if ( ipage && obj && vv ) {
-				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period);
+				ipage->DataExchange(m_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, m_case->m_analysis_period, ndxHybrid);
 			
 				// lookup and run any callback functions.
 				if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), ndxHybrid) )	{
@@ -968,21 +969,13 @@ void CaseWindow::OnCaseEvent( Case *, CaseEvent &evt )
 	}
 	else if ( evt.GetType() == CaseEvent::CONFIG_CHANGED )
 	{
-		wxString sel = m_inputPageList->GetStringSelection();
+	//	wxString sel = m_inputPageList->GetStringSelection();
+
+		// #1600 and #1608
+		//m_case->LoadDefaults(); // fails per 1618
+
 		UpdateConfiguration();
 
-//		if (!sel.empty()) 
-//			SwitchToInputPage( sel );
-//		else
-			m_pageFlipper->SetSelection(0);
-
-		// make sure at least the first input page is selected
-		// if nothing else
-		if ( m_pageFlipper->GetSelection() == 0
-			&& m_currentGroup == 0 
-			&& m_pageGroups.size() > 0 )
-			SwitchToInputPage( m_pageGroups[0]->SideBarLabel );
-		
 		m_baseCaseResults->Clear();
 
 		m_macros->ConfigurationChanged();
@@ -1048,6 +1041,36 @@ wxArrayString CaseWindow::GetInputPages()
 	return list;
 }
 
+
+bool CaseWindow::SwitchToNavigationMenu(const wxString& name)
+{
+	// iterate over menu tree items and match "name" or select first item (SAM issue 1618)
+	wxDataViewItem dvi;// = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	bool found = false;
+	int count = m_navigationMenu->GetChildCount(wxDataViewItem(0));
+	for (int i = 0; i < count && !found; i++) {
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), i);
+		if (dvi.IsOk() && m_navigationMenu->GetItemText(dvi) == name)
+			found = true;
+	}
+	// first item if not found
+	if (!found)
+		dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
+	if (dvi.IsOk()) {
+		m_navigationMenu->SetCurrentItem(dvi);
+		m_currentSelection = (dvi);
+		SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
+	}
+
+
+	return true;
+}
+
+
 bool CaseWindow::SwitchToInputPage( const wxString &name )
 {
 	wxBusyCursor wait;
@@ -1074,8 +1097,9 @@ bool CaseWindow::SwitchToInputPage( const wxString &name )
 
 //	m_inputPagePanel->Thaw();
 
-	if ( m_inputPageList->GetStringSelection() != name )
-		m_inputPageList->Select( m_inputPageList->Find( name ) );
+//	if ( m_inputPageList->GetStringSelection() != name )
+	int p = m_inputPageList->Find(name);
+	m_inputPageList->Select( p );
 
 	return true;
 }
@@ -1357,9 +1381,8 @@ void CaseWindow::UpdateConfiguration()
 	m_case->BaseCase().Clear(); // reset for UpdateResults
 
 	wxString Ts(SamApp::Config().Options(cfg->TechnologyFullName).ShortName);
-
-
 	if ( Ts.IsEmpty() ) Ts = cfg->TechnologyFullName;
+
 	wxString Fs( SamApp::Config().Options( cfg->Financing ).ShortName );
 	if ( Fs.IsEmpty() ) Fs = cfg->Financing;
 
@@ -1402,7 +1425,7 @@ void CaseWindow::UpdateConfiguration()
 	wxString Ts_lower = Ts.Lower();
 	wxArrayString Ts_split = wxSplit(Ts, '-');
 	wxDataViewItem cont_pv;
-	wxDataViewItemArray dvia{ m_pageGroups.size() + 1 };
+	wxDataViewItemArray dvia( m_pageGroups.size() + 1 );
 	wxArrayString bin_list;
 	wxArrayString page_list;
 	wxString bin_name;
@@ -1443,19 +1466,17 @@ void CaseWindow::UpdateConfiguration()
 		}
 	}
     
-    
-    wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
-    if (m_navigationMenu->IsContainer(dvi)) {
-        dvi = m_navigationMenu->GetNthChild(dvi, 0);
-    }
-    
-    if (dvi.IsOk()) {
-        m_navigationMenu->SetCurrentItem(dvi);
-        SwitchToInputPage(m_navigationMenu->GetItemText(dvi));
-        m_currentSelection = (dvi);
-    }
+	wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
+	if (m_navigationMenu->IsContainer(dvi)) {
+		dvi = m_navigationMenu->GetNthChild(dvi, 0);
+	}
 
-    // check for orphaned notes and if any found add to first page per Github issue 796
+	if (dvi.IsOk()) {
+//		m_navigationMenu->SetCurrentItem(dvi); // triggers OnTree on MacOS only
+		m_currentSelection = (dvi);
+	}
+
+	// check for orphaned notes and if any found add to first page per Github issue 796
 	CheckAndUpdateNotes(inputPageHelpContext);
 
 	m_szsims->Clear(true);

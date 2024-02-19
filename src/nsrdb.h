@@ -141,6 +141,7 @@ private:
 	wxButton *m_btnSelectAll, *m_btnClearAll, *m_btnSelectFiltered, *m_btnShowSelected, *m_btnShowAll, *m_btnResources, *m_btnFolder;
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
+	wxTextCtrl* m_txtLatLon;
 	wxSearchCtrl *m_search;
 
 	DECLARE_EVENT_TABLE()
