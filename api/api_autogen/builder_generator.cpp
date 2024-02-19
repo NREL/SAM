@@ -452,9 +452,9 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
             else
  */             
             if (config_name.find("Hybrid") != std::string::npos){
-                VarValue* vt = SAM_config_to_defaults[config_name].Get(cmod);
+                VarValue* vt = SAM_config_to_defaults[config_name].Get(format_as_symbol(cmod));
                 if (!vt)
-                    vt = SAM_config_to_defaults[config_name].Get("hybrid");
+                    vt = SAM_config_to_defaults[config_name].Get("Hybrid");
                 vv = vt->Table()[v.name];
             }
             else{

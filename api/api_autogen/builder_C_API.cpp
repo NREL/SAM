@@ -95,6 +95,9 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
         if (mm->first == "AdjustmentFactors")
             continue;
 
+        if (mm->first == "HybridTech")
+            continue;
+
         std::string module_symbol = format_as_symbol(mm->first);
 
         fx_file << "\n"
@@ -241,6 +244,9 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
         std::string module_symbol = format_as_symbol(mm->first);
 
         if (mm->first == "AdjustmentFactors")
+            continue;
+        
+        if (mm->first == "HybridTech")
             continue;
 
         for (auto & vardef : vardefs) {

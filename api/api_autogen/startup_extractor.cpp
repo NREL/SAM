@@ -52,6 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
 std::map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
 std::map<std::string, std::pair<std::string, std::string>> SAM_option_to_description;
+std::map<std::string, std::string> SAM_short_name_to_config;
 
 // print into dictionary format
 void startup_extractor::print_config_to_input_pages(){
