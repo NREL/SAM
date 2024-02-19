@@ -51,7 +51,7 @@ extern std::string active_cmod;
 extern int active_method; // LOAD or CHNG
 extern bool map_subobject; // true if subobject hasn't been mapped before
 extern std::vector<std::string> subobjects_completed;
-
+extern std::map<std::string, std::string> SAM_short_name_to_config;
 
 /// export_config_funcs
 
@@ -73,13 +73,16 @@ static void fcall_configopt( lk::invoke_t &cxt )
     LK_DOC("configopt", "Sets configuration options, such as long_name, short_name, description, etc.", "(string:config name, table:options):none");
     lk::vardata_t &tab = cxt.arg(1).deref();
     std::string config = cxt.arg(0).as_string().ToStdString();
-    std::string long_name, desc;
+    std::string long_name, desc, short_name;
     if (lk::vardata_t *vv = tab.lookup("long_name"))
         long_name = vv->as_string().ToStdString();
     if (lk::vardata_t *vv = tab.lookup("description"))
         desc = vv->as_string().ToStdString();
+    if (lk::vardata_t *vv = tab.lookup("short_name"))
+        short_name = vv->as_string().ToStdString();
 
     SAM_option_to_description.insert({config, {long_name, desc}});
+    SAM_short_name_to_config.insert({short_name, config});
 }
 
 static void fcall_setting( lk::invoke_t &cxt )

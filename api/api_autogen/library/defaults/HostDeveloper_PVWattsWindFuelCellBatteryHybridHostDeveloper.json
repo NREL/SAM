@@ -75,9 +75,9 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [],
-			"om_fixed": [],
-			"om_production": [],
+			"om_capacity": [0],
+			"om_fixed": [0],
+			"om_production": [0],
 			"total_installed_cost": 5.29306e+06
 		},
 		"LandLease": {
@@ -294,9 +294,9 @@
 		"FuelCell": {
 		},
 		"HybridTech": {
-			"om_capacity": [],
-			"om_fixed": [],
-			"om_production": [],
+			"om_capacity": [0],
+			"om_fixed": [0],
+			"om_production": [0],
 			"total_installed_cost": 5.29306e+06
 		}
 	}

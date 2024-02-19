@@ -82,7 +82,13 @@ bool config_extractor::load_defaults_for_config(){
         wxArrayString keys = vt.ListAll();
         for(size_t i = 0; i < keys.size(); i++){
             auto name = keys[i];
-            vt.Rename(name, util::lower_case(name.ToStdString()));
+            if (name.Lower() != "hybrid"){
+                auto tech_config = SAM_short_name_to_config[name];
+                auto cmod = config_to_cmod_name[format_as_symbol(tech_config)];
+                if (!cmod.size())
+                    throw std::runtime_error("Could not find technology component " + name + " for config " + config_name);
+                vt.Rename(name, cmod);
+            }
         }
     }
 
