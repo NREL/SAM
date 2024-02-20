@@ -5893,7 +5893,7 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
         throw lk::error_t(base_case.GetErrors()[0]);
     }
 
-    //
+	//
     // copy over required inputs from SAM
     //
     size_t length;
@@ -6007,14 +6007,18 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
     lk::vardata_t results;
     if (!lk::json_read(curl.GetDataAsString(), results, &err))
         cxt.result().assign("<reopt-error> " + err);
-
-    if (auto err_vd = results.lookup("messages"))
-        throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error")){
+	
+	// if run_uuid is not returned, get error message from json result
+	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
+	if (auto err_vd = results.lookup("messages")) {
+		throw lk::error_t(err_vd->lookup("error")->as_string());
+	}
+	if (auto err_vd = results.lookup("error")) {
         cxt.result().hash_item("error", err_vd->as_string());
         return;
     }
 
+	// now we have a run_uuid so make call to run REopt
     wxString poll_url = SamApp::WebApi("reopt_poll");
     poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
     poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
@@ -6036,8 +6040,8 @@ static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 
         optimizing_status = cxt_result->lookup("status")->as_string();
         if (optimizing_status.find("error") != std::string::npos){
-            std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
-            cxt.result().hash_item("error", error);
+            std::string error = cxt_result->lookup("messages")->lookup("errors")->as_string().ToStdString();
+            cxt.result().hash_item("errors", error);
             break;
         }
 
