@@ -1878,6 +1878,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "system_capacity": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "total_Ap_in": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1964,7 +1977,7 @@
         "\r",
         "\t//#ssc_auto_exec(obj, 'fresnel_physical', 2);\r",
         "\t\r",
-        "\t//ret_d = ssc_dump(obj, 'mslf_v2_mimo_ssc_auto_exec.lk');\r",
+        "\tret_d = ssc_dump(obj, 'mslf_v2_mimo_ssc_auto_exec.lk');\r",
         "\tret = ssc_exec(obj, 'fresnel_physical');\r",
         "\t\r",
         "\t\r",
@@ -1978,6 +1991,7 @@
         "\t\t\r",
         "\t\t${SD_CALC_q_pb_design} = ssc_var(obj, \"q_dot_cycle_des\");\r",
         "\t\t${SD_CALC_nameplate} = ssc_var(obj, \"nameplate\");\r",
+        "\t\t${system_capacity} = ssc_var(obj, \"system_capacity\");\r",
         "\t\t\r",
         "\t\t\r",
         "\t\t// Solar Field\r",

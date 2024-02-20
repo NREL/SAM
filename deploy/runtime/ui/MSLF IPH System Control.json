@@ -2702,7 +2702,7 @@
         "\r",
         "function loss_adjustment_set() \r",
         "{\r",
-        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\tif (financing() != \"LCOH Calculator\" && financing() != \"None\") {\r",
         "\t\tif (value('system_use_lifetime_output') == 1) {\r",
         "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));\r",
         "\t\t}\r",
