@@ -775,14 +775,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nHCEt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set nSCA: Number of SCAs in a loop [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nSCA_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set northsouth_field_sep: North/south separation between subfields. 0 = SCAs are touching [m]
 	 * options: None
 	 * constraints: None
@@ -2040,8 +2032,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEt_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_northsouth_field_sep_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_offset_xpan_hdr_nget(SAM_table ptr, SAM_error *err);
@@ -2624,6 +2614,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nSCA_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
 

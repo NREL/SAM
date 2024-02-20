@@ -158,12 +158,12 @@ Generic System,All Equity Partnership Flip,756864000,29.7983,25.9936,; Warning: 
 Generic System,Sale Leaseback,756864000,29.5291,25.9936,; Warning: NPV is $-2.70226e+08. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-3.1105e+07. A negative NPV indicates project costs are higher than revenues.
 Generic System,LCOE Calculator,756864000,NA,NA,; 
 Generic System,None,756864000,NA,NA,; 
-PVWatts Wind Battery Hybrid,Single Owner,578883008,11.1401,5.91853,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind Battery Hybrid,Host Developer,1.12532e+06,18.1816,16.542,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind FuelCell Battery Hybrid,Single Owner,579660736,10.6946,5.41105,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-PVWatts Wind FuelCell Battery Hybrid,Host Developer,2.68732e+06,49.7308,51.3957,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-Photovoltaic Wind Battery Hybrid,Single Owner,594070784,8.46988,5.95228,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind Battery Hybrid,Single Owner,578883008,11.4238,5.91853,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind Battery Hybrid,Host Developer,1.12532e+06,18.8231,16.542,; Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+PVWatts Wind FuelCell Battery Hybrid,Single Owner,fail,fail,fail
+PVWatts Wind FuelCell Battery Hybrid,Host Developer,fail,fail,fail
+Photovoltaic Wind Battery Hybrid,Single Owner,594070784,8.47657,5.95228,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
 Photovoltaic Wind Battery Hybrid,Host Developer,1.01627e+06,18.391,16.5709,; Notice: Simulation time step is 60 minutes for pvsamv1. Notice: Simulation time step is 60 minutes for windpower.
-Generic PVWatts Wind FuelCell Battery Hybrid,Single Owner,1337309056,18.883,5.41349,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
-Generic PVWatts Wind FuelCell Battery Hybrid,Host Developer,4.48675e+06,96.0204,102.629,; Notice: Simulation time step is 60 minutes for generic_system. Notice: Simulation time step is 60 minutes for pvwattsv8. Notice: Simulation time step is 60 minutes for windpower.
+Generic PVWatts Wind FuelCell Battery Hybrid,Single Owner,fail,fail,fail
+Generic PVWatts Wind FuelCell Battery Hybrid,Host Developer,fail,fail,fail
 final_configuration_eof,none,NA,NA,NA,

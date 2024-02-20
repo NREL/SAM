@@ -560,12 +560,6 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nHCEt_nset(SAM_table ptr, doubl
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nSCA_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "nSCA", number);
-	});
-}
-
 SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_northsouth_field_sep_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "northsouth_field_sep", number);
@@ -2345,17 +2339,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEt_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nHCEt", &result))
 		make_access_error("SAM_TroughPhysicalIph", "nHCEt");
-	});
-	return result;
-}
-
-
-
-SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "nSCA", &result))
-		make_access_error("SAM_TroughPhysicalIph", "nSCA");
 	});
 	return result;
 }
@@ -5187,6 +5170,17 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_e
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "nLoops", &result))
 		make_access_error("SAM_TroughPhysicalIph", "nLoops");
+	});
+	return result;
+}
+
+
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nSCA_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nSCA", &result))
+		make_access_error("SAM_TroughPhysicalIph", "nSCA");
 	});
 	return result;
 }
