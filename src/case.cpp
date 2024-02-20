@@ -448,7 +448,7 @@ bool Case::Read( wxInputStream &_i )
 			if (di.wrong_type.size() > 0) {
 				wxLogStatus("\twrong type: " + wxJoin(di.wrong_type, ','));
 			}
-			if (m_vals.size() > m_oldVals.size()) {
+			if (m_vals[i].size() > m_oldVals[i].size()) {
 				for (auto& newVal : m_vals[i]) {
 					if (!m_oldVals[i].Get(newVal.first))
 						wxLogStatus("%s, %s configuration variable %s missing from project file", tech.c_str(), fin.c_str(), newVal.first.c_str());
@@ -1497,7 +1497,7 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( trigger, ndxHybrid);
 	if (n > 0) {
-		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated()));
+		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid));
 		// hybrid updating across VarTables using HybridVariableDependencies
 // at this point vv is updated and corresponding object is updated
 // check through dependencies for obj->GetNatme()
@@ -1535,7 +1535,7 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( triggers, ndxHybrid);
 	if (n > 0) {
-		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated()));
+		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid));
 		// hybrid updating across VarTables using HybridVariableDependencies
 // at this point vv is updated and corresponding object is updated
 // check through dependencies for obj->GetNatme()
@@ -1562,17 +1562,41 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 
 }
 
+int Case::EvaluateEquations()
+{
+	if (!m_config) {
+		wxLogStatus("cannot recalculate all, no valid configuration information");
+		return -1;
+	}
+	for (size_t ndxHybrid = 0; ndxHybrid < GetConfiguration()->Technology.size(); ndxHybrid++) {
+		for (auto& hvd : GetConfiguration()->HybridVariables) {
+			if (ndxHybrid == hvd.IndependentVariableVarTable) {
+				// update dependent variable and equations 
+				if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+					if (VarValue* vv = Values(ndxHybrid).Get(hvd.IndependentVariableName)) {
+						depVar->Copy(*vv); // update dependent variable value
+						Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+					}
+				}
+			}
+		}
+	}
+	int n = 0;
+	for (size_t ndxHybrid = 0; ndxHybrid < GetConfiguration()->Technology.size(); ndxHybrid++)
+		n += RecalculateAll(ndxHybrid, true);
+	return n;
+}
+
 int Case::RecalculateAll(size_t ndxHybrid, bool quietly )
 {
-	if ( !m_config )
-	{
+	if ( !m_config ) {
 		wxLogStatus( "cannot recalculate all, no valid configuration information" );
 		return -1;
 	}
 
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.CalculateAll(ndxHybrid);
-	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated() ) );
+	if ( n > 0 ) SendEvent( CaseEvent( CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid ) );
 	else if ( n < 0 && !quietly ) wxShowTextMessageDialog( wxJoin( eval.GetErrors(), wxChar('\n') )  );
 
 	return n;

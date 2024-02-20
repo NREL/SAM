@@ -76,7 +76,8 @@ public:
 
 	void UpdateConfiguration();
 
-	bool SwitchToInputPage( const wxString &name );
+	bool SwitchToInputPage(const wxString& name);
+	bool SwitchToNavigationMenu(const wxString& name);
 	wxString GetInputPage();
 	wxArrayString GetInputPages();
 	wxUIObject* FindActiveObject(const wxString& name, ActiveInputPage** page = 0);

@@ -606,7 +606,7 @@
                 },
                 "Fields": {
                     "Type": 5.0,
-                    "String": "Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes"
+                    "String": "Location,Location ID,Distance to shore,Water depth,Latitude,Longitude,Year,Time Zone,Data Source,Notes"
                 }
             }
         },
@@ -825,6 +825,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "location_name": {
+            "Version": 4.0,
+            "Type": 4.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": "<invalid>",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "location_ts": {
             "Version": 4.0,
             "Type": 4.0,
@@ -832,7 +845,7 @@
             "Units": " ",
             "Group": "ME Wave Resource",
             "IndexLabels": "WaveResourceTSData|0",
-            "Flags": 19.0,
+            "Flags": 25.0,
             "DefaultValue": "PacWave East",
             "UIObject": "Library",
             "sscVariableName": "",

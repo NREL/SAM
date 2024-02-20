@@ -367,17 +367,17 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
     "city": "-",
-    "const_per_interest1": 18495700.0,
+    "const_per_interest1": 34349100.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 18495700.0,
+    "const_per_interest_total": 34349100.0,
     "const_per_months1": 24.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -400,7 +400,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 528448000.0,
-    "const_per_total1": 23780100.0,
+    "const_per_total1": 39633600.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -410,7 +410,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 23780100.0,
+    "construction_financing_cost": 39633600.0,
     "cooling_tower_operation_mode": 1.0,
     "cost_dev_fee_percent": 3.0,
     "cost_dev_fee_tax_liability": 4205920.0,
@@ -19573,7 +19573,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.118
+        0.138
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -19597,7 +19597,7 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "reserves_interest": 1.25,
+    "reserves_interest": 1.75,
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
@@ -19935,7 +19935,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,

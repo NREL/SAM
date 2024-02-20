@@ -1,7 +1,7 @@
 {
     "Name": "MSLF System Control",
-    "Width": 921.0,
-    "Height": 441.0,
+    "Width": 909.0,
+    "Height": 431.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1354,7 +1354,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1437,7 +1437,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1520,7 +1520,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1603,7 +1603,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 759.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1686,7 +1686,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 759.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1769,7 +1769,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1852,7 +1852,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1935,7 +1935,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 759.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2018,7 +2018,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 759.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2101,7 +2101,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 759.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2184,7 +2184,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2233,7 +2233,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2270,7 +2270,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2479,11 +2479,11 @@
         "SC_DISP_aux_par_0": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Aux heater parasitic Coeff 0",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.483,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2492,11 +2492,11 @@
         "SC_DISP_aux_par_1": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Aux heater parasitic Coeff 1",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.571,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2505,11 +2505,11 @@
         "SC_DISP_aux_par_2": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Aux heater parasitic Coeff 2",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2518,11 +2518,11 @@
         "SC_DISP_aux_par_f": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Aux heater parasitic factor",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2544,11 +2544,11 @@
         "SC_DISP_bop_par_0": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Balance of plant Coeff 0",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -2557,11 +2557,11 @@
         "SC_DISP_bop_par_1": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Balance of plant Coeff 1",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.483,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2570,11 +2570,11 @@
         "SC_DISP_bop_par_2": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Balance of plant Coeff 2",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2583,11 +2583,11 @@
         "SC_DISP_bop_par_f": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Balance of plant factor",
             "Units": "",
             "Group": "MSLF System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2609,9 +2609,9 @@
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "MSLF System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2622,9 +2622,9 @@
         "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "MSLF System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2635,9 +2635,9 @@
         "adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "MSLF System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2648,9 +2648,9 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "MSLF System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -2665,9 +2665,9 @@
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "MSLF System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [

@@ -1314,7 +1314,7 @@ void fcall_refresh( lk::invoke_t &cxt )
                 win->Refresh();
             if ( ipage && vv )
             {
-                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ );
+                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid );
             }
         }
 	}
@@ -1330,7 +1330,7 @@ void fcall_refresh( lk::invoke_t &cxt )
 				size_t ndxHybrid = ipage->GetHybridIndex();
 				VarValue* vv = cur_case->Values(ndxHybrid).Get(var);
 				if (vv)
-					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid);
             }
 		}
 	}
@@ -3719,8 +3719,8 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 void fcall_geocode(lk::invoke_t& cxt) 
 {
 	LK_DOC("geocode",
-		"Given a street address, location name, or latitude-longitude pair ('lat,lon') string, returns the latitude, longitude, and time zone of an address using Developer API. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
-		"(string:address):table");
+		"Given a street address or location name, returns latitude, longitude, and time zone. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NREL wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"(string):table");
 
 	double lat = 0, lon = 0, tz = 0;
 	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
@@ -5862,7 +5862,7 @@ static void fcall_read_json(lk::invoke_t &cxt)
 
 static void fcall_reopt_size_battery(lk::invoke_t &cxt)
 {
-    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "[boolean:grid_outage]: table");
+    LK_DOC("reopt_size_battery", "Makes a call to the REopt API using inputs from the current behind-the-meter battery case and returns optimum battery size and dispatch. Set the grid outage parameter to True to consider outages, False for no outages.", "[boolean:grid_outage]: table");
 
     ssc_data_t p_data = ssc_data_create();
 
