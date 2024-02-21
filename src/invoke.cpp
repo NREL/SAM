@@ -5872,9 +5872,6 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		grid_outage = cxt.arg(0).as_boolean();
 	}
 
-	wxProgressDialog pdlg("REopt API", "Running SAM simulation to generate REopt inputs.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL);
-
-	pdlg.Show();
 
 	// check if case exists and is correct configuration
 	Case* sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
@@ -5884,22 +5881,21 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
 	bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
-	pdlg.Update(10);
-
 	Simulation base_case = sam_case->BaseCase();
 	base_case.Clear();
 	base_case.Prepare();
 	bool success = base_case.Invoke(false,true,"");
 	if (!success) {
-		pdlg.Close();
 		ssc_data_free(p_data);
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
 
-	if (!pdlg.Update(20, "Reading SAM inputs to send to REopt API.")) {
-		return;
-	}
+	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL);
+
+	pdlg.Show();
+	pdlg.Fit();
+
 	//
 	// copy over required inputs from SAM
 	//
@@ -5988,7 +5984,8 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(40, "Getting REopt ID for optimization run.")) {
+
+	if (!pdlg.Update(20, "Getting REopt ID for optimization run.")) {
 		return;
 	}
 
@@ -6017,7 +6014,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(50, "Checking REopt ID.")) {
+	if (!pdlg.Update(30, "Checking REopt ID.")) {
 		return;
 	}
 
@@ -6037,7 +6034,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
+	if (!pdlg.Update(40, "Running optimization on REopt servers.")) {
 		return;
 	}
 
@@ -6049,7 +6046,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	cxt.result().hash_item("response", lk::vardata_t());
 	lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-	if (!pdlg.Update(70, "Running optimization on REopt servers.")) {
+	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
 		return;
 	}
 
