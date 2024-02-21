@@ -7739,14 +7739,20 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
+		str_value.Replace("\"", "\\\"");
+		// one exception per SAM issue 1515 for "library_folder_list"
+		if (strcmp(name,"library_folder_list")==0)
+			fprintf(m_fp, "	\"%s\" : \"x\",\n", name);
+		else
+			fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
         if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+			fprintf(m_fp, "    \"%s\" : \"nan\", \n", name); // per SAM issue 1515
+//			fprintf(m_fp, "    \"%s\" : NaN,\n", name);
 		else {
 			fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
 		}
@@ -7760,14 +7766,16 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                    fprintf(m_fp, " NaN,");
+					fprintf(m_fp, " \"nan\",");
+				//                    fprintf(m_fp, " NaN,");
                 else
                     fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ],\n");
+				fprintf(m_fp, " \"nan\" ],\n");
+			//                fprintf(m_fp, " NaN ],\n");
             else
                 fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
@@ -7783,25 +7791,29 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (nc == 1){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ], [");
+						fprintf(m_fp, " \"nan\" ], [");
+					//                        fprintf(m_fp, " NaN ], [");
                     else
                         fprintf(m_fp, " %.17g ], [", dbl_value);
                 }
 				else if ((k > 0) && (k % nc == 0)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " [ NaN,");
+						fprintf(m_fp, " [ \"nan\",");
+					//                        fprintf(m_fp, " [ NaN,");
                     else
                         fprintf(m_fp, " [ %.17g,", dbl_value);
                 }
 				else if (k % nc == (nc - 1)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ],");
+						fprintf(m_fp, " \"nan\" ],");
+					//                        fprintf(m_fp, " NaN ],");
                     else
                         fprintf(m_fp, " %.17g ],", dbl_value);
                 }
 				else {
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN, ");
+						fprintf(m_fp, " \"nan\", ");
+					//                        fprintf(m_fp, " NaN, ");
                     else
                         fprintf(m_fp, " %.17g, ", dbl_value);
                 }
@@ -7809,7 +7821,8 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ] ],\n");
+				fprintf(m_fp, " \"nan\" ] ],\n");
+			//                fprintf(m_fp, " NaN ] ],\n");
             else
                 fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
