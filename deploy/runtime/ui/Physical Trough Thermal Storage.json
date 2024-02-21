@@ -4075,7 +4075,7 @@
         "",
         "\ton_change{\"is_hx\"}();",
         "\t",
-        "    bUserDefined = (${combo_tes_htf_type} == 9);",
+        "    bUserDefined = (${combo_tes_htf_type} == 10);",
         "    enable(\"store_fl_props\", bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_min_opt_temp\",!bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_max_opt_temp\",!bUserDefined);",
