@@ -11237,6 +11237,7 @@
             0.0
         ],
         "fuelcell_dispatch_choice": 0.0,
+        "fuelcell_dispatch_excl": 0.0,
         "fuelcell_dispatch_input": [
             0.0
         ],
