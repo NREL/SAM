@@ -224,10 +224,11 @@ bool ParametricData::Read( wxInputStream &_I )
 	return in.Read8() == code;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
+//    void EnablePasteEvent(bool b); // sent as GRID_CELL_CHANGE with GetRow() = -1 and GetCol() = -1
 BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 EVT_GRID_COL_SORT(ParametricGrid::OnColSort)
+EVT_GRID_CELL_CHANGE(ParametricGrid::OnGridCellChange)
 END_EVENT_TABLE()
 
 
@@ -239,6 +240,24 @@ ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &p
 ParametricGrid::~ParametricGrid()
 {
 }
+
+void ParametricGrid::OnGridCellChange(wxGridEvent& evt)
+{
+	if (evt.GetRow() == -1 && evt.GetCol() == -1) { // paste event
+		// trigger validation as necessary (simulate cell click SAM issue 1314)
+		if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
+			for (size_t iCol = 0; iCol < pgd->GetNumberCols(); iCol++) {
+				if (pgd->IsInput(iCol)) {
+					for (size_t iRow = 0; iRow < pgd->GetNumberRows(); iRow++) {
+						
+						pgd->SetValue(iRow, iCol, pgd->GetValue(iRow, iCol)); // trigger editor
+					}
+				}
+			}
+		}
+	}
+}
+
 
 void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 {
