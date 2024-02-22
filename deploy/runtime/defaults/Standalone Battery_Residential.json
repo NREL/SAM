@@ -116,7 +116,7 @@
     "batt_h_to_ambient": 7.5,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
-    "batt_life_excl": 1.0,
+    "batt_life_excl": 0.0,
     "batt_life_model": 1.0,
     "batt_lifetime_matrix": [
         [
