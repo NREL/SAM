@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. Optionally allows for sizing to maintain power during a grid outage. See Help for details."
+                    "String": "The REopt API web service automatically sizes the battery bank and calculates a time series dispatch schedule. Click Get Size and Dispatch to run a simulation, send data from SAM to the service, run a REopt optimization on the service, and choose whether to modify SAM battery size and dispatch inputs with results from the REopt run. You can also choose whether to size the battery to maintain power during a grid outage. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
