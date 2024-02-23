@@ -2738,7 +2738,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_total_installed_cost'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_dispatch_choice_ui', 'DependentVartableIndex' = 2,'DependentVariableName' = 'batt_dispatch_choice_ui'}, // fuel cell dispatch
+//{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_dispatch_choice_ui', 'DependentVartableIndex' = 2,'DependentVariableName' = 'batt_dispatch_choice_ui'}, // fuel cell dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_power_discharge_max_kwac', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_power_discharge_max_kwac'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_replacement_option', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_replacement_option'}, // battery replacements
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'battery_system_capacity'},
