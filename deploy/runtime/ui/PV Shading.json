@@ -1,7 +1,7 @@
 {
     "Name": "PV Shading",
-    "Width": 1043.0,
-    "Height": 874.0,
+    "Width": 1036.0,
+    "Height": 845.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -747,7 +747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1372,11 +1372,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 1011.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1426,19 +1426,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 642.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 367.0
+                    "Integer": 735.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 118.0
+                    "Integer": 108.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1625,7 +1625,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 72.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1683,7 +1683,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "object 732"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1983,43 +1983,6 @@
                     "Boolean": 0.0
                 },
                 "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "self_shading_diagram"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 288.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 636.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 367.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 118.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "PV Shading.png"
-                },
-                "Centered": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -3916,7 +3879,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3929,7 +3892,7 @@
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
+                        "Red": 0.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
@@ -3945,7 +3908,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -3970,7 +3933,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5034,7 +4997,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Module area",
-            "Units": "m",
+            "Units": "m²",
             "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -6404,129 +6367,20 @@
         "\treturn ${subarray4_gcr};",
         "};",
         "",
-        "equations{ 'subarray1_land_area'} = define() {",
-        "\ttilt = 0;",
-        "\tif (${subarray1_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray1_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray1_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray1_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray1_shade_mode} == 0 ) {",
-        "\t\tlength = sqrt(${module_area}*${module_aspect_ratio});",
-        "\t\tnmods = ${subarray1_modules_per_string} * ${subarray1_nstrings} / 2;",
-        "\t\twidth = sqrt(${module_area}/${module_aspect_ratio});",
-        "\t\tarea = length * ( 3 / ${subarray1_gcr}) * nmods * width; ",
-        "\t\treturn area;",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray1_nmodx};",
-        "\t\tif (${subarray1_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray1_length_side} * ((${ui_subarray1_nrows}+1) / ${subarray1_gcr}) * nmods * width; ",
-        "\t\treturn area;",
-        "\t}",
+        "equations{ 'subarray1_land_area'} = define() {\r",
+        "\treturn ${subarray1_ref_nmodules} * ${module_area} / ${subarray1_gcr};",
         "};",
         "",
-        "equations{ 'subarray2_land_area'} = define() {",
-        "\tif (${subarray2_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray2_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray2_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray2_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray2_shade_mode} == 0 ) {",
-        "\t\tlength = sqrt(${module_area}*${module_aspect_ratio});",
-        "\t\tnmods = ${subarray2_modules_per_string} * ${subarray2_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/${module_aspect_ratio});",
-        "\t\tarea = length* ( 3 / ${subarray2_gcr} ) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray2_nmodx};",
-        "\t\tif (${subarray2_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray2_length_side} * ((${ui_subarray2_nrows}+1) / ${subarray2_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
+        "equations{ 'subarray2_land_area'} = define() {\r",
+        "\treturn ${subarray2_ref_nmodules} * ${module_area} / ${subarray2_gcr};",
         "};",
         "",
         "equations{ 'subarray3_land_area'} = define() {",
-        "\tif (${subarray3_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray3_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray3_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray3_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray3_shade_mode} == 0 ) {",
-        "\t\tlength = sqrt(${module_area}*${module_aspect_ratio});",
-        "\t\tnmods = ${subarray3_modules_per_string} * ${subarray3_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/${module_aspect_ratio});",
-        "\t\tarea = length* ( 3 / ${subarray3_gcr}) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray3_nmodx};",
-        "\t\tif (${subarray3_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray3_length_side} * ((${ui_subarray3_nrows}+1) / ${subarray3_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
+        "\treturn ${subarray3_ref_nmodules} * ${module_area} / ${subarray3_gcr};",
         "};",
         "",
         "equations{ 'subarray4_land_area'} = define() {",
-        "\tif (${subarray4_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray4_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray4_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray4_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray4_shade_mode} == 0 ) {",
-        "\t\tlength = sqrt(${module_area}*${module_aspect_ratio});",
-        "\t\tnmods = ${subarray4_modules_per_string} * ${subarray4_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/${module_aspect_ratio});",
-        "\t\tarea = length* ( 3 / ${subarray4_gcr}) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray4_nmodx};",
-        "\t\tif (${subarray4_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray4_length_side} * ((${ui_subarray4_nrows}+1) / ${subarray4_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
+        "\treturn ${subarray4_ref_nmodules} * ${module_area} / ${subarray4_gcr};",
         "};\r",
         ""
     ],
@@ -6535,9 +6389,6 @@
         "function input_enabling()",
         "{\r",
         "",
-        "\tmsg='';",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
-        "\t",
         "\t//enable_module_area = false;",
         "\t",
         "\tmsg_snow = '';",
@@ -6545,7 +6396,8 @@
         "\t\tmsg_snow = 'Weather file has no snow data. Simulation will fail.';",
         "\t}",
         "\tproperty('ui_msg_snow','Caption',msg_snow);",
-        "",
+        "\r",
+        "\tmsg='';\r",
         "\tfor(i=1; i<=4; i++)",
         "\t{",
         "\t\tprefix = 'subarray' + i + '_';",
@@ -6578,14 +6430,14 @@
         "\t\t//or there is only one row",
         "\t\tif (en3 == true ) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row.\\n';",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row. ';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//display message if snow model is enabled and nrows is not an integer",
         "\t\tif (en4 == true  && en3 == false) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//now enable all the inputs",
@@ -6603,7 +6455,8 @@
         "\t}",
         "\t//enable('module_area', enable_module_area);",
         "    if (msg!=\"\") msg = msg + 'Adjust the number of modules to correct the problem.'; ",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
+        "\tproperty('ui_msg_selfshad','Caption',msg);\r",
+        "\tproperty('ui_msg_selfshad','TextColour','red');",
         "}",
         "\r",
         "on_load{'PV Shading'} = define() { \r",
