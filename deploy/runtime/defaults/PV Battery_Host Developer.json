@@ -102867,7 +102867,7 @@
     "spe_bifacial_transmission_factor": 0.013,
     "spe_bifaciality": 0.7,
     "spe_dT": 3.0,
-    "spe_data_filename": "<invalid>",
+    "spe_data_filename": "",
     "spe_eff0": 19.0,
     "spe_eff1": 19.0,
     "spe_eff2": 19.0,
