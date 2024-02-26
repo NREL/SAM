@@ -845,7 +845,7 @@
             "Units": " ",
             "Group": "ME Wave Resource",
             "IndexLabels": "WaveResourceTSData|0",
-            "Flags": 25.0,
+            "Flags": 19.0,
             "DefaultValue": "PacWave East",
             "UIObject": "Library",
             "sscVariableName": "",
