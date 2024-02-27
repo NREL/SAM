@@ -405,6 +405,8 @@ public:
 		scroll->Add( m_enableDiffuse, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_textDiffuse = new wxStaticText( m_scrollWin, wxID_ANY, diff_text ), 0, wxALL|wxEXPAND, 10 );
 		scroll->Add( m_diffuseFrac, 0, wxALL, 5  );
+		m_diffuseFrac->SetMinSize(wxSize(100, 24));
+
 		m_textDiffuse->Wrap( wrap_width );
 		m_textDiffuse->SetForegroundColour( text_color );	
 
