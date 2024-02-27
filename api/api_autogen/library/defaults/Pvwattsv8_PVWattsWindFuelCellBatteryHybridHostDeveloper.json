@@ -42,15 +42,8 @@
 			]
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 0,
-			"adjust_en_periods": 0,
-			"adjust_en_timeindex": 0,
-			"adjust_periods": [
-				[0.000000, 0.000000, 0.000000]
-			],
-			"adjust_timeindex": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
-		"HybridTech": {
+		"HybridCosts": {
 			"degradation": [0.500000],
 			"om_capacity": [22.000000],
 			"om_capacity_escal": 0,

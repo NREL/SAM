@@ -299,7 +299,7 @@ extern "C"
 
 	/**
 	 * Set add_om_num_types: Number of O and M types
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
@@ -307,7 +307,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -315,7 +315,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
@@ -323,7 +323,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -331,7 +331,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -339,7 +339,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -347,7 +347,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -355,7 +355,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -363,7 +363,7 @@ extern "C"
 
 	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -379,7 +379,7 @@ extern "C"
 
 	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -395,7 +395,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -403,7 +403,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -411,7 +411,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -419,7 +419,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -427,7 +427,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_nameplate: Fuel cell capacity for System Costs values [kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -435,7 +435,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -443,7 +443,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -451,7 +451,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -459,7 +459,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -467,7 +467,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -475,7 +475,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -483,7 +483,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -491,7 +491,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -499,7 +499,7 @@ extern "C"
 
 	/**
 	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -507,7 +507,7 @@ extern "C"
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -515,7 +515,7 @@ extern "C"
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -531,7 +531,7 @@ extern "C"
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */

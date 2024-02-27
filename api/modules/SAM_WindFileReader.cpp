@@ -48,8 +48,6 @@ SAM_EXPORT const char* SAM_WindFileReader_WeatherReader_file_name_sget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_WeatherReader_interpolate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -58,8 +56,6 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_interpolate_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindFileReader_WeatherReader_requested_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -70,8 +66,6 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_requested_ht_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_WeatherReader_scan_header_only_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -80,8 +74,6 @@ SAM_EXPORT double SAM_WindFileReader_WeatherReader_scan_header_only_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WindFileReader_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -93,8 +85,6 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_city_sget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_closest_dir_meas_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -104,8 +94,6 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_closest_dir_meas_ht_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_closest_speed_meas_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -114,8 +102,6 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_closest_speed_meas_ht_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WindFileReader_Outputs_country_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -127,8 +113,6 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_country_sget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WindFileReader_Outputs_description_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -139,8 +123,6 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_description_sget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -150,8 +132,6 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_elev_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -160,8 +140,6 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WindFileReader_Outputs_location_id_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -173,8 +151,6 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_location_id_sget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -183,8 +159,6 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WindFileReader_Outputs_pressure_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -196,8 +170,6 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_pressure_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WindFileReader_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -207,8 +179,6 @@ SAM_EXPORT const char* SAM_WindFileReader_Outputs_state_sget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WindFileReader_Outputs_temperature_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -220,8 +190,6 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_temperature_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_direction_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -231,8 +199,6 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_direction_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_speed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -244,8 +210,6 @@ SAM_EXPORT double* SAM_WindFileReader_Outputs_wind_speed_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindFileReader_Outputs_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -254,6 +218,4 @@ SAM_EXPORT double SAM_WindFileReader_Outputs_year_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 

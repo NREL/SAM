@@ -275,8 +275,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_Simulation_sim_type_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_D_rec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -285,8 +283,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_D_rec_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_Flow_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -297,8 +293,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_Flow_type_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_N_panels_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -307,8 +301,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_N_panels_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -319,8 +311,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_T_htf_cold_des_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -329,8 +319,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_T_htf_hot_des_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_crossover_shift_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -341,8 +329,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_crossover_shift_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_csp_pt_rec_max_oper_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -351,8 +337,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_csp_pt_rec_max_oper_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_d_tube_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -363,8 +347,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_d_tube_out_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_downc_tm_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -373,8 +355,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_downc_tm_mult_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_epsilon_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -385,8 +365,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_epsilon_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -396,8 +374,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_eta_pump_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_f_rec_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -406,8 +382,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_f_rec_min_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_TowerAndReceiver_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -419,8 +393,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_TowerAndReceiver_field_fl_props_mget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_h_tower_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -429,8 +401,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_h_tower_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_hl_ffact_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -441,8 +411,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_hl_ffact_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_clearsky_control_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -451,8 +419,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_clearsky_cont
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_model_trans_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -463,8 +429,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_is_rec_model_trans_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_mat_tube_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -473,8 +437,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_mat_tube_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_length_const_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -485,8 +447,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_length_const_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_length_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -495,8 +455,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_length_mult_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_loss_coefficient_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -507,8 +465,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_piping_loss_coeffici
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_q_dot_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -517,8 +473,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_q_dot_rec_des_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -529,8 +483,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_height_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_htf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -539,8 +491,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_htf_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -551,8 +501,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_qf_delay_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -561,8 +509,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_su_delay_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_tm_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -573,8 +519,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_rec_tm_mult_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_riser_tm_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -583,8 +527,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_riser_tm_mult_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_riser_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -595,8 +537,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_riser_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_tube_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -606,8 +546,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_th_tube_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_u_riser_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -616,8 +554,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_TowerAndReceiver_u_riser_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_T_htf_cold_in_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -629,8 +565,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_T_htf_cold_in_od_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_plant_defocus_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -641,8 +575,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_ReceiverControl_plant_defocus_od_age
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_ReceiverControl_rec_clearsky_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -651,8 +583,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_ReceiverControl_rec_clearsky_fraction
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Timeseries_timestep_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -664,8 +594,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Timeseries_timestep_od_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_P_amb_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -675,8 +603,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_P_amb_od_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_T_amb_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -688,8 +614,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_T_amb_od_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_clearsky_to_measured_dni_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -699,8 +623,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_clearsky_to_measured_dni_od_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_deltaT_sky_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -712,8 +634,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_deltaT_sky_od_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_v_wind_10_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -723,8 +643,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Weather_v_wind_10_od_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Flux_flux_map_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -736,8 +654,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Flux_flux_map_od_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_T_htf_rec_out_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -747,8 +663,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_T_htf_rec_out_od_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_W_dot_pump_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -760,8 +674,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_W_dot_pump_od_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_eta_rec_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -772,8 +684,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_eta_rec_od_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -782,8 +692,6 @@ SAM_EXPORT double SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_des_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -795,8 +703,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_m_dot_rec_od_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_htf_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -806,8 +712,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_htf_od_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_conv_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -819,8 +723,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_conv_loss_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -830,8 +732,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_pre_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -843,8 +743,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_inc_pre_defocus_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_piping_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -854,8 +752,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_piping_loss_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_rad_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -867,8 +763,6 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_q_dot_rec_rad_loss_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_rec_component_defocus_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -878,6 +772,4 @@ SAM_EXPORT double* SAM_MsptSfAndRecIsolated_Outputs_rec_component_defocus_od_age
 	});
 	return result;
 }
-
-
 

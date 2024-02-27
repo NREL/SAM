@@ -41,8 +41,6 @@ SAM_EXPORT double SAM_InvCecCg_Common_inv_cec_cg_paco_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_InvCecCg_Common_inv_cec_cg_sample_power_units_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -51,8 +49,6 @@ SAM_EXPORT double SAM_InvCecCg_Common_inv_cec_cg_sample_power_units_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Common_inv_cec_cg_test_samples_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -64,8 +60,6 @@ SAM_EXPORT double* SAM_InvCecCg_Common_inv_cec_cg_test_samples_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_InvCecCg_Outputs_Pdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -74,8 +68,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_Pdco_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_InvCecCg_Outputs_Pso_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -86,8 +78,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_Pso_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_InvCecCg_Outputs_Vdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -96,8 +86,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_Vdco_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_InvCecCg_Outputs_c0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -108,8 +96,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_c0_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_InvCecCg_Outputs_c1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -118,8 +104,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_c1_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_InvCecCg_Outputs_c2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -130,8 +114,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_c2_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_InvCecCg_Outputs_c3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -140,8 +122,6 @@ SAM_EXPORT double SAM_InvCecCg_Outputs_c3_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -153,8 +133,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C0_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -164,8 +142,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C1_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -177,8 +153,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C2_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -188,8 +162,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_C3_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Pdco_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -201,8 +173,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Pdco_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Psco_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -212,8 +182,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Psco_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vdc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -225,8 +193,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vdc_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vdc_Vnom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -236,8 +202,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vdc_Vnom_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmax_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -249,8 +213,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmax_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmax_abc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -260,8 +222,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmax_abc_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmin_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -273,8 +233,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmin_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmin_abc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -284,8 +242,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vmin_abc_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vnom_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -297,8 +253,6 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vnom_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vnom_abc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -308,6 +262,4 @@ SAM_EXPORT double* SAM_InvCecCg_Outputs_inv_cec_cg_Vnom_abc_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 

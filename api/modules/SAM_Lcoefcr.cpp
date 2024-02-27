@@ -53,8 +53,6 @@ SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_annual_energy_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_capital_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -63,8 +61,6 @@ SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_capital_cost_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -75,8 +71,6 @@ SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_charge_rate_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -85,8 +79,6 @@ SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_fixed_operating_cost_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -97,8 +89,6 @@ SAM_EXPORT double SAM_Lcoefcr_SimpleLCOE_variable_operating_cost_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Lcoefcr_Outputs_lcoe_fcr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -107,6 +97,4 @@ SAM_EXPORT double SAM_Lcoefcr_Outputs_lcoe_fcr_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 

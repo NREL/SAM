@@ -42,20 +42,16 @@
 			]
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 0,
-			"adjust_en_periods": 0,
-			"adjust_en_timeindex": 0,
-			"adjust_periods": [
-				[0.000000, 0.000000, 0.000000]
-			],
-			"adjust_timeindex": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 		},
-		"HybridTech": {
+		"HybridCosts": {
 			"degradation": [0.500000],
+			"land_area": 3.51186,
 			"om_capacity": [22.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"total_installed_cost": 937312

@@ -263,6 +263,7 @@
 			"nColt": 4,
 			"nHCEVar": 4,
 			"nHCEt": 4,
+			"nSCA": 8,
 			"northsouth_field_sep": 20,
 			"offset_xpan_hdr": 1,
 			"p_start": 0.021,
@@ -633,13 +634,13 @@
 			"sales_tax_rate": 5
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 4,
-			"adjust_en_periods": 0,
-			"adjust_en_timeindex": 0,
-			"adjust_periods": [
+			"constant": 4,
+			"en_periods": 0,
+			"en_timeindex": 0,
+			"periods": [
 				[0.000000, 0.000000, 0.000000]
 			],
-			"adjust_timeindex": [0.000000]
+			"timeindex": [0.000000]
 		}
 	}
 }

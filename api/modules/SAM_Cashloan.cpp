@@ -1343,8 +1343,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_analysis_period_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_debt_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1353,8 +1351,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_debt_fraction_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FinancialParameters_federal_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1366,8 +1362,6 @@ SAM_EXPORT double* SAM_Cashloan_FinancialParameters_federal_tax_rate_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1376,8 +1370,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_inflation_rate_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_insurance_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1388,8 +1380,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_insurance_rate_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1398,8 +1388,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_rate_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1410,8 +1398,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_loan_term_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_market_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1420,8 +1406,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_market_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_mortgage_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1432,8 +1416,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_mortgage_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1442,8 +1424,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_assessed_decline_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1454,8 +1434,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_prop_tax_cost_assessed_percen
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_property_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1464,8 +1442,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_property_tax_rate_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_real_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1476,8 +1452,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_real_discount_rate_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1486,8 +1460,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_salvage_percentage_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FinancialParameters_state_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1499,8 +1471,6 @@ SAM_EXPORT double* SAM_Cashloan_FinancialParameters_state_tax_rate_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1509,8 +1479,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_capacity_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1521,8 +1489,6 @@ SAM_EXPORT double SAM_Cashloan_FinancialParameters_system_heat_rate_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1532,8 +1498,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_add_om_num_types_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1542,8 +1506,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_annual_fuel_usage_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1555,8 +1517,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1566,8 +1526,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_capacity_cost_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1579,8 +1537,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_fixed_cost_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1589,8 +1545,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_batt_nameplate_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1602,8 +1556,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_replacement_cost_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1613,8 +1565,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_variable_cost_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1626,8 +1576,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_capacity_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1636,8 +1584,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_capacity_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1649,8 +1595,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fixed_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1659,8 +1603,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fixed_escal_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1672,8 +1614,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuel_cost_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1682,8 +1622,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fuel_cost_escal_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1695,8 +1633,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_capacity_cost_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1707,8 +1643,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_fixed_cost_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1717,8 +1651,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_fuelcell_nameplate_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1730,8 +1662,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_replacement_cost_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1741,8 +1671,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_fuelcell_variable_cost_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1754,8 +1682,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1765,8 +1691,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_cost_escal_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1775,8 +1699,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_1_usage_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1788,8 +1710,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1799,8 +1719,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_cost_escal_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1809,8 +1727,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1822,8 +1738,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1833,8 +1747,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production1_values_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1846,8 +1758,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_production2_values_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1856,8 +1766,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_production_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1868,8 +1776,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_om_replacement_cost_escal_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1879,8 +1785,6 @@ SAM_EXPORT double SAM_Cashloan_SystemCosts_total_installed_cost_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_LandLease_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1889,8 +1793,6 @@ SAM_EXPORT double SAM_Cashloan_LandLease_land_area_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LandLease_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1902,8 +1804,6 @@ SAM_EXPORT double* SAM_Cashloan_LandLease_om_land_lease_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_LandLease_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1912,8 +1812,6 @@ SAM_EXPORT double SAM_Cashloan_LandLease_om_land_lease_escal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_fed_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1925,8 +1823,6 @@ SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_fed_custom_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1936,8 +1832,6 @@ SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_sl_years_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1946,8 +1840,6 @@ SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_type_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1959,8 +1851,6 @@ SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_sta_custom_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1970,8 +1860,6 @@ SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_sl_years_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1980,8 +1868,6 @@ SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_type_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1993,8 +1879,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2004,8 +1888,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_fed_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2014,8 +1896,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_amount_deprbas_sta_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2027,8 +1907,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2038,8 +1916,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_fed_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2048,8 +1924,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_deprbas_sta_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2061,8 +1935,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_fed_percent_maxvalue_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2073,8 +1945,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2084,8 +1954,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_fed_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2094,8 +1962,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_amount_deprbas_sta_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2107,8 +1973,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2118,8 +1982,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_fed_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2128,8 +1990,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_deprbas_sta_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2141,8 +2001,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_itc_sta_percent_maxvalue_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2153,8 +2011,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_fed_amount_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2164,8 +2020,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2174,8 +2028,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_fed_term_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2187,8 +2039,6 @@ SAM_EXPORT double* SAM_Cashloan_TaxCreditIncentives_ptc_sta_amount_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2197,8 +2047,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2209,8 +2057,6 @@ SAM_EXPORT double SAM_Cashloan_TaxCreditIncentives_ptc_sta_term_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2219,8 +2065,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2231,8 +2075,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2241,8 +2083,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_deprbas_sta_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2253,8 +2093,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_maxvalue_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2263,8 +2101,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_fed_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2275,8 +2111,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_fed_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2285,8 +2119,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2297,8 +2129,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2307,8 +2137,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2319,8 +2147,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_maxvalue_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2329,8 +2155,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_fed_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2341,8 +2165,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_oth_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2351,8 +2173,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2363,8 +2183,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2373,8 +2191,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2385,8 +2201,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_maxvalue_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2395,8 +2209,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_fed_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2407,8 +2219,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2417,8 +2227,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2429,8 +2237,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2439,8 +2245,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_deprbas_sta_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2451,8 +2255,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_maxvalue_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2461,8 +2263,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_fed_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2473,8 +2273,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_cbi_uti_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2483,8 +2281,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2495,8 +2291,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_fed_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2505,8 +2299,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_deprbas_sta_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2517,8 +2309,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_fed_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2527,8 +2317,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_amount_tax_sta_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2539,8 +2327,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2549,8 +2335,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_fed_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2561,8 +2345,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_deprbas_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2571,8 +2353,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_maxvalue_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2583,8 +2363,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_fed_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2593,8 +2371,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_fed_percent_tax_sta_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2605,8 +2381,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2615,8 +2389,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_fed_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2627,8 +2399,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_deprbas_sta_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2637,8 +2407,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_fed_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2649,8 +2417,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_amount_tax_sta_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2659,8 +2425,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2671,8 +2435,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_fed_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2681,8 +2443,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_deprbas_sta_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2693,8 +2453,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_maxvalue_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2703,8 +2461,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_fed_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2715,8 +2471,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_oth_percent_tax_sta_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2725,8 +2479,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2737,8 +2489,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_fed_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2747,8 +2497,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_deprbas_sta_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2759,8 +2507,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_fed_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2769,8 +2515,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_amount_tax_sta_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2781,8 +2525,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2791,8 +2533,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_fed_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2803,8 +2543,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_deprbas_sta_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2813,8 +2551,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_maxvalue_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2825,8 +2561,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_fed_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2835,8 +2569,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_sta_percent_tax_sta_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2847,8 +2579,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2857,8 +2587,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_fed_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2869,8 +2597,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_deprbas_sta_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2879,8 +2605,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_fed_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2891,8 +2615,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_amount_tax_sta_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2901,8 +2623,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2913,8 +2633,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_fed_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2923,8 +2641,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_deprbas_sta_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2935,8 +2651,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_maxvalue_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2946,8 +2660,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_fed_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2956,8 +2668,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_ibi_uti_percent_tax_sta_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2969,8 +2679,6 @@ SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_fed_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2979,8 +2687,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2991,8 +2697,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3002,8 +2706,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3012,8 +2714,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3025,8 +2725,6 @@ SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_oth_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3035,8 +2733,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3047,8 +2743,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_fed_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3058,8 +2752,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3068,8 +2760,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_oth_term_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3081,8 +2771,6 @@ SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_sta_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3091,8 +2779,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3103,8 +2789,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3114,8 +2798,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3124,8 +2806,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3137,8 +2817,6 @@ SAM_EXPORT double* SAM_Cashloan_PaymentIncentives_pbi_uti_amount_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3147,8 +2825,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_escal_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3159,8 +2835,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_fed_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3170,8 +2844,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_tax_sta_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3180,8 +2852,6 @@ SAM_EXPORT double SAM_Cashloan_PaymentIncentives_pbi_uti_term_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_BatterySystem_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3193,8 +2863,6 @@ SAM_EXPORT double* SAM_Cashloan_BatterySystem_batt_bank_replacement_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_BatterySystem_batt_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3204,8 +2872,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_batt_computed_bank_capacity_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_BatterySystem_batt_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3214,8 +2880,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_batt_replacement_option_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_BatterySystem_batt_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3227,8 +2891,6 @@ SAM_EXPORT double* SAM_Cashloan_BatterySystem_batt_replacement_schedule_percent_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_BatterySystem_battery_per_kWh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3237,8 +2899,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_battery_per_kWh_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_BatterySystem_en_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3249,8 +2909,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_en_batt_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_BatterySystem_en_standalone_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3260,8 +2918,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_en_standalone_batt_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_BatterySystem_en_wave_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3270,8 +2926,6 @@ SAM_EXPORT double SAM_Cashloan_BatterySystem_en_wave_batt_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3283,8 +2937,6 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3293,8 +2945,6 @@ SAM_EXPORT double SAM_Cashloan_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3306,8 +2956,6 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3317,8 +2965,6 @@ SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_per_kWh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3327,8 +2973,6 @@ SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_per_kWh_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3340,8 +2984,6 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3350,8 +2992,6 @@ SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_replacement_option_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3363,8 +3003,6 @@ SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_replacement_schedule_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3374,8 +3012,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_dc_tou_ym_mget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3387,8 +3023,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_ec_ym_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3398,8 +3032,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_charge_w_sys_fixed_ym_mget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3411,8 +3043,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_net_billing_credits_ym_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3422,8 +3052,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_nm_dollars_applied_ym_mget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3435,8 +3063,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_true_up_credits_ym_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3446,8 +3072,6 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3459,8 +3083,6 @@ SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3470,8 +3092,6 @@ SAM_EXPORT double* SAM_Cashloan_Battery_monthly_batt_to_grid_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3483,8 +3103,6 @@ SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_batt_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3494,8 +3112,6 @@ SAM_EXPORT double* SAM_Cashloan_Battery_monthly_grid_to_load_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3507,8 +3123,6 @@ SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_dc_with_system_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3518,8 +3132,6 @@ SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_e_fromgrid_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3531,8 +3143,6 @@ SAM_EXPORT double* SAM_Cashloan_TimeSeries_year1_hourly_ec_with_system_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3542,8 +3152,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_energy_value_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3555,8 +3163,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_annual_thermal_value_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3566,8 +3172,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_degradation_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3579,8 +3183,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3591,8 +3193,6 @@ SAM_EXPORT double* SAM_Cashloan_SystemOutput_gen_purchases_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3601,8 +3201,6 @@ SAM_EXPORT double SAM_Cashloan_Lifetime_system_use_lifetime_output_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3614,8 +3212,6 @@ SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_with_system_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3625,8 +3221,6 @@ SAM_EXPORT double* SAM_Cashloan_ThirdPartyOwnership_elec_cost_without_system_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3638,8 +3232,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_energy_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_from_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3649,8 +3241,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_charge_from_system_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_discharge_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3662,8 +3252,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_batt_annual_discharge_energy_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3674,8 +3262,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_batt_capacity_percent_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_LCOS_batt_salvage_percentage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3685,8 +3271,6 @@ SAM_EXPORT double SAM_Cashloan_LCOS_batt_salvage_percentage_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3695,8 +3279,6 @@ SAM_EXPORT double SAM_Cashloan_LCOS_battery_total_cost_lcos_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3708,8 +3290,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_charge_w_sys_ec_ym_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3719,8 +3299,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_grid_to_batt_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3732,8 +3310,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_batt_to_grid_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3743,8 +3319,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_batt_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3756,8 +3330,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_grid_to_load_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_system_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3767,8 +3339,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_monthly_system_to_grid_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_true_up_credits_ym_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3780,8 +3350,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_true_up_credits_ym_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3791,8 +3359,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_gross_with_system_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3804,8 +3370,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_ec_charge_with_system_aget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3815,8 +3379,6 @@ SAM_EXPORT double* SAM_Cashloan_LCOS_year1_monthly_electricity_to_grid_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3828,8 +3390,6 @@ SAM_EXPORT double* SAM_Cashloan_ElectricityRates_rate_escalation_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_adjusted_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3838,8 +3398,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_adjusted_installed_cost_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3850,8 +3408,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_fedtax_total_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3860,8 +3416,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_statax_total_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3872,8 +3426,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3882,8 +3434,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_fed_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3894,8 +3444,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_oth_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3905,8 +3453,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_sta_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3915,8 +3461,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cbi_total_uti_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_cash_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3928,8 +3472,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_cash_flow_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3939,8 +3481,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_after_tax_net_equity_cost_flow_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3952,8 +3492,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_cost_lcos_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_discharge_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3963,8 +3501,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_annual_discharge_lcos_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3976,8 +3512,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3987,8 +3521,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_battery_replacement_cost_schedule_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4000,8 +3532,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_grid_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_grid_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4011,8 +3541,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_grid_month_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4024,8 +3552,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4035,8 +3561,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_with_expenses_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_without_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4048,8 +3572,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_cumulative_payback_without_expenses_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4059,8 +3581,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_balance_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_interest_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4072,8 +3592,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_interest_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_principal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4083,8 +3601,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_principal_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4096,8 +3612,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_debt_payment_total_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_deductible_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4107,8 +3621,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_deductible_expenses_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_costs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4120,8 +3632,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_costs_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_cumulative_payback_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4131,8 +3641,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_cumulative_payback_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_payback_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4144,8 +3652,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_payback_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4155,8 +3661,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_discounted_savings_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4168,8 +3672,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_effective_tax_frac_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4179,8 +3681,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_net_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4192,8 +3692,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_purchases_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4203,8 +3701,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_sales_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4216,8 +3712,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_value_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4227,8 +3721,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_without_battery_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4240,8 +3732,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4251,8 +3741,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depreciation_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4264,8 +3752,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_incentive_income_less_deductions_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4275,8 +3761,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_tax_savings_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_incentive_income_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4288,8 +3772,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_incentive_income_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4299,8 +3781,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4312,8 +3792,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4323,8 +3801,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4336,8 +3812,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fuelcell_replacement_cost_schedule_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_insurance_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4347,8 +3821,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_insurance_expense_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4360,8 +3832,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4371,8 +3841,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_amount_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4384,8 +3852,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_fed_percent_amount_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4395,8 +3861,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4408,8 +3872,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_amount_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_percent_amount_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4419,8 +3881,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_sta_percent_amount_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4432,8 +3892,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_itc_total_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4444,8 +3902,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_land_lease_expense_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4454,8 +3910,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_cf_length_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4467,8 +3921,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_net_salvage_value_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_nte_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4478,8 +3930,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_nte_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4491,8 +3941,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_batt_capacity_expense_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_batt_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4502,8 +3950,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_batt_fixed_expense_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4515,8 +3961,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity1_expense_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4526,8 +3970,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity2_expense_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4539,8 +3981,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_capacity_expense_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4550,8 +3990,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4563,8 +4001,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed2_expense_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4574,8 +4010,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fixed_expense_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4587,8 +4021,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_fuel_expense_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4598,8 +4030,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_1_expense_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4611,8 +4041,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_opt_fuel_2_expense_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production1_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4622,8 +4050,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production1_expense_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production2_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4635,8 +4061,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production2_expense_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4646,8 +4070,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_om_production_expense_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4659,8 +4081,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_operating_expenses_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_parasitic_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4670,8 +4090,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_parasitic_cost_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4683,8 +4101,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_with_expenses_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_without_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4694,8 +4110,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_payback_without_expenses_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4707,8 +4121,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_fedtax_total_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4718,8 +4130,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_statax_total_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4731,8 +4141,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4742,8 +4150,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_fed_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4755,8 +4161,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_oth_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4766,8 +4170,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_sta_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4779,8 +4181,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_assessed_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4790,8 +4190,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_assessed_value_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_expense_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4803,8 +4201,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_property_tax_expense_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4814,8 +4210,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4827,8 +4221,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4838,8 +4230,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4851,8 +4241,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4862,8 +4250,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4875,8 +4261,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depreciation_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4886,8 +4270,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4899,8 +4281,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_tax_savings_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_incentive_income_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4910,8 +4290,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_incentive_income_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4923,8 +4301,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4934,8 +4310,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_state_tax_frac_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4947,8 +4321,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_thermal_value_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_util_escal_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4958,8 +4330,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_util_escal_rate_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4971,8 +4341,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_utility_bill_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4983,8 +4351,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_discounted_payback_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4993,8 +4359,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_discounted_payback_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5005,8 +4369,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_effective_tax_rate_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5015,8 +4377,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_first_cost_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5027,8 +4387,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_fedtax_total_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5037,8 +4395,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_statax_total_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5049,8 +4405,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5059,8 +4413,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_fed_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5071,8 +4423,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_oth_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5081,8 +4431,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5093,8 +4441,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5103,8 +4449,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5115,8 +4459,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5125,8 +4467,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_sta_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5137,8 +4477,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_nom_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5147,8 +4485,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5159,8 +4495,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5169,8 +4503,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5181,8 +4513,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_nom_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5191,8 +4521,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcoptc_sta_real_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_lcos_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5203,8 +4531,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcos_nom_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_lcos_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5213,8 +4539,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lcos_real_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_lnte_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5225,8 +4549,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lnte_nom_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5235,8 +4557,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5247,8 +4567,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5257,8 +4575,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5269,8 +4585,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5279,8 +4593,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5291,8 +4603,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_payback_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5301,8 +4611,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_payback_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5313,8 +4621,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_present_value_fuel_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_present_value_insandproptax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5323,8 +4629,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_present_value_insandproptax_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5335,8 +4639,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nonfuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5345,8 +4647,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_present_value_oandm_nonfuel_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Cashloan_Outputs_total_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5357,8 +4657,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_total_cost_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5368,8 +4666,6 @@ SAM_EXPORT double SAM_Cashloan_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Cashloan_Outputs_year1_nte_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5378,6 +4674,4 @@ SAM_EXPORT double SAM_Cashloan_Outputs_year1_nte_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 

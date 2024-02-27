@@ -37,7 +37,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "callback_extractor.h"
 #include "data_structures.h"
 
-extern var_info vtab_hybrid_tech_om_inputs[];
+extern var_info vtab_oandm[];
+extern var_info vtab_hybrid_tech_inputs[];
 
 std::unordered_map<std::string, VarTable> SAM_config_to_defaults;
 std::unordered_map<std::string, digraph*> SAM_config_to_variable_graph;
@@ -99,14 +100,32 @@ bool config_extractor::load_defaults_for_config(){
 
 size_t config_extractor::load_variables_into_graph(VarTable &vt) {
     size_t n = 0;
-    wxArrayString var_names = vt.ListAll(nullptr);
-    for (size_t i = 0; i < var_names.size(); i++){
-        std::string name = var_names[i].ToStdString();
-        std::string cmod = which_cmod_as_input(name, config_name);
-        bool is_ssc_var = (cmod.length() > 0);
-        vertex* v = var_graph->add_vertex(name, is_ssc_var, find_ui_of_variable(name, config_name));
-        v->cmod = cmod;
-        if (is_ssc_var) n+=1;
+    if (config_name.find("Hybrid") == std::string::npos) {
+        wxArrayString var_names = vt.ListAll(nullptr);
+        for (size_t i = 0; i < var_names.size(); i++){
+            std::string name = var_names[i].ToStdString();
+            std::string cmod = which_cmod_as_input(name, config_name);
+            bool is_ssc_var = (cmod.length() > 0);
+            vertex* v = var_graph->add_vertex(name, is_ssc_var, find_ui_of_variable(name, config_name));
+            v->cmod = cmod;
+            if (is_ssc_var) n+=1;
+        }
+    }
+    else{
+        wxArrayString cmod_names = vt.ListAll(nullptr);
+        for (size_t j = 0; j < cmod_names.size(); j++) {
+            std::string cmod_symbol = cmod_names[j];
+            auto vtt = vt.Get(cmod_symbol)->Table();
+            wxArrayString var_names = vtt.ListAll(nullptr);
+            for (size_t i = 0; i < var_names.size(); i++){
+                std::string name = var_names[i].ToStdString();
+                std::string cmod = which_cmod_as_input(name, config_name);
+                bool is_ssc_var = (cmod.length() > 0);
+                vertex* v = var_graph->add_vertex(name, is_ssc_var, find_ui_of_variable(name, config_name));
+                v->cmod = cmod;
+                if (is_ssc_var) n+=1;
+            }
+        }
     }
     return n;
 }

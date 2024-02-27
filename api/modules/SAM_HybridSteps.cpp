@@ -30,8 +30,6 @@ SAM_EXPORT SAM_table SAM_HybridSteps_Common_input_tget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT SAM_table SAM_HybridSteps_Outputs_output_tget(SAM_table ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
@@ -41,6 +39,4 @@ SAM_EXPORT SAM_table SAM_HybridSteps_Outputs_output_tget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 

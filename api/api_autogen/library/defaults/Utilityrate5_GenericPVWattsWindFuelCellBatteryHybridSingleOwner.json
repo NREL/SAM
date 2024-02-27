@@ -113,7 +113,7 @@
 		},
 		"Load": {
 		},
-		"HybridTech": {
+		"HybridCosts": {
 			"om_capacity": [0],
 			"om_fixed": [0],
 			"om_production": [0],

@@ -1313,8 +1313,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_addLocPerm_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_anchor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1323,8 +1321,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_anchor_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_arrCab1Mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1335,8 +1331,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_arrCab1Mass_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_arrCab2Mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1346,8 +1340,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_arrCab2Mass_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_arrVoltage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1356,8 +1348,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_arrVoltage_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WindObos_Wobos_arrayCables_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -1369,8 +1359,6 @@ SAM_EXPORT const char* SAM_WindObos_Wobos_arrayCables_sget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_arrayX_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1379,8 +1367,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_arrayX_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_arrayY_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1391,8 +1377,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_arrayY_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_backUpGen_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1401,8 +1385,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_backUpGen_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_ballCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1413,8 +1395,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ballCR_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_bioResStudyMet_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1423,8 +1403,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_bioResStudyMet_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_bioResStudyProj_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1435,8 +1413,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_bioResStudyProj_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_bladeL_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1445,8 +1421,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_bladeL_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_boltBlade1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1457,8 +1431,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltBlade1_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_boltBlade2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1467,8 +1439,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltBlade2_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1479,8 +1449,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle1_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1489,8 +1457,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle2_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1501,8 +1467,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltNacelle3_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_boltRotor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1511,8 +1475,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltRotor_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_boltTower_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1523,8 +1485,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_boltTower_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_buryDepth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1533,8 +1493,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_buryDepth_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_buryFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1545,8 +1503,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_buryFac_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_buryRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1555,8 +1511,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_buryRate_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cab1CR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1567,8 +1521,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab1CR_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cab1CurrRating_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1577,8 +1529,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab1CurrRating_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cab1TurbInterCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1589,8 +1539,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab1TurbInterCR_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cab2CR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1599,8 +1547,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab2CR_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cab2CurrRating_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1611,8 +1557,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab2CurrRating_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cab2SubsInterCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1621,8 +1565,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab2SubsInterCR_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cab2TurbInterCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1633,8 +1575,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cab2TurbInterCR_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cabDrillCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1643,8 +1583,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabDrillCR_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cabDrillDist_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1655,8 +1593,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabDrillDist_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cabLoadout_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1665,8 +1601,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabLoadout_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cabPullIn_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1677,8 +1611,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabPullIn_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cabSurveyCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1687,8 +1619,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabSurveyCR_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cabTerm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1699,8 +1629,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cabTerm_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cableOptimizer_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1709,8 +1637,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cableOptimizer_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1721,8 +1647,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_0_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1731,8 +1655,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_1_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1743,8 +1665,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_2_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1753,8 +1673,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_3_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1765,8 +1683,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_4_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1775,8 +1691,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_capital_cost_year_5_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_catLengFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1787,8 +1701,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_catLengFac_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_chord_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1797,8 +1709,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_chord_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_civilWork_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1809,8 +1719,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_civilWork_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_cleanWatAct402_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1819,8 +1727,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cleanWatAct402_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_cleanWatAct404_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1831,8 +1737,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_cleanWatAct404_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_coastZoneManAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1841,8 +1745,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_coastZoneManAct_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_compRacks_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1853,8 +1755,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_compRacks_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_conOpPlan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1863,8 +1763,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_conOpPlan_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_construction_insurance_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1875,8 +1773,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_construction_insurance_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_crane1000DR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1885,8 +1781,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_crane1000DR_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_crane600DR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1897,8 +1791,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_crane600DR_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_craneMobDemob_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1907,8 +1799,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_craneMobDemob_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_deaFixLeng_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1919,8 +1809,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_deaFixLeng_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_decomDiscRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1929,8 +1817,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_decomDiscRate_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_distAtoS_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1941,8 +1827,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_distAtoS_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_distInterCon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1951,8 +1835,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_distInterCon_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_distPort_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1963,8 +1845,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_distPort_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_distPtoA_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1973,8 +1853,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_distPtoA_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_distShore_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1985,8 +1863,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_distShore_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_diveTeamDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1995,8 +1871,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_diveTeamDR_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_dockRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2007,8 +1881,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_dockRate_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_dynCabFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2017,8 +1889,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_dynCabFac_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_elecCont_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2029,8 +1899,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_elecCont_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_elecWork_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2039,8 +1907,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_elecWork_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_endSpecAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2051,8 +1917,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_endSpecAct_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_entranceExitRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2061,8 +1925,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_entranceExitRate_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_estEnMFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2073,8 +1935,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_estEnMFac_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_exCabFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2083,8 +1943,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_exCabFac_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_expCabCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2095,8 +1953,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expCabCR_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_expCabLoad_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2105,8 +1961,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expCabLoad_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_expCabMass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2117,8 +1971,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expCabMass_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_expCurrRating_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2127,8 +1979,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expCurrRating_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_expSubsInterCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2139,8 +1989,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expSubsInterCR_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_expVoltage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2149,8 +1997,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_expVoltage_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WindObos_Wobos_exportCables_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -2162,8 +2008,6 @@ SAM_EXPORT const char* SAM_WindObos_Wobos_exportCables_sget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_faaPlan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2172,8 +2016,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_faaPlan_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_feedStudy_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2184,8 +2026,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_feedStudy_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_groutSpreadDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2194,8 +2034,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_groutSpreadDR_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_groutSpreadMob_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2206,8 +2044,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_groutSpreadMob_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_groutTP_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2216,8 +2052,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_groutTP_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_hamRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2228,8 +2062,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_hamRate_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_highVoltSG_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2238,8 +2070,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_highVoltSG_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_hubD_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2250,8 +2080,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_hubD_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_hubH_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2260,8 +2088,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_hubH_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_inspectClear_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2272,8 +2098,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_inspectClear_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_instScour_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2282,8 +2106,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_instScour_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_installStrategy_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2294,8 +2116,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_installStrategy_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_install_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2304,8 +2124,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_install_contingency_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_interConVolt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2316,8 +2134,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_interConVolt_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_interest_during_construction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2326,8 +2142,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_interest_during_construction_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_jackFasten_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2338,8 +2152,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jackFasten_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_jlatticeA_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2348,8 +2160,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jlatticeA_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_jlatticeCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2360,8 +2170,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jlatticeCR_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_jpileCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2370,8 +2178,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jpileCR_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_jpileD_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2382,8 +2188,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jpileD_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_jpileL_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2392,8 +2196,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jpileL_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_jtransCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2404,8 +2206,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_jtransCR_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_landConstruct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2414,8 +2214,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_landConstruct_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_laydownCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2426,8 +2224,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_laydownCR_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_levJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2436,8 +2232,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_levJack_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_marMamProtAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2448,8 +2242,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_marMamProtAct_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_medVoltSG_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2458,8 +2250,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_medVoltSG_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_metTowCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2470,8 +2260,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_metTowCR_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_migBirdAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2480,8 +2268,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_migBirdAct_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_monoFasten_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2492,8 +2278,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_monoFasten_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_moorCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2502,8 +2286,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorCR_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_moorCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2514,8 +2296,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorCost_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_moorDia_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2524,8 +2304,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorDia_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_moorLines_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2536,8 +2314,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorLines_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_moorLoadout_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2546,8 +2322,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorLoadout_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_moorSurvey_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2558,8 +2332,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorSurvey_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_moorTimeFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2568,8 +2340,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_moorTimeFac_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_mpEmbedL_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2580,8 +2350,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mpEmbedL_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_mpileCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2590,8 +2358,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mpileCR_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_mpileD_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2602,8 +2368,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mpileD_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_mpileL_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2612,8 +2376,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mpileL_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_mptCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2624,8 +2386,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mptCR_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_mpvRentalDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2634,8 +2394,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mpvRentalDR_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_mtransCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2646,8 +2404,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_mtransCR_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_nCrane1000_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2656,8 +2412,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nCrane1000_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_nCrane600_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2668,8 +2422,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nCrane600_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_nTurb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2678,8 +2430,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nTurb_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_nacelleL_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2690,8 +2440,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nacelleL_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_nacelleW_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2700,8 +2448,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nacelleW_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_natHisPresAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2712,8 +2458,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_natHisPresAct_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_navStudyMet_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2722,8 +2466,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_navStudyMet_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_navStudyProj_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2734,8 +2476,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_navStudyProj_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_nepaEisMet_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2744,8 +2484,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nepaEisMet_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_nepaEisProj_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2756,8 +2494,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_nepaEisProj_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_number_install_seasons_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2766,8 +2502,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_number_install_seasons_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_otherAncillary_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2778,8 +2512,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_otherAncillary_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_outConShelfLease_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2788,8 +2520,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_outConShelfLease_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_physResStudyMet_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2800,8 +2530,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_physResStudyMet_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_physResStudyProj_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2810,8 +2538,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_physResStudyProj_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_pileSpreadDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2822,8 +2548,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_pileSpreadDR_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_pileSpreadMob_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2832,8 +2556,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_pileSpreadMob_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_placeJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2844,8 +2566,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placeJack_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_placeMP_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2854,8 +2574,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placeMP_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_placePiles_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2866,8 +2584,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placePiles_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_placeTP_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2876,8 +2592,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placeTP_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_placeTemplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2888,8 +2602,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placeTemplate_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_placeTop_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2898,8 +2610,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_placeTop_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_plantComm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2910,8 +2620,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_plantComm_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_preFEEDStudy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2920,8 +2628,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_preFEEDStudy_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_prepAA_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2932,8 +2638,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepAA_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_prepGripperJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2942,8 +2646,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepGripperJack_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_prepGripperMono_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2954,8 +2656,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepGripperMono_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_prepHamJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2964,8 +2664,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepHamJack_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_prepHamMono_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2976,8 +2674,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepHamMono_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_prepSemi_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2986,8 +2682,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepSemi_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_prepSpar_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2998,8 +2692,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepSpar_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_prepTow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3008,8 +2700,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_prepTow_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_procurement_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3020,8 +2710,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_procurement_contingency_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_projLife_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3030,8 +2718,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_projLife_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_pwrFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3042,8 +2728,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_pwrFac_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_removeHamJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3052,8 +2736,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_removeHamJack_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_removeHamMono_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3064,8 +2746,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_removeHamMono_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_rivsnHarbsAct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3074,8 +2754,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_rivsnHarbsAct_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_rnaM_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3086,8 +2764,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_rnaM_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_rotorD_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3096,8 +2772,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_rotorD_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_sSteelCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3108,8 +2782,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_sSteelCR_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_saPlan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3118,8 +2790,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_saPlan_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_scourMat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3130,8 +2800,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_scourMat_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_scrapVal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3140,8 +2808,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_scrapVal_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_seaSpreadDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3152,8 +2818,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_seaSpreadDR_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_seaSpreadMob_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3162,8 +2826,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_seaSpreadMob_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_shorePullIn_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3174,8 +2836,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_shorePullIn_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_shuntCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3184,8 +2844,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_shuntCR_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_socEconStudyMet_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3196,8 +2854,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_socEconStudyMet_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_socEconStudyProj_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3206,8 +2862,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_socEconStudyProj_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_spMoorCheck_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3218,8 +2872,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_spMoorCheck_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_spMoorCon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3228,8 +2880,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_spMoorCon_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_spStifColCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3240,8 +2890,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_spStifColCR_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_spTapColCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3250,8 +2898,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_spTapColCR_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_ssBall_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3262,8 +2908,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssBall_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_ssHeaveCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3272,8 +2916,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssHeaveCR_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_ssMoorCheck_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3284,8 +2926,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssMoorCheck_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_ssMoorCon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3294,8 +2934,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssMoorCon_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_ssStifColCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3306,8 +2944,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssStifColCR_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_ssTrussCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3316,8 +2952,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_ssTrussCR_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_stateLease_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3328,8 +2962,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_stateLease_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_subTotCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3338,8 +2970,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subTotCost_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_subTotM_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3350,8 +2980,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subTotM_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_subsJackCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3360,8 +2988,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsJackCR_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_subsLoad_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3372,8 +2998,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsLoad_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_subsPileCR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3382,8 +3006,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsPileCR_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_subsPullIn_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3394,8 +3016,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsPullIn_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_subsTopDes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3404,8 +3024,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsTopDes_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_subsTopFab_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3416,8 +3034,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsTopFab_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_subsVessPos_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3426,8 +3042,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_subsVessPos_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_substructCont_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3438,8 +3052,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_substructCont_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_substructure_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3448,8 +3060,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_substructure_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_surfLayRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3460,8 +3070,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_surfLayRate_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3470,8 +3078,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_tax_rate_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_topAssemblyFac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3482,8 +3088,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_topAssemblyFac_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_towerD_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3492,8 +3096,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_towerD_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_towerInstallMethod_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3504,8 +3106,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_towerInstallMethod_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_towerM_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3514,8 +3114,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_towerM_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_tpCover_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3526,8 +3124,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_tpCover_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_turbCapEx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3536,8 +3132,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_turbCapEx_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_turbCont_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3548,8 +3142,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_turbCont_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_turbFasten_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3558,8 +3150,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_turbFasten_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_turbInstallMethod_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3570,8 +3160,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_turbInstallMethod_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_turbR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3580,8 +3168,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_turbR_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_upendSpar_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3592,8 +3178,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_upendSpar_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_vesselPosJack_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3602,8 +3186,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_vesselPosJack_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_vesselPosMono_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3614,8 +3196,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_vesselPosMono_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_vesselPosTurb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3624,8 +3204,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_vesselPosTurb_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_waterD_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3636,8 +3214,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_waterD_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_wharfRate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3646,8 +3222,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_wharfRate_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Wobos_winchDR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3658,8 +3232,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_winchDR_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Wobos_workSpace_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3668,8 +3240,6 @@ SAM_EXPORT double SAM_WindObos_Wobos_workSpace_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_arrCab1Cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3680,8 +3250,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_arrCab1Cost_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_arrCab2Cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3690,8 +3258,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_arrCab2Cost_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_arrInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3702,8 +3268,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_arrInstTime_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_array_cable_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3712,8 +3276,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_array_cable_install_cost_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_bos_capex_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3724,8 +3286,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_bos_capex_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_cab1Leng_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3734,8 +3294,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_cab1Leng_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_cab2Leng_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3746,8 +3304,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_cab2Leng_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_cabSurvey_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3756,8 +3312,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_cabSurvey_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_commissioning_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3768,8 +3322,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_commissioning_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_construction_finance_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3778,8 +3330,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_construction_finance_cost_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_construction_finance_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3790,8 +3340,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_construction_finance_factor_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_construction_insurance_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3800,8 +3348,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_construction_insurance_cost_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_decomCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3812,8 +3358,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_decomCost_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_electrical_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3822,8 +3366,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_electrical_install_cost_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_expCabCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3834,8 +3376,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_expCabCost_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_expCabLeng_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3844,8 +3384,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_expCabLeng_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_expInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3856,8 +3394,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_expInstTime_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_export_cable_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3866,8 +3402,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_export_cable_install_cost_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_fixCabLeng_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3878,8 +3412,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_fixCabLeng_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_floatPrepTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3888,8 +3420,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_floatPrepTime_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_freeCabLeng_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3900,8 +3430,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_freeCabLeng_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_mob_demob_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3910,8 +3438,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_mob_demob_cost_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_moorTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3922,8 +3448,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_moorTime_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_nExpCab_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3932,8 +3456,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_nExpCab_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_nSubPerTrip_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3944,8 +3466,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_nSubPerTrip_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_nTurbPerTrip_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3954,8 +3474,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_nTurbPerTrip_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_soft_costs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3966,8 +3484,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_soft_costs_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_subDeckArea_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3976,8 +3492,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subDeckArea_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_subInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3988,8 +3502,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subInstTime_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_subsInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3998,8 +3510,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subsInstTime_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_subsPileM_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4010,8 +3520,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subsPileM_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_subsSubM_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4020,8 +3528,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subsSubM_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_subsTopM_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4032,8 +3538,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_subsTopM_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_substation_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4042,8 +3546,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_substation_install_cost_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_substructure_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4054,8 +3556,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_substructure_install_cost_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_systAngle_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4064,8 +3564,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_systAngle_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_totAnICost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4076,8 +3574,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totAnICost_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_totDevCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4086,8 +3582,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totDevCost_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_totElecCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4098,8 +3592,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totElecCost_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_totEnMCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4108,8 +3600,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totEnMCost_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_totInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4120,8 +3610,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totInstTime_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_totPnSCost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4130,8 +3618,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_totPnSCost_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_total_bos_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4142,8 +3628,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_total_bos_cost_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_total_contingency_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4152,8 +3636,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_total_contingency_cost_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_WindObos_Outputs_turbDeckArea_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4164,8 +3646,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_turbDeckArea_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_turbInstTime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4175,8 +3655,6 @@ SAM_EXPORT double SAM_WindObos_Outputs_turbInstTime_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WindObos_Outputs_turbine_install_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4185,6 +3663,4 @@ SAM_EXPORT double SAM_WindObos_Outputs_turbine_install_cost_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 

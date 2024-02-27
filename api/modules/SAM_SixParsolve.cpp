@@ -83,8 +83,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Imp_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -93,8 +91,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Isc_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Nser_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -105,8 +101,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Nser_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Tref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -115,8 +109,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Tref_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Vmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -127,8 +119,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Vmp_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -137,8 +127,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_Voc_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_alpha_isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -149,8 +137,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_alpha_isc_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_beta_voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -159,8 +145,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_beta_voc_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_SixParsolve_SixParameterSolver_celltype_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -172,8 +156,6 @@ SAM_EXPORT const char* SAM_SixParsolve_SixParameterSolver_celltype_sget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_gamma_pmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -182,8 +164,6 @@ SAM_EXPORT double SAM_SixParsolve_SixParameterSolver_gamma_pmp_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_Outputs_Adj_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -194,8 +174,6 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_Adj_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_Outputs_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -204,8 +182,6 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_Il_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_Outputs_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -216,8 +192,6 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_Io_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_Outputs_Rs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -226,8 +200,6 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_Rs_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_SixParsolve_Outputs_Rsh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -238,8 +210,6 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_Rsh_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_SixParsolve_Outputs_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -248,6 +218,4 @@ SAM_EXPORT double SAM_SixParsolve_Outputs_a_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 

@@ -560,6 +560,12 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nHCEt_nset(SAM_table ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_nSCA_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "nSCA", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_northsouth_field_sep_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "northsouth_field_sep", number);
@@ -1301,8 +1307,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_disp_csu_cost_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1312,8 +1316,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_disp_rsu_cost_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1322,8 +1324,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_sim_type_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_TroughPhysicalIph_Weather_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -1335,8 +1335,6 @@ SAM_EXPORT const char* SAM_TroughPhysicalIph_Weather_file_name_sget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT SAM_table SAM_TroughPhysicalIph_Weather_solar_resource_data_tget(SAM_table ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
@@ -1347,8 +1345,6 @@ SAM_EXPORT SAM_table SAM_TroughPhysicalIph_Weather_solar_resource_data_tget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SystemDesign_q_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1357,8 +1353,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SystemDesign_q_pb_design_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_A_aperture_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1370,8 +1364,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_A_aperture_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_AbsorberMaterial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1381,8 +1373,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_AbsorberMaterial_mget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_AnnulusGas_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1394,8 +1384,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_AnnulusGas_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Ave_Focal_Length_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1405,8 +1393,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Ave_Focal_Length_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_ColperSCA_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1418,8 +1404,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_ColperSCA_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1429,8 +1413,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_2_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_3_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1442,8 +1424,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_3_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1453,8 +1433,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_4_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_5_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1466,8 +1444,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_5_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_p_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1477,8 +1453,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_D_p_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Design_loss_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1490,8 +1464,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Design_loss_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Dirt_HCE_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1501,8 +1473,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Dirt_HCE_mget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Dirt_mirror_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1514,8 +1484,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Dirt_mirror_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Distance_SCA_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1525,8 +1493,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Distance_SCA_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_EPSILON_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1538,8 +1504,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_EPSILON_4_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_EPSILON_5_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1549,8 +1513,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_EPSILON_5_mget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Error_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1562,8 +1524,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Error_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_FieldConfig_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1572,8 +1532,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_FieldConfig_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Flow_type_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1585,8 +1543,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Flow_type_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1595,8 +1551,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Fluid_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_GeomEffects_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1608,8 +1562,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_GeomEffects_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_GlazingIntactIn_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1619,8 +1571,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_GlazingIntactIn_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_HCE_FieldFrac_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1632,8 +1582,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_HCE_FieldFrac_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_HDR_rough_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1642,8 +1590,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_HDR_rough_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_IAM_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1655,8 +1601,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_IAM_matrix_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_I_bn_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1665,8 +1609,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_I_bn_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_L_SCA_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1678,8 +1620,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_L_SCA_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_L_aperture_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1690,8 +1630,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_L_aperture_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_rnr_per_xpan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1700,8 +1638,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_rnr_per_xpan_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_xpan_hdr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1712,8 +1648,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_xpan_hdr_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_xpan_rnr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1722,8 +1656,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_L_xpan_rnr_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Min_rnr_xpans_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1734,8 +1666,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Min_rnr_xpans_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_N_hdr_per_xpan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1745,8 +1675,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_N_hdr_per_xpan_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_N_max_hdr_diams_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1755,8 +1683,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_N_max_hdr_diams_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_P_a_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1768,8 +1694,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_P_a_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Pipe_hl_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1778,8 +1702,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Pipe_hl_coef_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Rho_mirror_clean_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1791,8 +1713,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Rho_mirror_clean_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Rough_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1803,8 +1723,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Rough_mget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Row_Distance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1814,8 +1732,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_Row_Distance_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_SCA_drives_elec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1824,8 +1740,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_SCA_drives_elec_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Shadowing_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1837,8 +1751,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Shadowing_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_fp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1847,8 +1759,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_fp_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1859,8 +1769,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_in_des_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1869,8 +1777,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_out_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1882,8 +1788,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Tau_envelope_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_TrackingError_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1894,8 +1798,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_TrackingError_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_cold_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1904,8 +1806,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_cold_max_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_cold_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1916,8 +1816,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_cold_min_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_hot_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1927,8 +1825,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_hot_max_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_hot_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1937,8 +1833,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_V_hdr_hot_min_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_W_aperture_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1950,8 +1844,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_W_aperture_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1960,8 +1852,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_init_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_loc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1972,8 +1862,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_loc_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1982,8 +1870,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_accept_mode_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_alpha_abs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1995,8 +1881,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_alpha_abs_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_alpha_env_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2007,8 +1891,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_alpha_env_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_azimuth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2017,8 +1899,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_azimuth_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_calc_design_pipe_vals_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2029,8 +1909,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_calc_design_pipe_vals_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_custom_sf_pipe_sizes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2039,8 +1917,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_custom_sf_pipe_sizes_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_11_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2052,8 +1928,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_11_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_12_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2063,8 +1937,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_12_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_13_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2076,8 +1948,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_13_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_14_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2087,8 +1957,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_14_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_21_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2100,8 +1968,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_21_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_22_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2111,8 +1977,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_22_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_23_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2124,8 +1988,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_23_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_24_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2135,8 +1997,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_24_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_31_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2148,8 +2008,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_31_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_32_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2159,8 +2017,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_32_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_33_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2172,8 +2028,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_33_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_34_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2183,8 +2037,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_34_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_41_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2196,8 +2048,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_41_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_42_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2207,8 +2057,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_42_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_43_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2220,8 +2068,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_43_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_44_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2232,8 +2078,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_epsilon_3_44_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2242,8 +2086,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_eta_pump_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2255,8 +2097,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_field_fl_props_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2265,8 +2105,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2277,8 +2115,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2287,8 +2123,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_cold_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2299,8 +2133,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_hot_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_sca_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2309,8 +2141,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_mc_bal_sca_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nColt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2321,8 +2151,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nColt_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEVar_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2331,8 +2159,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEVar_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2343,7 +2169,14 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nHCEt_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nSCA", &result))
+		make_access_error("SAM_TroughPhysicalIph", "nSCA");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_northsouth_field_sep_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2354,8 +2187,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_northsouth_field_sep_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_offset_xpan_hdr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2364,8 +2195,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_offset_xpan_hdr_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_p_start_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2376,8 +2205,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_p_start_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2387,8 +2214,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_rec_qf_delay_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2397,8 +2222,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_rec_su_delay_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2410,8 +2233,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_diams_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2421,8 +2242,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_lengths_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2434,8 +2253,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_hdr_wallthicks_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2445,8 +2262,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_diams_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2458,8 +2273,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_lengths_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2470,8 +2283,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_sf_rnr_wallthicks_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_theta_dep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2480,8 +2291,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_theta_dep_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2492,8 +2301,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_theta_stow_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2502,8 +2309,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_tilt_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_wind_stow_speed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2514,8 +2319,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_wind_stow_speed_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_HeatSink_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2524,8 +2327,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_HeatSink_pb_pump_coef_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2536,8 +2337,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2546,8 +2345,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2558,8 +2355,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2568,8 +2363,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2580,8 +2373,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_min_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_hot_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2590,8 +2381,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_hot_tank_Thtr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2602,8 +2391,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2612,8 +2399,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2625,8 +2410,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_TES_store_fl_props_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_store_fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2635,8 +2418,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_store_fluid_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2647,8 +2428,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_tank_pairs_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_tshours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2658,8 +2437,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_tshours_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2668,8 +2445,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_u_tank_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -2681,8 +2456,6 @@ SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_data_dir_sget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2693,8 +2466,6 @@ SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_exec_call_sget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2704,8 +2475,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_can_cycle_use_standby_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2714,8 +2483,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_pen_delta_w_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2727,8 +2494,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2738,8 +2503,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2751,8 +2514,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2762,8 +2523,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_series_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2775,8 +2534,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2785,8 +2542,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2797,8 +2552,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2807,8 +2560,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2819,8 +2570,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2829,8 +2578,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2841,8 +2588,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2852,8 +2597,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_heattrace_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2862,8 +2605,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_standby_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2875,8 +2616,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2886,8 +2625,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekday_schedule_mget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2899,8 +2636,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekend_schedule_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2909,8 +2644,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2921,8 +2654,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2931,8 +2662,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2944,8 +2673,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_fact
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2955,8 +2682,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_mp_energy_market_revenue_mget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2968,8 +2693,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_System_aux_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2979,8 +2702,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_System_aux_array_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_System_bop_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2992,8 +2713,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_System_bop_array_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_System_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3002,8 +2721,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_System_pb_fixed_par_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_System_washing_frequency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3014,8 +2731,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_System_washing_frequency_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_System_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3024,8 +2739,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_System_water_usage_per_wash_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3036,8 +2749,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_P_boil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3046,8 +2757,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_P_boil_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3058,8 +2767,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_T_tank_hot_inlet_min_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_V_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3068,8 +2775,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_V_tes_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_custom_tes_p_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3080,8 +2785,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_custom_tes_p_loss_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3091,8 +2794,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_custom_tes_pipe_sizes_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3101,8 +2802,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_has_hot_tank_bypass_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3114,8 +2813,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_k_tes_loss_coeffs_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3124,8 +2821,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_non_solar_field_land_area_mul
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3136,8 +2831,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_specified_solar_multiple_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3147,8 +2840,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_specified_total_aperture_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3157,8 +2848,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_tanks_in_parallel_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3170,8 +2859,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_diams_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3182,8 +2869,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_lengths_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3192,8 +2877,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_tes_pump_coef_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3205,8 +2888,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_tes_wallthicks_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_trough_loop_control_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3217,8 +2898,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Controller_trough_loop_control_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Controller_use_solar_mult_or_aperture_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3227,8 +2906,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Controller_use_solar_mult_or_aperture_ar
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3239,8 +2916,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarResourceData_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3249,8 +2924,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarResourceData_lat_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_bop_per_kwe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3261,8 +2934,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_bop_per_kwe_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_contingency_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3271,8 +2942,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_contingency_pe
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3283,8 +2952,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_fixed_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3293,8 +2960,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_per_acre_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3305,8 +2970,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_per_watt_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3315,8 +2978,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_epc_percent_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_heat_sink_cost_per_kwe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3327,8 +2988,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_heat_sink_cost
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_htf_system_cost_per_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3337,8 +2996,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_htf_system_cos
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3349,8 +3006,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_fixed_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_per_acre_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3359,8 +3014,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_per_acre_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3371,8 +3024,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_per_watt_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3381,8 +3032,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_plm_percent_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_sales_tax_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3393,8 +3042,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_sales_tax_perc
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_site_improvements_cost_per_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3403,8 +3050,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_site_improveme
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_solar_field_cost_per_m2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3415,8 +3060,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_solar_field_co
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_storage_cost_per_kwht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3425,8 +3068,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_csp_dtr_cost_storage_cost_p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3437,8 +3078,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_CapitalCosts_sales_tax_rate_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3447,8 +3086,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_r
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3459,8 +3096,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_r
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3469,8 +3104,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_r
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3481,8 +3114,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_r
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3491,8 +3122,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_r
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3503,8 +3132,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months1_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3513,8 +3140,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months2_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3525,8 +3150,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months3_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3535,8 +3158,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months4_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3547,8 +3168,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_months5_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3557,8 +3176,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent1_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3569,8 +3186,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent2_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3579,8 +3194,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent3_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3591,8 +3204,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent4_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3601,8 +3212,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_percent5_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3613,8 +3222,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_ra
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3623,8 +3230,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_ra
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3635,8 +3240,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_ra
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3645,8 +3248,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_ra
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3657,8 +3258,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_ra
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3667,8 +3266,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_constant_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3679,8 +3276,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_en_periods_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3689,8 +3284,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_AdjustmentFactors_adjust_en_timeindex_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3702,8 +3295,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_AdjustmentFactors_adjust_periods_mget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3713,8 +3304,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_AdjustmentFactors_adjust_timeindex_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_CosTh_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3726,8 +3315,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_CosTh_ave_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_D_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3737,8 +3324,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_D_cpnt_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EndLoss_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3750,8 +3335,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EndLoss_ave_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EqOpteff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3761,8 +3344,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EqOpteff_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_IAM_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3774,8 +3355,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_IAM_ave_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_K_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3785,8 +3364,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_K_cpnt_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_L_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3798,8 +3375,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_L_cpnt_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_P_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3809,8 +3384,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_P_fixed_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_P_plant_balance_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3822,8 +3395,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_P_plant_balance_tot_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_RowShadow_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3833,8 +3404,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_RowShadow_ave_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCADefocusArray_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3846,8 +3415,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCADefocusArray_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCAInfoArray_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3857,8 +3424,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCAInfoArray_mget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCAs_def_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3870,8 +3435,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_SCAs_def_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3881,8 +3444,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_cold_in_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3894,8 +3455,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_hot_out_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3905,8 +3464,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_in_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3918,8 +3475,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_out_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3929,8 +3484,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_cold_in_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3942,8 +3495,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_hot_out_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3953,8 +3504,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_tes_cold_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3966,8 +3515,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_tes_hot_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_Theta_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3977,8 +3524,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_Theta_ave_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_Type_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3990,8 +3535,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_Type_cpnt_mget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_V_tank_hot_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4000,8 +3543,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_V_tank_hot_ini_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_field_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4013,8 +3554,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_field_pump_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_par_tot_haf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4024,8 +3563,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_par_tot_haf_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_parasitic_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4037,8 +3574,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_parasitic_tot_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_pc_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4048,8 +3583,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_pc_pump_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_sca_track_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4061,8 +3594,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_sca_track_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4072,8 +3603,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_electricity_consumption_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4082,8 +3611,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_energy_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -4095,8 +3622,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_annual_energy_distribution_time
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4105,8 +3630,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_field_freeze_protection_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_tes_freeze_protection_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4117,8 +3640,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_tes_freeze_protection_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_thermal_consumption_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4127,8 +3648,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_thermal_consumption_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4139,8 +3658,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_total_water_use_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_aux_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4150,8 +3667,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_aux_design_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4160,8 +3675,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_avg_suboptimal_rel_mip_gap_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4173,8 +3686,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_beam_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_bop_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4183,8 +3694,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_bop_design_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4195,8 +3704,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_capacity_factor_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4205,8 +3712,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest1_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4217,8 +3722,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest2_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4227,8 +3730,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest3_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4239,8 +3740,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest4_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4249,8 +3748,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest5_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4261,8 +3758,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_interest_total_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4271,8 +3766,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_percent_total_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4283,8 +3776,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal1_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4293,8 +3784,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal2_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4305,8 +3794,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal3_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4315,8 +3802,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal4_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4327,8 +3812,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal5_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4337,8 +3820,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_principal_total_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4349,8 +3830,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total1_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4359,8 +3838,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total2_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4371,8 +3848,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total3_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4381,8 +3856,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total4_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4393,8 +3866,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_const_per_total5_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4403,8 +3874,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_construction_financing_cost_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4415,8 +3884,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_cp_battery_nameplate_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4425,8 +3892,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_cp_system_nameplate_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_bop_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4437,8 +3902,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_bop_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_contingency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4447,8 +3910,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_contingency_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_epc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4459,8 +3920,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_epc_total_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_heat_sink_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4469,8 +3928,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_heat_sink_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_htf_system_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4481,8 +3938,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_htf_system_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_installed_per_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4491,8 +3946,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_installed_per_capac
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_plm_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4503,8 +3956,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_plm_total_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_sales_tax_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4513,8 +3964,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_sales_tax_total_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_site_improvements_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4525,8 +3974,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_site_improvements_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_solar_field_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4536,8 +3983,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_solar_field_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_storage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4546,8 +3991,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_cost_storage_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_hce_design_heat_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4559,8 +4002,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_hce_design_heat_losses_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_hce_optical_effs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4571,8 +4012,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_hce_optical_effs_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_loop_hce_heat_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4581,8 +4020,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_loop_hce_heat_loss_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_ap_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -4594,8 +4031,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_ap_lengths_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_costh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4604,8 +4039,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_costh_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_end_gains_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -4617,8 +4050,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_end_gains_mget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_end_losses_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4628,8 +4059,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_end_losses_mge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_iams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -4641,8 +4070,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_iams_mget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_latitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4651,8 +4078,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_latitude_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_sca_effs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4664,8 +4089,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_sca_effs_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_theta_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4674,8 +4097,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_theta_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_zenith_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4686,8 +4107,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_dtr_sca_calc_zenith_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4697,8 +4116,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_htf_density_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4707,8 +4124,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4720,8 +4135,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_defocus_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_deltaP_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4732,8 +4145,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_deltaP_field_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_direct_subtotal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4742,8 +4153,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_direct_subtotal_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_dni_costh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4755,8 +4164,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_dni_costh_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4766,8 +4173,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_ch_tes_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_dot_field_int_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4779,8 +4184,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_dot_field_int_energy_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_cp_avg_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4789,8 +4192,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_cp_avg_des_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_max_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4801,8 +4202,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_max_temp_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_min_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4811,8 +4210,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_min_temp_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4823,8 +4220,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_actual_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4834,8 +4229,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_thermal_output_ideal_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_fixed_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4844,8 +4237,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_fixed_land_area_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4857,8 +4248,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4869,8 +4258,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_hour_day_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_is_hx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4879,8 +4266,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_is_hx_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_pc_sb_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4892,8 +4277,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_pc_sb_allowed_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_pc_su_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4903,8 +4286,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_pc_su_allowed_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_rec_su_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4916,8 +4297,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_rec_su_allowed_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4927,8 +4306,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_kwh_per_kw_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_loop_optical_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4937,8 +4314,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_loop_optical_efficiency_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4950,8 +4325,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_balance_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cold_tank_to_hot_tank_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4961,8 +4334,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cold_tank_to_hot_tank_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cr_to_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4974,8 +4345,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cr_to_tes_hot_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cycle_to_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4985,8 +4354,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_cycle_to_field_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_delivered_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4998,8 +4365,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_delivered_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_recirc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5009,8 +4374,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_recirc_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5022,8 +4385,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_to_cycle_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5033,8 +4394,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5046,8 +4405,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_loop_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_pc_to_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5057,8 +4414,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_pc_to_tes_cold_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_tes_cold_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5070,8 +4425,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_tes_cold_out_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_tes_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5081,8 +4434,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_tes_hot_out_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5094,8 +4445,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_mass_tes_cold_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5106,8 +4455,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_mass_tes_hot_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_field_flow_velocity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5116,8 +4463,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_field_flow_velocity_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_field_flow_velocity_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5128,8 +4473,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_field_flow_velocity_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_inner_diameter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5138,8 +4481,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_inner_diameter_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5151,8 +4492,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_month_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5163,8 +4502,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_monthly_energy_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5173,19 +4510,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
-
-SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nSCA_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "nSCA", &result))
-		make_access_error("SAM_TroughPhysicalIph", "nSCA");
-	});
-	return result;
-}
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5197,8 +4521,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5207,8 +4529,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5220,8 +4540,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_1_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5231,8 +4549,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_2_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5244,8 +4560,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_op_mode_3_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5255,8 +4569,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_a_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5268,8 +4580,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_b_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5279,8 +4589,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_operating_modes_c_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5292,8 +4600,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_P_dsn_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_T_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5303,8 +4609,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_T_dsn_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_diams_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5316,8 +4620,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_diams_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_expansions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5327,8 +4629,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_expansions_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5340,8 +4640,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_lengths_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5351,8 +4649,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_mdot_dsn_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_vel_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5364,8 +4660,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_vel_dsn_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_wallthk_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5375,8 +4669,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_header_wallthk_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_loop_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5388,8 +4680,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_loop_P_dsn_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_loop_T_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5399,8 +4689,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_loop_T_dsn_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5412,8 +4700,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_P_dsn_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_T_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5423,8 +4709,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_T_dsn_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_diams_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5436,8 +4720,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_diams_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_expansions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5447,8 +4729,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_expansions_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5460,8 +4740,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_lengths_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5471,8 +4749,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_mdot_dsn_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_vel_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5484,8 +4760,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_vel_dsn_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_wallthk_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5495,8 +4769,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_runner_wallthk_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5508,8 +4780,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_P_dsn_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_T_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5519,8 +4789,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_T_dsn_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_diams_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5532,8 +4800,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_diams_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5543,8 +4809,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_lengths_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5556,8 +4820,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_mdot_dsn_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_vel_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5567,8 +4829,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_vel_dsn_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5580,8 +4840,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5591,8 +4849,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pricing_mult_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5604,8 +4860,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pricing_mult_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5615,8 +4869,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_balance_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5628,8 +4880,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_ch_tes_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5639,8 +4889,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dc_tes_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5652,8 +4900,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_on_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_su_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5663,8 +4909,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_su_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_tes_ch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5676,8 +4920,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_tes_ch_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5687,8 +4929,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_tes_dc_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_freeze_prot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5700,8 +4940,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_freeze_prot_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_htf_sf_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5711,8 +4949,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_htf_sf_out_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_max_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5724,8 +4960,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_max_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_min_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5735,8 +4969,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_min_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_sb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5748,8 +4980,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_sb_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5759,8 +4989,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_pc_target_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_piping_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5772,8 +5000,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_piping_loss_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_abs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5783,8 +5009,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_abs_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_inc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5796,8 +5020,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_inc_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_thermal_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5808,8 +5030,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_rec_thermal_loss_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_dot_tes_est_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5818,8 +5038,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_dot_tes_est_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_to_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5831,8 +5049,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_to_heat_sink_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_inc_sf_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5843,8 +5059,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_inc_sf_tot_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5853,8 +5067,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_tes_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5866,8 +5078,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_tes_heater_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_qinc_costh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5877,8 +5087,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_qinc_costh_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_recirculating_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5890,8 +5098,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_recirculating_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_required_number_of_loops_for_SM1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5900,8 +5106,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_required_number_of_loops_for_SM1
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5913,8 +5117,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_rh_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_sim_duration_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5923,8 +5125,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_sim_duration_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_single_loop_aperture_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5935,8 +5135,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_single_loop_aperture_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_solar_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5945,8 +5143,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_solar_mult_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5958,8 +5154,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_solazi_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5970,8 +5164,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_solzen_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5980,8 +5172,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_system_capacity_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -5993,8 +5183,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tank_losses_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6005,8 +5193,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tdry_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6015,8 +5201,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_avail_vol_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_avg_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6027,8 +5211,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_avg_temp_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_max_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6038,8 +5220,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_max_temp_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_min_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6048,8 +5228,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_min_temp_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6061,8 +5239,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_htf_pump_power_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6073,8 +5249,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_aperture_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6083,8 +5257,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_aperture_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_direct_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6095,8 +5267,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_direct_cost_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_indirect_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6105,8 +5275,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_indirect_cost_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6117,8 +5285,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_installed_cost_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6127,8 +5293,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_land_area_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_loop_conversion_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6139,8 +5303,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_loop_conversion_efficiency
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_required_aperture_for_SM1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6150,8 +5312,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_required_aperture_for_SM1_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_tracking_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6160,8 +5320,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_tracking_power_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -6173,8 +5331,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tou_value_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6185,8 +5341,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_twet_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6195,8 +5349,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_min_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6207,8 +5359,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_tank_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6218,6 +5368,4 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_wspd_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 

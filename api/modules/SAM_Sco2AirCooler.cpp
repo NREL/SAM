@@ -83,8 +83,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_P_co2_hot_des_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Common_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -93,8 +91,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_T_amb_des_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2AirCooler_Common_T_co2_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -105,8 +101,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_T_co2_cold_des_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Common_T_co2_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -115,8 +109,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_T_co2_hot_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2AirCooler_Common_W_dot_fan_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -127,8 +119,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_W_dot_fan_des_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Common_deltaP_co2_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -137,8 +127,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_deltaP_co2_des_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Common_od_calc_T_co2_cold_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -150,8 +138,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Common_od_calc_T_co2_cold_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2AirCooler_Common_od_calc_W_dot_fan_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -162,8 +148,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Common_od_calc_W_dot_fan_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Common_q_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -173,8 +157,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_q_dot_des_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Common_site_elevation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -183,8 +165,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Common_site_elevation_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_P_co2_cold_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -196,8 +176,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_P_co2_cold_od_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_P_co2_hot_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -207,8 +185,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_P_co2_hot_od_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_amb_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -220,8 +196,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_amb_od_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_co2_cold_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -231,8 +205,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_co2_cold_od_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_co2_hot_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -244,8 +216,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_T_co2_hot_od_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_UA_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -254,8 +224,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_UA_total_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_W_dot_fan_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -267,8 +235,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_W_dot_fan_od_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_W_dot_fan_od_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -279,8 +245,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_W_dot_fan_od_ND_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_d_tube_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -290,8 +254,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_d_tube_in_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_d_tube_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -300,8 +262,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_d_tube_out_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_deltaP_co2_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -313,8 +273,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_deltaP_co2_od_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_depth_footprint_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -323,8 +281,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_depth_footprint_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -335,8 +291,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_length_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_m_V_hx_material_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -345,8 +299,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_m_V_hx_material_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_m_dot_co2_od_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -358,8 +310,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_m_dot_co2_od_ND_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_n_passes_series_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -368,8 +318,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_n_passes_series_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_number_of_tubes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -380,8 +328,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_number_of_tubes_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_parallel_paths_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -390,8 +336,6 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_parallel_paths_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_q_dot_od_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -403,8 +347,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_q_dot_od_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_q_dot_od_ND_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -415,8 +357,6 @@ SAM_EXPORT double* SAM_Sco2AirCooler_Outputs_q_dot_od_ND_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2AirCooler_Outputs_width_footprint_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -425,6 +365,4 @@ SAM_EXPORT double SAM_Sco2AirCooler_Outputs_width_footprint_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 

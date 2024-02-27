@@ -725,8 +725,6 @@ SAM_EXPORT double SAM_BatteryStateful_Controls_control_mode_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_Controls_dt_hr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -735,8 +733,6 @@ SAM_EXPORT double SAM_BatteryStateful_Controls_dt_hr_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_Controls_input_current_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -747,8 +743,6 @@ SAM_EXPORT double SAM_BatteryStateful_Controls_input_current_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_Controls_input_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -757,8 +751,6 @@ SAM_EXPORT double SAM_BatteryStateful_Controls_input_power_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_C_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -769,8 +761,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_C_rate_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -779,8 +769,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qexp_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qfull_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -791,8 +779,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qfull_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qfull_flow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -801,8 +787,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qfull_flow_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qnom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -813,8 +797,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Qnom_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vcut_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -823,8 +805,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vcut_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vexp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -835,8 +815,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vexp_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vfull_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -845,8 +823,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vfull_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vnom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -857,8 +833,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vnom_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vnom_default_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -867,8 +841,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_Vnom_default_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -879,8 +851,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_a_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -889,8 +859,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_b_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_c_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -901,8 +869,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_c_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -911,8 +877,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_choice_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_calendar_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -924,8 +888,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_calendar_matrix_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_q0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -935,8 +897,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_calendar_q0_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_chem_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -945,8 +905,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_chem_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_cycling_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -958,8 +916,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_cycling_matrix_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_initial_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -968,8 +924,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_initial_SOC_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_q10_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -980,8 +934,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_q10_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_q20_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -990,8 +942,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_q20_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_qn_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1002,8 +952,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_qn_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_tn_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1012,8 +960,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_leadacid_tn_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_life_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1024,8 +970,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_life_model_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_maximum_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1034,8 +978,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_maximum_SOC_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_minimum_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1046,8 +988,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_minimum_SOC_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_resistance_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1057,8 +997,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_resistance_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsCell_voltage_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1067,8 +1005,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsCell_voltage_choice_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_voltage_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1080,8 +1016,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsCell_voltage_matrix_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_Cp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1091,8 +1025,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_Cp_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_T_room_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1101,8 +1033,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_T_room_init_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_cap_vs_temp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1114,8 +1044,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_cap_vs_temp_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_h_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1124,8 +1052,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_h_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_loss_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1136,8 +1062,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_loss_choice_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_mass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1146,8 +1070,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_mass_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_charge_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1159,8 +1081,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_charge_loss_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_discharge_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1170,8 +1090,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_discharge_loss_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_idle_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1183,8 +1101,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_monthly_idle_loss_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_nominal_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1193,8 +1109,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_nominal_energy_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_nominal_voltage_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1205,8 +1119,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_nominal_voltage_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1216,8 +1128,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_capacity_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1226,8 +1136,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_replacement_option_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1239,8 +1147,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_a
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_schedule_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1251,8 +1157,6 @@ SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_schedule_loss_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_ParamsPack_surface_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1261,8 +1165,6 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_surface_area_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_I_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1273,8 +1175,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_I_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_I_chargeable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1283,8 +1183,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_I_chargeable_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_I_dischargeable_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1295,8 +1193,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_I_dischargeable_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_P_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1305,8 +1201,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_P_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_P_chargeable_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1317,8 +1211,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_P_chargeable_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_P_dischargeable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1327,8 +1219,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_P_dischargeable_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_Q_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1339,8 +1229,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_Q_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_Q_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1349,8 +1237,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_Q_max_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_SOC_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1361,8 +1247,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_SOC_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_T_batt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1371,8 +1255,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_T_batt_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_T_room_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1383,8 +1265,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_T_room_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_V_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1394,8 +1274,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_V_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_heat_dissipated_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1404,8 +1282,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_heat_dissipated_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_StatePack_indices_replaced_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1417,8 +1293,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StatePack_indices_replaced_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_last_idx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1427,8 +1301,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_last_idx_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1439,8 +1311,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_loss_kw_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StatePack_n_replacements_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1449,8 +1319,6 @@ SAM_EXPORT double SAM_BatteryStateful_StatePack_n_replacements_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1461,8 +1329,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_max_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1471,8 +1337,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_DOD_min_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1483,8 +1347,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1493,8 +1355,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_EFC_dt_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_I_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1505,8 +1365,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_I_loss_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_SOC_prev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1515,8 +1373,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_SOC_prev_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_T_batt_prev_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1527,8 +1383,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_T_batt_prev_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_average_range_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1537,8 +1391,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_average_range_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_b1_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1549,8 +1401,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_b1_dt_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_b2_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1559,8 +1409,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_b2_dt_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_b3_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1571,8 +1419,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_b3_dt_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_c0_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1581,8 +1427,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_c0_dt_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_c2_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1593,8 +1437,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_c2_dt_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_cell_current_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1603,8 +1445,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_cell_current_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_cell_voltage_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1615,8 +1455,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_cell_voltage_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_chargeChange_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1625,8 +1463,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_chargeChange_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_charge_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1637,8 +1473,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_charge_mode_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_cum_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1648,8 +1482,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_cum_dt_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_DOD_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1658,8 +1490,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_DOD_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1671,8 +1501,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_DOD_max_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_counts_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1683,8 +1511,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_cycle_counts_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_range_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1693,8 +1519,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_cycle_range_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_day_age_of_battery_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1705,8 +1529,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_day_age_of_battery_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1715,8 +1537,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cal_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1727,8 +1547,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_calendar_old_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cyc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1737,8 +1555,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_cyc_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1749,8 +1565,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li1_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1759,8 +1573,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li2_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1771,8 +1583,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_li3_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_neg_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1781,8 +1591,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_neg_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_n_cycles_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1793,8 +1601,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_n_cycles_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_prev_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1803,8 +1609,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_prev_charge_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1815,8 +1619,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q0_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q1_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1825,8 +1627,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q1_0_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1837,8 +1637,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q2_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q2_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1847,8 +1645,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q2_0_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1859,8 +1655,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_calendar_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1869,8 +1663,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_calendar_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_cycle_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1881,8 +1673,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_cycle_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_li_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1891,8 +1681,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_li_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_neg_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1903,8 +1691,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_neg_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_thermal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1913,8 +1699,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_q_relative_thermal_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_qmax_lifetime_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1925,8 +1709,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_qmax_lifetime_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_qmax_thermal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1935,8 +1717,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_qmax_thermal_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_qn_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1947,8 +1727,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_qn_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_Xlt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1957,8 +1735,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_Xlt_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_Ylt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1969,8 +1745,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_Ylt_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_jlt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1979,8 +1753,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_rainflow_jlt_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1992,8 +1764,6 @@ SAM_EXPORT double* SAM_BatteryStateful_StateCell_rainflow_peaks_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2003,8 +1773,6 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_avg_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_dt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2013,6 +1781,4 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_temp_dt_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 

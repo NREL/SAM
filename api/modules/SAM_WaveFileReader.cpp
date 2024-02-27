@@ -47,8 +47,6 @@ SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -58,8 +56,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_s
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_ts_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -71,8 +67,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -82,8 +76,6 @@ SAM_EXPORT double SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_average_power_flux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -92,8 +84,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_average_power_flux_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_bathymetry_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -105,8 +95,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_bathymetry_sget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -116,8 +104,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_city_sget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_country_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -129,8 +115,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_country_sget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -140,8 +124,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_data_source_sget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -153,8 +135,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_day_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_distance_to_shore_file_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -163,8 +143,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_distance_to_shore_file_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_energy_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -176,8 +154,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_energy_period_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -188,8 +164,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_hour_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -199,8 +173,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -209,8 +181,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_location_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -222,8 +192,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_location_name_sget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -232,8 +200,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_minute_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -245,8 +211,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_minute_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -256,8 +220,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_month_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -269,8 +231,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_name_sget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_nearby_buoy_number_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -280,8 +240,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_nearby_buoy_number_sget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -293,8 +251,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_notes_sget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_number_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -304,8 +260,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_number_hours_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_number_records_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -314,8 +268,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_number_records_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -327,8 +279,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_sea_bed_sget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_significant_wave_height_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -338,8 +288,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_significant_wave_height_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -351,8 +299,6 @@ SAM_EXPORT const char* SAM_WaveFileReader_Outputs_state_sget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -362,8 +308,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_tz_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_WaveFileReader_Outputs_water_depth_file_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -372,8 +316,6 @@ SAM_EXPORT double SAM_WaveFileReader_Outputs_water_depth_file_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -385,8 +327,6 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_wave_resource_matrix_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_WaveFileReader_Outputs_year_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -396,6 +336,4 @@ SAM_EXPORT double* SAM_WaveFileReader_Outputs_year_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 

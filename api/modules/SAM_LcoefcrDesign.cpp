@@ -131,8 +131,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SystemControl_sim_type_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -141,8 +139,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_annual_energy_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_LcoefcrDesign_SimpleLCOE_c_construction_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -154,8 +150,6 @@ SAM_EXPORT double* SAM_LcoefcrDesign_SimpleLCOE_c_construction_cost_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_construction_interest_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -165,8 +159,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_construction_interest_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_debt_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -175,8 +167,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_debt_percent_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_LcoefcrDesign_SimpleLCOE_c_depreciation_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -188,8 +178,6 @@ SAM_EXPORT double* SAM_LcoefcrDesign_SimpleLCOE_c_depreciation_schedule_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_equity_return_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -198,8 +186,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_equity_return_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_inflation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -210,8 +196,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_inflation_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_lifetime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -220,8 +204,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_lifetime_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_nominal_interest_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -232,8 +214,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_nominal_interest_rate_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -242,8 +222,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_c_tax_rate_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_fixed_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -254,8 +232,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_fixed_operating_cost_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_ui_fcr_input_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -264,8 +240,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_ui_fcr_input_option_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_ui_fixed_charge_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -276,8 +250,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_ui_fixed_charge_rate_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_variable_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -286,8 +258,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SimpleLCOE_variable_operating_cost_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -298,8 +268,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_SystemCosts_total_installed_cost_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_IPHLCOH_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -308,8 +276,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_IPHLCOH_annual_electricity_consumption_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_IPHLCOH_electricity_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -320,8 +286,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_IPHLCOH_electricity_rate_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_cfin_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -330,8 +294,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_cfin_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_crf_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -342,8 +304,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_crf_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_fixed_charge_rate_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -352,8 +312,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_fixed_charge_rate_calc_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_lcoe_fcr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -364,8 +322,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_lcoe_fcr_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_pfin_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -375,8 +331,6 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_pfin_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_LcoefcrDesign_Outputs_wacc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -385,6 +339,4 @@ SAM_EXPORT double SAM_LcoefcrDesign_Outputs_wacc_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 

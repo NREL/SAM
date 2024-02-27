@@ -3179,8 +3179,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_analysis_period_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Common_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3190,8 +3188,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_load_escalation_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Common_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3203,8 +3199,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_rate_escalation_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3213,8 +3207,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_system_use_lifetime_output_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3225,8 +3217,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_annual_min_charge_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3235,8 +3225,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t1_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3247,8 +3235,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3257,8 +3243,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t2_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3269,8 +3253,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t2_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3279,8 +3261,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t3_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3291,8 +3271,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3301,8 +3279,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t4_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3313,8 +3289,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t4_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3323,8 +3297,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t5_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3335,8 +3307,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3345,8 +3315,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t6_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3357,8 +3325,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_apr_t6_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3367,8 +3333,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t1_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3379,8 +3343,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3389,8 +3351,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t2_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3401,8 +3361,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t2_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3411,8 +3369,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t3_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3423,8 +3379,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3433,8 +3387,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t4_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3445,8 +3397,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t4_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3455,8 +3405,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t5_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3467,8 +3415,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3477,8 +3423,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t6_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3489,8 +3433,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_aug_t6_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3499,8 +3441,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t1_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3511,8 +3451,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3521,8 +3459,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t2_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3533,8 +3469,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t2_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3543,8 +3477,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t3_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3555,8 +3487,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3565,8 +3495,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t4_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3577,8 +3505,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t4_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3587,8 +3513,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t5_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3599,8 +3523,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3609,8 +3531,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t6_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3621,8 +3541,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_dec_t6_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3631,8 +3549,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_enable_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3643,8 +3559,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3653,8 +3567,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3665,8 +3577,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3675,8 +3585,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3687,8 +3595,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3697,8 +3603,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3709,8 +3613,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3719,8 +3621,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3731,8 +3631,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3741,8 +3639,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3753,8 +3649,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3763,8 +3657,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_feb_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3775,8 +3667,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3785,8 +3675,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3797,8 +3685,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3807,8 +3693,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3819,8 +3703,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3829,8 +3711,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3841,8 +3721,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3851,8 +3729,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3863,8 +3739,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3873,8 +3747,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3885,8 +3757,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3895,8 +3765,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jan_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3907,8 +3775,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3917,8 +3783,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3929,8 +3793,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3939,8 +3801,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3951,8 +3811,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3961,8 +3819,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3973,8 +3829,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3983,8 +3837,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3995,8 +3847,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4005,8 +3855,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4017,8 +3865,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4027,8 +3873,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jul_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4039,8 +3883,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4049,8 +3891,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4061,8 +3901,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4071,8 +3909,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4083,8 +3919,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4093,8 +3927,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4105,8 +3937,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4115,8 +3945,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4127,8 +3955,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4137,8 +3963,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4149,8 +3973,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4159,8 +3981,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_jun_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4171,8 +3991,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4181,8 +3999,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4193,8 +4009,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4203,8 +4017,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4215,8 +4027,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4225,8 +4035,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4237,8 +4045,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4247,8 +4053,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4259,8 +4063,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4269,8 +4071,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4281,8 +4081,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4291,8 +4089,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_mar_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4303,8 +4099,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4313,8 +4107,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4325,8 +4117,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4335,8 +4125,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4347,8 +4135,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4357,8 +4143,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4369,8 +4153,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4379,8 +4161,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4391,8 +4171,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4401,8 +4179,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4413,8 +4189,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4423,8 +4197,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_may_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4435,8 +4207,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4445,8 +4215,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4457,8 +4225,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4467,8 +4233,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4479,8 +4243,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4489,8 +4251,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4501,8 +4261,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4511,8 +4269,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4523,8 +4279,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4533,8 +4287,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4545,8 +4297,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4555,8 +4305,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_nov_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4567,8 +4315,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4577,8 +4323,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4589,8 +4333,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4599,8 +4341,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4611,8 +4351,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4621,8 +4359,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4633,8 +4369,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4643,8 +4377,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4655,8 +4387,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4665,8 +4395,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4677,8 +4405,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4687,8 +4413,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_oct_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4699,8 +4423,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4709,8 +4431,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4721,8 +4441,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4731,8 +4449,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4743,8 +4459,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4753,8 +4467,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4765,8 +4477,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4775,8 +4485,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4787,8 +4495,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4797,8 +4503,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4809,8 +4513,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4819,8 +4521,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p10_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4831,8 +4531,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4841,8 +4539,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4853,8 +4549,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4863,8 +4557,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4875,8 +4567,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4885,8 +4575,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4897,8 +4585,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4907,8 +4593,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4919,8 +4603,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4929,8 +4611,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4941,8 +4621,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4951,8 +4629,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p11_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4963,8 +4639,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t1_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4973,8 +4647,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t1_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -4985,8 +4657,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t2_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4995,8 +4665,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5007,8 +4675,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t3_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5017,8 +4683,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t3_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5029,8 +4693,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t4_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5039,8 +4701,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5051,8 +4711,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t5_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5061,8 +4719,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t5_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5073,8 +4729,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t6_dc_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5083,8 +4737,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p12_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5095,8 +4747,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5105,8 +4755,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5117,8 +4765,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5127,8 +4773,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5139,8 +4783,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5149,8 +4791,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5161,8 +4801,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5171,8 +4809,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5183,8 +4819,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5193,8 +4827,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5205,8 +4837,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5215,8 +4845,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p1_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5227,8 +4855,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5237,8 +4863,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5249,8 +4873,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5259,8 +4881,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5271,8 +4891,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5281,8 +4899,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5293,8 +4909,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5303,8 +4917,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5315,8 +4927,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5325,8 +4935,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5337,8 +4945,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5347,8 +4953,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p2_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5359,8 +4963,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5369,8 +4971,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5381,8 +4981,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5391,8 +4989,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5403,8 +4999,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5413,8 +5007,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5425,8 +5017,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5435,8 +5025,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5447,8 +5035,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5457,8 +5043,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5469,8 +5053,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5479,8 +5061,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p3_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5491,8 +5071,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5501,8 +5079,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5513,8 +5089,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5523,8 +5097,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5535,8 +5107,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5545,8 +5115,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5557,8 +5125,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5567,8 +5133,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5579,8 +5143,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5589,8 +5151,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5601,8 +5161,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5611,8 +5169,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p4_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5623,8 +5179,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5633,8 +5187,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5645,8 +5197,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5655,8 +5205,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5667,8 +5215,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5677,8 +5223,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5689,8 +5233,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5699,8 +5241,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5711,8 +5251,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5721,8 +5259,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5733,8 +5269,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5743,8 +5277,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p5_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5755,8 +5287,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5765,8 +5295,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5777,8 +5305,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5787,8 +5313,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5799,8 +5323,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5809,8 +5331,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5821,8 +5341,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5831,8 +5349,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5843,8 +5359,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5853,8 +5367,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5865,8 +5377,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5875,8 +5385,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p6_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5887,8 +5395,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5897,8 +5403,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5909,8 +5413,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5919,8 +5421,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5931,8 +5431,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5941,8 +5439,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5953,8 +5449,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5963,8 +5457,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5975,8 +5467,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5985,8 +5475,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -5997,8 +5485,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6007,8 +5493,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p7_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6019,8 +5503,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6029,8 +5511,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6041,8 +5521,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6051,8 +5529,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6063,8 +5539,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6073,8 +5547,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6085,8 +5557,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6095,8 +5565,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6107,8 +5575,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6117,8 +5583,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6129,8 +5593,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6139,8 +5601,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p8_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6151,8 +5611,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t1_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6161,8 +5619,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t1_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6173,8 +5629,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t2_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6183,8 +5637,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6195,8 +5647,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t3_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6205,8 +5655,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t3_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6217,8 +5665,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t4_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6227,8 +5673,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6239,8 +5683,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t5_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6249,8 +5691,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t5_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6261,8 +5701,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t6_dc_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6271,8 +5709,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_p9_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Common_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -6284,8 +5720,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_ur_dc_sched_weekday_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Common_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6296,8 +5730,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_ur_dc_sched_weekend_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t1_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6306,8 +5738,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t1_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6318,8 +5748,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t2_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6328,8 +5756,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t2_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6340,8 +5766,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t2_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t3_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6350,8 +5774,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t3_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6362,8 +5784,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t4_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6372,8 +5792,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t4_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6384,8 +5802,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t4_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t5_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6394,8 +5810,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t5_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6406,8 +5820,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t6_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6416,8 +5828,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t6_dc_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6428,8 +5838,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_dc_sep_t6_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6438,8 +5846,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_enable_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6450,8 +5856,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6460,8 +5864,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6472,8 +5874,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6482,8 +5882,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6494,8 +5892,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6504,8 +5900,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6516,8 +5910,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6526,8 +5918,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6538,8 +5928,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6548,8 +5936,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6560,8 +5946,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6570,8 +5954,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6582,8 +5964,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6592,8 +5972,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6604,8 +5982,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6614,8 +5990,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6626,8 +6000,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6636,8 +6008,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p10_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6648,8 +6018,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6658,8 +6026,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6670,8 +6036,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6680,8 +6044,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6692,8 +6054,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6702,8 +6062,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6714,8 +6072,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6724,8 +6080,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6736,8 +6090,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6746,8 +6098,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6758,8 +6108,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6768,8 +6116,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6780,8 +6126,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6790,8 +6134,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6802,8 +6144,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6812,8 +6152,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6824,8 +6162,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6834,8 +6170,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p11_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6846,8 +6180,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6856,8 +6188,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6868,8 +6198,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t1_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6878,8 +6206,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6890,8 +6216,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6900,8 +6224,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t2_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6912,8 +6234,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6922,8 +6242,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6934,8 +6252,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t3_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6944,8 +6260,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6956,8 +6270,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6966,8 +6278,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t4_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -6978,8 +6288,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_br_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -6988,8 +6296,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_sr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7000,8 +6306,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t5_ub_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7010,8 +6314,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_br_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7022,8 +6324,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_sr_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7032,8 +6332,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p12_t6_ub_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7044,8 +6342,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7054,8 +6350,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7066,8 +6360,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7076,8 +6368,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7088,8 +6378,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7098,8 +6386,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7110,8 +6396,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7120,8 +6404,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7132,8 +6414,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7142,8 +6422,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7154,8 +6432,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7164,8 +6440,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7176,8 +6450,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7186,8 +6458,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7198,8 +6468,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7208,8 +6476,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7220,8 +6486,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7230,8 +6494,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p1_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7242,8 +6504,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7252,8 +6512,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7264,8 +6522,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7274,8 +6530,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7286,8 +6540,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7296,8 +6548,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7308,8 +6558,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7318,8 +6566,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7330,8 +6576,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7340,8 +6584,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7352,8 +6594,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7362,8 +6602,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7374,8 +6612,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7384,8 +6620,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7396,8 +6630,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7406,8 +6638,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7418,8 +6648,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7428,8 +6656,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p2_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7440,8 +6666,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7450,8 +6674,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7462,8 +6684,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7472,8 +6692,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7484,8 +6702,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7494,8 +6710,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7506,8 +6720,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7516,8 +6728,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7528,8 +6738,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7538,8 +6746,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7550,8 +6756,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7560,8 +6764,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7572,8 +6774,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7582,8 +6782,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7594,8 +6792,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7604,8 +6800,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7616,8 +6810,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7626,8 +6818,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p3_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7638,8 +6828,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7648,8 +6836,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7660,8 +6846,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7670,8 +6854,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7682,8 +6864,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7692,8 +6872,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7704,8 +6882,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7714,8 +6890,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7726,8 +6900,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7736,8 +6908,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7748,8 +6918,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7758,8 +6926,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7770,8 +6936,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7780,8 +6944,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7792,8 +6954,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7802,8 +6962,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7814,8 +6972,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7824,8 +6980,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p4_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7836,8 +6990,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7846,8 +6998,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7858,8 +7008,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7868,8 +7016,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7880,8 +7026,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7890,8 +7034,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7902,8 +7044,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7912,8 +7052,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7924,8 +7062,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7934,8 +7070,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7946,8 +7080,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7956,8 +7088,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7968,8 +7098,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -7978,8 +7106,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -7990,8 +7116,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8000,8 +7124,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8012,8 +7134,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8022,8 +7142,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p5_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8034,8 +7152,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8044,8 +7160,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8056,8 +7170,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8066,8 +7178,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8078,8 +7188,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8088,8 +7196,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8100,8 +7206,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8110,8 +7214,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8122,8 +7224,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8132,8 +7232,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8144,8 +7242,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8154,8 +7250,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8166,8 +7260,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8176,8 +7268,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8188,8 +7278,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8198,8 +7286,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8210,8 +7296,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8220,8 +7304,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p6_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8232,8 +7314,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8242,8 +7322,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8254,8 +7332,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8264,8 +7340,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8276,8 +7350,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8286,8 +7358,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8298,8 +7368,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8308,8 +7376,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8320,8 +7386,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8330,8 +7394,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8342,8 +7404,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8352,8 +7412,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8364,8 +7422,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8374,8 +7430,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8386,8 +7440,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8396,8 +7448,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8408,8 +7458,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8418,8 +7466,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p7_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8430,8 +7476,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8440,8 +7484,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8452,8 +7494,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8462,8 +7502,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8474,8 +7512,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8484,8 +7520,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8496,8 +7530,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8506,8 +7538,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8518,8 +7548,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8528,8 +7556,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8540,8 +7566,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8550,8 +7574,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8562,8 +7584,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8572,8 +7592,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8584,8 +7602,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8594,8 +7610,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8606,8 +7620,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8616,8 +7628,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p8_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8628,8 +7638,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8638,8 +7646,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8650,8 +7656,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t1_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8660,8 +7664,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8672,8 +7674,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8682,8 +7682,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t2_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8694,8 +7692,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8704,8 +7700,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8716,8 +7710,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t3_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8726,8 +7718,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8738,8 +7728,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8748,8 +7736,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t4_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8760,8 +7746,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_br_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8770,8 +7754,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_sr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8782,8 +7764,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t5_ub_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_br_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8792,8 +7772,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_br_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_sr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8804,8 +7782,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_sr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_ub_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8814,8 +7790,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_ec_p9_t6_ub_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Common_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -8827,8 +7801,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_ur_ec_sched_weekday_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Common_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8839,8 +7811,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Common_ur_ec_sched_weekend_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_enable_net_metering_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8849,8 +7819,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_enable_net_metering_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_excess_monthly_energy_or_dollars_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8861,8 +7829,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_excess_monthly_energy_or_dollars_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_flat_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8871,8 +7837,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_flat_buy_rate_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_flat_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8883,8 +7847,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_flat_sell_rate_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8893,8 +7855,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_monthly_fixed_charge_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -8905,8 +7865,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_monthly_min_charge_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Common_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8915,8 +7873,6 @@ SAM_EXPORT double SAM_Utilityrate3_Common_ur_nm_yearend_sell_rate_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_TimeSeries_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -8928,8 +7884,6 @@ SAM_EXPORT double* SAM_Utilityrate3_TimeSeries_gen_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_TimeSeries_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8940,8 +7894,6 @@ SAM_EXPORT double* SAM_Utilityrate3_TimeSeries_load_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Financials_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -8950,8 +7902,6 @@ SAM_EXPORT double SAM_Utilityrate3_Financials_inflation_rate_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_AnnualOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -8963,8 +7913,6 @@ SAM_EXPORT double* SAM_Utilityrate3_AnnualOutput_degradation_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_annual_electric_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8974,8 +7922,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_annual_electric_load_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -8987,8 +7933,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_annual_energy_value_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -8998,8 +7942,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9011,8 +7953,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_apr_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9022,8 +7962,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_aug_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9035,8 +7973,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_dec_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9046,8 +7982,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_feb_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9059,8 +7993,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jan_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9070,8 +8002,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jul_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9083,8 +8013,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_jun_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9094,8 +8022,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_mar_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9107,8 +8033,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_may_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9118,8 +8042,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_nov_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9131,8 +8053,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_oct_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9142,8 +8062,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_fixed_sep_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9155,8 +8073,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9166,8 +8082,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_apr_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9179,8 +8093,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_aug_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9190,8 +8102,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_dec_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9203,8 +8113,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_feb_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9214,8 +8122,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jan_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9227,8 +8133,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jul_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9238,8 +8142,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_jun_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9251,8 +8153,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_mar_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9262,8 +8162,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_may_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9275,8 +8173,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_nov_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9286,8 +8182,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_oct_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9299,8 +8193,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_dc_tou_sep_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9310,8 +8202,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9323,8 +8213,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9334,8 +8222,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9347,8 +8233,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9358,8 +8242,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9371,8 +8253,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9382,8 +8262,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9395,8 +8273,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9406,8 +8282,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9419,8 +8293,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9430,8 +8302,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9443,8 +8313,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9454,8 +8322,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9467,8 +8333,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_apr_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9478,8 +8342,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9491,8 +8353,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9502,8 +8362,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9515,8 +8373,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9526,8 +8382,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9539,8 +8393,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9550,8 +8402,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9563,8 +8413,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9574,8 +8422,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9587,8 +8433,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9598,8 +8442,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9611,8 +8453,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9622,8 +8462,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_aug_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9635,8 +8473,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9646,8 +8482,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9659,8 +8493,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9670,8 +8502,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9683,8 +8513,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9694,8 +8522,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9707,8 +8533,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9718,8 +8542,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9731,8 +8553,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9742,8 +8562,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9755,8 +8573,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9766,8 +8582,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9779,8 +8593,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_dec_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9790,8 +8602,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9803,8 +8613,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9814,8 +8622,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9827,8 +8633,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9838,8 +8642,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9851,8 +8653,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9862,8 +8662,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9875,8 +8673,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9886,8 +8682,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9899,8 +8693,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9910,8 +8702,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9923,8 +8713,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9934,8 +8722,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_feb_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9947,8 +8733,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9958,8 +8742,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_apr_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9971,8 +8753,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_aug_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -9982,8 +8762,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_dec_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -9995,8 +8773,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_feb_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10006,8 +8782,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jan_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10019,8 +8793,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jul_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10030,8 +8802,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_jun_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10043,8 +8813,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_mar_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10054,8 +8822,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_may_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10067,8 +8833,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_nov_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10078,8 +8842,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_oct_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10091,8 +8853,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_flat_sep_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10102,8 +8862,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10115,8 +8873,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10126,8 +8882,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10139,8 +8893,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10150,8 +8902,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10163,8 +8913,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10174,8 +8922,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10187,8 +8933,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10198,8 +8942,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10211,8 +8953,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10222,8 +8962,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10235,8 +8973,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10246,8 +8982,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jan_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10259,8 +8993,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10270,8 +9002,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10283,8 +9013,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10294,8 +9022,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10307,8 +9033,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10318,8 +9042,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10331,8 +9053,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10342,8 +9062,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10355,8 +9073,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10366,8 +9082,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10379,8 +9093,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10390,8 +9102,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10403,8 +9113,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jul_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10414,8 +9122,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10427,8 +9133,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10438,8 +9142,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10451,8 +9153,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10462,8 +9162,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10475,8 +9173,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10486,8 +9182,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10499,8 +9193,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10510,8 +9202,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10523,8 +9213,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10534,8 +9222,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10547,8 +9233,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10558,8 +9242,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_jun_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10571,8 +9253,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10582,8 +9262,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10595,8 +9273,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10606,8 +9282,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10619,8 +9293,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10630,8 +9302,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10643,8 +9313,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10654,8 +9322,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10667,8 +9333,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10678,8 +9342,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10691,8 +9353,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10702,8 +9362,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10715,8 +9373,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_mar_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10726,8 +9382,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10739,8 +9393,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10750,8 +9402,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10763,8 +9413,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10774,8 +9422,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10787,8 +9433,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10798,8 +9442,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10811,8 +9453,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10822,8 +9462,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10835,8 +9473,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10846,8 +9482,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10859,8 +9493,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10870,8 +9502,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_may_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10883,8 +9513,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10894,8 +9522,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10907,8 +9533,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10918,8 +9542,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10931,8 +9553,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10942,8 +9562,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10955,8 +9573,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10966,8 +9582,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -10979,8 +9593,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10990,8 +9602,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11003,8 +9613,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11014,8 +9622,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11027,8 +9633,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_nov_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11038,8 +9642,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11051,8 +9653,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11062,8 +9662,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11075,8 +9673,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11086,8 +9682,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11099,8 +9693,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11110,8 +9702,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11123,8 +9713,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11134,8 +9722,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11147,8 +9733,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11158,8 +9742,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11171,8 +9753,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11182,8 +9762,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_oct_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11195,8 +9773,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11206,8 +9782,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p1_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11219,8 +9793,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p10_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11230,8 +9802,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p11_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11243,8 +9813,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p12_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11254,8 +9822,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p2_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11267,8 +9833,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p3_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11278,8 +9842,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p4_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11291,8 +9853,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p5_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11302,8 +9862,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p6_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11315,8 +9873,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p7_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11326,8 +9882,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p8_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11339,8 +9893,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_ec_sep_p9_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11350,8 +9902,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11363,8 +9913,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_apr_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11374,8 +9922,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_aug_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11387,8 +9933,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_dec_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11398,8 +9942,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_feb_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11411,8 +9953,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jan_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11422,8 +9962,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jul_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11435,8 +9973,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_jun_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11446,8 +9982,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_mar_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11459,8 +9993,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_may_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11470,8 +10002,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_nov_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11483,8 +10013,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_oct_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11494,8 +10022,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_fixed_sep_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11507,8 +10033,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11518,8 +10042,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_apr_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11531,8 +10053,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_aug_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11542,8 +10062,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_dec_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11555,8 +10073,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_feb_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11566,8 +10082,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jan_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11579,8 +10093,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jul_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11590,8 +10102,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_jun_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11603,8 +10113,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_mar_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11614,8 +10122,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_may_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11627,8 +10133,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_nov_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11638,8 +10142,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_oct_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11651,8 +10153,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_w_sys_minimum_sep_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11662,8 +10162,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11675,8 +10173,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_apr_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11686,8 +10182,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_aug_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11699,8 +10193,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_dec_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11710,8 +10202,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_feb_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11723,8 +10213,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jan_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11734,8 +10222,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jul_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11747,8 +10233,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_jun_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11758,8 +10242,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_mar_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11771,8 +10253,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_may_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11782,8 +10262,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_nov_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11795,8 +10273,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_oct_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11806,8 +10282,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_fixed_sep_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11819,8 +10293,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11830,8 +10302,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_apr_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11843,8 +10313,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_aug_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11854,8 +10322,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_dec_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11867,8 +10333,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_feb_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11878,8 +10342,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jan_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11891,8 +10353,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jul_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11902,8 +10362,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_jun_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11915,8 +10373,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_mar_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11926,8 +10382,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_may_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11939,8 +10393,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_nov_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11950,8 +10402,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_oct_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11963,8 +10413,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_dc_tou_sep_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11974,8 +10422,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -11987,8 +10433,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -11998,8 +10442,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12011,8 +10453,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12022,8 +10462,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12035,8 +10473,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12046,8 +10482,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12059,8 +10493,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12070,8 +10502,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12083,8 +10513,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12094,8 +10522,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12107,8 +10533,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12118,8 +10542,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12131,8 +10553,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_apr_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12142,8 +10562,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12155,8 +10573,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12166,8 +10582,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12179,8 +10593,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12190,8 +10602,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12203,8 +10613,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12214,8 +10622,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12227,8 +10633,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12238,8 +10642,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12251,8 +10653,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12262,8 +10662,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12275,8 +10673,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12286,8 +10682,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_aug_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12299,8 +10693,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12310,8 +10702,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12323,8 +10713,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12334,8 +10722,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12347,8 +10733,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12358,8 +10742,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12371,8 +10753,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12382,8 +10762,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12395,8 +10773,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12406,8 +10782,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12419,8 +10793,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12430,8 +10802,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12443,8 +10813,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_dec_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12454,8 +10822,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12467,8 +10833,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12478,8 +10842,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12491,8 +10853,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12502,8 +10862,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12515,8 +10873,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12526,8 +10882,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12539,8 +10893,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12550,8 +10902,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12563,8 +10913,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12574,8 +10922,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12587,8 +10933,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12598,8 +10942,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_feb_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12611,8 +10953,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12622,8 +10962,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_apr_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12635,8 +10973,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_aug_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12646,8 +10982,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_dec_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12659,8 +10993,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_feb_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12670,8 +11002,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jan_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12683,8 +11013,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jul_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12694,8 +11022,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_jun_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12707,8 +11033,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_mar_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12718,8 +11042,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_may_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12731,8 +11053,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_nov_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12742,8 +11062,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_oct_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12755,8 +11073,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_flat_sep_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12766,8 +11082,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12779,8 +11093,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12790,8 +11102,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12803,8 +11113,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12814,8 +11122,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12827,8 +11133,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12838,8 +11142,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12851,8 +11153,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12862,8 +11162,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12875,8 +11173,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12886,8 +11182,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12899,8 +11193,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12910,8 +11202,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jan_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12923,8 +11213,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12934,8 +11222,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12947,8 +11233,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12958,8 +11242,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12971,8 +11253,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -12982,8 +11262,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -12995,8 +11273,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13006,8 +11282,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13019,8 +11293,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13030,8 +11302,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13043,8 +11313,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13054,8 +11322,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13067,8 +11333,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jul_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13078,8 +11342,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13091,8 +11353,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13102,8 +11362,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13115,8 +11373,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13126,8 +11382,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13139,8 +11393,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13150,8 +11402,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13163,8 +11413,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13174,8 +11422,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13187,8 +11433,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13198,8 +11442,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13211,8 +11453,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13222,8 +11462,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_jun_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13235,8 +11473,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13246,8 +11482,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13259,8 +11493,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13270,8 +11502,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13283,8 +11513,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13294,8 +11522,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13307,8 +11533,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13318,8 +11542,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13331,8 +11553,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13342,8 +11562,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13355,8 +11573,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13366,8 +11582,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13379,8 +11593,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_mar_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13390,8 +11602,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13403,8 +11613,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13414,8 +11622,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13427,8 +11633,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13438,8 +11642,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13451,8 +11653,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13462,8 +11662,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13475,8 +11673,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13486,8 +11682,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13499,8 +11693,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13510,8 +11702,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13523,8 +11713,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13534,8 +11722,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_may_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13547,8 +11733,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13558,8 +11742,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13571,8 +11753,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13582,8 +11762,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13595,8 +11773,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13606,8 +11782,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13619,8 +11793,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13630,8 +11802,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13643,8 +11813,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13654,8 +11822,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13667,8 +11833,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13678,8 +11842,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13691,8 +11853,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_nov_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13702,8 +11862,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13715,8 +11873,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13726,8 +11882,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13739,8 +11893,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13750,8 +11902,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13763,8 +11913,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13774,8 +11922,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13787,8 +11933,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13798,8 +11942,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13811,8 +11953,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13822,8 +11962,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13835,8 +11973,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13846,8 +11982,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_oct_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13859,8 +11993,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13870,8 +12002,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p1_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13883,8 +12013,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p10_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13894,8 +12022,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p11_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13907,8 +12033,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p12_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13918,8 +12042,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p2_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13931,8 +12053,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p3_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13942,8 +12062,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p4_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13955,8 +12073,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p5_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13966,8 +12082,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p6_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -13979,8 +12093,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p7_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -13990,8 +12102,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p8_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14003,8 +12113,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_ec_sep_p9_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14014,8 +12122,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14027,8 +12133,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_apr_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14038,8 +12142,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_aug_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14051,8 +12153,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_dec_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14062,8 +12162,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_feb_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14075,8 +12173,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jan_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14086,8 +12182,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jul_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14099,8 +12193,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_jun_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14110,8 +12202,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_mar_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14123,8 +12213,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_may_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14134,8 +12222,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_nov_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14147,8 +12233,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_oct_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14158,8 +12242,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_fixed_sep_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14171,8 +12253,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14182,8 +12262,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_apr_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14195,8 +12273,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_aug_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14206,8 +12282,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_dec_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14219,8 +12293,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_feb_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14230,8 +12302,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jan_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14243,8 +12313,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jul_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14254,8 +12322,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_jun_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14267,8 +12333,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_mar_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14278,8 +12342,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_may_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14291,8 +12353,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_nov_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14302,8 +12362,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_oct_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14315,8 +12373,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_charge_wo_sys_minimum_sep_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14327,8 +12383,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_elec_cost_with_system_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Outputs_elec_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -14337,8 +12391,6 @@ SAM_EXPORT double SAM_Utilityrate3_Outputs_elec_cost_with_system_year1_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14350,8 +12402,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_elec_cost_without_system_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Outputs_elec_cost_without_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -14360,8 +12410,6 @@ SAM_EXPORT double SAM_Utilityrate3_Outputs_elec_cost_without_system_year1_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14373,8 +12421,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14384,8 +12430,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14397,8 +12441,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14408,8 +12450,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14421,8 +12461,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14432,8 +12470,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14445,8 +12481,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14456,8 +12490,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14469,8 +12501,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14480,8 +12510,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14493,8 +12521,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14504,8 +12530,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_apr_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14517,8 +12541,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14528,8 +12550,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14541,8 +12561,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14552,8 +12570,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14565,8 +12581,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14576,8 +12590,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14589,8 +12601,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14600,8 +12610,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14613,8 +12621,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14624,8 +12630,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14637,8 +12641,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14648,8 +12650,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_aug_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14661,8 +12661,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14672,8 +12670,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14685,8 +12681,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14696,8 +12690,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14709,8 +12701,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14720,8 +12710,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14733,8 +12721,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14744,8 +12730,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14757,8 +12741,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14768,8 +12750,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14781,8 +12761,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14792,8 +12770,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_dec_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14805,8 +12781,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14816,8 +12790,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14829,8 +12801,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14840,8 +12810,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14853,8 +12821,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14864,8 +12830,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14877,8 +12841,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14888,8 +12850,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14901,8 +12861,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14912,8 +12870,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14925,8 +12881,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14936,8 +12890,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_feb_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14949,8 +12901,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14960,8 +12910,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14973,8 +12921,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -14984,8 +12930,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -14997,8 +12941,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15008,8 +12950,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15021,8 +12961,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15032,8 +12970,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15045,8 +12981,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15056,8 +12990,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15069,8 +13001,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15080,8 +13010,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jan_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15093,8 +13021,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15104,8 +13030,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15117,8 +13041,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15128,8 +13050,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15141,8 +13061,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15152,8 +13070,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15165,8 +13081,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15176,8 +13090,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15189,8 +13101,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15200,8 +13110,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15213,8 +13121,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15224,8 +13130,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jul_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15237,8 +13141,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15248,8 +13150,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15261,8 +13161,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15272,8 +13170,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15285,8 +13181,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15296,8 +13190,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15309,8 +13201,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15320,8 +13210,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15333,8 +13221,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15344,8 +13230,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15357,8 +13241,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15368,8 +13250,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_jun_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15381,8 +13261,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15392,8 +13270,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15405,8 +13281,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15416,8 +13290,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15429,8 +13301,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15440,8 +13310,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15453,8 +13321,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15464,8 +13330,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15477,8 +13341,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15488,8 +13350,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15501,8 +13361,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15512,8 +13370,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_mar_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15525,8 +13381,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15536,8 +13390,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15549,8 +13401,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15560,8 +13410,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15573,8 +13421,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15584,8 +13430,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15597,8 +13441,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15608,8 +13450,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15621,8 +13461,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15632,8 +13470,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15645,8 +13481,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15656,8 +13490,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_may_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15669,8 +13501,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15680,8 +13510,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15693,8 +13521,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15704,8 +13530,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15717,8 +13541,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15728,8 +13550,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15741,8 +13561,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15752,8 +13570,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15765,8 +13581,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15776,8 +13590,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15789,8 +13601,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15800,8 +13610,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_nov_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15813,8 +13621,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15824,8 +13630,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15837,8 +13641,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15848,8 +13650,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15861,8 +13661,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15872,8 +13670,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15885,8 +13681,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15896,8 +13690,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15909,8 +13701,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15920,8 +13710,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15933,8 +13721,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15944,8 +13730,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_oct_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15957,8 +13741,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p1_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15968,8 +13750,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p10_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -15981,8 +13761,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p11_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -15992,8 +13770,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p12_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16005,8 +13781,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p2_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16016,8 +13790,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p3_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16029,8 +13801,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p4_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16040,8 +13810,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p5_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16053,8 +13821,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p6_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16064,8 +13830,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p7_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16077,8 +13841,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p8_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16088,8 +13850,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_w_sys_ec_sep_p9_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16101,8 +13861,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16112,8 +13870,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16125,8 +13881,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16136,8 +13890,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16149,8 +13901,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16160,8 +13910,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16173,8 +13921,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16184,8 +13930,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16197,8 +13941,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16208,8 +13950,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16221,8 +13961,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16232,8 +13970,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_apr_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16245,8 +13981,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16256,8 +13990,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16269,8 +14001,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16280,8 +14010,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16293,8 +14021,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16304,8 +14030,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16317,8 +14041,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16328,8 +14050,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16341,8 +14061,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16352,8 +14070,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16365,8 +14081,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16376,8 +14090,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_aug_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16389,8 +14101,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16400,8 +14110,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16413,8 +14121,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16424,8 +14130,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16437,8 +14141,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16448,8 +14150,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16461,8 +14161,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16472,8 +14170,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16485,8 +14181,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16496,8 +14190,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16509,8 +14201,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16520,8 +14210,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_dec_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16533,8 +14221,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16544,8 +14230,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16557,8 +14241,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16568,8 +14250,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16581,8 +14261,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16592,8 +14270,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16605,8 +14281,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16616,8 +14290,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16629,8 +14301,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16640,8 +14310,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16653,8 +14321,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16664,8 +14330,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_feb_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16677,8 +14341,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16688,8 +14350,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16701,8 +14361,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16712,8 +14370,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16725,8 +14381,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16736,8 +14390,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16749,8 +14401,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16760,8 +14410,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16773,8 +14421,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16784,8 +14430,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16797,8 +14441,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16808,8 +14450,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jan_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16821,8 +14461,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16832,8 +14470,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16845,8 +14481,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16856,8 +14490,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16869,8 +14501,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16880,8 +14510,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16893,8 +14521,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16904,8 +14530,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16917,8 +14541,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16928,8 +14550,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16941,8 +14561,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16952,8 +14570,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jul_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16965,8 +14581,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -16976,8 +14590,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -16989,8 +14601,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17000,8 +14610,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17013,8 +14621,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17024,8 +14630,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17037,8 +14641,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17048,8 +14650,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17061,8 +14661,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17072,8 +14670,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17085,8 +14681,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17096,8 +14690,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_jun_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17109,8 +14701,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17120,8 +14710,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17133,8 +14721,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17144,8 +14730,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17157,8 +14741,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17168,8 +14750,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17181,8 +14761,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17192,8 +14770,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17205,8 +14781,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17216,8 +14790,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17229,8 +14801,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17240,8 +14810,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_mar_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17253,8 +14821,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17264,8 +14830,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17277,8 +14841,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17288,8 +14850,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17301,8 +14861,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17312,8 +14870,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17325,8 +14881,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17336,8 +14890,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17349,8 +14901,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17360,8 +14910,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17373,8 +14921,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17384,8 +14930,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_may_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17397,8 +14941,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17408,8 +14950,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17421,8 +14961,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17432,8 +14970,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17445,8 +14981,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17456,8 +14990,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17469,8 +15001,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17480,8 +15010,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17493,8 +15021,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17504,8 +15030,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17517,8 +15041,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17528,8 +15050,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_nov_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17541,8 +15061,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17552,8 +15070,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17565,8 +15081,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17576,8 +15090,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17589,8 +15101,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17600,8 +15110,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17613,8 +15121,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17624,8 +15130,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17637,8 +15141,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17648,8 +15150,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17661,8 +15161,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17672,8 +15170,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_oct_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17685,8 +15181,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p1_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p10_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17696,8 +15190,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p10_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p11_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17709,8 +15201,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p11_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p12_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17720,8 +15210,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p12_aget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17733,8 +15221,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p2_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17744,8 +15230,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p3_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p4_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17757,8 +15241,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p4_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p5_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17768,8 +15250,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p5_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p6_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17781,8 +15261,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p6_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p7_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17792,8 +15270,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p7_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p8_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17805,8 +15281,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p8_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p9_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17816,8 +15290,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_energy_wo_sys_ec_sep_p9_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_lifetime_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17829,8 +15301,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_lifetime_load_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Outputs_savings_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -17839,8 +15309,6 @@ SAM_EXPORT double SAM_Utilityrate3_Outputs_savings_year1_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17852,8 +15320,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17863,8 +15329,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_apr_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17876,8 +15340,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_aug_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17887,8 +15349,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_dec_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17900,8 +15360,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_feb_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17911,8 +15369,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jan_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17924,8 +15380,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jul_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17935,8 +15389,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_jun_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17948,8 +15400,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_mar_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17959,8 +15409,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_may_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17972,8 +15420,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_nov_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -17983,8 +15429,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_oct_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -17996,8 +15440,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_w_sys_sep_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18007,8 +15449,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_apr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18020,8 +15460,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_apr_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_aug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18031,8 +15469,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_aug_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_dec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18044,8 +15480,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_dec_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_feb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18055,8 +15489,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_feb_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jan_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18068,8 +15500,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jan_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jul_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18079,8 +15509,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jul_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jun_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18092,8 +15520,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_jun_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_mar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18103,8 +15529,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_mar_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_may_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18116,8 +15540,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_may_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_nov_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18127,8 +15549,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_nov_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_oct_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18140,8 +15560,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_oct_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_sep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18152,8 +15570,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_utility_bill_wo_sys_sep_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrate3_Outputs_year1_electric_load_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -18162,8 +15578,6 @@ SAM_EXPORT double SAM_Utilityrate3_Outputs_year1_electric_load_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_peak_per_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18175,8 +15589,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_peak_per_period_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_tou_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18186,8 +15598,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_tou_schedule_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18199,8 +15609,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_with_system_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18210,8 +15618,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_dc_without_system_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_e_tofromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18223,8 +15629,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_e_tofromgrid_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_tou_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18234,8 +15638,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_tou_schedule_aget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18247,8 +15649,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_with_system_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18258,8 +15658,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_ec_without_system_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18271,8 +15669,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_load_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_p_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18282,8 +15678,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_p_system_to_load_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_p_tofromgrid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18295,8 +15689,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_p_tofromgrid_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_salespurchases_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18306,8 +15698,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_salespurchases_with_sys
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_salespurchases_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18319,8 +15709,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_hourly_salespurchases_without_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_cumulative_excess_dollars_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18330,8 +15718,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_cumulative_excess_doll
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_cumulative_excess_generation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18343,8 +15729,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_cumulative_excess_gene
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_fixed_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18354,8 +15738,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_fixed_with_system_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_fixed_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18367,8 +15749,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_fixed_without_syste
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_tou_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18378,8 +15758,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_tou_with_system_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_tou_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18391,8 +15769,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_dc_tou_without_system_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_flat_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18402,8 +15778,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_flat_with_sy
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_flat_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18415,8 +15789,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_flat_without
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18426,8 +15798,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_with_system_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18439,8 +15809,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_ec_charge_without_syst
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_electricity_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18450,8 +15818,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_electricity_to_grid_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_fixed_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18463,8 +15829,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_fixed_with_system_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_fixed_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18474,8 +15838,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_fixed_without_system_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18487,8 +15849,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_load_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_minimum_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18498,8 +15858,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_minimum_with_system_ag
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_minimum_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -18511,8 +15869,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_minimum_without_system
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18523,8 +15879,6 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_utility_bill_w_sys_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -18534,6 +15888,4 @@ SAM_EXPORT double* SAM_Utilityrate3_Outputs_year1_monthly_utility_bill_wo_sys_ag
 	});
 	return result;
 }
-
-
 

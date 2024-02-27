@@ -72,8 +72,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_diffuse_irrad_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_global_poa_irrad_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -83,8 +81,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_global_poa_irrad_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_mods_per_string_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -96,8 +92,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_mods_per_string_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_pv_cell_temp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -107,8 +101,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_pv_cell_temp_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_str_shade_fracs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -120,8 +112,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_str_shade_fracs_mget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_str_vmp_stc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -131,8 +121,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_str_vmp_stc_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_v_mppt_high_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -144,8 +132,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_v_mppt_high_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_v_mppt_low_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -155,8 +141,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_PVShadeLossDB_v_mppt_low_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_N_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -168,8 +152,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_N_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_S_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -179,8 +161,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_S_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_d_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -192,8 +172,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_d_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_shade_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -204,8 +182,6 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_shade_loss_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_t_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -215,6 +191,4 @@ SAM_EXPORT double* SAM_PvGetShadeLossMpp_Outputs_t_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 

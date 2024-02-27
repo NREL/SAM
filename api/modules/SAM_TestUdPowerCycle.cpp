@@ -29,8 +29,6 @@ SAM_EXPORT double SAM_TestUdPowerCycle_Common_q_pb_design_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TestUdPowerCycle_Outputs_udpc_table_out_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -40,6 +38,4 @@ SAM_EXPORT double* SAM_TestUdPowerCycle_Outputs_udpc_table_out_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 

@@ -291,6 +291,15 @@ int main(int argc, char *argv[]){
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
 
+    // do all technologies with Hybrid first because it has all the HybridTech stuff
+    for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
+        active_config = SAM_config_to_primary_module.first;
+       
+       if (active_config.find("Hybrid") == std::string::npos) continue;
+
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
+    }
+
     // do technology configs with None first
     for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
         active_config = SAM_config_to_primary_module.first;
@@ -300,9 +309,7 @@ int main(int argc, char *argv[]){
             continue;
         }
 
-//        if (active_config.find("IPH-LCOH") == std::string::npos){
-//            continue;
-//        }
+       if (active_config.find("Hybrid") != std::string::npos) continue;
 
         export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
     }

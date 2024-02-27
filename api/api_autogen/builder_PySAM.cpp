@@ -619,6 +619,26 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                 "{\n\tPyObject* ptr = PyLong_FromVoidPtr((void*)self->data_ptr);\n"
                 "\treturn ptr;\n}\n\n\n";
 
+    fx_file << "static PyObject *\n"
+                "" << tech_symbol << "_set_data_ptr(" << object_type << " *self, PyObject *args)\n"
+                "{\n"
+	            "\tlong long int ptr = 0;  // 64 bit arch\n"
+	            "\tif (!PyArg_ParseTuple(args, \"L:data_ptr\", &ptr)){\n"
+                "\t\tPyErr_BadArgument();\n"
+		        "\t\treturn NULL;\n"
+                "\t}\n\tself->data_ptr = (void*)ptr;\n";
+    
+    // modify the data ptr for all the groups
+    for (auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
+        if (mm->second.empty()) continue;
+        std::string module_symbol = format_as_symbol(mm->first);
+        fx_file << "\tVarGroupObject* " << module_symbol << "_obj = (VarGroupObject*)PyDict_GetItemString(self->x_attr, \"" << module_symbol << "\");\n"
+	               "\t" << module_symbol << "_obj->data_ptr = (void*)ptr;\n";
+    }
+
+	fx_file <<  "\treturn Py_None;\n}\n\n\n";
+
     if (stateful) {
         fx_file << "static PyObject *\n"
                    "" << tech_symbol << "_setup(" << object_type << " *self, PyObject *args)\n"
@@ -700,7 +720,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "\t\t{\"execute\",           (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
                "\t\t{\"get_data_ptr\",           (PyCFunction)" << tech_symbol << "_get_data_ptr,  METH_VARARGS,\n"
-			   "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> Pointer\\n Get ssc_data_t pointer\")},\n"
+			   "\t\t\t\tPyDoc_STR(\"get_data_ptr() -> Pointer\\n Get ssc_data_t pointer\")},\n"
+               "\t\t{\"set_data_ptr\",           (PyCFunction)" << tech_symbol << "_set_data_ptr,  METH_VARARGS,\n"
+			   "\t\t\t\tPyDoc_STR(\"set_data_ptr(data_ptr)\\n Set ssc_data_t pointer\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
                "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
@@ -1142,6 +1164,12 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tpass\n"
                "\n"
                "\tdef export(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef get_data_ptr(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef set_data_ptr(self, data_ptr):\n"
                "\t\tpass\n"
                "\n"
                "\tdef __getattribute__(self, *args, **kwargs):\n"

@@ -786,6 +786,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_nHCEt_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set nSCA: Number of SCAs in a loop [none]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_nSCA_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set northsouth_field_sep: North/south separation between subfields. 0 = SCAs are touching [m]
 	 * options: None
 	 * constraints: None
@@ -1372,7 +1380,7 @@ extern "C"
 	 * Set dispatch_factors_ts: Dispatch payment factor array
 	 * options: None
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1380,7 +1388,7 @@ extern "C"
 	 * Set dispatch_sched_weekday: 12x24 PPA pricing Weekday schedule
 	 * options: None
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1388,7 +1396,7 @@ extern "C"
 	 * Set dispatch_sched_weekend: 12x24 PPA pricing Weekend schedule
 	 * options: None
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1518,7 +1526,7 @@ extern "C"
 	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
 	 * options: None
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1544,7 +1552,7 @@ extern "C"
 	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
 	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1557,7 +1565,7 @@ extern "C"
 	 * Set mp_energy_market_revenue: Energy market revenue input
 	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
 	 * constraints: None
-	 * required if: sim_type=1&csp_financial_model=6&is_dispatch=1
+	 * required if: csp_financial_model=6&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1565,7 +1573,7 @@ extern "C"
 	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
 	 * options: None
 	 * constraints: None
-	 * required if: sim_type=1&ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -2192,6 +2200,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_nHCEt_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_northsouth_field_sep_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_offset_xpan_hdr_nget(SAM_table ptr, SAM_error *err);
@@ -2633,10 +2643,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_bop_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_contingency_nget(SAM_table ptr, SAM_error *err);
@@ -2817,8 +2823,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_nSCA_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
@@ -2956,8 +2960,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err);
 

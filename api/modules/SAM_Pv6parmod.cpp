@@ -191,8 +191,6 @@ SAM_EXPORT double SAM_Pv6parmod_Weather_elev_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Weather_incidence_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -202,8 +200,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_incidence_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -215,8 +211,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_beam_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_gnddiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -226,8 +220,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_gnddiff_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_skydiff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -239,8 +231,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_poa_skydiff_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Weather_sun_zen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -250,8 +240,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_sun_zen_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Weather_surf_tilt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -263,8 +251,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_surf_tilt_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Weather_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -274,8 +260,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_tdry_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Weather_wdir_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -287,8 +271,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_wdir_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Weather_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -299,8 +281,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Weather_wspd_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Adj_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -309,8 +289,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Adj_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Il_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -321,8 +299,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Il_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Imp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -331,8 +307,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Imp_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Io_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -343,8 +317,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Io_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -353,8 +325,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Isc_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Rs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -365,8 +335,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Rs_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Rsh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -375,8 +343,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Rsh_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Vmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -387,8 +353,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Vmp_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -397,8 +361,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_Voc_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -409,8 +371,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_a_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_alpha_isc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -419,8 +379,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_alpha_isc_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -431,8 +389,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_area_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -441,8 +397,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -453,8 +407,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -463,8 +415,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_height_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_CEC6ParameterPVModuleModel_opvoltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -476,8 +426,6 @@ SAM_EXPORT double* SAM_Pv6parmod_CEC6ParameterPVModuleModel_opvoltage_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_standoff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -487,8 +435,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_standoff_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_tnoct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -497,8 +443,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_tnoct_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -510,8 +454,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_current_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -521,8 +463,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_current_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_voltage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -534,8 +474,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Outputs_dc_voltage_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Outputs_eff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -546,8 +484,6 @@ SAM_EXPORT double* SAM_Pv6parmod_Outputs_eff_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pv6parmod_Outputs_tcell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -557,6 +493,4 @@ SAM_EXPORT double* SAM_Pv6parmod_Outputs_tcell_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 

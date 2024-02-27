@@ -248,6 +248,126 @@ SAM_EXPORT void SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_add_om_num_types_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "add_om_num_types", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_annual_fuel_usage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "annual_fuel_usage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_capacity_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fixed_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuel_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuel_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuelcell_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_capacity_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuelcell_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_fixed_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuelcell_nameplate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuelcell_nameplate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuelcell_replacement_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_replacement_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fuelcell_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuelcell_variable_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_production2_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_production2_values", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_production_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_replacement_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_replacement_cost_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "total_installed_cost", number);
+	});
+}
+
 SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -256,8 +376,6 @@ SAM_EXPORT double SAM_Fuelcell_Lifetime_analysis_period_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -268,8 +386,6 @@ SAM_EXPORT double SAM_Fuelcell_Lifetime_system_use_lifetime_output_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_Common_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -279,8 +395,6 @@ SAM_EXPORT double SAM_Fuelcell_Common_annual_energy_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_Common_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -289,8 +403,6 @@ SAM_EXPORT double SAM_Fuelcell_Common_capacity_factor_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Common_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -302,8 +414,6 @@ SAM_EXPORT double* SAM_Fuelcell_Common_gen_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -313,8 +423,6 @@ SAM_EXPORT double* SAM_Fuelcell_Load_load_aget(SAM_table ptr, int* length, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -326,8 +434,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -337,8 +443,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcell_sched_weekend_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -350,8 +454,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcellcharge_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcelldischarge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -361,8 +463,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_fuelcelldischarge_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -374,8 +474,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_percent_fc_discharge_ag
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_units_fc_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -385,8 +483,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_dispatch_manual_units_fc_discharge_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_availability_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -398,8 +494,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_availability_schedule_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -408,8 +502,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restart_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -420,8 +512,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restart_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restart_schedule_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -431,8 +521,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restart_schedule_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restarts_per_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -441,8 +529,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_degradation_restarts_per_year_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_dispatch_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -454,8 +540,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_dispatch_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dispatch_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -464,8 +548,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dispatch_choice_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dynamic_response_down_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -476,8 +558,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dynamic_response_down_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dynamic_response_up_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -486,8 +566,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_dynamic_response_up_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_efficiency_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -499,8 +577,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_efficiency_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_efficiency_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -509,8 +585,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_efficiency_choice_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fixed_pct_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -521,8 +595,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fixed_pct_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_available_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -531,8 +603,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_available_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_price_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -543,8 +613,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_price_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -553,8 +621,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_fuel_type_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_is_started_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -565,8 +631,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_is_started_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_lhv_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -575,8 +639,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_lhv_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_number_of_units_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -587,8 +649,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_number_of_units_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_operation_options_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -597,8 +657,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_operation_options_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_replacement_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -609,8 +667,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_replacement_option_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_replacement_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -619,8 +675,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_replacement_percent_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -632,8 +686,6 @@ SAM_EXPORT double* SAM_Fuelcell_FuelCell_fuelcell_replacement_schedule_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_shutdown_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -642,8 +694,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_shutdown_time_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_startup_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -654,8 +704,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_startup_time_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -664,8 +712,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_type_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_max_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -676,8 +722,6 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_max_power_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -687,7 +731,194 @@ SAM_EXPORT double SAM_Fuelcell_FuelCell_fuelcell_unit_min_power_nget(SAM_table p
 	return result;
 }
 
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "add_om_num_types", &result))
+		make_access_error("SAM_Fuelcell", "add_om_num_types");
+	});
+	return result;
+}
 
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
+		make_access_error("SAM_Fuelcell", "annual_fuel_usage");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "degradation");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_Fuelcell", "land_area");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_fixed_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_fuel_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_fuel_cost_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_fuelcell_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_capacity_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_fuelcell_capacity_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_fuelcell_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_fixed_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_fuelcell_fixed_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_fuelcell_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuelcell_nameplate", &result))
+		make_access_error("SAM_Fuelcell", "om_fuelcell_nameplate");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_fuelcell_replacement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_replacement_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_fuelcell_replacement_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_fuelcell_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuelcell_variable_cost", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_fuelcell_variable_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_land_lease");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_land_lease_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_production2_values", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "om_production2_values");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_production_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_replacement_cost_escal", &result))
+		make_access_error("SAM_Fuelcell", "om_replacement_cost_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_Fuelcell", "total_installed_cost");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_Fuelcell_Outputs_annual_energy_discharged_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -697,8 +928,6 @@ SAM_EXPORT double SAM_Fuelcell_Outputs_annual_energy_discharged_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -710,8 +939,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_fc_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -722,8 +949,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_energy_distribution_time_fc_mget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -732,8 +957,6 @@ SAM_EXPORT double SAM_Fuelcell_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -745,8 +968,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_annual_fuel_usage_lifetime_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -756,8 +977,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_battery_replacement_cost_schedule_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -769,8 +988,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_energy_net_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -781,7 +998,15 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_fuelcell_replacement_cost_schedule_ag
 	return result;
 }
 
-
+SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "cf_land_lease_expense");
+	});
+	return result;
+}
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -793,8 +1018,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_capacity_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -804,8 +1027,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fixed_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -817,8 +1038,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -828,8 +1047,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_land_lease_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -841,8 +1058,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_om_production_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -852,8 +1067,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_annual_energy_discharged_aget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -865,8 +1078,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_electrical_efficiency_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -876,8 +1087,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_fuel_consumption_mcf_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_monthly_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -889,8 +1098,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_monthly_energy_discharged_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_percent_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -900,8 +1107,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_percent_load_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -913,8 +1118,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_max_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -924,8 +1127,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_max_percent_aget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -937,8 +1138,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_power_thermal_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -948,8 +1147,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_replacement_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_to_grid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -961,8 +1158,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_to_grid_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_to_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -972,8 +1167,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_fuelcell_to_load_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Fuelcell_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -985,8 +1178,6 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_gen_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Fuelcell_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -995,6 +1186,4 @@ SAM_EXPORT double SAM_Fuelcell_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
