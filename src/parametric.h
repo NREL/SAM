@@ -193,7 +193,7 @@ public:
 
 	void OnLeftClick(wxGridEvent& evt);
 	void OnColSort(wxGridEvent& evt);
-
+	void OnGridCellChange(wxGridEvent& evt);
 	DECLARE_EVENT_TABLE()
 };
 

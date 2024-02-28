@@ -3944,7 +3944,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen());
 
-	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(1024, 768), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 	ShadeTool *st = new ShadeTool(&dlg, wxID_ANY);
 
 	if (cxt.arg_count() > 1 && bin.GetDataLen() == 0)
