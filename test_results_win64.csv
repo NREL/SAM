@@ -60,7 +60,7 @@ Standalone Battery,Merchant Plant,-8397703,26.6181,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,78.2835,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.12112e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,All Equity Partnership Flip,-8397703,79.1754,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.85976e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,Sale Leaseback,-8397703,80.5079,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-4.61131e+07. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-8.70063e+07. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466563296,14.794,7.40816,; 
+ETES,Single Owner,-466572064,14.7945,7.40855,; 
 PTES,Single Owner,-197595520,18.6636,10.3676,; 
 Physical Trough,Single Owner,377431488,14.4214,14.5131,; 
 Physical Trough,Merchant Plant,377431488,13.253,NA,; 
@@ -116,8 +116,8 @@ MEwave,Single Owner,65589748,63.1598,60.3986,; Warning: NPV is $-2.01264e+07. A 
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEwave,None,594343,NA,NA,; 
 MEwave Battery,Single Owner,64959432,64.963,60.3968,; Warning: NPV is $-3.29752e+07. A negative NPV indicates project costs are higher than revenues.
-MEtidal,LCOE Calculator,fail,fail,fail
-MEtidal,None,fail,fail,fail
+MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; 
+MEtidal,None,2.16152e+06,NA,NA,; 
 Wind Power,Residential,48358.4,21.9797,NA,; 
 Wind Power,Commercial,327922,8.85854,NA,; 
 Wind Power,Single Owner,818888256,2.60022,4.33226,; 
