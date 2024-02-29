@@ -3719,8 +3719,8 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 void fcall_geocode(lk::invoke_t& cxt) 
 {
 	LK_DOC("geocode",
-		"Given a street address, location name, or latitude-longitude pair ('lat,lon') string, returns the latitude, longitude, and time zone of an address using Developer API. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
-		"(string:address):table");
+		"Given a street address or location name, returns latitude, longitude, and time zone. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NREL wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"(string):table");
 
 	double lat = 0, lon = 0, tz = 0;
 	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
@@ -3944,7 +3944,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen());
 
-	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(1024, 768), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 	ShadeTool *st = new ShadeTool(&dlg, wxID_ANY);
 
 	if (cxt.arg_count() > 1 && bin.GetDataLen() == 0)
