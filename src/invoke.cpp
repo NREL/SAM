@@ -53,6 +53,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/mstream.h>
 #include <wx/busyinfo.h>
 #include <wx/arrstr.h>
+#include <wx/progdlg.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -3719,8 +3720,8 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 void fcall_geocode(lk::invoke_t& cxt) 
 {
 	LK_DOC("geocode",
-		"Given a street address, location name, or latitude-longitude pair ('lat,lon') string, returns the latitude, longitude, and time zone of an address using Developer API. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
-		"(string:address):table");
+		"Given a street address or location name, returns latitude, longitude, and time zone. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NREL wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"(string):table");
 
 	double lat = 0, lon = 0, tz = 0;
 	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
@@ -3944,7 +3945,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen());
 
-	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(1024, 768), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 	ShadeTool *st = new ShadeTool(&dlg, wxID_ANY);
 
 	if (cxt.arg_count() > 1 && bin.GetDataLen() == 0)
@@ -5863,189 +5864,224 @@ static void fcall_read_json(lk::invoke_t &cxt)
     sscdata_to_lkhash(data, cxt.result());
 }
 
-static void fcall_reopt_size_battery(lk::invoke_t &cxt)
+static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 {
-    LK_DOC("reopt_size_battery", "Makes a call to the REopt API using inputs from the current behind-the-meter battery case and returns optimum battery size and dispatch. Set the grid outage parameter to True to consider outages, False for no outages.", "[boolean:grid_outage]: table");
+	LK_DOC("reopt_size_battery", "Makes a call to the REopt API using inputs from the current behind-the-meter battery case and returns optimum battery size and dispatch. Set the grid outage parameter to True to consider outages, False for no outages.", "[boolean:grid_outage]: table");
 
-    ssc_data_t p_data = ssc_data_create();
+	ssc_data_t p_data = ssc_data_create();
 
-    bool grid_outage = false;
-    if (cxt.arg_count() > 0) {
-        grid_outage = cxt.arg(0).as_boolean();
-    }
+	bool grid_outage = false;
+	if (cxt.arg_count() > 0) {
+		grid_outage = cxt.arg(0).as_boolean();
+	}
 
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
-	dlg.Show();
-	wxGetApp().Yield(true);
 
-    // check if case exists and is correct configuration
-    Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-    if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
-            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
-             sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
-        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
-    bool pvsam = sam_case->GetTechnology() == "PV Battery";
+	// check if case exists and is correct configuration
+	Case* sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
+	if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
+		(sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
+			sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
+		throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
+	bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
-    Simulation base_case = sam_case->BaseCase();
-    base_case.Clear();
-    base_case.Prepare();
-    bool success = base_case.Invoke(true);
-    if (!success){
-        ssc_data_free(p_data);
-        throw lk::error_t(base_case.GetErrors()[0]);
-    }
+	Simulation base_case = sam_case->BaseCase();
+	base_case.Clear();
+	base_case.Prepare();
+	bool success = base_case.Invoke(false,true,"");
+	if (!success) {
+		ssc_data_free(p_data);
+		throw lk::error_t(base_case.GetErrors()[0]);
+		return;
+	}
 
-    //
-    // copy over required inputs from SAM
-    //
-    size_t length;
-    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
-    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // We're now providing prod factor series via gen, so REopt will ignore lat and lon
-    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value());
-    ssc_data_set_array(p_data, "gen_without_battery", gen, length);
+	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
-    ssc_data_set_number(p_data, "size_for_grid_outage", grid_outage);
+	pdlg.Show();
+	pdlg.Fit();
 
-    auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
-        for (auto& i : captured_vec){
-            auto vd = base_case.GetValue(i);
-            if (vd){
-                switch(vd->Type()){
-                    case VV_NUMBER:
-                        ssc_data_set_number(p_data, i.c_str(), vd->Value());
-                        break;
-                    case VV_ARRAY:{
-                        size_t n;
-                        double* arr = vd->Array(&n);
-                        ssc_data_set_array(p_data, i.c_str(), arr, n);
-                        break;
-                    }
-                    case VV_MATRIX:{
-                        size_t n, m;
-                        double* mat = vd->Matrix(&n, &m);
-                        ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
-                        break;
-                    }
-                    default:
-                        throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
-                }
-            }
-        }
-    };
+	//
+	// copy over required inputs from SAM
+	//
+	size_t length;
+	ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
+	ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // We're now providing prod factor series via gen, so REopt will ignore lat and lon
+	ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value());
+	ssc_data_set_array(p_data, "gen_without_battery", gen, length);
 
-    // variables that are disjoint between PVWatts and PVSam
-    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
-											 "module_type"};
+	ssc_data_set_number(p_data, "size_for_grid_outage", grid_outage);
 
-    std::vector<std::string> pvsam_vars = {"subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
-                                           "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
-                                           "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
-                                           "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
-                                           "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC", "batt_dispatch_auto_can_gridcharge", "crit_load", "grid_outage"};
+	auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec) {
+		for (auto& i : captured_vec) {
+			auto vd = base_case.GetValue(i);
+			if (vd) {
+				switch (vd->Type()) {
+				case VV_NUMBER:
+					ssc_data_set_number(p_data, i.c_str(), vd->Value());
+					break;
+				case VV_ARRAY: {
+					size_t n;
+					double* arr = vd->Array(&n);
+					ssc_data_set_array(p_data, i.c_str(), arr, n);
+					break;
+				}
+				case VV_MATRIX: {
+					size_t n, m;
+					double* mat = vd->Matrix(&n, &m);
+					ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
+					break;
+				}
+				default:
+					throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
+				}
+			}
+		}
+		};
 
-    if (pvsam){
-        copy_vars_into_ssc_data(pvsam_vars);
-    }
-    else{
-        copy_vars_into_ssc_data(pvwatts_vars);
-    }
+	// variables that are disjoint between PVWatts and PVSam
+	std::vector<std::string> pvwatts_vars = { "array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
+											 "module_type" };
 
-    // variables common to both models
-    std::vector<std::string> pv_vars = {"degradation", "itc_fed_percent", "system_capacity",
-                                        "pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
-                                        "ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
-                                        "total_installed_cost", "depr_bonus_fed", "depr_bonus_fed"};
+	std::vector<std::string> pvsam_vars = { "subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
+										   "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
+										   "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
+										   "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
+										   "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
+										   "batt_minimum_SOC", "batt_dispatch_auto_can_gridcharge", "crit_load", "grid_outage" };
 
-    std::vector<std::string> batt_vars = {"battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule"};
+	if (pvsam) {
+		copy_vars_into_ssc_data(pvsam_vars);
+	}
+	else {
+		copy_vars_into_ssc_data(pvwatts_vars);
+	}
 
-    std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
-                                          "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
-                                          "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
-                                          "load"};
+	// variables common to both models
+	std::vector<std::string> pv_vars = { "degradation", "itc_fed_percent", "system_capacity",
+										"pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
+										"ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
+										"total_installed_cost", "depr_bonus_fed", "depr_bonus_fed" };
 
-    std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
-                                         "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "system_use_lifetime_output"};
+	std::vector<std::string> batt_vars = { "battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule" };
 
-    copy_vars_into_ssc_data(pv_vars);
-    copy_vars_into_ssc_data(batt_vars);
-    copy_vars_into_ssc_data(rate_vars);
-    copy_vars_into_ssc_data(fin_vars);
+	std::vector<std::string> rate_vars = { "ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
+										  "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
+										  "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
+										  "load" };
 
-    try{
-        Reopt_size_battery_params(p_data);
-    }
-    catch( std::exception& e){
-        ssc_data_free(p_data);
-        throw lk::error_t(e.what());
-    }
+	std::vector<std::string> fin_vars = { "analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
+										 "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
+										 "total_installed_cost", "system_use_lifetime_output" };
 
-    auto reopt_scenario = new lk::vardata_t;
-    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
-    ssc_data_free(p_data);
+	copy_vars_into_ssc_data(pv_vars);
+	copy_vars_into_ssc_data(batt_vars);
+	copy_vars_into_ssc_data(rate_vars);
+	copy_vars_into_ssc_data(fin_vars);
 
-    cxt.result().empty_hash();
-    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-    cxt.result().hash_item("scenario", reopt_jsonpost);
+	try {
+		Reopt_size_battery_params(p_data);
+	}
+	catch (std::exception& e) {
+		pdlg.Close();
+		ssc_data_free(p_data);
+		throw lk::error_t(e.what());
+		return;
+	}
 
-    // send the post
-    wxString post_url = SamApp::WebApi("reopt_post");
-    post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
-    wxEasyCurl curl;
-    curl.AddHttpHeader("Accept: application/json");
-    curl.AddHttpHeader("Content-Type: application/json");
-    curl.SetPostData(reopt_jsonpost);
+	if (!pdlg.Update(20, "Getting REopt ID for optimization run.")) {
+		return;
+	}
 
-    wxString msg, err;
-    if (!curl.Get(post_url, msg))
-    {
-        cxt.result().assign(msg);
-        return;
-    }
+	auto reopt_scenario = new lk::vardata_t;
+	sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
+	ssc_data_free(p_data);
 
-    // get the run_uuid to poll for result, checking the status
-    lk::vardata_t results;
-    if (!lk::json_read(curl.GetDataAsString(), results, &err))
-        cxt.result().assign("<reopt-error> " + err);
+	cxt.result().empty_hash();
+	lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
+	cxt.result().hash_item("scenario", reopt_jsonpost);
 
-    if (auto err_vd = results.lookup("messages"))
-        throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error")){
-        cxt.result().hash_item("error", err_vd->as_string());
-        return;
-    }
+	// send the post
+	wxString post_url = SamApp::WebApi("reopt_post");
+	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
-    wxString poll_url = SamApp::WebApi("reopt_poll");
-    poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
-    poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
-    curl = wxEasyCurl();
-    cxt.result().hash_item("response", lk::vardata_t());
-    lk::vardata_t* cxt_result = cxt.result().lookup("response");
+	wxEasyCurl curl;
+	curl.AddHttpHeader("Accept: application/json");
+	curl.AddHttpHeader("Content-Type: application/json");
+	curl.SetPostData(reopt_jsonpost);
 
-    std::string optimizing_status = "Optimizing...";
-    while (optimizing_status == "Optimizing..."){
-        if (!curl.Get(poll_url, msg))
-        {
-            cxt.result().hash_item("error", msg);
-            break;
-        }
-        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)){
-            cxt.result().hash_item("error", "<json-error> " + err);
-            break;
-        }
+	wxString msg, err;
+	if (!curl.Get(post_url, msg))
+	{
+		pdlg.Close();
+		cxt.result().assign(msg);
+		return;
+	}
 
-        optimizing_status = cxt_result->lookup("status")->as_string();
-        if (optimizing_status.find("error") != std::string::npos){
-            std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
-            cxt.result().hash_item("error", error);
-            break;
-        }
+	if (!pdlg.Update(30, "Checking REopt ID.")) {
+		return;
+	}
 
-    }
-    dlg.Close();
+	// get the run_uuid to poll for result, checking the status
+	lk::vardata_t results;
+	if (!lk::json_read(curl.GetDataAsString(), results, &err))
+		cxt.result().assign("<reopt-error> " + err);
+
+	// if run_uuid is not returned, get error message from json result
+	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
+	if (auto err_vd = results.lookup("messages")) {
+		throw lk::error_t(err_vd->lookup("error")->as_string());
+	}
+	if (auto err_vd = results.lookup("error")) {
+		pdlg.Close();
+		cxt.result().hash_item("error", err_vd->as_string());
+		return;
+	}
+
+	if (!pdlg.Update(40, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	// now we have a run_uuid so make call to run REopt
+	wxString poll_url = SamApp::WebApi("reopt_poll");
+	poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
+	curl = wxEasyCurl();
+	cxt.result().hash_item("response", lk::vardata_t());
+	lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	int p=60;
+	std::string optimizing_status = "Optimizing...";
+	while (optimizing_status == "Optimizing...") {
+		if ( p > 100 ) p = 99;
+		if (!pdlg.Update(p++, "Running optimization on REopt servers.")) {
+			return;
+		}
+		if (!curl.Get(poll_url, msg))
+		{
+			cxt.result().hash_item("error", msg);
+			break;
+		}
+		if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)) {
+			cxt.result().hash_item("error", "<json-error> " + err);
+			break;
+		}
+
+		optimizing_status = cxt_result->lookup("status")->as_string();
+		if (optimizing_status.find("error") != std::string::npos) {
+			std::string error = cxt_result->lookup("messages")->lookup("errors")->as_string().ToStdString();
+			cxt.result().hash_item("errors", error);
+			break;
+		}
+
+	}
+
+	pdlg.Update(100, "Done.");
+	wxMilliSleep(1000);
+	pdlg.Close();
 }
 
 static void fcall_setup_landbosse(lk::invoke_t &cxt)
