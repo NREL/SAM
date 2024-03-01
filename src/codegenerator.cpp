@@ -454,11 +454,70 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 	for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < cfg->Simulations.size(); i++) { // each vartable
 		ssc_data_t p_val = ssc_data_create();
 		m_case->Values(i).AsSSCData(p_val); // skips overrides - okay for base case
-		//m_inputs[i].AsSSCData(p_val); // includes overrides (simulation.cpp)
-		if (i == m_case->GetConfiguration()->Technology.size() - 1) // "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
+		// remove any inputs that are not in the compute module
+		if (i == m_case->GetConfiguration()->Technology.size() - 1) {// "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
+			size_t j = i;
+			wxArrayString ssc_inputs;
+			while (j < cfg->Simulations.size()) {
+				auto& scompute_module = cfg->Simulations[j];
+				ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+				if (!p_mod)
+				{
+					m_errors.Add("could not create ssc module: " + scompute_module);
+					return false;
+				}
+				int pidx = 0;
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+				{
+					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+					const char* var_name = ssc_info_name(p_inf);
+					wxString name(var_name); // assumed to be non-null
+					wxString reqd(ssc_info_required(p_inf));
+
+					if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+						ssc_inputs.Add(name);
+					}
+				}
+				j++;
+			}
+			auto c = ssc_data_first(p_val);
+			while (c) {
+				if (ssc_inputs.Index(wxString(c)) == wxNOT_FOUND)
+					ssc_data_unassign(p_val, c);
+				c = ssc_data_next(p_val);
+			}
 			ssc_data_set_table(p_input, m_case->GetConfiguration()->Technology[i].c_str(), p_val);
-		else
+		}
+		else {
+			// remove inputs not in compute module
+			auto& scompute_module = cfg->Simulations[i];
+			ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+			if (!p_mod)
+			{
+				m_errors.Add("could not create ssc module: " + scompute_module);
+				return false;
+			}
+			wxArrayString ssc_inputs;
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+			{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				const char* var_name = ssc_info_name(p_inf);
+				wxString name(var_name); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+					ssc_inputs.Add(name);
+				}
+			}
+			auto c = ssc_data_first(p_val);
+			while (c) {
+				if (ssc_inputs.Index(wxString(c)) == wxNOT_FOUND)
+					ssc_data_unassign(p_val, c);
+				c = ssc_data_next(p_val);
+			}
 			ssc_data_set_table(p_input, cfg->Simulations[i].c_str(), p_val);
+		}
 		ssc_data_free(p_val);
 	}
 	// set "input" SSC_TABLE
