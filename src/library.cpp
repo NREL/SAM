@@ -1141,12 +1141,12 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../wave_resource/");
 	
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("wave_data_paths", &slist))
@@ -1331,12 +1331,12 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../wave_resource_ts/");
 
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("wave_data_paths", &slist))
@@ -1552,12 +1552,12 @@ bool ScanTidalResourceData(const wxString& db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../tidal_resource/");
 
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("tidal_data_paths", &slist))
