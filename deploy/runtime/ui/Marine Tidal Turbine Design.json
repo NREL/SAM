@@ -243,7 +243,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -334,7 +334,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Enter an annual land lease cost for each year of the analysis period."
+                    "String": "Enter Maximum CP values for each tidal surface velocity bin"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -699,11 +699,11 @@
         "tidal_turbine_kw_rating_input": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "User-defined rated output",
+            "Label": "Rated power output",
             "Units": "kW",
             "Group": "ME Tidal Converter",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 10.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -888,6 +888,11 @@
         "\t\r",
         "\t// other outputs\r",
         "\treturn 0;\r",
+        "};\r",
+        "\r",
+        "equations{'tidal_turbine_kw_rating_input'} = define() {\r",
+        "\trotor_area = pow(${tidal_turbine_rotor_diameter_input}/2,2) * 3.1415 * ${tidal_turbine_number_rotors};\r",
+        "\treturn 0.5 * 1025 * max(${tidal_turbine_max_cp}) * rotor_area / 1e6 * 1000; //kW\r",
         "};\r",
         ""
     ],
