@@ -59,6 +59,55 @@
 
 -->
 
+<h1 id="2023-12-17-r1">SAM 2023.12.17 r1, SSC 28x: March xx, 2024</h1>
+
+<p>This is the first maintenance update to <a href="#2023-12-17">SAM 2023.12.17</a>.</p>
+
+<ul>
+<li>Solar Resource
+<ul>
+<li>Support NSRDB weather file downloads from the Solar Resource page for locations outside the United States. (<a href="https://github.com/NREL/SAM/pull/1720">SAM 1720</a>, <a href="https://github.com/NREL/ssc/pull/1140">SSC 1140</a>)</br>&nbsp;&nbsp;<a href="https://github.com/NREL/SAM/issues/1534">Additional work is planned</a> for the Advanced NSRDB Download window for the second update to SAM 2023.12.17.</li>
+<li>Fix problem using latitude and longitude to download weather files from the Solar Resource page. (<a href="https://github.com/NREL/SAM/pull/1692">SAM 1692</a>)</li>
+</ul>
+</li>
+<li>Detailed PV and PVWatts
+<ul>
+<li>Fix PV land area calculations. (<a href="https://github.com/NREL/SAM/pull/1721">SAM 1721</a>, <a href="https://github.com/NREL/SAM/pull/1697">SAM 1697</a>)</li>
+<li>Fix PV time series shading data import from 3D shade calculator and overlapping inputs in Edit Shading window for PVWatts. (<a href="https://github.com/NREL/SAM/pull/1712">SAM 1712</a>)</li>
+<li>Fix Detailed PV non-linear self shading for vertical arrays to avoid negative POA irradiance values. (<a href="https://github.com/NREL/ssc/pull/1127">SSC 1127</a>)</li>
+<li>Fix issue with Detailed PV subhourly clipping loss when weather file has no DNI data. (<a href="https://github.com/NREL/ssc/pull/1126">SSC 1126</a>)</li>
+<li>Fix reporting of ground-reflected rear irradiance gains in loss diagram for Detailed PV model with bifacial modules. (<a href="https://github.com/NREL/ssc/pull/1125">SSC 1125</a>)</li>
+<li>Add snow slide coefficient to outputs for Detailed PV with snow model enabled. (<a href="https://github.com/NREL/ssc/pull/1128">SSC 1128</a>)</li>
+<li>Clean up PV subhourly clipping loss correction in user interface. (<a href="https://github.com/NREL/SAM/pull/1689">SAM 1689</a>)</li>
+<li>Fix diagrams on Detailed PV Shading and Layout page to show both portrait and landscape instead of duplicating portrait. (<a href="https://github.com/NREL/SAM/pull/1696">SAM 1696</a>)</li>
+</ul>
+</li>
+<li>Concentrating Solar Power (CSP)
+<ul>
+<li>Fix parabolic trough loop configuration on SCA (Collectors) page. (<a href="https://github.com/NREL/SAM/pull/1709">SAM 1709</a>)</li>
+<li>Fix problems with parabolic trough dispatch optimization and loop configuration that caused a simulation error. (<a href="https://github.com/NREL/SAM/issues/1674">SAM 1674</a>, <a href="https://github.com/NREL/ssc/pull/1121">SSC 1121</a>)
+</ul>
+</li>
+<li>Battery Storage
+<ul>
+<li>Improve REopt API calls for battery size and dispatch optimization to better report status and errors from API. (<a href="https://github.com/NREL/SAM/pull/1714">SAM 1714</a>)</li>
+<li>Fix simulation error caused by battery environment temperature input as time series array. (<a href="https://github.com/NREL/SAM/pull/1694">SAM 1694</a>, <a href="https://github.com/NREL/ssc/pull/1138">SSC 1138</a>)</li>
+<li>Fix issue with behind-the-meter battery with retail rate dispatch that caused a simulation error. (<a href="https://github.com/NREL/ssc/pull/1135">SSC 1135</a>)
+<li>Fix default battery life inputs so correct table is shown for the default Li-ion LFP/Graphite battery type.  (<a href="https://github.com/NREL/SAM/pull/1715">SAM 1715</a>)
+<li>Fix problem with battery discharging to grid for manual dispatch option. (<a href="https://github.com/NREL/ssc/pull/1115">SSC 1115</a>)</li>
+<li>Fix problem with battery self consumption dispatch option with grid outage. (<a href="https://github.com/NREL/ssc/pull/1114">SSC 1114</a>)</li>
+</ul>
+</li>
+<li>Fix problem with losses specifed as "time series losses with custom time periods" that caused a simulation error. (<a href="https://github.com/NREL/SAM/pull/1698">SAM 1698</a>)</li>
+<li>Improve reporting of time series data for subhourly Detailed PV and PV Battery simulations so that "hourly" and "hourly lifetime" values are consistent. (<a href="https://github.com/NREL/SAM/issues/1684">SAM 1684</a>)</li>
+<li>Fix problem with loading weather files with time series wave resource data for marine energy wave model. (<a href="https://github.com/NREL/SAM/pull/1701">SAM 1701</a>, <a href="https://github.com/NREL/ssc/pull/1130">SSC 1130</a>)</li>
+<li>Improve debt sizing calculation for front-of-meter financial models with sculpted debt (DSCR as input) and when debt size limit is enabled. (<a href="https://github.com/NREL/ssc/pull/1136">SSC 1136</a>)</li>
+<li>Fix state of Fuel Cell dispatch page when opening .sam files from older versions of SAM. (<a href="https://github.com/NREL/SAM/pull/1707">SAM 1707</a>)</li>
+<li>Fix Save and Load buttons throughout user interface. (<a href="https://github.com/NREL/SAM/pull/1695">SAM 1695</a>)</li>
+<li>Improve reporting of DC loss factors in PDF report for Detailed PV and PV Battery configurations. (<a href="https://github.com/NREL/SAM/pull/1690">SAM 1690</a>)
+<li>Fix broken link to SAM Forum from Help window.  (<a href="https://github.com/NREL/SAM/pull/1716">SAM 1716</a>)</li>
+</ul>
+
 <h1 id="2023-12-17">SAM 2023.12.17, SSC 288: December 17, 2023</h1>
 
 <p>This version introduces a set of new hybrid power system models and a new molten salt linear Fresnel models for electric power generation and industrial process heat (IPH) applications.</p>
