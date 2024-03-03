@@ -141,6 +141,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_en_snow_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set snow_slide_coefficient: Snow Slide Coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.97
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Losses_snow_slide_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray1_dcwiring_loss: Sub-array 1 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -4273,6 +4281,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set enable_subinterval_distribution: Enable subinterval distribution of PV power output [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subhourly_clipping_matrix: PV Subhourly clipping correction matrix
 	 * options: None
 	 * constraints: None
@@ -5651,14 +5667,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_production_escal: Production-based O&M escalation [%/year]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set total_installed_cost: Total installed cost [$]
 	 * options: None
 	 * constraints: None
@@ -5701,6 +5709,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Losses_en_snow_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Losses_snow_slide_coefficient_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_dcwiring_loss_nget(SAM_table ptr, SAM_error *err);
 
@@ -6810,6 +6820,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
@@ -7192,8 +7204,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -7296,6 +7306,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
@@ -7592,6 +7606,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_df_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_df_calc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_distribution_clipping_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_dn_aget(SAM_table ptr, int* length, SAM_error *err);
 

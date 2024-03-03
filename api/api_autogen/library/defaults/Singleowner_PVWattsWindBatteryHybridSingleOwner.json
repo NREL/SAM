@@ -80,7 +80,7 @@
 			"om_capacity": [0],
 			"om_fixed": [0],
 			"om_production": [0],
-			"total_installed_cost": 5.20326e+08
+			"total_installed_cost": 5.20327e+08
 		},
 		"LandLease": {
 		},
@@ -381,10 +381,7 @@
 		"Monthly": {
 		},
 		"HybridCosts": {
-			"om_capacity": [0],
-			"om_fixed": [0],
-			"om_production": [0],
-			"total_installed_cost": 5.20326e+08
+			"total_installed_cost": 5.20327e+08
 		}
 	}
 }

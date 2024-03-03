@@ -32,6 +32,14 @@ extern "C"
 	//
 
 	/**
+	 * Set snow_slide_coefficient: Snow Slide Coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.97
+	 */
+	SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snow_slide_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set snowdepth: Snow Depth [cm]
 	 * options: None
 	 * constraints: LENGTH=8760
@@ -120,6 +128,8 @@ extern "C"
 	/**
 	 * PVSnowModel Getters
 	 */
+
+	SAM_EXPORT double SAM_Snowmodel_PVSnowModel_snow_slide_coefficient_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_snowdepth_aget(SAM_table ptr, int* length, SAM_error *err);
 

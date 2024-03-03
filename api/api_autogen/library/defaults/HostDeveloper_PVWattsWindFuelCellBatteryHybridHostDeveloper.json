@@ -78,7 +78,7 @@
 			"om_capacity": [0],
 			"om_fixed": [0],
 			"om_production": [0],
-			"total_installed_cost": 5.29306e+06
+			"total_installed_cost": 5.29375e+06
 		},
 		"LandLease": {
 		},
@@ -276,7 +276,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 138943
+			"construction_financing_cost": 138961
 		},
 		"BatterySystem": {
 			"batt_replacement_option": 1
@@ -294,10 +294,7 @@
 		"FuelCell": {
 		},
 		"HybridCosts": {
-			"om_capacity": [0],
-			"om_fixed": [0],
-			"om_production": [0],
-			"total_installed_cost": 5.29306e+06
+			"total_installed_cost": 5.29375e+06
 		}
 	}
 }

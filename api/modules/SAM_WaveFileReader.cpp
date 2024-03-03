@@ -14,12 +14,6 @@ SAM_EXPORT int SAM_WaveFileReader_execute(SAM_table data, int verbosity, SAM_err
 	return SAM_module_exec("wave_file_reader", data, verbosity, err);
 }
 
-SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "use_specific_wf_wave", number);
-	});
-}
-
 SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_filename_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "wave_resource_filename", str);
@@ -36,15 +30,6 @@ SAM_EXPORT void SAM_WaveFileReader_WeatherReader_wave_resource_model_choice_nset
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wave_resource_model_choice", number);
 	});
-}
-
-SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "use_specific_wf_wave", &result))
-		make_access_error("SAM_WaveFileReader", "use_specific_wf_wave");
-	});
-	return result;
 }
 
 SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_table ptr, SAM_error *err){

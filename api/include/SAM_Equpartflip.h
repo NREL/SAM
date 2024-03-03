@@ -1811,7 +1811,7 @@ extern "C"
 	SAM_EXPORT void SAM_Equpartflip_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
+	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None

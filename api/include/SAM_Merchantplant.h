@@ -114,7 +114,7 @@ extern "C"
 	/**
 	 * Set dscr_maximum_debt_fraction: Maximum debt fraction [%]
 	 * options: None
-	 * constraints: MIN=0
+	 * constraints: POSITIVE
 	 * required if: ?=100
 	 */
 	SAM_EXPORT void SAM_Merchantplant_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2237,7 +2237,7 @@ extern "C"
 	SAM_EXPORT void SAM_Merchantplant_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
+	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None

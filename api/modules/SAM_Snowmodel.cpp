@@ -14,6 +14,12 @@ SAM_EXPORT int SAM_Snowmodel_execute(SAM_table data, int verbosity, SAM_error* e
 	return SAM_module_exec("snowmodel", data, verbosity, err);
 }
 
+SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snow_slide_coefficient_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "snow_slide_coefficient", number);
+	});
+}
+
 SAM_EXPORT void SAM_Snowmodel_PVSnowModel_snowdepth_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "snowdepth", arr, length);
@@ -72,6 +78,15 @@ SAM_EXPORT void SAM_Snowmodel_TimeSeries_sunup_aset(SAM_table ptr, double* arr, 
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "sunup", arr, length);
 	});
+}
+
+SAM_EXPORT double SAM_Snowmodel_PVSnowModel_snow_slide_coefficient_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "snow_slide_coefficient", &result))
+		make_access_error("SAM_Snowmodel", "snow_slide_coefficient");
+	});
+	return result;
 }
 
 SAM_EXPORT double* SAM_Snowmodel_PVSnowModel_snowdepth_aget(SAM_table ptr, int* length, SAM_error *err){

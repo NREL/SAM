@@ -461,14 +461,13 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 			while (j < cfg->Simulations.size()) {
 				auto& scompute_module = cfg->Simulations[j];
 				ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
-				if (!p_mod)
-				{
+				if (!p_mod)	{
 					m_errors.Add("could not create ssc module: " + scompute_module);
 					return false;
 				}
+				// do not hybridize "Hybrid" compute modules
 				int pidx = 0;
-				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
-				{
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
 					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 					const char* var_name = ssc_info_name(p_inf);
 					wxString name(var_name); // assumed to be non-null
@@ -482,7 +481,7 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 			}
 			auto c = ssc_data_first(p_val);
 			while (c) {
-				if (ssc_inputs.Index(wxString(c)) == wxNOT_FOUND)
+				if (ssc_inputs.Index(wxString(c),false) == wxNOT_FOUND)
 					ssc_data_unassign(p_val, c);
 				c = ssc_data_next(p_val);
 			}
@@ -492,15 +491,18 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 			// remove inputs not in compute module
 			auto& scompute_module = cfg->Simulations[i];
 			ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
-			if (!p_mod)
-			{
+			if (!p_mod)	{
 				m_errors.Add("could not create ssc module: " + scompute_module);
 				return false;
 			}
+			if (!ssc_module_hybridize( p_mod)) { // add o and m and total installed cost for each hybrid subsystem
+				m_errors.Add("could hybridize ssc module: " + scompute_module);
+				return false;
+			}
+
 			wxArrayString ssc_inputs;
 			int pidx = 0;
-			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
-			{
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
 				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 				const char* var_name = ssc_info_name(p_inf);
 				wxString name(var_name); // assumed to be non-null
@@ -512,7 +514,7 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 			}
 			auto c = ssc_data_first(p_val);
 			while (c) {
-				if (ssc_inputs.Index(wxString(c)) == wxNOT_FOUND)
+				if (ssc_inputs.Index(wxString(c),false) == wxNOT_FOUND) // no case comparison, e.g. wind_farm_xCoordinates
 					ssc_data_unassign(p_val, c);
 				c = ssc_data_next(p_val);
 			}
