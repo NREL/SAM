@@ -316,13 +316,13 @@
 			"startup_time": 0.35
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 4,
-			"adjust_en_periods": 0,
-			"adjust_en_timeindex": 0,
-			"adjust_periods": [
-				[0.000000]
+			"constant": 4,
+			"en_periods": 0,
+			"en_timeindex": 0,
+			"periods": [
+				[0.000000, 0.000000, 0.000000]
 			],
-			"adjust_timeindex": [0.000000]
+			"timeindex": [0.000000]
 		}
 	}
 }

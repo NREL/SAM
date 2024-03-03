@@ -68,6 +68,12 @@ SAM_EXPORT void SAM_Grid_Load_load_escalation_aset(SAM_table ptr, double* arr, i
 	});
 }
 
+SAM_EXPORT void SAM_Grid_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "monthly_energy", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Grid_GridLimits_enable_interconnection_limit_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "enable_interconnection_limit", number);
@@ -86,6 +92,72 @@ SAM_EXPORT void SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_Grid_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_capacity", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_capacity_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fixed", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fixed_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_production", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_production_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Grid_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "total_installed_cost", number);
+	});
+}
+
 SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -94,8 +166,6 @@ SAM_EXPORT double SAM_Grid_Lifetime_analysis_period_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -106,8 +176,6 @@ SAM_EXPORT double SAM_Grid_Lifetime_system_use_lifetime_output_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -116,8 +184,6 @@ SAM_EXPORT double SAM_Grid_SystemOutput_annual_energy_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -129,8 +195,6 @@ SAM_EXPORT double* SAM_Grid_SystemOutput_energy_hourly_kW_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -140,8 +204,6 @@ SAM_EXPORT double* SAM_Grid_SystemOutput_gen_aget(SAM_table ptr, int* length, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_Load_crit_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -153,8 +215,6 @@ SAM_EXPORT double* SAM_Grid_Load_crit_load_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Grid_Load_grid_outage_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -164,8 +224,6 @@ SAM_EXPORT double* SAM_Grid_Load_grid_outage_aget(SAM_table ptr, int* length, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -177,8 +235,6 @@ SAM_EXPORT double* SAM_Grid_Load_load_aget(SAM_table ptr, int* length, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -189,7 +245,15 @@ SAM_EXPORT double* SAM_Grid_Load_load_escalation_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
+SAM_EXPORT double* SAM_Grid_Monthly_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy", length);
+	if (!result)
+		make_access_error("SAM_Grid", "monthly_energy");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -199,8 +263,6 @@ SAM_EXPORT double SAM_Grid_GridLimits_enable_interconnection_limit_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -212,8 +274,6 @@ SAM_EXPORT double* SAM_Grid_GridLimits_grid_curtailment_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -223,7 +283,109 @@ SAM_EXPORT double SAM_Grid_GridLimits_grid_interconnection_limit_kwac_nget(SAM_t
 	return result;
 }
 
+SAM_EXPORT double* SAM_Grid_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Grid", "degradation");
+	});
+	return result;
+}
 
+SAM_EXPORT double SAM_Grid_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_Grid", "land_area");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Grid_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Grid", "om_capacity");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Grid_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
+		make_access_error("SAM_Grid", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Grid_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Grid", "om_fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Grid_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
+		make_access_error("SAM_Grid", "om_fixed_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Grid_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Grid", "om_land_lease");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Grid_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_Grid", "om_land_lease_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Grid_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_production", length);
+	if (!result)
+		make_access_error("SAM_Grid", "om_production");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Grid_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
+		make_access_error("SAM_Grid", "om_production_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Grid_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_Grid", "total_installed_cost");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -234,8 +396,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_kwh_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -244,8 +404,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_curtailment_loss_percent_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -256,8 +414,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_kwh_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -266,8 +422,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_ac_interconnect_loss_percent_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -279,8 +433,6 @@ SAM_EXPORT double* SAM_Grid_Outputs_annual_energy_distribution_time_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -289,8 +441,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_curtailment_ac_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -301,8 +451,6 @@ SAM_EXPORT double SAM_Grid_Outputs_annual_energy_pre_interconnect_ac_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -311,8 +459,6 @@ SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_curtailment_ac_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -323,7 +469,15 @@ SAM_EXPORT double SAM_Grid_Outputs_capacity_factor_interconnect_ac_nget(SAM_tabl
 	return result;
 }
 
-
+SAM_EXPORT double* SAM_Grid_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_Grid", "cf_land_lease_expense");
+	});
+	return result;
+}
 
 SAM_EXPORT double* SAM_Grid_Outputs_full_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -335,8 +489,6 @@ SAM_EXPORT double* SAM_Grid_Outputs_full_load_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -346,8 +498,6 @@ SAM_EXPORT double* SAM_Grid_Outputs_gen_aget(SAM_table ptr, int* length, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -359,8 +509,6 @@ SAM_EXPORT double* SAM_Grid_Outputs_system_pre_curtailment_kwac_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Grid_Outputs_system_pre_interconnect_kwac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -370,6 +518,4 @@ SAM_EXPORT double* SAM_Grid_Outputs_system_pre_interconnect_kwac_aget(SAM_table 
 	});
 	return result;
 }
-
-
 

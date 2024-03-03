@@ -28,6 +28,43 @@ extern "C"
 
 
 	//
+	// SystemControl parameters
+	//
+
+	/**
+	 * Set disp_csu_cost: Cycle startup cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_rsu_cost: Receiver startup cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sim_type: 1 (default): timeseries, 2: design only
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// Weather parameters
 	//
 
@@ -123,14 +160,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_D_5_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set D_cpnt: Interconnect component diameters, row=intc, col=cpnt [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_D_cpnt_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set D_p: Diameter of the absorber flow plug (optional)  [m]
@@ -269,14 +298,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_I_bn_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set K_cpnt: Interconnect component minor loss coefficients, row=intc, col=cpnt [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_K_cpnt_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
 	 * Set L_SCA: Length of the SCA  [m]
 	 * options: None
 	 * constraints: None
@@ -291,14 +312,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_L_aperture_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set L_cpnt: Interconnect component lengths, row=intc, col=cpnt [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_L_cpnt_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set L_power_block_piping: Length of piping (full mass flow) through heat sink (if applicable) [none]
@@ -451,14 +464,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_TrackingError_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set Type_cpnt: Interconnect component type, row=intc, col=cpnt [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_Type_cpnt_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set V_hdr_cold_max: Maximum HTF velocity in the cold headers at design [m/s]
@@ -779,14 +784,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_nHCEt_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set nLoops: Number of loops in the field [none]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_nLoops_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set nSCA: Number of SCAs in a loop [none]
@@ -1452,14 +1449,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set is_wlim_series: Use time-series net electricity generation limits
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Tou_is_wlim_series_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
 	 * options: None
 	 * constraints: None
@@ -1514,43 +1503,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set wlim_series: Time series net electicity generation limits [kWe]
-	 * options: None
-	 * constraints: None
-	 * required if: is_wlim_series=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Tou_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// SystemControl parameters
-	//
-
-	/**
-	 * Set disp_csu_cost: Cycle startup cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_rsu_cost: Receiver startup cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1783,7 +1735,7 @@ extern "C"
 	 * Set tes_diams: Custom TES diameters [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: custom_tes_pipe_sizes=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_diams_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1791,7 +1743,7 @@ extern "C"
 	 * Set tes_lengths: Custom TES lengths [m]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: custom_tes_pipe_sizes=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_lengths_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1807,7 +1759,7 @@ extern "C"
 	 * Set tes_wallthicks: Custom TES wall thicknesses [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: custom_tes_pipe_sizes=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1842,6 +1794,168 @@ extern "C"
 
 
 	//
+	// SolarResourceData parameters
+	//
+
+	/**
+	 * Set lat: Latitude [degree]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarResourceData_lat_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// CapitalCosts parameters
+	//
+
+	/**
+	 * Set csp.dtr.cost.bop_per_kwe: Balance of Plant Cost per kWe [$/kWe]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_bop_per_kwe_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.contingency_percent: Contingency Percent [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_contingency_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.epc.fixed: Fixed EPC Cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_fixed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.epc.per_acre: EPC Costs per acre [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_per_acre_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.epc.per_watt: EPC Cost Wac [$/Wac]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_per_watt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.epc.percent: EPC Costs % direct [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.fossil_backup.cost_per_kwe: Fossil Backup Cost per kWe [$/kWe]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_fossil_backup_cost_per_kwe_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.htf_system.cost_per_m2: HTF System Cost Per m2 [$/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_htf_system_cost_per_m2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.plm.fixed: Fixed Land Cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_fixed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.plm.per_acre: Land Cost per acre [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_per_acre_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.plm.per_watt: Land Cost Wac [$/Wac]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_per_watt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.plm.percent: Land Cost % direct [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.power_plant.cost_per_kwe: Power Plant Cost per kWe [$/kWe]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_power_plant_cost_per_kwe_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.sales_tax.percent: Sales Tax Percentage of Direct Cost [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_sales_tax_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.site_improvements.cost_per_m2: Site Improvement Cost per m2 [$/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_site_improvements_cost_per_m2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.solar_field.cost_per_m2: Solar Field Cost per m2 [$/m2]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_solar_field_cost_per_m2_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set csp.dtr.cost.storage.cost_per_kwht: Storage cost per kWht [$/kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_storage_cost_per_kwht_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set sales_tax_rate: Sales Tax Rate [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_CapitalCosts_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// AdjustmentFactors parameters
 	//
 
@@ -1849,7 +1963,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1887,6 +2001,19 @@ extern "C"
 
 
 	/**
+	 * SystemControl Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Weather Getters
 	 */
 
@@ -1916,8 +2043,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_D_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_D_5_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_D_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_D_p_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -1953,13 +2078,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_I_bn_des_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_K_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_L_SCA_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_L_aperture_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_L_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_L_power_block_piping_nget(SAM_table ptr, SAM_error *err);
 
@@ -1998,8 +2119,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_TrackingError_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_SolarField_Type_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_V_hdr_cold_max_nget(SAM_table ptr, SAM_error *err);
 
@@ -2080,8 +2199,6 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_nHCEVar_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_nHCEt_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SolarField_nLoops_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err);
 
@@ -2260,8 +2377,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Tou_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
@@ -2275,19 +2390,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Tou_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * SystemControl Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2393,6 +2495,54 @@ extern "C"
 
 
 	/**
+	 * SolarResourceData Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarResourceData_lat_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * CapitalCosts Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_bop_per_kwe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_contingency_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_per_acre_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_per_watt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_epc_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_fossil_backup_cost_per_kwe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_htf_system_cost_per_m2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_per_acre_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_per_watt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_plm_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_power_plant_cost_per_kwe_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_sales_tax_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_site_improvements_cost_per_m2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_solar_field_cost_per_m2_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_csp_dtr_cost_storage_cost_per_kwht_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_CapitalCosts_sales_tax_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * AdjustmentFactors Getters
 	 */
 
@@ -2413,11 +2563,17 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_CosTh_ave_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_D_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_EndLoss_ave_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_EqOpteff_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_IAM_ave_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_K_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_L_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_P_cooling_tower_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2430,6 +2586,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_P_plant_balance_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_RowShadow_ave_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_SCADefocusArray_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_SCAInfoArray_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_SCAs_def_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2451,6 +2611,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_Theta_ave_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_Type_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_V_tank_hot_ini_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_W_dot_field_pump_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_W_dot_sca_track_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2467,19 +2631,77 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_aux_design_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_bop_design_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_bop_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_contingency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_epc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_fossil_backup_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_htf_system_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_installed_per_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_plm_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_power_plant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_sales_tax_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_site_improvements_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_solar_field_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_storage_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_hce_design_heat_losses_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_hce_optical_effs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_loop_hce_heat_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_sca_ap_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_costh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_end_gains_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_end_losses_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_iams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_latitude_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_sca_effs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_theta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_sca_calc_zenith_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_deltaP_field_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_direct_subtotal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2515,6 +2737,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_thermeff_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_disp_wlim_max_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_dni_costh_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2525,9 +2749,23 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_eta_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_cp_avg_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_max_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_thermal_output_ideal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_fixed_land_area_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_is_hx_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_is_pc_sb_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2535,7 +2773,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_is_rec_su_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_loop_optical_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2550,6 +2792,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_field_recirc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2567,11 +2811,21 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_max_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_min_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_min_inner_diameter_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2645,6 +2899,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_q_dot_cycle_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_dot_est_cr_su_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2675,11 +2931,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_dot_rec_thermal_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_q_dot_tes_est_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_inc_sf_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_pb_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_pc_startup_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_q_tes_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_q_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2687,11 +2947,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_recirculating_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_required_number_of_loops_for_SM1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_rh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_sim_duration_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_solar_multiple_actual_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_single_loop_aperture_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_solar_mult_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2701,13 +2965,43 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_htf_avg_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_htf_max_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_aperture_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_direct_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_indirect_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_loop_conversion_efficiency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_required_aperture_for_SM1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_total_tracking_power_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 

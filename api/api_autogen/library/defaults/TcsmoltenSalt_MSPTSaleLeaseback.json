@@ -9826,10 +9826,10 @@
 			"en_electricity_rates": 0
 		},
 		"Revenue": {
-			"ppa_price_input": [0.084000]
+			"ppa_price_input": [0.095000]
 		},
 		"FinancialParameters": {
-			"const_per_interest_rate1": 3.5,
+			"const_per_interest_rate1": 6.5,
 			"const_per_interest_rate2": 0,
 			"const_per_interest_rate3": 0,
 			"const_per_interest_rate4": 0,
@@ -9854,20 +9854,20 @@
 		"Deprecated": {
 		},
 		"AdjustmentFactors": {
-			"adjust_constant": 4,
+			"constant": 4,
+			"en_periods": 0,
+			"en_timeindex": 0,
+			"periods": [
+				[0.000000, 0.000000, 0.000000]
+			],
+			"timeindex": [0.000000],
+			"adjust_constant": 0,
 			"adjust_en_periods": 0,
 			"adjust_en_timeindex": 0,
 			"adjust_periods": [
-				[0.000000]
+				[0.000000, 0.000000, 0.000000]
 			],
-			"adjust_timeindex": [0.000000],
-			"sf_adjust_constant": 0,
-			"sf_adjust_en_periods": 0,
-			"sf_adjust_en_timeindex": 0,
-			"sf_adjust_periods": [
-				[0.000000]
-			],
-			"sf_adjust_timeindex": [0.000000]
+			"adjust_timeindex": [0.000000]
 		}
 	}
 }

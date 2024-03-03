@@ -78,7 +78,7 @@ configopt( 'Solar Water Heating', { 'long_name'='Solar Water Heating', 'short_na
 configopt( 'Fuel Cell', { 'long_name'='Fuel Cell - PV - Battery', 'short_name'='FuelCell', 'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
 configopt( 'Generic System', { 'long_name'='Generic System', 'short_name'='Generic', 'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short_name'='Marine Wave', 'description'='Marine energy wave system' });
-configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Marine Wave Battery', 'description'='Marine energy wave system with battery' });
+configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Wave-Battery', 'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal', { 'tree_parent'='Marine Energy', 'long_name'='Tidal', 'short_name'='Marine Tidal', 'description'='Marine energy tidal system' });
 configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Battery Hybrid', 'short_name' = 'PVWatts-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
