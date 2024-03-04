@@ -513,11 +513,14 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 				}
 			}
 			auto c = ssc_data_first(p_val);
+			wxArrayString inputs_to_unassign;
 			while (c) {
 				if (ssc_inputs.Index(wxString(c),false) == wxNOT_FOUND) // no case comparison, e.g. wind_farm_xCoordinates
-					ssc_data_unassign(p_val, c);
+					inputs_to_unassign.Add(c);
 				c = ssc_data_next(p_val);
 			}
+			for (auto c : inputs_to_unassign)
+				ssc_data_unassign(p_val, c.c_str());
 			ssc_data_set_table(p_input, cfg->Simulations[i].c_str(), p_val);
 		}
 		ssc_data_free(p_val);
