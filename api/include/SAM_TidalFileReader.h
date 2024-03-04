@@ -47,14 +47,6 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_TidalFileReader_WeatherReader_tidal_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
-	/**
-	 * Set use_specific_wf_tidal: user specified file [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TidalFileReader_WeatherReader_use_specific_wf_tidal_nset(SAM_table ptr, double number, SAM_error *err);
-
 
 	/**
 	 * WeatherReader Getters
@@ -63,8 +55,6 @@ extern "C"
 	SAM_EXPORT const char* SAM_TidalFileReader_WeatherReader_tidal_resource_filename_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TidalFileReader_WeatherReader_tidal_resource_model_choice_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TidalFileReader_WeatherReader_use_specific_wf_tidal_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -104,12 +104,6 @@ SAM_EXPORT void SAM_GenericSystem_AdjustmentFactors_adjust_timeindex_aset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_GenericSystem_HybridCosts_annual_fuel_usage_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "annual_fuel_usage", number);
-	});
-}
-
 SAM_EXPORT void SAM_GenericSystem_HybridCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
@@ -329,15 +323,6 @@ SAM_EXPORT double* SAM_GenericSystem_AdjustmentFactors_adjust_timeindex_aget(SAM
 	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
 	if (!result)
 		make_access_error("SAM_GenericSystem", "adjust_timeindex");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_GenericSystem_HybridCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
-		make_access_error("SAM_GenericSystem", "annual_fuel_usage");
 	});
 	return result;
 }

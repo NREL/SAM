@@ -29,8 +29,9 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-#include <filesystem>
+// C++17 only - not in patch branch
+//#include <filesystem>
+#include <wx/file.h>
 #include <shared/lib_util.h>
 
 #include "builder_C_API.h"
@@ -47,7 +48,8 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
         cmod_symbol += "Model";
 
     std::string filename = file_dir + "/SAM_" + cmod_symbol + ".h";
-    if (std::filesystem::exists(filename))
+//    if (std::filesystem::exists(filename))
+    if (wxFileExists(filename))
         return;
 
     std::ofstream fx_file;
@@ -212,7 +214,8 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
         cmod_symbol += "Model";
 
     std::string filename = file_dir + "/SAM_" + cmod_symbol + ".cpp";
-    if (std::filesystem::exists(filename))
+//    if (std::filesystem::exists(filename))
+    if (wxFileExists(filename))
         return;
 
     std::ofstream fx_file;

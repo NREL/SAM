@@ -572,12 +572,6 @@ SAM_EXPORT void SAM_TroughPhysical_SolarField_nHCEt_nset(SAM_table ptr, double n
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_SolarField_nSCA_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "nSCA", number);
-	});
-}
-
 SAM_EXPORT void SAM_TroughPhysical_SolarField_northsouth_field_sep_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "northsouth_field_sep", number);
@@ -2319,15 +2313,6 @@ SAM_EXPORT double SAM_TroughPhysical_SolarField_nHCEt_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-SAM_EXPORT double SAM_TroughPhysical_SolarField_nSCA_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "nSCA", &result))
-		make_access_error("SAM_TroughPhysical", "nSCA");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_TroughPhysical_SolarField_northsouth_field_sep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4035,6 +4020,24 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_conversion_factor_nget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_TroughPhysical", "cp_battery_nameplate");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_TroughPhysical", "cp_system_nameplate");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_dtr_cost_bop_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4899,6 +4902,15 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_nLoops_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_Outputs_nSCA_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nSCA", &result))
+		make_access_error("SAM_TroughPhysical", "nSCA");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysical_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5577,6 +5589,15 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_solzen_aget(SAM_table ptr, int* le
 	result = ssc_data_get_array(ptr, "solzen", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "solzen");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_TroughPhysical", "system_capacity");
 	});
 	return result;
 }

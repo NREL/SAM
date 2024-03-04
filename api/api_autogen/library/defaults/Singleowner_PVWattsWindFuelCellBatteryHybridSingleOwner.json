@@ -381,9 +381,6 @@
 		"Monthly": {
 		},
 		"HybridCosts": {
-			"om_capacity": [0],
-			"om_fixed": [0],
-			"om_production": [0],
 			"total_installed_cost": 6.12681e+08
 		}
 	}

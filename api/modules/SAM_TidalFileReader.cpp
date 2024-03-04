@@ -26,12 +26,6 @@ SAM_EXPORT void SAM_TidalFileReader_WeatherReader_tidal_resource_model_choice_ns
 	});
 }
 
-SAM_EXPORT void SAM_TidalFileReader_WeatherReader_use_specific_wf_tidal_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "use_specific_wf_tidal", number);
-	});
-}
-
 SAM_EXPORT const char* SAM_TidalFileReader_WeatherReader_tidal_resource_filename_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -47,15 +41,6 @@ SAM_EXPORT double SAM_TidalFileReader_WeatherReader_tidal_resource_model_choice_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tidal_resource_model_choice", &result))
 		make_access_error("SAM_TidalFileReader", "tidal_resource_model_choice");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TidalFileReader_WeatherReader_use_specific_wf_tidal_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "use_specific_wf_tidal", &result))
-		make_access_error("SAM_TidalFileReader", "use_specific_wf_tidal");
 	});
 	return result;
 }

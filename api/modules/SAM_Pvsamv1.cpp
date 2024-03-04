@@ -92,6 +92,12 @@ SAM_EXPORT void SAM_Pvsamv1_Losses_en_snow_model_nset(SAM_table ptr, double numb
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Losses_snow_slide_coefficient_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "snow_slide_coefficient", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Losses_subarray1_dcwiring_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "subarray1_dcwiring_loss", number);
@@ -3116,6 +3122,12 @@ SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "enable_subinterval_distribution", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "subhourly_clipping_matrix", mat, nrows, ncols);
@@ -4112,12 +4124,6 @@ SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_aset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_production_escal", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvsamv1_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "total_installed_cost", number);
@@ -4241,6 +4247,15 @@ SAM_EXPORT double SAM_Pvsamv1_Losses_en_snow_model_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "en_snow_model", &result))
 		make_access_error("SAM_Pvsamv1", "en_snow_model");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Losses_snow_slide_coefficient_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "snow_slide_coefficient", &result))
+		make_access_error("SAM_Pvsamv1", "snow_slide_coefficient");
 	});
 	return result;
 }
@@ -8839,6 +8854,15 @@ SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nget(SAM_table 
 	return result;
 }
 
+SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "enable_subinterval_distribution", &result))
+		make_access_error("SAM_Pvsamv1", "enable_subinterval_distribution");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -10397,15 +10421,6 @@ SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_production_aget(SAM_table ptr, int
 	return result;
 }
 
-SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
-		make_access_error("SAM_Pvsamv1", "om_production_escal");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Pvsamv1_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -10851,6 +10866,24 @@ SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_percent_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_dc_wiring_loss_percent", &result))
 		make_access_error("SAM_Pvsamv1", "annual_dc_wiring_loss_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_distribution_clipping_loss", &result))
+		make_access_error("SAM_Pvsamv1", "annual_distribution_clipping_loss");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_distribution_clipping_loss_percent", &result))
+		make_access_error("SAM_Pvsamv1", "annual_distribution_clipping_loss_percent");
 	});
 	return result;
 }
@@ -12254,6 +12287,16 @@ SAM_EXPORT double* SAM_Pvsamv1_Outputs_df_calc_aget(SAM_table ptr, int* length, 
 	result = ssc_data_get_array(ptr, "df_calc", length);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "df_calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvsamv1_Outputs_distribution_clipping_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "distribution_clipping_loss", length);
+	if (!result)
+		make_access_error("SAM_Pvsamv1", "distribution_clipping_loss");
 	});
 	return result;
 }
