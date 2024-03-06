@@ -1,0 +1,7 @@
+{
+	"defaults": {
+		"WeatherReader": {
+			"tidal_resource_model_choice": 0
+		}
+	}
+}

@@ -254,7 +254,8 @@ public:
 	{
 		if ( m_periods.size() == 0 )
 		{
-			data.clear();
+			//data.clear();
+            data.resize_fill(1, 3, 0.0);
 			return;
 		}
 

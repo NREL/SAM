@@ -85,7 +85,11 @@ public:
 
 	// same across languages
 	bool PlatformFiles();
-	bool GenerateCode(const int &array_matrix_threshold);
+	bool GenerateCode(const int& array_matrix_threshold);
+	bool GenerateCodeHybrids(const int& array_matrix_threshold);
+
+	bool GenerateInputsOutputs(wxString& compute_module, ssc_data_t p_data, ssc_data_t p_data_output, std::vector<const char*>& cm_names);
+
 	bool Prepare();
 	bool Ok();
 	void AddData(CodeGenData md);

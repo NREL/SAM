@@ -162,8 +162,6 @@ SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_Monthly_util_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_Occ_Schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -174,8 +172,6 @@ SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_Occ_Schedule_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Occupants_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -184,8 +180,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Occupants_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Retrofits_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -196,8 +190,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Retrofits_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Stories_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -206,8 +198,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_Stories_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_TCool_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -218,8 +208,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_TCool_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_TCoolSB_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -228,8 +216,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_TCoolSB_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_THeat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -240,8 +226,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_THeat_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_THeatSB_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -250,8 +234,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_THeatSB_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_T_Sched_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -263,8 +245,6 @@ SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_T_Sched_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_YrBuilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -273,8 +253,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_YrBuilt_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_belpe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -285,8 +263,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_belpe_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_cool_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -295,8 +271,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_cool_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_dish_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -307,8 +281,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_dish_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_dry_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -317,8 +289,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_dry_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_fridge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -329,8 +299,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_fridge_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -339,8 +307,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_heat_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_mels_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -351,8 +317,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_mels_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_range_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -361,8 +325,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_range_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_wash_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -373,8 +335,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_en_wash_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_floor_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -383,8 +343,6 @@ SAM_EXPORT double SAM_Belpe_LoadProfileEstimator_floor_area_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -396,8 +354,6 @@ SAM_EXPORT double* SAM_Belpe_LoadProfileEstimator_load_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_Belpe_LoadProfileEstimator_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -407,6 +363,4 @@ SAM_EXPORT const char* SAM_Belpe_LoadProfileEstimator_solar_resource_file_sget(S
 	});
 	return result;
 }
-
-
 

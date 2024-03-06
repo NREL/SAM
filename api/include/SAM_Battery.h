@@ -864,8 +864,8 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
-	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=PriceSignalForecast if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
+	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4/5]
+	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=RetailRateDispatch,5=SelfConsumption if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
 	 * constraints: None
 	 * required if: en_batt=1
 	 */
@@ -1042,7 +1042,7 @@ extern "C"
 	/**
 	 * Set batt_look_ahead_hours: Hours to look ahead in automated dispatch [hours]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=1
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1710,6 +1710,107 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// HybridCosts parameters
+	//
+
+	/**
+	 * Set add_om_num_types: Number of O and M types
+	 * options: battery,fuelcell
+	 * constraints: INTEGER,MIN=0,MAX=2
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_add_om_num_types_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set degradation: Annual AC degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
+	 * options: battery
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_batt_capacity_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
+	 * options: battery
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_batt_fixed_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
+	 * options: battery
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_batt_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production1_values: Battery production for System Costs values [kWh]
+	 * options: battery
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set total_installed_cost: Total installed cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Battery_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * Simulation Getters
 	 */
@@ -2188,6 +2289,35 @@ extern "C"
 
 
 	/**
+	 * HybridCosts Getters
+	 */
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_add_om_num_types_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_HybridCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_HybridCosts_om_batt_fixed_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_om_batt_nameplate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battery_HybridCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -2327,6 +2457,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battery_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2383,11 +2515,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 
