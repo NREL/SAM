@@ -173,11 +173,13 @@ void builder_PySAM::all_options_of_cmod(const std::string &cmod) {
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
-    std::string tech_symbol = cmod_symbol;
     if (cmod_symbol == "6parsolve")
-        tech_symbol = "SixParsolve";
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
-        tech_symbol += "Model";
+        cmod_symbol += "Model";
+    std::string tech_symbol = cmod_symbol;
 
     std::ofstream fx_file;
     fx_file.open(file_dir + "/modules/" + tech_symbol + ".c");
@@ -185,7 +187,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "#include <Python.h>\n"
                "\n"
-               "#include <SAM_" << cmod_symbol << ".h>\n"
+               "#include <SAM_" << tech_symbol << ".h>\n"
                "#include <SAM_api.h>\n"
                "\n"
                "#include \"PySAM_utils.h\"\n\n";
@@ -612,6 +614,30 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "\tPyObject_Del(self);\n"
                "}\n\n\n";
+    fx_file << "static PyObject *\n"
+                "" << tech_symbol << "_get_data_ptr(" << object_type << " *self, PyObject *args)\n"
+                "{\n\tPyObject* ptr = PyLong_FromVoidPtr((void*)self->data_ptr);\n"
+                "\treturn ptr;\n}\n\n\n";
+
+    fx_file << "static PyObject *\n"
+                "" << tech_symbol << "_set_data_ptr(" << object_type << " *self, PyObject *args)\n"
+                "{\n"
+	            "\tlong long int ptr = 0;  // 64 bit arch\n"
+	            "\tif (!PyArg_ParseTuple(args, \"L:data_ptr\", &ptr)){\n"
+                "\t\tPyErr_BadArgument();\n"
+		        "\t\treturn NULL;\n"
+                "\t}\n\tself->data_ptr = (void*)ptr;\n";
+    
+    // modify the data ptr for all the groups
+    for (auto& i : root->vardefs_order) {
+        auto mm = root->m_vardefs.find(i);
+        if (mm->second.empty()) continue;
+        std::string module_symbol = format_as_symbol(mm->first);
+        fx_file << "\tVarGroupObject* " << module_symbol << "_obj = (VarGroupObject*)PyDict_GetItemString(self->x_attr, \"" << module_symbol << "\");\n"
+	               "\t" << module_symbol << "_obj->data_ptr = (void*)ptr;\n";
+    }
+
+	fx_file <<  "\treturn Py_None;\n}\n\n\n";
 
     if (stateful) {
         fx_file << "static PyObject *\n"
@@ -693,6 +719,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "\t\t{\"execute\",           (PyCFunction)" << tech_symbol << "_execute,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"execute(int verbosity) -> None\\n Execute simulation with verbosity level 0 (default) or 1\")},\n"
+               "\t\t{\"get_data_ptr\",           (PyCFunction)" << tech_symbol << "_get_data_ptr,  METH_VARARGS,\n"
+			   "\t\t\t\tPyDoc_STR(\"get_data_ptr() -> Pointer\\n Get ssc_data_t pointer\")},\n"
+               "\t\t{\"set_data_ptr\",           (PyCFunction)" << tech_symbol << "_set_data_ptr,  METH_VARARGS,\n"
+			   "\t\t\t\tPyDoc_STR(\"set_data_ptr(data_ptr)\\n Set ssc_data_t pointer\")},\n"
                "\t\t{\"assign\",            (PyCFunction)" << tech_symbol << "_assign,  METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"assign(dict) -> None\\n Assign attributes from nested dictionary, except for Outputs\\n\\n"
                "``nested_dict = { '" << root->vardefs_order[0] << "': { var: val, ...}, ...}``\")},\n"
@@ -1100,8 +1130,17 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
             fx_file << "-";
         fx_file << "-\n\n";
 
-        fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
-        fx_file << "\t:members:\n\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << ".. autoclass:: PySAM.AdjustmentFactors.AdjustmentFactors\n";
+        }
+        else {
+            fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
+        }
+        fx_file << "\t:members:\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << "\t:noindex:\n";
+        }
+        fx_file << "\n";
     }
 
     fx_file.close();
@@ -1125,6 +1164,12 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tpass\n"
                "\n"
                "\tdef export(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef get_data_ptr(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef set_data_ptr(self, data_ptr):\n"
                "\t\tpass\n"
                "\n"
                "\tdef __getattribute__(self, *args, **kwargs):\n"
@@ -1159,14 +1204,26 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                        "\t\t\tpass\n"
                        "\t\n"
                        "\t\tconstant = float\n"
-                       "\t\tdc_constant = float\n"
-                       "\t\tdc_hourly = tuple\n"
-                       "\t\tdc_periods = tuple\n"
+                       "\t\ten_hourly = float\n"
+                       "\t\ten_periods = float\n"
+                       "\t\ten_timeindex = float\n"
                        "\t\thourly = tuple\n"
                        "\t\tperiods = tuple\n"
+                       "\t\timeindex = tuple\n"
+                       "\t\tdc_constant = float\n"
+                       "\t\tdc_en_hourly = float\n"
+                       "\t\tdc_en_periods = float\n"
+                       "\t\tdc_en_timeindex = float\n"
+                       "\t\tdc_hourly = tuple\n"
+                       "\t\tdc_periods = tuple\n"
+                       "\t\tdc_imeindex = tuple\n"
                        "\t\tsf_constant = float\n"
+                       "\t\tsf_en_hourly = float\n"
+                       "\t\tsf_en_periods = float\n"
+                       "\t\tsf_en_timeindex = float\n"
                        "\t\tsf_hourly = tuple\n"
-                       "\t\tsf_periods = tuple\n\n";
+                       "\t\tsf_periods = tuple\n"
+                       "\t\tsf_timeindex = tuple\n\n";
             continue;
         }
 

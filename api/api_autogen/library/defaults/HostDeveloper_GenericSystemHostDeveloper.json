@@ -67,11 +67,11 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 9707.12,
-			"term_int_rate": 4,
+			"term_int_rate": 7,
 			"term_tenor": 0
 		},
 		"SystemCosts": {
@@ -297,6 +297,8 @@
 		"HybridFin": {
 		},
 		"Monthly": {
+		},
+		"FuelCell": {
 		}
 	}
 }

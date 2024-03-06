@@ -60,8 +60,8 @@ Standalone Battery,Merchant Plant,-8397703,26.6181,NA,; Warning: IRR at end of a
 Standalone Battery,Leveraged Partnership Flip,-8397703,78.2835,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.12112e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,All Equity Partnership Flip,-8397703,79.1754,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.85976e+07. A negative NPV indicates project costs are higher than revenues.
 Standalone Battery,Sale Leaseback,-8397703,80.5079,72.514,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-4.61131e+07. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-8.70063e+07. A negative NPV indicates project costs are higher than revenues.
-ETES,Single Owner,-466572064,14.7945,7.40855,; 
-PTES,Single Owner,-197595520,18.6636,10.3676,; 
+ETES,Single Owner,-467466976,14.8024,7.3987,; 
+PTES,Single Owner,-197564928,18.6721,10.3706,; 
 Physical Trough,Single Owner,377431488,14.4214,14.5131,; 
 Physical Trough,Merchant Plant,377431488,13.253,NA,; 
 Physical Trough,Leveraged Partnership Flip,377431488,14.692,14.5131,; 
