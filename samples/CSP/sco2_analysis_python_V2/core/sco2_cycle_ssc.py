@@ -455,7 +455,7 @@ class C_sco2_sim:
         self.m_des_par_base = self.m_des_par_default       # Can overwrite default with method below
         self.m_des_par_base["cycle_config"]= config
         self.m_des_par_sim = self.m_des_par_base
-        self.m_is_print_key_outputs = True
+        self.m_is_print_key_outputs = False
         self.m_solve_success = np.nan
         self.m_solve_dict = np.nan
         self.m_par_solve_success = np.nan
@@ -579,6 +579,11 @@ class C_sco2_sim:
         end_time = time.time()
         self.m_solve_dict["solution_time"] = end_time - start_time
         
+        # Add check for failed solve
+        if(self.m_solve_success == False):
+            print("\nSimulation failed")
+            return
+
         if(self.m_is_print_key_outputs):
             print("\nsolve time = ", end_time - start_time)
             print("min_deltaT = ", self.m_solve_dict["min_phx_deltaT"])
@@ -765,7 +770,7 @@ def create_and_save__eta_vs_UA_vs_config(RC_des_solved, PC_des_solved):
         c_sco2_overlay.plot_new_figure()
         #cy_plt.create_new_overlay_TStop_PHbot_figure(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i), cy_plt.filter_dict_to_index(PC_des_solved_filtered,i), True)
         
-        c_sco2_ts_ph_RC = cy_plt.C_sco2_TS_PH_plot(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i))
+        c_sco2_ts_ph_RC = cy_plt.save_m_solve_dict(cy_plt.filter_dict_to_index(RC_des_solved_filtered,i))
         c_sco2_ts_ph_RC.is_save_plot = True
         c_sco2_ts_ph_RC.plot_new_figure()
         

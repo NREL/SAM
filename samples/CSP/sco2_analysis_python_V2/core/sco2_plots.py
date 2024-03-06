@@ -73,9 +73,14 @@ class C_sco2_cycle_TS_plot:
         
     def plot_new_figure(self):
         
-        fig1, ax1 = plt.subplots(num = 1,figsize=(7.0,4.5))
+        fig = plt.figure()
+        ax = fig.add_subplot()
+        self.plot_from_existing_axes(ax)
+        plt.show(block = True)
+
+        #fig1, ax1 = plt.subplots(num = 2,figsize=(7.0,4.5))
     
-        self.plot_from_existing_axes(ax1)
+        #self.plot_from_existing_axes(ax1)
         
         plt.tight_layout(pad=0.0,h_pad=.30,rect=(0.02,0.01,0.99,0.98))
         
@@ -128,7 +133,7 @@ class C_sco2_cycle_TS_plot:
     
     def overlay_cycle_data(self, ax_in):
         
-        if(self.dict_cycle_data["cycle_config"] == 1):
+        if(self.dict_cycle_data["cycle_config"] == 1 or self.dict_cycle_data["cycle_config"] == 3):
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)
@@ -223,7 +228,9 @@ class C_sco2_cycle_TS_plot:
                            fontsize = 8,
                            bbox=dict(boxstyle="round", fc="w", pad = 0.5))
         
-        if(self.is_annotate_PHX and self.dict_cycle_data["od_T_t_in_mode"] == 0):
+        if(self.is_annotate_PHX
+            and ("od_T_t_in_mode" in self.dict_cycle_data)
+            and self.dict_cycle_data["od_T_t_in_mode"] == 0):
             T_states = self.dict_cycle_data["T_state_points"]
             s_states = self.dict_cycle_data["s_state_points"]
             
@@ -503,8 +510,10 @@ def get_plot_name(dict_cycle_data):
     
     eta_str = "Thermal Efficiency = " + '{:.1f}'.format(dict_cycle_data["eta_thermal_calc"] * 100) + "%"
 
-    if (dict_cycle_data["cycle_config"] == 1 and dict_cycle_data["is_recomp_ok"] == 1):
-        plot_title = "Recompression Cycle, " + eta_str
+    if ((dict_cycle_data["cycle_config"] == 3) and ('is_bypass_ok' in dict_cycle_data) and (dict_cycle_data['is_bypass_ok'] != 0)):
+        plot_title = "Recompression with HTR Bypass"
+    elif (dict_cycle_data["cycle_config"] == 1 and dict_cycle_data["is_recomp_ok"] != 0):
+        plot_title = "Recompression Cycle"
     elif (dict_cycle_data["cycle_config"] == 1):
         plot_title = "Simple Cycle, " + eta_str
     else:
@@ -556,7 +565,7 @@ class C_sco2_cycle_PH_plot:
 
     def set_y_min(self):
 
-        if (self.dict_cycle_data["cycle_config"] == 1):
+        if (self.dict_cycle_data["cycle_config"] == 1 or self.dict_cycle_data["cycle_config"] == 3):
             P_min = self.dict_cycle_data["P_state_points"][0]
         else:
             P_min = self.dict_cycle_data["P_state_points"][10]
@@ -595,7 +604,7 @@ class C_sco2_cycle_PH_plot:
     
     def overlay_cycle_data(self, ax_in):
         
-        if(self.dict_cycle_data["cycle_config"] == 1):
+        if(self.dict_cycle_data["cycle_config"] == 1 or self.dict_cycle_data["cycle_config"] == 3):
             self.plot_RC_points_and_lines(ax_in)
         else:
             self.plot_PC_points_and_lines(ax_in)

@@ -7,9 +7,11 @@ class PySSC:
 	def __init__(self):
 		this_directory = os.path.abspath(os.path.dirname(__file__))
 
+		ssc_directory = "C:\\Users\\tbrown2\\Documents\\repos\\sam_dev\\sam\\deploy\\x64"
+
 		if sys.platform == 'win32' or sys.platform == 'cygwin':
 			#print("Using SSC DLL from here: ", this_directory)
-			self.pdll = CDLL(os.path.join(this_directory, "ssc.dll"))
+			self.pdll = CDLL(os.path.join(ssc_directory, "sscd.dll"))
 		elif sys.platform == 'darwin':
 			self.pdll = CDLL(os.path.join(this_directory, "libssc.so"))
 		elif sys.platform == 'linux':
