@@ -113,8 +113,6 @@ SAM_EXPORT double SAM_Thermalrate_ThermalRate_en_thermal_rates_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -124,8 +122,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_fuelcell_power_thermal_aget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -137,8 +133,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_buy_rate_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -148,8 +142,6 @@ SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_flat_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -158,8 +150,6 @@ SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_buy_rate_option_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -171,8 +161,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_degradation_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -182,8 +170,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -195,8 +181,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_load_escalation_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -206,8 +190,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_rate_escalation_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -219,8 +201,6 @@ SAM_EXPORT double* SAM_Thermalrate_ThermalRate_thermal_sell_rate_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -229,8 +209,6 @@ SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_flat_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -241,8 +219,6 @@ SAM_EXPORT double SAM_Thermalrate_ThermalRate_thermal_sell_rate_option_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -251,8 +227,6 @@ SAM_EXPORT double SAM_Thermalrate_Lifetime_analysis_period_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thermalrate_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -263,8 +237,6 @@ SAM_EXPORT double SAM_Thermalrate_Lifetime_inflation_rate_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -273,8 +245,6 @@ SAM_EXPORT double SAM_Thermalrate_Lifetime_system_use_lifetime_output_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_Outputs_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -286,8 +256,6 @@ SAM_EXPORT double* SAM_Thermalrate_Outputs_annual_thermal_value_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -296,8 +264,6 @@ SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_with_system_year1_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -308,8 +274,6 @@ SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_cost_without_system_year1_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_load_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -318,8 +282,6 @@ SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_load_year1_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -331,8 +293,6 @@ SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_with_system_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -343,8 +303,6 @@ SAM_EXPORT double* SAM_Thermalrate_Outputs_thermal_revenue_without_system_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_savings_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -353,6 +311,4 @@ SAM_EXPORT double SAM_Thermalrate_Outputs_thermal_savings_year1_nget(SAM_table p
 	});
 	return result;
 }
-
-
 

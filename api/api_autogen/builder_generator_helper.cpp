@@ -211,7 +211,7 @@ std::string ssc_value_to_json(int ssc_type, VarValue* vv){
             break;
         case SSC_ARRAY:
             json += "[";
-            if (vv){
+            if (vv && vv->Array().size()){
                 std::vector<double> vec = vv->Array();
                 for (size_t j = 0; j < vec.size(); j++){
                     if (vec[j] > std::numeric_limits<double>::max()){

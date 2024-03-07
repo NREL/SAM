@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"cost_debt_closing": 450000,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -67,16 +67,16 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 215,
-			"term_int_rate": 4,
+			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [10.000000],
+			"om_batt_capacity_cost": [6.280000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 1199.36,
 			"om_batt_replacement_cost": [282.000000],
@@ -289,7 +289,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 16277.6
+			"construction_financing_cost": 22788.7
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 1199.36,
@@ -310,6 +310,8 @@
 		"HybridFin": {
 		},
 		"Monthly": {
+		},
+		"FuelCell": {
 		}
 	}
 }

@@ -664,7 +664,7 @@ extern "C"
 	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
 	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 * required if: ppa_multiplier_model=0&etes_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -980,7 +980,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_EtesPtes_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
