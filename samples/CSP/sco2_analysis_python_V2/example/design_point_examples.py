@@ -2845,17 +2845,87 @@ def run_alfani_2020_mult_UA():
 
     design_point_tools.plot_dict_from_file(combined_name)
 
+def run_refactor_test_case():
+    # Get Default Parameters
+    default_par = get_sco2_design_parameters_Alfani_2020_update2()
+    #default_par["is_bypass_ok"] = -0.6993
+    default_par["is_bypass_ok"] = 1
+    default_par["is_recomp_ok"] = 1
+    default_par["LTR_design_code"] = 1
+    default_par["HTR_design_code"] = 1
+    default_par["LTR_UA_des_in"] = 3.685192e-02
+    default_par["HTR_UA_des_in"] = 36851.88314808
+    default_par["is_PR_fixed"] = -8
+    #default_par["HTR_n_sub_hx"] = 50000
+    #default_par["LTR_n_sub_hx"] = 50000
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par)
+
+    c_sco2.solve_sco2_case()
+
+    # Initialize
+    labeled_result_array = []
+    label_list = get_result_list_v2([],[],True,True)
+    labeled_result_array.append(label_list)
+
+    debug_list = get_result_list_v2(c_sco2.m_des_par_base, c_sco2.m_solve_dict, c_sco2.m_solve_success)
+
+    labeled_result_array.append(debug_list);
+
+    file_name = "refactor_run";
+
+    combined_name = folder_location + file_name + get_time_string() + ".txt"
+
+    design_point_tools.write_string_array(combined_name, labeled_result_array, '\t')
+   
+def run_alfani_2020_htrbp():
+
+    default_par_paper = get_sco2_design_parameters_Alfani_2020_update2()
+
+    default_par_paper["is_bypass_ok"] = 1
+    #default_par_paper["is_recomp_ok"] = 1
+    default_par_paper["des_objective"] = 2
+
+    default_par_paper["cycle_config"] = 1
+    default_par_paper["is_P_high_fixed"] = 0
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par_paper)
+
+    # Solve
+    c_sco2.solve_sco2_case()
+
+    result_list_paper = get_result_list_v2(default_par_paper, c_sco2.m_solve_dict, c_sco2.m_solve_success)
+    labeled_result_array = []
+    label_list = get_label_list()
+    labeled_result_array.append(label_list)
+    labeled_result_array.append(result_list_paper)
+
+    file_name = "Alfani_2020";
+
+    combined_name = folder_location + file_name + get_time_string() + ".txt"
+
+    #design_point_tools.plot_dict_from_file(combined_name, "eta_thermal_calc", "T_htf_cold_des")
+
 
 # Main Script
 
 if __name__ == "__main__":
 
+    run_alfani_2020_htrbp()
     #run_alfani_2020_mult_UA()
     #run_alfani_2020()
     #file_name = run_fixed_eff_case(5)
     #design_point_tools.plot_dict_from_file(file_name, "eta_thermal_calc", "T_htf_cold_des", "recup_total_UA_calculated")
     #htrbp_sweep_special(4)
-    run_STRANGE_case()
+    run_refactor_test_case()
     #run_err_case()
     #sweep_Alfani_2024(10)
     #sweep_Alfani_2024(20)
