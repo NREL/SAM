@@ -64,6 +64,7 @@
         2.15
     ],
     "COPY_field_thermal_output": 25.8007,
+    "COPY_field_thermal_output_ideal": 0.0,
     "COPY_total_aperture": 36736.0,
     "CT": 2.0,
     "ColperSCA": [
@@ -1358,6 +1359,7 @@
     "annual_global": 5.83819,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
+    "annual_twet": 0.0,
     "annual_wspd": 2.35368,
     "arr_collectors_in_loop": [
         0.0,
@@ -11641,6 +11643,7 @@
     "field_htf_max_operating_temp": 220.0,
     "field_htf_min_operating_temp": 10.0,
     "field_thermal_output": 25.8007,
+    "field_thermal_output_ideal": 0.0,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "fixed_land_area": 22.6937,
     "flip_target_percent": 7.0,
