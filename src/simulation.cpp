@@ -315,6 +315,7 @@ VarValue *Simulation::GetValue( const wxString &name )
 	if ( VarValue *vv = Outputs().Get( name ) ) 
 		return vv;
 	else {
+		// search from last to first vartable for hybrids i=ndxHybrid and name is variable name in vorrect vartable - may report incorrect value for same names in different vartables
 		bool found = false;
 		for (int i = m_inputs.size() - 1; i>=0 && !found; i--) {
 			if (vv = GetInput(name, i))
@@ -532,9 +533,9 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	}
 	if ( !silent )
 	{
-		prog = new wxProgressDialog("Simulation", "in progress", 100,
+		prog = new wxProgressDialog("SAM Simulation", "Simulation running...", 100,
 			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
-			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
+			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_AUTO_HIDE );
 		prog->Show();
 
 		sc.SetProgressDialog( prog );
@@ -546,7 +547,7 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	bool ok =  InvokeWithHandler( &sc, folder );
 
 	if ( prog ) prog->Destroy();
-
+	
 	return ok;
 }
 
@@ -1218,11 +1219,15 @@ bool Simulation::InvokeWithHandler(ISimulationHandler *ih, wxString folder)
 							wxString units(ssc_info_units(p_inf));
 							wxString ui_hint(ssc_info_uihint(p_inf));
 							wxString sam_output_name = prepend_name + name; // hybrid processing
-							if ((prepend_name.Len() > 0) && (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())) { // check for "Battery Battery..."
+							wxString label_no_space = label;
+							label_no_space.Replace(" ", "");
+							if (((prepend_name.Len() > 0))
+								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label.Left(prepend_name.length() - 1).Lower())  // check for "Battery Battery..."
+								&& (prepend_name.Left(prepend_name.length() - 1).Lower() != label_no_space.Left(prepend_name.length() - 1).Lower()))  {// check for "FuelCell fuel cell..."
 								if (label.Left(2) == "AC" || label.Left(2) == "DC") // e.g. PVWatts AC..."
 									label = prepend_label + label;
 								else
-									label = prepend_label + label.Left(1).Lower() + label.Right(label.length()-1);
+									label = prepend_label + label.Left(1) + label.Right(label.length()-1);
 							}
 
 							if (/*(var_type == SSC_OUTPUT || var_type == SSC_INOUT) &&*/ data_type == SSC_NUMBER)

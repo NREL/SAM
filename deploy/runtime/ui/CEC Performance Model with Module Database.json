@@ -1,7 +1,7 @@
 {
     "Name": "CEC Performance Model with Module Database",
-    "Width": 1012.0,
-    "Height": 1080.0,
+    "Width": 1017.0,
+    "Height": 1197.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 912.0
+                    "Integer": 1017.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 56.0
+                    "Integer": 83.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Physical Characteristics"
+                    "String": "Module Dimensions"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 579.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 332.0
+                    "Integer": 434.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 972.0
+                    "Integer": 1101.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 107.0
+                    "Integer": 86.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -106,7 +106,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Additional Parameters"
+                    "String": "Single-diode Model Parameters"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -160,11 +160,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 759.0
+                    "Integer": 789.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -197,15 +197,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 479.0
+                    "Integer": 962.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -358,15 +358,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 654.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 473.0
+                    "Integer": 554.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -378,7 +378,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "See Help for more information about CEC cell temperature models."
+                    "String": "See Help for information about cell temperature models."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -586,11 +586,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 882.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1125.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -752,11 +752,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 936.0
+                    "Integer": 1032.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -835,11 +835,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 852.0
+                    "Integer": 849.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 849.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -918,11 +918,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 852.0
+                    "Integer": 849.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 822.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -997,15 +997,98 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "cec_aspect_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1059.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "cec_backside_temp"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 852.0
+                    "Integer": 849.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 846.0
+                    "Integer": 876.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1582,11 +1665,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 852.0
+                    "Integer": 849.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 903.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1665,11 +1748,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 246.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 840.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1706,11 +1789,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 678.0
+                    "Integer": 183.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 729.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1747,11 +1830,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 78.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 996.0
+                    "Integer": 1125.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1913,11 +1996,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1125.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2120,11 +2203,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 84.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 936.0
+                    "Integer": 528.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2179,11 +2262,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2211,7 +2294,7 @@
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 2.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -2262,11 +2345,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 1032.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2290,7 +2373,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -2345,11 +2428,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 246.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2386,11 +2469,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 246.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 840.0
+                    "Integer": 870.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2427,11 +2510,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 936.0
+                    "Integer": 528.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2593,11 +2676,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 450.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 996.0
+                    "Integer": 1125.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2676,11 +2759,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 687.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1023.0
+                    "Integer": 1125.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2759,11 +2842,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 678.0
+                    "Integer": 183.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 699.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2800,11 +2883,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 579.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 996.0
+                    "Integer": 699.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2932,11 +3015,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 714.0
+                    "Integer": 963.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3367,6 +3450,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_module_dimensions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 525.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1059.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The module aspect ratio input is enabled when the current module selection in the library does not have length and width data."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Library": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3413,11 +3558,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 936.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3450,15 +3595,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1050.0
+                    "Integer": 1158.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 924.0
+                    "Integer": 966.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3600,11 +3745,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 303.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 951.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3652,6 +3797,89 @@
                     "Boolean": 1.0
                 }
             }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_aspect_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1032.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -3675,7 +3903,7 @@
             "Units": "%/°C",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
-            "Flags": 9.0,
+            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3684,7 +3912,7 @@
         "cec_a_ref": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "A_ref",
+            "Label": "a_ref",
             "Units": "V",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
@@ -3710,7 +3938,7 @@
         "cec_alpha_sc": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "",
             "Units": "A/°C",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
@@ -3755,6 +3983,19 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cec_aspect_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module aspect ratio",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -3975,7 +4216,7 @@
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 0.0,
+            "DefaultValue": 1.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -3985,9 +4226,9 @@
             "Type": 1.0,
             "Label": "Module width",
             "Units": "m",
-            "Group": "PV Module (CEC Database)",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 8.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -4188,6 +4429,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "lib_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module length from CEC module library",
+            "Units": "m",
+            "Group": "PV Module (CEC Database)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "lib_manufacturer": {
             "Version": 4.0,
             "Type": 4.0,
@@ -4197,6 +4451,19 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": "",
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "lib_width": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module width from CEC module library",
+            "Units": "m",
+            "Group": "PV Module (CEC Database)",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -4226,14 +4493,56 @@
             "UIObject": "TextEntry",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "ui_aspect_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Module aspect ratio input",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 1.7,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         }
     },
     "Equations": [
+        "equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {\r",
+        "\r",
+        "if (${module_name} == \"\") { // SAM issue 1314\r",
+        "\t${cec_n_s} = -1;\r",
+        "}\r",
+        "\r",
+        "};\r",
+        "\r",
+        "\r",
+        "equations{ 'cec_aspect_ratio' } = define() {\r",
+        "\tif ( ${lib_length} == 0 || ${lib_width} == 0 )\r",
+        "\t\treturn ${ui_aspect_ratio};\r",
+        "\telse\r",
+        "\t\treturn ${lib_length} / ${lib_width};\r",
+        "};\r",
+        "\r",
+        "equations{ 'cec_module_length' } = define() {\r",
+        "\tif ( ${lib_length} == 0 )\r",
+        "\t\treturn sqrt(${cec_area}*${cec_aspect_ratio});\r",
+        "\telse\r",
+        "\t\treturn ${lib_length};\r",
+        "};\r",
+        "\r",
+        "equations{ 'cec_module_width' } = define() {\r",
+        "\tif ( ${lib_width} == 0 )\r",
+        "\t\treturn sqrt(${cec_area}/${cec_aspect_ratio});\r",
+        "\telse\r",
+        "\t\treturn ${lib_width};\r",
+        "};\r",
+        "\r",
         "equations{ 'cec_p_mp_ref' } = define() {",
-        "\treturn ${cec_i_mp_ref}*${cec_v_mp_ref}; };",
-        "",
-        "equations{ 'cec_module_length' } = define() {",
-        "\treturn ${cec_area}/${cec_module_width}; };",
+        "\treturn ${cec_i_mp_ref}*${cec_v_mp_ref}; \r",
+        "};",
+        "\r",
         "",
         "equations{ 'cec_eff' } = define() {",
         "\treturn  100.0 ",
@@ -4260,14 +4569,16 @@
         "\tstate = value('cec_temp_corr_mode');",
         "\tht = value('cec_heat_transfer');\t",
         "\tmc = value('cec_mounting_config');",
-        "\t\t",
-        "\tenable( 'cec_standoff', state == 0 );",
-        "\tenable( 'cec_height', state == 0 );",
-        "\t",
+        "\t\r",
+        "\t// NOCT method\t",
+        "\tenable( 'cec_standoff', state == 0 );\r",
+        "\tenable( 'cec_height', state == 0 );\r",
+        "\tenable( 'cec_t_noct', state == 0 );",
+        "\t\r",
+        "\t// Heat transfer method",
         "\tenable( 'cec_mounting_config', state == 1 );",
         "\tenable( 'cec_heat_transfer', state == 1 );",
         "\tenable( 'cec_mounting_orientation', state == 1 && mc == 3 );",
-        "\tenable( 'cec_module_width', state == 1 );",
         "\tenable( 'cec_array_rows', state == 1 && ht == 1 );",
         "\tenable( 'cec_array_cols', state == 1 && ht == 1 );",
         "\tenable( 'cec_backside_temp', state == 1 && mc == 2 );",
@@ -4276,8 +4587,10 @@
         "\tenable('cec_bifaciality', value('cec_is_bifacial'));",
         "\tenable('cec_bifacial_transmission_factor', value('cec_is_bifacial'));",
         "\tenable('cec_bifacial_ground_clearance_height', value('cec_is_bifacial'));",
-        "\t",
-        "\tshow('lbl_bifacial', value('lib_is_bifacial') && !value('cec_is_bifacial'));",
+        "\r",
+        "\tenable( 'ui_aspect_ratio', value('lib_length') == 0 || value('lib_width') == 0 );",
+        "\r",
+        "\tshow('lbl_bifacial', value('lib_is_bifacial') && !value('cec_is_bifacial'));\r",
         "\trefresh();",
         "",
         "}",
@@ -4332,7 +4645,8 @@
         "on_load{\"CEC Performance Model with Module Database\"} = define()",
         "{",
         "\tcec_module_update_ui();",
-        "\tcec_module_plot();",
+        "\tcec_module_plot();\r",
+        "\tcec_check_clearance_height();",
         "\t//on_change{'cec_step'}();",
         "\tenable('cec_transient_thermal_model_unit_mass',value('step') <=1200);",
         "};",
@@ -4340,7 +4654,12 @@
         "on_change{'cec_temp_corr_mode'} = cec_module_update_ui;",
         "on_change{'cec_mounting_config'} = cec_module_update_ui;",
         "on_change{'cec_heat_transfer'} = cec_module_update_ui;",
-        "on_change{'cec_is_bifacial'} = cec_module_update_ui;",
+        "on_change{'cec_is_bifacial'} = define() \r",
+        "{\r",
+        "\tcec_module_update_ui();\r",
+        "\tcec_check_clearance_height();\r",
+        "};\r",
+        "",
         "on_change{'module_name'} = define()",
         "{",
         "\tcec_module_update_ui();",
@@ -4352,7 +4671,37 @@
         "\tenable('cec_transient_thermal_model_unit_mass',time_step <=1200);",
         "\t//show('transient_thermal_model_message',time_step <=1200);",
         "\trefresh();",
-        "};*/",
+        "};*/\r",
+        "\r",
+        "function cec_check_clearance_height() \r",
+        "{\r",
+        "\theight = value('cec_bifacial_ground_clearance_height');\r",
+        "\tbool = false;\r",
+        "\tmsg = '';\r",
+        "\tproperty('lbl_bifacial', 'Caption', '');\r",
+        "\tfor (i = 0; i < 4; i ++) {\r",
+        "\t\ti_string = to_string(i+1);\r",
+        "\t\tif ((i == 0 || value(\"subarray\" + i_string + \"_enable\") == 1) && value(\"cec_is_bifacial\") == 1) {\r",
+        "\t\t\tif (value(\"subarray\" + i_string + \"_track_mode\") == 1) { //single axis\r",
+        "\t\t\t\tmax_height = value(\"ui_subarray\" + i_string + \"_length_side\") / 2.0 * sind(value(\"subarray\" + i_string + \"_rotlim\"));\r",
+        "\t\t\t\tmsg = property('lbl_bifacial', 'Caption');\r",
+        "\t\t\t\tif (height < max_height) {\r",
+        "\t\t\t\t\tif (msg == '')\r",
+        "\t\t\t\t\t\tproperty('lbl_bifacial', 'Caption', 'There is insufficient ground clearance for Subarray ' + i_string + '. Consider increasing the clearance height or decreasing the tracker rotation limit on the System Design page.');\r",
+        "\t\t\t\t\telse \r",
+        "\t\t\t\t\t\tproperty('lbl_bifacial', 'Caption', 'There is insufficient ground clearance for one or more subarrays. Consider increasing the clearance height or decreasing the tracker rotation limit on the System Design page.');\r",
+        "\t\t\t\t\t\r",
+        "\t\t\t\t\tshow('lbl_bifacial', true);\r",
+        "\t\t\t\t}\r",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\trefresh();\r",
+        "}\r",
+        "\r",
+        "on_change{'cec_bifacial_ground_clearance_height'} = define() {\r",
+        "\tcec_check_clearance_height();\r",
+        "};",
         ""
     ]
 }

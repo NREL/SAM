@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - BoS",
-    "Width": 918.0,
-    "Height": 552.0,
+    "Width": 1070.0,
+    "Height": 560.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -198,7 +198,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -298,6 +298,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "assembly_and_install_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "assembly_and_install_cost_total"
                 },
                 "X": {
@@ -385,11 +468,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,11 +551,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 519.0
+                    "Integer": 645.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 504.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -509,11 +592,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -654,7 +737,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -902,7 +985,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1002,6 +1085,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "development_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "development_cost_total"
                 },
                 "X": {
@@ -1089,7 +1255,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1275,7 +1441,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1375,6 +1541,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "elec_infras_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 279.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "elec_infras_cost_total"
                 },
                 "X": {
@@ -1462,7 +1711,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1648,7 +1897,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -1748,6 +1997,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "eng_and_mgmt_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 246.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "eng_and_mgmt_cost_total"
                 },
                 "X": {
@@ -1835,7 +2167,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1897,7 +2229,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1959,7 +2291,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2021,7 +2353,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2083,7 +2415,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2145,7 +2477,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2207,7 +2539,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 780.0
+                    "Integer": 897.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2269,7 +2601,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 762.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2327,7 +2659,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 1032.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2542,7 +2874,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 798.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2600,15 +2932,77 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "object 73228"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 666.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Array scaling R-value"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 734"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 600.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2686,7 +3080,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized balance of system (BOS) related capital costs in $ or $/kW, check Override Cost Structure to enter the total balance of system capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the balance of system cost. See Help for details."
+                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized balance of system (BOS) related capital costs in $ or $/kW, check Override Cost Structure to enter the total balance of system capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the balance of system cost. For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -3162,7 +3556,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3348,7 +3742,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -3440,6 +3834,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "other_infrastructure_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
                 }
             }
         },
@@ -3618,7 +4095,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3804,7 +4281,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -3904,11 +4381,94 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "plant_commissioning_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "site_access_port_staging_cost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -4094,7 +4654,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Value ($)|Use Cost Breakdown ($)"
+                    "StringList": "Enter in $/kW|Enter in $|Use Modeled Costs ($)|Use Cost Breakdown ($)|Use Array Scaling"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -4194,6 +4754,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "site_access_port_staging_cost_rvalue"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 345.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "site_access_port_staging_cost_total"
                 },
                 "X": {
@@ -4274,6 +4917,19 @@
         }
     },
     "VarDatabase": {
+        "assembly_and_install_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "balance_of_system_cost_input": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4339,6 +4995,58 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "development_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "elec_infras_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "eng_and_mgmt_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "other_infrastructure_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "plant_commissioning_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4371,7 +5079,7 @@
             "Label": "Plant commissioning cost method ",
             "Units": " ",
             "Group": "ME Costs - BOS",
-            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Cost Breakdown ($)",
+            "IndexLabels": "Enter in $/kW|Enter in $| Use Modeled Costs ($)|Use Array Scaling",
             "Flags": 3.0,
             "DefaultValue": 2.0,
             "UIObject": "Choice",
@@ -4386,6 +5094,32 @@
             "Group": "ME Costs - BOS",
             "IndexLabels": "",
             "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "plant_commissioning_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "site_access_port_staging_cost_rvalue": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "ME Costs - BOS",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -4416,11 +5150,13 @@
         "};",
         "",
         "equations{ 'plant_commissioning_cost' } = define() {",
+        "\tarray_scaling_b_value = -log(1 - ${plant_commissioning_cost_rvalue}) / log(2);\r",
         "\treturn ?${plant_commissioning_cost_method}",
         "\t\t\t[",
         "\t\t\t\t${plant_commissioning_cost_input} * ${system_capacity},",
         "\t\t\t\t${plant_commissioning_cost_input},",
-        "\t\t\t\t${plant_commissioning_cost_modeled_ui}",
+        "\t\t\t\t${plant_commissioning_cost_modeled_ui},\r",
+        "\t\t\t\t(${plant_commissioning_cost_input}*pow(${number_devices},-array_scaling_b_value))*${number_devices}",
         "\t\t\t];",
         "};",
         "",
@@ -4429,7 +5165,8 @@
         "\t\t\t[",
         "\t\t\t\t0,",
         "\t\t\t\t0,",
-        "\t\t\t\t1",
+        "\t\t\t\t1,\r",
+        "\t\t\t\t3",
         "\t\t\t];",
         "};",
         "",
@@ -4518,47 +5255,55 @@
         "\t//Development",
         "\tshow('development_cost_total',value('development_cost_method')==3);",
         "\tshow('development_cost_input',value('development_cost_method')!=3);",
-        "\tenable('development_cost_input',value('development_cost_method')!=2);",
+        "\tenable('development_cost_input',value('development_cost_method')!=2);\r",
+        "\tenable('development_cost_rvalue',value('development_cost_method')==4);",
         "\t",
         "\t//E&M",
         "\tshow('eng_and_mgmt_cost_total',value('eng_and_mgmt_cost_method')==3);",
         "\tshow('eng_and_mgmt_cost_input',value('eng_and_mgmt_cost_method')!=3);",
-        "\tenable('eng_and_mgmt_cost_input',value('eng_and_mgmt_cost_method')!=2);",
+        "\tenable('eng_and_mgmt_cost_input',value('eng_and_mgmt_cost_method')!=2);\r",
+        "\tenable('eng_and_mgmt_cost_rvalue',value('eng_and_mgmt_cost_method')==4);",
         "\t",
         "\t//Electrical Infrastructure",
         "\tshow('elec_infras_cost_total',value('elec_infras_cost_method')==3);",
         "\tshow('elec_infras_cost_input',value('elec_infras_cost_method')!=3);",
-        "\tenable('elec_infras_cost_input',value('elec_infras_cost_method')!=2);",
+        "\tenable('elec_infras_cost_input',value('elec_infras_cost_method')!=2);\r",
+        "\tenable('elec_infras_cost_rvalue',value('elec_infras_cost_method')==4);",
         "\t",
         "\t//Plant Commissioning",
         "\t//show('plant_commissioning_cost_total',value('plant_commissioning_cost_method')==3);",
         "\t//show('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);",
-        "\tenable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);",
+        "\tenable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);\r",
+        "\tenable('plant_commissioning_cost_rvalue',value('plant_commissioning_cost_method')==4);",
         "\t",
         "\t//Site access, Port and Staging",
         "\tshow('site_access_port_staging_cost_total',value('site_access_port_staging_cost_method')==3);",
         "\tshow('site_access_port_staging_cost_input',value('site_access_port_staging_cost_method')!=3);",
-        "\tenable('site_access_port_staging_cost_input',value('site_access_port_staging_cost_method')!=2);",
+        "\tenable('site_access_port_staging_cost_input',value('site_access_port_staging_cost_method')!=2);\r",
+        "\tenable('site_access_port_staging_cost_rvalue',value('site_access_port_staging_cost_method')==4);",
         "\t",
         "\t//Assembly and Install",
         "\tshow('assembly_and_install_cost_total',value('assembly_and_install_cost_method')==3);",
         "\tshow('assembly_and_install_cost_input',value('assembly_and_install_cost_method')!=3);",
         "\tenable('assembly_and_install_cost_input',value('assembly_and_install_cost_method')!=2);",
-        "\t",
+        "\tenable('assembly_and_install_cost_rvalue',value('assembly_and_install_cost_method')==4);",
+        "\t\r",
         "\t//Other Infrastructure",
         "\tshow('other_infrastructure_cost_total',value('other_infrastructure_cost_method')==3);",
         "\tshow('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=3);",
-        "\tenable('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=2);",
+        "\tenable('other_infrastructure_cost_input',value('other_infrastructure_cost_method')!=2);\r",
+        "\tenable('other_infrastructure_cost_rvalue',value('assembly_and_install_cost_method')==4);",
         "\t",
-        "\ton_change{'balance_of_system_cost_override'};",
+        "\ton_change{'balance_of_system_cost_override'}();",
         "\toverride_balance_of_system_cost();",
-        "\ton_change{'plant_commissioning_cost_override'};",
+        "\ton_change{'plant_commissioning_cost_method'}();",
         "\t",
         "\trefresh();",
         "};",
         "",
         "on_change{'plant_commissioning_cost_method'} = define() {",
         "\tenable('plant_commissioning_cost_input',value('plant_commissioning_cost_method')!=2);",
+        "\tenable('plant_commissioning_cost_rvalue', value('plant_commissioning_cost_method')==3);\r",
         "\trefresh();",
         "};",
         "",

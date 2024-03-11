@@ -449,8 +449,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Weather_azimuth_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_TcsgenericSolar_Weather_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -461,8 +459,6 @@ SAM_EXPORT const char* SAM_TcsgenericSolar_Weather_file_name_sget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Weather_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -471,8 +467,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Weather_tilt_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Weather_track_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -483,8 +477,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Weather_track_mode_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_GenericSolar_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -493,8 +485,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_GenericSolar_system_capacity_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_TouTranslator_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -506,8 +496,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_TouTranslator_weekday_schedule_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_TouTranslator_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -517,8 +505,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_TouTranslator_weekend_schedule_mget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_OpticalTable_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -530,8 +516,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_OpticalTable_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_PC_T_corr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -540,8 +524,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_PC_T_corr_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_T_pcdes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -552,8 +534,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_T_pcdes_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_T_sfdes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -562,8 +542,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_T_sfdes_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodD_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -575,8 +553,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodD_coefs_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodQ_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -586,8 +562,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodQ_coefs_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodT_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -599,8 +573,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_Wpar_prodT_coefs_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_diswos_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -610,8 +582,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_diswos_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_disws_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -623,8 +593,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_disws_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_etaQ_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -634,8 +602,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_etaQ_coefs_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_etaT_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -647,8 +613,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_etaT_coefs_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -657,8 +621,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_des_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_lhv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -669,8 +631,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_lhv_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_opt_gen_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -680,8 +640,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_opt_gen_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_opt_soil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -690,8 +648,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_eta_opt_soil_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_exergy_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -703,8 +659,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_exergy_table_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_Wpar_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -713,8 +667,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_Wpar_fixed_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_Wpar_prod_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -725,8 +677,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_Wpar_prod_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -735,8 +685,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_charge_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_disch_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -747,8 +695,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_disch_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_etes_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -757,8 +703,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_etes_0_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_sfhl_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -769,8 +713,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_sfhl_ref_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_startup_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -779,8 +721,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_startup_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_teshl_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -791,8 +731,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_teshl_ref_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_wmax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -802,8 +740,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_wmax_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_wmin_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -812,8 +748,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_f_wmin_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_fdisp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -825,8 +759,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_fdisp_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_hrs_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -835,8 +767,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_hrs_tes_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_ibh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -847,8 +777,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_ibh_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_ibn_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -857,8 +785,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_ibn_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_interp_arr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -869,8 +795,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_interp_arr_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_irr_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -879,8 +803,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_irr_des_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_istableunsorted_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -891,8 +813,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_istableunsorted_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_itoth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -901,8 +821,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_itoth_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_latitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -913,8 +831,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_latitude_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_longitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -924,8 +840,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_longitude_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_ntod_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -934,8 +848,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_ntod_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_qdisp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -947,8 +859,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_qdisp_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_qsf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -958,8 +868,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_qsf_des_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_rad_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -968,8 +876,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_rad_type_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlQ_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -981,8 +887,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlQ_coefs_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlT_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -992,8 +896,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlT_coefs_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlV_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1005,8 +907,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_sfhlV_coefs_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_solarm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1015,8 +915,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_solarm_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_storage_config_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1027,8 +925,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_storage_config_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_tdb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1037,8 +933,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_tdb_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_teshlT_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1050,8 +944,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_teshlT_coefs_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Type260_teshlX_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1062,8 +954,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Type260_teshlX_coefs_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_theta_dep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1072,8 +962,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_theta_dep_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_theta_stow_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1084,8 +972,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_theta_stow_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_timezone_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1094,8 +980,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_timezone_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_twb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1106,8 +990,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_twb_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_vwind_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1116,8 +998,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_vwind_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Type260_w_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1128,8 +1008,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Type260_w_des_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1138,8 +1016,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_constant_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1150,8 +1026,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_periods_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1160,8 +1034,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_adjust_en_timeindex_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1173,8 +1045,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_periods_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1185,8 +1055,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_adjust_timeindex_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1195,8 +1063,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_constant_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1207,8 +1073,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_periods_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1217,8 +1081,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_en_timeindex_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1230,8 +1092,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_periods_mget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1242,8 +1102,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_AdjustmentFactors_sf_adjust_timeindex_age
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1252,8 +1110,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_energy_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1265,8 +1121,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_annual_energy_distribution_time_m
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1275,8 +1129,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_fuel_usage_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_dump_tot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1287,8 +1139,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_dump_tot_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_fossil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1297,8 +1147,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_fossil_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_from_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1309,8 +1157,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_from_tes_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_hl_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1319,8 +1165,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_hl_sf_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_hl_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1331,8 +1175,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_hl_tes_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1341,8 +1183,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_sf_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_startup_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1353,8 +1193,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_startup_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_to_pb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1363,8 +1201,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_to_pb_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_to_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1375,8 +1211,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_q_to_tes_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_w_gr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1385,8 +1219,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_annual_w_gr_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1398,8 +1230,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_beam_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1409,8 +1239,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_capacity_factor_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1419,8 +1247,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_conversion_factor_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_diff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1432,8 +1258,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_diff_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_e_in_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1443,8 +1267,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_e_in_tes_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_enet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1456,8 +1278,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_enet_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_eta_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1467,8 +1287,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_eta_cycle_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_eta_opt_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1480,8 +1298,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_eta_opt_sf_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_effpc_qtpb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1491,8 +1307,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_effpc_qtpb_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_effpc_tamb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1504,8 +1318,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_effpc_tamb_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_qdni_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1515,8 +1327,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_qdni_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_tamb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1528,8 +1338,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_tamb_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_vwind_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1539,8 +1347,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_f_sfhl_vwind_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1552,8 +1358,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_gen_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_global_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1563,8 +1367,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_global_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1576,8 +1378,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_hour_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1586,8 +1386,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1599,8 +1397,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_month_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1610,8 +1406,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_energy_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_dump_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1623,8 +1417,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_dump_tot_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_fossil_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1634,8 +1426,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_fossil_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_from_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1647,8 +1437,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_from_tes_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_hl_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1658,8 +1446,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_hl_sf_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_hl_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1671,8 +1457,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_hl_tes_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1682,8 +1466,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_sf_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1695,8 +1477,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_startup_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_to_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1706,8 +1486,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_to_pb_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_to_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1719,8 +1497,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_q_to_tes_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_w_gr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1730,8 +1506,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_monthly_w_gr_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1743,8 +1517,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_pres_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_teschg_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1754,8 +1526,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_teschg_aget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_tesfull_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1767,8 +1537,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_tesfull_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1778,8 +1546,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_tot_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_umin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1791,8 +1557,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_dump_umin_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_fossil_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1802,8 +1566,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_fossil_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_from_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1815,8 +1577,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_from_tes_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_gas_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1826,8 +1586,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_gas_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_hl_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1839,8 +1597,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_hl_sf_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_hl_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1850,8 +1606,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_hl_tes_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_inc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1863,8 +1617,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_inc_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1874,8 +1626,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_sf_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1887,8 +1637,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_startup_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_to_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1898,8 +1646,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_to_pb_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_to_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1911,8 +1657,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_q_to_tes_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1922,8 +1666,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_solazi_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1935,8 +1677,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_solzen_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsgenericSolar_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1945,8 +1685,6 @@ SAM_EXPORT double SAM_TcsgenericSolar_Outputs_system_heat_rate_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1958,8 +1696,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_tdry_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1969,8 +1705,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_twet_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1982,8 +1716,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_fossil_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1993,8 +1725,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_fossil_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_solar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2006,8 +1736,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_gr_solar_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2017,8 +1745,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_fixed_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_offline_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2030,8 +1756,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_offline_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_online_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2041,8 +1765,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_online_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_prod_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2054,8 +1776,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_prod_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2066,8 +1786,6 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_w_par_tot_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2077,6 +1795,4 @@ SAM_EXPORT double* SAM_TcsgenericSolar_Outputs_wspd_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 

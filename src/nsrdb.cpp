@@ -89,6 +89,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	m_txtFolder->SetValue(dnpath);
 
 	m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "39.74,-105.17");// , wxDefaultPosition, wxSize(500, 30));
+	m_txtLatLon = new wxTextCtrl(this, ID_txtAddress, "", wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
 
 	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	m_btnSelectAll = new wxButton(this, ID_btnSelectAll, "Select all");
@@ -115,9 +116,14 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	msg += "Click OK to download the selected files and add them to your solar resource library.";
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
-	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
+	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Location:"), 0, wxALL , 2);
 	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
 	szAddress->Add(m_btnResources, 0, wxALL, 2);
+
+	wxBoxSizer* szLatLon = new wxBoxSizer(wxHORIZONTAL);
+	szLatLon->Add(15, 0, 0);
+	szLatLon->Add(new wxStaticText(this, wxID_ANY, "Latitude and longitude:"), 0, wxALL, 2);
+	szLatLon->Add(m_txtLatLon, 5, wxALL | wxEXPAND, 1);
 
 	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
 	szFolder->Add(new wxStaticText(this, wxID_ANY, "3. Choose download folder:"), 0, wxALL, 2);
@@ -155,6 +161,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
 	szmain->Add(szAddress, 0,  wxEXPAND, 1);
+	szmain->Add(szLatLon, 0, wxEXPAND, 1);
 	szmain->Add(szgrid, 10, wxALL | wxEXPAND, 1);
 	szmain->Add(szFolder, 0, wxALL | wxEXPAND, 1);
 	//szmain->Add(szWeatherFile, 0, wxALL | wxEXPAND, 1);
@@ -254,8 +261,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			break;
 		case ID_chkTmy:
 			{
-				size_t x;
-				x = SelectItems("psm3-tmy_60_tmy", m_chkTmy);
+				size_t x = SelectItems("psm3-tmy_60_tmy", m_chkTmy);
 				RefreshList(x);
 			}
 			break;
@@ -590,7 +596,9 @@ void NSRDBDialog::GetResources()
 	location.Replace(")", "_");
 	location.Replace("__", "_");
 
-	m_chlResources->Clear();
+	// update "select files to download label" to include lat/lon
+	m_txtLatLon->SetValue(wxString::Format("%f,%f", lat, lon));
+	m_chlResources->Clear(); 
 	m_links.clear();
 	for (int i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
 	{

@@ -265,14 +265,16 @@ bool digraph::copy_vertex_descendants(vertex *v){
             return false;
         // if it is a ssc var, add the vertex
         else{
-            add_vertex(v->name, v->is_ssc_var, v->ui_form);
+            auto new_v = add_vertex(v->name, v->is_ssc_var, v->ui_form);
+            new_v->cmod = v->cmod;
             return true;
         }
     }
 
     // if vertex is ssc, add it now in case none of its descendants are ssc
     if (v->is_ssc_var){
-        add_vertex(v->name, v->is_ssc_var, v->ui_form);
+        auto new_v = add_vertex(v->name, v->is_ssc_var, v->ui_form);
+        new_v->cmod = v->cmod;
         add = true;
     }
 

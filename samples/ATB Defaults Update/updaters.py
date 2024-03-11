@@ -26,6 +26,7 @@ class BaseUpdater:
                 units = row["Units"]
                 if "$" in units:
                     value = self.inflate_value(value)
+                    value = value / 1.34 # Convert $/Wac in ATB to $/Wdc in SAM
                 value = self.round_value(value, units)
                 print("new value", sam_name, value)
                 defaults_json[sam_name] = value
@@ -35,9 +36,11 @@ class BaseUpdater:
     
     def inflate_value(self, value):
         if self.dollar_year == 2020:
-            return value * 1.1087 # 2020$ to 2022$ (first half)
+            return value * 1.047 * 1.08 * 1.033 # 2020$ to 2023$ (first half)
         elif self.dollar_year == 2021:
-            return value * 1.0458 # 2020$ to 2022$ (first half)
+            return value * 1.08 * 1.033 # 2021$ to 2023$ (first half)
+        elif self.dollar_year == 2022:
+            return value * 1.033 # 2022$ to 2023$ (first half)
     
     def round_value(self, value, units):
         if "$" in units:

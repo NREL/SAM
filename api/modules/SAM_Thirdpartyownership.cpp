@@ -144,8 +144,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_fed_custom_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -155,8 +153,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_sl_years_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -165,8 +161,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_fed_type_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -178,8 +172,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Depreciation_depr_sta_custom_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -188,8 +180,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_sl_years_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -200,8 +190,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Depreciation_depr_sta_type_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Financials_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -210,8 +198,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Financials_analysis_period_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thirdpartyownership_Financials_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -222,8 +208,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Financials_inflation_rate_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Financials_real_discount_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -233,8 +217,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Financials_real_discount_rate_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_ppa_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -243,8 +225,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_FinancialThirdPartyOwnership_lease_or_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -256,8 +236,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Common_annual_energy_value_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_Common_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -267,8 +245,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Common_gen_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -280,8 +256,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_AnnualOutput_degradation_aget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -290,8 +264,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_AnnualOutput_system_use_lifetime_outpu
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -302,8 +274,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_escalation_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_price_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -312,8 +282,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_lease_price_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_escalation_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -324,8 +292,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_escalation_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_price_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -334,8 +300,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_CashFlow_ppa_price_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -347,8 +311,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_with_system
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -358,8 +320,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_ElectricityCost_elec_cost_without_sys
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -371,8 +331,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_cash_flow_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_flow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -382,8 +340,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_after_tax_net_equity_cost_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -395,8 +351,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_agreement_cost_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -406,8 +360,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_cumulative_payback_with_ex
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -419,8 +371,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_net_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -430,8 +380,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_purchases_aget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -443,8 +391,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_energy_sales_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -453,8 +399,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Outputs_cf_length_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -466,8 +410,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_nte_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -478,8 +420,6 @@ SAM_EXPORT double* SAM_Thirdpartyownership_Outputs_cf_payback_with_expenses_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_nom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -488,8 +428,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_nom_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -500,8 +438,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Outputs_lnte_real_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Outputs_npv_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -511,8 +447,6 @@ SAM_EXPORT double SAM_Thirdpartyownership_Outputs_npv_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Thirdpartyownership_Outputs_year1_nte_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -521,6 +455,4 @@ SAM_EXPORT double SAM_Thirdpartyownership_Outputs_year1_nte_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 

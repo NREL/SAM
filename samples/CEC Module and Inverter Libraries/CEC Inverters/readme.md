@@ -24,7 +24,7 @@ The "SAM library" is the text file the SAM user interface reads to populate the 
 
 	As of January 2019, we will not include legacy data in the SAM library.
 
-2. Go to the Grid Support Solar/Battery Inverters page at https://solarequipment.energy.ca.gov/Home/InvertersList and click **Download Excel File** to download the "Full Data" version of inverter list and save them to the folder with the CEC update date appended to the file name, for example `Inverter_List_Full_Data_2019-1-15.xlsm`:
+2. Go to the Grid Support Solar/Battery Inverters page at https://solarequipment.energy.ca.gov/Home/InvertersList and click **Download Excel File** to download the "Full Data" version of inverter list and save them to the folder with the CEC update date appended to the file name, for example `Grid_Support_Inverter_List_Full_Data_ADA_2023-11-17.xlsm`:
 
 ## 2. Process files
 
@@ -46,7 +46,7 @@ This manual process could be done automatically, but the manual conversion is us
 	
 	c. Replace LF space `\n ` with LF `\n`.
 
-6. Replace comma `,` with space hyphen space ` - `.
+6. Replace comma `,` with hyphen space `- `.
 
 7. Replace double quotes `"` with empty string.
 
@@ -72,7 +72,7 @@ This manual process could be done automatically, but the manual conversion is us
 
 2. Run the `generate_inverter_library_file.lk` script on `inverter_data.csv` to convert the file to a SAM CEC inverter library file. This should go quickly, if the script gets stuck, stop the script, open the `inverter_data.csv` file to see if there are any hidden characters in the file (use the "show all characters" option in Notepad++ to see them.)
 
-3. Review the CEC Inverter Update Log files to identify any potential problems with inverters added from the new database.
+3. Review the CEC Inverter Conversion Log files to identify any potential problems with inverters added from the new database.
 
 ## 4. Run library test script
 

@@ -1,7 +1,7 @@
 {
     "Name": "Marine Array",
-    "Width": 807.0,
-    "Height": 590.0,
+    "Width": 802.0,
+    "Height": 1025.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 458.0
+                    "Integer": 899.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -126,6 +126,55 @@
                 }
             }
         },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "cable_length_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 633.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 318.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Calculate cable lengths|Enter cable lengths"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -139,7 +188,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 390.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -147,7 +196,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -305,7 +354,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -313,7 +362,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -388,7 +437,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -396,7 +445,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -471,7 +520,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 300.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -479,7 +528,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -554,7 +603,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 300.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -562,7 +611,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -633,11 +682,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 513.0
+                    "Integer": 654.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -645,7 +694,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -720,7 +769,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 444.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -748,6 +797,192 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "export_cable_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 771.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "export_cable_voltage_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 771.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Use Modeled Voltage|7.2kV AC|12kV AC|36kV AC|66kV AC|72.5kV AC|145kV AC|220kV AC|400kV AC|150kV HVDC|300kV HVDC"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "export_cable_voltage_lbl"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 774.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "kV AC"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -761,7 +996,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -798,11 +1033,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 627.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -810,7 +1045,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -869,6 +1104,130 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inter_array_cable_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 741.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "inter_array_cable_voltage_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 741.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Use Modeled Voltage|7.2kV|12kV|24kV|36kV|66kV"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -934,6 +1293,130 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "load_grid_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 957.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "load_grid_voltage_options"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 957.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Extra Low Voltage (kV < 4)|Low Voltage (4 ≤ kV ≤ 34)|Medium Voltage (34 ≤ kV ≤ 69)|High Voltage (69 ≤ kV ≤ 138)|Extra High Voltage (138 ≤ kV ≤ 345)|Ultra High Voltage (345 ≤ kV ≤ 765)"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Plot": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -947,7 +1430,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1067,7 +1550,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1138,19 +1621,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 411.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 40.0
+                    "Integer": 340.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 64.0
+                    "Integer": 43.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1175,15 +1658,115 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 30.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 870.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 741.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Substation / Load Specifications"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2110"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 717.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 747.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Assumed Cable Voltages"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2118"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 747.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1216,6 +1799,43 @@
                 }
             }
         },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 579.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 774.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 432.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Cable specifications"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1225,11 +1845,73 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 75.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 507.0
+                    "Integer": 771.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Export cable voltage"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 742"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1283,19 +1965,19 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 719"
+                    "String": "object 78"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 45.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 927.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 162.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1307,7 +1989,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Wave direction"
+                    "String": "Onshore substation required"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1332,11 +2014,155 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 79"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 45.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 894.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 162.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Offshore substation required"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "offshore_substation_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 894.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Yes|No"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "onshore_substation_choice"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 927.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 180.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Yes|No"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -1349,11 +2175,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 513.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1361,7 +2187,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1428,6 +2254,130 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "riser_cable_voltage"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 801.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "riser_cable_voltage_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 801.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Use Modeled Voltage|7.2kV|12kV|24kV|36kV"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "row_spacing"
                 },
                 "X": {
@@ -1436,7 +2386,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1444,7 +2394,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1656,6 +2606,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "use_offshore_substation_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 402.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 894.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "use_wavefile_spacing"
                 },
                 "X": {
@@ -1664,7 +2655,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1705,7 +2696,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 270.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1759,6 +2750,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "user_export_cable_length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 654.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "user_input_devices_per_row"
                 },
                 "X": {
@@ -1767,7 +2841,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1775,7 +2849,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1858,7 +2932,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1925,6 +2999,172 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "user_inter_array_cable_length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 627.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "user_riser_cable_length"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 681.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "water_depth_file"
                 },
                 "X": {
@@ -1933,7 +3173,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1941,7 +3181,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2016,7 +3256,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2024,7 +3264,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2085,6 +3325,68 @@
                     "Integer": 6.0
                 }
             }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wave_direction_lbl"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wave direction"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -2098,6 +3400,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Image",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cable_length_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Calculate or enter cable lengths",
+            "Units": "0/1",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2205,6 +3520,84 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "export_cable_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable type",
+            "Units": "AC/HVDC",
+            "Group": "Marine Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable voltage",
+            "Units": "kV",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_voltage_calculated": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable voltage calculated",
+            "Units": "kV",
+            "Group": "Marine Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_voltage_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Override calculated AC/HVDC option for export cables",
+            "Units": "0/1",
+            "Group": "ME Array",
+            "IndexLabels": "Use Modeled Voltage|7.2kV AC|12kV AC|24kV AC|36kV AC|66kV AC|72.5kV AC|145kV AC|220kV AC|400kV AC|150kV HVDC|300kV HVDC",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_voltage_option_ac": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable voltage AC option",
+            "Units": " ",
+            "Group": "ME Array",
+            "IndexLabels": "7.2kV|12kV|24kV|36kV|66kV",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "export_cable_voltage_option_hvdc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable HVDC voltage options",
+            "Units": " ",
+            "Group": "Marine Array",
+            "IndexLabels": "150 kV|300 kV",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "floating_array": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2228,6 +3621,71 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inter_array_cable_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Inter-array cable voltage",
+            "Units": "kV",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inter_array_cable_voltage_calculated": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Inter-array cable voltage calculated",
+            "Units": "kV",
+            "Group": "Marine Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inter_array_cable_voltage_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Inter-array cable voltage option",
+            "Units": " ",
+            "Group": "ME Array",
+            "IndexLabels": "Use Modeled Voltage|7.2kV|12kV|24kV|36kV|66kV",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "load_grid_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Onshore substation voltage",
+            "Units": "kV AC",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "load_grid_voltage_options": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Load grid voltage",
+            "Units": "kV",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2257,6 +3715,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "offshore_substation_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Offshore substation cost choice",
+            "Units": " ",
+            "Group": "ME Array",
+            "IndexLabels": "Yes|No",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "onshore_substation_choice": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Onshore substation choice",
+            "Units": "0/1",
+            "Group": "Marine Array",
+            "IndexLabels": "Yes|No",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "riser_cable_length": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2267,6 +3751,45 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "riser_cable_voltage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Riser cable voltage",
+            "Units": "kV",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "riser_cable_voltage_calculated": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Riser cable voltage calculated",
+            "Units": "kV",
+            "Group": "Marine Array",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "riser_cable_voltage_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Riser cable voltage option",
+            "Units": " ",
+            "Group": "ME Array",
+            "IndexLabels": "Use Modeled Voltage|7.2kV|12kV|24kV|36kV",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2296,6 +3819,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "use_offshore_substation_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use modeled offshore substation boolean",
+            "Units": "0/1",
+            "Group": "Marine Array",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "use_onshore_substation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": " ",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "use_wavefile_spacing": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2306,6 +3855,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "user_export_cable_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Export cable length",
+            "Units": "m",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2331,6 +3893,32 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 3.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "user_inter_array_cable_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Inter-array cable length",
+            "Units": "m",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "user_riser_cable_length": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Riser cable length",
+            "Units": "m",
+            "Group": "ME Array",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2387,11 +3975,123 @@
         "\t\treturn 0;",
         "\t}",
         "\t//msgbox(data);",
-        "\t${inter_array_cable_length} = data.inter_array_cable_length;",
-        "\t${export_cable_length} = data.export_cable_length;",
-        "\t${riser_cable_length} = data.riser_cable_length;",
+        "\tif (${cable_length_option} == 0) {",
+        "\t\t${inter_array_cable_length} = data.inter_array_cable_length;",
+        "\t\t${export_cable_length} = data.export_cable_length;",
+        "\t\t${riser_cable_length} = data.riser_cable_length;",
+        "\t}",
+        "\telse {",
+        "\t\t${inter_array_cable_length} = ${user_inter_array_cable_length};",
+        "\t\t${export_cable_length} = ${user_export_cable_length};",
+        "\t\t${riser_cable_length} = ${user_riser_cable_length};",
+        "\t}",
+        "\t",
+        "};",
+        "",
+        "equations{'$MIMO$ cable_voltage'} = define() {",
+        "\tdata.devices_per_row = ${devices_per_row};",
+        "\tdata.device_spacing_in_row = ${device_spacing_in_row};",
+        "\tdata.number_rows = ${number_rows};",
+        "\tdata.row_spacing = ${row_spacing};",
+        "\tdata.cable_system_overbuild = ${cable_system_overbuild};",
+        "\tdata.water_depth = ${water_depth};",
+        "\tdata.number_devices = ${number_devices};",
+        "\tdata.distance_to_shore = ${distance_to_shore};",
+        "\tdata.floating_array = ${floating_array};",
+        "\tdata.export_cable_redundancy = ${export_cable_redundancy};",
+        "\t",
+        "\tdata.inter_array_cable_length = ${inter_array_cable_length};",
+        "\tdata.riser_cable_length = ${riser_cable_length};",
+        "\tdata.export_cable_length = ${export_cable_length};",
+        "\tdata.system_capacity = ${system_capacity};",
+        "\tdata.device_rated_power = ${device_rated_power};",
+        "\tdata.use_onshore_substation = ${onshore_substation_choice};",
+        "\tdata.load_grid_voltage = ${load_grid_voltage};",
+        "\t",
+        "\tsuccess = ssc_eqn(\"me_array_cable_voltage\", data);",
+        "\t",
+        "\tif (!success){",
+        "\t\tmsgbox(\"error = \" + success);",
+        "\t\treturn 0;",
+        "\t}",
+        "\t",
+        "\t${inter_array_cable_voltage_calculated} = data.array_cable_voltage;",
+        "\t${export_cable_voltage_calculated} = data.export_cable_voltage;",
+        "\t${riser_cable_voltage_calculated} = data.riser_cable_voltage;",
+        "\t${export_cable_type} = data.export_cable_type;",
+        "\tif (financing() != \"None\") {",
+        "\t\tif (${floating_array} == 1) ${array_cable_system_cost_modeled} = data.array_cable_cost_total +  data.riser_cable_cost_total;",
+        "\t\telse ${array_cable_system_cost_modeled} = data.array_cable_cost_total;",
+        "\t\t${export_cable_system_cost_modeled} = data.export_cable_cost_total;",
+        "\t\tif (${offshore_substation_choice} == 0) {",
+        "\t\t\t${offshore_substation_cost_modeled} = data.offshore_substation_cost_total;",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\t${offshore_substation_cost_modeled} = 0;",
+        "\t\t}",
+        "\t\tif (${onshore_substation_choice} == 0) { //0=Yes",
+        "\t\t\t${onshore_substation_cost_modeled} = data.onshore_substation_cost_total;",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\t${onshore_substation_cost_modeled} = 0;",
+        "\t\t}",
+        "\t}",
         "",
         "\treturn 0;",
+        "};",
+        "",
+        "equations{'inter_array_cable_voltage'} = define() {",
+        "\treturn ?${inter_array_cable_voltage_option}",
+        "\t[",
+        "\t\t${inter_array_cable_voltage_calculated},",
+        "\t\t7.2,",
+        "\t\t12,",
+        "\t\t24,",
+        "\t\t36,",
+        "\t\t66",
+        "\t];",
+        "};",
+        "",
+        "equations{'riser_cable_voltage'} = define() {",
+        "\treturn ?${riser_cable_voltage_option}",
+        "\t[",
+        "\t\t${riser_cable_voltage_calculated},",
+        "\t\t7.2,",
+        "\t\t12,",
+        "\t\t24,",
+        "\t\t36,",
+        "\t];",
+        "};",
+        "",
+        "equations{'export_cable_voltage'} = define() {",
+        "\t",
+        "\treturn ?${export_cable_voltage_choice}",
+        "\t[",
+        "\t\t${export_cable_voltage_calculated},",
+        "\t\t7.2,",
+        "\t\t12,",
+        "\t\t24,",
+        "\t\t36,",
+        "\t\t66,",
+        "\t\t72.5,",
+        "\t\t145,",
+        "\t\t220,",
+        "\t\t400,",
+        "\t\t150,",
+        "\t\t300",
+        "\t];",
+        "};",
+        "",
+        "equations{'load_grid_voltage'} = define() {",
+        "\treturn ?${load_grid_voltage_options}",
+        "\t[",
+        "\t\t8,",
+        "\t\t46,",
+        "\t\t69,",
+        "\t\t161,",
+        "\t\t230,",
+        "\t\t415",
+        "\t];",
         "};",
         "",
         "",
@@ -2480,6 +4180,18 @@
         "\trefresh();\t\t",
         "}",
         "",
+        "on_change{'cable_length_option'} = define() ",
+        "{",
+        "\tcheck = value('cable_length_option');",
+        "\tshow('inter_array_cable_length', check == 0);",
+        "\tshow('export_cable_length', check == 0);",
+        "\tshow('riser_cable_length', check == 0);",
+        "\tshow('user_inter_array_cable_length', check == 1);",
+        "\tshow('user_export_cable_length', check == 1);",
+        "\tshow('user_riser_cable_length', check == 1);",
+        "\trefresh();",
+        "};",
+        "",
         "function array_layout_inputs()",
         "{",
         "\tif (value('array_sizing_mode') == 0) //single device",
@@ -2555,8 +4267,18 @@
         "\tsystem_sizing_inputs();",
         "\tarray_layout_inputs();",
         "\tplot_mhk_array();",
-        "\twavefile_spacing_check();",
-        "\tshow('riser_cable_length', value('floating_array'));",
+        "\twavefile_spacing_check();\r",
+        "\tif (technology() == \"MEwave\" || technology() == \"MEwave Battery\") {\r",
+        "\t\tproperty('wave_direction_lbl', 'Caption', 'Wave direction');\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('wave_direction_lbl', 'Caption', 'Flow direction');\r",
+        "\t}",
+        "\ton_change{'cable_length_option'}();",
+        "\texport_cable_voltage_check();",
+        "\toffshore_substation_check();",
+        "\ton_change{'onshore_substation_choice'}();",
+        "\ton_change{'floating_array'}();",
         "\trefresh();",
         "};",
         "",
@@ -2588,7 +4310,10 @@
         "",
         "on_change{'floating_array'} = define()",
         "{",
-        "\tshow('riser_cable_length', value('floating_array'));",
+        "\tenable('riser_cable_length', value('floating_array'));",
+        "\tenable('user_riser_cable_length', value('floating_array'));",
+        "\tenable('riser_cable_voltage', value('floating_array'));",
+        "\tenable('riser_cable_voltage_option', value('floating_array'));",
         "\trefresh();",
         "};",
         "",
@@ -2637,6 +4362,68 @@
         "\t}",
         "\t",
         "}",
+        "",
+        "on_change{'onshore_substation_choice'} = define() {",
+        "\tcheck = value('onshore_substation_choice');",
+        "\tenable('load_grid_voltage', check == 0);",
+        "\tenable('load_grid_voltage_options', check == 0);",
+        "};",
+        "",
+        "",
+        "function offshore_substation_check() {",
+        "\tcalc = value('use_offshore_substation_calc');",
+        "\tif (calc == 1) {",
+        "\t\tif (value('export_cable_voltage') == value('inter_array_cable_voltage')) {",
+        "\t\t\tvalue('offshore_substation_choice',1); //No",
+        "\t\t\trefresh('offshore_substation_choice');",
+        "\t\t\tenable('offshore_substation_choice',false);",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\tvalue('offshore_substation_choice',0); //Yes",
+        "\t\t\trefresh('offshore_substation_choice');",
+        "\t\t\tenable('offshore_substation_choice',false);",
+        "\t\t}",
+        "\t}",
+        "\telse {",
+        "\t\tenable('offshore_substation_choice',true);",
+        "\t}",
+        "\t",
+        "}",
+        "",
+        "on_change{'use_offshore_substation_calc'} = define() {",
+        "\toffshore_substation_check();",
+        "};",
+        "",
+        "function export_cable_voltage_check() ",
+        "{",
+        "\tcheck = value('export_cable_voltage_choice');",
+        "\tif (check == 0) {",
+        "\t\tshow('export_cable_voltage_option_ac', false);",
+        "\t\tshow('export_cable_voltage_option_hvdc', false);",
+        "\t\tif (value('export_cable_type') == 0) {",
+        "\t\t\tproperty('export_cable_voltage_lbl', 'Caption', 'kV AC');",
+        "\t\t}",
+        "\t\telse {",
+        "\t\t\tproperty('export_cable_voltage_lbl', 'Caption', 'kV HVDC');",
+        "\t\t}",
+        "\t\t",
+        "\t}",
+        "\telse if (check > 0 && check < 10) {",
+        "\t\tshow('export_cable_voltage_option_ac', true);",
+        "\t\tshow('export_cable_voltage_option_hvdc', false);",
+        "\t\tproperty('export_cable_voltage_lbl', 'Caption', 'kV AC');",
+        "\t}",
+        "\telse {",
+        "\t\tshow('export_cable_voltage_option_ac', false);",
+        "\t\tshow('export_cable_voltage_option_hvdc', true);",
+        "\t\tproperty('export_cable_voltage_lbl', 'Caption', 'kV HVDC');",
+        "\t\t",
+        "\t}",
+        "}",
+        "",
+        "on_change{'export_cable_voltage_choice'} = define() {",
+        "\texport_cable_voltage_check();",
+        "};",
         "\t",
         ""
     ]

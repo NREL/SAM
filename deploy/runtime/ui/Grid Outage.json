@@ -1194,7 +1194,7 @@
         "",
         "function is_grid_outage()",
         "{",
-        "\treturn sum(${grid_outage}) > 0;",
+        "\treturn sum(value('grid_outage')) > 0;",
         "}",
         "",
         "function grid_outage_message()",

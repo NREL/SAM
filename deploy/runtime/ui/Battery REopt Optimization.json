@@ -1,7 +1,7 @@
 {
     "Name": "Battery REopt Optimization",
-    "Width": 1055.0,
-    "Height": 158.0,
+    "Width": 1052.0,
+    "Height": 127.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Automatically size the battery bank and calculate an hour-by-hour dispatch schedule using the REopt API web service. This sends values of SAM inputs to the service, runs a REopt optimization on the service, and modifies SAM battery size and dispatch inputs with results from the REopt run. See Help for details."
+                    "String": "The REopt API web service automatically sizes the battery bank and calculates a time series dispatch schedule. Click Get Size and Dispatch to run a simulation, send data from SAM to the service, run a REopt optimization on the service, and choose whether to modify SAM battery size and dispatch inputs with results from the REopt run. You can also choose whether to size the battery to maintain power during a grid outage. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -74,11 +74,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -123,7 +123,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 117.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -139,28 +139,28 @@
                 }
             }
         },
-        "Label": {
+        "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "reopt_consider_outage"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 72.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1029.0
+                    "Integer": 351.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -168,72 +168,58 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The REopt optimization uses a different weather file than the file on the Location and Resource page."
+                    "String": "Consider grid outage in REopt optimization"
                 },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
+                "State": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
-                "FontSize": {
+                "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
+                    "Integer": -1.0
                 }
             }
         }
     },
-    "VarDatabase": {},
+    "VarDatabase": {
+        "reopt_consider_outage": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Consider grid outage in REopt optimization",
+            "Units": "",
+            "Group": "Battery REopt Optimization",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
     "Equations": [],
     "Callbacks": [
-        "on_change{'call_reopt'} = define()",
-        "{",
+        "on_load{'Battery REopt Optimization'} = define() {",
+        "\tenable_consider_grid_outage();",
+        "};",
+        "",
+        "on_change{'reopt_consider_outage'} = define() {",
+        "\tenable_consider_grid_outage();",
+        "};",
+        "",
+        "on_change{'call_reopt'} = define() {",
         "\t// check inputs before making REopt call",
         "\twf_len = 60 / ${ui_step_minutes} * 8760;",
         "\tload_len = #(${load});",
-        "\tif (wf_len != load_len) ",
-        "\t{",
-        "\t\tmsgbox('Inconsistent time steps.\\nWeather file and load number of records must be the same.');",
-        "\t\texit;",
-        "\t}",
-        "\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) ",
-        "\t{",
-        "\t\tmsgbox('Incorrect time steps.\\nSimulation timestep must be 15, 30 or 60 minutes.');",
-        "\t\texit;",
-        "\t}",
+        "\tif (wf_len != load_len) {\r",
+        "\t\tmsgbox('Time step issue.\\nWeather and load data must have the same time step.');\r",
+        "\t\texit;\r",
+        "\t}\r",
+        "\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) \r",
+        "\t{\r",
+        "\t\tmsgbox('Unsupported simulation time step.\\nWeather file time step is ' + to_string(${ui_step_minutes}) + ' minutes. REopt requires 15-, 30-, or 60-minute time steps.');\r",
+        "\t\texit;\r",
+        "\t}\r",
         "",
-        "\tif (!value('batt_dispatch_auto_can_gridcharge'))",
-        "\t{",
-        "\t\tchange = yesno('REopt requires that battery can charge from grid.\\nChange Battery Can Charge from Grid on Battery Dispatch page automatically? Click No to exit optimization.');",
-        "\t\tif (change)",
-        "\t\t{",
-        "\t\t\tvalue('batt_dispatch_auto_can_gridcharge', true);",
-        "\t\t\trefresh();",
-        "\t\t}",
-        "\t\telse ",
-        "\t\t{",
-        "\t\t\texit;",
-        "\t\t}",
-        "\t}",
         "\tif (!value('batt_dispatch_auto_can_charge'))",
         "\t{",
         "\t\tchange = yesno('REopt requires that battery can charge from PV.\\nChange Battery Can Charge from System input on Battery Dispatch page automatically? Click No to exit optimization.');",
@@ -260,21 +246,33 @@
         "\t\t{",
         "\t\t\texit;",
         "\t\t}",
+        "\t}\r",
+        "\t",
+        "\tsize_outage = false;",
+        "\t// is_crit() and is_grid_outage() defined on Grid Outage form",
+        "\tif ( is_crit() && is_grid_outage() ) {",
+        "\t\tsize_outage = value('reopt_consider_outage');",
         "\t}",
         "\t",
         "\tbatt_kw_original = value('batt_bank_power');",
         "\tbatt_kwh_original = value('batt_bank_size_ui');",
         "\tdispatch_original_mode = value('batt_dispatch_choice_ui'); //store original batt dispatch mode",
-        "",
+        "\tcustom_dispatch_original = value('batt_custom_dispatch');\r",
+        "\t",
         "\t// temporarily size to 0 to remove battery costs from total_installed_cost for REopt API call",
         "\tvalue('batt_bank_power', 0);",
-        "\tvalue('batt_bank_size_ui', 0);",
-        "\tvalue('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf",
+        "\tvalue('batt_bank_size_ui', 0);\r",
+        "\t\r",
+        "\tcustom_dispatch = value('batt_custom_dispatch');\r",
+        "\tif (#custom_dispatch != #(${load})) {",
+        "\t\tvalue('batt_custom_dispatch', ${load}); //reset size of dispatch array to match load and wf",
+        "\t}\r",
         "\t",
-        "\treopt = reopt_size_battery();",
+        "\treopt = reopt_size_battery(size_outage);",
         "",
         "\tif (reopt.error)",
-        "\t{",
+        "\t{\r",
+        "\t\tmsgbox(reopt);",
         "\t\tif (strlen(reopt.error) > 0)",
         "\t\t{",
         "\t\t\tmsgbox(reopt.error);",
@@ -283,40 +281,37 @@
         "\t\t{",
         "\t\t\tmsgbox('API timed out.\\nThe REopt API timed out. Please try again later.');",
         "\t\t}",
-        "\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input",
-        "\t\tvalue('batt_bank_power', batt_kw_original);",
-        "\t\tvalue('batt_bank_size_ui', batt_kwh_original); ",
-        "\t\trefresh();",
-        "\t\texit;",
+        "\treset_original_inputs();\r",
+        "\texit;",
         "\t}",
         "\t",
         "\ty = reopt.response;",
         "",
-        "\tif (y.outputs == null || y.outputs.Scenario == null)",
+        "\tif (y.outputs == null)",
         "\t{",
         "\t\tmsgbox('Error in REopt API response.\\nTry again later or try another system design.');",
-        "\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input",
-        "\t\tvalue('batt_bank_power', batt_kw_original);",
-        "\t\tvalue('batt_bank_size_ui', batt_kwh_original); ",
-        "\t\trefresh();",
+        "\t\treset_original_inputs();\r",
         "\t\texit;",
         "\t}",
-        "",
-        "\tif (y.outputs.Scenario.status != 'optimal')",
+        "\r",
+        "\tif (y.status == 'error')\r",
+        "\t{\r",
+        "\t\tmsgbox('REopt could not find optimal battery size and dispatch.\\n' + y.messages.errors);\r",
+        "\t\treset_original_inputs();\r",
+        "\t\texit;\r",
+        "\t}",
+        "\telseif (y.status != 'optimal')",
         "\t{",
-        "\t\tmsgbox('REopt could not find optimal battery size and dispatch.\\n' + y.outputs.Scenario.status);",
-        "\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input",
-        "\t\tvalue('batt_bank_power', batt_kw_original);",
-        "\t\tvalue('batt_bank_size_ui', batt_kwh_original); ",
-        "\t\trefresh();",
+        "\t\tmsgbox('REopt could not find optimal battery size and dispatch.\\n' + y.status);",
+        "\t\treset_original_inputs();\r",
         "\t\texit;",
         "\t}",
         "",
-        "\tpv = y.outputs.Scenario.Site.PV;",
-        "\tbatt = y.outputs.Scenario.Site.Storage;",
-        "\telec = y.outputs.Scenario.Site.ElectricTariff;",
+        "\tpv = y.outputs.PV;",
+        "\tbatt = y.outputs.ElectricStorage;",
+        "\telec = y.outputs.ElectricUtility;",
         "",
-        "\tif (batt.size_kw == null && batt.size_kwh == null)",
+        "\tif (batt == null || (batt.size_kw == null && batt.size_kwh == null))",
         "\t{",
         "\t\tapply_str = 'Optimal capacity: ' + to_string(0) + ",
         "\t\t\t' kWh\\nOptimal power: ' + to_string(0) + ' kW\\n\\nApply results?';",
@@ -325,14 +320,12 @@
         "\t\t{",
         "\t\t\tvalue('batt_bank_power', 0.0);",
         "\t\t\tvalue('batt_bank_size_ui', 0.0);",
+        "\t\t\trefresh();\r",
         "\t\t}",
         "\t\telse",
         "\t\t{",
-        "\t\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input",
-        "\t\t\tvalue('batt_bank_power', batt_kw_original);",
-        "\t\t\tvalue('batt_bank_size_ui', batt_kwh_original); ",
+        "\t\t\treset_original_inputs();\r",
         "\t\t}",
-        "\t\trefresh();",
         "\t\texit;",
         "\t}",
         "",
@@ -348,14 +341,11 @@
         "\t}",
         "\telse",
         "\t{",
-        "\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input",
-        "\t\tvalue('batt_bank_power', batt_kw_original);",
-        "\t\tvalue('batt_bank_size_ui', batt_kwh_original); ",
-        "\t\trefresh();",
+        "\t\treset_original_inputs();\r",
         "\t\texit;",
         "\t}",
         "",
-        "\tif (batt.size_kw == 0 && batt.size_kwh == 0)",
+        "\tif ((batt.size_kw == 0 && batt.size_kwh == 0) || !apply)",
         "\t{",
         "\t\texit;",
         "\t}",
@@ -365,9 +355,9 @@
         "\t{",
         "\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;",
         "\t}",
-        "\tbatt_to_load = batt.year_one_to_load_series_kw;",
-        "\tpv_charge = pv.year_one_to_battery_series_kw;",
-        "\tgrid_charge = elec.year_one_to_battery_series_kw;",
+        "\tbatt_to_load = batt.storage_to_load_series_kw;",
+        "\tpv_charge = pv.electric_to_storage_series_kw;",
+        "\tgrid_charge = elec.electric_to_storage_series_kw;",
         "",
         "\tvalue('batt_dispatch_choice_ui', 2); // make sure UI input is consistent with SSC input",
         "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
@@ -393,8 +383,25 @@
         "\tvalue('batt_custom_dispatch', dispatch);",
         "\tvalue('batt_dispatch_charge_only_system_exceeds_load', false);",
         "\tvalue('batt_dispatch_discharge_only_load_exceeds_system', false);",
-        "\trefresh();",
+        "\trefresh();\r",
+        "\t\r",
+        "\tif (size_outage) {\r",
+        "\t\tmsgbox('REopt found an optimal PV size of ' + to_string(pv.size_kw) + ' kW\\n' +\r",
+        "\t\t\t'This will need to be applied manually.' );\r",
+        "\t}",
         "",
-        "};"
+        "};",
+        "",
+        "function enable_consider_grid_outage() {",
+        "\tenable('reopt_consider_outage',  is_crit() && is_grid_outage());\r",
+        "}\r",
+        "\r",
+        "function reset_original_inputs() {\r",
+        "\t\tvalue('batt_dispatch_choice_ui',dispatch_original_mode); //make sure UI input is consistent with SSC input\r",
+        "\t\tvalue('batt_custom_dispatch',custom_dispatch_original);\r",
+        "\t\tvalue('batt_bank_power', batt_kw_original);\r",
+        "\t\tvalue('batt_bank_size_ui', batt_kwh_original); \r",
+        "\t\trefresh();\r",
+        "}"
     ]
 }
