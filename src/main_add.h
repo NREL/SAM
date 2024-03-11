@@ -74,6 +74,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
+			{ 2024, 3, 11 }, // 2024.3.11.ssc.291.beta - Norwich Windows and Mac installers that expire 5/11/2024
 			{ 2023, 11, 18 },
 			{ 2023, 10, 31 },
 			{ 2023, 9, 19 },  // 2023.9.19 ssc 283 beta release from develop with hybrids expires 12/19/2023
