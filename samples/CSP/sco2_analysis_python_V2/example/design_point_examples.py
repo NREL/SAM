@@ -817,8 +817,8 @@ def get_sco2_design_parameters_Alfani_2020_update2():
     des_par["HTR_min_dT_des_in"] = 10.0   # [C] (required if LTR_design_code == 2)
     
     # ADDED to converge LTR and HTR 
-    des_par["HTR_n_sub_hx"] = 500
-    des_par["LTR_n_sub_hx"] = 500
+    des_par["HTR_n_sub_hx"] = 10
+    des_par["LTR_n_sub_hx"] = 10
 
     # Ambient
     des_par["T_amb_des"] = 25.0  # [C] Ambient temperature at design
@@ -2886,12 +2886,14 @@ def run_alfani_2020_htrbp():
 
     default_par_paper = get_sco2_design_parameters_Alfani_2020_update2()
 
+    default_par_paper["design_method"] = 1
+
     default_par_paper["is_bypass_ok"] = 1
     #default_par_paper["is_recomp_ok"] = 1
-    default_par_paper["des_objective"] = 2
+    #default_par_paper["des_objective"] = 2
 
-    default_par_paper["cycle_config"] = 1
-    default_par_paper["is_P_high_fixed"] = 0
+    #default_par_paper["cycle_config"] = 1
+    #default_par_paper["is_P_high_fixed"] = 0
 
     # Make Cycle class
     c_sco2 = sco2_solve.C_sco2_sim(3)
