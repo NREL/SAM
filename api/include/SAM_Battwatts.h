@@ -449,11 +449,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battwatts_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 

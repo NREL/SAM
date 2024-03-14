@@ -316,13 +316,254 @@ bool CodeGen_Base::Prepare()
 		if (n < 0)
 		{
 			wxArrayString& errs = eval.GetErrors();
-			for (size_t i = 0; i < errs.size(); i++)
-				m_errors.Add(errs[i]);
+			for (size_t ii = 0; ii < errs.size(); ii++)
+				m_errors.Add(errs[ii]);
 
 			return false;
 		}
 	}
 	return true;
+}
+
+bool CodeGen_Base::GenerateInputsOutputs(wxString& compute_module, ssc_data_t p_data, ssc_data_t p_data_output, std::vector<const char*>& cm_names)
+{
+	ssc_module_t p_mod = ssc_module_create(compute_module.c_str());
+	if (!p_mod)
+	{
+		m_errors.Add("could not create ssc module: " + compute_module);
+		return false;
+	}
+
+
+	int pidx = 0;
+	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+	{
+		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+		int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+		const char* var_name = ssc_info_name(p_inf);
+		wxString name(var_name); // assumed to be non-null
+		wxString reqd(ssc_info_required(p_inf));
+
+		if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+		{
+			// handle ssc variable names
+			// that are explicit field accesses"shading:mxh"
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND)
+			{
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != ssc_data_type)
+			{
+				for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+					if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
+					{
+						if (!field.IsEmpty())
+						{
+							if (vv->Type() != VV_TABLE)
+								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+							bool do_copy_var = false;
+							if (reqd.Left(1) == "?")
+							{
+								// if the SSC variable is optional, check for the 'en_<field>' element in the table
+								if (VarValue* en_flag = vv->Table().Get("en_" + field))
+									if (en_flag->Boolean())
+										do_copy_var = true;
+							}
+							else do_copy_var = true;
+
+							if (do_copy_var)
+							{
+								if (VarValue* vv_field = vv->Table().Get(field))
+								{
+									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									else
+										cm_names.push_back(var_name);
+								}
+							}
+
+						}
+						else // no table value
+						{
+							if (!VarValueToSSC(vv, p_data, name))
+								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+							else
+								cm_names.push_back(var_name);
+						}
+					}
+					//					else if (reqd == "*")
+					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+				}
+			}
+		}
+		else if (var_type == SSC_OUTPUT)
+		{
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND)
+			{
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != ssc_data_type)
+			{
+				if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
+					m_errors.Add("Error for output " + name);
+			}
+		}
+	} // end of compute module variables
+	return true;
+}
+
+bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+	if (!Prepare())
+	{
+		m_errors.Add("preparation failed for this case");
+		return false;
+	}
+	ssc_data_t p_data = ssc_data_create();
+
+	ssc_data_t p_input = ssc_data_create();
+	// set "compute_modules"
+
+	ssc_var_t p_compute_modules[10];  // only constant allowed here - assumes m_simlist.size() < 10
+	for (size_t i = 0; i < cfg->Simulations.size() && i < 10; i++) {
+		p_compute_modules[i] = ssc_var_create();
+		ssc_var_set_string(p_compute_modules[i], cfg->Simulations[i].c_str());
+	}
+	ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], (int)cfg->Simulations.size());
+	for (size_t i = 0; i < cfg->Simulations.size() && i < 10; i++)
+		ssc_var_free(p_compute_modules[i]);
+
+	for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < cfg->Simulations.size(); i++) { // each vartable
+		ssc_data_t p_val = ssc_data_create();
+		m_case->Values(i).AsSSCData(p_val, true); // skips overrides - okay for base case
+		// remove any inputs that are not in the compute module
+		wxArrayString ssc_inputs;
+		std::string inputs_name;
+		if (i == m_case->GetConfiguration()->Technology.size() - 1) {// "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
+			size_t j = i;
+			while (j < cfg->Simulations.size()) {
+				auto& scompute_module = cfg->Simulations[j];
+				ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+				if (!p_mod)	{
+					m_errors.Add("could not create ssc module: " + scompute_module);
+					return false;
+				}
+				// do not hybridize "Hybrid" compute modules
+				int pidx = 0;
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+					const char* var_name = ssc_info_name(p_inf);
+					int ssc_type = ssc_info_data_type(p_inf);
+
+					if (ssc_type == SSC_ARRAY) {
+						int ssc_data_type = ssc_data_query(p_val, var_name);
+						if (ssc_data_type == SSC_NUMBER) {
+							ssc_number_t num;
+							ssc_data_get_number(p_val, var_name, &num);
+							ssc_data_set_array(p_val, var_name, &num, 1);
+						}
+					}
+
+					wxString name(var_name); // assumed to be non-null
+					wxString reqd(ssc_info_required(p_inf));
+
+					if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+						ssc_inputs.Add(name);
+					}
+				}
+				j++;
+			}
+			inputs_name = m_case->GetConfiguration()->Technology[i].ToStdString();
+		}
+		else {
+			// remove inputs not in compute module
+			auto& scompute_module = cfg->Simulations[i];
+			ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+			if (!p_mod)	{
+				m_errors.Add("could not create ssc module: " + scompute_module);
+				return false;
+			}
+			if (!ssc_module_hybridize( p_mod)) { // add o and m and total installed cost for each hybrid subsystem
+				m_errors.Add("could hybridize ssc module: " + scompute_module);
+				return false;
+			}
+
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				const char* var_name = ssc_info_name(p_inf);
+				wxString name(var_name); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+					ssc_inputs.Add(name);
+				}
+			}
+			inputs_name = cfg->Simulations[i].ToStdString();
+		}
+		auto c = ssc_data_first(p_val);
+		wxArrayString inputs_to_unassign;
+		while (c) {
+			if (ssc_inputs.Index(wxString(c),false) == wxNOT_FOUND) // no case comparison, e.g. wind_farm_xCoordinates
+				inputs_to_unassign.Add(c);
+			c = ssc_data_next(p_val);
+		}
+		for (auto c : inputs_to_unassign)
+			ssc_data_unassign(p_val, c.c_str());
+		ssc_data_set_table(p_input, inputs_name.c_str(), p_val);
+		ssc_data_free(p_val);
+	}
+	// set "input" SSC_TABLE
+	ssc_data_set_table(p_data, "input", p_input);
+	ssc_data_free(p_input); // after deep copy above
+
+	// Platform specific files
+	if (!PlatformFiles())
+		m_errors.Add("PlatformFiles failed");
+
+	// language specific additional files
+	if (!SupportingFiles())
+		m_errors.Add("SupportingFiles failed");
+
+	// write language specific header
+	if (!Header())
+		m_errors.Add("Header failed");
+
+	std::string name = "input";
+	if (!Input(p_data, name.c_str(), m_folder, array_matrix_threshold))
+		m_errors.Add(wxString::Format("Input %s write failed", name.c_str()));
+
+
+	wxString compute_module = "hybrid";
+	CreateSSCModule(compute_module);
+	RunSSCModule(compute_module);
+	FreeSSCModule();
+
+	// TODO: Add outputs here!
+
+	if (!Footer())
+		m_errors.Add("Footer failed");
+
+	if (m_fp) fclose(m_fp);
+	return (m_errors.Count() == 0);
 }
 
 
@@ -361,6 +602,11 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
+		// store all variable names that are used to run compute module in vector of variable names
+		std::vector<const char*> cm_names;
+
+		GenerateInputsOutputs(simlist[kk], p_data, p_data_output, cm_names);
+		/*
 		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
 		if (!p_mod)
 		{
@@ -368,8 +614,6 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 			continue;
 		}
 
-		// store all variable names that are used to run compute module in vector of variable names
-		std::vector<const char *> cm_names;
 
 		int pidx = 0;
 		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
@@ -456,6 +700,7 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 				}
 			}
 		} // end of compute module variables
+		*/
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
 	}
@@ -724,7 +969,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 
 	if (cg)
 	{
-		cg->GenerateCode(threshold);
+		ConfigInfo* cfg = c->GetConfiguration();
+		if (!cfg)
+			return false;
+		if (cfg->Technology.size() > 1)
+			cg->GenerateCodeHybrids(threshold);
+		else
+			cg->GenerateCode(threshold);
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
@@ -7558,14 +7809,20 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
+		str_value.Replace("\"", "\\\"");
+		// one exception per SAM issue 1515 for "library_folder_list"
+		if (strcmp(name,"library_folder_list")==0)
+			fprintf(m_fp, "	\"%s\" : \"x\",\n", name);
+		else
+			fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
         if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+			fprintf(m_fp, "    \"%s\" : \"nan\", \n", name); // per SAM issue 1515
+//			fprintf(m_fp, "    \"%s\" : NaN,\n", name);
 		else {
 			fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
 		}
@@ -7579,14 +7836,16 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                    fprintf(m_fp, " NaN,");
+					fprintf(m_fp, " \"nan\",");
+				//                    fprintf(m_fp, " NaN,");
                 else
                     fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ],\n");
+				fprintf(m_fp, " \"nan\" ],\n");
+			//                fprintf(m_fp, " NaN ],\n");
             else
                 fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
@@ -7602,25 +7861,29 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (nc == 1){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ], [");
+						fprintf(m_fp, " \"nan\" ], [");
+					//                        fprintf(m_fp, " NaN ], [");
                     else
                         fprintf(m_fp, " %.17g ], [", dbl_value);
                 }
 				else if ((k > 0) && (k % nc == 0)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " [ NaN,");
+						fprintf(m_fp, " [ \"nan\",");
+					//                        fprintf(m_fp, " [ NaN,");
                     else
                         fprintf(m_fp, " [ %.17g,", dbl_value);
                 }
 				else if (k % nc == (nc - 1)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ],");
+						fprintf(m_fp, " \"nan\" ],");
+					//                        fprintf(m_fp, " NaN ],");
                     else
                         fprintf(m_fp, " %.17g ],", dbl_value);
                 }
 				else {
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN, ");
+						fprintf(m_fp, " \"nan\", ");
+					//                        fprintf(m_fp, " NaN, ");
                     else
                         fprintf(m_fp, " %.17g, ", dbl_value);
                 }
@@ -7628,19 +7891,20 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ] ],\n");
+				fprintf(m_fp, " \"nan\" ] ],\n");
+			//                fprintf(m_fp, " NaN ] ],\n");
             else
                 fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
 		break;
 	case SSC_TABLE:
 		{
-		// create table
+			// create table
 			auto dat = ssc_data_get_table(p_data, name); // owned by p_data - no need to free
 			fprintf(m_fp, "	\"%s\" : {\n", name);
-		// track number of table inputs - add to table to prevent read error for last entry with comma
+			// track number of table inputs - add to table to prevent read error for last entry with comma
 			int num_entries = 0;
-		// call input
+			// call input
 			const char* dat_name = ssc_data_first(dat);
 			while (dat_name)
 			{
@@ -7652,6 +7916,32 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			// finish json table
 			fprintf(m_fp, " \"number table entries\" : %d\n", num_entries);
 			fprintf(m_fp, " },\n");
+		}
+		break;
+	case SSC_DATARR:
+		{
+			int n;
+			ssc_var_t data_arr = ssc_data_get_data_array(p_data, name, &n);
+			fprintf(m_fp, "	\"%s\" : [", name);
+			for (int i = 0; i < n - 1; i++)
+			{
+				ssc_var_t var = ssc_var_get_var_array(data_arr, i);
+				switch (ssc_var_query(var)) {
+				case SSC_STRING:
+					fprintf(m_fp, "\"%s\",", ssc_var_get_string(var));
+					break;
+				case SSC_NUMBER:
+					fprintf(m_fp, "%.17g,", ssc_var_get_number(var));
+				}
+			}
+			ssc_var_t var = ssc_var_get_var_array(data_arr, n - 1);
+			switch (ssc_var_query(var)) {
+			case SSC_STRING:
+				fprintf(m_fp, "\"%s\"],\n", ssc_var_get_string(var));
+				break;
+			case SSC_NUMBER:
+				fprintf(m_fp, "%.17g],\n", ssc_var_get_number(var));
+			}
 		}
 		break;
 	}

@@ -134,7 +134,7 @@ public:
 	bool Read_JSON(const std::string& file);
 
     // returns a pointer to a ssc::var_table class that'll need to be freed using ssc_data_free
-    bool AsSSCData(ssc_data_t p_dat);
+    bool AsSSCData(ssc_data_t p_dat, bool case_sensitive=false);
 };
 
 class VarValue

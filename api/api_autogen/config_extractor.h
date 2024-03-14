@@ -42,7 +42,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "variables.h"
 
 #include "variable_graph.h"
-#include "config_extractor.h"
 #include "callback_extractor.h"
 #include "lk_env.h"
 

@@ -863,8 +863,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Weather_azimuth_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_TcslinearFresnel_Weather_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -875,8 +873,6 @@ SAM_EXPORT const char* SAM_TcslinearFresnel_Weather_file_name_sget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Weather_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -885,8 +881,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Weather_tilt_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Weather_track_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -897,8 +891,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Weather_track_mode_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_LinearFresnelr_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -907,8 +899,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_LinearFresnelr_system_capacity_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -920,8 +910,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekday_schedule_mget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -931,8 +919,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_TouTranslator_weekend_schedule_mget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_A_aperture_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -944,8 +930,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_A_aperture_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -955,8 +939,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AbsorberMaterial_mget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AnnulusGas_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -968,8 +950,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_AnnulusGas_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_ColAz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -978,8 +958,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_ColAz_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -991,8 +969,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_2_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_3_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1002,8 +978,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_3_mget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1015,8 +989,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_4_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_5_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1026,8 +998,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_5_mget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_p_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1039,8 +1009,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_D_p_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Design_loss_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1050,8 +1018,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Design_loss_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1063,8 +1029,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Dirt_HCE_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_EPSILON_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1074,8 +1038,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_EPSILON_4_mget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Flow_type_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1087,8 +1049,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Flow_type_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GeomEffects_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1098,8 +1058,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GeomEffects_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1111,8 +1069,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_GlazingIntactIn_mget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1122,8 +1078,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HCE_FieldFrac_mget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HLCharType_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1135,8 +1089,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HLCharType_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_W_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1146,8 +1098,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_W_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_dT_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1159,8 +1109,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_HL_dT_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_L_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1170,8 +1118,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_L_mget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_T_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1183,8 +1129,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_IAM_T_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1193,8 +1137,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1205,8 +1147,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_I_bn_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_LHV_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1215,8 +1155,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_LHV_eff_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_L_col_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1228,8 +1166,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_L_col_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_OptCharType_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1240,8 +1176,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_OptCharType_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1251,8 +1185,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_fixed_par_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1261,8 +1193,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_PB_pump_coef_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_P_a_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1274,8 +1204,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_P_a_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_amb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1284,8 +1212,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_amb_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_turb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1296,8 +1222,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_P_turb_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1306,8 +1230,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_Pipe_hl_coef_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Rough_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1319,8 +1241,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Rough_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1329,8 +1249,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SCA_drives_elec_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Shadowing_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1342,8 +1260,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Shadowing_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarAz_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1352,8 +1268,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarAz_init_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarZen_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1364,8 +1278,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_SolarZen_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1374,8 +1286,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_amb_des_sf_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_db_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1386,8 +1296,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_db_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_dp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1396,8 +1304,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_dp_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_fp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1408,8 +1314,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_fp_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_pb_out_init_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1418,8 +1322,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_T_pb_out_init_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1431,8 +1333,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_Tau_envelope_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_TrackingError_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1443,8 +1343,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_TrackingError_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1454,8 +1352,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1464,8 +1360,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_V_wind_max_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_abs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1477,8 +1371,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_abs_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_env_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1488,8 +1380,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_alpha_env_mget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_aux_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1501,8 +1391,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_aux_array_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1512,8 +1400,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_OpticalTable_mget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1525,8 +1411,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE1_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1536,8 +1420,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE2_mget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1549,8 +1431,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE3_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1560,8 +1440,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_b_eps_HCE4_mget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_bop_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1573,8 +1451,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_bop_array_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1584,8 +1460,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_cutoff_frac_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1594,8 +1468,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_cycle_max_fraction_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_dirt_mirror_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1607,8 +1479,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_dirt_mirror_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_dnifc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1618,8 +1488,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_dnifc_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_e_startup_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1628,8 +1496,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_e_startup_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_error_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1641,8 +1507,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_error_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1651,8 +1515,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_eta_pump_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1663,8 +1525,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_boil_to_sh_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_c_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1673,8 +1533,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_c_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_h_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1685,8 +1543,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_hdr_h_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_boil_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1696,8 +1552,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_boil_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1706,8 +1560,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fP_sf_sh_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_ffrac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1719,8 +1571,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_ffrac_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fossil_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1729,8 +1579,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_fossil_mode_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_multgeom_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1741,8 +1589,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_multgeom_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_oncethru_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1751,8 +1597,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_oncethru_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1763,8 +1607,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_is_sh_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_latitude_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1773,8 +1615,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_latitude_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1785,8 +1625,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_htf_ref_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1795,8 +1633,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_dot_min_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_pb_demand_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1807,8 +1643,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_m_pb_demand_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nLoops_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1817,8 +1651,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nLoops_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModBoil_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1829,8 +1661,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModBoil_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModSH_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1839,8 +1669,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_nModSH_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_max_aux_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1851,8 +1679,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_max_aux_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_pb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1862,8 +1688,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_pb_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_sby_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1872,8 +1696,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_q_sby_frac_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1885,8 +1707,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_rho_mirror_clean_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1896,8 +1716,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_OpticalTable_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1909,8 +1727,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE1_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1920,8 +1736,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE2_mget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1933,8 +1747,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE3_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1945,8 +1757,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Solarfield_sh_eps_HCE4_mget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_shift_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1955,8 +1765,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_shift_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_solarm_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1967,8 +1775,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_solarm_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_t_sby_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1977,8 +1783,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_t_sby_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_tes_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1989,8 +1793,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_tes_hours_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_dep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1999,8 +1801,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_dep_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_stow_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2011,8 +1811,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_theta_stow_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_x_b_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2021,8 +1819,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Solarfield_x_b_des_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2033,8 +1829,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_washes_per_year_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2044,8 +1838,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Heliostat_csp_lf_sf_water_per_wash_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_CT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2054,8 +1846,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_CT_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Powerblock_F_wc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2067,8 +1857,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Powerblock_F_wc_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_amb_pwb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2077,8 +1865,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_amb_pwb_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_boil_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2089,8 +1875,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_boil_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2099,8 +1883,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_min_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_ratio_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2111,8 +1893,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_cond_ratio_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_rh_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2121,8 +1901,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_P_rh_ref_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_ITD_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2133,8 +1911,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_ITD_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2143,8 +1919,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_amb_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2155,8 +1929,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_approach_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_cold_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2165,8 +1937,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_cold_ref_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_db_pwb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2177,8 +1947,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_db_pwb_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2187,8 +1955,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_hot_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_wb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2199,8 +1965,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_T_wb_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dT_cw_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2209,8 +1973,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dT_cw_ref_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_demand_var_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2221,8 +1983,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_demand_var_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2231,8 +1991,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_b_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_rh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2243,8 +2001,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_rh_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_sh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2253,8 +2009,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_dp_sh_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_eta_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2265,8 +2019,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_eta_ref_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_f_recSU_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2275,8 +2027,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_f_recSU_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_m_dot_st_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2287,8 +2037,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_m_dot_st_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_n_pl_inc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2297,8 +2045,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_n_pl_inc_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pb_bd_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2309,8 +2055,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pb_bd_frac_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pc_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2319,8 +2063,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_pc_mode_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_q_sby_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2331,8 +2073,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_q_sby_frac_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_relhum_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2341,8 +2081,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_relhum_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_rh_frac_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2353,8 +2091,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_rh_frac_ref_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_standby_control_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2363,8 +2099,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_standby_control_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2375,8 +2109,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_frac_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2385,8 +2117,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Powerblock_startup_time_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2397,8 +2127,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_constant_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2408,8 +2136,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_en_periods_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2418,8 +2144,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_AdjustmentFactors_adjust_en_timeindex_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2431,8 +2155,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_AdjustmentFactors_adjust_periods_mget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2442,8 +2164,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_AdjustmentFactors_adjust_timeindex_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_E_bal_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2455,8 +2175,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_E_bal_startup_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_cond_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2466,8 +2184,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_cond_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_sf_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2479,8 +2195,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_sf_in_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_turb_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2490,8 +2204,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_P_turb_in_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2503,8 +2215,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_in_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2514,8 +2224,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_field_out_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_loop_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2527,8 +2235,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_loop_out_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2538,8 +2244,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_in_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2551,8 +2255,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_T_pb_out_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cool_par_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2562,8 +2264,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cool_par_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cycle_gross_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2575,8 +2275,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_cycle_gross_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_aux_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2586,8 +2284,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_aux_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_bop_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2599,8 +2295,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_bop_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_col_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2610,8 +2304,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_col_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2623,8 +2315,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_fixed_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2634,8 +2324,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_dot_pump_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2647,8 +2335,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_W_net_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_W_cycle_gross_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2658,8 +2344,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_W_cycle_gross_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2668,8 +2352,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_energy_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2681,8 +2363,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_annual_energy_distribution_time_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2692,8 +2372,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_fuel_usage_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2702,8 +2380,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_total_water_use_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2715,8 +2391,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_beam_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2726,8 +2400,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_capacity_factor_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2736,8 +2408,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_conversion_factor_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_dP_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2749,8 +2419,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_dP_tot_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2760,8 +2428,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_defocus_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2773,8 +2439,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_opt_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2784,8 +2448,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_opt_ave_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2797,8 +2459,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_sf_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2808,8 +2468,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_eta_thermal_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_f_bays_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2821,8 +2479,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_f_bays_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2832,8 +2488,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_gen_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2845,8 +2499,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_hour_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2855,8 +2507,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_kwh_per_kw_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2868,8 +2518,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aux_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2879,8 +2527,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_aux_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_b_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2892,8 +2538,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_b_tot_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2903,8 +2547,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_field_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_makeup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2916,8 +2558,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_makeup_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_to_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2927,8 +2567,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_m_dot_to_pb_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2940,8 +2578,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_month_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2951,8 +2587,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_monthly_energy_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2964,8 +2598,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_pres_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fluid_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2975,8 +2607,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fluid_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fuel_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2988,8 +2618,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_aux_fuel_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_dump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2999,8 +2627,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_dump_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_field_delivered_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3012,8 +2638,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_field_delivered_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_inc_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3023,8 +2647,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_inc_tot_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_piping_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3036,8 +2658,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_piping_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_rec_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3047,8 +2667,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_rec_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_sf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3060,8 +2678,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_loss_sf_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_to_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3071,8 +2687,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_q_to_pb_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3084,8 +2698,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solazi_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3096,8 +2708,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_solzen_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3106,8 +2716,6 @@ SAM_EXPORT double SAM_TcslinearFresnel_Outputs_system_heat_rate_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3119,8 +2727,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tdry_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3130,8 +2736,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_tou_value_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3143,8 +2747,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_twet_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3154,6 +2756,4 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_wspd_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 

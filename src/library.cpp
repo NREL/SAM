@@ -1141,12 +1141,12 @@ bool ScanWaveResourceData(const wxString &db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../wave_resource/");
 	
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("wave_data_paths", &slist))
@@ -1331,12 +1331,12 @@ bool ScanWaveResourceTSData(const wxString& db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../wave_resource_ts/");
 
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("wave_data_paths", &slist))
@@ -1552,12 +1552,12 @@ bool ScanTidalResourceData(const wxString& db_file, bool show_busy)
     wxArrayString paths;
     paths.Add(SamApp::GetRuntimePath() + "../tidal_resource/");
 
-    /*
+    
     wxString dnpath;
     if (SamApp::Settings().Read("wave_download_path", &dnpath)
         && wxDirExists(dnpath))
         paths.Add(dnpath);
-        */
+        
 
     wxString slist;
     if (SamApp::Settings().Read("tidal_data_paths", &slist))
@@ -1788,6 +1788,7 @@ wxString WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     // process file
     wxString wf = path + "/" + file;
     ssc_data_t pdata = ssc_data_create();
+    wxString err_return = "";
     ssc_data_set_string(pdata, "wave_resource_filename_ts", (const char*)ts_file.c_str());
     ssc_data_set_number(pdata, "wave_resource_model_choice", 1);
 
@@ -1795,6 +1796,8 @@ wxString WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
     {
         wxLogStatus("error scanning '" + wf + "'");
         wxLogStatus("\t%s", err);
+        err_return += err;
+        err_return += "\n";
     }
     else
     {
@@ -1898,6 +1901,6 @@ wxString WaveResourceTSData_makeJPD(const wxString& ts_file, bool show_busy)
 
     //return csv.WriteFile(string_jpdfile + "_jpd.csv");
     csv.WriteFile(ts_file); //Reuse File input as output for JPD file to avoid having multi-year time series file in library
-    return (csv(1, 0)); //Return name of file for library indexing
+    return (err_return); //Return name of file for library indexing
     
 }

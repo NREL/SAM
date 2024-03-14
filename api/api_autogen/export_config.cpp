@@ -271,7 +271,10 @@ int main(int argc, char *argv[]){
     std::string content = static_cast<std::stringstream const&>(std::stringstream() << ifs.rdbuf()).str();
 
     startup_extractor su_e;
-    su_e.load_startup_script(content);
+    if (!su_e.load_startup_script(content)){
+        std::cerr << "Startup script error\n";
+        return 1;
+    }
     std::vector<std::string> unique_ui_form_names = su_e.get_unique_ui_forms();
 
     // get all the SSC_INPUT & SSC_INOUT for all used compute_modules
@@ -288,6 +291,15 @@ int main(int argc, char *argv[]){
     // parsing the callbacks requires all ui forms in a config
     active_config = "";
 
+    // do all technologies with Hybrid first because it has all the HybridTech stuff
+    for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
+        active_config = SAM_config_to_primary_module.first;
+       
+       if (active_config.find("Hybrid") == std::string::npos) continue;
+
+        export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
+    }
+
     // do technology configs with None first
     for (auto & SAM_config_to_primary_module : SAM_config_to_primary_modules){
         active_config = SAM_config_to_primary_module.first;
@@ -297,9 +309,7 @@ int main(int argc, char *argv[]){
             continue;
         }
 
-//        if (active_config.find("IPH-LCOH") == std::string::npos){
-//            continue;
-//        }
+       if (active_config.find("Hybrid") != std::string::npos) continue;
 
         export_files(active_config, processed_cmods, runtime_path, defaults_path, api_path, pysam_path);
     }
@@ -361,7 +371,7 @@ int main(int argc, char *argv[]){
             if (c != ' ' && c != '-') cfg += c; 
 
         snprintf(buffer, sizeof(buffer),
-            "%s\n-----------------------------------------------------------------------\n\n"
+            "%s\n---------------------------------------------------------------------------------\n\n"
             "      %s\n\n"
             "      Configuration name for defaults: *\"%s\"*\n\n"
             "      %s\n\n",
