@@ -2888,9 +2888,12 @@ def run_alfani_2020_htrbp():
 
     default_par_paper["design_method"] = 1
 
-    default_par_paper["is_bypass_ok"] = 1
-    #default_par_paper["is_recomp_ok"] = 1
-    #default_par_paper["des_objective"] = 2
+    #default_par_paper["design_method"] = 2
+    default_par_paper["is_bypass_ok"] = -0.1
+    default_par_paper["is_recomp_ok"] = -0.3
+    default_par_paper["des_objective"] = 2
+    default_par_paper["is_PR_fixed"] = 0
+    default_par_paper["is_P_high_fixed"] = 0
 
     #default_par_paper["cycle_config"] = 1
     #default_par_paper["is_P_high_fixed"] = 0
@@ -2927,7 +2930,7 @@ if __name__ == "__main__":
     #file_name = run_fixed_eff_case(5)
     #design_point_tools.plot_dict_from_file(file_name, "eta_thermal_calc", "T_htf_cold_des", "recup_total_UA_calculated")
     #htrbp_sweep_special(4)
-    run_refactor_test_case()
+    #run_refactor_test_case()
     #run_err_case()
     #sweep_Alfani_2024(10)
     #sweep_Alfani_2024(20)
