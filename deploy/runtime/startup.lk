@@ -936,13 +936,13 @@ setconfig( 'Physical Trough IPH', 'None' );
 setmodules( ['trough_physical_iph']);
 setup_cst_physical_trough_pages();
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('Physical Trough IPH', 'LCOH Calculator');
 setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
