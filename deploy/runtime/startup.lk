@@ -31,7 +31,7 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
 addconfig( 'MSPT IPH', ['None', 'LCOH Calculator', 'Single Owner']);
-addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator', 'Single Owner']);
+addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator', 'Single Owner', 'Commercial']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
 addconfig( 'MSLF IPH', ['None', 'LCOH Calculator', 'Single Owner']);
 // Marine Energy
@@ -968,6 +968,13 @@ addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
+
+setconfig( 'Physical Trough IPH', 'Commercial' );
+setmodules( ['trough_physical_iph']);
+setup_cst_physical_trough_pages();
+addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
+addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
