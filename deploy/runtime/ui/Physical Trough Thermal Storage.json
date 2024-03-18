@@ -1857,7 +1857,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Diameter|Height"
+                    "StringList": "Fix diameter|Fix height"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
