@@ -1529,7 +1529,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Copy of nameplate (needed for financial models)",
-            "Units": "MWe",
+            "Units": "MWt",
             "Group": "MSLF System Design",
             "IndexLabels": "",
             "Flags": 8.0,

@@ -372,7 +372,7 @@
             "Group": "PPA Price and IRR",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 0.0,
+            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
