@@ -970,8 +970,9 @@ addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 setconfig( 'Physical Trough IPH', 'Commercial' );
-setmodules( ['trough_physical_iph']);
+setmodules( ['trough_physical_iph', 'utilityrate5', 'cashloan']);
 setup_cst_physical_trough_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
