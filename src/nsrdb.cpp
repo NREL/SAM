@@ -637,9 +637,10 @@ void NSRDBDialog::GetResources()
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif
-			// skip datasets that do not work with SAM
+			// skip some datasets
 			// spectral-india-tmy is not compatible with SAM
-			if ( (name.Lower() != "spectral-india-tmy") )
+			// full-disc only covers a few years and seems similar to psm3 from solar modeling perspective
+			if ( (name.Lower() != "spectral-india-tmy") && (name.Lower() != "full-disc"))
 				m_links.push_back(LinkInfo(name, displayName, year, URL, interval, location, attributes));
 			// disable auto-select button if not psm3 data, need this for suny-india data
 			if ( !name.Lower().Contains("psm3") )
