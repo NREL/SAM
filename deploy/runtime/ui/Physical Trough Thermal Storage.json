@@ -924,7 +924,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1007,7 +1007,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1090,7 +1090,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1422,7 +1422,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 162.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4278,6 +4278,7 @@
         "on_load{'Physical Trough Thermal Storage'} = define() {",
         "\ton_change{\"combo_tes_htf_type\"}();",
         "\ton_change{\"is_hx\"}();",
+        "\ton_change{\"tes_type\"}();\r",
         "\t",
         "\t// constants and initial conditions",
         "\tvalue(\"tc_fill\", 7);",
@@ -4333,6 +4334,22 @@
         "    enable(\"store_fl_props\", bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_min_opt_temp\",!bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_max_opt_temp\",!bUserDefined);",
+        "};\r",
+        "\r",
+        "on_change{\"tes_type\"}=define(){\r",
+        "\t\r",
+        "\tif(${tes_type} == 1){\r",
+        "\t\r",
+        "\t\tif(${tanks_in_parallel} != 1) {\r",
+        "\t\t\t${tanks_in_parallel} = 1;\r",
+        "\t\t}\r",
+        "\t\t\r",
+        "\t\tenable('tanks_in_parallel', false);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('tanks_in_parallel', true);\r",
+        "\t}\r",
+        "\r",
         "};"
     ]
 }
