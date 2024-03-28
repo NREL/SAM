@@ -58,3 +58,6 @@ To use the data in SAM:
 
 You will need 15-minute weather data to run a simulation in SAM, which you can download by using the **Advanced download** option on the Location and Resource page, and choosing a 15-minute file from the "psm3-5min" dataset. You can choose the year to match the load data if you want to use SAM simulation results to explore the correlation between weather and load.
 
+## Additional Resources
+
+TMY3 weather files used to generate ResStock and ComStock data are available here: https://data.nrel.gov/submissions/156
