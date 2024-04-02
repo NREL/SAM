@@ -172,7 +172,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
@@ -203,7 +208,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods from previous versions are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [[0,0,0]] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('dc_adjust_periods', p); 
 		value('dc_adjust_en_timeindex', x.en_timeindex);
 		value('dc_adjust_timeindex', x.timeindex);
@@ -216,7 +226,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
