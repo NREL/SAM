@@ -2919,6 +2919,27 @@ def run_alfani_2020_htrbp():
 
     #design_point_tools.plot_dict_from_file(combined_name, "eta_thermal_calc", "T_htf_cold_des")
 
+def test_tsf_alfani_2020():
+    default_par = get_sco2_design_parameters_Alfani_2020_update2()
+
+    # Define TSF Parameters
+    default_par["cycle_config"] = 4
+    default_par["eta_isen_t2"] = 0.898
+    default_par["is_turbine_split_ok"] = -0.5
+
+
+    #default_par_paper["cycle_config"] = 1
+    #default_par_paper["is_P_high_fixed"] = 0
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par)
+
+    # Solve
+    c_sco2.solve_sco2_case()
+
 
 # Main Script
 
