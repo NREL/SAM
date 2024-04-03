@@ -11,7 +11,7 @@
 #include "SAM_TcsMSLF.h"
 
 SAM_EXPORT int SAM_TcsMSLF_execute(SAM_table data, int verbosity, SAM_error* err){
-	return SAM_module_exec("tcsMSLF", data, verbosity, err);
+	return SAM_module_exec("tcsmslf", data, verbosity, err);
 }
 
 SAM_EXPORT void SAM_TcsMSLF_Weather_azimuth_nset(SAM_table ptr, double number, SAM_error *err){
@@ -1115,8 +1115,6 @@ SAM_EXPORT double SAM_TcsMSLF_Weather_azimuth_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_TcsMSLF_Weather_file_name_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1127,8 +1125,6 @@ SAM_EXPORT const char* SAM_TcsMSLF_Weather_file_name_sget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Weather_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1137,8 +1133,6 @@ SAM_EXPORT double SAM_TcsMSLF_Weather_tilt_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Weather_track_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1149,8 +1143,6 @@ SAM_EXPORT double SAM_TcsMSLF_Weather_track_mode_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Mslf_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1159,8 +1151,6 @@ SAM_EXPORT double SAM_TcsMSLF_Mslf_system_capacity_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_TouTranslator_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1172,8 +1162,6 @@ SAM_EXPORT double* SAM_TcsMSLF_TouTranslator_weekday_schedule_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_TouTranslator_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1184,8 +1172,6 @@ SAM_EXPORT double* SAM_TcsMSLF_TouTranslator_weekend_schedule_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_A_aperture_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1194,8 +1180,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_A_aperture_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_AbsorberMaterial_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1207,8 +1191,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_AbsorberMaterial_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_AnnulusGas_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1219,8 +1201,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_AnnulusGas_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_ColAz_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1230,8 +1210,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_ColAz_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_DP_SGS_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1240,8 +1218,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_DP_SGS_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_DP_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1253,8 +1229,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_DP_coefs_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_DP_nominal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1263,8 +1237,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_DP_nominal_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_D_abs_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1276,8 +1248,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_D_abs_in_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_D_abs_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1287,8 +1257,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_D_abs_out_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_D_glass_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1300,8 +1268,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_D_glass_in_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_D_glass_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1311,8 +1277,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_D_glass_out_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_D_plug_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1324,8 +1288,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_D_plug_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_Design_loss_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1336,8 +1298,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_Design_loss_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_Dirt_mirror_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1346,8 +1306,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_Dirt_mirror_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_Error_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1358,8 +1316,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_Error_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_FieldConfig_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1368,8 +1324,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_FieldConfig_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_Flow_type_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1381,8 +1335,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_Flow_type_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_Fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1392,8 +1344,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_Fluid_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_GeomEffects_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1402,8 +1352,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_GeomEffects_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_GlazingIntactIn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1415,8 +1363,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_GlazingIntactIn_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_HCE_FieldFrac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1427,8 +1373,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_HCE_FieldFrac_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_HDR_rough_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1437,8 +1381,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_HDR_rough_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_HL_T_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1450,8 +1392,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_HL_T_coefs_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_HL_w_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1461,8 +1401,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_HL_w_coefs_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_IAM_L_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1474,8 +1412,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_IAM_L_coefs_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_IAM_T_coefs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1486,8 +1422,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_IAM_T_coefs_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_I_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1496,8 +1430,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_I_b_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_I_bn_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1508,8 +1440,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_I_bn_des_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_L_crossover_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1518,8 +1448,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_L_crossover_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_L_mod_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1530,8 +1458,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_L_mod_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_L_mod_spacing_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1540,8 +1466,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_L_mod_spacing_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_OpticalTable_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1553,8 +1477,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_OpticalTable_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_P_a_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1565,8 +1487,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_P_a_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_P_amb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1576,8 +1496,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_P_amb_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_Pipe_hl_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1586,8 +1504,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_Pipe_hl_coef_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_Rough_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1599,8 +1515,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_Rough_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_SCA_drives_elec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1609,8 +1523,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_SCA_drives_elec_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_Shadowing_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1622,8 +1534,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_Shadowing_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_amb_sf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1632,8 +1542,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_amb_sf_des_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_cold_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1644,8 +1552,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_cold_in_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_db_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1654,8 +1560,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_db_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_dp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1666,8 +1570,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_dp_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1676,8 +1578,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_in_des_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1688,8 +1588,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_ini_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1698,8 +1596,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_field_out_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_fp_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1710,8 +1606,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_fp_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_loop_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1720,8 +1614,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_loop_in_des_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_loop_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1732,8 +1624,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_loop_out_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_set_aux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1742,8 +1632,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_set_aux_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_startup_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1754,8 +1642,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_startup_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_cold_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1764,8 +1650,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_cold_ini_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_hot_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1776,8 +1660,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_hot_ini_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1786,8 +1668,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_Tau_envelope_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1799,8 +1679,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_Tau_envelope_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_TrackingError_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1809,8 +1687,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_TrackingError_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_hdr_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1821,8 +1697,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_hdr_max_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_hdr_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1831,8 +1705,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_hdr_min_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_tank_hot_ini_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1843,8 +1715,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_tank_hot_ini_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1853,8 +1723,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_tes_des_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_wind_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1865,8 +1733,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_wind_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_V_wind_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1876,8 +1742,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_V_wind_des_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_W_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1886,8 +1750,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_W_pb_design_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_alpha_abs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1899,8 +1761,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_alpha_abs_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_alpha_env_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1910,8 +1770,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_alpha_env_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_aux_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1923,8 +1781,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_aux_array_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_bop_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1935,8 +1791,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_bop_array_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_calc_design_pipe_vals_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1945,8 +1799,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_calc_design_pipe_vals_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1957,8 +1809,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_cold_tank_Thtr_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_custom_sgs_pipe_sizes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1967,8 +1817,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_custom_sgs_pipe_sizes_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_custom_tes_p_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1979,8 +1827,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_custom_tes_p_loss_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_cycle_cutoff_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1989,8 +1835,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_cycle_cutoff_frac_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_cycle_max_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2001,8 +1845,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_cycle_max_frac_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_defocus_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2011,8 +1853,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_defocus_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_dirt_env_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2024,8 +1864,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_dirt_env_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_dt_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2035,8 +1873,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_dt_cold_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_dt_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2045,8 +1881,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_dt_hot_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_1_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2058,8 +1892,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_1_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_2_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2069,8 +1901,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_2_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_3_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2082,8 +1912,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_3_mget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_4_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2093,8 +1921,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_abs_4_mget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_glass_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2106,8 +1932,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_epsilon_glass_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2116,8 +1940,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_eta_pump_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_f_tc_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2128,8 +1950,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_f_tc_cold_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_fc_on_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2138,8 +1958,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_fc_on_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_ffrac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2151,8 +1969,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_ffrac_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2163,8 +1979,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_field_fl_props_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_field_fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2173,8 +1987,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_field_fluid_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_fossil_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2185,8 +1997,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_fossil_mode_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_fthr_ok_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2195,8 +2005,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_fthr_ok_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_fthrctrl_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2207,8 +2015,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_fthrctrl_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_fthrok_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2217,8 +2023,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_fthrok_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2229,8 +2033,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_h_tank_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2239,8 +2041,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_h_tank_min_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2251,8 +2051,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_has_hot_tank_bypass_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_hot_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2261,8 +2059,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_hot_tank_Thtr_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_hx_config_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2273,8 +2069,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_hx_config_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_is_hx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2283,8 +2077,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_is_hx_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_k_tes_loss_coeffs_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2296,8 +2088,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_k_tes_loss_coeffs_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2306,8 +2096,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_m_dot_htfmax_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2318,8 +2106,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_m_dot_htfmin_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2328,8 +2114,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_cold_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2340,8 +2124,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_hot_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_sca_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2350,8 +2132,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_mc_bal_sca_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_nLoops_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2362,8 +2142,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_nLoops_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_nMod_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2372,8 +2150,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_nMod_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_nRecVar_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2384,8 +2160,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_nRecVar_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_nSCA_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2394,8 +2168,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_nSCA_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_nodes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2406,8 +2178,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_nodes_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_opt_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2416,8 +2186,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_opt_model_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2428,8 +2196,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_pb_fixed_par_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2438,8 +2204,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_pb_pump_coef_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_pb_rated_cap_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2450,8 +2214,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_pb_rated_cap_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_q_max_aux_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2460,8 +2222,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_q_max_aux_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_q_pb_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2472,8 +2232,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_q_pb_design_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_rec_htf_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2482,8 +2240,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_rec_htf_vol_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_rec_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2494,8 +2250,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_rec_model_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_reflectivity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2504,8 +2258,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_reflectivity_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_diams_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2517,8 +2269,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_diams_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_lengths_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2528,8 +2278,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_lengths_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_wallthicks_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2541,8 +2289,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_sgs_wallthicks_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_solar_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2552,8 +2298,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_solar_mult_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_solarm_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2562,8 +2306,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_solarm_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2575,8 +2317,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_store_fl_props_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_store_fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2585,8 +2325,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_store_fluid_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_t_ch_out_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2597,8 +2335,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_t_ch_out_max_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_t_dis_out_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2607,8 +2343,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_t_dis_out_min_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_t_standby_reset_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2619,8 +2353,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_t_standby_reset_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2629,8 +2361,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tank_max_heat_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2641,8 +2371,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tank_pairs_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2651,8 +2379,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tanks_in_parallel_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_tc_fill_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2663,8 +2389,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tc_fill_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_tc_void_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2673,8 +2397,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tc_void_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2685,8 +2407,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_tes_temp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2695,8 +2415,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tes_temp_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_tes_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2707,8 +2425,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tes_type_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_theta_dep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2717,8 +2433,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_theta_dep_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_theta_stow_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2729,8 +2443,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_theta_stow_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_tshours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2739,8 +2451,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_tshours_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_a_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2752,8 +2462,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_a_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_b_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2763,8 +2471,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_b_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_c_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2776,8 +2482,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Controller_tslogic_c_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Controller_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2786,8 +2490,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_u_tank_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Controller_vol_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2798,8 +2500,6 @@ SAM_EXPORT double SAM_TcsMSLF_Controller_vol_tank_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_SolarField_washes_per_year_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2808,8 +2508,6 @@ SAM_EXPORT double SAM_TcsMSLF_SolarField_washes_per_year_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_SolarField_water_per_wash_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2820,8 +2518,6 @@ SAM_EXPORT double SAM_TcsMSLF_SolarField_water_per_wash_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_CT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2830,8 +2526,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_CT_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Powerblock_F_wc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2843,8 +2537,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Powerblock_F_wc_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_cond_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2853,8 +2545,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_cond_min_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_cond_ratio_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2865,8 +2555,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_cond_ratio_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2875,8 +2563,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_P_ref_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_ITD_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2887,8 +2573,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_ITD_des_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2897,8 +2581,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_amb_des_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2909,8 +2591,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_approach_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_htf_cold_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2919,8 +2599,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_htf_cold_ref_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_htf_hot_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2931,8 +2609,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_T_htf_hot_ref_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_dT_cw_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2941,8 +2617,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_dT_cw_ref_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_eta_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2953,8 +2627,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_eta_ref_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_n_pl_inc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2963,8 +2635,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_n_pl_inc_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_pb_bd_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2975,8 +2645,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_pb_bd_frac_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_pc_config_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2985,8 +2653,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_pc_config_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_q_sby_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2997,8 +2663,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_q_sby_frac_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_startup_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3007,8 +2671,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_startup_frac_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_startup_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3019,8 +2681,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_startup_time_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Powerblock_tech_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3030,8 +2690,6 @@ SAM_EXPORT double SAM_TcsMSLF_Powerblock_tech_type_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_f_W_dot_cool_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3040,8 +2698,6 @@ SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_f_W_dot_cool_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3053,8 +2709,6 @@ SAM_EXPORT double* SAM_TcsMSLF_UserDefinedPC_ud_ind_od_mget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3063,8 +2717,6 @@ SAM_EXPORT double SAM_TcsMSLF_UserDefinedPC_ud_m_dot_water_cool_des_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Enet_eta_lhv_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3075,8 +2727,6 @@ SAM_EXPORT double SAM_TcsMSLF_Enet_eta_lhv_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Enet_eta_tes_htr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3085,8 +2735,6 @@ SAM_EXPORT double SAM_TcsMSLF_Enet_eta_tes_htr_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_Enet_fp_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3097,8 +2745,6 @@ SAM_EXPORT double SAM_TcsMSLF_Enet_fp_mode_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3107,8 +2753,6 @@ SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_constant_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3119,8 +2763,6 @@ SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_en_periods_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3129,8 +2771,6 @@ SAM_EXPORT double SAM_TcsMSLF_AdjustmentFactors_adjust_en_timeindex_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3142,8 +2782,6 @@ SAM_EXPORT double* SAM_TcsMSLF_AdjustmentFactors_adjust_periods_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3153,8 +2791,6 @@ SAM_EXPORT double* SAM_TcsMSLF_AdjustmentFactors_adjust_timeindex_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_DP_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3166,8 +2802,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_DP_tot_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_E_bal_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3177,8 +2811,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_E_bal_startup_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_EqOptEff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3190,8 +2822,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_EqOptEff_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_P_cycle_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3201,8 +2831,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_P_cycle_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_Pipe_hl_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3214,8 +2842,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_Pipe_hl_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_Q_par_sf_fp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3225,8 +2851,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_Q_par_sf_fp_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_Q_par_tes_fp_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3238,8 +2862,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_Q_par_tes_fp_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_pb_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3249,8 +2871,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_pb_in_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_pb_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3262,8 +2882,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_pb_out_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_sys_c_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3273,8 +2891,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_sys_c_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_sys_h_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3286,8 +2902,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_sys_h_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_cold_fin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3297,8 +2911,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_cold_fin_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3310,8 +2922,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_cold_in_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_hot_fin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3321,8 +2931,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_hot_fin_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_hot_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3334,8 +2942,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_T_tank_hot_in_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_Ts_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3345,8 +2951,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_Ts_cold_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_Ts_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3358,8 +2962,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_Ts_hot_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_cool_par_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3369,8 +2971,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_cool_par_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_dot_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3382,8 +2982,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_dot_pump_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3393,8 +2991,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_net_aget(SAM_table ptr, int* length, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_par_BOP_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3406,8 +3002,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_par_BOP_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_par_aux_boiler_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3418,8 +3012,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_W_par_aux_boiler_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_W_cycle_gross_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3429,8 +3021,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_W_cycle_gross_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3439,8 +3029,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_energy_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -3452,8 +3040,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_annual_energy_distribution_time_mget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3463,8 +3049,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3473,8 +3057,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_total_water_use_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3486,8 +3068,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_beam_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3497,8 +3077,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_capacity_factor_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_conversion_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3507,8 +3085,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_conversion_factor_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3520,8 +3096,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_optical_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3531,8 +3105,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_optical_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_thermal_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3544,8 +3116,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_eta_thermal_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_fixed_par_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3555,8 +3125,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_fixed_par_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3568,8 +3136,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_gen_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3579,8 +3145,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_hour_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3592,8 +3156,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_htf_pump_power_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3602,8 +3164,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_avail_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3615,8 +3175,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_avail_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_charge_field_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3626,8 +3184,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_charge_field_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_discharge_tank_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3639,8 +3195,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_discharge_tank_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_htf2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3650,8 +3204,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_htf2_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_makeup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3663,8 +3215,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_makeup_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3674,8 +3224,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_m_dot_pb_aget(SAM_table ptr, int* length,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_mass_tank_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3687,8 +3235,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_mass_tank_cold_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_mass_tank_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3698,8 +3244,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_mass_tank_hot_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3711,8 +3255,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_month_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3722,8 +3264,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_monthly_energy_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_phi_t_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3735,8 +3275,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_phi_t_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3746,8 +3284,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_P_dsn_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_T_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3759,8 +3295,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_T_dsn_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_diams_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3770,8 +3304,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_diams_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_mdot_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3783,8 +3315,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_mdot_dsn_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_vel_dsn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3794,8 +3324,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_vel_dsn_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_wallthk_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3807,8 +3335,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pipe_sgs_wallthk_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3818,8 +3344,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_pres_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_abs_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3831,8 +3355,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_abs_tot_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_aux_fuel_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3842,8 +3364,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_aux_fuel_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_avail_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3855,8 +3375,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_avail_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_dump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3866,8 +3384,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_dump_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_inc_sf_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3879,8 +3395,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_inc_sf_tot_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_loss_spec_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3890,8 +3404,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_loss_spec_tot_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_loss_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3903,8 +3415,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_loss_tot_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_pb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3914,8 +3424,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_pb_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_to_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3927,8 +3435,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_q_to_tes_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_sf_def_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3938,8 +3444,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_sf_def_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3951,8 +3455,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_solazi_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3963,8 +3465,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_solzen_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_TcsMSLF_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3973,8 +3473,6 @@ SAM_EXPORT double SAM_TcsMSLF_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_t_loop_outlet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3986,8 +3484,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_t_loop_outlet_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_tank_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3997,8 +3493,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_tank_losses_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4010,8 +3504,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_tdry_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_theta_L_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4021,8 +3513,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_theta_L_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4034,8 +3524,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_tou_value_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_track_par_tot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4045,8 +3533,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_track_par_tot_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4058,8 +3544,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_twet_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_cold_fin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4069,8 +3553,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_cold_fin_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_hot_fin_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -4082,8 +3564,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_hot_fin_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_total_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4094,8 +3574,6 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_vol_tank_total_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_TcsMSLF_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4105,6 +3583,4 @@ SAM_EXPORT double* SAM_TcsMSLF_Outputs_wspd_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 

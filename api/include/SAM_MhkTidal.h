@@ -136,6 +136,22 @@ extern "C"
 	SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_resource_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set tidal_resource_model_choice: Resource distribution or time series tidal resource data [0/1]
+	 * options: None
+	 * constraints: INTEGER
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_resource_model_choice_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tidal_velocity: Tidal velocity [m/s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_MhkTidal_MHKTidal_tidal_velocity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set total_operating_cost: O&M costs [$]
 	 * options: None
 	 * constraints: None
@@ -174,6 +190,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_resource_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_MhkTidal_MHKTidal_tidal_resource_model_choice_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkTidal_MHKTidal_tidal_velocity_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_MhkTidal_MHKTidal_total_operating_cost_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -192,6 +212,8 @@ extern "C"
 	SAM_EXPORT double SAM_MhkTidal_Outputs_device_average_power_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_device_rated_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MhkTidal_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_MhkTidal_Outputs_tidal_power_end_velocity_nget(SAM_table ptr, SAM_error *err);
 

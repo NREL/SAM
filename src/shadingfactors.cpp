@@ -276,7 +276,7 @@ bool ShadingInputData::read(Case *c, size_t ndxHybrid, wxString name)
 }
 
 
-static const char *hourly_text_basic = "Enter or import a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nNote that the 3D Shade Calculator automatically populates this beam shading table.";
+static const char *hourly_text_basic = "Enter or import a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step.\n\nFor a subarray of modules with c-Si cells and up to 8 strings of modules, you can use the partial shading model to estimate the impact of partial shading on the subarray's DC output.\n\nYou can use the 3D Shade Calculator to populate this beam shading table.";
 static const char *hourly_text_strings = "Enter or import a beam shading loss percentage for each of the simulation time steps in a single year. No shading is 0%, and full shading is 100%. Choose a time step in minutes equivalent to the weather file time step. For a subarray of modules with c-Si cells and up to 8 strings of modules, you can use the partial shading model to estimate the impact of partial shading on the subarray's DC output.\n\nIf you use the 3D Shade Calculator to populate this beam shading table, be sure that the active surface subarray number(s) and string number(s) match the system design.";
 static const char *mxh_text = "Enter 288 (24 hours x 12 month) beam shading loss percentages that apply to the 24 hours of the day for each month of the year. No shading is 0%, and full shading is 100%. Select a cell or group of cells and type a number to assign values to the table by hand. Click Import to import a table of values from a properly formatted text file. Click Export to export the data to a text file, or to create a template file for importing.";
 static const char *azal_text = "Use the Azimuth by Altitude option if you have a set of beam shading losses for different sun positions.\n\n"
@@ -405,6 +405,8 @@ public:
 		scroll->Add( m_enableDiffuse, 0, wxALL|wxEXPAND, 5 );
 		scroll->Add( m_textDiffuse = new wxStaticText( m_scrollWin, wxID_ANY, diff_text ), 0, wxALL|wxEXPAND, 10 );
 		scroll->Add( m_diffuseFrac, 0, wxALL, 5  );
+		m_diffuseFrac->SetMinSize(wxSize(100, 24));
+
 		m_textDiffuse->Wrap( wrap_width );
 		m_textDiffuse->SetForegroundColour( text_color );	
 
@@ -1290,7 +1292,7 @@ wxShadingFactorsCtrl::wxShadingFactorsCtrl(wxWindow *parent, int id,
 	m_btn_copy = new wxButton(this, ISFC_COPY, "Copy");
 	m_btn_paste = new wxButton(this, ISFC_PASTE, "Paste");
 
-
+	// hide db options for pvwatts
 	if (!show_db_options)
 	{
 		m_caption_col->Show(false);
@@ -1428,7 +1430,7 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 	{
 		case ISFC_CHKDB:
 			{
-				bool bol_db = m_chk_shading_db->GetValue();
+				bool bol_db = m_chk_shading_db->GetValue() && m_show_db_options;
 				m_caption_col->Show(bol_db);
 				m_choice_col->Show(bol_db);
 				if (!bol_db)
@@ -1488,9 +1490,9 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 				int ndx = m_minute_arystrvals.Index(wxString::Format("%d", minutes));
 				if (ndx >= 0)
 					m_choice_timestep->SetSelection(ndx);
-				m_chk_shading_db->SetValue(true);
-				m_caption_col->Show(true);
-				m_choice_col->Show(true);
+				//m_chk_shading_db->SetValue(true);
+				m_caption_col->Show(m_show_db_options);
+				m_choice_col->Show(m_show_db_options);
 			}
 
 		}
@@ -1504,9 +1506,9 @@ void wxShadingFactorsCtrl::OnCommand(wxCommandEvent &evt)
 					wxMessageBox("Error import data file:\n\n" + dlg.GetPath());
 				else
 				{
-					m_chk_shading_db->SetValue(true);
-					m_caption_col->Show(true);
-					m_choice_col->Show(true);
+					//m_chk_shading_db->SetValue(true);
+					m_caption_col->Show(m_show_db_options);
+					m_choice_col->Show(m_show_db_options);
 				}
 			}
 		}
@@ -1716,9 +1718,9 @@ void wxShadingFactorsCtrl::SetDBOption(int &db_option)
 {
 	// keep compatibility with shading database = 0 choice
 	bool bol_shade_db = (db_option == 0);
-	m_chk_shading_db->SetValue(bol_shade_db);
-	m_caption_col->Show(bol_shade_db);
-	m_choice_col->Show(bol_shade_db);
+	m_chk_shading_db->SetValue(bol_shade_db); // checkbox can be enabled for pvwatts or detailed pv
+	m_caption_col->Show(bol_shade_db && m_show_db_options); // don't show label for pvwatts
+	m_choice_col->Show(bol_shade_db && m_show_db_options); // don't show number of strings listbox for pvwatts
 }
 
 int wxShadingFactorsCtrl::GetDBOption()

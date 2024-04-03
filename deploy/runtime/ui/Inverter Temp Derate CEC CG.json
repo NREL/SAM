@@ -288,7 +288,7 @@
             "Type": 3.0,
             "Label": "Inv Temp Derate CEC Coefficient Generator",
             "Units": " ",
-            "Group": "Inverter Temperature",
+            "Group": "PV Inverter (CEC Coefficient Generator)",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
