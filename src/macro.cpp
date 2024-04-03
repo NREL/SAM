@@ -757,6 +757,7 @@ void MacroPanel::CreateUI( const wxString &buf )
 		if ( type == "text" )
 		{
 			win = new wxTextCtrl( m_macroUI, wxID_ANY, value );
+            expand_win = true;
 		}
 		else if ( type == "checkbox" )
 		{
