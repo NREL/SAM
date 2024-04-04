@@ -1097,7 +1097,6 @@
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
     "tidal_turbine_kw_rating": 0.0,
-    "tidal_turbine_kw_rating_input": 210.0,
     "tidal_turbine_max_cp": [
         0.42
     ],
@@ -1138,6 +1137,9 @@
         210.0,
         210.0
     ],
+    "tidal_turbine_powercurve_powerout_electric": [
+        0.0
+    ],
     "tidal_turbine_powercurve_tidalspeeds": [
         0.0,
         0.1,
@@ -1177,9 +1179,12 @@
     "tidal_turbine_pto_eff": [
         95.0
     ],
+    "tidal_turbine_rated_power": 0.0,
+    "tidal_turbine_rated_power_rotor": 0.0,
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 50.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 0.0,
     "tidal_velocity": [
         1.06411,
         0.907655,
