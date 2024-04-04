@@ -128,6 +128,7 @@ private:
 
 	void GetResources();
 	void RefreshList(size_t );
+	void ResetAll();
 	size_t SelectItems( wxString, wxCheckBox * );
 
 	std::vector<LinkInfo> m_links;

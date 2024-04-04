@@ -173,6 +173,7 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	//szmain->Add(szWeatherFile, 0, wxALL | wxEXPAND, 1);
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 
+	ResetAll();
 	SetSizer( szmain );
 	Fit();
 	m_txtAddress->SetFocus();
@@ -188,6 +189,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			break;
 		case ID_btnResources:
 			{
+				ResetAll();
 				GetResources();
 				//std::sort(m_links.begin(),m_links.end());
 				// select first item (should be tmy)
@@ -213,7 +215,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				size_t first_item = 0;
 				if (m_search->GetValue() == "")
 				{
-					wxMessageBox("Type a keyword in the Search box before clicking Check Filtered.", "NSRDB Download Message", wxOK, this);
+					wxMessageBox("Type a keyword in the Search box before clicking Select Filtered.", "NSRDB Download Message", wxOK, this);
 					break;
 				}
 				for (size_t i = 0; i < m_links.size(); i++)
@@ -500,9 +502,39 @@ void NSRDBDialog::RefreshList( size_t first_item )
 		}
 	}
 	m_chlResources->Thaw();
-	m_chlResources->SetFirstItem(first_item);
+	if ( first_item > 0 )
+		m_chlResources->SetFirstItem(first_item);
 }
 
+void NSRDBDialog::ResetAll()
+{
+	m_txtLatLon->Clear();
+	m_chlResources->Clear();
+	m_chlResources->Disable();
+	m_links.clear();
+	m_chk60->SetValue(false);
+	m_chk30->SetValue(false);
+	m_chk15->SetValue(false);
+	m_chk10->SetValue(false);
+	m_chk5->SetValue(false);
+	m_chkTmy->SetValue(false);
+	m_chkTgy->SetValue(false);
+	m_chkTdy->SetValue(false);
+	m_chk60->Disable();
+	m_chk30->Disable();
+	m_chk15->Disable();
+	m_chk10->Disable();
+	m_chk5->Disable();
+	m_chkTmy->Disable();
+	m_chkTgy->Disable();
+	m_chkTdy->Disable();
+	m_search->Disable();
+	m_btnSelectFiltered->Disable();
+	m_btnShowSelected->Disable();
+	m_btnShowAll->Disable();
+	m_btnSelectAll->Disable();
+	m_btnClearAll->Disable();
+}
 void NSRDBDialog::GetResources()
 {
 	// hit api with address and return available resources
@@ -611,18 +643,8 @@ void NSRDBDialog::GetResources()
 	location.Replace(")", "_");
 	location.Replace("__", "_");
 
-	// update "select files to download label" to include lat/lon
 	m_txtLatLon->SetValue(wxString::Format("%f,%f", lat, lon));
-	m_chlResources->Clear(); 
-	m_links.clear();
-	m_chk60->Disable();
-	m_chk30->Disable();
-	m_chk15->Disable();
-	m_chk10->Disable();
-	m_chk5->Disable();
-	m_chkTmy->Disable();
-	m_chkTgy->Disable();
-	m_chkTdy->Disable();
+
 	for (int i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
 	{
 		wxJSONValue out_item = output_list[i_outputs];
@@ -638,32 +660,23 @@ void NSRDBDialog::GetResources()
 			wxString URL = links_list[i_links]["link"].AsString();
             URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
+
 			/*
-			// list of available subhourly intervals for checkboxes (all datasets have 60 minute data)
-			// use underscores so we can find 5 and 15
-			wxString intervals = "";
-			if (name.Trim() == "psm3") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
-				intervals = "_30";
-			else if (name.Trim() == "psm3-2-2") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-2-2-download/
-				intervals = "_30";
-			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
-				intervals = "_5,_15,_30";
-			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
-				intervals = "_15,_30";
-			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
-				intervals = "_15,_30";
-			else if (name.Trim() == "msg-v1-0-0") // https://developer.nrel.gov/docs/solar/nsrdb/nsrdb-msg-v1-0-0-download/
-				intervals = "_15,_30";
-			else if (name.Trim() == "himawari") // https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/
-				intervals = "_10,_30";
-			else if (name.Trim() == "himawari7") // https://developer.nrel.gov/docs/solar/nsrdb/himawari7-download/
-				intervals = "_30";*/
+			datasets have different available intervals in addition to 60 (all datasets have 60 minute data):
+			psm3 https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/ 30
+			psm3-2-2 https://developer.nrel.gov/docs/solar/nsrdb/psm3-2-2-download/ 30
+			psm3-5min https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/ 5,15,30
+			suny-india https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/ 15,30
+			msg-iodc https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/ 15,30
+			msg-v1-0-0 https://developer.nrel.gov/docs/solar/nsrdb/nsrdb-msg-v1-0-0-download/ 15,30
+			himawari https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/ 10,30
+			himawari7 https://developer.nrel.gov/docs/solar/nsrdb/himawari7-download/ 30
+			*/
+
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif
 			// skip some datasets
-			// spectral-india-tmy is not compatible with SAM
-			// full-disc only covers a few years and seems similar to psm3 from solar modeling perspective
 			if ((name.Lower() != "spectral-india-tmy") // not compatible with SAM
 				&& (name.Lower() != "full-disc") // only covers a few years and is similar to PSM V3 from solar modeling perspective
 				&& (name.Lower() != "philippines") // basic solar resource data only tamb, dhi, dni, ghi, wind (not enough data for CSP or PV thermal models)
@@ -671,6 +684,16 @@ void NSRDBDialog::GetResources()
 			{
 				m_links.push_back(LinkInfo(name, displayName, year, URL, interval, location));
 
+				// enable list, search, and buttons
+				m_chlResources->Enable();
+				m_search->Enable();
+				m_btnSelectFiltered->Enable();
+				m_btnShowSelected->Enable();
+				m_btnShowAll->Enable();
+				m_btnSelectAll->Enable();
+				m_btnClearAll->Enable();
+
+				// enable filter options that are available for this location
 				m_chk60->Enable(); // all datasets have hourly data
 				if (interval.IsSameAs("30"))
 					m_chk30->Enable();
@@ -680,6 +703,7 @@ void NSRDBDialog::GetResources()
 					m_chk10->Enable();
 				if (interval.IsSameAs("5"))
 					m_chk5->Enable();
+				// may be names like "tmy" or "tmy-2020" so use Contains() for these
 				if (year.Lower().Contains("tmy"))
 					m_chkTmy->Enable();
 				if (year.Lower().Contains("tgy"))
