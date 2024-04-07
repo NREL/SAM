@@ -890,6 +890,104 @@ def get_sco2_design_parameters_Alfani_2020_update2():
 
     return des_par
 
+def get_sco2_tsf_design_parameters_Alfani_2021():
+
+    des_par = {}
+
+    # from Alfani 2021
+
+    # Configuration
+    des_par["cycle_config"] = 4  # [1] = RC, [2] = PC, [3] = HTRBP, [4] = TSF
+
+    # Power
+    W_thermo = 6.40 # [MWe]
+    des_par["W_dot_net_des"] = W_thermo  # [MWe] Design cycle power output (no cooling parasitics)
+    des_par["fan_power_frac"] = 0.1/W_thermo  # [-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+
+    # HTF
+    des_par["T_htf_hot_des"] = 550          # [C] HTF design hot temperature (PHX inlet)
+    des_par["dT_PHX_hot_approach"] = 25     # [C/K] Temperature difference between hot HTF and turbine inlet
+    des_par["set_HTF_mdot"] = 50
+
+    # Ambient
+    des_par["T_amb_des"] = 25.0  # [C] Ambient temperature at design
+    des_par["dT_mc_approach"] = 8.0  # [C] Use 6 here per Neises & Turchi 19. Temperature difference between main compressor CO2 inlet and ambient air
+
+    # Pressure
+    des_par["PHX_co2_deltaP_des_in"] = -200  # [kPa] Absolute pressure loss
+    des_par["deltaP_cooler_frac"] = 0.005  # [-] Fraction of CO2 inlet pressure that is design point cooler CO2 pressure drop
+    des_par["LTR_LP_deltaP_des_in"] = 0.01  # [-]
+    des_par["HTR_LP_deltaP_des_in"] = 0.01  # [-]
+    des_par["is_P_high_fixed"] = 1  # 0 = No, optimize. 1 = Yes (=P_high_limit)
+    des_par["P_high_limit"] = 25  # [MPa] Cycle high pressure limit
+    des_par["is_PR_fixed"] = -7.918     # 0 = No, >0 = fixed pressure ratio at input <0 = fixed LP at abs(input)
+
+    # Efficiency
+    des_par["eta_isen_t"] = 0.85 # [-] Turbine isentropic efficiency
+    des_par["eta_isen_t2"] = 0.85 # [-] Secondary turbine isentropic efficiency
+    des_par["eta_isen_mc"] = 0.80  # [-] Main compressor isentropic efficiency
+
+    # Recuperators
+    des_par["design_method"] = 3  # [-] 1 = specify efficiency, 2 = specify total recup UA, 3 = Specify each recup design (see inputs below)
+        # LTR
+    des_par["LTR_design_code"] = 2        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["LTR_min_dT_des_in"] = 10.0   # [C] (required if LTR_design_code == 2)
+    des_par["LTR_UA_des_in"] = 1.61506 * 112.18     # [kW/K] (required if LTR_design_code == 1)
+
+        # HTR
+    des_par["HTR_design_code"] = 2        # 1 = UA, 2 = min dT, 3 = effectiveness
+    des_par["HTR_min_dT_des_in"] = 10.0   # [C] (required if LTR_design_code == 2)
+    des_par["HTR_UA_des_in"] = 0.77925 * 959.37     # [kW/K] (required if LTR_design_code == 1)
+
+    # TSF
+    des_par["is_turbine_split_ok"] = -0.301383579
+
+    # DEFAULTS
+
+    # ADDED to converge LTR and HTR 
+    des_par["HTR_n_sub_hx"] = 10
+    des_par["LTR_n_sub_hx"] = 10
+
+        # Pressure
+    des_par["LTR_HP_deltaP_des_in"] = 0.01  # [-]
+    des_par["HTR_HP_deltaP_des_in"] = 0.01  # [-]
+ 
+        # System design parameters
+    des_par["htf"] = 17  # [-] Solar salt
+    des_par["site_elevation"] = 588  # [m] Elevation of Daggett, CA. Used to size air cooler...
+
+    # Convergence and optimization criteria
+    des_par["rel_tol"] = 6  # [-] Baseline solver and optimization relative tolerance exponent (10^-rel_tol)
+
+    # Default
+    des_par["deltaP_counterHX_frac"] = 0.0054321  # [-] Fraction of CO2 inlet pressure that is design point counterflow HX (recups & PHX) pressure drop
+
+
+
+    # NOT USED
+
+    # LTR
+    eff_max = 1
+    
+    des_par["LTR_eff_des_in"] = 0.895     # [-] (required if LTR_design_code == 3)
+    des_par["LT_recup_eff_max"] = eff_max    # [-] Maximum effectiveness low temperature recuperator
+    
+    # HTR
+    des_par["HTR_UA_des_in"] = 7500     # [kW/K] (required if LTR_design_code == 1)
+    des_par["HTR_eff_des_in"] = 0.945      # [-] (required if LTR_design_code == 3)
+    des_par["HT_recup_eff_max"] = eff_max  # [-] Maximum effectiveness high temperature recuperator
+
+    des_par["eta_isen_rc"] = -0.767  # [-] Recompressor Polytropic efficiency
+    des_par["UA_recup_tot_des"] = 36851.92  # [kW/K] (used when design_method == 2)
+
+    des_par["eta_isen_pc"] = 0.85  # [-] Precompressor isentropic efficiency
+    des_par["eta_thermal_des"] = 0.44  # [-] Target power cycle thermal efficiency (used when design_method == 1)
+    des_par["is_IP_fixed"] = 0      # partial cooling config: 0 = No, >0 = fixed HP-IP pressure ratio at input, <0 = fixed IP at abs(input)
+
+    
+    return des_par
+
+
 def get_sco2_design_parameters_Moullec():
 
     des_par = {}
@@ -2920,16 +3018,8 @@ def run_alfani_2020_htrbp():
     #design_point_tools.plot_dict_from_file(combined_name, "eta_thermal_calc", "T_htf_cold_des")
 
 def test_tsf_alfani_2020():
-    default_par = get_sco2_design_parameters_Alfani_2020_update2()
 
-    # Define TSF Parameters
-    default_par["cycle_config"] = 4
-    default_par["eta_isen_t2"] = 0.898
-    default_par["is_turbine_split_ok"] = -0.5
-
-
-    #default_par_paper["cycle_config"] = 1
-    #default_par_paper["is_P_high_fixed"] = 0
+    default_par = get_sco2_tsf_design_parameters_Alfani_2021()
 
     # Make Cycle class
     c_sco2 = sco2_solve.C_sco2_sim(3)
@@ -2945,7 +3035,8 @@ def test_tsf_alfani_2020():
 
 if __name__ == "__main__":
 
-    run_alfani_2020_htrbp()
+    test_tsf_alfani_2020()
+    #run_alfani_2020_htrbp()
     #run_alfani_2020_mult_UA()
     #run_alfani_2020()
     #file_name = run_fixed_eff_case(5)
