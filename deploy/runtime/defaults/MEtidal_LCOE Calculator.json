@@ -1102,6 +1102,9 @@
         0.42
     ],
     "tidal_turbine_number_rotors": 2.0,
+    "tidal_turbine_powercurve_electric": [
+        0.0
+    ],
     "tidal_turbine_powercurve_powerout": [
         0.0,
         0.803021,
