@@ -900,8 +900,13 @@ def get_sco2_tsf_design_parameters_Alfani_2021():
     des_par["cycle_config"] = 4  # [1] = RC, [2] = PC, [3] = HTRBP, [4] = TSF
 
     # Power
-    W_thermo = 6.40 # [MWe]
-    des_par["W_dot_net_des"] = W_thermo  # [MWe] Design cycle power output (no cooling parasitics)
+    W_thermo_w_eff = 6.924633;
+    W_thermo_net = 6.4
+    W_air_cooler = 0.1
+
+
+    W_thermo = 6.50 # [MWe]
+    des_par["W_dot_net_des"] = W_thermo_w_eff  # [MWe] Design cycle power output (no cooling parasitics)
     des_par["fan_power_frac"] = 0.1/W_thermo  # [-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
 
     # HTF
@@ -940,7 +945,8 @@ def get_sco2_tsf_design_parameters_Alfani_2021():
     des_par["HTR_UA_des_in"] = 0.77925 * 959.37     # [kW/K] (required if LTR_design_code == 1)
 
     # TSF
-    des_par["is_turbine_split_ok"] = -0.301383579
+    #des_par["is_turbine_split_ok"] = -0.301383579
+    des_par["is_turbine_split_ok"] = -0.431364843
 
     # DEFAULTS
 
