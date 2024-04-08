@@ -273,6 +273,26 @@ void PVUncertaintyForm::ClearPlots()
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 {
 
+	// change sample size from default of 100 to 1000 must change in header m_pUS
+	m_data.UncertaintySources.N = 1000;
+	wxArrayString errors;
+
+	StochasticData sd;
+	sd.N = m_data.UncertaintySources.N;
+	sd.Seed = m_data.UncertaintySources.Seed;
+	for (size_t i = 0; i < m_data.UncertaintySourcesEnabled.size() && i < m_data.UncertaintySources.InputDistributions.size(); i++) {
+		if (m_data.UncertaintySourcesEnabled[i])
+			sd.InputDistributions.push_back(m_data.UncertaintySources.InputDistributions[i]);
+	}
+	// check that at least one uncertainty is enabled per SAM pull request #1753
+	if (sd.InputDistributions.size() < 1) {
+		wxMessageBox("Uncertainty simulations require at least one distribution.\nPlease enable at least one uncertainty source.", "No Uncertainty Sources Enabled", wxICON_INFORMATION);
+		return;
+	}
+
+
+
+
 	std::vector<unsigned short> years;
 	wxArrayString folder_files;
 	wxArrayString list;
@@ -446,27 +466,8 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	// end of weather file simulations
 
 
+	// Uncertainty Sources simulation
 	matrix_t<double> output_stats;
-
-    /*
-	// generate samples
-	// update to new distributions
-	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
-		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->GetInfoDistDialog();
-	}
-    */
-    // change sample size from default of 100 to 1000 must change in header m_pUS
-	m_data.UncertaintySources.N = 1000;
-	wxArrayString errors;
-
-	StochasticData sd;
-	sd.N = m_data.UncertaintySources.N;
-	sd.Seed = m_data.UncertaintySources.Seed;
-	for (size_t i = 0; i < m_data.UncertaintySourcesEnabled.size() && i < m_data.UncertaintySources.InputDistributions.size(); i++) {
-		if (m_data.UncertaintySourcesEnabled[i])
-			sd.InputDistributions.push_back(m_data.UncertaintySources.InputDistributions[i]);
-	}
-
 
 	//if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
 	if (!ComputeLHSInputVectors(sd, output_stats, &errors))
