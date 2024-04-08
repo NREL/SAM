@@ -130,7 +130,8 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
         wxString distInfo = std::get<2>(sourceinfo[i]);
-		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), &distInfo));
+		int iEnabled = 1;
+		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), &distInfo, &iEnabled));
 		sizer_inputs->Add(m_uncertaintySources[i], 0, wxALL|wxEXPAND, 0);
 		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
@@ -766,7 +767,7 @@ BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
 	EVT_CHECKBOX(ID_chkEnable, UncertaintySource::OnEnable)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value, int* iEnabled): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info), m_piEnable(iEnabled)
 {
 //	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
 
@@ -794,6 +795,7 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     sizer_inputs->Add( m_btnEdit, 0, wxALL|wxALIGN_TOP);
 
 	PopulateDistInfoText();
+	UIUpdate();
 
     SetSizer(sizer_inputs);
 }
@@ -896,9 +898,10 @@ void UncertaintySource::SetEnabled(int* pEnabled)
 {
 	m_piEnable = pEnabled;
 	m_chkEnable->SetValue(*m_piEnable == 1);
+	UIUpdate();
 }
 
-void UncertaintySource::OnEnable(wxCommandEvent& evt)
+void UncertaintySource::UIUpdate()
 {
 	bool benabled = m_chkEnable->IsChecked();
 	if (benabled)
@@ -909,6 +912,14 @@ void UncertaintySource::OnEnable(wxCommandEvent& evt)
 	m_distInfo->Enable(benabled);
 	m_tt->Enable(benabled);
 	m_btnEdit->Enable(benabled);
+}
+
+void UncertaintySource::OnEnable(wxCommandEvent& evt)
+{
+	UIUpdate();
+	// clear results
+	if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
+		uf->ClearPlots();
 }
 
 
