@@ -206,6 +206,7 @@ void P50P90Form::OnSimulate( wxCommandEvent & )
 		wxString weatherFile = m_folder->GetValue() + "/" + folder_files[n];
 
 		Simulation *sim = new Simulation( m_case, wxString::Format("Year %d", (int)years[n]) );
+		sim->Clear(); // Fix SAM issue 1681
 		sims.push_back( sim );
 
 		sim->Override( "use_specific_weather_file", VarValue(true), 0 ); // TODO: hybrids
