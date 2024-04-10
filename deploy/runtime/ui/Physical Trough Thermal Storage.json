@@ -3652,7 +3652,7 @@
         "d_tank_in": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Tank diameter",
+            "Label": "Tank inner diameter",
             "Units": "",
             "Group": "",
             "IndexLabels": "",
