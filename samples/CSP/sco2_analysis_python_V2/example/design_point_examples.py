@@ -900,14 +900,14 @@ def get_sco2_tsf_design_parameters_Alfani_2021():
     des_par["cycle_config"] = 4  # [1] = RC, [2] = PC, [3] = HTRBP, [4] = TSF
 
     # Power
-    W_thermo_w_eff = 6.924633;
+    W_thermo_w_eff = 6.924633; # This is actual thermo power produced by alfani (includes cooling parasitics and gen/motor eff)
     W_thermo_net = 6.4
     W_air_cooler = 0.1
 
 
     W_thermo = 6.50 # [MWe]
     des_par["W_dot_net_des"] = W_thermo_w_eff  # [MWe] Design cycle power output (no cooling parasitics)
-    des_par["fan_power_frac"] = 0.1/W_thermo  # [-] Fraction of net cycle power consumed by air cooler fan. 2% here per Turchi et al.
+    des_par["fan_power_frac"] = 0.1/W_thermo_w_eff  # [-] Fraction of net cycle power consumed by air cooler fan
 
     # HTF
     des_par["T_htf_hot_des"] = 550          # [C] HTF design hot temperature (PHX inlet)
@@ -955,8 +955,8 @@ def get_sco2_tsf_design_parameters_Alfani_2021():
     des_par["LTR_n_sub_hx"] = 10
 
         # Pressure
-    des_par["LTR_HP_deltaP_des_in"] = 0.01  # [-]
-    des_par["HTR_HP_deltaP_des_in"] = 0.01  # [-]
+    des_par["LTR_HP_deltaP_des_in"] = 0.0 # 0.01  # [-]
+    des_par["HTR_HP_deltaP_des_in"] = 0.0 # 0.01  # [-]
  
         # System design parameters
     des_par["htf"] = 17  # [-] Solar salt
@@ -3026,6 +3026,8 @@ def run_alfani_2020_htrbp():
 def test_tsf_alfani_2020():
 
     default_par = get_sco2_tsf_design_parameters_Alfani_2021()
+
+    #default_par['is_turbine_split_ok'] = 1
 
     # Make Cycle class
     c_sco2 = sco2_solve.C_sco2_sim(3)
