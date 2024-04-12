@@ -514,8 +514,8 @@ void DefaultsManager::OnQuery(wxCommandEvent &)
 					ndxEnd = vt.size();
 				}
 				else {
-					ndxStart = ndxHybrid;
-					ndxEnd = ndxStart + 1;
+					ndxStart = ndxHybrid < vt.size() ? ndxHybrid : vt.size();
+					ndxEnd = (ndxStart + 1) < vt.size() ? (ndxStart + 1) : vt.size();
 				}
 
 				for (ndxHybrid = ndxStart; ndxHybrid < ndxEnd; ndxHybrid++) {
