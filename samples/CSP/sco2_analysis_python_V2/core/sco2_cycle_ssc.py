@@ -715,7 +715,146 @@ class C_sco2_sim:
         
         self.solve_sco2_case()
 
+class C_sco2_solve_dict_item:
+        def __init__(self, name, type, i, j, value):
+            self.name = name
+            self.type = type
+            self.i = i
+            self.j = j
+            self.value = value
+
+class C_sco2_sim_result_collection:
+
+    def __init__(self):
+        self.solve_dict_list = []
+        self.flattened_solve_list = []
+        self.num_cases = 0
+        return
+
+    def add(self, sco2_sim):
+        self.solve_dict_list.append(sco2_sim.m_solve_dict)
+        self.num_cases = self.num_cases + 1
+
+        self.flattened_solve_list.append(self.flatten(sco2_sim.m_solve_dict))
+
+        return
+
+    def write_to_csv(self, file_name):
+        csv_array = self.form_csv_array()
+
+        f = open(file_name, "w")
+        delimiter = ', '
+        for row in csv_array:
+
+            N_col = len(row)
+            for col in range(N_col):
+
+                val = row[col]
+                f.write(str(val))
+                
+                if(col != N_col - 1):
+                    f.write(delimiter)
+        
+            f.write('\n')
     
+        f.close()
+
+        return
+
+    def does_row_exist(self, csv_array, name, type, i, j):
+
+        row_id = 0;
+        for row in csv_array:
+            if(row[0] == name
+               and row[1] == type
+               and row[2] == i
+               and row[3] == j):
+                return row_id
+            row_id = row_id + 1
+        
+        return -1
+
+    def form_csv_array(self):
+
+        flatten_list_copy = self.flattened_solve_list
+        NRun = len(flatten_list_copy)
+        csv_array = []
+        col_offset = 4
+
+        # Loop through every run
+        for run_id in range(NRun):
+
+            # Loop through every item
+            for item in flatten_list_copy[run_id]:
+                
+                # Check if row exists
+                exists = self.does_row_exist(csv_array, item.name, item.type, item.i, item.j)
+                row_index = -1
+                if(exists == -1):
+                    row = [item.name, item.type, item.i, item.j]
+                    for col in range(NRun):
+                        row.append('')
+                    row_index = len(csv_array)
+                    csv_array.append(row)
+                else:
+                    row_index = exists
+
+                # Place value
+                csv_array[row_index][run_id + col_offset] = item.value
+
+        return csv_array
+
+
+
+
+
+
+
+
+
+    def get_val_type(self, value):
+        if(isinstance(value, list)):
+
+            # matrix
+            if(isinstance(value[0], list)):
+                return "matrix"
+            
+            # vector
+            else:
+                return "vector"
+
+        # single value
+        else:
+            return "single"
+
+    def flatten(self, solve_dict):
+        item_list = []
+
+        for key in solve_dict:
+
+            val = solve_dict[key]
+            type_string = self.get_val_type(val)
+
+            if(type_string == "single"):
+                item = C_sco2_solve_dict_item(key, type_string, 0, 0, val)
+                item_list.append(item)
+
+            elif(type_string == "vector"):
+                for i in range(len(val)):
+                    item = C_sco2_solve_dict_item(key, type_string, i, 0, val[i]) 
+                    item_list.append(item)
+
+            elif(type_string == "matrix"):
+                for i in range(len(val)):
+                    for j in range(len(val[i])):
+                        item = C_sco2_solve_dict_item(key, type_string, i, j, val[i][j])
+                        item_list.append(item)
+
+        return item_list
+    
+    
+
+
 
 def solve_default_des_and_compare_od_at_des(cycle_config = 1):
     
