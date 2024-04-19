@@ -24,6 +24,7 @@ sys.path.append(newPath)
 import sco2_plots as cy_plt
 import PySSC as sscapi
 import ssc_inout_v2 as ssc_sim
+import sco2_cycle_ssc as sco2_solve
 
 htr_pp_left_label = "htr_pp_left"
 htr_pp_right_label = "htr_pp_right"
@@ -2986,9 +2987,17 @@ def special_investigation():
     plt.show(block = True)
 
 
+def example_plot_solve_dict():
+    filename = r"C:\Users\tbrown2\Desktop\sco2_python\Alfani2020_Final\test_collection20240417_164418.csv"
+    sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    sim_collection.open_csv(filename)
+
+    
+
 # Main Script
 
 if __name__ == "__main__":
+    example_plot_solve_dict()
 
     #file_in = "C:\\Users\\tbrown2\\OneDrive - NREL\\sCO2-CSP 10302.41.01.40\\Notes\\Optimization\\Alfani 2020\\Final Data\\alfani_2020_partial_sweep100_results20231010_100456.txt"
     #file_out = "C:\\Users\\tbrown2\\OneDrive - NREL\\sCO2-CSP 10302.41.01.40\\Notes\\Optimization\\Alfani 2020\\Final Data\\alfani_2020_partial_sweep100_REDUCED.txt";
@@ -3001,7 +3010,7 @@ if __name__ == "__main__":
     #display_recomp()
     #display_Alfani_2020_BONUS()
     #display_Alfani_2020_backup()
-    display_Alfani_2020_Final()
+    #display_Alfani_2020_Final()
     #display_Alfani_2020_Final_2()
     #FindAnomalousDataPt()
     #display_bp_opening()

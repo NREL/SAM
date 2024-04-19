@@ -226,13 +226,13 @@ def get_label_list():
     return get_result_list_v2([], [], True, True)
 
 def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], max_pressure_list = [], pres_ratio_list = [], UA_total_list = [], HTF_targ_list = [],
-                       min_phx_deltaT_list = []):
+                       min_phx_deltaT_list = [], split_frac_list = []):
 
     if(ltr_ua_frac_list != [] and UA_total_list == []):
         return
 
     # Create List of non empty input lists
-    input_list = [bp_list, recomp_list, ltr_ua_frac_list, max_pressure_list, pres_ratio_list, HTF_targ_list, min_phx_deltaT_list]
+    input_list = [bp_list, recomp_list, ltr_ua_frac_list, max_pressure_list, pres_ratio_list, HTF_targ_list, min_phx_deltaT_list, split_frac_list]
 
     # UA total is ALWAYS last
     input_list.append(UA_total_list)
@@ -317,6 +317,12 @@ def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], ma
 
             local_dict["des_objective"] = 2
             local_dict["min_phx_deltaT"] = min_dT
+
+        if(split_frac_list != empty):
+            split_frac = combo[combo_index]
+            combo_index += 1
+
+            local_dict["is_turbine_split_ok"] = -1.0 * split_frac
 
         # Add dictionary
         dict_list.append(local_dict)
@@ -1289,7 +1295,6 @@ def get_sco2_G3P3():
     des_par["LT_recup_eff_max"] = eff_max    # [-] Maximum effectiveness low temperature recuperator
     
     # HTR
-    des_par["HTR_UA_des_in"] = 7500     # [kW/K] (required if LTR_design_code == 1)
     des_par["HTR_eff_des_in"] = 0.945      # [-] (required if LTR_design_code == 3)
     des_par["HT_recup_eff_max"] = eff_max  # [-] Maximum effectiveness high temperature recuperator
 
@@ -1522,6 +1527,62 @@ def run_opt_parallel_experimental(dict_list_total, default_par, nproc, filename 
         write_string_array(filename, labeled_result_array, '\t')
 
     return labeled_result_array
+
+
+def run_once_solve_dict(dict, default_par, solve_dict_queue = None, N_run_total = 0):
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par)
+    mod_base_dict = dict
+    c_sco2.overwrite_des_par_base(mod_base_dict)  
+
+    # Solve
+    c_sco2.solve_sco2_case()
+
+    #debug_list = get_result_list_v2(c_sco2.m_des_par_base, c_sco2.m_solve_dict, c_sco2.m_solve_success)
+
+    # Add result to queue (if necessary)
+    if(solve_dict_queue != None):
+        solve_dict_queue.put(c_sco2.m_solve_dict)
+
+    # Report Progress (if necessary)
+    if(N_run_total > 0):
+        completed = solve_dict_queue.qsize()
+        percent = (completed / N_run_total) * 100
+        print(str(percent) + "% complete")
+
+    #print(str(run_id) + " has finished")
+
+    return
+
+def run_opt_parallel_solve_dict(dict_list_total, default_par, nproc):
+    # Initialize
+    N_run = len(dict_list_total)
+
+    # Make Cycle Collection Class
+    sim_collection = sco2_solve.C_sco2_sim_result_collection()
+
+    start = time.time()
+
+    manager = multiprocessing.Manager()
+    solve_dict_queue = manager.Queue()
+
+    with multiprocessing.Pool(nproc, maxtasksperchild=50) as p:
+        p.imap_unordered(partial(run_once_solve_dict, default_par=default_par, solve_dict_queue=solve_dict_queue, N_run_total = N_run), dict_list_total)
+        p.close()
+        p.join()
+
+    # Collect results from queue
+    while not solve_dict_queue.empty():
+        sim_collection.add(solve_dict_queue.get())
+
+    end = time.time()
+
+    return sim_collection
+
 
 def get_time_string():
     now = datetime.datetime.now()
@@ -3140,7 +3201,7 @@ def run_alfani_2020_htrbp():
 def test_tsf_alfani_2020():
 
     default_par = get_sco2_tsf_design_parameters_Alfani_2021()
-    default_par["HTR_design_code"] = 3  # Test define UA
+    #default_par["HTR_design_code"] = 3  # Test define UA
 
     #default_par['is_turbine_split_ok'] = 1
 
@@ -3165,13 +3226,43 @@ def test_tsf_alfani_2020():
 
     x = "this is a test"
 
+def test_tsf_alfani_2020_bad():
+
+    default_par = get_sco2_tsf_design_parameters_Alfani_2021()
+    del default_par['design_method']
+    
+    #default_par['is_turbine_split_ok'] = 1
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par)
+
+    del c_sco2.m_des_par_default['design_method']
+    # Solve
+    c_sco2.solve_sco2_case()
+
+
+    file_name = "test_json_";
+
+    combined_name = folder_location + file_name + get_time_string()
+
+
+    c_sco2.m_also_save_csv = True
+    c_sco2.save_m_solve_dict(combined_name)
+    
+
+    x = "this is a test"
+
+
 def test_tsf_sweep():
 
     default_par = get_sco2_tsf_design_parameters_Alfani_2021()
 
     # Make Cycle Collection Class
     sim_collection = sco2_solve.C_sco2_sim_result_collection()
-    
+
     # Make Cycle class
     c_sco2 = sco2_solve.C_sco2_sim(3)
 
@@ -3193,17 +3284,224 @@ def test_tsf_sweep():
     sim_collection.write_to_csv(combined_name)
 
 
+def test_tsf_sweep_correct():
+    default_par = get_sco2_tsf_design_parameters_Alfani_2021()
+
+    # Organize Variable Combinations
+    Npts = 10
+    ltr_ua_frac_list = np.linspace(0.1,0.9,Npts, True)
+    min_pressure = 5
+    max_pressure = 15
+    pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
+    max_UA_single_val = default_par["UA_recup_tot_des"]
+    split_frac_list = np.linspace(0.3, 0.7, Npts, True)
+
+    dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
+                                   UA_total_list=[max_UA_single_val], 
+                                   split_frac_list=split_frac_list,
+                                   pres_ratio_list=pressure_list)
+
+    solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
+
+    file_name = "test_collection"
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    solve_collection.write_to_csv(combined_name)
+
+    finished = ""
+    
+def run_bad_tsf():
+    default_par = get_sco2_tsf_design_parameters_Alfani_2021()
+    
+    default_par["is_PR_fixed"] = -11.667
+    default_par["design_method"] = 3
+    default_par["LTR_design_code"] = 1
+    default_par["LTR_UA_des_in"] = 0.0368519
+    default_par["HTR_design_code"] = 1
+    default_par["HTR_UA_des_in"] = 36851.883
+    default_par["is_turbine_split_ok"] = -0.1
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    # Overwrite Variables
+    c_sco2.overwrite_default_design_parameters(default_par)
+
+    # Solve
+    c_sco2.solve_sco2_case()
+
+    i = 5
+
+def test_UA_tsf():
+
+    default_par = get_sco2_tsf_design_parameters_Alfani_2021()
+    #default_par["HTR_design_code"] = 1
+
+    # Make Cycle Collection Class
+    sim_collection = sco2_solve.C_sco2_sim_result_collection()
+
+    # Make Cycle class
+    c_sco2 = sco2_solve.C_sco2_sim(3)
+
+    for i in range(10):
+        
+        #default_par["HTR_UA_des_in"] = (i + 1) * 1000
+
+        # Overwrite Variables
+        c_sco2.overwrite_default_design_parameters(default_par)
+
+        # Solve
+        c_sco2.solve_sco2_case()
+
+        # Add results to cycle collection class
+        sim_collection.add(c_sco2.m_solve_dict)
+
+    file_name = "test_collection"
+
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    sim_collection.write_to_csv(combined_name)
+
+def run_G3P3_tsf_sweep(n_par):
+
+    # Define constant parameters
+    default_par = get_sco2_G3P3()
+    default_par["cycle_config"] = 4
+
+    # Organize Variable Combinations
+    Npts = n_par
+    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    min_pressure = 5
+    max_pressure = 15
+    pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
+    max_UA_single_val = default_par["UA_recup_tot_des"]
+    split_frac_list = np.linspace(0.3, 0.7, Npts, True)
+
+    dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
+                                   UA_total_list=[max_UA_single_val], 
+                                   split_frac_list=split_frac_list,
+                                   pres_ratio_list=pressure_list)
+
+    solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
+
+    file_name = "TSF_G3P3_collection"
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    solve_collection.write_to_csv(combined_name)
+
+    finished = ""
+
+def run_G3P3_recomp_sweep(n_par):
+
+    # Define constant parameters
+    default_par = get_sco2_G3P3()
+    default_par["cycle_config"] = 1
+
+    # Organize Variable Combinations
+    Npts = n_par
+    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    min_pressure = 5
+    max_pressure = 15
+    pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
+    max_UA_single_val = default_par["UA_recup_tot_des"]
+    recomp_frac_list = np.linspace(0, 0.7, Npts, True)
+
+    dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
+                                   UA_total_list=[max_UA_single_val], 
+                                   recomp_list=recomp_frac_list,
+                                   pres_ratio_list=pressure_list)
+
+    solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
+
+    file_name = "recomp_G3P3_collection"
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    solve_collection.write_to_csv(combined_name)
+
+    finished = ""
+
+def run_G3P3_htrbp_sweep(n_par):
+
+    # Define constant parameters
+    default_par = get_sco2_G3P3()
+    default_par["cycle_config"] = 3
+    default_par["T_bypass_target"] = 0 # (not used)
+    default_par["deltaT_bypass"] = 0
+
+    # Organize Variable Combinations
+    Npts = n_par
+    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    min_pressure = 5
+    max_pressure = 15
+    pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
+    max_UA_single_val = default_par["UA_recup_tot_des"]
+    recomp_frac_list = np.linspace(0, 0.7, Npts, True)
+    bp_frac_list = np.linspace(0, 0.9, Npts, True)
+
+    dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
+                                   UA_total_list=[max_UA_single_val], 
+                                   recomp_list=recomp_frac_list,
+                                   pres_ratio_list=pressure_list,
+                                   bp_list=bp_frac_list)
+
+    solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
+
+    file_name = "htrbp_G3P3_collection"
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    solve_collection.write_to_csv(combined_name)
+
+    finished = ""
 
 
+def run_G3P3_partial_sweep(n_par):
 
+    # Define constant parameters
+    default_par = get_sco2_G3P3()
+    default_par["cycle_config"] = 2
+
+    # Organize Variable Combinations
+    Npts = n_par
+    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    min_pressure = 1
+    max_pressure = 15
+    pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
+    max_UA_single_val = default_par["UA_recup_tot_des"]
+    recomp_frac_list = np.linspace(0, 0.7, Npts, True)
+
+    dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
+                                   UA_total_list=[max_UA_single_val], 
+                                   recomp_list=recomp_frac_list,
+                                   pres_ratio_list=pressure_list)
+
+    solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
+
+    file_name = "partial_G3P3_collection"
+    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    solve_collection.write_to_csv(combined_name)
+
+    finished = ""
+
+
+def run_G3P3_sweeps():
+    run_G3P3_htrbp_sweep(3)
+    return
+    n_par = 10
+    run_G3P3_tsf_sweep(n_par)
+    run_G3P3_recomp_sweep(n_par)
+    run_G3P3_partial_sweep(n_par)
 
 
 # Main Script
 
 if __name__ == "__main__":
 
-    test_tsf_sweep()
-    test_tsf_alfani_2020()
+    run_G3P3_sweeps()
+    #run_G3P3_partial_sweep()
+    #run_G3P3_recomp_sweep()
+    #run_G3P3_tsf_sweep()
+    #test_tsf_alfani_2020()
+    #test_tsf_alfani_2020_bad()
+    #test_tsf_sweep_correct()
+    #test_UA_tsf()
+    #run_bad_tsf()
+    #test_tsf_sweep_correct()
+    #test_tsf_alfani_2020()
     #run_alfani_2020_htrbp()
     #run_alfani_2020_mult_UA()
     #run_alfani_2020()

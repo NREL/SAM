@@ -715,36 +715,39 @@ class C_sco2_sim:
         
         self.solve_sco2_case()
 
-class C_sco2_solve_dict_item:
+class C_sco2_sim_result_collection:
+
+    class C_sco2_solve_dict_item:
         def __init__(self, name, type, i, j, value):
             self.name = name
             self.type = type
             self.i = i
             self.j = j
             self.value = value
-
-class C_sco2_sim_result_collection:
+        
 
     def __init__(self):
         self.solve_dict_list = []
         self.flattened_solve_list = []
         self.num_cases = 0
+        self.csv_array = []
+        self.csv_col_offset = 4
         return
 
-    def add(self, sco2_sim):
-        self.solve_dict_list.append(sco2_sim.m_solve_dict)
+    def add(self, solve_dict):
+        self.solve_dict_list.append(solve_dict)
         self.num_cases = self.num_cases + 1
 
-        self.flattened_solve_list.append(self.flatten(sco2_sim.m_solve_dict))
+        self.flattened_solve_list.append(self.flatten(solve_dict))
 
         return
 
     def write_to_csv(self, file_name):
-        csv_array = self.form_csv_array()
+        self.csv_array = self.form_csv_array()
 
         f = open(file_name, "w")
         delimiter = ', '
-        for row in csv_array:
+        for row in self.csv_array:
 
             N_col = len(row)
             for col in range(N_col):
@@ -804,14 +807,7 @@ class C_sco2_sim_result_collection:
 
         return csv_array
 
-
-
-
-
-
-
-
-
+    
     def get_val_type(self, value):
         if(isinstance(value, list)):
 
@@ -836,24 +832,130 @@ class C_sco2_sim_result_collection:
             type_string = self.get_val_type(val)
 
             if(type_string == "single"):
-                item = C_sco2_solve_dict_item(key, type_string, 0, 0, val)
+                item = self.C_sco2_solve_dict_item(key, type_string, 0, 0, val)
                 item_list.append(item)
 
             elif(type_string == "vector"):
                 for i in range(len(val)):
-                    item = C_sco2_solve_dict_item(key, type_string, i, 0, val[i]) 
+                    item = self.C_sco2_solve_dict_item(key, type_string, i, 0, val[i]) 
                     item_list.append(item)
 
             elif(type_string == "matrix"):
                 for i in range(len(val)):
                     for j in range(len(val[i])):
-                        item = C_sco2_solve_dict_item(key, type_string, i, j, val[i][j])
+                        item = self.C_sco2_solve_dict_item(key, type_string, i, j, val[i][j])
                         item_list.append(item)
 
         return item_list
     
-    
+    def open_csv(self, file_name):
+        # Read in csv array
+        self.csv_array = []
+        f = open(file_name, "r")
+        for row in f:
 
+            items = row.split(', ')
+            items[len(items)-1] = items[len(items)-1].replace('\n','')
+            self.csv_array.append(items)
+        f.close()
+
+        # Form dicts for each run (by unflattening)
+        NRuns = len(self.csv_array[0]) - self.csv_col_offset
+        for run in range(NRuns):
+            solve_dict = self.unflatten(self.csv_array, run)
+            self.solve_dict_list.append(solve_dict)
+            self.num_cases = self.num_cases + 1
+            self.flattened_solve_list.append(self.flatten(solve_dict))
+
+        return True
+
+
+    def load_solve_dict_item(self, csv_row, col_id_absolute):
+            name = csv_row[0]
+            type = csv_row[1]
+            i = csv_row[2]
+            j = csv_row[3]
+            value = csv_row[col_id_absolute]
+
+            return self.C_sco2_solve_dict_item(name, type, i, j, value)
+
+    def unflatten(self, csv_array, col_id):
+        # This returns a dict for the specified column of the csv array
+        # col_id starts at 0 (there is an offset of 4 for labels)
+        
+        solve_dict = {}
+        dict_item_list = []
+        if(len(csv_array[0]) < col_id + self.csv_col_offset):
+            return solve_dict
+
+        # Make List of dict items (which contain name, type, i, j, and value)
+        for row in csv_array:
+            dict_item = self.load_solve_dict_item(row, col_id + self.csv_col_offset)
+            #dict_item.load(row, col_id + self.csv_col_offset)
+            dict_item_list.append(dict_item)
+
+        # Fill dict with items
+        for item in dict_item_list:
+
+            # Convert Value to correct type
+            val_converted = self.convert_string(str(item.value))
+
+            if item.type == "single":
+                if((item.name in solve_dict) == True):
+                    return "problem with " + item.name + " single"
+                else:
+                    solve_dict[item.name] = val_converted
+
+            elif item.type == "vector":
+                if((item.name in solve_dict) == True):
+                    # key already exists, extend vector (if necessary)
+                    self.extend_vector(solve_dict[item.name], int(item.i) + 1, 'nan')
+                    solve_dict[item.name][int(item.i)] = val_converted
+                else:
+                    # Create key, and size it
+                    solve_dict[item.name] = []
+                    self.extend_vector(solve_dict[item.name], int(item.i) + 1, 'nan')
+                    solve_dict[item.name][int(item.i)] = val_converted
+
+            elif item.type == "matrix":
+                if((item.name in solve_dict) == True):
+                    # key already exists, extend matrix (if necessary)
+                    self.extend_matrix(solve_dict[item.name], int(item.i) + 1, int(item.j) + 1, 'nan')
+                    solve_dict[item.name][int(item.i)][int(item.j)] = val_converted
+                else:
+                    # Create key, and size it
+                    solve_dict[item.name] = [[]]
+                    self.extend_matrix(solve_dict[item.name], int(item.i) + 1, int(item.j) + 1, 'nan')
+                    solve_dict[item.name][int(item.i)][int(item.j)] = val_converted
+
+        return solve_dict
+
+    def extend_vector(self, vec, final_length, fill_val):
+        while len(vec) < final_length:
+            vec.append(fill_val)
+
+    def extend_matrix(self, mat, NCols, NRows, fill_val):
+        # Loop through rows
+        for row in range(NRows):
+            if(row >= len(mat)):
+                mat.append([])
+
+            # Loop through Columns
+            for col in range(NCols):
+                if(col >= len(mat[row])):
+                    mat[row].append(fill_val)
+
+    def convert_string(self, val_string):
+
+        is_dec = val_string.isdecimal()
+
+        if(is_dec):
+            return int(val_string)
+        else:
+            try:
+                return float(val_string)
+            except:
+                return val_string
 
 
 def solve_default_des_and_compare_od_at_des(cycle_config = 1):
