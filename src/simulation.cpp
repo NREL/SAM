@@ -533,9 +533,9 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	}
 	if ( !silent )
 	{
-		prog = new wxProgressDialog("Simulation", "in progress", 100,
+		prog = new wxProgressDialog("SAM Simulation", "Simulation running...", 100,
 			SamApp::CurrentActiveWindow(),  // progress dialog parent is current active window - works better when invoked scripting
-			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT);
+			wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_AUTO_HIDE );
 		prog->Show();
 
 		sc.SetProgressDialog( prog );
@@ -547,7 +547,7 @@ bool Simulation::Invoke( bool silent, bool prepare, wxString folder )
 	bool ok =  InvokeWithHandler( &sc, folder );
 
 	if ( prog ) prog->Destroy();
-
+	
 	return ok;
 }
 

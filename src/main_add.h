@@ -572,7 +572,7 @@ public:
 			return;
 		}
 		else if ( url == ":forum" )
-			url = SamApp::WebApi( "forum" );
+			url = SamApp::WebApi( "website" ) + "/forum.html";
 		else if ( url == ":website" )
 			url = SamApp::WebApi( "website" );
 

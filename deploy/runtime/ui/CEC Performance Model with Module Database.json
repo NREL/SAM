@@ -4509,6 +4509,15 @@
         }
     },
     "Equations": [
+        "equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {\r",
+        "\r",
+        "if (${module_name} == \"\") { // SAM issue 1314\r",
+        "\t${cec_n_s} = -1;\r",
+        "}\r",
+        "\r",
+        "};\r",
+        "\r",
+        "\r",
         "equations{ 'cec_aspect_ratio' } = define() {\r",
         "\tif ( ${lib_length} == 0 || ${lib_width} == 0 )\r",
         "\t\treturn ${ui_aspect_ratio};\r",

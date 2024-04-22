@@ -54,6 +54,25 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "adjust_en_hourly", num);
+    });
+}
+
+
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_periods_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "adjust_en_periods", num);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "adjust_en_timeindex", num);
+    });
+}
+
 SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_array(ptr, "adjust_hourly", arr, length);
@@ -66,9 +85,35 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "adjust_timeindex", arr, length);
+    });
+}
+
+// dc adjust
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double number, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_number(ptr, "dc_adjust_constant", number);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "dc_adjust_en_hourly", num);
+    });
+}
+
+
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_periods_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "dc_adjust_en_periods", num);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "dc_adjust_en_timeindex", num);
     });
 }
 
@@ -84,9 +129,34 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "dc_adjust_timeindex", arr, length);
+    });
+}
+
+// sf adjust
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double number, SAM_error *err){
     translateExceptions(err, [&]{
         ssc_data_set_number(ptr, "sf_adjust_constant", number);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "sf_adjust_en_hourly", num);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_periods_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "sf_adjust_en_periods", num);
+    });
+}
+
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_number(ptr, "sf_adjust_en_timeindex", num);
     });
 }
 
@@ -102,6 +172,12 @@ SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_periods_mset(void* ptr, double* 
     });
 }
 
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err){
+    translateExceptions(err, [&]{
+        ssc_data_set_array(ptr, "sf_adjust_timeindex", arr, length);
+    });
+}
+
 /**
  * Getters
  */
@@ -111,6 +187,33 @@ SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void* ptr, SAM_erro
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "adjust_constant", &result))
             make_access_error("SAM_AdjustmentFactors", "adjust_constant");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_hourly_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "adjust_en_hourly", &result))
+            make_access_error("SAM_AdjustmentFactors", "adjust_en_hourly");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_periods_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "adjust_en_periods", &result))
+            make_access_error("SAM_AdjustmentFactors", "adjust_en_periods");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_timeindex_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "adjust_en_timeindex", &result))
+            make_access_error("SAM_AdjustmentFactors", "adjust_en_timeindex");
     });
     return result;
 }
@@ -135,11 +238,49 @@ SAM_EXPORT double* SAM_AdjustmentFactors_adjust_periods_mget(void *ptr, int *nro
     return result;
 }
 
+SAM_EXPORT double* SAM_AdjustmentFactors_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "adjust_timeindex", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "adjust_timeindex");
+    });
+    return result;
+}
+
+// dc adjust
 SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_constant_nget(void* ptr, SAM_error *err){
     double result;
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "dc_adjust_constant", &result))
             make_access_error("SAM_AdjustmentFactors", "dc_adjust_constant");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_hourly_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "dc_adjust_en_hourly", &result))
+            make_access_error("SAM_AdjustmentFactors", "dc_adjust_en_hourly");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_periods_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "dc_adjust_en_periods", &result))
+            make_access_error("SAM_AdjustmentFactors", "dc_adjust_en_periods");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_timeindex_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "dc_adjust_en_timeindex", &result))
+            make_access_error("SAM_AdjustmentFactors", "dc_adjust_en_timeindex");
     });
     return result;
 }
@@ -164,11 +305,49 @@ SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_periods_mget(void *ptr, int *
     return result;
 }
 
+SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "dc_adjust_timeindex", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "dc_adjust_timeindex");
+    });
+    return result;
+}
+
+// sf adjust
 SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_constant_nget(void* ptr, SAM_error *err){
     double result;
     translateExceptions(err, [&]{
         if (!ssc_data_get_number(ptr, "sf_adjust_constant", &result))
             make_access_error("SAM_AdjustmentFactors", "sf_adjust_constant");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_hourly_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "sf_adjust_en_hourly", &result))
+            make_access_error("SAM_AdjustmentFactors", "sf_adjust_en_hourly");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_periods_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "sf_adjust_en_periods", &result))
+            make_access_error("SAM_AdjustmentFactors", "sf_adjust_en_periods");
+    });
+    return result;
+}
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_timeindex_nget(void* ptr, SAM_error *err){
+    double result;
+    translateExceptions(err, [&]{
+        if (!ssc_data_get_number(ptr, "sf_adjust_en_timeindex", &result))
+            make_access_error("SAM_AdjustmentFactors", "sf_adjust_en_timeindex");
     });
     return result;
 }
@@ -183,13 +362,22 @@ SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_hourly_aget(void* ptr, int* l
     return result;
 }
 
-
 SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err){
     double* result;
     translateExceptions(err, [&]{
         result = ssc_data_get_matrix(ptr, "sf_adjust_periods", nrows, ncols);
         if (!result)
             make_access_error("SAM_AdjustmentFactors", "sf_adjust_periods");
+    });
+    return result;
+}
+
+SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err){
+    double* result;
+    translateExceptions(err, [&]{
+        result = ssc_data_get_array(ptr, "sf_adjust_timeindex", length);
+        if (!result)
+            make_access_error("SAM_AdjustmentFactors", "sf_adjust_timeindex");
     });
     return result;
 }
