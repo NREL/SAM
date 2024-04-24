@@ -936,14 +936,18 @@ void VarTable::Write_JSON(rapidjson::Document& doc, const wxArrayString& asCalcu
 
 
 
-bool VarTable::AsSSCData(ssc_data_t p_dat) {
+bool VarTable::AsSSCData(ssc_data_t p_dat, bool case_sensitive)
+{
     ssc_data_clear(p_dat);
     ssc_var_t entry = ssc_var_create();
     for( auto it = begin(); it != end(); ++it )
     {
         if (!it->second->AsSSCVar(entry))
             return false;
-        ssc_data_set_var(p_dat, it->first.c_str(), entry);
+		if (case_sensitive)
+        	ssc_data_set_var_match_case(p_dat, it->first.c_str(), entry);
+		else
+        	ssc_data_set_var(p_dat, it->first.c_str(), entry);
     }
     ssc_var_free(entry);
     return true;
