@@ -1230,11 +1230,16 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
     #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
     #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
     #              "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des"]
+    #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
+    #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
+    #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
+    #              "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des",
+    #              ltr_pp_left_label, ltr_pp_right_label, htr_pp_left_label, htr_pp_right_label]
+    
     label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
                   "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
-                  "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
-                  "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des",
-                  ltr_pp_left_label, ltr_pp_right_label, htr_pp_left_label, htr_pp_right_label]
+                  "bypass_frac", "recomp_frac", "P_comp_in",
+                  "cycle_cost", "T_htf_hot_des", "T_htf_cold_des", "T_htf_phx_out_des", "T_state_points_5_0", "T_co2_PHX_in"]
     fig.canvas.mpl_connect("button_press_event", lambda event: hover_multiple_pts(event, dict_list, label_list, fig, annot, ax, ax.collections))
 
 def plot_lines(dict_list_with_kwarg, X_label, Y_label, Z_label = "", title=""):

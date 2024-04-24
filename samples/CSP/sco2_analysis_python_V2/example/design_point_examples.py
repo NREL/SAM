@@ -228,7 +228,7 @@ def get_label_list():
 def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], max_pressure_list = [], pres_ratio_list = [], UA_total_list = [], HTF_targ_list = [],
                        min_phx_deltaT_list = [], split_frac_list = []):
 
-    if(ltr_ua_frac_list != [] and UA_total_list == []):
+    if(len(ltr_ua_frac_list) > 0 and len(UA_total_list) == 0):
         return
 
     # Create List of non empty input lists
@@ -237,10 +237,10 @@ def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], ma
     # UA total is ALWAYS last
     input_list.append(UA_total_list)
 
-    empty = []
+
     input_non_empty_list = []
     for input in input_list:
-        if(input != empty):
+        if(len(input) > 0):
             input_non_empty_list.append(input)
 
     
@@ -257,26 +257,26 @@ def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], ma
 
         # Get UA Total
         UA_total_local = 0
-        if(UA_total_list != empty):
+        if(len(UA_total_list) > 0):
             UA_total_local = combo[len(combo) - 1]
             local_dict["UA_recup_tot_des"] = UA_total_local
 
         # BP fraction
-        if(bp_list != empty):
+        if(len(bp_list) > 0):
             bp_frac = combo[combo_index]
             combo_index += 1
 
             local_dict["is_bypass_ok"] = -1.0 * bp_frac
 
         # Recomp fraction
-        if(recomp_list != empty):
+        if(len(recomp_list) > 0):
             recomp_frac = combo[combo_index]
             combo_index += 1
 
             local_dict["is_recomp_ok"] = -1.0 * recomp_frac
 
         # UA fraction
-        if(ltr_ua_frac_list != empty):
+        if(len(ltr_ua_frac_list) > 0):
             ltr_ua_frac = combo[combo_index]
             combo_index += 1
 
@@ -290,7 +290,7 @@ def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], ma
             local_dict["design_method"] = 3
 
         # Max Pressure
-        if(max_pressure_list != empty):
+        if(len(max_pressure_list) > 0):
             max_pressure = combo[combo_index]
             combo_index += 1
 
@@ -298,27 +298,27 @@ def make_dict_par_list(bp_list = [], recomp_list = [], ltr_ua_frac_list = [], ma
             local_dict["P_high_limit"] = max_pressure
 
         # Pressure Ratio
-        if(pres_ratio_list != empty):
+        if(len(pres_ratio_list) > 0):
             low_pressure = combo[combo_index]
             combo_index += 1
 
             local_dict["is_PR_fixed"] = -1.0 * low_pressure
 
         # HTF Target Outlet Temperature
-        if(HTF_targ_list != empty):
+        if(len(HTF_targ_list) > 0):
             target_temp = combo[combo_index]
             combo_index += 1
 
             local_dict["T_bypass_target"] = target_temp
 
-        if(min_phx_deltaT_list != empty):
+        if(len(min_phx_deltaT_list) > 0):
             min_dT = combo[combo_index]
             combo_index += 1
 
             local_dict["des_objective"] = 2
             local_dict["min_phx_deltaT"] = min_dT
 
-        if(split_frac_list != empty):
+        if(len(split_frac_list) > 0):
             split_frac = combo[combo_index]
             combo_index += 1
 
@@ -1229,7 +1229,7 @@ def get_sco2_G3P3():
     des_par["HTR_UA_des_in"] = 0.77925 * 959.37     # [kW/K] (required if LTR_design_code == 1)
     des_par["LTR_UA_des_in"] = 1.61506 * 112.18     # [kW/K] (required if LTR_design_code == 1)
 
-
+    des_par["N_nodes_air_cooler_pass"] = 100
 
     # from Alfani 2021
 
@@ -1259,10 +1259,6 @@ def get_sco2_G3P3():
         # HTR
     des_par["HTR_design_code"] = 2        # 1 = UA, 2 = min dT, 3 = effectiveness
     des_par["HTR_min_dT_des_in"] = 10.0   # [C] (required if LTR_design_code == 2)
-    
-
-    # TSF
-    
 
     # DEFAULTS
 
@@ -1271,8 +1267,8 @@ def get_sco2_G3P3():
     des_par["LTR_n_sub_hx"] = 10
 
         # Pressure
-    des_par["LTR_HP_deltaP_des_in"] = 0.0 # 0.01  # [-]
-    des_par["HTR_HP_deltaP_des_in"] = 0.0 # 0.01  # [-]
+    des_par["LTR_HP_deltaP_des_in"] = 0.01  # [-]
+    des_par["HTR_HP_deltaP_des_in"] = 0.01  # [-]
  
         # System design parameters
     des_par["htf"] = 17  # [-] Solar salt
@@ -1542,7 +1538,8 @@ def run_once_solve_dict(dict, default_par, solve_dict_queue = None, N_run_total 
     # Solve
     c_sco2.solve_sco2_case()
 
-    #debug_list = get_result_list_v2(c_sco2.m_des_par_base, c_sco2.m_solve_dict, c_sco2.m_solve_success)
+    # Add success to solve dict
+    c_sco2.m_solve_dict['cmod_success'] = c_sco2.m_solve_success
 
     # Add result to queue (if necessary)
     if(solve_dict_queue != None):
@@ -1552,9 +1549,7 @@ def run_once_solve_dict(dict, default_par, solve_dict_queue = None, N_run_total 
     if(N_run_total > 0):
         completed = solve_dict_queue.qsize()
         percent = (completed / N_run_total) * 100
-        print(str(percent) + "% complete")
-
-    #print(str(run_id) + " has finished")
+        print(str(round(percent, 2)) + "% complete")
 
     return
 
@@ -1576,9 +1571,19 @@ def run_opt_parallel_solve_dict(dict_list_total, default_par, nproc):
         p.join()
 
     # Collect results from queue
+    q_size = solve_dict_queue.qsize()
+    count = 0
+
+    print("Runs complete. Collecting results")
+
     while not solve_dict_queue.empty():
         sim_collection.add(solve_dict_queue.get())
+        count = count + 1
 
+        if(count % 100 == 0):
+            print("Collecting " + str(round((count / q_size) * 100.0, 2)) + "%")
+
+    print("Collecting complete.")
     end = time.time()
 
     return sim_collection
@@ -3372,19 +3377,21 @@ def run_G3P3_tsf_sweep(n_par):
     min_pressure = 5
     max_pressure = 15
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    max_UA_single_val = default_par["UA_recup_tot_des"]
+    UA_total_list = np.linspace(1000, 50000, Npts, True)
     split_frac_list = np.linspace(0.3, 0.7, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
-                                   UA_total_list=[max_UA_single_val], 
+                                   UA_total_list=UA_total_list, 
                                    split_frac_list=split_frac_list,
                                    pres_ratio_list=pressure_list)
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
+    print("Saving tsf results...")
     file_name = "TSF_G3P3_collection"
     combined_name = folder_location + file_name + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
+    print("tsf finished")
 
     finished = ""
 
@@ -3400,19 +3407,21 @@ def run_G3P3_recomp_sweep(n_par):
     min_pressure = 5
     max_pressure = 15
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    max_UA_single_val = default_par["UA_recup_tot_des"]
+    UA_total_list = np.linspace(1000, 50000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
-                                   UA_total_list=[max_UA_single_val], 
+                                   UA_total_list=UA_total_list, 
                                    recomp_list=recomp_frac_list,
                                    pres_ratio_list=pressure_list)
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
+    print("Saving recomp results...")
     file_name = "recomp_G3P3_collection"
     combined_name = folder_location + file_name + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
+    print("recomp finished")
 
     finished = ""
 
@@ -3423,31 +3432,33 @@ def run_G3P3_htrbp_sweep(n_par):
     default_par["cycle_config"] = 3
     default_par["T_bypass_target"] = 0 # (not used)
     default_par["deltaT_bypass"] = 0
+    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     # Organize Variable Combinations
     Npts = n_par
     ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
-    min_pressure = 5
-    max_pressure = 15
+    min_pressure = 7
+    max_pressure = 12
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    max_UA_single_val = default_par["UA_recup_tot_des"]
+    UA_total_list = np.linspace(1000, 50000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
     bp_frac_list = np.linspace(0, 0.9, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
-                                   UA_total_list=[max_UA_single_val], 
+                                   UA_total_list=UA_total_list, 
                                    recomp_list=recomp_frac_list,
                                    pres_ratio_list=pressure_list,
                                    bp_list=bp_frac_list)
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
+    print("Saving htrbp results...")
     file_name = "htrbp_G3P3_collection"
     combined_name = folder_location + file_name + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
+    print("htrbp finished")
 
     finished = ""
-
 
 def run_G3P3_partial_sweep(n_par):
 
@@ -3461,36 +3472,113 @@ def run_G3P3_partial_sweep(n_par):
     min_pressure = 1
     max_pressure = 15
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    max_UA_single_val = default_par["UA_recup_tot_des"]
+    UA_total_list = np.linspace(1000, 50000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
-                                   UA_total_list=[max_UA_single_val], 
+                                   UA_total_list=UA_total_list, 
                                    recomp_list=recomp_frac_list,
                                    pres_ratio_list=pressure_list)
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
+    print("Saving partial results...")
     file_name = "partial_G3P3_collection"
     combined_name = folder_location + file_name + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
+    print("partial finished")
 
     finished = ""
 
 
 def run_G3P3_sweeps():
-    run_G3P3_htrbp_sweep(3)
-    return
+    
     n_par = 10
     run_G3P3_tsf_sweep(n_par)
     run_G3P3_recomp_sweep(n_par)
     run_G3P3_partial_sweep(n_par)
+    return
+    run_G3P3_htrbp_sweep(n_par)
+    return
+    run_G3P3_recomp_sweep(n_par)
+    return
+    
+    
+    
+    
+def test_bad_G3P3_case():
+
+    if True:
+        default_par = get_sco2_G3P3()
+        default_par["cycle_config"] = 3
+        default_par["T_bypass_target"] = 0 # (not used)
+        default_par["deltaT_bypass"] = 0
+        default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
+
+        # Design Variables
+        default_par["design_method"] = 3
+        default_par["LTR_design_code"] = 1
+        default_par["LTR_UA_des_in"] = 29481.54
+        default_par["HTR_design_code"] = 1
+        default_par["HTR_UA_des_in"] = 7370.38
+        default_par["is_recomp_ok"] = -0.35
+        default_par["is_PR_fixed"] = -5
+        default_par["is_bypass_ok"] = -0.45
+
+        # Make Cycle class
+        c_sco2 = sco2_solve.C_sco2_sim(3)
+
+        # Overwrite Variables
+        c_sco2.overwrite_default_design_parameters(default_par)
+
+        # Solve
+        c_sco2.solve_sco2_case()
+        c_sco2.m_solve_dict['cmod_success'] = c_sco2.m_solve_success
+
+        # Make Cycle Collection Class
+        sim_collection = sco2_solve.C_sco2_sim_result_collection()
+        sim_collection.add(c_sco2.m_solve_dict)
+        file_name = "bad htrbp_G3P3_collection"
+        combined_name = folder_location + file_name + get_time_string() + ".csv"
+        sim_collection.write_to_csv(combined_name)
+
+        i = 5
+
+    if False:
+        default_par = get_sco2_G3P3()
+        default_par["cycle_config"] = 3
+        default_par["T_bypass_target"] = 0 # (not used)
+        default_par["deltaT_bypass"] = 0
+        default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
+
+        # Design Variables
+        default_par["design_method"] = 3
+        default_par["LTR_design_code"] = 1
+        default_par["LTR_UA_des_in"] = 22111.15
+        default_par["HTR_design_code"] = 1
+        default_par["HTR_UA_des_in"] = 14740.77
+        default_par["is_recomp_ok"] = 0
+        default_par["is_PR_fixed"] = -12
+        default_par["is_bypass_ok"] = 0
+
+        # Make Cycle class
+        c_sco2 = sco2_solve.C_sco2_sim(3)
+
+        # Overwrite Variables
+        c_sco2.overwrite_default_design_parameters(default_par)
+
+        # Solve
+        c_sco2.solve_sco2_case()
+
+        i = 5
 
 
 # Main Script
 
 if __name__ == "__main__":
 
+    #run_bad_tsf()
+    #test_bad_G3P3_case()
     run_G3P3_sweeps()
     #run_G3P3_partial_sweep()
     #run_G3P3_recomp_sweep()

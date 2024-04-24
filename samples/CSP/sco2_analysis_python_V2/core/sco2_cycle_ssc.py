@@ -725,25 +725,42 @@ class C_sco2_sim_result_collection:
             self.j = j
             self.value = value
         
+    # 'Public' Methods
 
     def __init__(self):
-        self.solve_dict_list = []
-        self.flattened_solve_list = []
+        #self.solve_dict_list = []
+        #self.flattened_solve_list = []
         self.num_cases = 0
         self.csv_array = []
         self.csv_col_offset = 4
+        self.old_result_dict = {}
+        self.success_id_vec = []
+        self.failure_id_vec = []
         return
 
     def add(self, solve_dict):
-        self.solve_dict_list.append(solve_dict)
+        
+        if(('cmod_success' in solve_dict) == False):
+            print("WARNING: solve_dict should have cmod_success key")
+
+        # Add config_name
+        if(('config_name' in solve_dict) == False):
+            config_name = self.get_config_name(solve_dict["cycle_config"], solve_dict["recomp_frac"], solve_dict["bypass_frac"])
+            solve_dict["config_name"] = config_name
+
+        #self.solve_dict_list.append(solve_dict)
         self.num_cases = self.num_cases + 1
 
-        self.flattened_solve_list.append(self.flatten(solve_dict))
+        self.add_run_to_csv_array(solve_dict)
 
         return
 
     def write_to_csv(self, file_name):
-        self.csv_array = self.form_csv_array()
+        #self.csv_array = self.form_csv_array()
+
+        if(len(self.csv_array) == 0):
+            print("ERROR: no csv array to save")
+            return
 
         f = open(file_name, "w")
         delimiter = ', '
@@ -764,18 +781,106 @@ class C_sco2_sim_result_collection:
 
         return
 
-    def does_row_exist(self, csv_array, name, type, i, j):
+    def open_csv(self, file_name):
+        # Read in csv array
+        self.csv_array = []
+        f = open(file_name, "r")
+        for row in f:
+            items = row.split(', ')
+            items[len(items)-1] = items[len(items)-1].replace('\n','')
+            self.csv_array.append(items)
+        f.close()
 
-        row_id = 0;
-        for row in csv_array:
-            if(row[0] == name
-               and row[1] == type
-               and row[2] == i
-               and row[3] == j):
-                return row_id
-            row_id = row_id + 1
+        # Fill in missing vals at end of rows
+        NVal = len(self.csv_array[0]) - self.csv_col_offset
+        for row in self.csv_array:
+            N_missing_cols = NVal - (len(row) - self.csv_col_offset)
+            for x in range(N_missing_cols):
+                row.append('')
+
+        # Add config name (if it doesn't exist)
+        config_name_exists = False
+        bypass_frac_row_id = 0
+        recomp_frac_row_id = 0
+        cycle_config_row_id = -1
+        NRows = len(self.csv_array)
+        for row_id in range(NRows):
+            key = self.csv_array[row_id][0]
+            if(key == 'config_name'):
+                config_name_exists = True
+                break
+            elif(key == 'bypass_frac'):
+                bypass_frac_row_id = row_id
+            elif(key == 'recomp_frac'):
+                recomp_frac_row_id = row_id
+            elif(key == 'cycle_config'):
+                cycle_config_row_id = row_id
+        if(config_name_exists == False):
+            self.csv_array.append(['config_name', 'single', '0', '0'])
+            
+            for run_id in range(NVal):
+                bypass_frac = self.csv_array[bypass_frac_row_id][run_id + self.csv_col_offset]
+                if(bypass_frac != ''):
+                    bypass_frac = float(bypass_frac)
+                
+                recomp_frac = self.csv_array[recomp_frac_row_id][run_id + self.csv_col_offset]
+                if(recomp_frac != ''):
+                    recomp_frac = float(recomp_frac)
+
+                cycle_config = int(float(self.csv_array[cycle_config_row_id][run_id + self.csv_col_offset]))
+                config_name = self.get_config_name(cycle_config, recomp_frac, bypass_frac)
+                self.csv_array[NRows].append(config_name)
+
+
+        ## Form dicts for each run (by unflattening)
+        #NRuns = len(self.csv_array[0]) - self.csv_col_offset
+        #for run in range(NRuns):
+        #    solve_dict = self.unflatten(self.csv_array, run)
+        #    self.solve_dict_list.append(solve_dict)
+        #    self.num_cases = self.num_cases + 1
+        #    self.flattened_solve_list.append(self.flatten(solve_dict))
+
+        # Form old result dict
+        self.form_old_result_dict_from_csv_array()
+
+        return True
+
+    def combine_by_key(self, list_of_collections, key_name):
+        distinct_vals = []
         
-        return -1
+
+    # 'Internal' Methods
+
+    def add_run_to_csv_array(self, solve_dict):
+
+        flattened_solve_dict = self.flatten(solve_dict)
+
+        NRun_prev = 0
+        if(len(self.csv_array) > 0):
+            NRun_prev = len(self.csv_array[0]) - self.csv_col_offset
+
+        run_id = NRun_prev # id is at end of row
+
+        # Loop through every item
+        for item in flattened_solve_dict:
+            
+            # Check if row exists
+            exists = self.does_row_exist(self.csv_array, item.name, item.type, item.i, item.j)
+            row_index = -1
+            if(exists == -1):
+                row = [item.name, item.type, item.i, item.j]
+                for col in range(NRun_prev):
+                    row.append('')
+                row_index = len(self.csv_array)
+                self.csv_array.append(row)
+            else:
+                row_index = exists
+                # Fill missing gaps
+                while(len(self.csv_array[row_index]) < run_id + self.csv_col_offset):
+                    self.csv_array[row_index].append('')
+
+            # Place value
+            self.csv_array[row_index].append(item.value)
 
     def form_csv_array(self):
 
@@ -807,7 +912,19 @@ class C_sco2_sim_result_collection:
 
         return csv_array
 
-    
+    def does_row_exist(self, csv_array, name, type, i, j):
+
+        row_id = 0;
+        for row in csv_array:
+            if(row[0] == name
+               and row[1] == type
+               and row[2] == i
+               and row[3] == j):
+                return row_id
+            row_id = row_id + 1
+        
+        return -1
+
     def get_val_type(self, value):
         if(isinstance(value, list)):
 
@@ -848,28 +965,6 @@ class C_sco2_sim_result_collection:
 
         return item_list
     
-    def open_csv(self, file_name):
-        # Read in csv array
-        self.csv_array = []
-        f = open(file_name, "r")
-        for row in f:
-
-            items = row.split(', ')
-            items[len(items)-1] = items[len(items)-1].replace('\n','')
-            self.csv_array.append(items)
-        f.close()
-
-        # Form dicts for each run (by unflattening)
-        NRuns = len(self.csv_array[0]) - self.csv_col_offset
-        for run in range(NRuns):
-            solve_dict = self.unflatten(self.csv_array, run)
-            self.solve_dict_list.append(solve_dict)
-            self.num_cases = self.num_cases + 1
-            self.flattened_solve_list.append(self.flatten(solve_dict))
-
-        return True
-
-
     def load_solve_dict_item(self, csv_row, col_id_absolute):
             name = csv_row[0]
             type = csv_row[1]
@@ -946,9 +1041,7 @@ class C_sco2_sim_result_collection:
                     mat[row].append(fill_val)
 
     def convert_string(self, val_string):
-
         is_dec = val_string.isdecimal()
-
         if(is_dec):
             return int(val_string)
         else:
@@ -956,6 +1049,113 @@ class C_sco2_sim_result_collection:
                 return float(val_string)
             except:
                 return val_string
+
+    def form_old_result_dict_from_csv_array(self, remove_zeros = True):
+        if(len(self.csv_array) == 0):
+            self.csv_array = self.form_csv_array()
+
+        # get number of values
+        NVals = len(self.csv_array[0]) - self.csv_col_offset
+
+        # get eta thermal calc row (this will be used to check if run succeeded)
+        eta_vec = []
+        success_id_vec = []
+        failure_id_vec = []
+        success_bool_vec = []
+        for row_vec in self.csv_array:
+            if(row_vec[0] == "eta_thermal_calc"):
+                NVals_row = len(row_vec) - self.csv_col_offset
+                for i in range(NVals_row):
+                    eta_val = self.convert_string(row_vec[i + self.csv_col_offset])
+                    eta_vec.append(eta_val)
+                    if(isinstance(eta_val, str) == False):
+                        success_id_vec.append(i)
+                    else:
+                        failure_id_vec.append(i)
+
+                # account for missing data at end of row
+                while(len(eta_vec) < NVals):
+                    eta_vec.append('')
+                    success_bool_vec.append(0)
+
+                break
+
+        self.success_id_vec = success_id_vec
+        self.failure_id_vec = failure_id_vec
+
+        num_keys = len(self.csv_array)
+        self.old_result_dict = {}
+        self.old_result_dict_complete = {}
+        row_num = 0
+        for row_vec in self.csv_array:
+            val_vec = [0] * len(success_id_vec)
+
+            ## Fill in missing data (if necessary)
+            #missing_data = NVals - (len(row_vec) - self.csv_col_offset)
+            #for i in range(missing_data):
+            #    row_vec.append('')
+
+            key_name = ""
+            val_type = row_vec[1]
+            if(val_type == "single"):
+                key_name = row_vec[0]
+            else:
+                key_name = row_vec[0] + "_" + row_vec[2] + "_" + row_vec[3]
+
+            NVals = len(row_vec) - self.csv_col_offset
+
+            # Collect good results
+            count = 0
+            for id in success_id_vec:
+                val_vec[count] = self.convert_string(row_vec[id + self.csv_col_offset])
+                count = count + 1
+
+            self.old_result_dict[key_name] = val_vec
+
+            if(row_num % 50 == 0):
+                print(str(round((row_num / num_keys) * 100, 2)) + "% loaded")
+            row_num = row_num + 1
+
+        return
+
+    def get_config_name(self, cycle_config, recomp_frac, bypass_frac):
+
+        # Recompresion
+        if(cycle_config == 1):
+            if(recomp_frac == ''):
+                return "recompression"
+
+            if(recomp_frac <= 0.0001):
+                return "simple"
+            else:
+                return "recompression"
+        # Partial
+        if(cycle_config == 2):
+            if(recomp_frac == ''):
+                return "partial"
+            
+            if(recomp_frac <= 0.0001):
+                return "partial no recomp"
+            else:
+                return "partial"
+        # TSF
+        elif(cycle_config == 4):
+            return "turbine split flow"
+        #HTR BP
+        elif(cycle_config == 3):
+            if(bypass_frac == ''):
+                return "htr bp"
+            if bypass_frac != 0 and recomp_frac <= 0.01:
+                return "simple split flow bypass"
+            elif recomp_frac <= 0.01 and bypass_frac == 0:
+                return "simple"
+            elif bypass_frac == 0:
+                return "recompression"
+            else:
+                return "htr bp"
+        
+        return ""
+
 
 
 def solve_default_des_and_compare_od_at_des(cycle_config = 1):

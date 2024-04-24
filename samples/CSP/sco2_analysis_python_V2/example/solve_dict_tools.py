@@ -10,6 +10,7 @@ sys.path.append(parentDir)
 newPath = os.path.join(parentDir, 'core')
 sys.path.append(newPath)
 import sco2_cycle_ssc as sco2_solve
+import design_point_tools as design_tools
 
 def toString(val, n=-1):
     if(n==-1):
@@ -144,32 +145,104 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
     annot.set_visible(False)
 
 
-
-
-
-
 def example_plot_solve_dict():
-    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\Alfani2020_Final\TSF_G3P3_collection20240419_091842.csv"
-    recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\Alfani2020_Final\recomp_G3P3_collection20240419_092151.csv"
-    partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\Alfani2020_Final\partial_G3P3_collection20240419_092640.csv"
+    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection20240422_235632.csv"
+    recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\recomp_G3P3_collection20240422_233921.csv"
+    partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\partial_G3P3_collection20240422_220557.csv"
+    htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\htrbp_G3P3_collection20240424_072851.csv"
 
+    print("Opening htrbp...")
+    htrbp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    htrbp_sim_collection.open_csv(htrbp_filename)
+    print("HTR BP opened")
 
-    tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
-    tsf_sim_collection.open_csv(tsf_filename)
-
+    print("Opening recomp...")
     recomp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
     recomp_sim_collection.open_csv(recomp_filename)
+    print("Recomp open")
 
+    print("Opening tsf...")
+    tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    tsf_sim_collection.open_csv(tsf_filename)
+    print("TSF opened")
+
+    print("Opening partial...")
     partial_sim_collection = sco2_solve.C_sco2_sim_result_collection()
     partial_sim_collection.open_csv(partial_filename)
+    print("Partial opened")
 
-    # Plot HTR Sweep with All Optimal Points
-    plot_scatter_pts([[tsf_sim_collection.solve_dict_list, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.solve_dict_list, {'label':"recomp sweep", 'marker':'.'}],
-                      [partial_sim_collection.solve_dict_list, {'label':"partial sweep", 'marker':'.'}]
+
+    # Variables to Display
+    X_label = "eta_thermal_calc"
+    Y_label = "T_htf_cold_des"
+    Z_label = "bypass_frac"
+
+    X_unit = ""
+    Y_unit = "C"
+    Z_unit = ""
+
+    print("Forming pareto fronts...")
+
+    # Create Pareto Fronts
+    htrbp_pareto_dict = design_tools.get_pareto_front_from_dict(htrbp_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    recomp_pareto_dict = design_tools.get_pareto_front_from_dict(recomp_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    tsf_pareto_dict = design_tools.get_pareto_front_from_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    partial_pareto_dict = design_tools.get_pareto_front_from_dict(partial_sim_collection.old_result_dict, X_label, Y_label, True, False)
+
+
+
+    print("Plotting...")
+
+    design_tools.plot_scatter_pts([[tsf_pareto_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_pareto_dict, {'label':"recomp sweep", 'marker':'.'}],
+                      [partial_pareto_dict, {'label':"partial sweep", 'marker':'.'}],
+                      [htrbp_pareto_dict, {'label':"htrbp sweep", 'marker':'.'}]
                       ], 
-                      ["eta_thermal_calc", ""], ["dT_htf_des", "C"], title="G3P3")
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], title="G3P3 Pareto")
+
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'.'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'.'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'.'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], title="G3P3")
     
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["recomp_frac", ""],title="G3P3 Recomp")
+
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["recup_total_UA_calculated", "MW/K"],title="G3P3 Total UA")
+    
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["is_PR_fixed", "MPa"],title="G3P3 Min Pressure")
+
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["T_state_points_5_0", "C"],title="G3P3 Turbine Inlet Temp")
+
+    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
+                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
+                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
+                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
+                      ], 
+                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["T_co2_PHX_in", "C"],title="G3P3 PHX sco2 Inlet Temp")
+
+
     plt.show(block = True)
 
 
