@@ -151,6 +151,25 @@ def example_plot_solve_dict():
     partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\partial_G3P3_collection20240422_220557.csv"
     htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\htrbp_G3P3_collection20240424_072851.csv"
 
+    if True:
+        print("Opening tsf...")
+        tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+        tsf_sim_collection.open_csv(tsf_filename)
+        print("TSF opened")
+
+        X_label = "eta_thermal_calc"
+        Y_label = "T_htf_cold_des"
+        Z_label = "bypass_frac"
+
+        X_unit = ""
+        Y_unit = "C"
+        Z_unit = ""
+        tsf_pareto_dict = design_tools.get_pareto_front_from_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
+
+        x = ""
+
+    return
+
     print("Opening htrbp...")
     htrbp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
     htrbp_sim_collection.open_csv(htrbp_filename)

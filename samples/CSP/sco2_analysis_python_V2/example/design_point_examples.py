@@ -1209,6 +1209,7 @@ def get_sco2_G3P3():
     T_turbine_in = 720                      # [C] sco2 turbine inlet temp    
     des_par["T_htf_hot_des"] = T_HTF_in     # [C] HTF design hot temperature (PHX inlet)
     des_par["dT_PHX_hot_approach"] = T_HTF_in - T_turbine_in     # [C/K] Temperature difference between hot HTF and turbine inlet
+    des_par["dT_PHX_cold_approach"] = des_par["dT_PHX_hot_approach"]
     des_par["set_HTF_mdot"] = 0
 
     # Efficiency (ASSUMPTION)
@@ -3432,7 +3433,6 @@ def run_G3P3_htrbp_sweep(n_par):
     default_par["cycle_config"] = 3
     default_par["T_bypass_target"] = 0 # (not used)
     default_par["deltaT_bypass"] = 0
-    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     # Organize Variable Combinations
     Npts = n_par

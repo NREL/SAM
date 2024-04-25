@@ -844,7 +844,7 @@ def get_pareto_front(X_list, Y_list, is_max_X, is_max_Y):
 
     return pf_X, pf_Y
 
-def get_pareto_front_from_dict(result_dict, X_label, Y_label, is_max_X, is_max_Y):
+def get_pareto_front_from_dict_OLD(result_dict, X_label, Y_label, is_max_X, is_max_Y):
     
     sorted_dict = sort_by_key(result_dict, Y_label, False)
     x_pareto, y_pareto = get_pareto_front(result_dict[X_label], result_dict[Y_label], is_max_X, is_max_Y)
@@ -865,7 +865,34 @@ def get_pareto_front_from_dict(result_dict, X_label, Y_label, is_max_X, is_max_Y
     return pareto_dict
 
 
+def get_pareto_front_from_dict(result_dict, X_label, Y_label, is_max_X, is_max_Y):
+    
+    sorted_dict = sort_by_key(result_dict, Y_label, False)
+    x_pareto, y_pareto = get_pareto_front(result_dict[X_label], result_dict[Y_label], is_max_X, is_max_Y)
+    y_pareto, x_pareto = zip(*sorted(zip(y_pareto, x_pareto), reverse=False))
 
+    test = zip(x_pareto, y_pareto)
+
+    if(len(x_pareto) != len(y_pareto)):
+        print("Pareto front mismatch")
+
+    pareto_dict = {}
+    for key in result_dict:
+        pareto_dict[key] = []
+
+    # Fill pareto dict with the cases that are on pareto front
+    pareto_index = 0
+    N_cases = len(sorted_dict[list(sorted_dict.keys())[0]])
+    N_pareto = len(x_pareto)
+        # Loop through every case, check if on pareto front
+    i = 0
+    for i in range(N_cases):
+        if (sorted_dict[X_label][i] == x_pareto[pareto_index]) and (sorted_dict[Y_label][i] == y_pareto[pareto_index]):
+            for key in result_dict:
+                pareto_dict[key].append(sorted_dict[key][i])
+            pareto_index += 1
+
+    return pareto_dict
 
 
 def get_pareto_front_v2(X_list, Y_list, is_max_X, is_max_Y, Z_list = []):
