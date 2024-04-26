@@ -164,11 +164,9 @@ def example_plot_solve_dict():
         X_unit = ""
         Y_unit = "C"
         Z_unit = ""
-        tsf_pareto_dict = design_tools.get_pareto_front_from_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
+        tsf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
 
         x = ""
-
-    return
 
     print("Opening htrbp...")
     htrbp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
@@ -203,10 +201,10 @@ def example_plot_solve_dict():
     print("Forming pareto fronts...")
 
     # Create Pareto Fronts
-    htrbp_pareto_dict = design_tools.get_pareto_front_from_dict(htrbp_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    recomp_pareto_dict = design_tools.get_pareto_front_from_dict(recomp_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    tsf_pareto_dict = design_tools.get_pareto_front_from_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    partial_pareto_dict = design_tools.get_pareto_front_from_dict(partial_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    htrbp_pareto_dict = design_tools.get_pareto_dict(htrbp_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    recomp_pareto_dict = design_tools.get_pareto_dict(recomp_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    tsf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    partial_pareto_dict = design_tools.get_pareto_dict(partial_sim_collection.old_result_dict, X_label, Y_label, True, False)
 
 
 

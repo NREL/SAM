@@ -844,6 +844,40 @@ def get_pareto_front(X_list, Y_list, is_max_X, is_max_Y):
 
     return pf_X, pf_Y
 
+def get_pareto_dict(result_dict, X_label, Y_label, is_max_X, is_max_Y):
+
+    # Sort by X_label
+    sorted_dict = sort_by_key(result_dict, X_label, is_max_X)
+
+    pareto_front = [[sorted_dict[X_label][0], sorted_dict[Y_label][0]],]
+    pareto_index_list = [0]
+
+    pareto_dict = {}
+    for key in sorted_dict:
+        pareto_dict[key] = [sorted_dict[key][0]]
+    NVal = len(sorted_dict[X_label])
+
+    for i in range(NVal):
+
+        pair = [sorted_dict[X_label][i], sorted_dict[Y_label][i]]
+        if pair == [0.0,0.0]:
+            continue
+
+        if is_max_Y:
+            if pair[1] >= pareto_front[-1][1]:
+                pareto_front.append(pair)
+                for key in sorted_dict:
+                    pareto_dict[key].append(sorted_dict[key][i])
+        else:
+            if pair[1] <= pareto_front[-1][1]:
+                pareto_front.append(pair)
+                for key in sorted_dict:
+                    pareto_dict[key].append(sorted_dict[key][i])
+
+
+    return pareto_dict
+
+
 def get_pareto_front_from_dict_OLD(result_dict, X_label, Y_label, is_max_X, is_max_Y):
     
     sorted_dict = sort_by_key(result_dict, Y_label, False)
@@ -871,28 +905,79 @@ def get_pareto_front_from_dict(result_dict, X_label, Y_label, is_max_X, is_max_Y
     x_pareto, y_pareto = get_pareto_front(result_dict[X_label], result_dict[Y_label], is_max_X, is_max_Y)
     y_pareto, x_pareto = zip(*sorted(zip(y_pareto, x_pareto), reverse=False))
 
-    test = zip(x_pareto, y_pareto)
+    # Check sorted dict, x_pareto, and y_pareto
+    is_sorted_dict_actually_sorted = is_sorted(sorted_dict[Y_label], True)
+    is_x_pareto_actually_sorted = is_sorted(x_pareto, True)
+    is_y_pareto_actually_sorted = is_sorted(y_pareto, True)
 
     if(len(x_pareto) != len(y_pareto)):
         print("Pareto front mismatch")
 
-    pareto_dict = {}
-    for key in result_dict:
-        pareto_dict[key] = []
-
-    # Fill pareto dict with the cases that are on pareto front
-    pareto_index = 0
-    N_cases = len(sorted_dict[list(sorted_dict.keys())[0]])
     N_pareto = len(x_pareto)
-        # Loop through every case, check if on pareto front
-    i = 0
-    for i in range(N_cases):
-        if (sorted_dict[X_label][i] == x_pareto[pareto_index]) and (sorted_dict[Y_label][i] == y_pareto[pareto_index]):
-            for key in result_dict:
-                pareto_dict[key].append(sorted_dict[key][i])
-            pareto_index += 1
 
-    return pareto_dict
+    #pareto_dict = {}
+    #for key in result_dict:
+    #    pareto_dict[key] = []
+    ## Fill pareto dict with the cases that are on pareto front
+    #pareto_index = 0
+    #N_cases = len(sorted_dict[list(sorted_dict.keys())[0]])
+    #
+    #    # Loop through every case, check if on pareto front
+    #i = 0
+    #for i in range(N_cases):
+    #    if (sorted_dict[X_label][i] == x_pareto[pareto_index]) and (sorted_dict[Y_label][i] == y_pareto[pareto_index]):
+    #        for key in sorted_dict:
+    #            pareto_dict[key].append(sorted_dict[key][i])
+    #        pareto_index += 1
+
+    pareto_dict_2 = {}
+    for key in result_dict:
+        pareto_dict_2[key] = []
+    for pareto_index in range(N_pareto):
+        sorted_index = get_first_combo_index(x_pareto[pareto_index], y_pareto[pareto_index], sorted_dict[X_label], sorted_dict[Y_label])
+
+        if(sorted_index > -1):
+            for key in sorted_dict:
+                pareto_dict_2[key].append(sorted_dict[key][sorted_index])
+
+    return pareto_dict_2
+
+
+def get_first_index(val, val_vec):
+    test = [i for i, x in enumerate(val_vec) if x == val]
+    return test
+
+def get_first_combo_index(val_x, val_y, val_vec_x, val_vec_y):
+    x_index_list = [i for i, x in enumerate(val_vec_x) if x == val_x]
+    y_index_list = [i for i, y in enumerate(val_vec_y) if y == val_y]
+
+    for x_index in x_index_list:
+        for y_index in y_index_list:
+            if(x_index == y_index):
+                return x_index
+            
+    return -1
+
+
+def is_sorted(val_vec, ascend = True):
+
+    # Check if values are sorted in ascending order
+    prev_val = val_vec[0]
+    if(ascend == True):
+        for val in val_vec:
+            if(val < prev_val):
+                return False
+            prev_val = val
+            
+        return True
+
+    # Check if values are sorted in descending order
+    else:
+        for val in val_vec:
+            if(val > prev_val):
+                return False
+            prev_val = val
+        return True
 
 
 def get_pareto_front_v2(X_list, Y_list, is_max_X, is_max_Y, Z_list = []):
