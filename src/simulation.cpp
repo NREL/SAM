@@ -174,6 +174,8 @@ bool Simulation::Read(wxInputStream& is)
 		m_uiHints.Read( is );
 	
 	return ( code == in.Read8() );	
+//	in.Read8();
+//	return true;
 }
 
 void Simulation::Copy( const Simulation &rh )

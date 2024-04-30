@@ -210,8 +210,9 @@ bool ObjectCollection::Read( wxInputStream &input )
 		}
 
 	}
-
 	return ( in.Read16() == code );
+//	in.Read16();
+//	return true;
 }
 
 

@@ -319,6 +319,8 @@ bool ProjectFile::Read( wxInputStream &input )
 		m_saveHourlyData = false;
 
 	return (in.Read16() == code );
+//	in.Read16();
+//	return true;
 }
 
 bool ProjectFile::WriteArchive( const wxString &file )

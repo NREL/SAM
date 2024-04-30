@@ -395,6 +395,7 @@ void Case::Write( wxOutputStream &_o )
 
 	m_parametric.Write( _o );
 	m_stochastic.Write( _o );
+	
 	m_pvuncertainty.Write(_o);
 
 	out.Write8( 0x9b );
@@ -562,6 +563,8 @@ bool Case::Read( wxInputStream &_i )
 	}
 
 	return (in.Read8() == code);
+//	in.Read8();
+//	return true;
 }
 
 bool Case::SaveDefaults(bool quiet)
