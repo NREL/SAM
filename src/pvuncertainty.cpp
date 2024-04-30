@@ -717,12 +717,13 @@ void PVUncertaintyData::Write(wxOutputStream& _o)
 	out.WriteString(WeatherFileFolder);
 	out.WriteDouble(pValue);
 
+	/*
 	// version 2 and on
 	size_t N = UncertaintySourcesEnabled.size();
 	out.Write32(N);
 	for (size_t i = 0; i < N; i++)
 		out.Write8(UncertaintySourcesEnabled[i]);
-
+*/
 	out.Write8(0x9f);
 }
 
