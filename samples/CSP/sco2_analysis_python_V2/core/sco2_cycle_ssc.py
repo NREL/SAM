@@ -844,9 +844,6 @@ class C_sco2_sim_result_collection:
         self.form_old_result_dict_from_csv_array()
 
         return True
-
-    def combine_by_key(self, list_of_collections, key_name):
-        distinct_vals = []
         
 
     # 'Internal' Methods
@@ -1135,7 +1132,7 @@ class C_sco2_sim_result_collection:
                 return "partial"
             
             if(recomp_frac <= 0.0001):
-                return "partial no recomp"
+                return "partial intercooling"
             else:
                 return "partial"
         # TSF

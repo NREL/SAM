@@ -471,6 +471,69 @@ def get_dict_from_file(file_name, removeZeros=False):
 
     return result_dict
 
+def get_dict_from_file_w_STRING(file_name, removeZeros=False):
+    f = open(file_name, "r")
+
+    lines_raw = []
+    for line in f:
+        lines_raw.append(line)
+
+    f.close()
+
+    lines_list = []
+    for line in lines_raw:
+        lines_list.append(line.split('\t'))
+
+    result_list = []
+    row_count = len(lines_list)
+    col_count = len(lines_list[0])
+    result_row = 0
+
+    for col in range(col_count):
+
+        result_list.append([])
+        for row in range(row_count):
+            result_list[col].append(lines_list[row][col].replace('\n',''))
+
+    # Remove Zeros if necessary
+    if removeZeros:
+        result_list = remove_zeros_v2(result_list, True)
+
+    # Convert Result List into dictionary
+    N_cols = len(result_list[0])
+    N_rows = len(result_list)
+    result_dict = {}
+    for col in range(N_cols):
+        label = result_list[0][col]
+        if(label == ""):
+            continue
+
+        vals = []
+        
+        for row in range(N_rows):
+            if(row == 0):
+                continue
+            if result_list[row][col] == '':
+                vals.append('')
+
+            else:
+                vals.append(convert_string(result_list[row][col]))
+
+        result_dict[label] = vals
+
+
+
+    return result_dict
+
+def convert_string(val_string):
+        is_dec = val_string.isdecimal()
+        if(is_dec):
+            return int(val_string)
+        else:
+            try:
+                return float(val_string)
+            except:
+                return val_string
 
 def sort_by_key(result_dict, key_label, reverse=False):
 
@@ -645,11 +708,121 @@ def combine_dict_by_key(result_dict_list, key_name, key_value):
 
     return return_dict
 
-    
+def split_by_key_UDPATED(result_dict, key_label):
 
+    # Loop through every run, find number of each type
+    unique_key_id_list = [-1] * len(result_dict[key_label])
+    unique_key_val_list = []
+    unique_key_NVal_list = []
+    NVal_total = len(result_dict[key_label])
+    for i in range(NVal_total):
+        val = result_dict[key_label][i]
 
+        try:
+            id = unique_key_val_list.index(val)
+        except:
+            unique_key_val_list.append(val)
+            unique_key_NVal_list.append(0)
+            id = len(unique_key_val_list) - 1
 
+        unique_key_id_list[i] = id
+        unique_key_NVal_list[id] += 1
+        
+    # Make new split dicts
+    list_of_dicts = []
+    for NVal in unique_key_NVal_list:
+        sub_dict = {}
+        for key in result_dict:
+            sub_dict[key] = [-1] * NVal
+        list_of_dicts.append(sub_dict)
 
+    # Fill new split dicts
+    unique_key_last_id_list = [0] * len(unique_key_val_list)
+    for i in range(NVal_total):
+        id = unique_key_id_list[i]
+        for key in result_dict:
+            list_of_dicts[id][key][unique_key_last_id_list[id]] = result_dict[key][i]
+        unique_key_last_id_list[id] += 1
+
+    return list_of_dicts
+
+def combine_dicts(result_dict_list):
+    combined_dict = result_dict_list[0]
+    NDicts = len(result_dict_list)
+    for i in range(NDicts - 1):
+        dict_id = i + 1
+        for key in result_dict_list[dict_id]:
+            for val in result_dict_list[dict_id][key]:
+                combined_dict[key].append(val)
+
+    return combined_dict
+
+def combine_common_runs(result_dict_list, compare_key_list):
+    NDict = len(result_dict_list)
+    NVal_list = []
+    for result_dict in result_dict_list:
+        NVal_list.append(len(result_dict[list(result_dict.keys())[0]]))
+
+    ordered_list = NVal_list.copy()
+    ordered_list.sort()
+
+    ordered_dict_list = []
+    for NVal in ordered_list:
+        id = NVal_list.index(NVal)
+        NVal_list[id] = 0
+        ordered_dict_list.append(result_dict_list[id])
+
+    compare_dict = ordered_dict_list[0]
+    # Loop through dictionaries (after the first)
+    for i in range(NDict - 1):
+        id = i + 1
+
+        
+        current_dict = ordered_dict_list[id]
+        combined_dict = {}
+        for key in current_dict:
+            combined_dict[key] = []
+        NVal = ordered_list[id]
+        NVal_compare = len(compare_dict[list(compare_dict.keys())[0]])
+        # Loop through every run current dictionary
+        for run_id in range(NVal):
+            # Loop through compare dictionary
+            for compare_run_id in range(NVal_compare):              
+                # Check key parameters
+                is_equal = True
+                for key in compare_key_list:
+                    if(compare_data(current_dict[key][run_id], compare_dict[key][compare_run_id]) == False):
+                        is_equal = False
+                        break
+                # Check if dicts are identical
+                if(is_equal):
+                    is_identical = True
+                    for key in current_dict:
+                        if(compare_data(current_dict[key][run_id], compare_dict[key][compare_run_id]) == False):
+                            is_identical == False
+                            break
+                    # Add dict to combined dict
+                    for key in combined_dict:
+                        combined_dict[key].append(compare_dict[key][compare_run_id])
+                    if(is_identical == False):
+                        # Add both dicts since they are not identical
+                        for key in combined_dict:
+                            combined_dict[key].append(current_dict[key][run_id])
+
+        compare_dict = combined_dict
+            
+    return compare_dict
+                    
+            
+
+def compare_data(val1, val2):
+    if(isinstance(val1, str)):
+        return (val1 == val2)
+    else:
+        if(isinstance(val1, int) and isinstance(val2, int)):
+            return val1 == val2
+        else:
+            return float(val1) == float(val2)
 
 # argument is a list of lists. First list is labels
 def plot_from_result_list(result_list, X_label, Y_label, Z_label):
@@ -1134,7 +1307,6 @@ def update_annot(ind, result_dict, label_list, annot, sc):
         if pp != -777:
             text += toString(pp, 4)
 
-
         if(i != N_label - 1):
             text += '\n'
 
@@ -1214,8 +1386,6 @@ def hover_multiple_pts(event, result_dict_list, label_list, fig, annot, ax, sc_c
                 update_annot(ind, result_dict_list[sc_ID], label_list, annot, sc_collection[sc_ID])
                 annot.set_visible(True)
                 
-            
-
             fig.canvas.draw_idle()
         else:
             if vis:
@@ -1224,10 +1394,9 @@ def hover_multiple_pts(event, result_dict_list, label_list, fig, annot, ax, sc_c
 
 
 
-def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""):
+def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title="", figure_size=[], ax=0, show_legend=True, legend_loc=""):
 
     marker_list = get_marker_list()
-
 
     # Process Labels
     X_label = ""
@@ -1261,9 +1430,17 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
         else:
             Z_label = Z_info
 
-    fig = plt.figure()
-    ax = fig.add_subplot()        
-    
+    # Make figure and axis if it doesn't exist already
+    if(ax == 0):
+        if(len(figure_size) == 2):
+            fig = plt.figure(figsize=(figure_size[0],figure_size[1]))
+        else:
+            fig = plt.figure()
+        
+        if(ax == 0):
+            ax = fig.add_subplot()        
+    else:
+        fig = ax.get_figure()
     i = 0
     dict_list = []
     for data in dict_list_with_kwarg:
@@ -1290,8 +1467,6 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
 
     cp3 = ax.collections[0]
 
-    
-
     if isinstance(X_info, list) and len(X_info) > 2:
         X_plot_label = X_info[2]
     else:
@@ -1301,8 +1476,6 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
         Y_plot_label = Y_info[2]
     else:
         Y_plot_label = Y_label
-
-    
 
     if(X_unit != ""):
         X_plot_label += " (" + X_unit + ")"
@@ -1326,18 +1499,35 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
         cb3 = fig.colorbar(ax.collections[0])
         cb3.set_label(Z_plot_label)
 
-    plt.legend(loc='upper left')
-
     if(title != ""):
         ax.set_title(title)
- 
+
+    # Handle Legend business
+    if(show_legend):
+        if(legend_loc == ""):
+            legend_loc = "upper left"
+        legend = ax.legend(loc=legend_loc)
+    #legend.set_picker(True)
+    #
+    #line_legend_list = legend.get_lines()
+
+    ##for line_legend in line_legend_list:
+    ##    line_legend.set_picker(True)
+    ##    line_legend.set_pickradius(10)
+    
+    #def on_legend_pick(event):
+    #    legend = event.artist
+    #    isVisible = legend.get_visible()
+    #    legend.set_visible(False)
+    #    asdf = 4564
+
+    #plt.connect('pick_event', on_legend_pick)
+
+    # Handle Click Business
     annot = ax.annotate("",xy=(0,0), xytext=(-100,20), textcoords="offset points",
                              bbox=dict(boxstyle="round", fc="w"),
                              arrowprops=dict(arrowstyle="->"))
     annot.set_visible(False)
-
-        
-
     #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
     #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
     #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
@@ -1348,11 +1538,20 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
     #              "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des",
     #              ltr_pp_left_label, ltr_pp_right_label, htr_pp_left_label, htr_pp_right_label]
     
-    label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
-                  "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
-                  "bypass_frac", "recomp_frac", "P_comp_in",
-                  "cycle_cost", "T_htf_hot_des", "T_htf_cold_des", "T_htf_phx_out_des", "T_state_points_5_0", "T_co2_PHX_in"]
+    #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
+    #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
+    #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points_10_0",
+    #              "cycle_cost", "T_htf_hot_des", "T_htf_cold_des", "T_htf_phx_out_des", "T_state_points_5_0", "T_co2_PHX_in"]
+    
+    label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_calculated", "LTR_UA_calculated", 
+                  "HTR_UA_calculated", "UA_BPX", "UA_PHX",
+                  "cycle_cost", "mc_cost_bare_erected", "rc_cost_bare_erected", "pc_cost_bare_erected", "t_cost_bare_erected", "t2_cost_bare_erected", "LTR_cost_bare_erected", "HTR_cost_bare_erected",
+                  "PHX_cost_bare_erected", "BPX_cost_bare_erected", "mc_cooler_cost_bare_erected", "pc_cooler_cost_bare_erected", "piping_inventory_etc_cost"]
     fig.canvas.mpl_connect("button_press_event", lambda event: hover_multiple_pts(event, dict_list, label_list, fig, annot, ax, ax.collections))
+
+    return ax
+
+
 
 def plot_lines(dict_list_with_kwarg, X_label, Y_label, Z_label = "", title=""):
 
@@ -1445,18 +1644,24 @@ def plot_split_lines(dict_list_with_kwarg, X_label, Y_label, Z_label, title=""):
             ax.plot(dicti[X_label], dicti[Y_label], label=('Total UA = ' + toString(dicti[Z_label][0],2)))
         i += 1
 
-def combine_dicts(dict_1, dict_2):
+def combine_dicts(dict_list):
+    # Combines dicts (only contains keys that all dicts have)
+
     total_dict = {}
 
-    for key in dict_1:
-        if key in dict_2:
+    for key in dict_list[0]:
+        is_common = True
+        for dic in dict_list:
+            if (key in dic) == False:
+                is_common = False
+                break
+        if is_common == True:
             total_dict[key] = []
 
     for key in total_dict:
-        for val in dict_1[key]:
-            total_dict[key].append(val)
-        for val in dict_2[key]:
-            total_dict[key].append(val)
+        for dic in dict_list:
+            for val in dic[key]:
+                total_dict[key].append(val)
 
     return total_dict
 
@@ -2827,12 +3032,10 @@ def display_recomp():
 
     plt.show(block = True)
 
-
-
-
 def display_Alfani_2024():
     fileaname = "C:\\Users\\tbrown2\\Desktop\\sco2_python\\Alfani2020_Final\\alfani_2024_results10_20240206_224944.txt"
     
+
     data_dict = open_dict_fast(fileaname, True)
     
     #plot_Ts_via_result_dict(data_dict)
@@ -2862,8 +3065,7 @@ def display_Alfani_2024():
     # Plot HTR BP Sweep
     plot_scatter_pts([[data_dict, {'label':"htr bp sweep", 'marker':'.', 's':small_pt_size}], 
                       ], 
-                     "T_htf_cold_des", "T_state_points 3", "eta_thermal_calc", title="test")
-
+                     "T_htf_cold_des", "T_state_points 3", "eta_thermal_calc", title="test", figure_size=[10,6])
     
     plt.show(block = True)
 
@@ -3109,12 +3311,50 @@ def example_plot_solve_dict():
     sim_collection = sco2_solve.C_sco2_sim_result_collection()
     sim_collection.open_csv(filename)
 
+def demo_plotting():
+    fileaname = "C:\\Users\\tbrown2\\Desktop\\sco2_python\\Alfani2020_Final\\alfani_2024_results10_20240206_224944.txt"   
+
+    data_dict = open_dict_fast(fileaname, True)
+
+    # Variables to Display
+    X_label = "eta_thermal_calc"
+    Y_label = "T_htf_cold_des"
+    Z_label = "bypass_frac"
+
+    X_unit = ""
+    Y_unit = "C"
+    Z_unit = ""
+
+    X_real_name = "Thermal Efficiency"
+    Y_real_name = "HTF Outlet Temperature"
+    Z_real_name = "Bypass Fraction"
+
+    X_info = [X_label, X_unit, X_real_name]
+    Y_info = [Y_label, Y_unit, Y_real_name]
+    Z_info = [Z_label, Z_unit, Z_real_name]
+
+    # Plotting Parameters
+    small_pt_size = 5    
+
+    fig, (ax1, ax2) = plt.subplots(1,2)
+
+    # Plot HTR BP Sweep
+    plot_scatter_pts([[data_dict, {'label':"htr bp sweep", 'marker':'.', 's':small_pt_size}], 
+                      ], 
+                     "eta_thermal_calc", "T_htf_cold_des", figure_size=[10,6], ax=ax1, show_legend=False)
     
+    plot_scatter_pts([[data_dict, {'label':"htr bp sweep", 'marker':'.', 's':small_pt_size}], 
+                      ], 
+                     "eta_thermal_calc", "T_htf_cold_des", figure_size=[10,6], ax=ax2, show_legend=True)
+
+
+    plt.tight_layout()
+    plt.show(block = True)
 
 # Main Script
 
 if __name__ == "__main__":
-    example_plot_solve_dict()
+    #example_plot_solve_dict()
 
     #file_in = "C:\\Users\\tbrown2\\OneDrive - NREL\\sCO2-CSP 10302.41.01.40\\Notes\\Optimization\\Alfani 2020\\Final Data\\alfani_2020_partial_sweep100_results20231010_100456.txt"
     #file_out = "C:\\Users\\tbrown2\\OneDrive - NREL\\sCO2-CSP 10302.41.01.40\\Notes\\Optimization\\Alfani 2020\\Final Data\\alfani_2020_partial_sweep100_REDUCED.txt";
@@ -3123,6 +3363,7 @@ if __name__ == "__main__":
     #compare_reduced(file_in, file_out)
     #special_investigation()
     #display_Alfani_2024()
+    demo_plotting()
     #display_Alfani_2020()
     #display_recomp()
     #display_Alfani_2020_BONUS()

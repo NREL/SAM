@@ -11,6 +11,7 @@ newPath = os.path.join(parentDir, 'core')
 sys.path.append(newPath)
 import sco2_cycle_ssc as sco2_solve
 import design_point_tools as design_tools
+import math
 
 def toString(val, n=-1):
     if(n==-1):
@@ -146,16 +147,32 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
 
 
 def example_plot_solve_dict():
-    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection20240422_235632.csv"
-    recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\recomp_G3P3_collection20240422_233921.csv"
-    partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\partial_G3P3_collection20240422_220557.csv"
-    htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\htrbp_G3P3_collection20240424_072851.csv"
+    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection_10_20240426_224925.csv"
+    recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\recomp_G3P3_collection_10_20240426_223109.csv"
+    partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\partial_G3P3_collection_10_20240426_204607.csv"
+    htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\htrbp_G3P3_collection_10_20240427_205838.csv"
 
-    if True:
+    # Load smaller files
+    if False:
+        tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\reduced\TSF_G3P3_collection_5_20240426_163601.csv"
+        recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\reduced\recomp_G3P3_collection_5_20240426_163437.csv"
+        partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\reduced\partial_G3P3_collection_5_20240426_162235.csv"
+        htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\reduced\htrbp_G3P3_collection_5_20240426_174143.csv"
+
+    # Load huge files
+    if False:
+        tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\mega\TSF_G3P3_collection_20_20240428_214905.csv"
+        recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\mega\recomp_G3P3_collection_20_20240428_172705.csv"
+        partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\mega\partial_G3P3_collection_20_20240428_044506.csv"
+
+    # Test Pareto
+    if False:
         print("Opening tsf...")
         tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
         tsf_sim_collection.open_csv(tsf_filename)
         print("TSF opened")
+
+        validate_costs(tsf_sim_collection.old_result_dict)
 
         X_label = "eta_thermal_calc"
         Y_label = "T_htf_cold_des"
@@ -167,6 +184,36 @@ def example_plot_solve_dict():
         tsf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
 
         x = ""
+
+    # Test Split
+    if False:
+        print("Opening partial...")
+        partial_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+        partial_sim_collection.open_csv(partial_filename)
+        print("Partial opened")
+
+        print("Opening recomp...")
+        recomp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+        recomp_sim_collection.open_csv(recomp_filename)
+        print("Recomp open")
+
+        print("Opening tsf...")
+        tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+        tsf_sim_collection.open_csv(tsf_filename)
+        print("TSF opened")
+
+        design_tools.combine_common_runs([partial_sim_collection.old_result_dict, recomp_sim_collection.old_result_dict, tsf_sim_collection.old_result_dict])
+
+
+        x = design_tools.split_by_key_UDPATED(htrbp_sim_collection.old_result_dict, "config_name")
+        x.append(*design_tools.split_by_key_UDPATED(recomp_sim_collection.old_result_dict, "config_name"))
+        simple_dicts = []
+        for dict in x:
+            if(dict["config_name"][0] == simple_legend_label):
+                simple_dicts.append(dict)
+        simple_combined_dict = design_tools.combine_dicts(simple_dicts)
+
+        d = 0
 
     print("Opening htrbp...")
     htrbp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
@@ -188,88 +235,601 @@ def example_plot_solve_dict():
     partial_sim_collection.open_csv(partial_filename)
     print("Partial opened")
 
+    # Validate Cost Calculations
+    if False:
+        htrbp_cost_error = validate_costs(htrbp_sim_collection.old_result_dict)
+        recomp_cost_error = validate_costs(recomp_sim_collection.old_result_dict)
+        tsf_cost_error = validate_costs(tsf_sim_collection.old_result_dict)
+        partial_cost_error = validate_costs(partial_sim_collection.old_result_dict)
+
+    # Split Dicts by 'Actual' config name
+
+    print("Splitting by config type...")
+
+    # HTR BP (only comes from htr bp file)
+    htrbp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict],
+                                                            "config_name", "htr bp")
+
+    # Recompression (comes from recomp and htr bp)
+    recomp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict, 
+                                                            recomp_sim_collection.old_result_dict],  
+                                                            "config_name", "recompression")
+
+    # Simple (from recomp and htr bp)
+    simple_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict, 
+                                                            recomp_sim_collection.old_result_dict],  
+                                                            "config_name", "simple")
+
+    # Simple w/ htr bypass (from htr bp only)
+    simple_htrbp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict],
+                                                            "config_name", "simple split flow bypass")
+    
+    # Partial (only comes from partial file)
+    partial_compiled_dict = design_tools.combine_dict_by_key([partial_sim_collection.old_result_dict],
+                                                            "config_name", "partial")
+
+    # Partial Intercooling (only comes from partial file)
+    partial_ic_compiled_dict = design_tools.combine_dict_by_key([partial_sim_collection.old_result_dict],
+                                                            "config_name", "partial intercooling")
 
     # Variables to Display
-    X_label = "eta_thermal_calc"
-    Y_label = "T_htf_cold_des"
-    Z_label = "bypass_frac"
+    ETA_label = ["eta_thermal_calc", "", "Cycle Thermal Efficiency"]
+    T_HTF_label = ["T_htf_cold_des", "C", "HTF Outlet Temperature"]
+    COST_label = ["cycle_cost", "M$", "Cycle Cost"]
 
-    X_unit = ""
-    Y_unit = "C"
-    Z_unit = ""
+    
+    # Create T HTF Pareto Fronts
+    print("Forming T HTF pareto fronts...")
+    htrbp_T_HTF_pareto_dict = design_tools.get_pareto_dict(htrbp_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
+    recomp_T_HTF_pareto_dict = design_tools.get_pareto_dict(recomp_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
+    tsf_T_HTF_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
+    partial_T_HTF_pareto_dict = design_tools.get_pareto_dict(partial_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
 
-    print("Forming pareto fronts...")
+    # Create Cost Pareto Fronts
+    print("Forming cost pareto fronts...")
+    htrbp_cost_pareto_dict = design_tools.get_pareto_dict(htrbp_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
+    recomp_cost_pareto_dict = design_tools.get_pareto_dict(recomp_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
+    tsf_cost_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
+    partial_cost_pareto_dict = design_tools.get_pareto_dict(partial_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
 
-    # Create Pareto Fronts
-    htrbp_pareto_dict = design_tools.get_pareto_dict(htrbp_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    recomp_pareto_dict = design_tools.get_pareto_dict(recomp_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    tsf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, X_label, Y_label, True, False)
-    partial_pareto_dict = design_tools.get_pareto_dict(partial_sim_collection.old_result_dict, X_label, Y_label, True, False)
+    # Create Cycle Split T HTF Pareto
+    print("Forming split cycle T HTF pareto fronts...")
+    htrbp_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(htrbp_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
+    recomp_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(recomp_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
+    simple_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(simple_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
+    simple_htrbp_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(simple_htrbp_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
+    partial_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(partial_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
+    partial_ic_compiled_T_HTF_pareto_dict = design_tools.get_pareto_dict(partial_ic_compiled_dict, ETA_label[0], T_HTF_label[0], True, False)
 
+    # Create Cycle Split Cost Pareto
+    print("Forming split cycle cost pareto fronts...")
+    htrbp_compiled_cost_pareto_dict = design_tools.get_pareto_dict(htrbp_compiled_dict, ETA_label[0], COST_label[0], True, False)
+    recomp_compiled_cost_pareto_dict = design_tools.get_pareto_dict(recomp_compiled_dict, ETA_label[0], COST_label[0], True, False)
+    simple_compiled_cost_pareto_dict = design_tools.get_pareto_dict(simple_compiled_dict, ETA_label[0], COST_label[0], True, False)
+    simple_htrbp_compiled_cost_pareto_dict = design_tools.get_pareto_dict(simple_htrbp_compiled_dict, ETA_label[0], COST_label[0], True, False)
+    partial_compiled_cost_pareto_dict = design_tools.get_pareto_dict(partial_compiled_dict, ETA_label[0], COST_label[0], True, False)
+    partial_ic_compiled_cost_pareto_dict = design_tools.get_pareto_dict(partial_ic_compiled_dict, ETA_label[0], COST_label[0], True, False)
 
+    # Create Cycle Split Cost vs T HTF Pareto
+    print("Forming split cycle cost vs t htf pareto fronts...")
+    htrbp_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(htrbp_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    recomp_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(recomp_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    simple_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(simple_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    simple_htrbp_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(simple_htrbp_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    partial_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(partial_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    partial_ic_compiled_cost_htf_pareto_dict = design_tools.get_pareto_dict(partial_ic_compiled_dict, T_HTF_label[0], COST_label[0], False, False)
+    tsf_cost_htf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, T_HTF_label[0], COST_label[0], False, False)
 
+    # Plot
     print("Plotting...")
+    figure_size=[8,6]
+    htrbp_legend_label = "recompression w/ htr bypass"
+    recomp_legend_label = "recompression"
+    simple_legend_label = "simple"
+    simple_bp_legend_label = "simple w/ bypass"
+    partial_legend_label = "partial cooling"
+    partial_ic_legend_label = "simple intercooling"
+    tsf_legend_label = "turbine split flow"
 
-    design_tools.plot_scatter_pts([[tsf_pareto_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_pareto_dict, {'label':"recomp sweep", 'marker':'.'}],
-                      [partial_pareto_dict, {'label':"partial sweep", 'marker':'.'}],
-                      [htrbp_pareto_dict, {'label':"htrbp sweep", 'marker':'.'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], title="G3P3 Pareto")
+    # Subsets (ETA X Axis)
+    if True:
+        # Compiled Pareto (Temp vs ETA)
+        design_tools.plot_scatter_pts([[simple_compiled_T_HTF_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_T_HTF_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_compiled_T_HTF_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_T_HTF_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_T_HTF_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3 Pareto w/ Subset Configs", figure_size=figure_size)
 
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'.'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'.'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'.'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], title="G3P3")
-    
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["recomp_frac", ""],title="G3P3 Recomp")
+        # Compiled Pareto (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_cost_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_cost_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_compiled_cost_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_cost_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_cost_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_cost_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_cost_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, COST_label, title="G3P3 Cost Pareto w/ Subset Configs", figure_size=figure_size)
 
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["recup_total_UA_calculated", "MW/K"],title="G3P3 Total UA")
-    
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["is_PR_fixed", "MPa"],title="G3P3 Min Pressure")
+        # Compiled All Data (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                        [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                        [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3 w/ Subset Configs", figure_size=figure_size)
 
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["T_state_points_5_0", "C"],title="G3P3 Turbine Inlet Temp")
+        # Compiled All Data (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, COST_label, title="G3P3 Cost w/ Subset Configs", figure_size=figure_size)
 
-    design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':"tsf sweep", 'marker':'.'}], 
-                      [recomp_sim_collection.old_result_dict, {'label':"recomp sweep", 'marker':'1'}],
-                      [partial_sim_collection.old_result_dict, {'label':"partial sweep", 'marker':'2'}],
-                      [htrbp_sim_collection.old_result_dict, {'label':"htrbp sweep", 'marker':'3'}]
-                      ], 
-                      ["eta_thermal_calc", ""], ["T_htf_cold_des", "C"], ["T_co2_PHX_in", "C"],title="G3P3 PHX sco2 Inlet Temp")
+    # Cost vs T HTF
+    if True:
+            # Sweep
+            design_tools.plot_scatter_pts([
+                        [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_dict, {'label':"htr bp sweep", 'marker':'.'}],
+                        [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        T_HTF_label, COST_label, title="G3P3 w/ Subset Configs", figure_size=figure_size)
+            # Pareto
+            design_tools.plot_scatter_pts([ 
+                            [simple_compiled_cost_htf_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                            [simple_htrbp_compiled_cost_htf_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                            [recomp_compiled_cost_htf_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                            [htrbp_compiled_cost_htf_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                            [partial_ic_compiled_cost_htf_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                            [partial_compiled_cost_htf_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                            [tsf_cost_htf_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                            ], 
+                            T_HTF_label, COST_label, title="G3P3 Pareto w/ Subset Configs", figure_size=figure_size)
 
+    # Combine all paretos
+    if True:
+        # Combine the three types of pareto front
+        htrbp_ult_pareto_dict = design_tools.combine_dicts([htrbp_compiled_T_HTF_pareto_dict, htrbp_compiled_cost_pareto_dict, htrbp_compiled_cost_htf_pareto_dict])
+        recomp_ult_pareto_dict = design_tools.combine_dicts([recomp_compiled_T_HTF_pareto_dict, recomp_compiled_cost_pareto_dict, recomp_compiled_cost_htf_pareto_dict])
+        simple_ult_pareto_dict = design_tools.combine_dicts([simple_compiled_T_HTF_pareto_dict, simple_compiled_cost_pareto_dict, simple_compiled_cost_htf_pareto_dict])
+        simple_htrbp_ult_pareto_dict = design_tools.combine_dicts([simple_htrbp_compiled_T_HTF_pareto_dict, simple_htrbp_compiled_cost_pareto_dict, simple_htrbp_compiled_cost_htf_pareto_dict])
+        partial_ult_pareto_dict = design_tools.combine_dicts([partial_compiled_T_HTF_pareto_dict, partial_compiled_cost_pareto_dict, partial_compiled_cost_htf_pareto_dict])
+        partial_ic_ult_pareto_dict = design_tools.combine_dicts([partial_ic_compiled_T_HTF_pareto_dict, partial_ic_compiled_cost_pareto_dict, partial_ic_compiled_cost_htf_pareto_dict])
+        tsf_ult_pareto_dict = design_tools.combine_dicts([tsf_T_HTF_pareto_dict, tsf_cost_pareto_dict, tsf_cost_htf_pareto_dict])
 
+        design_tools.plot_scatter_pts([
+                        [simple_ult_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_ult_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_ult_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_ult_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_ult_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_ult_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_ult_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3 All Paretos", figure_size=figure_size)
+
+        # HTRBP Ult
+        design_tools.plot_scatter_pts([
+                            [htrbp_ult_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                            ], 
+                            ETA_label, T_HTF_label, title="HTRBP Ult Pareto", figure_size=figure_size)
+
+        # HTRBP T HTF
+        design_tools.plot_scatter_pts([
+                            [htrbp_compiled_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                            ], 
+                            ETA_label, T_HTF_label, title="HTRBP T HTF Pareto", figure_size=figure_size)
+        
+        # HTRBP Cost
+        design_tools.plot_scatter_pts([
+                            [htrbp_compiled_cost_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                            ], 
+                            ETA_label, T_HTF_label, title="HTRBP Cost Pareto", figure_size=figure_size)
+        
+        # HTRBP COST T
+        design_tools.plot_scatter_pts([
+                            [htrbp_compiled_cost_htf_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                            ], 
+                            ETA_label, T_HTF_label, title="HTRBP Cost vs HTF Pareto", figure_size=figure_size)
+        
+        # HTRBP COST T
+        design_tools.plot_scatter_pts([
+                            [htrbp_compiled_T_HTF_pareto_dict, {'label':"T HTF vs ETA", 'marker':'.'}],
+                            [htrbp_compiled_cost_pareto_dict, {'label':"Cost vs ETA", 'marker':'.'}],
+                            [htrbp_compiled_cost_htf_pareto_dict, {'label':"T HTF vs Cost", 'marker':'.'}],
+                            ], 
+                            ETA_label, T_HTF_label, title="HTRBP Cost vs HTF Pareto", figure_size=figure_size)
+
+    # Overlap paretos
+    if False:
+        compare_key_list = ["eta_thermal_calc", "T_htf_cold_des", "cycle_cost"]
+        htrbp_overlap_pareto = design_tools.combine_common_runs([htrbp_compiled_T_HTF_pareto_dict, htrbp_compiled_cost_pareto_dict, htrbp_compiled_cost_htf_pareto_dict], compare_key_list)
+        recomp_overlap_pareto_dict = design_tools.combine_common_runs([recomp_compiled_T_HTF_pareto_dict, recomp_compiled_cost_pareto_dict, recomp_compiled_cost_htf_pareto_dict], compare_key_list)
+        simple_overlap_pareto_dict = design_tools.combine_common_runs([simple_compiled_T_HTF_pareto_dict, simple_compiled_cost_pareto_dict, simple_compiled_cost_htf_pareto_dict], compare_key_list)
+        simple_htrbp_overlap_pareto_dict = design_tools.combine_common_runs([simple_htrbp_compiled_T_HTF_pareto_dict, simple_htrbp_compiled_cost_pareto_dict, simple_htrbp_compiled_cost_htf_pareto_dict], compare_key_list)
+        partial_overlap_pareto_dict = design_tools.combine_common_runs([partial_compiled_T_HTF_pareto_dict, partial_compiled_cost_pareto_dict, partial_compiled_cost_htf_pareto_dict], compare_key_list)
+        partial_ic_overlap_pareto_dict = design_tools.combine_common_runs([partial_ic_compiled_T_HTF_pareto_dict, partial_ic_compiled_cost_pareto_dict, partial_ic_compiled_cost_htf_pareto_dict], compare_key_list)
+        tsf_overlap_pareto_dict = design_tools.combine_common_runs([tsf_T_HTF_pareto_dict, tsf_cost_pareto_dict, tsf_cost_htf_pareto_dict], compare_key_list)
+
+        test = ""
+
+    # Highlight Data Points
+    if True:
+        simple_pt_dict, simple_bp_pt_dict, recomp_pt_dict, htrbp_pt_dict, simple_ic_pt_dict, partial_pt_dict, tsf_pt_dict = load_highlight_data()
+        colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
+        sweep_alpha = 1
+        highlight_pt_size = 500
+        # Compiled Pareto (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_T_HTF_pareto_dict, {'label':simple_legend_label, 'alpha':sweep_alpha, 'c':colors[0], 'marker':'.'}],
+                        [simple_pt_dict, {'label':simple_legend_label, 'c':colors[0], 's':highlight_pt_size, 'marker':'1'}],
+
+                        [simple_htrbp_compiled_T_HTF_pareto_dict, {'label':simple_bp_legend_label, 'alpha':sweep_alpha, 'c':colors[1], 'marker':'.'}],
+                        [simple_bp_pt_dict, {'label':simple_bp_legend_label, 's':highlight_pt_size, 'c':colors[1], 'marker':'1'}],
+
+                        [recomp_compiled_T_HTF_pareto_dict, {'label':recomp_legend_label, 'alpha':sweep_alpha, 'c':colors[2], 'marker':'.'}],
+                        [recomp_pt_dict, {'label':recomp_legend_label, 's':highlight_pt_size, 'c':colors[2], 'marker':'1'}],
+
+                        [htrbp_compiled_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'alpha':sweep_alpha, 'c':colors[3], 'marker':'.'}],
+                        [htrbp_pt_dict, {'label':htrbp_legend_label, 's':highlight_pt_size, 'c':colors[3], 'marker':'1'}],
+
+                        [partial_ic_compiled_T_HTF_pareto_dict, {'label':partial_ic_legend_label, 'alpha':sweep_alpha, 'c':colors[4], 'marker':'.'}],
+                        [simple_ic_pt_dict, {'label':partial_ic_legend_label, 's':highlight_pt_size, 'c':colors[4], 'marker':'1'}],
+
+                        [partial_compiled_T_HTF_pareto_dict, {'label':partial_legend_label, 'alpha':sweep_alpha, 'c':colors[5], 'marker':'.'}],
+                        [partial_pt_dict, {'label':partial_legend_label, 's':highlight_pt_size, 'c':colors[5], 'marker':'1'}],
+
+                        [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'alpha':sweep_alpha, 'c':colors[6], 'marker':'.'}],
+                        [tsf_pt_dict, {'label':tsf_legend_label, 's':highlight_pt_size, 'c':colors[6], 'marker':'1'}],
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3 Pareto w/ Subset Configs", figure_size=figure_size)
+
+        # Compiled Pareto (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_cost_pareto_dict, {'label':simple_legend_label, 'alpha':sweep_alpha, 'c':colors[0], 'marker':'.'}],
+                        [simple_pt_dict, {'label':simple_legend_label, 'c':colors[0], 's':highlight_pt_size, 'marker':'1'}],
+
+                        [simple_htrbp_compiled_cost_pareto_dict, {'label':simple_bp_legend_label, 'alpha':sweep_alpha, 'c':colors[1], 'marker':'.'}],
+                        [simple_bp_pt_dict, {'label':simple_bp_legend_label, 's':highlight_pt_size, 'c':colors[1], 'marker':'1'}],
+
+                        [recomp_compiled_cost_pareto_dict, {'label':recomp_legend_label, 'alpha':sweep_alpha, 'c':colors[2], 'marker':'.'}],
+                        [recomp_pt_dict, {'label':recomp_legend_label, 's':highlight_pt_size, 'c':colors[2], 'marker':'1'}],
+
+                        [htrbp_compiled_cost_pareto_dict, {'label':htrbp_legend_label, 'alpha':sweep_alpha, 'c':colors[3], 'marker':'.'}],
+                        [htrbp_pt_dict, {'label':htrbp_legend_label, 's':highlight_pt_size, 'c':colors[3], 'marker':'1'}],
+
+                        [partial_ic_compiled_cost_pareto_dict, {'label':partial_ic_legend_label, 'alpha':sweep_alpha, 'c':colors[4], 'marker':'.'}],
+                        [simple_ic_pt_dict, {'label':partial_ic_legend_label, 's':highlight_pt_size, 'c':colors[4], 'marker':'1'}],
+
+                        [partial_compiled_cost_pareto_dict, {'label':partial_legend_label, 'alpha':sweep_alpha, 'c':colors[5], 'marker':'.'}],
+                        [partial_pt_dict, {'label':partial_legend_label, 's':highlight_pt_size, 'c':colors[5], 'marker':'1'}],
+
+                        [tsf_cost_pareto_dict, {'label':tsf_legend_label, 'alpha':sweep_alpha, 'c':colors[6], 'marker':'.'}],
+                        [tsf_pt_dict, {'label':tsf_legend_label, 's':highlight_pt_size, 'c':colors[6], 'marker':'1'}],
+                        ], 
+                        ETA_label, COST_label, title="G3P3 Pareto w/ Subset Configs", figure_size=figure_size)
+
+        test = 0
+
+    # Raw data (no subset splitting)
+    if False:
+        # Pareto (Temp vs ETA)
+        design_tools.plot_scatter_pts([[tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_T_HTF_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [partial_T_HTF_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [htrbp_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3 Pareto", figure_size=figure_size)
+
+        # Pareto (Cost vs ETA)
+        design_tools.plot_scatter_pts([[tsf_cost_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_cost_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [partial_cost_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [htrbp_cost_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, COST_label, title="G3P3 Cost Pareto", figure_size=figure_size)
+
+        # All Data (Temp vs ETA)
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, title="G3P3", figure_size=figure_size)
+        
+        # All Data (Cost vs ETA)
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, COST_label, title="G3P3 Cost", figure_size=figure_size)
+
+    # Design Parameter Plots (raw data)
+    if False:
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'1'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'2'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'3'}]
+                        ], 
+                        ETA_label, T_HTF_label, ["recomp_frac", ""],title="G3P3 Recomp", figure_size=figure_size)
+
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'1'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'2'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'3'}]
+                        ], 
+                        ETA_label, T_HTF_label, ["recup_total_UA_calculated", "MW/K"],title="G3P3 Total UA", figure_size=figure_size)
+        
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'1'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'2'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'3'}]
+                        ], 
+                        ETA_label, T_HTF_label, ["is_PR_fixed", "MPa"],title="G3P3 Min Pressure", figure_size=figure_size)
+
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'1'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'2'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'3'}]
+                        ], 
+                        ETA_label, T_HTF_label, ["T_state_points_5_0", "C"],title="G3P3 Turbine Inlet Temp", figure_size=figure_size)
+
+        design_tools.plot_scatter_pts([[tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}], 
+                        [recomp_sim_collection.old_result_dict, {'label':recomp_legend_label, 'marker':'1'}],
+                        [partial_sim_collection.old_result_dict, {'label':partial_legend_label, 'marker':'2'}],
+                        [htrbp_sim_collection.old_result_dict, {'label':htrbp_legend_label, 'marker':'3'}]
+                        ], 
+                        ETA_label, T_HTF_label, ["T_co2_PHX_in", "C"],title="G3P3 PHX sco2 Inlet Temp", figure_size=figure_size)
+
+    # Abstract specific plots
+    if True:
+        fig_abstract, (ax1_abstract, ax2_abstract) = plt.subplots(1,2)
+        
+        # Compiled All Data (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                        [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                        [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, T_HTF_label, ax=ax1_abstract, show_legend=False)
+
+        # Compiled All Data (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                        [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                        [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                        [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                        [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                        [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                        [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],
+                        [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                        ], 
+                        ETA_label, COST_label, ax=ax2_abstract, show_legend=True, legend_loc='upper right')
+
+    plt.tight_layout()
     plt.show(block = True)
 
-
-
-
-
-
+def load_highlight_data():
+    simple_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\simple_data_point.txt"
+    simple_bp_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\simple_bp_data_point.txt"
+    recomp_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\recomp_data_point.txt"
+    htrbp_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\htrbp_data_point.txt"
+    simple_ic_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\simple_ic_data_point.txt"
+    partial_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\partial_data_point.txt"
+    tsf_pt_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\Highlight Points\tsf_data_point.txt"
     
+    file_name_list = [simple_pt_filename, 
+                      simple_bp_pt_filename,
+                      recomp_pt_filename,
+                      htrbp_pt_filename,
+                      simple_ic_pt_filename,
+                      partial_pt_filename,
+                      tsf_pt_filename]
+
+    dict_list = []
+    for file_name in file_name_list:
+        test_dict = design_tools.get_dict_from_file_w_STRING(file_name)
+        real_dict = {}
+        for key in test_dict:
+            real_dict[key] = [test_dict[key][0],] 
+        dict_list.append(real_dict)
+
+    return dict_list
+
+def validate_costs(result_dict):
+    cost_equ_keys = ["mc_cost_equipment", "rc_cost_equipment", "pc_cost_equipment", "c_tot_cost_equip", "t_cost_equipment", "t2_cost_equipment", "LTR_cost_equipment", "HTR_cost_equipment",
+                         "PHX_cost_equipment", "BPX_cost_equipment", "mc_cooler_cost_equipment", "pc_cooler_cost_equipment"]
+    cost_erected_keys = ["mc_cost_bare_erected", "rc_cost_bare_erected", "pc_cost_bare_erected", "t_cost_bare_erected", "t2_cost_bare_erected", "LTR_cost_bare_erected", "HTR_cost_bare_erected",
+                         "PHX_cost_bare_erected", "BPX_cost_bare_erected", "mc_cooler_cost_bare_erected", "pc_cooler_cost_bare_erected", "piping_inventory_etc_cost"]
+    
+    error_id_list = []
+    NVal = len(result_dict['htf'])
+    for i in range(NVal):
+        total_equip_cost = 0
+        total_erected_cost = 0
+        for key in cost_equ_keys:
+            if key in result_dict:
+                val = result_dict[key][i]
+                if(isinstance(val, str) == False and math.isnan(val) == False):
+                    total_equip_cost += val
+        for key in cost_erected_keys:
+            if key in result_dict:
+                val = result_dict[key][i]
+                if(isinstance(val, str) == False and math.isnan(val) == False):
+                    total_erected_cost += val
+        
+        cost_reported = result_dict['cycle_cost'][i]
+        cost_calc = total_erected_cost
+
+        if(cost_reported != cost_calc):
+            error_id_list.append(i)
+
+    return error_id_list
+    
+def test_combine_paretos():
+
+    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection_10_20240426_224925.csv"
+    print("Opening tsf...")
+    tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    tsf_sim_collection.open_csv(tsf_filename)
+    print("TSF opened")
+
+    # Variables to Display
+    ETA_label = ["eta_thermal_calc", "", "Cycle Thermal Efficiency"]
+    T_HTF_label = ["T_htf_cold_des", "C", "HTF Outlet Temperature"]
+    COST_label = ["cycle_cost", "M$", "Cycle Cost"]
+
+    # Create T HTF Pareto Fronts
+    print("Forming T HTF pareto fronts...")
+    tsf_T_HTF_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
+
+    # Create Cost Pareto Fronts
+    print("Forming cost pareto fronts...")
+    tsf_cost_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
+
+    # Create Cycle Split Cost vs T HTF Pareto
+    tsf_cost_htf_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, T_HTF_label[0], COST_label[0], False, False)
+
+    common_dict = design_tools.combine_common_runs([tsf_T_HTF_pareto_dict, tsf_cost_pareto_dict, tsf_cost_htf_pareto_dict], ["eta_thermal_calc", "T_htf_cold_des", "cycle_cost"])
+
+def solarpaces_2024_abstract():
+    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection_10_20240426_224925.csv"
+    recomp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\recomp_G3P3_collection_10_20240426_223109.csv"
+    partial_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\partial_G3P3_collection_10_20240426_204607.csv"
+    htrbp_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\htrbp_G3P3_collection_10_20240427_205838.csv"
+
+    print("Opening htrbp...")
+    htrbp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    htrbp_sim_collection.open_csv(htrbp_filename)
+    print("HTR BP opened")
+
+    print("Opening recomp...")
+    recomp_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    recomp_sim_collection.open_csv(recomp_filename)
+    print("Recomp open")
+
+    print("Opening tsf...")
+    tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    tsf_sim_collection.open_csv(tsf_filename)
+    print("TSF opened")
+
+    print("Opening partial...")
+    partial_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    partial_sim_collection.open_csv(partial_filename)
+    print("Partial opened")
+
+    # Validate Cost Calculations
+    if False:
+        htrbp_cost_error = validate_costs(htrbp_sim_collection.old_result_dict)
+        recomp_cost_error = validate_costs(recomp_sim_collection.old_result_dict)
+        tsf_cost_error = validate_costs(tsf_sim_collection.old_result_dict)
+        partial_cost_error = validate_costs(partial_sim_collection.old_result_dict)
+
+    # Split Dicts by 'Actual' config name
+
+    print("Splitting by config type...")
+
+    # HTR BP (only comes from htr bp file)
+    htrbp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict],
+                                                            "config_name", "htr bp")
+
+    # Recompression (comes from recomp and htr bp)
+    recomp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict, 
+                                                            recomp_sim_collection.old_result_dict],  
+                                                            "config_name", "recompression")
+
+    # Simple (from recomp and htr bp)
+    simple_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict, 
+                                                            recomp_sim_collection.old_result_dict],  
+                                                            "config_name", "simple")
+
+    # Simple w/ htr bypass (from htr bp only)
+    simple_htrbp_compiled_dict = design_tools.combine_dict_by_key([htrbp_sim_collection.old_result_dict],
+                                                            "config_name", "simple split flow bypass")
+    
+    # Partial (only comes from partial file)
+    partial_compiled_dict = design_tools.combine_dict_by_key([partial_sim_collection.old_result_dict],
+                                                            "config_name", "partial")
+
+    # Partial Intercooling (only comes from partial file)
+    partial_ic_compiled_dict = design_tools.combine_dict_by_key([partial_sim_collection.old_result_dict],
+                                                            "config_name", "partial intercooling")
+
+    # Variables to Display
+    ETA_label = ["eta_thermal_calc", "", "Cycle Thermal Efficiency"]
+    T_HTF_label = ["T_htf_cold_des", "C", "HTF Outlet Temperature"]
+    COST_label = ["cycle_cost", "M$", "Cycle Cost"]
+
+    # Plot
+    print("Plotting...")
+    htrbp_legend_label = "recompression w/ htr bypass"
+    recomp_legend_label = "recompression"
+    simple_legend_label = "simple"
+    simple_bp_legend_label = "simple w/ bypass"
+    partial_legend_label = "partial cooling"
+    partial_ic_legend_label = "simple intercooling"
+    tsf_legend_label = "turbine split flow"
+
+    fig_width = 6 * 1.6
+    fig_height = 2.2 * 1.6
+
+    # Abstract specific plots
+    fig_abstract, (ax1_abstract, ax2_abstract) = plt.subplots(1,2)
+    fig_abstract.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([
+                    [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                    [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract, show_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                    [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract, show_legend=True, legend_loc='upper right')
+    ax2_abstract.set_ylim(0,70)
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+    plt.show(block = True)
 
 # Main Script
 
 if __name__ == "__main__":
-    example_plot_solve_dict()
+    solarpaces_2024_abstract()
+    #example_plot_solve_dict()
