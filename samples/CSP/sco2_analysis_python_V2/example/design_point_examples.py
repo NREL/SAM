@@ -1209,7 +1209,6 @@ def get_sco2_G3P3():
     T_turbine_in = 720                      # [C] sco2 turbine inlet temp    
     des_par["T_htf_hot_des"] = T_HTF_in     # [C] HTF design hot temperature (PHX inlet)
     des_par["dT_PHX_hot_approach"] = T_HTF_in - T_turbine_in     # [C/K] Temperature difference between hot HTF and turbine inlet
-    des_par["dT_PHX_cold_approach"] = des_par["dT_PHX_hot_approach"]
     des_par["set_HTF_mdot"] = 0
 
     # Efficiency (ASSUMPTION)
@@ -3374,12 +3373,13 @@ def run_G3P3_tsf_sweep(n_par):
 
     # Organize Variable Combinations
     Npts = n_par
-    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    ltr_ua_frac_list = np.linspace(0,1.0,Npts, True)
     min_pressure = 5
-    max_pressure = 15
+    max_pressure = 13
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    UA_total_list = np.linspace(1000, 50000, Npts, True)
-    split_frac_list = np.linspace(0.3, 0.7, Npts, True)
+    UA_total_list = np.linspace(100, 5000, Npts, True)
+    split_frac_list = np.linspace(0, 0.7, Npts, True)
+    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
                                    UA_total_list=UA_total_list, 
@@ -3388,11 +3388,9 @@ def run_G3P3_tsf_sweep(n_par):
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
-    print("Saving tsf results...")
     file_name = "TSF_G3P3_collection"
-    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    combined_name = folder_location + file_name  + '_' + str(n_par) + '_' + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
-    print("tsf finished")
 
     finished = ""
 
@@ -3404,12 +3402,13 @@ def run_G3P3_recomp_sweep(n_par):
 
     # Organize Variable Combinations
     Npts = n_par
-    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    ltr_ua_frac_list = np.linspace(0,1.0,Npts, True)
     min_pressure = 5
-    max_pressure = 15
+    max_pressure = 13
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    UA_total_list = np.linspace(1000, 50000, Npts, True)
+    UA_total_list = np.linspace(100, 5000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
+    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
                                    UA_total_list=UA_total_list, 
@@ -3418,11 +3417,9 @@ def run_G3P3_recomp_sweep(n_par):
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
-    print("Saving recomp results...")
     file_name = "recomp_G3P3_collection"
-    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    combined_name = folder_location + file_name  + '_' + str(n_par) + '_' +  get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
-    print("recomp finished")
 
     finished = ""
 
@@ -3433,16 +3430,17 @@ def run_G3P3_htrbp_sweep(n_par):
     default_par["cycle_config"] = 3
     default_par["T_bypass_target"] = 0 # (not used)
     default_par["deltaT_bypass"] = 0
+    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     # Organize Variable Combinations
     Npts = n_par
-    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
-    min_pressure = 7
-    max_pressure = 12
+    ltr_ua_frac_list = np.linspace(0,1.0,Npts, True)
+    min_pressure = 5
+    max_pressure = 13
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    UA_total_list = np.linspace(1000, 50000, Npts, True)
+    UA_total_list = np.linspace(100, 5000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
-    bp_frac_list = np.linspace(0, 0.9, Npts, True)
+    bp_frac_list = np.linspace(0, 0.99, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
                                    UA_total_list=UA_total_list, 
@@ -3454,8 +3452,9 @@ def run_G3P3_htrbp_sweep(n_par):
 
     print("Saving htrbp results...")
     file_name = "htrbp_G3P3_collection"
-    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    combined_name = folder_location + file_name  + '_' + str(n_par) + '_' + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
+
     print("htrbp finished")
 
     finished = ""
@@ -3465,14 +3464,15 @@ def run_G3P3_partial_sweep(n_par):
     # Define constant parameters
     default_par = get_sco2_G3P3()
     default_par["cycle_config"] = 2
+    default_par["dT_PHX_cold_approach"] = default_par["dT_PHX_hot_approach"]
 
     # Organize Variable Combinations
     Npts = n_par
-    ltr_ua_frac_list = np.linspace(0.2,0.8,Npts, True)
+    ltr_ua_frac_list = np.linspace(0,1.0,Npts, True)
     min_pressure = 1
-    max_pressure = 15
+    max_pressure = 13
     pressure_list = np.linspace(min_pressure, max_pressure, Npts, True)
-    UA_total_list = np.linspace(1000, 50000, Npts, True)
+    UA_total_list = np.linspace(100, 5000, Npts, True)
     recomp_frac_list = np.linspace(0, 0.7, Npts, True)
 
     dict_list = make_dict_par_list(ltr_ua_frac_list=ltr_ua_frac_list, 
@@ -3482,27 +3482,18 @@ def run_G3P3_partial_sweep(n_par):
 
     solve_collection = run_opt_parallel_solve_dict(dict_list, default_par, Nproc)
 
-    print("Saving partial results...")
     file_name = "partial_G3P3_collection"
-    combined_name = folder_location + file_name + get_time_string() + ".csv"
+    combined_name = folder_location + file_name + '_' + str(n_par) + '_' + get_time_string() + ".csv"
     solve_collection.write_to_csv(combined_name)
-    print("partial finished")
 
     finished = ""
 
 
-def run_G3P3_sweeps():
-    
-    n_par = 10
-    run_G3P3_tsf_sweep(n_par)
-    run_G3P3_recomp_sweep(n_par)
+def run_G3P3_sweeps(n_par):
     run_G3P3_partial_sweep(n_par)
-    return
-    run_G3P3_htrbp_sweep(n_par)
-    return
     run_G3P3_recomp_sweep(n_par)
-    return
-    
+    run_G3P3_tsf_sweep(n_par)
+    run_G3P3_htrbp_sweep(n_par)
     
     
     
@@ -3577,9 +3568,10 @@ def test_bad_G3P3_case():
 
 if __name__ == "__main__":
 
+    run_G3P3_sweeps(10)
     #run_bad_tsf()
     #test_bad_G3P3_case()
-    run_G3P3_sweeps()
+    #run_G3P3_sweeps(10)
     #run_G3P3_partial_sweep()
     #run_G3P3_recomp_sweep()
     #run_G3P3_tsf_sweep()
