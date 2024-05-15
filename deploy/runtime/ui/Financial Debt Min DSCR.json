@@ -878,7 +878,8 @@
         "",
         "equations{ 'ui_construction_financing_cost' } = define() {",
         "  fin = financing();",
-        "  if ( fin == 'Residential' || fin == 'Commercial' ) c = 0;",
+        "  if ( fin == 'Residential' || fin == 'Commercial') \r",
+        "       c = 0;",
         "  else\tc = ${construction_financing_cost}; ",
         "  return c;",
         "};\t"

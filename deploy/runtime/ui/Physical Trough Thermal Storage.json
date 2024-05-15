@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough Thermal Storage",
-    "Width": 911.0,
-    "Height": 461.0,
+    "Width": 904.0,
+    "Height": 698.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,11 +20,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 888.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 350.0
+                    "Integer": 584.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 201.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,7 +468,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -551,7 +551,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -634,7 +634,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 345.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -675,7 +675,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -758,7 +758,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -841,7 +841,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 369.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -920,11 +920,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -999,6 +999,172 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "csp.pt.tes.tank_height"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 156.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "d_tank_in"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 282.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "dt_cold"
                 },
                 "X": {
@@ -1007,7 +1173,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1090,7 +1256,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1173,7 +1339,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 321.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1248,7 +1414,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "h_tank"
+                    "String": "h_tank_in"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1256,7 +1422,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1339,7 +1505,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1422,7 +1588,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1505,7 +1671,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1588,7 +1754,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 201.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1658,12 +1824,98 @@
                 }
             }
         },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_h_tank_fixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Fix diameter|Fix height"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
                     "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 519.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 873.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Norwich HeatTrap"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 427"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1675,7 +1927,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 888.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1695,6 +1947,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 558.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Piston Loss (%) as function of mass flow rate x (kg/s)"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1708,7 +2022,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1791,7 +2105,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1824,7 +2138,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1903,11 +2217,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 282.0
+                    "Integer": 369.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 480.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1940,6 +2254,421 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "tes_NT_nstep"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_NT_piston_loss_poly_0"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 558.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 40.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_NT_piston_loss_poly_1"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 615.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 40.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_NT_piston_loss_poly_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 678.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 40.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_NT_piston_loss_poly_3"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 744.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 40.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "tes_avail_vol"
                 },
                 "X": {
@@ -1948,7 +2677,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2027,19 +2756,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 450.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 267.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 33.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2093,7 +2822,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2168,6 +2897,296 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "tes_tank_cp"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 594.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_tank_dens"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 618.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_tank_thick"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 570.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tes_type"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "u_tank"
                 },
                 "X": {
@@ -2176,7 +3195,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 369.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2259,7 +3278,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2581,12 +3600,25 @@
         "csp.pt.tes.tank_diameter": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Tank diameter",
+            "Label": "",
             "Units": "m",
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp.pt.tes.tank_height": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "m",
+            "Group": "Physical Trough Thermal Storage",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 20.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2612,6 +3644,19 @@
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
             "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "d_tank_in": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tank inner diameter",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -2669,16 +3714,16 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "h_tank": {
+        "h_tank_in": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Tank height",
-            "Units": "m",
-            "Group": "Physical Trough Thermal Storage",
+            "Units": "",
+            "Group": "",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 20.0,
-            "UIObject": "Numeric",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2757,6 +3802,19 @@
             "Flags": 2.0,
             "DefaultValue": 30.0,
             "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_h_tank_fixed": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2934,6 +3992,86 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tes_NT_nstep": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of timesteps",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_NT_piston_loss_poly": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Piston Loss Poly Coeffs",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_NT_piston_loss_poly_0": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "f(x)=",
+            "Units": "+",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_NT_piston_loss_poly_1": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "x +",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_NT_piston_loss_poly_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "x² +",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_NT_piston_loss_poly_3": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "x³",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tes_avail_vol": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2977,14 +4115,53 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tes_tank_cp": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tank wall specific heat",
+            "Units": "kJ/kg K",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_tank_dens": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tank wall density",
+            "Units": "kg/m³",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tes_tank_thick": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Tank wall thickness",
+            "Units": "m",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tes_type": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "TES type (1=two-tank, 2=thermocline)",
+            "Label": "Is NT HeatTrap?",
             "Units": " ",
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
-            "Flags": 9.0,
+            "Flags": 0.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -3063,6 +4240,14 @@
         "\t];",
         "};",
         "",
+        "// Collect Array Inputs\r",
+        "equations{ 'tes_NT_piston_loss_poly' } = define(){\r",
+        "\treturn [${tes_NT_piston_loss_poly_0},\r",
+        "\t\t\t${tes_NT_piston_loss_poly_1},\r",
+        "\t\t\t${tes_NT_piston_loss_poly_2},\r",
+        "\t\t\t${tes_NT_piston_loss_poly_3}\r",
+        "\t\t\t];\r",
+        "};\r",
         "",
         "// Just UI indicator\t",
         "equations{ 'TES_COPY_q_pb_design' } = define(){",
@@ -3093,6 +4278,7 @@
         "on_load{'Physical Trough Thermal Storage'} = define() {",
         "\ton_change{\"combo_tes_htf_type\"}();",
         "\ton_change{\"is_hx\"}();",
+        "\ton_change{\"tes_type\"}();\r",
         "\t",
         "\t// constants and initial conditions",
         "\tvalue(\"tc_fill\", 7);",
@@ -3144,10 +4330,26 @@
         "",
         "\ton_change{\"is_hx\"}();",
         "\t",
-        "    bUserDefined = (${combo_tes_htf_type} == 9);",
+        "    bUserDefined = (${combo_tes_htf_type} == 10);",
         "    enable(\"store_fl_props\", bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_min_opt_temp\",!bUserDefined);",
         "    enable(\"csp.dtr.tes.htf_max_opt_temp\",!bUserDefined);",
+        "};\r",
+        "\r",
+        "on_change{\"tes_type\"}=define(){\r",
+        "\t\r",
+        "\tif(${tes_type} == 1){\r",
+        "\t\r",
+        "\t\tif(${tanks_in_parallel} != 1) {\r",
+        "\t\t\t${tanks_in_parallel} = 1;\r",
+        "\t\t}\r",
+        "\t\t\r",
+        "\t\tenable('tanks_in_parallel', false);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('tanks_in_parallel', true);\r",
+        "\t}\r",
+        "\r",
         "};"
     ]
 }
