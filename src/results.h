@@ -218,6 +218,7 @@ private:
 
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
 	wxDVTimeSeriesCtrl *m_timeSeries = nullptr;
+    wxDVTimeSeriesCtrl* m_battVisualization = nullptr;
 	wxDVDMapCtrl *m_dMap = nullptr;
 	wxDVProfileCtrl *m_profilePlots = nullptr;
 	wxDVStatisticsTableCtrl *m_statTable = nullptr;
