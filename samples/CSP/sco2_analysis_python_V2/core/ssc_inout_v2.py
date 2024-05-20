@@ -77,6 +77,56 @@ def cmod_ui_udpc_checks(dat_dict):
     
     return udpc_dict_out
 
+def cmod_particle_from_dict(dat_dict, is_SO_financial = True, is_ssc_print = True):
+
+    part_cmod_name = "csp_tower_particle"
+    # Convert python dictionary into ssc var info table
+    dat = dict_to_ssc_table(dat_dict, part_cmod_name)
+
+    so_name = "singleowner"
+    dat = dict_to_ssc_table_dat(dat_dict, so_name, dat)
+
+    val = cmod_particle_tower(dat, is_SO_financial, is_ssc_print)
+    sscapi.PySSC().data_free(dat)
+
+    return val
+
+def cmod_particle_tower(dat, is_SO_financial = True, is_ssc_print = True):
+
+    # Run the particle tower compute module
+    particle_name = "csp_tower_particle"
+    particle_return = ssc_cmod(dat, particle_name, is_ssc_print)
+    particle_success = particle_return[0]
+    particle_dict = particle_return[1]
+
+    if(particle_success == 0):
+        particle_dict["cmod_success"] = 0
+        return particle_dict
+    
+    if(is_SO_financial == False):
+        particle_dict["cmod_success"] = 1
+        return particle_dict
+    
+    # Run the single owner financial model
+    cmod_name = "singleowner"
+    cmod_return = ssc_cmod(dat, cmod_name)
+    cmod_success = cmod_return[0]
+    so_dict = cmod_return[1]
+    
+    if(cmod_success == 0):
+        so_dict["cmod_success"] = 0
+        out_err_dict = particle_dict.copy()
+        return out_err_dict.update(so_dict)
+    
+    # If all models successful, set boolean true
+    so_dict["cmod_success"] = 1
+    
+    # Combine mspt and single owner dictionaries
+    out_dict = particle_dict.copy()
+    out_dict.update(so_dict)
+
+    return out_dict
+
 def cmod_mspt_from_dict(dat_dict, is_SO_financial = True, is_ssc_print = True):
     
     mspt_name = "tcsmolten_salt"
