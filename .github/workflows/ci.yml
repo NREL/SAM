@@ -110,13 +110,6 @@ jobs:
         ref: ${{ env.ref_of_lk }}
         path: lk
         repository: NREL/lk
-    - name: Build LK
-      if: steps.cachedlk.outputs.cache-hit != 'true'
-      run: |
-        cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        cmake --build build -j4
-        
     - name: Get cached build data of sibling dependency WEX
       uses: actions/cache@v4
       id: cachedwex
@@ -130,13 +123,6 @@ jobs:
         ref: ${{ env.ref_of_wex }}
         path: wex
         repository: NREL/wex
-    - name: Build WEX
-      if: steps.cachedwex.outputs.cache-hit != 'true'
-      run: |
-        cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        cmake --build build -j4
-
     - name: Get cached build data of sibling dependency SSC
       uses: actions/cache@v4
       id: cachedssc
@@ -150,6 +136,19 @@ jobs:
         ref: ${{ env.ref_of_ssc }}
         path: ssc
         repository: NREL/ssc
+
+    - name: Build LK
+      if: steps.cachedlk.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/lk
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake --build build -j4
+    - name: Build WEX
+      if: steps.cachedwex.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/wex
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake --build build -j4
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
@@ -287,13 +286,6 @@ jobs:
         ref: ${{ env.ref_of_lk }}
         path: lk
         repository: NREL/lk
-    - name: Build LK
-      if: steps.cachedlk.outputs.cache-hit != 'true'
-      run: |
-        cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        cmake --build build -j4
-        
     - name: Get cached build data of sibling dependency WEX
       uses: actions/cache@v4
       id: cachedwex
@@ -307,13 +299,6 @@ jobs:
         ref: ${{ env.ref_of_wex }}
         path: wex
         repository: NREL/wex
-    - name: Build WEX
-      if: steps.cachedwex.outputs.cache-hit != 'true'
-      run: |
-        cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-        cmake --build build -j4
-
     - name: Get cached build data of sibling dependency SSC
       uses: actions/cache@v4
       id: cachedssc
@@ -327,6 +312,19 @@ jobs:
         ref: ${{ env.ref_of_ssc }}
         path: ssc
         repository: NREL/ssc
+
+    - name: Build LK
+      if: steps.cachedlk.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/lk
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake --build build -j4
+    - name: Build WEX
+      if: steps.cachedwex.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/wex
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake --build build -j4
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
