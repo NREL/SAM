@@ -267,11 +267,11 @@ jobs:
     - name: Get git ref of sibling dependencies
       run: |
         ref=$(git ls-remote --exit-code https://github.com/NREL/lk.git refs/heads/$LK_BRANCH | awk '{print $1}')
-        echo "ref_of_lk=$ref" | tee --append $GITHUB_ENV
+        echo "ref_of_lk=$ref" | tee -a $GITHUB_ENV
         ref=$(git ls-remote --exit-code https://github.com/NREL/wex.git refs/heads/$WEX_BRANCH | awk '{print $1}')
-        echo "ref_of_wex=$ref" | tee --append $GITHUB_ENV
+        echo "ref_of_wex=$ref" | tee -a $GITHUB_ENV
         ref=$(git ls-remote --exit-code https://github.com/NREL/ssc.git refs/heads/$SSC_BRANCH | awk '{print $1}')
-        echo "ref_of_ssc=$ref" | tee --append $GITHUB_ENV
+        echo "ref_of_ssc=$ref" | tee -a $GITHUB_ENV
 
     - name: Get cached build data of sibling dependency LK
       uses: actions/cache@v4
