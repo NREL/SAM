@@ -158,6 +158,8 @@ jobs:
             python-version: [ 3.10 ]
 
     steps:
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v2
       with:
