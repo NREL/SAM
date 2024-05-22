@@ -152,7 +152,7 @@ jobs:
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
-        cd $GITHUB_WORKSPACE/wex
+        cd $GITHUB_WORKSPACE/ssc
         cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
         cmake --build build -j4 --target ssc
       
@@ -328,7 +328,7 @@ jobs:
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
-        cd $GITHUB_WORKSPACE/wex
+        cd $GITHUB_WORKSPACE/ssc
         cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
         cmake --build build -j4 --target ssc
 
