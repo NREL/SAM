@@ -7,6 +7,7 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  WX_VERSION: '3.2.4'
 
 jobs:
   build-ubuntu:
@@ -113,7 +114,7 @@ jobs:
       if: steps.cachedlk.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE
         cmake --build build_linux -j4
         
     - name: Get cached build data of sibling dependency WEX
@@ -133,7 +134,7 @@ jobs:
       if: steps.cachedwex.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE
         cmake --build build_linux -j4
 
     - name: Get cached build data of sibling dependency SSC
@@ -153,7 +154,7 @@ jobs:
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
         cmake --build build_linux -j4 --target ssc
       
     - name: Checkout SAM       
@@ -165,7 +166,7 @@ jobs:
       run: |
           mkdir ${SAMNTDIR}/build
           cd ${SAMNTDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+          cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0 && make -j 4
 
     - name: Generate test file
       shell: bash {0}
@@ -290,7 +291,7 @@ jobs:
       if: steps.cachedlk.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE
         cmake --build build_linux -j4
         
     - name: Get cached build data of sibling dependency WEX
@@ -310,7 +311,7 @@ jobs:
       if: steps.cachedwex.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE
         cmake --build build_linux -j4
 
     - name: Get cached build data of sibling dependency SSC
@@ -330,7 +331,7 @@ jobs:
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=Release  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+        cmake -Bbuild_linux -DCMAKE_BUILD_TYPE=$BUILD_TYPE  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
         cmake --build build_linux -j4 --target ssc
 
     - name: Checkout SAM       
@@ -341,7 +342,7 @@ jobs:
       run: |
           mkdir ${SAMNTDIR}/build
           cd ${SAMNTDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DSAMAPI_EXPORT=0 && make -j 4
+          cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0 && make -j 4
   
     - name: Generate test file
       shell: bash {0}
