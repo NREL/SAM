@@ -158,6 +158,7 @@ jobs:
         
     - name: Build sam
       run: |
+          ls $SSCDIR/build/ssc
           mkdir ${SAMNTDIR}/build
           cd ${SAMNTDIR}/build
           cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0 && make -j 4
