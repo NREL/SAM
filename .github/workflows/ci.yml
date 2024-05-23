@@ -270,7 +270,7 @@ jobs:
     - name: Build LK
       if: steps.cachedlk.outputs.cache-hit != 'true'
       run: |
-        lk
+        cd lk
         mkdir build
         cd build
         cmake .. -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release;Debug" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TOOLS=1
@@ -279,7 +279,7 @@ jobs:
     - name: Build WEX
       if: steps.cachedwex.outputs.cache-hit != 'true'
       run: |
-        wex
+        cd wex
         mkdir build
         cd build
         cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 ..
@@ -288,7 +288,7 @@ jobs:
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
-        ssc
+        cd ssc
         mkdir build
         cd build
         cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0 ..
