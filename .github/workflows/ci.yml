@@ -208,13 +208,12 @@ jobs:
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
     - name: Determine branches for other repos
       run: |
-        echo "GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER}" >> $GITHUB_ENV
-        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $env:GIT_BRANCH
-        if ($LASTEXITCODE -ne 0) { echo "LK_BRANCH=develop" >> $GITHUB_ENV} else {echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV}
-        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $env:GIT_BRANCH
-        if ($LASTEXITCODE -ne 0) { echo "WEX_BRANCH=develop" >> $GITHUB_ENV} else {echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV}
-        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $env:GIT_BRANCH
-        if ($LASTEXITCODE -ne 0) { echo "SSC_BRANCH=develop" >> $GITHUB_ENV} else {echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV}
+        git ls-remote --heads --exit-code https://github.com/$env:GITHUB_REPOSITORY_OWNER/lk.git $env:GIT_BRANCH
+        if ($LASTEXITCODE -ne 0) { echo "LK_BRANCH=develop" >> $GITHUB_ENV} else {echo "LK_BRANCH=$env:GIT_BRANCH" >> $GITHUB_ENV}
+        git ls-remote --heads --exit-code https://github.com/$env:GITHUB_REPOSITORY_OWNER/wex.git $env:GIT_BRANCH
+        if ($LASTEXITCODE -ne 0) { echo "WEX_BRANCH=develop" >> $GITHUB_ENV} else {echo "WEX_BRANCH=$env:GIT_BRANCH" >> $GITHUB_ENV}
+        git ls-remote --heads --exit-code https://github.com/$env:GITHUB_REPOSITORY_OWNER/ssc.git $env:GIT_BRANCH
+        if ($LASTEXITCODE -ne 0) { echo "SSC_BRANCH=develop" >> $GITHUB_ENV} else {echo "SSC_BRANCH=$env:GIT_BRANCH" >> $GITHUB_ENV}
     - name: Get git ref of sibling dependencies
       shell: bash
       run: |
