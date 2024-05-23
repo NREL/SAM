@@ -207,6 +207,7 @@ jobs:
           if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
           echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
     - name: Determine branches for other repos
+      continue-on-error: true
       run: |
         git ls-remote --heads --exit-code https://github.com/$env:GITHUB_REPOSITORY_OWNER/lk.git $env:GIT_BRANCH
         if ($LASTEXITCODE -ne 0) { echo "LK_BRANCH=develop" >> $GITHUB_ENV} else {echo "LK_BRANCH=$env:GIT_BRANCH" >> $GITHUB_ENV}
