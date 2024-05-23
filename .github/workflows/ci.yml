@@ -343,10 +343,11 @@ jobs:
         
     - name: Build sam
       run: |
-          mkdir ${SAMNTDIR}/build
-          cd ${SAMNTDIR}/build
-          cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
-          MSBuild.exe .\ssc.sln /t:Build /p:Configuration=Release
+        cd sam
+        mkdir build
+        cd build
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
+        MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
 
     - name: Generate test file
       shell: bash {0}
