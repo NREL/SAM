@@ -291,7 +291,7 @@ jobs:
         mkdir build
         cd build
         cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0 ..
-        MSBuild.exe .\ssc.sln /t:Build /p:Configuration=Release
+        MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Release
 
   build-mac:
     runs-on: ${{ matrix.os }}
