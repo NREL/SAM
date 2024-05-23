@@ -200,6 +200,98 @@ jobs:
         cp -r include $env:WXMSW3
         cp -r lib $env:WXMSW3
 
+    - name: Get branch name
+      shell: bash
+      run:  |
+          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
+          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+    - name: Determine branches for other repos
+      shell: bash
+      run: |
+        echo "GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER}" >> $GITHUB_ENV
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $GIT_BRANCH
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $GIT_BRANCH
+        # if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+    - name: Get git ref of sibling dependencies
+      shell: bash
+      run: |
+        ref=$(git ls-remote --exit-code https://github.com/NREL/lk.git refs/heads/$LK_BRANCH | awk '{print $1}')
+        echo "ref_of_lk=$ref" | tee --append $GITHUB_ENV
+        ref=$(git ls-remote --exit-code https://github.com/NREL/wex.git refs/heads/$WEX_BRANCH | awk '{print $1}')
+        echo "ref_of_wex=$ref" | tee --append $GITHUB_ENV
+        ref=$(git ls-remote --exit-code https://github.com/NREL/ssc.git refs/heads/$SSC_BRANCH | awk '{print $1}')
+        echo "ref_of_ssc=$ref" | tee --append $GITHUB_ENV
+
+    - name: Get cached build data of sibling dependency LK
+      uses: actions/cache@v4
+      id: cachedlk
+      with:
+        path: lk
+        key: windows-${{ env.ref_of_lk }}-LK
+    - name: Clone sibling dependency LK
+      if: steps.cachedlk.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.ref_of_lk }}
+        path: lk
+        repository: NREL/lk
+    - name: Get cached build data of sibling dependency WEX
+      uses: actions/cache@v4
+      id: cachedwex
+      with:
+        path: wex
+        key: windows-${{ env.ref_of_wex }}-WEX
+    - name: Clone sibling dependency WEX
+      if: steps.cachedwex.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.ref_of_wex }}
+        path: wex
+        repository: NREL/wex
+    - name: Get cached build data of sibling dependency SSC
+      uses: actions/cache@v4
+      id: cachedssc
+      with:
+        path: ssc
+        key: windows-${{ env.ref_of_ssc }}-SSC
+    - name: Clone sibling dependency SSC
+      if: steps.cachedssc.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.ref_of_ssc }}
+        path: ssc
+        repository: NREL/ssc
+
+    - name: Build LK
+      if: steps.cachedlk.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/lk
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release;Debug" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TOOLS=1
+        MSBuild.exe .\lk.sln /t:Build /p:Configuration=Release
+        MSBuild.exe .\lk.sln /t:Build /p:Configuration=Debug
+    - name: Build WEX
+      if: steps.cachedwex.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/wex
+        mkdir build
+        cd build
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 ..
+        MSBuild.exe .\wex.sln /t:Build /p:Configuration=Release
+        MSBuild.exe .\wex.sln /t:Build /p:Configuration=Debug
+    - name: Build SSC
+      if: steps.cachedssc.outputs.cache-hit != 'true'
+      run: |
+        cd $GITHUB_WORKSPACE/ssc
+        mkdir build
+        cd build
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0 ..
+        MSBuild.exe .\ssc.sln /t:Build /p:Configuration=Release
 
   build-mac:
     runs-on: ${{ matrix.os }}
