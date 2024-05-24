@@ -205,6 +205,8 @@ jobs:
     steps:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
+      with:
+        msbuild-architecture: x64
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v2
       with:
