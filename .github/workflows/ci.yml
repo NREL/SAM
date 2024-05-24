@@ -137,19 +137,19 @@ jobs:
       if: steps.cachedlk.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAM_SKIP_TOOLS=1 
         cmake --build build -j4
     - name: Build WEX
       if: steps.cachedwex.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAM_SKIP_TOOLS=1 
         cmake --build build -j4
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/ssc
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE  -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0
         cmake --build build -j4 --target ssc
       
     - name: Checkout SAM       
@@ -159,10 +159,10 @@ jobs:
         
     - name: Build sam
       run: |
-          ls $SSCDIR/build/ssc
-          mkdir ${SAMNTDIR}/build
-          cd ${SAMNTDIR}/build
-          cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0 && make -j 4
+          cd $GITHUB_WORKSPACE/sam
+          cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0
+          cmake --build build -j4
+
 
     - name: Generate test file
       shell: bash {0}
@@ -327,7 +327,7 @@ jobs:
         cd wex
         mkdir build
         cd build
-        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 ..
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TOOLS=1  ..
         MSBuild.exe .\wex.sln /t:Build /p:Configuration=Release
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
@@ -486,13 +486,13 @@ jobs:
       if: steps.cachedlk.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/lk
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAM_SKIP_TOOLS=1 
         cmake --build build -j4
     - name: Build WEX
       if: steps.cachedwex.outputs.cache-hit != 'true'
       run: |
         cd $GITHUB_WORKSPACE/wex
-        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAM_SKIP_TOOLS=1 
         cmake --build build -j4
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
