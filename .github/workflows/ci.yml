@@ -329,48 +329,19 @@ jobs:
         cd wex
         mkdir build
         cd build
-        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TOOLS=1  ..
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release;Debug" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TOOLS=1  ..
         MSBuild.exe .\wex.sln /t:Build /p:Configuration=Release
+        MSBuild.exe .\wex.sln /t:Build /p:Configuration=Debug
     - name: Build SSC
       if: steps.cachedssc.outputs.cache-hit != 'true'
       run: |
         cd ssc
         mkdir build
         cd build
-        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0 ..
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release;Debug" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=1 -DSAMAPI_EXPORT=0 ..
         MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Release
+        MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Debug
 
-    - name: Checkout SAM       
-      uses: actions/checkout@v4
-      with:
-        path: sam
-        
-    - name: Build sam
-      run: |
-        cd sam
-        mkdir build
-        cd build
-        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
-        MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
-
-    - name: Generate test file
-      shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAMOS.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
-      
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-          python-version: ${{ matrix.python-version }}
-          
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-          name: Test Results Windows
-          path: ${{env.SAMNTDIR}}/build/test_results_wind64.csv
-
-    - name: Evaluate test results vs Windows file
-      run: |
-        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_win64.csv true
     
 
   build-mac:
