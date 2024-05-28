@@ -51,6 +51,23 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+version_upgrade{'2024.5.28'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
+	{
+		message('We modified the trough loop min and max mass flow rate limits to use a relative value, rather than absolute.'
+		        ' The limits are now a factor of the design mass flow rate.'
+		        ' The default factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        ' Please ensure these values are appropriate for your case.', 'warning');
+		        
+			value('f_htfmin', 0.25);
+			value('f_htfmax', 1.2);
+	}
+};
+
 version_upgrade{'2023.12.17'} = define() {
 	
 	const cfg = config();

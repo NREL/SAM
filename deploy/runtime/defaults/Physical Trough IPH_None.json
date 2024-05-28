@@ -1822,6 +1822,8 @@
     ],
     "eta_pump": 0.85,
     "eta_tes_htr": 0.98,
+    "f_htfmax": 1.2,
+    "f_htfmin": 0.25,
     "f_tc_cold": 2.0,
     "f_turb_tou_periods": [
         1.0,
@@ -2090,8 +2092,6 @@
     "library_paths": "\"\"",
     "lon": -110.94,
     "loop_optical_efficiency": 0.721755,
-    "m_dot_htfmax": 12.0,
-    "m_dot_htfmin": 1.0,
     "max_collector_width": 6.0,
     "max_field_flow_velocity": 2.87903,
     "mc_bal_cold": 0.2,
