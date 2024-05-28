@@ -9492,7 +9492,6 @@
     "disp_rsu_cost_rel": 1.4,
     "disp_time_weighting": 0.999,
     "disp_timeout": 5.0,
-    "disp_wlim_maxspec": 1e38,
     "dispatch_data_filename": "",
     "dispatch_factors_ts": [
         0.7,
@@ -18884,9 +18883,6 @@
             1.0
         ]
     ],
-    "dispatch_series": [
-        0.0
-    ],
     "dispatch_tod_factors": [
         1.0,
         1.0,
@@ -27849,9 +27845,7 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_dispatch": 0.0,
-    "is_dispatch_series": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
-    "is_wlim_design": 0.0,
     "itc_fed_amount": [
         0.0
     ],
