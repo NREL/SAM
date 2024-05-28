@@ -357,7 +357,7 @@ jobs:
 
     - name: Generate test file
       shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAMOS.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
+      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/deploy/x64/SAMOS.exe" no_sam_file ${SAMNTDIR}"/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_win64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_win64.csv; results=$?; done 
       
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
@@ -368,7 +368,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
           name: Test Results Windows
-          path: ${{env.SAMNTDIR}}/build/test_results_wind64.csv
+          path: ${{env.SAMNTDIR}}/build/test_results_win64.csv
 
     - name: Evaluate test results vs Windows file
       run: |
