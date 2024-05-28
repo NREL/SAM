@@ -60,8 +60,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_UserDefinedPowerCycle_ud_ind_od_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Common_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -70,8 +68,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Common_T_htf_cold_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Common_T_htf_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -82,8 +78,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Common_T_htf_des_in_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Common_cooler_tot_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -92,8 +86,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Common_cooler_tot_W_dot_fan_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Common_is_calc_m_dot_vs_T_amb_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -104,8 +96,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Common_is_calc_m_dot_vs_T_amb_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_SystemDesign_W_dot_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -114,8 +104,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_SystemDesign_W_dot_net_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_Q_dot_HTF_ND_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -126,8 +114,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_Q_dot_HTF_ND_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_HT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -136,8 +122,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_HT_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_LT_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -148,8 +132,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_LT_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -158,8 +140,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_des_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -170,8 +150,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_high_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -180,8 +158,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_amb_low_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_amb_pars_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -193,8 +169,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_amb_pars_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_amb_sweep_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -205,8 +179,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_amb_sweep_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -215,8 +187,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_des_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -227,8 +197,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_high_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -237,8 +205,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_T_htf_low_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_htf_pars_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -250,8 +216,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_T_htf_pars_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_T_amb__T_HTF_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -261,8 +225,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_T_amb__T_HTF_low_le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -274,8 +236,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_HT_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -285,8 +245,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_LT_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_design_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -298,8 +256,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_design
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_high_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -309,8 +265,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_high_l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -322,8 +276,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_regr_vs_m_dot__T_amb_low_le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -333,8 +285,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_vs_m_dot__T_amb_HT_aget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -346,8 +296,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_W_dot_ND_vs_m_dot__T_amb_LT_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_cooling_ND_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -356,8 +304,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_cooling_ND_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_gross_ND_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -368,8 +314,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_gross_ND_des_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_HT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -378,8 +322,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_HT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_HT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -390,8 +332,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_HT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_LT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -400,8 +340,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_LT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_LT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -412,8 +350,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_LT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_design_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -422,8 +358,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_design_regr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_design_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -434,8 +368,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_design_rule
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_high_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -444,8 +376,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_high_level_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_high_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -456,8 +386,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_high_level_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_low_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -466,8 +394,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_low_level_r
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_low_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -478,8 +404,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_W_dot_htf_ND_max_at_T_amb_low_level_r
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_HT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -488,8 +412,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_HT_regr_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_HT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -500,8 +422,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_HT_rule0_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_LT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -510,8 +430,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_LT_regr_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_LT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -522,8 +440,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_LT_rule0_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_design_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -532,8 +448,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_design_regr_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_design_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -544,8 +458,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_design_rule0_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_high_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -554,8 +466,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_high_level_regr_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_high_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -566,8 +476,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_high_level_rule0_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_low_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -577,8 +485,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_low_level_regr_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_low_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -587,8 +493,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_eta_ND_max_at_T_amb_low_level_rule0_n
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_T_amb__T_HTF_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -600,8 +504,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_T_amb__T_HTF_low_leve
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -611,8 +513,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_HT_aget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -624,8 +524,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_LT_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_design_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -635,8 +533,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_design_a
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_high_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -648,8 +544,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_high_lev
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -659,8 +553,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_regr_vs_m_dot__T_amb_low_leve
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -672,8 +564,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_vs_m_dot__T_amb_HT_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -684,8 +574,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_eta_ND_vs_m_dot__T_amb_LT_aget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -694,8 +582,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_des_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -706,8 +592,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_high_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_HT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -716,8 +600,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_HT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_HT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -728,8 +610,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_HT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_LT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -738,8 +618,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_LT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_LT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -750,8 +628,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_LT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_design_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -760,8 +636,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_design_regr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_design_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -772,8 +646,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_design_rule
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_high_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -782,8 +654,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_high_level_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_high_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -794,8 +664,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_high_level_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_low_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -805,8 +673,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_low_level_r
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_low_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -815,8 +681,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_at_T_amb_low_level_r
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_vs_T_amb_rule0_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -828,8 +692,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_m_dot_htf_ND_max_vs_T_amb_rule0_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -838,8 +700,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_low_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_m_dot_pars_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -851,8 +711,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_m_dot_pars_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_water_ND_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -861,8 +719,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_m_dot_water_ND_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -873,8 +729,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_amb_pars_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -884,8 +738,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_T_htf_pars_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -894,8 +746,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_n_m_dot_pars_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_T_amb__T_HTF_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -907,8 +757,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_T_amb__T_HTF_low_le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -918,8 +766,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_HT_age
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -931,8 +777,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_LT_age
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_design_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -942,8 +786,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_design
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_high_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -955,8 +797,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_high_l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_low_level_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -966,8 +806,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_regr_vs_m_dot__T_amb_low_le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_vs_m_dot__T_amb_HT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -979,8 +817,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_vs_m_dot__T_amb_HT_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_vs_m_dot__T_amb_LT_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -991,8 +827,6 @@ SAM_EXPORT double* SAM_UiUdpcChecks_Outputs_q_dot_ND_vs_m_dot__T_amb_LT_aget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_HT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1001,8 +835,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_HT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_HT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1013,8 +845,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_HT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_LT_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1023,8 +853,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_LT_regr_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_LT_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1035,8 +863,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_LT_rule0_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_design_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1045,8 +871,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_design_regr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_design_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1057,8 +881,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_design_rule
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_high_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1067,8 +889,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_high_level_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_high_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1079,8 +899,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_high_level_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_low_level_regr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1090,8 +908,6 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_low_level_r
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_low_level_rule0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1100,6 +916,4 @@ SAM_EXPORT double SAM_UiUdpcChecks_Outputs_q_dot_htf_ND_max_at_T_amb_low_level_r
 	});
 	return result;
 }
-
-
 

@@ -68,11 +68,10 @@ public:
 		wxString interval; // 30 or 60 
 		wxString location; // lat and lon
 		wxString display;
-		wxString attributes; // limit column and file size to SAM specific per NSRDB
 		bool is_selected;
 		bool is_visible;
-		LinkInfo(wxString &_n, wxString &_dn, wxString &_y, wxString &_u, wxString &_i, wxString &_l, wxString &_a)
-			: name(_n), displayName(_dn), year(_y), URL(_u), interval(_i), location(_l), attributes(_a)
+		LinkInfo(wxString &_n, wxString &_dn, wxString &_y, wxString &_u, wxString &_i, wxString &_l)
+			: name(_n), displayName(_dn), year(_y), URL(_u), interval(_i), location(_l)
 		{
 			display = location + "_" + name + "_" + interval + "_" + year;
 			is_visible = true;
@@ -129,6 +128,7 @@ private:
 
 	void GetResources();
 	void RefreshList(size_t );
+	void ResetAll();
 	size_t SelectItems( wxString, wxCheckBox * );
 
 	std::vector<LinkInfo> m_links;
@@ -137,10 +137,11 @@ private:
 	wxString m_addFolder;
 	wxComboBox *m_cboWeatherFile;
 	wxCheckListBox *m_chlResources;
-	wxCheckBox *m_chk60, *m_chk30, *m_chk5, *m_chkTmy, *m_chkTgy, *m_chkTdy;
+	wxCheckBox *m_chk60, *m_chk30, *m_chk15, *m_chk10, *m_chk5, *m_chkTmy, *m_chkTgy, *m_chkTdy;
 	wxButton *m_btnSelectAll, *m_btnClearAll, *m_btnSelectFiltered, *m_btnShowSelected, *m_btnShowAll, *m_btnResources, *m_btnFolder;
 	wxTextCtrl *m_txtFolder;
 	wxTextCtrl *m_txtAddress;
+	wxTextCtrl* m_txtLatLon;
 	wxSearchCtrl *m_search;
 
 	DECLARE_EVENT_TABLE()

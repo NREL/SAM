@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - O&M",
-    "Width": 960.0,
-    "Height": 364.0,
+    "Width": 1021.0,
+    "Height": 373.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 912.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -74,7 +74,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 912.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 852.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -426,7 +426,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 717.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -654,7 +654,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -712,7 +712,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 945.0
+                    "Integer": 990.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -803,7 +803,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 594.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -811,7 +811,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 258.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -885,7 +885,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The fixed annual operating cost on the Financial Parameters page is the sum of the Operations and Maintenance (O&M) costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance costs' box is used as the 'Fixed operating cost (annual) value in the Financial Parameters page. See Help for details."
+                    "String": "The fixed annual operating cost on the Financial Parameters page is the sum of the Operations and Maintenance (O&M) costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance costs' box is used as the 'Fixed operating cost (annual) value in the Financial Parameters page. For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1051,7 +1051,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1059,7 +1059,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 135.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1113,7 +1113,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1237,7 +1237,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 852.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1320,7 +1320,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 606.0
+                    "Integer": 633.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1361,7 +1361,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 852.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1651,7 +1651,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 717.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1817,7 +1817,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 852.0
                 },
                 "Y": {
                     "Type": 3.0,

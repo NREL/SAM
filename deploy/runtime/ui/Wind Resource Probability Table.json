@@ -158,11 +158,11 @@
         "wind_resource_distribution": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": " ",
+            "Label": "Wind resource distribution",
             "Units": " ",
-            "Group": " ",
+            "Group": "Wind Resource Probability Table",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": [
                 [
                     0.0

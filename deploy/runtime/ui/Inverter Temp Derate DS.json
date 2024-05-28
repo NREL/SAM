@@ -288,7 +288,7 @@
             "Type": 3.0,
             "Label": "Inv Temp Derate Datasheet",
             "Units": " ",
-            "Group": "Inverter Temperature",
+            "Group": "PV Inverter (Datasheet)",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [

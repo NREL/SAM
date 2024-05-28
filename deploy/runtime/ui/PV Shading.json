@@ -1,7 +1,7 @@
 {
     "Name": "PV Shading",
-    "Width": 1043.0,
-    "Height": 874.0,
+    "Width": 1036.0,
+    "Height": 845.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -747,7 +747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1032,15 +1032,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 720.0
+                    "Integer": 687.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1060,11 +1060,11 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
-                    "Integer": 4.0
+                    "Integer": 3.0
                 },
                 "Prefix": {
                     "Type": 5.0,
@@ -1115,15 +1115,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 639.0
+                    "Integer": 714.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1143,7 +1143,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1198,15 +1198,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 660.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1281,15 +1281,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 693.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 90.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1372,11 +1372,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 1011.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1426,19 +1426,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 642.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 334.0
+                    "Integer": 735.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 108.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1554,6 +1554,56 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 612.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Dimensions from Module Page"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1575,7 +1625,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 72.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1633,7 +1683,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "object 732"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1933,43 +1983,6 @@
                     "Boolean": 0.0
                 },
                 "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "self_shading_diagram"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 276.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 636.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 412.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 118.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "PV Shading.png"
-                },
-                "Centered": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -3854,7 +3867,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3862,11 +3875,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 720.0
+                    "Integer": 735.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3879,7 +3892,7 @@
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
+                        "Red": 0.0,
                         "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
@@ -3895,7 +3908,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -3920,7 +3933,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 807.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4997,12 +5010,12 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Module aspect ratio",
-            "Units": " ",
+            "Units": "",
             "Group": "Shading and Snow",
             "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 1.7,
-            "UIObject": "Default",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -5015,7 +5028,7 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -5027,8 +5040,8 @@
             "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "DefaultValue": 1.0,
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -5142,11 +5155,11 @@
         "subarray1_shading": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "ShadingFactors",
             "sscVariableName": "",
@@ -5155,9 +5168,9 @@
         "subarray1_shading_azal": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by sun azimuth altitude 1",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5172,9 +5185,9 @@
         "subarray1_shading_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses diffuse 1",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5185,9 +5198,9 @@
         "subarray1_shading_en_azal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by sun azimuth altitude enable 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5198,9 +5211,9 @@
         "subarray1_shading_en_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses diffuse enable 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5211,9 +5224,9 @@
         "subarray1_shading_en_mxh": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses month by hour enable 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5224,9 +5237,9 @@
         "subarray1_shading_en_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses partial shading model enable 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5237,9 +5250,9 @@
         "subarray1_shading_en_timestep": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by time step enable 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5250,9 +5263,9 @@
         "subarray1_shading_mxh": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses month by hour 1",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5267,9 +5280,9 @@
         "subarray1_shading_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses patial shading model number of strings 1",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5280,9 +5293,9 @@
         "subarray1_shading_timestep": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by time step 1",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5388,11 +5401,11 @@
         "subarray2_shading": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "ShadingFactors",
             "sscVariableName": "",
@@ -5401,9 +5414,9 @@
         "subarray2_shading_azal": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by sun azimuth altitude 2",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5418,9 +5431,9 @@
         "subarray2_shading_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses diffuse 2",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5431,9 +5444,9 @@
         "subarray2_shading_en_azal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by sun azimuth altitude enable 2",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5444,9 +5457,9 @@
         "subarray2_shading_en_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses diffuse enable 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5457,9 +5470,9 @@
         "subarray2_shading_en_mxh": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses month by hour enable 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5470,9 +5483,9 @@
         "subarray2_shading_en_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses partial shading model enable 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5483,9 +5496,9 @@
         "subarray2_shading_en_timestep": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by time step enable 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5496,9 +5509,9 @@
         "subarray2_shading_mxh": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses month by hour 2",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5513,9 +5526,9 @@
         "subarray2_shading_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses patial shading model number of strings 2",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5526,9 +5539,9 @@
         "subarray2_shading_timestep": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by time step 2",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5634,11 +5647,11 @@
         "subarray3_shading": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "ShadingFactors",
             "sscVariableName": "",
@@ -5647,9 +5660,9 @@
         "subarray3_shading_azal": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by sun azimuth altitude 3",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5664,9 +5677,9 @@
         "subarray3_shading_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses diffuse 3",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5677,9 +5690,9 @@
         "subarray3_shading_en_azal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by sun azimuth altitude enable 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5690,9 +5703,9 @@
         "subarray3_shading_en_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses diffuse enable 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5703,9 +5716,9 @@
         "subarray3_shading_en_mxh": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses month by hour enable 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5716,9 +5729,9 @@
         "subarray3_shading_en_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses partial shading model enable 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5729,9 +5742,9 @@
         "subarray3_shading_en_timestep": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by time step enable 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5742,9 +5755,9 @@
         "subarray3_shading_mxh": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses month by hour 3",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5759,9 +5772,9 @@
         "subarray3_shading_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses patial shading model number of strings 3",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5772,9 +5785,9 @@
         "subarray3_shading_timestep": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by time step 3",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5880,11 +5893,11 @@
         "subarray4_shading": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "ShadingFactors",
             "sscVariableName": "",
@@ -5893,9 +5906,9 @@
         "subarray4_shading_azal": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by sun azimuth altitude 4",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -5910,9 +5923,9 @@
         "subarray4_shading_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses diffuse 4",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5923,9 +5936,9 @@
         "subarray4_shading_en_azal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by sun azimuth altitude enable 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5936,9 +5949,9 @@
         "subarray4_shading_en_diff": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses diffuse enable 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5949,9 +5962,9 @@
         "subarray4_shading_en_mxh": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses month by hour enable 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5962,9 +5975,9 @@
         "subarray4_shading_en_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses partial shading model enable 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5975,9 +5988,9 @@
         "subarray4_shading_en_timestep": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses by time step enable 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -5988,9 +6001,9 @@
         "subarray4_shading_mxh": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses month by hour 4",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6005,9 +6018,9 @@
         "subarray4_shading_string_option": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Shading losses patial shading model number of strings 4",
             "Units": "",
-            "Group": "",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6018,9 +6031,9 @@
         "subarray4_shading_timestep": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Shading losses by time step 4",
+            "Units": "%",
+            "Group": "Shading and Snow",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6190,20 +6203,47 @@
         }
     },
     "Equations": [
+        "equations{'module_width'} = define() {\r",
+        "\t\treturn ? ${module_model} [ \r",
+        "\t\t${spe_module_width},\r",
+        "\t\t${cec_module_width},\r",
+        "\t\t${6par_module_width},\r",
+        "\t\t${snl_module_width},\r",
+        "\t\t${sd11par_module_width} ];\r",
+        "};\r",
+        "\r",
+        "equations{'module_length'} = define() {\r",
+        "\t\treturn ? ${module_model} [ \r",
+        "\t\t${spe_module_length},\r",
+        "\t\t${cec_module_length},\r",
+        "\t\t${6par_module_length},\r",
+        "\t\t${snl_module_length},\r",
+        "\t\t${sd11par_module_length} ];};\r",
+        "\r",
+        "equations{'module_area'} = define() {\r",
+        "\treturn ? ${module_model} [ \r",
+        "\t\t${spe_area},\r",
+        "\t\t${cec_area},\r",
+        "\t\t${6par_area},\r",
+        "\t\t${snl_area},\r",
+        "\t\t${sd11par_area} ];\r",
+        "};\r",
+        "\r",
+        "equations{'module_aspect_ratio'} = define() {\r",
+        "\treturn ? ${module_model} [ \r",
+        "\t\t${spe_aspect_ratio},\r",
+        "\t\t${cec_aspect_ratio},\r",
+        "\t\t${6par_aspect_ratio},\r",
+        "\t\t${snl_aspect_ratio},\r",
+        "\t\t${sd11par_aspect_ratio} ];\r",
+        "};\r",
+        "\r",
         "equations{'ui_subarray1_length_side'} = define() {",
         "\to=${subarray1_mod_orient};",
         "\tn=${subarray1_nmody};",
         "\tif (o==0) l=${module_length}*n; //portrait",
         "\telse l=${module_width}*n; //landscape",
         "\treturn l;",
-        "};",
-        "",
-        "equations{'module_length'} = define() {",
-        "\treturn sqrt(${module_area}*${module_aspect_ratio});",
-        "};",
-        "",
-        "equations{'module_width'} = define() {",
-        "\treturn sqrt(${module_area}/${module_aspect_ratio});",
         "};",
         "",
         "equations{'ui_subarray2_length_side'} = define() {",
@@ -6327,150 +6367,37 @@
         "\treturn ${subarray4_gcr};",
         "};",
         "",
-        "equations{ 'subarray1_land_area'} = define() {",
-        "\ttilt = 0;",
-        "\tif (${subarray1_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray1_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray1_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray1_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray1_shade_mode} == 0 ) {",
-        "\t\taspect = 1.7;",
-        "\t\tlength = sqrt(${module_area}*aspect);",
-        "\t\tnmods = ${subarray1_modules_per_string} * ${subarray1_nstrings} / 2;",
-        "\t\twidth = sqrt(${module_area}/aspect);",
-        "\t\tarea = length * ( 3 / ${subarray1_gcr}) * nmods * width; ",
-        "\t\treturn area;",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray1_nmodx};",
-        "\t\tif (${subarray1_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray1_length_side} * ((${ui_subarray1_nrows}+1) / ${subarray1_gcr}) * nmods * width; ",
-        "\t\treturn area;",
-        "\t}",
+        "equations{ 'subarray1_land_area'} = define() {\r",
+        "\treturn ${subarray1_ref_nmodules} * ${module_area} / ${subarray1_gcr};",
         "};",
         "",
-        "equations{ 'subarray2_land_area'} = define() {",
-        "\tif (${subarray2_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray2_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray2_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray2_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray2_shade_mode} == 0 ) {",
-        "\t\taspect = 1.7;",
-        "\t\tlength = sqrt(${module_area}*aspect);",
-        "\t\tnmods = ${subarray2_modules_per_string} * ${subarray2_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/aspect);",
-        "\t\tarea = length* ( 3 / ${subarray2_gcr} ) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray2_nmodx};",
-        "\t\tif (${subarray2_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray2_length_side} * ((${ui_subarray2_nrows}+1) / ${subarray2_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
+        "equations{ 'subarray2_land_area'} = define() {\r",
+        "\treturn ${subarray2_ref_nmodules} * ${module_area} / ${subarray2_gcr};",
         "};",
         "",
         "equations{ 'subarray3_land_area'} = define() {",
-        "\tif (${subarray3_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray3_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray3_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray3_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray3_shade_mode} == 0 ) {",
-        "\t\taspect = 1.7;",
-        "\t\tlength = sqrt(${module_area}*aspect);",
-        "\t\tnmods = ${subarray3_modules_per_string} * ${subarray3_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/aspect);",
-        "\t\tarea = length* ( 3 / ${subarray3_gcr}) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray3_nmodx};",
-        "\t\tif (${subarray3_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray3_length_side} * ((${ui_subarray3_nrows}+1) / ${subarray3_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
+        "\treturn ${subarray3_ref_nmodules} * ${module_area} / ${subarray3_gcr};",
         "};",
         "",
         "equations{ 'subarray4_land_area'} = define() {",
-        "\tif (${subarray4_track_mode} == 2) { //2-axis tracking",
-        "\t\ttilt = 0;",
-        "\t}",
-        "\telse if (${subarray4_track_mode} == 4) { //Seasonal tilt",
-        "\t\ttilt_monthly = ${subarray4_monthly_tilt};",
-        "\t\ttilt = min(tilt_monthly);",
-        "\t}",
-        "\telse { //Fixed tilt, single axis, azimuth axis",
-        "\t\ttilt = ${subarray4_tilt};",
-        "\t}",
-        "\t",
-        "\tif ( ${subarray4_shade_mode} == 0 ) {",
-        "\t\taspect = 1.7;",
-        "\t\tlength = sqrt(${module_area}*aspect);",
-        "\t\tnmods = ${subarray4_modules_per_string} * ${subarray4_nstrings} / 2; //Two rows of 1 module",
-        "\t\twidth = sqrt(${module_area}/aspect);",
-        "\t\tarea = length* ( 3 / ${subarray4_gcr}) * nmods * width; ",
-        "\t}",
-        "\telse {",
-        "\t\taspect = ${module_aspect_ratio};",
-        "\t\tnmods = ${subarray4_nmodx};",
-        "\t\tif (${subarray4_mod_orient} == 0)",
-        "\t\t\twidth = ${module_width};",
-        "\t\telse",
-        "\t\t\twidth = ${module_length};",
-        "\t\tarea = ${ui_subarray4_length_side} * ((${ui_subarray4_nrows}+1) / ${subarray4_gcr}) * nmods * width; ",
-        "\t",
-        "\t}",
-        "\treturn area;",
-        "};"
+        "\treturn ${subarray4_ref_nmodules} * ${module_area} / ${subarray4_gcr};",
+        "};\r",
+        ""
     ],
     "Callbacks": [
         "//just run this function anytime anything relevant changes",
         "function input_enabling()",
-        "{",
-        "\tmsg='';",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
-        "\t",
-        "\tenable_module_area = false;",
+        "{\r",
+        "",
+        "\t//enable_module_area = false;",
         "\t",
         "\tmsg_snow = '';",
         "\tif ( isnan(value('annual_snow')) == true && value('en_snow_model') == 1 ) {",
         "\t\tmsg_snow = 'Weather file has no snow data. Simulation will fail.';",
         "\t}",
         "\tproperty('ui_msg_snow','Caption',msg_snow);",
-        "",
+        "\r",
+        "\tmsg='';\r",
         "\tfor(i=1; i<=4; i++)",
         "\t{",
         "\t\tprefix = 'subarray' + i + '_';",
@@ -6503,20 +6430,20 @@
         "\t\t//or there is only one row",
         "\t\tif (en3 == true ) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row.\\n';",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t\tif ( nrows == 1 ) msg = msg + 'Subarray ' + i + ' has only one row. ';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//display message if snow model is enabled and nrows is not an integer",
         "\t\tif (en4 == true  && en3 == false) {",
         "\t\t\tnrows = value('ui_' + prefix + 'nrows');",
-        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer.\\n';",
+        "\t\t    if ( nrows-to_int(nrows) != 0 ) msg = msg + 'The number of rows in subarray ' + i + ' is not an integer. ';",
         "\t\t}",
         "",
         "\t\t//now enable all the inputs",
         "\t\tenable(prefix + 'shading', en1);",
         "\t\tenable(prefix + 'shade_mode', (en1 && en2));",
-        "\t\tif (en3) enable_module_area = true;",
+        "\t\t//if (en3) enable_module_area = true;",
         "\t\tenable(prefix + 'mod_orient', (en1 && en2 && en3) || (en1 && en5));",
         "\t\tenable('ui_' + prefix + 'length_side', (en1 && en2 && en3) || (en1 && en5));",
         "\t\tenable('ui_' + prefix + 'nrows', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5));",
@@ -6526,13 +6453,16 @@
         "\t\tenable(prefix + 'nmodx', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5) );",
         "\t\tenable(prefix + 'nmody', (en1 && en2 && en3) || (en1 && en4) || (en1 && en5) );",
         "\t}",
-        "\tenable('module_area', enable_module_area);",
+        "\t//enable('module_area', enable_module_area);",
         "    if (msg!=\"\") msg = msg + 'Adjust the number of modules to correct the problem.'; ",
-        "\tproperty('ui_msg_selfshad','Caption',msg);",
-        "",
+        "\tproperty('ui_msg_selfshad','Caption',msg);\r",
+        "\tproperty('ui_msg_selfshad','TextColour','red');",
         "}",
+        "\r",
+        "on_load{'PV Shading'} = define() { \r",
+        "\tinput_enabling(); \r",
+        "};\r",
         "",
-        "on_load{'PV Shading'} = define() { input_enabling(); };",
         "on_change{'subarray1_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(1,1); };",
         "on_change{'subarray2_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(2,value('subarray2_enable')); };",
         "on_change{'subarray3_shade_mode'} = define() { input_enabling();sysdesign_show_hide_subarray_inputs(3,value('subarray3_enable')); };",
@@ -6546,7 +6476,7 @@
         "on_change{'subarray3_nmodx'} = define() { input_enabling(); };",
         "on_change{'subarray4_nmodx'} = define() { input_enabling(); };",
         "on_change{'en_snow_model'} = define() { input_enabling(); };",
-        "",
+        "\r",
         "on_change{'edit_3d_scene'} = define() {",
         "\t",
         "\tminute_step = 60;",
@@ -6562,125 +6492,66 @@
         "\tx = editscene3d( 'shading_3d_scene', ",
         "\t\tvalue('lat'), value('lon'), value('tz'), ",
         "\t\tvalue('city') + ', ' + value('state') , minute_step , true);",
+        "\t\r",
+        "\t//msgbox('Debug\\nShade data written to CSV (t/f): ' + cwd()+'/shade-data.csv' + '\\n' + csvwrite(cwd()+'/shade-data.csv', x));\r",
         "\t",
-        "\tif ( x.ierr == 0 )",
-        "\t{",
+        "\tif ( x.ierr == 0 ) // shade calculator has valid data",
+        "\t{\r",
+        "\t\t// get number of enabled subarrays",
         "\t\tn_subarrays = 1; // subarray 1 always enabled.",
-        "\t\tif (value(\"subarray2_enable\") == 1)",
-        "\t\t\tn_subarrays++;",
-        "\t\tif (value(\"subarray3_enable\") == 1)",
-        "\t\t\tn_subarrays++;",
-        "\t\tif (value(\"subarray4_enable\") == 1)",
-        "\t\t\tn_subarrays++;",
+        "\t\tif (value(\"subarray2_enable\") == 1) { n_subarrays++; }",
+        "\t\tif (value(\"subarray3_enable\") == 1) { n_subarrays++; }",
+        "\t\tif (value(\"subarray4_enable\") == 1) { n_subarrays++; }",
         "\t",
-        "\t\tif (( x.nsubarrays > 1 ) || ( n_subarrays > 1 ))",
+        "\t\t// check that number of subarrays in shade scene matches enabled subarrays",
+        "\t\tmsg=\"\";",
+        "\t\tif (x.nsubarrays != n_subarrays)\r",
         "\t\t{",
-        "\t\t// check that nsubarrays = number enabled",
-        "\t\t\t",
-        "\t\t\tmsg=\"\";",
-        "\t\t\tif (x.nsubarrays != n_subarrays)",
-        "\t\t\t\tmsg = \"WARNING: You have \" + n_subarrays + \" subarrays enabled and \" ",
-        "\t\t\t\t+ x.nsubarrays + \" subarrays in the 3D scene.\\n\";",
+        "\t\t\tmsg = \"WARNING: You have \" + n_subarrays + \" subarrays enabled and \" + x.nsubarrays + \" subarrays in the 3D scene.\\n\";",
+        "\t\t}\t",
+        "\t\tmsg += \"Update timeseries shading and diffuse losses for \" + n_subarrays + \" subarrays with calculated values from 3D scene?\\n\\n\";",
         "\t\t\t\t",
-        "\t\t\tmsg += \"Update timeseries shading and diffuse losses for \" ",
-        "\t\t\t\t+ x.nsubarrays + \" subarrays with calculated values from 3D scene?\\n\\n\";",
-        "\t\t",
-        "\t\t",
-        "\t\t\tif( yesno(msg))",
-        "\t\t\t{",
-        "\t",
-        "\t\t\t\tfor (i=0;i<4;i++)",
+        "\t\tif( yesno(msg))",
+        "\t\t{\r",
+        "\t\t\tapplied_subarrays = '';",
+        "\t\t\tfor (i=0;i<4;i++)",
+        "\t\t\t{\r",
+        "\t\t\t\tpre = 'subarray' + to_string(i+1);\r",
+        "\t\t\t\t// get time series shade data",
+        "\t\t\t\ttimestep = x{ pre };\r",
+        "\t\t\t\t// check that time series shading data is available for this subarray\r",
+        "\t\t\t\tif ( timestep == null || typeof(timestep) != 'array' ) \r",
+        "\t\t\t\t{\r",
+        "\t\t\t\t\tcontinue;\r",
+        "\t\t\t\t}",
+        "\t\t\t\t// if subarray is not enabled apply shading data from next subarray in shading data\r",
+        "\t\t\t\t// note that subarray number in time series data is not the same as active surface subarray property but order is preserved\r",
+        "\t\t\t\telseif ( i>0 && value(pre+'_enable') != 1 ) \r",
+        "\t\t\t\t{ \r",
+        "\t\t\t\t\tif ( i<3 ) { pre = 'subarray' + to_string(i+2);}\r",
+        "\t\t\t\t}\r",
+        "\t\t\t\t// check parallel strings = number of subarray strings\r",
+        "\t\t\t\tif (value(pre + \"_nstrings\") != #timestep[0])",
         "\t\t\t\t{",
-        "\t\t\t\t\tpre = 'subarray' + to_string(i+1);",
-        "\t\t\t\t\t",
-        "\t\t\t\t\ttimestep = x{ pre };",
-        "\t\t\t\t\tif ( timestep == null || typeof(timestep) != 'array' ) continue;",
-        "\t\t\t\t\t",
-        "\t\t\t\t\t// check parallel strings = number of subarray strings",
-        "\t\t\t\t\tif (value(pre + \"_nstrings\") != #timestep[0])",
+        "\t\t\t\t\tif (!yesno(\"WARNING!\\nFor \" + pre + \", you specified \" + value(pre + \"_nstrings\") + \" strings and have \" + #timestep[0] + \" strings for this subarray in the 3D scene.\\nApply shading data anyway?\"))\r",
         "\t\t\t\t\t{",
-        "\t\t\t\t\t\tif (!yesno(\"WARNING: For \" + pre + \", you specified \" ",
-        "\t\t\t\t\t\t+ value(pre + \"_nstrings\") + \" strings and have \" + #timestep[0] ",
-        "\t\t\t\t\t\t+ \" strings in the 3D scene.\\nDo you wish to continue with the 3D scene values?.\\n\\n\"))",
-        "\t\t\t\t\t\t\tcontinue;",
+        "\t\t\t\t\t\tcontinue;\r",
         "\t\t\t\t\t}",
-        "\t\t\t\t\t",
-        "\t\t\t\t\tshad = value( pre+'_shading');",
-        "\t\t\t\t\tshad.en_timestep = true;",
-        "\t\t\t\t\tshad.timestep = timestep;",
-        "\t\t\t\t\t// bugfix 4/20/16",
-        "\t\t\t\t\tshad.string_option=0; // default to shading database",
-        "\t\t\t\t\t",
-        "\t\t\t\t\t// diffuse",
-        "\t\t\t\t\tshad.en_diff = true;",
-        "\t\t\t\t\tshad.diff = x.diffuse[i];",
-        "\t\t\t\t\tvalue( pre+'_shading', shad );\t",
         "\t\t\t\t}",
-        "\t\t\t\t",
+        "\t\t\t\tvalue(pre+'_shading_en_timestep', true);\t",
+        "\t\t\t\tvalue(pre+'_shading_timestep', timestep);\t\r",
+        "\t\t\t\tvalue(pre+'_shading_string_option', 0);\t\r",
+        "\t\t\t\tvalue(pre+'_shading_en_diff', true);\t\r",
+        "\t\t\t\tvalue(pre+'_shading_diff', x.diffuse[i]);\r",
+        "\t\t\t\trefresh(pre+'_shading');\r",
         "\t\t\t}",
-        "\t\t\t/* no longer an option to update first array for multiple",
-        "\t\t\telse if (yesno( 'Update timeseries shading and diffuse losses for the array (in subarray 1)?') )",
-        "\t\t\t{",
-        "\t\t\t\ttimestep = x{ 'subarray1' };",
-        "\t\t\t\tif ( timestep == null || typeof(timestep) != 'array') // || #mxh != 12 )",
-        "\t\t\t\t{",
-        "\t\t\t\t\tmsgbox('Shading loss table was not specified correctly.\\n\\n'",
-        "\t\t\t\t\t + to_string(timestep) );",
-        "\t\t\t\t\treturn;",
-        "\t\t\t\t}",
-        "\t\t\t\t",
-        "\t\t\t\tshad = value( 'subarray1_shading');",
-        "\t\t\t\tshad.en_timestep = true;",
-        "\t\t\t\tshad.timestep = timestep;",
-        "\t\t\t",
-        "\t\t\t\t\t// diffuse",
-        "\t\t\t\tshad.en_diff = true;",
-        "\t\t\t\tshad.diff = x.diffuse[0];",
-        "",
-        "\t\t\t\tvalue( 'subarray1_shading', shad );\t",
-        "\t\t\t}",
-        "\t\t\t*/",
-        "\t\t\treturn;",
         "\t\t}",
-        "\t\t",
-        "\t\telse if( x.nsubarrays <= 1 ",
-        "\t\t\t&& yesno( 'Update timeseries shading and diffuse losses for the array (in subarray 1)?') )",
-        "\t\t{",
-        "\t\t\tpre = 'subarray1';",
-        "\t\t\ttimestep = x{ pre };",
-        "\t\t\tif ( timestep == null || typeof(timestep) != 'array')// || #mxh != 12 )",
-        "\t\t\t{",
-        "\t\t\t\tmsgbox('Shading loss table was not specified correctly.\\n\\n'",
-        "\t\t\t\t + to_string(timestep) );",
-        "\t\t\t\treturn;",
-        "\t\t\t}",
-        "\t",
-        "\t\t\t// check parallel strings = number of subarray strings",
-        "\t\t\tif (value(pre + \"_nstrings\") != #timestep[0])",
-        "\t\t\t{",
-        "\t\t\t\tif (!yesno(\"WARNING: For subarray1, you specified \" ",
-        "\t\t\t\t+ value(pre + \"_nstrings\") + \" strings and have \" + #timestep[0] ",
-        "\t\t\t\t+ \" strings in the 3D scene.\\nDo you wish to continue with the 3D scene values?.\\n\\n\"))",
-        "\t\t\t\t\treturn;",
-        "\t\t\t}",
-        "\t\t\t",
-        "\t\t\tshad = value( 'subarray1_shading');",
-        "\t\t\tshad.en_timestep = true;",
-        "\t\t\tshad.timestep = timestep;",
-        "\t\t\t// bugfix 4/20/16",
-        "\t\t\tshad.string_option=0; // default to shading database",
-        "\t\t",
-        "\t\t\t\t// diffuse",
-        "\t\t\tshad.en_diff = true;",
-        "\t\t\tshad.diff = x.diffuse[0];",
-        "",
-        "\t\t\tvalue( 'subarray1_shading', shad );\t",
-        "\t\t\treturn;",
-        "\t\t}",
+        "\t\tmsgbox('Shading data applied!\\nClick Edit Shading for each enabled subarray to check the data.');",
+        "\t\treturn;",
         "\t}",
         "\telseif (x.ierr > 0)",
         "\t{",
-        "\t\tmsgbox('Internal error: ' + x.message);",
+        "\t\tmsgbox('Shade Calculator Error.\\n' + x.message);",
         "\t}",
         "\telse",
         "\t{// dialog closed without applying ",

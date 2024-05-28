@@ -72,8 +72,8 @@ public:
 
 //    void Write(VarValue*);
 //    bool Read(VarValue*);
-    void Write(Case*);
-    bool Read(Case*);
+    void Write(Case*,size_t);
+    bool Read(Case*, size_t);
 
 	struct FactorData
 	{

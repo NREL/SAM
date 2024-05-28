@@ -120,6 +120,9 @@ function cf_production()
 		cfline( 'pvwatts_cf_energy_net',0);
 		cfline( 'wind_cf_energy_net',0);
 	}
+	if (( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
+		cfline( 'fuelcell_fuelcell_annual_energy_discharged',0);
+	}
 	if ( is_fom_fin() || financing() == 'Community Solar' )
 	{
 		cfline( 'cf_energy_sales', 0);
@@ -130,7 +133,7 @@ function cf_production()
 	{
 		cfline( 'cf_energy_net', 0);
 	}
-	if ( is_batt_tech() )
+	if ( is_batt_tech() && (varinfo('gen_without_battery')!= null))  // SAM issue 1563
 	{
 		cfline( 'cf_energy_without_battery',0);
 		cfline( 'batt_annual_discharge_energy',0);
@@ -1733,7 +1736,7 @@ function set_annual_values( xl )
 		}
 	}
 	// tech-dependent
-	if ( is_batt_tech() )
+	if ( is_batt_tech() && (varinfo('gen_without_battery')!= null))  // SAM issue 1563
 	{
 		xl_set_output( xl, 'cf_energy_without_battery' );
 		xl_set_output( xl, 'batt_annual_discharge_energy');

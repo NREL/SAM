@@ -848,7 +848,7 @@
             "IndexLabels": "",
             "Flags": 5.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -865,7 +865,7 @@
                     0.0
                 ]
             ],
-            "UIObject": "Default",
+            "UIObject": "DataMatrix",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -878,7 +878,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -891,7 +891,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

@@ -472,9 +472,11 @@ bool MainWindow::CreateNewCase( const wxString &_name, wxString tech, wxString f
 	if ( m_topBook->GetSelection() != 1 )
 		m_topBook->SetSelection( 1 ); // switch to cases view if currently in welcome window
 
-	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	//	Case *c = m_project.AddCase( GetUniqueCaseName(_name ) );
+	Case* c = new Case;
 	c->SetConfiguration( tech, fin );
 	c->LoadDefaults();
+	m_project.AddCase(GetUniqueCaseName(_name), c);
 	CreateCaseWindow( c );
 	return true;
 }
@@ -503,16 +505,22 @@ CaseWindow *MainWindow::CreateCaseWindow( Case *c )
    
 	wxArrayString pages = win->GetInputPages();
 	if (pages.size() > 0) {
-		if (c->GetConfiguration()->Technology.size() > 1) { // hybrid
-			// hybrids -  trigger onload event for all technologies first page (specifically update wind resource file to run without selecting page)
-            for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
-                win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][0]->SideBarLabel);
-                //win->SwitchToInputPage(win->m_navigationMenu->GetItemText(win->m_navigationMenu->GetCurrentSelection())
-            }
-		}
-		else {
+		win->Freeze();
+		// go through and load all pages to trigger on-load events - addresses SAM issue 1520 and other requests
+		for (int i = 0; i <= c->GetConfiguration()->Technology.size() - 1; i++) {
+			for (int j=0; j< c->GetConfiguration()->InputPageGroups[i].size(); j++)
+	            win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[i][j]->SideBarLabel);
+        }
+		// load first page of hybrid and non-hybrid configurations
+		if (c->GetConfiguration()->Technology.size() > 1) // hybrid	
+			win->SwitchToInputPage(c->GetConfiguration()->InputPageGroups[c->GetConfiguration()->Technology.size() - 1][0]->SideBarLabel);
+		else
 			win->SwitchToInputPage(pages[0]);
-		}
+
+		// reevaluate all equations address SAM #1583
+		c->EvaluateEquations();
+
+		win->Thaw();
 	} //mp trying to not overwrite first page switch at start
 	return win;
 }
@@ -1081,8 +1089,11 @@ bool MainWindow::LoadProject( const wxString &file )
 
 	ProjectFile pf;
 	// tell user to save and check file if issue
-	if (!pf.ReadArchive(file))
-		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+	if (!pf.ReadArchive(file)) {
+//		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%sTo fix the problem, click OK to open the file and then save it.", file, pf.GetLastError()));
+		wxMessageBox(wxString::Format("Problem reading file!\n\n%s\n\n%s.", file, pf.GetLastError()));
+		return false;
+	}
 
 	int major, minor, micro;
 	size_t file_ver = pf.GetVersionInfo( &major, &minor, &micro );
@@ -1299,9 +1310,14 @@ void MainWindow::OnCaseMenu( wxCommandEvent &evt )
 			wxString tech, fin;
 			c->GetConfiguration( &tech, &fin );
 			wxString t2(tech), f2(fin);
-			if( ShowConfigurationDialog( this, &t2, &f2, NULL )
-				&& (t2 != tech || f2 != fin) )
-				c->SetConfiguration( t2, f2 ); // this will cause case window to update accordingly
+			wxString sel = cw->GetInputPage();
+			if (ShowConfigurationDialog(this, &t2, &f2, NULL)
+				&& (t2 != tech || f2 != fin)) {
+				// updates CaseWindow through OnCaseEvetn
+				c->SetConfiguration(t2, f2); 
+				// manually set tree navigation - selects current selection or first item
+				cw->SwitchToNavigationMenu(sel);
+			}
 		}
 		break;
 	case ID_CASE_RENAME:
@@ -2336,6 +2352,10 @@ void SamApp::Restart()
     wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
     if (!wxFileExists(wave_resource_ts_db)) ScanWaveResourceTSData(wave_resource_ts_db);
     Library::Load(wave_resource_ts_db);
+
+    wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+    if (!wxFileExists(tidal_resource_db)) ScanTidalResourceData(tidal_resource_db);
+    Library::Load(tidal_resource_db);
 }
 
 wxString SamApp::WebApi( const wxString &name )
@@ -2761,8 +2781,12 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 	SetBackgroundColour( wxMetroTheme::Colour( wxMT_FOREGROUND ) );
 	CenterOnParent();
 
+	wxFont font(wxMetroTheme::Font(wxMT_NORMAL, 12));
+
 	m_pTech = new wxMetroDataViewTreeCtrl(this, ID_TechTree);
-	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pTech->SetFont(font);
+ 	m_pFin = new wxMetroDataViewTreeCtrl(this, ID_FinTree);
+	m_pFin->SetFont(font);
 
 	wxBoxSizer *choice_sizer = new wxBoxSizer( wxHORIZONTAL );
 	choice_sizer->Add( m_pTech, 1, wxALL|wxEXPAND, 0 );
@@ -2770,7 +2794,6 @@ ConfigDialog::ConfigDialog( wxWindow *parent, const wxSize &size )
 
 	wxStaticText *label = new wxStaticText( this, wxID_ANY,
 		"Choose a performance model, and then choose from the available financial models." );
-	wxFont font( wxMetroTheme::Font( wxMT_NORMAL, 12  ) );
 	label->SetFont( font );
 	label->SetForegroundColour( *wxWHITE );
 
@@ -2907,6 +2930,12 @@ void ConfigDialog::PopulateTech()
 {
 	// clear tree
 	m_pTech->DeleteAllItems();
+
+	// TODO set width to fit longest collapsed label
+	int tech_width = 400;
+	int tech_height = m_pTech->GetBestHeight(tech_width);
+	m_pTech->SetMinSize(wxSize(tech_width, tech_height));
+	
 	// list all technologies
 	m_tnames = SamApp::Config().GetTechnologies();
 
@@ -2922,7 +2951,7 @@ void ConfigDialog::PopulateTech()
 			nodes.Add(node);
 	}
 
-	wxDataViewItemArray dvia{containers.Count()};
+	wxDataViewItemArray dvia(containers.Count());
 
 	// order from startup.lk configopt("TechnologyTreeOrder", ...
 	wxString TreeOrder = SamApp::Config().Options("TechnologyTreeOrder").Description;

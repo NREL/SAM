@@ -16,17 +16,22 @@ configs = 0;
 technologies = 	list_technologies();
 for (t=0; t<#technologies; t++)
 {
-	if ((technologies[t] != "DSPT") )
+	if ((technologies[t] != "DSPT") 
+	&& (technologies[t] != "Dish Stirling")
+	&& (technologies[t] != "ISCC")
+	&& (technologies[t] != "Retired")
+	&& (technologies[t] != "MSPTV2"))
 	{
 		//Loop through all financing options for that technology
 		financing = list_financing(technologies[t]);
 		for(f=0; f<#financing; f++)
 		{	
-			out( technologies[t] + '\t' + financing[f] + '\t' );
+			out( technologies[t] + '\t' + financing[f] + '\n' );
 			active_case( 'test_case' );
 			configuration( technologies[t], financing[f]) ;
 			load_defaults("");
 			overwrite_defaults();
+			configs++;
 		}
 	}
 }

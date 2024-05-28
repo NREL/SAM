@@ -128,14 +128,6 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_analysis_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set casing_size: Production pump casing size [in]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_casing_size_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set conversion_subtype: Conversion Subtype
 	 * options: None
 	 * constraints: INTEGER
@@ -184,6 +176,14 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set drilling_success_rate: Drilling success rate [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_drilling_success_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dt_prod_well: Temperature loss in production well [C]
 	 * options: None
 	 * constraints: None
@@ -206,6 +206,22 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_excess_pressure_pump_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set exploration_wells_production: Exploration wells used for production
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_exploration_wells_production_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set failed_prod_flow_ratio: Failed production well flow ratio
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_failed_prod_flow_ratio_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set file_name: local weather file path
@@ -256,6 +272,14 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_width_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set geotherm.cost.inj_cost_curve_welldiam: Injection well diameter type [0/1]
+	 * options: 0=LargerDiameter,1=SmallerDiameter
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set geotherm.cost.inj_cost_curve_welltype: Injection well type [0/1]
 	 * options: None
 	 * constraints: None
@@ -270,6 +294,14 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set geotherm.cost.prod_cost_curve_welldiam: Production well diameter type [0/1]
+	 * options: 0=LargerDiameter,1=SmallerDiameter
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set geotherm.cost.prod_cost_curve_welltype: Production well type [0/1]
@@ -376,14 +408,6 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_hybrid_dispatch_schedule_sset(SAM_table ptr, const char* str, SAM_error *err);
 
 	/**
-	 * Set inj_casing_size: Injection pump casing size [in]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_inj_casing_size_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set inj_prod_well_distance: Distance from injection to production wells [m]
 	 * options: None
 	 * constraints: None
@@ -392,12 +416,12 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_inj_prod_well_distance_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set inj_well_diam: Injection well diameter [in]
+	 * Set injectivity_index: Injectivity index [lb/hr-psi]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_inj_well_diam_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_injectivity_index_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set model_choice: Which model to run (0,1,2)
@@ -616,6 +640,14 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_startup_time_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set stim_success_rate: Stimulation success rate [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_stim_success_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subsurface_water_loss: Subsurface water loss [%]
 	 * options: None
 	 * constraints: None
@@ -656,12 +688,12 @@ extern "C"
 	SAM_EXPORT void SAM_Geothermal_GeoHourly_ui_calculations_only_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set well_diameter: Production well diameter [in]
+	 * Set use_weather_file_conditions: Use weather file ambient temperature [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_Geothermal_GeoHourly_well_diameter_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Geothermal_GeoHourly_use_weather_file_conditions_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set well_flow_rate: Production flow rate per well [kg/s]
@@ -688,7 +720,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Geothermal_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -753,8 +785,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_analysis_type_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_casing_size_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_conversion_subtype_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_conversion_type_nget(SAM_table ptr, SAM_error *err);
@@ -767,11 +797,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_drilling_success_rate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_dt_prod_well_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_eta_ref_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_excess_pressure_pump_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_exploration_wells_production_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_failed_prod_flow_ratio_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_Geothermal_GeoHourly_file_name_sget(SAM_table ptr, SAM_error *err);
 
@@ -785,9 +821,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_width_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
 
@@ -815,11 +855,9 @@ extern "C"
 
 	SAM_EXPORT const char* SAM_Geothermal_GeoHourly_hybrid_dispatch_schedule_sget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_casing_size_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_prod_well_distance_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_inj_well_diam_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_injectivity_index_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_model_choice_nget(SAM_table ptr, SAM_error *err);
 
@@ -875,6 +913,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_startup_time_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_stim_success_rate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_subsurface_water_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
@@ -885,7 +925,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_ui_calculations_only_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Geothermal_GeoHourly_well_diameter_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Geothermal_GeoHourly_use_weather_file_conditions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Geothermal_GeoHourly_well_flow_rate_nget(SAM_table ptr, SAM_error *err);
 
@@ -952,6 +992,8 @@ extern "C"
 	SAM_EXPORT double SAM_Geothermal_Outputs_lp_flash_pressure_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Geothermal_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Geothermal_Outputs_monthly_energy_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Geothermal_Outputs_monthly_power_aget(SAM_table ptr, int* length, SAM_error *err);
 

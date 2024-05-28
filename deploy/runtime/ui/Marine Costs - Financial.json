@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Financial",
-    "Width": 962.0,
-    "Height": 448.0,
+    "Width": 1093.0,
+    "Height": 469.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -260,7 +260,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -343,7 +343,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 639.0
+                    "Integer": 663.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -384,7 +384,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -467,7 +467,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -716,7 +716,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -840,7 +840,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 969.0
+                    "Integer": 993.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -902,7 +902,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 969.0
+                    "Integer": 993.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -964,7 +964,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 969.0
+                    "Integer": 993.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1026,7 +1026,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 969.0
+                    "Integer": 993.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1088,7 +1088,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 783.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1146,7 +1146,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 945.0
+                    "Integer": 1062.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1299,7 +1299,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 603.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1307,7 +1307,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 231.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1443,7 +1443,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized financial related capital costs in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost. See Help for details."
+                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized financial related capital costs in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost.For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1493,7 +1493,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 138.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1547,7 +1547,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 795.0
+                    "Integer": 819.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1609,7 +1609,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1899,7 +1899,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1982,7 +1982,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2065,7 +2065,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2355,7 +2355,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2645,7 +2645,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2811,7 +2811,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 939.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2848,7 +2848,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 939.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2885,7 +2885,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 915.0
+                    "Integer": 939.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3521,7 +3521,7 @@
         "\t",
         "\t//Project Contingency Budget",
         "\tshow('project_contingency_cost_total',value('project_contingency_cost_method')==3);",
-        "\tshow('project_contingency_cost_input',value('project_contingency_cost_method')!=3);",
+        "\t//show('project_contingency_cost_input',value('project_contingency_cost_method')!=3);",
         "\tenable('project_contingency_cost_input',value('project_contingency_cost_method')!=2);",
         "\tenable('project_contingency_budget_cost_rvalue', value('project_contingency_cost_method')==3);",
         "\t\r",

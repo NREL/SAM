@@ -143,7 +143,7 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
     wxJSONValue root;
     if (reader.Parse(curl.GetDataAsString(), &root) == 0)
     {
-        wxJSONValue loc = root.Item("results").Item(0).Item("locations").Item(0).Item("displayLatLng");
+        wxJSONValue loc = root.Item("results").Item(0).Item("locations").Item(0).Item("latLng");
         if (!loc.IsValid()) return false;
         *lat = loc.Item("lat").AsDouble();
         *lon = loc.Item("lng").AsDouble();

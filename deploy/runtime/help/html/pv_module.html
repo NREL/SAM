@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?pv_module.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -603,7 +598,9 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The heat transfer method uses a steady state heat transfer model to calculate cell temperatures described in Neises (2010). When the simulation time step is less than 20 minutes and you choose the gap mounting configuration for the heat transfer model, it applies the transient weighted average model for the back surface-temperature described in Prilliman (2020). References to both publications are available under &quot;Module/Cell Temperature Models&quot; on the <a href="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html" target="_blank" class="weblink" title="https://sam.nrel.gov/photovoltaic/pv-sub-page-2.html">PV Publications</a> page of the SAM website.</span></p>
 <p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">The temperature correction algorithms use wind speed and ambient (dry-bulb) temperature data from the weather file, assumed to be measured at 2 meters above the ground. The heat transfer method also uses atmospheric pressure and wet-bulb temperature data.</span><br />
+<span class="f_Note">The temperature correction algorithms use wind speed and ambient (dry-bulb) temperature data from the weather file, assumed to be measured at 2 meters above the ground. </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The heat transfer method also uses atmospheric pressure and wet-bulb temperature data, and will generate a simulation error if that data is missing from the weather file.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">When you specify a vertical or horizontal mounting structure option, SAM also uses wind direction data in the cell temperature calculation.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Mounting configuration</span></p>

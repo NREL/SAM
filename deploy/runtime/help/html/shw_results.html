@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?shw_results.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -598,7 +593,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 </td>
 <td class="VariableListSortable" style="width:8.6875rem; background-color:#C0C0C0;"><p class="p_TableTextCenter" style="page-break-inside: avoid;"><span class="f_TableTextCenter">kW</span></p>
 </td>
-<td class="VariableListSortable" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;">Power saved by the system in a single time step, equal to:</p>
+<td class="VariableListSortable" style="background-color:#C0C0C0;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span style="font-family: Verdana,Geneva,Arial,sans-serif;">Power saved by the system in a single time step, equal to:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Gen = Q auxiliary only - Q auxiliary - P pump</span></p>
 <p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">For any time step &nbsp;that Gen &gt; Load, SAM sets Gen = Load because the solar water heating system cannot export power.</span></p>
 </td>

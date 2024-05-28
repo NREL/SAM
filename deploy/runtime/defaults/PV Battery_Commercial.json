@@ -3,6 +3,7 @@
     "6par_aisc_display": 0.00373527,
     "6par_aisc_units": 0.0,
     "6par_area": 1.631,
+    "6par_aspect_ratio": 1.49,
     "6par_bifacial_ground_clearance_height": 1.0,
     "6par_bifacial_transmission_factor": 0.013,
     "6par_bifaciality": 0.7,
@@ -15,7 +16,9 @@
     "6par_imp": 5.67,
     "6par_is_bifacial": 0.0,
     "6par_isc": 6.05,
+    "6par_module_length": 1.55891,
     "6par_module_name": "SunPower SPR-E19-310-COM",
+    "6par_module_width": 1.04625,
     "6par_mounting": 0.0,
     "6par_mpeff": 19.0159,
     "6par_nser": 96.0,
@@ -18270,6 +18273,7 @@
     "annual_peak": 274.231,
     "annual_snow": "nan",
     "annual_tdry": 21.9385,
+    "annual_twet": "nan",
     "annual_wspd": 1.78648,
     "batt_C_rate": 0.2,
     "batt_C_rate_max_charge": 0.25,
@@ -18381,133 +18385,868 @@
     "batt_h_to_ambient": 7.5,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
-    "batt_life_excl": 1.0,
+    "batt_life_excl": 0.0,
     "batt_life_model": 1.0,
     "batt_lifetime_matrix": [
         [
-            10.0,
+            100.0,
             0.0,
-            100.853
-        ],
-        [
-            10.0,
-            1250.0,
-            94.884
-        ],
-        [
-            10.0,
-            2500.0,
-            88.9147
-        ],
-        [
-            10.0,
-            3750.0,
-            82.9454
-        ],
-        [
-            10.0,
-            5000.0,
-            76.9761
-        ],
-        [
-            20.0,
-            0.0,
-            100.853
-        ],
-        [
-            20.0,
-            1250.0,
-            94.8798
-        ],
-        [
-            20.0,
-            2500.0,
-            88.9063
-        ],
-        [
-            20.0,
-            3750.0,
-            82.9328
-        ],
-        [
-            20.0,
-            5000.0,
-            76.9593
-        ],
-        [
-            40.0,
-            0.0,
-            100.853
-        ],
-        [
-            40.0,
-            1250.0,
-            94.7822
-        ],
-        [
-            40.0,
-            2500.0,
-            88.711
-        ],
-        [
-            40.0,
-            3750.0,
-            82.6397
-        ],
-        [
-            40.0,
-            5000.0,
-            76.5682
-        ],
-        [
-            80.0,
-            0.0,
-            100.853
-        ],
-        [
-            80.0,
-            1250.0,
-            92.4838
-        ],
-        [
-            80.0,
-            2500.0,
-            84.0543
-        ],
-        [
-            80.0,
-            3750.0,
-            75.56
-        ],
-        [
-            80.0,
-            5000.0,
-            66.9956
+            100.0
         ],
         [
             100.0,
-            0.0,
-            100.853
+            128.0,
+            98.7907
         ],
         [
             100.0,
-            1250.0,
-            88.1256
+            202.0,
+            97.9632
         ],
         [
             100.0,
-            2500.0,
-            74.8732
+            277.0,
+            97.3904
         ],
         [
             100.0,
-            3750.0,
-            60.9511
+            371.0,
+            96.6266
+        ],
+        [
+            100.0,
+            523.0,
+            95.9265
+        ],
+        [
+            100.0,
+            666.0,
+            95.2263
+        ],
+        [
+            100.0,
+            1012.0,
+            93.9533
+        ],
+        [
+            100.0,
+            1354.0,
+            92.9349
+        ],
+        [
+            100.0,
+            1733.0,
+            91.9484
+        ],
+        [
+            100.0,
+            2052.0,
+            91.0573
+        ],
+        [
+            100.0,
+            2384.0,
+            90.2298
+        ],
+        [
+            100.0,
+            2744.0,
+            89.3706
+        ],
+        [
+            100.0,
+            3103.0,
+            88.5431
+        ],
+        [
+            100.0,
+            3465.0,
+            87.7157
+        ],
+        [
+            100.0,
+            3830.0,
+            86.9201
+        ],
+        [
+            100.0,
+            4188.0,
+            86.1881
+        ],
+        [
+            100.0,
+            4560.0,
+            85.297
         ],
         [
             100.0,
             5000.0,
-            46.1312
+            84.4378
+        ],
+        [
+            100.0,
+            5374.0,
+            83.7376
+        ],
+        [
+            100.0,
+            5757.0,
+            82.9738
+        ],
+        [
+            100.0,
+            6132.0,
+            82.3055
+        ],
+        [
+            100.0,
+            6527.0,
+            81.4781
+        ],
+        [
+            100.0,
+            6926.0,
+            80.7461
+        ],
+        [
+            100.0,
+            7300.0,
+            79.9823
+        ],
+        [
+            100.0,
+            7701.0,
+            79.2185
+        ],
+        [
+            100.0,
+            8111.0,
+            78.6139
+        ],
+        [
+            100.0,
+            8495.0,
+            77.6591
+        ],
+        [
+            100.0,
+            8778.0,
+            77.3409
+        ],
+        [
+            100.0,
+            9192.0,
+            76.4498
+        ],
+        [
+            100.0,
+            9987.0,
+            74.8904
+        ],
+        [
+            100.0,
+            10829.0,
+            73.4265
+        ],
+        [
+            100.0,
+            11474.0,
+            72.1535
+        ],
+        [
+            100.0,
+            12162.0,
+            70.9123
+        ],
+        [
+            100.0,
+            12921.0,
+            69.5757
+        ],
+        [
+            80.0,
+            0.0,
+            100.0
+        ],
+        [
+            80.0,
+            161.0,
+            98.4088
+        ],
+        [
+            80.0,
+            301.0,
+            97.1358
+        ],
+        [
+            80.0,
+            448.0,
+            96.0219
+        ],
+        [
+            80.0,
+            645.0,
+            95.0672
+        ],
+        [
+            80.0,
+            831.0,
+            94.3034
+        ],
+        [
+            80.0,
+            1276.0,
+            92.6803
+        ],
+        [
+            80.0,
+            1696.0,
+            91.5665
+        ],
+        [
+            80.0,
+            2191.0,
+            90.4844
+        ],
+        [
+            80.0,
+            2596.0,
+            89.657
+        ],
+        [
+            80.0,
+            3023.0,
+            89.0205
+        ],
+        [
+            80.0,
+            3466.0,
+            88.3522
+        ],
+        [
+            80.0,
+            3912.0,
+            87.7157
+        ],
+        [
+            80.0,
+            4375.0,
+            87.0474
+        ],
+        [
+            80.0,
+            4828.0,
+            86.3472
+        ],
+        [
+            80.0,
+            5292.0,
+            85.7426
+        ],
+        [
+            80.0,
+            5759.0,
+            85.0424
+        ],
+        [
+            80.0,
+            6297.0,
+            84.3423
+        ],
+        [
+            80.0,
+            7242.0,
+            83.1011
+        ],
+        [
+            80.0,
+            7724.0,
+            82.4328
+        ],
+        [
+            80.0,
+            8196.0,
+            81.8281
+        ],
+        [
+            80.0,
+            8678.0,
+            81.0644
+        ],
+        [
+            80.0,
+            9186.0,
+            80.4915
+        ],
+        [
+            80.0,
+            9690.0,
+            79.9505
+        ],
+        [
+            80.0,
+            10169.0,
+            79.314
+        ],
+        [
+            80.0,
+            10623.0,
+            78.8048
+        ],
+        [
+            80.0,
+            11000.0,
+            78.2638
+        ],
+        [
+            80.0,
+            11534.0,
+            77.6273
+        ],
+        [
+            80.0,
+            12479.0,
+            76.6726
+        ],
+        [
+            80.0,
+            13496.0,
+            75.5905
+        ],
+        [
+            80.0,
+            14299.0,
+            74.7949
+        ],
+        [
+            80.0,
+            15119.0,
+            73.9038
+        ],
+        [
+            80.0,
+            16019.0,
+            72.8854
+        ],
+        [
+            40.0,
+            0.0,
+            100.0
+        ],
+        [
+            40.0,
+            489.0,
+            95.7355
+        ],
+        [
+            40.0,
+            948.0,
+            92.6803
+        ],
+        [
+            40.0,
+            1323.0,
+            89.8161
+        ],
+        [
+            40.0,
+            1733.0,
+            87.7794
+        ],
+        [
+            40.0,
+            2690.0,
+            83.7694
+        ],
+        [
+            40.0,
+            3623.0,
+            82.3055
+        ],
+        [
+            40.0,
+            4676.0,
+            82.1146
+        ],
+        [
+            40.0,
+            5591.0,
+            82.1146
+        ],
+        [
+            40.0,
+            6507.0,
+            82.1782
+        ],
+        [
+            40.0,
+            7506.0,
+            81.9236
+        ],
+        [
+            40.0,
+            8468.0,
+            81.6054
+        ],
+        [
+            40.0,
+            9438.0,
+            82.7511
+        ],
+        [
+            40.0,
+            10407.0,
+            81.7963
+        ],
+        [
+            40.0,
+            11358.0,
+            81.1598
+        ],
+        [
+            40.0,
+            12345.0,
+            80.4915
+        ],
+        [
+            40.0,
+            13463.0,
+            80.4915
+        ],
+        [
+            40.0,
+            14484.0,
+            80.0778
+        ],
+        [
+            40.0,
+            15468.0,
+            79.7595
+        ],
+        [
+            40.0,
+            16470.0,
+            79.4095
+        ],
+        [
+            40.0,
+            17477.0,
+            78.9321
+        ],
+        [
+            40.0,
+            18475.0,
+            78.6139
+        ],
+        [
+            40.0,
+            19492.0,
+            78.1365
+        ],
+        [
+            40.0,
+            20530.0,
+            77.8182
+        ],
+        [
+            40.0,
+            21542.0,
+            77.4363
+        ],
+        [
+            40.0,
+            22456.0,
+            77.1181
+        ],
+        [
+            40.0,
+            23209.0,
+            77.2454
+        ],
+        [
+            40.0,
+            24274.0,
+            76.7362
+        ],
+        [
+            40.0,
+            26229.0,
+            75.9724
+        ],
+        [
+            40.0,
+            28263.0,
+            75.2405
+        ],
+        [
+            40.0,
+            29842.0,
+            74.7631
+        ],
+        [
+            40.0,
+            31478.0,
+            74.2539
+        ],
+        [
+            40.0,
+            33293.0,
+            73.872
+        ],
+        [
+            20.0,
+            0.0,
+            100.0
+        ],
+        [
+            20.0,
+            322.0,
+            97.8359
+        ],
+        [
+            20.0,
+            744.0,
+            96.5629
+        ],
+        [
+            20.0,
+            1030.0,
+            94.9717
+        ],
+        [
+            20.0,
+            1861.0,
+            91.3437
+        ],
+        [
+            20.0,
+            2726.0,
+            87.843
+        ],
+        [
+            20.0,
+            2726.0,
+            87.843
+        ],
+        [
+            20.0,
+            3518.0,
+            84.7878
+        ],
+        [
+            20.0,
+            5462.0,
+            79.2504
+        ],
+        [
+            20.0,
+            7476.0,
+            76.9272
+        ],
+        [
+            20.0,
+            9813.0,
+            77.0863
+        ],
+        [
+            20.0,
+            11702.0,
+            77.2772
+        ],
+        [
+            20.0,
+            13699.0,
+            77.9137
+        ],
+        [
+            20.0,
+            15707.0,
+            78.6775
+        ],
+        [
+            20.0,
+            17758.0,
+            79.0594
+        ],
+        [
+            20.0,
+            19770.0,
+            79.4413
+        ],
+        [
+            20.0,
+            21691.0,
+            79.505
+        ],
+        [
+            20.0,
+            23725.0,
+            79.5686
+        ],
+        [
+            20.0,
+            25701.0,
+            79.5686
+        ],
+        [
+            20.0,
+            27985.0,
+            79.9823
+        ],
+        [
+            20.0,
+            30010.0,
+            79.8232
+        ],
+        [
+            20.0,
+            31981.0,
+            79.6959
+        ],
+        [
+            20.0,
+            33984.0,
+            79.5368
+        ],
+        [
+            20.0,
+            35993.0,
+            79.2504
+        ],
+        [
+            20.0,
+            37950.0,
+            79.0594
+        ],
+        [
+            20.0,
+            40000.0,
+            78.8048
+        ],
+        [
+            20.0,
+            42027.0,
+            78.5502
+        ],
+        [
+            20.0,
+            44002.0,
+            78.2956
+        ],
+        [
+            20.0,
+            45809.0,
+            78.041
+        ],
+        [
+            20.0,
+            47324.0,
+            78.4547
+        ],
+        [
+            20.0,
+            49421.0,
+            77.9774
+        ],
+        [
+            20.0,
+            53266.0,
+            77.2772
+        ],
+        [
+            20.0,
+            57263.0,
+            76.6089
+        ],
+        [
+            20.0,
+            60363.0,
+            76.2907
+        ],
+        [
+            20.0,
+            63598.0,
+            75.8133
+        ],
+        [
+            20.0,
+            67147.0,
+            75.686
+        ],
+        [
+            10.0,
+            0.0,
+            100.0
+        ],
+        [
+            10.0,
+            827.0,
+            98.2815
+        ],
+        [
+            10.0,
+            1341.0,
+            97.0085
+        ],
+        [
+            10.0,
+            2050.0,
+            95.6719
+        ],
+        [
+            10.0,
+            3697.0,
+            92.4257
+        ],
+        [
+            10.0,
+            5352.0,
+            89.3388
+        ],
+        [
+            10.0,
+            6801.0,
+            86.761
+        ],
+        [
+            10.0,
+            10801.0,
+            81.8281
+        ],
+        [
+            10.0,
+            14594.0,
+            79.1867
+        ],
+        [
+            10.0,
+            19282.0,
+            78.2638
+        ],
+        [
+            10.0,
+            22891.0,
+            78.2956
+        ],
+        [
+            10.0,
+            26837.0,
+            78.7412
+        ],
+        [
+            10.0,
+            30819.0,
+            79.1867
+        ],
+        [
+            10.0,
+            34952.0,
+            79.5686
+        ],
+        [
+            10.0,
+            38953.0,
+            79.8868
+        ],
+        [
+            10.0,
+            42829.0,
+            80.0141
+        ],
+        [
+            10.0,
+            46812.0,
+            80.1414
+        ],
+        [
+            10.0,
+            50791.0,
+            80.2051
+        ],
+        [
+            10.0,
+            55205.0,
+            80.8416
+        ],
+        [
+            10.0,
+            59150.0,
+            80.8416
+        ],
+        [
+            10.0,
+            63094.0,
+            80.9052
+        ],
+        [
+            10.0,
+            67040.0,
+            80.7779
+        ],
+        [
+            10.0,
+            71103.0,
+            80.7143
+        ],
+        [
+            10.0,
+            74943.0,
+            80.6825
+        ],
+        [
+            10.0,
+            78957.0,
+            80.5233
+        ],
+        [
+            10.0,
+            82865.0,
+            80.396
+        ],
+        [
+            10.0,
+            86722.0,
+            80.2687
+        ],
+        [
+            10.0,
+            90414.0,
+            80.1733
+        ],
+        [
+            10.0,
+            93306.0,
+            80.5233
+        ],
+        [
+            10.0,
+            97274.0,
+            80.2687
+        ],
+        [
+            10.0,
+            104629.0,
+            79.5686
+        ],
+        [
+            10.0,
+            112503.0,
+            78.9958
+        ],
+        [
+            10.0,
+            118575.0,
+            78.6139
+        ],
+        [
+            10.0,
+            124792.0,
+            78.232
+        ],
+        [
+            10.0,
+            131609.0,
+            78.1683
         ]
     ],
     "batt_load_ac_forecast": [
@@ -36167,10 +36906,10 @@
     ],
     "batt_thermal_choice": 0.0,
     "batt_time_capacity": 4.0,
-    "batt_type": 8.0,
+    "batt_type": 5.0,
     "batt_ui_bank_voltage": 500.4,
     "batt_ui_cell_voltage": 3.6,
-    "batt_ui_inverter_eff": 98.2262,
+    "batt_ui_inverter_eff": 98.6909,
     "batt_ui_nominal_bank_power": 299.84,
     "batt_unit_capacity": 400.0,
     "batt_unit_surface_area": 30.0,
@@ -36194,16 +36933,16 @@
     "battery_power_kw": 299.84,
     "battery_thermal_shown": 0.0,
     "battery_total": 391531.0,
-    "battery_total_cost_lcos": 464103.0,
+    "battery_total_cost_lcos": 449293.0,
     "battery_voltage_shown": 0.0,
     "beta_oc_calc": -0.2727,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.36,
-    "bos_equip_total": 179986.0,
+    "bos_equip_perwatt": 0.35,
+    "bos_equip_total": 175854.0,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
-    "calculated_dcac_ratio": 1.18973,
+    "calculated_dcac_ratio": 1.10671,
     "cap_vs_temp": [
         [
             0.0,
@@ -36222,7 +36961,7 @@
             105.4
         ]
     ],
-    "capex_table_ac_cost_per_w": 0.0,
+    "capex_table_ac_cost_per_w": 0.72,
     "capex_table_ac_inputs": [
         [
             100000.0,
@@ -36261,8 +37000,8 @@
             0.65
         ]
     ],
-    "capex_table_batt_cost_per_kw": 0.0,
-    "capex_table_batt_cost_per_kwh": 0.0,
+    "capex_table_batt_cost_per_kw": 1010.76,
+    "capex_table_batt_cost_per_kwh": 212.032,
     "capex_table_batt_inputs": [
         [
             300.0,
@@ -36300,7 +37039,7 @@
             192.0
         ]
     ],
-    "capex_table_cost_per_w": 0.0,
+    "capex_table_cost_per_w": 0.96,
     "capex_table_dc_inputs": [
         [
             100000.0,
@@ -36354,9 +37093,9 @@
             0.0
         ]
     ],
-    "capex_table_total_installed_ac_cost": 0.0,
-    "capex_table_total_installed_batt_cost": 0.0,
-    "capex_table_total_installed_dc_cost": 0.0,
+    "capex_table_total_installed_ac_cost": 326876.0,
+    "capex_table_total_installed_batt_cost": 1466570.0,
+    "capex_table_total_installed_dc_cost": 482344.0,
     "capex_table_total_installed_land_cost": 0.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
@@ -36388,6 +37127,7 @@
     "cec_area": 1.631,
     "cec_array_cols": 10.0,
     "cec_array_rows": 1.0,
+    "cec_aspect_ratio": 1.49044,
     "cec_backside_temp": 20.0,
     "cec_beta_oc": -0.175619,
     "cec_bifacial_ground_clearance_height": 1.0,
@@ -36404,8 +37144,8 @@
     "cec_i_sc_ref": 6.05,
     "cec_is_bifacial": 0.0,
     "cec_material": "Mono-c-Si",
-    "cec_module_length": 1.631,
-    "cec_module_width": 1.0,
+    "cec_module_length": 1.559,
+    "cec_module_width": 1.046,
     "cec_mounting_config": 0.0,
     "cec_mounting_orientation": 0.0,
     "cec_n_s": 96.0,
@@ -36421,7 +37161,7 @@
     "chk_update_peaks": 1.0,
     "city": "-",
     "compute_as_cube": 0.0,
-    "contingency": 42859.1,
+    "contingency": 40984.3,
     "contingency_percent": 4.0,
     "country": "-",
     "crit_1": 0.0,
@@ -63822,9 +64562,9 @@
     "energy_8": 77555.1,
     "energy_9": 61793.7,
     "engr_fixed": 0.0,
-    "engr_per_watt": 0.44,
+    "engr_per_watt": 0.3,
     "engr_percent": 0.0,
-    "engr_total": 219982.0,
+    "engr_total": 150732.0,
     "escal_belpe": [
         0.0
     ],
@@ -72606,9 +73346,9 @@
     "grid_outage": [
         0.0
     ],
-    "grid_per_watt": 0.06,
+    "grid_per_watt": 0.05,
     "grid_percent": 0.0,
-    "grid_total": 29997.6,
+    "grid_total": 25122.1,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
     "ibi_fed_amount_deprbas_sta": 0.0,
@@ -72879,13 +73619,13 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.16,
-    "install_labor_total": 79993.6,
+    "install_labor_perwatt": 0.18,
+    "install_labor_total": 90439.4,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.31,
-    "install_margin_total": 154988.0,
-    "installed_per_capacity": 2.87029,
+    "install_margin_perwatt": 0.25,
+    "install_margin_total": 125610.0,
+    "installed_per_capacity": 2.60687,
     "insurance_rate": 0.0,
     "inv_cec_cg_c0": -0.0000031752,
     "inv_cec_cg_c1": -0.0000512314,
@@ -73214,9 +73954,9 @@
     ],
     "inv_cec_cg_vdcmax": 600.0,
     "inv_cec_cg_vdco": 398.497,
-    "inv_cec_date": "9/1/2020",
-    "inv_cec_hybrid": "N",
-    "inv_cec_name": "ABB: PVS-60-TL-US [480V]",
+    "inv_cec_date": "2/22/2021",
+    "inv_cec_hybrid": "Y",
+    "inv_cec_name": "Sungrow Power Supply Co - Ltd : SG250HX-US [800V]",
     "inv_cec_type": "Utility Interactive",
     "inv_ds_ac_voltage": 240.0,
     "inv_ds_data_filename": "",
@@ -74764,23 +75504,23 @@
     "inv_pd_pnt": 0.0,
     "inv_pd_vdcmax": 600.0,
     "inv_pd_vdco": 310.0,
-    "inv_snl_ac_voltage": 480.0,
-    "inv_snl_c0": -1.41816e-7,
-    "inv_snl_c1": -0.0000303226,
-    "inv_snl_c2": 0.0010953,
-    "inv_snl_c3": -0.000176618,
-    "inv_snl_eff_cec": 98.2262,
-    "inv_snl_eff_euro": 98.0423,
-    "inv_snl_idcmax": 84.9267,
-    "inv_snl_mppt_hi": 800.0,
-    "inv_snl_mppt_low": 570.0,
+    "inv_snl_ac_voltage": 800.0,
+    "inv_snl_c0": -4.38534e-8,
+    "inv_snl_c1": -0.00000857136,
+    "inv_snl_c2": -0.000791432,
+    "inv_snl_c3": -0.000320828,
+    "inv_snl_eff_cec": 98.6909,
+    "inv_snl_eff_euro": 98.5767,
+    "inv_snl_idcmax": 213.33,
+    "inv_snl_mppt_hi": 1300.0,
+    "inv_snl_mppt_low": 860.0,
     "inv_snl_num_mppt": 1.0,
-    "inv_snl_paco": 60033.0,
-    "inv_snl_pdco": 61147.2,
-    "inv_snl_pnt": 0.9,
-    "inv_snl_pso": 148.792,
-    "inv_snl_vdcmax": 800.0,
-    "inv_snl_vdco": 720.0,
+    "inv_snl_paco": 226997.0,
+    "inv_snl_pdco": 230396.0,
+    "inv_snl_pnt": 5.21,
+    "inv_snl_pso": 443.342,
+    "inv_snl_vdcmax": 1300.0,
+    "inv_snl_vdco": 1080.0,
     "inv_tdc_cec_cg": [
         [
             1500.0,
@@ -74818,13 +75558,13 @@
         ]
     ],
     "inverter_costunits": 1.0,
-    "inverter_count": 7.0,
+    "inverter_count": 2.0,
     "inverter_model": 0.0,
-    "inverter_num_units": 7.0,
-    "inverter_power": 60.033,
-    "inverter_total": 29997.6,
-    "inverterarray_power": 420.231,
-    "inverterarray_power_w": 420231.0,
+    "inverter_num_units": 2.0,
+    "inverter_power": 226.997,
+    "inverter_total": 25122.1,
+    "inverterarray_power": 453.994,
+    "inverterarray_power_w": 453994.0,
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
     "is_btm": 1.0,
@@ -74854,8 +75594,8 @@
     "itc_sta_percent_maxvalue": [
         1e38
     ],
-    "land_area_capex": 3.24841,
-    "land_area_value": 3.24841,
+    "land_area_capex": 3.26453,
+    "land_area_value": 3.26453,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,
     "land_per_watt": 0.0,
@@ -74867,10 +75607,12 @@
     "landprep_percent": 0.0,
     "landprep_total": 0.0,
     "lat": 33.45,
-    "layout_warning": "Subarray 1 string voltage exceeds the inverter maximum rated voltage at reference conditions. Consider using fewer modules per string.\n",
+    "layout_warning": "Subarray 1 Vmp > Vdc_max\nSubarray 1 Vmp > Vmppt_high\nConsider decreasing the number of modules per string for Subarray(s) 1.\nMinimum MPPT voltage is different from value on inverter page: 860 Vdc.\nMaximum MPPT voltage is different from value on inverter page: 1300 Vdc.\nMaximum DC voltage is different from value on inverter page: 1300 Vdc.",
     "lbl_bifacial": "",
     "lib_is_bifacial": 0.0,
+    "lib_length": 1.559,
     "lib_manufacturer": "SunPower",
+    "lib_width": 1.046,
     "library_folder_list": "x",
     "library_paths": "",
     "load": [
@@ -92408,23 +93150,23 @@
     "load_user_forecast_data_psd": [
         0.0
     ],
-    "loan_rate": 4.0,
+    "loan_rate": 7.0,
     "loan_term": 25.0,
     "lon": -111.98,
     "mismatch_shown": 0.0,
     "module_area": 1.631,
-    "module_aspect_ratio": 1.7,
+    "module_aspect_ratio": 1.49044,
     "module_costunits": 0.0,
-    "module_length": 1.66514,
+    "module_length": 1.559,
     "module_model": 1.0,
     "module_name": "SunPower SPR-E19-310-COM",
-    "module_num_units": 1612.0,
+    "module_num_units": 1620.0,
     "module_power": 0.310149,
-    "module_total": 234981.0,
-    "module_width": 0.979496,
-    "modulearray_area": 2629.17,
-    "modulearray_power": 499.96,
-    "modulearray_power_w": 499960.0,
+    "module_total": 216050.0,
+    "module_width": 1.046,
+    "modulearray_area": 2642.22,
+    "modulearray_power": 502.441,
+    "modulearray_power_w": 502441.0,
     "mpeak": [
         234.676,
         173.422,
@@ -92444,10 +93186,10 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "num_enabled": 1.0,
-    "num_strings_total": 124.0,
+    "num_strings_total": 81.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [
-        10.0
+        6.28
     ],
     "om_batt_fixed_cost": [
         0.0
@@ -92460,7 +93202,7 @@
         0.0
     ],
     "om_capacity": [
-        18.0
+        22.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -92517,15 +93259,15 @@
     "peak_8": 260.336,
     "peak_9": 226.751,
     "peak_shaving_batt_dispatch_choice": 0.0,
-    "per_inverter": 0.06,
-    "per_module": 0.47,
+    "per_inverter": 0.05,
+    "per_module": 0.43,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.03,
     "permitting_percent": 0.0,
-    "permitting_total": 14998.8,
+    "permitting_total": 15073.2,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 1435030.0,
+    "property_assessed_value": 1309800.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -92569,10 +93311,11 @@
     ],
     "real_discount_rate": 6.4,
     "ref_conditions": "Total Irradiance = 1000 W/m2, Cell temp = 25 C",
+    "reopt_consider_outage": 0.0,
     "run_resiliency_calcs": 0.0,
     "sales_tax_percent": 100.0,
     "sales_tax_rate": 5.0,
-    "sales_tax_total": 55716.8,
+    "sales_tax_total": 53279.6,
     "sales_tax_value": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
@@ -92593,6 +93336,7 @@
     "sd11par_Voc0": 70.2144,
     "sd11par_alphaIsc": 0.00144911,
     "sd11par_area": 1.68,
+    "sd11par_aspect_ratio": 1.7,
     "sd11par_betaVoc": -0.169816,
     "sd11par_c1": 386.03,
     "sd11par_c2": 451.442,
@@ -92603,6 +93347,8 @@
     "sd11par_eff": 19.1848,
     "sd11par_gammaPmp": -0.29628,
     "sd11par_glass": 0.0,
+    "sd11par_module_length": 1.68997,
+    "sd11par_module_width": 0.9941,
     "sd11par_mounting": 0.0,
     "sd11par_n": 1.01273,
     "sd11par_nser": 96.0,
@@ -92626,6 +93372,7 @@
     "snl_aimp": -0.00038,
     "snl_aisc": 0.00059,
     "snl_area": 1.631,
+    "snl_aspect_ratio": 1.7,
     "snl_b": -0.075,
     "snl_b0": 1.0,
     "snl_b1": -0.002438,
@@ -92653,8 +93400,10 @@
     "snl_material": "c-Si",
     "snl_mbvmp": 0.0,
     "snl_mbvoc": 0.0,
+    "snl_module_length": 1.66514,
     "snl_module_name": "SunPower SPR-305-WHT [2007 (E)]",
     "snl_module_structure": 0.0,
+    "snl_module_width": 0.979496,
     "snl_n": 1.131,
     "snl_n_cells": 96.0,
     "snl_parallel_cells": 1.0,
@@ -92693,12 +93442,13 @@
     "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "spe_a": -3.56,
     "spe_area": 0.74074,
+    "spe_aspect_ratio": 1.7,
     "spe_b": -0.075,
     "spe_bifacial_ground_clearance_height": 1.0,
     "spe_bifacial_transmission_factor": 0.013,
     "spe_bifaciality": 0.7,
     "spe_dT": 3.0,
-    "spe_data_filename": "<invalid>",
+    "spe_data_filename": "",
     "spe_eff0": 19.0,
     "spe_eff1": 19.0,
     "spe_eff2": 19.0,
@@ -92706,7 +93456,9 @@
     "spe_eff4": 19.0,
     "spe_fd": 1.0,
     "spe_is_bifacial": 0.0,
+    "spe_module_length": 1.12217,
     "spe_module_structure": 0.0,
+    "spe_module_width": 0.660098,
     "spe_power": 140.741,
     "spe_rad0": 200.0,
     "spe_rad1": 400.0,
@@ -92735,10 +93487,10 @@
     "subarray1_electrical_mismatch": 0.0,
     "subarray1_gcr": 0.3,
     "subarray1_gcr_ref": 0.3,
-    "subarray1_land_area": 13145.9,
+    "subarray1_land_area": 13211.1,
     "subarray1_mismatch_loss": 2.0,
     "subarray1_mod_orient": 0.0,
-    "subarray1_modules_per_string": 13.0,
+    "subarray1_modules_per_string": 20.0,
     "subarray1_monthly_tilt": [
         40.0,
         40.0,
@@ -92755,13 +93507,13 @@
     ],
     "subarray1_mppt_input": 1.0,
     "subarray1_nameplate_loss": 0.0,
-    "subarray1_nmodules": 1612.0,
+    "subarray1_nmodules": 1620.0,
     "subarray1_nmodx": 7.0,
     "subarray1_nmody": 2.0,
-    "subarray1_nstrings": 124.0,
-    "subarray1_rack_shading": 0.0,
+    "subarray1_nstrings": 81.0,
+    "subarray1_rack_shading": 4.0,
     "subarray1_rear_soiling_loss": 0.0,
-    "subarray1_ref_nmodules": 1612.0,
+    "subarray1_ref_nmodules": 1620.0,
     "subarray1_rotlim": 45.0,
     "subarray1_shade_mode": 0.0,
     "subarray1_shading": 292931.0,
@@ -92804,8 +93556,8 @@
         5.0
     ],
     "subarray1_soiling_annual_average": 5.0,
-    "subarray1_string_vmp": 711.1,
-    "subarray1_string_voc": 837.2,
+    "subarray1_string_vmp": 1094.0,
+    "subarray1_string_voc": 1288.0,
     "subarray1_tilt": 20.0,
     "subarray1_tilt_eq_lat": 0.0,
     "subarray1_track_mode": 0.0,
@@ -92820,7 +93572,7 @@
     "subarray2_enable": 0.0,
     "subarray2_gcr": 0.3,
     "subarray2_gcr_ref": 0.3,
-    "subarray2_land_area": 0.0,
+    "subarray2_land_area": 8.155,
     "subarray2_mismatch_loss": 2.0,
     "subarray2_mod_orient": 0.0,
     "subarray2_modules_per_string": 1.0,
@@ -92889,8 +93641,8 @@
         5.0
     ],
     "subarray2_soiling_annual_average": 5.0,
-    "subarray2_string_vmp": 0.0,
-    "subarray2_string_voc": 0.0,
+    "subarray2_string_vmp": 54.7,
+    "subarray2_string_voc": 64.4,
     "subarray2_tilt": 20.0,
     "subarray2_tilt_eq_lat": 0.0,
     "subarray2_track_mode": 0.0,
@@ -92905,7 +93657,7 @@
     "subarray3_enable": 0.0,
     "subarray3_gcr": 0.3,
     "subarray3_gcr_ref": 0.3,
-    "subarray3_land_area": 0.0,
+    "subarray3_land_area": 8.155,
     "subarray3_mismatch_loss": 2.0,
     "subarray3_mod_orient": 0.0,
     "subarray3_modules_per_string": 1.0,
@@ -92974,8 +93726,8 @@
         5.0
     ],
     "subarray3_soiling_annual_average": 5.0,
-    "subarray3_string_vmp": 0.0,
-    "subarray3_string_voc": 0.0,
+    "subarray3_string_vmp": 54.7,
+    "subarray3_string_voc": 64.4,
     "subarray3_tilt": 20.0,
     "subarray3_tilt_eq_lat": 0.0,
     "subarray3_track_mode": 0.0,
@@ -92990,7 +93742,7 @@
     "subarray4_enable": 0.0,
     "subarray4_gcr": 0.3,
     "subarray4_gcr_ref": 0.3,
-    "subarray4_land_area": 0.0,
+    "subarray4_land_area": 8.155,
     "subarray4_mismatch_loss": 2.0,
     "subarray4_mod_orient": 0.0,
     "subarray4_modules_per_string": 1.0,
@@ -93059,37 +93811,38 @@
         5.0
     ],
     "subarray4_soiling_annual_average": 5.0,
-    "subarray4_string_vmp": 0.0,
-    "subarray4_string_voc": 0.0,
+    "subarray4_string_vmp": 54.7,
+    "subarray4_string_voc": 64.4,
     "subarray4_tilt": 20.0,
     "subarray4_tilt_eq_lat": 0.0,
     "subarray4_track_mode": 0.0,
     "subarray4_tracking_loss": 0.0,
-    "subtotal_direct": 1071480.0,
-    "system_capacity": 499.96,
+    "subtotal_direct": 1024610.0,
+    "system_capacity": 502.441,
     "system_use_lifetime_output": 1.0,
-    "total_battery_indirect_cost": 52995.8,
-    "total_dc_inverter_capacity": 428.03,
-    "total_direct_cost": 1114340.0,
-    "total_indirect_cost": 264979.0,
-    "total_installed_cost": 1435030.0,
-    "total_inverter_capacity": 420.231,
-    "total_land_area": 3.24841,
-    "total_module_area": 2629.17,
-    "total_modules": 1612.0,
-    "total_system_indirect_cost": 211983.0,
-    "total_system_installed_cost": 970928.0,
+    "total_battery_indirect_cost": 38185.5,
+    "total_dc_inverter_capacity": 460.792,
+    "total_direct_cost": 1065590.0,
+    "total_indirect_cost": 190928.0,
+    "total_installed_cost": 1309800.0,
+    "total_inverter_capacity": 453.994,
+    "total_land_area": 3.26453,
+    "total_module_area": 2642.22,
+    "total_modules": 1620.0,
+    "total_system_indirect_cost": 152742.0,
+    "total_system_installed_cost": 860506.0,
     "transformer_load_loss": 0.0,
     "transformer_no_load_loss": 0.0,
     "transformer_rating": 0.0,
     "transmission_loss": 0.0,
     "tz": -7.0,
-    "ui_ac_capacity": 0.420231,
+    "ui_ac_capacity": 0.453994,
     "ui_annual_load": 0.0,
-    "ui_array_land_area_acres": 3.24841,
-    "ui_array_land_area_ha": 1.31459,
+    "ui_array_land_area_acres": 3.26453,
+    "ui_array_land_area_ha": 1.32111,
     "ui_array_land_area_multiplier": 1.0,
-    "ui_batt_life_model": 1.0,
+    "ui_aspect_ratio": 1.7,
+    "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
     "ui_copy_batt_discharge_percent_2": 25.0,
     "ui_copy_batt_discharge_percent_3": 25.0,
@@ -93099,28 +93852,28 @@
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
     "ui_land_area_per_mw": 0.0,
-    "ui_loan_amount": 861019.0,
-    "ui_net_capital_cost": 1435030.0,
-    "ui_pv_capacity": 499.96,
+    "ui_loan_amount": 785879.0,
+    "ui_net_capital_cost": 1309800.0,
+    "ui_pv_capacity": 502.441,
     "ui_step_minutes": 60.0,
-    "ui_subarray1_length_side": 3.33029,
-    "ui_subarray1_nrows": 115.143,
-    "ui_subarray1_row_spacing": 11.101,
-    "ui_subarray2_length_side": 3.33029,
+    "ui_subarray1_length_side": 3.118,
+    "ui_subarray1_nrows": 115.714,
+    "ui_subarray1_row_spacing": 10.3933,
+    "ui_subarray2_length_side": 3.118,
     "ui_subarray2_nrows": 0.0,
-    "ui_subarray2_row_spacing": 11.101,
-    "ui_subarray3_length_side": 3.33029,
+    "ui_subarray2_row_spacing": 10.3933,
+    "ui_subarray3_length_side": 3.118,
     "ui_subarray3_nrows": 0.0,
-    "ui_subarray3_row_spacing": 11.101,
-    "ui_subarray4_length_side": 3.33029,
+    "ui_subarray3_row_spacing": 10.3933,
+    "ui_subarray4_length_side": 3.118,
     "ui_subarray4_nrows": 0.0,
-    "ui_subarray4_row_spacing": 11.101,
-    "ui_total_land_area_ha": 1.31459,
-    "ui_total_module_area": 2629.17,
-    "ui_total_module_area_acres": 0.649682,
-    "ui_total_module_area_ha": 0.262917,
+    "ui_subarray4_row_spacing": 10.3933,
+    "ui_total_land_area_ha": 1.32111,
+    "ui_total_module_area": 2642.22,
+    "ui_total_module_area_acres": 0.652906,
+    "ui_total_module_area_ha": 0.264222,
     "ui_use_acre_per_mw": 0.0,
-    "ui_wacc": 5.38728,
+    "ui_wacc": 6.70974,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
@@ -93600,7 +94353,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 0.0,
+    "ur_dc_is_shown": 1.0,
     "ur_dc_sched_weekday": [
         [
             2.0,

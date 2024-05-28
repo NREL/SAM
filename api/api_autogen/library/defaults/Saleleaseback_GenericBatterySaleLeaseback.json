@@ -53,16 +53,16 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 20000
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [10.000000],
+			"om_batt_capacity_cost": [5.300000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
-			"om_batt_replacement_cost": [282.000000],
+			"om_batt_replacement_cost": [323.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [25.000000],
 			"om_capacity_escal": 0,
@@ -238,7 +238,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 4.75563e+06,
+			"construction_financing_cost": 6.9138e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -251,7 +251,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 2.53634e+08
+			"total_installed_cost": 2.63383e+08
 		},
 		"UtilityBill": {
 		},
@@ -261,7 +261,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 8.38445e+07
+			"battery_total_cost_lcos": 9.16799e+07
 		},
 		"ChargesByMonth": {
 		},
@@ -269,10 +269,12 @@
 			"batt_computed_bank_capacity": 240000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 282,
+			"battery_per_kWh": 323,
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 0
+		},
+		"FuelCell": {
 		}
 	}
 }

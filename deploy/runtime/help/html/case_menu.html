@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?case_menu.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -541,6 +536,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Change model</span></p>
 <p class="p_Definition"><span class="f_Definition">Change the performance model, financial model, or both for the current case.</span></p>
 <p class="p_Definition"><span class="f_Definition">When you change one model, SAM retains the input values of the other model and assigns default values to the inputs of the model you changed. For example, if you change a PVWatts/Residential case to Detailed Photovoltaic/Residential, SAM keeps the Residential financial model's inputs, and changes the performance model to detailed photovoltaic with its default values.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> Change Model does not preserve inputs between hybrid and non-hybrid, or between hybrid models because of the way input variables are defined for hybrid models. This will be fixed in an update.</span></p>
 <p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Reset inputs to default values</span></p>
 <p class="p_Definition"><span class="f_Definition">Replaces all inputs variable values with default values.</span></p>
 <p class="p_Term" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_Term">Excel exchange</span></p>

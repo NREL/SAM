@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?mslf_power_cycle.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -551,7 +546,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">If your system includes an auxiliary boiler, choose a fossil dispatch mode and define the fossil fill fractions as described below.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Aux heater outlet set temp, °C</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The temperature set point for the auxiliary heaters for the fossil backup system.</span></p>
-<p style="page-break-inside: avoid; page-break-after: avoid; margin: 0 0 0.3750rem 0.7500rem;"><span style="font-weight: bold;">Fossil dispatch mode</span></p>
+<p style="page-break-inside: avoid; page-break-after: avoid; margin: 0 0 0.3750rem 0.7500rem;"><span style="font-family: Verdana,Geneva,Arial,sans-serif; font-weight: bold;">Fossil dispatch mode</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The fossil dispatch mode determines how the optional auxiliary fossil (natural gas) backup boiler is configured and how it operates. Use the </span><span class="f_CHInterfaceElement">fossil fill fraction</span><span class="f_VariableDescription"> input under </span><span class="f_CHInterfaceElement">Dispatch Control</span><span class="f_VariableDescription"> on the <a href="mslf_thermal_storage.html" class="topiclink">Thermal Storage</a> page to determine when the auxiliary boiler operates. Use the fossil backup boiler LHV efficiency value under Plant Design to define the boiler's lower heating value efficiency.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">If your system has an auxiliary fossil backup boiler, and you want to account for fuel costs in the financial model, you should assign a fossil fuel cost under Operation and Maintenance costs on the <a href="cc_linear_fresnel.html" class="topiclink">Installation Costs</a> page.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If the </span><span class="f_CHInterfaceElement">Fossil fill fraction</span><span class="f_Note"> under </span><span class="f_CHInterfaceElement">Dispatch Control</span><span class="f_Note"> on the Thermal Storage page is zero for all periods, the system does not include an auxiliary fossil backup boiler, and you can ignore the fossil dispatch mode input.</span></p>
