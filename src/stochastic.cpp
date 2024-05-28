@@ -241,7 +241,8 @@ bool LHS::Exec()
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory( workdir );
 	wxString execstr =  wxString('"' + lhsexe + "\" SAMLHS.LHI"); 
-	bool exe_ok = ( 0 == wxExecute( execstr, wxEXEC_SYNC|wxEXEC_HIDE_CONSOLE ) );
+//    bool exe_ok = ( 0 == wxExecute( execstr, wxEXEC_SYNC|wxEXEC_HIDE_CONSOLE ) );
+    bool exe_ok = ( 0 == system( execstr.c_str() ) );
 	wxSetWorkingDirectory(curdir);
 	exe_ok = true;
 	
