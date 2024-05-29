@@ -62,9 +62,9 @@ jobs:
           echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
 
     - name: Get branch name for push
-      if: ${{ github.event_name != 'pull_request' }}
+      if: ${{ github.event_name == 'push' }}
       run:  |
-          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
+        echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
     
     - name: Determine branches for other repos
       shell: bash {0}
@@ -212,7 +212,7 @@ jobs:
     - name: Get branch name for push
       if: ${{ github.event_name == 'push' }}
       run:  |
-          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
+          echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
 
     - name: Determine branches for other repos
       shell: bash {0}
