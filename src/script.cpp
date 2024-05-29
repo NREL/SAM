@@ -504,6 +504,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 		}
 
 		Simulation *sim = new Simulation( cc, wxString::Format("run %d", (int)i+1 ) );
+		sim->Clear(); // fix SAM issue #1693
 		sg_parSims.push_back( sim );
 
 		for( lk::varhash_t::iterator it = run.hash()->begin();

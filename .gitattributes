@@ -14,7 +14,10 @@ deploy/runtime/defaults/*.txt text eol=lf
 *.c text
 *.cpp text
 *.h text
+*.csv text
 *.lk text
+*.json text
+
 
 # Ensure those won't be messed up with
 *.jpg binary
