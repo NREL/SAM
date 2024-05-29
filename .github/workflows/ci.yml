@@ -56,11 +56,15 @@ jobs:
     - name: Get libc version
       run: ldd --versio
 
-    - name: Get branch name
+    - name: Get branch name for pull request
+      if: ${{ github.event_name == 'pull_request' }}
       run:  |
-          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
-          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
-          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+          echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
+
+    - name: Get branch name for push
+      if: ${{ github.event_name != 'pull_request' }}
+      run:  |
+          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
     
     - name: Determine branches for other repos
       shell: bash {0}
@@ -200,11 +204,15 @@ jobs:
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
     
-    - name: Get branch name
+    - name: Get branch name for pull request
+      if: ${{ github.event_name == 'pull_request' }}
       run:  |
-          # Short name for current branch. base ref is set on push builds, head ref is for pull request builds
-          if [ -z ${GITHUB_HEAD_REF+x} ]; then GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}; else GIT_BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}; fi
-          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+          echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
+
+    - name: Get branch name for push
+      if: ${{ github.event_name == 'push' }}
+      run:  |
+          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
 
     - name: Determine branches for other repos
       shell: bash {0}
