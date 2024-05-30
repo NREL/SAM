@@ -38,6 +38,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/scrolwin.h>
 
 class wxTextCtrl;
+class wxCheckBox;
 class wxSnapLayout;
 class Case;
 class wxExtGridCtrl;
@@ -52,21 +53,29 @@ class StochasticData;
 class UncertaintySource : public wxPanel
 {
 public:
-	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, wxString* initial_value);
+	UncertaintySource(wxWindow* parent, std::string& source_label, std::string& source_info, wxString* initial_value, int* ienabled);
 	void OnEdit(wxCommandEvent& evt);
 //	void PopulateDistInfoText(int i, InputDistDialog& dlg);
 	void PopulateDistInfoText();
 	void OnToolTip(wxCommandEvent& evt);
+	void OnEnable(wxCommandEvent& evt);
+	void UIUpdate();
 
 	// add setter and getter
 	wxString *GetInfoDistDialog() { return m_infoDistDialog; }
 	void SetInfoDistDialog(wxString* _infoDistDialog);
 
+	int *GetEnabled() const { return m_piEnable; }
+	void SetEnabled(int* pEnabled);
+
 private:
 	wxString* m_infoDistDialog;
+	int* m_piEnable;
+	wxCheckBox* m_chkEnable;
 	wxStaticText* m_source;
 	wxTextCtrl* m_distInfo;
 	AFToolTipCtrl* m_tt;
+	wxButton* m_btnEdit;
 	std::string m_label; // information icon - tool tip
 	std::string m_info; // information icon - tool tip
 	DECLARE_EVENT_TABLE();
@@ -110,7 +119,7 @@ public:
 	StochasticData UncertaintySources;
 	wxString WeatherFileFolder;
 	double pValue;
-
+	wxArrayInt UncertaintySourcesEnabled;
 };
 
 

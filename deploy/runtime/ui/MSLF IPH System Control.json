@@ -2575,34 +2575,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "disp_wlim_maxspec": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Max. net power to the grid",
-            "Units": "MWe",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Dispatch TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "is_dispatch": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2612,32 +2584,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_wlim_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2665,10 +2611,6 @@
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
         "//",
-        "\r",
-        "equations{ 'is_wlim_design' } = define() {\r",
-        "\treturn ${is_dispatch};\r",
-        "};\r",
         "\r",
         "// Just UI input aggregator\r",
         "equations{ 'aux_array' } = define() {\r",

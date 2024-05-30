@@ -2577,32 +2577,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_wlim_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Enable maximum net power limit",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "pb_fixed_par": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2638,21 +2612,6 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 31536000.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "wlim_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Max. net power limit by time step",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
