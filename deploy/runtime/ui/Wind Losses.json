@@ -1560,7 +1560,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Turbine performance losses represent the amount of energy that is not produced by a wind turbine at a given wind speed compared to the OEM power curve."
+                    "String": "Environmental losses account for performance degradation and shut downs due to environmental factors such as weather, ambient temperature, and tree growth."
                 },
                 "TextColour": {
                     "Type": 4.0,

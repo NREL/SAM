@@ -1735,10 +1735,16 @@ static void fcall_xl_set( lk::invoke_t &cxt )
 			wxArrayString list;
 			for( size_t i=0;i<cxt.arg(1).length();i++ )
 				list.Add( cxt.arg(1).index( i )->deref().as_string() );
-			xl->Excel().SetNamedRangeArray( cxt.arg(2).as_string(), list );
+			if (!xl->Excel().SetNamedRangeArray(cxt.arg(2).as_string(), list)) {
+				cxt.error(xl->Excel().GetLastError());
+			}
+				
 		}
-		else if ( cxt.arg_count() == 3 )
-			xl->Excel().SetNamedRangeValue( cxt.arg(2).as_string(), cxt.arg(1).as_string() );
+		else if (cxt.arg_count() == 3) {
+			if (!xl->Excel().SetNamedRangeValue(cxt.arg(2).as_string(), cxt.arg(1).as_string())) {
+				cxt.error(xl->Excel().GetLastError());
+			}
+		}
 	}
 	else
 		cxt.error( "invalid xl-obj-ref" );
