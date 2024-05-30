@@ -1628,6 +1628,9 @@
     "disp_rsu_cost_rel": 1.4,
     "disp_time_weighting": 0.999,
     "disp_timeout": 5.0,
+    "dispatch_series": [
+        0.0
+    ],
     "dt_cold": 5.0,
     "dt_hot": 5.0,
     "electricity_rate": 0.06,
@@ -1988,6 +1991,7 @@
     "in_time_step": 0.0,
     "init_hot_htf_percent": 30.0,
     "is_advanced": 0.0,
+    "is_dispatch": 0.0,
     "is_hx": 0.0,
     "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
