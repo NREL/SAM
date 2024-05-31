@@ -380,6 +380,12 @@ function setup_iph_lcoefcr_cost_pages() // LCOE calculator will not work with to
            { 'sidebar'='Financial Parameters', 'help'='fin_lcoh'} );
 }
 
+function setup_iph_lcoefcr_cost_pages_no_elec() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
+{
+  addpage( [['Financial LCOE Calc with Costs']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_lcoh'} );
+}
+
 function setup_commercial_pages( mode ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -943,7 +949,8 @@ setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr',
 setup_cst_physical_trough_pages();
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
-setup_iph_lcoefcr_cost_pages();
+addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Electricity Rates', 'help'='tod_factors' });  
+setup_iph_lcoefcr_cost_pages_no_elec();
 
 setconfig('Physical Trough IPH', 'Single Owner');
 setmodules( ['trough_physical_iph', 'singleowner']);	// 'iph_to_lcoefcr', 
