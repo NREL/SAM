@@ -38,6 +38,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/filename.h>
 #include <wx/progdlg.h>
 #include <wx/dir.h>
+#include <wx/stdpaths.h>
+#include <wx/arrstr.h>
 
 #include <wex/metro.h>
 #include <wex/utils.h>
@@ -85,8 +87,10 @@ void LHS::SeedVal(int sv)
 
 bool LHS::Exec()
 {
-	wxString workdir(wxFileName::GetTempDir());
-	
+//    wxString workdir(wxFileName::GetTempDir());
+    auto stdPaths = wxStandardPaths::Get();
+    wxString workdir(stdPaths.GetUserDataDir());
+
 	wxString lhsexe( SamApp::GetRuntimePath() + "/bin/" + wxString(LHSBINARY) );
 
 	if (!wxFileExists(lhsexe))
@@ -240,9 +244,16 @@ bool LHS::Exec()
 	// run the executable synchronously
 	wxString curdir = wxGetCwd();
 	wxSetWorkingDirectory( workdir );
-	wxString execstr =  wxString('"' + lhsexe + "\" SAMLHS.LHI"); 
-//    bool exe_ok = ( 0 == wxExecute( execstr, wxEXEC_SYNC|wxEXEC_HIDE_CONSOLE ) );
-    bool exe_ok = ( 0 == system( execstr.c_str() ) );
+//    wxString execstr =  wxString("\"" + lhsexe + "\" \"" + workdir + "/SAMLHS.LHI\"");
+    wxString execstr =  wxString("\"" + lhsexe + "\" SAMLHS.LHI");
+//    wxMessageBox(   execstr);
+    
+    wxArrayString stdOut, stdErr;
+    bool exe_ok = ( 0 == wxExecute( execstr, stdOut, stdErr, wxEXEC_SYNC|wxEXEC_HIDE_CONSOLE ) );
+//    bool exe_ok = ( 0 == system( execstr.c_str() ) );
+    
+    wxMessageBox("stdOut = " + wxJoin(stdOut, ';'));
+    wxMessageBox("stdErr = " + wxJoin(stdErr, ';'));
 	wxSetWorkingDirectory(curdir);
 	exe_ok = true;
 	
