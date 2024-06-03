@@ -35,6 +35,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <wx/dir.h>
 #include <wx/textctrl.h>
+#include <wx/checkbox.h>
 #include <wx/stattext.h>
 #include <wx/filename.h>
 #include <wx/hyperlink.h>
@@ -129,7 +130,8 @@ PVUncertaintyForm::PVUncertaintyForm( wxWindow *parent, Case *cc )
 
 	for (size_t i = 0; i < sourceinfo.size(); i++) {
         wxString distInfo = std::get<2>(sourceinfo[i]);
-		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), &distInfo));
+		int iEnabled = 1;
+		m_uncertaintySources.push_back(new UncertaintySource(this, std::get<0>(sourceinfo[i]), std::get<1>(sourceinfo[i]), &distInfo, &iEnabled));
 		sizer_inputs->Add(m_uncertaintySources[i], 0, wxALL|wxEXPAND, 0);
 		m_sd_defaults.InputDistributions.push_back(std::get<2>(sourceinfo[i]));
 	}
@@ -193,12 +195,23 @@ void PVUncertaintyForm::UpdateFromSimInfo()
 	m_puser->SetValue(m_data.pValue);
 
 
-	if (m_data.UncertaintySources.InputDistributions.Count() < 1)
+	if (m_data.UncertaintySources.InputDistributions.Count() < 1) {
 		m_data.UncertaintySources = m_sd_defaults;
+	}
+
+	size_t N = m_sd_defaults.InputDistributions.size();
+	if (m_data.UncertaintySourcesEnabled.size() != N) {
+		m_data.UncertaintySourcesEnabled.clear();
+		for (size_t i = 0; i < N; i++)
+			m_data.UncertaintySourcesEnabled.push_back(true);
+	}
+
 
 	// update uncertainty sources
-	for (size_t i = 0; i < m_data.UncertaintySources.InputDistributions.Count() && i < m_uncertaintySources.size(); i++)
-		m_uncertaintySources[i]->SetInfoDistDialog(&m_data.UncertaintySources.InputDistributions[i]);
+	for (size_t i = 0; i < m_data.UncertaintySources.InputDistributions.Count() && i < m_uncertaintySources.size(); i++) {
+		m_uncertaintySources[i]->SetInfoDistDialog(&m_data.UncertaintySources.InputDistributions[i]); // hmm... a little unsafe if dynamically changing
+		m_uncertaintySources[i]->SetEnabled(&m_data.UncertaintySourcesEnabled[i]);
+	}
 }
 
 void PVUncertaintyForm::OnSetPValue(wxCommandEvent&)
@@ -259,6 +272,26 @@ void PVUncertaintyForm::ClearPlots()
 
 void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 {
+
+	// change sample size from default of 100 to 1000 must change in header m_pUS
+	m_data.UncertaintySources.N = 1000;
+	wxArrayString errors;
+
+	StochasticData sd;
+	sd.N = m_data.UncertaintySources.N;
+	sd.Seed = m_data.UncertaintySources.Seed;
+	for (size_t i = 0; i < m_data.UncertaintySourcesEnabled.size() && i < m_data.UncertaintySources.InputDistributions.size(); i++) {
+		if (m_data.UncertaintySourcesEnabled[i])
+			sd.InputDistributions.push_back(m_data.UncertaintySources.InputDistributions[i]);
+	}
+	// check that at least one uncertainty is enabled per SAM pull request #1753
+	if (sd.InputDistributions.size() < 1) {
+		wxMessageBox("Uncertainty simulations require at least one distribution.\nPlease enable at least one uncertainty source.", "No Uncertainty Sources Enabled", wxICON_INFORMATION);
+		return;
+	}
+
+
+
 
 	std::vector<unsigned short> years;
 	wxArrayString folder_files;
@@ -433,20 +466,11 @@ void PVUncertaintyForm::OnSimulate( wxCommandEvent & )
 	// end of weather file simulations
 
 
+	// Uncertainty Sources simulation
 	matrix_t<double> output_stats;
 
-    /*
-	// generate samples
-	// update to new distributions
-	for (size_t i = 0; i < m_uncertaintySources.size(); i++) {
-		m_data.UncertaintySources.InputDistributions[i] = m_uncertaintySources[i]->GetInfoDistDialog();
-	}
-    */
-    // change sample size from default of 100 to 1000 must change in header m_pUS
-	m_data.UncertaintySources.N = 1000;
-	wxArrayString errors;
-
-	if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
+	//if (!ComputeLHSInputVectors(m_data.UncertaintySources, output_stats, &errors))
+	if (!ComputeLHSInputVectors(sd, output_stats, &errors))
 	{
 		wxShowTextMessageDialog("An error occurred while computing the samples using LHS:\n\n" + wxJoin(errors, '\n'));
 		return;
@@ -679,18 +703,25 @@ void PVUncertaintyData::Copy(PVUncertaintyData& pvd)
 	UncertaintySources = pvd.UncertaintySources;
 	WeatherFileFolder = pvd.WeatherFileFolder;
 	pValue = pvd.pValue;
+	UncertaintySourcesEnabled = pvd.UncertaintySourcesEnabled;
 }
 
 void PVUncertaintyData::Write(wxOutputStream& _o)
 {
 	wxDataOutputStream out(_o);
 	out.Write8(0x9f);
-	out.Write8(1);
+	out.Write8(2); // version 2  - added UncertaintySourcesEnabled per SAM issue 1362
 
 	UncertaintySources.Write(_o);
 
 	out.WriteString(WeatherFileFolder);
 	out.WriteDouble(pValue);
+
+	// version 2 and on
+	size_t N = UncertaintySourcesEnabled.size();
+	out.Write32(N);
+	for (size_t i = 0; i < N; i++)
+		out.Write8(UncertaintySourcesEnabled[i]);
 
 	out.Write8(0x9f);
 }
@@ -699,12 +730,26 @@ bool PVUncertaintyData::Read(wxInputStream& _i)
 {
 	wxDataInputStream in(_i);
 	wxUint8 code = in.Read8();
-	in.Read8(); // ver
+	wxUint8 ver = in.Read8(); // version
 
 	UncertaintySources.Read(_i);
 
 	WeatherFileFolder = in.ReadString();
 	pValue = in.ReadDouble();
+
+	if (ver > 1) {
+		auto N = in.Read32();
+		for (size_t i = 0; i < N; i++) {
+			auto int_en = in.Read8();
+			UncertaintySourcesEnabled.push_back(int_en);
+		}
+	}
+	else { // setup UncertaintySourcesEnabled with all true
+		size_t N = UncertaintySources.InputDistributions.size();
+		for (size_t i = 0; i < N; i++) {
+			UncertaintySourcesEnabled.push_back(1);
+		}
+	}
 
 	return in.Read8() == code;
 }
@@ -713,19 +758,26 @@ bool PVUncertaintyData::Read(wxInputStream& _i)
 
 enum {
   ID_btnEditUncertaintySourceDist = wxID_HIGHEST+414,
-  ID_ttMouseDown
+  ID_ttMouseDown,
+  ID_chkEnable
 };
 
 BEGIN_EVENT_TABLE( UncertaintySource, wxPanel )
     EVT_BUTTON( ID_btnEditUncertaintySourceDist, UncertaintySource::OnEdit)
     EVT_TOOLTIPCTRL(ID_ttMouseDown, UncertaintySource::OnToolTip)
+	EVT_CHECKBOX(ID_chkEnable, UncertaintySource::OnEnable)
 END_EVENT_TABLE()
 
-UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info)
+UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label, std::string& source_info, wxString* initial_value, int* iEnabled): wxPanel( parent ), m_infoDistDialog(initial_value), m_label(source_label), m_info(source_info), m_piEnable(iEnabled)
 {
 //	m_infoDistDialog = "1:10:1:0:0"; // factor with a normal distribution with mean of 10% and std dev 1%
 
 	wxBoxSizer *sizer_inputs = new wxBoxSizer( wxHORIZONTAL );
+
+	// SAM issue #1362
+	m_chkEnable = new wxCheckBox(this, ID_chkEnable, wxEmptyString);
+	m_chkEnable->SetValue(true); // on be default
+	sizer_inputs->Add(m_chkEnable, 0, wxALL | wxALIGN_TOP, 1);
 
     m_source =  new wxStaticText(this, wxID_ANY, wxString(source_label) );
     m_source->SetSizeHints(250, 24);
@@ -740,9 +792,11 @@ UncertaintySource::UncertaintySource(wxWindow *parent, std::string& source_label
     m_distInfo->SetSizeHints(800, 24);
     sizer_inputs->Add(m_distInfo,0, wxALL|wxALIGN_TOP,1);
 
-    sizer_inputs->Add( new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT), 0, wxALL|wxALIGN_TOP);
+	m_btnEdit = new wxButton(this, ID_btnEditUncertaintySourceDist, "Edit...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+    sizer_inputs->Add( m_btnEdit, 0, wxALL|wxALIGN_TOP);
 
 	PopulateDistInfoText();
+	UIUpdate();
 
     SetSizer(sizer_inputs);
 }
@@ -840,6 +894,35 @@ void UncertaintySource::PopulateDistInfoText()
 		}
 	}
 }
+
+void UncertaintySource::SetEnabled(int* pEnabled)
+{
+	m_piEnable = pEnabled;
+	m_chkEnable->SetValue(*m_piEnable == 1);
+	UIUpdate();
+}
+
+void UncertaintySource::UIUpdate()
+{
+	bool benabled = m_chkEnable->IsChecked();
+	if (benabled)
+		*m_piEnable = 1;
+	else
+		*m_piEnable = 0;
+	m_source->Enable(benabled);
+	m_distInfo->Enable(benabled);
+	m_tt->Enable(benabled);
+	m_btnEdit->Enable(benabled);
+}
+
+void UncertaintySource::OnEnable(wxCommandEvent& evt)
+{
+	UIUpdate();
+	// clear results
+	if (PVUncertaintyForm* uf = static_cast<PVUncertaintyForm*>(this->GetParent()))
+		uf->ClearPlots();
+}
+
 
 void UncertaintySource::OnToolTip(wxCommandEvent &evt)
 {
