@@ -6502,11 +6502,11 @@
         "use_abs_or_rel_mdot_limit": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Use absolute or relative mass flow limit",
             "Units": "",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
