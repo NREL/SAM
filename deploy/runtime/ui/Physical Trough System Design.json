@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -99,7 +99,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1708,7 +1708,7 @@
         "COPY_field_thermal_output": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal power w/ no defocus constraints",
+            "Label": "Actual field thermal power",
             "Units": "MWt",
             "Group": "System Design",
             "IndexLabels": "",
@@ -1721,7 +1721,7 @@
         "COPY_field_thermal_output_ideal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Actual field thermal power",
+            "Label": "Field thermal power w/ no defocus constraints",
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",
