@@ -1717,7 +1717,7 @@
         "\r",
         "\t//#ssc_auto_exec(obj, 'trough_physical_iph', 2);\r",
         "\t\r",
-        "\tret_d = ssc_dump(obj, 'physical_trough_IPH_v2_mimo_ssc_auto_exec.lk');\r",
+        "\t//ret_d = ssc_dump(obj, 'physical_trough_IPH_v2_mimo_ssc_auto_exec.lk');\r",
         "\tret = ssc_exec(obj, 'trough_physical_iph');\r",
         "\t\r",
         "\t\r",
