@@ -58,7 +58,7 @@ version_upgrade{'2024.5.28'} = define() {
 	// Physical Trough Model Changes
 	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
 	{
-		message('We modified the trough loop min and max mass flow rate limits to use either absolute or relative values.'
+		message('We modified the trough loop min and max mass flow rate limits to allow either absolute or relative values.'
 		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
 		        , 'warning');
 		        
@@ -66,6 +66,18 @@ version_upgrade{'2024.5.28'} = define() {
 			value('f_htfmin', 0.25);
 			value('f_htfmax', 1.2);
 			
+	}
+	
+	// Linear Fresnel Model Changes
+	if(cfg.tech == 'MSLF' || cfg.tech == 'MSLF IPH')
+	{
+		message('We modified the linear fresnel loop min and max mass flow rate limits to allow either absolute or relative values.'
+		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 0);
+			value('f_htfmin', 0.25);
+			value('f_htfmax', 1.2);
 	}
 };
 
