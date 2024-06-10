@@ -1028,6 +1028,7 @@
         6.0,
         6.0
     ],
+    "W_dot_pump_SS": 0.0,
     "accept_init": 0.0,
     "accept_loc": 1.0,
     "accept_mode": 0.0,
@@ -1620,6 +1621,7 @@
     "custom_sf_pipe_sizes": 0.0,
     "custom_tes_p_loss": 0.0,
     "custom_tes_pipe_sizes": 0.0,
+    "dP_sf_SS": 0.0,
     "direct_subtotal": 7953700.0,
     "dispatch_series": [
         0.0

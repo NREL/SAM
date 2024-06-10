@@ -1281,6 +1281,7 @@
         6.0,
         6.0
     ],
+    "W_dot_pump_SS": 0.0,
     "W_rad_tubes": 0.05,
     "accept_init": 0.0,
     "accept_loc": 1.0,
@@ -1829,6 +1830,7 @@
     "custom_tes_pipe_sizes": 0.0,
     "cycle_cutoff_frac": 0.2,
     "cycle_max_frac": 1.0,
+    "dP_sf_SS": 0.0,
     "dT_cw_ref": 10.0,
     "direct_subtotal": 634201000.0,
     "disp_csu_cost_rel": 87.0,
