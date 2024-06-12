@@ -161,6 +161,10 @@ CodeGen_Base::CodeGen_Base( Case *cc, const wxString &fullpath )
 {
 	m_fp = fopen(fullpath.c_str(), "w");
 	wxFileName::SplitPath(fullpath, &m_folder, &m_name, NULL );
+	m_cfg = m_case->GetConfiguration();
+	m_is_hybrid = false;
+	if (m_cfg && m_cfg->Technology.size() > 1)
+		m_is_hybrid = true;
 }
 
 CodeGen_Base::~CodeGen_Base()
@@ -190,13 +194,11 @@ bool CodeGen_Base::PlatformFiles()
 	// sscapi.h - switch to copy version for syching issues 5/30/17
 	// assumes in runtime folder for all builds.
 	f1 = SamApp::GetAppPath() + "/sscapi.h";
-	if (wxFileExists(f1))
-	{
+	if (wxFileExists(f1)) {
 		f2 = m_folder + "/sscapi.h";
 		wxCopyFile(f1,f2);
 	}
-	else
-	{
+	else {
 		// fallback to sscapi.h generation
 		wxString fn = m_folder + "/sscapi.h";
 		FILE* f = fopen(fn.c_str(), "w");
@@ -526,8 +528,8 @@ bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
 				inputs_to_unassign.Add(c);
 			c = ssc_data_next(p_val);
 		}
-		for (auto c : inputs_to_unassign)
-			ssc_data_unassign(p_val, c.c_str());
+		for (auto d : inputs_to_unassign)
+			ssc_data_unassign(p_val, d.c_str());
 		ssc_data_set_table(p_input, inputs_name.c_str(), p_val);
 		ssc_data_free(p_val);
 	}
@@ -606,101 +608,6 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 		std::vector<const char*> cm_names;
 
 		GenerateInputsOutputs(simlist[kk], p_data, p_data_output, cm_names);
-		/*
-		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
-		if (!p_mod)
-		{
-			m_errors.Add("could not create ssc module: " + simlist[kk]);
-			continue;
-		}
-
-
-		int pidx = 0;
-		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
-		{
-			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
-			const char* var_name = ssc_info_name(p_inf);
-			wxString name(var_name); // assumed to be non-null
-			wxString reqd(ssc_info_required(p_inf));
-
-			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
-			{
-				// handle ssc variable names
-				// that are explicit field accesses"shading:mxh"
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
-						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
-						{
-							if (!field.IsEmpty())
-							{
-								if (vv->Type() != VV_TABLE)
-									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-								bool do_copy_var = false;
-								if (reqd.Left(1) == "?")
-								{
-									// if the SSC variable is optional, check for the 'en_<field>' element in the table
-									if (VarValue* en_flag = vv->Table().Get("en_" + field))
-										if (en_flag->Boolean())
-											do_copy_var = true;
-								}
-								else do_copy_var = true;
-
-								if (do_copy_var)
-								{
-									if (VarValue* vv_field = vv->Table().Get(field))
-									{
-										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-										else
-											cm_names.push_back(var_name);
-									}
-								}
-
-							}
-							else // no table value
-							{
-								if (!VarValueToSSC(vv, p_data, name))
-									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-								else
-									cm_names.push_back(var_name);
-							}
-						}
-						//					else if (reqd == "*")
-						//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
-					}
-				}
-			}
-			else if (var_type == SSC_OUTPUT)
-			{
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
-						m_errors.Add("Error for output " + name);
-				}
-			}
-		} // end of compute module variables
-		*/
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
 	}
@@ -716,35 +623,6 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// write language specific header
 	if (!Header())
 		m_errors.Add("Header failed");
-
-	/* old single unordered grouping of inputs
-	const char *name = ssc_data_first(p_data);
-	while (name)
-	{
-		if (!Input(p_data, name, m_folder, array_matrix_threshold))
-			m_errors.Add(wxString::Format("Input %s write failed",name));
-		name = ssc_data_next(p_data);
-	}
-	*/
-
-	// check that input order has same count as number of compute modules
-	//if (simlist.size() != input_order.size())
-	//	m_errors.Add("input ordering failed");
-	// can do inputs with compute module calls below
-	/*
-	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
-	{
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
-		for (size_t jj = 0; jj < input_order[k].size(); jj++)
-		{
-			const char* name = input_order[k][jj];
-			if (!Input(p_data, name, m_folder, array_matrix_threshold))
-				m_errors.Add(wxString::Format("Input %s write failed", name));
-		}
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-	}
-	*/
 
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
@@ -879,8 +757,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
 
-	if (!wxFileName::DirExists(testpath))
-	{
+	if (!wxFileName::DirExists(testpath)) {
 		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
 		delete[] cfn;
 		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
@@ -888,14 +765,37 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	}
 	delete[] cfn;
 
+	// Updates per SAM issue 1717 - generate json to be used for all code generation options
+	std::shared_ptr<CodeGen_json> cgjson;
+	wxString fnjson = fn + ".json";
+	cgjson = std::make_shared<CodeGen_json>(c, fnjson);
+	if (cgjson) {
+		ConfigInfo* cfg = c->GetConfiguration();
+		if (!cfg)
+			return false;
+		if (cfg->Technology.size() > 1)
+			cgjson->GenerateCodeHybrids(threshold);
+		else
+			cgjson->GenerateCode(threshold);
+		if (!cgjson->Ok()) {
+			wxMessageBox(cgjson->GetErrors(), "Code Generator Errors", wxICON_ERROR);
+			return false;
+		}
+	}
+	else
+		return false;
+
+
 	std::shared_ptr<CodeGen_Base> cg;
-	wxString err_msg = "";
+//	wxString err_msg = "";
+	/*
 	if (lang == 0) // JSON
 	{
 		fn += ".json";
 		cg = std::make_shared<CodeGen_json>(c, fn);
 	}
-	else if (lang == 1) // lk
+	else */
+	if (lang == 1) // lk
 	{
 		fn += ".lk";
 		cg = std::make_shared<CodeGen_lk>(c, fn);
@@ -963,12 +863,11 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		else
 			return false;
 		}
-	//#endif
 	else
 		return false;
 
-	if (cg)
-	{
+	if (cg)	{
+		/*
 		ConfigInfo* cfg = c->GetConfiguration();
 		if (!cfg)
 			return false;
@@ -976,6 +875,25 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 			cg->GenerateCodeHybrids(threshold);
 		else
 			cg->GenerateCode(threshold);
+			*/
+		// Platform specific files
+		if (!cg->PlatformFiles())
+			cg->AddError("PlatformFiles failed");
+		// language specific additional files
+		if (!cg->SupportingFiles())
+			cg->AddError("SupportingFiles failed");
+		if (!cg->Header())
+			cg->AddError("Header failed");
+		if (!cg->Inputs())
+			cg->AddError("Inputs failed");
+		if (!cg->RunSSCModules())
+			cg->AddError("RunsSSCModules failed");
+		if (!cg->Outputs())
+			cg->AddError("Outputs failed");
+		if (!cg->Footer())
+			cg->AddError("Footer failed");
+
+
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
@@ -1000,9 +918,24 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 {
 }
 
+bool CodeGen_lk::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "outputs = var('output');\n");
+		fprintf(m_fp, "outln(outputs); // View all outputs that are available.\n");
+	}
+	else {
+		fprintf(m_fp, "num_metrics = var('number_metrics');\n");
+		fprintf(m_fp, "for (i=0;i<num_metrics;i++)\n");
+		fprintf(m_fp, "\toutln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
+	}
+	return true;
+}
 
 bool CodeGen_lk::Output(ssc_data_t)
 {
+
 	for (size_t ii = 0; ii < m_data.size(); ii++) {
 		m_data[ii].label.Replace("\\", "\\\\"); // for unicode handling in outln statements
 		wxString outs = m_data[ii].label + m_data[ii].pre + m_data[ii].post;
@@ -1011,11 +944,31 @@ bool CodeGen_lk::Output(ssc_data_t)
 		else
 			fprintf(m_fp, "outln('%s ' + %g * var('%s'));\n", (const char*)outs.c_str(), m_data[ii].scale, (const char*)m_data[ii].var.c_str());
 	}
+
+
+	return true;
+}
+
+
+bool CodeGen_lk::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, "json_to_ssc('%s.json');\n", (const char*)m_name.c_str());
+
+	if (m_is_hybrid) {
+		fprintf(m_fp, "inputs = var('input');\n");
+		fprintf(m_fp, "outln(inputs); // View all inputs from JSON file.\n");
+	}
+	else { // all non-hybrid values in JSON and SDKtool var_table
+	}
+
 	return true;
 }
 
 bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
+
+
 	ssc_number_t value;
 	ssc_number_t *p;
 	int len, nr, nc;
@@ -1106,16 +1059,33 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		}
 		// TODO tables in future
 	}
+	
 	return true;
 }
 
+bool CodeGen_lk::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "run('hybrid');\n");
+	}
+	else {
+		fprintf(m_fp, "num_cm = var('number_compute_modules');\n");
+		fprintf(m_fp, "for (i=0;i<num_cm;i++)\n");
+		fprintf(m_fp, "\trun(var('compute_module_'+i));\n");
+	}
+
+	return true;
+}
 
 bool CodeGen_lk::RunSSCModule(wxString &name)
 {
+	
 	if (name.IsNull() || name.Length() < 1)
 		return false;
 	else
 		fprintf(m_fp, "run('%s');\n", (const char*)name.c_str());
+		
 	return true;
 }
 
