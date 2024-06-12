@@ -1028,6 +1028,7 @@
         6.0,
         6.0
     ],
+    "W_dot_pump_SS": 0.0,
     "accept_init": 0.0,
     "accept_loc": 1.0,
     "accept_mode": 0.0,
@@ -1644,6 +1645,7 @@
     "custom_sf_pipe_sizes": 0.0,
     "custom_tes_p_loss": 0.0,
     "custom_tes_pipe_sizes": 0.0,
+    "dP_sf_SS": 0.0,
     "debt_fraction": 100.0,
     "debt_message": "",
     "degradation": [
@@ -1664,7 +1666,6 @@
     "disp_horizon": -123.0,
     "disp_max_iter": 0.0,
     "disp_mip_gap": -123.0,
-    "disp_rsu_cost_rel": -123.0,
     "disp_time_weighting": -123.0,
     "disp_timeout": -123.0,
     "dispatch_series": [
@@ -1908,6 +1909,10 @@
     ],
     "eta_pump": 0.85,
     "eta_tes_htr": 0.98,
+    "f_htfmax": 1.2,
+    "f_htfmax_actual": 0.0,
+    "f_htfmin": 0.25,
+    "f_htfmin_actual": 0.0,
     "f_tc_cold": 2.0,
     "f_turb_tou_periods": [
         1.0,
@@ -19783,7 +19788,9 @@
     "lon": -110.94,
     "loop_optical_efficiency": 0.721755,
     "m_dot_htfmax": 12.0,
+    "m_dot_htfmax_actual": 0.0,
     "m_dot_htfmin": 1.0,
+    "m_dot_htfmin_actual": 0.0,
     "max_collector_width": 6.0,
     "max_field_flow_velocity": 2.87903,
     "mc_bal_cold": 0.2,
@@ -47931,6 +47938,7 @@
         156.2,
         184.05
     ],
+    "use_abs_or_rel_mdot_limit": 0.0,
     "use_solar_mult_or_aperture_area": 0.0,
     "use_specific_weather_file": 0.0,
     "user_specified_weather_file": "",

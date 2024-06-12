@@ -1608,7 +1608,6 @@
     "disp_horizon": 48.0,
     "disp_max_iter": 50000.0,
     "disp_mip_gap": 0.001,
-    "disp_rsu_cost_rel": 1.4,
     "disp_time_weighting": 0.999,
     "disp_timeout": 5.0,
     "dispatch_series": [
