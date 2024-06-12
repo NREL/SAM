@@ -48,6 +48,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class Case;
 class CaseWindow;
 class VarTable;
+class ConfigInfo;
 
 struct CodeGenData {
 	CodeGenData() :
@@ -70,6 +71,9 @@ public:
 	void Clear();
 	Case *GetCase() { return m_case; }
 	wxString GetErrors();
+	void AddError(const wxString err) {
+		m_errors.Add(err);
+	};
 
 	// language specific header and supporting functions
 	virtual bool SupportingFiles() = 0;
@@ -80,6 +84,10 @@ public:
 
 	virtual bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold) = 0;
 	virtual bool Output(ssc_data_t p_data) = 0;
+
+	virtual bool RunSSCModules() = 0;
+	virtual bool Inputs() = 0;
+	virtual bool Outputs() = 0;
 
 	virtual bool Footer() = 0;
 
@@ -103,6 +111,8 @@ protected:
 	wxArrayString m_errors;
 	VarTable m_inputs;
 	std::vector<CodeGenData> m_data;
+	ConfigInfo* m_cfg;
+	bool m_is_hybrid;
 };
 
 class CodeGen_lk : virtual public CodeGen_Base
@@ -117,6 +127,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs();
+	bool Outputs();
+	bool RunSSCModules();
 };
 
 class CodeGen_c : virtual public CodeGen_Base
@@ -131,6 +144,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_csharp : virtual public CodeGen_Base
@@ -145,6 +161,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_matlab : virtual public CodeGen_Base
@@ -159,6 +178,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_python : virtual public CodeGen_Base
@@ -168,6 +190,9 @@ public:
 	bool SupportingFiles();
 	bool FreeSSCModule();
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_python2 : public virtual CodeGen_python
@@ -205,6 +230,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_php : public virtual CodeGen_Base
@@ -218,6 +246,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_php5 : public virtual CodeGen_php
@@ -246,6 +277,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 
@@ -261,6 +295,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 
@@ -276,6 +313,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 };
 
 class CodeGen_json : virtual public CodeGen_Base
@@ -290,6 +330,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
+	bool Inputs() { return true; }
+	bool Outputs() { return true; }
+	bool RunSSCModules() { return true; }
 private:
 	int m_num_cm;
 	int m_num_metrics;
