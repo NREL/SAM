@@ -1116,25 +1116,25 @@
         0.023,
         1.0,
         0.483,
-        0.571,
+        0.517,
         0.0
     ],
     "aux_par": 0.023,
     "aux_par_0": 0.483,
-    "aux_par_1": 0.571,
+    "aux_par_1": 0.517,
     "aux_par_2": 0.0,
     "aux_par_f": 1.0,
     "azimuth": 0.0,
     "bop_array": [
         0.0,
         1.0,
-        0.0,
         0.483,
+        0.517,
         0.0
     ],
     "bop_par": 0.0,
-    "bop_par_0": 0.0,
-    "bop_par_1": 0.483,
+    "bop_par_0": 0.483,
+    "bop_par_1": 0.517,
     "bop_par_2": 0.0,
     "bop_par_f": 1.0,
     "c_construction_cost": [
@@ -1256,7 +1256,7 @@
     "csp.dtr.tes.htf_min_opt_temp": 10.0,
     "csp.dtr.tes.min_fluid_volume": 16.2886,
     "csp.dtr.tes.thermal_capacity": 31.14,
-    "csp.pt.par.calc.aux": 0.125816,
+    "csp.pt.par.calc.aux": 0.11937,
     "csp.pt.par.calc.bop": 0.0,
     "csp.pt.tes.htf_density": 944.436,
     "csp.pt.tes.tank_diameter": 6.44039,
@@ -20585,7 +20585,7 @@
     "user_specified_weather_file": "",
     "variable_operating_cost": 0.001,
     "vol_tank": 488.659,
-    "washing_frequency": 12.0,
+    "washing_frequency": 63.0,
     "water_usage_per_wash": 0.7,
     "weekday_schedule": [
         [
