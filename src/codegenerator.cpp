@@ -1123,6 +1123,23 @@ CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder
 {
 }
 
+bool CodeGen_c::Outputs()
+{
+	/*
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "outputs = var('output');\n");
+		fprintf(m_fp, "outln(outputs); // View all outputs that are available.\n");
+	}
+	else {
+		fprintf(m_fp, "num_metrics = var('number_metrics');\n");
+		fprintf(m_fp, "for (i=0;i<num_metrics;i++)\n");
+		fprintf(m_fp, "\toutln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
+	}
+	*/
+	return true;
+}
+
 
 bool CodeGen_c::Output(ssc_data_t p_data)
 {
@@ -1259,6 +1276,38 @@ bool CodeGen_c::RunSSCModule(wxString &)
 	fprintf(m_fp, "		ssc_data_free(data); \n");
 	fprintf(m_fp, "		return -1; \n");
 	fprintf(m_fp, "	}\n");
+	return true;
+}
+
+
+bool CodeGen_c::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+
+	return true;
+}
+
+
+bool CodeGen_c::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " data = json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
 	return true;
 }
 
