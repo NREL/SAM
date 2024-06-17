@@ -1125,18 +1125,19 @@ CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder
 
 bool CodeGen_c::Outputs()
 {
-	/*
+	
 	// all values from json file and then running compute module
 	if (m_is_hybrid) {
-		fprintf(m_fp, "outputs = var('output');\n");
-		fprintf(m_fp, "outln(outputs); // View all outputs that are available.\n");
+		fprintf(m_fp, "	ssc_data_t outputs = ssc_data_get_table(data, \"output\");\n");
+		// TODO - iterate through compute modules and get annual energy
+//		fprintf(m_fp, "	outln(outputs); // View all outputs that are available.\n");
 	}
-	else {
-		fprintf(m_fp, "num_metrics = var('number_metrics');\n");
-		fprintf(m_fp, "for (i=0;i<num_metrics;i++)\n");
-		fprintf(m_fp, "\toutln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
+	else { // TODO - finish for each metric
+		fprintf(m_fp, "	ssc_number_t num_metrics = ssc_data_get_number(\"number_metrics\");\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+//		fprintf(m_fp, "		outln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
+		fprintf(m_fp, "		const char *%s = ssc_data_get_string( data, \"%s\" );\n");
 	}
-	*/
 	return true;
 }
 
