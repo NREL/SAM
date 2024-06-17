@@ -36,13 +36,13 @@
             27.0,
             1.0,
             1.0,
-            1.0
+            27.0
         ],
         [
             27.0,
             1.0,
             1.0,
-            1.0
+            27.0
         ],
         [
             27.0,
@@ -1032,7 +1032,6 @@
     "accept_init": 0.0,
     "accept_loc": 1.0,
     "accept_mode": 0.0,
-    "adjust": 0.0,
     "adjust_constant": 4.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
@@ -1480,8 +1479,8 @@
     "csp_dtr_hce_var4_field_fraction_2": 0.0,
     "csp_dtr_hce_var4_field_fraction_3": 0.0,
     "csp_dtr_hce_var4_field_fraction_4": 0.0,
-    "csp_dtr_hce_var4_gas_type_1": 0.0,
-    "csp_dtr_hce_var4_gas_type_2": 0.0,
+    "csp_dtr_hce_var4_gas_type_1": 2.0,
+    "csp_dtr_hce_var4_gas_type_2": 2.0,
     "csp_dtr_hce_var4_gas_type_3": 2.0,
     "csp_dtr_hce_var4_gas_type_4": 2.0,
     "csp_dtr_hce_var4_hce_dirt_1": 0.98,
@@ -20505,7 +20504,6 @@
     "ui_alpha_env_1": 0.02,
     "ui_alpha_env_2": 0.02,
     "ui_alpha_env_3": 0.0,
-    "ui_capital_cost_capacity": 560.0,
     "ui_capital_cost_reference": 9929670.0,
     "ui_cfin": 1.02027,
     "ui_collector_description": "SkyFuel SkyTrough (with 80-mm OD receiver)",
