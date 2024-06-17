@@ -672,89 +672,6 @@
                     "Integer": 4.0
                 }
             }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "tidal_turbine_target_cf"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 198.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 114.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 118.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 25.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                }
-            }
         }
     },
     "VarDatabase": {
@@ -1021,19 +938,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tidal_turbine_target_cf": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Target capacity factor",
-            "Units": "",
-            "Group": "ME Tidal Converter",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "tidal_velocity_power_law_fit": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1063,7 +967,6 @@
         "\r",
         "\t// If user defined turbine, get user inputs, otherwise get values for kW rating and rotor diameter from the library for the (non-generic) turbine chosen in the drop-down\r",
         "\tdata.tidal_turbine_rotor_diameter = ${tidal_turbine_rotor_diameter_input};\r",
-        "\tdata.tidal_turbine_target_cf = ${tidal_turbine_target_cf};\r",
         "\tdata.number_rotors = ${tidal_turbine_number_rotors};\r",
         "\tdata.tidal_turbine_max_cp = ${tidal_turbine_max_cp};\r",
         "\tdata.cut_in = ${tidal_turbine_cutin};\r",
@@ -1150,13 +1053,13 @@
         "\trefresh();\r",
         "}\r",
         "\r",
-        "on_change{'tidal_turbine_kw_rating_input'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_rated_power'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_rotor_diameter_input'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_max_cp'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_pto_eff'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cutin'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cut_out'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};\r",
-        "on_change{'tidal_turbine_target_cf'} = define() { plot_turbine_curve();};"
+        ""
     ]
 }
