@@ -2092,89 +2092,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "disp_wlim_maxspec"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 759.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 369.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2824,34 +2741,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "disp_wlim_maxspec": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Max. net power to the grid",
-            "Units": "MWe",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Dispatch TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "is_dispatch": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2861,32 +2750,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_wlim_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2914,10 +2777,6 @@
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
         "//",
-        "\r",
-        "equations{ 'is_wlim_design' } = define() {\r",
-        "\treturn ${is_dispatch};\r",
-        "};\r",
         "\r",
         "// Just UI input aggregator\r",
         "equations{ 'aux_array' } = define() {\r",
@@ -2959,8 +2818,6 @@
         "     enable(\"disp_csu_cost_rel\", en==1);\r",
         "     enable(\"disp_rsu_cost_rel\", en==1);\r",
         "     enable(\"disp_pen_ramping\", en==1);\r",
-        "     enable(\"disp_wlim_max\", en==1);\r",
-        "     enable(\"disp_wlim_maxspec\", en==1);\r",
         "     enable(\"disp_time_weighting\", en==1);\r",
         "};\r",
         "\r",
