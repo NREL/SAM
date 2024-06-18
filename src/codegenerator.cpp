@@ -1125,12 +1125,11 @@ CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder
 
 bool CodeGen_c::Outputs()
 {
-	
 	// all values from json file and then running compute module
 	if (m_is_hybrid) {
 		fprintf(m_fp, "	ssc_data_t outputs = ssc_data_get_table(data, \"output\");\n");
 		fprintf(m_fp, "	ssc_number_t ae;\n");
-		// TODO - iterate through compute modules and get annual energy
+		// iterate through compute modules and get annual energy
 		auto &simlist = m_cfg->Simulations;
 		for (auto& sim : simlist) {
 			fprintf(m_fp, "	ssc_data_t %s = ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
@@ -1141,11 +1140,20 @@ bool CodeGen_c::Outputs()
 			fprintf(m_fp, "	}\n");
 		}
 	}
-	else { // TODO - finish for each metric
-		fprintf(m_fp, "	ssc_number_t num_metrics = ssc_data_get_number(\"number_metrics\");\n");
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
 		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
-//		fprintf(m_fp, "		outln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
-//		fprintf(m_fp, "		const char *%s = ssc_data_get_string( data, \"%s\" );\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
 	}
 	return true;
 }
