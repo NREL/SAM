@@ -7,6 +7,7 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  DEFAULT_BRANCH: patch
 
 jobs:
   build-ubuntu:
@@ -71,11 +72,11 @@ jobs:
       run: |
         echo "GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER}" >> $GITHUB_ENV
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
 
     - name: Install wxWidgets
       run: |
@@ -219,11 +220,11 @@ jobs:
       run: |
         echo "GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER}" >> $GITHUB_ENV
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/lk.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "LK_BRANCH=develop" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "LK_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "LK_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/wex.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "WEX_BRANCH=develop" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "WEX_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "WEX_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
         git ls-remote --heads --exit-code https://github.com/${GITHUB_REPOSITORY_OWNER}/ssc.git $GIT_BRANCH
-        if [[ $? != "0" ]]; then echo "SSC_BRANCH=develop" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
+        if [[ $? != "0" ]]; then echo "SSC_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV; else echo "SSC_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV; fi
     
     - name: Install wxWidgets
       run: |
