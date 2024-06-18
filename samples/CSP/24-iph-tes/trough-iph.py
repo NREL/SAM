@@ -17,7 +17,7 @@ sam_iph_dict_base = json.load(open("IPH_with_oil_field.json"))
 
 # dictionaries are "pointers", so use "copy.deepcopy(dict_name)" to copy/move dicts between variable names
 
-is_des_pt_only = True
+is_des_pt_only = False
 
 if(is_des_pt_only):
 
