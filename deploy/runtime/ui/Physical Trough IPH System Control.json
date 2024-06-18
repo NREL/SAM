@@ -2105,6 +2105,19 @@
         }
     },
     "VarDatabase": {
+        "adjust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
