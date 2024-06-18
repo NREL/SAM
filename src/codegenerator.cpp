@@ -1316,7 +1316,6 @@ bool CodeGen_c::RunSSCModules()
 			FreeSSCModule();
 		}
 	}
-
 	return true;
 }
 
@@ -2633,6 +2632,42 @@ CodeGen_matlab::CodeGen_matlab(Case *cc, const wxString &folder) : CodeGen_Base(
 }
 
 
+bool CodeGen_matlab::Outputs()
+{
+//	fprintf(m_fp, "	%s = ssccall('data_get_string', data, '%s' );\n", name, name);
+//	fprintf(m_fp, "	%s = ssccall('data_get_number', data, '%s' );\n", name, name);
+//	fprintf(m_fp, "	disp(sprintf('%%s = %%g', '%s', %s));\n", (const char*)m_data[ii].label.c_str(), name);
+
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	outputs = ssccall('ssc_data_get_table',data, 'output');\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	%s = ssccall('ssc_data_get_table',outputs, '%s');\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if ssccall('ssc_data_lookup', %s, 'annual_energy'))\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ae = ssccall('ssc_data_get_number', %s, 'annual_energy');\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		disp(sprintf('%%s annual outputs = %%g', '%s', ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	end\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	num_metrics = ssccall('ssc_data_get_number', data, 'number_metrics');\n");
+		fprintf(m_fp, "	for i=1:num_metrics\n");
+		fprintf(m_fp, "		d =  num2str(i-1);\n");
+		fprintf(m_fp, "		metric_label_name =  ['metric_'d'_label'];\n");
+		fprintf(m_fp, "		metric_name = ['metric_'d];\n");
+		fprintf(m_fp, "		metric_label = ssccall('ssc_data_get_string', data, metric_label_name);\n");
+		fprintf(m_fp, "		metric_value = ssccall('ssc_data_get_string', data, metric_name);\n");
+		fprintf(m_fp, "		metric = ssccall('ssc_data_get_number', data, metric_value);\n");
+		fprintf(m_fp, "		disp(sprintf('%%s = %%g', metric_label, metric);\n");
+		fprintf(m_fp, "	end\n");
+	}
+	return true;
+}
+
+
 bool CodeGen_matlab::Output(ssc_data_t p_data)
 {
 	wxString str_value;
@@ -2672,6 +2707,17 @@ bool CodeGen_matlab::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+
+bool CodeGen_matlab::Inputs()
+{
+	// all values from json file and then running compute module (assumes in same folder)
+	// in Header fprintf(m_fp, "	data = ssccall('data_create');\n");
+	fprintf(m_fp, "	data = ssccall('json_file_to_ssc_data', '%s');\n", (const char*)m_name.c_str());
+	return true;
+}
+
 
 bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -2785,6 +2831,28 @@ bool CodeGen_matlab::RunSSCModule(wxString &name)
 	fprintf(m_fp, "		end\n");
 	fprintf(m_fp, "		return \n");
 	fprintf(m_fp, "	end\n");
+	return true;
+}
+
+
+bool CodeGen_matlab::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
 	return true;
 }
 

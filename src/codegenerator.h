@@ -178,9 +178,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
-	bool Inputs() { return true; }
-	bool Outputs() { return true; }
-	bool RunSSCModules() { return true; }
+	bool Inputs();
+	bool Outputs();
+	bool RunSSCModules();
 };
 
 class CodeGen_python : virtual public CodeGen_Base
