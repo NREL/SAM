@@ -1129,14 +1129,23 @@ bool CodeGen_c::Outputs()
 	// all values from json file and then running compute module
 	if (m_is_hybrid) {
 		fprintf(m_fp, "	ssc_data_t outputs = ssc_data_get_table(data, \"output\");\n");
+		fprintf(m_fp, "	ssc_number_t ae;\n");
 		// TODO - iterate through compute modules and get annual energy
-//		fprintf(m_fp, "	outln(outputs); // View all outputs that are available.\n");
+		auto &simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	ssc_data_t %s = ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ssc_data_get_number(%s, \"annual_energy\", &ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		printf(\"%%s annual outputs = %%lg\\n\", \"%s\", (double)ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
 	}
 	else { // TODO - finish for each metric
 		fprintf(m_fp, "	ssc_number_t num_metrics = ssc_data_get_number(\"number_metrics\");\n");
 		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
 //		fprintf(m_fp, "		outln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
-		fprintf(m_fp, "		const char *%s = ssc_data_get_string( data, \"%s\" );\n");
+//		fprintf(m_fp, "		const char *%s = ssc_data_get_string( data, \"%s\" );\n");
 	}
 	return true;
 }
