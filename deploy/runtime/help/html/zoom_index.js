@@ -6553,7 +6553,7 @@ dictwords = ["scene 0 94 236 1 51 110 2 23 104 3 23 112 4 58 124 6 33 44 7 29 23
 	"run_simulations.html 285 6 64",
 	"container 286 10 16",
 	"editable 286 10 16",
-	"ready-to-run 286 10 16",
+	"ready-to-run 286 10 8",
 	"written 286 10 8",
 	"1.download 286 10 8",
 	"sdktool.exe 286 10 4",
