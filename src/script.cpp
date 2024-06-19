@@ -138,7 +138,7 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 static void fcall_selectinputs( lk::invoke_t &cxt )
 {
-	LK_DOC("select_inputs", "Shows the input variable selection dialog.", "(<array:checked>, [string:title]):boolean")
+	LK_DOC("select_inputs", "Shows the input variable window with an optional title and writes a list of checked variable names to the array argument.", "(array:checked, [string:title]):boolean")
 		
 	cxt.result().assign( 0.0 );
 
@@ -401,7 +401,7 @@ static void fcall_configuration( lk::invoke_t &cxt )
 
 static void fcall_load_defaults( lk::invoke_t &cxt )
 {
-	LK_DOC( "load_defaults", "Load SAM default values for the current active case. An optional error message is stored in the first argument, if given.", "([<string:error>]):boolean" );
+	LK_DOC( "load_defaults", "Load SAM default values for the current active case. An optional error message is stored in the first argument, if given.", "([string:error]):boolean" );
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
