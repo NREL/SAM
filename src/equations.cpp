@@ -174,9 +174,17 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
 
-			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+/*	SAM issue 1634 ssc_auto_exec
+*	Note that EqnDatabase is constructed when pages are loaded and, therefore, has no clue to what UI variables will be present
+*			in a configuration in which the page that has a ssc_auto_exec call is used.
+*	set ssc compute module variables with REQUIRED_IF="*" to UI variables
+*	will fail if UI variables not present
+*	will skip variables with UIHINT="SIMLATION_PARAMETER"
+*/
+			bool bRequired = (reqd.Length() > 0 && reqd == "*"); 
+			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+//			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
-
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
 				wxString field ="";
