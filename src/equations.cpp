@@ -44,6 +44,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/sscapi.h> // for preprocessing
 
 #include "equations.h"
+#include "main.h"
 
 
 EqnDatabase::EqnDatabase()
@@ -158,11 +159,34 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 		wxString cm = args[1];
 		cm.Replace("'", "");
 		ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
-		if (!p_mod)
-		{
+		if (!p_mod)	{
 			errors->Add("could not create ssc module: " + cm);
 			return false;
 		}
+
+		// SAM 1634 - find first configuration that contains compute module specified in ssc_auto_exec
+		ConfigInfo* cfg = NULL;
+		bool bfound = false; 
+		auto& cfgdb = SamApp::Config(); // assumes configuration database already constructed
+		auto techs = cfgdb.GetTechnologies();
+		// search through configurations for first occurence of compute module specified in ssc_auto_exec call
+		// limited to technologies with singleowner financial model until a more complete search implemented
+		wxString fin = "singleowner";
+		for (auto& tech : techs) {
+			if (auto cfginfo = cfgdb.Find(tech, fin)) {
+				// check simlist for compute module
+				if (cfginfo->Simulations.Index(cm) != wxNOT_FOUND) {
+					bfound = true;
+					cfg = cfginfo;
+				}
+			}
+		}
+
+		if (!bfound) {
+			errors->Add("could not find ssc module: '" + cm +  "' in any configuration.");
+			return false;
+		}
+
 		ssc_data_t p_data = ssc_data_create();
 		// Assign the compute module with existing values
 		int pidx = 0;
@@ -181,7 +205,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 *	will fail if UI variables not present
 *	will skip variables with UIHINT="SIMLATION_PARAMETER"
 */
-			bool bRequired = (reqd.Length() > 0 && reqd == "*"); 
+			bool bRequired = true;// = (reqd.Length() > 0 && reqd == "*");
 			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 //			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
@@ -195,9 +219,15 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					name = name.Left(pos);
 				}
 
+// SAM 1634 - check for variable in UI and required_if non-blank - no access to case or config
+				bool bInUI = false;
+				for (size_t ndxHybrid = 0; !bInUI && ndxHybrid < cfg->Technology.size(); ndxHybrid++) {
+					bInUI |= (cfg->Variables[ndxHybrid].Lookup(name) != NULL);
+				}
+
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != data_type)
-				{
+				//if (existing_type != data_type)
+				if (existing_type != data_type && bInUI)	{
 					wxString ssc_var_name = name;
 					wxString lk_var_name = "${" + name + "}";
 					if (field != "") // 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
