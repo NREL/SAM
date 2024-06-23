@@ -118,6 +118,7 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 
 bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 {
+
 	// check text for preprocessing setup for design point calculations SAM issue #634
 	// prototype to be refactored if more equations added for preprocessing
 	// Check string for instances of replacements for equations
@@ -183,8 +184,8 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 *	will skip variables with UIHINT="SIMLATION_PARAMETER"
 */
 			// true necessary for MSLF - some REQUIRED_IF are suspect
-//			bool bRequired = true;// = (reqd.Length() > 0 && reqd == "*");
-			bool bRequired = ((reqd.Length() > 0) && (reqd.Find("=") == wxNOT_FOUND));
+			bool bRequired = true;// = (reqd.Length() > 0 && reqd == "*");
+//			bool bRequired = ((reqd.Length() > 0) && (reqd.Find("=") == wxNOT_FOUND));
 			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 //			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
@@ -213,7 +214,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[1] = compute module name
 					arg[2] = sim_type value
 					*/
-					strReplace += "\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
+					strReplace += "\tssc_var_auto_exec(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
 				}
 			}
 		}
