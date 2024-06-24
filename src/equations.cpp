@@ -176,18 +176,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
 
-/*	SAM issue 1634 ssc_auto_exec
-*	Note that EqnDatabase is constructed when pages are loaded and, therefore, has no clue to what UI variables will be present
-*			in a configuration in which the page that has a ssc_auto_exec call is used.
-*	set ssc compute module variables with REQUIRED_IF="*" to UI variables
-*	will fail if UI variables not present
-*	will skip variables with UIHINT="SIMLATION_PARAMETER"
-*/
-			// true necessary for MSLF - some REQUIRED_IF are suspect
-			bool bRequired = true;// = (reqd.Length() > 0 && reqd == "*");
-//			bool bRequired = ((reqd.Length() > 0) && (reqd.Find("=") == wxNOT_FOUND));
-			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
-//			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
@@ -214,7 +203,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[1] = compute module name
 					arg[2] = sim_type value
 					*/
-					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // issue 1634
+					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // SAM issue 1634
 					strReplace += "\t\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
 				}
 			}
