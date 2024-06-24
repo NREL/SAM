@@ -20498,6 +20498,7 @@
     "is_btm": 0.0,
     "is_dispatch": 0.0,
     "is_hx": 1.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -21514,6 +21515,9 @@
     "tilt": 0.0,
     "time_start": 0.0,
     "time_stop": 31536000.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "tod_library": "Uniform Dispatch",
     "total_aperture": 965632.0,
     "total_direct_cost": 485686000.0,
