@@ -214,7 +214,8 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[1] = compute module name
 					arg[2] = sim_type value
 					*/
-					strReplace += "\tssc_var_auto_exec(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
+					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // issue 1634
+					strReplace += "\t\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
 				}
 			}
 		}
