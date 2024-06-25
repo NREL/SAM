@@ -1141,7 +1141,7 @@
                 },
                 "Fields": {
                     "Type": 5.0,
-                    "String": "Name,Impo,Vmpo,Area,#Series,Isco,Voco,a,b,dT,Material"
+                    "String": "Name,Impo,Vmpo,Isco,Voco,Area,Cells in Series,a,b,dT,Material,Aisc,Aimp,C0,C1,Bvoco,Mbvoc,Bvmpo,Mbvmp,N,C2,C3,A0,A1,A2,A3,A4,B0,B1,B2,B3,B4,B5,dT,FD,a,b,C4,C5,IXO,IXXO,C6,C7"
                 }
             }
         },
