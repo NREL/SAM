@@ -368,15 +368,9 @@ jobs:
       shell: bash {0}
       run: |
         curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
-        tar -xf runprocess-v0.523.zip
-
-    - name: Download RunProcess
-      shell: bash {0}
-      run: |
-        curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
-        tar -xf runprocess-v0.523.zip
+        7z x example.zip runprocess-v0.523.zip -orunprocess
         ls
-        ./runprocess-v0.523/RunProcess.exe
+        ./runprocess/RunProcess.exe
 
     # - name: Generate test file
     #   shell: bash {0}
