@@ -342,23 +342,33 @@ jobs:
         MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Release
         MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Debug
 
-    - name: Check xvfb-run
-      shell: bash {0}
-      run: |
-        xvfb-run
+    - name: Make temp cache of SAM
+      uses: actions/cache@v4
+      id: cachedsam
+      with:
+        path: sam
+        key: windows-SAM
 
-    # - name: Checkout SAM       
-    #   uses: actions/checkout@v4
-    #   with:
-    #     path: sam
+    - name: Checkout SAM       
+      if: steps.cachedsam.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        path: sam
         
-    # - name: Build sam
+    - name: Build sam
+      if: steps.cachedsam.outputs.cache-hit != 'true'
+      run: |
+        cd sam
+        mkdir build
+        cd build
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
+        MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
+
+    # - name: Download RunProcess and SAM
+    #   shell: bash {0}
     #   run: |
-    #     cd sam
-    #     mkdir build
-    #     cd build
-    #     cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
-    #     MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
+    #     curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
+    #     tar -xf runprocess-v0.523.zip
 
     # - name: Generate test file
     #   shell: bash {0}
