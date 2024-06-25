@@ -374,6 +374,14 @@ jobs:
 
     - name: Run SAM
       run: |
+        echo "ls ${{env.SAMNTDIR}}\deploy"
+        ls ${{env.SAMNTDIR}}\deploy 
+        echo "ls ${{env.SAMNTDIR}}\deploy\x64"
+        ls ${{env.SAMNTDIR}}\deploy\x64
+        echo "ls"
+        ls 
+        echo "ls runprocess"
+        ls runprocess
         runprocess\RunProcess.exe ${{env.SAMNTDIR}}\deploy\x64\SAMOS.exe no_sam_file "${{env.SAMNTDIR}}\deploy\test_script_ow.lk"
 
     # - name: Generate test file
