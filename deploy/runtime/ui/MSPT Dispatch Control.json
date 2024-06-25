@@ -1,7 +1,7 @@
 {
     "Name": "MSPT Dispatch Control",
-    "Width": 912.0,
-    "Height": 711.0,
+    "Width": 913.0,
+    "Height": 764.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 597.0
+                    "Integer": 642.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -78,7 +78,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 315.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -140,7 +140,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -202,7 +202,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 429.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -311,11 +311,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 894.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 701.0
+                    "Integer": 749.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -344,7 +344,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 135.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -381,7 +381,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 438.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -414,11 +414,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -455,7 +455,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -552,6 +552,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "is_timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 534.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use hourly turbine output fractions?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "is_tod_pc_target_also_pc_max"
                 },
                 "X": {
@@ -588,6 +629,51 @@
                 }
             }
         },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 534.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Hourly turbine output fractions"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Hourly turbine output fractions"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "DiurnalPeriod": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -601,7 +687,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -646,7 +732,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 414.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -726,6 +812,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "is_timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "is_tod_pc_target_also_pc_max": {
             "Version": 4.0,
             "Type": 1.0,
@@ -737,6 +836,21 @@
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly turbine output fractions",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "weekday_schedule": {
@@ -1445,7 +1559,9 @@
         "\tenable(\"hybrid_tou7\", mode==2);",
         "\tenable(\"hybrid_tou8\", mode==2);",
         "\tenable(\"hybrid_tou9\", mode==2);",
-        "*/",
+        "*/\r",
+        "\r",
+        "\ton_change{\"is_timestep_load_fractions\"}();",
         "};",
         "\t",
         "on_change{ 'copy_schedule' } = define() {",
@@ -1454,6 +1570,15 @@
         "    value( 'weekend_schedule' , value ( 'dispatch_sched_weekend' ) );",
         "",
         "};",
+        "\r",
+        "on_change{ 'is_timestep_load_fractions' }= define(){\r",
+        "\tmode = value(\"is_timestep_load_fractions\");\r",
+        "\tenable(\"timestep_load_fractions\",mode==1);\r",
+        "\tenable(\"f_turb_tou_periods\",mode==0);\r",
+        "\tenable(\"copy_schedule\",mode==0);\r",
+        "\tenable(\"weekday_schedule\",mode==0);\r",
+        "\tenable(\"weekend_schedule\",mode==0);\r",
+        "};\r",
         ""
     ]
 }
