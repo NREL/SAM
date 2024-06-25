@@ -364,11 +364,19 @@ jobs:
         cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
         MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
 
-    # - name: Download RunProcess and SAM
-    #   shell: bash {0}
-    #   run: |
-    #     curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
-    #     tar -xf runprocess-v0.523.zip
+    - name: Download RunProcess
+      shell: bash {0}
+      run: |
+        curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
+        tar -xf runprocess-v0.523.zip
+
+    - name: Download RunProcess
+      shell: bash {0}
+      run: |
+        curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
+        tar -xf runprocess-v0.523.zip
+        ls
+        ./runprocess-v0.523/RunProcess.exe
 
     # - name: Generate test file
     #   shell: bash {0}
