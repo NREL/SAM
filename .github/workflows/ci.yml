@@ -368,9 +368,13 @@ jobs:
       shell: bash {0}
       run: |
         curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
-        7z x example.zip runprocess-v0.523.zip -orunprocess
+        7z x runprocess-v0.523.zip -orunprocess
         ls
-        ./runprocess/RunProcess.exe
+        runprocess/RunProcess.exe
+
+    - name: Run SAM
+      run: |
+        runprocess\RunProcess.exe ${{env.SAMNTDIR}}\deploy\x64\SAMOS.exe no_sam_file "${{env.SAMNTDIR}}\deploy\test_script_ow.lk"
 
     # - name: Generate test file
     #   shell: bash {0}
