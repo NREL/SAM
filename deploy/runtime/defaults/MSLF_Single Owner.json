@@ -449,7 +449,7 @@
     "SF_CALC_eff_loop_des_SS": 0.521804,
     "SF_CALC_eta_optical_des_SS": 0.56518,
     "SF_CALC_f_htfmax_actual": 0.0,
-    "SF_CALC_f_htfmin_actual": -6.2774385622041928e66,
+    "SF_CALC_f_htfmin_actual": -6.277438562204193e66,
     "SF_CALC_field_area": 312.382,
     "SF_CALC_field_htf_max_temp": 593.0,
     "SF_CALC_field_htf_min_temp": 238.0,
@@ -27869,6 +27869,7 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_dispatch": 0.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -28719,6 +28720,9 @@
     "theta_dep": 10.0,
     "theta_stow": 170.0,
     "tilt": 0.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "tod_library": "Uniform Dispatch",
     "total_Ap_in": 877000.0,
     "total_direct_cost": 503059000.0,
