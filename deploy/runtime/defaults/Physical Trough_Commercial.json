@@ -13721,6 +13721,7 @@
     "is_dispatch": 0.0,
     "is_h_tank_fixed": 1.0,
     "is_hx": 0.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -34346,6 +34347,9 @@
     "tilt": 0.0,
     "time_start": 0.0,
     "time_stop": 31536000.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "total_aperture": 57728.0,
     "total_direct_cost": 16226200.0,
     "total_indirect_cost": 2296610.0,
