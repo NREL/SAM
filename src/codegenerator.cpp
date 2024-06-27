@@ -690,17 +690,15 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	wxArrayString code_languages;
 	// ids or just index values from here
 	code_languages.Add("JSON for inputs");				// 0
-	code_languages.Add("LK for SDKtool");				// 1
-	code_languages.Add("C");							// 2
-	code_languages.Add("MATLAB");						// 3
-	code_languages.Add("Python 2");						// 4
-	code_languages.Add("Python 3");						// 5
+	code_languages.Add("PySAM JSON");					// 1
+	code_languages.Add("LK for SDKtool");				// 2
+	code_languages.Add("C");							// 3
+	code_languages.Add("MATLAB");						// 4
+	code_languages.Add("PySSC");						// 5
 	code_languages.Add("Java");							// 6
-	code_languages.Add("C#");							// 8 7
-	code_languages.Add("VBA");							// 9 8
-	code_languages.Add("PHP 5");						// 8 (11) 7 (9)
-	code_languages.Add("PHP 7");						// 9 (12) 8 (10)
-	code_languages.Add("PySAM JSON");					// 10 (13) 9 (11)
+	code_languages.Add("C#");							// 7
+	code_languages.Add("VBA");							// 8
+	code_languages.Add("PHP 7");						// 9
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -795,25 +793,37 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		cg = std::make_shared<CodeGen_json>(c, fn);
 	}
 	else */
-	if (lang == 1) // lk
+	if (lang == 1) // PySAM JSON
+	{
+		fn += ".json";
+		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
+		pySAM->GenerateCode(threshold);
+		if (pySAM) {
+			if (!pySAM->Ok())
+				wxMessageBox(pySAM->GetErrors(), "Code Generator Errors", wxICON_ERROR);
+			else
+			{
+				wxLaunchDefaultApplication(foldername);
+			}
+			return pySAM->Ok();
+		}
+		else
+			return false;
+	}
+	else if (lang == 2) // lk
 	{
 		fn += ".lk";
 		cg = std::make_shared<CodeGen_lk>(c, fn);
 	}
-	else if (lang == 2) // c
+	else if (lang == 3) // c
 	{
 		fn += ".c";
 		cg = std::make_shared < CodeGen_c>(c, fn);
 	}
-	else if (lang == 3) // matlab
+	else if (lang == 4) // matlab
 	{
 		fn += ".m";
 		cg = std::make_shared < CodeGen_matlab>(c, fn);
-	}
-	else if (lang == 4) // python2
-	{
-		fn += ".py";
-		cg = std::make_shared < CodeGen_python2>(c, fn);
 	}
 	else if (lang == 5) // python3
 	{
@@ -839,30 +849,8 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	else if (lang == 9) // php
 	{
 		fn += ".php";
-		cg = std::make_shared < CodeGen_php5>(c, fn);
-	}
-	else if (lang == 10) // php
-	{
-		fn += ".php";
 		cg = std::make_shared < CodeGen_php7>(c, fn);
 	}
-	else if (lang == 11) // PySAM JSON
-	{
-		fn += ".json";
-		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
-		pySAM->GenerateCode(threshold);
-		if (pySAM) {
-			if (!pySAM->Ok())
-				wxMessageBox(pySAM->GetErrors(), "Code Generator Errors", wxICON_ERROR);
-			else
-			{
-				wxLaunchDefaultApplication(foldername);
-			}
-			return pySAM->Ok();
-		}
-		else
-			return false;
-		}
 	else
 		return false;
 
