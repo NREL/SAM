@@ -1517,6 +1517,42 @@ CodeGen_csharp::CodeGen_csharp(Case *cc, const wxString &folder) : CodeGen_Base(
 {
 }
 
+bool CodeGen_csharp::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	Data outputs = data.GetTable(\"output\");\n"); // note that GetTable currently uses m_data implicitly and has no "data" argument - need to update in Header.
+		fprintf(m_fp, "	double ae;\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	Data %s = outputs.GetTable(\"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (%s.Query(\"annual_energy\") == 2) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ae = %s.GetNumber(\"annual_energy\");\n", (const char*)sim.c_str());
+//			fprintf(m_fp, "		printf(\"%%s annual outputs = %%lg\\n\", \"%s\", (double)ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		Console.WriteLine(\"{0} annual outputs = {1}\", \"%s\", ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
 
 bool CodeGen_csharp::Output(ssc_data_t p_data)
 {
@@ -1547,6 +1583,15 @@ bool CodeGen_csharp::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+bool CodeGen_csharp::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " data = json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -1645,6 +1690,31 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 	}
 	return true;
 }
+
+
+
+bool CodeGen_csharp::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 
 
 bool CodeGen_csharp::RunSSCModule(wxString &)
