@@ -694,11 +694,10 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("LK for SDKtool");				// 2
 	code_languages.Add("C");							// 3
 	code_languages.Add("MATLAB");						// 4
-	code_languages.Add("PySSC");						// 5
-	code_languages.Add("Java");							// 6
-	code_languages.Add("C#");							// 7
-	code_languages.Add("VBA");							// 8
-	code_languages.Add("PHP 7");						// 9
+	code_languages.Add("Java");							// 5
+	code_languages.Add("C#");							// 6
+	code_languages.Add("VBA");							// 7
+	code_languages.Add("PHP 7");						// 8
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -825,28 +824,23 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".m";
 		cg = std::make_shared < CodeGen_matlab>(c, fn);
 	}
-	else if (lang == 5) // python3
-	{
-		fn += ".py";
-		cg = std::make_shared < CodeGen_python3>(c, fn);
-	}
-	else if (lang == 6) // java
+	else if (lang == 5) // java
 	{
 		fn += ".java";
 		cg = std::make_shared < CodeGen_java>(c, fn);
 	}
 
-	else if (lang == 7) // c#
+	else if (lang == 6) // c#
 	{
 		fn += ".cs";
 		cg = std::make_shared < CodeGen_csharp>(c, fn);
 	}
-	else if (lang == 8) // vba
+	else if (lang == 7) // vba
 	{
 		fn += ".bas";
 		cg = std::make_shared < CodeGen_vba>(c, fn);
 	}
-	else if (lang == 9) // php
+	else if (lang == 8) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php7>(c, fn);
