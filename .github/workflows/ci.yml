@@ -372,6 +372,14 @@ jobs:
         ls
         runprocess/RunProcess.exe
 
+    - name: Build SDKTOOl
+      run: |
+        cd ssc
+        cd build
+        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release;Debug" -DCMAKE_SYSTEM_VERSION=10 -DSAM_SKIP_TESTS=1 -DSAM_SKIP_TOOLS=0 -DSAMAPI_EXPORT=0 ..
+        MSBuild.exe .\sam_simulation_core.sln /t:Build /p:Configuration=Release
+        dir D:\a\SAM\SAM\ssc\build\sdktool\Release\
+
     - name: Run SAM
       run: |
         echo "ls ${{env.SAMNTDIR}}\deploy"
@@ -383,7 +391,9 @@ jobs:
         echo "ls runprocess"
         ls runprocess
         echo runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe no_sam_file" ${{env.SAMNTDIR}}"\deploy\test_script_ow.lk"
-        runprocess\RunProcess.exe /w:S0 D:\a\SAM\SAM\sam\deploy\x64\SAMOS.exe no_sam_file D:\a\SAM\SAM\sam\deploy\test_script_ow.lk
+        runprocess\RunProcess.exe /w:S0 D:\a\SAM\SAM\ssc\build\sdktool\Release\SDKtool.exe
+
+    # runprocess\RunProcess.exe /w:S0 D:\a\SAM\SAM\sam\deploy\x64\SAMOS.exe no_sam_file D:\a\SAM\SAM\sam\deploy\test_script_ow.lk
 
     # - name: Generate test file
     #   shell: bash {0}
