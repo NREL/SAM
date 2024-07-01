@@ -383,7 +383,7 @@ jobs:
         echo "ls runprocess"
         ls runprocess
         echo runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe no_sam_file" ${{env.SAMNTDIR}}"\deploy\test_script_ow.lk"
-        runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe"
+        runprocess\RunProcess.exe D:\a\SAM\SAM\sam\deploy\x64\SAMOS.exe
 
     # - name: Generate test file
     #   shell: bash {0}
