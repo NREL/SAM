@@ -364,26 +364,26 @@ jobs:
         cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Release" -DCMAKE_SYSTEM_VERSION=10 -DSAMAPI_EXPORT=0 ..
         MSBuild.exe .\samos.sln /t:Build /p:Configuration=Release
 
-    - name: Download RunProcess
-      shell: bash {0}
-      run: |
-        curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
-        7z x runprocess-v0.523.zip -orunprocess
-        ls
-        runprocess/RunProcess.exe
+    # - name: Download RunProcess
+    #   shell: bash {0}
+    #   run: |
+    #     curl -L https://dennisbareis.com//zip3rdp/runprocess-v0.523.zip -o runprocess-v0.523.zip
+    #     7z x runprocess-v0.523.zip -orunprocess
+    #     ls
+    #     runprocess/RunProcess.exe
 
-    - name: Run SAM
-      run: |
-        echo "ls ${{env.SAMNTDIR}}\deploy"
-        ls ${{env.SAMNTDIR}}\deploy 
-        echo "ls ${{env.SAMNTDIR}}\deploy\x64"
-        ls ${{env.SAMNTDIR}}\deploy\x64
-        echo "ls"
-        ls 
-        echo "ls runprocess"
-        ls runprocess
-        echo runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe no_sam_file" ${{env.SAMNTDIR}}"\deploy\test_script_ow.lk"
-        runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe
+    # - name: Run SAM
+    #   run: |
+    #     echo "ls ${{env.SAMNTDIR}}\deploy"
+    #     ls ${{env.SAMNTDIR}}\deploy 
+    #     echo "ls ${{env.SAMNTDIR}}\deploy\x64"
+    #     ls ${{env.SAMNTDIR}}\deploy\x64
+    #     echo "ls"
+    #     ls 
+    #     echo "ls runprocess"
+    #     ls runprocess
+    #     echo runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe no_sam_file" ${{env.SAMNTDIR}}"\deploy\test_script_ow.lk"
+    #     runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe"
 
     # - name: Generate test file
     #   shell: bash {0}
