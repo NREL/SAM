@@ -391,7 +391,7 @@ jobs:
         echo "ls runprocess"
         ls runprocess
         echo runprocess\RunProcess.exe ${{env.SAMNTDIR}}"\deploy\x64\SAMOS.exe no_sam_file" ${{env.SAMNTDIR}}"\deploy\test_script_ow.lk"
-        runprocess\RunProcess.exe /w:S0 D:\a\SAM\SAM\ssc\build\sdktool\Release\SDKtool.exe
+        runprocess\RunProcess.exe /w:S0 /k:60s D:\a\SAM\SAM\ssc\build\sdktool\Release\SDKtool.exe
 
     # runprocess\RunProcess.exe /w:S0 D:\a\SAM\SAM\sam\deploy\x64\SAMOS.exe no_sam_file D:\a\SAM\SAM\sam\deploy\test_script_ow.lk
 
