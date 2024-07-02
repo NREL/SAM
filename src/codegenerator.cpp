@@ -6234,6 +6234,44 @@ CodeGen_vba::CodeGen_vba(Case *cc, const wxString &folder) : CodeGen_Base(cc, fo
 }
 
 
+bool CodeGen_vba::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "Dim outputs As LongPtr\n");
+		fprintf(m_fp, "outputs = sscvb_data_get_table(p_data, \"output\")\n");
+		fprintf(m_fp, "Dim ae As Double\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	Dim %s As LongPtr\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	%s = sscvb_data_get_table(outputs, \"%s\")\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	If (sscvb_data_lookup(%s, \"annual_energy\") = 1) Then\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		sscvb_data_get_number %s, \"annual_energy\", ae\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		Debug.Print \"%s annual outputs = \" & ae \n", (const char*)sim.c_str());
+			fprintf(m_fp, "	End If\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+
 bool CodeGen_vba::Output(ssc_data_t p_data)
 {
 	wxString str_value;
@@ -6259,6 +6297,15 @@ bool CodeGen_vba::Output(ssc_data_t p_data)
 			break;
 		}
 	}
+	return true;
+}
+
+
+bool CodeGen_vba::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, "p_data = sscvb_json_file_to_ssc_data(\"%s.json\")\n", (const char*)m_name.c_str());
+
 	return true;
 }
 
@@ -6363,6 +6410,28 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 }
 
 
+bool CodeGen_vba::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_vba::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "    res = sscvb_module_exec(p_mod, p_data)\n");
@@ -6383,121 +6452,63 @@ bool CodeGen_vba::RunSSCModule(wxString &name)
 bool CodeGen_vba::Header()
 {
 	fprintf(m_fp, "Option Explicit\n");
-	fprintf(m_fp, "#If Win64 Then\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_version _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_version _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        () As Long\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_build_info _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_build_info _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal info As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_create _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_create _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        () As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_create _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_json_file_to_ssc_data _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal name As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_table _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_number _\n");
+	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String) As LongPtr\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_lookup _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_array _\n");
+	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String) As LongPtr\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_create _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_array _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_string _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_exec _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_free _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_free _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "#Else ' win32 - requires Alias per dumpbin\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_version _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_version@0\" _\n");
-	fprintf(m_fp, "        () As Long\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_build_info _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_build_info@8\" _\n");
-	fprintf(m_fp, "        (ByVal info As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_create _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_create@0\" _\n");
-	fprintf(m_fp, "        () As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_create _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_create@4\" _\n");
 	fprintf(m_fp, "        (ByVal name As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_number _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_number@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_number _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_number@12\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_array _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_array _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_array@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_array _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_array _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_array@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_matrix@20\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_matrix@20\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_string _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_string@12\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_string@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_exec _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_exec _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_exec@8\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_free _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_free _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_free@4\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_free _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_free _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_free@4\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_log _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_log@24\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "#End If\n");
 	fprintf(m_fp, "Public Function VBASSCDataSetArray(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
 	fprintf(m_fp, "    Dim count As LongPtr\n");
 	fprintf(m_fp, "    count = UBound(data) + 1\n");
@@ -6785,7 +6796,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    str = Space(str_len)\n");
 	fprintf(m_fp, "    lng_ptr = sscvb_build_info(str, str_len)\n");
 	fprintf(m_fp, "    Debug.Print \"ssc build \" & str\n");
-	fprintf(m_fp, "    p_data = sscvb_data_create()\n");
+//	fprintf(m_fp, "    p_data = sscvb_data_create()\n");
 
 	return true;
 }
