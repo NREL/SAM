@@ -86,7 +86,7 @@
             "Units": "",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -236,7 +236,7 @@
         "\t\treturn data.total_getem_om_cost;\r",
         "\t}\r",
         "\telse {\r",
-        "\t\treturn 0;\r",
+        "\t\treturn -50;\r",
         "\t}\r",
         "\t\r",
         "};\r",
@@ -246,6 +246,7 @@
     "Callbacks": [
         "on_change{'getem_om_cost_btn'} = define() {\r",
         "\tvalue('om_fixed', [value('total_getem_om_cost')]);\r",
+        "\trefresh();\r",
         "};"
     ]
 }
