@@ -3383,6 +3383,44 @@ CodeGen_java::CodeGen_java(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 }
 
 
+bool CodeGen_java::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	long outputs = api.ssc_data_get_table(data, \"output\");\n");
+		fprintf(m_fp, "	double[] ae = {0.0f};\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	long %s = api.ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (api.ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		api.ssc_data_get_number(%s, \"annual_energy\", ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		System.out.println(\"%s annual outputs = \" + ae[0]);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+
+
+
 bool CodeGen_java::Output(ssc_data_t p_data)
 {
 	wxString str_value;
@@ -3414,6 +3452,16 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+bool CodeGen_java::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " data = api.json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -3504,6 +3552,28 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 			fprintf(m_fp, "		api.ssc_data_set_matrix( data, \"%s\", p_%s, %d, %d );\n", name, (const char*)localname.c_str(), nr, nc);
 		}
 		// TODO tables in future
+	}
+	return true;
+}
+
+
+bool CodeGen_java::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
 	}
 	return true;
 }
@@ -3661,10 +3731,12 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  public final static native int SSC_MATRIX_get();\n");
 	fprintf(f, "  public final static native int SSC_TABLE_get();\n");
 	fprintf(f, "  public final static native long ssc_data_create();\n");
+	fprintf(f, "  public final static native long json_file_to_ssc_data(String jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_free(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_clear(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_unassign(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native int ssc_data_query(long jarg1, String jarg2);\n");
+	fprintf(f, "  public final static native bool ssc_data_lookup(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native String ssc_data_first(long jarg1);\n");
 	fprintf(f, "  public final static native String ssc_data_next(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_set_string(long jarg1, String jarg2, String jarg3);\n");
