@@ -1522,7 +1522,7 @@ bool CodeGen_csharp::Outputs()
 		for (auto& sim : simlist) {
 			fprintf(m_fp, "		SSC.Data %s = outputs.GetTable(\"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
 			// check that "annual_energy" exists
-			fprintf(m_fp, "		if (%s != null) {\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			fprintf(m_fp, "		if (%s != null) {\n", (const char*)sim.c_str());
 			fprintf(m_fp, "			if (%s.Query(\"annual_energy\") == 2) {\n", (const char*)sim.c_str());
 			fprintf(m_fp, "				ae = %s.GetNumber(\"annual_energy\");\n", (const char*)sim.c_str());
 			fprintf(m_fp, "				Console.WriteLine(\"{0} annual outputs = {1}\", \"%s\", ae);\n", (const char*)sim.c_str());
@@ -6238,9 +6238,9 @@ bool CodeGen_vba::Outputs()
 {
 	// all values from json file and then running compute module
 	if (m_is_hybrid) {
-		fprintf(m_fp, "Dim outputs As LongPtr\n");
-		fprintf(m_fp, "outputs = sscvb_data_get_table(p_data, \"output\")\n");
-		fprintf(m_fp, "Dim ae As Double\n");
+		fprintf(m_fp, "	Dim outputs As LongPtr\n");
+		fprintf(m_fp, "	outputs = sscvb_data_get_table(p_data, \"output\")\n");
+		fprintf(m_fp, "	Dim ae As Double\n");
 		// iterate through compute modules and get annual energy
 		auto& simlist = m_cfg->Simulations;
 		for (auto& sim : simlist) {
@@ -6254,19 +6254,22 @@ bool CodeGen_vba::Outputs()
 		}
 	}
 	else { // output label and value for each metric from JSON for inputs
-		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
-		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
-		fprintf(m_fp, "	ssc_number_t metric;\n");
-		fprintf(m_fp, "	char metric_name[10];\n");
-		fprintf(m_fp, "	char metric_label_name[17];\n");
-		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
-		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
-		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
-		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
-		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
-		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
-		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
-		fprintf(m_fp, "	}\n");
+		fprintf(m_fp, "	Dim num_metrics As Double\n");
+		fprintf(m_fp, "	sscvb_data_get_number p_data,\"number_metrics\", num_metrics\n");
+		fprintf(m_fp, "	Dim metric As Double\n");
+		fprintf(m_fp, "	Dim metric_name As String\n");
+		fprintf(m_fp, "	Dim metric_label_name As String\n");
+		fprintf(m_fp, "	Dim metric_value As String\n");
+		fprintf(m_fp, "	Dim metric_label As String\n");
+		fprintf(m_fp, "	Dim I As Long\n");
+		fprintf(m_fp, "	For I=0 To num_metrics - 1\n");
+		fprintf(m_fp, "		metric_label_name = \"metric_\" & i & \"_label\"\n");
+		fprintf(m_fp, "		metric_name = \"metric_\" & i\n");
+		fprintf(m_fp, "		metric_label = VBASSCDataGetString(p_data, metric_label_name)\n");
+		fprintf(m_fp, "		metric_value = VBASSCDataGetString(p_data, metric_name)\n");
+		fprintf(m_fp, "		sscvb_data_get_number p_data, metric_value, metric\n");
+		fprintf(m_fp, "		Debug.Print metric_label & \" = \" & metric \n");
+		fprintf(m_fp, "	Next I\n");
 	}
 	return true;
 }
@@ -6304,7 +6307,7 @@ bool CodeGen_vba::Output(ssc_data_t p_data)
 bool CodeGen_vba::Inputs()
 {
 	// all values from json file and then running compute module
-	fprintf(m_fp, "p_data = sscvb_json_file_to_ssc_data(\"%s.json\")\n", (const char*)m_name.c_str());
+	fprintf(m_fp, "	p_data = sscvb_json_file_to_ssc_data(\"%s.json\")\n", (const char*)m_name.c_str());
 
 	return true;
 }
