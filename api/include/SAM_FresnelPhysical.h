@@ -117,7 +117,7 @@ extern "C"
 	 * Set solar_mult_in: Solar multiple Input
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SystemDesign_solar_mult_in_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -125,7 +125,7 @@ extern "C"
 	 * Set solar_mult_or_Ap: Design using specified solar mult or field aperture [m3]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SystemDesign_solar_mult_or_Ap_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -133,7 +133,7 @@ extern "C"
 	 * Set total_Ap_in: Field aperture Input [m3]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SystemDesign_total_Ap_in_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -271,22 +271,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_land_mult_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set mc_bal_cold: The heat capacity of the balance of plant on the cold side [kWht/K-MWt]
 	 * options: None
 	 * constraints: None
@@ -381,6 +365,51 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_water_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// SolarField parameters
+	//
+
+	/**
+	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -852,7 +881,7 @@ extern "C"
 	 * Set pc_config: 0: Steam Rankine (224), 1: user defined [-]
 	 * options: None
 	 * constraints: INTEGER
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_Powerblock_pc_config_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1158,14 +1187,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SysControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SysControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pb_fixed_par: Fixed parasitic load - runs at all times
@@ -1856,10 +1877,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_land_mult_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_mc_bal_cold_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_mc_bal_hot_nget(SAM_table ptr, SAM_error *err);
@@ -1883,6 +1900,21 @@ extern "C"
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_washes_per_year_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_water_per_wash_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * SolarField Getters
+	 */
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2096,8 +2128,6 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SysControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
 
@@ -2485,6 +2515,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_Outputs_eta_optical_des_SS_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysical_Outputs_field_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_Outputs_field_htf_max_temp_nget(SAM_table ptr, SAM_error *err);
@@ -2532,6 +2566,10 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_m_dot_field_recirc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 

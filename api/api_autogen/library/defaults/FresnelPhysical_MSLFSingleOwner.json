@@ -34,8 +34,6 @@
 				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 			],
 			"land_mult": 1.6,
-			"m_dot_htfmax": 14.4763,
-			"m_dot_htfmin": 3.01589,
 			"mc_bal_cold": 0.2,
 			"mc_bal_hot": 0.2,
 			"mc_bal_sca": 4.5,
@@ -48,6 +46,13 @@
 			"theta_stow": 170,
 			"washes_per_year": 120,
 			"water_per_wash": 0.02
+		},
+		"SolarField": {
+			"f_htfmax": 1.2,
+			"f_htfmin": 0.25,
+			"m_dot_htfmax": 14.4763,
+			"m_dot_htfmin": 3.01589,
+			"use_abs_or_rel_mdot_limit": 0
 		},
 		"ColRec": {
 			"A_aperture": 940.6,
@@ -360,9 +365,7 @@
 			"disp_rsu_cost_rel": 1.4,
 			"disp_time_weighting": 0.999,
 			"disp_timeout": 5,
-			"dispatch_series": [0.000000],
 			"is_dispatch": 0,
-			"is_dispatch_series": 0,
 			"pb_fixed_par": 0.0055,
 			"weekday_schedule": [
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
