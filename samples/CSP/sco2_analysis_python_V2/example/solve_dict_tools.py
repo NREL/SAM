@@ -885,6 +885,62 @@ def solarpaces_2024_abstract():
     plt.rc('font', size=11) 
 
 
+    # Combine All 4 Plots
+    if True:
+        fig_abstract_all, ((ax1_abstract_allsweep, ax2_abstract_allsweep), (ax1_abstract_allpareto, ax2_abstract_allpareto)) = plt.subplots(2,2)
+        fig_abstract_all.set_size_inches(fig_width, fig_height * 2)
+
+        # Sweep (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                    [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                    [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract_allsweep, show_legend=False)
+        
+        # Sweep (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                    [simple_compiled_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                    [recomp_compiled_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_dict, {'label':partial_legend_label, 'marker':'.'}],
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract_allsweep, show_legend=True, legend_loc='upper right')
+        
+        # Pareto (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                    [simple_compiled_T_HTF_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_T_HTF_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                    [recomp_compiled_T_HTF_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_T_HTF_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_T_HTF_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                    [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract_allpareto, show_legend=False)
+
+        # Pareto (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                    [simple_compiled_cost_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_cost_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],
+                    [recomp_compiled_cost_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_cost_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_cost_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_cost_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],
+                    [tsf_cost_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract_allpareto, show_legend=False, legend_loc='upper left')
+
+        plt.tight_layout()
+        plt.rc('font', size=11) 
+
     plt.show(block = True)
 
 # Main Script
