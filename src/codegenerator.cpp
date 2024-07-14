@@ -3394,16 +3394,16 @@ bool CodeGen_java::Outputs()
 		for (auto& sim : simlist) {
 			fprintf(m_fp, "	long %s = api.ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
 			// check that "annual_energy" exists
-			fprintf(m_fp, "	if (api.ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	if (api.ssc_data_lookup(%s, \"annual_energy\") != 0) {\n", (const char*)sim.c_str());
 			fprintf(m_fp, "		api.ssc_data_get_number(%s, \"annual_energy\", ae);\n", (const char*)sim.c_str());
 			fprintf(m_fp, "		System.out.println(\"%s annual outputs = \" + ae[0]);\n", (const char*)sim.c_str());
 			fprintf(m_fp, "	}\n");
 		}
 	}
 	else { // output label and value for each metric from JSON for inputs
-		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
-		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
-		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	double[] num_metrics = {0.0f};\n");
+		fprintf(m_fp, "	api.ssc_data_get_number(data,\"number_metrics\", num_metrics);\n");
+		fprintf(m_fp, "	double[] metric = {0.0f};\n");
 		fprintf(m_fp, "	char metric_name[10];\n");
 		fprintf(m_fp, "	char metric_label_name[17];\n");
 		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
@@ -3411,8 +3411,8 @@ bool CodeGen_java::Outputs()
 		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
 		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
 		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
-		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
-		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "		api.ssc_data_get_number(data, metric_value, metric);\n");
+		fprintf(m_fp, "		System.out.println(\"%%s = %%s[0]\", metric_label, (double)metric);\n");
 		fprintf(m_fp, "	}\n");
 	}
 	return true;
@@ -3431,7 +3431,7 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:// TODO
-			fprintf(m_fp, "		String %s = ssc_data_get_string( data, \"%s\" );\n", name, name);
+			fprintf(m_fp, "		String %s = api.ssc_data_get_string( data, \"%s\" );\n", name, name);
 			fprintf(m_fp, "		System.out.println(\"%s = \" + %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
@@ -3617,7 +3617,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "		try {\n");
 	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
-	fprintf(m_fp, "				ary[i]=double.parseDouble(line);\n");
+	fprintf(m_fp, "				ary[i]=Double.parseDouble(line);\n");
 	fprintf(m_fp, "				i++;\n");
 	fprintf(m_fp, "			}\n");
 	fprintf(m_fp, "		} catch (FileNotFoundException e) {\n");
@@ -3654,7 +3654,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
 	fprintf(m_fp, "				values = line.split(cvsSplitBy);\n");
 	fprintf(m_fp, "				for (int ic=0;ic<values.length;ic++){\n");
-	fprintf(m_fp, "					ary[i]=double.parseDouble(values[ic]);\n");
+	fprintf(m_fp, "					ary[i]=Double.parseDouble(values[ic]);\n");
 	fprintf(m_fp, "					i++;\n");
 	fprintf(m_fp, "				}\n");
 	fprintf(m_fp, "			}\n");
@@ -3736,7 +3736,7 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  public final static native void ssc_data_clear(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_unassign(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native int ssc_data_query(long jarg1, String jarg2);\n");
-	fprintf(f, "  public final static native bool ssc_data_lookup(long jarg1, String jarg2);\n");
+	fprintf(f, "  public final static native int ssc_data_lookup(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native String ssc_data_first(long jarg1);\n");
 	fprintf(f, "  public final static native String ssc_data_next(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_set_string(long jarg1, String jarg2, String jarg3);\n");
@@ -3994,6 +3994,40 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  result = (ssc_data_t)ssc_data_create();\n");
 	fprintf(f, "  *(ssc_data_t *)&jresult = result;\n");
 	fprintf(f, "  return jresult;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "SWIGEXPORT jlong JNICALL Java_SSCAPIJNI_json_1file_1to_1ssc_1data(JNIEnv *jenv, jclass jcls, jstring jarg2) {\n");
+	fprintf(f, "  jlong jresult = 0 ;\n");
+	fprintf(f, "  ssc_data_t result;\n");
+	fprintf(f, "  char *arg2 = (char *) 0;\n");
+	fprintf(f, "  (void)jenv;\n");
+	fprintf(f, "  (void)jcls;\n");
+	fprintf(f, "  if (jarg2) {\n");
+	fprintf(f, "    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);\n");
+	fprintf(f, "    if (!arg2) return 0;\n");
+	fprintf(f, "  }\n");
+	fprintf(f, "  result = (ssc_data_t)json_file_to_ssc_data((char const *)arg2);\n");
+	fprintf(f, "  *(ssc_data_t *)&jresult = result;\n");
+	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
+	fprintf(f, "  return jresult;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "SWIGEXPORT jint JNICALL Java_SSCAPIJNI_ssc_1data_1lookup(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {\n");
+	fprintf(f, "  jint jresult = 0 ;\n");
+	fprintf(f, "  ssc_data_t  arg1 = (ssc_data_t) 0;\n");
+	fprintf(f, "  char *arg2 = (char *) 0;\n");
+	fprintf(f, "  ssc_var_t result;\n");
+	fprintf(f, "  (void)jenv;\n");
+	fprintf(f, "  (void)jcls;\n");
+	fprintf(f, "  arg1 = *(ssc_data_t *)&jarg1;\n");
+	fprintf(f, "  if (jarg2) {\n");
+	fprintf(f, "    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);\n");
+	fprintf(f, "    if (!arg2) return 0;\n");
+	fprintf(f, "  }\n");
+	fprintf(f, "  result = (ssc_var_t)ssc_data_lookup(arg1,(char const *)arg2);\n");
+	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
+	fprintf(f, "  if (result == NULL)\n");
+	fprintf(f, "	return 0;\n");
+	fprintf(f, "  else\n");
+	fprintf(f, "	return 1;\n");
 	fprintf(f, "}\n");
 	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1free(JNIEnv *jenv, jclass jcls, jlong jarg1) {\n");
 	fprintf(f, "  ssc_data_t arg1 = (ssc_data_t) 0 ;\n");
@@ -4700,25 +4734,14 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	RM = del /Q\n");
 	fprintf(f, "	EXT = dll\n");
 	fprintf(f, "	JNILIB = SSCAPIJNI.dll\n");
-	fprintf(f, "	ifneq (,$(findstring 64, $(value PROCESSOR_IDENTIFIER)))\n");
-	fprintf(f, "		BITS = 64\n");
-	fprintf(f, "		CCCOMP = c:/MinGW64/bin/gcc.exe\n");
+	fprintf(f, "	BITS = 64\n");
+	fprintf(f, "	CCCOMP = c:/MinGW-64/mingw64/bin/gcc.exe\n");
 	fprintf(f, "#Update based on your Java installation location		\n");
-	fprintf(f, " 		CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files\\Java\\jdk1.7.0_71\\include\"  -I\"C:\\Program Files\\Java\\jdk1.7.0_71\\include\\win32\"\n");
-	fprintf(f, "		JC = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\javac.exe\n");
-	fprintf(f, "		JAR = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\jar.exe\n");
-	fprintf(f, "		JAVA = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\java.exe\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	else\n");
-	fprintf(f, "		BITS = 32\n");
-	fprintf(f, "		CCCOMP = c:/MinGW/bin/gcc.exe\n");
-	fprintf(f, "#Update based on your Java installation location		\n");
-	fprintf(f, "		CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files(x86)\\Java\\jdk1.7.0_71\\include\"  -I\"C:\\Program Files(x86)\\Java\\jdk1.7.0_71\\include\\win32\"\n");
-	fprintf(f, "		JC = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\javac.exe\n");
-	fprintf(f, "		JAR = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\jar.exe\n");
-	fprintf(f, "		JAVA = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\java.exe\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	endif	\n");
+	fprintf(f, " 	CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files\\Java\\jdk-22\\include\"  -I\"C:\\Program Files\\Java\\jdk-22\\include\\win32\"\n");
+	fprintf(f, "	JC = C:\\Program Files\\Java\\jdk-22\\bin\\javac.exe\n");
+	fprintf(f, "	JAR = C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe\n");
+	fprintf(f, "	JAVA = C:\\Program Files\\Java\\jdk-22\\bin\\java.exe\n");
+	fprintf(f, "	SSCLIB = ssc.dll\n");
 	fprintf(f, "else\n");
 	fprintf(f, "    PF = $(shell uname)\n");
 	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
