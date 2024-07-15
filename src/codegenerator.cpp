@@ -3404,15 +3404,15 @@ bool CodeGen_java::Outputs()
 		fprintf(m_fp, "	double[] num_metrics = {0.0f};\n");
 		fprintf(m_fp, "	api.ssc_data_get_number(data,\"number_metrics\", num_metrics);\n");
 		fprintf(m_fp, "	double[] metric = {0.0f};\n");
-		fprintf(m_fp, "	char metric_name[10];\n");
-		fprintf(m_fp, "	char metric_label_name[17];\n");
-		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
-		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
-		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
-		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
-		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "	String metric_name;\n");
+		fprintf(m_fp, "	String metric_label_name;\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics[0];i++) {\n");
+		fprintf(m_fp, "		metric_label_name = String.format(\"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		metric_name = String.format(\"metric_%%d\", i);\n");
+		fprintf(m_fp, "		String metric_label = api.ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		String metric_value = api.ssc_data_get_string( data, metric_name);\n");
 		fprintf(m_fp, "		api.ssc_data_get_number(data, metric_value, metric);\n");
-		fprintf(m_fp, "		System.out.println(\"%%s = %%s[0]\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "		System.out.println(String.format(\"%%s = %%f\", metric_label, metric[0]));\n");
 		fprintf(m_fp, "	}\n");
 	}
 	return true;
