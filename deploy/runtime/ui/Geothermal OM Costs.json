@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal OM Costs",
-    "Width": 897.0,
-    "Height": 2297.0,
+    "Width": 778.0,
+    "Height": 209.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Group box"
+                    "String": "GETEM OM Cost Calculator"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -226,7 +226,7 @@
         "\t\t}\r",
         "\t\tdata.ppi_base_year = ${ppi_base_year};\r",
         "\t\tdata.cwflow = ssc_var(geothermal, \"cwflow\");\r",
-        "\t\tdata.drilling_cost = ${geotherm.cost.prod_inj_total};\r",
+        "\t\tdata.drilling_cost = ${geotherm.cost.drilling.amount};\r",
         "\t\tdata.field_gathering_system_cost = ${geotherm.cost.pumping.amount};\r",
         "\t\tdata.GF_flowrate = ssc_var(geothermal, \"GF_flowrate\");\r",
         "\t\tdata.num_wells = ${num_wells};\r",
