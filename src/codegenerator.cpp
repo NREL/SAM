@@ -697,7 +697,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Java");							// 5
 	code_languages.Add("C#");							// 6
 	code_languages.Add("VBA");							// 7
-	code_languages.Add("PHP 7");						// 8
+	code_languages.Add("PHP 8");						// 8
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -843,7 +843,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	else if (lang == 8) // php
 	{
 		fn += ".php";
-		cg = std::make_shared < CodeGen_php7>(c, fn);
+		cg = std::make_shared < CodeGen_php8>(c, fn);
 	}
 	else
 		return false;
@@ -4845,6 +4845,55 @@ CodeGen_php::CodeGen_php(Case * cc, const wxString & folder) : CodeGen_Base(cc, 
 }
 #pragma warning(pop)
 
+
+bool CodeGen_php::Outputs()
+{
+	// all values from json file and then running compute module
+	/*
+		case SSC_STRING:
+			fprintf(m_fp, "	$%s = sscphp_data_get_string( $dat, \"%s\" );\n", name, name);
+			fprintf(m_fp, " echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(m_fp, "	$%s = sscphp_data_get_number( $dat, \"%s\");\n", name, name);
+			fprintf(m_fp, "	echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+	*/
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	$outputs = sscphp_data_get_table($dat, \"output\");\n");
+//		fprintf(m_fp, "	ssc_number_t ae;\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	$%s = sscphp_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		$ae = sscphp_data_get_number(%s, \"annual_energy\");\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		printf(\"%%s annual outputs = %%lg\\n\", \"%s\", (double)ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		echo '%s = '. $ae . PHP_EOL;\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+
+
 bool CodeGen_php::Output(ssc_data_t p_data)
 {
 	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
@@ -4861,7 +4910,7 @@ bool CodeGen_php::Output(ssc_data_t p_data)
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	$%s = sscphp_data_get_number( $dat, \"%s\");\n", name, name);
-			fprintf(m_fp, "	 echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
 			fprintf(m_fp, "	$%s = sscphp_data_get_array( $dat, \"%s\");\n", name, name);
@@ -4877,6 +4926,16 @@ bool CodeGen_php::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+bool CodeGen_php::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " $dat = sscphp_json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -4975,6 +5034,28 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 }
 
 
+bool CodeGen_php::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_php::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "	if ( !sscphp_module_exec( $mod, $dat ) )\n");
@@ -5048,7 +5129,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_version() . PHP_EOL;\n");
 	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_build_info() . PHP_EOL;\n");
 	fprintf(m_fp, "	sscphp_module_exec_set_print(0);\n");
-	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
+//	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
 	return true;
 }
 
@@ -6308,6 +6389,639 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "\n");
 	fprintf(f, "run:\n");
 	fprintf(f, "	php -c ./php.ini %s.php\n", (const char *)m_name.c_str());
+	fprintf(f, "\n");
+	fprintf(f, "clean:\n");
+	fprintf(f, "	rm sscphp.so\n");
+	fprintf(f, "\n");
+	fprintf(f, "help:\n");
+	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
+	fclose(f);
+	return true;
+#else
+	return false;
+#endif
+}
+
+
+CodeGen_php8::CodeGen_php8(Case* cc, const wxString& folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
+{
+}
+
+bool CodeGen_php8::SupportingFiles()
+{
+	// add c wrapper for building
+	wxString fn = m_folder + "/sscphp.c";
+	FILE* f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "#include <stdio.h>\n");
+	fprintf(f, "#include <stdlib.h>\n");
+	fprintf(f, "#include <string.h>\n");
+	fprintf(f, "#include <ctype.h>\n");
+	fprintf(f, "#include <php.h>\n");
+	fprintf(f, "#include \"sscapi.h\"\n");
+	fprintf(f, "#define PHP_SSC_VERSION \"1.0\"\n");
+	fprintf(f, "#define PHP_SSC_EXTNAME \"sscphp\"\n");
+	fprintf(f, "typedef struct {\n");
+	fprintf(f, "	ssc_module_t p_mod;\n");
+	fprintf(f, "	ssc_data_t p_dat;\n");
+	fprintf(f, "	int is_dat_const_ref;\n");
+	fprintf(f, "} spobj;\n");
+	fprintf(f, "static int spobj_id;\n");
+	fprintf(f, "#define spobj_name \"sscphpobj\"\n");
+	fprintf(f, "static void _free_spobj( zend_resource *rsrc TSRMLS_DC ) {\n");
+	fprintf(f, "	spobj *p = (spobj*)rsrc->ptr;\n");
+	fprintf(f, "	if ( p->p_mod ) ssc_module_free( p->p_mod );\n");
+	fprintf(f, "	if ( p->p_dat && !p->is_dat_const_ref ) ssc_data_free( p->p_dat );\n");
+	fprintf(f, "	efree(p);\n");
+	fprintf(f, "};\n");
+	fprintf(f, "static spobj *create_ref( ssc_module_t *m, ssc_data_t *d ) {\n");
+	fprintf(f, "	spobj *p = emalloc(sizeof(spobj));\n");
+	fprintf(f, "	p->p_mod = m;\n");
+	fprintf(f, "	p->p_dat = d;\n");
+	fprintf(f, "	p->is_dat_const_ref = 0;\n");
+	fprintf(f, "	return p;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MINIT_FUNCTION(sscphp) {\n");
+	fprintf(f, "	spobj_id = zend_register_list_destructors_ex( _free_spobj,\n");
+	fprintf(f, "			NULL, spobj_name, module_number );\n");
+	fprintf(f, "	return SUCCESS;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MSHUTDOWN_FUNCTION(sscphp) {\n");
+	fprintf(f, "	return SUCCESS;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MINFO_FUNCTION(sscphp) {\n");
+	fprintf(f, "	char buf[16];\n");
+	fprintf(f, "	sprintf(buf, \"188713200\", ssc_version());\n");
+	fprintf(f, "	php_info_print_table_start();\n");
+	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
+	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
+	fprintf(f, "	php_info_print_table_row(2, \"Build\", ssc_build_info() );\n");
+	fprintf(f, "	php_info_print_table_end();\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_version ) {\n");
+	fprintf(f, "	RETURN_LONG( ssc_version() );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_build_info ) {\n");
+	fprintf(f, "	RETURN_STRING( ssc_build_info() );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_create ) {\n");
+	fprintf(f, "	spobj *p = create_ref(0, ssc_data_create() );\n");
+	fprintf(f, "	RETURN_RES(zend_register_resource( (void *)p, spobj_id ));\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_free ) {\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		ssc_data_free( p->p_dat );\n");
+	fprintf(f, "		p->p_dat = 0;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_clear ) {\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		ssc_data_clear( p->p_dat );\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_unassign )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		ssc_data_unassign( p->p_dat, name );\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_query )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		RETURN_LONG( ssc_data_query( p->p_dat, name ) );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_first )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		const char *str = ssc_data_first(p->p_dat);\n");
+	fprintf(f, "		if ( str )\n");
+	fprintf(f, "			RETURN_STRING( str );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_next )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		const char *str = ssc_data_next( p->p_dat );\n");
+	fprintf(f, "		if ( str )\n");
+	fprintf(f, "			RETURN_STRING( str );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_string )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	char *value;\n");
+	fprintf(f, "	size_t value_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rss\", &res, &name, &name_len, &value, &value_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p ) RETURN_FALSE;\n");
+	fprintf(f, "	if( p->p_dat )\n");
+	fprintf(f, "		ssc_data_set_string( p->p_dat, name, value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_number )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	double value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsd\", &res, &name, &name_len, &value ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p ) RETURN_FALSE;\n");
+	fprintf(f, "	if( p->p_dat )\n");
+	fprintf(f, "		ssc_data_set_number( p->p_dat, name, (ssc_number_t)value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_array )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	long i, len;\n");
+	fprintf(f, "	zval *arr;\n");
+	fprintf(f, "	zval *data;\n");
+	fprintf(f, "	HashTable *hash;\n");
+	fprintf(f, "	HashPosition pointer;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsa\", &res, &name, &name_len, &arr ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) return;\n");
+	fprintf(f, "	hash = Z_ARRVAL_P(arr);\n");
+	fprintf(f, "	len = zend_hash_num_elements( hash );\n");
+	fprintf(f, "	if (len < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_number_t *vec = (ssc_number_t*) malloc( sizeof(ssc_number_t)*len );\n");
+	fprintf(f, "	if ( !vec ) RETURN_FALSE;\n");
+	fprintf(f, "	i=0;\n");
+	fprintf(f, "	for( zend_hash_internal_pointer_reset_ex( hash, &pointer );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex(hash, &pointer )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(hash, &pointer ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		if ( i >= len ) break;\n");
+	fprintf(f, "		vec[i] = 0.0f;\n");
+	fprintf(f, "		if ( Z_TYPE_P(data) == IS_DOUBLE )\n");
+	fprintf(f, "			vec[i] = (ssc_number_t)Z_DVAL_P(data);\n");
+	fprintf(f, "		else if ( Z_TYPE_P(data) == IS_LONG )\n");
+	fprintf(f, "			vec[i] = (ssc_number_t)Z_LVAL_P(data);\n");
+	fprintf(f, "		i++;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	ssc_data_set_array( p->p_dat, name, vec, len );\n");
+	fprintf(f, "	free( vec );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_matrix )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	long i, j, nr, nc, nlen, index;\n");
+	fprintf(f, "	zval *mat;\n");
+	fprintf(f, "	zval *data;\n");
+	fprintf(f, "	HashTable *hash, *row;\n");
+	fprintf(f, "	HashPosition pointer1, pointer2;\n");
+	fprintf(f, "	ssc_number_t *vec;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsa\", &res, &name, &name_len, &mat ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	hash = Z_ARRVAL_P(mat);\n");
+	fprintf(f, "	nr = zend_hash_num_elements( hash );\n");
+	fprintf(f, "	if ( nr < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	zend_hash_internal_pointer_reset_ex( hash, &pointer1 );\n");
+	fprintf(f, "  	data = zend_hash_get_current_data_ex(hash, &pointer1 );\n");
+	fprintf(f, "	row = Z_ARRVAL_P(data);\n");
+	fprintf(f, "	nc = zend_hash_num_elements( row );\n");
+	fprintf(f, "	if ( nc < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	nlen = nr * nc;\n");
+	fprintf(f, "	vec = (ssc_number_t*)malloc( sizeof(ssc_number_t)*nlen );\n");
+	fprintf(f, "	if ( !vec ) RETURN_FALSE;\n");
+	fprintf(f, "	i = 0;\n");
+	fprintf(f, "	for( zend_hash_internal_pointer_reset_ex( hash, &pointer1 );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex(hash, &pointer1 )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(hash, &pointer1) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		if ( i >= nr ) break;\n");
+	fprintf(f, "		if ( Z_TYPE_P(data) != IS_ARRAY ) continue;\n");
+	fprintf(f, "		row = Z_ARRVAL_P(data);\n");
+	fprintf(f, "		j = 0;\n");
+	fprintf(f, "		nc = zend_hash_num_elements( row );\n");
+	fprintf(f, "		for( zend_hash_internal_pointer_reset_ex( row, &pointer2 );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex( row, &pointer2 )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(row, &pointer2 ) )\n");
+	fprintf(f, "		{\n");
+	fprintf(f, "			if ( j >= nc ) break;\n");
+	fprintf(f, "			index = i*nc+j;\n");
+	fprintf(f, "			vec[index] = 0.0f;\n");
+	fprintf(f, "			if ( Z_TYPE_P(data) == IS_DOUBLE )\n");
+	fprintf(f, "				vec[ index ] = (ssc_number_t)Z_DVAL_P(data);\n");
+	fprintf(f, "			else if ( Z_TYPE_P(data) == IS_LONG )\n");
+	fprintf(f, "				vec[ index ] = (ssc_number_t)Z_LVAL_P(data);\n");
+	fprintf(f, "			j++;\n");
+	fprintf(f, "		}\n");
+	fprintf(f, "		i++;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "\n");
+	fprintf(f, "	ssc_data_set_matrix( p->p_dat, name, vec, nr, nc );\n");
+	fprintf(f, "	free( vec );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_table )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	zval *tab;\n");
+	fprintf(f, "	spobj *t;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsr\", &res, &name, &name_len, &tab ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	if ((t = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "//	ZEND_FETCH_RESOURCE( t, spobj*, &tab, -1, spobj_name, spobj_id );\n");
+	fprintf(f, "	if (!t || !t->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_data_set_table( p->p_dat, name, t->p_dat );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_string )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	const char *value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	value = ssc_data_get_string( p->p_dat, name );\n");
+	fprintf(f, "	RETURN_STRING( value ? value : \"\" )\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_number )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( ssc_data_get_number( p->p_dat, name, &value ) )\n");
+	fprintf(f, "		RETURN_DOUBLE( (double)value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_array )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t *arr;\n");
+	fprintf(f, "	int i, len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	arr = ssc_data_get_array( p->p_dat, name, &len );\n");
+	fprintf(f, "	if ( !arr || len < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	array_init( return_value );\n");
+	fprintf(f, "	for( i=0;i<len;i++)\n");
+	fprintf(f, "		add_index_double( return_value, i, (double)arr[i] );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_matrix )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t *mat;\n");
+	fprintf(f, "	int i,j, nr, nc;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	mat = ssc_data_get_matrix( p->p_dat, name, &nr, &nc );\n");
+	fprintf(f, "	if ( !mat || nr < 1 || nc < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	array_init( return_value );\n");
+	fprintf(f, "	for( i=0;i<nr;i++ )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		zval *row;\n");
+	fprintf(f, "//		MAKE_STD_ZVAL( row );\n");
+	fprintf(f, "		array_init( row );\n");
+	fprintf(f, "		for( j=0;j<nc;j++ )\n");
+	fprintf(f, "		{\n");
+	fprintf(f, "			int index = i*nc+j;\n");
+	fprintf(f, "			add_index_double( row, j, (double)mat[index] );\n");
+	fprintf(f, "		}\n");
+	fprintf(f, "		add_index_zval( return_value, i, row );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_table )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_data_t table;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	table = ssc_data_get_table( p->p_dat, name );\n");
+	fprintf(f, "	if ( !table ) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	spobj *t = create_ref( 0, 0);\n");
+	fprintf(f, "	t->p_dat = table;\n");
+	fprintf(f, "	t->is_dat_const_ref = 1; // ssc_data_get_table returns an internal reference\n");
+	fprintf(f, "	RETURN_RES(zend_register_resource( (void *)t, spobj_id ));\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_entry )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	ssc_entry_t ent;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"l\", &index ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( ent = ssc_module_entry( index ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		array_init( return_value );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"name\", (char*)ssc_entry_name( ent ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"description\", (char*)ssc_entry_description( ent ) );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"version\", (long)ssc_entry_version( ent ) );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	else\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_NULL();\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_create )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	ssc_module_t mod;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"s\", &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( mod = ssc_module_create( name ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		spobj *p = create_ref( mod, 0 );\n");
+	fprintf(f, "		RETURN_RES(zend_register_resource( (void *)p, spobj_id ));\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	else\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_NULL();\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_free )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_module_free( p->p_mod );\n");
+	fprintf(f, "	p->p_mod = 0;\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_var_info )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	ssc_info_t inf;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rl\", &res, &index ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( inf = ssc_module_var_info( p->p_mod, index ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		array_init( return_value );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"var_type\", (long)ssc_info_var_type( inf ) );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"data_type\", (long)ssc_info_data_type( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"name\", (char*)ssc_info_name( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"label\", (char*)ssc_info_label( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"units\", (char*)ssc_info_units( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"meta\", (char*)ssc_info_meta( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"group\", (char*)ssc_info_group( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"required\", (char*)ssc_info_required( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"constraints\", (char*)ssc_info_constraints( inf ) );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_exec_set_print )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	long print;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"l\", &print ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	ssc_module_exec_set_print( print );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_exec )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *mm, *dd;\n");
+	fprintf(f, "	zval *res1, *res2;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rr\", &res1, &res2 ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((mm = (spobj *)zend_fetch_resource_ex(res1, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !mm || !mm->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	if ((dd = (spobj *)zend_fetch_resource_ex(res2, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !dd || !dd->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	RETURN_BOOL( ssc_module_exec( mm->p_mod, dd->p_dat ) );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_log )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	const char *msg;\n");
+	fprintf(f, "	int type;\n");
+	fprintf(f, "	float time;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rl\", &res, &index ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( msg = ssc_module_log( p->p_mod, index, &type, &time ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_STRING( msg );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "\n");
+	fprintf(f, "static zend_function_entry sscphp_functions[] = {\n");
+	fprintf(f, "	PHP_FE( sscphp_version, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_build_info, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_create, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_free, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_clear, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_query, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_first, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_next, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_string, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_number, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_array, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_matrix, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_table, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_string, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_number, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_array, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_matrix, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_table, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_entry, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_create, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_free, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_var_info, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_exec_set_print, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_exec, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_log, NULL )\n");
+	fprintf(f, "		{ NULL, NULL, NULL }\n");
+	fprintf(f, "};\n");
+	fprintf(f, "zend_module_entry sscphp_module_entry = {\n");
+	fprintf(f, "	STANDARD_MODULE_HEADER,\n");
+	fprintf(f, "	PHP_SSC_EXTNAME,\n");
+	fprintf(f, "	sscphp_functions,\n");
+	fprintf(f, "	PHP_MINIT(sscphp),\n");
+	fprintf(f, "	PHP_MSHUTDOWN(sscphp),\n");
+	fprintf(f, "	NULL,\n");
+	fprintf(f, "	NULL,\n");
+	fprintf(f, "	PHP_MINFO(sscphp),\n");
+	fprintf(f, "	PHP_SSC_VERSION,\n");
+	fprintf(f, "	STANDARD_MODULE_PROPERTIES\n");
+	fprintf(f, "};\n");
+	fprintf(f, "// install module\n");
+	fprintf(f, "ZEND_GET_MODULE(sscphp)\n");
+	fclose(f);
+	// add php.ini for module location
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "extension=%s/sscphp.so\n", (const char*)m_folder.c_str());
+	fclose(f);
+#if defined(__WXMSW__)  // no windows support yet
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
+#elif defined(__WXOSX__) // not tested on OS X
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
+#elif defined(__WXGTK__)
+	// add Makefile (currently linux only)
+	fn = m_folder + "/Makefile";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
+	fprintf(f, "# Header files from php-devel package, e.g. sudo yum install php-devel\n");
+	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");
+	fprintf(f, "# To build and run:\n");
+	fprintf(f, "# make\n");
+	fprintf(f, "# make run\n");
+	fprintf(f, "PHPDIR=/usr/include/php\n");
+	fprintf(f, "\n");
+	fprintf(f, "sscphp.so: sscphp.c\n");
+	fprintf(f, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ./ssc.so\n");
+	fprintf(f, "\n");
+	fprintf(f, "run:\n");
+	fprintf(f, "	php -c ./php.ini %s.php\n", (const char*)m_name.c_str());
 	fprintf(f, "\n");
 	fprintf(f, "clean:\n");
 	fprintf(f, "	rm sscphp.so\n");

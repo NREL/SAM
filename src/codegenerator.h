@@ -246,9 +246,9 @@ public:
 	bool Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold);
 	bool Output(ssc_data_t p_data);
 	bool Footer();
-	bool Inputs() { return true; }
-	bool Outputs() { return true; }
-	bool RunSSCModules() { return true; }
+	bool Inputs();
+	bool Outputs();
+	bool RunSSCModules();
 };
 
 class CodeGen_php5 : public virtual CodeGen_php
@@ -261,7 +261,14 @@ public:
 class CodeGen_php7 : public virtual CodeGen_php
 {
 public:
-	CodeGen_php7(Case *cc, const wxString &folder);
+	CodeGen_php7(Case* cc, const wxString& folder);
+	bool SupportingFiles();
+};
+
+class CodeGen_php8 : public virtual CodeGen_php
+{
+public:
+	CodeGen_php8(Case* cc, const wxString& folder);
 	bool SupportingFiles();
 };
 
