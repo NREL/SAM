@@ -2259,6 +2259,7 @@ void SamApp::Restart()
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
 #elif defined(__LOAD_AS_JSON__)
 			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
+
 			if (!SamApp::InputPages().LoadFileJSON(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else
