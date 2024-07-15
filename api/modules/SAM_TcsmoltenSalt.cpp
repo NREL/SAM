@@ -32,6 +32,18 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_F_wc_aset(SAM_table ptr, double*
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_T_tank_cold_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_tank_cold_init", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_T_tank_hot_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_tank_hot_init", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_string(ptr, "ampl_data_dir", str);
@@ -206,21 +218,15 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_timeout_nset(SAM_table ptr,
 	});
 }
 
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_wlim_maxspec_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "disp_wlim_maxspec", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "dispatch_series", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "f_turb_tou_periods", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_PAR_HTR_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "is_PAR_HTR_allowed_in", arr, length);
 	});
 }
 
@@ -236,9 +242,15 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_targets_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_dispatch_series", number);
+		ssc_data_set_number(ptr, "is_dispatch_targets", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_field_tracking_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_field_tracking_init", number);
 	});
 }
 
@@ -248,21 +260,27 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nset(SAM_table p
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_pc_sb_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "is_pc_sb_allowed_in", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_pc_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "is_pc_su_allowed_in", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "is_rec_su_allowed_in", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_design_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_wlim_design", number);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_wlim_series", number);
 	});
 }
 
@@ -278,6 +296,48 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pc_op_mode_initial", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_startup_energy_remain_initial_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pc_startup_energy_remain_initial", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_startup_time_remain_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "pc_startup_time_remain_init", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_dot_elec_to_PAR_HTR_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "q_dot_elec_to_PAR_HTR_in", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_max_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "q_pc_max_in", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_target_on_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "q_pc_target_on_in", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_target_su_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "q_pc_target_su_in", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_rec_heattrace", number);
@@ -287,6 +347,24 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nset(SAM_table p
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "q_rec_standby", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_op_mode_initial", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_startup_energy_remain_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_startup_energy_remain_init", number);
+	});
+}
+
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_startup_time_remain_init_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_startup_time_remain_init", number);
 	});
 }
 
@@ -335,12 +413,6 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mset(SAM_table 
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "weekend_schedule", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "wlim_series", arr, length);
 	});
 }
 
@@ -1856,6 +1928,24 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_F_wc_aget(SAM_table ptr, int*
 	return result;
 }
 
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_T_tank_cold_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_tank_cold_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "T_tank_cold_init");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_T_tank_hot_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_tank_hot_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "T_tank_hot_init");
+	});
+	return result;
+}
+
 SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2119,31 +2209,22 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_timeout_nget(SAM_table pt
 	return result;
 }
 
-SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_wlim_maxspec_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "disp_wlim_maxspec", &result))
-		make_access_error("SAM_TcsmoltenSalt", "disp_wlim_maxspec");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "dispatch_series", length);
-	if (!result)
-		make_access_error("SAM_TcsmoltenSalt", "dispatch_series");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "f_turb_tou_periods", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "f_turb_tou_periods");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_PAR_HTR_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_PAR_HTR_allowed_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "is_PAR_HTR_allowed_in");
 	});
 	return result;
 }
@@ -2166,11 +2247,20 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_nget(SAM_table ptr
 	return result;
 }
 
-SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_targets_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_dispatch_series");
+	if (!ssc_data_get_number(ptr, "is_dispatch_targets", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_dispatch_targets");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_field_tracking_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_field_tracking_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_field_tracking_init");
 	});
 	return result;
 }
@@ -2184,29 +2274,41 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nget(SAM_table
 	return result;
 }
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_pc_sb_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_pc_sb_allowed_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "is_pc_sb_allowed_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_pc_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_pc_su_allowed_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "is_pc_su_allowed_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_rec_su_allowed_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "is_rec_su_allowed_in");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_tod_pc_target_also_pc_max", &result))
 		make_access_error("SAM_TcsmoltenSalt", "is_tod_pc_target_also_pc_max");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_design_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_wlim_design", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_wlim_design");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_wlim_series", &result))
-		make_access_error("SAM_TcsmoltenSalt", "is_wlim_series");
 	});
 	return result;
 }
@@ -2229,6 +2331,73 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_op_mode_initial_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_op_mode_initial", &result))
+		make_access_error("SAM_TcsmoltenSalt", "pc_op_mode_initial");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_startup_energy_remain_initial_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_startup_energy_remain_initial", &result))
+		make_access_error("SAM_TcsmoltenSalt", "pc_startup_energy_remain_initial");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_startup_time_remain_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pc_startup_time_remain_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "pc_startup_time_remain_init");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_dot_elec_to_PAR_HTR_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_elec_to_PAR_HTR_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "q_dot_elec_to_PAR_HTR_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_max_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_pc_max_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "q_pc_max_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_target_on_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_pc_target_on_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "q_pc_target_on_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_target_su_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_pc_target_su_in", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "q_pc_target_su_in");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2243,6 +2412,33 @@ SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "q_rec_standby", &result))
 		make_access_error("SAM_TcsmoltenSalt", "q_rec_standby");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_op_mode_initial_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_op_mode_initial", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_op_mode_initial");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_startup_energy_remain_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_startup_energy_remain_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_startup_energy_remain_init");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_startup_time_remain_init_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_startup_time_remain_init", &result))
+		make_access_error("SAM_TcsmoltenSalt", "rec_startup_time_remain_init");
 	});
 	return result;
 }
@@ -2318,16 +2514,6 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mget(SAM_tab
 	result = ssc_data_get_matrix(ptr, "weekend_schedule", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "weekend_schedule");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "wlim_series", length);
-	if (!result)
-		make_access_error("SAM_TcsmoltenSalt", "wlim_series");
 	});
 	return result;
 }
@@ -5752,6 +5938,26 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_tower_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_Tdb_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "cycle_Tdb_table", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "cycle_Tdb_table");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_eff_load_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "cycle_eff_load_table", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "cycle_eff_load_table");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6195,12 +6401,32 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_revenue_fraction_nget(SAM_
 	return result;
 }
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_hot_tank_htf_percent_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "hot_tank_htf_percent_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "hot_tank_htf_percent_final");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "is_PAR_HTR_allowed", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "is_PAR_HTR_allowed");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_field_tracking_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_field_tracking_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "is_field_tracking_final");
 	});
 	return result;
 }
@@ -6599,6 +6825,36 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_operating_modes_c_aget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pc_op_mode_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "pc_op_mode_final");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_startup_energy_remain_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pc_startup_energy_remain_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "pc_startup_energy_remain_final");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_startup_time_remain_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pc_startup_time_remain_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "pc_startup_time_remain_final");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6929,6 +7185,36 @@ SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_rec_height_calc_nget(SAM_table ptr, 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_height_calc", &result))
 		make_access_error("SAM_TcsmoltenSalt", "rec_height_calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rec_op_mode_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "rec_op_mode_final");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_startup_energy_remain_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rec_startup_energy_remain_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "rec_startup_energy_remain_final");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_startup_time_remain_final_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "rec_startup_time_remain_final", length);
+	if (!result)
+		make_access_error("SAM_TcsmoltenSalt", "rec_startup_time_remain_final");
 	});
 	return result;
 }
