@@ -1903,68 +1903,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 719"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 603.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 474.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 120.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Wave direction"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 742"
                 },
                 "X": {
@@ -3387,6 +3325,68 @@
                     "Integer": 6.0
                 }
             }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "wave_direction_lbl"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 603.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 120.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Wave direction"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -4267,7 +4267,13 @@
         "\tsystem_sizing_inputs();",
         "\tarray_layout_inputs();",
         "\tplot_mhk_array();",
-        "\twavefile_spacing_check();",
+        "\twavefile_spacing_check();\r",
+        "\tif (technology() == \"MEwave\" || technology() == \"MEwave Battery\") {\r",
+        "\t\tproperty('wave_direction_lbl', 'Caption', 'Wave direction');\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('wave_direction_lbl', 'Caption', 'Flow direction');\r",
+        "\t}",
         "\ton_change{'cable_length_option'}();",
         "\texport_cable_voltage_check();",
         "\toffshore_substation_check();",

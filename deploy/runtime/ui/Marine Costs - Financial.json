@@ -1443,7 +1443,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized financial related capital costs in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost. See Help for details."
+                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized financial related capital costs in $ or $/kW, check Override Cost Structure to enter the total financial capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the financial cost.For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,

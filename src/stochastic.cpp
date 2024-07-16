@@ -2287,6 +2287,7 @@ void StochasticPanel::Simulate()
 	for (int i = 0; i < m_sd.N; i++)
 	{
 		Simulation *s = new Simulation(m_case, wxString::Format("Stochastic #%d", (int)(i + 1)));
+		s->Clear(); // address SAM issue 1683 for Windows
 		m_sims.push_back(s);
 
 		for (size_t j = 0; j < m_sd.InputDistributions.size(); j++)

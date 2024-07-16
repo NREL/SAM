@@ -1,16 +1,17 @@
 /*@
 
 <p>This macro calculates the host indifference point over a range of system sizes 
-for the Third Party Ownership - Host / Developer model. This helps determine, from the
-developer perspective, how large the system would need to be to both meet the 
-developer returns requirement and be beneficial to the host.</p>
+for the Third Party Ownership - Host / Developer model. This helps determine, 
+from the developer perspective, how large the system would need to be to both 
+meet the developer returns requirement and be beneficial to the host.</p>
 
 <p>From the host perspective, the agreement is econonically beneficial when the
-PPA price exceeds the host indifference point.</p>
+PPA price is less than the host indifference point.</p>
 
-<p>Run the macro to generate a plot of the PPA price and indifference point for a range
-of system sizes given the cost and financial assumptions you provided on the input
-pages, and to generate a table of these and other metrics for further analysis.</p>
+<p>Run the macro to generate a plot of the PPA price and indifference point for 
+a range of system sizes given the cost and financial assumptions you provided on 
+the input pages, and to generate a table of these and other metrics for further 
+analysis.</p>
 
 <p><img src="$MACROPATH/tpo_sample_plot.png"></p>
 

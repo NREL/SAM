@@ -714,8 +714,6 @@ SAM_EXPORT const char* SAM_EtesPtes_SolarResource_solar_resource_file_sget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -724,8 +722,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -736,8 +732,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_0_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -746,8 +740,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_1_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -758,8 +750,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_2_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -768,8 +758,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_bop_par_f_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -780,8 +768,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_csu_cost_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_down_time_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -790,8 +776,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_down_time_min_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_frequency_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -802,8 +786,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_frequency_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_horizon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -812,8 +794,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_horizon_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_hsu_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -824,8 +804,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_hsu_cost_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -834,8 +812,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_max_iter_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -846,8 +822,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_mip_gap_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -856,8 +830,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_pen_delta_w_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_reporting_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -868,8 +840,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_reporting_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_bb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -878,8 +848,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_bb_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -890,8 +858,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_presolve_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -900,8 +866,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_spec_scaling_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -912,8 +876,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_steps_per_hour_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -922,8 +884,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_time_weighting_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -934,8 +894,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_timeout_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_up_time_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -944,8 +902,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_disp_up_time_min_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -956,8 +912,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_is_dispatch_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -966,8 +920,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_pb_fixed_par_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -978,8 +930,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_sim_type_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -988,8 +938,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_time_start_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_time_steps_per_hour_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1000,8 +948,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_time_steps_per_hour_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemControl_time_stop_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1010,8 +956,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_time_stop_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemControl_vacuum_arrays_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1022,8 +966,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemControl_vacuum_arrays_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialModel_etes_financial_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1032,8 +974,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialModel_etes_financial_model_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_CT_cold_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1044,8 +984,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_CT_cold_htf_des_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_CT_hot_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1054,8 +992,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_CT_hot_htf_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_HT_cold_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1066,8 +1002,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_HT_cold_htf_des_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_HT_hot_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1076,8 +1010,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_T_HT_hot_htf_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_W_dot_pc_thermo_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1088,8 +1020,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_W_dot_pc_thermo_des_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_cop_hp_thermo_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1098,8 +1028,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_cop_hp_thermo_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_eta_pc_thermo_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1110,8 +1038,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_eta_pc_thermo_des_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_f_hp_parasitic_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1120,8 +1046,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_f_hp_parasitic_des_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_f_pc_parasitic_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1132,8 +1056,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_f_pc_parasitic_des_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_heater_mult_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1142,8 +1064,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_heater_mult_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemDesign_tshours_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1154,8 +1074,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemDesign_tshours_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_ThermalStorage_cold_htf_code_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1165,8 +1083,6 @@ SAM_EXPORT double SAM_EtesPtes_ThermalStorage_cold_htf_code_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_ThermalStorage_hot_htf_code_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1175,8 +1091,6 @@ SAM_EXPORT double SAM_EtesPtes_ThermalStorage_hot_htf_code_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_ThermalStorage_ud_cold_htf_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1188,8 +1102,6 @@ SAM_EXPORT double* SAM_EtesPtes_ThermalStorage_ud_cold_htf_props_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_ThermalStorage_ud_hot_htf_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1200,8 +1112,6 @@ SAM_EXPORT double* SAM_EtesPtes_ThermalStorage_ud_hot_htf_props_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Heater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1210,8 +1120,6 @@ SAM_EXPORT double SAM_EtesPtes_Heater_f_q_dot_des_allowable_su_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1222,8 +1130,6 @@ SAM_EXPORT double SAM_EtesPtes_Heater_f_q_dot_heater_min_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1232,8 +1138,6 @@ SAM_EXPORT double SAM_EtesPtes_Heater_hrs_startup_at_max_rate_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_CT_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1244,8 +1148,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_CT_pb_pump_coef_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_cycle_cutoff_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1254,8 +1156,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_cycle_cutoff_frac_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_cycle_max_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1266,8 +1166,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_cycle_max_frac_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_heat_pump_CT_HTF_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1276,8 +1174,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_heat_pump_CT_HTF_pump_coef_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_heat_pump_HT_HTF_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1288,8 +1184,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_heat_pump_HT_HTF_pump_coef_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1298,8 +1192,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_pb_pump_coef_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_q_sby_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1310,8 +1202,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_q_sby_frac_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_startup_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1320,8 +1210,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_startup_frac_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_PowerCycle_startup_time_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1332,8 +1220,6 @@ SAM_EXPORT double SAM_EtesPtes_PowerCycle_startup_time_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1342,8 +1228,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_cold_tank_Thtr_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1354,8 +1238,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_cold_tank_max_heat_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1364,8 +1246,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_h_tank_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1376,8 +1256,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_h_tank_min_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_hot_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1386,8 +1264,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_hot_tank_Thtr_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_hot_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1398,8 +1274,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_hot_tank_max_heat_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1408,8 +1282,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_tank_pairs_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_tes_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1420,8 +1292,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_tes_init_hot_htf_percent_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1430,8 +1300,6 @@ SAM_EXPORT double SAM_EtesPtes_HotThermalStorage_u_tank_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1442,8 +1310,6 @@ SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_h_tank_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1452,8 +1318,6 @@ SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_h_tank_min_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1464,8 +1328,6 @@ SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_tank_pairs_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1474,8 +1336,6 @@ SAM_EXPORT double SAM_EtesPtes_ColdThermalStorage_CT_u_tank_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1487,8 +1347,6 @@ SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_factors_ts_aget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1498,8 +1356,6 @@ SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_sched_weekday_mge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1511,8 +1367,6 @@ SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_sched_weekend_mge
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1523,8 +1377,6 @@ SAM_EXPORT double* SAM_EtesPtes_TimeOfDeliveryFactors_dispatch_tod_factors_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_TimeOfDeliveryFactors_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1533,8 +1385,6 @@ SAM_EXPORT double SAM_EtesPtes_TimeOfDeliveryFactors_ppa_multiplier_model_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1546,8 +1396,6 @@ SAM_EXPORT double* SAM_EtesPtes_Revenue_ppa_price_input_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_CT_tes_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1556,8 +1404,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_CT_tes_spec_cost_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_bop_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1568,8 +1414,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_bop_spec_cost_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_contingency_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1578,8 +1422,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_contingency_rate_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_cycle_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1590,8 +1432,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_cycle_spec_cost_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1600,8 +1440,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_fixed_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1612,8 +1450,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_per_watt_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_perc_of_direct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1622,8 +1458,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_epc_cost_perc_of_direct_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_heat_pump_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1634,8 +1468,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_heat_pump_spec_cost_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1644,8 +1476,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_fixed_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_per_watt_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1656,8 +1486,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_per_watt_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_perc_of_direct_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1666,8 +1494,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_land_cost_perc_of_direct_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_sales_tax_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1678,8 +1504,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_sales_tax_frac_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_SystemCosts_tes_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1688,8 +1512,6 @@ SAM_EXPORT double SAM_EtesPtes_SystemCosts_tes_spec_cost_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1700,8 +1522,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate1_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1710,8 +1530,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate2_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1722,8 +1540,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate3_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1732,8 +1548,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate4_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1744,8 +1558,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_interest_rate5_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1754,8 +1566,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months1_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1766,8 +1576,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months2_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1776,8 +1584,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months3_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1788,8 +1594,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months4_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1798,8 +1602,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_months5_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1810,8 +1612,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent1_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1820,8 +1620,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent2_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1832,8 +1630,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent3_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1842,8 +1638,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent4_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1854,8 +1648,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_percent5_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1864,8 +1656,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate1_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1876,8 +1666,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate2_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1886,8 +1674,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate3_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1898,8 +1684,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate4_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1908,8 +1692,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_const_per_upfront_rate5_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_FinancialParameters_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1920,8 +1702,6 @@ SAM_EXPORT double SAM_EtesPtes_FinancialParameters_sales_tax_rate_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1930,8 +1710,6 @@ SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_constant_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1942,8 +1720,6 @@ SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_en_periods_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1952,8 +1728,6 @@ SAM_EXPORT double SAM_EtesPtes_AdjustmentFactors_adjust_en_timeindex_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1965,8 +1739,6 @@ SAM_EXPORT double* SAM_EtesPtes_AdjustmentFactors_adjust_periods_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1977,8 +1749,6 @@ SAM_EXPORT double* SAM_EtesPtes_AdjustmentFactors_adjust_timeindex_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_COP_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1987,8 +1757,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_COP_net_des_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_CT_tes_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1999,8 +1767,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_CT_tes_cost_calc_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_E_hp_su_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2009,8 +1775,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_E_hp_su_des_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_Q_CT_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2021,8 +1785,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_Q_CT_tes_des_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2031,8 +1793,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_Q_tes_des_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_CT_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2044,8 +1804,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_CT_tes_cold_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_CT_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2055,8 +1813,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_CT_tes_hot_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_CT_htf_cold_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2068,8 +1824,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_CT_htf_cold_out_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_CT_htf_hot_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2079,8 +1833,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_CT_htf_hot_in_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_HT_htf_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2092,8 +1844,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_HT_htf_cold_in_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_HT_htf_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2103,8 +1853,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_hp_HT_htf_hot_out_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_CT_htf_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2116,8 +1864,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_CT_htf_cold_in_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_CT_htf_hot_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2127,8 +1873,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_CT_htf_hot_out_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_HT_htf_cold_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2140,8 +1884,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_HT_htf_cold_out_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_HT_htf_hot_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2151,8 +1893,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_pc_HT_htf_hot_in_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2164,8 +1904,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_tes_cold_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_T_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2176,8 +1914,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_T_tes_hot_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_V_CT_tes_htf_avail_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2186,8 +1922,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_V_CT_tes_htf_avail_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_V_CT_tes_htf_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2198,8 +1932,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_V_CT_tes_htf_total_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_V_tes_htf_avail_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2208,8 +1940,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_V_tes_htf_avail_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_V_tes_htf_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2220,8 +1950,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_V_tes_htf_total_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_bop_design_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2230,8 +1958,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_bop_design_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_bop_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2243,8 +1969,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_bop_parasitics_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2253,8 +1977,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_fixed_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_fixed_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2266,8 +1988,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_fixed_parasitics_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_CT_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2278,8 +1998,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_CT_htf_pump_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_CT_htf_pump_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2288,8 +2006,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_CT_htf_pump_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_HT_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2301,8 +2017,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_HT_htf_pump_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_HT_htf_pump_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2311,8 +2025,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_HT_htf_pump_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_elec_parasitic_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2323,8 +2035,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_elec_parasitic_des_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_in_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2334,8 +2044,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_in_net_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_in_thermo_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2344,8 +2052,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_hp_in_thermo_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2357,8 +2063,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_net_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2368,8 +2072,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_parasitics_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_thermo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2381,8 +2083,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_hp_thermo_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_out_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2392,8 +2092,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_out_net_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_CT_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2405,8 +2103,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_CT_htf_pump_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_CT_htf_pump_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2415,8 +2111,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_CT_htf_pump_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_HT_htf_pump_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2428,8 +2122,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_HT_htf_pump_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_HT_htf_pump_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2438,8 +2130,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_HT_htf_pump_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_elec_parasitic_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2450,8 +2140,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_elec_parasitic_des_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2460,8 +2148,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_W_dot_pc_net_des_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_parasitics_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2473,8 +2159,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_parasitics_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_thermo_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2485,8 +2169,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_W_dot_pc_thermo_out_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2495,8 +2177,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_annual_energy_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -2508,8 +2188,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_annual_energy_distribution_time_mget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2518,8 +2196,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_avg_suboptimal_rel_mip_gap_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2530,8 +2206,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_bop_cost_calc_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_charge_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2540,8 +2214,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_charge_capacity_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2552,8 +2224,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_construction_financing_cost_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_contingency_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2562,8 +2232,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_contingency_cost_calc_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_cop_hot_hp_thermo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2575,8 +2243,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_cop_hot_hp_thermo_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2585,8 +2251,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_cp_battery_nameplate_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2597,8 +2261,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_cp_system_nameplate_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2607,8 +2269,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_cycle_cost_calc_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_d_CT_tank_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2619,8 +2279,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_d_CT_tank_tes_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2629,8 +2287,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_direct_subtotal_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2641,8 +2297,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_direct_subtotal_cost_calc_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2651,8 +2305,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_iter_ann_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2664,8 +2316,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_obj_relax_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2676,8 +2326,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_objective_aget(SAM_table ptr, int* 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_objective_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2686,8 +2334,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_objective_ann_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_pceff_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2699,8 +2345,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_pceff_expected_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2711,8 +2355,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nconstr_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nconstr_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2721,8 +2363,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nconstr_ann_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2734,8 +2374,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_presolve_nvar_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2744,8 +2382,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_presolve_nvar_ann_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2757,8 +2393,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qpbsu_expected_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2768,8 +2402,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfprod_expected_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2781,8 +2413,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2792,8 +2422,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rev_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2805,8 +2433,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_rev_expected_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2816,8 +2442,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_iter_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2829,8 +2453,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_state_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_state_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2839,8 +2461,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_state_ann_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2852,8 +2472,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_solve_time_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_time_ann_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2862,8 +2480,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_disp_solve_time_ann_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2875,8 +2491,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_subopt_flag_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2886,8 +2500,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_tes_expected_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2899,8 +2511,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_disp_wpb_expected_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2910,8 +2520,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_e_ch_tes_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_elec_purchase_price_mult_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2923,8 +2531,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_elec_purchase_price_mult_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_epc_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2934,8 +2540,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_epc_cost_calc_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_eta_pc_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2944,8 +2548,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_eta_pc_net_des_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_eta_pc_thermo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2957,8 +2559,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_eta_pc_thermo_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_flip_target_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2967,8 +2567,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_flip_target_percent_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2980,8 +2578,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_gen_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_heater_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2990,8 +2586,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_heater_cost_calc_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_installed_per_cap_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3002,8 +2596,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_installed_per_cap_cost_calc_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_land_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3012,8 +2604,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_land_cost_calc_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3025,8 +2615,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_balance_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_hp_CT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3037,8 +2625,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_hp_CT_htf_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_hp_CT_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3047,8 +2633,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_hp_CT_htf_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_hp_HT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3060,8 +2644,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_hp_HT_htf_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_hp_HT_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3070,8 +2652,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_hp_HT_htf_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_pc_CT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3083,8 +2663,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_pc_CT_htf_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_pc_CT_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3093,8 +2671,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_pc_CT_htf_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_pc_HT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3106,8 +2682,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_m_dot_pc_HT_htf_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_pc_HT_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3116,8 +2690,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_m_dot_pc_HT_htf_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_CT_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3129,8 +2701,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_CT_tes_cold_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_CT_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3140,8 +2710,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_CT_tes_hot_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3153,8 +2721,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_tes_cold_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3164,8 +2730,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_mass_tes_hot_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3177,8 +2741,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_n_op_modes_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3187,8 +2749,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_nameplate_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3200,8 +2760,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_1_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3211,8 +2769,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_2_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3224,8 +2780,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_op_mode_3_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_a_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3235,8 +2789,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_a_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3248,8 +2800,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_b_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3260,8 +2810,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_operating_modes_c_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3270,8 +2818,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_ppa_soln_mode_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_balance_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3283,8 +2829,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_balance_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_CT_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3294,8 +2838,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_CT_tes_heater_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_CT_tes_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3307,8 +2849,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_CT_tes_losses_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3318,8 +2858,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_ch_tes_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3331,8 +2869,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_dc_tes_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_hp_cold_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3341,8 +2877,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_hp_cold_in_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_from_CT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3354,8 +2888,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_from_CT_htf_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_hp_hot_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3364,8 +2896,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_hp_hot_out_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3377,8 +2907,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_startup_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_to_HT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3389,8 +2917,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_hp_to_HT_htf_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_loss_CT_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3399,8 +2925,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_loss_CT_tes_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_loss_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3411,8 +2935,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_loss_tes_des_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_out_thermo_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3421,8 +2943,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_out_thermo_des_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_to_CTES_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3433,8 +2953,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_to_CTES_des_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_to_surroundings_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3443,8 +2961,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_cold_to_surroundings_des_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_from_HT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3456,8 +2972,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_from_HT_htf_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_hot_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3466,8 +2980,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_q_dot_pc_hot_in_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_rejected_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3479,8 +2991,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_rejected_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_startup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3490,8 +3000,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_startup_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_thermo_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3503,8 +3011,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_thermo_out_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_to_CT_htf_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3514,8 +3020,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_pc_to_CT_htf_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_tes_heater_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3527,8 +3031,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_tes_heater_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_tes_losses_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3538,8 +3040,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_dot_tes_losses_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_q_pc_target_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3551,8 +3051,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_q_pc_target_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_rte_net_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3561,8 +3059,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_rte_net_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_rte_thermo_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3573,8 +3069,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_rte_thermo_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_sales_tax_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3584,8 +3078,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_sales_tax_cost_calc_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3594,8 +3086,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_system_capacity_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3607,8 +3097,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_tdry_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_tes_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3617,8 +3105,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_tes_cost_calc_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3630,8 +3116,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_time_hr_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_total_direct_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3640,8 +3124,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_total_direct_cost_calc_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_EtesPtes_Outputs_total_indirect_cost_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -3652,8 +3134,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_total_indirect_cost_calc_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3662,8 +3142,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_total_installed_cost_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_tou_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3675,8 +3153,6 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_tou_period_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_EtesPtes_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3685,8 +3161,6 @@ SAM_EXPORT double SAM_EtesPtes_Outputs_tshours_heater_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_EtesPtes_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -3697,6 +3171,4 @@ SAM_EXPORT double* SAM_EtesPtes_Outputs_twet_aget(SAM_table ptr, int* length, SA
 	});
 	return result;
 }
-
-
 

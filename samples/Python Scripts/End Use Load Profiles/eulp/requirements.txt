@@ -3,5 +3,4 @@ matplotlib==3.6.0
 pandas==1.5.2
 pyarrow==14.0.1
 seaborn==0.12.1
-snappy==3.1.1
 urllib3==1.26.18

@@ -32,14 +32,6 @@ extern "C"
 	//
 
 	/**
-	 * Set use_specific_wf_wave: user specified file [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set wave_resource_filename: File path with Wave Height x Period Distribution as 2-D PDF
 	 * options: None
 	 * constraints: LOCAL_FILE
@@ -67,8 +59,6 @@ extern "C"
 	/**
 	 * WeatherReader Getters
 	 */
-
-	SAM_EXPORT double SAM_WaveFileReader_WeatherReader_use_specific_wf_wave_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_WaveFileReader_WeatherReader_wave_resource_filename_sget(SAM_table ptr, SAM_error *err);
 
@@ -102,6 +92,8 @@ extern "C"
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_lat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_location_id_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_WaveFileReader_Outputs_location_name_sget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_WaveFileReader_Outputs_lon_nget(SAM_table ptr, SAM_error *err);
 

@@ -3080,7 +3080,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized balance of system (BOS) related capital costs in $ or $/kW, check Override Cost Structure to enter the total balance of system capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the balance of system cost. See Help for details."
+                    "String": "The capital cost on the Financial Parameters page is the sum of the total cost on the Device, BOS, and Financial Capital Costs pages. On this page, enter itemized balance of system (BOS) related capital costs in $ or $/kW, check Override Cost Structure to enter the total balance of system capital cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the balance of system cost. For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,

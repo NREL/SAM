@@ -104,6 +104,90 @@ SAM_EXPORT void SAM_GenericSystem_AdjustmentFactors_adjust_timeindex_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_capacity", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_capacity_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fixed", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fixed_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_fuel_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fuel_cost", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_fuel_cost_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fuel_cost_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_production", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_production_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_GenericSystem_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "total_installed_cost", number);
+	});
+}
+
 SAM_EXPORT double SAM_GenericSystem_Plant_conv_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -113,8 +197,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_conv_eff_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Plant_derate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -123,8 +205,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_derate_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -136,8 +216,6 @@ SAM_EXPORT double* SAM_GenericSystem_Plant_energy_output_array_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Plant_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -146,8 +224,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_heat_rate_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_GenericSystem_Plant_spec_mode_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -158,8 +234,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_spec_mode_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Plant_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -168,8 +242,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_system_capacity_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_GenericSystem_Plant_user_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -180,8 +252,6 @@ SAM_EXPORT double SAM_GenericSystem_Plant_user_capacity_factor_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -190,8 +260,6 @@ SAM_EXPORT double SAM_GenericSystem_Lifetime_analysis_period_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -203,8 +271,6 @@ SAM_EXPORT double* SAM_GenericSystem_Lifetime_generic_degradation_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -213,8 +279,6 @@ SAM_EXPORT double SAM_GenericSystem_Lifetime_system_use_lifetime_output_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -225,8 +289,6 @@ SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_constant_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -236,8 +298,6 @@ SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_en_periods_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -246,8 +306,6 @@ SAM_EXPORT double SAM_GenericSystem_AdjustmentFactors_adjust_en_timeindex_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -259,8 +317,6 @@ SAM_EXPORT double* SAM_GenericSystem_AdjustmentFactors_adjust_periods_mget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_GenericSystem_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -271,7 +327,138 @@ SAM_EXPORT double* SAM_GenericSystem_AdjustmentFactors_adjust_timeindex_aget(SAM
 	return result;
 }
 
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "annual_fuel_usage_lifetime");
+	});
+	return result;
+}
 
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "degradation");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_GenericSystem", "land_area");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_capacity", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "om_capacity");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
+		make_access_error("SAM_GenericSystem", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fixed", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "om_fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
+		make_access_error("SAM_GenericSystem", "om_fixed_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "om_fuel_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_om_fuel_cost_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fuel_cost_escal", &result))
+		make_access_error("SAM_GenericSystem", "om_fuel_cost_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "om_land_lease");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_GenericSystem", "om_land_lease_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_GenericSystem_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_production", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "om_production");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
+		make_access_error("SAM_GenericSystem", "om_production_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_GenericSystem", "total_installed_cost");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_GenericSystem_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -281,8 +468,6 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_annual_energy_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -294,8 +479,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_annual_energy_distribution_time_mge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -305,8 +488,6 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_annual_fuel_usage_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -315,8 +496,6 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_capacity_factor_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -328,8 +507,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_battery_replacement_cost_schedul
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -339,8 +516,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_energy_net_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -352,7 +527,15 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_fuelcell_replacement_cost_schedu
 	return result;
 }
 
-
+SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_GenericSystem", "cf_land_lease_expense");
+	});
+	return result;
+}
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -364,8 +547,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_capacity_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -375,8 +556,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_fixed_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -388,8 +567,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_fuel_cost_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -399,8 +576,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_land_lease_aget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -412,8 +587,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_cf_om_production_aget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_GenericSystem_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -424,8 +597,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_gen_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -434,8 +605,6 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -447,8 +616,6 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -458,8 +625,6 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_GenericSystem_Outputs_water_usage_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -468,6 +633,4 @@ SAM_EXPORT double SAM_GenericSystem_Outputs_water_usage_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 

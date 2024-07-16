@@ -138,7 +138,7 @@ static void fcall_varinfo( lk::invoke_t &cxt )
 
 static void fcall_selectinputs( lk::invoke_t &cxt )
 {
-	LK_DOC("select_inputs", "Shows the input variable selection dialog.", "(<array:checked>, [string:title]):boolean")
+	LK_DOC("select_inputs", "Shows the input variable window with an optional title and writes a list of checked variable names to the array argument.", "(array:checked, [string:title]):boolean")
 		
 	cxt.result().assign( 0.0 );
 
@@ -152,27 +152,22 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 	wxArrayString names;
 	wxArrayString labels;
 
-	for( VarInfoLookup::iterator it = cc->Variables(0).begin();
-		it != cc->Variables(0).end();
-		++it )
-	{
-		VarInfo &vi = *(it->second);
+	auto ci = cc->GetConfiguration();
+	for (size_t ndxHybrid = 0; ndxHybrid < ci->Technology.size(); ndxHybrid++) {
+		VarInfoLookup& vil = ci->Variables[ndxHybrid];
 
-		if ( !vi.Label.IsEmpty()
-			&& !(vi.Flags & VF_INDICATOR) 
-			&& !(vi.Flags & VF_CALCULATED) )
-		{
-			if ( vi.Type == VV_NUMBER && vi.IndexLabels.size() > 0 )
-				continue;
+		for (VarInfoLookup::iterator it = vil.begin(); it != vil.end(); ++it) {
+			wxString name = it->first;
+			if (ci->Technology.size() > 1) name = ci->Technology[ndxHybrid].Lower() + "_" + name;
+			VarInfo& vi = *(it->second);
 
-			wxString label;
-			if ( !vi.Group.IsEmpty() )
-				label = vi.Group + "/" + vi.Label;
-			else
-				label = vi.Label;
-							
-			names.Add( it->first );
-			labels.Add( label );
+			// update to select only "Parametric" variables and NOT calculated variables
+			if ((vi.Flags & VF_PARAMETRIC) && !(vi.Flags & VF_INDICATOR) && !(vi.Flags & VF_CALCULATED))
+			{
+				wxString label = SelectVariableDialog::PrettyPrintLabel(name, vi);
+				labels.Add(label);
+				names.Add(name);
+			}
 		}
 	}
 
@@ -197,6 +192,23 @@ static void fcall_selectinputs( lk::invoke_t &cxt )
 }
 
 
+static bool UpdateVarNameNdxHybrid(Case* c, const wxString& input_name, wxString* var_name, size_t* ndx_hybrid)
+{
+	*ndx_hybrid = 0;
+	*var_name = input_name;
+	if (!c) return false;
+	// decode if necessary for hybrids varname for unsorted index
+	wxArrayString as = wxSplit(input_name, '_');
+	for (size_t j = 0; j < c->GetConfiguration()->Technology.size(); j++) {
+		if (c->GetConfiguration()->Technology[j].Lower() == as[0]) {
+			*ndx_hybrid = j;
+			*var_name = input_name.Right(input_name.length() - (as[0].length() + 1));
+		}
+	}
+	return true;
+}
+
+
 void fcall_set( lk::invoke_t &cxt )
 {
 	LK_DOC( "set", "Set an input variable's value. Issues a script error if the variable doesn't exist or there is data type error.", "(string:name, variant:value):none" );
@@ -204,10 +216,13 @@ void fcall_set( lk::invoke_t &cxt )
 	wxString name = cxt.arg(0).as_string();
 	if ( Case *c = CurrentCase() )
 	{
-		if ( VarValue *vv = c->Values(0).Get( name ) )
+		wxString var_name;
+		size_t ndx_hybrid;
+		UpdateVarNameNdxHybrid(c, name, &var_name, &ndx_hybrid);
+		if ( VarValue *vv = c->Values(ndx_hybrid).Get( var_name ) )
 		{
 			if ( vv->Read( cxt.arg(1), false ) )
-				c->VariableChanged( name, 0 ); // TODO: hybrids
+				c->VariableChanged( var_name, ndx_hybrid );
 			else
 				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
 		}
@@ -223,10 +238,13 @@ void fcall_get( lk::invoke_t &cxt )
 	if ( Case *c = CurrentCase() )
 	{
 		wxString name = cxt.arg(0).as_string();
+		wxString var_name;
+		size_t ndx_hybrid;
+		UpdateVarNameNdxHybrid(c, name, &var_name, &ndx_hybrid);
 		if ( VarValue *vv = c->BaseCase().GetOutput( name ) )
 			vv->Write( cxt.result() );
-		else if ( VarValue *vv = c->Values(0).Get( name ) ) // TODO: hybrids
-			vv->Write( cxt.result() );
+		else if ( VarValue *vv2 = c->Values(ndx_hybrid).Get( var_name ) )
+			vv2->Write( cxt.result() );
 		else
 			cxt.error("variable '" + name + "' does not exist in this context" );
 
@@ -383,7 +401,7 @@ static void fcall_configuration( lk::invoke_t &cxt )
 
 static void fcall_load_defaults( lk::invoke_t &cxt )
 {
-	LK_DOC( "load_defaults", "Load SAM default values for the current active case. An optional error message is stored in the first argument, if given.", "([<string:error>]):boolean" );
+	LK_DOC( "load_defaults", "Load SAM default values for the current active case. An optional error message is stored in the first argument, if given.", "([string:error]):boolean" );
 	if ( Case *c = CurrentCase() )
 	{
 		wxString err;
@@ -405,7 +423,7 @@ static void fcall_overwrite_defaults( lk::invoke_t &cxt )
 {
 	LK_DOC( "overwrite_defaults", "Overwrite SAM default values file for the current configuration with current values.", "(none):boolean");
 	if (Case* c = CurrentCase()) {
-		int n = c->EvaluateEquations();
+		c->EvaluateEquations();
 		cxt.result().assign(c->SaveDefaults(true));
 	}
 	else cxt.error("no active case");
@@ -504,6 +522,7 @@ static void fcall_parsim( lk::invoke_t &cxt )
 		}
 
 		Simulation *sim = new Simulation( cc, wxString::Format("run %d", (int)i+1 ) );
+		sim->Clear(); // fix SAM issue #1693
 		sg_parSims.push_back( sim );
 
 		for( lk::varhash_t::iterator it = run.hash()->begin();
