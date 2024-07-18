@@ -42,7 +42,7 @@ PVWatts Battery,Residential,13662.6,19.6469,NA,;
 PVWatts Battery,Commercial,929768,13.1177,NA,; 
 PVWatts Battery,Third Party,10996.8,NA,NA,; 
 PVWatts Battery,Host Developer,929768,16.8362,16.2118,; Warning: NPV is $-55146.3. A negative NPV indicates project costs are higher than revenues.
-Generic Battery,Residential,6695.44,71.6356,NA,; 
+Generic Battery,Residential,6695.48,71.6355,NA,; 
 Generic Battery,Commercial,359914,46.7374,NA,; 
 Generic Battery,Third Party,6690.4,NA,NA,; 
 Generic Battery,Host Developer,359914,25.4033,16.246,; Warning: NPV is $-322299. A negative NPV indicates project costs are higher than revenues.
@@ -54,7 +54,7 @@ Generic Battery,Sale Leaseback,68124544,49.4303,48.7091,; Warning: NPV is $-4.96
 Standalone Battery,Residential,-416.554,61.5286,NA,; 
 Standalone Battery,Commercial,-11930.4,426.385,NA,; 
 Standalone Battery,Third Party,-219.052,NA,NA,; 
-Standalone Battery,Host Developer,-11930.4,59.3521,16.2319,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-491940. A negative NPV indicates project costs are higher than revenues. Warning: Debt percent is -10.359. A debt percent less than 0% may indicate the mininum EBITDA cannot support any debt in at least one year.
+Standalone Battery,Host Developer,-11930.4,59.352,16.2319,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-491939. A negative NPV indicates project costs are higher than revenues. Warning: Debt percent is -10.3589. A debt percent less than 0% may indicate the mininum EBITDA cannot support any debt in at least one year.
 Standalone Battery,Single Owner,-8405303,77.6201,72.5124,; 
 Standalone Battery,Merchant Plant,-8405303,26.6311,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-8.64365e+07. A negative NPV indicates project costs are higher than revenues. Warning: Debt percent is -8.37586. A debt percent less than 0% may indicate the mininum EBITDA cannot support any debt in at least one year.
 Standalone Battery,Leveraged Partnership Flip,-8405303,78.2914,72.5124,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-3.12422e+07. A negative NPV indicates project costs are higher than revenues.
@@ -115,7 +115,7 @@ MSLF IPH,LCOH Calculator,926623360,NA,NA,; Notice: Piping geometry file\ \ Maxim
 MEwave,Single Owner,65589748,61.7545,60.3986,; Warning: NPV is $-9.88339e+06. A negative NPV indicates project costs are higher than revenues.
 MEwave,LCOE Calculator,59434320,NA,NA,; 
 MEwave,None,594343,NA,NA,; 
-MEwave Battery,Single Owner,64951152,63.5479,60.3969,; Warning: NPV is $-2.27537e+07. A negative NPV indicates project costs are higher than revenues.
+MEwave Battery,Single Owner,64951112,63.5481,60.3969,; Warning: NPV is $-2.27549e+07. A negative NPV indicates project costs are higher than revenues.
 MEtidal,LCOE Calculator,2.16152e+06,NA,NA,; 
 MEtidal,None,2.16152e+06,NA,NA,; 
 Wind Power,Residential,48358.4,21.9797,NA,; 
