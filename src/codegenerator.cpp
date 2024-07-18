@@ -697,7 +697,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	code_languages.Add("Java");							// 5
 	code_languages.Add("C#");							// 6
 	code_languages.Add("VBA");							// 7
-	code_languages.Add("PHP 8");						// 8
+	//code_languages.Add("PHP 8");						// 8 - remove since Zend no longer supported per 7/27/2024 meeting
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -840,11 +840,13 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		fn += ".bas";
 		cg = std::make_shared < CodeGen_vba>(c, fn);
 	}
+	/*
 	else if (lang == 8) // php
 	{
 		fn += ".php";
 		cg = std::make_shared < CodeGen_php8>(c, fn);
 	}
+	*/
 	else
 		return false;
 
