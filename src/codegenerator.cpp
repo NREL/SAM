@@ -2341,28 +2341,28 @@ bool CodeGen_matlab::Outputs()
 
 	// all values from json file and then running compute module
 	if (m_is_hybrid) {
-		fprintf(m_fp, "	outputs = ssccall('ssc_data_get_table',data, 'output');\n");
+		fprintf(m_fp, "	outputs = ssccall('data_get_table',data, 'output');\n");
 		// iterate through compute modules and get annual energy
 		auto& simlist = m_cfg->Simulations;
 		for (auto& sim : simlist) {
-			fprintf(m_fp, "	%s = ssccall('ssc_data_get_table',outputs, '%s');\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			fprintf(m_fp, "	%s = ssccall('data_get_table',outputs, '%s');\n", (const char*)sim.c_str(), (const char*)sim.c_str());
 			// check that "annual_energy" exists
-			fprintf(m_fp, "	if ssccall('ssc_data_lookup', %s, 'annual_energy'))\n", (const char*)sim.c_str());
-			fprintf(m_fp, "		ae = ssccall('ssc_data_get_number', %s, 'annual_energy');\n", (const char*)sim.c_str());
-			fprintf(m_fp, "		disp(sprintf('%%s annual outputs = %%g', '%s', ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	if ssccall('ssc_data_lookup', %s, 'annual_energy')\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ae = ssccall('data_get_number', %s, 'annual_energy');\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		fprintf('%%s annual outputs = %%g\\n', '%s', ae);\n", (const char*)sim.c_str());
 			fprintf(m_fp, "	end\n");
 		}
 	}
 	else { // output label and value for each metric from JSON for inputs
-		fprintf(m_fp, "	num_metrics = ssccall('ssc_data_get_number', data, 'number_metrics');\n");
+		fprintf(m_fp, "	num_metrics = ssccall('data_get_number', data, 'number_metrics');\n");
 		fprintf(m_fp, "	for i=1:num_metrics\n");
 		fprintf(m_fp, "		d =  num2str(i-1);\n");
-		fprintf(m_fp, "		metric_label_name =  ['metric_'d'_label'];\n");
-		fprintf(m_fp, "		metric_name = ['metric_'d];\n");
-		fprintf(m_fp, "		metric_label = ssccall('ssc_data_get_string', data, metric_label_name);\n");
-		fprintf(m_fp, "		metric_value = ssccall('ssc_data_get_string', data, metric_name);\n");
-		fprintf(m_fp, "		metric = ssccall('ssc_data_get_number', data, metric_value);\n");
-		fprintf(m_fp, "		disp(sprintf('%%s = %%g', metric_label, metric);\n");
+		fprintf(m_fp, "		metric_label_name =  strcat('metric_',d,'_label');\n");
+		fprintf(m_fp, "		metric_name = strcat('metric_',d);\n");
+		fprintf(m_fp, "		metric_label = ssccall('data_get_string', data, metric_label_name);\n");
+		fprintf(m_fp, "		metric_value = ssccall('data_get_string', data, metric_name);\n");
+		fprintf(m_fp, "		metric = ssccall('data_get_number', data, metric_value);\n");
+		fprintf(m_fp, "		fprintf('%%s = %%g\\n', metric_label, metric);\n");
 		fprintf(m_fp, "	end\n");
 	}
 	return true;
@@ -2415,7 +2415,7 @@ bool CodeGen_matlab::Inputs()
 {
 	// all values from json file and then running compute module (assumes in same folder)
 	// in Header fprintf(m_fp, "	data = ssccall('data_create');\n");
-	fprintf(m_fp, "	data = ssccall('json_file_to_ssc_data', '%s');\n", (const char*)m_name.c_str());
+	fprintf(m_fp, "	data = ssccall('json_file_to_ssc_data', '%s.json');\n", (const char*)m_name.c_str());
 	return true;
 }
 
@@ -2589,6 +2589,18 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_create');\n");
 	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
 	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        end\n");
+	fprintf(m_fp, "    elseif strcmp(action,'json_file_to_ssc_data')\n");
+	fprintf(m_fp, "        result = calllib(ssclib, 'json_file_to_ssc_data', arg0);\n");
+	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
+	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        end\n");
+	fprintf(m_fp, "    elseif strcmp(action,'ssc_data_lookup')\n");
+	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_lookup', arg0, arg1);\n");
+	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
+	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        else\n");
+	fprintf(m_fp, "            result = 1;\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_free')\n");
 	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_free', arg0);\n");
@@ -2774,7 +2786,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "	disp(sprintf('SSC Version = %%d', ssccall('version')));\n");
 	fprintf(m_fp, "	disp(sprintf('SSC Build Information = %%s', ssccall('build_info')));\n");
 	fprintf(m_fp, "	ssccall('module_exec_set_print',0);\n");
-	fprintf(m_fp, "	data = ssccall('data_create');\n");
+//	fprintf(m_fp, "	data = ssccall('data_create');\n");
 	return true;
 }
 
