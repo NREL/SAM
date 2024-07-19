@@ -884,6 +884,17 @@ def solarpaces_2024_abstract():
     plt.tight_layout()
     plt.rc('font', size=11) 
 
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([
+                    [simple_compiled_T_HTF_pareto_dict, {'label':simple_legend_label, 'marker':'.'}],
+                    [simple_htrbp_compiled_T_HTF_pareto_dict, {'label':simple_bp_legend_label, 'marker':'.'}],             
+                    [recomp_compiled_T_HTF_pareto_dict, {'label':recomp_legend_label, 'marker':'.'}],
+                    [htrbp_compiled_T_HTF_pareto_dict, {'label':htrbp_legend_label, 'marker':'.'}],
+                    [partial_ic_compiled_T_HTF_pareto_dict, {'label':partial_ic_legend_label, 'marker':'.'}],
+                    [partial_compiled_T_HTF_pareto_dict, {'label':partial_legend_label, 'marker':'.'}],          
+                    [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, show_legend=True)
 
     # Combine All 4 Plots
     if True:
@@ -943,8 +954,184 @@ def solarpaces_2024_abstract():
 
     plt.show(block = True)
 
+def asme_es_plots():
+    tsf_filename = r"C:\Users\tbrown2\Desktop\sco2_python\G3P3\TSF_G3P3_collection_10_20240426_224925.csv"
+
+    print("Opening tsf...")
+    tsf_sim_collection = sco2_solve.C_sco2_sim_result_collection()
+    tsf_sim_collection.open_csv(tsf_filename)
+    print("TSF opened")
+
+    # Convert Split Fraction
+    if ("split_frac" in tsf_sim_collection.old_result_dict) == False:
+
+        tsf_sim_collection.old_result_dict["split_frac"] = []
+        for val in tsf_sim_collection.old_result_dict["is_turbine_split_ok"]:
+            tsf_sim_collection.old_result_dict["split_frac"].append(val * -1)
+
+    # Variables to Display
+    ETA_label = ["eta_thermal_calc", "", "Cycle Thermal Efficiency"]
+    T_HTF_label = ["T_htf_cold_des", "C", "HTF Outlet Temperature"]
+    COST_label = ["cycle_cost", "M$", "Cycle Cost"]
+
+    # Variables to Display
+    ETA_label = ["eta_thermal_calc", "", "Cycle Thermal Efficiency"]
+    T_HTF_label = ["T_htf_cold_des", "C", "HTF Outlet Temperature"]
+    COST_label = ["cycle_cost", "M$", "Cycle Cost"]
+
+    # Create Cycle Split T HTF Pareto
+    print("Forming TSF T HTF pareto fronts...")
+    tsf_T_HTF_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], T_HTF_label[0], True, False)
+
+    # Create Cycle Split Cost Pareto
+    print("Forming TSF cost pareto fronts...")
+    tsf_cost_pareto_dict = design_tools.get_pareto_dict(tsf_sim_collection.old_result_dict, ETA_label[0], COST_label[0], True, False)
+
+    
+
+    # Plot
+    print("Plotting...")
+    tsf_legend_label = "turbine split flow"
+
+    fig_width = 6 * 1.6
+    fig_height = 2.2 * 1.6
+
+    # All data
+    fig_abstract, (ax1_abstract, ax2_abstract) = plt.subplots(1,2)
+    fig_abstract.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([   
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract, show_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract, show_legend=False, legend_loc='upper right')
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+
+
+    # Pareto Fronts
+    fig_abstract_pareto, (ax1_abstract_pareto, ax2_abstract_pareto) = plt.subplots(1,2)
+    fig_abstract_pareto.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([       
+                    [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract_pareto, show_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [tsf_cost_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract_pareto, show_legend=False, legend_loc='upper left')
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+
+
+    # All data (Split Fraction Z)
+    fig_abstract_splitZ, axs_splitZ = plt.subplots(1,2)
+    fig_abstract_splitZ.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([   
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, Z_info=["split_frac", "", "Turbine Split Fraction"], ax=axs_splitZ[0], show_legend=False, show_Z_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, Z_info=["split_frac", "", "Turbine Split Fraction"], ax=axs_splitZ[1], show_legend=False, legend_loc='upper right',
+                    show_Z_legend=True)
+    
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+
+    # All data (Total UA Z)
+    d = ""
+    fig_abstract_UAZ, axs_UAZ = plt.subplots(1,2)
+    fig_abstract_UAZ.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([   
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, Z_info=["recup_total_UA_calculated", "MW/K", "Total Conductance"], ax=axs_UAZ[0], show_legend=False, show_Z_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, Z_info=["recup_total_UA_calculated", "MW/K", "Total Conductance"], ax=axs_UAZ[1], show_legend=False, legend_loc='upper right',
+                    show_Z_legend=True)
+    
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+
+    # All data (Min Pressure Z)
+    fig_abstract_presZ, axs_presZ = plt.subplots(1,2)
+    fig_abstract_presZ.set_size_inches(fig_width, fig_height)
+
+    # Compiled All Data (Temp vs ETA)
+    design_tools.plot_scatter_pts([   
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, Z_info=["P_comp_in", "MPa", "Minimum Pressure"], ax=axs_presZ[0], show_legend=False, show_Z_legend=False)
+
+    # Compiled All Data (Cost vs ETA)
+    design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, Z_info=["P_comp_in", "MPa", "Minimum Pressure"], ax=axs_presZ[1], show_legend=False, legend_loc='upper right',
+                    show_Z_legend=True)
+    
+    plt.tight_layout()
+    plt.rc('font', size=11) 
+
+    # Combine All 4 Plots
+    if False:
+        fig_abstract_all, ((ax1_abstract_allsweep, ax2_abstract_allsweep), (ax1_abstract_allpareto, ax2_abstract_allpareto)) = plt.subplots(2,2)
+        fig_abstract_all.set_size_inches(fig_width, fig_height * 2)
+
+        # Sweep (Temp vs ETA)
+        design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract_allsweep, show_legend=False)
+        
+        # Sweep (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                    [tsf_sim_collection.old_result_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract_allsweep, show_legend=True, legend_loc='upper right')
+        
+        # Pareto (Temp vs ETA)
+        design_tools.plot_scatter_pts([        
+                    [tsf_T_HTF_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, T_HTF_label, ax=ax1_abstract_allpareto, show_legend=False)
+
+        # Pareto (Cost vs ETA)
+        design_tools.plot_scatter_pts([
+                    [tsf_cost_pareto_dict, {'label':tsf_legend_label, 'marker':'.'}]
+                    ], 
+                    ETA_label, COST_label, ax=ax2_abstract_allpareto, show_legend=False, legend_loc='upper left')
+
+        plt.tight_layout()
+        plt.rc('font', size=11) 
+
+    plt.show(block = True)
+
 # Main Script
 
 if __name__ == "__main__":
     solarpaces_2024_abstract()
+    #asme_es_plots()
     #example_plot_solve_dict()

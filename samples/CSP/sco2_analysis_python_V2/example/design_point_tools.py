@@ -1394,7 +1394,7 @@ def hover_multiple_pts(event, result_dict_list, label_list, fig, annot, ax, sc_c
 
 
 
-def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title="", figure_size=[], ax=0, show_legend=True, legend_loc=""):
+def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title="", figure_size=[], ax=0, show_legend=True, legend_loc="", show_Z_legend=True):
 
     marker_list = get_marker_list()
 
@@ -1496,8 +1496,9 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
         if(Z_unit != ""):
             Z_plot_label += " (" + Z_unit + ")"
 
-        cb3 = fig.colorbar(ax.collections[0])
-        cb3.set_label(Z_plot_label)
+        if(show_Z_legend == True):
+            cb3 = fig.colorbar(ax.collections[0])
+            cb3.set_label(Z_plot_label)
 
     if(title != ""):
         ax.set_title(title)
@@ -1507,41 +1508,12 @@ def plot_scatter_pts(dict_list_with_kwarg, X_info, Y_info, Z_info = [], title=""
         if(legend_loc == ""):
             legend_loc = "upper left"
         legend = ax.legend(loc=legend_loc)
-    #legend.set_picker(True)
-    #
-    #line_legend_list = legend.get_lines()
-
-    ##for line_legend in line_legend_list:
-    ##    line_legend.set_picker(True)
-    ##    line_legend.set_pickradius(10)
-    
-    #def on_legend_pick(event):
-    #    legend = event.artist
-    #    isVisible = legend.get_visible()
-    #    legend.set_visible(False)
-    #    asdf = 4564
-
-    #plt.connect('pick_event', on_legend_pick)
 
     # Handle Click Business
     annot = ax.annotate("",xy=(0,0), xytext=(-100,20), textcoords="offset points",
                              bbox=dict(boxstyle="round", fc="w"),
                              arrowprops=dict(arrowstyle="->"))
     annot.set_visible(False)
-    #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
-    #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
-    #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
-    #              "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des"]
-    #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
-    #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
-    #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points 10",
-    #              "cycle_cost", "UA_BPX", "BPX_min_dT", "T_htf_hot_des", "T_htf_phx_out_des", "T_htf_bp_out_des",
-    #              ltr_pp_left_label, ltr_pp_right_label, htr_pp_left_label, htr_pp_right_label]
-    
-    #label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_assigned", "recup_total_UA_calculated", "LTR_UA_assigned",
-    #              "LTR_UA_calculated", "LTR_min_dT", "eff_LTR", "HTR_UA_assigned", "HTR_UA_calculated", "HTR_min_dT", "eff_HTR",
-    #              "bypass_frac", "recomp_frac", "P_comp_in", "P_state_points_10_0",
-    #              "cycle_cost", "T_htf_hot_des", "T_htf_cold_des", "T_htf_phx_out_des", "T_state_points_5_0", "T_co2_PHX_in"]
     
     label_list = ["cycle_config", "config_name", "T_htf_cold_des", "eta_thermal_calc", "recup_total_UA_calculated", "LTR_UA_calculated", 
                   "HTR_UA_calculated", "UA_BPX", "UA_PHX",
@@ -3363,12 +3335,12 @@ if __name__ == "__main__":
     #compare_reduced(file_in, file_out)
     #special_investigation()
     #display_Alfani_2024()
-    demo_plotting()
+    #demo_plotting()
     #display_Alfani_2020()
     #display_recomp()
     #display_Alfani_2020_BONUS()
     #display_Alfani_2020_backup()
-    #display_Alfani_2020_Final()
+    display_Alfani_2020_Final()
     #display_Alfani_2020_Final_2()
     #FindAnomalousDataPt()
     #display_bp_opening()
