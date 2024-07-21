@@ -36,6 +36,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/jsonval.h>
 #include <wex/jsonreader.h>
 
+#include <rapidjson/reader.h>
+#include <rapidjson/pointer.h>
+
 #include "main.h"
 #include "geotools.h"
 
@@ -138,7 +141,7 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
         if (!curl.Get(url))
             return false;
     }
-
+    /*
     wxJSONReader reader;
     wxJSONValue root;
     if (reader.Parse(curl.GetDataAsString(), &root) == 0)
@@ -150,6 +153,28 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
 
         if (root.Item("info").Item("statuscode").AsInt() != 0)
             return false;
+    }
+    else
+        return false;
+*/
+    rapidjson::Document reader;
+//    wxJSONValue root;
+    auto str = curl.GetDataAsString();
+    reader.Parse(curl.GetDataAsString().c_str());
+    if (!reader.HasParseError())
+    {
+//        wxJSONValue loc = root.Item("results").Item(0).Item("locations").Item(0).Item("latLng");
+//        const rapidjson::Value& v1 = reader["results"];
+//        const rapidjson::Value& v2 = v1["locations"]; // fails
+//        const rapidjson::Value& loc = v1["latLng"];
+
+        rapidjson::Value* loc = rapidjson::GetValueByPointer(reader, "results/locations/latLng");
+        if (!loc->HasMember("lat")) return false;
+        *lat = rapidjson::GetValueByPointer(reader, "results/locations/latLng/lat")->GetDouble();
+        *lon = rapidjson::GetValueByPointer(reader, "results/locations/latLng/lng")->GetDouble();
+
+//        if (reader["info"]["statuscode"].GetInt() != 0)
+//            return false;
     }
     else
         return false;
