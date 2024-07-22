@@ -33,11 +33,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/wx.h>
 
 #include <wex/easycurl.h>
-#include <wex/jsonval.h>
-#include <wex/jsonreader.h>
+//#include <wex/jsonval.h>
+//#include <wex/jsonreader.h>
 
 #include <rapidjson/reader.h>
-#include <rapidjson/pointer.h>
+//#include <rapidjson/pointer.h>
 
 #include "main.h"
 #include "geotools.h"
@@ -54,6 +54,8 @@ static wxString MyGet(const wxString& url)
 // Geocode using Google API for non-NREL builds of SAM
 bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, double* tz, bool showprogress) {
     wxBusyCursor _curs;
+
+    bool success = false;
 
     wxString plusaddr = address;
     plusaddr.Replace(", ", "+");
@@ -79,6 +81,7 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
             return false;
     }
 
+    /*
     wxJSONReader reader;
     wxJSONValue root;
     if (reader.Parse(curl.GetDataAsString(), &root) == 0) {
@@ -92,7 +95,51 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
     }
     else
         return false;
+    */
+    rapidjson::Document reader;
+    auto str = curl.GetDataAsString();
+    reader.Parse(curl.GetDataAsString().c_str());
 
+    if (!reader.HasParseError()) {
+        if (reader.HasMember("results")) {
+            if (reader["results"].IsArray()) {
+                if (reader["results"][0].HasMember("geometry")) {
+                    if (reader["results"][0]["geometry"].IsArray()) {
+                        if (reader["results"][0]["geometry"][0].HasMember("location")) {
+                            if (reader["results"][0]["geometry"][0]["location"].HasMember("lat")) {
+                                if (reader["results"][0]["geometry"][0]["location"]["lat"].IsDouble()) {
+                                    *lat = reader["results"][0]["geometry"][0]["location"]["lat"].GetDouble();
+                                    success = true;
+                                }
+                            }
+                            if (reader["results"][0]["geometry"][0]["location"].HasMember("lng")) {
+                                if (reader["results"][0]["geometry"][0]["location"]["lng"].IsDouble()) {
+                                    *lon = reader["results"][0]["geometry"][0]["location"]["lng"].GetDouble();
+                                    success &= true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // check status code
+        success = false;//overrides success of retrieving data
+
+        success = false;//overrides success of retrieving data
+
+        if (reader.HasMember("status")) {
+            if (reader["status"].IsString()) {
+                str = reader["status"].GetString();
+                success = str.Lower() == "ok";
+            }
+        }
+    }
+
+    if (!success)
+        return false;
+
+/*
     if (tz != 0) {
         // get timezone from Goolge timezone API
         url = SamApp::WebApi("google_timezone_api") + wxString::Format("&location=%.14lf,%.14lf", *lat, *lon);
@@ -115,6 +162,51 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
             return false;
     } // if no tz argument given then return true
     else return true;
+    */
+
+    if (tz != 0) {
+        success = false;
+
+        // get timezone from Goolge timezone API
+        url = SamApp::WebApi("google_timezone_api") + wxString::Format("&location=%.14lf,%.14lf", *lat, *lon);
+        url.Replace("<GOOGLEAPIKEY>", wxString(google_api_key));
+
+        bool ok;
+        if (showprogress)
+            ok = curl.Get(url, "Geocoding address...");
+        else
+            ok = curl.Get(url);
+
+
+        str = curl.GetDataAsString();
+        reader.Parse(curl.GetDataAsString().c_str());
+
+        if (!reader.HasParseError()) {
+            if (reader.HasMember("rawOffset")) {
+                if (reader["rawOffset"].IsDouble()) {
+                    *tz = reader["rawOffset"].GetDouble() / 3600.0;
+                    success = true;
+                }
+                else if (reader["rawOffset"].IsInt()) {
+                    *tz = reader["rawOffset"].GetInt() / 3600.0;
+                    success = true;
+                }
+            }
+        }
+    
+        // check status code
+        success = false;//overrides success of retrieving data
+
+        if (reader.HasMember("status")) {
+            if (reader["status"].IsString()) {
+                str = reader["status"].GetString();
+                success = str.Lower() == "ok";
+            }
+        }
+    }
+    
+    return success;
+
 }
 
 // Geocode using NREL Developer API (MapQuest) for NREL builds of SAM
@@ -205,7 +297,7 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
     {
         success = false;
 
-        wxString url = SamApp::WebApi("bing_maps_timezone_api");
+        url = SamApp::WebApi("bing_maps_timezone_api");
         url.Replace("<POINT>", wxString::Format("%.14lf,%.14lf", *lat, *lon));
         url.Replace("<BINGAPIKEY>", wxString(bing_api_key));
 
