@@ -95,7 +95,7 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
 
     if (tz != 0) {
         // get timezone from Goolge timezone API
-        wxString url = SamApp::WebApi("google_timezone_api") + wxString::Format("&location=%.14lf,%.14lf", *lat, *lon);
+        url = SamApp::WebApi("google_timezone_api") + wxString::Format("&location=%.14lf,%.14lf", *lat, *lon);
         url.Replace("<GOOGLEAPIKEY>", wxString(google_api_key));
 
         bool ok;
@@ -121,6 +121,8 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
 bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lon, double* tz, bool showprogress) {
     wxBusyCursor _curs;
 
+    bool success = false;
+
     wxString plusaddr = address;
     plusaddr.Replace(", ", "+");
     plusaddr.Replace(",", "+");
@@ -141,52 +143,72 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
         if (!curl.Get(url))
             return false;
     }
-    /*
-    wxJSONReader reader;
-    wxJSONValue root;
-    if (reader.Parse(curl.GetDataAsString(), &root) == 0)
-    {
-        wxJSONValue loc = root.Item("results").Item(0).Item("locations").Item(0).Item("latLng");
-        if (!loc.IsValid()) return false;
-        *lat = loc.Item("lat").AsDouble();
-        *lon = loc.Item("lng").AsDouble();
-
-        if (root.Item("info").Item("statuscode").AsInt() != 0)
-            return false;
-    }
-    else
-        return false;
-*/
+ 
     rapidjson::Document reader;
-//    wxJSONValue root;
     auto str = curl.GetDataAsString();
     reader.Parse(curl.GetDataAsString().c_str());
-    if (!reader.HasParseError())
-    {
-//        wxJSONValue loc = root.Item("results").Item(0).Item("locations").Item(0).Item("latLng");
-//        const rapidjson::Value& v1 = reader["results"];
-//        const rapidjson::Value& v2 = v1["locations"]; // fails
-//        const rapidjson::Value& loc = v1["latLng"];
 
-        rapidjson::Value* loc = rapidjson::GetValueByPointer(reader, "results/locations/latLng");
-        if (!loc->HasMember("lat")) return false;
-        *lat = rapidjson::GetValueByPointer(reader, "results/locations/latLng/lat")->GetDouble();
-        *lon = rapidjson::GetValueByPointer(reader, "results/locations/latLng/lng")->GetDouble();
 
-//        if (reader["info"]["statuscode"].GetInt() != 0)
-//            return false;
+    /* example for "denver, co"
+{"info":
+    {"statuscode":0,"copyright":
+        {"text":"© 2024 MapQuest, Inc.","imageUrl":"http://api.mqcdn.com/res/mqlogo.gif","imageAltText":"© 2024 MapQuest, Inc."}
+    ,"messages":[]}
+    ,"options":{"maxResults":-1,"ignoreLatLngInput":false}
+    ,"results":
+    [{"providedLocation":{"location":"denver co"},"locations":
+        [{"street":"","adminArea6":"","adminArea6Type":"Neighborhood","adminArea5":"Denver","adminArea5Type":"City","adminArea4":"Denver","adminArea4Type":"County","adminArea3":"CO","adminArea3Type":"State","adminArea1":"US","adminArea1Type":"Country","postalCode":"","geocodeQualityCode":"A5XAX","geocodeQuality":"CITY","dragPoint":false,"sideOfStreet":"N","linkId":"0","unknownInput":"","type":"s","latLng":{"lat":39.74001,"lng":-104.99202},"displayLatLng":{"lat":39.74001,"lng":-104.99202},"mapUrl":""}]
     }
-    else
+]}
+        */
+
+    if (!reader.HasParseError()) {
+        if (reader.HasMember("results")) {
+            if (reader["results"].IsArray()) {
+                if (reader["results"][0].HasMember("locations")) {
+                    if (reader["results"][0]["locations"].IsArray()) {
+                        if (reader["results"][0]["locations"][0].HasMember("latLng")) {
+                            if (reader["results"][0]["locations"][0]["latLng"].HasMember("lat")) {
+                                if (reader["results"][0]["locations"][0]["latLng"]["lat"].IsDouble()) {
+                                    *lat = reader["results"][0]["locations"][0]["latLng"]["lat"].GetDouble();
+                                    success = true;
+                                }
+                            }
+                            if (reader["results"][0]["locations"][0]["latLng"].HasMember("lng")) {
+                                if (reader["results"][0]["locations"][0]["latLng"]["lng"].IsDouble()) {
+                                    *lon = reader["results"][0]["locations"][0]["latLng"]["lng"].GetDouble();
+                                    success &= true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // check status code
+        success = false;//overrides success of retrieving data
+
+        if (reader.HasMember("info")) {
+            if (reader["info"].HasMember("statuscode")) {
+                if (reader["info"]["statuscode"].IsInt()) {
+                    success = reader["info"]["statuscode"].GetInt() == 0;
+                }
+            }
+        }
+    }
+
+    if (!success)
         return false;
+
 
     if (tz != 0) 
     {
+        success = false;
+
         wxString url = SamApp::WebApi("bing_maps_timezone_api");
         url.Replace("<POINT>", wxString::Format("%.14lf,%.14lf", *lat, *lon));
         url.Replace("<BINGAPIKEY>", wxString(bing_api_key));
 
-        wxEasyCurl curl;
-        wxBusyCursor curs;
         if (showprogress) 
         {
             if (!curl.Get(url, "Geocoding address '" + address + "'..."))
@@ -197,29 +219,48 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
                 return false;
         }
 
-        wxJSONReader reader;
-        wxJSONValue root;
-        if (reader.Parse(curl.GetDataAsString(), &root) == 0) {
-            wxJSONValue loc = root.Item("resourceSets").Item(0).Item("resources").Item(0).Item("timeZone");
-            if (!loc.IsValid()) return false;
-            wxString stz = loc.Item("utcOffset").AsString();
-            wxArrayString as = wxSplit(stz, ':');
-            if (as.Count() != 2) return false;
-            if (!as[0].ToDouble(tz)) return false;
-            double offset = 0;
-            if (as[1] == "30") offset = 0.5;
-            if (*tz < 0)
-                *tz = *tz - offset;
-            else
-                *tz = *tz + offset;
+        str = curl.GetDataAsString();
+        reader.Parse(curl.GetDataAsString().c_str());
 
-            if (root.Item("statusDescription").AsString() != "OK")
-                return false;
+        if (!reader.HasParseError()) {
+            if (reader.HasMember("resourceSets")) {
+                if (reader["resourceSets"].IsArray()) {
+                    if (reader["resourceSets"][0].HasMember("resources")) {
+                        if (reader["resourceSets"][0]["resources"].IsArray()) {
+                            if (reader["resourceSets"][0]["resources"][0].HasMember("timeZone")) {
+                                if (reader["resourceSets"][0]["resources"][0]["timeZone"].HasMember("utcOffset")) {
+                                    if (reader["resourceSets"][0]["resources"][0]["timeZone"]["utcOffset"].IsString()) {
+                                        wxString stz = reader["resourceSets"][0]["resources"][0]["timeZone"]["utcOffset"].GetString();
+                                        wxArrayString as = wxSplit(stz, ':');
+                                        if (as.Count() != 2) return false;
+                                        if (!as[0].ToDouble(tz)) return false;
+                                        double offset = 0;
+                                        if (as[1] == "30") offset = 0.5;
+                                        if (*tz < 0)
+                                            *tz = *tz - offset;
+                                        else
+                                            *tz = *tz + offset;
+                                        success = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // check status code
+            success = false;//overrides success of retrieving data
+
+            if (reader.HasMember("statusDescription")) {
+                if (reader["statusDescription"].IsString()) {
+                    str = reader["statusDescription"].GetString();
+                    success = str.Lower() == "ok";
+                }
+            }
         }
-        else
-            return false;
+
     }
-    return true;
+    return success;
 }
 
 
