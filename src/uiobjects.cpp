@@ -948,7 +948,7 @@ public:
 					json_items += tf.GetNextLine();
 				tf.Close();
 			}
-			reader.Parse(json_items);
+			reader.Parse(json_items.c_str());
 			if (reader.HasParseError())
 				tt_title = "JSON or file read failed.";
 			else
