@@ -33,11 +33,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/wx.h>
 
 #include <wex/easycurl.h>
-//#include <wex/jsonval.h>
-//#include <wex/jsonreader.h>
 
 #include <rapidjson/reader.h>
-//#include <rapidjson/pointer.h>
 
 #include "main.h"
 #include "geotools.h"
@@ -81,24 +78,9 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
             return false;
     }
 
-    /*
-    wxJSONReader reader;
-    wxJSONValue root;
-    if (reader.Parse(curl.GetDataAsString(), &root) == 0) {
-        wxJSONValue loc = root.Item("results").Item(0).Item("geometry").Item("location");
-        if (!loc.IsValid()) return false;
-        *lat = loc.Item("lat").AsDouble();
-        *lon = loc.Item("lng").AsDouble();
-
-        if (root.Item("status").AsString() != "OK")
-            return false;
-    }
-    else
-        return false;
-    */
     rapidjson::Document reader;
     auto str = curl.GetDataAsString();
-    reader.Parse(curl.GetDataAsString().c_str());
+    reader.Parse(str.c_str());
 
     if (!reader.HasParseError()) {
         if (reader.HasMember("results")) {
@@ -139,30 +121,6 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
     if (!success)
         return false;
 
-/*
-    if (tz != 0) {
-        // get timezone from Goolge timezone API
-        url = SamApp::WebApi("google_timezone_api") + wxString::Format("&location=%.14lf,%.14lf", *lat, *lon);
-        url.Replace("<GOOGLEAPIKEY>", wxString(google_api_key));
-
-        bool ok;
-        if (showprogress)
-            ok = curl.Get(url, "Geocoding address...");
-        else
-            ok = curl.Get(url);
-
-        if (ok && reader.Parse(curl.GetDataAsString(), &root) == 0) {
-            wxJSONValue val = root.Item("rawOffset");
-            if (val.IsDouble()) *tz = val.AsDouble() / 3600.0;
-            else *tz = val.AsInt() / 3600.0;
-
-            return root.Item("status").AsString() == "OK";
-        }
-        else
-            return false;
-    } // if no tz argument given then return true
-    else return true;
-    */
 
     if (tz != 0) {
         success = false;
@@ -179,7 +137,7 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
 
 
         str = curl.GetDataAsString();
-        reader.Parse(curl.GetDataAsString().c_str());
+        reader.Parse(str.c_str());
 
         if (!reader.HasParseError()) {
             if (reader.HasMember("rawOffset")) {
@@ -238,7 +196,7 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
  
     rapidjson::Document reader;
     auto str = curl.GetDataAsString();
-    reader.Parse(curl.GetDataAsString().c_str());
+    reader.Parse(str.c_str());
 
 
     /* example for "denver, co"
@@ -312,7 +270,7 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
         }
 
         str = curl.GetDataAsString();
-        reader.Parse(curl.GetDataAsString().c_str());
+        reader.Parse(str.c_str());
 
         if (!reader.HasParseError()) {
             if (reader.HasMember("resourceSets")) {
