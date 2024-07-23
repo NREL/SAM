@@ -141,6 +141,34 @@ def cmod_trough_iph_lcoh_from_dict(dat_dict, is_ssc_print = True):
 
     return val
 
+def cmod_lcoefcr_design_from_dict(dat_dict, is_ssc_print = True):
+
+    t_fin_name = "lcoefcr_design"
+    dat = dict_to_ssc_table(dat_dict, t_fin_name)
+
+    val = cmod_lcoefcr_design(dat, is_ssc_print)
+    sscapi.PySSC().data_free(dat)
+
+    return val
+
+
+def cmod_lcoefcr_design(dat, is_ssc_print = True):
+
+    # Run the LCOH financial model
+    cmod_name = "lcoefcr_design"
+    cmod_return = ssc_cmod(dat, cmod_name)
+    cmod_success = cmod_return[0]
+    fin_dict = cmod_return[1]
+    
+    if(cmod_success == 0):
+        fin_dict["cmod_success"] = 0
+        return fin_dict
+    
+    # If all models successful, set boolean true
+    fin_dict["cmod_success"] = 1
+
+    return fin_dict
+
 def cmod_trough_iph_lcoh(dat, is_ssc_print = True):
     
     # Run the molten salt power tower compute module
@@ -172,6 +200,8 @@ def cmod_trough_iph_lcoh(dat, is_ssc_print = True):
     out_dict.update(so_dict)
 
     return out_dict
+
+
 
 def cmod_generic_from_dict(dat_dict, is_SO_financial = True):
     
