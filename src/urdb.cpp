@@ -215,33 +215,49 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 		return false;
 	}
 
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse( json_data, &root )!=0)
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
+
+	if (reader.HasParseError())
 	{
 		if (err) *err = "Could not process returned JSON data for utility rate companies.";
 		return false;
 	}
 
-    if ( root.HasMember("error") )
+    if ( reader.HasMember("error") )
     {
-        wxJSONValue error_list = root.Item("error");
-        if (err) *err = "URDB API error: " + error_list.Item("message").AsString();
+		if (reader["error"].HasMember("message")) {
+			wxString str = reader["error"]["message"].GetString();
+			if (err) *err = "URDB API error: " + str;
+		}
         return false;
     }
 
 	names.Clear();
-	wxJSONValue item_list = root.Item("items");
-	int count = item_list.Size();
-	for (int i=0;i<count;i++)
-	{
-		wxString buf = item_list[i].Item("label").AsString();
-		buf.Replace("&amp;", "&");
-			names.Add( buf );
-	}
 
-	if (err) *err = wxEmptyString;
-	return true;
+	if (reader.HasMember("items")) {
+
+		if (reader["items"].IsArray()) {
+
+			auto item_list = reader["items"].GetArray();
+
+			int count = item_list.Size();
+			for (int i = 0; i < count; i++)	{
+				if (item_list[i].HasMember("label")) {
+					wxString buf = item_list[i]["label"].GetString();
+					buf.Replace("&amp;", "&");
+					names.Add(buf);
+				}
+			}
+
+			if (err) *err = wxEmptyString;
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
 
 }
 
@@ -259,20 +275,29 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 		return false;
 	}
 
-	wxJSONReader reader;
-	wxJSONValue root;
-	if (reader.Parse(json_data, &root) != 0)
+//	wxJSONReader reader;
+//	wxJSONValue root;
+
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
+
+	if (reader.HasParseError())
 	{
 		if (err) *err = "Could not parse JSON for zip code = " + zipcode + ".";
 		return false;
 	}
 
-	wxJSONValue item_list = root.Item("outputs");
-	// does not resolve to OpenEI names only EIA names
-	//wxString buf = item_list.Item("utility_name").AsString();
-    // EIAID number for utility company
-    // some zip codes return company_id with multiple EIAIDs separated by single pipes
-	wxString company_id = item_list.Item("company_id").AsString();
+	wxString company_id = wxEmptyString;
+
+	if (reader.HasMember("outputs")) {
+		//wxJSONValue item_list = root.Item("outputs");
+		// does not resolve to OpenEI names only EIA names
+		//wxString buf = item_list.Item("utility_name").AsString();
+		// EIAID number for utility company
+		// some zip codes return company_id with multiple EIAIDs separated by single pipes
+		if (reader["outputs"].HasMember("company_id"))
+			company_id = reader["outputs"]["company_id"].GetString();
+	}
 	if (company_id.IsEmpty())
 	{
 		if (err) *err = "JSON returned by web API call to urdb_companies_by_zip returned empty company_id for zip code =" + zipcode + ".";
@@ -293,30 +318,38 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 		return false;
 	}
 
-	if (reader.Parse(json_data, &root) != 0)
+	reader.Parse(json_data.c_str());
+	if (reader.HasParseError())
 	{
 		if (err) *err = "URDB ask for query by zip: Failed to parse JSON failed for EIAID = " + company_id + ".";
 		return false;
 	}
 
 	names.Clear();
-	item_list = root["results"];
-	wxArrayString list_name = item_list.GetMemberNames();
-	if (list_name.GetCount() > 0)
-	{
-        for (int i = 0; i < list_name.GetCount(); i++)
-        {
-            wxString urdbname = list_name[i];
-            if (item_list[list_name[i]].HasMember("fulltext"))
-                urdbname = item_list[list_name[i]]["fulltext"].AsString();
-            urdbname.Replace("&amp;", "&");
-            names.Add(urdbname);
-        }
+
+	if (reader.HasMember("results")) {
+		if (reader["results"].IsArray()) {
+			auto item_list = reader["results"].GetArray();
+			//wxArrayString list_name = item_list.GetMemberNames();
+			if (item_list.Size() > 0)	{
+				for (size_t i = 0; i < item_list.Size(); i++) {
+					wxString urdbname = item_list[i].GetString(); // needs to be tested
+					if (item_list[i][item_list[i].GetString()].HasMember("fulltext"))
+						urdbname = item_list[i][item_list[i]]["fulltext"].GetString();
+					urdbname.Replace("&amp;", "&");
+					names.Add(urdbname);
+				}
+			}
+
+			if (err) *err = wxEmptyString;
+
+			return true;
+		}
+		else
+			return false;
 	}
-
-	if (err) *err = wxEmptyString;
-
-	return true;
+	else
+		return false;
 
 }
 
@@ -326,16 +359,19 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
 	
-	int max_limit = 500;
-	int offset;
-	int old_offset;
-	int count;
+	size_t max_limit = 500;
+	size_t offset;
+	size_t old_offset;
+	size_t count;
 	wxString url;
 	wxString json_data;
+
+	/*
 	wxJSONReader reader;
 	wxJSONValue root;
 	wxJSONValue item_list;
 	wxJSONValue items;
+	*/
 
 	// initial query to get first 500 rates
 	// OpenEI International Utility Rate Database https://openei.org/services/doc/rest/util_rates/?version=7
@@ -356,62 +392,83 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	}
 
 //	reader.SetSkipStringDoubleQuotes(true);
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
 
-	if (reader.Parse( json_data, &root )!=0)
+	if (reader.HasParseError())
 	{
 		if (err) *err = "Could not parse JSON for utility company name = " + name;
 		return false;
 	}
 
-	item_list = root.Item("items");
+	if (reader.HasMember("items")) {
+		if (reader["items"].IsArray()) {
 
-	rates.clear();
-	// download additional rates, up to 500 at a time
-	old_offset = offset;
-	offset = max_limit + 1;
-	count = item_list.Size();
+			auto item_list = reader["items"].GetArray();
 
-    if (count == 0)
-    {
-        if (err) *err = "No rates found for utility company name = " + name;
-        return false;
-    }
+			rates.clear();
+			// download additional rates, up to 500 at a time
+			old_offset = offset;
+			offset = max_limit + 1;
+			count = item_list.Size();
 
-	while (count != 0)
-	{
-		url.Replace(wxString::Format("&offset=%d",old_offset), wxString::Format("&offset=%d", offset));
-		json_data = MyGet(url);
-		reader.Parse(json_data, &root);
-		items = root.Item("items");
-		count = items.Size();
-		for (int i = 0; i < count; i++)
-		{
-			item_list[i+offset ] = items[i];
+			if (count == 0) {
+				if (err) *err = "No rates found for utility company name = " + name;
+				return false;
+			}
+
+			while (count != 0)
+			{
+				url.Replace(wxString::Format("&offset=%d", old_offset), wxString::Format("&offset=%d", offset));
+				json_data = MyGet(url);
+				reader.Parse(json_data.c_str());
+				if (reader.HasParseError()) {
+					if (err) *err = "No rates found for url = " + url;
+					return false;
+				}
+				if (reader.HasMember("items")) {
+					if (reader["items"].IsArray()) {
+						auto items = reader["items"].GetArray();
+						count = items.Size();
+						for (int i = 0; i < count; i++) {
+							item_list[i + offset] = items[i];
+						}
+						old_offset = offset;
+						offset += max_limit;
+					}
+				}
+			}
+			// can check each for validity
+			count = item_list.Size();
+			for (size_t i = 0; i < count; i++) {
+				RateInfo x;
+				x.GUID = item_list[i]["label"].GetString();
+				x.Name = item_list[i]["name"].GetString();
+				x.Utility = item_list[i]["utility"].GetString();
+				x.Sector = item_list[i]["sector"].GetString();
+				x.Description = item_list[i]["description"].GetString();
+				x.Source = item_list[i]["source"].GetString();
+				x.Version = item_list[i]["version"].GetInt();
+				x.uri = item_list[i]["uri"].GetString();
+				x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
+				x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				rates.push_back(x);
+			}
+
+			if (err) *err = wxEmptyString;
+
+			return true;
 		}
-		old_offset = offset;
-		offset += max_limit;
+		else {
+			if (err) *err = "No rates found for utility company name = " + name;
+			return false;
+		}
+	}
+	else {
+		if (err) *err = "No rates found for utility company name = " + name;
+		return false;
 	}
 
-	count = item_list.Size();
-	for (int i=0;i<count;i++)
-	{
-		RateInfo x;
-		x.GUID = json_string(item_list[i].Item("label"));
-		x.Name = json_string(item_list[i].Item("name"));
-		x.Utility = json_string(item_list[i].Item("utility"));
-		x.Sector = json_string(item_list[i].Item("sector"));
-		x.Description = json_string(item_list[i].Item("description"));
-		x.Source = json_string(item_list[i].Item("source"));
-		x.Version = json_integer(item_list[i].Item("version"));
-		x.uri = json_string(item_list[i].Item("uri"));
-		x.StartDate = GetDate(json_integer(item_list[i].Item("startdate")));
-		x.EndDate = GetDate(json_integer(item_list[i].Item("enddate")));
-		rates.push_back(x);
-	}
-
-	if (err) *err = wxEmptyString;
-
-	return true;
 }
 
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
@@ -439,16 +496,18 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		return false;
 	}
 
-	wxJSONReader reader;
-//	reader.SetSkipStringDoubleQuotes(true);
-	wxJSONValue root;
-	if (reader.Parse( json_data, &root )!=0)
+
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
+
+	if (reader.HasParseError())
 	{
 		if (err) *err = "Could not parse JSON for GUID = " + guid;
 		return false;
 	}
 
-	wxJSONValue val = root.Item("items").ItemAt(0);
+//	wxJSONValue val = root.Item("items").ItemAt(0);
+	auto& val = reader["items"][0];
 	if (val.IsNull())
 	{
 		if (err) *err = "Root JSON structure error: Items is null for GUID = " + guid;
@@ -458,166 +517,198 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.Reset();
 	
 	rate.Header.GUID = guid;
-	rate.Header.Name = json_string( val.Item("name"));
-	rate.Header.Utility = json_string( val.Item("utility"));
-	rate.Header.Sector = json_string( val.Item("sector"));
-	rate.Header.Description = json_string( val.Item("description"));
-	rate.Header.Source = json_string( val.Item("source"));
-	rate.Header.Version = json_integer( val.Item("version"));
-	rate.Header.EnergyComments = json_string(val.Item("energycomments"));
-	rate.Header.DemandComments = json_string(val.Item("demandcomments"));
-	rate.Header.BasicInformationComments = json_string(val.Item("demandcomments"));
+	rate.Header.Name =  val["name"].GetString();
+	rate.Header.Utility =  val["utility"].GetString();
+	rate.Header.Sector =  val["sector"].GetString();
+	rate.Header.Description = val["description"].GetString();
+	rate.Header.Source = val["source"].GetString();
+	rate.Header.Version = val["version"].GetInt();
+	rate.Header.EnergyComments = val["energycomments"].GetString();
+	rate.Header.DemandComments = val["demandcomments"].GetString();
+	rate.Header.BasicInformationComments = val["demandcomments"].GetString();
 	rate.Header.JSONURL = url;
 	rate.Header.RateURL = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;
 
-	rate.Header.StartDate = GetDate(json_integer(val.Item("startdate")));
-	rate.Header.EndDate = GetDate(json_integer(val.Item("enddate")));
+	rate.Header.StartDate = GetDate(val["startdate"].GetInt());
+	rate.Header.EndDate = GetDate(val["enddate"].GetInt());
 
 	// Metering Option
-	rate.DgRules = json_string(val.Item("dgrules"));
+	rate.DgRules = val["dgrules"].GetString();
 
 	// Applicability
-	rate.Applicability.peakkwcapacityhistory = json_double(val.Item("peakkwcapacityhistory"));
-	rate.Applicability.peakkwcapacitymax = json_double(val.Item("peakkwcapacitymax"));
-	rate.Applicability.peakkwcapacitymin = json_double(val.Item("peakkwcapacitymin"));
-	rate.Applicability.peakkwhusagehistory = json_double(val.Item("peakkwhusagehistory"));
-	rate.Applicability.peakkwhusagemax = json_double(val.Item("peakkwhusagemax"));
-	rate.Applicability.peakkwhusagemin = json_double(val.Item("peakkwhusagemin"));
-	rate.Applicability.voltagemaximum = json_double(val.Item("voltagemaximum"));
-	rate.Applicability.voltageminimum = json_double(val.Item("voltageminimum"));
-	rate.Applicability.voltagecategory = json_string(val.Item("voltagecategory"));
-	rate.Applicability.phasewiring = json_string(val.Item("phasewiring"));
+	rate.Applicability.peakkwcapacityhistory = val["peakkwcapacityhistory"].GetDouble();
+	rate.Applicability.peakkwcapacitymax = val["peakkwcapacitymax"].GetDouble();
+	rate.Applicability.peakkwcapacitymin = val["peakkwcapacitymin"].GetDouble();
+	rate.Applicability.peakkwhusagehistory = val["peakkwhusagehistory"].GetDouble();
+	rate.Applicability.peakkwhusagemax = val["peakkwhusagemax"].GetDouble();
+	rate.Applicability.peakkwhusagemin = val["peakkwhusagemin"].GetDouble();
+	rate.Applicability.voltagemaximum = val["voltagemaximum"].GetDouble();
+	rate.Applicability.voltageminimum = val["voltageminimum"].GetDouble();
+	rate.Applicability.voltagecategory = val["voltagecategory"].GetString();
+	rate.Applicability.phasewiring = val["phasewiring"].GetString();
 
 	// Unused Items, set HasUnusedItems to true for items that would affect bill calculation
 
 	rate.Unused.HasUnusedItems = false;
 
-	wxJSONValue isd = val.Item("is_default");
-    if ( isd.IsBool() )
-        rate.Unused.IsDefault = isd.AsBool();
 
-	wxJSONValue st = val.Item("servicetype");
-    if ( st.IsString())
-	    rate.Unused.ServiceType = st.AsString();
+//	wxJSONValue isd = val.Item("is_default");
+//    if ( isd.IsBool() )
+	if (val.HasMember("is_default"))
+		if (val["is_default"].IsBool())
+			rate.Unused.IsDefault = val["is_default"].GetBool();
 
-	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
-	if (fam.Size() > 0)
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < 12; i++)
-			rate.Unused.FuelAdjustmentsMonthly[i] = fam[i].AsDouble();
+//	wxJSONValue st = val.Item("servicetype");
+//    if ( st.IsString())
+	if (val.HasMember("servicetype"))
+		if (val["servicetype"].IsString())
+		    rate.Unused.ServiceType = val["servicetype"].GetString();
+
+//	wxJSONValue fam = val.Item("fueladjustmentsmonthly");
+//	if (fam.Size() > 0)
+//	{
+	if (val.HasMember("fueladjustmentsmonthly")) {
+		if (val["fueladjustmentsmonthly"].IsArray()) {
+			auto fam = val["fueladjustmentsmonthly"].GetArray();
+			rate.Unused.HasUnusedItems = true;
+			for (int i = 0; i < 12; i++)
+				rate.Unused.FuelAdjustmentsMonthly[i] = fam[i].GetDouble();
+		}
 	}
 
-	wxJSONValue dw = val.Item("demandwindow");
-	if (dw.IsDouble())
-	{
-		rate.Unused.HasUnusedItems = true;
-		rate.Unused.DemandWindow = dw.AsDouble();
+//	wxJSONValue dw = val.Item("demandwindow");
+//	if (dw.IsDouble())
+	if (val.HasMember("demandwindow")) {
+		if (val["demandwindow"].IsDouble()) {
+			rate.Unused.HasUnusedItems = true;
+			rate.Unused.DemandWindow = val["demandwindow"].GetDouble();
+		}
 	}
 
-  wxJSONValue drpc = val.Item("demandreactivepowercharge");
-   if (drpc.IsDouble() )
-   {
-       rate.Unused.HasUnusedItems = true;
-       rate.Unused.DemandReactivePowerCharge = drpc.AsDouble();
-   }
+//   wxJSONValue drpc = val.Item("demandreactivepowercharge");
+//   if (drpc.IsDouble() )
+	if (val.HasMember("demandreactivepowercharge")) {
+		if (val["demandreactivepowercharge"].IsDouble()) {
+			rate.Unused.HasUnusedItems = true;
+			rate.Unused.DemandReactivePowerCharge = val["demandreactivepowercharge"].GetDouble();
+		}
+	}
 
 	// energy, fixed, and demand attributes
 
-	wxArrayString key;
+//	wxArrayString key;
 
-	wxJSONValue ea = val.Item("energyattrs");
-	wxString ea_str = "";
-	if (ea.IsArray())
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < ea.Size(); i++)
-		{
-			key = ea[i].GetMemberNames();
-			ea_str.Append(wxString::Format("%s, %s\n",key[0],ea[i].Item(key[0]).AsString()));
+	if (val.HasMember("energyattrs")) {
+		auto& ea = val["energyattrs"];
+		wxString ea_str = "";
+		if (ea.IsArray()){
+			rate.Unused.HasUnusedItems = true;
+			for (size_t i = 0; i < ea.Size(); i++)	{
+//				key = ea[i].GetMemberNames();
+//				ea_str.Append(wxString::Format("%s, %s\n", key[0], ea[i].Item(key[0]).AsString()));
+				wxString str = ea[i].GetString();
+				wxString str2 = ea[i][ea[i].GetString()].GetString();
+				ea_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+			}
+			rate.Unused.EnergyAttrs = ea_str;
 		}
-		rate.Unused.EnergyAttrs = ea_str;
+	}
+//	wxJSONValue fa = val.Item("fixedattrs");
+	if (val.HasMember("fixedattrs")) {
+		auto& fa = val["fixedattrs"];
+		wxString fa_str = "";
+		if (fa.IsArray())		{
+			rate.Unused.HasUnusedItems = true;
+			for (size_t i = 0; i < fa.Size(); i++)	{
+//				key = fa[i].GetMemberNames();
+//				fa_str.Append(wxString::Format("%s, %s\n", key[0], fa[i].Item(key[0]).AsString()));
+				wxString str = fa[i].GetString();
+				wxString str2 = fa[i][fa[i].GetString()].GetString();
+				fa_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+			}
+			rate.Unused.FixedAttrs = fa_str;
+		}
+	}
+//	wxJSONValue da = val.Item("demandattrs");
+	if (val.HasMember("demandattrs")) {
+		auto& da = val["demandattrs"];
+		wxString da_str = "";
+		if (da.IsArray())		{
+			rate.Unused.HasUnusedItems = true;
+			for (size_t i = 0; i < da.Size(); i++)			{
+//				key = da[i].GetMemberNames();
+//				da_str.Append(wxString::Format("%s, %s\n", key[0], da[i].Item(key[0]).AsString()));
+				wxString str = da[i].GetString();
+				wxString str2 = da[i][da[i].GetString()].GetString();
+				da_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+			}
+			rate.Unused.DemandAttrs = da_str;
+		}
 	}
 
-	wxJSONValue fa = val.Item("fixedattrs");
-	wxString fa_str = "";
-	if (fa.IsArray())
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < fa.Size(); i++)
-		{
-			key = fa[i].GetMemberNames();
-			ea_str.Append(wxString::Format("%s, %s\n", key[0], fa[i].Item(key[0]).AsString()));
+	if (val.HasMember("coincidentrateunit"))
+		rate.Unused.CoincidentRateUnit = val["coincidentrateunit"].GetString();
+
+
+	if (val.HasMember("coincidentratestructure")) {
+		int num_cr_rows = 0;
+		auto& cr_periods = val["coincidentratestructure"];
+		if (cr_periods.IsArray()){
+			for (size_t period = 0; period < cr_periods.Size(); period++)	{
+				auto& cr_tier = cr_periods[period];
+				if (cr_tier.IsArray())	{
+					for (size_t tier = 0; tier < cr_tier.Size(); tier++){
+						num_cr_rows++;
+					}
+				}
+			}
 		}
-		rate.Unused.FixedAttrs = fa_str;
-	}
-
-	wxJSONValue da = val.Item("demandattrs");
-	wxString da_str = "";
-	if (da.IsArray())
-	{
-		rate.Unused.HasUnusedItems = true;
-		for (int i = 0; i < da.Size(); i++)
-		{
-			key = da[i].GetMemberNames();
-			da_str.Append(wxString::Format("%s, %s\n", key[0], da[i].Item(key[0]).AsString()));
-		}
-		rate.Unused.DemandAttrs = da_str;
-	}
-
-	rate.Unused.CoincidentRateUnit = json_string(val.Item("coincidentrateunit"));
-
-	int num_cr_rows = 0;
-	wxJSONValue cr_periods = val.Item("coincidentratestructure");
-	if (cr_periods.IsArray())
-	{
-		for (int period = 0; period < cr_periods.Size(); period++)
-		{
-			wxJSONValue cr_tier = cr_periods[period];
-			if (cr_tier.IsArray())
-			{
-				for (int tier = 0; tier < cr_tier.Size(); tier++)
-				{
-					num_cr_rows++;
+		if (num_cr_rows > 0){
+			rate.Unused.HasCoincidentRate = true;
+			rate.Unused.HasUnusedItems = true;
+			rate.Unused.CoincidentRateStructure.resize_fill(num_cr_rows, 4, 0.0);
+			int cr_row = 0;
+			for (size_t period = 0; period < cr_periods.Size(); period++)	{
+				auto& cr_tier = cr_periods[period];
+				for (size_t tier = 0; tier < cr_tier.Size(); tier++)	{
+//					double max = json_double(cr_tier[tier].Item("max"), 1e38, &rate.Unused.HasCoincidentRate);
+//					double charge = json_double(cr_tier[tier].Item("rate"), 0.0, &rate.Unused.HasCoincidentRate);
+//					double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
+					double max = 1e38;
+					if (cr_tier[tier].HasMember("max"))
+						if (cr_tier[tier]["max"].IsDouble())
+							max = cr_tier[tier]["max"].GetDouble();
+					double charge = 0.0;
+					if (cr_tier[tier].HasMember("rate"))
+						if (cr_tier[tier]["rate"].IsDouble())
+							charge = cr_tier[tier]["rate"].GetDouble();
+					double adj =  0.0;
+					if (cr_tier[tier].HasMember("adj"))
+						if (cr_tier[tier]["adj"].IsDouble())
+							adj = cr_tier[tier]["adj"].GetDouble();
+					rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
+					rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
+					rate.Unused.CoincidentRateStructure.at(cr_row, 2) = max;
+					rate.Unused.CoincidentRateStructure.at(cr_row, 3) = charge + adj;
+					cr_row++;
 				}
 			}
 		}
 	}
-	if (num_cr_rows > 0)
-	{
-		rate.Unused.HasCoincidentRate = true;
-		rate.Unused.HasUnusedItems = true;
-		rate.Unused.CoincidentRateStructure.resize_fill(num_cr_rows, 4, 0.0);
-		int cr_row = 0;
-		for (int period = 0; period < cr_periods.Size(); period++)
-		{
-			wxJSONValue cr_tier = cr_periods[period];
-			for (int tier = 0; tier < cr_tier.Size(); tier++)
-			{
-				double max = json_double(cr_tier[tier].Item("max"), 1e38, &rate.Unused.HasCoincidentRate);
-				double charge = json_double(cr_tier[tier].Item("rate"), 0.0, &rate.Unused.HasCoincidentRate);
-				double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
-				rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
-				rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
-				rate.Unused.CoincidentRateStructure.at(cr_row, 2) = max;
-				rate.Unused.CoincidentRateStructure.at(cr_row, 3) = charge + adj;
-				cr_row++;
-			}
-		}
-	}
 
-	if (!RetrieveDiurnalData(val.Item("coincidentschedule"), rate.Unused.CoincidentSchedule)) return false;
+	if (val.HasMember("coincidentschedule"))
+		if (!RetrieveDiurnalData(val["coincidentschedule"], rate.Unused.CoincidentSchedule)) return false;
 
 	// Minimum Charge
-	rate.MinCharge = json_double(val.Item("mincharge"));
-	rate.MinChargeUnits = json_string(val.Item("minchargeunits"));
+	rate.MinCharge = val["mincharge"].GetDouble();
+	rate.MinChargeUnits = val["minchargeunits"].GetString();
     if (rate.MinChargeUnits == "$/day")
         rate.Unused.HasUnusedItems = true;
 
 	// Fixed Charge
-	rate.FixedChargeFirstMeter = json_double(val.Item("fixedchargefirstmeter"));
-	rate.FixedChargeAddlMeter = json_double(val.Item("fixedchargeeaaddl"));
-	rate.FixedChargeUnits = json_string(val.Item("fixedchargeunits"));
+	rate.FixedChargeFirstMeter = val["fixedchargefirstmeter"].GetDouble();
+	rate.FixedChargeAddlMeter = val["fixedchargeeaaddl"].GetDouble();
+	rate.FixedChargeUnits = val["fixedchargeunits"].GetString();
     if (rate.FixedChargeUnits != "$/month")
         rate.Unused.HasUnusedItems = true;
 
@@ -625,138 +716,150 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	rate.HasEnergyCharge = true;
 
 	// first check for energy rate structure and resize matrix if present
-	int num_ec_rows = 0; // default to one for each month
-	wxJSONValue ers_periods = val.Item("energyratestructure");
-	if (ers_periods.IsArray())
-	{
-		for (int period = 0; period < ers_periods.Size(); period++)
-		{
-			wxJSONValue ers_tier = ers_periods[period];
-			if (ers_tier.IsArray())
-			{
-				for (int tier = 0; tier < ers_tier.Size(); tier++)
-				{
-					num_ec_rows++;
+	if (val.HasMember("energyratestructure")) {
+		int num_ec_rows = 0; // default to one for each month
+		//	wxJSONValue ers_periods = val.Item("energyratestructure");
+		auto& ers_periods = val["energyratestructure"];
+		if (ers_periods.IsArray())	{
+			for (size_t period = 0; period < ers_periods.Size(); period++)	{
+				auto& ers_tier = ers_periods[period];
+				if (ers_tier.IsArray())	{
+					for (size_t tier = 0; tier < ers_tier.Size(); tier++)	{
+						num_ec_rows++;
+					}
 				}
 			}
 		}
-	}
 
-	if (num_ec_rows > 0)
-	{
-		rate.EnergyStructure.resize_fill(num_ec_rows, 6, 0.0);
-
-	// next, assign rate values
-		int es_row = 0;
-		for (int period = 0; period < ers_periods.Size(); period++)
+		if (num_ec_rows > 0)
 		{
-			wxJSONValue ers_tier = ers_periods[period];
-			for (int tier = 0; tier < ers_tier.Size(); tier++)
-			{
-				double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
-				double buy = json_double(ers_tier[tier].Item("rate"), 0.0, &rate.HasEnergyCharge);
-				double sell = json_double(ers_tier[tier].Item("sell"), 0.0, &rate.HasEnergyCharge);
-				double adj = json_double(ers_tier[tier].Item("adj"), 0.0, &rate.HasEnergyCharge);
-				wxString units = json_string(ers_tier[tier].Item("unit"));
-                rate.EnergyUnits = "";
-				int iunits = 0; // assume kWh if units not provided
-				if (units.Lower() == "kwh")
-					iunits = 0;
-				else if (units.Lower() == "kwh/kw")
-					iunits = 1;
-				else if (units.Lower() == "kwh daily")
-					iunits = 2;
-				else if (units.Lower() == "kwh/kw daily")
-					iunits = 3;
-                else {
-                    rate.Unused.HasUnusedItems = true;
-                    rate.EnergyUnits = units;
-                }
-				rate.EnergyStructure.at(es_row, 0) = period + 1;
-				rate.EnergyStructure.at(es_row, 1) = tier + 1;
-				rate.EnergyStructure.at(es_row, 2) = max;
-				rate.EnergyStructure.at(es_row, 3) = iunits;
-				rate.EnergyStructure.at(es_row, 4) = buy+adj;
-				rate.EnergyStructure.at(es_row, 5) = sell;
-				es_row++;
+			rate.EnergyStructure.resize_fill(num_ec_rows, 6, 0.0);
+
+			// next, assign rate values
+			int es_row = 0;
+			for (size_t period = 0; period < ers_periods.Size(); period++)	{
+				auto& ers_tier = ers_periods[period];
+				for (size_t tier = 0; tier < ers_tier.Size(); tier++) {
+//					double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
+					double max = 1e38;
+					if (ers_tier[tier].HasMember("max"))
+						if (ers_tier[tier]["max"].IsDouble())
+							max = ers_tier[tier]["max"].GetDouble();
+					double buy = 0.0;
+					if (ers_tier[tier].HasMember("buy"))
+						if (ers_tier[tier]["buy"].IsDouble())
+							buy = ers_tier[tier]["buy"].GetDouble();
+					double sell = 0.0;
+					if (ers_tier[tier].HasMember("sell"))
+						if (ers_tier[tier]["sell"].IsDouble())
+							sell = ers_tier[tier]["sell"].GetDouble();
+					double adj = 0.0;
+					if (ers_tier[tier].HasMember("adj"))
+						if (ers_tier[tier]["adj"].IsDouble())
+							adj = ers_tier[tier]["adj"].GetDouble();
+					wxString units = ers_tier[tier]["unit"].GetString();
+					rate.EnergyUnits = "";
+					int iunits = 0; // assume kWh if units not provided
+					if (units.Lower() == "kwh")
+						iunits = 0;
+					else if (units.Lower() == "kwh/kw")
+						iunits = 1;
+					else if (units.Lower() == "kwh daily")
+						iunits = 2;
+					else if (units.Lower() == "kwh/kw daily")
+						iunits = 3;
+					else {
+						rate.Unused.HasUnusedItems = true;
+						rate.EnergyUnits = units;
+					}
+					rate.EnergyStructure.at(es_row, 0) = period + 1;
+					rate.EnergyStructure.at(es_row, 1) = tier + 1;
+					rate.EnergyStructure.at(es_row, 2) = max;
+					rate.EnergyStructure.at(es_row, 3) = iunits;
+					rate.EnergyStructure.at(es_row, 4) = buy + adj;
+					rate.EnergyStructure.at(es_row, 5) = sell;
+					es_row++;
+				}
 			}
 		}
+
+		if (!RetrieveDiurnalData(val["energyweekdayschedule"], rate.EnergyWeekdaySchedule)) return false;
+		if (!RetrieveDiurnalData(val["energyweekendschedule"], rate.EnergyWeekendSchedule)) return false;
 	}
 
-	if (!RetrieveDiurnalData(val.Item("energyweekdayschedule"), rate.EnergyWeekdaySchedule)) return false;
-	if (!RetrieveDiurnalData(val.Item("energyweekendschedule"), rate.EnergyWeekendSchedule)) return false;
-	
 	// Demand Charge
 	rate.HasDemandCharge = true;
-	rate.DemandRateUnit = json_string( val.Item("demandrateunit") );
+	rate.DemandRateUnit = val["demandrateunit"].GetString();
 
-    wxJSONValue lp = val.Item("lookbackpercent");
+    auto& lp = val["lookbackpercent"];
     if (lp.IsDouble()) {
-        rate.LookbackPercent = lp.AsDouble() * 100.0;
+        rate.LookbackPercent = lp.GetDouble() * 100.0;
     }
     else if (lp.IsInt()) {
-        rate.LookbackPercent = lp.AsInt() * 100.0;
+        rate.LookbackPercent = lp.GetInt() * 100.0;
     }
 
-    wxJSONValue lr = val.Item("lookbackrange");
+    auto& lr = val["lookbackrange"];
     if ( lr.IsInt() )
-        rate.LookbackRange = lr.AsInt();
+        rate.LookbackRange = lr.GetInt();
 
-    wxJSONValue lm = val.Item("lookbackmonths");
+    auto& lm = val["lookbackmonths"];
     if (lm.IsArray()) {
         for (size_t i = 0; i < lm.Size(); i++) {
-            rate.LookbackMonths[i] = lm[i].AsBool();
+            rate.LookbackMonths[i] = lm[i].GetBool();
         }
     }
 
 	int num_months = 0;
-	wxJSONValue fdm_periods = val.Item("flatdemandmonths");
-	if (fdm_periods.IsArray())
-	{
+	auto& fdm_periods = val["flatdemandmonths"];
+	if (fdm_periods.IsArray())	{
 		// addresses issue from Pieter 6/26/15 for Upper Cumberland EMC GS3 rate with incorrect json - not an entry for every month.
 		num_months = fdm_periods.Size();
 		if (num_months != 12) return false;
-		for (int month = 0; month <num_months; month++)
-		{
-			rate.FlatDemandMonth[month] = fdm_periods[month].AsInt();
+		for (int month = 0; month <num_months; month++)	{
+			rate.FlatDemandMonth[month] = fdm_periods[month].GetInt();
 		}
 	}
-	if (num_months == 12)
-	{
-		wxJSONValue fds_periods = val.Item("flatdemandstructure");
+	if (num_months == 12) {
+		auto& fds_periods = val["flatdemandstructure"];
 		int fds_row = 0;
-		if (fds_periods.IsArray())
-		{
-			for (int period = 0; period < fds_periods.Size(); period++)
-			{
-				wxJSONValue fds_tier = fds_periods[period];
-				if (fds_tier.IsArray())
-				{
-					for (int tier = 0; tier < fds_tier.Size(); tier++)
-					{
+		if (fds_periods.IsArray())	{
+			for (size_t period = 0; period < fds_periods.Size(); period++)	{
+				auto& fds_tier = fds_periods[period];
+				if (fds_tier.IsArray())	{
+					for (size_t tier = 0; tier < fds_tier.Size(); tier++)	{
 						fds_row++;
 					}
 				}
 			}
 		}
 		fds_row *= num_months; //estimate - may resize as below.
-		if (fds_row > 0)
-		{
+		if (fds_row > 0)		{
 			rate.DemandFlatStructure.resize_fill(fds_row, 4, 0.0);
 
 			int fd_row = 0;
-			for (int m = 0; m < num_months; m++)
-			{
+			for (size_t m = 0; m < num_months; m++){
 				int period = rate.FlatDemandMonth[m];
-				if ( period >= 0 && period < fds_periods.Size())
+				if ( period >= 0 && period < (int)fds_periods.Size())
 				{
-					wxJSONValue fds_tier = fds_periods[period];
-					for (int tier = 0; tier < fds_tier.Size(); tier++)
+					auto& fds_tier = fds_periods[period];
+					for (size_t tier = 0; tier < fds_tier.Size(); tier++)
 					{
-						double max = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-						double charge = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-
+//						double max = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+//						double charge = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+//						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+						double max = 1e38;
+						if (fds_tier[tier].HasMember("max"))
+							if (fds_tier[tier]["max"].IsDouble())
+								max = fds_tier[tier]["max"].GetDouble();
+						double charge = 0.0;
+						if (fds_tier[tier].HasMember("rate"))
+							if (fds_tier[tier]["rate"].IsDouble())
+								charge = fds_tier[tier]["rate"].GetDouble();
+						double adj = 0.0;
+						if (fds_tier[tier].HasMember("adj"))
+							if (fds_tier[tier]["adj"].IsDouble())
+								adj = fds_tier[tier]["adj"].GetDouble();
 						rate.DemandFlatStructure.at(fd_row, 0) = m;
 						rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
 						rate.DemandFlatStructure.at(fd_row, 2) = max;
@@ -772,16 +875,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	// first check for energy rate structure and resize matrix if present
 	int num_dc_rows = 0; // default to one for each month
-	wxJSONValue drs_periods = val.Item("demandratestructure");
-	if (drs_periods.IsArray())
-	{
-		for (int period = 0; period < drs_periods.Size(); period++)
-		{
-			wxJSONValue drs_tier = drs_periods[period];
-			if (drs_tier.IsArray())
-			{
-				for (int tier = 0; tier < drs_tier.Size(); tier++)
-				{
+	auto& drs_periods = val["demandratestructure"];
+	if (drs_periods.IsArray()) {
+		for (size_t period = 0; period < drs_periods.Size(); period++)	{
+			auto& drs_tier = drs_periods[period];
+			if (drs_tier.IsArray())	{
+				for (size_t tier = 0; tier < drs_tier.Size(); tier++)	{
 					num_dc_rows++;
 				}
 			}
@@ -793,15 +892,24 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 		// next, assign rate values
 		int ds_row = 0;
-		for (int period = 0; period < drs_periods.Size(); period++)
-		{
-			wxJSONValue drs_tier = drs_periods[period];
-			for (int tier = 0; tier < drs_tier.Size(); tier++)
-			{
-				double max = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-
-				double charge = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+		for (size_t period = 0; period < drs_periods.Size(); period++)	{
+			auto& drs_tier = drs_periods[period];
+			for (size_t tier = 0; tier < drs_tier.Size(); tier++){
+//				double max = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+//				double charge = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+//				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+				double max = 1e38;
+				if (drs_tier[tier].HasMember("max"))
+					if (drs_tier[tier]["max"].IsDouble())
+						max = drs_tier[tier]["max"].GetDouble();
+				double charge = 0.0;
+				if (drs_tier[tier].HasMember("rate"))
+					if (drs_tier[tier]["rate"].IsDouble())
+						charge = drs_tier[tier]["rate"].GetDouble();
+				double adj = 0.0;
+				if (drs_tier[tier].HasMember("adj"))
+					if (drs_tier[tier]["adj"].IsDouble())
+						adj = drs_tier[tier]["adj"].GetDouble();
 
 				rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
 				rate.DemandTOUStructure.at(ds_row, 1) = tier + 1;
@@ -812,17 +920,17 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		}
 	}
 	
-	if (!RetrieveDiurnalData(val.Item("demandweekdayschedule"), rate.DemandWeekdaySchedule)) return false;
-	if (!RetrieveDiurnalData(val.Item("demandweekendschedule"), rate.DemandWeekendSchedule)) return false;
+	if (!RetrieveDiurnalData(val["demandweekdayschedule"], rate.DemandWeekdaySchedule)) return false;
+	if (!RetrieveDiurnalData(val["demandweekendschedule"], rate.DemandWeekendSchedule)) return false;
 
 	return true;
 }
 
 
 
-bool OpenEI::RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24])
+bool OpenEI::RetrieveDiurnalData(rapidjson::Value &month_ary, double sched[12][24])
 {
-	wxJSONValue hour_ary;
+	rapidjson::Value hour_ary;
 
 	if (month_ary.IsArray())
 	{
@@ -833,7 +941,7 @@ bool OpenEI::RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24])
 			if (hour_ary.Size() != 24) return false;
 			for (int h = 0; h < 24; h++)
 			{
-				sched[m][h] = hour_ary[h].AsInt() + 1;
+				sched[m][h] = hour_ary[h].GetInt() + 1;
 			}
 		}
 	}
