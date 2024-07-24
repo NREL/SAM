@@ -328,14 +328,14 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	names.Clear();
 
 	if (reader.HasMember("results")) {
-		if (reader["results"].IsArray()) {
-			auto item_list = reader["results"].GetArray();
+		if (reader["results"].IsObject()) {
+			auto& item_list = reader["results"].GetObject();
 			//wxArrayString list_name = item_list.GetMemberNames();
-			if (item_list.Size() > 0)	{
-				for (size_t i = 0; i < item_list.Size(); i++) {
-					wxString urdbname = item_list[i].GetString(); // needs to be tested
-					if (item_list[i][item_list[i].GetString()].HasMember("fulltext"))
-						urdbname = item_list[i][item_list[i]]["fulltext"].GetString();
+			if (item_list.MemberCount() > 0)	{
+				for (size_t i = 0; i < item_list.MemberCount(); i++) {
+					wxString urdbname = (item_list.begin() + i)->name.GetString(); 
+					if ((item_list.begin() + i)->value.HasMember("fulltext"))
+						urdbname = (item_list.begin() + i)->value["fulltext"].GetString();
 					urdbname.Replace("&amp;", "&");
 					names.Add(urdbname);
 				}
@@ -377,9 +377,9 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	// OpenEI International Utility Rate Database https://openei.org/services/doc/rest/util_rates/?version=7
 	offset = 0;
 	url = SamApp::WebApi("urdb_rates");
-	url.Replace("<LIMIT>", wxString::Format("%d", max_limit));
+	url.Replace("<LIMIT>", wxString::Format("%d", (int)max_limit));
 	url.Replace("<DETAIL>", "minimal"); // don't need rate details for this call
-	url.Replace("&offset=<OFFSET>", wxString::Format("&offset=%d", offset));
+	url.Replace("&offset=<OFFSET>", wxString::Format("&offset=%d", (int)offset));
 	url.Replace("<UTILITYNAME>", utlnm);
 	url.Replace("<GUID>", "");
 	url.Replace("<APIKEY>", wxString(sam_api_key));
@@ -419,7 +419,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 
 			while (count != 0)
 			{
-				url.Replace(wxString::Format("&offset=%d", old_offset), wxString::Format("&offset=%d", offset));
+				url.Replace(wxString::Format("&offset=%d", (int)old_offset), wxString::Format("&offset=%d", (int)offset));
 				json_data = MyGet(url);
 				reader.Parse(json_data.c_str());
 				if (reader.HasParseError()) {
@@ -446,12 +446,24 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 				x.Name = item_list[i]["name"].GetString();
 				x.Utility = item_list[i]["utility"].GetString();
 				x.Sector = item_list[i]["sector"].GetString();
-				x.Description = item_list[i]["description"].GetString();
-				x.Source = item_list[i]["source"].GetString();
-				x.Version = item_list[i]["version"].GetInt();
+				// optional
+				if (item_list[i].HasMember("description"))
+					x.Description = item_list[i]["description"].GetString();
+				// optional
+				if (item_list[i].HasMember("source"))
+					x.Source = item_list[i]["source"].GetString();
+				// optional
+				if (item_list[i].HasMember("version"))
+					x.Version = item_list[i]["version"].GetInt();
 				x.uri = item_list[i]["uri"].GetString();
-				x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
-				x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				// optional
+				if (item_list[i].HasMember("startdate"))
+					x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
+				// optional
+				if (item_list[i].HasMember("enddate"))
+					x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				else
+					x.EndDate = "N/A";
 				rates.push_back(x);
 			}
 
