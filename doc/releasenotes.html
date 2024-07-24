@@ -59,6 +59,46 @@
 
 -->
 
+<h1 id="2023-12-17-r2">SAM 2023.12.17 r2, SSC 2xx: July xx, 2024</h1>
+
+<p>This is the second maintenance update to <a href="#2023-12-17">SAM 2023.12.17</a>.</p>
+
+<ul>
+<li>Detailed PV and PVWatts
+<ul>
+<li>Set default PV uncertainty input distributions for factors that are represented by Detailed PV/PVWatts performance model.(<a href="https://github.com/NREL/SAM/pull/1812">SAM 1812</a>)</li>
+<li>Fix problems with PV PDF report. (<a href="https://github.com/NREL/SAM/pull/1789">SAM 1789</a>)</li>
+<li>Change diagrams of tracking and orientation on Sytem Design page for Detailed PV and PVWatts models, and revise Help descriptions of tilt and azimuth inputs and labels of plane-of-array (POA) irradiance output variables. (<a href="https://github.com/NREL/SAM/pull/1791">SAM 1791</a>, <a href="https://github.com/NREL/ssc/pull/1153">SSC 1153</a>)</li>
+<li>Improve documentation of IEC 61858 temperature, optical, and spectral models for PV. (<a href="https://github.com/NREL/SAM/pull/1795">SAM 1795</a>, <a href="https://github.com/NREL/ssc/pull/1175">SSC 1175</a>)</li>
+<li>Add checkboxes to PV uncertainty page to allow for enabling and disabling uncertainty categories. (<a href="https://github.com/NREL/SAM/pull/1753">SAM 1753</a>)</li>
+</ul>
+</li>
+<li>Battery Storage
+<ul>
+<li>Fix default battery properties for Li-NMC batteries for some configurations with batteires. (<a href="https://github.com/NREL/SAM/pull/1818">SAM 1818</a>)</li>
+<li>Improve battery lifetime model to allow for reversible thermal degradation. (<a href="https://github.com/NREL/ssc/pull/1164">SSC 1164</a>)</li>
+<li>Display a message on input page when battery is allowed to charge from grid an a production tax credit (PTC) is enabled. (<a href="https://github.com/NREL/SAM/pull/1792">SAM 1792</a>)</li>
+<li>Improve results of battery storage self-consumption dispatch option to more accurately determine when 100% of load is met by the system. (<a href="https://github.com/NREL/ssc/pull/1182">SSC 1182</a>)</li>
+<li>Fix PDF report for the self-consumption battery dispatch option. (<a href="https://github.com/NREL/SAM/pull/1750">SAM 1750</a>)</li>
+</ul>
+</li>
+<li>Financial Models
+<ul>
+<li>Fix electricity bill calculation for net billing with tiered energy rates. (<a href="https://github.com/NREL/ssc/pull/1168">SSC 1168</a>)
+<li>Report basis for investment tax credit (ITC) and depreciation in outputs to improve transparency of incentive calculations. (<a href="https://github.com/NREL/SAM/pull/1808">SAM 1808</a>, <a href="https://github.com/NREL/ssc/pull/1178">SSC 1178</a>)</li>
+<li>Fix formula in Excel Workbook for Third Party Host / Developer financial model that calculates federal depreciation. (<a href="https://github.com/NREL/SAM/pull/1793">SAM 1793</a>)</li>
+<li>Fix formulas in Excel Workbook for Community Solar financial model that calculates subscriber share of generation. (<a href="https://github.com/NREL/SAM/pull/1744">SAM 1744</a>)</li>
+<li>Revise description of Indifference Point macro for Third Party Host / Developer model. (<a href="https://github.com/NREL/SAM/pull/1788">SAM 1788</a>)</li>
+</ul>
+</li>
+<li>Update weather file downloads from the Advanced NSRDB Download window to make all attributes and time resolutions available from latest PSM V3.2.2 endpoints. (<a href="https://github.com/NREL/SAM/pull/1746">SAM 1746</a>)</li>
+<li>Fix stochastic and PV uncertainty simulations on macOS. (<a href="https://github.com/NREL/SAM/pull/1758">SAM 1758</a>, <a href="https://github.com/NREL/SAM/pull/1782">SAM 1782</a>)</li>
+<li>Revise Marine Energy Help topics mentioning DOE Reference Model project. (<a href="https://github.com/NREL/SAM/pull/1790">SAM 1790</a>)</li>
+<li>Revise description of Wind environmental loss on input page and in Help. (<a href="https://github.com/NREL/SAM/pull/1770">SAM 1770</a>)</li>
+<li>Fix problem reading time series loss data (converting from old 'adjust:periods' to new 'adjust_periods' variable names) when opening .sam files from older versions. (<a href="https://github.com/NREL/SAM/pull/1749">SAM 1749</a>)</li>
+<li>Fix application of time series losses ('adjust' variables) for non-annual simulations from SAM SDK / PySAM. (<a href="https://github.com/NREL/ssc/pull/1113">SSC 1113</a>)</li>
+</ul>
+
 <h1 id="2023-12-17-r1">SAM 2023.12.17 r1, SSC 290: March 4, 2024</h1>
 
 <p>This is the first maintenance update to <a href="#2023-12-17">SAM 2023.12.17</a>.</p>
