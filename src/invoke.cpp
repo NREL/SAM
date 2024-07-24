@@ -1931,6 +1931,51 @@ public:
 	}
 };
 
+void fcall_var_exists(lk::invoke_t& cxt)
+{
+	LK_DOC("var_exists", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+	if (Case* c = SamApp::Window()->GetCurrentCase()) {
+		wxString name = cxt.arg(0).as_string();
+		auto cfg = c->GetConfiguration();
+		int ndxHybrid = 0;
+		VarValue* vv = NULL;
+		bool bfound = false;
+		for (size_t ndx = 0; ndx < cfg->Technology.size(); ndx++ ) { // select ndxHybrid based on compute module position in 		
+			if (vv = c->Values(ndxHybrid).Get(name)) {
+				bfound = true;
+				ndxHybrid = ndx;
+			}
+		}
+		if (bfound)
+			cxt.result().assign(1);
+		else
+			cxt.result().assign((double)0);
+	}
+	else
+		cxt.result().assign((double)0);
+}
+
+void fcall_ssc_var_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC2("ssc_var_auto_exec", "Sets or gets a variable value in the SSC data set if it exists in the UI.",
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
+		"Get a variable value", "(ssc-obj-ref:data, string:name):variant");
+
+	if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 2)
+			sscdata_to_lkvar(*ssc, (const char*)name.ToUTF8(), cxt.result());
+		else if (cxt.arg_count() == 3) {
+			assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+		}
+	}
+	else
+		cxt.error("invalid ssc-obj-ref");
+}
+
+
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
@@ -1964,6 +2009,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 		cxt.error("wrong number of argument specified " + cxt.arg_count());
 		return;
 	}
+	// 	e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if (Case* c = SamApp::Window()->GetCurrentCase())
 	{
@@ -2008,8 +2054,17 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
-						{
+//						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
+/*
+* Note for hybrids - the search starts with the firs case vartable and continues until the first "name" is found in the UI
+*/						auto cfg = c->GetConfiguration();
+						int ndxHybrid = 0;
+						if (cfg->Technology.size() > 1) { // select ndxHybrid based on compute module position in simulations collection
+							ndxHybrid = cfg->Simulations.Index(cm);
+							if ((ndxHybrid < 0) || (ndxHybrid > (cfg->Technology.size()-1)))
+								ndxHybrid = cfg->Technology.size() - 1;
+						}
+						if (auto vv = c->Values(ndxHybrid).Get(name)) {
 							
 							if (!field.IsEmpty())
 							{
@@ -6280,6 +6335,8 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
+		fcall_ssc_var_auto_exec,
+		fcall_var_exists,
 		fcall_ssc_exec,
 		fcall_ssc_eqn,
 		0 };
