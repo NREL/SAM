@@ -329,7 +329,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 	if (reader.HasMember("results")) {
 		if (reader["results"].IsObject()) {
-			auto& item_list = reader["results"].GetObject();
+			const auto& item_list = reader["results"].GetObject();
 			//wxArrayString list_name = item_list.GetMemberNames();
 			if (item_list.MemberCount() > 0)	{
 				for (size_t i = 0; i < item_list.MemberCount(); i++) {
@@ -528,22 +528,58 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	rate.Reset();
 	
+	/*
+					// optional
+				if (item_list[i].HasMember("description"))
+					x.Description = item_list[i]["description"].GetString();
+				// optional
+				if (item_list[i].HasMember("source"))
+					x.Source = item_list[i]["source"].GetString();
+				// optional
+				if (item_list[i].HasMember("version"))
+					x.Version = item_list[i]["version"].GetInt();
+				x.uri = item_list[i]["uri"].GetString();
+				// optional
+				if (item_list[i].HasMember("startdate"))
+					x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
+				// optional
+				if (item_list[i].HasMember("enddate"))
+					x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				else
+					x.EndDate = "N/A";
+
+	
+	*/
+
+
+
 	rate.Header.GUID = guid;
 	rate.Header.Name =  val["name"].GetString();
 	rate.Header.Utility =  val["utility"].GetString();
 	rate.Header.Sector =  val["sector"].GetString();
-	rate.Header.Description = val["description"].GetString();
-	rate.Header.Source = val["source"].GetString();
-	rate.Header.Version = val["version"].GetInt();
+	// optional
+	if (val.HasMember("description"))
+		rate.Header.Description = val["description"].GetString();
+	// optional
+	if (val.HasMember("source"))
+		rate.Header.Source = val["source"].GetString();
+	// optional
+	if (val.HasMember("version"))
+		rate.Header.Version = val["version"].GetInt();
 	rate.Header.EnergyComments = val["energycomments"].GetString();
 	rate.Header.DemandComments = val["demandcomments"].GetString();
 	rate.Header.BasicInformationComments = val["demandcomments"].GetString();
 	rate.Header.JSONURL = url;
 	rate.Header.RateURL = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;
 
-	rate.Header.StartDate = GetDate(val["startdate"].GetInt());
-	rate.Header.EndDate = GetDate(val["enddate"].GetInt());
-
+	// optional
+	if (val.HasMember("startdate"))
+		rate.Header.StartDate = GetDate(val["startdate"].GetInt());
+	// optional
+	if (val.HasMember("enddate"))
+		rate.Header.EndDate = GetDate(val["enddate"].GetInt());
+	else
+		rate.Header.EndDate = "N/A";
 	// Metering Option
 	rate.DgRules = val["dgrules"].GetString();
 
