@@ -566,9 +566,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	// optional
 	if (val.HasMember("version"))
 		rate.Header.Version = val["version"].GetInt();
-	rate.Header.EnergyComments = val["energycomments"].GetString();
-	rate.Header.DemandComments = val["demandcomments"].GetString();
-	rate.Header.BasicInformationComments = val["demandcomments"].GetString();
+	// optional
+	if (val.HasMember("energycomments"))
+		rate.Header.EnergyComments = val["energycomments"].GetString();
+	// optional
+	if (val.HasMember("demandcomments"))
+		rate.Header.DemandComments = val["demandcomments"].GetString();
+	// optional
+	if (val.HasMember("basicinformationcomments"))
+		rate.Header.BasicInformationComments = val["basicinformationcomments"].GetString();
 	rate.Header.JSONURL = url;
 	rate.Header.RateURL = SamApp::WebApi("urdb_view_rate") + "/rate/view/" + guid;
 
@@ -581,19 +587,41 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 	else
 		rate.Header.EndDate = "N/A";
 	// Metering Option
-	rate.DgRules = val["dgrules"].GetString();
+	// optional
+	if (val.HasMember("dgrules"))
+		rate.DgRules = val["dgrules"].GetString();
 
 	// Applicability
-	rate.Applicability.peakkwcapacityhistory = val["peakkwcapacityhistory"].GetDouble();
-	rate.Applicability.peakkwcapacitymax = val["peakkwcapacitymax"].GetDouble();
-	rate.Applicability.peakkwcapacitymin = val["peakkwcapacitymin"].GetDouble();
-	rate.Applicability.peakkwhusagehistory = val["peakkwhusagehistory"].GetDouble();
-	rate.Applicability.peakkwhusagemax = val["peakkwhusagemax"].GetDouble();
-	rate.Applicability.peakkwhusagemin = val["peakkwhusagemin"].GetDouble();
-	rate.Applicability.voltagemaximum = val["voltagemaximum"].GetDouble();
-	rate.Applicability.voltageminimum = val["voltageminimum"].GetDouble();
-	rate.Applicability.voltagecategory = val["voltagecategory"].GetString();
-	rate.Applicability.phasewiring = val["phasewiring"].GetString();
+	// optional
+	if (val.HasMember("peakkwcapacityhistory"))
+		rate.Applicability.peakkwcapacityhistory = val["peakkwcapacityhistory"].GetDouble();
+	// optional
+	if (val.HasMember("peakkwcapacitymax"))
+		rate.Applicability.peakkwcapacitymax = val["peakkwcapacitymax"].GetDouble();
+	// optional
+	if (val.HasMember("peakkwcapacitymin"))
+		rate.Applicability.peakkwcapacitymin = val["peakkwcapacitymin"].GetDouble();
+	// optional
+	if (val.HasMember("peakkwhusagehistory"))
+		rate.Applicability.peakkwhusagehistory = val["peakkwhusagehistory"].GetDouble();
+	// optional
+	if (val.HasMember("peakkwhusagemax"))
+		rate.Applicability.peakkwhusagemax = val["peakkwhusagemax"].GetDouble();
+	// optional
+	if (val.HasMember("peakkwhusagemin"))
+		rate.Applicability.peakkwhusagemin = val["peakkwhusagemin"].GetDouble();
+	// optional
+	if (val.HasMember("voltagemaximum"))
+		rate.Applicability.voltagemaximum = val["voltagemaximum"].GetDouble();
+	// optional
+	if (val.HasMember("voltageminimum"))
+		rate.Applicability.voltageminimum = val["voltageminimum"].GetDouble();
+	// optional
+	if (val.HasMember("voltagecategory"))
+		rate.Applicability.voltagecategory = val["voltagecategory"].GetString();
+	// optional
+	if (val.HasMember("phasewiring"))
+		rate.Applicability.phasewiring = val["phasewiring"].GetString();
 
 	// Unused Items, set HasUnusedItems to true for items that would affect bill calculation
 
@@ -748,15 +776,20 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 		if (!RetrieveDiurnalData(val["coincidentschedule"], rate.Unused.CoincidentSchedule)) return false;
 
 	// Minimum Charge
-	rate.MinCharge = val["mincharge"].GetDouble();
-	rate.MinChargeUnits = val["minchargeunits"].GetString();
+	if (val.HasMember("mincharge"))
+		rate.MinCharge = val["mincharge"].GetDouble();
+	if (val.HasMember("minchargeunits"))
+		rate.MinChargeUnits = val["minchargeunits"].GetString();
     if (rate.MinChargeUnits == "$/day")
         rate.Unused.HasUnusedItems = true;
 
 	// Fixed Charge
-	rate.FixedChargeFirstMeter = val["fixedchargefirstmeter"].GetDouble();
-	rate.FixedChargeAddlMeter = val["fixedchargeeaaddl"].GetDouble();
-	rate.FixedChargeUnits = val["fixedchargeunits"].GetString();
+	if (val.HasMember("fixedchargefirstmeter"))
+		rate.FixedChargeFirstMeter = val["fixedchargefirstmeter"].GetDouble();
+	if (val.HasMember("fixedchargeeaaddl"))
+		rate.FixedChargeAddlMeter = val["fixedchargeeaaddl"].GetDouble();
+	if (val.HasMember("fixedchargeunits"))
+		rate.FixedChargeUnits = val["fixedchargeunits"].GetString();
     if (rate.FixedChargeUnits != "$/month")
         rate.Unused.HasUnusedItems = true;
 
@@ -805,7 +838,9 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 					if (ers_tier[tier].HasMember("adj"))
 						if (ers_tier[tier]["adj"].IsDouble())
 							adj = ers_tier[tier]["adj"].GetDouble();
-					wxString units = ers_tier[tier]["unit"].GetString();
+					wxString units;
+					if (ers_tier[tier].HasMember("unit"))
+						units = ers_tier[tier]["unit"].GetString();
 					rate.EnergyUnits = "";
 					int iunits = 0; // assume kWh if units not provided
 					if (units.Lower() == "kwh")
@@ -837,140 +872,154 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	// Demand Charge
 	rate.HasDemandCharge = true;
-	rate.DemandRateUnit = val["demandrateunit"].GetString();
+	if (val.HasMember("demandrateunit"))
+		rate.DemandRateUnit = val["demandrateunit"].GetString();
 
-    auto& lp = val["lookbackpercent"];
-    if (lp.IsDouble()) {
-        rate.LookbackPercent = lp.GetDouble() * 100.0;
-    }
-    else if (lp.IsInt()) {
-        rate.LookbackPercent = lp.GetInt() * 100.0;
-    }
 
-    auto& lr = val["lookbackrange"];
-    if ( lr.IsInt() )
-        rate.LookbackRange = lr.GetInt();
+	if (val.HasMember("lookbackpercent")) {
+		auto& lp = val["lookbackpercent"];
+		if (lp.IsDouble()) {
+			rate.LookbackPercent = lp.GetDouble() * 100.0;
+		}
+		else if (lp.IsInt()) {
+			rate.LookbackPercent = lp.GetInt() * 100.0;
+		}
+	}
 
-    auto& lm = val["lookbackmonths"];
-    if (lm.IsArray()) {
-        for (size_t i = 0; i < lm.Size(); i++) {
-            rate.LookbackMonths[i] = lm[i].GetBool();
-        }
-    }
+	if (val.HasMember("lookbackrange")) {
+		auto& lr = val["lookbackrange"];
+		if (lr.IsInt())
+			rate.LookbackRange = lr.GetInt();
+	}
+
+	if (val.HasMember("lookbackmonths")) {
+		auto& lm = val["lookbackmonths"];
+		if (lm.IsArray()) {
+			for (size_t i = 0; i < lm.Size(); i++) {
+				rate.LookbackMonths[i] = lm[i].GetBool();
+			}
+		}
+	}
 
 	int num_months = 0;
-	auto& fdm_periods = val["flatdemandmonths"];
-	if (fdm_periods.IsArray())	{
-		// addresses issue from Pieter 6/26/15 for Upper Cumberland EMC GS3 rate with incorrect json - not an entry for every month.
-		num_months = fdm_periods.Size();
-		if (num_months != 12) return false;
-		for (int month = 0; month <num_months; month++)	{
-			rate.FlatDemandMonth[month] = fdm_periods[month].GetInt();
+	if (val.HasMember("flatdemandmonths")) {
+		auto& fdm_periods = val["flatdemandmonths"];
+		if (fdm_periods.IsArray()) {
+			// addresses issue from Pieter 6/26/15 for Upper Cumberland EMC GS3 rate with incorrect json - not an entry for every month.
+			num_months = fdm_periods.Size();
+			if (num_months != 12) return false;
+			for (int month = 0; month < num_months; month++) {
+				rate.FlatDemandMonth[month] = fdm_periods[month].GetInt();
+			}
 		}
 	}
 	if (num_months == 12) {
-		auto& fds_periods = val["flatdemandstructure"];
-		int fds_row = 0;
-		if (fds_periods.IsArray())	{
-			for (size_t period = 0; period < fds_periods.Size(); period++)	{
-				auto& fds_tier = fds_periods[period];
-				if (fds_tier.IsArray())	{
-					for (size_t tier = 0; tier < fds_tier.Size(); tier++)	{
-						fds_row++;
-					}
-				}
-			}
-		}
-		fds_row *= num_months; //estimate - may resize as below.
-		if (fds_row > 0)		{
-			rate.DemandFlatStructure.resize_fill(fds_row, 4, 0.0);
-
-			int fd_row = 0;
-			for (size_t m = 0; m < num_months; m++){
-				int period = rate.FlatDemandMonth[m];
-				if ( period >= 0 && period < (int)fds_periods.Size())
-				{
+		if (val.HasMember("flatdemandmonths")) {
+			auto& fds_periods = val["flatdemandstructure"];
+			int fds_row = 0;
+			if (fds_periods.IsArray()) {
+				for (size_t period = 0; period < fds_periods.Size(); period++) {
 					auto& fds_tier = fds_periods[period];
-					for (size_t tier = 0; tier < fds_tier.Size(); tier++)
-					{
-//						double max = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-//						double charge = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-//						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-						double max = 1e38;
-						if (fds_tier[tier].HasMember("max"))
-							if (fds_tier[tier]["max"].IsDouble())
-								max = fds_tier[tier]["max"].GetDouble();
-						double charge = 0.0;
-						if (fds_tier[tier].HasMember("rate"))
-							if (fds_tier[tier]["rate"].IsDouble())
-								charge = fds_tier[tier]["rate"].GetDouble();
-						double adj = 0.0;
-						if (fds_tier[tier].HasMember("adj"))
-							if (fds_tier[tier]["adj"].IsDouble())
-								adj = fds_tier[tier]["adj"].GetDouble();
-						rate.DemandFlatStructure.at(fd_row, 0) = m;
-						rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
-						rate.DemandFlatStructure.at(fd_row, 2) = max;
-						rate.DemandFlatStructure.at(fd_row, 3) = charge + adj;
-						fd_row++;
+					if (fds_tier.IsArray()) {
+						for (size_t tier = 0; tier < fds_tier.Size(); tier++) {
+							fds_row++;
+						}
 					}
 				}
 			}
-			rate.DemandFlatStructure.resize_preserve(fd_row, 4, 0.0);
+			fds_row *= num_months; //estimate - may resize as below.
+			if (fds_row > 0) {
+				rate.DemandFlatStructure.resize_fill(fds_row, 4, 0.0);
+
+				int fd_row = 0;
+				for (size_t m = 0; m < num_months; m++) {
+					int period = rate.FlatDemandMonth[m];
+					if (period >= 0 && period < (int)fds_periods.Size())
+					{
+						auto& fds_tier = fds_periods[period];
+						for (size_t tier = 0; tier < fds_tier.Size(); tier++)
+						{
+							//						double max = json_double(fds_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+							//						double charge = json_double(fds_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+							//						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+							double max = 1e38;
+							if (fds_tier[tier].HasMember("max"))
+								if (fds_tier[tier]["max"].IsDouble())
+									max = fds_tier[tier]["max"].GetDouble();
+							double charge = 0.0;
+							if (fds_tier[tier].HasMember("rate"))
+								if (fds_tier[tier]["rate"].IsDouble())
+									charge = fds_tier[tier]["rate"].GetDouble();
+							double adj = 0.0;
+							if (fds_tier[tier].HasMember("adj"))
+								if (fds_tier[tier]["adj"].IsDouble())
+									adj = fds_tier[tier]["adj"].GetDouble();
+							rate.DemandFlatStructure.at(fd_row, 0) = m;
+							rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
+							rate.DemandFlatStructure.at(fd_row, 2) = max;
+							rate.DemandFlatStructure.at(fd_row, 3) = charge + adj;
+							fd_row++;
+						}
+					}
+				}
+				rate.DemandFlatStructure.resize_preserve(fd_row, 4, 0.0);
+			}
 		}
 	}
 
 
 	// first check for energy rate structure and resize matrix if present
 	int num_dc_rows = 0; // default to one for each month
-	auto& drs_periods = val["demandratestructure"];
-	if (drs_periods.IsArray()) {
-		for (size_t period = 0; period < drs_periods.Size(); period++)	{
-			auto& drs_tier = drs_periods[period];
-			if (drs_tier.IsArray())	{
-				for (size_t tier = 0; tier < drs_tier.Size(); tier++)	{
-					num_dc_rows++;
+	if (val.HasMember("demandratestructure")) {
+		auto& drs_periods = val["demandratestructure"];
+		if (drs_periods.IsArray()) {
+			for (size_t period = 0; period < drs_periods.Size(); period++) {
+				auto& drs_tier = drs_periods[period];
+				if (drs_tier.IsArray()) {
+					for (size_t tier = 0; tier < drs_tier.Size(); tier++) {
+						num_dc_rows++;
+					}
 				}
 			}
 		}
-	}
-	if (num_dc_rows > 0)
-	{
-		rate.DemandTOUStructure.resize_fill(num_dc_rows, 4, 0.0);
 
-		// next, assign rate values
-		int ds_row = 0;
-		for (size_t period = 0; period < drs_periods.Size(); period++)	{
-			auto& drs_tier = drs_periods[period];
-			for (size_t tier = 0; tier < drs_tier.Size(); tier++){
-//				double max = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
-//				double charge = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
-//				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
-				double max = 1e38;
-				if (drs_tier[tier].HasMember("max"))
-					if (drs_tier[tier]["max"].IsDouble())
-						max = drs_tier[tier]["max"].GetDouble();
-				double charge = 0.0;
-				if (drs_tier[tier].HasMember("rate"))
-					if (drs_tier[tier]["rate"].IsDouble())
-						charge = drs_tier[tier]["rate"].GetDouble();
-				double adj = 0.0;
-				if (drs_tier[tier].HasMember("adj"))
-					if (drs_tier[tier]["adj"].IsDouble())
-						adj = drs_tier[tier]["adj"].GetDouble();
+		if (num_dc_rows > 0)
+		{
+			rate.DemandTOUStructure.resize_fill(num_dc_rows, 4, 0.0);
 
-				rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
-				rate.DemandTOUStructure.at(ds_row, 1) = tier + 1;
-				rate.DemandTOUStructure.at(ds_row, 2) = max;
-				rate.DemandTOUStructure.at(ds_row, 3) = charge + adj;
-				ds_row++;
+			// next, assign rate values
+			int ds_row = 0;
+			for (size_t period = 0; period < drs_periods.Size(); period++) {
+				auto& drs_tier = drs_periods[period];
+				for (size_t tier = 0; tier < drs_tier.Size(); tier++) {
+					//				double max = json_double(drs_tier[tier].Item("max"), 1e38, &rate.HasDemandCharge);
+					//				double charge = json_double(drs_tier[tier].Item("rate"), 0.0, &rate.HasDemandCharge);
+					//				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
+					double max = 1e38;
+					if (drs_tier[tier].HasMember("max"))
+						if (drs_tier[tier]["max"].IsDouble())
+							max = drs_tier[tier]["max"].GetDouble();
+					double charge = 0.0;
+					if (drs_tier[tier].HasMember("rate"))
+						if (drs_tier[tier]["rate"].IsDouble())
+							charge = drs_tier[tier]["rate"].GetDouble();
+					double adj = 0.0;
+					if (drs_tier[tier].HasMember("adj"))
+						if (drs_tier[tier]["adj"].IsDouble())
+							adj = drs_tier[tier]["adj"].GetDouble();
+
+					rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
+					rate.DemandTOUStructure.at(ds_row, 1) = tier + 1;
+					rate.DemandTOUStructure.at(ds_row, 2) = max;
+					rate.DemandTOUStructure.at(ds_row, 3) = charge + adj;
+					ds_row++;
+				}
 			}
 		}
-	}
-	
-	if (!RetrieveDiurnalData(val["demandweekdayschedule"], rate.DemandWeekdaySchedule)) return false;
-	if (!RetrieveDiurnalData(val["demandweekendschedule"], rate.DemandWeekendSchedule)) return false;
 
+		if (!RetrieveDiurnalData(val["demandweekdayschedule"], rate.DemandWeekdaySchedule)) return false;
+		if (!RetrieveDiurnalData(val["demandweekendschedule"], rate.DemandWeekendSchedule)) return false;
+	}
 	return true;
 }
 
