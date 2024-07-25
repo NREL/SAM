@@ -682,9 +682,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (size_t i = 0; i < ea.Size(); i++)	{
 //				key = ea[i].GetMemberNames();
 //				ea_str.Append(wxString::Format("%s, %s\n", key[0], ea[i].Item(key[0]).AsString()));
-				wxString str = ea[i].GetString();
-				wxString str2 = ea[i][ea[i].GetString()].GetString();
-				ea_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+				if (ea[i].IsObject()) {
+					auto obj = ea[i].GetObject();
+					wxString str1 = obj.begin()->name.GetString();
+					wxString str2 = obj.begin()->value.GetString();
+					ea_str.Append(wxString::Format("%s, %s\n", str1.c_str(), str2.c_str()));
+				}
 			}
 			rate.Unused.EnergyAttrs = ea_str;
 		}
@@ -698,13 +701,23 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (size_t i = 0; i < fa.Size(); i++)	{
 //				key = fa[i].GetMemberNames();
 //				fa_str.Append(wxString::Format("%s, %s\n", key[0], fa[i].Item(key[0]).AsString()));
-				wxString str = fa[i].GetString();
-				wxString str2 = fa[i][fa[i].GetString()].GetString();
-				fa_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+				if (fa[i].IsObject()) {
+					auto obj = fa[i].GetObject();
+					wxString str1 = obj.begin()->name.GetString();
+					wxString str2 = obj.begin()->value.GetString();
+					fa_str.Append(wxString::Format("%s, %s\n", str1.c_str(), str2.c_str()));
+				}
 			}
 			rate.Unused.FixedAttrs = fa_str;
 		}
 	}
+	/*
+	failing for demandattr
+	{"items":[{"label":"539f74d4ec4f024411ed0cf3","uri":"https:\/\/apps.openei.org\/IURDB\/rate\/view\/539f74d4ec4f024411ed0cf3","sector":"Commercial","energyweekendschedule":[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],"flatdemandunit":"kW","eiaid":97,"demandattrs":[{"Interuptible Demand Charge per kW":"$1.50\/kw"},{"Transformation Charge":"$0.50\/kVA"}],"flatdemandmonths":[0,0,0,0,0,0,0,0,0,0,0,0],"revisions":[1349714258,1349714484,1354885044,1403771140,1405948276,1427405193],"energyratestructure":[[{"rate":0.075,"unit":"kWh"}]],"flatdemandstructure":[[{"rate":11}]],"startdate":1301641200,"demandunits":"kW","demandcomments":"$0.50 kVA charge can be voided if customer owns their own transformer","fixedchargeunits":"$\/month","utility":"Adams Electric Coop","description":"Available to cooperative members requiring three phase electric service and a monthly average demand greater than two hundred kilowatts.\r\n\r\nTransformation charge is $0.50\/KVA installed transformer capacity.","name":"Rate Schedule LLFI (Low Load Factor Interruptible)","source":"Rate Binder #7 (Illinois State University)","approved":true,"country":"USA","fixedchargefirstmeter":90,"energyweekdayschedule":[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]}]}
+	
+	*/
+
+
 //	wxJSONValue da = val.Item("demandattrs");
 	if (val.HasMember("demandattrs")) {
 		auto& da = val["demandattrs"];
@@ -714,9 +727,12 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 			for (size_t i = 0; i < da.Size(); i++)			{
 //				key = da[i].GetMemberNames();
 //				da_str.Append(wxString::Format("%s, %s\n", key[0], da[i].Item(key[0]).AsString()));
-				wxString str = da[i].GetString();
-				wxString str2 = da[i][da[i].GetString()].GetString();
-				da_str.Append(wxString::Format("%s, %s\n", str.c_str(), str2.c_str()));
+				if (da[i].IsObject()) {
+					auto obj = da[i].GetObject();
+					wxString str1 = obj.begin()->name.GetString();
+					wxString str2 = obj.begin()->value.GetString();
+					da_str.Append(wxString::Format("%s, %s\n", str1.c_str(), str2.c_str()));
+				}
 			}
 			rate.Unused.DemandAttrs = da_str;
 		}
