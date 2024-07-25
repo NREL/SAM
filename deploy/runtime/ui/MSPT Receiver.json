@@ -3762,7 +3762,7 @@
         "};",
         "",
         "function enable_custom_htf(){",
-        "    bUserDefined = (value(\"csp.pt.rec.htf_type\") == 2);",
+        "    bUserDefined = (value(\"csp.pt.rec.htf_type\") == 3);",
         "    enable(\"field_fl_props\", bUserDefined);",
         "}",
         "",
