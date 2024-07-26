@@ -760,7 +760,11 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check this option to model snow losses if the weather file on the Location and Resource page includes snow depth data.</span></p>
 <h4 class="p_Heading4" style="text-indent: -1.1250rem; margin: 0.3750rem 0 0.3750rem 1.1250rem;"><a id="curtailmentavailability" class="hmanchor"></a><span class="f_Heading4">System Availability</span></h4>
 <p class="p_Text"><span class="f_Text">System availability losses are reductions in the system's output due to operational requirements such as maintenance down time or other situations that prevent the system from operating as designed. </span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.html" class="topiclink">Grid</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.html" class="topiclink">Grid</a> page.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">For the PV Battery model, battery dispatch is affected by the system availability losses. For the PVWatts Battery, Generic Battery, and Standalone Battery battery dispatch ignores the system availability losses.</span></p>
 <p class="p_Text"><span class="f_Text">To edit the system availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
 <p class="p_Text"><span class="f_Text">The <a href="edit_losses.html" class="topiclink">Edit Losses</a> window allows you to define loss factors as follows:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p>
