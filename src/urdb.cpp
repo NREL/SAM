@@ -843,9 +843,9 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 						if (ers_tier[tier]["max"].IsDouble())
 							max = ers_tier[tier]["max"].GetDouble();
 					double buy = 0.0;
-					if (ers_tier[tier].HasMember("buy"))
-						if (ers_tier[tier]["buy"].IsDouble())
-							buy = ers_tier[tier]["buy"].GetDouble();
+					if (ers_tier[tier].HasMember("rate"))
+						if (ers_tier[tier]["rate"].IsDouble())
+							buy = ers_tier[tier]["rate"].GetDouble();
 					double sell = 0.0;
 					if (ers_tier[tier].HasMember("sell"))
 						if (ers_tier[tier]["sell"].IsDouble())
