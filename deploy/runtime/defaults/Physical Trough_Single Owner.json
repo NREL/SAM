@@ -1089,6 +1089,7 @@
     "T_htf_hot_des": 295.0,
     "T_loop_in_des": 170.0,
     "T_loop_out": 295.0,
+    "T_shutdown": 0.0,
     "T_startup": 300.0,
     "T_tank_cold_ini": 300.0,
     "T_tank_hot_inlet_min": 400.0,
