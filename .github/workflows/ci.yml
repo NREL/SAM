@@ -57,15 +57,15 @@ jobs:
     - name: Get libc version
       run: ldd --versio
 
-    - name: Get branch name for pull request
+    - name: Get branch name to match with other repos
+      run:  |
+          echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+    
+    - name: Get base branch name for pull request
       if: ${{ github.event_name == 'pull_request' }}
       run:  |
-          echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
-
-    - name: Get branch name for push
-      if: ${{ github.event_name == 'push' }}
-      run:  |
-        echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+          # to use a default branch if no matching branch exists for other repos
+          echo "DEFAULT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
     
     - name: Determine branches for other repos
       shell: bash {0}
@@ -204,16 +204,16 @@ jobs:
         echo "RAPIDJSONDIR=$RAPIDJSONDIR" >> $GITHUB_ENV
         SAMNTDIR=$GITHUB_WORKSPACE/sam
         echo "SAMNTDIR=$SAMNTDIR" >> $GITHUB_ENV
-    
-    - name: Get branch name for pull request
-      if: ${{ github.event_name == 'pull_request' }}
-      run:  |
-          echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
-
-    - name: Get branch name for push
-      if: ${{ github.event_name == 'push' }}
+        
+    - name: Get branch name to match with other repos
       run:  |
           echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
+    
+    - name: Get base branch name for pull request
+      if: ${{ github.event_name == 'pull_request' }}
+      run:  |
+          # to use a default branch if no matching branch exists for other repos
+          echo "DEFAULT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
 
     - name: Determine branches for other repos
       shell: bash {0}
