@@ -40,14 +40,6 @@ extern "C"
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_GF_flowrate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set calc_drill_costs: Calculate drill costs [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_calc_drill_costs_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set condensate_pump_power: hp
 	 * options: None
 	 * constraints: None
@@ -118,70 +110,6 @@ extern "C"
 	 * required if: conversion_type=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_flash_count_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_cost_curve: Injection well diameter type [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_cost_curve_welldiam: Injection well diameter type [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_cost_curve_welltype: Injection well type [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.inj_wells_drilled: Number of drilled injection wells [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_wells_drilled_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.prod_cost_curve: Production well diameter type [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.prod_cost_curve_welldiam: Production well diameter type [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.prod_cost_curve_welltype: Production well type [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set geotherm.cost.prod_wells_drilled: Number of drilled production wells [0/1]
-	 * options: 0=LargerDiameter,1=SmallerDiameter
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_wells_drilled_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set gross_cost_output: Gross output from GETEM for cost calculations [MW]
@@ -296,14 +224,6 @@ extern "C"
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_qRejectTotal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set resource_depth: Resource Depth [m]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_resource_depth_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set spec_vol: Specific Volume [cft/lb]
 	 * options: None
 	 * constraints: None
@@ -366,8 +286,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_GF_flowrate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_calc_drill_costs_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_condensate_pump_power_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_conversion_type_nget(SAM_table ptr, SAM_error *err);
@@ -385,22 +303,6 @@ extern "C"
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_eff_secondlaw_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_flash_count_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_wells_drilled_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_wells_drilled_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_gross_cost_output_nget(SAM_table ptr, SAM_error *err);
 
@@ -430,8 +332,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_qRejectTotal_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_resource_depth_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GeothermalCosts_GeoHourly_spec_vol_lp_nget(SAM_table ptr, SAM_error *err);
@@ -452,10 +352,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_GeothermalCosts_Outputs_baseline_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_Outputs_inj_total_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GeothermalCosts_Outputs_prod_total_cost_nget(SAM_table ptr, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */
