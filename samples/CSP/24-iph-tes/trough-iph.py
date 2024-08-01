@@ -19,8 +19,8 @@ sam_iph_dict_base = json.load(open("IPH_with_oil_field.json"))
 
 solution_mode = "design_point"
 solution_mode = "annual_sim"
-solution_mode = "LCOH_demo"
-solution_mode = "CST_sim_then_hybrid_lcoh"
+#solution_mode = "LCOH_demo"
+#solution_mode = "CST_sim_then_hybrid_lcoh"
 
 if(solution_mode == "design_point"):
 
@@ -72,6 +72,11 @@ elif(solution_mode == "LCOH_demo"):
 elif(solution_mode == "annual_sim"):
 
     sam_iph_dict_annual_sim = copy.deepcopy(sam_iph_dict_base)
+
+    # Assume we change T_loop_out here, then makes sense to apply startup/shutdown temp as a temperature difference
+    deltaT_outlet_threshold = 20
+    sam_iph_dict_annual_sim["T_startup"] = sam_iph_dict_annual_sim["T_loop_out"] - deltaT_outlet_threshold
+    sam_iph_dict_annual_sim["T_shutdown"] = sam_iph_dict_annual_sim["T_startup"]
 
     iph_solved_dict = ssc_sim.cmod_trough_iph_lcoh_from_dict(sam_iph_dict_annual_sim, True)  # ssc_sim.cmod_mspt_from_dict(sam_mspt_dict)
 
