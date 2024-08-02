@@ -582,7 +582,8 @@ void NSRDBDialog::GetResources()
 		}
 	}
 
-	//Create URL for weather file download
+	// NSRDB Data Query returns a list of links to all available files for a location
+	// https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/
 	wxString url;
 	url = SamApp::WebApi("nsrdb_query");
 	url.Replace("<LAT>", wxString::Format("%lg", lat), 1);
@@ -668,8 +669,12 @@ void NSRDBDialog::GetResources()
 			wxString displayName = output_list[i_outputs]["displayName"].GetString();
 
 			wxString year, interval;
+			// year may be a number like 2018 or a string like "tmy-2020"
 			if (links_list[i_links]["year"].IsInt())
-				year = wxString::Format("%d",links_list[i_links]["year"].GetInt());
+				year = wxString::Format("%d", links_list[i_links]["year"].GetInt());
+			else
+				year = links_list[i_links]["year"].GetString();
+			// interval should be a number like 5, 15, 30, 60
 			if (links_list[i_links]["interval"].IsInt())
 				interval = wxString::Format("%d", links_list[i_links]["interval"].GetInt());
 
