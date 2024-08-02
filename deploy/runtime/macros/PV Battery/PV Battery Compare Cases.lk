@@ -1,0 +1,673 @@
+/*@
+This macro allows you to compare multiple PV Battery cases.
+This may be helpful for modeling a variety of scenarios, including:
+<ul>
+<li>Model a baseline system in contrast with an alternate system.
+<li>Compare systems with different PV or battery configurations.
+<li>Compare systems located at different resource locations.
+</ul>
+
+<b>Instructions:</b>
+<ol>
+<li>Create the cases that you wish to compare. 
+<li>Define the PV module, inverter, system design, battery system, losses, system cost, and financial parameters for all the created cases. 
+<li>Simulate all the cases.
+<li>Open the PV Battery Compare Cases Macro and select a simulation option from the list. 
+<ul>
+<li>You may choose all of the cases in the existing project to be compared, OR
+<li>You may choose which cases to compare by typing their names into the input box, separated by ONLY a comma (no space).
+</ul>
+<li>Click 'Run macro' at the top of the screen.
+<li>When prompted, confirm the cases that will be compared.
+<li>When the macro simulation is complete, view the results in your browser.
+</ol>
+
+@*/
+//Macro user interface widgets
+//@ name=mode;type=combo;label=Choose an option;value=1) Compare all cases,2) Compare only the cases listed below;sel=0
+//@ name=cases;type=text;label=List cases for Option 2 (comma-separated);value= 
+
+
+//Check that this macro was run from within a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+//Determine available cases
+cases = list_cases();
+num_cases = #cases;
+
+//if 'Select cases' is enabled, parse the input to get the list of cases that should be compared
+if (macro.mode == '2) Compare only the cases listed below')
+{
+	input_cases = split(macro.cases, ','); //delimited with commas
+	for (i=0; i<#input_cases; i++) //check each input case
+	{
+		match = false; //a match has not yet been found
+		for (j=0; j<num_cases; j++) //loop through all available cases
+			if (input_cases[i] == cases[j]) //check if it matches
+				match = true; //flag that this input case was found in the list of available cases
+		if (!match) //a match was never found
+		{
+			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
+			exit;
+		}
+	}
+	//all cases were found, overwrite the list of cases
+	cases = input_cases;
+	num_cases = #cases;
+	
+}
+
+//Make sure there are sufficient cases
+if (num_cases <= 0)
+{
+	msgbox('No cases detected. Check your inputs and try again.');
+	exit;
+}
+
+if (num_cases == 1)
+{
+	msgbox('Only ' + num_cases + ' case detected.\n\nThis macro requires at least 2 cases.' + 
+		'Check your inputs and try again.');
+	exit;
+}
+if (num_cases > 4)
+{
+	msgbox('This macro requires 4 or less cases.' + 
+		' Check your inputs and try again.');
+	exit;
+}
+
+
+//outln('Cases: ' + cases);
+//outln('Number of cases: ' + num_cases);
+//outln(cases[3]);
+
+lcoe = alloc(0,num_cases);
+aep = alloc(0,num_cases);
+arrayRatedPower = alloc(0,num_cases);
+npv = alloc(0,num_cases);
+capacityFactor = alloc(0,num_cases);
+capEx = alloc(0,num_cases);
+opEx = alloc(0,num_cases);
+irr = alloc(0,num_cases);
+aep_battery = alloc(0, num_cases);
+batt_charge_sys = alloc(0, num_cases);
+batt_charge_grid = alloc(0, num_cases);
+
+for (i=0; i<num_cases; i++)
+{
+	active_case(cases[i]);
+	config = configuration();
+	/*
+	if (config[1] != 'LCOE Calculator')
+
+	{
+
+		msgbox('The ME Wave report macro only works with the LCOE Calculator selected as the financial model.');
+
+		exit;
+
+	}
+	*/
+	if (config[1] == 'LCOE Calculator') {
+		lcoe[i] = get('lcoe_fcr');
+	}
+	else {
+		lcoe[i] = get('lcoe_nom');
+	}
+	aep[i] = get('annual_energy');
+	arrayRatedPower[i] = get('system_capacity');
+	npv[i] = get('project_return_aftertax_npv');
+	irr[i] = get('project_return_aftertax_irr');
+	capacityFactor[i] = get('capacity_factor');
+	capEx[i] = get('total_installed_cost');
+	opEx[i] = get('present_value_oandm');
+	batt_annual_discharge = get('cf_annual_discharge_lcos');
+	aep_battery[i] = batt_annual_discharge[1];
+	aep_system[i] = aep[i] - aep_battery[i];
+	batt_annual_charge_grid = get('grid_to_batt');
+	batt_annual_charge_sys = get('system_to_batt');
+	batt_charge_sys[i] = batt_annual_charge_sys[1];
+	batt_charge_grid[i] = batt_annual_charge_grid[1];
+}
+
+//outln(lcoe);
+//outln(aep);
+//outln(capEx);
+//outln(opEx);
+//outln(arrayRatedPower);
+//outln(structure);
+//outln(pto);
+//outln(foundation);
+//outln(development);
+//outln(engmanag);
+//outln(commissioning);
+//outln(access);
+//outln(otherinfras);
+//outln(projectContingency);
+//outln(reserveAccounts);
+//outln(financial);
+//outln(insurance);
+//outln(operations);
+//outln(maintenance);
+
+//get cost in dollar per kw
+capexKw = alloc(0,num_cases);
+opexKw =  alloc(0,num_cases);
+
+//get cost in dollar per kw
+for (i=0; i<num_cases; i++)
+{
+	active_case(cases[i]);
+	capexKw[i] = round(capEx[i]/arrayRatedPower[i]);
+	opexKw[i] =  round(opEx[i]/arrayRatedPower[i]);
+}
+
+//outln(capexKw);
+//outln(opexKw);
+
+//get LCOE fraction
+capexLcoe = alloc(0,num_cases);
+opexLcoe =  alloc(0,num_cases);
+
+//get LCOE contribution
+for (i=0; i<num_cases; i++)
+{
+active_case(cases[i]);
+capexLcoe[i] = sprintf("%.2f",((capEx[i]*fcr[i])/aep[i]));
+opexLcoe[i] =  sprintf("%.2f",(opEx[i]/aep[i]));
+}
+
+
+//outln(commissioningLcoe);
+
+if (num_cases ==4)
+{
+test = '4 cases';
+
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[3]+'</th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[0]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[3]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[3]) +' kWh</td>'
+		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+             '<td>'+ sprintf("%.1f",capacityFactor[3]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+             '<td>'+ sprintf("$%,",capEx[3]) +' </td>'
+		     '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+             '<td>'+ sprintf("$%,",opEx[3]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[3]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr[3]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[2]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[3] +'","'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+              
+            'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[3] +','+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[3] +','+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [aep2, aep1];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+'</section>'
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==3)
+{
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[0]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+		     '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr[2]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+              
+            'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [aep2, aep1];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+'</section>'
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==2)
+{
+//Get change in capex, opex, and aep contribution for two case comparison
+
+	if ((batt_charge_sys[1]+batt_charge_grid[1])>(batt_charge_sys[0]+batt_charge_grid[0]))
+	{
+		baselineCase = 1;
+		advancedCase = 0;
+	}
+	if (lcoe[0]>=lcoe[1])
+	{
+		baselineCase = 0;
+		advancedCase = 1;
+	}
+	
+battChargeBaseline = batt_charge_sys[baselineCase] + batt_charge_grid[baselineCase];
+battChargeAdvanced = batt_charge_sys[advancedCase] + batt_charge_grid[advancedCase];
+battChargeSysChange = batt_charge_sys[baselineCase] - batt_charge_sys[advancedCase];
+battChargeGridChange = batt_charge_grid[baselineCase] - batt_charge_grid[advancedCase];
+//outln(lcoe[baselineCase]-lcoe[advancedCase]);
+//outln(capexLcoeChange);
+//outln(opexLcoeChange);
+//outln(aepLcoeChange);
+//outln(totalLcoeChange);
+//outln('baseline case = '+baselineCase);
+//outln('baseline= '+cases[baselineCase]);
+//outln('advanced case='+cases[advancedCase]);
+reportCode = 
+'<html>'
+'<head>'
+  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+    'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+    '.waterfallContainer {display: flex; align-items: center; justify-content: center;}'
+  '</style>'
+  
+'<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[0]+'</th>'
+        '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+              
+            'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
+                'name: "OpEx",'
+                'type: "bar"'
+            '};'
+            
+            'var lcoeData = [aep2, aep1];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+
+		'<div id="waterfallChart"></div>'
+		
+		'<script>'
+            
+            'var data1 = [{'
+                'type: "waterfall",'
+                'x: ["Baseline", "System Charging", "Grid Charging", "Advanced Case"],'
+                'textposition: "inside",'
+				'text: ["'+ cases[baselineCase] +'"," "," "," ","'+ cases[advancedCase] +'"],'
+                'measure: ["absolute", "relative", "relative", "relative", "total"],'
+                'y: ['+ battChargeBaseline +','+ -1*battChargeSysChange +','+ -1*battChargeGridChange +','+ battChargeAdvanced +'],'
+                'base: 0,'
+                'decreasing: { marker: { color: "Maroon" , line:{color : "red", width :2}}},'
+                'increasing: { marker: { color: "Teal"}},'
+                'totals: { marker: { color: "deep sky blue", line:{color:"blue",width:3}}}'
+            '}];'
+            
+            'var layout1 = {'
+                'title:"Change in Battery Annual Energy Charging",'
+                'waterfallgap : 0.3,'
+                'xaxis: {tickfont: {size: 15},ticks: "outside"},'
+                'yaxis:{title: "Annual Energy Charged kWh"}'
+            '};'   
+
+          
+		'Plotly.newPlot("waterfallChart", data1, layout1);'
+        '</script>'
+	
+'</body>'
+'<footer>'
+    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+
+}
+
+report = tempfile('html'); //specify a temporary location to save the plot
+
+ok = write_text_file(report, reportCode);
+if (!ok)
+	{
+		msgbox('Report rendering failed.');
+		exit;
+	}
+browse(report);	
+
+msgbox('Please save the report opened in your browser as a PDF.');
+
+//// Delete temporary chart file 
+
+remove_file(report);
+
+
+
+
+
+
+
+
