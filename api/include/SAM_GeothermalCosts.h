@@ -123,7 +123,7 @@ extern "C"
 	 * Set geotherm.cost.inj_cost_curve: Injection well diameter type [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -131,7 +131,7 @@ extern "C"
 	 * Set geotherm.cost.inj_cost_curve_welldiam: Injection well diameter type [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -139,7 +139,7 @@ extern "C"
 	 * Set geotherm.cost.inj_cost_curve_welltype: Injection well type [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -147,7 +147,7 @@ extern "C"
 	 * Set geotherm.cost.inj_wells_drilled: Number of drilled injection wells [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_inj_wells_drilled_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -155,7 +155,7 @@ extern "C"
 	 * Set geotherm.cost.prod_cost_curve: Production well diameter type [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -163,7 +163,7 @@ extern "C"
 	 * Set geotherm.cost.prod_cost_curve_welldiam: Production well diameter type [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -171,7 +171,7 @@ extern "C"
 	 * Set geotherm.cost.prod_cost_curve_welltype: Production well type [0/1]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_cost_curve_welltype_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -179,7 +179,7 @@ extern "C"
 	 * Set geotherm.cost.prod_wells_drilled: Number of drilled production wells [0/1]
 	 * options: 0=LargerDiameter,1=SmallerDiameter
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_geotherm_cost_prod_wells_drilled_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -299,7 +299,7 @@ extern "C"
 	 * Set resource_depth: Resource Depth [m]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: calc_drill_costs=1
 	 */
 	SAM_EXPORT void SAM_GeothermalCosts_GeoHourly_resource_depth_nset(SAM_table ptr, double number, SAM_error *err);
 
