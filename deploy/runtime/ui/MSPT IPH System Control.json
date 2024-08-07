@@ -1899,34 +1899,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "disp_wlim_maxspec": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Max. net power to the grid",
-            "Units": "MWe",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "dispatch_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Dispatch TOD series",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "is_dispatch": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1936,32 +1908,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "is_wlim_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
@@ -2004,28 +1950,9 @@
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
-        },
-        "wlim_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Max. net power limit by time step",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
         }
     },
     "Equations": [
-        "equations{ 'is_wlim_design' } = define() {",
-        "\treturn ${is_dispatch};",
-        "};",
-        "",
         "equations{ 'csp.pt.par.calc.bop' } = define() {",
         "\treturn ${W_dot_bop_design_calc};",
         "};",

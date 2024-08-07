@@ -205,9 +205,9 @@ private:
 public:
 	SelectVariableDialog( wxWindow *parent, const wxString &title );
 	
-	wxString PrettyPrintLabel(const wxString name, const wxString label, const wxString type, 
+	static wxString PrettyPrintLabel(const wxString name, const wxString label, const wxString type, 
 								const wxString units, const wxString group, bool ssc_variable=false);
-	wxString PrettyPrintLabel(const wxString name, const VarInfo vi);
+	static wxString PrettyPrintLabel(const wxString name, const VarInfo vi);
 	void SetItems(const wxArrayString &names, const wxArrayString &labels);
 	void SetCheckedNames(const wxArrayString &list);
 	wxArrayString GetCheckedNames();

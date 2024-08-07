@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?depreciation.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -545,7 +540,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <div id="toggle0186a2" class="dropdown-toggle-body" style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.3750rem 0;display:none"><table class="ToggleContentTable" >
 <tr class="ToggleContentTable">
 <td class="ToggleContentTable"><p class="p_Text"><span class="f_Text">The Depreciation options allow you to specify how SAM calculates depreciation amounts and to specify an optional bonus depreciation.</span></p>
-<p class="p_Text"><span class="f_Text">The depreciation basis is the <a href="mtf_costs.html" class="topiclink">net capital cost</a>. </span></p>
+<p class="p_Text"><span class="f_Text">The depreciation basis is the </span><span class="f_CHInterfaceElement">Total depreciation basis prior to allocation</span><span class="f_Text"> output variable. It includes the total installed cost and and financing costs.</span></p>
 <p class="p_Text"><span class="f_Text">For projects with the Investment Tax Credit (ITC), when you check the </span><span class="f_CHInterfaceElement">Reduces Depreciation Basis</span><span class="f_Text"> check box for the ITC the <a href="incentives.html" class="topiclink">Incentives</a> page, SAM reduces the depreciation basis by 50% of the ITC amount as required by U.S. Internal Revenue Service rules.</span></p>
 <p class="p_Text"><span class="f_Text">The net capital cost is the sum of the total installed cost from the Installed Costs page, and debt, other financing fees, and reserve funding from the Financial Parameters page, less investment-based and capacity-based incentives from the Incentives page. SAM shows the depreciation basis calculation in the <a href="cashflow.html" class="topiclink">cash flow</a>.</span></p>
 <p class="p_Text"><span class="f_Text">SAM makes the following simplifying assumptions:</span></p>
@@ -555,7 +550,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Depreciation Classes</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Each row in the Depreciation Classes box represents a recovery period (5, 15, 20, or 39 years) and depreciation method (MACRS or Straight Line) based on the guidelines in the United States tax code. See U.S. Internal Revenue Service Publication 946 (<a href="http://www.irs.gov/pub/irs-pdf/p946.pdf" target="_blank" class="weblink">http://www.irs.gov/pub/irs-pdf/p946.pdf</a>) for details. </span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The following table shows the depreciation percentage by year for each depreciation class:</span></p>
-<p class="p_VariableDescription"><img alt="TBL_DepreciationClasses" style="margin:0;width:34.0000rem;height:21.5000rem;border:none" src="./images/tbl_depreciationclasses.png"/></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="TBL_DepreciationClasses" style="margin:0 auto 0 auto;width:34.0000rem;height:21.5000rem;border:none" src="./images/tbl_depreciationclasses.png"/></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Each depreciation class has an associated value or set of check boxes listed under Federal and State Allocations, Bonus Depreciation, and ITC Qualification.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription" style="font-weight: bold;">Custom Depreciation Schedules</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For projects outside of the U.S., or for analyses involving depreciation methods other than IRS methods, you can specify a custom depreciation schedule. To specify a custom depreciation schedule, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_VariableDescription">, and enter a percentage for each year in the depreciation schedule table. (Enter values in the table as percentages, not decimals: For example type '25' for 25%.)</span></p>

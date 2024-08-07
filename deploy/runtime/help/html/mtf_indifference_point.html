@@ -14,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="generator" content="Help+Manual" />
 	<meta name="keywords" content="" />
-	<meta name="description" content="The Third Party - Host / Developer financial model calculates the host indifference point, which quantifies host's annual electricity bill from the utility with out the..." />
+	<meta name="description" content="The Third Party - Host / Developer financial model calculates the host indifference point, which quantifies host's annual electricity bill from the utility without the..." />
 	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
 	<meta name="author" content="National Renewable Energy Laboratory" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?mtf_indifference_point.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -517,7 +512,8 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody">
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
-	<p class="p_Text"><span class="f_Text">The <a href="fin_tpo_host_developer.html" class="topiclink">Third Party - Host / Developer</a> financial model calculates the host indifference point, which quantifies host's annual electricity bill from the utility with out the renewable energy system as a rate per unit of electricity ($/kWh), accounting for the host's electricity rate structure and consumption. The indifference point is the maximum power purchase agreement (PPA) price that makes the PPA more cost effective to the host than purchasing power from the utility: The host is unlikely to accept a PPA if the developer offers a PPA price that is greater than the indifference point. Like the <a href="mtf_ppa_price.html" class="topiclink">PPA price</a>, SAM reports the Year 1, nominal levelized, and real levelized indifference point. Be sure to compare the same form of the indifference point and PPA price.</span></p>
+	<p class="p_Text"><span class="f_Text">The <a href="fin_tpo_host_developer.html" class="topiclink">Third Party - Host / Developer</a> financial model calculates the host indifference point, which quantifies host's annual electricity bill from the utility without the renewable energy system as a rate per unit of electricity ($/kWh), accounting for the host's electricity rate structure and consumption. </span></p>
+<p class="p_Text"><span class="f_Text">The indifference point is the maximum power purchase agreement (PPA) price that makes the PPA more cost effective to the host than purchasing power from the utility: The host is unlikely to accept a PPA if the developer offers a PPA price that is greater than the indifference point. Like the <a href="mtf_ppa_price.html" class="topiclink">PPA price</a>, SAM reports the Year 1, nominal levelized, and real levelized indifference point. Be sure to compare the same form of the indifference point and PPA price.</span></p>
 <p class="p_Text"><span class="f_Text">The host indifference point in each year is the <a href="mtf_revenues.html" class="topiclink">electricity savings</a> divided by the total renewable energy production:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Host Indifference Point in Year n = Electricity Savings in Year n / Annual Energy in Year n</span></p>
 <p class="p_Text"><span class="f_Text">The levelized host indifference point is the present value of the annual values.</span></p>

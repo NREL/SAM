@@ -120,6 +120,7 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 
 bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 {
+
 	// check text for preprocessing setup for design point calculations SAM issue #634
 	// prototype to be refactored if more equations added for preprocessing
 	// Check string for instances of replacements for equations
@@ -165,11 +166,12 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 		wxString cm = args[1];
 		cm.Replace("'", "");
 		ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
-		if (!p_mod)
-		{
+		if (!p_mod)	{
 			errors->Add("could not create ssc module: " + cm);
 			return false;
 		}
+
+
 		ssc_data_t p_data = ssc_data_create();
 		// Assign the compute module with existing values
 		int pidx = 0;
@@ -185,7 +187,6 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 //			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
-
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
 				wxString field ="";
@@ -195,19 +196,10 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					field = name.Mid(pos + 1);
 					name = name.Left(pos);
 				}
-				/*
-				// SAM 1634 - check for variable in UI and required_if non-blank - no access to case or config
-				bool bInUI = true; // (vdb.Lookup(name) != NULL);
-				if (c) {
-					bInUI = false;
-					for (size_t ndxHybrid = 0; !bInUI && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
-						bInUI |= (c->Variables(ndxHybrid).Lookup(name) != NULL);
-					}
-				}
-				*/
+
+
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != data_type)// && bInUI)
-				{
+				if (existing_type != data_type) {
 					wxString ssc_var_name = name;
 					wxString lk_var_name = "${" + name + "}";
 					if (field != "") // 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
@@ -220,7 +212,8 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[1] = compute module name
 					arg[2] = sim_type value
 					*/
-					strReplace += "\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
+					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // SAM issue 1634
+					strReplace += "\t\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
 				}
 			}
 		}

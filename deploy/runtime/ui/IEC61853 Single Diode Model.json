@@ -360,7 +360,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -397,7 +397,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -405,7 +405,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 405.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -434,7 +434,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -442,7 +442,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 75.0
+                    "Integer": 93.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -471,7 +471,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 183.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -508,7 +508,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -545,7 +545,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -553,7 +553,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 375.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -578,19 +578,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 555.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 972.0
+                    "Integer": 279.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -598,7 +598,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:"
+                    "String": "Air mass polynominal coefficients"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -611,7 +611,7 @@
                 },
                 "Bold": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "FontSize": {
                     "Type": 3.0,
@@ -619,7 +619,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -627,7 +627,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 }
             }
         },
@@ -702,7 +702,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 300.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -710,7 +710,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 162.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -722,7 +722,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "STC temp coeffs"
+                    "String": "STC temp coefficients"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -752,6 +752,68 @@
                 "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 723"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 810.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 972.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "For more information about the IEC 61853 module model inputs, see Help. For a detailed description of the model, see Gilman (2015) and Dobos (2014) on the SAM website's Performance Documentation page:"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -888,11 +950,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 681.0
+                    "Integer": 585.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -971,11 +1033,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 675.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1054,11 +1116,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1137,11 +1199,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 879.0
+                    "Integer": 855.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1224,7 +1286,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 351.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2054,7 +2116,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 126.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2137,7 +2199,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 153.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2967,7 +3029,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 303.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3008,7 +3070,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 153.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3091,7 +3153,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 126.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3174,7 +3236,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 252.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3381,7 +3443,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3422,7 +3484,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3776,7 +3838,7 @@
         "sd11par_AMa0": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air mass modifiers",
+            "Label": "a0",
             "Units": " ",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
@@ -3789,11 +3851,11 @@
         "sd11par_AMa1": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air mass modifiers for IEC-61853 model",
+            "Label": "a1",
             "Units": " ",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": 0.6516,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3802,11 +3864,11 @@
         "sd11par_AMa2": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air mass modifiers for IEC-61853 model",
+            "Label": "a2",
             "Units": " ",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": -0.02022,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3815,11 +3877,11 @@
         "sd11par_AMa3": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air mass modifiers for IEC-61853 model",
+            "Label": "a3",
             "Units": " ",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": 0.00219,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3828,11 +3890,11 @@
         "sd11par_AMa4": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Air mass modifiers for IEC-61853 model",
+            "Label": "a4",
             "Units": " ",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": -0.000091,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3946,7 +4008,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "alpha",
-            "Units": "A/C",
+            "Units": "A/°C",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
@@ -3959,7 +4021,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Module area",
-            "Units": "m2",
+            "Units": "m²",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
@@ -3985,7 +4047,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "beta",
-            "Units": "V/C",
+            "Units": "V/°C",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
@@ -4089,7 +4151,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "gamma",
-            "Units": "%/C",
+            "Units": "%/°C",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
@@ -4193,7 +4255,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Nominal operating cell temp",
-            "Units": "C",
+            "Units": "°C",
             "Group": "IEC-68153 PV Module Model",
             "IndexLabels": "",
             "Flags": 0.0,
