@@ -84,23 +84,35 @@ if (num_cases > 4)
 //outln('Cases: ' + cases);
 //outln('Number of cases: ' + num_cases);
 //outln(cases[3]);
-
+fin = alloc(0, num_cases);
 lcoe = alloc(0,num_cases);
+lcos = alloc(0, num_cases);
 aep = alloc(0,num_cases);
 arrayRatedPower = alloc(0,num_cases);
 npv = alloc(0,num_cases);
 capacityFactor = alloc(0,num_cases);
 capEx = alloc(0,num_cases);
 opEx = alloc(0,num_cases);
-irr = alloc(0,num_cases);
 aep_battery = alloc(0, num_cases);
 batt_charge_sys = alloc(0, num_cases);
 batt_charge_grid = alloc(0, num_cases);
+dispatch_choice = alloc(0, num_cases);
+monthly_energy = alloc(12, num_cases);
+monthly_bill = alloc(12, num_cases);
+irr_bill = alloc(0, num_cases);
+irr_bill_table = alloc(0, num_cases);
+batt_annual_charge_grid = [];
+batt_annual_charge_sys = [];
 
 for (i=0; i<num_cases; i++)
 {
 	active_case(cases[i]);
 	config = configuration();
+	fin[i] = config[1];
+	if (i > 0 && fin[i-1] != fin[i]) {
+		msgbox('The macro can only compare cases with the same financial model.');
+		exit;
+	}
 	/*
 	if (config[1] != 'LCOE Calculator')
 
@@ -118,21 +130,51 @@ for (i=0; i<num_cases; i++)
 	else {
 		lcoe[i] = get('lcoe_nom');
 	}
+	lcos[i] = get('lcos_nom');
 	aep[i] = get('annual_energy');
 	arrayRatedPower[i] = get('system_capacity');
 	npv[i] = get('project_return_aftertax_npv');
-	irr[i] = get('project_return_aftertax_irr');
 	capacityFactor[i] = get('capacity_factor');
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
 	batt_annual_discharge = get('cf_annual_discharge_lcos');
 	aep_battery[i] = batt_annual_discharge[1];
 	aep_system[i] = aep[i] - aep_battery[i];
-	batt_annual_charge_grid = get('grid_to_batt');
-	batt_annual_charge_sys = get('system_to_batt');
+	batt_annual_charge_grid = get('batt_annual_charge_from_grid');
+	batt_annual_charge_sys = get('batt_annual_charge_from_system');
 	batt_charge_sys[i] = batt_annual_charge_sys[1];
 	batt_charge_grid[i] = batt_annual_charge_grid[1];
+	monthly_energy_bin = get('monthly_energy');
+	for (j = 0; j < 12; j++) {
+		monthly_energy[j][i] = monthly_energy_bin[j];
+	}
+	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
+		dispatch = get('batt_dispatch_choice');
+		if (dispatch == 0) dispatch_choice[i] = "Peak shaving";
+		else if (dispatch == 1) dispatch_choice[i] = "Grid power targets";
+		else if (dispatch == 2) dispatch_choice[i] = "Battery power targets";
+		else if (dispatch == 3) dispatch_choice[i] = "Manual dispatch";
+		else if (dispatch == 4) dispatch_choice[i] = "Retail rate dispatch";
+		else dispatch_choice[i] = "Self-consumption";
+		irr_bill[i] = get('savings_year1');
+		irr_bill_string = "Net savings with system";
+		irr_bill_table[i] = sprintf("$%.1f",irr_bill[i]);
+	}
+	else {
+		dispatch = get('batt_dispatch_choice');
+		if (dispatch == 0) dispatch_choice[i] = "Automated dispatch";
+		else if (dispatch == 1) dispatch_choice[i] = "PV smoothing";
+		else if (dispatch == 2) dispatch_choice[i] = "Custom time series";
+		else dispatch_choice[i] = "Manual dispatch";
+		irr_bill[i] = get('project_return_aftertax_irr');
+		irr_bill_string = "Internal rate of return";
+		irr_bill_table[i] = sprintf("%.1f%",irr_bill[i]);
+	}
 }
+outln(batt_annual_charge_grid);
+outln(batt_annual_charge_sys);
+outln(batt_charge_sys);
+outln(batt_charge_grid);
 
 //outln(lcoe);
 //outln(aep);
@@ -173,13 +215,6 @@ for (i=0; i<num_cases; i++)
 capexLcoe = alloc(0,num_cases);
 opexLcoe =  alloc(0,num_cases);
 
-//get LCOE contribution
-for (i=0; i<num_cases; i++)
-{
-active_case(cases[i]);
-capexLcoe[i] = sprintf("%.2f",((capEx[i]*fcr[i])/aep[i]));
-opexLcoe[i] =  sprintf("%.2f",(opEx[i]/aep[i]));
-}
 
 
 //outln(commissioningLcoe);
@@ -233,6 +268,13 @@ reportCode =
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
          '</tr>'
          '<tr>'
+             '<td>Levelized Cost of Storage</td>'
+             '<td>'+ sprintf("$%.2f",lcos[3]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
              '<td>Annual Energy Production</td>'
 			 '<td>'+ sprintf("%,",aep[3]) +' kWh</td>'
 		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
@@ -269,11 +311,18 @@ reportCode =
              '<td>'+ sprintf("$%,",npv[0]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>Internal Rate of Return</td>'
-             '<td>'+ sprintf("%.1f",irr[3]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[2]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+             '<td>'+sprintf(irr_bill_string)+' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[3]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[0]) +' %</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[3]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
          '</tr>'
      '</table>'
 
@@ -295,7 +344,7 @@ reportCode =
             'var aep2 = {'
                 'x: xValues,'
                 'y: ['+ aep_system[3] +','+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
-                'name: "OpEx",'
+                'name: "System Generation",'
                 'type: "bar"'
             '};'
             
@@ -313,6 +362,58 @@ reportCode =
                 '};'   
             
           'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+            
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][3] +','+ monthly_energy[1][3] +','+  monthly_energy[2][3] +','+ monthly_energy[3][3] +','+ monthly_energy[4][3] +','+ monthly_energy[5][3] +','+ monthly_energy[6][3] +','+ monthly_energy[7][3] +','+ monthly_energy[8][3] +','+ monthly_energy[9][3] +','+  monthly_energy[10][3] +','+  monthly_energy[11][3] +'],'
+               'name: "'+ cases[3] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly2 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][2] +','+ monthly_energy[1][2] +','+  monthly_energy[2][2] +','+ monthly_energy[3][2] +','+ monthly_energy[4][2] +','+ monthly_energy[5][2] +','+ monthly_energy[6][2] +','+ monthly_energy[7][2] +','+ monthly_energy[8][2] +','+ monthly_energy[9][2] +','+  monthly_energy[10][2] +','+  monthly_energy[11][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+              
+            'var monthly3 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly4 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly4, monthly3, monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
         '</script>'
 
 '</section>'
@@ -375,6 +476,12 @@ reportCode =
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
          '</tr>'
          '<tr>'
+             '<td>Levelized Cost of Storage</td>'
+             '<td>'+ sprintf("$%.2f",lcos[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
              '<td>Annual Energy Production</td>'
 		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
 			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
@@ -406,10 +513,16 @@ reportCode =
              '<td>'+ sprintf("$%,",npv[0]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>Internal Rate of Return</td>'
-             '<td>'+ sprintf("%.1f",irr[2]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+             '<td>'+sprintf(irr_bill_string)+' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[0]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
          '</tr>'
      '</table>'
 
@@ -431,7 +544,7 @@ reportCode =
             'var aep2 = {'
                 'x: xValues,'
                 'y: ['+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
-                'name: "OpEx",'
+                'name: "System Generation",'
                 'type: "bar"'
             '};'
             
@@ -449,6 +562,51 @@ reportCode =
                 '};'   
             
           'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+            
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][2] +','+ monthly_energy[1][2] +','+  monthly_energy[2][2] +','+ monthly_energy[3][2] +','+ monthly_energy[4][2] +','+ monthly_energy[5][2] +','+ monthly_energy[6][2] +','+ monthly_energy[7][2] +','+ monthly_energy[8][2] +','+ monthly_energy[9][2] +','+  monthly_energy[10][2] +','+  monthly_energy[11][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+              
+            'var monthly2 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly3 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly3, monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
         '</script>'
 
 '</section>'
@@ -525,7 +683,6 @@ reportCode =
 	'<table>'
          '<tr>'
             '<th></th>'
-            '<th>'+cases[2]+'</th>'
             '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
         '</tr>'
@@ -533,6 +690,11 @@ reportCode =
              '<td>Levelized Cost of Energy</td>'
              '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Storage</td>'
+             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
@@ -561,9 +723,14 @@ reportCode =
              '<td>'+ sprintf("$%,",npv[0]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>Internal Rate of Return</td>'
-             '<td>'+ sprintf("%.1f",irr[1]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr[0]) +' </td>'
+             '<td>'+sprintf(irr_bill_string)+' </td>'
+             '<td>'+ irr_bill_table[1] +' </td>'
+             '<td>'+ irr_bill_table[0] +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
          '</tr>'
      '</table>'
 
@@ -573,19 +740,19 @@ reportCode =
         
         '<script>'
         
-            'var xValues =["'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+            'var xValues =["'+ cases[1] +'","'+ cases[0] +'"];'
               
             'var aep1 = {'
                'x: xValues,'
-               'y: ['+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
+               'y: ['+ aep_battery[1] +','+ aep_battery[0] +'],'
                'name: "Battery discharge",'
                'type: "bar"'
             '};'
             
             'var aep2 = {'
                 'x: xValues,'
-                'y: ['+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
-                'name: "OpEx",'
+                'y: ['+ aep_system[1] +','+ aep_system[0] +'],'
+                'name: "System Generation",'
                 'type: "bar"'
             '};'
             
@@ -604,6 +771,44 @@ reportCode =
             
 		'Plotly.newPlot("lcoePlot", lcoeData, layout);'
         '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+              
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly2 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
+        '</script>'
 
 		'<div id="waterfallChart"></div>'
 		
@@ -614,7 +819,7 @@ reportCode =
                 'x: ["Baseline", "System Charging", "Grid Charging", "Advanced Case"],'
                 'textposition: "inside",'
 				'text: ["'+ cases[baselineCase] +'"," "," "," ","'+ cases[advancedCase] +'"],'
-                'measure: ["absolute", "relative", "relative", "relative", "total"],'
+                'measure: ["absolute", "relative", "relative", "total"],'
                 'y: ['+ battChargeBaseline +','+ -1*battChargeSysChange +','+ -1*battChargeGridChange +','+ battChargeAdvanced +'],'
                 'base: 0,'
                 'decreasing: { marker: { color: "Maroon" , line:{color : "red", width :2}}},'
@@ -623,7 +828,7 @@ reportCode =
             '}];'
             
             'var layout1 = {'
-                'title:"Change in Battery Annual Energy Charging",'
+                'title:"Change in Year 1 Battery Annual Energy Charging",'
                 'waterfallgap : 0.3,'
                 'xaxis: {tickfont: {size: 15},ticks: "outside"},'
                 'yaxis:{title: "Annual Energy Charged kWh"}'
@@ -647,7 +852,7 @@ reportCode =
 '</html>';
 
 }
-
+outln(reportCode);
 report = tempfile('html'); //specify a temporary location to save the plot
 
 ok = write_text_file(report, reportCode);
