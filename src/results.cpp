@@ -666,6 +666,92 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     settings.GetProperty(wxT("tabIndex")).ToLong(&i);
     SetSelection(i);
 
+    int preset = m_battVisualization->GetPresetChoice();
+    switch (preset) {
+        case 0: {
+            //Battery visualization test
+            int batt_index = -1;
+            int load_index = -1;
+            int gen_index = -1;
+            int grid_index = -1;
+            for (size_t j = 0; j < m_tsDataSets.size(); j++)
+            {
+                if (m_tsDataSets[j]->GetMetaData() == "batt_to_load") {
+                    batt_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == "grid_to_load") {
+                    grid_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == "system_to_load") {
+                    gen_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == "load") {
+                    load_index = j;
+                }
+            }
+
+
+
+            //***TimeSeries Properties***
+            m_battVisualization->SetStackingOnYLeft(true); //Turn on stacked area plot
+            m_battVisualization->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+            m_battVisualization->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+
+            // select something by default
+            if (m_battVisualization->GetNumberOfSelections() == 0) {
+                m_battVisualization->SelectDataSetAtIndex(batt_index, 0);
+                m_battVisualization->SelectDataSetAtIndex(grid_index, 0);
+                m_battVisualization->SelectDataSetAtIndex(gen_index, 0);
+                m_battVisualization->SelectDataSetAtIndex(load_index, 1);
+
+            }
+
+            //Set min/max after setting plots to make sure there is an axis to set.
+            if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
+                m_battVisualization->SetViewMin(min);
+            /*
+            if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
+                m_battVisualization->SetViewMax(max);
+            */
+            m_battVisualization->SetViewMax(500);
+            break;
+        }
+        case 1: {
+            //Battery visualization test
+            int gen_index = -1;
+            for (size_t j = 0; j < m_tsDataSets.size(); j++)
+            {
+                if (m_tsDataSets[j]->GetMetaData() == "gen") {
+                    gen_index = j;
+                }
+                
+            }
+
+
+
+            //***TimeSeries Properties***
+            m_battVisualization->SetStackingOnYLeft(true); //Turn on stacked area plot
+            m_battVisualization->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+            m_battVisualization->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+
+            // select something by default
+            if (m_battVisualization->GetNumberOfSelections() == 0) {
+                m_battVisualization->SelectDataSetAtIndex(gen_index, 0);
+
+            }
+
+            //Set min/max after setting plots to make sure there is an axis to set.
+            if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
+                m_battVisualization->SetViewMin(min);
+            /*
+            if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
+                m_battVisualization->SetViewMax(max);
+            */
+            m_battVisualization->SetViewMax(500);
+            break;
+        }
+    }
+
     //Battery visualization test
     int batt_index = -1;
     int load_index = -1;
