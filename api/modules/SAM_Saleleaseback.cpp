@@ -9310,6 +9310,24 @@ SAM_EXPORT double SAM_Saleleaseback_Outputs_ppa_price_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
+SAM_EXPORT double SAM_Saleleaseback_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pre_depr_alloc_basis", &result))
+		make_access_error("SAM_Saleleaseback", "pre_depr_alloc_basis");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Saleleaseback_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pre_itc_qual_basis", &result))
+		make_access_error("SAM_Saleleaseback", "pre_itc_qual_basis");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Saleleaseback_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

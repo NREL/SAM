@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Levelized cost of Energy",
 hmDescription:"The levelized cost of energy (LCOE) is the total project lifecycle cost expressed in cents per kilowatt-hour of electricity delivered by the system over its life to the grid...",
-hmPrevLink:"mtf_irr.html",
+hmPrevLink:"mtf_levelized.html",
 hmNextLink:"mtf_lcos.html",
 hmParentLink:"financial_metrics.html",
 hmBreadCrumbs:"<a href=\"financial_metrics.html\">Financial Metrics<\/a>",
