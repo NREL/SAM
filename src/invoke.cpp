@@ -5948,12 +5948,14 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	Simulation base_case = sam_case->BaseCase();
 	base_case.Clear();
 	base_case.Prepare();
-	bool success = base_case.Invoke(false,true,"");
+	bool success = base_case.Invoke(false,true);
 	if (!success) {
 		ssc_data_free(p_data);
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
+
+	wxGetApp().Yield();
 
 	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
@@ -6038,6 +6040,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	copy_vars_into_ssc_data(rate_vars);
 	copy_vars_into_ssc_data(fin_vars);
 
+
 	try {
 		Reopt_size_battery_params(p_data);
 	}
@@ -6049,7 +6052,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 
 
-	if (!pdlg.Update(20, "Getting REopt ID for optimization run.")) {
+	if (!pdlg.Update(3, "Getting REopt ID for optimization run.")) {
 		return;
 	}
 
@@ -6078,7 +6081,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(30, "Checking REopt ID.")) {
+	if (!pdlg.Update(5, "Checking REopt ID.")) {
 		return;
 	}
 
@@ -6098,29 +6101,39 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(40, "Running optimization on REopt servers.")) {
-		return;
-	}
+//	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+//		return;
+//	}
 
 	// now we have a run_uuid so make call to run REopt
 	wxString poll_url = SamApp::WebApi("reopt_poll");
 	poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
 	curl = wxEasyCurl();
-	cxt.result().hash_item("response", lk::vardata_t());
-	lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
+	if (!curl.Get(poll_url, msg))	{
+		cxt.result().hash_item("error", msg);
 		return;
 	}
 
-	int p=60;
+
+	cxt.result().hash_item("response", lk::vardata_t());
+	lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	int p=6;
 	std::string optimizing_status = "Optimizing...";
 	while (optimizing_status == "Optimizing...") {
-		if ( p > 100 ) p = 99;
+//		if (p > 100) p = 99;
+		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
 		if (!pdlg.Update(p++, "Running optimization on REopt servers.")) {
 			return;
 		}
+//		pdlg.Update(p++, "Running optimization on REopt servers.");
+
 		if (!curl.Get(poll_url, msg))
 		{
 			cxt.result().hash_item("error", msg);
@@ -6137,8 +6150,12 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			cxt.result().hash_item("errors", error);
 			break;
 		}
+		wxGetApp().Yield();
+		wxMilliSleep(3000); // reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
 
 	}
+
+//	wxMessageBox("url=" + poll_url, "Finished"); // Debug test to make sure completed loop
 
 	pdlg.Update(100, "Done.");
 	wxMilliSleep(1000);
