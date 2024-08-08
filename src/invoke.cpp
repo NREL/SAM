@@ -6129,7 +6129,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	while (optimizing_status == "Optimizing...") {
 //		if (p > 100) p = 99;
 		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
-		if (!pdlg.Update(p++, "Running optimization on REopt servers.")) {
+		if (!pdlg.Update(p++, "Optimizing. This may take several minutes.")) {
 			return;
 		}
 //		pdlg.Update(p++, "Running optimization on REopt servers.");
@@ -6151,7 +6151,8 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			break;
 		}
 		wxGetApp().Yield();
-		wxMilliSleep(3000); // reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
+		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
+		wxMilliSleep(10000);
 
 	}
 
