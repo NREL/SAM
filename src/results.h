@@ -54,6 +54,7 @@ class Case;
 class wxExtGridCtrl;
 class wxDVPlotCtrl;
 class wxDVTimeSeriesCtrl;
+class wxDVTimeSeriesCtrlSAM;
 class wxDVDMapCtrl;
 class wxDVProfileCtrl;
 class wxDVPnCdfCtrl;
@@ -217,7 +218,7 @@ private:
 	wxSnapLayout *m_spatialLayout = nullptr;
 
 	std::vector<wxDVTimeSeriesDataSet*> m_tsDataSets;
-	wxDVTimeSeriesCtrl *m_timeSeries = nullptr;
+	wxDVTimeSeriesCtrlSAM* m_timeSeries = nullptr;
     wxDVTimeSeriesCtrl* m_battVisualization = nullptr;
 	wxDVDMapCtrl *m_dMap = nullptr;
 	wxDVProfileCtrl *m_profilePlots = nullptr;

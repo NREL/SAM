@@ -501,7 +501,9 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     cf_main_sizer->SetSizeHints(m_cf_panel);
 
 
-    m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+    //m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+    //AddPage(m_timeSeries, "Time series");
+    m_timeSeries = new wxDVTimeSeriesCtrlSAM(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
     AddPage(m_timeSeries, "Time series");
 
     //m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
@@ -666,7 +668,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     settings.GetProperty(wxT("tabIndex")).ToLong(&i);
     SetSelection(i);
 
-    int preset = m_battVisualization->GetPresetChoice();
+    int preset = 0;
     switch (preset) {
         case 0: {
             //Battery visualization test
