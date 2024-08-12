@@ -21514,14 +21514,14 @@
             -1.0
         ]
     ],
-    "tes_pb_T_cold_delta": 10.0,
-    "tes_pb_T_hot_delta": 10.0,
+    "tes_pb_T_cold_delta": 30.0,
+    "tes_pb_T_hot_delta": 30.0,
     "tes_pb_cp_solid": 830.0,
     "tes_pb_dens_solid": 2500.0,
     "tes_pb_f_oversize": 1.0,
     "tes_pb_k_eff": 5.69,
-    "tes_pb_n_tsteps": 10.0,
-    "tes_pb_n_xsteps": 19.0,
+    "tes_pb_n_tsteps": 30.0,
+    "tes_pb_n_xsteps": 99.0,
     "tes_pb_void_frac": 0.22,
     "tes_pump_coef": 0.15,
     "tes_tank_cp": 0.49,
