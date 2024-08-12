@@ -5954,9 +5954,9 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
-
+#ifdef _MSWWX_
 	wxGetApp().Yield();
-
+#endif
 	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
 	pdlg.Show();
@@ -6078,8 +6078,11 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	{
 		pdlg.Close();
 		cxt.result().assign(msg);
+        wxMessageBox("url=" + post_url, "error1"); // Debug test to make sure completed loop
+
 		return;
 	}
+    wxMessageBox("url=" + post_url, "error2"); // Debug test to make sure completed loop
 
 	if (!pdlg.Update(5, "Checking REopt ID.")) {
 		return;
@@ -6150,7 +6153,9 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			cxt.result().hash_item("errors", error);
 			break;
 		}
+#ifdef _MSWWX_
 		wxGetApp().Yield();
+#endif
 		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
 		wxMilliSleep(10000);
 
