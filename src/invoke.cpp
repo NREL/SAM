@@ -6071,7 +6071,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
-	curl.WriteDataToFile("curl_dump.txt");
+	curl.WriteDataToFile(SamApp::GetAppPath() + "/curl_dump.txt");
 
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
