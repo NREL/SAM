@@ -403,10 +403,6 @@
 		"ElectricityRates": {
 			"en_electricity_rates": 0
 		},
-		"TimeOfDeliveryFactors": {
-		},
-		"FinancialSolutionMode": {
-		},
 		"Revenue": {
 			"mp_energy_market_revenue": [
 				[0.000000, 0.000000]
