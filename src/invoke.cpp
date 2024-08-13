@@ -5954,9 +5954,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
-#ifdef _MSWWX_
 	wxGetApp().Yield();
-#endif
 	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
 	pdlg.Show();
@@ -6073,6 +6071,8 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
+	curl.WriteDataToFile("curl_dump.txt");
+
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
 	{
@@ -6093,6 +6093,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
 
+	wxMessageBox("results = " + results.as_string(), "Results");
 	// if run_uuid is not returned, get error message from json result
 	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
 	if (auto err_vd = results.lookup("messages")) {
@@ -6153,9 +6154,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			cxt.result().hash_item("errors", error);
 			break;
 		}
-#ifdef _MSWWX_
 		wxGetApp().Yield();
-#endif
 		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
 		wxMilliSleep(10000);
 
