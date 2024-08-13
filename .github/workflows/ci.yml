@@ -62,7 +62,7 @@ jobs:
       run:  |
           echo "GIT_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV
     
-    - name: Get branch name to match with other repos for push
+    - name: Get branch name to match with other repos for pull_request
       if: ${{ github.event_name == 'pull_request' }}
       run:  |
           echo "GIT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
