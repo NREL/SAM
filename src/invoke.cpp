@@ -1931,6 +1931,51 @@ public:
 	}
 };
 
+void fcall_var_exists(lk::invoke_t& cxt)
+{
+	LK_DOC("var_exists", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+	if (Case* c = SamApp::Window()->GetCurrentCase()) {
+		wxString name = cxt.arg(0).as_string();
+		auto cfg = c->GetConfiguration();
+		int ndxHybrid = 0;
+		VarValue* vv = NULL;
+		bool bfound = false;
+		for (size_t ndx = 0; ndx < cfg->Technology.size(); ndx++ ) { // select ndxHybrid based on compute module position in 		
+			if (vv = c->Values(ndxHybrid).Get(name)) {
+				bfound = true;
+				ndxHybrid = ndx;
+			}
+		}
+		if (bfound)
+			cxt.result().assign(1);
+		else
+			cxt.result().assign((double)0);
+	}
+	else
+		cxt.result().assign((double)0);
+}
+
+void fcall_ssc_var_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC2("ssc_var_auto_exec", "Sets or gets a variable value in the SSC data set if it exists in the UI.",
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
+		"Get a variable value", "(ssc-obj-ref:data, string:name):variant");
+
+	if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 2)
+			sscdata_to_lkvar(*ssc, (const char*)name.ToUTF8(), cxt.result());
+		else if (cxt.arg_count() == 3) {
+			assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+		}
+	}
+	else
+		cxt.error("invalid ssc-obj-ref");
+}
+
+
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
@@ -1964,6 +2009,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 		cxt.error("wrong number of argument specified " + cxt.arg_count());
 		return;
 	}
+	// 	e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if (Case* c = SamApp::Window()->GetCurrentCase())
 	{
@@ -2008,8 +2054,17 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
-						{
+//						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
+/*
+* Note for hybrids - the search starts with the firs case vartable and continues until the first "name" is found in the UI
+*/						auto cfg = c->GetConfiguration();
+						int ndxHybrid = 0;
+						if (cfg->Technology.size() > 1) { // select ndxHybrid based on compute module position in simulations collection
+							ndxHybrid = cfg->Simulations.Index(cm);
+							if ((ndxHybrid < 0) || (ndxHybrid > (cfg->Technology.size()-1)))
+								ndxHybrid = cfg->Technology.size() - 1;
+						}
+						if (auto vv = c->Values(ndxHybrid).Get(name)) {
 							
 							if (!field.IsEmpty())
 							{
@@ -5893,12 +5948,14 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	Simulation base_case = sam_case->BaseCase();
 	base_case.Clear();
 	base_case.Prepare();
-	bool success = base_case.Invoke(false,true,"");
+	bool success = base_case.Invoke(false,true);
 	if (!success) {
 		ssc_data_free(p_data);
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
+
+	wxGetApp().Yield();
 
 	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
@@ -5983,6 +6040,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	copy_vars_into_ssc_data(rate_vars);
 	copy_vars_into_ssc_data(fin_vars);
 
+
 	try {
 		Reopt_size_battery_params(p_data);
 	}
@@ -5994,7 +6052,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 
 
-	if (!pdlg.Update(20, "Getting REopt ID for optimization run.")) {
+	if (!pdlg.Update(3, "Getting REopt ID for optimization run.")) {
 		return;
 	}
 
@@ -6023,7 +6081,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(30, "Checking REopt ID.")) {
+	if (!pdlg.Update(5, "Checking REopt ID.")) {
 		return;
 	}
 
@@ -6043,29 +6101,39 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(40, "Running optimization on REopt servers.")) {
-		return;
-	}
+//	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+//		return;
+//	}
 
 	// now we have a run_uuid so make call to run REopt
 	wxString poll_url = SamApp::WebApi("reopt_poll");
 	poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
 	curl = wxEasyCurl();
-	cxt.result().hash_item("response", lk::vardata_t());
-	lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
+	if (!curl.Get(poll_url, msg))	{
+		cxt.result().hash_item("error", msg);
 		return;
 	}
 
-	int p=60;
+
+	cxt.result().hash_item("response", lk::vardata_t());
+	lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	int p=6;
 	std::string optimizing_status = "Optimizing...";
 	while (optimizing_status == "Optimizing...") {
-		if ( p > 100 ) p = 99;
-		if (!pdlg.Update(p++, "Running optimization on REopt servers.")) {
+//		if (p > 100) p = 99;
+		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
+		if (!pdlg.Update(p++, "Optimizing. This may take several minutes.")) {
 			return;
 		}
+//		pdlg.Update(p++, "Running optimization on REopt servers.");
+
 		if (!curl.Get(poll_url, msg))
 		{
 			cxt.result().hash_item("error", msg);
@@ -6082,8 +6150,13 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			cxt.result().hash_item("errors", error);
 			break;
 		}
+		wxGetApp().Yield();
+		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
+		wxMilliSleep(10000);
 
 	}
+
+//	wxMessageBox("url=" + poll_url, "Finished"); // Debug test to make sure completed loop
 
 	pdlg.Update(100, "Done.");
 	wxMilliSleep(1000);
@@ -6280,6 +6353,8 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
+		fcall_ssc_var_auto_exec,
+		fcall_var_exists,
 		fcall_ssc_exec,
 		fcall_ssc_eqn,
 		0 };
