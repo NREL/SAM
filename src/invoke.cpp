@@ -6071,20 +6071,15 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
-	curl.WriteDataToFile(SamApp::GetAppPath() + "/curl_dump.txt");
-
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
 	{
 		pdlg.Close();
 		cxt.result().assign(msg);
-        wxMessageBox("url=" + post_url, "error1"); // Debug test to make sure completed loop
-
 		return;
 	}
-    wxMessageBox("url=" + post_url, "error2"); // Debug test to make sure completed loop
 
-	if (!pdlg.Update(5, "Checking REopt ID.")) {
+    if (!pdlg.Update(5, "Checking REopt ID.")) {
 		return;
 	}
 
@@ -6093,7 +6088,6 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
 
-	wxMessageBox("results = " + results.as_string(), "Results");
 	// if run_uuid is not returned, get error message from json result
 	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
 	if (auto err_vd = results.lookup("messages")) {
