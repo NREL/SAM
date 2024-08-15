@@ -66,11 +66,12 @@ jobs:
         sudo ln -s $HOME/wx-$WX_VERSION/bin/wx-config /usr/local/bin/wx-config-3
         wx-config-3 --cflags
         echo $HOME/wx-$WX_VERSION/bin >> $GITHUB_PATH
-
+    
     - name: Get branch name for pull request
       if: ${{ github.event_name == 'pull_request' }}
       run:  |
-          echo "GIT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
+        echo "GIT_BRANCH=${{ github.head_ref }}" >> $GITHUB_ENV
+        echo "DEFAULT_BRANCH=$GITHUB_BASE_REF" >> $GITHUB_ENV
 
     - name: Get branch name for push
       if: ${{ github.event_name == 'push' }}
