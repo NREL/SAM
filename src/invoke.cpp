@@ -6077,7 +6077,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.SetPostData(reopt_jsonpost);
 
 	// write to file for SAM issue 1830
-	wxString filename = SamApp::GetAppPath() + "reopt_jsonpost.json";
+	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
 	wxFile file(filename, wxFile::write);
 	if (!file.IsOpened()) {
 		wxLogError("Could not open file for writing!");
