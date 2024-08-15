@@ -55,6 +55,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/arrstr.h>
 #include <wx/progdlg.h>
 
+// SAM 1830
+#include <wx/file.h>
+
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
@@ -6072,6 +6075,16 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.AddHttpHeader("Accept: application/json");
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.SetPostData(reopt_jsonpost);
+
+	// write to file for SAM issue 1830
+	wxString filename = SamApp::GetAppPath() + "reopt_jsonpost.json";
+	wxFile file(filename, wxFile::write);
+	if (!file.IsOpened()) {
+		wxLogError("Could not open file for writing!");
+		return;
+	}
+	file.Write(reopt_jsonpost);
+	file.Close();
 
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
