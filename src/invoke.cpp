@@ -6099,6 +6099,9 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 
 	// get the run_uuid to poll for result, checking the status
+	// examine raw string
+	wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+
 	lk::vardata_t results;
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
