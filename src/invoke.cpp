@@ -6071,11 +6071,13 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	wxString post_url = SamApp::WebApi("reopt_post");
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
+//	reopt_jsonpost = "'" + reopt_jsonpost + "'"; // Not valid JSON on Windows
+
 	wxEasyCurl curl;
 //	curl.AddHttpHeader("Accept: application/json");
 //	curl.AddHttpHeader("Content-Type: application/json");
 	curl.AddHttpHeader("Content-Type: application/json");
-	curl.AddHttpHeader("Accept: application/json");
+//	curl.AddHttpHeader("Accept: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
 	// write to file for SAM issue 1830
@@ -6087,6 +6089,9 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 	file.Write(reopt_jsonpost);
 	file.Close();
+
+//	post_url = "'" + post_url + "'"; // lk error on Windows
+//	post_url = "\"" + post_url + "\""; // lk error on Windows
 
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
