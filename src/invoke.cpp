@@ -6072,8 +6072,10 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
 	wxEasyCurl curl;
-	curl.AddHttpHeader("Accept: application/json");
+//	curl.AddHttpHeader("Accept: application/json");
+//	curl.AddHttpHeader("Content-Type: application/json");
 	curl.AddHttpHeader("Content-Type: application/json");
+	curl.AddHttpHeader("Accept: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
 	// write to file for SAM issue 1830
@@ -6101,6 +6103,15 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	// get the run_uuid to poll for result, checking the status
 	// examine raw string
 	wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+
+	// handle errors instead of hard crash SAM 1830
+	auto strData = curl.GetDataAsString();
+	if (strData.Find("error") != wxNOT_FOUND) {
+		pdlg.Close();
+		cxt.result().hash_item("error", strData);
+		return;
+	}
+
 
 	lk::vardata_t results;
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
@@ -6162,7 +6173,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 
 		optimizing_status = cxt_result->lookup("status")->as_string();
 		if (optimizing_status.find("error") != std::string::npos) {
-			std::string error = cxt_result->lookup("messages")->lookup("errors")->as_string().ToStdString();
+			std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
 			cxt.result().hash_item("errors", error);
 			break;
 		}
