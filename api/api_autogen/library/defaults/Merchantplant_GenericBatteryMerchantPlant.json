@@ -219290,7 +219290,7 @@
 		"FuelCell": {
 		},
 		"CapacityPayments": {
-			"cp_battery_nameplate": 57.6,
+			"cp_battery_nameplate": 57.6001,
 			"cp_capacity_credit_percent": [0.000000],
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
@@ -219299,7 +219299,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 9.16799e+07
+			"battery_total_cost_lcos": 9.16801e+07
 		},
 		"ChargesByMonth": {
 		},
