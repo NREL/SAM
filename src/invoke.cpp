@@ -6071,15 +6071,36 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	wxString post_url = SamApp::WebApi("reopt_post");
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
-//	reopt_jsonpost = "'" + reopt_jsonpost + "'"; // Not valid JSON on Windows
 
 	wxEasyCurl curl;
-//	curl.AddHttpHeader("Accept: application/json");
-//	curl.AddHttpHeader("Content-Type: application/json");
 	curl.AddHttpHeader("Content-Type: application/json");
-//	curl.AddHttpHeader("Accept: application/json");
+	curl.AddHttpHeader("Accept: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
+/*
+	auto ElectricLoad = reopt_scenario->lookup("ElectricLoad");
+	ElectricLoad->empty_hash();
+	ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
+//	ElectricLoad->hash_item("annual_kwh", 100000.0);
+	lk::vardata_t monthly_load;
+	monthly_load.empty_vector();
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
+	monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
+	ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
+	//	ElectricLoad->assign("{	\"doe_reference_name\": \"MidriseApartment\",\"annual_kwh\" : 1000000.0	}, ");
+	reopt_jsonpost = lk::json_write(*reopt_scenario);
+	cxt.result().hash_item("scenario", reopt_jsonpost);
+*/
 	// write to file for SAM issue 1830
 	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
 	wxFile file(filename, wxFile::write);
@@ -6107,14 +6128,73 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 
 	// get the run_uuid to poll for result, checking the status
 	// examine raw string
-	wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+	//wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
 
 	// handle errors instead of hard crash SAM 1830
 	auto strData = curl.GetDataAsString();
 	if (strData.Find("error") != wxNOT_FOUND) {
-		pdlg.Close();
-		cxt.result().hash_item("error", strData);
-		return;
+		// content-length issue on Linux 135832 runs and 140778 fails
+		// if failing with "Request Rejected" title, then run with monthly scaled load per 
+		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
+		if (strData.Find("Request Rejected") != wxNOT_FOUND) {
+			// TODO: extra prompt to let user know what is going on???
+			auto ElectricLoad = reopt_scenario->lookup("ElectricLoad");
+			ElectricLoad->empty_hash();
+			if (sam_case->GetFinancing() == "Residential")
+				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
+			else
+				ElectricLoad->hash_item("doe_reference_name", "LargeOffice");
+			//	ElectricLoad->hash_item("annual_kwh", 100000.0);
+			lk::vardata_t monthly_load;
+			monthly_load.empty_vector();
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
+			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
+			//	ElectricLoad->assign("{	\"doe_reference_name\": \"MidriseApartment\",\"annual_kwh\" : 1000000.0	}, ");
+			reopt_jsonpost = lk::json_write(*reopt_scenario);
+			cxt.result().hash_item("scenario", reopt_jsonpost);
+			curl.SetPostData(reopt_jsonpost);
+			// TODO: remove after review
+			// write to file for SAM issue 1830
+			filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
+			wxFile file(filename, wxFile::write);
+			if (!file.IsOpened()) {
+				wxLogError("Could not open file for writing!");
+				return;
+			}
+			file.Write(reopt_jsonpost);
+			file.Close();
+
+
+
+			if (!curl.Get(post_url, msg))
+			{
+				pdlg.Close();
+				cxt.result().assign(msg);
+				return;
+			}
+			strData = curl.GetDataAsString();
+			if (strData.Find("error") != wxNOT_FOUND) {
+				pdlg.Close();
+				cxt.result().hash_item("error", strData);
+				return;
+			}
+		}
+		else {
+			pdlg.Close();
+			cxt.result().hash_item("error", strData);
+			return;
+		}
 	}
 
 
