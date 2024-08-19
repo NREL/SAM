@@ -1537,7 +1537,7 @@
     "csp.dtr.tes.htf_calc_temp": 232.5,
     "csp.dtr.tes.htf_max_opt_temp": 0.0,
     "csp.dtr.tes.htf_min_opt_temp": 0.0,
-    "csp.dtr.tes.min_fluid_volume": -6.5426546903792609e62,
+    "csp.dtr.tes.min_fluid_volume": -6.542654690379261e62,
     "csp.dtr.tes.thermal_capacity": 61.236,
     "csp.pt.par.calc.aux": 0.0495514,
     "csp.pt.par.calc.bop": 0.0,
@@ -1545,7 +1545,7 @@
     "csp.pt.pwrb.pressure_mode": 0.0,
     "csp.pt.tes.htf_density": 2500.0,
     "csp.pt.tes.tank_diameter": 3.0,
-    "csp.pt.tes.tank_height": 154.154,
+    "csp.pt.tes.tank_height": 102.858,
     "csp_dtr_hce_absorber_material_1": 0.0,
     "csp_dtr_hce_absorber_material_2": 0.0,
     "csp_dtr_hce_absorber_material_3": 0.0,
@@ -21508,12 +21508,13 @@
     "tes_NT_piston_loss_poly_1": 0.0,
     "tes_NT_piston_loss_poly_2": 0.0,
     "tes_NT_piston_loss_poly_3": 0.0,
-    "tes_avail_vol": 1089.65,
+    "tes_avail_vol": 727.058,
     "tes_diams": [
         [
             -1.0
         ]
     ],
+    "tes_pb_T_charge_min": 0.0,
     "tes_pb_T_cold_delta": 30.0,
     "tes_pb_T_hot_delta": 30.0,
     "tes_pb_cp_solid": 830.0,
@@ -23871,7 +23872,7 @@
     "use_solar_mult_or_aperture_area": 0.0,
     "use_specific_weather_file": 0.0,
     "user_specified_weather_file": "",
-    "vol_tank": 1089.65,
+    "vol_tank": 727.058,
     "washing_frequency": 63.0,
     "water_usage_per_wash": 0.7,
     "weekday_schedule": [
