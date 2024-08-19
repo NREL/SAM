@@ -6077,30 +6077,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	curl.AddHttpHeader("Accept: application/json");
 	curl.SetPostData(reopt_jsonpost);
 
-/*
-	auto ElectricLoad = reopt_scenario->lookup("ElectricLoad");
-	ElectricLoad->empty_hash();
-	ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
-//	ElectricLoad->hash_item("annual_kwh", 100000.0);
-	lk::vardata_t monthly_load;
-	monthly_load.empty_vector();
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
-	monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
-	ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
-	//	ElectricLoad->assign("{	\"doe_reference_name\": \"MidriseApartment\",\"annual_kwh\" : 1000000.0	}, ");
-	reopt_jsonpost = lk::json_write(*reopt_scenario);
-	cxt.result().hash_item("scenario", reopt_jsonpost);
-*/
+	/* DEBUG only - fails on Mac per ssc pull request 1204
 	// write to file for SAM issue 1830
 	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
 	wxFile file(filename, wxFile::write);
@@ -6110,6 +6087,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 	file.Write(reopt_jsonpost);
 	file.Close();
+	*/
 
 //	post_url = "'" + post_url + "'"; // lk error on Windows
 //	post_url = "\"" + post_url + "\""; // lk error on Windows
@@ -6164,7 +6142,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			reopt_jsonpost = lk::json_write(*reopt_scenario);
 			cxt.result().hash_item("scenario", reopt_jsonpost);
 			curl.SetPostData(reopt_jsonpost);
-			// TODO: remove after review
+			/* DEBUG only - fails on Mac per ssc pull request 1204
 			// write to file for SAM issue 1830
 			filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
 			wxFile file(filename, wxFile::write);
@@ -6174,9 +6152,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			}
 			file.Write(reopt_jsonpost);
 			file.Close();
-
-
-
+			*/
 			if (!curl.Get(post_url, msg))
 			{
 				pdlg.Close();
