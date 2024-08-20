@@ -6059,14 +6059,54 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	auto reopt_scenario = new lk::vardata_t;
-	sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
-	ssc_data_free(p_data);
+//	auto reopt_scenario = new lk::vardata_t;
+    lk::vardata_t reopt_scenario;
+//    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
+    sscdata_to_lkvar(p_data, "reopt_scenario", reopt_scenario);
+//	ssc_data_free(p_data);
 
-	cxt.result().empty_hash();
-	lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-	cxt.result().hash_item("scenario", reopt_jsonpost);
+    /* desired order for MacOS
+      "Site", "ElectricStorage", "ElectricLoad", "ElectricUtility", "ElectricTariff", "PV", "Financial", "Settings"
+  following has no effect
+    lk::vardata_t reopt_scenario;
+    reopt_scenario.empty_hash();
+ //   auto hash = reopt_scenario.hash();
+    reopt_scenario.assign("Settings", unordered_reopt_scenario.lookup("Settings"));
+    reopt_scenario.assign("Financial", unordered_reopt_scenario.lookup("Financial"));
+    reopt_scenario.assign("PV", unordered_reopt_scenario.lookup("PV"));
+    reopt_scenario.assign("ElectricTariff", unordered_reopt_scenario.lookup("ElectricTariff"));
+    reopt_scenario.assign("ElectricUtility", unordered_reopt_scenario.lookup("ElectricUtility"));
+    reopt_scenario.assign("ElectricLoad", unordered_reopt_scenario.lookup("ElectricLoad"));
+    reopt_scenario.assign("ElectricStorage", unordered_reopt_scenario.lookup("ElectricStorage"));
+    reopt_scenario.assign("Site", unordered_reopt_scenario.lookup("Site"));
+*/
+    wxString reopt_post = "{\n";
+    
+    wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
+    reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+    reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+    reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+    reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+    reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("PV"));
+    reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Financial"));
+    reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Settings"));
+    reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
 
+    reopt_post += "}\n";
+    
+    cxt.result().empty_hash();
+//    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
+//    lk_string reopt_jsonpost = lk::json_write(reopt_scenario);
+	cxt.result().hash_item("scenario", reopt_post);
+
+    
 	// send the post
 	wxString post_url = SamApp::WebApi("reopt_post");
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
@@ -6075,9 +6115,10 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	wxEasyCurl curl;
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.AddHttpHeader("Accept: application/json");
-	curl.SetPostData(reopt_jsonpost);
+	curl.SetPostData(reopt_post);
 
-	/* DEBUG only - fails on Mac per ssc pull request 1204
+    /*
+	//DEBUG only - fails on Mac per ssc pull request 1204
 	// write to file for SAM issue 1830
 	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
 	wxFile file(filename, wxFile::write);
@@ -6085,7 +6126,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		wxLogError("Could not open file for writing!");
 		return;
 	}
-	file.Write(reopt_jsonpost);
+	file.Write(reopt_post);
 	file.Close();
 	*/
 
@@ -6116,7 +6157,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
 		if (strData.Find("Request Rejected") != wxNOT_FOUND) {
 			// TODO: extra prompt to let user know what is going on???
-			auto ElectricLoad = reopt_scenario->lookup("ElectricLoad");
+			auto ElectricLoad = reopt_scenario.lookup("ElectricLoad");
 			ElectricLoad->empty_hash();
 			if (sam_case->GetFinancing() == "Residential")
 				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
@@ -6139,18 +6180,41 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
 			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
 			//	ElectricLoad->assign("{	\"doe_reference_name\": \"MidriseApartment\",\"annual_kwh\" : 1000000.0	}, ");
-			reopt_jsonpost = lk::json_write(*reopt_scenario);
-			cxt.result().hash_item("scenario", reopt_jsonpost);
-			curl.SetPostData(reopt_jsonpost);
-			/* DEBUG only - fails on Mac per ssc pull request 1204
+			//reopt_jsonpost = lk::json_write(reopt_scenario);
+            
+            reopt_post = "{\n";
+            
+            wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
+            reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+            reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+            reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+            reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+            reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("PV"));
+            reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Financial"));
+            reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Settings"));
+            reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
+
+            reopt_post += "}\n";
+
+			cxt.result().hash_item("scenario", reopt_post);
+			curl.SetPostData(reopt_post);
+            /*
+			// DEBUG only - fails on Mac per ssc pull request 1204
 			// write to file for SAM issue 1830
-			filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
+			wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
 			wxFile file(filename, wxFile::write);
 			if (!file.IsOpened()) {
 				wxLogError("Could not open file for writing!");
 				return;
 			}
-			file.Write(reopt_jsonpost);
+			file.Write(reopt_post);
 			file.Close();
 			*/
 			if (!curl.Get(post_url, msg))
