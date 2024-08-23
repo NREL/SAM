@@ -6059,28 +6059,11 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-//	auto reopt_scenario = new lk::vardata_t;
     lk::vardata_t reopt_scenario;
-//    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
     sscdata_to_lkvar(p_data, "reopt_scenario", reopt_scenario);
-//	ssc_data_free(p_data);
+	ssc_data_free(p_data);
 
-    /* desired order for MacOS
-      "Site", "ElectricStorage", "ElectricLoad", "ElectricUtility", "ElectricTariff", "PV", "Financial", "Settings"
-  following has no effect
-    lk::vardata_t reopt_scenario;
-    reopt_scenario.empty_hash();
- //   auto hash = reopt_scenario.hash();
-    reopt_scenario.assign("Settings", unordered_reopt_scenario.lookup("Settings"));
-    reopt_scenario.assign("Financial", unordered_reopt_scenario.lookup("Financial"));
-    reopt_scenario.assign("PV", unordered_reopt_scenario.lookup("PV"));
-    reopt_scenario.assign("ElectricTariff", unordered_reopt_scenario.lookup("ElectricTariff"));
-    reopt_scenario.assign("ElectricUtility", unordered_reopt_scenario.lookup("ElectricUtility"));
-    reopt_scenario.assign("ElectricLoad", unordered_reopt_scenario.lookup("ElectricLoad"));
-    reopt_scenario.assign("ElectricStorage", unordered_reopt_scenario.lookup("ElectricStorage"));
-    reopt_scenario.assign("Site", unordered_reopt_scenario.lookup("Site"));
-*/
-    wxString reopt_post = "{\n";
+	wxString reopt_post = "{\n";
     
     wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
     reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
@@ -6102,8 +6085,6 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
     reopt_post += "}\n";
     
     cxt.result().empty_hash();
-//    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-//    lk_string reopt_jsonpost = lk::json_write(reopt_scenario);
 	cxt.result().hash_item("scenario", reopt_post);
 
     
@@ -6163,7 +6144,6 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
 			else
 				ElectricLoad->hash_item("doe_reference_name", "LargeOffice");
-			//	ElectricLoad->hash_item("annual_kwh", 100000.0);
 			lk::vardata_t monthly_load;
 			monthly_load.empty_vector();
 			monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
@@ -6179,12 +6159,10 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
 			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
 			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
-			//	ElectricLoad->assign("{	\"doe_reference_name\": \"MidriseApartment\",\"annual_kwh\" : 1000000.0	}, ");
-			//reopt_jsonpost = lk::json_write(reopt_scenario);
             
             reopt_post = "{\n";
             
-            wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
+            str = lk::json_write(*reopt_scenario.lookup("Site"));
             reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
             str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
             reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
@@ -6253,9 +6231,6 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-//	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
-//		return;
-//	}
 
 	// now we have a run_uuid so make call to run REopt
 	wxString poll_url = SamApp::WebApi("reopt_poll");
@@ -6279,12 +6254,10 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	int p=6;
 	std::string optimizing_status = "Optimizing...";
 	while (optimizing_status == "Optimizing...") {
-//		if (p > 100) p = 99;
 		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
 		if (!pdlg.Update(p++, "Optimizing. This may take several minutes.")) {
 			return;
 		}
-//		pdlg.Update(p++, "Running optimization on REopt servers.");
 
 		if (!curl.Get(poll_url, msg))
 		{
