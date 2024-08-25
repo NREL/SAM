@@ -10616,8 +10616,6 @@
     "ui_total_indirect_cost": 39568400.0,
     "ui_total_installed_cost": 272324000.0,
     "ui_wacc": 7.10145,
-    "ur_nb_apply_credit_current_month": 0.0,
-    "ur_nb_credit_expire": 0.0,
     "use_specific_weather_file": 0.0,
     "user_specified_weather_file": "",
     "wf_nrecords": 8760.0
