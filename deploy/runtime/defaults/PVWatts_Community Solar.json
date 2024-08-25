@@ -9444,8 +9444,6 @@
         0.03
     ],
     "unsubscribed_payment_generation_escal": 0.0,
-    "ur_nb_apply_credit_current_month": 0.0,
-    "ur_nb_credit_expire": 0.0,
     "use_specific_weather_file": 0.0,
     "use_wf_albedo": 1.0,
     "user_specified_constant_albedo": 0.2,
