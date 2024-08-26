@@ -55,6 +55,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/arrstr.h>
 #include <wx/progdlg.h>
 
+// SAM 1830
+#include <wx/file.h>
+
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
 #include <wex/dview/dvplotctrl.h>
@@ -1931,6 +1934,51 @@ public:
 	}
 };
 
+void fcall_var_exists(lk::invoke_t& cxt)
+{
+	LK_DOC("var_exists", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+	if (Case* c = SamApp::Window()->GetCurrentCase()) {
+		wxString name = cxt.arg(0).as_string();
+		auto cfg = c->GetConfiguration();
+		int ndxHybrid = 0;
+		VarValue* vv = NULL;
+		bool bfound = false;
+		for (size_t ndx = 0; ndx < cfg->Technology.size(); ndx++ ) { // select ndxHybrid based on compute module position in 		
+			if (vv = c->Values(ndxHybrid).Get(name)) {
+				bfound = true;
+				ndxHybrid = ndx;
+			}
+		}
+		if (bfound)
+			cxt.result().assign(1);
+		else
+			cxt.result().assign((double)0);
+	}
+	else
+		cxt.result().assign((double)0);
+}
+
+void fcall_ssc_var_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC2("ssc_var_auto_exec", "Sets or gets a variable value in the SSC data set if it exists in the UI.",
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
+		"Get a variable value", "(ssc-obj-ref:data, string:name):variant");
+
+	if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 2)
+			sscdata_to_lkvar(*ssc, (const char*)name.ToUTF8(), cxt.result());
+		else if (cxt.arg_count() == 3) {
+			assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+		}
+	}
+	else
+		cxt.error("invalid ssc-obj-ref");
+}
+
+
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
@@ -1964,6 +2012,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 		cxt.error("wrong number of argument specified " + cxt.arg_count());
 		return;
 	}
+	// 	e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if (Case* c = SamApp::Window()->GetCurrentCase())
 	{
@@ -2008,8 +2057,17 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
-						{
+//						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
+/*
+* Note for hybrids - the search starts with the firs case vartable and continues until the first "name" is found in the UI
+*/						auto cfg = c->GetConfiguration();
+						int ndxHybrid = 0;
+						if (cfg->Technology.size() > 1) { // select ndxHybrid based on compute module position in simulations collection
+							ndxHybrid = cfg->Simulations.Index(cm);
+							if ((ndxHybrid < 0) || (ndxHybrid > (cfg->Technology.size()-1)))
+								ndxHybrid = cfg->Technology.size() - 1;
+						}
+						if (auto vv = c->Values(ndxHybrid).Get(name)) {
 							
 							if (!field.IsEmpty())
 							{
@@ -5893,12 +5951,14 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	Simulation base_case = sam_case->BaseCase();
 	base_case.Clear();
 	base_case.Prepare();
-	bool success = base_case.Invoke(false,true,"");
+	bool success = base_case.Invoke(false,true);
 	if (!success) {
 		ssc_data_free(p_data);
 		throw lk::error_t(base_case.GetErrors()[0]);
 		return;
 	}
+
+	wxGetApp().Yield();
 
 	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
@@ -5983,6 +6043,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	copy_vars_into_ssc_data(rate_vars);
 	copy_vars_into_ssc_data(fin_vars);
 
+
 	try {
 		Reopt_size_battery_params(p_data);
 	}
@@ -5994,26 +6055,64 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 
 
-	if (!pdlg.Update(20, "Getting REopt ID for optimization run.")) {
+	if (!pdlg.Update(3, "Getting REopt ID for optimization run.")) {
 		return;
 	}
 
-	auto reopt_scenario = new lk::vardata_t;
-	sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
+    lk::vardata_t reopt_scenario;
+    sscdata_to_lkvar(p_data, "reopt_scenario", reopt_scenario);
 	ssc_data_free(p_data);
 
-	cxt.result().empty_hash();
-	lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-	cxt.result().hash_item("scenario", reopt_jsonpost);
+	wxString reopt_post = "{\n";
+    
+    wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
+    reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+    reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+    reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+    reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+    reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("PV"));
+    reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Financial"));
+    reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Settings"));
+    reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
 
+    reopt_post += "}\n";
+    
+    cxt.result().empty_hash();
+	cxt.result().hash_item("scenario", reopt_post);
+
+    
 	// send the post
 	wxString post_url = SamApp::WebApi("reopt_post");
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
+
 	wxEasyCurl curl;
-	curl.AddHttpHeader("Accept: application/json");
 	curl.AddHttpHeader("Content-Type: application/json");
-	curl.SetPostData(reopt_jsonpost);
+	curl.AddHttpHeader("Accept: application/json");
+	curl.SetPostData(reopt_post);
+
+    /*
+	//DEBUG only - fails on Mac per ssc pull request 1204
+	// write to file for SAM issue 1830
+	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
+	wxFile file(filename, wxFile::write);
+	if (!file.IsOpened()) {
+		wxLogError("Could not open file for writing!");
+		return;
+	}
+	file.Write(reopt_post);
+	file.Close();
+	*/
+
+//	post_url = "'" + post_url + "'"; // lk error on Windows
+//	post_url = "\"" + post_url + "\""; // lk error on Windows
 
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
@@ -6023,11 +6122,100 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(30, "Checking REopt ID.")) {
+	if (!pdlg.Update(5, "Checking REopt ID.")) {
 		return;
 	}
 
 	// get the run_uuid to poll for result, checking the status
+	// examine raw string
+	//wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+
+	// handle errors instead of hard crash SAM 1830
+	auto strData = curl.GetDataAsString();
+	if (strData.Find("error") != wxNOT_FOUND) {
+		// content-length issue on Linux 135832 runs and 140778 fails
+		// if failing with "Request Rejected" title, then run with monthly scaled load per 
+		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
+		if (strData.Find("Request Rejected") != wxNOT_FOUND) {
+			// TODO: extra prompt to let user know what is going on???
+			auto ElectricLoad = reopt_scenario.lookup("ElectricLoad");
+			ElectricLoad->empty_hash();
+			if (sam_case->GetFinancing() == "Residential")
+				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
+			else
+				ElectricLoad->hash_item("doe_reference_name", "LargeOffice");
+			lk::vardata_t monthly_load;
+			monthly_load.empty_vector();
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
+			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
+            
+            reopt_post = "{\n";
+            
+            str = lk::json_write(*reopt_scenario.lookup("Site"));
+            reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+            reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+            reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+            reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+            reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("PV"));
+            reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Financial"));
+            reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Settings"));
+            reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
+
+            reopt_post += "}\n";
+
+			cxt.result().hash_item("scenario", reopt_post);
+			curl.SetPostData(reopt_post);
+            /*
+			// DEBUG only - fails on Mac per ssc pull request 1204
+			// write to file for SAM issue 1830
+			wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
+			wxFile file(filename, wxFile::write);
+			if (!file.IsOpened()) {
+				wxLogError("Could not open file for writing!");
+				return;
+			}
+			file.Write(reopt_post);
+			file.Close();
+			*/
+			if (!curl.Get(post_url, msg))
+			{
+				pdlg.Close();
+				cxt.result().assign(msg);
+				return;
+			}
+			strData = curl.GetDataAsString();
+			if (strData.Find("error") != wxNOT_FOUND) {
+				pdlg.Close();
+				cxt.result().hash_item("error", strData);
+				return;
+			}
+		}
+		else {
+			pdlg.Close();
+			cxt.result().hash_item("error", strData);
+			return;
+		}
+	}
+
+
 	lk::vardata_t results;
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
@@ -6043,29 +6231,34 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		return;
 	}
 
-	if (!pdlg.Update(40, "Running optimization on REopt servers.")) {
-		return;
-	}
 
 	// now we have a run_uuid so make call to run REopt
 	wxString poll_url = SamApp::WebApi("reopt_poll");
 	poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
 	curl = wxEasyCurl();
-	cxt.result().hash_item("response", lk::vardata_t());
-	lk::vardata_t* cxt_result = cxt.result().lookup("response");
 
-	if (!pdlg.Update(60, "Running optimization on REopt servers.")) {
+	if (!curl.Get(poll_url, msg))	{
+		cxt.result().hash_item("error", msg);
 		return;
 	}
 
-	int p=60;
+
+	cxt.result().hash_item("response", lk::vardata_t());
+	lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	int p=6;
 	std::string optimizing_status = "Optimizing...";
 	while (optimizing_status == "Optimizing...") {
-		if ( p > 100 ) p = 99;
-		if (!pdlg.Update(p++, "Running optimization on REopt servers.")) {
+		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
+		if (!pdlg.Update(p++, "Optimizing. This may take several minutes.")) {
 			return;
 		}
+
 		if (!curl.Get(poll_url, msg))
 		{
 			cxt.result().hash_item("error", msg);
@@ -6078,12 +6271,17 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 
 		optimizing_status = cxt_result->lookup("status")->as_string();
 		if (optimizing_status.find("error") != std::string::npos) {
-			std::string error = cxt_result->lookup("messages")->lookup("errors")->as_string().ToStdString();
+			std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
 			cxt.result().hash_item("errors", error);
 			break;
 		}
+		wxGetApp().Yield();
+		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
+		wxMilliSleep(10000);
 
 	}
+
+//	wxMessageBox("url=" + poll_url, "Finished"); // Debug test to make sure completed loop
 
 	pdlg.Update(100, "Done.");
 	wxMilliSleep(1000);
@@ -6280,6 +6478,8 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
+		fcall_ssc_var_auto_exec,
+		fcall_var_exists,
 		fcall_ssc_exec,
 		fcall_ssc_eqn,
 		0 };

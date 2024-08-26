@@ -616,6 +616,25 @@ SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT const char* SAM_GenericSystem_Outputs_output_file_sget(SAM_table ptr, SAM_error *err){
+	const char* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_string(ptr, "output_file");
+	if (!result)
+		make_access_error("SAM_GenericSystem", "output_file");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_GenericSystem_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_cpu_run_time", &result))
+		make_access_error("SAM_GenericSystem", "sim_cpu_run_time");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

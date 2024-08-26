@@ -22,7 +22,7 @@
 			"add_om_num_types": 1,
 			"om_batt_capacity_cost": [9.680000],
 			"om_batt_fixed_cost": [0.000000],
-			"om_batt_nameplate": 12.8102,
+			"om_batt_nameplate": 12.474,
 			"om_batt_replacement_cost": [273.520000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [10.000000],
@@ -34,7 +34,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 52086.5
+			"total_installed_cost": 51691.6
 		},
 		"LandLease": {
 		},
@@ -153,7 +153,7 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"batt_computed_bank_capacity": 12.8102,
+			"batt_computed_bank_capacity": 12.474,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
 			"battery_per_kWh": 706.24,
@@ -195,7 +195,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 14356.3
+			"battery_total_cost_lcos": 14035
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

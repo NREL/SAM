@@ -33,7 +33,7 @@ extern "C"
 
 	/**
 	 * Set input: input_table for multiple technologies and one financial market
-	 * options: None
+	 * options: pvsamv1,pvwattsv8,windpower,generic_system,battery,fuelcell,hybrid
 	 * constraints: None
 	 * required if: *
 	 */
