@@ -45,8 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/srchctrl.h>
 
 #include <wex/easycurl.h>
-#include <wex/jsonval.h>
-#include <wex/jsonreader.h>
+#include <rapidjson/document.h>
 
 #include "wavetoolkit.h"
 #include "geotools.h"
@@ -132,14 +131,14 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     //all_years_chk = new wxCheckBox(this, ID_allyear_chk, "Download all years");
 
     wxBoxSizer* szll = new wxBoxSizer(wxHORIZONTAL);
-    szll->Add(new wxStaticText(this, wxID_ANY, "Enter desired location coordinates: "), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-    szll->Add(new wxStaticText(this, wxID_ANY, "Latitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Enter desired location coordinates: "), 0, wxALL , 5);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Latitude"), 0, wxALL , 5);
     szll->Add(txtLat, 0, wxALL, 5);
-    szll->Add(new wxStaticText(this, wxID_ANY, "Longitude"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szll->Add(new wxStaticText(this, wxID_ANY, "Longitude"), 0, wxALL , 5);
     szll->Add(txtLon, 0, wxALL, 5);
 
     wxBoxSizer* szgrid = new wxBoxSizer(wxHORIZONTAL);
-    szgrid->Add(szll, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
+    szgrid->Add(szll, 0, wxALL | wxEXPAND , 1);
 
     /*
     wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
@@ -149,17 +148,17 @@ WaveDownloadDialog::WaveDownloadDialog(wxWindow *parent, const wxString &title)
     */
 
     wxBoxSizer* szmultyr = new wxBoxSizer(wxHORIZONTAL);
-    szmultyr->Add(new wxStaticText(this, wxID_ANY, "Start year"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szmultyr->Add(new wxStaticText(this, wxID_ANY, "Start year"), 0, wxALL , 5);
     szmultyr->Add(txtStartYear, 0, wxALL, 5);
-    szmultyr->Add(new wxStaticText(this, wxID_ANY, "End year"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+    szmultyr->Add(new wxStaticText(this, wxID_ANY, "End year"), 0, wxALL , 5);
     szmultyr->Add(txtEndYear, 0, wxALL, 5);
 
     wxBoxSizer* szyr = new wxBoxSizer(wxHORIZONTAL);
-    szyr->Add(radSingleYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
-    szyr->Add(cboSingleYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 1);
-    szyr->Add(radMultiYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
-    szyr->Add(szmultyr, 0, wxALL | wxEXPAND | wxALIGN_CENTER_VERTICAL, 1);
-    szyr->Add(radAllYear, 0, wxALL | wxALIGN_CENTER_VERTICAL, 10);
+    szyr->Add(radSingleYear, 0, wxALL , 5);
+    szyr->Add(cboSingleYear, 0, wxALL , 1);
+    szyr->Add(radMultiYear, 0, wxALL, 10);
+    szyr->Add(szmultyr, 0, wxALL | wxEXPAND , 1);
+    szyr->Add(radAllYear, 0, wxALL , 10);
 
     
     wxBoxSizer* szmain = new wxBoxSizer(wxVERTICAL);
@@ -414,32 +413,34 @@ void WaveDownloadDialog::GetResources()
 		return;
 	}
 
-	wxJSONReader reader;
-	//	reader.SetSkipStringDoubleQuotes(true);
-	wxJSONValue root;
-	if (reader.Parse(json_data, &root) != 0)
+
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
+
+	if (reader.HasParseError())
 	{
 		wxMessageBox("Wave Data Query failed.\n\nCould not process JSON from Wave Data Query response for\n" + location + "\n\nPlease try again and contact SAM Support if you continue to have trouble.", "Wave Download Message", wxOK, this);
 		return;
 	}
 
-	wxJSONValue meta_data = root["metadata"];
-	wxJSONValue result_set = meta_data["resultset"];
+	if (reader.HasMember("metadata"))
+		if (reader["metadata"].HasMember("resultset"))
+			if (reader["metadata"]["resultset"].HasMember("count"))
+				if (reader["metadata"]["resultset"]["count"].IsInt())
+					if (reader["metadata"]["resultset"]["count"].GetInt() == 0) {
+							wxMessageBox("No Weather Files Found.\n\nWave Data Query did not return any files for\n" + location, "Wave Download Message", wxOK, this);
+							return;
+						}
 
-	if (result_set["count"].AsInt() == 0)
-	{
-		wxMessageBox("No Weather Files Found.\n\nWave Data Query did not return any files for\n" + location, "Wave Download Message", wxOK, this);
-		return;
-	}
+	if (reader.HasMember("error"))
+		if (reader["error"].HasMember("message") && reader["error"].HasMember("code"))
+			if (reader["error"]["message"].IsString() && reader["error"]["code"].IsString()) {
+				wxString message = reader["error"]["message"].GetString();
+				wxString code = reader["error"]["code"].GetString();
+				wxMessageBox(wxString::Format("NSRDB API error!\n\nMessage: %s\n\nCode: %s ", message.c_str(), code.c_str()));
+				return;
+			}
 
-    if (root.HasMember("error"))
-    {
-       wxJSONValue error_list = root.Item("error");
-       wxMessageBox( wxString::Format("Wave API error!\n\nMessage: %s\n\nCode: %s ", error_list.Item("message").AsString(), error_list.Item("code").AsString() ));
-       return;
-    }
-
-	wxJSONValue output_list = root["outputs"];
 
 	// format location to use in file name
 	location.Replace("\\", "_"); 
@@ -452,18 +453,33 @@ void WaveDownloadDialog::GetResources()
 
 	m_chlResources->Clear();
 	m_links.clear();
-	for (int i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
-	{
-		wxJSONValue out_item = output_list[i_outputs];
-		wxJSONValue links_list = output_list[i_outputs]["links"];
-		for (int i_links = 0; i_links < links_list.Size(); i_links++)
-		{
-			wxString name = output_list[i_outputs]["name"].AsString();
-			wxString displayName = output_list[i_outputs]["displayName"].AsString();
 
-			wxString year = links_list[i_links]["year"].AsString();
-			wxString URL = links_list[i_links]["link"].AsString();
-			wxString interval = links_list[i_links]["interval"].AsString();
+	if (!reader.HasMember("outputs")) return; // error message?
+	if (!reader["outputs"].IsArray()) return; // error message?
+
+	auto output_list = reader["outputs"].GetArray();
+
+	for (size_t i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
+	{
+		if (!output_list[i_outputs].HasMember("links")) return; // error message?
+		if (!output_list[i_outputs]["links"].IsArray()) return; // error message?
+
+		auto links_list = output_list[i_outputs]["links"].GetArray();
+
+		for (size_t i_links = 0; i_links < links_list.Size(); i_links++)
+		{
+			// check for validity
+			wxString name = output_list[i_outputs]["name"].GetString();
+			wxString displayName = output_list[i_outputs]["displayName"].GetString();
+
+			wxString year, interval;
+			if (links_list[i_links]["year"].IsInt())
+				year = wxString::Format("%d", links_list[i_links]["year"].GetInt());
+			if (links_list[i_links]["interval"].IsInt())
+				interval = wxString::Format("%d", links_list[i_links]["interval"].GetInt());
+
+			wxString URL = links_list[i_links]["link"].GetString();
+
 			URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
 			
