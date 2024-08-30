@@ -1089,8 +1089,8 @@
     "T_htf_hot_des": 391.0,
     "T_loop_in_des": 293.0,
     "T_loop_out": 391.0,
-    "T_shutdown": 325.3,
-    "T_startup": 325.3,
+    "T_shutdown": 325.34,
+    "T_startup": 325.34,
     "T_tank_cold_ini": 300.0,
     "T_tank_hot_inlet_min": 400.0,
     "Tau_envelope": [
@@ -1920,7 +1920,7 @@
     "cycle_max_frac": 1.0,
     "dP_sf_SS": 19.7887,
     "dT_cw_ref": 10.0,
-    "d_tank_in": 0.0,
+    "d_tank_in": 56.13,
     "debt_message": "",
     "debt_option": 1.0,
     "debt_percent": 50.0,
@@ -20502,7 +20502,7 @@
     "is_dispatch": 0.0,
     "is_h_tank_fixed": 1.0,
     "is_hx": 0.0,
-    "is_timestep_load_fractions": 1.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -21528,7 +21528,8 @@
     "tes_pb_void_frac": 0.22,
     "tes_pump_coef": 0.15,
     "tes_tank_cp": 0.49,
-    "tes_tank_dens": 0.0,
+    "tes_tank_dens": 8000.0,
+    "tes_tank_insul_percent": 0.0,
     "tes_tank_thick": 0.0254,
     "tes_type": 0.0,
     "tes_wallthicks": [

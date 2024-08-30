@@ -1,7 +1,7 @@
 {
     "Name": "TES Packed Bed",
-    "Width": 915.0,
-    "Height": 186.0,
+    "Width": 906.0,
+    "Height": 167.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 81.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -219,7 +219,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 51.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -302,7 +302,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 81.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 51.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,7 +468,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -551,7 +551,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -634,7 +634,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -717,7 +717,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,

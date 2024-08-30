@@ -1,7 +1,7 @@
 {
     "Name": "TES Two Tank",
-    "Width": 912.0,
-    "Height": 333.0,
+    "Width": 622.0,
+    "Height": 66.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 33.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "This is the two tank box"
+                    "String": "No additional parameters"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -49,7 +49,7 @@
                 },
                 "FontSize": {
                     "Type": 3.0,
-                    "Integer": 25.0
+                    "Integer": 0.0
                 },
                 "WordWrap": {
                     "Type": 2.0,
