@@ -671,11 +671,16 @@ function setup_csp_physical_trough_pages()
 			{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 
+
+	addpage( [[ 'TES Two Tank' ], [ 'TES NT' ], [ 'TES Packed Bed' ]],
+			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
+			  'exclusive_header_pages' = ['TES Common']} );
+
 	//addpage( [[ 'Physical Trough Power Block Common' ,
 	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	//addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
