@@ -678,7 +678,7 @@ function setup_csp_physical_trough_pages()
 			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 
 
-	addpage( [[ 'TES Two Tank' ], [ 'TES NT' ], [ 'TES Packed Bed' ]],
+	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES NT' ]], 
 			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
 
