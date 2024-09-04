@@ -832,11 +832,11 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Solid media specific heat",
-            "Units": "J/kg K",
+            "Units": "kJ/kg K",
             "Group": "TES",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 830.0,
+            "DefaultValue": 0.83,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""

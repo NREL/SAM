@@ -11173,7 +11173,7 @@
     "tes_pb_T_charge_min": 0.0,
     "tes_pb_T_cold_delta": 10.0,
     "tes_pb_T_hot_delta": 10.0,
-    "tes_pb_cp_solid": 830.0,
+    "tes_pb_cp_solid": 0.83,
     "tes_pb_dens_solid": 2500.0,
     "tes_pb_f_oversize": 1.0,
     "tes_pb_k_eff": 5.69,
