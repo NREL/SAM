@@ -32,6 +32,54 @@ extern "C"
 	//
 
 	/**
+	 * Set T_in_loop_initial: Initial loop inlet, cold header and cold runner fluid temperature [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_T_in_loop_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_out_loop_initial: Initial loop outlet, hot header and hot runner fluid temperature [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_T_out_loop_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_out_scas_initial: Initial SCA outlet temperatures [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_T_out_scas_initial_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set T_tank_cold_init: Initial cold tank fluid temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_T_tank_cold_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_tank_hot_init: Initial hot tank fluid temperate [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_T_tank_hot_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set defocus_initial: Initial receiver defocus [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_defocus_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set disp_csu_cost: Cycle startup cost [$]
 	 * options: None
 	 * constraints: None
@@ -56,12 +104,132 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_dispatch_targets: Run solution from user-specified dispatch targets? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_is_dispatch_targets_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_pc_sb_allowed_in: User-provided is power cycle standby allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_is_pc_sb_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_pc_su_allowed_in: User-provided is power cycle startup allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_is_pc_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_rec_su_allowed_in: User-provided is receiver startup allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_is_rec_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set pc_op_mode_initial: Initial cycle operation mode 0:startup, 1:on, 2:standby, 3:off, 4:startup_controlled [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_pc_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pc_startup_energy_remain_initial: Initial cycle startup energy remaining [kwh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_pc_startup_energy_remain_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pc_startup_time_remain_init: Initial cycle startup time remaining [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_pc_startup_time_remain_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_pc_max_in: User-provided max thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_q_pc_max_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_pc_target_on_in: User-provided target thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_q_pc_target_on_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_pc_target_su_in: User-provided target thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_q_pc_target_su_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set rec_op_mode_initial: Initial receiver operating mode 0: off, 1: startup, 2: on [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
 	 * options: None
 	 * constraints: None
 	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_start: Simulation start time [s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_time_start_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_steps_per_hour: Number of simulation time steps per hour
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_time_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set time_stop: Simulation stop time [s]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=31536000
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_time_stop_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set vacuum_arrays: Allocate arrays for only the required number of steps
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_vacuum_arrays_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -706,6 +874,22 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_eta_pump_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set field_fl_props: User defined field fluid property data [-]
 	 * options: None
 	 * constraints: None
@@ -725,7 +909,7 @@ extern "C"
 	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: use_abs_or_rel_mdot_limit=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -733,7 +917,7 @@ extern "C"
 	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: use_abs_or_rel_mdot_limit=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -896,6 +1080,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set wind_stow_speed: Trough wind stow speed [m/s]
@@ -1393,14 +1585,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_series: Time series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Tou_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
 	 * options: None
 	 * constraints: None
@@ -1423,14 +1607,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
@@ -1668,14 +1844,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set disp_wlim_maxspec: disp_wlim_maxspec [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_disp_wlim_maxspec_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set has_hot_tank_bypass: Bypass valve connects field outlet to cold tank [-]
 	 * options: None
 	 * constraints: None
@@ -1783,19 +1951,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TowerAndReceiver_piping_loss_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// SolarResourceData parameters
-	//
-
-	/**
-	 * Set lat: Latitude [degree]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarResourceData_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1996,13 +2151,55 @@ extern "C"
 	 * SystemControl Getters
 	 */
 
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_T_in_loop_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_T_out_loop_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_T_out_scas_initial_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_T_tank_cold_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_T_tank_hot_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_defocus_initial_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_is_dispatch_targets_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_is_pc_sb_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_is_pc_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_is_rec_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_pc_op_mode_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_pc_startup_energy_remain_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_pc_startup_time_remain_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_q_pc_max_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_q_pc_target_on_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_SystemControl_q_pc_target_su_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_time_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_time_stop_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_vacuum_arrays_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2172,6 +2369,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_eta_pump_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_include_fixed_power_block_runner_nget(SAM_table ptr, SAM_error *err);
@@ -2219,6 +2420,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_tilt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_wind_stow_speed_nget(SAM_table ptr, SAM_error *err);
 
@@ -2355,15 +2558,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysical_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
@@ -2450,8 +2649,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Controller_disp_wlim_maxspec_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TroughPhysical_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
@@ -2482,13 +2679,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_TroughPhysical_TowerAndReceiver_piping_loss_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * SolarResourceData Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysical_SolarResourceData_lat_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2587,6 +2777,12 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_field_hot_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_in_loop_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_out_loop_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_out_scas_last_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_pc_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_pc_out_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2606,6 +2802,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_V_tank_hot_ini_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_W_dot_field_pump_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_W_dot_pump_SS_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_W_dot_sca_track_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2689,9 +2887,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_Tdb_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_eff_load_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_dP_sf_SS_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_defocus_final_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_deltaP_field_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2731,8 +2937,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_thermeff_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_disp_wlim_max_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_disp_wpb_expected_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_dni_costh_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2742,6 +2946,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_e_dot_field_int_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_eta_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_field_htf_cp_avg_des_nget(SAM_table ptr, SAM_error *err);
 
@@ -2757,6 +2965,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_hot_tank_htf_percent_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_is_hx_nget(SAM_table ptr, SAM_error *err);
@@ -2766,8 +2976,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_is_pc_su_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_is_rec_su_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Outputs_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
 
@@ -2789,6 +2997,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_m_dot_htf_cycle_des_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_m_dot_pc_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2807,9 +3019,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_max_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_max_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_min_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_min_inner_diameter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_min_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2834,6 +3050,12 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_pc_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_pc_startup_energy_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_pc_startup_time_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_pipe_header_P_dsn_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2941,6 +3163,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_qinc_costh_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_rec_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_recirculating_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_required_number_of_loops_for_SM1_nget(SAM_table ptr, SAM_error *err);
@@ -2995,11 +3219,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_vel_loop_max_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_vel_loop_min_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Outputs_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 

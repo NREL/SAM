@@ -6227,6 +6227,68 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "lbl_pbi_message"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 663.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Caption defined in UI callback"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 7"
                 },
                 "X": {
@@ -8923,8 +8985,39 @@
     },
     "Equations": [],
     "Callbacks": [
+        "function pbi_grid_charge_message() {\r",
+        "\tpbi_enabled = ( sum(value('pbi_fed_amount')) != 0 && value('pbi_fed_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_sta_amount')) != 0 && value('pbi_sta_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_uti_amount')) != 0 && value('pbi_uti_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_oth_amount')) != 0 && value('pbi_oth_term') > 0 );\r",
+        "\tgridcharge_enabled = false;\r",
+        "\tif ( is_assigned('batt_dispatch_choice') ) {\r",
+        "\t\tif ( value('batt_dispatch_choice') == 3 ) { // manual dispatch\r",
+        "\t\t\tgridcharge_enabled = value('pv.storage.p1.gridcharge') \r",
+        "\t\t\t\t\t\t      || value('pv.storage.p2.gridcharge')\r",
+        "\t\t\t\t\t\t      || value('pv.storage.p3.gridcharge') \r",
+        "\t                          || value('pv.storage.p4.gridcharge') \r",
+        "\t                          || value('pv.storage.p5.gridcharge') \r",
+        "\t                          || value('pv.storage.p6.gridcharge');\r",
+        "\t\t}\r",
+        "\t\telse { // all other dispatch options have grid charge option\r",
+        "\t\t\tgridcharge_enabled = value('batt_dispatch_auto_can_gridcharge');\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\tmessage = '';\r",
+        "\tcolor = 'black';\r",
+        "\tif ( gridcharge_enabled && pbi_enabled )  {\r",
+        "\t\tmessage = 'Grid charging is enabled on the Battery Dispatch page. The PBI is calculated from Electricity to Grid, which may include electricity discharged by the battery to the grid that was originally stored from the grid.';\r",
+        "\t\tcolor = 'red';\r",
+        "\t}\r",
+        "\tproperty('lbl_pbi_message', 'Caption', message);\r",
+        "\tproperty('lbl_pbi_message', 'TextColour', color);\r",
+        "}\r",
+        "\r",
         "on_load{\"Financial Cash Incentives\"}=define()",
-        "{",
+        "{\r",
+        "\tpbi_grid_charge_message();\r",
+        "",
         "\tf = financing();",
         "\t\r",
         "    property('pbi_fed_amount','FixedLength',value('analysis_period'));\r",
@@ -8976,6 +9069,16 @@
         "\tshow( 'pbi_sta_for_ds', is_debt_fin);",
         "\tshow( 'pbi_uti_for_ds', is_debt_fin);",
         "\tshow( 'pbi_oth_for_ds', is_debt_fin);",
-        "};"
+        "};\r",
+        "\r",
+        "on_change{\"pbi_fed_amount\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_sta_amount\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_uti_amount\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_oth_amount\"} = define() { pbi_grid_charge_message(); };\r",
+        "\r",
+        "on_change{\"pbi_fed_term\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_sta_term\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_uti_term\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_oth_term\"} = define() { pbi_grid_charge_message(); };"
     ]
 }

@@ -703,6 +703,22 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_eta_pump_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set field_fl_props: User defined field fluid property data [-]
 	 * options: None
 	 * constraints: None
@@ -714,7 +730,7 @@ extern "C"
 	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: use_abs_or_rel_mdot_limit=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -722,7 +738,7 @@ extern "C"
 	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: use_abs_or_rel_mdot_limit=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -885,6 +901,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_tilt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set wind_stow_speed: Trough wind stow speed [m/s]
@@ -1078,14 +1102,6 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set dispatch_series: Time series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
 	 * options: None
 	 * constraints: None
@@ -1100,14 +1116,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
@@ -1465,19 +1473,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// SolarResourceData parameters
-	//
-
-	/**
-	 * Set lat: Latitude [degree]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_SolarResourceData_lat_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2014,6 +2009,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_eta_pump_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
@@ -2059,6 +2058,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_tilt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_wind_stow_speed_nget(SAM_table ptr, SAM_error *err);
 
@@ -2119,13 +2120,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
@@ -2249,13 +2246,6 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * SolarResourceData Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_SolarResourceData_lat_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2417,6 +2407,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_pc_pump_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_W_dot_pump_SS_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_sca_track_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err);
@@ -2535,6 +2527,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_dP_sf_SS_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_deltaP_field_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2546,6 +2540,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_dot_field_int_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_field_htf_cp_avg_des_nget(SAM_table ptr, SAM_error *err);
 
@@ -2591,6 +2589,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_pc_to_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2605,9 +2607,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_field_flow_velocity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_inner_diameter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2786,6 +2792,10 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vel_loop_max_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vel_loop_min_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err);
 

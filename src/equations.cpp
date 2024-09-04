@@ -44,8 +44,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/sscapi.h> // for preprocessing
 
 #include "equations.h"
-#include "case.h"
-#include "main.h" // ConfigInfo
 
 
 EqnDatabase::EqnDatabase()
@@ -120,6 +118,7 @@ bool EqnDatabase::LoadFile( const wxString &file, wxArrayString *errors )
 
 bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 {
+
 	// check text for preprocessing setup for design point calculations SAM issue #634
 	// prototype to be refactored if more equations added for preprocessing
 	// Check string for instances of replacements for equations
@@ -127,12 +126,6 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 	wxString lookup = "//#ssc_auto_exec(";
 	size_t nposStart = text->Find(lookup); 
 	if (nposStart != wxNOT_FOUND)  {
-/*		if (!c) {// line that equation on does not have \n (could also check for end of string)
-			errors->Add("Check equations PreProcessScript: no case provided for ssc_auto_exec.");
-			return false;
-		}
-*/
-
 		// first part of string to keep
 		auto strPart1 = text->Mid(0, nposStart - 1);
 		auto strPart2 = text->Mid(nposStart, text->Length() - 1);
@@ -157,6 +150,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 
 		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 		*/
+
 		if (args.Count() != 3) {// specific to lookup function
 			errors->Add("Check equations script: " + lookup + " statement does not have 3 arguments.");
 			return false;
@@ -165,11 +159,12 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 		wxString cm = args[1];
 		cm.Replace("'", "");
 		ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
-		if (!p_mod)
-		{
+		if (!p_mod)	{
 			errors->Add("could not create ssc module: " + cm);
 			return false;
 		}
+
+
 		ssc_data_t p_data = ssc_data_create();
 		// Assign the compute module with existing values
 		int pidx = 0;
@@ -180,12 +175,9 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
-			bool bRequired = (reqd.Length() > 0); // SAM issue 1634 - works for MSPT and fails for MSLF - until missing required values updated REQUIRED_IF
 
-			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
-//			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
-
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
 				wxString field ="";
@@ -195,19 +187,10 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					field = name.Mid(pos + 1);
 					name = name.Left(pos);
 				}
-				/*
-				// SAM 1634 - check for variable in UI and required_if non-blank - no access to case or config
-				bool bInUI = true; // (vdb.Lookup(name) != NULL);
-				if (c) {
-					bInUI = false;
-					for (size_t ndxHybrid = 0; !bInUI && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
-						bInUI |= (c->Variables(ndxHybrid).Lookup(name) != NULL);
-					}
-				}
-				*/
+
+
 				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != data_type)// && bInUI)
-				{
+				if (existing_type != data_type) {
 					wxString ssc_var_name = name;
 					wxString lk_var_name = "${" + name + "}";
 					if (field != "") // 	ssc_var(obj, "adjust:constant", ${adjust}{'constant'});
@@ -220,7 +203,8 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[1] = compute module name
 					arg[2] = sim_type value
 					*/
-					strReplace += "\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
+					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // SAM issue 1634
+					strReplace += "\t\tssc_var(" + args[0] + ", \"" + ssc_var_name + "\"," + lk_var_name + ");\n";
 				}
 			}
 		}
@@ -241,11 +225,11 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 
 
 
-bool EqnDatabase::LoadScript(  const wxString &text, wxArrayString *errors )
+bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
 // check text for preprocessing setup for design point calculations SAM issue #634
 	wxString txtPreprocess(text);
-	if (PreProcessScript( &txtPreprocess, errors)) {
+	if (PreProcessScript(&txtPreprocess, errors)) {
 		//	lk::input_string in(text);
 		lk::input_string in(txtPreprocess);
 		if (Parse(in, errors)) return true;

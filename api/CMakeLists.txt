@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.24)
 # For CMake build option `SAMAPI_EXPORT` and `SAM_SKIP_AUTOGEN`, see ../CMakeLists.txt
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment version")
     set(CMAKE_MACOSX_RPATH 1)
 endif()
 
@@ -69,7 +69,7 @@ else()
 endif()
 
 if(APPLE)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.15" )
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=12" )
 endif()
 
 

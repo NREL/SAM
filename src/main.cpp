@@ -1714,7 +1714,7 @@ bool InputPageData::BuildDatabases()
 
 	// TODO - add m_eqnScript preprocess to expand compute module calls per Github SAM Issue#634 and PR#687
 
-	if ( !m_eqns.LoadScript(m_eqnScript ) )
+	if ( !m_eqns.LoadScript( m_eqnScript ) )
 		return false;
 
 	if ( !m_cbs.LoadScript( m_cbScript ) )
@@ -2259,6 +2259,7 @@ void SamApp::Restart()
 				wxLogStatus(" --> error loading .ui for " + wxFileName(file).GetName());
 #elif defined(__LOAD_AS_JSON__)
 			//			wxLogStatus("loading .json: " + wxFileName(file).GetName());
+
 			if (!SamApp::InputPages().LoadFileJSON(SamApp::GetRuntimePath() + "/ui/" + file))
 				wxLogStatus(" --> error loading .json for " + wxFileName(file).GetName());
 #else

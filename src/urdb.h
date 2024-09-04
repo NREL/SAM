@@ -40,7 +40,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/string.h>
 
 #include "object.h"
-#include <wex/jsonreader.h>
+#include <rapidjson/reader.h>
 
 class AFSearchListBox;
 
@@ -145,7 +145,7 @@ public:
 	bool QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayString &names, wxString *err=NULL);
 	bool QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err=NULL);
 	bool RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url=NULL, wxString *err=NULL);
-	bool RetrieveDiurnalData(wxJSONValue &month_ary, double sched[12][24]);
+	bool RetrieveDiurnalData(rapidjson::Value &month_ary, double sched[12][24]);
 };
 
 
