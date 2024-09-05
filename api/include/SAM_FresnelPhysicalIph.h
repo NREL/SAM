@@ -28,40 +28,8 @@ extern "C"
 
 
 	//
-	// SysControl parameters
+	// SystemControl parameters
 	//
-
-	/**
-	 * Set aux_array: Aux heater, boiler parasitic
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set bop_array: Balance of plant parasitic power fraction
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set disp_inventory_incentive: Dispatch storage terminal inventory incentive multiplier
@@ -69,63 +37,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_max_iter: Max. no. dispatch optimization iterations [-]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_mip_gap: Dispatch optimization solution tolerance [-]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_time_weighting: Dispatch optimization future time discounting factor [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.99
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_timeout: Max. dispatch optimization solve duration [s]
-	 * options: None
-	 * constraints: None
-	 * required if: is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_dispatch: Allow dispatch optimization? [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set pb_fixed_par: Fixed parasitic load - runs at all times
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SystemControl_disp_inventory_incentive_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
@@ -133,23 +45,7 @@ extern "C"
 	 * constraints: None
 	 * required if: ?=1
 	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -205,7 +101,7 @@ extern "C"
 	 * Set solar_mult_in: Solar multiple Input
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SystemDesign_solar_mult_in_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -213,7 +109,7 @@ extern "C"
 	 * Set solar_mult_or_Ap: Design using specified solar mult or field aperture [m3]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SystemDesign_solar_mult_or_Ap_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -221,7 +117,7 @@ extern "C"
 	 * Set total_Ap_in: Field aperture Input [m3]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SystemDesign_total_Ap_in_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -359,22 +255,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_land_mult_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set mc_bal_cold: The heat capacity of the balance of plant on the cold side [kWht/K-MWt]
 	 * options: None
 	 * constraints: None
@@ -469,6 +349,51 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_water_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// SolarField parameters
+	//
+
+	/**
+	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1035,30 +960,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
 	 * options: None
 	 * constraints: None
@@ -1132,6 +1033,115 @@ extern "C"
 
 
 	//
+	// SysControl parameters
+	//
+
+	/**
+	 * Set aux_array: Aux heater, boiler parasitic
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set bop_array: Balance of plant parasitic power fraction
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_max_iter: Max. no. dispatch optimization iterations [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_mip_gap: Dispatch optimization solution tolerance [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_rsu_cost_rel: Receiver startup cost [$/MWt/start]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_time_weighting: Dispatch optimization future time discounting factor [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.99
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_timeout: Max. dispatch optimization solve duration [s]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_dispatch: Allow dispatch optimization? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pb_fixed_par: Fixed parasitic load - runs at all times
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
 	// FinancialModel parameters
 	//
 
@@ -1143,13 +1153,18 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
 
+
+	//
+	// FinancialSolutionMode parameters
+	//
+
 	/**
 	 * Set ppa_price_input: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialModel_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
@@ -1157,7 +1172,36 @@ extern "C"
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialModel_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_sched_weekday: PPA pricing weekday schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekend: PPA pricing weekend schedule, 12x24
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1512,38 +1556,12 @@ extern "C"
 
 
 	/**
-	 * SysControl Getters
+	 * SystemControl Getters
 	 */
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_aux_array_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SystemControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_bop_array_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_inventory_incentive_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_sim_type_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -1608,10 +1626,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_land_mult_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_mc_bal_cold_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_mc_bal_hot_nget(SAM_table ptr, SAM_error *err);
@@ -1635,6 +1649,21 @@ extern "C"
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_washes_per_year_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_water_per_wash_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * SolarField Getters
+	 */
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -1792,12 +1821,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
@@ -1818,14 +1841,61 @@ extern "C"
 
 
 	/**
+	 * SysControl Getters
+	 */
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_aux_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_bop_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_rsu_cost_rel_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
 	 * FinancialModel Getters
 	 */
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialModel_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialModel_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
+	/**
+	 * FinancialSolutionMode Getters
+	 */
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2121,6 +2191,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_eta_optical_des_SS_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_field_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_field_htf_max_temp_nget(SAM_table ptr, SAM_error *err);
@@ -2170,6 +2244,10 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
