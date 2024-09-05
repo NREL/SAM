@@ -889,6 +889,8 @@
     "T_fp": 10.0,
     "T_loop_in_des": 90.0,
     "T_loop_out": 150.0,
+    "T_shutdown": 0.0,
+    "T_startup": 0.0,
     "T_tank_cold_ini": 300.0,
     "T_tank_hot_inlet_min": 400.0,
     "Tau_envelope": [

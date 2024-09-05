@@ -889,6 +889,8 @@
     "T_fp": 10.0,
     "T_loop_in_des": 90.0,
     "T_loop_out": 150.0,
+    "T_shutdown": 0.0,
+    "T_startup": 0.0,
     "T_tank_cold_ini": 300.0,
     "T_tank_hot_inlet_min": 400.0,
     "Tau_envelope": [
@@ -1258,6 +1260,7 @@
     "csp.pt.par.calc.bop": 0.0,
     "csp.pt.tes.htf_density": 944.436,
     "csp.pt.tes.tank_diameter": 6.44039,
+    "csp.pt.tes.tank_height": 15.0,
     "csp_dtr_hce_absorber_material_1": 0.0,
     "csp_dtr_hce_absorber_material_2": 0.0,
     "csp_dtr_hce_absorber_material_3": 0.0,
@@ -1622,6 +1625,7 @@
     "custom_tes_p_loss": 0.0,
     "custom_tes_pipe_sizes": 0.0,
     "dP_sf_SS": 0.0,
+    "d_tank_in": 0.0,
     "direct_subtotal": 7953700.0,
     "dt_cold": 5.0,
     "dt_hot": 5.0,
@@ -1971,7 +1975,7 @@
     "fluid_dens_outlet_temp": 918.795,
     "fthrctrl": 2.0,
     "fthrok": 1.0,
-    "h_tank": 15.0,
+    "h_tank_in": 15.0,
     "h_tank_min": 0.5,
     "has_hot_tank_bypass": 0.0,
     "hce_2_is_shown": 1.0,
@@ -1987,6 +1991,7 @@
     "in_time_step": 0.0,
     "init_hot_htf_percent": 30.0,
     "is_advanced": 0.0,
+    "is_h_tank_fixed": 1.0,
     "is_hx": 0.0,
     "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
@@ -2204,6 +2209,17 @@
     "tanks_in_parallel": 1.0,
     "tc_fill": 7.0,
     "tc_void": 0.25,
+    "tes_NT_nstep": 1.0,
+    "tes_NT_piston_loss_poly": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "tes_NT_piston_loss_poly_0": 0.0,
+    "tes_NT_piston_loss_poly_1": 0.0,
+    "tes_NT_piston_loss_poly_2": 0.0,
+    "tes_NT_piston_loss_poly_3": 0.0,
     "tes_avail_vol": 472.37,
     "tes_diams": [
         [
@@ -2211,6 +2227,10 @@
         ]
     ],
     "tes_pump_coef": 0.15,
+    "tes_tank_cp": 0.0,
+    "tes_tank_dens": 0.0,
+    "tes_tank_insul_percent": 10.0,
+    "tes_tank_thick": 0.0,
     "tes_type": 1.0,
     "tes_wallthicks": [
         [
