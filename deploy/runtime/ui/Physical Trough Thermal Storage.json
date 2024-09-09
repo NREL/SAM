@@ -3895,7 +3895,7 @@
             "Units": "",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 9.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
             "sscVariableName": "",
