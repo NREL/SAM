@@ -179,7 +179,11 @@ jobs:
     - name: Evaluate test results vs Linux file
       run: |
         python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
-        
+    
+    - name: Evaluate test results vs Windows file
+      run: |
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+    
     - name: Run SSC Variable & SAM Defaults Differ
       run: |
           python -m pip install --upgrade pip
@@ -573,3 +577,7 @@ jobs:
     - name: Evaluate test results vs Mac file
       run: |
         python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_osx64.csv ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv false
+
+    - name: Evaluate test results vs Windows file
+      run: |
+        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/SAMOS.app/Contents/MacOS/../../test_results_osx64.csv true

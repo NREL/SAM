@@ -393,10 +393,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_GenericSystem_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT const char* SAM_GenericSystem_Outputs_output_file_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_GenericSystem_Outputs_sim_cpu_run_time_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_GenericSystem_Outputs_system_heat_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_GenericSystem_Outputs_water_usage_nget(SAM_table ptr, SAM_error *err);
