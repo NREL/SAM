@@ -2193,7 +2193,7 @@
     "solar_resource": "tucson_az_32.116521_-110.933042_psmv3_60_tmy",
     "solar_resource_file": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "specified_solar_multiple": 2.5,
-    "specified_total_aperture": 20992.0,
+    "specified_total_aperture": 20000.0,
     "state": "-",
     "station_id": "67345",
     "step": 3600.0,
@@ -2209,17 +2209,6 @@
     "tanks_in_parallel": 1.0,
     "tc_fill": 7.0,
     "tc_void": 0.25,
-    "tes_NT_nstep": 1.0,
-    "tes_NT_piston_loss_poly": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-    ],
-    "tes_NT_piston_loss_poly_0": 0.0,
-    "tes_NT_piston_loss_poly_1": 0.0,
-    "tes_NT_piston_loss_poly_2": 0.0,
-    "tes_NT_piston_loss_poly_3": 0.0,
     "tes_avail_vol": 472.37,
     "tes_diams": [
         [
@@ -2227,11 +2216,6 @@
         ]
     ],
     "tes_pump_coef": 0.15,
-    "tes_tank_cp": 0.0,
-    "tes_tank_dens": 0.0,
-    "tes_tank_insul_percent": 10.0,
-    "tes_tank_thick": 0.0,
-    "tes_type": 1.0,
     "tes_wallthicks": [
         [
             -1.0
