@@ -2489,6 +2489,78 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fixed: Fixed O&M annual amount [$/year]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production: Production-based O&M amount [$/MWh]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set total_installed_cost: Total installed cost [$]
 	 * options: None
 	 * constraints: None
@@ -3193,6 +3265,24 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 

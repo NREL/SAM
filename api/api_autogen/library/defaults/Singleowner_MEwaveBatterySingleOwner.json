@@ -250,6 +250,8 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 10
 		},
+		"Common": {
+		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 20000,
 			"batt_meter_position": 1,

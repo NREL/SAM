@@ -167,6 +167,14 @@ extern "C"
 	//
 
 	/**
+	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * constraints: MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_GenericSystem_HybridCosts_annual_fuel_usage_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
 	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
@@ -327,6 +335,8 @@ extern "C"
 	/**
 	 * HybridCosts Getters
 	 */
+
+	SAM_EXPORT double SAM_GenericSystem_HybridCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_GenericSystem_HybridCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -5683,6 +5683,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set total_installed_cost: Total installed cost [$]
 	 * options: None
 	 * constraints: None
@@ -7223,6 +7231,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 

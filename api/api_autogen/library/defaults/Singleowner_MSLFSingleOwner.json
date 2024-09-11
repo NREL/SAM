@@ -250,6 +250,8 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 0
 		},
+		"Common": {
+		},
 		"BatterySystem": {
 		},
 		"ElectricityRates": {

@@ -242,6 +242,8 @@
 			"pbi_uti_tax_sta": 1,
 			"pbi_uti_term": 0
 		},
+		"Common": {
+		},
 		"BatterySystem": {
 			"batt_replacement_option": 1
 		},
@@ -398,6 +400,9 @@
 		"Monthly": {
 		},
 		"HybridCosts": {
+			"om_capacity": [0],
+			"om_fixed": [0],
+			"om_production": [0],
 			"total_installed_cost": 4.11485e+08
 		}
 	}

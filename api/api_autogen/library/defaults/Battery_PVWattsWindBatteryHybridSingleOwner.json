@@ -390,8 +390,12 @@
 			"om_batt_capacity_cost": [5.300000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
+			"om_batt_replacement_cost": [323.000000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
 			"om_fixed_escal": 0,
+			"om_production_escal": 0,
+			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 1.119e+08
 		}
 	}

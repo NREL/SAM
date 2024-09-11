@@ -254,6 +254,18 @@ SAM_EXPORT void SAM_Fuelcell_HybridCosts_add_om_num_types_nset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_annual_fuel_usage_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "annual_fuel_usage", number);
+	});
+}
+
+SAM_EXPORT void SAM_Fuelcell_HybridCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "annual_fuel_usage_lifetime", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Fuelcell_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
@@ -724,6 +736,25 @@ SAM_EXPORT double SAM_Fuelcell_HybridCosts_add_om_num_types_nget(SAM_table ptr, 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "add_om_num_types", &result))
 		make_access_error("SAM_Fuelcell", "add_om_num_types");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Fuelcell_HybridCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
+		make_access_error("SAM_Fuelcell", "annual_fuel_usage");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_HybridCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "annual_fuel_usage_lifetime", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "annual_fuel_usage_lifetime");
 	});
 	return result;
 }
