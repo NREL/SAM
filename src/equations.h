@@ -63,7 +63,7 @@ public:
 
 	void Clear();
 	bool LoadFile( const wxString &file, wxArrayString *errors = 0 );
-	bool LoadScript(  const wxString &text, wxArrayString *errors = 0 );
+	bool LoadScript( const wxString &text, wxArrayString *errors = 0 );
 	bool Parse( lk::input_base &in, wxArrayString *errors = 0 );
 
 	wxArrayString *GetAffectedVariables( const wxString &var );
@@ -80,7 +80,7 @@ private:
 	void ScanParseTree( lk::node_t *root, wxArrayString *inputs, wxArrayString *outputs, bool in_assign_lhs = false );
 	bool AddEquation( const wxArrayString &inputs, const wxArrayString &outputs, lk::node_t *tree, bool result_is_output );
 
-	bool PreProcessScript(  wxString *text, wxArrayString* errors = 0);
+	bool PreProcessScript(wxString *text, wxArrayString* errors = 0);
 
 };
 
