@@ -1089,8 +1089,8 @@
     "T_htf_hot_des": 391.0,
     "T_loop_in_des": 293.0,
     "T_loop_out": 391.0,
-    "T_shutdown": 325.3,
-    "T_startup": 325.3,
+    "T_shutdown": 325.34,
+    "T_startup": 325.34,
     "T_tank_cold_ini": 300.0,
     "T_tank_hot_inlet_min": 400.0,
     "Tau_envelope": [
@@ -1547,6 +1547,7 @@
     "csp.pt.pwrb.pressure_mode": 0.0,
     "csp.pt.tes.htf_density": 1872.49,
     "csp.pt.tes.tank_diameter": 56.1257,
+    "csp.pt.tes.tank_height": 12.0,
     "csp_dtr_hce_absorber_material_1": 0.0,
     "csp_dtr_hce_absorber_material_2": 0.0,
     "csp_dtr_hce_absorber_material_3": 0.0,
@@ -1919,6 +1920,7 @@
     "cycle_max_frac": 1.0,
     "dP_sf_SS": 19.7887,
     "dT_cw_ref": 10.0,
+    "d_tank_in": 0.0,
     "debt_message": "",
     "debt_option": 1.0,
     "debt_percent": 50.0,
@@ -20424,7 +20426,7 @@
     "gross_net_conversion_factor": 0.9,
     "h_ctes_tank": 30.0,
     "h_ctes_tank_min": 1.0,
-    "h_tank": 12.0,
+    "h_tank_in": 12.0,
     "h_tank_min": 1.0,
     "has_hot_tank_bypass": 0.0,
     "hce_2_is_shown": 1.0,
@@ -20498,7 +20500,9 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_dispatch": 0.0,
-    "is_hx": 1.0,
+    "is_h_tank_fixed": 1.0,
+    "is_hx": 0.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -21496,14 +21500,38 @@
     "tech_type": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
+    "tes_NT_piston_loss_poly": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "tes_NT_piston_loss_poly_0": 0.0,
+    "tes_NT_piston_loss_poly_1": 0.0,
+    "tes_NT_piston_loss_poly_2": 0.0,
+    "tes_NT_piston_loss_poly_3": 0.0,
     "tes_avail_vol": 27214.9,
     "tes_diams": [
         [
             -1.0
         ]
     ],
+    "tes_n_tsteps": 50.0,
+    "tes_pb_T_charge_min": 0.0,
+    "tes_pb_T_cold_delta": 10.0,
+    "tes_pb_T_hot_delta": 10.0,
+    "tes_pb_cp_solid": 830.0,
+    "tes_pb_dens_solid": 2500.0,
+    "tes_pb_f_oversize": 1.0,
+    "tes_pb_k_eff": 5.69,
+    "tes_pb_n_xsteps": 99.0,
+    "tes_pb_void_frac": 0.22,
     "tes_pump_coef": 0.15,
-    "tes_type": 1.0,
+    "tes_tank_cp": 0.49,
+    "tes_tank_dens": 8000.0,
+    "tes_tank_insul_percent": 10.0,
+    "tes_tank_thick": 0.0254,
+    "tes_type": 0.0,
     "tes_wallthicks": [
         [
             -1.0
@@ -21515,6 +21543,9 @@
     "tilt": 0.0,
     "time_start": 0.0,
     "time_stop": 31536000.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "tod_library": "Uniform Dispatch",
     "total_aperture": 965632.0,
     "total_direct_cost": 485686000.0,
