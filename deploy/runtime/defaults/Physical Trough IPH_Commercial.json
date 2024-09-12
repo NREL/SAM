@@ -1284,6 +1284,7 @@
     "csp.pt.par.calc.bop": 0.0,
     "csp.pt.tes.htf_density": 944.436,
     "csp.pt.tes.tank_diameter": 6.44039,
+    "csp.pt.tes.tank_height": 15.0,
     "csp_dtr_hce_absorber_material_1": 0.0,
     "csp_dtr_hce_absorber_material_2": 0.0,
     "csp_dtr_hce_absorber_material_3": 0.0,
@@ -1648,6 +1649,7 @@
     "custom_tes_p_loss": 0.0,
     "custom_tes_pipe_sizes": 0.0,
     "dP_sf_SS": 4.39675,
+    "d_tank_in": 0.0,
     "debt_fraction": 100.0,
     "debt_message": "",
     "degradation": [
@@ -2042,7 +2044,7 @@
     "fluid_dens_outlet_temp": 918.795,
     "fthrctrl": 2.0,
     "fthrok": 1.0,
-    "h_tank": 15.0,
+    "h_tank_in": 15.0,
     "h_tank_min": 0.5,
     "has_hot_tank_bypass": 0.0,
     "hce_2_is_shown": 1.0,
@@ -2106,6 +2108,7 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_dispatch": 0.0,
+    "is_h_tank_fixed": 1.0,
     "is_hx": 0.0,
     "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
@@ -19975,7 +19978,6 @@
         ]
     ],
     "tes_pump_coef": 0.15,
-    "tes_type": 1.0,
     "tes_wallthicks": [
         [
             -1.0
