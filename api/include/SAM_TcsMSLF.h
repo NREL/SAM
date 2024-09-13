@@ -1991,8 +1991,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsMSLF_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_TcsMSLF_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsMSLF_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);

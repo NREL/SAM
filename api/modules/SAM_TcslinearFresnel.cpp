@@ -2363,15 +2363,6 @@ SAM_EXPORT double* SAM_TcslinearFresnel_Outputs_annual_energy_distribution_time_
 	return result;
 }
 
-SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
-		make_access_error("SAM_TcslinearFresnel", "annual_fuel_usage");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_TcslinearFresnel_Outputs_annual_total_water_use_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{

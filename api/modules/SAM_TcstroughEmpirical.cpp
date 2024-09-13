@@ -2390,15 +2390,6 @@ SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_annual_energy_distribution_tim
 	return result;
 }
 
-SAM_EXPORT double SAM_TcstroughEmpirical_Outputs_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "annual_fuel_usage", &result))
-		make_access_error("SAM_TcstroughEmpirical", "annual_fuel_usage");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_TcstroughEmpirical_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
