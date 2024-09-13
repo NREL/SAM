@@ -10,7 +10,7 @@
     "T_htf_cold_ref": 90.0,
     "T_htf_hot_ref": 200.0,
     "adjust": 0.0,
-    "adjust_constant": 0.0,
+    "adjust_constant": 5.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [

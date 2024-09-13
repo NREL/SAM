@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Plant and Equipment",
-    "Width": 844.0,
-    "Height": 697.0,
+    "Width": 857.0,
+    "Height": 1016.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -102,7 +102,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 89.0
+                    "Integer": 131.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -110,7 +110,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "System Availability"
+                    "String": "Plant Utilitzation Factor"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -131,7 +131,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -139,7 +139,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 137.0
+                    "Integer": 182.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -168,7 +168,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -176,7 +176,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 137.0
+                    "Integer": 182.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -205,7 +205,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 564.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -238,19 +238,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 465.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 47.0
+                    "Integer": 368.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 48.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -258,13 +258,13 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "kW"
+                    "String": "GETEM assumption:15°C for Flash and 10°C for Binary plants. Please change when switching between plants."
                 },
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
+                        "Red": 255.0,
+                        "Green": 128.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
                     }
@@ -279,7 +279,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -287,7 +287,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 }
             }
         },
@@ -353,6 +353,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label19"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 47.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "kW"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
         "LossAdjustment": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -362,7 +424,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 522.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -423,11 +485,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 661.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 480.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -510,7 +572,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 39.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -649,7 +711,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -698,7 +760,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 627.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -947,7 +1009,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 651.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1154,7 +1216,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 669.0
+                    "Integer": 750.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1540,7 +1602,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 567.0
+                    "Integer": 648.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1614,7 +1676,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1762,7 +1824,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 624.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1799,7 +1861,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1836,7 +1898,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1873,7 +1935,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1894,6 +1956,68 @@
                 "TipTitle": {
                     "Type": 5.0,
                     "String": "Wet-bulb Temp from Weather File"
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "getem_utilization_factor_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 480.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The System Availability Losses are generation outages and losses that decrease the utilization factor of a plant. This utilization factor is also termed the net capacity factor in GETEM. It accounts for plant availability and ambient temperature variability but does not include the effect of declining resource productivity/degradation. Resource productivity decline is included separately in the LCOE calculation."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -1993,7 +2117,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 573.0
+                    "Integer": 654.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2317,68 +2441,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 264.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 423.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 48.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "System availability losses reduce the system output to represent system outages or other events."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 77"
                 },
                 "X": {
@@ -2387,7 +2449,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2573,7 +2635,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2656,7 +2718,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 603.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2739,7 +2801,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 549.0
+                    "Integer": 630.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2822,7 +2884,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2905,7 +2967,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 711.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2988,7 +3050,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 684.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3029,7 +3091,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3112,7 +3174,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3195,7 +3257,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3236,7 +3298,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 579.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3315,11 +3377,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 661.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3402,7 +3464,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4426,6 +4488,7 @@
         "\t\tvalue('decline_type', 0);\r",
         "\t\tenable('decline_type', false);\r",
         "\t}\r",
+        "\t//msgbox('Plant type has changed. Consider updating the assumed wet bulb temperature to 10degC for Binary or 15degC for Flash. Placeholder text, update with text from Dayo.');\r",
         "};\r",
         "\r",
         "on_change{'analysis_type'} = define() {\r",
