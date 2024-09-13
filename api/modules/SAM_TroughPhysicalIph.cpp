@@ -314,6 +314,18 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_loop_out_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_shutdown_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_shutdown", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_startup_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_startup", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_Tau_envelope_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Tau_envelope", mat, nrows, ncols);
@@ -686,15 +698,21 @@ SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nset(SAM_table ptr,
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "d_tank_in", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dt_hot", number);
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "h_tank", number);
+		ssc_data_set_number(ptr, "h_tank_in", number);
 	});
 }
 
@@ -719,6 +737,12 @@ SAM_EXPORT void SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nset(SAM_table ptr, 
 SAM_EXPORT void SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "init_hot_htf_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_h_tank_fixed", number);
 	});
 }
 
@@ -1772,6 +1796,24 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_out_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_shutdown_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_shutdown", &result))
+		make_access_error("SAM_TroughPhysicalIph", "T_shutdown");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_startup_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_startup", &result))
+		make_access_error("SAM_TroughPhysicalIph", "T_startup");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2358,6 +2400,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "d_tank_in", &result))
+		make_access_error("SAM_TroughPhysicalIph", "d_tank_in");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2367,11 +2418,11 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "h_tank", &result))
-		make_access_error("SAM_TroughPhysicalIph", "h_tank");
+	if (!ssc_data_get_number(ptr, "h_tank_in", &result))
+		make_access_error("SAM_TroughPhysicalIph", "h_tank_in");
 	});
 	return result;
 }
@@ -2408,6 +2459,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nget(SAM_table 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "init_hot_htf_percent", &result))
 		make_access_error("SAM_TroughPhysicalIph", "init_hot_htf_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_h_tank_fixed", &result))
+		make_access_error("SAM_TroughPhysicalIph", "is_h_tank_fixed");
 	});
 	return result;
 }
@@ -4114,6 +4174,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp_pt_tes_tank_diameter", &result))
 		make_access_error("SAM_TroughPhysicalIph", "csp_pt_tes_tank_diameter");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "csp_pt_tes_tank_height", &result))
+		make_access_error("SAM_TroughPhysicalIph", "csp_pt_tes_tank_height");
 	});
 	return result;
 }

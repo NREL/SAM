@@ -142,6 +142,8 @@
 			"T_fp": 10,
 			"T_loop_in_des": 90,
 			"T_loop_out": 150,
+			"T_shutdown": 109.8,
+			"T_startup": 109.8,
 			"Tau_envelope": [
 				[0.964000, 0.964000, 1.000000, 0.000000],
 				[0.964000, 0.964000, 1.000000, 0.000000],
@@ -311,12 +313,14 @@
 		"TES": {
 			"cold_tank_Thtr": 60,
 			"cold_tank_max_heat": 0.5,
+			"d_tank_in": 0,
 			"dt_hot": 5,
-			"h_tank": 15,
+			"h_tank_in": 15,
 			"h_tank_min": 0.5,
 			"hot_tank_Thtr": 110,
 			"hot_tank_max_heat": 1,
 			"init_hot_htf_percent": 30,
+			"is_h_tank_fixed": 1,
 			"store_fl_props": [
 				[1.000000]
 			],

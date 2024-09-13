@@ -447,6 +447,22 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_loop_out_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set T_shutdown: Temperature when solar field begins recirculating [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_shutdown_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_startup: Required temperature of the system before the power block can be switched on [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_startup_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set Tau_envelope: Envelope transmittance [none]
 	 * options: None
 	 * constraints: None
@@ -953,6 +969,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set d_tank_in: Tank diameter input [m]
+	 * options: None
+	 * constraints: None
+	 * required if: is_h_tank_fixed=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
@@ -961,12 +985,12 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set h_tank: Total height of tank (height of HTF when tank is full [m]
+	 * Set h_tank_in: Total height of tank input (height of HTF when tank is full [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: is_h_tank_fixed=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
@@ -999,6 +1023,14 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_h_tank_fixed: [1] Use fixed height (calculate diameter) [0] Use fixed diameter [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set store_fl_props: User defined storage fluid property data [-]
@@ -1945,6 +1977,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_out_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_shutdown_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_startup_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_TrackingError_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2079,9 +2115,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err);
 
@@ -2090,6 +2128,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -2526,6 +2566,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_height_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_dP_sf_SS_nget(SAM_table ptr, SAM_error *err);
 

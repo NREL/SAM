@@ -82,6 +82,22 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_T_src_out_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set T_tank_cold_ini: Temperature of fluid in cold tank at beginning of step [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_T_tank_cold_ini_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_tank_hot_ini: Temperature of fluid in hot tank at beginning of step [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_T_tank_hot_ini_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set cold_tank_Thtr: Minimum allowable cold tank HTF temp [C]
 	 * options: None
 	 * constraints: None
@@ -98,6 +114,14 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set d_tank_in: Tank diameter input [m]
+	 * options: None
+	 * constraints: None
+	 * required if: is_h_tank_fixed=0
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
@@ -106,12 +130,12 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set h_tank: Total height of tank (height of HTF when tank is full [m]
+	 * Set h_tank_in: Total height of tank (height of HTF when tank is full [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: is_h_tank_fixed=1
 	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_CspSubcomponent_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
@@ -154,6 +178,14 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_h_tank_fixed: [1] Use fixed height (calculate diameter) [0] Use fixed diameter [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mdot_sink: Mass flow to heat sink or power block [kg/s]
 	 * options: None
 	 * constraints: None
@@ -192,6 +224,62 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_NT_nstep: Number of time steps for energy balance (used for Norwich HeatTrap)
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_NT_nstep_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_NT_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_NT_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set tes_tank_cp: Tank wall cp (used for Norwich HeatTrap) [kJ/kg-K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_tank_dens: Tank wall thickness (used for Norwich HeatTrap) [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_tank_insul_percent: Percent additional wall mass due to insulation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_tank_thick: Tank wall thickness (used for Norwich HeatTrap) [m]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_type: Standard two tank (0), HeatTrap Single Tank (1) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tshours: Equivalent full-load thermal storage hours [hr]
@@ -425,13 +513,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CspSubcomponent_TES_T_src_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_CspSubcomponent_TES_T_tank_cold_ini_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_T_tank_hot_ini_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_CspSubcomponent_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_CspSubcomponent_TES_dt_hot_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err);
 
@@ -443,6 +537,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_CspSubcomponent_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_sink_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_src_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -452,6 +548,20 @@ extern "C"
 	SAM_EXPORT double SAM_CspSubcomponent_TES_store_fluid_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_NT_nstep_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_TES_tes_NT_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_tank_cp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_tank_dens_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_tank_insul_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_tank_thick_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_type_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_tshours_nget(SAM_table ptr, SAM_error *err);
 
@@ -528,6 +638,54 @@ extern "C"
 	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_cold_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_hot_tank_mass_perc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_hot_tank_vol_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_piston_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_piston_loc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_q_ch_from_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_q_dc_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_q_dot_ch_from_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_q_dot_dc_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_E_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_E_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_V_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_V_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_Outputs_tes_diameter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_error_corrected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_error_percent_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_exp_length_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_exp_wall_mass_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_Outputs_tes_height_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_leak_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_mass_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_mass_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_Outputs_tes_radius_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CspSubcomponent_Outputs_tes_wall_error_aget(SAM_table ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

@@ -278,6 +278,12 @@ SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_timestep_load_fractions", number);
+	});
+}
+
 SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
@@ -2300,6 +2306,15 @@ SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aget(SAM
 	result = ssc_data_get_array(ptr, "is_rec_su_allowed_in", length);
 	if (!result)
 		make_access_error("SAM_TcsmoltenSalt", "is_rec_su_allowed_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_timestep_load_fractions", &result))
+		make_access_error("SAM_TcsmoltenSalt", "is_timestep_load_fractions");
 	});
 	return result;
 }

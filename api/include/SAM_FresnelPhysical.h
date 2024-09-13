@@ -1081,6 +1081,155 @@ extern "C"
 
 
 	//
+	// Tou parameters
+	//
+
+	/**
+	 * Set ampl_data_dir: AMPL data file directory [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=''
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
+
+	/**
+	 * Set ampl_exec_call: System command to run AMPL code [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?='ampl sdk_solution.run'
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
+
+	/**
+	 * Set can_cycle_use_standby: Can the cycle use standby operation?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_reporting: Dispatch optimization reporting level [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=9e99
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// SysControl parameters
 	//
 
@@ -1211,147 +1360,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-
-	//
-	// Tou parameters
-	//
-
-	/**
-	 * Set ampl_data_dir: AMPL data file directory [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set can_cycle_use_standby: Can the cycle use standby operation?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_reporting: Dispatch optimization reporting level [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=9e99
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2100,6 +2108,47 @@ extern "C"
 
 
 	/**
+	 * Tou Getters
+	 */
+
+	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * SysControl Getters
 	 */
 
@@ -2134,45 +2183,6 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-
-	/**
-	 * Tou Getters
-	 */
-
-	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

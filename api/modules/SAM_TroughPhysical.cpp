@@ -446,6 +446,18 @@ SAM_EXPORT void SAM_TroughPhysical_SolarField_T_loop_out_nset(SAM_table ptr, dou
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_SolarField_T_shutdown_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_shutdown", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_SolarField_T_startup_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "T_startup", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_SolarField_Tau_envelope_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "Tau_envelope", mat, nrows, ncols);
@@ -968,15 +980,21 @@ SAM_EXPORT void SAM_TroughPhysical_TES_cold_tank_max_heat_nset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "d_tank_in", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "dt_hot", number);
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysical_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "h_tank", number);
+		ssc_data_set_number(ptr, "h_tank_in", number);
 	});
 }
 
@@ -1004,6 +1022,12 @@ SAM_EXPORT void SAM_TroughPhysical_TES_init_hot_htf_percent_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_h_tank_fixed", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "store_fl_props", mat, nrows, ncols);
@@ -1019,6 +1043,48 @@ SAM_EXPORT void SAM_TroughPhysical_TES_store_fluid_nset(SAM_table ptr, double nu
 SAM_EXPORT void SAM_TroughPhysical_TES_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tank_pairs", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_NT_nstep_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_NT_nstep", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_NT_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "tes_NT_piston_loss_poly", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_tank_cp_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_tank_cp", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_tank_dens_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_tank_dens", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_tank_insul_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_tank_thick_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_tank_thick", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_type", number);
 	});
 }
 
@@ -1175,6 +1241,12 @@ SAM_EXPORT void SAM_TroughPhysical_Tou_is_ampl_engine_nset(SAM_table ptr, double
 SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_dispatch", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_timestep_load_fractions", number);
 	});
 }
 
@@ -2229,6 +2301,24 @@ SAM_EXPORT double SAM_TroughPhysical_SolarField_T_loop_out_nget(SAM_table ptr, S
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_SolarField_T_shutdown_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_shutdown", &result))
+		make_access_error("SAM_TroughPhysical", "T_shutdown");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_SolarField_T_startup_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "T_startup", &result))
+		make_access_error("SAM_TroughPhysical", "T_startup");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysical_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3042,6 +3132,15 @@ SAM_EXPORT double SAM_TroughPhysical_TES_cold_tank_max_heat_nget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "d_tank_in", &result))
+		make_access_error("SAM_TroughPhysical", "d_tank_in");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysical_TES_dt_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3051,11 +3150,11 @@ SAM_EXPORT double SAM_TroughPhysical_TES_dt_hot_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-SAM_EXPORT double SAM_TroughPhysical_TES_h_tank_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_TroughPhysical_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "h_tank", &result))
-		make_access_error("SAM_TroughPhysical", "h_tank");
+	if (!ssc_data_get_number(ptr, "h_tank_in", &result))
+		make_access_error("SAM_TroughPhysical", "h_tank_in");
 	});
 	return result;
 }
@@ -3096,6 +3195,15 @@ SAM_EXPORT double SAM_TroughPhysical_TES_init_hot_htf_percent_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_h_tank_fixed", &result))
+		make_access_error("SAM_TroughPhysical", "is_h_tank_fixed");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysical_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3120,6 +3228,70 @@ SAM_EXPORT double SAM_TroughPhysical_TES_tank_pairs_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tank_pairs", &result))
 		make_access_error("SAM_TroughPhysical", "tank_pairs");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_NT_nstep_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_NT_nstep", &result))
+		make_access_error("SAM_TroughPhysical", "tes_NT_nstep");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_TES_tes_NT_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_NT_piston_loss_poly", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_NT_piston_loss_poly");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_tank_cp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_tank_cp", &result))
+		make_access_error("SAM_TroughPhysical", "tes_tank_cp");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_tank_dens_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_tank_dens", &result))
+		make_access_error("SAM_TroughPhysical", "tes_tank_dens");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_tank_insul_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_tank_insul_percent", &result))
+		make_access_error("SAM_TroughPhysical", "tes_tank_insul_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_tank_thick_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_tank_thick", &result))
+		make_access_error("SAM_TroughPhysical", "tes_tank_thick");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_TES_tes_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_type", &result))
+		make_access_error("SAM_TroughPhysical", "tes_type");
 	});
 	return result;
 }
@@ -3360,6 +3532,15 @@ SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_nget(SAM_table ptr, SAM_err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_dispatch", &result))
 		make_access_error("SAM_TroughPhysical", "is_dispatch");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_timestep_load_fractions", &result))
+		make_access_error("SAM_TroughPhysical", "is_timestep_load_fractions");
 	});
 	return result;
 }
@@ -4620,6 +4801,15 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_diameter_nget(SAM_t
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "csp_pt_tes_tank_diameter", &result))
 		make_access_error("SAM_TroughPhysical", "csp_pt_tes_tank_diameter");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_height_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "csp_pt_tes_tank_height", &result))
+		make_access_error("SAM_TroughPhysical", "csp_pt_tes_tank_height");
 	});
 	return result;
 }
@@ -6092,11 +6282,81 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_tdry_aget(SAM_table ptr, int* leng
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_cold_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_SA_cold", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_SA_cold");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_SA_hot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_SA_hot");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_tot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_SA_tot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_SA_tot");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_avail_vol", &result))
 		make_access_error("SAM_TroughPhysical", "tes_avail_vol");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_cold_vol_frac_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_cold_vol_frac", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_cold_vol_frac");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_error", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_error");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_corrected_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_error_corrected", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_error_corrected");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_error_percent", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_error_percent");
 	});
 	return result;
 }
@@ -6134,6 +6394,56 @@ SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_htf_pump_power_aget(SAM_table 
 	result = ssc_data_get_array(ptr, "tes_htf_pump_power", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "tes_htf_pump_power");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_leak_error_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_leak_error", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_leak_error");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_mass_tot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_mass_tot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_mass_tot");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_piston_frac_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_piston_frac", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_piston_frac");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_piston_loc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_piston_loc", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_piston_loc");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_wall_error_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_wall_error", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "tes_wall_error");
 	});
 	return result;
 }
@@ -6274,6 +6584,36 @@ SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_tank_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "vol_tank", &result))
 		make_access_error("SAM_TroughPhysical", "vol_tank");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "vol_tes_cold", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "vol_tes_cold");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "vol_tes_hot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "vol_tes_hot");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_tot_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "vol_tes_tot", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysical", "vol_tes_tot");
 	});
 	return result;
 }
