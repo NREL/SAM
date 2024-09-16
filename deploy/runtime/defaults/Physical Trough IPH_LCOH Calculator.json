@@ -1844,7 +1844,6 @@
         ]
     ],
     "eta_pump": 0.85,
-    "eta_tes_htr": 0.98,
     "f_htfmax": 1.2,
     "f_htfmax_actual": 1.96049,
     "f_htfmin": 0.25,

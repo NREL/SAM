@@ -11603,7 +11603,6 @@
     "equip_reserve_depr_sta": 0.0,
     "eta_pump": 0.85,
     "eta_ref": 0.356,
-    "eta_tes_htr": 0.98,
     "f_ctes_warm_ini": 0.0,
     "f_htfmax": 1.2,
     "f_htfmax_actual": 0.581947,
