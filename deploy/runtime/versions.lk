@@ -71,7 +71,7 @@ version_upgrade{'2024.9.15'} = define() {
    
 		value('tes_type', tes_type);
 		value('tes_nt_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
-		value('tes_nt_tank_cp', oldvalue('tes_tank_cp'), 'Updated unit (kJ/kg K) and variable name');
+		value('tes_nt_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
 		value('tes_nt_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
 		value('tes_nt_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
 		value('tes_nt_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
