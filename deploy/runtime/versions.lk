@@ -51,6 +51,34 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+// Placeholder numbewr 
+version_upgrade{'2024.9.15'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough')
+	{
+		message('We added new TES models and modified certain TES variable names in the physical trough model', 'warning');
+		        
+		// NT is now tes_type == 2 (two tank == 0, packed bed == 1)
+		old_tes_type = oldvalue('tes_type');
+		tes_type = 0;
+		if(old_tes_type == 1)
+		{
+			tes_type = 2;
+		}
+   
+		value('tes_type', tes_type);
+		value('tes_nt_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
+		value('tes_nt_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
+		value('tes_nt_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
+		value('tes_nt_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
+		value('tes_nt_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
+	}
+};
+
+
 version_upgrade{'2024.5.28'} = define() {
 	
 	const cfg = config();

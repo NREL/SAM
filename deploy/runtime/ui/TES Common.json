@@ -1,7 +1,7 @@
 {
     "Name": "TES Common",
-    "Width": 904.0,
-    "Height": 526.0,
+    "Width": 903.0,
+    "Height": 463.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 410.0
+                    "Integer": 347.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -621,296 +621,6 @@
                 }
             }
         },
-        "Choice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "combo_tes_htf_type"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 345.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 124.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Solar Salt|Caloria|Hitec XL|VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|Pressurized Water|User-defined..."
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.dtr.tes.htf_max_opt_temp"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 417.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.dtr.tes.htf_min_opt_temp"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 393.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "csp.pt.tes.htf_density"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 369.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1157,255 +867,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 5.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dt_cold"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 465.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 18.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "dt_hot"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 441.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 17.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "eta_tes_htr"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 663.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 321.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
                 }
             }
         },
@@ -1993,39 +1454,6 @@
                 }
             }
         },
-        "MaterialProperties": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "store_fl_props"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 795.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 342.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 59.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 22.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2109,47 +1537,6 @@
                 }
             }
         },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "tanks_in_parallel"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 360.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 20.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2230,68 +1617,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 4.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "tes_bypass_msg"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 108.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 450.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 267.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
                 }
             }
         },
@@ -2772,19 +2097,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "combo_tes_htf_type": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Storage HTF fluid",
-            "Units": " ",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "Hitec Solar Salt|Caloria HT 43|Hitec XL|Therminol VP-1|Hitec|Dowtherm Q|Dowtherm RP|Therminol 59|Therminol 66|Pressurized Water|User-defined...",
-            "Flags": 2.0,
-            "DefaultValue": 3.0,
-            "UIObject": "Choice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "csp.dtr.tes.fluid_sph": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2802,32 +2114,6 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Fluid temperature",
-            "Units": "°C",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.dtr.tes.htf_max_opt_temp": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Storage HTF max operating temp",
-            "Units": "°C",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.dtr.tes.htf_min_opt_temp": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Storage HTF min operating temp",
             "Units": "°C",
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
@@ -2860,19 +2146,6 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "csp.pt.tes.htf_density": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "HTF density",
-            "Units": "kg/m³",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2938,45 +2211,6 @@
             "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dt_cold": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Cold side HX approach temp",
-            "Units": "°C",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 7.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dt_hot": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Hot side HX approach temp",
-            "Units": "°C",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 5.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "eta_tes_htr": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Tank heater efficiency",
-            "Units": " ",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.98,
-            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3097,19 +2331,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "is_hx": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Heat exchanger no/yes flag",
-            "Units": "0/1",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 9.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "k_tes_loss_coeffs": {
             "Version": 4.0,
             "Type": 3.0,
@@ -3163,23 +2384,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "store_fl_props": {
-            "Version": 4.0,
-            "Type": 3.0,
-            "Label": "User-defined HTF fluid",
-            "Units": " ",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": [
-                [
-                    1.0
-                ]
-            ],
-            "UIObject": "MaterialProperties",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "store_fluid": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3229,19 +2433,6 @@
             "Flags": 2.0,
             "DefaultValue": 1.0,
             "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "tanks_in_parallel": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Field HTF can bypass TES to cycle",
-            "Units": "-",
-            "Group": "Physical Trough Thermal Storage",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3379,26 +2570,7 @@
         "//   If the equations change an input value",
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
-        "//",
-        "",
-        "",
-        "// Just combo converter",
-        "equations{ 'store_fluid' } = define() {",
-        "\treturn ?${combo_tes_htf_type}",
-        "\t[",
-        "\t\t18, //    18.) Nitrate Salt**",
-        "\t\t19, //    19.) Caloria HT 43**",
-        "\t\t20, //    20.) Hitec XL**",
-        "\t\t21, //    21.) Therminol VP-1**",
-        "\t\t22, //    22.) Hitec**",
-        "\t\t23, //    23.) Dowtherm Q**",
-        "\t\t24, //    24.) Dowtherm RP**",
-        "\t\t30, //    30.) Therminol 59",
-        "\t\t29, //    29.) Therminol 66\r",
-        "\t\t31, //    31.) Pressurized Water    ",
-        "\t\t50  //    user defined HTF",
-        "\t];",
-        "};\r",
+        "//\r",
         "",
         "// Just UI indicator\t",
         "equations{ 'TES_COPY_q_pb_design' } = define(){",
@@ -3420,16 +2592,12 @@
         "equations{ 'csp.dtr.tes.thermal_capacity' } = define(){",
         "\treturn ${Q_tes}; };",
         "",
-        "// Just UI indicator",
-        "equations{ 'dt_cold' } = define() {",
-        "\treturn ${dt_hot}; };",
+        "",
         ""
     ],
     "Callbacks": [
-        "on_load{'Physical Trough Thermal Storage'} = define() {",
-        "\ton_change{\"combo_tes_htf_type\"}();",
-        "\ton_change{\"is_hx\"}();",
-        "\ton_change{\"tes_type\"}();\r",
+        "on_load{'TES Common'} = define() {",
+        "\t//on_change{\"tes_type\"}();\r",
         "\t",
         "\t// constants and initial conditions",
         "\tvalue(\"tc_fill\", 7);",
@@ -3453,54 +2621,7 @@
         "function hx_derate_update() {",
         "\t",
         "\thx_derate_update_module();",
-        "}",
-        "",
-        "function set_tes_bypass_msg ( v ) {",
-        "\tmsg = '';",
-        "\tif ( v ) {",
-        "\t\tmsg = \"If the storage fluid is different than the field HTF, then the field and TES must operate in parallel.\";",
-        "\t}",
-        "\tproperty('tes_bypass_msg','Caption',msg);",
-        "}",
-        "",
-        "on_change{\"is_hx\"} = define(){",
-        "\t",
-        "\tis_hx = ${is_hx};",
-        "",
-        "\tenable('dt_hot', is_hx );",
-        "\tenable('dt_cold', is_hx );",
-        "\tenable('tanks_in_parallel', !is_hx);",
-        "\tset_tes_bypass_msg(is_hx);",
-        "};",
-        "",
-        "on_change{\"store_fl_props\"}=define(){",
-        "\ton_change{\"is_hx\"}();",
-        "};",
-        "",
-        "on_change{\"combo_tes_htf_type\"}=define(){",
-        "",
-        "\ton_change{\"is_hx\"}();",
-        "\t",
-        "    bUserDefined = (${combo_tes_htf_type} == 10);",
-        "    enable(\"store_fl_props\", bUserDefined);",
-        "    enable(\"csp.dtr.tes.htf_min_opt_temp\",!bUserDefined);",
-        "    enable(\"csp.dtr.tes.htf_max_opt_temp\",!bUserDefined);",
-        "};\r",
-        "\r",
-        "on_change{\"tes_type\"}=define(){\r",
-        "\t\r",
-        "\tif(${tes_type} == 1){\r",
-        "\t\r",
-        "\t\tif(${tanks_in_parallel} != 1) {\r",
-        "\t\t\t${tanks_in_parallel} = 1;\r",
-        "\t\t}\r",
-        "\t\t\r",
-        "\t\tenable('tanks_in_parallel', false);\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\tenable('tanks_in_parallel', true);\r",
-        "\t}\r",
-        "\r",
-        "};"
+        "}\r",
+        ""
     ]
 }
