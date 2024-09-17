@@ -770,7 +770,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 663.0
+                    "Integer": 669.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -778,7 +778,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 422.0
+                    "Integer": 306.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1014,6 +1014,88 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 10.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nb_apply_credit_current_month"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 978.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 322.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Apply earned credits to current month before roll over"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nb_credit_expire"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 978.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Accrued credits expire at end of true-up period"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -1493,6 +1575,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "ur_nb_apply_credit_current_month": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Apply earned credits to current month before roll over",
+            "Units": "",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_nb_credit_expire": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Accrued credits expire at end of true-up period",
+            "Units": "",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "ur_nm_credit_month": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1669,7 +1777,9 @@
         "\tshow('lbl_metering_option',is_fom_bool() && !is_merchant_plant());",
         "\tenable( 'ur_nm_yearend_sell_rate', eme==0 );",
         "\tenable( 'ur_nm_credit_rollover', eme==0 );",
-        "\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );",
+        "\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );\r",
+        "\tenable( 'ur_nb_credit_expire', eme==3 );\r",
+        "\tenable( 'ur_nb_apply_credit_current_month', eme==3 );",
         "\tif (eme==2 || eme==3|| eme==4)",
         "\t{",
         "\t\tenable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() );",

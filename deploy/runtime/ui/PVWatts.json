@@ -1677,43 +1677,6 @@
                 }
             }
         },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 12"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 78.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 190.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 102.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "PVWatts.png"
-                },
-                "Centered": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1945,6 +1908,43 @@
                     "Boolean": 0.0
                 },
                 "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pvwatts_orientation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 210.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 200.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 110.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "PVWatts.png"
+                },
+                "Centered": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }

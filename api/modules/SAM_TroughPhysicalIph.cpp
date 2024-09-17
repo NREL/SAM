@@ -506,6 +506,18 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_eta_pump_nset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_htfmax", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_htfmin", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_field_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "field_fl_props", mat, nrows, ncols);
@@ -644,6 +656,12 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_tilt_nset(SAM_table ptr, double
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "use_abs_or_rel_mdot_limit", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_wind_stow_speed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_stow_speed", number);
@@ -776,12 +794,6 @@ SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "dispatch_series", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "f_turb_tou_periods", arr, length);
@@ -791,12 +803,6 @@ SAM_EXPORT void SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr,
 SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_ampl_engine", number);
-	});
-}
-
-SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_dispatch_series", number);
 	});
 }
 
@@ -1031,12 +1037,6 @@ SAM_EXPORT void SAM_TroughPhysicalIph_Controller_use_solar_mult_or_aperture_area
 SAM_EXPORT void SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "piping_loss", number);
-	});
-}
-
-SAM_EXPORT void SAM_TroughPhysicalIph_SolarResourceData_lat_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "lat", number);
 	});
 }
 
@@ -2081,6 +2081,24 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_eta_pump_nget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmax", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_htfmax");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmin", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_htfmin");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2295,6 +2313,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_tilt_nget(SAM_table ptr, SAM_
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "use_abs_or_rel_mdot_limit", &result))
+		make_access_error("SAM_TroughPhysicalIph", "use_abs_or_rel_mdot_limit");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_wind_stow_speed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2499,16 +2526,6 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_tab
 	return result;
 }
 
-SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "dispatch_series", length);
-	if (!result)
-		make_access_error("SAM_TroughPhysicalIph", "dispatch_series");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2524,15 +2541,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_ampl_engine", &result))
 		make_access_error("SAM_TroughPhysicalIph", "is_ampl_engine");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_dispatch_series_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_dispatch_series", &result))
-		make_access_error("SAM_TroughPhysicalIph", "is_dispatch_series");
 	});
 	return result;
 }
@@ -2897,15 +2905,6 @@ SAM_EXPORT double SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nget(SAM_ta
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "piping_loss", &result))
 		make_access_error("SAM_TroughPhysicalIph", "piping_loss");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TroughPhysicalIph_SolarResourceData_lat_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "lat", &result))
-		make_access_error("SAM_TroughPhysicalIph", "lat");
 	});
 	return result;
 }
@@ -3569,6 +3568,15 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_pc_pump_aget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_W_dot_pump_SS_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_pump_SS", &result))
+		make_access_error("SAM_TroughPhysicalIph", "W_dot_pump_SS");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_sca_track_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4110,6 +4118,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SA
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_dP_sf_SS_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dP_sf_SS", &result))
+		make_access_error("SAM_TroughPhysicalIph", "dP_sf_SS");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4165,6 +4182,24 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_dot_field_int_energy_aget(SAM
 	result = ssc_data_get_array(ptr, "e_dot_field_int_energy", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "e_dot_field_int_energy");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmax_actual", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_htfmax_actual");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmin_actual", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_htfmin_actual");
 	});
 	return result;
 }
@@ -4380,6 +4415,24 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmax_actual", &result))
+		make_access_error("SAM_TroughPhysicalIph", "m_dot_htfmax_actual");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmin_actual", &result))
+		make_access_error("SAM_TroughPhysicalIph", "m_dot_htfmin_actual");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4449,6 +4502,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_field_flow_velocity_nget(SAM
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_max_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_loop_flow_vel_des", &result))
+		make_access_error("SAM_TroughPhysicalIph", "max_loop_flow_vel_des");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_field_flow_velocity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4463,6 +4525,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_inner_diameter_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "min_inner_diameter", &result))
 		make_access_error("SAM_TroughPhysicalIph", "min_inner_diameter");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_min_loop_flow_vel_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "min_loop_flow_vel_des", &result))
+		make_access_error("SAM_TroughPhysicalIph", "min_loop_flow_vel_des");
 	});
 	return result;
 }
@@ -5331,6 +5402,26 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_twet_aget(SAM_table ptr, int* l
 	result = ssc_data_get_array(ptr, "twet", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "twet");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vel_loop_max_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "vel_loop_max", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "vel_loop_max");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vel_loop_min_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "vel_loop_min", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "vel_loop_min");
 	});
 	return result;
 }

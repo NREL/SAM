@@ -2240,6 +2240,22 @@ extern "C"
 	SAM_EXPORT void SAM_Singleowner_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set ur_nb_apply_credit_current_month: Apply earned credits to balance before rolling over excess         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_credit_expire: Credit is lost upon end of year         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
@@ -3320,6 +3336,10 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
 
@@ -4594,6 +4614,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_ppa_multipliers_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 

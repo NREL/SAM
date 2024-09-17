@@ -3630,6 +3630,8 @@
         "\tvalue('geotherm.cost.pump_per_hp', getem_params.geotherm_cost_pump_per_hp);",
         "\tvalue('delta_pressure_equip', getem_params.delta_pressure_equip);",
         "\tvalue('reservoir_pressure_change', getem_params.reservoir_pressure_change);",
+        "\tvalue('injectivity_index', getem_params.injectivity_index);\r",
+        "\tvalue('geotherm.cost.stim_per_well', getem_params.geotherm_cost_stim_per_well);\r",
         "\tvalue('subsurface_water_loss', getem_params.subsurface_water_loss);",
         "\tvalue('temp_decline_rate', getem_params.temp_decline_rate);",
         "\tvalue('conversion_type', getem_params.conversion_type);",

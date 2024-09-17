@@ -74,8 +74,8 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-			{ 2024, 1, 9 },  // 2024.1.9 ssc 289 beta release from develop - particle_gen3_csp expires 5/31/2024
-			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023
+			{ 2024, 5, 28},		// 2024.05.28 Change trough mass flow rate limits 
+			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023, 2023.12.17.r1.ssc.290 3/4/2024
 			{ 2023, 12, 1 },  // 2023.12.1 ssc 287 2023 release candidate from develop expires 12/17/2023
 			{ 2023, 10, 31 },  // 2023.10.31 ssc 286 public beta release from develop expires 11/30/2023
 			{ 2023, 10, 6 },  // 2023.10.6 ssc 285 beta release from develop with hybrids expires 1/6/2024

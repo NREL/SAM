@@ -170,18 +170,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_land_mult_nset(SAM_table ptr, 
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "m_dot_htfmax", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "m_dot_htfmin", number);
-	});
-}
-
 SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_mc_bal_cold_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "mc_bal_cold", number);
@@ -251,6 +239,36 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_washes_per_year_nset(SAM_table
 SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_water_per_wash_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "water_per_wash", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_htfmax", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_htfmin", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "m_dot_htfmax", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "m_dot_htfmin", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "use_abs_or_rel_mdot_limit", number);
 	});
 }
 
@@ -1318,24 +1336,6 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_land_mult_nget(SAM_table ptr
 	return result;
 }
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "m_dot_htfmax", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmax");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "m_dot_htfmin", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmin");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_mc_bal_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1440,6 +1440,51 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_water_per_wash_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "water_per_wash", &result))
 		make_access_error("SAM_FresnelPhysicalIph", "water_per_wash");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmax", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "f_htfmax");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmin", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "f_htfmin");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmax", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmax");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmin", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmin");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "use_abs_or_rel_mdot_limit", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "use_abs_or_rel_mdot_limit");
 	});
 	return result;
 }
@@ -3626,6 +3671,24 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_eta_optical_des_SS_nget(SAM_tab
 	return result;
 }
 
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmax_actual", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "f_htfmax_actual");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_f_htfmin_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_htfmin_actual", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "f_htfmin_actual");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_field_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3860,6 +3923,24 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_t
 	result = ssc_data_get_array(ptr, "m_dot_htf_heat_sink", length);
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htf_heat_sink");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmax_actual", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmax_actual");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_m_dot_htfmin_actual_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "m_dot_htfmin_actual", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "m_dot_htfmin_actual");
 	});
 	return result;
 }

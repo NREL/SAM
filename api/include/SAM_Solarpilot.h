@@ -120,7 +120,7 @@ extern "C"
 	SAM_EXPORT void SAM_Solarpilot_SolarPILOT_contingency_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set cost_sf_fixed: Soalr field fixed cost [$]
+	 * Set cost_sf_fixed: Solar field fixed cost [$]
 	 * options: None
 	 * constraints: None
 	 * required if: *

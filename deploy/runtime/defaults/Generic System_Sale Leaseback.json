@@ -20619,6 +20619,8 @@
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,
     "ur_name": "",
+    "ur_nb_apply_credit_current_month": 0.0,
+    "ur_nb_credit_expire": 0.0,
     "ur_nm_credit_month": 0.0,
     "ur_nm_credit_rollover": 0.0,
     "ur_nm_yearend_sell_rate": 0.0,

@@ -2190,8 +2190,6 @@ public:
     std::vector<wxString> MakeFluxMaps(size_t n_cols);
     std::vector<wxString> MakeNoRowLabels(size_t n_rows);
     std::vector<wxString> MakeSCO2UDPClabels();
-    std::vector<wxString> MakeThermalLoadEfficiency();
-    std::vector<wxString> MakeAmbientEfficiencyCondPow();
 
     void RemoveTopRow();
     void RemoveLeftCol();
@@ -2522,16 +2520,6 @@ public:
                             write_label = false;
                             MatrixColLabels = MakeFluxMaps(nc);
                         }
-                        else if (!value.Cmp("THERMLOAD_EFFICIENCY"))
-                        {
-                            write_label = false;
-                            MatrixColLabels = MakeThermalLoadEfficiency();
-                        }
-                        else if (!value.Cmp("AMBTEMP_EFF_CONDPOW"))
-                        {
-                            write_label = false;
-                            MatrixColLabels = MakeAmbientEfficiencyCondPow();
-                        }
                         else if (!value.Cmp("UDPC_SCO2_PREPROC"))
                         {
                             write_label = false;
@@ -2815,26 +2803,6 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
 
     return v;
 }
-std::vector<wxString> TabularBrowser::ResultsTable::MakeThermalLoadEfficiency()
-{
-    std::vector<wxString> v;
-
-    v.push_back("Thermal Load (MWt)");
-    v.push_back("Efficiency (-)");
-
-    return v;
-}
-std::vector<wxString> TabularBrowser::ResultsTable::MakeAmbientEfficiencyCondPow()
-{
-    std::vector<wxString> v;
-
-    v.push_back("Ambient Temperature (C)");
-    v.push_back("Normalized Cycle Efficiency (-)");
-    v.push_back("Normalized Condenser Power (-)");
-
-    return v;
-}
-
 std::vector<wxString> TabularBrowser::ResultsTable::MakeNoRowLabels(size_t n_rows)
 {
     std::vector<wxString> v;
