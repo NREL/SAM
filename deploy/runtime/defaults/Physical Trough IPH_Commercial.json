@@ -1666,12 +1666,12 @@
     "depr_sta_sl_years": 7.0,
     "depr_sta_type": 1.0,
     "direct_subtotal": 7953700.0,
-    "disp_frequency": -123.0,
-    "disp_horizon": -123.0,
-    "disp_max_iter": 0.0,
-    "disp_mip_gap": -123.0,
-    "disp_time_weighting": -123.0,
-    "disp_timeout": -123.0,
+    "disp_frequency": 24.0,
+    "disp_horizon": 48.0,
+    "disp_max_iter": 50000.0,
+    "disp_mip_gap": 0.001,
+    "disp_time_weighting": 0.999,
+    "disp_timeout": 5.0,
     "dispatch_series": [
         0.0
     ],
@@ -1912,7 +1912,6 @@
         0.0
     ],
     "eta_pump": 0.85,
-    "eta_tes_htr": 0.98,
     "f_htfmax": 1.2,
     "f_htfmax_actual": 1.96049,
     "f_htfmin": 0.25,
@@ -19977,7 +19976,32 @@
             -1.0
         ]
     ],
+    "tes_n_tsteps": 50.0,
+    "tes_nt_piston_loss_poly": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "tes_nt_piston_loss_poly_0": 0.0,
+    "tes_nt_piston_loss_poly_1": 0.0,
+    "tes_nt_piston_loss_poly_2": 0.0,
+    "tes_nt_piston_loss_poly_3": 0.0,
+    "tes_nt_tank_cp": 0.49,
+    "tes_nt_tank_dens": 8000.0,
+    "tes_nt_tank_insul_percent": 0.0,
+    "tes_nt_tank_thick": 0.0254,
+    "tes_pb_T_charge_min": 0.0,
+    "tes_pb_T_cold_delta": 10.0,
+    "tes_pb_T_hot_delta": 10.0,
+    "tes_pb_cp_solid": 0.83,
+    "tes_pb_dens_solid": 2500.0,
+    "tes_pb_f_oversize": 1.0,
+    "tes_pb_k_eff": 5.69,
+    "tes_pb_n_xsteps": 99.0,
+    "tes_pb_void_frac": 0.22,
     "tes_pump_coef": 0.15,
+    "tes_type": 0.0,
     "tes_wallthicks": [
         [
             -1.0

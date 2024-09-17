@@ -1022,7 +1022,7 @@
     "V_hdr_cold_min": 2.0,
     "V_hdr_hot_max": 3.0,
     "V_hdr_hot_min": 2.0,
-    "V_tank_hot_ini": 150.689,
+    "V_tank_hot_ini": 16.2886,
     "V_tes_des": 1.85,
     "W_aperture": [
         6.0,

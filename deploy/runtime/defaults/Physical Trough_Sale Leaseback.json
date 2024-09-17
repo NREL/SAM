@@ -21478,16 +21478,6 @@
     "tc_fill": 7.0,
     "tc_void": 0.25,
     "tech_type": 1.0,
-    "tes_NT_piston_loss_poly": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-    ],
-    "tes_NT_piston_loss_poly_0": 0.0,
-    "tes_NT_piston_loss_poly_1": 0.0,
-    "tes_NT_piston_loss_poly_2": 0.0,
-    "tes_NT_piston_loss_poly_3": 0.0,
     "tes_avail_vol": 27214.9,
     "tes_diams": [
         [
