@@ -421,6 +421,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -435,6 +437,7 @@
     "annual_global": 5.83339,
     "annual_snow": "nan",
     "annual_tdry": 16.9747,
+    "annual_twet": "nan",
     "annual_wspd": 2.26213,
     "azimuth": 0.0,
     "batt_salvage_percentage": 0.0,
@@ -465,17 +468,17 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
     "city": "-",
-    "const_per_interest1": 24762400.0,
+    "const_per_interest1": 45987300.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 24762400.0,
+    "const_per_interest_total": 45987300.0,
     "const_per_months1": 24.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -498,7 +501,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 707497000.0,
-    "const_per_total1": 31837400.0,
+    "const_per_total1": 53062300.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -508,8 +511,8 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 31837400.0,
-    "cost_debt_closing": 450000.0,
+    "construction_financing_cost": 53062300.0,
+    "cost_debt_closing": 0.0,
     "cost_debt_fee": 2.75,
     "cost_dev_fee_percent": 3.0,
     "cost_dev_fee_tax_liability": 5630970.0,
@@ -10090,7 +10093,7 @@
     "dni_par_f1": -0.086635,
     "dni_par_f2": 0.584528,
     "dni_par_f3": 0.0,
-    "dscr": 1.3,
+    "dscr": 1.45,
     "dscr_limit_debt_fraction": 1.0,
     "dscr_maximum_debt_fraction": 60.0,
     "dscr_reserve_months": 6.0,
@@ -19732,7 +19735,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.089
+        0.104
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -19766,7 +19769,7 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "reserves_interest": 1.25,
+    "reserves_interest": 1.75,
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
@@ -19776,6 +19779,8 @@
     "sf_adjust_en_timeindex": 0.0,
     "sf_adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -19800,10 +19805,10 @@
         0.002526,
         0.0
     ],
-    "show_CapitalCostSO": 0.0,
-    "show_DebtConstDSCR": 0.0,
-    "show_ReserveAccounts": 0.0,
-    "show_construction_period": 0.0,
+    "show_CapitalCostSO": 1.0,
+    "show_DebtConstDSCR": 1.0,
+    "show_ReserveAccounts": 1.0,
+    "show_construction_period": 1.0,
     "solar_data_file_name": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv",
     "solar_data_file_name_load": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
@@ -19826,7 +19831,7 @@
     "tax_investor_preflip_cash_percent": 98.0,
     "tax_investor_preflip_tax_percent": 98.0,
     "tdb": 15.0,
-    "term_int_rate": 4.0,
+    "term_int_rate": 7.0,
     "term_tenor": 18.0,
     "teshlT_coefs": [
         0.0,
@@ -19905,7 +19910,7 @@
         0.0
     ],
     "ui_step_minutes": 60.0,
-    "ui_wacc": 5.9994,
+    "ui_wacc": 7.10145,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
@@ -20051,7 +20056,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,
@@ -21353,6 +21358,8 @@
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,
     "ur_name": "",
+    "ur_nb_apply_credit_current_month": 0.0,
+    "ur_nb_credit_expire": 0.0,
     "ur_nm_credit_month": 0.0,
     "ur_nm_credit_rollover": 0.0,
     "ur_nm_yearend_sell_rate": 0.0,

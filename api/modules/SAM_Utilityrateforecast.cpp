@@ -170,6 +170,18 @@ SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_ur_monthly_min_charge_n
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_apply_credit_current_month", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_credit_expire", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrateforecast_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_nm_credit_month", number);
@@ -245,8 +257,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_en_electricity_rates_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -256,8 +266,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_gen_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_grid_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -269,8 +277,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_grid_power_aget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_load_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -280,8 +286,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_load_aget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -293,8 +297,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_rate_escalation_aget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -303,8 +305,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_annual_min_charge_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -316,8 +316,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_lo
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -327,8 +325,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_loo
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -337,8 +333,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_billing_demand_min
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -350,8 +344,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_billing_demand
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -360,8 +352,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_dc_enable_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -373,8 +363,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_flat_mat_mget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_peaks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -384,8 +372,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_peaks_mget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -397,8 +383,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_sched_weekday_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -408,8 +392,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_sched_weekend_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -421,8 +403,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_dc_tou_mat_mget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -432,8 +412,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_sched_weekday_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -445,8 +423,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_sched_weekend_
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -457,8 +433,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ec_tou_mat_mget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -467,8 +441,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_en_ts_buy_rate_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -479,8 +451,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_en_ts_sell_rate_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -489,8 +459,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_enable_billing_dem
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_energy_use_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -502,8 +470,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_energy_use_mget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -512,8 +478,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_metering_option_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -524,8 +488,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_monthly_fixed_char
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -535,7 +497,23 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_monthly_min_charge
 	return result;
 }
 
+SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_apply_credit_current_month", &result))
+		make_access_error("SAM_Utilityrateforecast", "ur_nb_apply_credit_current_month");
+	});
+	return result;
+}
 
+SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_credit_expire", &result))
+		make_access_error("SAM_Utilityrateforecast", "ur_nb_credit_expire");
+	});
+	return result;
+}
 
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -546,8 +524,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_credit_month_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -556,8 +532,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_credit_rollover
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -568,8 +542,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_nm_yearend_sell_ra
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -578,8 +550,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_ElectricityRates_ur_sell_eq_buy_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -591,8 +561,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ts_buy_rate_aget(
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -602,8 +570,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_ts_sell_rate_aget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -615,8 +581,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_ElectricityRates_ur_yearzero_usage_pe
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -625,8 +589,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_Lifetime_analysis_period_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Utilityrateforecast_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -637,8 +599,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_Lifetime_inflation_rate_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_Controls_idx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -648,8 +608,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_Controls_idx_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_Controls_steps_per_hour_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -658,8 +616,6 @@ SAM_EXPORT double SAM_Utilityrateforecast_Controls_steps_per_hour_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Utilityrateforecast_Outputs_ur_price_series_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -671,8 +627,6 @@ SAM_EXPORT double* SAM_Utilityrateforecast_Outputs_ur_price_series_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Utilityrateforecast_Outputs_ur_total_bill_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -681,6 +635,4 @@ SAM_EXPORT double SAM_Utilityrateforecast_Outputs_ur_total_bill_nget(SAM_table p
 	});
 	return result;
 }
-
-
 

@@ -407,7 +407,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -455,6 +455,99 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// HybridCosts parameters
+	//
+
+	/**
+	 * Set degradation: Annual AC degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fixed: Fixed O&M annual amount [$/year]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production: Production-based O&M amount [$/MWh]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set total_installed_cost: Total installed cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -588,6 +681,33 @@ extern "C"
 
 
 	/**
+	 * HybridCosts Getters
+	 */
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -606,6 +726,24 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_cutoff_losses_nget(SAM_table ptr, SAM_error *err);
 

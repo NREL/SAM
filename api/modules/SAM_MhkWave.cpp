@@ -221,8 +221,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_balance_of_system_cost_total_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_MHKWave_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -233,8 +231,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_day_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_device_costs_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -244,8 +240,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_device_costs_total_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_device_rated_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -254,8 +248,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_device_rated_power_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_energy_period_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -267,8 +259,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_energy_period_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_financial_cost_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -278,8 +268,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_financial_cost_total_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_fixed_charge_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -288,8 +276,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_fixed_charge_rate_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_hour_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -301,8 +287,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_hour_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_loss_additional_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -311,8 +295,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_loss_additional_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_MHKWave_loss_array_spacing_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -323,8 +305,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_loss_array_spacing_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_loss_downtime_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -333,8 +313,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_loss_downtime_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_MHKWave_loss_resource_overprediction_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -345,8 +323,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_loss_resource_overprediction_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_loss_transmission_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -355,8 +331,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_loss_transmission_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_minute_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -368,8 +342,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_minute_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_MHKWave_month_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -380,8 +352,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_month_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_number_devices_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -390,8 +360,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_number_devices_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_MHKWave_number_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -402,8 +370,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_number_hours_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_number_records_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -412,8 +378,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_number_records_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_significant_wave_height_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -425,8 +389,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_significant_wave_height_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -436,8 +398,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_system_capacity_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_total_operating_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -446,8 +406,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_total_operating_cost_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_power_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -459,8 +417,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_power_matrix_mget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT SAM_table SAM_MhkWave_MHKWave_wave_resource_data_tget(SAM_table ptr, SAM_error *err){
 	SAM_table result = nullptr;
 	translateExceptions(err, [&]{
@@ -470,8 +426,6 @@ SAM_EXPORT SAM_table SAM_MhkWave_MHKWave_wave_resource_data_tget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_resource_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -483,8 +437,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_wave_resource_matrix_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_MHKWave_wave_resource_model_choice_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -493,8 +445,6 @@ SAM_EXPORT double SAM_MhkWave_MHKWave_wave_resource_model_choice_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_MHKWave_year_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -506,8 +456,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_year_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -516,8 +464,6 @@ SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -529,8 +475,6 @@ SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -540,8 +484,6 @@ SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -553,8 +495,6 @@ SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -563,8 +503,6 @@ SAM_EXPORT double SAM_MhkWave_Lifetime_analysis_period_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Lifetime_generic_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -576,8 +514,6 @@ SAM_EXPORT double* SAM_MhkWave_Lifetime_generic_degradation_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -587,8 +523,6 @@ SAM_EXPORT double SAM_MhkWave_Lifetime_system_use_lifetime_output_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -597,8 +531,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_annual_energy_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_annual_energy_distribution_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -610,8 +542,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_annual_energy_distribution_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -622,8 +552,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_annual_energy_distribution_time_mget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -633,8 +561,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_capacity_factor_nget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -643,8 +569,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_device_average_power_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kW_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -656,8 +580,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kW_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kWh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -667,8 +589,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_energy_hourly_kWh_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -680,8 +600,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_data_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_index_mat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -691,8 +609,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_energy_period_index_mat_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -704,8 +620,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_gen_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_numberHours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -715,8 +629,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_numberHours_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_numberRecords_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -725,8 +637,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_numberRecords_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -738,8 +648,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_data_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_index_mat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -750,8 +658,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_sig_wave_height_index_mat_aget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -760,8 +666,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_kwh_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -772,8 +676,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_lcoe_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -782,8 +684,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_bos_cost_per_kw_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -794,8 +694,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_kwh_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -804,8 +702,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_lcoe_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -816,8 +712,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_capital_cost_per_kw_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -826,8 +720,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_kwh_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_lcoe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -838,8 +730,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_lcoe_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -848,8 +738,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_device_cost_per_kw_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -860,8 +748,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_kwh_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_lcoe_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -870,8 +756,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_lcoe_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -882,8 +766,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_financial_cost_per_kw_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -892,8 +774,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_kwh_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -904,8 +784,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_om_cost_lcoe_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_total_operations_cost_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -914,8 +792,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_total_operations_cost_per_kw_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_end_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -926,8 +802,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_end_height_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_end_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -936,8 +810,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_end_period_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_MhkWave_Outputs_wave_power_index_mat_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -949,8 +821,6 @@ SAM_EXPORT double* SAM_MhkWave_Outputs_wave_power_index_mat_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_start_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -959,8 +829,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_start_height_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_start_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -971,8 +839,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_power_start_period_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_end_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -981,8 +847,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_end_height_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_end_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -993,8 +857,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_end_period_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_start_height_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1004,8 +866,6 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_start_height_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_start_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1014,6 +874,4 @@ SAM_EXPORT double SAM_MhkWave_Outputs_wave_resource_start_period_nget(SAM_table 
 	});
 	return result;
 }
-
-
 

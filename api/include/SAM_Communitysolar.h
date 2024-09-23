@@ -106,7 +106,7 @@ extern "C"
 	/**
 	 * Set dscr_maximum_debt_fraction: Maximum debt fraction [%]
 	 * options: None
-	 * constraints: MIN=0
+	 * constraints: POSITIVE
 	 * required if: ?=100
 	 */
 	SAM_EXPORT void SAM_Communitysolar_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
@@ -280,14 +280,6 @@ extern "C"
 	SAM_EXPORT void SAM_Communitysolar_FinancialParameters_reserves_interest_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set roe_input: Return on equity
-	 * options: None
-	 * constraints: None
-	 * required if: ?=20
-	 */
-	SAM_EXPORT void SAM_Communitysolar_FinancialParameters_roe_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set salvage_percentage: Net pre-tax cash salvage value [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -342,7 +334,7 @@ extern "C"
 
 	/**
 	 * Set add_om_num_types: Number of O and M types
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
@@ -350,7 +342,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -358,23 +350,15 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Communitysolar_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Communitysolar_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -382,7 +366,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -390,7 +374,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -398,7 +382,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -406,7 +390,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -414,7 +398,7 @@ extern "C"
 
 	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -430,7 +414,7 @@ extern "C"
 
 	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -446,7 +430,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -454,7 +438,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: None
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -462,7 +446,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -470,7 +454,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -478,7 +462,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_nameplate: Fuel cell capacity for System Costs values [kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -486,7 +470,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -494,7 +478,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -502,7 +486,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -510,7 +494,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -518,7 +502,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -526,7 +510,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -534,7 +518,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -542,7 +526,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -550,7 +534,7 @@ extern "C"
 
 	/**
 	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -558,7 +542,7 @@ extern "C"
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -566,7 +550,7 @@ extern "C"
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -582,7 +566,7 @@ extern "C"
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -2037,7 +2021,7 @@ extern "C"
 	SAM_EXPORT void SAM_Communitysolar_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
+	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -2473,12 +2457,28 @@ extern "C"
 	//
 
 	/**
+	 * Set annual_fuel_usage_lifetime: Annual Fuel Usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Communitysolar_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set en_fuelcell: Enable fuel cell storage model [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Communitysolar_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Communitysolar_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set fuelcell_computed_bank_capacity: Fuel cell capacity [kWh]
@@ -2762,8 +2762,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Communitysolar_FinancialParameters_reserves_interest_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Communitysolar_FinancialParameters_roe_input_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Communitysolar_FinancialParameters_salvage_percentage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_FinancialParameters_state_tax_rate_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2786,8 +2784,6 @@ extern "C"
 	SAM_EXPORT double SAM_Communitysolar_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3359,7 +3355,11 @@ extern "C"
 	 * FuelCell Getters
 	 */
 
+	SAM_EXPORT double* SAM_Communitysolar_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Communitysolar_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err);
 
@@ -3595,8 +3595,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_lcog_costs_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Communitysolar_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3701,8 +3699,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_pv_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_pv_interest_factor_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3724,12 +3720,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_reserve_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_reserve_total_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_return_on_equity_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_return_on_equity_dollars_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_return_on_equity_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4423,18 +4413,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_lcoe_real_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_depr_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_loan_int_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_om_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_roe_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Communitysolar_Outputs_lcog_wc_int_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_Communitysolar_Outputs_lcoptc_fed_nom_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_lcoptc_fed_real_nget(SAM_table ptr, SAM_error *err);
@@ -4478,6 +4456,10 @@ extern "C"
 	SAM_EXPORT double SAM_Communitysolar_Outputs_npv_thermal_value_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_npv_uti_pbi_income_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Communitysolar_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Communitysolar_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 

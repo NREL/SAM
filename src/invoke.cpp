@@ -53,6 +53,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/mstream.h>
 #include <wx/busyinfo.h>
 #include <wx/arrstr.h>
+#include <wx/progdlg.h>
+
+// SAM 1830
+#include <wx/file.h>
 
 #include <wex/plot/plplotctrl.h>
 #include <wex/lkscript.h>
@@ -164,7 +168,7 @@ struct wfvec {
 
 static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 {
-	LK_DOC("dview_wave", "Read a solar weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
+	LK_DOC("dview_wave", "Read a wave weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
 
 	wxString file( cxt.arg(0).as_string() );
 	if ( !wxFileExists( file ) ) {
@@ -231,6 +235,76 @@ static void fcall_dview_wave_data_file( lk::invoke_t &cxt )
 	dview->DisplayTabs();
 
 	frame->Show();
+}
+
+static void fcall_dview_tidal_data_file(lk::invoke_t& cxt)
+{
+    LK_DOC("dview_tidal", "Read a tidal weather data file on disk (*.csv) and popup a frame with a data viewer.", "(string:filename):boolean");
+
+    wxString file(cxt.arg(0).as_string());
+    if (!wxFileExists(file)) {
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    ssc_data_t pdata = ssc_data_create();
+    ssc_data_set_number(pdata, "tidal_resource_model_choice", 1);
+    ssc_data_set_string(pdata, "tidal_resource_filename", (const char*)file.c_str());
+
+    if (const char* err = ssc_module_exec_simple_nothread("tidal_file_reader", pdata))
+    {
+        wxLogStatus("error scanning '" + file + "'");
+        cxt.error(err);
+        cxt.result().assign(0.0);
+        return;
+    }
+
+    wxFrame* frame = new wxFrame(SamApp::Window(), wxID_ANY, "Data Viewer: " + file, wxDefaultPosition, wxScaleSize(1000, 700),
+        (wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER));
+#ifdef __WXMSW__
+    frame->SetIcon(wxICON(appicon));
+#endif
+
+    wxDVPlotCtrl* dview = new wxDVPlotCtrl(frame, wxID_ANY);
+
+    // this information is consistent with the variable definitions in the wfreader module
+    wfvec vars[] = {
+        { "tidal_velocity", "Tidal velocity", "m/s" },
+        { 0, 0, 0 } };
+
+    ssc_number_t start = 0;
+    ssc_number_t step = 3600 * 3; // start & step in seconds, then convert to hours
+    start /= 3600;
+    step /= 3600;
+
+    size_t i = 0;
+    while (vars[i].name != 0)
+    {
+        int len;
+        ssc_number_t* p = ssc_data_get_array(pdata, vars[i].name, &len);
+        if (p != 0 && len > 2)
+        {
+            std::vector<double> plot_data(len);
+            for (int j = 0; j < len; j++)
+                plot_data[j] = p[j];
+
+            wxDVArrayDataSet* dvset = new wxDVArrayDataSet(vars[i].label, vars[i].units, start, step, plot_data);
+            dvset->SetGroupName(wxFileNameFromPath(file));
+            dview->AddDataSet(dvset);
+        }
+
+        i++;
+    }
+
+    ssc_data_free(pdata);
+
+    dview->GetStatisticsTable()->RebuildDataViewCtrl();
+    if (i > 0)
+        dview->SelectDataIndex(0);
+
+    dview->DisplayTabs();
+
+    frame->Show();
 }
 
 static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
@@ -396,6 +470,34 @@ static void fcall_setmodules( lk::invoke_t &cxt )
 	SamApp::Config().SetModules( list );
 }
 
+
+static void fcall_sethybridvariabledependencies(lk::invoke_t& cxt)
+{
+	LK_DOC("sethybridvariabledependencies", "Sets the hybrid simulation models variable dependencies for equations and callbacks", "(table:IndependentVartableIndex,IndependentVariableName,DependentVartableIndex,DependentVariableName):none");
+
+	std::vector<HybridVariableDependencies> dependencies;
+	lk::vardata_t &vardependencies = cxt.arg(0);
+	for (size_t i = 0; i < vardependencies.length(); i++) {
+		HybridVariableDependencies hvd;
+		lk::vardata_t& item = vardependencies.index(i)->deref();
+		if (item.type() == lk::vardata_t::HASH)	{
+			if (lk::vardata_t* IndependentVartableIndex = item.lookup("IndependentVartableIndex"))
+				hvd.IndependentVariableVarTable = IndependentVartableIndex->as_integer();
+			if (lk::vardata_t* IndependentVariableName = item.lookup("IndependentVariableName"))
+				hvd.IndependentVariableName = IndependentVariableName->as_string();
+			if (lk::vardata_t* DependentVartableIndex = item.lookup("DependentVartableIndex"))
+				hvd.DependentVariableVarTable = DependentVartableIndex->as_integer();
+			if (lk::vardata_t* DependentVariableName = item.lookup("DependentVariableName"))
+				hvd.DependentVariableName = DependentVariableName->as_string();
+		}
+		if (!hvd.IndependentVariableName.IsEmpty() && !hvd.DependentVariableName.IsEmpty())
+			dependencies.push_back(hvd);
+	}
+	if (dependencies.size() == 0) return;
+
+	SamApp::Config().SetHybridVariableDependencies(dependencies);
+}
+
 static void fcall_addpage( lk::invoke_t &cxt )
 {
 	LK_DOC("addpage", "Add an input page group to the currently active configuration (may have multiple pages).", "(array:pages, table:caption,help,exclusive,exclusive_var):none" );
@@ -451,11 +553,14 @@ static void fcall_addpage( lk::invoke_t &cxt )
 	wxString sidebar = pages[0][0].Name;
 	wxString help = sidebar;
 	wxString exclusive_var;
+    wxString bin_name = "";
 	bool exclusive_tabs = false;
     bool exclusive_radio = false;
     bool exclusive_hide = false;
+    bool exclusive_top = false;
 	std::vector<PageInfo> excl_header_pages;
     std::vector<PageInfo> excl_footer_pages;
+    std::vector<PageInfo> bin_summary;
 
 	if ( cxt.arg_count() > 1 )
 	{
@@ -479,6 +584,12 @@ static void fcall_addpage( lk::invoke_t &cxt )
         if (lk::vardata_t* x = props.lookup("exclusive_hide"))
             exclusive_hide = x->as_boolean();
 
+        if (lk::vardata_t* x = props.lookup("bin_name"))
+            bin_name = x->as_string();
+
+        if (lk::vardata_t* x = props.lookup("top_page"))
+            exclusive_top = x->as_boolean();
+
 		if ( lk::vardata_t *x = props.lookup("exclusive_header_pages") )
 		{
 			lk::vardata_t &vec = x->deref();
@@ -494,6 +605,22 @@ static void fcall_addpage( lk::invoke_t &cxt )
 			}
 
 		}
+
+        if (lk::vardata_t* x = props.lookup("bin_summary"))
+        {
+            lk::vardata_t& vec = x->deref();
+            if (vec.type() == lk::vardata_t::VECTOR)
+            {
+                for (size_t i = 0; i < vec.length(); i++)
+                {
+                    PageInfo pi;
+                    pi.Name = vec.index(i)->as_string();
+                    pi.Caption = pi.Name;
+                    bin_summary.push_back(pi);
+                }
+            }
+
+        }
 
         if (lk::vardata_t* x = props.lookup("exclusive_footer_pages"))
         {
@@ -511,7 +638,7 @@ static void fcall_addpage( lk::invoke_t &cxt )
 
         }
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide);
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide, bin_name, exclusive_top);
 }
 
 
@@ -1049,7 +1176,7 @@ static void fcall_output(lk::invoke_t &cxt)
 void invoke_get_var_info( Case *c, const wxString &name, lk::vardata_t &result )
 {
 	result.nullify();
-	if (VarInfo *vi = c->Variables().Lookup( name ))
+	if (VarInfo *vi = c->Variables(0).Lookup( name ))
 	{
 		result.empty_hash();
 		result.hash_item("label").assign( vi->Label );
@@ -1104,26 +1231,31 @@ void fcall_value( lk::invoke_t &cxt )
 
 	CaseCallbackContext &cc = *(CaseCallbackContext*)cxt.user_data();
 	wxString name = cxt.arg(0).as_string();
-	if ( VarValue *vv = cc.GetValues().Get( name ) )
-	{
-		if ( cxt.arg_count() > 1 )
+	auto& c = cc.GetCase();
+	bool found = false;
+	for (size_t ndxHybrid = 0; !found && ndxHybrid < c.GetConfiguration()->Technology.size(); ndxHybrid++) {
+		if (VarValue* vv = cc.GetValues(ndxHybrid).Get(name))
 		{
-			if ( vv->Read( cxt.arg(1), false ) ){
-			    bool trigger = true;
-			    if (cxt.arg_count() == 3 ) {
-			        trigger = cxt.arg(2).as_boolean();
-			    }
-			    if (trigger) {
-			      cc.GetCase().VariableChanged( name );
-			    }
+			found = true;
+			if (cxt.arg_count() > 1)
+			{
+				if (vv->Read(cxt.arg(1), false)) {
+					bool trigger = true;
+					if (cxt.arg_count() == 3) {
+						trigger = cxt.arg(2).as_boolean();
+					}
+					if (trigger) {
+						cc.GetCase().VariableChanged(name, ndxHybrid); 
+					}
+				}
+				else
+					cxt.error("data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " (" + wxString(cxt.arg(1).typestr()) + ")");
 			}
 			else
-				cxt.error( "data type mismatch attempting to set '" + name + "' (" + vv_strtypes[vv->Type()] + ") to " + cxt.arg(1).as_string() + " ("+ wxString(cxt.arg(1).typestr()) + ")"  );
+				vv->Write(cxt.result());
 		}
-		else
-			vv->Write( cxt.result() );
 	}
-	else
+	if (!found)
 		cxt.error("variable '" + name + "' does not exist in this context" );
 }
 
@@ -1179,13 +1311,14 @@ void fcall_refresh( lk::invoke_t &cxt )
 	    ipage = cc.InputPage();
 		ipage->Refresh();
         auto UIObjects = ipage->GetObjects();
+		size_t ndxHybrid = ipage->GetHybridIndex();
         for (auto &i: UIObjects){
-            VarValue *vv = cur_case->Values().Get( i->GetName() );
+            VarValue *vv = cur_case->Values(ndxHybrid).Get( i->GetName() );
             if ( wxWindow *win = i->GetNative() )
                 win->Refresh();
             if ( ipage && vv )
             {
-                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ );
+                ipage->DataExchange(cur_case, i, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid );
             }
         }
 	}
@@ -1193,13 +1326,15 @@ void fcall_refresh( lk::invoke_t &cxt )
 	{
 	    wxString var = cxt.arg(0).as_string();
         wxUIObject *obj = cc.InputPage()->FindActiveObject( var, &ipage );
-        VarValue *vv = cur_case->Values().Get( var );
         if ( obj ){
 			if ( wxWindow *win = obj->GetNative() )
 				win->Refresh();
-            if ( ipage && vv )
+            if ( ipage )
             {
-                ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ );
+				size_t ndxHybrid = ipage->GetHybridIndex();
+				VarValue* vv = cur_case->Values(ndxHybrid).Get(var);
+				if (vv)
+					ipage->DataExchange(cur_case, obj, *vv, ActiveInputPage::VAR_TO_OBJ, cur_case->m_analysis_period, ndxHybrid);
             }
 		}
 	}
@@ -1603,10 +1738,16 @@ static void fcall_xl_set( lk::invoke_t &cxt )
 			wxArrayString list;
 			for( size_t i=0;i<cxt.arg(1).length();i++ )
 				list.Add( cxt.arg(1).index( i )->deref().as_string() );
-			xl->Excel().SetNamedRangeArray( cxt.arg(2).as_string(), list );
+			if (!xl->Excel().SetNamedRangeArray(cxt.arg(2).as_string(), list)) {
+				cxt.error(xl->Excel().GetLastError());
+			}
+				
 		}
-		else if ( cxt.arg_count() == 3 )
-			xl->Excel().SetNamedRangeValue( cxt.arg(2).as_string(), cxt.arg(1).as_string() );
+		else if (cxt.arg_count() == 3) {
+			if (!xl->Excel().SetNamedRangeValue(cxt.arg(2).as_string(), cxt.arg(1).as_string())) {
+				cxt.error(xl->Excel().GetLastError());
+			}
+		}
 	}
 	else
 		cxt.error( "invalid xl-obj-ref" );
@@ -1793,6 +1934,51 @@ public:
 	}
 };
 
+void fcall_var_exists(lk::invoke_t& cxt)
+{
+	LK_DOC("var_exists", "Check by name if an input or output variable exists in current case", "(string:name):bool");
+
+	if (Case* c = SamApp::Window()->GetCurrentCase()) {
+		wxString name = cxt.arg(0).as_string();
+		auto cfg = c->GetConfiguration();
+		int ndxHybrid = 0;
+		VarValue* vv = NULL;
+		bool bfound = false;
+		for (size_t ndx = 0; ndx < cfg->Technology.size(); ndx++ ) { // select ndxHybrid based on compute module position in 		
+			if (vv = c->Values(ndxHybrid).Get(name)) {
+				bfound = true;
+				ndxHybrid = ndx;
+			}
+		}
+		if (bfound)
+			cxt.result().assign(1);
+		else
+			cxt.result().assign((double)0);
+	}
+	else
+		cxt.result().assign((double)0);
+}
+
+void fcall_ssc_var_auto_exec(lk::invoke_t& cxt)
+{
+	LK_DOC2("ssc_var_auto_exec", "Sets or gets a variable value in the SSC data set if it exists in the UI.",
+		"Set a variable value.", "(ssc-obj-ref:data, string:name, variant:value):none",
+		"Get a variable value", "(ssc-obj-ref:data, string:name):variant");
+
+	if (lkSSCdataObj* ssc = dynamic_cast<lkSSCdataObj*>(cxt.env()->query_object(cxt.arg(0).as_integer())))
+	{
+		wxString name = cxt.arg(1).as_string();
+		if (cxt.arg_count() == 2)
+			sscdata_to_lkvar(*ssc, (const char*)name.ToUTF8(), cxt.result());
+		else if (cxt.arg_count() == 3) {
+			assign_lkvar_to_sscdata(cxt.arg(2).deref(), (const char*)name.ToUTF8(), *ssc);
+		}
+	}
+	else
+		cxt.error("invalid ssc-obj-ref");
+}
+
+
 void fcall_ssc_var( lk::invoke_t &cxt )
 {
 	LK_DOC2( "ssc_var", "Sets or gets a variable value in the SSC data set.",
@@ -1826,6 +2012,7 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 		cxt.error("wrong number of argument specified " + cxt.arg_count());
 		return;
 	}
+	// 	e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 
 	if (Case* c = SamApp::Window()->GetCurrentCase())
 	{
@@ -1870,8 +2057,17 @@ void fcall_ssc_auto_exec(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 //						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vv = c->Values().Get(name))
-						{
+//						if (auto vv = c->Values(0).Get(name)) // TODO: hybrids
+/*
+* Note for hybrids - the search starts with the firs case vartable and continues until the first "name" is found in the UI
+*/						auto cfg = c->GetConfiguration();
+						int ndxHybrid = 0;
+						if (cfg->Technology.size() > 1) { // select ndxHybrid based on compute module position in simulations collection
+							ndxHybrid = cfg->Simulations.Index(cm);
+							if ((ndxHybrid < 0) || (ndxHybrid > (cfg->Technology.size()-1)))
+								ndxHybrid = cfg->Technology.size() - 1;
+						}
+						if (auto vv = c->Values(ndxHybrid).Get(name)) {
 							
 							if (!field.IsEmpty())
 							{
@@ -1998,7 +2194,7 @@ void fcall_ssc_auto_exec_eqn(lk::invoke_t& cxt)
 					if (existing_type != data_type)
 					{
 						//						if (auto vv = cxt.env()->lookup(name, true))
-						if (auto vi = ci->Variables.Lookup(name))
+						if (auto vi = ci->Variables[0].Lookup(name))
 						{
 							auto& vv = vi->DefaultValue;
 							if (!field.IsEmpty())
@@ -2118,7 +2314,7 @@ void fcall_ssc_module_create_from_case(lk::invoke_t &cxt)
 			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
 			if (existing_type != data_type)
 			{
-				if (VarValue *vv = sim.GetInput(name))
+				if (VarValue *vv = sim.GetInput(name, 0)) // TODO: hybrids
 				{
 					if (!field.IsEmpty())
 					{
@@ -2896,7 +3092,8 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-    if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
+		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+        if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, NULL, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
 			md->ShowModal();
@@ -2936,7 +3133,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	url.Replace("<LAT>", wxString::Format("%lg", lat));
 	url.Replace("<LON>", wxString::Format("%lg", lon));
 	url.Replace("<INTERVAL>", interval);
-	url.Replace("<ATTRS>", "windspeed_100m,windspeed_120m,winddirection_100m,winddirection_120m,temperature_100m,temperature_120m,pressure_0m,pressure_100m,pressure_200m"); // empty attributes parameter returns file with all hub heights
+	url.Replace("<ATTRS>", attributes); // empty attributes parameter returns file with all hub heights
 
 	// make API call to download weather file
 	wxBusyInfo bid("Downloading weather file for " + msg + ".\nThis may take a while, please wait...");
@@ -3145,7 +3342,7 @@ void fcall_calculated_list(lk::invoke_t &cxt)
 	if (!ci) return;
 
 	wxArrayString sim_list = ci->Simulations;
-	VarInfoLookup &vil = ci->Variables;
+	VarInfoLookup &vil = ci->Variables[0];
 
 	if (sim_list.size() == 0)
 	{
@@ -3200,8 +3397,8 @@ void fcall_group_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 		// skip calculated and indicator values
@@ -3211,7 +3408,7 @@ void fcall_group_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3244,6 +3441,7 @@ void fcall_group_read(lk::invoke_t &cxt)
 	{
 		wxArrayString errors;
 		wxArrayString list;
+		size_t ndx = 0;
 
 		for (row = 0; row < (int)csv.NumRows(); row++)
 		{
@@ -3251,24 +3449,32 @@ void fcall_group_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
-			{
-				if (!VarValue::Parse(vv->Type(), value, *vv))
+
+			bool found = false;
+
+			for (size_t ndxHybrid=0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) { // TODO: hybrids - move found outside of csv file and assume all in same vartable
+
+				if (VarValue* vv = c->Values(ndxHybrid).Get(var_name))
 				{
-					errors.Add("Problem assigning " + var_name + " to " + value);
-					ret_val = false;
+					found = true;
+					ndx = ndxHybrid;
+					if (!VarValue::Parse(vv->Type(), value, *vv))
+					{
+						errors.Add("Problem assigning " + var_name + " to " + value);
+						ret_val = false;
+					}
+					else
+						list.Add(var_name);
 				}
-				else
-					list.Add(var_name);
 			}
-			else
+			if (!found)
 			{// variable not found
 				errors.Add("Problem assigning " + var_name + " missing with " + value);
 				ret_val = false;
 			}
 		}
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged(list);
+		c->VariablesChanged(list, ndx);
 	}
 	cxt.result().assign(ret_val ? 1.0 : 0.0);
 }
@@ -3289,8 +3495,8 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 
 	wxCSVData csv;
 	int row = 0;
-	for (VarInfoLookup::iterator it = ci->Variables.begin();
-		it != ci->Variables.end();	++it)
+	for (VarInfoLookup::iterator it = ci->Variables[0].begin();
+		it != ci->Variables[0].end();	++it)
 	{
 		VarInfo &vi = *(it->second);
 //		if (vi.Flags & VF_CALCULATED || vi.Flags & VF_INDICATOR) continue;
@@ -3299,7 +3505,7 @@ void fcall_urdb_write(lk::invoke_t &cxt)
 		{
 			wxString var_name = it->first;
 			// get value
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name))
 			{
 				// write out csv with first row var name and second row var values
 				wxString value = vv->AsString();
@@ -3342,7 +3548,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 			// get value
 			wxString value = csv.Get(row, 1);
 			value.Replace(";;", "\n");
-			if (VarValue *vv = c->Values().Get(var_name))
+			if (VarValue *vv = c->Values(0).Get(var_name)) // TODO: hybrids - determine correct vartable
 			{
 				if ( !VarValue::Parse(vv->Type(), value, *vv) )
 				{
@@ -3521,25 +3727,25 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 				dc_tou_mat.resize_preserve(dc_tou_row, 4, 0);
 				dc_flat_mat.resize_preserve(dc_flat_row, 4, 0);
 				var_name = "ur_ec_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(ec_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_tou_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_cr_tou_mat";
-				if (VarValue* vv = c->Values().Get(var_name))
+				if (VarValue* vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(cr_tou_mat);
 					list.Add(var_name);
 				}
 				var_name = "ur_dc_flat_mat";
-				if (VarValue *vv = c->Values().Get(var_name))
+				if (VarValue *vv = c->Values(0).Get(var_name))
 				{
 					vv->Set(dc_flat_mat);
 					list.Add(var_name);
@@ -3548,7 +3754,7 @@ void fcall_urdb_read(lk::invoke_t &cxt)
 		}
 
 		// this causes the UI and other variables to be updated
-		c->VariablesChanged( list );
+		c->VariablesChanged( list, 0 ); // TODO: hybrids
 	}
 
 	cxt.result().assign( ret_val ? 1.0 : 0.0 );
@@ -3578,10 +3784,11 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 void fcall_geocode(lk::invoke_t& cxt) 
 {
 	LK_DOC("geocode",
-		"Given a street address, location name, or latitude-longitude pair ('lat,lon') string, returns the latitude, longitude, and time zone of an address using Developer API. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
-		"(string:address):table");
+		"Given a street address or location name, returns latitude, longitude, and time zone. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NREL wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"(string):table");
 
 	double lat = 0, lon = 0, tz = 0;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	bool ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon, &tz);
 	cxt.result().empty_hash();
 	cxt.result().hash_item("lat").assign(lat);
@@ -3787,7 +3994,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 	cxt.result().empty_hash();
 
 	wxString name(cxt.arg(0).as_string());
-	VarValue *vv = cc.GetCase().Values().Get(name);
+	VarValue *vv = cc.GetCase().Values(0).Get(name);
 	if (!vv)
 	{
 		cxt.result().hash_item("ierr").assign(1.0);
@@ -3802,7 +4009,7 @@ void fcall_editscene3d(lk::invoke_t &cxt)
 
 	wxLogStatus("EDIT SCENE (%s): loaded %d bytes", (const char*)name.c_str(), (int)bin.GetDataLen());
 
-	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(800, 600), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+	wxDialog dlg(SamApp::Window(), wxID_ANY, "Edit 3D Shading Scene", wxDefaultPosition, wxScaleSize(1024, 768), wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 	ShadeTool *st = new ShadeTool(&dlg, wxID_ANY);
 
 	if (cxt.arg_count() > 1 && bin.GetDataLen() == 0)
@@ -4099,6 +4306,7 @@ void fcall_showsettings( lk::invoke_t &cxt )
     if (type == "solar") cxt.result().assign(ShowSolarResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wind") cxt.result().assign(ShowWindResourceDataSettings() ? 1.0 : 0.0);
     else if (type == "wave") cxt.result().assign(ShowWaveResourceDataSettings() ? 1.0 : 0.0);
+    else if (type == "tidal") cxt.result().assign(ShowTidalResourceDataSettings() ? 1.0 : 0.0);
 }
 
 void fcall_rescanlibrary( lk::invoke_t &cxt )
@@ -4108,7 +4316,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 
 	wxString type(cxt.arg(0).as_string().Lower());
 	Library *reloaded = 0;
-    Library* reloaded2 = 0;
 
 	if ( type == "solar" )
 	{
@@ -4133,9 +4340,13 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
         wxString wave_resource_ts_db = SamApp::GetUserLocalDataDir() + "/WaveResourceTSData.csv";
         wxString wave_resource_db = SamApp::GetRuntimePath() + "../wave_resource/test_time_series_jpd.csv";
         ScanWaveResourceTSData(wave_resource_ts_db, true);
-        //WaveResourceTSData_makeJPD(wave_resource_db, true);
         reloaded = Library::Load(wave_resource_ts_db);
-        //reloaded2 = Library::Load(wave_resource_db);
+    }
+    else if (type == "tidal")
+    {
+        wxString tidal_resource_db = SamApp::GetUserLocalDataDir() + "/TidalResourceData.csv";
+        ScanTidalResourceData(tidal_resource_db, true);
+        reloaded = Library::Load(tidal_resource_db);
     }
 
 
@@ -4149,13 +4360,6 @@ void fcall_rescanlibrary( lk::invoke_t &cxt )
 		}
 	}
 
-    if (reloaded2 != 0)
-    {
-        std::vector<wxUIObject*> objs = cc.InputPage()->GetObjects();
-        for (size_t i = 0; i < objs.size(); i++)
-            if (LibraryCtrl* lc = objs[i]->GetNative<LibraryCtrl>())
-                lc->ReloadLibrary();
-    }
 }
 
 void fcall_makejpdfile(lk::invoke_t& cxt)
@@ -4262,8 +4466,10 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
 
         if (const char* err = ssc_module_exec_simple_nothread("wave_file_reader", pdata))
         {
-            wxLogStatus("error scanning '" + wf + "'");
-            wxLogStatus("\t%s", err);
+            //wxLogStatus("error scanning '" + wf + "'");
+            //cxt.error(err);
+            cxt.result().assign(err);
+            return;
         }
         else
         {
@@ -4356,8 +4562,8 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
     }
     //csv(1, 0) += "_" + wxString::Format("%g", first_year + file_count - 1);
     csv.WriteFile(final_file);
-    wxString name = WaveResourceTSData_makeJPD(final_file, true);
-    cxt.result().assign(name); //return name for library indexing
+    wxString err = WaveResourceTSData_makeJPD(final_file, true);
+    cxt.result().assign(err); //return name for library indexing
     wxString wave_resource_db = SamApp::GetUserLocalDataDir() + "/WaveResourceData.csv";
     ScanWaveResourceData(wave_resource_db, true);
     //std::remove(final_file); //Remove multiyear time series file as it doesn't make sense to run in SAM
@@ -4371,6 +4577,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                     lc->ReloadLibrary();
         }
     }
+    return;
 }
 
 void fcall_librarygetcurrentselection(lk::invoke_t &cxt)
@@ -5721,182 +5928,364 @@ static void fcall_read_json(lk::invoke_t &cxt)
     sscdata_to_lkhash(data, cxt.result());
 }
 
-static void fcall_reopt_size_battery(lk::invoke_t &cxt)
+static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 {
-    LK_DOC("reopt_size_battery", "From a detailed or simple photovoltaic with residential, commercial, third party or host developer model, get the optimal battery sizing using inputs set in activate case.", "( none ): table");
+	LK_DOC("reopt_size_battery", "Makes a call to the REopt API using inputs from the current behind-the-meter battery case and returns optimum battery size and dispatch. Set the grid outage parameter to True to consider outages, False for no outages.", "[boolean:grid_outage]: table");
 
-    ssc_data_t p_data = ssc_data_create();
+	ssc_data_t p_data = ssc_data_create();
 
-	MyMessageDialog dlg(GetCurrentTopLevelWindow(), "Preparing data and polling for result...this may take a few minutes.", "REopt API",
-		wxCENTER, wxDefaultPosition, wxDefaultSize, true);
-	dlg.Show();
-	wxGetApp().Yield(true);
+	bool grid_outage = false;
+	if (cxt.arg_count() > 0) {
+		grid_outage = cxt.arg(0).as_boolean();
+	}
 
-    // check if case exists and is correct configuration
-    Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
-    if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
-            (sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
-             sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
-        throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
-    bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
-    Simulation base_case = sam_case->BaseCase();
-    base_case.Clear();
-    base_case.Prepare();
-    bool success = base_case.Invoke(true);
-    if (!success){
-        ssc_data_free(p_data);
-        throw lk::error_t(base_case.GetErrors()[0]);
-    }
+	// check if case exists and is correct configuration
+	Case* sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
+	if (!sam_case || ((sam_case->GetTechnology() != "PV Battery" && sam_case->GetTechnology() != "PVWatts Battery") ||
+		(sam_case->GetFinancing() != "Residential" && sam_case->GetFinancing() != "Commercial" &&
+			sam_case->GetFinancing() != "Third Party" && sam_case->GetFinancing() != "Host Developer")))
+		throw lk::error_t("Must be run from Photovoltaic case with Residential, Commercial, Third Party or Host Developer model.");
+	bool pvsam = sam_case->GetTechnology() == "PV Battery";
 
-    //
-    // copy over required inputs from SAM
-    //
-    size_t length;
-    ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
-    ssc_data_set_number(p_data, "lat", base_case.GetInput("lat")->Value());
-    ssc_data_set_number(p_data, "lon", base_case.GetInput("lon")->Value());
-    ssc_data_set_array(p_data, "gen", gen, length);
+	Simulation base_case = sam_case->BaseCase();
+	base_case.Clear();
+	base_case.Prepare();
+	bool success = base_case.Invoke(false,true);
+	if (!success) {
+		ssc_data_free(p_data);
+		throw lk::error_t(base_case.GetErrors()[0]);
+		return;
+	}
 
-    auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec){
-        for (auto& i : captured_vec){
-            auto vd = base_case.GetValue(i);
-            if (vd){
-                switch(vd->Type()){
-                    case VV_NUMBER:
-                        ssc_data_set_number(p_data, i.c_str(), vd->Value());
-                        break;
-                    case VV_ARRAY:{
-                        size_t n;
-                        double* arr = vd->Array(&n);
-                        ssc_data_set_array(p_data, i.c_str(), arr, n);
-                        break;
-                    }
-                    case VV_MATRIX:{
-                        size_t n, m;
-                        double* mat = vd->Matrix(&n, &m);
-                        ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
-                        break;
-                    }
-                    default:
-                        throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
-                }
-            }
-        }
-    };
+	wxGetApp().Yield();
 
-    // variables that are disjoint between PVWatts and PVSam
-    std::vector<std::string> pvwatts_vars = {"array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
-											 "module_type"};
+	wxProgressDialog pdlg("REopt API", "Reading SAM inputs and simulation results to send to REopt API.", 100, GetCurrentTopLevelWindow(), wxPD_SMOOTH | wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE );
 
-    std::vector<std::string> pvsam_vars = {"subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
-                                           "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
-                                           "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
-                                           "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
-                                           "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
-                                           "batt_minimum_SOC", "crit_load" };
+	pdlg.Show();
+	pdlg.Fit();
 
-    if (pvsam){
-        copy_vars_into_ssc_data(pvsam_vars);
-    }
-    else{
-        copy_vars_into_ssc_data(pvwatts_vars);
-    }
+	//
+	// copy over required inputs from SAM
+	//
+	size_t length;
+	ssc_number_t* gen = base_case.GetOutput("gen")->Array(&length);
+	ssc_data_set_number(p_data, "lat", base_case.GetInput("lat", 0)->Value()); // We're now providing prod factor series via gen, so REopt will ignore lat and lon
+	ssc_data_set_number(p_data, "lon", base_case.GetInput("lon", 0)->Value());
+	ssc_data_set_array(p_data, "gen_without_battery", gen, length);
 
-    // variables common to both models
-    std::vector<std::string> pv_vars = {"degradation", "itc_fed_percent", "system_capacity",
-                                        "pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
-                                        "ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
-                                        "total_installed_cost", "depr_bonus_fed", "depr_bonus_fed"};
+	ssc_data_set_number(p_data, "size_for_grid_outage", grid_outage);
 
-    std::vector<std::string> batt_vars = {"battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule"};
+	auto copy_vars_into_ssc_data = [&base_case, &p_data](std::vector<std::string>& captured_vec) {
+		for (auto& i : captured_vec) {
+			auto vd = base_case.GetValue(i);
+			if (vd) {
+				switch (vd->Type()) {
+				case VV_NUMBER:
+					ssc_data_set_number(p_data, i.c_str(), vd->Value());
+					break;
+				case VV_ARRAY: {
+					size_t n;
+					double* arr = vd->Array(&n);
+					ssc_data_set_array(p_data, i.c_str(), arr, n);
+					break;
+				}
+				case VV_MATRIX: {
+					size_t n, m;
+					double* mat = vd->Matrix(&n, &m);
+					ssc_data_set_matrix(p_data, i.c_str(), mat, n, m);
+					break;
+				}
+				default:
+					throw lk::error_t("reopt_size_battery input error: " + i + " type must be number, array or matrix");
+				}
+			}
+		}
+		};
 
-    std::vector<std::string> rate_vars = {"ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
-                                          "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
-                                          "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
-                                          "load"};
+	// variables that are disjoint between PVWatts and PVSam
+	std::vector<std::string> pvwatts_vars = { "array_type", "azimuth", "tilt",  "gcr", "inv_eff", "dc_ac_ratio",
+											 "module_type" };
 
-    std::vector<std::string> fin_vars = {"analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
-                                         "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
-                                         "total_installed_cost", "system_use_lifetime_output"};
+	std::vector<std::string> pvsam_vars = { "subarray1_track_mode", "subarray1_backtrack", "subarray1_azimuth",
+										   "subarray1_tilt", "subarray1_gcr", "inverter_model", "inverter_count",
+										   "inv_snl_eff_cec", "inv_ds_eff", "inv_pd_eff", "inv_cec_cg_eff",
+										   "inv_snl_paco", "inv_ds_paco", "inv_pd_paco", "inv_cec_cg_paco",
+										   "batt_dc_ac_efficiency", "batt_ac_dc_efficiency", "batt_initial_SOC",
+										   "batt_minimum_SOC", "batt_dispatch_auto_can_gridcharge", "crit_load", "grid_outage" };
 
-    copy_vars_into_ssc_data(pv_vars);
-    copy_vars_into_ssc_data(batt_vars);
-    copy_vars_into_ssc_data(rate_vars);
-    copy_vars_into_ssc_data(fin_vars);
+	if (pvsam) {
+		copy_vars_into_ssc_data(pvsam_vars);
+	}
+	else {
+		copy_vars_into_ssc_data(pvwatts_vars);
+	}
 
-    try{
-        Reopt_size_battery_params(p_data);
-    }
-    catch( std::exception& e){
-        ssc_data_free(p_data);
-        throw lk::error_t(e.what());
-    }
+	// variables common to both models
+	std::vector<std::string> pv_vars = { "degradation", "itc_fed_percent", "system_capacity",
+										"pbi_fed_amount", "pbi_fed_term", "ibi_sta_percent", "ibi_sta_percent_maxvalue",
+										"ibi_uti_percent", "ibi_uti_percent_maxvalue", "om_fixed", "om_production",
+										"total_installed_cost", "depr_bonus_fed", "depr_bonus_fed" };
 
-    auto reopt_scenario = new lk::vardata_t;
-    sscdata_to_lkvar(p_data, "reopt_scenario", *reopt_scenario);
-    ssc_data_free(p_data);
+	std::vector<std::string> batt_vars = { "battery_per_kW", "battery_per_kWh", "om_replacement_cost1", "batt_replacement_schedule" };
 
+	std::vector<std::string> rate_vars = { "ur_monthly_fixed_charge", "ur_dc_sched_weekday", "ur_dc_sched_weekend",
+										  "ur_dc_tou_mat", "ur_dc_flat_mat", "ur_ec_sched_weekday", "ur_ec_sched_weekend",
+										  "ur_ec_tou_mat", "ur_metering_option", "ur_monthly_min_charge", "ur_annual_min_charge",
+										  "load" };
+
+	std::vector<std::string> fin_vars = { "analysis_period", "federal_tax_rate", "state_tax_rate", "rate_escalation",
+										 "inflation_rate", "real_discount_rate", "om_fixed_escal", "om_production_escal",
+										 "total_installed_cost", "system_use_lifetime_output" };
+
+	copy_vars_into_ssc_data(pv_vars);
+	copy_vars_into_ssc_data(batt_vars);
+	copy_vars_into_ssc_data(rate_vars);
+	copy_vars_into_ssc_data(fin_vars);
+
+
+	try {
+		Reopt_size_battery_params(p_data);
+	}
+	catch (std::exception& e) {
+		pdlg.Close();
+		ssc_data_free(p_data);
+		throw lk::error_t(e.what());
+		return;
+	}
+
+
+	if (!pdlg.Update(3, "Getting REopt ID for optimization run.")) {
+		return;
+	}
+
+    lk::vardata_t reopt_scenario;
+    sscdata_to_lkvar(p_data, "reopt_scenario", reopt_scenario);
+	ssc_data_free(p_data);
+
+	wxString reopt_post = "{\n";
+    
+    wxString str = lk::json_write(*reopt_scenario.lookup("Site"));
+    reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+    reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+    reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+    reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+    reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("PV"));
+    reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Financial"));
+    reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+    str = lk::json_write(*reopt_scenario.lookup("Settings"));
+    reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
+
+    reopt_post += "}\n";
+    
     cxt.result().empty_hash();
-    lk_string reopt_jsonpost = lk::json_write(*reopt_scenario);
-    cxt.result().hash_item("scenario", reopt_jsonpost);
+	cxt.result().hash_item("scenario", reopt_post);
 
-    // send the post
-    wxString post_url = SamApp::WebApi("reopt_post");
-    post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+    
+	// send the post
+	wxString post_url = SamApp::WebApi("reopt_post");
+	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
-    wxEasyCurl curl;
-    curl.AddHttpHeader("Accept: application/json");
-    curl.AddHttpHeader("Content-Type: application/json");
-    curl.SetPostData(reopt_jsonpost);
 
-    wxString msg, err;
-    if (!curl.Get(post_url, msg))
-    {
-        cxt.result().assign(msg);
-        return;
-    }
+	wxEasyCurl curl;
+	curl.AddHttpHeader("Content-Type: application/json");
+	curl.AddHttpHeader("Accept: application/json");
+	curl.SetPostData(reopt_post);
 
-    // get the run_uuid to poll for result, checking the status
-    lk::vardata_t results;
-    if (!lk::json_read(curl.GetDataAsString(), results, &err))
-        cxt.result().assign("<reopt-error> " + err);
+    /*
+	//DEBUG only - fails on Mac per ssc pull request 1204
+	// write to file for SAM issue 1830
+	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
+	wxFile file(filename, wxFile::write);
+	if (!file.IsOpened()) {
+		wxLogError("Could not open file for writing!");
+		return;
+	}
+	file.Write(reopt_post);
+	file.Close();
+	*/
 
-    if (auto err_vd = results.lookup("messages"))
-        throw lk::error_t(err_vd->lookup("error")->as_string() + "\n" + err_vd->lookup("input_errors")->as_string() );
-    if (auto err_vd = results.lookup("error")){
-        cxt.result().hash_item("error", err_vd->as_string());
-        return;
-    }
+//	post_url = "'" + post_url + "'"; // lk error on Windows
+//	post_url = "\"" + post_url + "\""; // lk error on Windows
 
-    wxString poll_url = SamApp::WebApi("reopt_poll");
-    poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
-    poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
-    curl = wxEasyCurl();
-    cxt.result().hash_item("response", lk::vardata_t());
-    lk::vardata_t* cxt_result = cxt.result().lookup("response");
+	wxString msg, err;
+	if (!curl.Get(post_url, msg))
+	{
+		pdlg.Close();
+		cxt.result().assign(msg);
+		return;
+	}
 
-    std::string optimizing_status = "Optimizing...";
-    while (optimizing_status == "Optimizing..."){
-        if (!curl.Get(poll_url, msg))
-        {
-            cxt.result().hash_item("error", msg);
-            break;
-        }
-        if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)){
-            cxt.result().hash_item("error", "<json-error> " + err);
-            break;
-        }
-        if (lk::vardata_t* res = cxt_result->lookup("outputs")){
-            optimizing_status = res->lookup("Scenario")->lookup("status")->as_string();
-            if (optimizing_status.find("error") != std::string::npos){
-                std::string error = res->lookup("messages")->lookup("error")->as_string().ToStdString();
-                cxt.result().hash_item("error", error);
-                break;
-            }
-        }
-    }
-    dlg.Close();
+	if (!pdlg.Update(5, "Checking REopt ID.")) {
+		return;
+	}
+
+	// get the run_uuid to poll for result, checking the status
+	// examine raw string
+	//wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+
+	// handle errors instead of hard crash SAM 1830
+	auto strData = curl.GetDataAsString();
+	if (strData.Find("error") != wxNOT_FOUND) {
+		// content-length issue on Linux 135832 runs and 140778 fails
+		// if failing with "Request Rejected" title, then run with monthly scaled load per 
+		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
+		if (strData.Find("Request Rejected") != wxNOT_FOUND) {
+			// TODO: extra prompt to let user know what is going on???
+			auto ElectricLoad = reopt_scenario.lookup("ElectricLoad");
+			ElectricLoad->empty_hash();
+			if (sam_case->GetFinancing() == "Residential")
+				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
+			else
+				ElectricLoad->hash_item("doe_reference_name", "LargeOffice");
+			lk::vardata_t monthly_load;
+			monthly_load.empty_vector();
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
+			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
+			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
+            
+            reopt_post = "{\n";
+            
+            str = lk::json_write(*reopt_scenario.lookup("Site"));
+            reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
+            reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
+            reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
+            reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
+            reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("PV"));
+            reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Financial"));
+            reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
+            str = lk::json_write(*reopt_scenario.lookup("Settings"));
+            reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
+
+            reopt_post += "}\n";
+
+			cxt.result().hash_item("scenario", reopt_post);
+			curl.SetPostData(reopt_post);
+            /*
+			// DEBUG only - fails on Mac per ssc pull request 1204
+			// write to file for SAM issue 1830
+			wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
+			wxFile file(filename, wxFile::write);
+			if (!file.IsOpened()) {
+				wxLogError("Could not open file for writing!");
+				return;
+			}
+			file.Write(reopt_post);
+			file.Close();
+			*/
+			if (!curl.Get(post_url, msg))
+			{
+				pdlg.Close();
+				cxt.result().assign(msg);
+				return;
+			}
+			strData = curl.GetDataAsString();
+			if (strData.Find("error") != wxNOT_FOUND) {
+				pdlg.Close();
+				cxt.result().hash_item("error", strData);
+				return;
+			}
+		}
+		else {
+			pdlg.Close();
+			cxt.result().hash_item("error", strData);
+			return;
+		}
+	}
+
+
+	lk::vardata_t results;
+	if (!lk::json_read(curl.GetDataAsString(), results, &err))
+		cxt.result().assign("<reopt-error> " + err);
+
+	// if run_uuid is not returned, get error message from json result
+	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
+	if (auto err_vd = results.lookup("messages")) {
+		throw lk::error_t(err_vd->lookup("error")->as_string());
+	}
+	if (auto err_vd = results.lookup("error")) {
+		pdlg.Close();
+		cxt.result().hash_item("error", err_vd->as_string());
+		return;
+	}
+
+
+	// now we have a run_uuid so make call to run REopt
+	wxString poll_url = SamApp::WebApi("reopt_poll");
+	poll_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
+	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
+	curl = wxEasyCurl();
+
+	if (!curl.Get(poll_url, msg))	{
+		cxt.result().hash_item("error", msg);
+		return;
+	}
+
+
+	cxt.result().hash_item("response", lk::vardata_t());
+	lk::vardata_t* cxt_result = cxt.result().lookup("response");
+
+	if (!pdlg.Update(6, "Running optimization on REopt servers.")) {
+		return;
+	}
+
+	int p=6;
+	std::string optimizing_status = "Optimizing...";
+	while (optimizing_status == "Optimizing...") {
+		if (p > 99) p = 98; // if latest wxWidgets progress dialog goes to 100 then disappears.
+		if (!pdlg.Update(p++, "Optimizing. This may take several minutes.")) {
+			return;
+		}
+
+		if (!curl.Get(poll_url, msg))
+		{
+			cxt.result().hash_item("error", msg);
+			break;
+		}
+		if (!lk::json_read(curl.GetDataAsString(), *cxt_result, &err)) {
+			cxt.result().hash_item("error", "<json-error> " + err);
+			break;
+		}
+
+		optimizing_status = cxt_result->lookup("status")->as_string();
+		if (optimizing_status.find("error") != std::string::npos) {
+			std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
+			cxt.result().hash_item("errors", error);
+			break;
+		}
+		wxGetApp().Yield();
+		// check API status every 10 seconds. reopt v3 api seems to take about 3 minutes for commercial and 1 minute for residential defaults.
+		wxMilliSleep(10000);
+
+	}
+
+//	wxMessageBox("url=" + poll_url, "Finished"); // Debug test to make sure completed loop
+
+	pdlg.Update(100, "Done.");
+	wxMilliSleep(1000);
+	pdlg.Close();
 }
 
 static void fcall_setup_landbosse(lk::invoke_t &cxt)
@@ -5926,7 +6315,7 @@ static void fcall_run_landbosse(lk::invoke_t & cxt)
 
     Case *sam_case = SamApp::Window()->GetCurrentCaseWindow()->GetCase();
 
-    VarTable* vartable = &sam_case->Values();
+    VarTable* vartable = &sam_case->Values(0);  //TODO: hybrid update for Wind
 
     ssc_data_t landbosse_data = ssc_data_create();
 
@@ -6022,6 +6411,7 @@ lk::fcall_t* invoke_general_funcs()
             fcall_dview,
             fcall_dview_solar_data_file,
             fcall_dview_wave_data_file,
+            fcall_dview_tidal_data_file,
             fcall_pdfreport,
             fcall_pagenote,
             fcall_macrocall,
@@ -6088,6 +6478,8 @@ lk::fcall_t* invoke_ssc_funcs()
 		fcall_ssc_free,
 		fcall_ssc_dump,
 		fcall_ssc_var,
+		fcall_ssc_var_auto_exec,
+		fcall_var_exists,
 		fcall_ssc_exec,
 		fcall_ssc_eqn,
 		0 };
@@ -6103,6 +6495,7 @@ lk::fcall_t* invoke_config_funcs()
 		fcall_addpage,
 		fcall_setting,
 		fcall_setmodules,
+		fcall_sethybridvariabledependencies,
 		0 };
 	return (lk::fcall_t*)vec;
 }

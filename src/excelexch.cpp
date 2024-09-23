@@ -271,7 +271,7 @@ public:
 		lstVariables->Clear();
 		for (size_t i=0;i<m_exch.Vars.size();i++)
 		{
-			wxString lab = m_ci->Variables.Label( m_exch.Vars[i].Name );
+			wxString lab = m_ci->Variables[0].Label(m_exch.Vars[i].Name);
 			if ( lab.IsEmpty() ) lab = "{" + m_exch.Vars[i].Name + "}";
 			lstVariables->Append( lab );
 		}
@@ -326,10 +326,10 @@ public:
 			{
 				if (idx < 0 || idx >= (int)m_exch.Vars.size())
 					return;
-				unsigned long vf = m_ci->Variables.Flags(m_exch.Vars[idx].Name);
+				unsigned long vf = m_ci->Variables[0].Flags(m_exch.Vars[idx].Name);
 				if ( vf & VF_CALCULATED || vf & VF_LIBRARY )
 				{
-					wxMessageBox("'" + m_ci->Variables.Label( m_exch.Vars[idx].Name ) + "' is a calculated value or a library selection, and as a result its value cannot be captured from Excel.");
+					wxMessageBox("'" + m_ci->Variables[0].Label(m_exch.Vars[idx].Name) + "' is a calculated value or a library selection, and as a result its value cannot be captured from Excel.");
 					rbgToFrom->SetSelection(0);
 				}
 				else
@@ -355,7 +355,7 @@ public:
 		{
 			txtExcelRange->SetValue( m_exch.Vars[idx].Range );
 			
-			unsigned long vf = m_ci->Variables.Flags( m_exch.Vars[idx].Name );
+			unsigned long vf = m_ci->Variables[0].Flags(m_exch.Vars[idx].Name);
 			if ( vf & VF_CALCULATED || vf & VF_LIBRARY )
 				m_exch.Vars[idx].Type = ExcelExchange::SEND_TO;
 
@@ -377,8 +377,8 @@ public:
 		wxArrayString names;
 		wxArrayString labels;
 
-		for( VarInfoLookup::iterator it = m_ci->Variables.begin();
-			it != m_ci->Variables.end();
+		for( VarInfoLookup::iterator it = m_ci->Variables[0].begin();
+			it != m_ci->Variables[0].end();
 			++it )
 		{
 			VarInfo &vi = *(it->second);
@@ -746,16 +746,21 @@ int ExcelExchange::RunExcelExchange( ExcelExchange &ex, VarTable &inputs, Simula
 		else
 		{
 			// override the variable value in the simulation object
-			sim->Override( ex.Vars[i].Name, vval );
+			sim->Override( ex.Vars[i].Name, vval, 0 ); // TODO: hybrids
 
 			// update ui input value per Paul 3/6/15
 			Case *c = sim->GetCase();
-			if (VarValue *vv = c->Values().Get(ex.Vars[i].Name))
-			{
-				vv->Copy(vval);
-				c->VariableChanged(ex.Vars[i].Name);
-			}
 
+			bool found = false;
+
+			for (size_t ndxHybrid = 0; !found && ndxHybrid < c->GetConfiguration()->Technology.size(); ndxHybrid++) {
+				if (VarValue* vv = c->Values(ndxHybrid).Get(ex.Vars[i].Name))
+				{
+					vv->Copy(vval);
+					c->VariableChanged(ex.Vars[i].Name, ndxHybrid);
+					found = true;
+				}
+			}
 			// log successful exchange transaction
 			// will be shown in results summary window
 

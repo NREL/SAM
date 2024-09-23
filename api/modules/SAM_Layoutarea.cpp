@@ -30,8 +30,6 @@ SAM_EXPORT double* SAM_Layoutarea_Common_positions_mget(SAM_table ptr, int* nrow
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Layoutarea_Outputs_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -40,8 +38,6 @@ SAM_EXPORT double SAM_Layoutarea_Outputs_area_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Layoutarea_Outputs_convex_hull_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -52,6 +48,4 @@ SAM_EXPORT double* SAM_Layoutarea_Outputs_convex_hull_mget(SAM_table ptr, int* n
 	});
 	return result;
 }
-
-
 

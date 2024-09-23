@@ -462,6 +462,141 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "csp_dtr_sca_ap_lengths": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_costh": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_end_gains": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_end_losses": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_iams": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_latitude": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_sca_effs": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_theta": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_dtr_sca_calc_zenith": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "lib_A_aperture": {
             "Version": 4.0,
             "Type": 1.0,
@@ -915,26 +1050,21 @@
         "//   referencing in ssc_equations.h",
         "//",
         "",
-        "",
-        "equations{ '$MIMO$ collector constants' } = define() {",
-        "\t// Value of nColt must match the number of collector types allowed",
-        "\t// Each array calculated below must have nColt values in it",
-        "\t${nColt} = 4;",
+        "// Just UI indicator\r",
+        "equations{ 'collectors_in_field' } = define () {\r",
+        "  arr = ${SCAInfoArray};\r",
+        "  n = ${nColt};\r",
+        "  str = \"Cold - \"; \r",
+        "  for ( i=0; i<#arr; i++ ) // number of collector assemblies in loop\r",
+        "    for ( j=0; j<n; j++ ) \r",
+        "      if ( arr[i][1] == j+1 ) { // receiver type number for user display (1-4)\r",
+        "        s[j] = to_string(j+1); \r",
+        "        str = str + s[j] + \" - \";\r",
+        "\t  }\r",
+        "  str = str + \"Hot\";\r",
+        "  return str; \r",
         "};",
         "",
-        "// Just UI indicator",
-        "equations{ '$MIMO$ collectors in field' } = define () {",
-        "  arr = ${SCAInfoArray};",
-        "  n = ${nColt};",
-        "  str = \"Cold - \"; ",
-        "  for ( i=0; i<#arr; i++ ) // number of collector assemblies in loop",
-        "    for ( j=0; j<n; j++ ) ",
-        "      if ( arr[i][1] == j+1 ) { // collector type number for UI display (1-4)",
-        "        s[j] = to_string(j+1);",
-        "        str = str + s[j] + \" - \";",
-        "\t  }",
-        "  ${collectors_in_field} = str + \"Hot\";",
-        "};",
         "",
         "// Just input aggregator",
         "equations{ 'IAM_matrix' } = define() {",
@@ -1031,13 +1161,13 @@
         "};",
         "",
         "// Just input aggregator",
-        "equations{ 'L_aperture' } = define() {",
-        "\tacollector[0] = ${csp_dtr_sca_ap_length_1};",
-        "\tacollector[1] = ${csp_dtr_sca_ap_length_2};",
-        "\tacollector[2] = ${csp_dtr_sca_ap_length_3};",
-        "\tacollector[3] = ${csp_dtr_sca_ap_length_4};",
-        "\treturn acollector;",
-        "};",
+        "//equations{ 'L_aperture' } = define() {",
+        "//\tacollector[0] = ${csp_dtr_sca_ap_length_1};",
+        "//\tacollector[1] = ${csp_dtr_sca_ap_length_2};",
+        "//\tacollector[2] = ${csp_dtr_sca_ap_length_3};",
+        "//\tacollector[3] = ${csp_dtr_sca_ap_length_4};",
+        "//\treturn acollector;",
+        "//};",
         "",
         "// Just input aggregator",
         "equations{ 'ColperSCA' } = define() {",

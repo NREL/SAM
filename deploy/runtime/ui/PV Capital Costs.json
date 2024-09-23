@@ -114,43 +114,6 @@
                 }
             }
         },
-        "GroupBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "GroupBox35"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 627.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 812.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 95.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Total Installed Cost"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1980,6 +1943,43 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 39.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "grpTotalInstalledCost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 627.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 812.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 104.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "grpTotalInstalledCost"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -4145,23 +4145,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "lblFinancingCost"
+                    "String": "lblTotalInstalledCost"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 651.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 380.0
+                    "Integer": 258.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 21.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -4169,7 +4169,69 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page."
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lblTotalInstalledCostDescription"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 645.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 386.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -5082,68 +5144,6 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 471.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 651.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 210.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Total installed cost"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
                 }
             }
         },
@@ -7672,26 +7672,32 @@
         "\t\t\t+ ${engr_fixed};",
         "};",
         "",
-        "equations{ 'inverter_num_units' } = define() {",
-        "\tif( technology() == \"Flat Plate PV\" ) return ${inverter_count};",
-        "\telseif ( technology() == \"PVWatts\" ) return 1;",
-        "\telse return 0;",
+        "equations{ 'inverter_num_units' } = define() {\r",
+        "\ttech = technology();",
+        "\tif ( tech == 'Flat Plate PV' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' ) {\r",
+        "\t\treturn ${inverter_count};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 1; \r",
+        "\t}",
         "};",
         "",
-        "equations{ 'module_power' } = define() {",
-        "\tif( technology() == \"PVWatts\" ) {",
-        "\t\treturn ${system_capacity};",
+        "equations{ 'module_power' } = define() {\r",
+        "\ttech = technology();",
+        "\tif ( tech == 'Flat Plate PV' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' ) {",
+        "\t\treturn 0.001*?${module_model}\r",
+        "\t\t\t\t[\r",
+        "\t\t\t\t\t${spe_power},\r",
+        "\t\t\t\t\t${cec_p_mp_ref},\r",
+        "\t\t\t\t\t${6par_pmp},\r",
+        "\t\t\t\t\t${snl_ref_pmp},\r",
+        "\t\t\t\t\t${sd11par_Pmp0}\r",
+        "\t\t\t\t];\r",
         "\t}\t",
         "\telse {",
-        "\t\t// Flat Plate PV",
-        "\t\treturn 0.001*?${module_model}",
-        "\t\t\t\t[",
-        "\t\t\t\t\t${spe_power},",
-        "\t\t\t\t\t${cec_p_mp_ref},",
-        "\t\t\t\t\t${6par_pmp},",
-        "\t\t\t\t\t${snl_ref_pmp},",
-        "\t\t\t\t\t${sd11par_Pmp0}",
-        "\t\t\t\t];",
+        "\t\treturn ${system_capacity};\r",
         "\t}",
         "};",
         "",
@@ -7708,15 +7714,21 @@
         "\treturn ${total_land_area};",
         "};",
         "",
-        "equations{ 'inverter_power' } = define() {",
-        "\tif ( technology() == \"PVWatts\" ) return ${system_capacity}/${dc_ac_ratio};",
-        "\telse return 0.001*?${inverter_model}",
-        "\t\t\t[",
-        "\t\t\t\t${inv_snl_paco},",
-        "\t\t\t\t${inv_ds_paco},",
-        "\t\t\t\t${inv_pd_paco},",
-        "\t\t\t\t${inv_cec_cg_paco}",
-        "\t\t\t];",
+        "equations{ 'inverter_power' } = define() {\r",
+        "\ttech = technology();",
+        "\tif ( tech == 'Flat Plate PV' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' ) {\r",
+        "\t\treturn 0.001*?${inverter_model}\r",
+        "\t\t\t[\r",
+        "\t\t\t\t${inv_snl_paco},\r",
+        "\t\t\t\t${inv_ds_paco},\r",
+        "\t\t\t\t${inv_pd_paco},\r",
+        "\t\t\t\t${inv_cec_cg_paco}\r",
+        "\t\t\t];\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn ${ac_nameplate};\r",
+        "\t}",
         "};",
         "",
         "equations{ 'sales_tax_value' } = define() {",
@@ -7756,8 +7768,14 @@
         "\t\t+ ${modulearray_area}*${install_labor_perarea}; };",
         "",
         "equations{ 'module_num_units' } = define() {",
-        "\tif ( technology() == \"PVWatts\" ) return 1;",
-        "\telse return ${total_modules};",
+        "\ttech = technology();\r",
+        "\tif ( tech == 'Flat Plate PV' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' )  {\r",
+        "\t\treturn ${total_modules};\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 1;\t\r",
+        "\t}\r",
         "};",
         "",
         "equations{ 'landprep_total' } = define() {",
@@ -7769,26 +7787,34 @@
         "equations{ 'install_margin_total' } = define() {",
         "\treturn ${install_margin_fixed}",
         "\t\t+ ${modulearray_power}*1000*${install_margin_perwatt}",
-        "\t\t+ ${modulearray_area}*${install_margin_perarea}; };",
+        "\t\t+ ${modulearray_area}*${install_margin_perarea}; \r",
+        "};",
         "",
         "equations{ 'total_installed_cost' } = define() {",
-        "\ttech = technology();",
-        "\tif(${pv_capex_cost_choice}==0) {",
-        "\t\treturn ${total_direct_cost}+${total_indirect_cost}+${sales_tax_total};",
-        "\t}",
-        "\telse if (${pv_capex_cost_choice}==1 && tech == 'Flat Plate PV') {",
-        "\t\treturn ${capex_table_total_installed_dc_cost} + ",
-        "\t\t\t${capex_table_total_installed_ac_cost}+",
-        "\t\t\t${capex_table_total_installed_land_cost};",
-        "\t}",
-        "\telse {",
-        "\t\treturn ${capex_table_total_installed_dc_cost} + ",
-        "\t\t\t${capex_table_total_installed_ac_cost};",
-        "\t}",
+        "\ttech = technology();\r",
+        "\t// no land capex table for pvwatts\r",
+        "\tif ( tech == 'Flat Plate PV' || tech == 'PVWatts' ) {\r",
+        "\t\tif ( ${pv_capex_cost_choice} == 1 ) {\r",
+        "\t\t\tif ( tech == 'Flat Plate PV' ) {\r",
+        "\t\t\t\treturn ${capex_table_total_installed_dc_cost} \r",
+        "\t\t\t\t\t + ${capex_table_total_installed_ac_cost}\r",
+        "\t\t\t\t\t + ${capex_table_total_installed_land_cost};",
+        "\t\t\t}",
+        "\t\t\tif ( tech == 'PVWatts' ) {\r",
+        "\t\t\t\treturn ${capex_table_total_installed_dc_cost} \r",
+        "\t\t\t\t\t + ${capex_table_total_installed_ac_cost};",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\t// pv_capex_cost_choice == 0 or hybrid\r",
+        "\treturn ${total_direct_cost}\r",
+        "\t     + ${total_indirect_cost}\r",
+        "\t\t + ${sales_tax_total};\r",
         "};",
         "",
         "equations{ 'inverterarray_power' } = define() {",
-        "\treturn ${inverter_power}*${inverter_num_units}; };",
+        "\treturn ${inverter_power}*${inverter_num_units}; \r",
+        "};",
         "",
         "equations{ 'modulearray_area' } = define() {",
         "\treturn ${total_module_area};",
@@ -7799,13 +7825,14 @@
         "\t\t+${engr_total}",
         "\t\t+${grid_total}",
         "\t\t+${land_total}",
-        "\t\t+${landprep_total};};",
-        "",
+        "\t\t+${landprep_total};\r",
+        "};",
         "",
         "equations{ 'grid_total' } = define() {",
         "\treturn ${grid_percent}/100*${total_direct_cost} ",
         "\t\t+ ${modulearray_power}*1000*${grid_per_watt} ",
-        "\t\t+ ${grid_fixed}; };",
+        "\t\t+ ${grid_fixed}; \r",
+        "};",
         "",
         "equations{ 'inverter_total' } = define() {",
         "\treturn ?${inverter_costunits}",
@@ -7814,23 +7841,26 @@
         "\t\t\t\t\t(${module_num_units}*${module_power})*1000,",
         "\t\t\t\t\t${inverter_num_units}",
         "\t\t\t\t]",
-        "\t\t\t\t*${per_inverter}; };",
-        "",
+        "\t\t\t\t*${per_inverter}; \r",
+        "};",
         "",
         "equations{ 'bos_equip_total' } = define() {",
         "\treturn ${bos_equip_fixed}",
-        "+ ${modulearray_power}*1000*${bos_equip_perwatt}",
-        "+ ${modulearray_area}*${bos_equip_perarea}; };",
+        "\t+ ${modulearray_power}*1000*${bos_equip_perwatt}",
+        "\t+ ${modulearray_area}*${bos_equip_perarea};\r",
+        "};",
         "",
         "equations{ 'installed_per_capacity' } = define() {",
-        "\treturn 0.001*${total_installed_cost}/${modulearray_power}; };",
+        "\treturn 0.001*${total_installed_cost}/${modulearray_power}; \r",
+        "};",
         "",
         "equations{ 'subtotal_direct' } = define() {",
         "\treturn ${module_total}",
         "\t\t+${inverter_total}",
         "\t\t+${bos_equip_total}",
         "\t\t+${install_labor_total}",
-        "\t\t+${install_margin_total}; };",
+        "\t\t+${install_margin_total}; \r",
+        "};",
         "",
         "equations{ 'total_direct_cost' } = define() {",
         "\treturn ${module_total}",
@@ -7838,13 +7868,29 @@
         "\t\t+${bos_equip_total}",
         "\t\t+${install_labor_total}",
         "\t\t+${install_margin_total}",
-        "\t\t+${contingency}; };",
-        "\t\t",
-        "",
-        "",
-        "",
-        "",
+        "\t\t+${contingency}; \r",
+        "};",
         ""
     ],
-    "Callbacks": []
+    "Callbacks": [
+        "on_load{'PV Capital Costs'} = define() {\r",
+        "\ttech = technology();\r",
+        "\tif ( tech == 'PVWatts Wind Battery Hybrid' \r",
+        "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
+        "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
+        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t{\r",
+        "\t\tpv_name = 'Total Installed Cost of PV Subsystem';\r",
+        "\t\tpv_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the PV subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t}\r",
+        "\telse\r",
+        "\t{\r",
+        "\t\tpv_name = 'Total Installed Cost';\r",
+        "\t\tpv_description = 'The total installed cost is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
+        "\t}\r",
+        "\tproperty('lblTotalInstalledCostDescription', 'Caption', pv_description );\r",
+        "\tproperty('grpTotalInstalledCost', 'Caption', pv_name );\r",
+        "\tproperty('lblTotalInstalledCost', 'Caption', pv_name );\r",
+        "};"
+    ]
 }

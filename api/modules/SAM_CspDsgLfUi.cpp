@@ -41,8 +41,6 @@ SAM_EXPORT double SAM_CspDsgLfUi_Common_P_boil_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspDsgLfUi_Common_deltaT_subcooled_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -51,8 +49,6 @@ SAM_EXPORT double SAM_CspDsgLfUi_Common_deltaT_subcooled_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspDsgLfUi_Common_use_quality_or_subcooled_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -63,8 +59,6 @@ SAM_EXPORT double SAM_CspDsgLfUi_Common_use_quality_or_subcooled_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspDsgLfUi_Outputs_T_hot_out_target_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -74,8 +68,6 @@ SAM_EXPORT double SAM_CspDsgLfUi_Outputs_T_hot_out_target_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspDsgLfUi_Outputs_T_saturation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -84,6 +76,4 @@ SAM_EXPORT double SAM_CspDsgLfUi_Outputs_T_saturation_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 

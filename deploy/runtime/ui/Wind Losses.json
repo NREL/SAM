@@ -82,7 +82,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 4.0
                 }
             }
         },
@@ -165,7 +165,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 5.0
                 }
             }
         },
@@ -248,7 +248,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -331,7 +331,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 3.0
                 }
             }
         },
@@ -414,7 +414,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 6.0
                 }
             }
         },
@@ -497,7 +497,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -580,7 +580,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 7.0
                 }
             }
         },
@@ -663,7 +663,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 13.0
                 }
             }
         },
@@ -746,7 +746,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 14.0
                 }
             }
         },
@@ -829,7 +829,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 15.0
                 }
             }
         },
@@ -912,7 +912,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 12.0
                 }
             }
         },
@@ -995,7 +995,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -1560,7 +1560,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Turbine performance losses represent the amount of energy that is not produced by a wind turbine at a given wind speed compared to the OEM power curve."
+                    "String": "Environmental losses account for performance degradation and shut downs due to environmental factors such as weather, ambient temperature, and tree growth."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1672,7 +1672,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 18.0
                 }
             }
         },
@@ -1755,7 +1755,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 17.0
                 }
             }
         },
@@ -1838,7 +1838,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 16.0
                 }
             }
         },
@@ -1921,7 +1921,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -2004,7 +2004,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 19.0
                 }
             }
         },
@@ -2087,7 +2087,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 9.0
                 }
             }
         },
@@ -2170,7 +2170,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 11.0
                 }
             }
         },
@@ -2336,7 +2336,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 8.0
                 }
             }
         },
@@ -2419,7 +2419,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 10.0
                 }
             }
         },
@@ -2502,7 +2502,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 1.0
                 }
             }
         },
@@ -2585,7 +2585,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": -1.0
+                    "Integer": 2.0
                 }
             }
         },
@@ -2685,7 +2685,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2751,7 +2751,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
                 }
             }
         }
@@ -3086,7 +3086,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total wake losses",
-            "Units": " %",
+            "Units": "%",
             "Group": "Losses",
             "IndexLabels": "",
             "Flags": 8.0,

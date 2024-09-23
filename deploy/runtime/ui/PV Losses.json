@@ -1,7 +1,7 @@
 {
     "Name": "PV Losses",
-    "Width": 853.0,
-    "Height": 1000.0,
+    "Width": 854.0,
+    "Height": 1034.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 864.0
+                    "Integer": 900.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 77.0
+                    "Integer": 107.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 684.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 810.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1317,7 +1317,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 921.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1363,11 +1363,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 636.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1450,7 +1450,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 906.0
+                    "Integer": 942.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1704,7 +1704,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 906.0
+                    "Integer": 942.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1765,7 +1765,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 885.0
+                    "Integer": 921.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1885,6 +1885,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "enable_subhourly_clipping"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 501.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 636.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Enable subhourly clipping loss correction"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1940,7 +1981,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 4"
+                    "String": "object 439"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1967,68 +2008,6 @@
                     "String": "Irradiance Losses"
                 },
                 "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 591.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 813.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -2349,6 +2328,68 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "object 740"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 591.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model. Subhourly clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy days."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 762"
                 },
                 "X": {
@@ -2357,7 +2398,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 669.0
+                    "Integer": 702.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2419,7 +2460,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 882.0
+                    "Integer": 918.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2543,7 +2584,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 828.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6073,7 +6114,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 774.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6156,7 +6197,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 714.0
+                    "Integer": 747.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6239,7 +6280,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 855.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6340,9 +6381,9 @@
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6353,9 +6394,9 @@
         "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6366,9 +6407,9 @@
         "adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6379,9 +6420,9 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6396,9 +6437,9 @@
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6450,9 +6491,9 @@
         "dc_adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC Constant performance adjustment",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6463,9 +6504,9 @@
         "dc_adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6476,9 +6517,9 @@
         "dc_adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6489,9 +6530,9 @@
         "dc_adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC custom period performance adjustments",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6506,9 +6547,9 @@
         "dc_adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC timeseries performance adjustments",
+            "Units": "%",
+            "Group": "Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6528,6 +6569,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "enable_subhourly_clipping": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable subhourly clipping loss correction",
+            "Units": "0/1",
+            "Group": "Losses",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7308,7 +7362,8 @@
         "\tpv_losses_enable_subarray_items( 3, value('subarray3_enable') != false );",
         "\tpv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );",
         "\tloss_adjustment_set();",
-        "\tdc_loss_adjustment_set();",
+        "\tdc_loss_adjustment_set();\r",
+        "\tsubhourly_clipping_check();",
         "\t",
         "\t// Remove the following once there's a bifacial rack shading calculation",
         "\tshow('Label_bifacial_0', false);",
@@ -7393,6 +7448,22 @@
         "\telse {",
         "\t\tproperty('dc_adjust', 'AnalysisPeriod', 1);",
         "\t}",
-        "}"
+        "}\r",
+        "\r",
+        "function subhourly_clipping_check()\r",
+        "{\r",
+        "\ttimestep = value('ui_step_minutes');\r",
+        "\tif (timestep < 60) {\r",
+        "\t\tvalue('enable_subhourly_clipping', 0);\r",
+        "\t\tenable('enable_subhourly_clipping', false);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('enable_subhourly_clipping', true);\r",
+        "\t}\r",
+        "}\r",
+        "\r",
+        "on_change{'ui_step_minutes'} = define() {\r",
+        "\tsubhourly_clipping_check();\r",
+        "};"
     ]
 }

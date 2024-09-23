@@ -155,8 +155,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_P0_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_P1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -165,8 +163,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_P1_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_T0_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -177,8 +173,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_T0_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_T_compressor_inlet_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -187,8 +181,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_T_compressor_inlet_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_T_compressor_outlet_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -199,8 +191,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_T_compressor_outlet_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_alpha_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -209,8 +199,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_alpha_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_charge_time_hr_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -221,8 +209,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_charge_time_hr_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_cold_fluid_id_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -231,8 +217,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_cold_fluid_id_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PtesDesignPoint_Common_cold_ud_fluid_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -244,8 +228,6 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Common_cold_ud_fluid_props_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_discharge_time_hr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -254,8 +236,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_discharge_time_hr_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_eta_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -266,8 +246,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_eta_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -276,8 +254,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_eta_pump_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_gen_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -288,8 +264,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_gen_eff_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_hot_fluid_id_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -298,8 +272,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_hot_fluid_id_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PtesDesignPoint_Common_hot_ud_fluid_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -311,8 +283,6 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Common_hot_ud_fluid_props_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_hx_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -321,8 +291,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_hx_eff_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_motor_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -333,8 +301,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_motor_eff_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_air_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -343,8 +309,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_air_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_liquid_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -355,8 +319,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_liquid_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_working_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -366,8 +328,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_ploss_working_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Common_power_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -376,8 +336,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Common_power_output_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_PtesDesignPoint_Common_working_fluid_type_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -389,8 +347,6 @@ SAM_EXPORT const char* SAM_PtesDesignPoint_Common_working_fluid_type_sget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_N_pts_charge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -399,8 +355,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_N_pts_charge_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_N_pts_discharge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -411,8 +365,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_N_pts_discharge_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Tc_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -421,8 +373,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Tc_cold_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Tc_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -433,8 +383,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Tc_hot_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Th_cold_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -443,8 +391,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Th_cold_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Th_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -455,8 +401,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_Th_hot_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_cycle_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -465,8 +409,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_cycle_eff_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_COP_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -477,8 +419,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_COP_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_cold_pump_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -487,8 +427,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_cold_pump_power_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_hot_pump_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -499,8 +437,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_hot_pump_power_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_parasitic_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -509,8 +445,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_hp_parasitic_fraction_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_cold_pump_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -521,8 +455,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_cold_pump_power_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_hot_pump_power_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -532,8 +464,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_hot_pump_power_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_parasitic_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -542,8 +472,6 @@ SAM_EXPORT double SAM_PtesDesignPoint_Outputs_pc_parasitic_fraction_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_s_series_charge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -555,8 +483,6 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_s_series_charge_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_s_series_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -566,8 +492,6 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_s_series_discharge_aget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_temp_series_charge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -579,8 +503,6 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_temp_series_charge_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_temp_series_discharge_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -590,6 +512,4 @@ SAM_EXPORT double* SAM_PtesDesignPoint_Outputs_temp_series_discharge_aget(SAM_ta
 	});
 	return result;
 }
-
-
 

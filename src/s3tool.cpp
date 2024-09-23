@@ -77,7 +77,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/pllineplot.h>
 #include <wex/dview/dvplotctrl.h>
 #include <wex/utils.h>
-#include <wex/jsonreader.h>
+//#include <wex/jsonreader.h>
 #include <wex/metro.h>
 #include <wex/easycurl.h>
 
@@ -204,6 +204,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent & )
 	wxYield();
 
 	double lat, lon, tz;
+	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
 	if ( !GeoTools::GeocodeDeveloper( m_address->GetValue(), &lat, &lon, &tz ) )
 	{
 		wxMessageBox("failed to geocode address");

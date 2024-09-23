@@ -278,6 +278,72 @@ SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table 
 	});
 }
 
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "degradation", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "land_area", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_capacity", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_capacity_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_fixed", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_fixed_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_land_lease", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_land_lease_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_production", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_production_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "total_installed_cost", number);
+	});
+}
+
 SAM_EXPORT double* SAM_Pvwattsv8_SolarResource_albedo_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -288,8 +354,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_SolarResource_albedo_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -299,8 +363,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_snow_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -309,8 +371,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SolarResource_albedo_default_snow_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT SAM_table SAM_Pvwattsv8_SolarResource_solar_resource_data_tget(SAM_table ptr, SAM_error *err){
 	SAM_table result = nullptr;
@@ -322,8 +382,6 @@ SAM_EXPORT SAM_table SAM_Pvwattsv8_SolarResource_solar_resource_data_tget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT const char* SAM_Pvwattsv8_SolarResource_solar_resource_file_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
 	translateExceptions(err, [&]{
@@ -334,8 +392,6 @@ SAM_EXPORT const char* SAM_Pvwattsv8_SolarResource_solar_resource_file_sget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SolarResource_use_wf_albedo_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -345,8 +401,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SolarResource_use_wf_albedo_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -355,8 +409,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Lifetime_analysis_period_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Lifetime_dc_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -368,8 +420,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Lifetime_dc_degradation_aget(SAM_table ptr, int
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -378,8 +428,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Lifetime_system_use_lifetime_output_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_array_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -390,8 +438,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_array_type_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_azimuth_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -400,8 +446,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_azimuth_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_batt_simple_enable_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -412,8 +456,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_batt_simple_enable_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_bifaciality_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -422,8 +464,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_bifaciality_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_dc_ac_ratio_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -434,8 +474,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_dc_ac_ratio_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_en_snowloss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -444,8 +482,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_en_snowloss_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_enable_wind_stow_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -456,8 +492,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_enable_wind_stow_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_gcr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -466,8 +500,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_gcr_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_gust_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -478,8 +510,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_gust_factor_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_inv_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -488,8 +518,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_inv_eff_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -500,8 +528,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_losses_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_module_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -511,8 +537,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_module_type_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_rotlim_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -521,8 +545,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_rotlim_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_soiling_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -534,8 +556,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_SystemDesign_soiling_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_stow_wspd_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -544,8 +564,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_stow_wspd_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -556,8 +574,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_system_capacity_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_tilt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -566,8 +582,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_tilt_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_wind_stow_angle_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -578,8 +592,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_wind_stow_angle_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_ll_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -589,8 +601,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_ll_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_nll_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -599,8 +609,6 @@ SAM_EXPORT double SAM_Pvwattsv8_SystemDesign_xfmr_nll_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_azal_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -612,8 +620,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_azal_mget(SAM_table ptr, int* n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_diff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -622,8 +628,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_diff_nget(SAM_table ptr, SAM_err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_azal_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -634,8 +638,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_azal_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_diff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -644,8 +646,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_diff_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -656,8 +656,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_mxh_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_string_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -667,8 +665,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_string_option_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_timestep_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -677,8 +673,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_en_timestep_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_mxh_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -690,8 +684,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_mxh_mget(SAM_table ptr, int* nr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_string_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -700,8 +692,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Shading_shading_string_option_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_timestep_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -713,8 +703,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Shading_shading_timestep_mget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -723,8 +711,6 @@ SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_constant_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -735,8 +721,6 @@ SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_periods_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -745,8 +729,6 @@ SAM_EXPORT double SAM_Pvwattsv8_AdjustmentFactors_adjust_en_timeindex_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -758,8 +740,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_periods_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -770,7 +750,109 @@ SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_tab
 	return result;
 }
 
+SAM_EXPORT double* SAM_Pvwattsv8_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "degradation");
+	});
+	return result;
+}
 
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "land_area", &result))
+		make_access_error("SAM_Pvwattsv8", "land_area");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "om_capacity");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
+		make_access_error("SAM_Pvwattsv8", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "om_fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_fixed_escal", &result))
+		make_access_error("SAM_Pvwattsv8", "om_fixed_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "om_land_lease");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_land_lease_escal", &result))
+		make_access_error("SAM_Pvwattsv8", "om_land_lease_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_production", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "om_production");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
+		make_access_error("SAM_Pvwattsv8", "om_production_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_Pvwattsv8", "total_installed_cost");
+	});
+	return result;
+}
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -782,8 +864,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -793,8 +873,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_nget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_pre_adjust_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -803,8 +881,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_ac_annual_pre_adjust_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -816,8 +892,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_monthly_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_pre_adjust_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -827,8 +901,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ac_pre_adjust_aget(SAM_table ptr, int* 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_alb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -840,8 +912,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_alb_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -850,8 +920,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_annual_energy_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -863,8 +931,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_annual_energy_distribution_time_mget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_aoi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -875,8 +941,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_aoi_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -885,8 +949,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -897,7 +959,95 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_capacity_factor_ac_nget(SAM_table ptr, S
 	return result;
 }
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_battery_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_battery_replacement_cost_schedule");
+	});
+	return result;
+}
 
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_net", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_energy_net");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_fuelcell_replacement_cost_schedule");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_land_lease_expense");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_capacity", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_capacity");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fixed", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_fuel_cost_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_fuel_cost", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_fuel_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_land_lease", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_land_lease");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_production", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "cf_om_production");
+	});
+	return result;
+}
 
 SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_city_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -909,8 +1059,6 @@ SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_city_sget(SAM_table ptr, SAM_error 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -920,8 +1068,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dc_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dc_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -933,8 +1079,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dc_monthly_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dcsnowderate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -944,8 +1088,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dcsnowderate_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_df_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -957,8 +1099,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_df_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dn_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -969,8 +1109,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_dn_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_elev_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -979,8 +1117,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_elev_nget(SAM_table ptr, SAM_error *err)
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -992,8 +1128,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gen_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gh_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1003,8 +1137,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_gh_aget(SAM_table ptr, int* length, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_inv_eff_output_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1016,8 +1148,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_inv_eff_output_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_inverter_efficiency_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1026,8 +1156,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_inverter_efficiency_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1038,8 +1166,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1048,8 +1174,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_lat_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_location_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -1061,8 +1185,6 @@ SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_location_sget(SAM_table ptr, SAM_er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1071,8 +1193,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_lon_nget(SAM_table ptr, SAM_error *err){
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1084,8 +1204,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_monthly_energy_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_percent_complete_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1094,8 +1212,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_percent_complete_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_poa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1107,8 +1223,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_poa_aget(SAM_table ptr, int* length, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_poa_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1118,8 +1232,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_poa_monthly_aget(SAM_table ptr, int* le
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_shad_beam_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1131,8 +1243,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_shad_beam_factor_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_snow_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1142,8 +1252,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_snow_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_soiling_f_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1155,8 +1263,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_soiling_f_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_solrad_annual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1165,8 +1271,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_solrad_annual_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_solrad_monthly_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1178,8 +1282,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_solrad_monthly_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_beam_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1189,8 +1291,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_beam_factor_aget(SAM_table ptr, int*
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_gnd_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1202,8 +1302,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_gnd_diffuse_factor_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_sky_diffuse_factor_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1213,8 +1311,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_ss_sky_diffuse_factor_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_state_sget(SAM_table ptr, SAM_error *err){
 	const char* result = nullptr;
@@ -1226,8 +1322,6 @@ SAM_EXPORT const char* SAM_Pvwattsv8_Outputs_state_sget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_sunup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1237,8 +1331,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_sunup_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tamb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1250,8 +1342,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tamb_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tcell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1261,8 +1351,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tcell_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tpoa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1274,8 +1362,6 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tpoa_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_ts_shift_hours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1284,8 +1370,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_ts_shift_hours_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Pvwattsv8_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1296,8 +1380,6 @@ SAM_EXPORT double SAM_Pvwattsv8_Outputs_tz_nget(SAM_table ptr, SAM_error *err){
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1307,6 +1389,4 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_wspd_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 

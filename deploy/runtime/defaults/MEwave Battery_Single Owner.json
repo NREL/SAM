@@ -12,15 +12,18 @@
     "additional_structural_components_cost": 0.0,
     "additional_structural_components_cost_total": 0.0,
     "air_turbine_cost": 0.0,
+    "air_turbine_cost_rvalue": 0.0,
     "air_turbine_cost_total": 0.0,
     "air_turbine_cost_total_check": 0.0,
     "analysis_period": 30.0,
     "analysis_period_warning": "",
     "anchors_and_piles_cost": 0.0,
     "ancillary_marine_systems_cost": 0.0,
+    "ancillary_marine_systems_cost_rvalue": 0.0,
     "ancillary_marine_systems_cost_total": 0.0,
     "ancillary_marine_systems_cost_total_check": 0.0,
     "annual_leases_fees_cost": 0.0,
+    "annual_leases_fees_cost_rvalue": 0.0,
     "annual_leases_fees_cost_total": 0.0,
     "annual_leases_fees_cost_total_check": 0.0,
     "array_cable_accessories_and_jointing_cost": 0.0,
@@ -28,7 +31,8 @@
     "array_cable_system_cost": 0.0,
     "array_cable_system_cost_input": 0.0,
     "array_cable_system_cost_method": 0.0,
-    "array_cable_system_cost_modeled": 12813800.0,
+    "array_cable_system_cost_modeled": 5107980.0,
+    "array_cable_system_cost_rvalue": 0.0,
     "array_cable_system_cost_total": 0.0,
     "array_cable_system_cost_total_check": 0.0,
     "array_cable_system_transportation_cost": 0.0,
@@ -41,13 +45,14 @@
     "assembly_and_install_cost_input": 0.0,
     "assembly_and_install_cost_method": 2.0,
     "assembly_and_install_cost_modeled": 25655500.0,
+    "assembly_and_install_cost_rvalue": 0.0,
     "assembly_and_install_cost_total": 0.0,
     "assembly_and_install_override": 0.0,
     "assembly_areas_cost": 0.0,
     "balance_of_system_cost_input": 0.0,
     "balance_of_system_cost_override": 0.0,
-    "balance_of_system_cost_total": 79150700.0,
-    "balance_of_system_cost_total_mill": 79.1507,
+    "balance_of_system_cost_total": 76795100.0,
+    "balance_of_system_cost_total_mill": 76.7951,
     "balance_of_system_scheduled_maintenance_cost": 0.0,
     "balance_of_system_unscheduled_maintenance_cost": 0.0,
     "ballast_system_cost": 0.0,
@@ -171,133 +176,868 @@
     "batt_h_to_ambient": 5.0,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
-    "batt_life_excl": 1.0,
+    "batt_life_excl": 0.0,
     "batt_life_model": 1.0,
     "batt_lifetime_matrix": [
         [
-            10.0,
+            100.0,
             0.0,
-            100.853
-        ],
-        [
-            10.0,
-            1250.0,
-            94.884
-        ],
-        [
-            10.0,
-            2500.0,
-            88.9147
-        ],
-        [
-            10.0,
-            3750.0,
-            82.9454
-        ],
-        [
-            10.0,
-            5000.0,
-            76.9761
-        ],
-        [
-            20.0,
-            0.0,
-            100.853
-        ],
-        [
-            20.0,
-            1250.0,
-            94.8798
-        ],
-        [
-            20.0,
-            2500.0,
-            88.9063
-        ],
-        [
-            20.0,
-            3750.0,
-            82.9328
-        ],
-        [
-            20.0,
-            5000.0,
-            76.9593
-        ],
-        [
-            40.0,
-            0.0,
-            100.853
-        ],
-        [
-            40.0,
-            1250.0,
-            94.7822
-        ],
-        [
-            40.0,
-            2500.0,
-            88.711
-        ],
-        [
-            40.0,
-            3750.0,
-            82.6397
-        ],
-        [
-            40.0,
-            5000.0,
-            76.5682
-        ],
-        [
-            80.0,
-            0.0,
-            100.853
-        ],
-        [
-            80.0,
-            1250.0,
-            92.4838
-        ],
-        [
-            80.0,
-            2500.0,
-            84.0543
-        ],
-        [
-            80.0,
-            3750.0,
-            75.56
-        ],
-        [
-            80.0,
-            5000.0,
-            66.9956
+            100.0
         ],
         [
             100.0,
-            0.0,
-            100.853
+            128.0,
+            98.7907
         ],
         [
             100.0,
-            1250.0,
-            88.1256
+            202.0,
+            97.9632
         ],
         [
             100.0,
-            2500.0,
-            74.8732
+            277.0,
+            97.3904
         ],
         [
             100.0,
-            3750.0,
-            60.9511
+            371.0,
+            96.6266
+        ],
+        [
+            100.0,
+            523.0,
+            95.9265
+        ],
+        [
+            100.0,
+            666.0,
+            95.2263
+        ],
+        [
+            100.0,
+            1012.0,
+            93.9533
+        ],
+        [
+            100.0,
+            1354.0,
+            92.9349
+        ],
+        [
+            100.0,
+            1733.0,
+            91.9484
+        ],
+        [
+            100.0,
+            2052.0,
+            91.0573
+        ],
+        [
+            100.0,
+            2384.0,
+            90.2298
+        ],
+        [
+            100.0,
+            2744.0,
+            89.3706
+        ],
+        [
+            100.0,
+            3103.0,
+            88.5431
+        ],
+        [
+            100.0,
+            3465.0,
+            87.7157
+        ],
+        [
+            100.0,
+            3830.0,
+            86.9201
+        ],
+        [
+            100.0,
+            4188.0,
+            86.1881
+        ],
+        [
+            100.0,
+            4560.0,
+            85.297
         ],
         [
             100.0,
             5000.0,
-            46.1312
+            84.4378
+        ],
+        [
+            100.0,
+            5374.0,
+            83.7376
+        ],
+        [
+            100.0,
+            5757.0,
+            82.9738
+        ],
+        [
+            100.0,
+            6132.0,
+            82.3055
+        ],
+        [
+            100.0,
+            6527.0,
+            81.4781
+        ],
+        [
+            100.0,
+            6926.0,
+            80.7461
+        ],
+        [
+            100.0,
+            7300.0,
+            79.9823
+        ],
+        [
+            100.0,
+            7701.0,
+            79.2185
+        ],
+        [
+            100.0,
+            8111.0,
+            78.6139
+        ],
+        [
+            100.0,
+            8495.0,
+            77.6591
+        ],
+        [
+            100.0,
+            8778.0,
+            77.3409
+        ],
+        [
+            100.0,
+            9192.0,
+            76.4498
+        ],
+        [
+            100.0,
+            9987.0,
+            74.8904
+        ],
+        [
+            100.0,
+            10829.0,
+            73.4265
+        ],
+        [
+            100.0,
+            11474.0,
+            72.1535
+        ],
+        [
+            100.0,
+            12162.0,
+            70.9123
+        ],
+        [
+            100.0,
+            12921.0,
+            69.5757
+        ],
+        [
+            80.0,
+            0.0,
+            100.0
+        ],
+        [
+            80.0,
+            161.0,
+            98.4088
+        ],
+        [
+            80.0,
+            301.0,
+            97.1358
+        ],
+        [
+            80.0,
+            448.0,
+            96.0219
+        ],
+        [
+            80.0,
+            645.0,
+            95.0672
+        ],
+        [
+            80.0,
+            831.0,
+            94.3034
+        ],
+        [
+            80.0,
+            1276.0,
+            92.6803
+        ],
+        [
+            80.0,
+            1696.0,
+            91.5665
+        ],
+        [
+            80.0,
+            2191.0,
+            90.4844
+        ],
+        [
+            80.0,
+            2596.0,
+            89.657
+        ],
+        [
+            80.0,
+            3023.0,
+            89.0205
+        ],
+        [
+            80.0,
+            3466.0,
+            88.3522
+        ],
+        [
+            80.0,
+            3912.0,
+            87.7157
+        ],
+        [
+            80.0,
+            4375.0,
+            87.0474
+        ],
+        [
+            80.0,
+            4828.0,
+            86.3472
+        ],
+        [
+            80.0,
+            5292.0,
+            85.7426
+        ],
+        [
+            80.0,
+            5759.0,
+            85.0424
+        ],
+        [
+            80.0,
+            6297.0,
+            84.3423
+        ],
+        [
+            80.0,
+            7242.0,
+            83.1011
+        ],
+        [
+            80.0,
+            7724.0,
+            82.4328
+        ],
+        [
+            80.0,
+            8196.0,
+            81.8281
+        ],
+        [
+            80.0,
+            8678.0,
+            81.0644
+        ],
+        [
+            80.0,
+            9186.0,
+            80.4915
+        ],
+        [
+            80.0,
+            9690.0,
+            79.9505
+        ],
+        [
+            80.0,
+            10169.0,
+            79.314
+        ],
+        [
+            80.0,
+            10623.0,
+            78.8048
+        ],
+        [
+            80.0,
+            11000.0,
+            78.2638
+        ],
+        [
+            80.0,
+            11534.0,
+            77.6273
+        ],
+        [
+            80.0,
+            12479.0,
+            76.6726
+        ],
+        [
+            80.0,
+            13496.0,
+            75.5905
+        ],
+        [
+            80.0,
+            14299.0,
+            74.7949
+        ],
+        [
+            80.0,
+            15119.0,
+            73.9038
+        ],
+        [
+            80.0,
+            16019.0,
+            72.8854
+        ],
+        [
+            40.0,
+            0.0,
+            100.0
+        ],
+        [
+            40.0,
+            489.0,
+            95.7355
+        ],
+        [
+            40.0,
+            948.0,
+            92.6803
+        ],
+        [
+            40.0,
+            1323.0,
+            89.8161
+        ],
+        [
+            40.0,
+            1733.0,
+            87.7794
+        ],
+        [
+            40.0,
+            2690.0,
+            83.7694
+        ],
+        [
+            40.0,
+            3623.0,
+            82.3055
+        ],
+        [
+            40.0,
+            4676.0,
+            82.1146
+        ],
+        [
+            40.0,
+            5591.0,
+            82.1146
+        ],
+        [
+            40.0,
+            6507.0,
+            82.1782
+        ],
+        [
+            40.0,
+            7506.0,
+            81.9236
+        ],
+        [
+            40.0,
+            8468.0,
+            81.6054
+        ],
+        [
+            40.0,
+            9438.0,
+            82.7511
+        ],
+        [
+            40.0,
+            10407.0,
+            81.7963
+        ],
+        [
+            40.0,
+            11358.0,
+            81.1598
+        ],
+        [
+            40.0,
+            12345.0,
+            80.4915
+        ],
+        [
+            40.0,
+            13463.0,
+            80.4915
+        ],
+        [
+            40.0,
+            14484.0,
+            80.0778
+        ],
+        [
+            40.0,
+            15468.0,
+            79.7595
+        ],
+        [
+            40.0,
+            16470.0,
+            79.4095
+        ],
+        [
+            40.0,
+            17477.0,
+            78.9321
+        ],
+        [
+            40.0,
+            18475.0,
+            78.6139
+        ],
+        [
+            40.0,
+            19492.0,
+            78.1365
+        ],
+        [
+            40.0,
+            20530.0,
+            77.8182
+        ],
+        [
+            40.0,
+            21542.0,
+            77.4363
+        ],
+        [
+            40.0,
+            22456.0,
+            77.1181
+        ],
+        [
+            40.0,
+            23209.0,
+            77.2454
+        ],
+        [
+            40.0,
+            24274.0,
+            76.7362
+        ],
+        [
+            40.0,
+            26229.0,
+            75.9724
+        ],
+        [
+            40.0,
+            28263.0,
+            75.2405
+        ],
+        [
+            40.0,
+            29842.0,
+            74.7631
+        ],
+        [
+            40.0,
+            31478.0,
+            74.2539
+        ],
+        [
+            40.0,
+            33293.0,
+            73.872
+        ],
+        [
+            20.0,
+            0.0,
+            100.0
+        ],
+        [
+            20.0,
+            322.0,
+            97.8359
+        ],
+        [
+            20.0,
+            744.0,
+            96.5629
+        ],
+        [
+            20.0,
+            1030.0,
+            94.9717
+        ],
+        [
+            20.0,
+            1861.0,
+            91.3437
+        ],
+        [
+            20.0,
+            2726.0,
+            87.843
+        ],
+        [
+            20.0,
+            2726.0,
+            87.843
+        ],
+        [
+            20.0,
+            3518.0,
+            84.7878
+        ],
+        [
+            20.0,
+            5462.0,
+            79.2504
+        ],
+        [
+            20.0,
+            7476.0,
+            76.9272
+        ],
+        [
+            20.0,
+            9813.0,
+            77.0863
+        ],
+        [
+            20.0,
+            11702.0,
+            77.2772
+        ],
+        [
+            20.0,
+            13699.0,
+            77.9137
+        ],
+        [
+            20.0,
+            15707.0,
+            78.6775
+        ],
+        [
+            20.0,
+            17758.0,
+            79.0594
+        ],
+        [
+            20.0,
+            19770.0,
+            79.4413
+        ],
+        [
+            20.0,
+            21691.0,
+            79.505
+        ],
+        [
+            20.0,
+            23725.0,
+            79.5686
+        ],
+        [
+            20.0,
+            25701.0,
+            79.5686
+        ],
+        [
+            20.0,
+            27985.0,
+            79.9823
+        ],
+        [
+            20.0,
+            30010.0,
+            79.8232
+        ],
+        [
+            20.0,
+            31981.0,
+            79.6959
+        ],
+        [
+            20.0,
+            33984.0,
+            79.5368
+        ],
+        [
+            20.0,
+            35993.0,
+            79.2504
+        ],
+        [
+            20.0,
+            37950.0,
+            79.0594
+        ],
+        [
+            20.0,
+            40000.0,
+            78.8048
+        ],
+        [
+            20.0,
+            42027.0,
+            78.5502
+        ],
+        [
+            20.0,
+            44002.0,
+            78.2956
+        ],
+        [
+            20.0,
+            45809.0,
+            78.041
+        ],
+        [
+            20.0,
+            47324.0,
+            78.4547
+        ],
+        [
+            20.0,
+            49421.0,
+            77.9774
+        ],
+        [
+            20.0,
+            53266.0,
+            77.2772
+        ],
+        [
+            20.0,
+            57263.0,
+            76.6089
+        ],
+        [
+            20.0,
+            60363.0,
+            76.2907
+        ],
+        [
+            20.0,
+            63598.0,
+            75.8133
+        ],
+        [
+            20.0,
+            67147.0,
+            75.686
+        ],
+        [
+            10.0,
+            0.0,
+            100.0
+        ],
+        [
+            10.0,
+            827.0,
+            98.2815
+        ],
+        [
+            10.0,
+            1341.0,
+            97.0085
+        ],
+        [
+            10.0,
+            2050.0,
+            95.6719
+        ],
+        [
+            10.0,
+            3697.0,
+            92.4257
+        ],
+        [
+            10.0,
+            5352.0,
+            89.3388
+        ],
+        [
+            10.0,
+            6801.0,
+            86.761
+        ],
+        [
+            10.0,
+            10801.0,
+            81.8281
+        ],
+        [
+            10.0,
+            14594.0,
+            79.1867
+        ],
+        [
+            10.0,
+            19282.0,
+            78.2638
+        ],
+        [
+            10.0,
+            22891.0,
+            78.2956
+        ],
+        [
+            10.0,
+            26837.0,
+            78.7412
+        ],
+        [
+            10.0,
+            30819.0,
+            79.1867
+        ],
+        [
+            10.0,
+            34952.0,
+            79.5686
+        ],
+        [
+            10.0,
+            38953.0,
+            79.8868
+        ],
+        [
+            10.0,
+            42829.0,
+            80.0141
+        ],
+        [
+            10.0,
+            46812.0,
+            80.1414
+        ],
+        [
+            10.0,
+            50791.0,
+            80.2051
+        ],
+        [
+            10.0,
+            55205.0,
+            80.8416
+        ],
+        [
+            10.0,
+            59150.0,
+            80.8416
+        ],
+        [
+            10.0,
+            63094.0,
+            80.9052
+        ],
+        [
+            10.0,
+            67040.0,
+            80.7779
+        ],
+        [
+            10.0,
+            71103.0,
+            80.7143
+        ],
+        [
+            10.0,
+            74943.0,
+            80.6825
+        ],
+        [
+            10.0,
+            78957.0,
+            80.5233
+        ],
+        [
+            10.0,
+            82865.0,
+            80.396
+        ],
+        [
+            10.0,
+            86722.0,
+            80.2687
+        ],
+        [
+            10.0,
+            90414.0,
+            80.1733
+        ],
+        [
+            10.0,
+            93306.0,
+            80.5233
+        ],
+        [
+            10.0,
+            97274.0,
+            80.2687
+        ],
+        [
+            10.0,
+            104629.0,
+            79.5686
+        ],
+        [
+            10.0,
+            112503.0,
+            78.9958
+        ],
+        [
+            10.0,
+            118575.0,
+            78.6139
+        ],
+        [
+            10.0,
+            124792.0,
+            78.232
+        ],
+        [
+            10.0,
+            131609.0,
+            78.1683
         ]
     ],
     "batt_look_ahead_hours": 18.0,
@@ -9180,7 +9920,7 @@
     "batt_surface_area": 260.279,
     "batt_thermal_choice": 0.0,
     "batt_time_capacity": 2.0,
-    "batt_type": 8.0,
+    "batt_type": 5.0,
     "batt_ui_bank_voltage": 500.4,
     "batt_ui_cell_voltage": 3.6,
     "batt_ui_inverter_eff": 96.0,
@@ -9232,8 +9972,10 @@
     "building_facilities_cost": 0.0,
     "buoyancy_chamber_cost": 0.0,
     "cable_accessories_and_jointing_cost": 0.0,
+    "cable_length_option": 0.0,
     "cable_mattresses_cost": 0.0,
     "cable_protection_cost": 0.0,
+    "cable_protection_cost_rvalue": 0.0,
     "cable_protection_cost_total": 0.0,
     "cable_protection_cost_total_check": 0.0,
     "cable_system_overbuild": 10.0,
@@ -9255,7 +9997,7 @@
             105.4
         ]
     ],
-    "capex_check": 364551000.0,
+    "capex_check": 362258000.0,
     "carrying_cost_during_construction_cost": 0.0,
     "cathodic_protection_system_cost": 0.0,
     "cbi_fed_amount": 0.0,
@@ -9293,17 +10035,17 @@
     "condition_monitoring_cost": 0.0,
     "condition_monitoring_operations_cost": 0.0,
     "connecting_hardware_cost": 0.0,
-    "const_per_interest1": 3635580.0,
+    "const_per_interest1": 6710150.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 3635580.0,
+    "const_per_interest_total": 6710150.0,
     "const_per_months1": 6.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -9320,13 +10062,13 @@
     "const_per_percent4": 0.0,
     "const_per_percent5": 0.0,
     "const_per_percent_total": 100.0,
-    "const_per_principal1": 415494000.0,
+    "const_per_principal1": 412932000.0,
     "const_per_principal2": 0.0,
     "const_per_principal3": 0.0,
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
-    "const_per_principal_total": 415494000.0,
-    "const_per_total1": 7790520.0,
+    "const_per_principal_total": 412932000.0,
+    "const_per_total1": 10839500.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -9336,13 +10078,14 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 7790520.0,
+    "construction_financing_cost": 10839500.0,
     "construction_management_cost": 0.0,
+    "construction_management_cost_rvalue": 0.0,
     "construction_management_cost_total": 0.0,
     "construction_management_cost_total_check": 0.0,
     "cooling_system_cost": 0.0,
     "cooling_system_gearbox_cost": 0.0,
-    "cost_debt_closing": 450000.0,
+    "cost_debt_closing": 0.0,
     "cost_debt_fee": 2.75,
     "cost_other_financing": 0.0,
     "cp_battery_nameplate": 0.0,
@@ -9361,7 +10104,9 @@
     "debt_option": 1.0,
     "debt_percent": 50.0,
     "debt_service_reserve_account_cost": 0.0,
+    "debt_service_reserve_account_cost_rvalue": 0.0,
     "decommissioning_reserve_account_cost": 0.0,
+    "decommissioning_reserve_account_cost_rvalue": 0.0,
     "dedicated_om_vessel_cost": 0.0,
     "degradation": [
         0.0
@@ -9457,6 +10202,7 @@
     "development_cost_input": 0.0,
     "development_cost_method": 2.0,
     "development_cost_modeled": 16536500.0,
+    "development_cost_rvalue": 0.0,
     "development_cost_total": 0.0,
     "development_override": 0.0,
     "development_shown": 0.0,
@@ -18944,18 +19690,20 @@
     "due_diligence_cost": 0.0,
     "e&m_shown": 0.0,
     "elec_infrac_shown": 0.0,
-    "elec_infras_cost": 21459900.0,
+    "elec_infras_cost": 19166200.0,
     "elec_infras_cost_input": 0.0,
     "elec_infras_cost_method": 2.0,
-    "elec_infras_cost_modeled": 21459900.0,
+    "elec_infras_cost_modeled": 19166200.0,
+    "elec_infras_cost_rvalue": 0.0,
     "elec_infras_cost_total": 0.0,
     "elec_infras_override": 0.0,
     "electrical_conversion_equipment_cost": 0.0,
     "electrical_equipment_onshore_substation_cost": 0.0,
     "electrical_generator_cost": 0.0,
+    "electrical_generator_cost_rvalue": 0.0,
     "electrical_generator_cost_total": 0.0,
     "electrical_generator_cost_total_check": 0.0,
-    "en_batt": 1.0,
+    "en_batt": 0.0,
     "en_electricity_rates": 0.0,
     "en_standalone_batt": 0.0,
     "en_wave_batt": 1.0,
@@ -21886,11 +22634,13 @@
     "eng_and_mgmt_cost_input": 0.0,
     "eng_and_mgmt_cost_method": 2.0,
     "eng_and_mgmt_cost_modeled": 5655880.0,
+    "eng_and_mgmt_cost_rvalue": 0.0,
     "eng_and_mgmt_cost_total": 0.0,
     "eng_and_mgmt_override": 0.0,
     "engineering_certification_cost": 0.0,
     "entrance_exit_fees_cost": 0.0,
     "environmental_health_and_safety_monitoring_cost": 0.0,
+    "environmental_health_and_safety_monitoring_cost_rvalue": 0.0,
     "environmental_health_and_safety_monitoring_cost_total": 0.0,
     "environmental_health_and_safety_monitoring_cost_total_check": 0.0,
     "environmental_monitoring_cost": 0.0,
@@ -21912,10 +22662,17 @@
     "export_cable_system_cost": 0.0,
     "export_cable_system_cost_input": 0.0,
     "export_cable_system_cost_method": 0.0,
-    "export_cable_system_cost_modeled": 1603450.0,
+    "export_cable_system_cost_modeled": 813437.0,
+    "export_cable_system_cost_rvalue": 0.0,
     "export_cable_system_cost_total": 0.0,
     "export_cable_system_cost_total_check": 0.0,
     "export_cable_system_transportation_cost": 0.0,
+    "export_cable_type": 0.0,
+    "export_cable_voltage": 36.0,
+    "export_cable_voltage_calculated": 36.0,
+    "export_cable_voltage_choice": 0.0,
+    "export_cable_voltage_option_ac": 0.0,
+    "export_cable_voltage_option_hvdc": 0.0,
     "export_cables_cost": 0.0,
     "external_ballast_chambers_cost": 0.0,
     "fabrication_facilities_cost": 0.0,
@@ -21927,11 +22684,12 @@
     "feed_cost": 0.0,
     "financial_cost_input": 0.0,
     "financial_cost_override": 0.0,
-    "financial_cost_total": 32809600.0,
-    "financial_cost_total_mill": 32.8096,
+    "financial_cost_total": 32603200.0,
+    "financial_cost_total_mill": 32.6032,
     "financial_itemized_shown": 0.0,
     "financial_override_check": 0.0,
     "financing_and_incentives_cost": 0.0,
+    "financing_and_incentives_cost_rvalue": 0.0,
     "financing_and_incentives_cost_total": 0.0,
     "financing_and_incentives_cost_total_check": 0.0,
     "flip_target_percent": 10.0,
@@ -21941,6 +22699,7 @@
     "foundation_onshore_substation_cost": 0.0,
     "frequency_converter_cost": 0.0,
     "gearbox_cost": 0.0,
+    "gearbox_cost_rvalue": 0.0,
     "gearbox_cost_total": 0.0,
     "gearbox_cost_total_check": 0.0,
     "gears_cost": 0.0,
@@ -30732,12 +31491,14 @@
     "grid_interconnection_limit_kwac": 100000.0,
     "health_and_safety_monitoring_cost": 0.0,
     "health_safety_and_environmental_monitoring_cost": 0.0,
+    "health_safety_and_environmental_monitoring_cost_rvalue": 0.0,
     "health_safety_and_environmental_monitoring_cost_total": 0.0,
     "health_safety_and_environmental_monitoring_cost_total_check": 0.0,
     "health_safety_monitoring_cost": 0.0,
     "housing_cost": 0.0,
     "hub_assembly_cost": 0.0,
     "hydraulic_drivetrain_cost": 0.0,
+    "hydraulic_drivetrain_cost_rvalue": 0.0,
     "hydraulic_drivetrain_cost_total": 0.0,
     "hydraulic_drivetrain_cost_total_check": 0.0,
     "hydraulic_fluid_cost": 0.0,
@@ -30790,18 +31551,24 @@
     "incentives_cost": 0.0,
     "inflation_rate": 2.5,
     "initial_engineering_cost": 0.0,
+    "initial_engineering_cost_rvalue": 0.0,
     "initial_engineering_cost_total": 0.0,
     "initial_engineering_cost_total_check": 0.0,
-    "insurance_during_construction_cost": 3645510.0,
+    "insurance_during_construction_cost": 3622580.0,
     "insurance_during_construction_cost_input": 0.0,
-    "insurance_during_construction_cost_modeled_ui": 3645510.0,
+    "insurance_during_construction_cost_modeled_ui": 3622580.0,
+    "insurance_during_construction_cost_rvalue": 0.0,
     "insurance_during_construction_method": 2.0,
     "insurance_during_construction_modeled": 3430910.0,
     "insurance_operations_cost": 0.0,
     "insurance_rate": 0.0,
     "integration_assembly_testing_checkout_cost": 0.0,
     "inter_array_cable_length": 65340.0,
+    "inter_array_cable_voltage": 7.2,
+    "inter_array_cable_voltage_calculated": 7.2,
+    "inter_array_cable_voltage_option": 0.0,
     "interconnection_and_power_marketing_cost": 0.0,
+    "interconnection_and_power_marketing_cost_rvalue": 0.0,
     "interconnection_and_power_marketing_cost_total": 0.0,
     "interconnection_and_power_marketing_cost_total_check": 0.0,
     "interconnection_studies_and_fees_cost": 0.0,
@@ -30858,7 +31625,6 @@
     "legal_support_cost": 0.0,
     "level_check": 0.0,
     "level_eng": 0.0,
-    "level_value": 0.0,
     "lib_dispatch_factor1": 1.0,
     "lib_dispatch_factor2": 1.0,
     "lib_dispatch_factor3": 1.0,
@@ -32005,8 +32771,11 @@
     ],
     "library_folder_list": "x",
     "library_or_input_wec": 0.0,
+    "load_grid_voltage": 8.0,
+    "load_grid_voltage_options": 0.0,
     "loan_moratorium": 0.0,
     "location_id": 596791.0,
+    "location_name": "Humboldt Bay",
     "location_ts": "lat40.84_lon-124.25__2010",
     "lon": -124.25,
     "long_term_service_agreement_cost": 0.0,
@@ -32022,12 +32791,15 @@
     "maintenance_cost_input": 0.0,
     "maintenance_cost_method": 2.0,
     "maintenance_cost_modeled": 3658280.0,
+    "maintenance_cost_rvalue": 0.0,
     "maintenance_cost_total": 0.0,
     "maintenance_override_check": 0.0,
     "maintenance_reserve_account_cost": 0.0,
+    "maintenance_reserve_account_cost_rvalue": 0.0,
     "maintenance_we_shown": 0.0,
     "marine_coatings_cost": 0.0,
     "marine_energy_converter_device_cost": 0.0,
+    "marine_energy_converter_device_cost_rvalue": 0.0,
     "marine_energy_converter_device_cost_total": 0.0,
     "marine_energy_converter_device_cost_total_check": 0.0,
     "marine_energy_converter_power_consumption_cost": 0.0,
@@ -32037,6 +32809,7 @@
     "marine_management_cost": 0.0,
     "marine_system_cost_total_check": 0.0,
     "marine_systems_cost": 0.0,
+    "marine_systems_cost_rvalue": 0.0,
     "marine_systems_cost_total": 0.0,
     "mera_cost1": 0.0,
     "mera_cost2": 0.0,
@@ -32052,6 +32825,7 @@
     "mooring_found_substruc_cost_input": 0.0,
     "mooring_found_substruc_cost_method": 2.0,
     "mooring_found_substruc_cost_modeled": 52549700.0,
+    "mooring_found_substruc_cost_rvalue": 0.0,
     "mooring_found_substruc_cost_total": 0.0,
     "mooring_lines_cost": 0.0,
     "mooring_override": 0.0,
@@ -32068,16 +32842,19 @@
     "offshore_accommodations_platform_cost": 0.0,
     "offshore_accomodations_other_infras_cost": 0.0,
     "offshore_electrical_infrastructure_cost": 0.0,
+    "offshore_electrical_infrastructure_cost_rvalue": 0.0,
     "offshore_electrical_infrastructure_cost_total": 0.0,
     "offshore_electrical_infrastructure_cost_total_check": 0.0,
     "offshore_export_cables_assem_install_cost": 0.0,
     "offshore_logistical_infrastructure_assem_install_cost": 0.0,
     "offshore_logistical_infrastructure_other_infras_cost": 0.0,
     "offshore_substation_assem_install_cost": 0.0,
+    "offshore_substation_choice": 1.0,
     "offshore_substation_cost": 0.0,
     "offshore_substation_cost_input": 0.0,
     "offshore_substation_cost_method": 0.0,
-    "offshore_substation_cost_modeled": 2860000.0,
+    "offshore_substation_cost_modeled": 9709920.0,
+    "offshore_substation_cost_rvalue": 0.0,
     "offshore_substation_cost_total": 0.0,
     "offshore_substation_cost_total_check": 0.0,
     "offshore_substation_cost_total_display": 0.0,
@@ -32106,20 +32883,24 @@
     "om_replacement_cost_escal": 0.0,
     "onshore_electric_infrastructure_assem_install_cost": 0.0,
     "onshore_electrical_infrastructure_cost": 0.0,
+    "onshore_electrical_infrastructure_cost_rvalue": 0.0,
     "onshore_electrical_infrastructure_cost_total": 0.0,
     "onshore_electrical_infrastructure_cost_total_check": 0.0,
     "onshore_interconnection_rights_cost": 0.0,
     "onshore_land_lease_cost": 0.0,
     "onshore_om_facilities_cost": 0.0,
     "onshore_substation_assem_install_cost": 0.0,
+    "onshore_substation_choice": 1.0,
     "onshore_substation_cost": 0.0,
     "onshore_substation_cost_input": 0.0,
     "onshore_substation_cost_method": 0.0,
-    "onshore_substation_cost_modeled": 2145000.0,
+    "onshore_substation_cost_modeled": 1497220.0,
+    "onshore_substation_cost_rvalue": 0.0,
     "onshore_substation_cost_total": 0.0,
     "onshore_substation_cost_total_check": 0.0,
     "onshore_substations_cost": 0.0,
     "onshore_transmission_infrastructure_cost": 0.0,
+    "onshore_transmission_infrastructure_cost_rvalue": 0.0,
     "onshore_transmission_infrastructure_cost_total": 0.0,
     "onshore_transmission_infrastructure_cost_total_check": 0.0,
     "onshore_transmission_infrastructure_transportation_cost": 0.0,
@@ -32130,8 +32911,10 @@
     "operations_cost_input": 0.0,
     "operations_cost_method": 2.0,
     "operations_cost_modeled": 1773030.0,
+    "operations_cost_rvalue": 0.0,
     "operations_cost_total": 0.0,
     "operations_management_general_administration_cost": 0.0,
+    "operations_management_general_administration_cost_rvalue": 0.0,
     "operations_management_general_administration_cost_total": 0.0,
     "operations_management_general_administration_cost_total_check": 0.0,
     "operations_override_check": 0.0,
@@ -32150,6 +32933,7 @@
     "other_elec_infra_cost_input": 0.0,
     "other_elec_infra_cost_method": 0.0,
     "other_elec_infra_cost_modeled": 2037670.0,
+    "other_elec_infra_cost_rvalue": 0.0,
     "other_elec_infra_cost_total": 0.0,
     "other_electrical_generator_cost": 0.0,
     "other_eng_cost": 0.0,
@@ -32159,6 +32943,7 @@
     "other_financial_cost_input": 0.0,
     "other_financial_cost_method": 2.0,
     "other_financial_cost_modeled": 0.0,
+    "other_financial_cost_rvalue": 0.0,
     "other_financing_cost": 0.0,
     "other_gearbox_cost": 0.0,
     "other_gen_admin_cost": 0.0,
@@ -32169,6 +32954,7 @@
     "other_infrastructure_cost_input": 0.0,
     "other_infrastructure_cost_method": 2.0,
     "other_infrastructure_cost_modeled": 0.0,
+    "other_infrastructure_cost_rvalue": 0.0,
     "other_infrastructure_cost_total": 0.0,
     "other_infrastructure_transportation_other_infras_cost": 0.0,
     "other_initial_engineering_cost": 0.0,
@@ -32194,6 +32980,7 @@
     "other_pto_cost": 0.0,
     "other_pto_total": 0.0,
     "other_reserve_account_cost": 0.0,
+    "other_reserve_account_cost_rvalue": 0.0,
     "other_scheduled_maintenance_cost": 0.0,
     "other_shortterm_energy_storage_cost": 0.0,
     "other_site_access_cost": 0.0,
@@ -32203,6 +32990,7 @@
     "other_substructure_cost": 0.0,
     "other_unscheduled_maintenance_cost": 0.0,
     "outfitting_structure_cost": 0.0,
+    "outfitting_structure_cost_rvalue": 0.0,
     "outfitting_structure_cost_total": 0.0,
     "outfitting_structure_cost_total_check": 0.0,
     "overhead_lines_cost": 0.0,
@@ -32243,24 +33031,28 @@
     "pbi_uti_term": 10.0,
     "permit_acquisition_activities_cost": 0.0,
     "permitting_and_leasing_cost": 0.0,
+    "permitting_and_leasing_cost_rvalue": 0.0,
     "permitting_and_leasing_cost_total": 0.0,
     "permitting_and_leasing_cost_total_check": 0.0,
     "personnel_access_system_cost": 0.0,
     "personnel_access_system_mooring_cost": 0.0,
     "personnel_facilities_cost": 0.0,
-    "plant_commissioning_cost": 5832820.0,
+    "plant_commissioning_cost": 5796120.0,
     "plant_commissioning_cost_input": 0.0,
     "plant_commissioning_cost_method": 2.0,
     "plant_commissioning_cost_modeled": 5489460.0,
-    "plant_commissioning_cost_modeled_ui": 5832820.0,
+    "plant_commissioning_cost_modeled_ui": 5796120.0,
+    "plant_commissioning_cost_rvalue": 0.0,
     "plumbing_fittings_cost": 0.0,
     "port_fees_cost": 0.0,
+    "port_fees_cost_rvalue": 0.0,
     "port_fees_cost_total": 0.0,
     "port_fees_cost_total_check": 0.0,
     "port_fees_total": 0.0,
     "port_improvement_cost": 0.0,
     "power_electrical_system_cost": 0.0,
     "power_electronics_cost": 0.0,
+    "power_electronics_cost_rvalue": 0.0,
     "power_electronics_cost_total": 0.0,
     "power_electronics_cost_total_check": 0.0,
     "power_marketing_cost": 0.0,
@@ -32272,6 +33064,7 @@
     "power_takeoff_system_cost_input_label": 0.0,
     "power_takeoff_system_cost_method": 2.0,
     "power_takeoff_system_cost_modeled": 44014100.0,
+    "power_takeoff_system_cost_rvalue": 0.0,
     "power_takeoff_system_cost_total": 0.0,
     "power_takeoff_system_total_label": 0.0,
     "ppa_escalation": 1.0,
@@ -32284,6 +33077,7 @@
     "primary_hydraulic_pump_cost": 0.0,
     "primary_struct_assem_cost": 0.0,
     "prime_mover_cost": 0.0,
+    "prime_mover_cost_rvalue": 0.0,
     "prime_mover_cost_total": 0.0,
     "prime_mover_cost_total_check": 0.0,
     "procurement_cost": 0.0,
@@ -32295,17 +33089,19 @@
     "profit_eng_cost": 0.0,
     "project_certification_cost": 0.0,
     "project_certification_cost_total_display": 0.0,
-    "project_contingency_budget_cost": 18227600.0,
+    "project_contingency_budget_cost": 18112900.0,
+    "project_contingency_budget_cost_rvalue": 0.0,
     "project_contingency_cost_input": 0.0,
     "project_contingency_cost_method": 2.0,
-    "project_contingency_cost_modeled_ui": 18227600.0,
+    "project_contingency_cost_modeled_ui": 18112900.0,
     "project_contingency_modeled": 17154600.0,
     "project_management_during_development_cost": 0.0,
+    "project_management_during_development_cost_rvalue": 0.0,
     "project_management_during_development_cost_total": 0.0,
     "project_management_during_development_cost_total_check": 0.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 415494000.0,
+    "property_assessed_value": 412932000.0,
     "property_tax_rate": 0.0,
     "protection_control_cost": 0.0,
     "ptc_fed_amount": [
@@ -32352,10 +33148,11 @@
     ],
     "real_discount_rate": 5.5,
     "rectifying_circuit_cost": 0.0,
-    "reserve_accounts_cost": 10936500.0,
+    "reserve_accounts_cost": 10867700.0,
     "reserve_accounts_cost_input": 0.0,
     "reserve_accounts_cost_method": 2.0,
-    "reserve_accounts_cost_modeled_ui": 10936500.0,
+    "reserve_accounts_cost_modeled_ui": 10867700.0,
+    "reserve_accounts_cost_rvalue": 0.0,
     "reserve_accounts_cost_total": 0.0,
     "reserve_accounts_modeled": 10292700.0,
     "reserves_interest": 1.75,
@@ -32365,6 +33162,9 @@
     "revenue_capacity_payments_is_shown": 0.0,
     "revenue_curtailment_is_shown": 0.0,
     "riser_cable_length": 8250.0,
+    "riser_cable_voltage": 7.2,
+    "riser_cable_voltage_calculated": 7.2,
+    "riser_cable_voltage_option": 0.0,
     "rotors_cost": 0.0,
     "row_spacing": 600.0,
     "salaries_cost": 0.0,
@@ -32377,6 +33177,7 @@
     "salvage_value": 0.0,
     "scada_cost": 0.0,
     "scheduled_maintenance_cost": 0.0,
+    "scheduled_maintenance_cost_rvalue": 0.0,
     "scheduled_maintenance_cost_total": 0.0,
     "scheduled_maintenance_cost_total_check": 0.0,
     "scour_protection_assem_install_cost": 0.0,
@@ -32389,10 +33190,10 @@
     "shaft_assembly_cost": 0.0,
     "shortterm_energy_storage_cost": 0.0,
     "shortterm_energy_storage_cost_total": 0.0,
-    "show_CapitalCostSO": 0.0,
+    "show_CapitalCostSO": 1.0,
     "show_DebtConstDSCR": 1.0,
-    "show_ReserveAccounts": 0.0,
-    "show_construction_period": 0.0,
+    "show_ReserveAccounts": 1.0,
+    "show_construction_period": 1.0,
     "significant_wave_height": [
         3.21103,
         3.13325,
@@ -35316,21 +36117,25 @@
         2.27728
     ],
     "site_access_override": 0.0,
-    "site_access_port_staging_cost": 4010060.0,
+    "site_access_port_staging_cost": 3984830.0,
     "site_access_port_staging_cost_input": 0.0,
     "site_access_port_staging_cost_method": 2.0,
     "site_access_port_staging_cost_modeled": 3774010.0,
-    "site_access_port_staging_cost_modeled_ui": 4010060.0,
+    "site_access_port_staging_cost_modeled_ui": 3984830.0,
+    "site_access_port_staging_cost_rvalue": 0.0,
     "site_access_port_staging_cost_total": 0.0,
     "site_access_shown": 0.0,
     "site_characterization_cost": 0.0,
+    "site_characterization_cost_rvalue": 0.0,
     "site_characterization_cost_total": 0.0,
     "site_characterization_cost_total_check": 0.0,
     "site_selection_cost": 0.0,
+    "site_selection_cost_rvalue": 0.0,
     "site_selection_cost_total": 0.0,
     "site_selection_cost_total_check": 0.0,
     "solution_mode_message": "",
     "staging_port_cost": 0.0,
+    "staging_port_cost_rvalue": 0.0,
     "staging_port_cost_total": 0.0,
     "staging_port_cost_total_check": 0.0,
     "stakeholder_outreach_cost": 0.0,
@@ -35348,6 +36153,7 @@
     "structural_assembly_cost_method": 2.0,
     "structural_assembly_cost_modeled": 198680000.0,
     "structural_assembly_cost_modeled_formatted": 198680000.0,
+    "structural_assembly_cost_rvalue": 0.0,
     "structural_assembly_cost_total": 0.0,
     "structure_foundations_cost": 0.0,
     "stuctural_assem_shown": 0.0,
@@ -35358,9 +36164,10 @@
     "substructure_assem_install_cost_total": 0.0,
     "substructure_assem_install_cost_total_check": 0.0,
     "substructures_and_foundations_cost": 0.0,
+    "substructures_and_foundations_cost_rvalue": 0.0,
     "system_capacity": 28600.0,
     "system_use_lifetime_output": 1.0,
-    "term_int_rate": 4.0,
+    "term_int_rate": 7.0,
     "term_tenor": 18.0,
     "test_num": 0.0,
     "tod_library": "Uniform Dispatch",
@@ -35375,16 +36182,16 @@
     "total_financial_cost_per_kwh": 0.0,
     "total_indirect_battery_cost": 0.0,
     "total_installed_battery_cost": 8290560.0,
-    "total_installed_cost": 415494000.0,
+    "total_installed_cost": 412932000.0,
     "total_installed_cost_lcoe": 0.0,
-    "total_installed_cost_mill": 415.494,
+    "total_installed_cost_mill": 412.932,
     "total_installed_cost_structural": 198680000.0,
     "total_operating_cost": 5431320.0,
     "total_operating_cost_mill": 5.43132,
     "total_operations_cost_lcoe": 0.0,
     "total_operations_cost_per_kwh": 0.0,
     "total_rated_capacity": 28600.0,
-    "total_test": 407204000.0,
+    "total_test": 404642000.0,
     "transmission_charges_rights_cost": 0.0,
     "transmission_towers_cost": 0.0,
     "transport_power_conversion_chain_cost": 0.0,
@@ -35394,7 +36201,7 @@
     "transportation_cost": 0.0,
     "turbine_bearings_cost": 0.0,
     "tz": -8.0,
-    "ui_batt_life_model": 1.0,
+    "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
     "ui_copy_batt_discharge_percent_2": 25.0,
     "ui_copy_batt_discharge_percent_3": 25.0,
@@ -35404,11 +36211,12 @@
     "ui_electricity_rate_option": 0.0,
     "ui_step_minutes": 180.0,
     "ui_system_nameplate_standalone": 0.0,
-    "ui_wacc": 5.53815,
+    "ui_wacc": 6.6402,
     "underground_cable_system_cost": 0.0,
     "underground_cable_system_onshore_electrical_infrastructure_cost": 0.0,
     "unscheduled_maintenance_contingency_cost": 0.0,
     "unscheduled_maintenance_cost": 0.0,
+    "unscheduled_maintenance_cost_rvalue": 0.0,
     "unscheduled_maintenance_cost_total": 0.0,
     "unscheduled_maintenance_cost_total_check": 0.0,
     "ur_annual_min_charge": 0.0,
@@ -35510,7 +36318,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,
@@ -36938,6 +37746,8 @@
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,
     "ur_name": "",
+    "ur_nb_apply_credit_current_month": 0.0,
+    "ur_nb_credit_expire": 0.0,
     "ur_nm_credit_month": 0.0,
     "ur_nm_credit_rollover": 0.0,
     "ur_nm_yearend_sell_rate": 0.0,
@@ -36963,9 +37773,14 @@
     "ur_yearzero_usage_peaks": [
         0.0
     ],
+    "use_offshore_substation_calc": 0.0,
+    "use_onshore_substation": 0.0,
     "use_wavefile_spacing": 0.0,
+    "user_export_cable_length": 0.0,
     "user_input_devices_per_row": 10.0,
     "user_input_number_rows": 10.0,
+    "user_inter_array_cable_length": 0.0,
+    "user_riser_cable_length": 0.0,
     "user_wave_power_matrix": [
         [
             0.0,

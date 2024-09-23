@@ -1,0 +1,206 @@
+﻿/* Reset Styles for Consistency */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	font-size: 100%;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	color: #444444;
+	background-color:transparent;
+	overflow: hidden;
+	}
+div#noscript {
+		display: none;
+	}
+	
+/* Pretty scrollbars for Webkit browsers */
+ /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a1a1a1;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #858585;
+}
+	
+div#hmpageheader {
+	position: absolute;
+	top: 0; left: 0.313rem; right: 0.313rem;
+	background-color: transparent;
+	}
+div#hmpagebody {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	background-color: transparent;
+	overflow-x: auto;
+	overflow-y: scroll;
+	border-style: solid;
+	border-color: transparent;
+	border-width: 1px;
+	border-radius: 0.5rem 0 0 0.5rem;
+	padding: 0 2px 0 0;
+	margin: 0 0 0 0;
+	/* Pretty scrollbar for Firefox */
+	scrollbar-color: #a1a1a1 #f5f5f5;
+	scrollbar-width: thin;
+	}
+
+p#tocnavbar { display: table-cell;}
+
+/* General */
+.tablet {
+	display: none !important;
+}
+.phone {
+	display: none !important;
+	}
+.noscript { 
+	display: none !important;
+	}
+.scripted {
+	
+	}
+.desktop {
+
+	}
+.desk_tablet {
+
+}
+
+.navbar { font-size: 120%; }
+
+/* Header in TOC */
+div#tocHeader {
+	position: static;
+	border-bottom: 1px solid #888888;
+	margin: 0 0 0 0.5rem;
+	padding-bottom: 0.2rem;
+	background-image: url('../images/sam-logo.png');
+	background-repeat: no-repeat;
+	background-size: 1.2rem 1.2rem;
+	background-attachment: fixed;
+	background-position: 10px 4px;
+}
+p.tocProjectTitle {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	text-align: center;
+	font-size: 1.1rem;
+	color: #444444;
+	padding-left: calc(1.2rem + 5px);
+}
+a#tocHeaderLink:link {
+	text-decoration: none;
+	color: initial;
+}
+a#tocHeaderLink:visited {
+	color: initial;
+}
+
+/* TOC LIST CSS */
+div#hmtoctree {
+	position: relative;
+	left: 0; right: 0; bottom: 0; top: 0.5rem;
+	font-size: 0.950rem;
+	}
+ul#toc, ul#toc ul { 
+	padding: 0; margin: 0;
+	list-style-type: none;
+	}
+ul#toc li { 
+	cursor: pointer;
+	padding: 0;
+	background-repeat: no-repeat;
+	}
+
+ul#toc li > a {
+	display: block;
+	text-decoration: none;
+	border: thin solid transparent;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding: 0rem 0.143rem 0rem 1.7rem;
+	background-repeat: no-repeat;
+	background-position: 0.32rem 0.12rem;
+	background-size: 1.1rem;
+	text-decoration: none;
+	}
+
+ul#toc li a:link, ul#toc li a:visited {
+	color: #444444;
+	}
+ul#toc li a:hover {
+	background-color: #eaeaea;
+	border: thin dashed #444444;
+	}
+ul#toc li a:focus {
+	background-color: transparent;
+	border: thin dashed #000000;
+	}
+ul#toc li a.current {
+	background-color: #eaeaea;
+	border: thin dashed #444444;
+	color: #000000;
+	}
+ul#toc li a.current:hover {
+	border: thin solid #000000;
+	}
+
+ul#toc li.lv2 a {
+	background-position: 0.9rem 0.12rem;
+	padding-left: 2.27rem;
+	}
+
+ul#toc li.lv3 a {
+	background-position: 1.7rem 0.12rem;
+	padding-left: 3.2rem;
+	}
+ul#toc li.lv4 a {
+	background-position: 2.60rem 0.12rem;
+	padding-left: 4.0rem;
+	}
+ul#toc li.lv5 a {
+	background-position: 3.4rem 0.12rem;
+	padding-left: 4.8rem;
+	}
+ul#toc li.lv6 a {
+	background-position: 4.4rem 0.12rem;
+	padding-left: 5.7rem;
+	}
+ul#toc li.lv7 a {
+	background-position: 5.3rem 0.12rem;
+	padding-left: 6.6rem;
+	}
+	
+ul#toc li.current {
+	z-index: 10000;
+	}
+
+ul#toc ul { 
+	
+	}
+	
+/* TOC LIST CSS */

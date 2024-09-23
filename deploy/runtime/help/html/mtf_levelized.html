@@ -1,0 +1,790 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+	<!-- Help+Manual Premium Pack 5.1.0 (c) 2015-2023 by Tim Green. All rights reserved. -->
+	<title>Levelized Values Values</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" id="pageviewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="cache-control" content="no-cache" />	
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta name="generator" content="Help+Manual" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="SAM reports several &quot;levelized&quot; values. A levelized value is the present value of an array of annual values. It is a series of future values expressed as a present value using..." />
+	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
+	<meta name="author" content="National Renewable Energy Laboratory" />
+	<meta name="msapplication-tap-highlight" content="no" />
+<link rel="shortcut icon" href="favicon.ico" /> 
+<!--This is set up for self-hosted Google Fonts on your own web server with font files included in the skin. See the help for instructions on using fonts hosted by Google -->
+<link type="text/css" href="./css/GoogleFonts.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmprojectstyles.css" rel="stylesheet" />
+	<link id="customstylesheet" type="text/css" href="./css/custom_topic_styles.css" rel="stylesheet" />
+	<link type="text/css" href="./css/hmwebhelp_main.css" rel="stylesheet" />
+	<script type="text/javascript">
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+		var pageName = "mainPage";
+
+		
+		var hmDevice = {
+		
+		mobileSleepReload: true,
+		// Unique project ID
+		compilehash: (function () {
+		var outVal = 0, t="SAM HelpUser-defined Project ID";
+		for (var x = 0; x < t.length; x++) {
+			outVal = outVal + (t.charCodeAt(x)*(x+2));
+		}
+		return (outVal*697).toString(32) + "_";
+		})(),
+		
+		// Cookies
+		hmSetCookie: function(cname, cvalue, exdays) {
+			var expires = "";
+			if (exdays) {
+				var d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				expires = "expires="+d.toGMTString();
+			}
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+		},
+
+		hmGetCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1);
+				if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		hmDeleteCookie: function(cname) {
+			var name = cname + "=";
+			document.cookie = name + "; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+		}
+	
+	};
+	// Session Variables
+	// Test that storage is both available and accessible (looking at you, Safari!)
+	var storageOK = (function(){
+		var gotStorage = typeof(Storage) === "object" && typeof(localStorage) === "object" && typeof(sessionStorage) === "object";
+		if (gotStorage) {
+			try {
+				localStorage.setItem('testStorage',1);
+				localStorage.removeItem('testStorage');
+				gotStorage = true;
+			}
+			catch(e) {
+			gotStorage = false;
+			}
+		}
+		return gotStorage;
+		})();
+		
+	var sessionVariable = {
+		localS: storageOK,
+		
+		fxVal: function(v) {
+			return decodeURIComponent(v);
+		},
+		
+		setPV: function(sVar,sVal) {
+			if (this.localS) {
+				localStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			} else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),365);	
+		},
+		setSV: function(sVar,sVal) {
+			if (this.localS)
+				sessionStorage.setItem(hmDevice.compilehash + sVar,this.fxVal(sVal));
+			else
+				hmDevice.hmSetCookie(hmDevice.compilehash + sVar,this.fxVal(sVal),false);
+		},
+		getPV: function(sVar) {
+			if (this.localS) {
+				if (typeof(localStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return localStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		getSV: function(sVar) {
+			if (this.localS) {
+				if (typeof(sessionStorage.getItem(hmDevice.compilehash + sVar)) !== "undefined")
+					return sessionStorage.getItem(hmDevice.compilehash + sVar);
+				else return null;
+			} else 
+				return hmDevice.hmGetCookie(hmDevice.compilehash + sVar);
+		},
+		deletePV: function(sVar) {
+			if (this.localS)
+				localStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		},
+		deleteSV: function(sVar) {
+			if (this.localS)
+				sessionStorage.removeItem(hmDevice.compilehash + sVar);
+			else
+				hmDevice.hmDeleteCookie(hmDevice.compilehash + sVar);
+		}
+	},
+	hmFlags = {
+		skinType: "flat"
+	};	
+	
+	/* UI Location */
+	hmDevice.page = "topicpage";
+	hmDevice.baseFontSize = 100;
+	hmDevice.fontChangeMax = 20;
+	
+	/* GA Active */
+	hmDevice.GAactive = true;
+	
+	/* Source Checks */
+	hmDevice.agent = navigator.userAgent.toLowerCase();
+	hmDevice.embedded = (self != top);
+	hmDevice.Xdomain = (function(){try { return parent.location.hostname.length < 0 } catch(err) { return true;}})();
+	hmDevice.platform = navigator.platform.toLowerCase();
+	hmDevice.ipad = /ipad/.test(hmDevice.platform);
+	hmDevice.iphone = /iphone/.test(hmDevice.platform);
+	hmDevice.winphone7 =  (/windows phone os [7]\.\d\d??; .*?trident\/[5]\.\d\d??; iemobile\/9/.test(hmDevice.agent));
+	hmDevice.winphone = (/windows phone [89]\.\d\d??; .*?trident\/[67]\.\d\d??;.*?touch; /.test(hmDevice.agent));
+	hmDevice.w8desktop = (/windows nt 6\.[2345]|windows nt 10\.[0123456]/m.test(hmDevice.agent));
+	hmDevice.msBrowser = (/edge|trident/m.test(hmDevice.agent));
+	hmDevice.w8metro = (function(){var supported = true; 
+				try {new ActiveXObject("htmlfile");} catch(e) {supported = false;} 
+				return (!supported && hmDevice.w8desktop && hmDevice.msBrowser)})();
+	hmDevice.touch = !!(('ontouchstart' in window && !window.opera) || ('msmaxtouchppoints' in window.navigator) || ('maxtouchppoints' in window.navigator) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+	// Treat all Windows 8 devices as desktops unless in metro mode with touch
+	hmDevice.tb = (/tablet/.test(hmDevice.agent) && (!/trident/.test(hmDevice.agent) || (hmDevice.w8metro && hmDevice.touch)));
+	hmDevice.goodandroid = (/android.+?applewebkit\/(?:(?:537\.(?:3[6-9]|[4-9][0-9]))|(?:53[8-9]\.[0-9][0-9])|(?:54[0-9]\.[0-9][0-9]))|android.+?gecko\/[345][0-9]\.\d{1,2} firefox/.test(hmDevice.agent));
+	hmDevice.deadandroid = (/android.+?applewebkit\/(?:53[0-6]\.\d{1,2})|firefox\/[0-2]\d\.\d{1,2}/.test(hmDevice.agent));
+	hmDevice.android = (/android/.test(hmDevice.agent) && !hmDevice.deadandroid);
+	hmDevice.mb = /mobi|mobile/.test(hmDevice.agent);
+	
+	/* Main Checks */
+	hmDevice.phone = (hmDevice.mb && !hmDevice.ipad && !hmDevice.tb);
+	hmDevice.tablet = (hmDevice.ipad || hmDevice.tb || (!hmDevice.phone && hmDevice.android));
+	hmDevice.aspectRatio = (screen.height / screen.width > 1 ? screen.height / screen.width : screen.width / screen.height).toFixed(2);
+	hmDevice.narrowTablet = (hmDevice.tablet && hmDevice.aspectRatio > 1.4);
+	hmDevice.desktop = ((!hmDevice.tablet && !hmDevice.phone));
+	hmDevice.device = hmDevice.phone ? "phone" : hmDevice.tablet ? "tablet" : hmDevice.desktop ? "desktop" : "default";
+	hmDevice.fontSize = hmDevice.phone ? hmDevice.baseFontSize * 1.0 : hmDevice.tablet ? hmDevice.baseFontSize * 1.0 : hmDevice.desktop ? hmDevice.baseFontSize : hmDevice.baseFontSize;
+	hmDevice.maxFontSize = hmDevice.fontSize + hmDevice.fontChangeMax;
+	hmDevice.minFontSize = hmDevice.fontSize - hmDevice.fontChangeMax;
+	if (hmDevice.device !== sessionVariable.getPV("hmDevice")) {
+		sessionVariable.setPV("hmDevice", hmDevice.device);
+		sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		} else {
+			var tempSize = sessionVariable.getPV("hmFontSize");
+			if (tempSize !== null)
+				hmDevice.fontSize = parseInt(tempSize,10);
+			else
+				sessionVariable.setPV("hmFontSize",hmDevice.fontSize.toString());
+		}
+
+	// Expand to full width of container frame if help is embedded in another page
+	if (hmDevice.embedded && hmDevice.desktop) {
+		let embedStyle = document.createElement("style");
+			embedStyle.type = "text/css";
+			embedStyle.appendChild(document.createTextNode("div#helpwrapper {max-width: 100% !important}"));
+			document.getElementsByTagName("head")[0].appendChild(embedStyle);
+	}
+hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
+	var hmSearchActive = true,
+		hmIndexActive = false;
+	</script>
+	<style id="livestyles" type="text/css"></style>
+	<noscript><style type="text/css">
+	div#pagewrapper {display: none;}
+	div#fouc {display: none;}
+	div#noscript {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border: 1rem solid grey;
+		background-color: #eaeaea;
+		}
+	h2#noscriptwarning {
+		text-align: center;
+		position: relative;
+		top: 35%;
+		color: #333333;
+	}
+	</style>
+	</noscript>
+	<link rel="canonical" href="https://sam.nrel.gov/help/mtf_levelized.html" />
+	<script id="jqscript" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="./css/HM_CLASSICMENU.css" />
+</head>
+<body>
+<!--ZOOMSTOP-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+<defs>
+<g class="svgsprite" id="th-list" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.152 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h5.696q0.704 0 1.216 0.48t0.512 1.216zM9.152 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-5.696q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 22.272v3.456q0 0.704-0.512 1.184t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.184v-3.456q0-0.704 0.512-1.216t1.216-0.48h17.12q0.736 0 1.216 0.48t0.512 1.216zM9.152 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-5.696q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h5.696q0.704 0 1.216 0.512t0.512 1.216zM32 13.152v3.424q0 0.704-0.512 1.216t-1.216 0.48h-17.12q-0.736 0-1.216-0.48t-0.512-1.216v-3.424q0-0.736 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216zM32 4v3.424q0 0.704-0.512 1.216t-1.216 0.512h-17.12q-0.736 0-1.216-0.512t-0.512-1.216v-3.424q0-0.704 0.512-1.216t1.216-0.512h17.12q0.736 0 1.216 0.512t0.512 1.216z"></path>
+	</g>	
+<g class="svgsprite" id="key-inv" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.256 1.696q3.68 0 6.304 2.624t2.592 6.304-2.592 6.304-6.336 2.624q-0.896 0-1.632-0.16l-0.16 0.16v3.584h-3.584v3.552h-3.552v3.616h-10.72v-7.168l10.88-10.88q-0.16-0.736-0.16-1.664 0-3.68 2.624-6.272t6.336-2.624zM20.256 12.416q0.704 0 1.248-0.512t0.512-1.312-0.512-1.248-1.28-0.512q-0.768 0-1.28 0.544t-0.512 1.216q0 0.768 0.544 1.312t1.28 0.512z"></path>
+	</g>
+<g class="svgsprite" id="search" width="30" height="32" viewBox="0 0 30 32">
+<path d="M20.576 14.848q0-3.296-2.368-5.632t-5.632-2.368-5.664 2.368-2.336 5.632 2.336 5.664 5.664 2.336 5.632-2.336 2.368-5.664zM29.728 29.728q0 0.928-0.704 1.6t-1.6 0.672q-0.96 0-1.6-0.672l-6.112-6.112q-3.2 2.208-7.136 2.208-2.56 0-4.896-0.992t-4-2.688-2.688-4-0.992-4.896 0.992-4.864 2.688-4.032 4-2.688 4.896-0.992 4.864 0.992 4.032 2.688 2.688 4.032 0.992 4.864q0 3.936-2.208 7.136l6.112 6.112q0.672 0.672 0.672 1.632z"></path>
+	</g>
+<g class="svgsprite" id="draghandle_r" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M10,6L8.59,7.41,13.17,12l-4.58,4.59L10,18l6,-6z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_l" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M15.41,7.41L14,6l-6,6,6,6,1.41,-1.41L10.83,12z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_rm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="draghandle_lm" width="30" height="32" viewBox="0 0 30 32">
+    <path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_updown_icon" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M17.038,8.518h-4.977v8.879l-7.084-0.002V8.518H0L8.519,0L17.038,8.518z M22.2,30l8.519-8.518h-4.977v-8.877l-7.084-0.002
+	v8.879h-4.977L22.2,30z"></path>
+  </g>
+<g class="svgsprite" id="toolbar_close" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M16.295 15.705C16.295 15.705 17.705 14.295 17.705 14.295C17.705 14.295 11.705 8.295 11.705 8.295C11.705 8.295 5.705 14.295 5.705 14.295C5.705 14.295 7.115 15.705 7.115 15.705C7.115 15.705 11.705 11.125 11.705 11.125C11.705 11.125 16.295 15.705 16.295 15.705"></path>
+  </g>
+<g class="svgsprite" id="toolbar_open" width="30" height="30" viewBox="0 0 30 30">
+    <path d="M7.115 8.295C7.115 8.295 5.705 9.705 5.705 9.705C5.705 9.705 11.705 15.705 11.705 15.705C11.705 15.705 17.705 9.705 17.705 9.705C17.705 9.705 16.295 8.295 16.295 8.295C16.295 8.295 11.705 12.875 11.705 12.875C11.705 12.875 7.115 8.295 7.115 8.295"></path>
+  </g>
+<g class="svgsprite" id="angle-circled-left" width="27" height="32" viewBox="0 0 27 32">
+<path d="M16.224 24.896l1.824-1.792q0.352-0.352 0.352-0.832t-0.352-0.8l-5.472-5.472 5.472-5.472q0.352-0.352 0.352-0.8t-0.352-0.832l-1.824-1.792q-0.32-0.352-0.8-0.352t-0.8 0.352l-8.096 8.096q-0.352 0.32-0.352 0.8t0.352 0.8l8.096 8.096q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-up" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.8 20.352l1.824-1.824q0.352-0.352 0.352-0.8t-0.352-0.832l-8.096-8.096q-0.352-0.32-0.8-0.32t-0.832 0.32l-8.096 8.096q-0.32 0.352-0.32 0.832t0.32 0.8l1.824 1.824q0.352 0.32 0.8 0.32t0.8-0.32l5.504-5.504 5.472 5.504q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="angle-circled-right" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.8 24.896l8.096-8.096q0.352-0.352 0.352-0.8t-0.352-0.8l-8.096-8.096q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.792q-0.352 0.352-0.352 0.832t0.352 0.8l5.472 5.472-5.472 5.472q-0.352 0.352-0.352 0.8t0.352 0.832l1.824 1.792q0.352 0.352 0.8 0.352t0.8-0.352zM27.424 16q0 3.744-1.824 6.88t-4.992 4.992-6.88 1.856-6.912-1.856-4.96-4.992-1.856-6.88 1.856-6.88 4.96-4.992 6.912-1.856 6.88 1.856 4.992 4.992 1.824 6.88z"></path>
+	</g>
+<g class="svgsprite" id="menu" width="27" height="32" viewBox="0 0 27 32">
+    <path d="M27.424 24v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.8t0.8-0.352h25.12q0.48 0 0.832 0.352t0.32 0.8zM27.424 14.848v2.304q0 0.448-0.32 0.8t-0.832 0.32h-25.12q-0.48 0-0.8-0.32t-0.352-0.8v-2.304q0-0.448 0.352-0.8t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.8zM27.424 5.728v2.272q0 0.48-0.32 0.8t-0.832 0.352h-25.12q-0.48 0-0.8-0.352t-0.352-0.8v-2.272q0-0.48 0.352-0.832t0.8-0.32h25.12q0.48 0 0.832 0.32t0.32 0.832z"></path>
+  </g>
+<g class="svgsprite" id="weblink" width="32" height="32" viewBox="0 0 27 32">
+ <path d="M11.99,2C6.47,2,2,6.48,2,12s4.47,10,9.99,10C17.52,22,22,17.52,22,12S17.52,2,11.99,2zm6.93,6h-2.95c-0.32,-1.25,-0.78,-2.45,-1.38,-3.56,1.84,0.63,3.37,1.91,4.33,3.56zM12,4.04c0.83,1.2,1.48,2.53,1.91,3.96h-3.82c0.43,-1.43,1.08,-2.76,1.91,-3.96zM4.26,14C4.1,13.36,4,12.69,4,12s0.1,-1.36,0.26,-2h3.38c-0.08,0.66,-0.14,1.32,-0.14,2,0,0.68,0.06,1.34,0.14,2H4.26zm0.82,2h2.95c0.32,1.25,0.78,2.45,1.38,3.56,-1.84,-0.63,-3.37,-1.9,-4.33,-3.56zm2.95,-8H5.08c0.96,-1.66,2.49,-2.93,4.33,-3.56C8.81,5.55,8.35,6.75,8.03,8zM12,19.96c-0.83,-1.2,-1.48,-2.53,-1.91,-3.96h3.82c-0.43,1.43,-1.08,2.76,-1.91,3.96zM14.34,14H9.66c-0.09,-0.66,-0.16,-1.32,-0.16,-2,0,-0.68,0.07,-1.35,0.16,-2h4.68c0.09,0.65,0.16,1.32,0.16,2,0,0.68,-0.07,1.34,-0.16,2zm0.25,5.56c0.6,-1.11,1.06,-2.31,1.38,-3.56h2.95c-0.96,1.65,-2.49,2.93,-4.33,3.56zM16.36,14c0.08,-0.66,0.14,-1.32,0.14,-2,0,-0.68,-0.06,-1.34,-0.14,-2h3.38c0.16,0.64,0.26,1.31,0.26,2s-0.1,1.36,-0.26,2h-3.38z"></path>
+ </g>
+<g class="svgsprite" id="collapse" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 19.936q-0.32 0.64-1.024 0.64h-11.424q-0.704 0-1.024-0.64-0.32-0.608 0.096-1.184l5.728-8q0.32-0.48 0.928-0.48t0.928 0.48l5.696 8q0.416 0.576 0.096 1.184zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="expand" width="27" height="32" viewBox="0 0 27 32">
+<path d="M20.448 12.064q0.32 0.608-0.096 1.152l-5.696 8q-0.352 0.512-0.928 0.512t-0.928-0.512l-5.728-8q-0.416-0.544-0.096-1.152 0.32-0.64 1.024-0.64h11.424q0.704 0 1.024 0.64zM22.848 24.576v-17.152q0-0.224-0.16-0.384t-0.416-0.192h-17.12q-0.224 0-0.416 0.192t-0.16 0.384v17.152q0 0.224 0.16 0.384t0.416 0.192h17.12q0.256 0 0.416-0.192t0.16-0.384zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<g class="svgsprite" id="eye" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.728 17.152q-2.72-4.224-6.816-6.304 1.088 1.856 1.088 4 0 3.328-2.336 5.664t-5.664 2.336-5.664-2.336-2.336-5.664q0-2.144 1.088-4-4.096 2.080-6.816 6.304 2.4 3.648 5.984 5.824t7.744 2.176 7.744-2.176 5.984-5.824zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM32 17.152q0 0.608-0.352 1.216-2.496 4.128-6.72 6.592t-8.928 2.464-8.928-2.464-6.72-6.592q-0.352-0.608-0.352-1.216t0.352-1.248q2.496-4.096 6.72-6.56t8.928-2.496 8.928 2.496 6.72 6.56q0.352 0.64 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="eye-off" width="32" height="32" viewBox="0 0 32 32">
+<path d="M9.92 23.84l1.376-2.528q-1.536-1.12-2.432-2.816t-0.864-3.648q0-2.144 1.088-4-4.096 2.080-6.816 6.304 3.008 4.608 7.648 6.688zM16.864 10.272q0-0.352-0.256-0.608t-0.608-0.224q-2.24 0-3.84 1.6t-1.6 3.808q0 0.352 0.256 0.608t0.608 0.256 0.608-0.256 0.256-0.608q0-1.536 1.088-2.624t2.624-1.088q0.352 0 0.608-0.256t0.256-0.608zM23.328 6.88q0 0.128 0 0.16-1.888 3.36-5.632 10.112t-5.632 10.112l-0.896 1.6q-0.16 0.288-0.48 0.288-0.224 0-2.4-1.248-0.288-0.192-0.288-0.512 0-0.224 0.8-1.568-2.56-1.152-4.704-3.072t-3.744-4.384q-0.352-0.544-0.352-1.216t0.352-1.248q2.752-4.192 6.784-6.624t8.864-2.432q1.6 0 3.2 0.32l0.992-1.728q0.16-0.288 0.48-0.288 0.096 0 0.32 0.096t0.576 0.288 0.576 0.32 0.576 0.32 0.32 0.224q0.288 0.16 0.288 0.48zM24 14.848q0 2.496-1.408 4.544t-3.744 2.944l5.024-8.992q0.128 0.832 0.128 1.504zM32 17.152q0 0.608-0.352 1.216-0.704 1.152-1.952 2.592-2.688 3.072-6.208 4.768t-7.488 1.696l1.312-2.368q3.808-0.32 7.008-2.432t5.408-5.472q-2.080-3.2-5.056-5.248l1.12-2.016q1.696 1.152 3.264 2.752t2.592 3.264q0.352 0.608 0.352 1.248z"></path>
+	</g>
+<g class="svgsprite" id="link" width="30" height="32" viewBox="0 0 30 32">
+<path d="M25.984 21.728q0-0.736-0.48-1.216l-3.712-3.712q-0.512-0.512-1.216-0.512-0.768 0-1.28 0.576 0.032 0.032 0.32 0.32t0.384 0.384 0.288 0.352 0.224 0.448 0.064 0.48q0 0.736-0.512 1.216t-1.216 0.512q-0.256 0-0.48-0.064t-0.448-0.224-0.352-0.288-0.384-0.384-0.32-0.32q-0.608 0.544-0.608 1.28t0.512 1.216l3.68 3.712q0.48 0.48 1.216 0.48 0.704 0 1.216-0.48l2.624-2.592q0.48-0.512 0.48-1.184zM13.44 9.12q0-0.704-0.48-1.216l-3.68-3.68q-0.512-0.512-1.216-0.512t-1.216 0.48l-2.624 2.624q-0.512 0.48-0.512 1.184t0.512 1.216l3.712 3.712q0.48 0.48 1.216 0.48t1.28-0.544q-0.064-0.064-0.352-0.352t-0.384-0.384-0.256-0.32-0.224-0.448-0.064-0.512q0-0.704 0.48-1.216t1.216-0.48q0.288 0 0.512 0.064t0.448 0.224 0.32 0.256 0.384 0.384 0.352 0.352q0.576-0.544 0.576-1.312zM29.44 21.728q0 2.144-1.536 3.616l-2.624 2.592q-1.472 1.504-3.616 1.504-2.176 0-3.648-1.536l-3.68-3.68q-1.472-1.504-1.472-3.648 0-2.176 1.568-3.712l-1.568-1.568q-1.536 1.568-3.712 1.568-2.144 0-3.648-1.504l-3.712-3.712q-1.504-1.504-1.504-3.648t1.504-3.616l2.624-2.624q1.504-1.472 3.648-1.472t3.648 1.504l3.648 3.712q1.504 1.472 1.504 3.616 0 2.208-1.568 3.744l1.568 1.568q1.536-1.568 3.712-1.568 2.144 0 3.648 1.504l3.712 3.712q1.504 1.504 1.504 3.648z"></path>
+	</g>
+<g class="svgsprite" id="mail-alt" width="32" height="32" viewBox="0 0 32 32">
+<path d="M32 12.672v14.176q0 1.184-0.832 2.016t-2.016 0.864h-26.304q-1.152 0-2.016-0.864t-0.832-2.016v-14.176q0.8 0.896 1.792 1.568 6.464 4.384 8.896 6.144 1.024 0.768 1.632 1.184t1.696 0.864 1.952 0.416h0.064q0.896 0 1.952-0.416t1.696-0.864 1.632-1.184q3.040-2.176 8.896-6.144 1.024-0.704 1.792-1.568zM32 7.424q0 1.408-0.864 2.688t-2.176 2.208q-6.72 4.672-8.384 5.792-0.16 0.128-0.736 0.544t-0.96 0.704-0.928 0.576-1.056 0.48-0.864 0.16h-0.064q-0.384 0-0.864-0.16t-1.056-0.48-0.928-0.576-0.96-0.704-0.736-0.544q-1.632-1.12-4.704-3.232t-3.648-2.56q-1.12-0.736-2.080-2.048t-0.992-2.464q0-1.376 0.736-2.304t2.112-0.928h26.304q1.152 0 1.984 0.832t0.864 2.016z"></path>
+	</g>
+<g class="svgsprite" id="print" width="30" height="32" viewBox="0 0 30 32">
+<path d="M6.848 27.424h16v-4.576h-16v4.576zM6.848 16h16v-6.848h-2.848q-0.704 0-1.216-0.512t-0.512-1.216v-2.848h-11.424v11.424zM27.424 17.152q0-0.48-0.32-0.8t-0.832-0.352-0.8 0.352-0.32 0.8 0.32 0.8 0.8 0.32 0.832-0.32 0.32-0.8zM29.728 17.152v7.424q0 0.224-0.192 0.384t-0.384 0.192h-4v2.848q0 0.704-0.512 1.216t-1.216 0.512h-17.152q-0.704 0-1.184-0.512t-0.512-1.216v-2.848h-4q-0.224 0-0.416-0.192t-0.16-0.384v-7.424q0-1.408 1.024-2.432t2.4-0.992h1.152v-9.728q0-0.704 0.512-1.216t1.184-0.512h12q0.736 0 1.6 0.384t1.344 0.832l2.72 2.72q0.48 0.512 0.864 1.376t0.352 1.568v4.576h1.12q1.44 0 2.432 0.992t1.024 2.432z"></path>
+	</g>
+<g class="svgsprite" id="resize-full" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.472 18.848q0 0.256-0.16 0.416l-5.92 5.92 2.56 2.592q0.32 0.32 0.32 0.8t-0.32 0.8-0.8 0.352h-8q-0.48 0-0.8-0.352t-0.352-0.8v-8q0-0.48 0.352-0.8t0.8-0.352 0.8 0.352l2.56 2.56 5.92-5.92q0.192-0.192 0.416-0.192t0.416 0.192l2.048 2.016q0.16 0.192 0.16 0.416zM27.424 3.424v8q0 0.48-0.32 0.8t-0.832 0.352-0.8-0.352l-2.56-2.56-5.92 5.92q-0.192 0.192-0.416 0.192t-0.416-0.192l-2.048-2.016q-0.16-0.192-0.16-0.416t0.16-0.416l5.952-5.92-2.592-2.592q-0.32-0.32-0.32-0.8t0.32-0.8 0.8-0.352h8q0.48 0 0.832 0.352t0.32 0.8z"></path>
+	</g>
+<g class="svgsprite" id="resize-small" width="27" height="32" viewBox="0 0 27 32">
+<path d="M13.728 17.152v8q0 0.448-0.352 0.8t-0.8 0.32-0.8-0.32l-2.592-2.592-5.92 5.952q-0.16 0.16-0.416 0.16t-0.416-0.16l-2.016-2.048q-0.192-0.16-0.192-0.416t0.192-0.416l5.92-5.92-2.56-2.56q-0.352-0.352-0.352-0.8t0.352-0.8 0.8-0.352h8q0.448 0 0.8 0.352t0.352 0.8zM27.2 5.152q0 0.224-0.192 0.416l-5.92 5.92 2.56 2.56q0.352 0.352 0.352 0.8t-0.352 0.8-0.8 0.352h-8q-0.448 0-0.8-0.352t-0.32-0.8v-8q0-0.448 0.32-0.8t0.8-0.32 0.8 0.32l2.592 2.592 5.92-5.952q0.192-0.16 0.416-0.16t0.416 0.16l2.016 2.048q0.192 0.16 0.192 0.416z"></path>
+	</g>
+<g class="svgsprite" id="share" width="27" height="32" viewBox="0 0 27 32">
+<path d="M21.728 18.272q2.368 0 4.032 1.696t1.664 4.032-1.664 4.032-4.032 1.696-4.064-1.696-1.664-4.032q0-0.224 0.032-0.608l-6.432-3.2q-1.632 1.536-3.872 1.536-2.4 0-4.064-1.696t-1.664-4.032 1.664-4.032 4.064-1.696q2.24 0 3.872 1.536l6.432-3.2q-0.032-0.384-0.032-0.608 0-2.368 1.664-4.032t4.064-1.696 4.032 1.696 1.664 4.032-1.664 4.032-4.032 1.696q-2.272 0-3.904-1.536l-6.432 3.2q0.032 0.384 0.032 0.608t-0.032 0.608l6.432 3.2q1.632-1.536 3.904-1.536z"></path>
+	</g>
+<g class="svgsprite" id="text-height" width="32" height="32" viewBox="0 0 32 32">
+<path d="M31.136 25.152q0.608 0 0.768 0.32t-0.192 0.8l-2.272 2.88q-0.352 0.48-0.864 0.48t-0.864-0.48l-2.272-2.88q-0.352-0.48-0.192-0.8t0.736-0.32h1.44v-18.304h-1.44q-0.576 0-0.736-0.32t0.192-0.8l2.272-2.88q0.352-0.48 0.864-0.48t0.864 0.48l2.272 2.88q0.352 0.48 0.192 0.8t-0.768 0.32h-1.408v18.304h1.408zM1.44 2.304l0.96 0.48q0.224 0.096 3.776 0.096 0.8 0 2.368-0.032t2.336-0.032q0.672 0 1.92 0t1.92 0h5.248q0.096 0 0.384 0t0.352 0 0.288-0.032 0.32-0.16 0.256-0.32l0.768-0.032q0.064 0 0.224 0.032t0.256 0q0.032 1.984 0.032 5.984 0 1.44-0.064 1.952-0.704 0.256-1.216 0.32-0.448-0.768-0.992-2.272-0.032-0.16-0.192-0.864t-0.256-1.312-0.128-0.64q-0.096-0.128-0.224-0.224t-0.256-0.096-0.256-0.032-0.32-0.032-0.288 0.032q-0.288 0-1.184-0.032t-1.344 0-1.12 0.032-1.28 0.128q-0.16 1.44-0.128 2.4 0 1.696 0.032 6.944t0.032 8.128q0 0.288-0.032 1.28t0 1.632 0.224 1.216q0.704 0.384 2.208 0.768t2.144 0.672q0.064 0.704 0.064 0.896 0 0.256-0.032 0.512l-0.608 0.032q-1.376 0.032-3.904-0.16t-3.68-0.16q-0.896 0-2.72 0.16t-2.688 0.16q-0.064-0.928-0.064-0.928v-0.16q0.288-0.48 1.088-0.768t1.76-0.544 1.408-0.48q0.32-0.736 0.32-6.816 0-1.824-0.032-5.44t-0.064-5.408v-2.080q0-0.032 0-0.288t0.032-0.448-0.032-0.448-0.064-0.416-0.096-0.256q-0.192-0.224-2.88-0.224-0.576 0-1.664 0.224t-1.408 0.48q-0.352 0.224-0.608 1.28t-0.576 1.984-0.768 0.96q-0.736-0.48-0.992-0.8v-6.816z"></path>
+	</g>
+<g class="svgsprite" id="list-bullet" width="32" height="32" viewBox="0 0 32 32">
+<path d="M6.848 25.152q0 1.408-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM6.848 16q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 23.424v3.424q0 0.224-0.16 0.416t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.416v-3.424q0-0.224 0.16-0.384t0.416-0.192h21.696q0.224 0 0.416 0.192t0.16 0.384zM6.848 6.848q0 1.44-0.992 2.432t-2.432 0.992-2.432-0.992-0.992-2.432 0.992-2.432 2.432-0.992 2.432 0.992 0.992 2.432zM32 14.272v3.456q0 0.224-0.16 0.384t-0.416 0.16h-21.696q-0.256 0-0.416-0.16t-0.16-0.384v-3.456q0-0.224 0.16-0.384t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.384zM32 5.152v3.424q0 0.224-0.16 0.384t-0.416 0.192h-21.696q-0.256 0-0.416-0.192t-0.16-0.384v-3.424q0-0.256 0.16-0.416t0.416-0.16h21.696q0.224 0 0.416 0.16t0.16 0.416z"></path>
+	</g>
+<g class="svgsprite" id="ok" width="32" height="32" viewBox="0 0 32 32">
+<path d="M29.824 10.112q0 0.704-0.48 1.216l-15.36 15.36q-0.512 0.48-1.216 0.48t-1.216-0.48l-8.896-8.896q-0.48-0.512-0.48-1.216t0.48-1.216l2.432-2.432q0.512-0.512 1.216-0.512t1.216 0.512l5.248 5.28 11.712-11.744q0.512-0.512 1.216-0.512t1.216 0.512l2.432 2.432q0.48 0.512 0.48 1.216z"></path>
+	</g>
+<g class="svgsprite" id="ok-squared" width="27" height="32" viewBox="0 0 27 32">
+<path d="M12.224 23.2l10.976-10.976q0.32-0.32 0.32-0.8t-0.32-0.8l-1.824-1.824q-0.352-0.32-0.8-0.32t-0.8 0.32l-8.352 8.352-3.776-3.776q-0.32-0.352-0.8-0.352t-0.8 0.352l-1.824 1.824q-0.32 0.32-0.32 0.8t0.32 0.8l6.4 6.4q0.352 0.32 0.8 0.32t0.8-0.32zM27.424 7.424v17.152q0 2.112-1.504 3.616t-3.648 1.536h-17.12q-2.144 0-3.648-1.536t-1.504-3.616v-17.152q0-2.112 1.504-3.616t3.648-1.536h17.12q2.144 0 3.648 1.536t1.504 3.616z"></path>
+	</g>
+<symbol class="svgsprite" id="menu-closed" viewBox="0 0 24 24">
+<path d="M2.99999995 23.9999998C2.99999995 23.9999998 21.0123147 12.01849265 21.0123147 12.01849265C21.0123147 12.01849265 3.02464845 1.28000000075e-05 3.02464845 1.28000000075e-05C3.02464845 1.28000000075e-05 2.99999995 23.9999998 2.99999995 23.9999998"></path>
+  </symbol>
+<symbol class="svgsprite" id="menu-open" viewBox="0 0 24 24">
+    <path d="M0.0 3.0C0.0 3.0 12.0 21.0 12.0 21.0C12.0 21.0 24.0 3.0 24.0 3.0C24.0 3.0 0.0 3.0 0.0 3.0"></path>
+  </symbol>
+<symbol class="svgsprite" id="close-search" viewBox="0 0 72 72">
+	<path d="M57 19.23L52.77 15 36 31.77 19.23 15 15 19.23 31.77 36 15 52.77 19.23 57 36 40.23 52.77 57 57 52.77 40.23 36 57 19.23z"></path>
+	</symbol>
+</defs>
+</svg>
+<div id="fouc" style="background:#ffffff;position:absolute;top:0;right:0;bottom:0;left:0;z-index:100001;"></div><div id="noscript"><h2 id="noscriptwarning">Please enable JavaScript to view this site.</h2></div>
+	<div id="helpwrapper">
+	<!--<div id="pagewrapper">-->
+	<div id="toolbar_updown" class="toolwrapper phone">
+	<svg id="toolbar_updown_button" alt="Show/Hide Toolbars" viewBox="0 0 30 30"><use xlink:href="#toolbar_updown_icon"></use></svg>
+	</div>
+	<header id="headerbox_wrapper">
+	<div id="headerbox">
+	<div id="headerwrapper">
+<html>
+	<head></head>
+	<body>
+		<nav id="header_menu">
+			
+				<div id="homebutton">
+					<a id="homebuttonlink" href="https://sam.nrel.gov" alt="System Advisor Model (SAM)" title="System Advisor Model (SAM)" aria-label="System Advisor Model (SAM)"></a>
+				</div>
+			
+			<ul id="topnav" class="topnav" role="tablist">
+				<span>
+					<li class="desk_tablet headerlink logo">
+						<a href="https://sam.nrel.gov/" target="_blank" class="extralink" title="SAM Website" aria-label="SAM Website">
+							<svg class="submenu_icon" alt="SAM Website" viewBox="0 0 32 32">
+								<use xlink:href="#weblink"></use>
+							</svg>
+							<span>SAM Website</span>
+						</a>
+					</li>
+					<li class="header last" role="tab">
+						<a title="LK Script" aria-label="LK Script" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>LK Script</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">LK Script</p>
+									<li>
+										<a href="#macros.html" target="_parent" title="Scripting and Macros Instructions" aria-label="Scripting and Macros Instructions">
+											<span>Basic Instructions</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/images/web_page_files/lk_guide.pdf" target="_blank" title="Download LK reference manual" aria-label="Download LK reference manual">
+											<span>LK Reference Manual (PDF)</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://github.com/NREL/SAM/tree/develop/samples/LK%20Scripts%20for%20SAM" target="_blank" title="LK sample scripts on GitHub.com" aria-label="LK sample scripts on GitHub.com">
+											<span>Sample Scripts</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="Contact" aria-label="Contact" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>Contact</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">Contact</p>
+									<li>
+										<a href="https://sam.nrel.gov/forum" target="_blank" title="SAM Forum" aria-label="SAM Forum">
+											<span>Forum</span>
+										</a>
+									</li>
+									<li>
+										<a href="mailto:sam.support@nrel.gov?subject=Email%20from%20SAM%20Help" target="_blank" title="Email SAM support" aria-label="Email SAM support">
+											<span>Email</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="header last" role="tab">
+						<a title="About" aria-label="About" href="#">
+							<svg class="submenu_icon" alt="Show/Hide Submenu" viewBox="0 0 24 24">
+								<use xlink:href="#menu-closed"></use>
+							</svg>
+							<span>About</span>
+						</a>
+						<ul class="subnav">
+							<div class="subnav-menu">
+								<div class="fullmenu">
+									<p class="menu-header center">About</p>
+									<li>
+										<a href="https://nrel.github.io/SAM/doc/releasenotes.html" target="_blank" title="Release Notes" aria-label="Release Notes">
+											<span>Release Notes</span>
+										</a>
+									</li>
+									<li>
+										<a href="https://sam.nrel.gov/" target="_blank" title="SAM Website" aria-label="SAM Website">
+											<span>Website</span>
+										</a>
+									</li>
+								</div>
+							</div>
+						</ul>
+					</li>
+					<li class="desktop tablet"></li>
+				</span>
+			</ul>
+		</nav>
+	</body>
+</html> 
+	</div>
+	</div>
+	</header>
+	<div id="navigationmenu">
+	<ul id="hamburgermenu" role="menu" aria-labelledby="hamburgerlink">
+	<li id="toggle_fullscreen" class="desktop" role="menuitem">
+	<svg id="fullscreen_toggle" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#resize-full"></use></svg>
+	<a onclick='hmWebHelp.doFullEmbedWindow(this)' tabindex="0" title="Zoom window">
+	<span>Zoom Window Out</span></a>
+	</li>
+	<li role="menuitem" id="changefontsize">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#text-height"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('fontSize',[true,'global']);" id="increaseFont" title="Increase Font Size" href="javascript:void(0);"> 
+		<span>Larger Text</span></a>&nbsp;|&nbsp;<a onclick="hmWebHelp.extFuncs('fontSize',[false,'global']);" id="decreaseFont" title="Decrease Font Size" href="javascript:void(0);"><span>Smaller Text</span></a>
+	</li>
+	<li class="desktop" id="showhide_pageheader" role="menuitem">
+		<svg id="showhide_header_icon" class="hmbicon" viewBox="0 0 27 32"><use xlink:href="#collapse"></use></svg>
+		<a title="Hide Page Header" href="javascript:void(0);">
+		<span>Hide Page Header</span></a>
+	</li>
+	<li class="toggles" id="showhide_toggles" role="menuitem">
+		<svg id="showhide_toggles_icon" class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#eye"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
+		<span>Show Expanding Text</span></a>
+	</li>
+	<li id="mailfeedback" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
+		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
+		<span>Send Mail Feedback</span></a>
+	</li>
+	<li class="desktop server" id="savepermalink" role="menuitem">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<a href="javascript:hmWebHelp.hamburgerMenu()" data-target="_hmpermalink.html" data-path="./" data-title="Save Topic Permalink" class="popuplink" title="Copy URL of current topic" href="javascript:void(0);">
+		<span>Save Permalink URL</span></a>
+	</li> 	
+	</ul>
+	</div>
+	<!-- TOPIC CONTENT -->
+	<main id="topicbox">
+	<div id="autoTocWrapper" class=""></div>
+	<div id="topicbody">
+	<!-- HMSKIN BODY START -->
+	<nav id="hmpageheader" role="navigation" aria-label="Topic Navigation">
+	<table id="topicheadertable">
+	  <tr>
+		<td id="topicheadercell">
+		  <div id="topicheaderwrapper">
+		  <p id="ptopic_breadcrumbs" class="topic_breadcrumbs">Navigation: <a href="financial_metrics.html">Financial Metrics</a></p> 
+		  <h1 class="topictitle" title="Levelized Values">Levelized Values<h1>
+		  </div>
+		</td>
+		<td id="topicnavcell"><span>
+		<a id="phonemenulink" class="topicnavlink" href="javascript:void(0)" title="Links to other pages">
+		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#link"></use></svg>
+		<span >Links</span>
+		</a>
+		<a id="atoclink" class="topicnavlink" href="javascript:void(0);" title="Contents of this topic">
+		<svg class="navicon" viewBox="0 0 32 32"><use xlink:href="#list-bullet"></use></svg>
+		<span>Topic Contents</span></a>
+		 <a id="hamburgerlink" class="topicnavlink" href="javascript:void(0);" title="Additional Functions Menu">
+		 <svg class="navicon" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg>
+		 <span>Menu</span></a>
+		 </span>
+		 </td>
+	  </tr>
+	</table>
+	</nav>
+	<div id="hmpagebody">
+	<div id="hmpagebody_scroller">
+<!--ZOOMRESTART--> 
+	<p class="p_Text"><span class="f_Text">SAM reports several &quot;levelized&quot; values. A levelized value is the present value of an array of annual values. It is a series of future values expressed as a present value using a discount rate that represents the time value of money. In general, a levelized value is calculated from an array of annual values as follows:</span></p>
+<p class="p_Text" style="text-align: center;"><span style="display:inline-block;width:5.9375rem;height:2.6250rem;padding:0 0;overflow:visible"><svg xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;overflow:visible" viewBox="0 0 380 168"><path d="M2 103 C2 103,3 103,3 102 C4 102,4 102,4 101 C4 101,5 100,5 100 C5 99,5 98,6 96 L10 76 C10 74,11 72,11 71 C11 71,10 70,10 70 C10 69,9 69,8 69 L8 68 L19 68 L18 69 C18 69,17 69,17 70 C17 70,16 70,16 70 C16 71,16 71,15 72 C15 73,15 74,15 76 L9 102 L15 102 C17 102,17 102,18 102 C19 102,19 101,20 100 C21 100,21 99,22 98 C22 97,23 96,23 94 L26 94 L23 104 L1 104 L2 103 Z" fill="black"/><path d="M48 85 L48 82 L80 82 L80 85 L48 85 Z M48 96 L48 93 L80 93 L80 96 L48 96 Z" fill="black"/><path d="M114 41 L145 83 L145 86 L112 131 L157 131 C159 131,160 130,161 129 C162 128,163 125,164 120 L168 120 L166 139 L103 139 L103 136 L139 87 L104 40 L104 38 L166 38 L166 53 L163 53 C162 49,162 47,160 44 C159 42,157 41,155 41 L114 41 Z" fill="black"/><path d="M143 19 C143 18,143 17,143 16 C144 15,144 14,144 13 C144 12,144 11,145 10 C145 9,145 8,145 7 C146 6,146 5,146 5 C146 4,146 3,146 3 C146 2,146 2,146 1 C145 1,145 1,144 1 L144 0 L151 0 L151 1 C151 1,150 1,150 1 C150 2,150 2,149 2 C149 2,149 3,149 3 C149 4,149 5,148 5 L144 25 L141 25 C140 23,140 22,139 20 C138 18,138 16,137 14 C136 13,136 11,135 9 C134 7,134 6,133 4 L133 4 C133 4,133 5,133 5 C133 6,133 7,133 7 C132 8,132 8,132 9 C132 10,132 10,132 11 C132 12,132 12,131 13 C131 13,131 14,131 15 C131 16,131 16,130 17 C130 18,130 19,130 19 C130 20,130 21,130 21 C130 22,130 22,130 22 C130 23,130 23,130 24 C130 24,131 24,132 24 L131 25 L124 25 L124 24 C125 24,125 24,125 24 C126 24,126 24,126 23 C126 23,127 23,127 22 C127 22,127 21,127 20 L130 5 C130 5,131 4,131 4 C131 4,131 3,131 3 C131 2,131 2,130 1 C130 1,129 1,129 1 L129 0 L136 0 C136 2,137 3,137 5 C138 7,139 8,139 10 C140 11,140 13,141 15 C142 16,142 18,143 19 L143 19 Z" fill="black"/><path d="M109 157 C110 155,111 154,113 153 C114 153,115 152,116 152 C118 152,119 152,119 153 C120 154,120 155,120 156 C120 157,120 157,120 158 C120 159,120 159,120 160 C119 161,119 162,119 163 C119 163,119 164,119 165 C118 166,118 166,118 167 C118 167,118 168,118 168 C118 168,118 169,118 169 C118 169,119 169,119 169 C119 169,119 169,120 169 C120 169,120 169,120 169 C121 168,121 168,121 168 C122 168,122 167,122 167 L124 168 C123 169,122 169,122 169 C121 170,121 170,120 170 C120 171,119 171,119 171 C118 171,118 171,117 171 C117 171,117 171,116 171 C116 171,115 170,115 170 C115 170,115 169,115 169 C114 169,114 168,114 168 C114 167,114 167,114 166 C115 165,115 165,115 164 C115 163,115 162,116 161 C116 161,116 160,116 159 C116 159,116 158,116 158 C117 157,117 157,117 156 C117 156,116 155,116 155 C116 154,115 154,115 154 C114 154,114 154,113 154 C113 155,113 155,112 155 C112 156,111 156,111 156 C110 157,110 158,110 158 C109 159,109 159,109 160 C108 160,108 161,108 161 L106 171 L102 171 L105 159 C105 158,105 157,105 157 C106 156,106 156,106 155 C106 155,105 154,104 154 C104 154,104 154,104 154 C103 154,103 155,103 155 C103 155,102 155,102 155 C102 156,101 156,101 156 L100 155 C100 155,101 154,102 154 C102 153,103 153,103 153 C104 153,104 152,104 152 C105 152,105 152,106 152 C107 152,108 152,108 153 C109 154,109 154,109 155 C109 156,109 156,109 156 C109 157,109 157,109 157 L109 157 Z" fill="black"/><path d="M128 157 L128 154 L150 154 L150 157 L128 157 Z M128 165 L128 162 L150 162 L150 165 L128 165 Z" fill="black"/><path d="M164 171 C161 171,159 170,158 168 C156 166,156 163,156 159 C156 157,156 155,156 153 C157 152,157 150,158 149 C159 148,160 147,161 147 C162 146,163 146,164 146 C166 146,167 146,168 147 C169 148,170 148,171 149 C172 150,172 152,172 153 C173 155,173 156,173 158 C173 163,172 166,171 168 C169 170,167 171,164 171 L164 171 Z M160 158 C160 160,160 162,160 163 C160 165,160 166,161 167 C161 167,162 168,162 168 C163 169,164 169,164 169 C165 169,166 169,166 169 C167 168,167 168,168 167 C168 166,168 165,169 164 C169 162,169 161,169 159 C169 157,169 156,169 154 C168 153,168 152,168 151 C167 150,167 149,166 149 C166 148,165 148,164 148 C163 148,163 148,162 149 C161 149,161 150,161 151 C160 152,160 153,160 154 C160 155,160 157,160 158 L160 158 Z" fill="black"/><path d="M273 64 L273 63 C274 63,275 63,275 62 C276 61,276 60,276 58 C276 57,276 56,276 56 L276 52 L264 52 L263 55 C262 56,262 57,261 58 C261 59,261 60,261 60 C261 62,262 63,264 63 L263 64 L253 64 L253 63 C254 63,254 63,254 62 C255 62,255 61,256 61 C257 60,257 59,258 57 L275 28 L279 28 L281 57 C281 59,281 60,281 60 C281 61,282 62,282 62 C282 62,283 63,284 63 L283 64 L273 64 Z M265 50 L276 50 L275 42 C275 40,275 39,275 37 C275 36,275 34,275 34 L275 34 L265 50 Z" fill="black"/><path d="M297 61 C298 59,299 58,301 57 C302 57,303 56,304 56 C306 56,307 56,307 57 C308 58,308 59,308 60 C308 61,308 61,308 62 C308 63,308 63,308 64 C307 65,307 66,307 67 C307 67,307 68,307 69 C306 70,306 70,306 71 C306 71,306 72,306 72 C306 72,306 73,306 73 C306 73,307 73,307 73 C307 73,307 73,308 73 C308 73,308 73,308 73 C309 72,309 72,309 72 C310 72,310 71,310 71 L312 72 C311 73,310 73,310 73 C309 74,309 74,308 74 C308 75,307 75,307 75 C306 75,306 75,305 75 C305 75,305 75,304 75 C304 75,303 74,303 74 C303 74,303 73,303 73 C302 73,302 72,302 72 C302 71,302 71,302 70 C303 69,303 69,303 68 C303 67,303 66,304 65 C304 65,304 64,304 63 C304 63,304 62,304 62 C305 61,305 61,305 60 C305 60,304 59,304 59 C304 58,303 58,303 58 C302 58,302 58,301 58 C301 59,301 59,300 59 C300 60,299 60,299 60 C298 61,298 62,298 62 C297 63,297 63,297 64 C296 64,296 65,296 65 L294 75 L290 75 L293 63 C293 62,293 61,293 61 C294 60,294 60,294 59 C294 59,293 58,292 58 C292 58,292 58,292 58 C291 58,291 59,291 59 C291 59,290 59,290 59 C290 60,289 60,289 60 L288 59 C288 59,289 58,290 58 C290 57,291 57,291 57 C292 57,292 56,292 56 C293 56,293 56,294 56 C295 56,296 56,296 57 C297 58,297 58,297 59 C297 60,297 60,297 60 C297 61,297 61,297 61 L297 61 Z" fill="black"/><path d="M194 129 C194 135,195 140,197 144 C199 148,202 151,206 152 L205 154 C200 153,196 150,194 146 C191 141,190 136,190 130 C190 123,191 118,194 114 C196 109,200 106,205 105 L206 107 C202 108,199 111,197 115 C195 119,194 124,194 129 L194 129 Z" fill="black"/><path d="M225 135 C225 136,225 137,225 137 C225 138,226 138,226 139 C226 139,226 139,227 139 C227 140,228 140,229 140 C230 140,231 140,232 140 L232 142 L213 142 L213 140 C215 140,216 140,217 140 C218 140,218 139,219 139 C219 139,220 138,220 138 C220 137,220 136,220 135 L220 114 C220 113,220 113,220 112 C219 112,219 112,219 112 C218 112,217 112,217 113 C216 113,214 114,213 115 L212 113 L224 106 L225 106 C225 108,225 110,225 113 L225 135 Z" fill="black"/><path d="M270 129 L270 144 L266 144 L266 129 L252 129 L252 126 L266 126 L266 111 L270 111 L270 126 L284 126 L284 129 L270 129 Z" fill="black"/><path d="M318 135 C316 138,315 139,313 140 C312 142,310 142,309 142 C307 142,305 141,304 140 C303 139,303 137,303 134 C303 131,303 128,304 126 C306 123,307 121,309 119 C311 118,314 117,316 117 C317 117,318 117,319 117 C320 118,321 118,322 118 L323 112 C323 112,323 111,323 110 C324 109,324 109,324 108 C324 108,324 107,323 107 C323 107,323 107,323 106 C322 106,322 106,321 106 L321 105 L327 105 L329 105 L322 133 C322 135,322 136,322 137 C322 138,322 138,322 139 C323 139,323 139,323 139 C324 139,324 139,325 138 C326 138,326 137,327 136 L329 137 C327 139,326 140,325 141 C324 142,323 142,321 142 C320 142,319 142,319 141 C318 140,318 139,318 138 C318 137,318 136,318 135 L318 135 Z M320 126 C320 125,320 124,320 123 C320 122,320 121,319 120 C319 119,318 119,317 119 C315 119,313 120,312 121 C310 123,309 124,309 127 C308 129,307 132,307 134 C307 136,308 137,308 138 C309 139,309 139,311 139 C311 139,312 139,312 139 C313 139,313 138,314 138 C315 137,315 137,316 136 C316 135,317 134,317 134 C318 133,318 132,319 131 C319 130,319 129,320 127 L320 126 Z" fill="black"/><path d="M346 129 C346 124,345 119,343 115 C341 111,338 108,334 107 L335 105 C340 106,344 109,346 114 C349 118,350 123,350 130 C350 136,349 141,346 146 C344 150,340 153,335 154 L334 152 C338 151,341 148,343 144 C345 140,346 135,346 129 L346 129 Z" fill="black"/><path d="M365 103 C366 101,367 100,369 99 C370 99,371 98,372 98 C374 98,375 98,375 99 C376 100,376 101,376 102 C376 103,376 103,376 104 C376 105,376 105,376 106 C375 107,375 108,375 109 C375 109,375 110,375 111 C374 112,374 112,374 113 C374 113,374 114,374 114 C374 114,374 115,374 115 C374 115,375 115,375 115 C375 115,375 115,376 115 C376 115,376 115,376 115 C377 114,377 114,377 114 C378 114,378 113,378 113 L380 114 C379 115,378 115,378 115 C377 116,377 116,376 116 C376 117,375 117,375 117 C374 117,374 117,373 117 C373 117,373 117,372 117 C372 117,371 116,371 116 C371 116,371 115,371 115 C370 115,370 114,370 114 C370 113,370 113,370 112 C371 111,371 111,371 110 C371 109,371 108,372 107 C372 107,372 106,372 105 C372 105,372 104,372 104 C373 103,373 103,373 102 C373 102,372 101,372 101 C372 100,371 100,371 100 C370 100,370 100,369 100 C369 101,369 101,368 101 C368 102,367 102,367 102 C366 103,366 104,366 104 C365 105,365 105,365 106 C364 106,364 107,364 107 L362 117 L358 117 L361 105 C361 104,361 103,361 103 C362 102,362 102,362 101 C362 101,361 100,360 100 C360 100,360 100,360 100 C359 100,359 101,359 101 C359 101,358 101,358 101 C358 102,357 102,357 102 L356 101 C356 101,357 100,358 100 C358 99,359 99,359 99 C360 99,360 98,360 98 C361 98,361 98,362 98 C363 98,364 98,364 99 C365 100,365 100,365 101 C365 102,365 102,365 102 C365 103,365 103,365 103 L365 103 Z" fill="black"/><rect x="185" y="88" width="197" height="3" fill="black"/></svg></span></p>
+<p class="p_Text"><span class="f_Text">Where:</span></p>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.1875rem 1.5000rem;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.5000rem"><span class="f_List" style="font-family: 'Times New Roman',Times,Georgia,serif; font-style: italic;">L</span></td><td style="border:none;padding:0"><span class="f_List"> Levelized value</span></td></tr></table></div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.1875rem 1.5000rem;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.5000rem"><span class="f_List" style="font-family: 'Times New Roman',Times,Georgia,serif; font-style: italic;">A</span></td><td style="border:none;padding:0"><span class="f_List"> Annual values</span></td></tr></table></div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.1875rem 1.5000rem;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.5000rem"><span class="f_List" style="font-family: 'Times New Roman',Times,Georgia,serif; font-style: italic;">n</span></td><td style="border:none;padding:0"><span class="f_List"> Year</span></td></tr></table></div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.1875rem 1.5000rem;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.5000rem"><span class="f_List" style="font-family: 'Times New Roman',Times,Georgia,serif; font-style: italic;">N</span></td><td style="border:none;padding:0"><span class="f_List"> Analysis period</span></td></tr></table></div>
+<div style="text-align: left; text-indent: 0; padding: 0 0 0 0; margin: 0 0 0.1875rem 1.5000rem;"><table style="border:none;border-spacing:0;padding:0;line-height: normal;"><tr style="vertical-align:baseline"><td style="border:none;padding:0;width:1.5000rem"><span class="f_List" style="font-family: 'Times New Roman',Times,Georgia,serif; font-style: italic;">d</span></td><td style="border:none;padding:0"><span class="f_List"> Discount rate</span></td></tr></table></div>
+<p class="p_Text"><span class="f_Text">The form of the levelized value depends on the form of the discount rate used in the equation: A nominal discount rate results in a nominal levelized value, and a real discount rate results in a real levelized value. For a discussion of real and nominal values, see <a href="mtf_lcoe.html#realnom" class="topiclink">Real and Nominal Levelized Cost of Energy</a>.</span></p>
+<p class="p_Text"><span class="f_Text">For more about the following levelized values, see the detailed descriptions:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="mtf_lcoe.html" class="topiclink">Levelized Cost of Energy (LCOE)</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="mtf_lcos.html" class="topiclink">Levelized Cost of Storage (LCOS)</a></span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast"><a href="mtf_lppa.html" class="topiclink">Levelized PPA Price (LPPA)</a></span></p>
+	<footer class="topicfooter">
+<p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>
+</footer>
+	</div> <!-- hmpagebody_scroller -->
+	</div> <!-- hmpagebody -->
+	</div> <!-- topicbody-->
+	</main><!-- topicbox -->
+	<div id="navwrapper">
+	<div id="toolbutton_wrapper" class="toolwrapper desk_tablet" tabindex="0" role="button" aria-label="Hide Page Header">
+	<div id="toolbutton">
+	<svg id="toolbar_updown_close" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_close"></use></svg>
+	<svg id="toolbar_updown_open" class="splittertool" viewBox="0 0 30 32" alt="showhide pageheader"><use xlink:href="#toolbar_open"></use></svg>
+	</div></div>
+	<div id="dragwrapper" class="toolwrapper" tabindex="0" role="button" aria-label="Hide Navigation Pane">
+	<div id="dragbutton">
+	<svg id="draghandleicon_r" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_r"></use></svg>
+	<svg id="draghandleicon_l" class="splittertool" viewBox="0 0 30 32" alt="resize nav pane"><use xlink:href="#draghandle_l"></use></svg>
+	</div></div>
+	<div id="navsplitbar"></div>
+	<img id="leftright" src="./images/leftright.png" alt="resize nav pane" width="150" height="45" border="0" />
+	<nav id="navcontainer" role="navigation" aria-label="Main Navigation">
+	<!-- NAV TABS START -->
+	<div id="main_searchbox">
+	<div class="search_input_wrapper">
+	<a id="searchlink" title="Search" aria-label="Search" href="hmftsearch.html"><svg class="tocicon" viewBox="0 0 30 32"><use xlink:href="#search"></use></svg></a>
+	<input type="text" name="search_input" id="search_input" size="100%" autocorrect="off" autocapitalize="none" spellcheck="false" />&nbsp;
+	<svg class="searchicon" id="clear_search_button" alt="Close Search" viewBox="0 0 30 30"><use xlink:href="#close-search"></use></svg>
+	<div id="contents_link_wrapper" title="Contents" aria-label="Contents"><a id="contentslink" title="Contents" aria-label="Contents" href="hmcontent.html" target="hmnavigation"><svg class="searchicon" id="contents_button" title="Contents" aria-label="Contents" alt="Contents" viewBox="0 0 30 30"><use xlink:href="#angle-circled-left"></use></svg></a></div>
+	</div>
+	</div>
+	<!-- NAV TABS END -->	
+	<div id="contentsbox" class="navbox on">
+	<iframe name="hmnavigation" id="hmnavigation" class="navframe" src="hmcontent.html" scrolling="no" seamless="seamless" title="Contents" frameborder="0"></iframe>
+	</div>
+	<div id="searchbox" class="navbox off">
+	<iframe name="hmsearch" id="hmsearch" class="navframe" src="" scrolling="no" seamless="seamless" title="Search" frameborder="0"></iframe>
+	</div>
+	</nav><!-- navcontainer -->
+	</div><!-- navwrapper -->
+	<div id="mob_toolbar_wrapper" data="open">
+	<div id="mob_toolbar" class="mtoolbar">
+		<table id="mob_tb_table" class="mobtoolbar" border="0" width="100%"><tr>
+			<td width="22"></td> 
+			<td id="mob_tb_home" align="center" valign="middle"><div id="mobnavhome" class="mobnav home"></div></td>
+			<td id="mob_tb_toc" align="center" valign="middle"><div id="mobnavtoc" class="mobnav toc"></div></td>
+			<td id="mob_tb_textplus" align="center" valign="middle"><div id="mobnavtextplus" class="mobnav textplus"></div></td>
+			<td id="mob_tb_textminus" align="center" valign="middle"><div id="mobnavtextminus" class="mobnav textminus"></div></td>
+			<td id="mob_tb_previous" align="center" valign="middle"><div id="mobnavprevious" class="mobnav previous"></div></td>
+			<td id="mob_tb_next" align="center" valign="middle"><div id="mobnavnext" class="mobnav next"></div></td>
+			<td>&nbsp;&nbsp;</td>
+			<td id="mob_tb_hamburger" class="mob_hamburger" align="right" valign="top"><div id="phone_mobnav_hamburger_icon" class="mobnav phone"><svg id="phonetb_hamburger_mobnav" viewBox="0 0 27 32"><use xlink:href="#menu"></use></svg></div></td>
+			</tr></table>
+	</div></div>
+	 <!-- </div> pagewrapper -->
+	</div> <!-- helpwrapper -->
+	<div id="dragsurface"></div>
+<script type="text/javascript" src="./js/xmessage.js"></script> 
+<script id="hmPageInitScript" type="text/javascript">
+var fouc=document.getElementById("fouc");
+/*! Help+Manual WebHelp 3 Script functions
+Copyright (c) 2015-2023 by Tim Green. All rights reserved. Contact: https://www.helpandmanual.com
+*/
+// Reset font size with preset cookie value if available
+(function(){
+	var tempFontSize = sessionVariable.getPV("hmFontSize"),
+		baseElement = document.getElementsByTagName("html")[0];
+	if (tempFontSize !== null) {
+	baseElement.style.fontSize=tempFontSize + "%";
+	} else {
+	baseElement.style.fontSize = hmDevice.baseFontSize + "%";
+	}
+	})();
+/*** TOGGLE INIT PLACEHOLDER ***/
+
+	var moveCheck = null, hmTocLoaded = false, hmTocWidth = 0, xMessage = new xMsg("LANDING TOPIC");
+
+	// Post-loading scripts function
+	function initScripts() {
+	hmPopupsObject = {};
+	hmFlags.isHmTopic = true;
+	hmFlags.idxLoaded = false;
+	hmFlags.schLoaded = false;
+	hmFlags.searchSession = false;
+	hmFlags.tocClicked = false;
+	hmFlags.layoutTable = false;
+	hmFlags.searchHighlight = "";
+	hmFlags.tocInitWidth = 0;
+	hmFlags.jumpHighlight = false;
+	hmFlags.hmMainPage = "index.html";
+	hmFlags.hmTrackHost = "https://sam.nrel.gov/help/";
+	hmFlags.hmProject = "SAM Help";
+	hmFlags.hmDefaultPage = "index.html";
+	hmFlags.hmCurrentPage = "mtf_levelized.html";
+	hmFlags.hmTOC = "hmcontent.html";
+	hmFlags.hmSearchPage = "hmftsearch.html";
+	hmFlags.hmIndexPage = "hmkwindex.html";
+	hmFlags.thisTopic = "mtf_levelized.html";
+	hmFlags.lastTopic = "index.html";
+	hmFlags.isEWriter = false;
+	hmFlags.topicExt = ".html";
+	hmFlags.defaultExt = ".html";
+	hmFlags.projName = "SAMhelp";
+	hmFlags.tDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	hmFlags.tKeywords = "";
+	hmFlags.hdFormat = false;
+	hmFlags.contextID = (function(){
+		var cntxMatch;
+		if (/^https??:\/\//im.test(document.location)) {
+			cntxMatch = /contextid=\d*/.exec(window.location.search.substring(1));
+		} else {
+			cntxMatch = /contextid=\d*/.exec(window.location.hash.substring(1));
+			}
+		return cntxMatch != null ? cntxMatch[0] : false;
+		})();	
+	
+	function loadScripts(x) {
+	$.getScript( scripts[x], function( data, textStatus, jqxhr ) {
+	  if (currentScript < scripts.length-1) {
+	  currentScript++;
+	  loadScripts(currentScript);
+	  } else {
+	  hmpage.defaulttopic = "index.html";
+	hmpage.breadcrumbs = !false;
+	hmpage.parenthome = true;
+	  //hmWebHelp.hmMainPageInit();
+	  hmpage.hmDescription = document.querySelector("meta[name='description']").getAttribute("content");
+	  hmpage.hmPicture = "" === "" ? "" : "./images/";
+	  hmpage.topicfooter = $("footer.topicfooter")[0].outerHTML;
+	  
+	  $("input#search_input").on("keyup", function(event) {
+		
+		var searchQ = $(this).val();
+	  
+		if (event.which == 13 && searchQ.length > 2) {
+			xMessage.sendObject("hmsearch",{action: "callfunction",fn: "hmDoFtSearch", fa: searchQ});
+			return;
+		};
+		if (event.which == 27) {
+			searchQ = "";
+			$(this).val("");
+			return;
+		}
+		
+		$(this).attr("placeholder", "");
+		
+		xMessage.sendObject("hmsearch",{action: "callfunction",fn: "loadSquery", fa: searchQ});
+	  });
+	  
+	hmWebHelp.hmMainPageInit();
+	  }
+	}); // $getScript
+	}  // loadScripts()
+	
+	// Force HTML4 mode in History framework for local WebHelp (required for Chrome, use globally for consistency)
+	if (document.location.protocol.substr(0,4) !== "http") {
+		window.History = {options: {html4Mode: true} };
+	}
+	var currentScript = 0;
+	var scripts = ["./js/helpman_settings.js", "./js/jquery.scrollTomin.js", "./js/jquery.history.js", "./js/hm_webhelp.js", "./js/HM_CLASSICMENU.js" ];
+	if (hmFlags.contextID) scripts.unshift("./js/hmcontextids.js");
+ 
+	var jScript = document.getElementById("jqscript");
+	jScript.src = "./js/jquery.js";
+	
+	var loadCheck = setInterval(function() {
+		if (window.jQuery) {
+			clearInterval(loadCheck);
+			$.ajaxPrefilter( "json script", function(options) {options.crossDomain = true;});
+			if (hmDevice.embedded && hmDevice.desktop) $("li#toggle_fullscreen").show();
+			loadScripts(0);
+			
+			/* Title Bar Text */
+			var titleBarText = "Levelized Values Values";
+			switch ("topic") {
+				case "project":
+				titleBarText = "SAM Help";
+				break;
+				
+				case "project_topic":
+				titleBarText = "SAM Help" + " \> " + "Levelized Values Values"; 
+				break;
+				}
+			titleBarText = $("<textarea/>").html(titleBarText).text();
+			$("title").text(titleBarText);
+			
+			}
+		},100);
+	}
+	if (window.addEventListener)
+	window.addEventListener("load", initScripts, false);
+	else if (window.attachEvent)
+	window.attachEvent("onload", initScripts);
+	else window.onload = initScripts;
+helpman_mailrecipient = 'sam.support@nrel.gov';
+hmGetUrlParams = function() {/*! 
+* Enter code to save URL parameters to session variables inside the if clause below.
+* This will be executed when your WebHelp is first opened and the session variables
+* you save here will then be available. See the session variables documentation in
+* the V3 Responsive Skins chapter of the help for detailed instructions.
+*/
+if (hmWebHelp.userParams && hmWebHelp.userParams.paramsCount > 0) {
+
+}
+}
+/*! 
+* Enter the JS function/s you want to be able to call after the main page 
+* or individual topics load in this file. The functions are made available 
+* by this file but called by the POSTLOAD_TOPICFUNC and POSTLOAD_PAGEFUNC
+* variables. 
+*  
+* Nothing in this file should be executed on loading! All execution is
+* initiated with a single statement stored in the POSTLOAD_PAGEFUNC and
+* POSTLOAD_TOPICFUNC variables, in the General Settings variables group. 
+*
+* POSTLOAD_PAGEFUNC: Statement to be executed ONCE on loading the main page.
+* POSTLOAD_TOPICFUNC: Statement to be executed on EVERY page load
+* 
+* The statement/s you enter POSTLOAD_PAGEFUNC will be executed after 
+* all page components and assets have loaded, including images.
+* 
+* The statement/s in POSTLOAD_TOPICFUNC are executed after topic content
+* has been dynamically replaced in the page when the user browses to a new
+* topic.
+*/
+
+</script>
+<div id="keyboardinfo"> 
+<h1 id="keynavtitle">Keyboard Navigation</h1>
+<p>F7 for caret browsing</br> 
+Hold ALT and press letter</p> 
+<table border="0">
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('info')" title="Display this popup">This Info:</a></td>
+		<td class="c2">ALT+q</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('header');" title="Go to main page header">Page Header:</a></td>
+		<td class="c2">ALT+h</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('topic');" title="Go to topic navigation header">Topic Header:</a></td>
+		<td class="c2">ALT+t</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.pageFocus('body');" title="Go to top of topic body">Topic Body:</a></td>
+		<td class="c2">ALT+b</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('contents');" title="Go to table of contents">Contents:</a></td>
+		<td class="c2">ALT+c</td> 
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.switchNavTab('search');" title="Go to search">Search:</a></td> 
+		<td class="c2">ALT+s</td>
+	</tr>
+	<tr>
+		<td class="c1"><a href="javascript:hmWebHelp.closeMenus()" title="Exit a menu or go up">Exit Menu/Up:</a></td>
+		<td class="c2">ESC</td> 
+	</tr>
+</table>
+</div> 
+</body>
+</html>

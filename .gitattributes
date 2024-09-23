@@ -1,5 +1,6 @@
-Sandia/* linguist-vendored
-deploy/* linguist-vendored
+Sandia/** linguist-vendored=true
+deploy/** linguist-vendored=true
+samples/** linguist-vendored=true
 
 # Autodetect text files
 * text=auto
@@ -13,8 +14,12 @@ deploy/runtime/defaults/*.txt text eol=lf
 *.c text
 *.cpp text
 *.h text
+*.csv text
 *.lk text
+*.json text
+
 
 # Ensure those won't be messed up with
 *.jpg binary
 *.data binary
+

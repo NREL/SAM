@@ -111,10 +111,10 @@ BEGIN_EVENT_TABLE( ActiveInputPage, wxPanel )
 	EVT_PAINT( ActiveInputPage::OnPaint )
 END_EVENT_TABLE()
 
-ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw,
+ActiveInputPage::ActiveInputPage( wxWindow *parent, wxUIFormData *form, CaseWindow *cw, size_t ndx_hybrid,
 	int id, const wxPoint &pos, const wxSize &size )
 	: wxPanel( parent, id, pos, size, wxTAB_TRAVERSAL|wxCLIP_CHILDREN ),
-  	m_formData( form ), m_cwin(cw), m_case(cw->GetCase())
+  	m_formData( form ), m_cwin(cw), m_case(cw->GetCase()), m_ndxHybrid(ndx_hybrid)
 {
 	m_scaleX = m_scaleY = 1.0;
 	UpdateScale( NULL );
@@ -198,12 +198,12 @@ bool ActiveInputPage::LoadFile( const wxString &file )
 
 void ActiveInputPage::Initialize()
 {
-	VarInfoLookup &vdb = GetVariables();
-	VarTable &vals = GetValues();
+	VarInfoLookup &vdb = GetVariables(m_ndxHybrid);
+	VarTable &vals = GetValues(m_ndxHybrid);
 
 	if (m_case->m_analysis_period < 1) {
 		// initialize
-		VarValue* vv_ap = m_case->Values().Get("analysis_period");
+		VarValue* vv_ap = m_case->Values(m_ndxHybrid).Get("analysis_period");
 		if (vv_ap) m_case->m_analysis_period = (size_t)vv_ap->Integer();
 	}
 
@@ -274,15 +274,15 @@ void ActiveInputPage::Initialize()
 			}
 
 			if ( VarValue *vval = vals.Get( name ) )
-				DataExchange(m_case, objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period);
+				DataExchange(m_case, objs[i], *vval, VAR_TO_OBJ, m_case->m_analysis_period, m_ndxHybrid);
 		}
 	}
 
 	// lookup and run any callback functions.
-	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_load", m_formData->GetName(), m_ndxHybrid ) )
 	{
 		UICallbackContext cbcxt( this, m_formData->GetName() + "->on_load" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) ){
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(m_ndxHybrid),m_ndxHybrid ) ){
 		//	wxLogStatus("callback script " + m_formData->GetName() + "->on_load succeeded");
 		}
 	}
@@ -299,9 +299,9 @@ wxUIObject *ActiveInputPage::FindActiveObject( const wxString &name, ActiveInput
 }
 
 std::vector<wxUIObject*> ActiveInputPage::GetObjects() { return m_formData->GetObjects(); }
-VarInfoLookup &ActiveInputPage::GetVariables()	{ return m_case->Variables(); }
-EqnFastLookup &ActiveInputPage::GetEquations() { return m_case->Equations(); }
-VarTable &ActiveInputPage::GetValues() { return m_case->Values(); }
+VarInfoLookup &ActiveInputPage::GetVariables(size_t i)	{ return m_case->Variables(i); }
+EqnFastLookup &ActiveInputPage::GetEquations(size_t i) { return m_case->Equations(i); }
+VarTable &ActiveInputPage::GetValues(size_t i) { return m_case->Values(i); }
 Case *ActiveInputPage::GetCase() { return m_case; }
 CaseWindow *ActiveInputPage::GetCaseWindow() { return m_cwin; }
 void ActiveInputPage::OnErase( wxEraseEvent & )
@@ -317,7 +317,7 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 	dc.SetBackground( GetBackgroundColour() );
 	dc.Clear();
 
-	VarInfoLookup &vdb = GetVariables();
+	VarInfoLookup &vdb = GetVariables(m_ndxHybrid);
 
 	wxRect rct;
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
@@ -380,11 +380,15 @@ void ActiveInputPage::OnPaint( wxPaintEvent & )
 // handler(s) for child widget changes
 void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 {
+	// handle same input page in different subsystems - see SAM issue 1472
+//	if (this->m_windowId != evt.GetId())
+//		return;
+
 	wxUIObject *obj = 0;
 	std::vector<wxUIObject*> objs = m_formData->GetObjects();
 	for( size_t i=0;i<objs.size();i++ )
 	{
-		if ( evt.GetEventObject() == objs[i]->GetNative() )
+		if ( evt.GetEventObject() == objs[i]->GetNative())// && evt.GetId() == objs[i]->GetNative()->GetId())
 		{
 			obj = objs[i];
 			break;
@@ -408,13 +412,13 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 	// within the case, the calculations will be redone as needed
 	// and then the casewindow will be notified by event that
 	// other UI objects (calculated ones) need to be updated
-	if( VarValue *vval = GetValues().Get( obj->GetName() ) )
+	if( VarValue *vval = GetValues(m_ndxHybrid).Get( obj->GetName() ) )
 	{
 		// tracking analysis period changes to update analysis period dependent widgets
 		if (obj->GetName() == "analysis_period")
 			m_case->m_analysis_period_old = vval->Integer();
 
-		if ( DataExchange(m_case, obj, *vval, OBJ_TO_VAR ) )
+		if ( DataExchange(m_case, obj, *vval, OBJ_TO_VAR, m_case->m_analysis_period, m_ndxHybrid ) )
 		{
 			wxLogStatus("Variable " + obj->GetName() + " changed by user interaction, case notified.");
 
@@ -423,7 +427,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 				m_case->m_analysis_period = vval->Integer();
 
 			// equations updates
-			m_case->Recalculate( obj->GetName() );
+			m_case->Recalculate( obj->GetName(), m_ndxHybrid );
 
 			// prevent further updates of analysis period dependent variables
 			if (obj->GetName() == "analysis_period")
@@ -431,20 +435,20 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 
 			// send value changed whenever recalculate is called to update other windows
 			// for example the VariableGrid
-			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName()));
+			m_case->SendEvent(CaseEvent(CaseEvent::VALUE_USER_INPUT, obj->GetName(), m_ndxHybrid));
 
 			// Handle changes in VarInfo sscVariable dependent variables, e.g. ssc varaible rec_htf	and SAM UI variable csp.pt.rec.htf_type
 			// Set any ssc variables that are listed as a VarInfo from a SAM UI variable (e.g. ssc var rec_htf and SAM UI csp.pt.rec.htf_type)
-			if (VarInfo* vi = m_case->GetConfiguration()->Variables.Lookup(obj->GetName())) {
+			if (VarInfo* vi = m_case->GetConfiguration()->Variables[m_ndxHybrid].Lookup(obj->GetName())) {
 				wxString sscVariableName = vi->sscVariableName.Trim();
 				if (sscVariableName.Len() > 0) {
-					if (VarValue* vv = GetValues().Get(sscVariableName)) {
-						VarValue* sscVal = GetValues().Set(sscVariableName, VarValue(wxAtof(vi->sscVariableValue[vval->Integer()])));
+					if (VarValue* vv = GetValues(m_ndxHybrid).Get(sscVariableName)) {
+						VarValue* sscVal = GetValues(m_ndxHybrid).Set(sscVariableName, VarValue(wxAtof(vi->sscVariableValue[vval->Integer()])));
 						// can check validity of sscVal
 						wxLogStatus("SSC Variable " + sscVariableName + " changed by user interaction, case notified.");
 
 						// equations updates
-						m_case->Recalculate(sscVariableName);
+						m_case->Recalculate(sscVariableName, m_ndxHybrid);
 
 						// send value changed whenever recalculate is called to update other windows
 						// for example the VariableGrid
@@ -453,23 +457,38 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 				}
 			}
 
+			// hybrid updating across VarTables using HybridVariableDependencies
+			// at this point vv is updated and corresponding object is updated
+			// check through dependencies for obj->GetNatme()
+			for (auto& hvd : m_case->GetConfiguration()->HybridVariables) {
+				if (m_ndxHybrid == hvd.IndependentVariableVarTable && obj->GetName() == hvd.IndependentVariableName) {
+					// update dependent variable and equations 
+					if (VarValue* depVar = GetValues(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
+						depVar->Copy(*vval); // update dependent variable value
+						m_case->Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+					}
+				}
+			}
+
+
 		}
 		else
 			wxMessageBox("ActiveInputPage >> data exchange fail: " + obj->GetName() );
 	}
 
 	// lookup and run any callback functions, even if no data was exchanged.
-	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName() ) )
+	if ( lk::node_t *root = m_case->QueryCallback( "on_change", obj->GetName(), m_ndxHybrid) )
 	{
 		UICallbackContext cbcxt( this, obj->GetName() + "->on_change" );
-		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment() ) )
+		if ( cbcxt.Invoke( root, &m_case->CallbackEnvironment(m_ndxHybrid), m_ndxHybrid) )
 		  {
 			wxLogStatus("callback script " + obj->GetName() + "->on_change succeeded");
 		  }
 	}
+	
 }
 
-bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period)
+bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, DdxDir dir, size_t analysis_period, size_t ndxHybrid)
 {
 	if ( wxNumericCtrl *num = obj->GetNative<wxNumericCtrl>() )
 	{
@@ -607,8 +626,8 @@ bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, Ddx
 	}
 	else if ( ShadingButtonCtrl *sb = obj->GetNative<ShadingButtonCtrl>() )
 	{
-		if ( dir == VAR_TO_OBJ ) sb->Read( &val );
-		else sb->Write( &val );
+		if ( dir == VAR_TO_OBJ ) sb->Read( c, ndxHybrid );
+		else sb->Write( c, ndxHybrid );
 	}
 	else if ( AFValueMatrixButton *vm = obj->GetNative<AFValueMatrixButton>() )
 	{
@@ -639,8 +658,8 @@ bool ActiveInputPage::DataExchange( Case *c, wxUIObject *obj, VarValue &val, Ddx
 		//if (dir == VAR_TO_OBJ) la->Read(&val);
 		//else la->Write(&val);
 		// Protype to flatten 
-		if (dir == VAR_TO_OBJ) la->Read(c);
-		else la->Write(c);
+		if (dir == VAR_TO_OBJ) la->Read(c, ndxHybrid);
+		else la->Write(c, ndxHybrid);
 		}
 	else if ( wxDiurnalPeriodCtrl *dp = obj->GetNative<wxDiurnalPeriodCtrl>())
 	{

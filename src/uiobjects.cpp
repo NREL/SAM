@@ -45,8 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
-#include <wex/jsonval.h>
-#include <wex/jsonreader.h>
+#include <rapidjson/document.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -785,6 +784,7 @@ public:
 	virtual wxWindow *CreateNative( wxWindow *parent ) {
 		ShadingButtonCtrl *sb = new ShadingButtonCtrl(parent, wxID_ANY, Property("ShowDBOptions").GetBoolean());
 		sb->SetDescription(Property("Description").GetString());
+        sb->SetName(Property("Name").GetString());
 		return AssignNative(sb);
 	}
 	virtual void Draw( wxWindow *win, wxDC &dc, const wxRect &geom )
@@ -930,12 +930,11 @@ public:
 			wxString tt_name;
 			wxString tt_title;
 			wxString json_file;
-			wxJSONReader reader;
-			wxJSONValue root;
+			rapidjson::Document reader;
 			wxString json_items;
 			wxTextFile tf;
 			wxString str_line;
-			int i;
+			size_t i;
 			// use widget property values if not defined in json file
 			tt_name = Property("Name").GetString();
 			tt_tips = Property("Tips").GetString();
@@ -949,17 +948,22 @@ public:
 					json_items += tf.GetNextLine();
 				tf.Close();
 			}
-			if (reader.Parse(json_items, &root) != 0)
+			reader.Parse(json_items.c_str());
+			if (reader.HasParseError())
 				tt_title = "JSON or file read failed.";
 			else
 			{
-				wxJSONValue tooltips = root["tooltips"];
-				for (i = 0; i < tooltips.Size(); i++)
-				{
-					if (tooltips[i]["name"].AsString() == tt_name)
-					{
-						tt_title = tooltips[i]["title"].AsString();
-						tt_tips = tooltips[i]["tip"].AsString();
+				if (reader.HasMember("tooltips")) {
+					if (reader["tooltips"].IsArray()) {
+						auto tooltips = reader["tooltips"].GetArray();
+						for (i = 0; i < tooltips.Size(); i++)
+						{
+							if (tooltips[i]["name"].GetString() == tt_name)
+							{
+								tt_title = tooltips[i]["title"].GetString();
+								tt_tips = tooltips[i]["tip"].GetString();
+							}
+						}
 					}
 				}
 			}
@@ -1017,9 +1021,9 @@ public:
 		//int yc = geom.y+geom.height/2;
 		dc.DrawText( label, geom.x + button.x/2-x/2, geom.y + button.y/2-y/2/*-y/2*/ );
 		dc.SetTextForeground( wxColour(29,80,173) );
-		dc.DrawText( "Constant loss: n.nn", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
-		dc.DrawText( "Hourly losses: Avg = n.nn", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
-		dc.DrawText( "Custom periods: n", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
+		dc.DrawText( "Constant loss: None", geom.x+button.x+4, geom.y/*yc-y/2-dc.GetCharHeight()-2*/ );
+		dc.DrawText( "Time series losses: None", geom.x+button.x+4, geom.y+dc.GetCharHeight()/*yc-y/2*/ );
+		dc.DrawText( "Custom period losses: None", geom.x + button.x + 4, geom.y+2*dc.GetCharHeight()/*yc + y / 2 + 2*/);
 	}
     virtual void OnPropertyChanged(const wxString& id, wxUIProperty* p)
     {

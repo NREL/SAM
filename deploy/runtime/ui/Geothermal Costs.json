@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Costs",
-    "Width": 819.0,
-    "Height": 2204.0,
+    "Width": 897.0,
+    "Height": 2297.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2043.0
+                    "Integer": 2130.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -53,11 +53,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2043.0
+                    "Integer": 2130.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 449.0
+                    "Integer": 518.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -94,11 +94,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 176.0
+                    "Integer": 254.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,11 +127,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1845.0
+                    "Integer": 1932.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -164,11 +164,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -201,11 +201,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1386.0
+                    "Integer": 1473.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -238,11 +238,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1509.0
+                    "Integer": 1596.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -337,7 +337,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 504.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -399,7 +399,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1863.0
+                    "Integer": 1950.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -461,7 +461,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1959.0
+                    "Integer": 2046.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -519,11 +519,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -585,7 +585,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -647,7 +647,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 981.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -709,7 +709,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1284.0
+                    "Integer": 1368.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -767,11 +767,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 927.0
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -833,7 +833,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -895,7 +895,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2109.0
+                    "Integer": 2196.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -957,7 +957,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1019,7 +1019,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1081,7 +1081,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1143,7 +1143,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1758.0
+                    "Integer": 1845.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1201,11 +1201,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1263,11 +1263,73 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 567.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 927.0
+                    "Integer": 1014.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 110.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Non-drilling cost"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label211113314"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 426.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1329,7 +1391,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1863.0
+                    "Integer": 1950.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1391,7 +1453,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1453,7 +1515,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1515,7 +1577,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 957.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1577,7 +1639,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1639,7 +1701,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1863.0
+                    "Integer": 1950.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1701,7 +1763,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1759,11 +1821,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 216.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 927.0
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1821,11 +1883,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 216.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1887,7 +1949,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1949,7 +2011,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1959.0
+                    "Integer": 2046.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2011,7 +2073,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 618.0
+                    "Integer": 711.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2019,11 +2081,177 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 234.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "drilling_success_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 684.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "failed_prod_flow_ratio"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 684.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 132.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -2040,7 +2268,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2067.0
+                    "Integer": 2154.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2123,7 +2351,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2206,7 +2434,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2289,7 +2517,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2372,7 +2600,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2455,7 +2683,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2538,7 +2766,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 468.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2621,7 +2849,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 81.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2787,7 +3015,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2091.0
+                    "Integer": 2178.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2870,7 +3098,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2091.0
+                    "Integer": 2178.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2953,7 +3181,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1317.0
+                    "Integer": 1401.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3036,7 +3264,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1317.0
+                    "Integer": 1401.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3119,7 +3347,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1317.0
+                    "Integer": 1401.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3160,7 +3388,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1887.0
+                    "Integer": 1974.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3243,7 +3471,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1887.0
+                    "Integer": 1974.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3326,7 +3554,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1887.0
+                    "Integer": 1974.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3409,7 +3637,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3492,7 +3720,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3575,7 +3803,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3658,7 +3886,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3741,7 +3969,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3824,7 +4052,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 525.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3907,7 +4135,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2007.0
+                    "Integer": 2094.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3990,7 +4218,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2007.0
+                    "Integer": 2094.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4031,7 +4259,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 981.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4072,7 +4300,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 981.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4113,7 +4341,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 981.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4150,11 +4378,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 951.0
+                    "Integer": 1035.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4233,11 +4461,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 951.0
+                    "Integer": 1035.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4316,11 +4544,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 216.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 951.0
+                    "Integer": 1035.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4403,7 +4631,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 204.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4486,7 +4714,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 228.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4569,7 +4797,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2163.0
+                    "Integer": 2250.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4648,11 +4876,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 171.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1593.0
+                    "Integer": 1680.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4735,7 +4963,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1440.0
+                    "Integer": 1527.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4776,7 +5004,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1416.0
+                    "Integer": 1503.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4859,7 +5087,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1416.0
+                    "Integer": 1503.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4942,7 +5170,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1416.0
+                    "Integer": 1503.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5025,7 +5253,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1416.0
+                    "Integer": 1503.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5108,7 +5336,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1452.0
+                    "Integer": 1539.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5191,7 +5419,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1452.0
+                    "Integer": 1539.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5274,7 +5502,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1452.0
+                    "Integer": 1539.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5315,7 +5543,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1911.0
+                    "Integer": 1998.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5398,7 +5626,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1911.0
+                    "Integer": 1998.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5481,7 +5709,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1911.0
+                    "Integer": 1998.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5564,7 +5792,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5605,7 +5833,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5646,7 +5874,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 537.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5683,11 +5911,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5766,11 +5994,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5849,11 +6077,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 585.0
+                    "Integer": 564.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5932,11 +6160,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6019,7 +6247,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 975.0
+                    "Integer": 1059.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6098,11 +6326,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6181,11 +6409,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 216.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6351,7 +6579,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 180.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6434,7 +6662,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1536.0
+                    "Integer": 1623.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6517,7 +6745,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1692.0
+                    "Integer": 1779.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6600,7 +6828,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1536.0
+                    "Integer": 1623.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6683,7 +6911,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1536.0
+                    "Integer": 1623.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6766,7 +6994,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1560.0
+                    "Integer": 1647.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6849,7 +7077,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1560.0
+                    "Integer": 1647.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6932,7 +7160,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1560.0
+                    "Integer": 1647.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7011,11 +7239,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 414.0
+                    "Integer": 393.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1593.0
+                    "Integer": 1680.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7047,7 +7275,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": "$ "
+                    "String": ""
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -7098,7 +7326,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1797.0
+                    "Integer": 1884.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7181,7 +7409,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1797.0
+                    "Integer": 1884.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7264,7 +7492,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1797.0
+                    "Integer": 1884.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7305,7 +7533,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1725.0
+                    "Integer": 1812.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7388,7 +7616,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2085.0
+                    "Integer": 2172.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7471,7 +7699,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2061.0
+                    "Integer": 2148.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7554,7 +7782,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2085.0
+                    "Integer": 2172.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7595,7 +7823,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1959.0
+                    "Integer": 2046.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7678,7 +7906,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1959.0
+                    "Integer": 2046.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7761,7 +7989,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1959.0
+                    "Integer": 2046.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7840,11 +8068,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 585.0
+                    "Integer": 564.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1284.0
+                    "Integer": 1368.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -7923,11 +8151,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 402.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1284.0
+                    "Integer": 1368.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8010,7 +8238,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1284.0
+                    "Integer": 1368.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8093,7 +8321,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1284.0
+                    "Integer": 1368.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8176,7 +8404,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1758.0
+                    "Integer": 1845.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8259,7 +8487,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1758.0
+                    "Integer": 1845.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8342,7 +8570,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1758.0
+                    "Integer": 1845.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8425,7 +8653,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1758.0
+                    "Integer": 1845.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8495,6 +8723,302 @@
                 }
             }
         },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_conf_wells_prod_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 804.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 54.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Determines the number of full-size wells drilled in exploration phase to be used for geothermal field development and production. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Determines the number of full-size wells drilled in exploration phase to be used for geothermal field development and production. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Confirmation Wells Used for Production"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_confirmation_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 546.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to wells drilled in the exploration phase that have the same dimensions and specifications as a typical production well."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to wells drilled in the exploration phase that have the same dimensions and specifications as a typical production well."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Full Diameter Confirmation"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_exploration_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 813.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 522.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to slim holes, core holes, and temperature gradient wells."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to slim holes, core holes, and temperature gradient wells."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Small Diameter Exploration"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_prod_wells_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 804.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Calculated number of geothermal wells needed to meet the required geothermal flow. Eq.: Total Geothermal Flow Required / Production Well Flow Rate."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Calculated number of geothermal wells needed to meet the required geothermal flow. Eq.: Total Geothermal Flow Required / Production Well Flow Rate."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Production Wells Required"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_direct_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2199.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to the comprehensive costs associated with the exploration, development, and construction of a geothermal power plant. This includes exploration, drilling, stimulation (EGS only), power plant construction, and pumping and field gathering costs. "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to the comprehensive costs associated with the exploration, development, and construction of a geothermal power plant. This includes exploration, drilling, stimulation (EGS only), power plant construction, and pumping and field gathering costs. "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Direct Cost"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_indirect_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2091.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "Refers to general overhead costs incurred during plant construction. This includes engineering, home office, startup, and other activities not directly associated the plant construction. They are calculated as percentages of the direct costs.  "
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "Refers to general overhead costs incurred during plant construction. This includes engineering, home office, startup, and other activities not directly associated the plant construction. They are calculated as percentages of the direct costs.  "
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Indirect Cost"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_installed_capacity_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2247.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "The total installed cost divided by the net power plant capacity."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "The total installed cost divided by the net power plant capacity."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Installed cost per capacity"
+                }
+            }
+        },
+        "ToolTipCtrl": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "geothermal_total_installed_cost_ttip"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 2223.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": "This is the sum of the total direct and indirect costs."
+                },
+                "Tips": {
+                    "Type": 5.0,
+                    "String": "This is the sum of the total direct and indirect costs."
+                },
+                "TipTitle": {
+                    "Type": 5.0,
+                    "String": "Total Installed Cost"
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -8508,7 +9032,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1662.0
+                    "Integer": 1749.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8591,7 +9115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1659.0
+                    "Integer": 1746.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8674,7 +9198,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1017.0
+                    "Integer": 1110.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8682,7 +9206,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 234.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -8703,7 +9227,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 387.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8753,15 +9277,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 798.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 117.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -8790,11 +9314,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 276.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 797.0
+                    "Integer": 866.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -8823,19 +9347,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 669.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1911.0
+                    "Integer": 1056.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 18.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -8843,7 +9367,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Project, Land, Miscellaneous"
+                    "String": "="
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -8868,7 +9392,69 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 71"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 669.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1365.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "="
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -8889,7 +9475,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8951,7 +9537,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 957.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9013,7 +9599,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 300.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9075,7 +9661,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1659.0
+                    "Integer": 1746.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9137,7 +9723,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 951.0
+                    "Integer": 1011.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9191,7 +9777,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 72"
+                    "String": "object 7143"
                 },
                 "X": {
                     "Type": 3.0,
@@ -9199,7 +9785,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1887.0
+                    "Integer": 1998.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9215,7 +9801,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Engineer, Procure, Construct"
+                    "String": "Project, Land, Miscellaneous"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -9253,6 +9839,130 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "object 716"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1365.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "x"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 72"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1365.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "+"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 721"
                 },
                 "X": {
@@ -9261,7 +9971,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1593.0
+                    "Integer": 1680.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9323,7 +10033,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1692.0
+                    "Integer": 1779.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9377,6 +10087,68 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "object 72148"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1974.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Engineer, Procure, Construct"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "object 723"
                 },
                 "X": {
@@ -9385,7 +10157,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1596.0
+                    "Integer": 1683.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9443,11 +10215,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 399.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1623.0
+                    "Integer": 1713.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9505,11 +10277,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 282.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1590.0
+                    "Integer": 1677.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9567,11 +10339,73 @@
                 },
                 "X": {
                     "Type": 3.0,
+                    "Integer": 543.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 1056.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "+"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 75130"
+                },
+                "X": {
+                    "Type": 3.0,
                     "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 957.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9625,7 +10459,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 75130"
+                    "String": "object 75154"
                 },
                 "X": {
                     "Type": 3.0,
@@ -9633,7 +10467,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 873.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9695,7 +10529,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 411.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9736,7 +10570,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1626.0
+                    "Integer": 1713.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9819,7 +10653,90 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1596.0
+                    "Integer": 1683.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "stim_success_rate"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 684.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 105.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9902,7 +10819,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2115.0
+                    "Integer": 2202.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9985,7 +10902,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2007.0
+                    "Integer": 2094.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -10068,7 +10985,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2139.0
+                    "Integer": 2226.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -10166,6 +11083,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "drilling_ppi": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Drilling PPI",
+            "Units": "",
+            "Group": "Geothermal Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "drilling_success_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Drilling success rate",
+            "Units": "%",
+            "Group": "Geothermal Drilling",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "engineering_ppi": {
             "Version": 4.0,
             "Type": 1.0,
@@ -10174,6 +11117,32 @@
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "exploration_wells_production": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Exploration wells used for production",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "failed_prod_flow_ratio": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Failed production well flow ratio",
+            "Units": "",
+            "Group": "Geothermal Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
@@ -10273,7 +11242,7 @@
         "geotherm.cost.confirm_wells_num": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Number of Confirmation Wells",
+            "Label": "Number of Confirmation Wells Used for Production",
             "Units": " ",
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
@@ -11119,7 +12088,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Cost of Pump",
-            "Units": "$",
+            "Units": "$/well",
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
@@ -11265,7 +12234,7 @@
             "Units": " ",
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
-            "Flags": 9.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -11505,6 +12474,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "stim_success_rate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Stimulation success rate",
+            "Units": "%",
+            "Group": "Geothermal Costs",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "system_recapitalization_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -11586,7 +12568,7 @@
     },
     "Equations": [
         "equations{ 'geotherm.cost.pump_per_pump' } = define() {",
-        "\treturn ${geotherm.cost.pump_per_hp} * sqrt(${geotherm.cost.pump_size}); };",
+        "\treturn ${geotherm.cost.pump_per_hp} * ${geotherm.cost.pump_size}; };",
         "",
         "equations{ 'geotherm.cost.plm.total' } = define() {",
         "\treturn ${geotherm.cost.plm.fixed}+${geotherm.cost.plm.nonfixed}; };",
@@ -11614,7 +12596,10 @@
         "\treturn  ${geotherm.cost.conf_multiplier} * ${geotherm.cost.prod_per_well}; };",
         "",
         "equations{ 'geotherm.cost.prod_wells_drilled' } = define() {",
-        "\treturn ( ${geotherm.cost.prod_req} - ${geotherm.cost.confirm_wells_num} ); };",
+        "\tnum_wells = ${geotherm.cost.prod_req} - ${geotherm.cost.confirm_wells_num};\r",
+        "\tif (num_wells < 0) num_wells = 0;\r",
+        "\treturn num_wells;\r",
+        "};",
         "",
         "equations{ 'geotherm.cost.pump_total_per_pump' } = define() {",
         "\treturn ${geotherm.cost.pump_installation} + ${geotherm.cost.pump_per_pump}; };",
@@ -11649,7 +12634,8 @@
         "+ ${geotherm.cost.pumps_total}]; };",
         "",
         "equations{ 'geotherm.cost.prod_num_wells' } = define() {",
-        "\treturn  ${geotherm.cost.prod_wells_drilled}; };",
+        "//\treturn  ${geotherm.cost.confirm_wells_num} / (1 - (1 - ${stim_success_rate}/100) * (1 - ${drilling_success_rate}/100)); };\r",
+        "\treturn  ${geotherm.cost.prod_wells_drilled} / (1 - (1 - ${stim_success_rate}/100) * (1 - ${drilling_success_rate}/100)); };\r",
         "",
         "equations{ 'geotherm.cost.plm.nonfixed' } = define() {",
         "\treturn ${total_direct_cost}*${geotherm.cost.plm.percent}/100; };",
@@ -11664,7 +12650,7 @@
         "\treturn ${geotherm.cost.sales_tax.value}/100*${total_direct_cost}*${geotherm.cost.sales_tax.percent}/100; };",
         "",
         "equations{ 'geotherm.cost.stim_num_wells' } = define() {",
-        "\treturn  ${geotherm.cost.prod_req} + ${geotherm.cost.inj_num_wells}; };",
+        "\treturn ${geotherm.cost.inj_num_wells}; };",
         "",
         "equations{ 'geotherm.cost.surf_total' } = define() {",
         "\treturn  ${geotherm.cost.surf_non_drill}; };",
@@ -11688,12 +12674,12 @@
         "equations{ 'geotherm.cost.plant_size' } = define() {",
         "\treturn  ${gross_output} * 1000; };",
         "",
-        "equations{ 'geotherm.cost.stim_non_drill' } = define() {",
-        "\treturn  ${geotherm.cost.stim_per_well} * ${geotherm.cost.stim_num_wells}; };",
-        "",
         "equations{ 'geotherm.cost.inj_num_wells' } = define() {",
-        "\t//return  ${geotherm.cost.inj_wells_drilled}; ",
-        "\treturn ${num_wells_getem_inj};",
+        "\t//return  ${geotherm.cost.inj_wells_drilled}; \r",
+        "\tif (${resource_type} == 0) ",
+        "\t    return ${num_wells_getem_inj} / (${drilling_success_rate}/100);\r",
+        "\telse \r",
+        "\t\treturn ${num_wells_getem_inj} / (${drilling_success_rate}/100 * ${stim_success_rate}/100);",
         "};",
         "",
         "equations{ 'geotherm.cost.inj_drill' } = define() {",
@@ -11775,16 +12761,19 @@
         "\treturn  ${geotherm.cost.surf_per_well} * ${geotherm.cost.surf_num_wells}; };",
         "",
         "equations{ 'geotherm.cost.stim_total' } = define() {",
-        "\treturn  ${geotherm.cost.stim_non_drill}; };",
+        "\treturn  ${geotherm.cost.stim_per_well} * ${drilling_ppi} * ${geotherm.cost.stim_num_wells} + ${geotherm.cost.stim_non_drill}; };",
         "",
         "equations{ 'geotherm.cost.capital_total' } = define() {",
         "\treturn  ${geotherm.cost.drilling.amount} + ${geotherm.cost.plant_total.amount} + ${geotherm.cost.pumping.amount}; };",
         "",
         "equations{ 'geotherm.cost.inj_wells_drilled' } = define() {",
-        "\treturn ( ${geotherm.cost.prod_req} * ${geotherm.cost.inj_prod_well_ratio} ); };",
+        "\t//return ( ${geotherm.cost.prod_req} * ${geotherm.cost.inj_prod_well_ratio} ); \r",
+        "\treturn ${num_wells_getem_inj};\r",
+        "};",
         "",
         "equations{ 'geotherm.cost.conf_total' } = define() {",
-        "\treturn  ${geotherm.cost.conf_drill} + ${geotherm.cost.conf_non_drill}; };",
+        "\treturn  ${geotherm.cost.conf_drill} + ${geotherm.cost.conf_non_drill}; \r",
+        "};",
         "",
         "equations{ 'geotherm.cost.pump_installation' } = define() {",
         "\treturn ${geotherm.cost.pump_per_foot} * ${geotherm.cost.pump_depth}; };",
@@ -11836,7 +12825,12 @@
         "\treturn  ${geotherm.cost.prod_num_wells} + ${geotherm.cost.inj_num_wells}; };",
         "",
         "equations{ 'geotherm.cost.sales_tax.value' } = define() {",
-        "\treturn ${sales_tax_rate}; };",
+        "\tif (financing() != \"LCOE Calculator\") {\r",
+        "\t\treturn ${sales_tax_rate}; \r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 0;}\r",
+        "};",
         "",
         "equations{ 'geotherm.cost.total_installed_millions' } = define() {",
         "\treturn ${total_installed_cost}/1000000; };",
@@ -11850,15 +12844,15 @@
         "\t{",
         "\t\tgeothermal = ssc_create();\t",
         "\t\tssc_var( geothermal, 'ui_calculations_only', 0);",
-        "\t\tssc_var( geothermal, 'adjust:constant', 0.0);",
+        "\t\tssc_var( geothermal, 'adjust_constant', 0.0);",
         "\t\tssc_var( geothermal, 'file_name', ${file_name});",
         "\t\tssc_var( geothermal, 'resource_potential', ${resource_potential});",
         "\t\tssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER",
         "\t\tif (${resource_temp} < 374) {\r",
-        "\t\t\tssc_var( obj, 'resource_temp', ${resource_temp} );\r",
+        "\t\t\tssc_var( geothermal, 'resource_temp', ${resource_temp} );\r",
         "\t\t}\r",
         "\t\telse {\r",
-        "\t\t\tssc_var( obj, 'resource_temp', ${resource_temp_old} );\r",
+        "\t\t\tssc_var( geothermal, 'resource_temp', ${resource_temp_old} );\r",
         "\t\t}",
         "\t\tssc_var( geothermal, 'resource_depth', ${resource_depth} );",
         "\t\tssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );\t",
@@ -11867,6 +12861,9 @@
         "\t\tssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER",
         "\t\tssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER",
         "\t\tssc_var( geothermal, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});",
+        "\t\tssc_var( geothermal, 'drilling_success_rate', ${drilling_success_rate});\r",
+        "\t\tssc_var( geothermal, 'stim_success_rate', ${stim_success_rate});\r",
+        "\t\tssc_var( geothermal, 'failed_prod_flow_ratio', ${failed_prod_flow_ratio});\r",
         "\t\t// geothermal plant and equipment\t\t    ",
         "\t\tssc_var( geothermal, 'nameplate', ${nameplate} );",
         "\t\tssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER",
@@ -11884,18 +12881,17 @@
         "\t\t\tssc_var( geothermal, 'decline_type', 0);",
         "\t\tssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );",
         "\t\tssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );",
-        "\t\tssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );",
+        "\t\tssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );\r",
+        "\t\tssc_var( geothermal, 'use_weather_file_conditions', ${use_weather_file_conditions} );",
         "\t\tssc_var( geothermal, 'ambient_pressure', ${ambient_pressure} );",
         "\t\tssc_var( geothermal, 'well_flow_rate', ${well_flow_rate} );",
         "\t\tssc_var( geothermal, 'pump_efficiency', ${pump_efficiency} );",
         "\t\tssc_var( geothermal, 'delta_pressure_equip', ${delta_pressure_equip} );",
         "\t\tssc_var( geothermal, 'excess_pressure_pump', ${excess_pressure_pump} );",
-        "\t\tssc_var( geothermal, 'well_diameter', ${well_diameter} );",
-        "\t\tssc_var( geothermal, 'casing_size', ${casing_size} );",
-        "\t\tssc_var( geothermal, 'inj_well_diam', ${inj_well_diam} );",
-        "\t\tssc_var( geothermal, 'inj_casing_size', ${inj_casing_size} );",
         "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );",
         "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );",
+        "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
+        "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welldiam', ${geotherm.cost.prod_cost_curve_welldiam} );\r",
         "",
         "\t\tssc_var( geothermal, 'design_temp', ${design_temp} );",
         "\t\tssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER",
@@ -11912,6 +12908,8 @@
         "\t\telse ",
         "\t\t\tssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER",
         "\t\tssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );",
+        "\t\tssc_var( geothermal, 'injectivity_index', ${injectivity_index} );\r",
+        "\t\tssc_var( geothermal, 'exploration_wells_production', ${geotherm.cost.confirm_wells_num} );\r",
         "\t\tssc_var( geothermal, 'reservoir_width', ${reservoir_width} );",
         "\t\tssc_var( geothermal, 'reservoir_height', ${reservoir_height} );",
         "\t\tssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );\t\t",
@@ -11957,8 +12955,11 @@
         "\t\tssc_var( geothermal, 'hc_ctl8', ${hc_ctl8});",
         "\t\tssc_var( geothermal, 'hc_ctl9', ${hc_ctl9});",
         "\t\tssc_var( geothermal, 'hybrid_dispatch_schedule', ${hybrid_dispatch_schedule});",
-        "\t\t",
-        "\t\t",
+        "\t\tresult = ssc_exec(geothermal, 'geothermal');",
+        "\t\tif ( typeof(result) != 'number' && result != 0 )\r",
+        "\t\t{\r",
+        "\t\t\tmsgbox('geothermal mimo error, result =' + result); \r",
+        "\t\t}",
         "\t\tif (ssc_exec(geothermal, 'geothermal') == 0) ",
         "\t\t{",
         "\t\t\t//geothermal = ssc_create('geothermal_geothermals');",
@@ -12068,17 +13069,18 @@
         "};",
         "",
         "equations{ 'prod_pump_cost' } = define() {",
-        "\treturn 1750 * pow(${pump_size_hp}, 0.7) * ${pump_ppi};",
+        "\treturn 1750 * pow(${pump_size_hp}, 0.7) * ${pump_ppi} * ${geotherm.cost.num_pumps};",
         "};",
         "",
         "equations{ '$MIMO$ ppi' } = define() {",
-        "\tppis = [[0.890669720,0.919862622,0.938752147,0.957069262,0.963938180,0.972524327,0.983400114,1.000000000,0.998855180,1.066399542,1.226674299,1.333142530,1.377790498,1.438465942,1.414997138,1.423583286,1.464224385,1.513451631,1.535203205,1.555237550,1.604464797,1.643961076,1.657698912, 1.743,1.797,1.832,1.998,1.000],",
-        "\t\t[1.128834356,1.102541630,1.108676599,1.073619632,0.999123576,1.021910605,0.961437336,1.000000000,1.064855390,1.423312883,1.499561788,1.634531113,1.762489045,2.159509202,1.612620508,1.958808063,2.219106047,2.109553024,1.984224365,2.034180543,1.714285714,1.638913234,1.858019281,2.084,1.947,1.826,3.126,1.000],",
-        "\t\t[0.884044412,0.907406542,0.926150373,0.942470679,0.956807105,0.967657025,0.985381166,1.000000000,1.014742613,1.077732637,1.155135271,1.222672817,1.304587248,1.382668341,1.403383400,1.411178107,1.455344223,1.509492085,1.533628545,1.638936512,1.656479161,1.653172080,1.679672296,1.741, 1.794,1.832,1.900,1.000],",
-        "\t\t[0.779879622,0.810834050,0.859415305,0.888650043,0.913585555,0.954428203,0.975924334,1.000000000,1.048581255,1.081685297,1.102751505,1.136285469,1.210232158,1.275150473,1.329750645,1.392089424,1.362424764,1.365004299,1.388650043,1.433791917,1.486242476,1.503869304,1.558039553,1.602,1.611,1.647,1.701,1.000],",
-        "\t\t[0.853394181,0.872219053,0.899600685,0.924130063,0.936679977,0.950370793,0.976041072,1.000000000,1.010838562,1.039931546,1.093553908,1.142042213,1.213348545,1.278379920,1.314318311,1.324586423,1.324586423,1.349115801,1.339418140,1.366799772,1.391899601,1.411294923,1.438106104,1.489,1.553,1.575,1.660,1.000],",
-        "\t\t[0.882850242,0.896135266,0.917874396,0.934782609,0.960144928,0.969202899,0.980072464,1.000000000,1.013285024,1.018719807,1.017512077,1.050120773,1.106884058,1.245169082,1.350241546,1.340579710,1.359903382,1.349637681,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.327974034,1.408,1.452,1.491,1.000],",
-        "\t\t[0.790555556,0.816666667,0.842222222,0.872777778,0.909444444,0.933333333,0.957777778,1.000000000,1.039444444,1.067222222,1.088888889,1.129444444,1.170000000,1.221666667,1.277777778,1.320000000,1.357777778,1.361666667,1.374444444,1.426666667,1.475000000,1.528333333,1.594444444,1.653,1.676,1.708,1.753,1.000]];",
+        "\tppis = [[0.890669720,0.919862622,0.938752147,0.957069262,0.963938180,0.972524327,0.983400114,1.000000000,0.998855180,1.066399542,1.226674299,1.333142530,1.377790498,1.438465942,1.414997138,1.423583286,1.464224385,1.513451631,1.535203205,1.555237550,1.604464797,1.643961076,1.657698912, 1.743,1.797,1.832,1.998,2.273],",
+        "\t\t[1.128834356,1.102541630,1.108676599,1.073619632,0.999123576,1.021910605,0.961437336,1.000000000,1.064855390,1.423312883,1.499561788,1.634531113,1.762489045,2.159509202,1.612620508,1.958808063,2.219106047,2.109553024,1.984224365,2.034180543,1.714285714,1.638913234,1.858019281,2.084,1.947,1.826,3.127,3.335],",
+        "\t\t[0.884044412,0.907406542,0.926150373,0.942470679,0.956807105,0.967657025,0.985381166,1.000000000,1.014742613,1.077732637,1.155135271,1.222672817,1.304587248,1.382668341,1.403383400,1.411178107,1.455344223,1.509492085,1.533628545,1.638936512,1.656479161,1.653172080,1.679672296,1.741, 1.794,1.832,1.900,2.184],",
+        "\t\t[0.779879622,0.810834050,0.859415305,0.888650043,0.913585555,0.954428203,0.975924334,1.000000000,1.048581255,1.081685297,1.102751505,1.136285469,1.210232158,1.275150473,1.329750645,1.392089424,1.362424764,1.365004299,1.388650043,1.433791917,1.486242476,1.503869304,1.558039553,1.602,1.611,1.647,1.701,1.781],",
+        "\t\t[0.853394181,0.872219053,0.899600685,0.924130063,0.936679977,0.950370793,0.976041072,1.000000000,1.010838562,1.039931546,1.093553908,1.142042213,1.213348545,1.278379920,1.314318311,1.324586423,1.324586423,1.349115801,1.339418140,1.366799772,1.391899601,1.411294923,1.438106104,1.489,1.553, 1.553, 1.553, 1.553],",
+        "\t\t[0.882850242,0.896135266,0.917874396,0.934782609,0.960144928,0.969202899,0.980072464,1.000000000,1.013285024,1.018719807,1.017512077,1.050120773,1.106884058,1.245169082,1.350241546,1.340579710,1.359903382,1.349637681,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.327974034,1.408,1.452,1.491,1.541],",
+        "\t\t[0.790555556,0.816666667,0.842222222,0.872777778,0.909444444,0.933333333,0.957777778,1.000000000,1.039444444,1.067222222,1.088888889,1.129444444,1.170000000,1.221666667,1.277777778,1.320000000,1.357777778,1.361666667,1.374444444,1.426666667,1.475000000,1.528333333,1.594444444,1.653,1.676,1.708,1.753,1.858],\r",
+        "\t\t[0.319,0.353,0.441,0.474,0.408,0.425,0.540,0.471,0.471,0.517,0.808,1.180,1.121,1.142,1.015,1.000,1.113,1.207,1.344,1.403,1.152,0.960,0.989,1.016,1.030,0.959,0.977,1.155]];",
         "\tppi_index = ${ppi_base_year};",
         "\t${hx_ppi} = ppis[0][ppi_index];\t",
         "\t${steel_ppi} = ppis[1][ppi_index];\t",
@@ -12086,7 +13088,13 @@
         "\t${engineering_ppi} = ppis[3][ppi_index];\t",
         "\t${pump_ppi} = ppis[4][ppi_index];\t",
         "\t${turbine_ppi} = ppis[5][ppi_index];\t",
-        "\t${construction_ppi} = ppis[6][ppi_index];\t",
+        "\t${construction_ppi} = ppis[6][ppi_index];\r",
+        "\t${drilling_ppi} = ppis[7][ppi_index];\t",
+        "};\r",
+        "\r",
+        "equations{'exploration_wells_production'} = define() \r",
+        "{\r",
+        "\treturn ${geotherm.cost.confirm_wells_num};\r",
         "};",
         "",
         "",

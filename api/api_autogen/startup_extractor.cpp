@@ -52,6 +52,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 std::unordered_map<std::string, std::vector<page_info>> SAM_config_to_input_pages;
 std::map<std::string, std::vector<std::string>> SAM_config_to_primary_modules;
 std::map<std::string, std::pair<std::string, std::string>> SAM_option_to_description;
+std::map<std::string, std::string> SAM_short_name_to_config;
 
 // print into dictionary format
 void startup_extractor::print_config_to_input_pages(){
@@ -119,8 +120,10 @@ bool startup_extractor::load_startup_script(const std::string script_file){
         if ( tree ) delete tree;
 
         if ( !ok )
-            for( size_t i=0;i<e.error_count();i++ )
+            for( size_t i=0;i<e.error_count();i++ ){
                 errors.push_back( e.get_error(i).ToStdString());
+                std::cerr << errors.back() << "\n";
+            }
 
         return ok;
     }

@@ -407,8 +407,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_T_amb_des_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_T_htf_hot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -417,8 +415,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_T_htf_hot_des_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_W_dot_net_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -429,8 +425,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_W_dot_net_des_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_dT_PHX_hot_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -439,8 +433,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_dT_PHX_hot_approach_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_dT_mc_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -451,8 +443,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_dT_mc_approach_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_design_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -461,8 +451,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_design_method_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_eta_thermal_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -473,8 +461,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_eta_thermal_des_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_htf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -483,8 +469,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_htf_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_SystemDesign_htf_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -496,8 +480,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_SystemDesign_htf_props_mget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_site_elevation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -506,8 +488,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_SystemDesign_site_elevation_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_HP_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -518,8 +498,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_HP_deltaP_des_in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_LP_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -528,8 +506,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_LP_deltaP_des_in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_UA_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -540,8 +516,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_UA_des_in_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_design_code_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -550,8 +524,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_design_code_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_eff_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -562,8 +534,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_eff_des_in_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_min_dT_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -572,8 +542,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_min_dT_des_in_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -584,8 +552,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_n_sub_hx_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_od_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -594,8 +560,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HTR_od_model_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HT_recup_eff_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -606,8 +570,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_HT_recup_eff_max_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_HP_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -616,8 +578,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_HP_deltaP_des_in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_LP_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -628,8 +588,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_LP_deltaP_des_in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_UA_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -638,8 +596,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_UA_des_in_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_design_code_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -650,8 +606,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_design_code_nget
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_eff_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -660,8 +614,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_eff_des_in_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_min_dT_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -672,8 +624,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_min_dT_des_in_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -682,8 +632,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_n_sub_hx_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_od_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -694,8 +642,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LTR_od_model_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LT_recup_eff_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -704,8 +650,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_LT_recup_eff_max_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_UA_recup_tot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -716,8 +660,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_UA_recup_tot_des_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_cycle_config_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -726,8 +668,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_cycle_config_nget(SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_des_objective_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -738,8 +678,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_des_objective_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_IP_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -748,8 +686,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_IP_fixed_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_PR_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -760,8 +696,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_PR_fixed_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_P_high_fixed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -770,8 +704,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_P_high_fixed_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_recomp_ok_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -782,8 +714,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_is_recomp_ok_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_min_phx_deltaT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -792,8 +722,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_min_phx_deltaT_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_rel_tol_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -804,8 +732,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_HeatExchangerDesign_rel_tol_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_PHX_co2_deltaP_des_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -814,8 +740,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_PHX_co2_deltaP_des_in_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_P_high_limit_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -826,8 +750,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_P_high_limit_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_amb_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -836,8 +758,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_amb_high_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_amb_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -848,8 +768,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_amb_low_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_htf_hot_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -858,8 +776,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_htf_hot_high_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_htf_hot_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -870,8 +786,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_T_htf_hot_low_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_deltaP_counterHX_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -880,8 +794,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_deltaP_counterHX_frac_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_mc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -892,8 +804,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_mc_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_pc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -902,8 +812,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_pc_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_rc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -914,8 +822,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_rc_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_t_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -924,8 +830,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_eta_isen_t_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_apply_default_htf_mins_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -936,8 +840,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_apply_default_htf_mins_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_generate_udpc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -946,8 +848,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_is_generate_udpc_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_high_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -958,8 +858,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_high_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_low_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -968,8 +866,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_m_dot_htf_ND_low_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_mc_comp_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -980,8 +876,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_mc_comp_type_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_amb_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -990,8 +884,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_amb_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_htf_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1002,8 +894,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_T_htf_hot_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_m_dot_htf_ND_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1012,8 +902,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Common_n_m_dot_htf_ND_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_n_sub_hx_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1024,8 +912,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_n_sub_hx_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_od_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1034,8 +920,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_PHX_od_model_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1046,8 +930,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_PHXDesign_dT_PHX_cold_approach_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_N_nodes_air_cooler_pass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1056,8 +938,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_N_nodes_air_cooler_pass_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1068,8 +948,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_deltaP_cooler_frac_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_eta_air_cooler_fan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1078,8 +956,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_eta_air_cooler_fan_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1090,8 +966,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_fan_power_frac_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1100,8 +974,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_AirCoolerDesign_is_design_air_cooler_nge
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_HP_T_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1112,8 +984,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_HP_T_in_des_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_HP_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1122,8 +992,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_HP_deltaP_des_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_LP_T_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1134,8 +1002,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_LP_T_out_des_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_LP_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1144,8 +1010,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_LP_deltaP_des_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_UA_assigned_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1156,8 +1020,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_UA_assigned_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_UA_calculated_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1166,8 +1028,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_UA_calculated_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1178,8 +1038,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_cost_bare_erected_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1188,8 +1046,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_cost_equipment_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_min_dT_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1200,8 +1056,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_HTR_min_dT_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_HP_T_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1210,8 +1064,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_HP_T_out_des_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_HP_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1222,8 +1074,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_HP_deltaP_des_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_LP_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1232,8 +1082,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_LP_deltaP_des_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_UA_assigned_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1244,8 +1092,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_UA_assigned_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_UA_calculated_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1254,8 +1100,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_UA_calculated_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1266,8 +1110,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_cost_bare_erected_nget(SAM_t
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1276,8 +1118,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_cost_equipment_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_min_dT_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1288,8 +1128,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_LTR_min_dT_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_HTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1298,8 +1136,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_HTR_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_LTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1310,8 +1146,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_LTR_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1320,8 +1154,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_NTU_PHX_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1332,8 +1164,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_co2_deltaP_des_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1342,8 +1172,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_cost_bare_erected_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1354,8 +1182,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_cost_equipment_nget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_min_dT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1364,8 +1190,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_PHX_min_dT_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_co2_PHX_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1376,8 +1200,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_co2_PHX_in_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_comp_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1387,8 +1209,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_comp_in_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_comp_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1397,8 +1217,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_P_comp_out_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_mc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1410,8 +1228,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_mc_data_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_pc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1421,8 +1237,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_pc_data_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_rc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1434,8 +1248,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_rc_data_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_state_points_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1445,8 +1257,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_state_points_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_t_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1458,8 +1268,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_P_t_data_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_HTR_HP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1469,8 +1277,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_HTR_HP_data_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_HTR_LP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1482,8 +1288,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_HTR_LP_data_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_LTR_HP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1493,8 +1297,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_LTR_HP_data_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_LTR_LP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1506,8 +1308,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_LTR_LP_data_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_PHX_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1517,8 +1317,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_PHX_data_aget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_amb_ind_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1530,8 +1328,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_amb_ind_mget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_co2_PHX_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1540,8 +1336,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_co2_PHX_in_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_comp_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1552,8 +1346,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_comp_in_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_htf_cold_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1562,8 +1354,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_htf_cold_des_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_htf_ind_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1575,8 +1365,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_htf_ind_mget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_main_cooler_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1586,8 +1374,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_main_cooler_data_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_pre_cooler_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1599,8 +1385,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_pre_cooler_data_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_state_points_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1611,8 +1395,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_T_state_points_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_turb_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1621,8 +1403,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_T_turb_in_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_UA_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1633,8 +1413,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_UA_PHX_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_W_dot_net_less_cooling_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1643,8 +1421,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_W_dot_net_less_cooling_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_W_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1655,8 +1431,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_W_dot_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_cost_equip_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1665,8 +1439,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_c_tot_cost_equip_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_UA_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1677,8 +1449,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_UA_nget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1687,8 +1457,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_W_dot_fan_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1699,8 +1467,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_cost_bare_erected_nge
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1709,8 +1475,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cooler_tot_cost_equipment_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1721,8 +1485,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_cost_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_spec_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1731,8 +1493,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_spec_cost_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_spec_cost_thermal_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1743,8 +1503,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_cycle_spec_cost_thermal_nget(SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_deltaT_HTF_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1753,8 +1511,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_deltaT_HTF_PHX_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_HTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1765,8 +1521,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_HTR_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_LTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1775,8 +1529,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_LTR_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1787,8 +1539,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eff_PHX_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_calc_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1798,8 +1548,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_calc_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_net_less_cooling_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1808,8 +1556,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_eta_thermal_net_less_cooling_des
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_mc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1821,8 +1567,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_mc_data_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_pc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1832,8 +1576,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_pc_data_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_rc_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1845,8 +1587,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_rc_data_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_state_points_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1856,8 +1596,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_state_points_aget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_t_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1869,8 +1607,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_h_t_data_aget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_m_dot_co2_full_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1879,8 +1615,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_m_dot_co2_full_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_m_dot_htf_ND_ind_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -1892,8 +1626,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_m_dot_htf_ND_ind_mget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_m_dot_htf_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1902,8 +1634,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_m_dot_htf_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_D_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1915,8 +1645,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_D_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1925,8 +1653,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_N_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_T_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1937,8 +1663,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_T_out_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_W_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1947,8 +1671,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_W_dot_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1959,8 +1681,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_P_in_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1969,8 +1689,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_T_in_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_UA_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1981,8 +1699,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_UA_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1991,8 +1707,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_W_dot_fan_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_co2_deltaP_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2003,8 +1717,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_co2_deltaP_des_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2013,8 +1725,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_cost_bare_erected_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2025,8 +1735,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_cost_equipment_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_in_isen_deltah_to_P_mc_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2035,8 +1743,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_in_isen_deltah_to_P_mc
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2047,8 +1753,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_m_dot_co2_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2057,8 +1761,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_q_dot_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_rho_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2069,8 +1771,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cooler_rho_in_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2080,8 +1780,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cost_bare_erected_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2090,8 +1788,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_cost_equipment_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_eta_stages_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2103,8 +1799,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_eta_stages_des_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_ideal_spec_work_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2113,8 +1807,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_ideal_spec_work_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2125,8 +1817,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_m_dot_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_n_stages_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2135,8 +1825,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_n_stages_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_phi_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2147,8 +1835,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_phi_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_phi_surge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2157,8 +1843,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_phi_surge_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_psi_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2169,8 +1853,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_psi_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_psi_max_at_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2180,8 +1862,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_psi_max_at_N_des_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_rho_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2190,8 +1870,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_mc_rho_in_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_tip_ratio_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2203,8 +1881,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_mc_tip_ratio_des_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_D_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2215,8 +1891,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_D_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2225,8 +1899,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_N_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_P_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2237,8 +1909,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_P_in_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_T_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2247,8 +1917,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_T_in_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_W_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2259,8 +1927,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_W_dot_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_P_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2269,8 +1935,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_P_in_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_T_in_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2281,8 +1945,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_T_in_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_UA_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2291,8 +1953,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_UA_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_W_dot_fan_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2303,8 +1963,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_W_dot_fan_nget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2313,8 +1971,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_cost_bare_erected_nget
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2325,8 +1981,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_cost_equipment_nget(SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_m_dot_co2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2335,8 +1989,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_m_dot_co2_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_q_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2347,8 +1999,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cooler_q_dot_nget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2358,8 +2008,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cost_bare_erected_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2368,8 +2016,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_cost_equipment_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_eta_stages_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2381,8 +2027,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_eta_stages_des_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_ideal_spec_work_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2391,8 +2035,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_ideal_spec_work_des_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2403,8 +2045,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_m_dot_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_n_stages_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2413,8 +2053,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_n_stages_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_phi_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2425,8 +2063,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_phi_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_phi_surge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2436,8 +2072,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_phi_surge_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_rho_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2446,8 +2080,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_pc_rho_in_des_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_tip_ratio_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2459,8 +2091,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_pc_tip_ratio_des_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_piping_inventory_etc_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2469,8 +2099,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_piping_inventory_etc_cost_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_HTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2481,8 +2109,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_HTR_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_LTR_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2492,8 +2118,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_LTR_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_PHX_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2502,8 +2126,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_q_dot_PHX_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_D_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2515,8 +2137,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_D_aget(SAM_table ptr, int* l
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2525,8 +2145,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_N_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_P_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2537,8 +2155,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_P_in_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_P_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2547,8 +2163,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_P_out_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_T_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2559,8 +2173,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_T_in_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_T_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2569,8 +2181,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_T_out_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_W_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2581,8 +2191,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_W_dot_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2592,8 +2200,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_cost_bare_erected_nget(SAM_ta
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2602,8 +2208,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_cost_equipment_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_eta_stages_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2615,8 +2219,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_eta_stages_des_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2625,8 +2227,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_m_dot_des_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_n_stages_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2637,8 +2237,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_n_stages_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_phi_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2647,8 +2245,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_phi_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_phi_surge_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2659,8 +2255,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_phi_surge_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_psi_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2670,8 +2264,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_psi_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_psi_max_at_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2680,8 +2272,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_rc_psi_max_at_N_des_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_tip_ratio_des_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2693,8 +2283,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_rc_tip_ratio_des_aget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recomp_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2703,8 +2291,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recomp_frac_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_LTR_UA_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2715,8 +2301,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_LTR_UA_frac_nget(SAM_table
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_UA_assigned_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2725,8 +2309,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_UA_assigned_nget(SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_UA_calculated_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2737,8 +2319,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_UA_calculated_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2748,8 +2328,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_cost_bare_erected_ng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2758,8 +2336,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_recup_total_cost_equipment_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_HTR_HP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2771,8 +2347,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_HTR_HP_data_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_HTR_LP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2782,8 +2356,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_HTR_LP_data_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_LTR_HP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2795,8 +2367,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_LTR_HP_data_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_LTR_LP_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2806,8 +2376,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_LTR_LP_data_aget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_PHX_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2819,8 +2387,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_PHX_data_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_main_cooler_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2830,8 +2396,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_main_cooler_data_aget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_pre_cooler_data_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -2843,8 +2407,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_pre_cooler_data_aget(SAM_tabl
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_state_points_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -2855,8 +2417,6 @@ SAM_EXPORT double* SAM_Sco2CspUdPcTables_Outputs_s_state_points_aget(SAM_table p
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_D_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2865,8 +2425,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_D_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_N_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2877,8 +2435,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_N_des_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_P_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2887,8 +2443,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_P_in_des_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_P_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2899,8 +2453,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_P_out_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_T_out_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2909,8 +2461,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_T_out_des_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_W_dot_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2921,8 +2471,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_W_dot_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_cost_bare_erected_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2931,8 +2479,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_cost_bare_erected_nget(SAM_tab
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_cost_equipment_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2943,8 +2489,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_cost_equipment_nget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_delta_h_isen_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2953,8 +2497,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_delta_h_isen_des_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_m_dot_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2965,8 +2507,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_m_dot_des_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_nu_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2975,8 +2515,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_nu_des_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_rho_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -2987,8 +2525,6 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_rho_in_des_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_tip_ratio_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2997,6 +2533,4 @@ SAM_EXPORT double SAM_Sco2CspUdPcTables_Outputs_t_tip_ratio_des_nget(SAM_table p
 	});
 	return result;
 }
-
-
 

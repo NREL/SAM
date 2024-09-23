@@ -1,7 +1,7 @@
 {
     "Name": "Operating Costs Land Lease",
-    "Width": 825.0,
-    "Height": 163.0,
+    "Width": 824.0,
+    "Height": 181.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 158.0
+                    "Integer": 176.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -206,7 +206,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -256,11 +256,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -268,7 +268,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -351,7 +351,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -422,11 +422,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 375.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -434,7 +434,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -463,11 +463,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -475,7 +475,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -626,14 +626,30 @@
         "// or equivalent for each technology",
         "equations{ 'land_area' } = define() {",
         "\ttech = technology();",
-        "\tif ( tech == 'Empirical Trough' ) { land_area = ${ui_total_land_area}; }",
-        "\telseif ( tech == 'MSPT') { land_area = ${csp.pt.sf.total_land_area}; }",
-        "\telseif ( tech == 'Generic CSP System') { land_area = ${csp.gss.solf.total_land_area}; }",
-        "\telseif ( tech == 'MSLF') { land_area = ${csp.mslf.cost.total_land_area}; }",
-        "\telseif ( tech == 'DSLF') { land_area = ${csp.lf.cost.total_land_area}; }\t",
-        "\telseif ( tech == 'High-X Concentrating PV') { land_area = ${hcpv.array.total_land_area}; }",
-        "\telseif ( tech == 'Flat Plate PV' || tech == 'PVWatts' || tech == 'Physical Trough' || tech == 'PV Battery' || tech == 'Fuel Cell')  { land_area = ${total_land_area}; }",
-        "\telse { land_area = 0; }",
+        "\tif ( tech == 'Empirical Trough' ) { \r",
+        "\t\tland_area = ${ui_total_land_area}; }",
+        "\telseif ( tech == 'MSPT') {\r",
+        "\t\tland_area = ${csp.pt.sf.total_land_area}; }",
+        "\telseif ( tech == 'Generic CSP System') {\r",
+        "\t\tland_area = ${csp.gss.solf.total_land_area}; }",
+        "\telseif ( tech == 'MSLF' || tech == 'MSLF IPH') {\r",
+        "\t\tland_area = ${SF_CALC_total_land_area}; }",
+        "\telseif ( tech == 'DSLF') {\r",
+        "\t\tland_area = ${csp.lf.cost.total_land_area}; }\t",
+        "\telseif ( tech == 'High-X Concentrating PV') {\r",
+        "\t\tland_area = ${hcpv.array.total_land_area}; }",
+        "\telseif ( tech == 'Flat Plate PV' \r",
+        "\t      || tech == 'PVWatts' \r",
+        "\t      || tech == 'Physical Trough' \r",
+        "\t      || tech == 'PV Battery' \r",
+        "\t      || tech == 'Fuel Cell' \r",
+        "\t      || tech == 'PVWatts Wind Battery Hybrid' \r",
+        "\t      || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
+        "\t      || tech == 'Photovoltaic Wind Battery Hybrid' \r",
+        "\t      || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\tland_area = ${total_land_area}; }",
+        "\telse {\r",
+        "\t\tland_area = 0; }",
         "\treturn land_area;",
         "};",
         "",

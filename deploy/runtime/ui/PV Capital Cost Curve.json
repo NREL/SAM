@@ -738,7 +738,8 @@
     "Callbacks": [
         "on_load{'PV Capital Cost Curve'} = define() {",
         "\ttech = technology();",
-        "\tcheck = (tech != 'PVWatts');",
+        "//\tcheck = (tech != 'PVWatts');\r",
+        "\tcheck = (strpos(tech,'PVWatts') < 0);\r",
         "\tshow('capex_table_total_land_label', check==1);",
         "\tshow('capex_table_total_installed_land_cost', check==1);",
         "\trefresh();",

@@ -281,8 +281,6 @@ SAM_EXPORT double SAM_CspSubcomponent_System_solar_mult_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_System_t_step_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -291,8 +289,6 @@ SAM_EXPORT double SAM_CspSubcomponent_System_t_step_nget(SAM_table ptr, SAM_erro
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_Weather_T_amb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -304,8 +300,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Weather_T_amb_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_TES_T_sink_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -315,8 +309,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_T_sink_out_aget(SAM_table ptr, int* l
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_TES_T_src_out_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -328,8 +320,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_T_src_out_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -338,8 +328,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_Thtr_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -350,8 +338,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_cold_tank_max_heat_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_dt_hot_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -360,8 +346,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_dt_hot_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -372,8 +356,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -383,8 +365,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_h_tank_min_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_hot_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -393,8 +373,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_hot_tank_Thtr_nget(SAM_table ptr, SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_TES_hot_tank_bypassed_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -406,8 +384,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_hot_tank_bypassed_aget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_hot_tank_max_heat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -417,8 +393,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_hot_tank_max_heat_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -427,8 +401,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_init_hot_htf_percent_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_sink_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -440,8 +412,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_sink_aget(SAM_table ptr, int* le
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_src_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -451,8 +421,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_mdot_src_aget(SAM_table ptr, int* len
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -464,8 +432,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_TES_store_fl_props_mget(SAM_table ptr, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_store_fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -474,8 +440,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_store_fluid_nget(SAM_table ptr, SAM_er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -486,8 +450,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_tank_pairs_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_TES_tshours_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -496,8 +458,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_tshours_nget(SAM_table ptr, SAM_error 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_TES_u_tank_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -508,8 +468,6 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_u_tank_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_Fluid_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -518,8 +476,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_Fluid_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_HDR_rough_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -530,8 +486,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_HDR_rough_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_T_loop_in_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -540,8 +494,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_T_loop_in_des_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_T_loop_out_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -552,8 +504,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_T_loop_out_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_calc_design_pipe_vals_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -563,8 +513,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_calc_design_pipe_vals_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_SolarField_eta_pump_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -573,8 +521,6 @@ SAM_EXPORT double SAM_CspSubcomponent_SolarField_eta_pump_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -586,8 +532,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_SolarField_field_fl_props_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Powerblock_P_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -596,8 +540,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Powerblock_P_ref_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_Powerblock_eta_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -608,8 +550,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Powerblock_eta_ref_nget(SAM_table ptr, SAM
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Powerblock_pb_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -618,8 +558,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Powerblock_pb_pump_coef_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_Controller_DP_SGS_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -630,8 +568,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_DP_SGS_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -640,8 +576,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_T_tank_hot_inlet_min_nget(SAM_t
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_Controller_V_tes_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -652,8 +586,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_V_tes_des_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Controller_custom_tes_p_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -662,8 +594,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_custom_tes_p_loss_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CspSubcomponent_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -674,8 +604,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_custom_tes_pipe_sizes_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -684,8 +612,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_has_hot_tank_bypass_nget(SAM_ta
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -697,8 +623,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Controller_k_tes_loss_coeffs_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -707,8 +631,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_tanks_in_parallel_nget(SAM_tabl
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -720,8 +642,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_diams_mget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -732,8 +652,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_lengths_mget(SAM_table ptr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CspSubcomponent_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -742,8 +660,6 @@ SAM_EXPORT double SAM_CspSubcomponent_Controller_tes_pump_coef_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -755,8 +671,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Controller_tes_wallthicks_mget(SAM_table 
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_sink_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -766,8 +680,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_sink_in_aget(SAM_table ptr, int
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_src_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -779,8 +691,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_src_in_aget(SAM_table ptr, int*
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_cold_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -791,8 +701,6 @@ SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_cold_aget(SAM_table ptr, i
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_hot_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -802,6 +710,4 @@ SAM_EXPORT double* SAM_CspSubcomponent_Outputs_T_tank_hot_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 

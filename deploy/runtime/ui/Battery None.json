@@ -131,7 +131,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "By default, the battery model is not enabled.  To enable, select \"Enable Battery\" in the above drop down."
+                    "String": "By default, the battery model is not enabled.  To enable, select \"Enable Battery\" in the blue drop-down above."
                 },
                 "TextColour": {
                     "Type": 4.0,

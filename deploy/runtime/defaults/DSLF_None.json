@@ -350,6 +350,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -390,6 +392,7 @@
     "annual_global": 5.83819,
     "annual_snow": "nan",
     "annual_tdry": 18.1261,
+    "annual_twet": "nan",
     "annual_wspd": 2.35368,
     "aux_array": [
         0.023,

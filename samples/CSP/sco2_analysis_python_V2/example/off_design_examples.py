@@ -3,11 +3,15 @@
 import sys
 import os
 
-parentDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parentDir)
+absFilePath = os.path.abspath(__file__)
+fileDir = os.path.dirname(os.path.abspath(__file__))
+parentDir = os.path.dirname(fileDir)
+newPath = os.path.join(parentDir, 'core')
 
-from core import sco2_cycle_ssc as sco2_solve
-from core import sco2_plots as cy_plt
+sys.path.append(newPath)
+
+import sco2_cycle_ssc as sco2_solve
+import sco2_plots as cy_plt
 
 ##################################################
 ##################################################

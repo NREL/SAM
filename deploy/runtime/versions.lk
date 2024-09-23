@@ -49,7 +49,501 @@ Some more examples:
 
 
 //***********************************************************************************************************************************************************
-//CURRENT WORKING VERSION- CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+//CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+
+version_upgrade{'2024.5.28'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
+	{
+		message('We modified the trough loop min and max mass flow rate limits to allow either absolute or relative values.'
+		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 0);
+			value('f_htfmin', 0.25);
+			value('f_htfmax', 1.2);
+			
+	}
+	
+	// Linear Fresnel Model Changes
+	if(cfg.tech == 'MSLF' || cfg.tech == 'MSLF IPH')
+	{
+		message('We modified the linear fresnel loop min and max mass flow rate limits to allow either absolute or relative values.'
+		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 0);
+			value('f_htfmin', 0.25);
+			value('f_htfmax', 1.2);
+	}
+};
+
+version_upgrade{'2023.12.17'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough')
+	{
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
+	
+		if(cfg.fin == 'LCOE Calculator' || cfg.fin == 'None')
+		{
+			value('csp.dtr.cost.site_improvements.cost_per_m2', 25, 'Installation costs default.');
+			value('csp.dtr.cost.solar_field.cost_per_m2', 150, 'Installation costs default.');
+			value('csp.dtr.cost.htf_system.cost_per_m2', 60, 'Installation costs default.');
+			value('csp.dtr.cost.storage.cost_per_kwht', 62, 'Installation costs default.');
+			value('csp.dtr.cost.fossil_backup.cost_per_kwe', 0, 'Installation costs default.');
+			value('csp.dtr.cost.power_plant.cost_per_kwe', 910, 'Installation costs default.');
+			value('csp.dtr.cost.bop_per_kwe', 90, 'Installation costs default.');
+			
+			value('csp.dtr.cost.contingency_percent', 7, 'Installation costs default.');
+			value('csp.dtr.cost.epc.per_acre', 0, 'Installation costs default.');
+			value('csp.dtr.cost.epc.percent', 11, 'Installation costs default.');
+			value('csp.dtr.cost.epc.per_watt', 0, 'Installation costs default.');
+			value('csp.dtr.cost.epc.fixed', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.per_acre', 10000, 'Installation costs default.');
+			value('csp.dtr.cost.plm.percent', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.per_watt', 0, 'Installation costs default.');
+			value('csp.dtr.cost.plm.fixed', 0, 'Installation costs default.');
+			value('csp.dtr.cost.sales_tax.percent', 80, 'Installation costs default.');
+			value('sales_tax_rate', 5, 'Installation costs default.');
+		}
+	
+	}
+	
+	// Physical Trough IPH Model Changes
+	if(cfg.tech == 'Physical Trough IPH')
+	{
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
+		
+		value('use_solar_mult_or_aperture_area', 0, 'Previous model used solar multiple to size system');
+		value('specified_total_aperture', 20000, 'Default value for specified total aperture');
+		value('tes_pump_coef', oldvalue('pb_pump_coef'), 'Previous model did not have independent TES pumping power');
+		value('eta_tes_htr', oldvalue('csp.pt.tes.heater_eff'), 'Variable name change.');
+		
+		value('csp.dtr.cost.site_improvements.cost_per_m2', 25, 'Installation costs default.');
+		value('csp.dtr.cost.solar_field.cost_per_m2', 150, 'Installation costs default.');
+		value('csp.dtr.cost.htf_system.cost_per_m2', 60, 'Installation costs default.');
+		value('csp.dtr.cost.storage.cost_per_kwht', 62, 'Installation costs default.');
+		value('csp.dtr.cost.heat_sink.cost_per_kwe', 120, 'Installation costs default.');
+		value('csp.dtr.cost.bop_per_kwe', 90, 'Installation costs default.');
+		value('csp.dtr.cost.contingency_percent', 7, 'Installation costs default.');
+		value('csp.dtr.cost.epc.per_acre', 0, 'Installation costs default.');
+		value('csp.dtr.cost.epc.percent', 11, 'Installation costs default.');
+		value('csp.dtr.cost.epc.per_watt', 0, 'Installation costs default.');
+		value('csp.dtr.cost.epc.fixed', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.per_acre', 10000, 'Installation costs default.');
+		value('csp.dtr.cost.plm.percent', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.per_watt', 0, 'Installation costs default.');
+		value('csp.dtr.cost.plm.fixed', 0, 'Installation costs default.');
+		value('csp.dtr.cost.sales_tax.percent', 80, 'Installation costs default.');
+		value('sales_tax_rate', 5, 'Installation costs default.');
+	}
+
+
+
+	// SAM 2022.11.21 default inverters are not in new CEC inverters library
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' || cfg.tech == 'High-X Concentrating PV' ) 
+	{
+		old_inverter = value( 'inv_cec_name' );
+		str = runtimedir();
+		if ( strpos( str, '/' ) > -1 ) { slash = '/'; }
+		else { slash = '\\'; }
+		arr = split ( str, slash );
+		lib_file = '';
+		for (i=0; i<#arr-1; i++) { lib_file += arr[i] + '/'; }
+		lib_file += 'libraries/CEC Inverters.csv';
+		new_inverters = csvread( lib_file, { 'table' = true } );
+		inverter_names = new_inverters{'Name'};
+		new_inverters = {};
+		inverter_names -@ 0;
+		inverter_names -@ 0;
+		check = 0;
+		i = 0;
+		while (check == 0 && i < #inverter_names) {
+			if (inverter_names[i] == old_inverter) {
+				check = 1;
+			}
+			i++;
+		}
+		if ( check == 0 )
+		{
+			stable_sort( lower(inverter_names) );
+			msg = 'The inverter in the file you are opening is from an out-of-date library.\n\n';
+			inv = '';
+			inv = choose_from_list( inverter_names, msg + 'Inverter from old library is:\n  ' + old_inverter +'\nChoose an inverter from the new library:', 'Choose Inverter' );
+			if ( inv == '' ) { inv = inverter_names[0] ; }
+			value( 'inv_cec_name', inv, 'Inverter updated from ' + old_inverter + ' to ' + inv + '.');
+		}	
+		message('We updated the CEC module and inverter libraries from the CEC data available in November, 2023. Please check the library on the Module and Inverter page to verify the selected module and inverter is in the new library.'); 
+	}
+
+	// handle adjust variables conversion from table to variables
+	// note marine energy availability not used in any configurations in SAM 2022.11.21 so no need to handle conversion
+	// standalone battery also does not have availability losses
+	// all others call this "availability loss" except for detailed PV, handled separately below
+	if ( cfg.tech == 'PVWatts' || cfg.tech ==  'High-X Concentrating PV' || cfg.tech == 'PVWatts Battery' || cfg.tech ==  'Generic Battery' || cfg.tech ==  'ETES' || cfg.tech == 'PTES'
+	    || cfg.tech ==  'Physical Trough' || cfg.tech ==  'Empirical Trough' || cfg.tech ==  'MSPT' || cfg.tech == 'MSLF' || cfg.tech ==  'DSLF' || cfg.tech ==  'Generic CSP System' 
+	    || cfg.tech ==  'Physical Trough IPH' || cfg.tech ==  'DSGL IPH' || cfg.tech ==  'Wind Power' || cfg.tech == 'Fuel Cell' || cfg.tech ==  'Geothermal Power' || cfg.tech ==  'Solar Water Heating'
+	    || cfg.tech == 'Biopower' || cfg.tech == 'Generic System' || cfg.tech ==  'MSLF IPH' || cfg.tech ==  'MSPT IPH' ) 
+	{	
+		x = oldvalue('adjust');
+		message('Availability losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
+		value('adjust_constant', x.constant);
+		value('adjust_en_periods', x.en_periods);
+		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
+		value('adjust_periods', p); 
+		value('adjust_en_timeindex', x.en_timeindex);
+		value('adjust_timeindex', x.timeindex);
+	}
+	if ( cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' ) {
+		//change in default subarray modules per string
+		if ( oldvalue('subarray2_enable') == 0 && oldvalue('subarray2_modules_per_string') == 0 && oldvalue('subarray2_nstrings') == 0 ) {
+			value('subarray2_modules_per_string', 1, 'Change default Subarray 2 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray2_nstrings', 1, 'Change default Subarray 2 strings in parallel from 0 to 1 to avoid simulation error');
+		}
+		if ( oldvalue('subarray3_enable') == 0 && oldvalue('subarray3_modules_per_string') == 0 && oldvalue('subarray3_nstrings') == 0 ) {
+			value('subarray3_modules_per_string', 1, 'Change default Subarray 3 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray3_nstrings', 1, 'Change default Subarray 3 strings in parallel from 0 to 1 to avoid simulation error');
+		}
+		if ( oldvalue('subarray4_enable') == 0 && oldvalue('subarray4_modules_per_string') == 0 && oldvalue('subarray4_nstrings') == 0 ) {
+			value('subarray4_modules_per_string', 1, 'Change default Subarray 4 modules per string from 0 to 1 to avoid simulation error' );
+			value('subarray4_nstrings', 1, 'Change default Subarray 4 strings in parallel from 0 to 1 to avoid simulation error');
+		}
+		
+		//changed module aspect ratio
+		message('The module aspect ratio input is now on the Module page instead of the Shading and Layout page. For the CEC performance model with module library, SAM now calculates the aspect ratio from the length and width data in the module library if it is avalailable.');
+		
+		//DC adjust factor
+		x = oldvalue('dc_adjust');
+		message('DC Losses variable format changed from single table ("dc_adjust") to separate variables: dc_adjust_constant (number), dc_adjust_en_timeindex (number), dc_adjust_timeindex (array), dc_adjust_en_periods (number), dc_adjust_periods (array).');
+		value('dc_adjust_constant', x.constant);
+		value('dc_adjust_en_periods', x.en_periods);
+		//assigned periods from previous versions are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [[0,0,0]] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
+		value('dc_adjust_periods', p); 
+		value('dc_adjust_en_timeindex', x.en_timeindex);
+		value('dc_adjust_timeindex', x.timeindex);
+		
+		//AC adjust factor
+		x = oldvalue('adjust');
+		message('AC losses variable format changed from single table ("adjust") to separate variables: adjust_constant (number), adjust_en_timeindex (number), adjust_timeindex (array), adjust_en_periods (number), adjust_periods (array).');
+		value('adjust_constant', x.constant);
+		value('adjust_en_periods', x.en_periods);
+		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
+		p = x.periods;
+		p1 = p[0];
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
+		value('adjust_periods', p); 
+		value('adjust_en_timeindex', x.en_timeindex);
+		value('adjust_timeindex', x.timeindex);
+		
+		//shading variable renaming
+		x = oldvalue('subarray1_shading');
+		message('Subarray 1 Shading variable format changed from table to separate variables.');
+		value('subarray1_shading_en_azal', x.en_azal); 
+		value('subarray1_shading_azal', x.azal);
+		value('subarray1_shading_en_diff', x.en_diff);
+		value('subarray1_shading_diff', x.diff);
+		value('subarray1_shading_en_mxh', x.en_mxh);
+		value('subarray1_shading_mxh', x.mxh);
+		value('subarray1_shading_en_string_option', x.en_string_option);
+		value('subarray1_shading_string_option', x.string_option);
+		value('subarray1_shading_en_timestep', x.en_timestep);
+		value('subarray1_shading_timestep', x.timestep);
+		x = oldvalue('subarray2_shading');
+		message('Subarray 2 Shading variable format changed from table to separate variables.');
+		value('subarray2_shading_en_azal', x.en_azal); 
+		value('subarray2_shading_azal', x.azal);
+		value('subarray2_shading_en_diff', x.en_diff);
+		value('subarray2_shading_diff', x.diff);
+		value('subarray2_shading_en_mxh', x.en_mxh);
+		value('subarray2_shading_mxh', x.mxh);
+		value('subarray2_shading_en_string_option', x.en_string_option);
+		value('subarray2_shading_string_option', x.string_option);
+		value('subarray2_shading_en_timestep', x.en_timestep);
+		value('subarray2_shading_timestep', x.timestep);
+		x = oldvalue('subarray3_shading');
+		message('Subarray 3 Shading variable format changed from table to separate variables.');
+		value('subarray3_shading_en_azal', x.en_azal); 
+		value('subarray3_shading_azal', x.azal);
+		value('subarray3_shading_en_diff', x.en_diff);
+		value('subarray3_shading_diff', x.diff);
+		value('subarray3_shading_en_mxh', x.en_mxh);
+		value('subarray3_shading_mxh', x.mxh);
+		value('subarray3_shading_en_string_option', x.en_string_option);
+		value('subarray3_shading_string_option', x.string_option);
+		value('subarray3_shading_en_timestep', x.en_timestep);
+		value('subarray3_shading_timestep', x.timestep);
+		x = oldvalue('subarray4_shading');
+		message('Subarray 4 Shading variable format changed from table to separate variables.');
+		value('subarray4_shading_en_azal', x.en_azal); 
+		value('subarray4_shading_azal', x.azal);
+		value('subarray4_shading_en_diff', x.en_diff);
+		value('subarray4_shading_diff', x.diff);
+		value('subarray4_shading_en_mxh', x.en_mxh);
+		value('subarray4_shading_mxh', x.mxh);
+		value('subarray4_shading_en_string_option', x.en_string_option);
+		value('subarray4_shading_string_option', x.string_option);
+		value('subarray4_shading_en_timestep', x.en_timestep);
+		value('subarray4_shading_timestep', x.timestep);
+	}
+	if ( cfg.tech == 'PVWatts' ) {
+		//shading variable renaming
+		x = oldvalue('shading');
+		message('Shading variable format changed from table to separate variables.');
+		value('shading_en_azal', x.en_azal); 
+		value('shading_azal', x.azal);
+		value('shading_en_diff', x.en_diff);
+		value('shading_diff', x.diff);
+		value('shading_en_mxh', x.en_mxh);
+		value('shading_mxh', x.mxh);
+		value('shading_en_string_option', x.en_string_option);
+		value('shading_string_option', x.string_option);
+		value('shading_en_timestep', x.en_timestep);
+		value('shading_timestep', x.timestep);
+	}
+	if ( cfg.tech ==  'Generic CSP System' || cfg.tech ==  'MSPT') {	
+		x = oldvalue('sf_adjust');
+		message('Solar Field Losses (availability losses) variable format changed from table to separate variables.');
+		value('sf_adjust_constant', x.constant, 'Convert Solar Field Losses sf_adjust:constant to sf_adjust_constant');
+		value('sf_adjust_en_periods', x.en_periods, 'Convert Solar Field Losses asf_djust:en_periods to sf_adjust_en_periods');
+		p = x.periods; //this logic works for both blank period arrays and for completed ones
+		value('sf_adjust_periods', p, 'Convert Solar Field Losses sf_adjust:periods to sf_adjust_periods');
+		value('sf_adjust_en_timeindex', x.en_timeindex, 'Convert Solar Field Losses sf_adjust:en_timeindex to sf_adjust_en_timeindex');
+		value('sf_adjust_timeindex', x.timeindex, 'Convert Solar Field Losses sf_adjust:timeindex to sf_adjust_timeindex');
+	}
+
+	// new variables for MSLF
+	if(cfg.tech == 'MSLF'){
+	
+		old_fp_mode = value( 'fp_mode' );
+		if(old_fp_mode != 1){
+			message('Your file uses fossil backup for freeze protection (dropdown on Thermal Storage page). We removed this option for this release'
+			' and switched to using electricity that is deducted from the total plant output. Your annual energy will decrease, and the difference'
+			' will depend on the amount of freeze protection required. For reference, the annual energy in the default case decreases by around 12%.', 'warning');
+		}
+	
+		// General Warnings
+		message('We improved this model to use the numerical solver and plant controller that the power tower and Physical trough use. This framework improves mass and energy balances and system control.'
+		' The new implementation requires moving or renaming many inputs from your old file. Please carefully review the new input pages and results.', 'warning');
+		message('We improved the calculations that size the field to achieve to a target solar multiple.'
+		' This version includes all design-point optical and thermal losses. For the default case, this change increases the solar field size by 1-2%.'
+		' Please review the calculated solar field area when you open your case.', 'warning');
+		
+	
+		// System Design
+		value('solar_mult_in', oldvalue('solar_mult'), 'Changed variable cmod name.');
+		value('total_Ap_in', oldvalue('a_field'), 'Added variable to cmod');
+		value('solar_mult_or_Ap', oldvalue('csp.mslf.sf.sm_or_area'), 'Added variable to cmod');
+		value('gross_net_conversion_factor', oldvalue('csp.mslf.cycle.gr_to_net'), 'Added variable to cmod');
+		
+		// Solar Field
+		value('rec_su_delay', 0.2, 'Added receiver startup delay time (s)');
+		value('rec_qf_delay', 0.25, 'Added receiver startup delay energy fraction');
+		value('p_start', 0.021, 'Added collector startup energy (kWhe/sca)');
+		value('DISP_combo_htf_type', oldvalue('csp.mslf.sf.Fluid'), 'Changed variable UI name');
+		value('field_fl_props', oldvalue('HTF_data'), 'Changed variable UI name');
+		
+		// Collector and Receiver
+		value('DISP_rec_model', oldvalue('csp.mslf.sf.rec_model'), 'Changed variable UI name.');
+		value('DISP_opt_model', oldvalue('csp.mslf.sf.opt_model'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs0', oldvalue('csp.mslf.sf.IAM_T_coefs0'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs1', oldvalue('csp.mslf.sf.IAM_T_coefs1'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs2', oldvalue('csp.mslf.sf.IAM_T_coefs2'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs3', oldvalue('csp.mslf.sf.IAM_T_coefs3'), 'Changed variable UI name.');
+		value('DISP_IAM_T_coefs4', oldvalue('csp.mslf.sf.IAM_T_coefs4'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs0', oldvalue('csp.mslf.sf.IAM_L_coefs0'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs1', oldvalue('csp.mslf.sf.IAM_L_coefs1'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs2', oldvalue('csp.mslf.sf.IAM_L_coefs2'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs3', oldvalue('csp.mslf.sf.IAM_L_coefs3'), 'Changed variable UI name.');
+		value('DISP_IAM_L_coefs4', oldvalue('csp.mslf.sf.IAM_L_coefs4'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs0', oldvalue('csp.mslf.sf.HL_T_coefs0'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs1', oldvalue('csp.mslf.sf.HL_T_coefs1'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs2', oldvalue('csp.mslf.sf.HL_T_coefs2'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs3', oldvalue('csp.mslf.sf.HL_T_coefs3'), 'Changed variable UI name.');
+		value('DISP_HL_T_coefs4', oldvalue('csp.mslf.sf.HL_T_coefs4'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs0', oldvalue('csp.mslf.sf.HL_w_coefs0'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs1', oldvalue('csp.mslf.sf.HL_w_coefs1'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs2', oldvalue('csp.mslf.sf.HL_w_coefs2'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs3', oldvalue('csp.mslf.sf.HL_w_coefs3'), 'Changed variable UI name.');
+		value('DISP_HL_w_coefs4', oldvalue('csp.mslf.sf.HL_w_coefs4'), 'Changed variable UI name.');
+		value('DISP_DP_coefs0', oldvalue('csp.mslf.sf.DP_coefs0'), 'Changed variable UI name.');
+		value('DISP_DP_coefs1', oldvalue('csp.mslf.sf.DP_coefs1'), 'Changed variable UI name.');
+		value('DISP_DP_coefs2', oldvalue('csp.mslf.sf.DP_coefs2'), 'Changed variable UI name.');
+		value('DISP_DP_coefs3', oldvalue('csp.mslf.sf.DP_coefs3'), 'Changed variable UI name.');
+		value('DISP_HCE_FieldFrac1', oldvalue('csp.mslf.sf.HCE_FieldFrac1'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac2', oldvalue('csp.mslf.sf.HCE_FieldFrac2'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac3', oldvalue('csp.mslf.sf.HCE_FieldFrac3'), 'Changed UI cmod name.');
+		value('DISP_HCE_FieldFrac4', oldvalue('csp.mslf.sf.HCE_FieldFrac4'), 'Changed UI cmod name.');
+		value('DISP_alpha_abs1', oldvalue('csp.mslf.sf.alpha_abs1'), 'Changed variable UI name.');
+		value('DISP_alpha_abs2', oldvalue('csp.mslf.sf.alpha_abs2'), 'Changed variable UI name.');
+		value('DISP_alpha_abs3', oldvalue('csp.mslf.sf.alpha_abs3'), 'Changed variable UI name.');
+		value('DISP_alpha_abs4', oldvalue('csp.mslf.sf.alpha_abs4'), 'Changed variable UI name.');
+		
+		value('DISP_alpha_env1', oldvalue('csp.mslf.sf.alpha_env1'), 'Changed variable UI name.');
+		value('DISP_alpha_env2', oldvalue('csp.mslf.sf.alpha_env2'), 'Changed variable UI name.');
+		value('DISP_alpha_env3', oldvalue('csp.mslf.sf.alpha_env3'), 'Changed variable UI name.');
+		value('DISP_alpha_env4', oldvalue('csp.mslf.sf.alpha_env4'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass1', oldvalue('csp.mslf.sf.epsilon_glass1'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass2', oldvalue('csp.mslf.sf.epsilon_glass2'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass3', oldvalue('csp.mslf.sf.epsilon_glass3'), 'Changed variable UI name.');
+		value('DISP_epsilon_glass4', oldvalue('csp.mslf.sf.epsilon_glass4'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope1', oldvalue('csp.mslf.sf.Tau_envelope1'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope2', oldvalue('csp.mslf.sf.Tau_envelope2'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope3', oldvalue('csp.mslf.sf.Tau_envelope3'), 'Changed variable UI name.');
+		value('DISP_Tau_envelope4', oldvalue('csp.mslf.sf.Tau_envelope4'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn1', oldvalue('csp.mslf.sf.GlazingIntactIn1'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn2', oldvalue('csp.mslf.sf.GlazingIntactIn2'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn3', oldvalue('csp.mslf.sf.GlazingIntactIn3'), 'Changed variable UI name.');
+		value('DISP_GlazingIntactIn4', oldvalue('csp.mslf.sf.GlazingIntactIn4'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas1', oldvalue('csp.mslf.sf.AnnulusGas1'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas2', oldvalue('csp.mslf.sf.AnnulusGas2'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas3', oldvalue('csp.mslf.sf.AnnulusGas3'), 'Changed variable UI name.');
+		value('DISP_AnnulusGas4', oldvalue('csp.mslf.sf.AnnulusGas4'), 'Changed variable UI name.');
+		value('DISP_P_a1', oldvalue('csp.mslf.sf.P_a1'), 'Changed variable UI name.');
+		value('DISP_P_a2', oldvalue('csp.mslf.sf.P_a2'), 'Changed variable UI name.');
+		value('DISP_P_a3', oldvalue('csp.mslf.sf.P_a3'), 'Changed variable UI name.');
+		value('DISP_P_a4', oldvalue('csp.mslf.sf.P_a4'), 'Changed variable UI name.');
+		value('DISP_Design_loss1', oldvalue('csp.mslf.sf.Design_loss1'), 'Changed variable UI name.');
+		value('DISP_Design_loss2', oldvalue('csp.mslf.sf.Design_loss2'), 'Changed variable UI name.');
+		value('DISP_Design_loss3', oldvalue('csp.mslf.sf.Design_loss3'), 'Changed variable UI name.');
+		value('DISP_Design_loss4', oldvalue('csp.mslf.sf.Design_loss4'), 'Changed variable UI name.');
+		value('DISP_Shadowing1', oldvalue('csp.mslf.sf.Shadowing1'), 'Changed variable UI name.');
+		value('DISP_Shadowing2', oldvalue('csp.mslf.sf.Shadowing2'), 'Changed variable UI name.');
+		value('DISP_Shadowing3', oldvalue('csp.mslf.sf.Shadowing3'), 'Changed variable UI name.');
+		value('DISP_Shadowing4', oldvalue('csp.mslf.sf.Shadowing4'), 'Changed variable UI name.');
+		value('DISP_dirt_env1', oldvalue('csp.mslf.sf.dirt_env1'), 'Changed variable UI name.');
+		value('DISP_dirt_env2', oldvalue('csp.mslf.sf.dirt_env2'), 'Changed variable UI name.');
+		value('DISP_dirt_env3', oldvalue('csp.mslf.sf.dirt_env3'), 'Changed variable UI name.');
+		value('DISP_dirt_env4', oldvalue('csp.mslf.sf.dirt_env4'), 'Changed variable UI name.');
+		
+		value('DISP_D_abs_in', oldvalue('csp.mslf.sf.D_abs_in'), 'Changed variable UI name.');
+		value('DISP_D_abs_out', oldvalue('csp.mslf.sf.D_abs_out'), 'Changed variable UI name.');
+		value('DISP_D_glass_in', oldvalue('csp.mslf.sf.D_glass_in'), 'Changed variable UI name.');
+		value('DISP_D_glass_out', oldvalue('csp.mslf.sf.D_glass_out'), 'Changed variable UI name.');
+		value('DISP_D_plug', oldvalue('csp.mslf.sf.D_plug'), 'Changed variable UI name.');
+		value('DISP_Rough', oldvalue('csp.mslf.sf.Rough'), 'Changed variable UI name.');
+		value('DISP_Flow_type', oldvalue('csp.mslf.sf.Flow_type'), 'Changed variable UI name.');
+		value('DISP_AbsorberMaterial', oldvalue('csp.mslf.sf.AbsorberMaterial'), 'Changed variable UI name.');
+		
+		// Thermal Storage
+		value('init_hot_htf_percent', 30, 'Added Initial hot HTF percent');
+		value('hot_tank_max_heat', oldvalue('tank_max_heat'), 'New model has hot and cold tank max heat.');
+		value('cold_tank_max_heat', oldvalue('tank_max_heat'), 'New model has hot and cold tank max heat.');
+		value('DISP_store_fluid', oldvalue('csp.mslf.control.store_fluid'), 'Changed variable UI name.');
+		
+		// System Control
+		value('is_dispatch', 0, 'Added dispatch optimization.');
+		value('is_dispatch_series', 0, 'Added dispatch optimization.');
+		//value('dispatch_series', oldvalue('tank_max_heat'), 'Added dispatch optimization.');
+		value('disp_frequency', 24, 'Added dispatch optimization.');
+		value('disp_horizon', 48, 'Added dispatch optimization.');
+		value('disp_max_iter', 50000, 'Added dispatch optimizationv.');
+		value('disp_timeout', 5, 'Added dispatch optimization.');
+		value('disp_mip_gap', 0.001, 'Added dispatch optimization.');
+		value('disp_time_weighting', 0.999, 'Added dispatch optimization.');
+		value('disp_rsu_cost_rel', 1.4, 'Added dispatch optimization.');
+		value('disp_csu_cost_rel', 87, 'Added dispatch optimization.');
+		value('disp_pen_ramping', 1, 'Added dispatch optimization.');
+
+		value('SC_DISP_bop_par', oldvalue('csp.mslf.control.bop_array_mult'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_f', oldvalue('csp.mslf.control.bop_array_pf'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_0', oldvalue('csp.mslf.control.bop_array_c0'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_1', oldvalue('csp.mslf.control.bop_array_c1'), 'Changed variable UI name.');
+		value('SC_DISP_bop_par_2', oldvalue('csp.mslf.control.bop_array_c2'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par', oldvalue('csp.mslf.control.aux_array_mult'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_f', oldvalue('csp.mslf.control.aux_array_pf'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_0', oldvalue('csp.mslf.control.aux_array_c0'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_1', oldvalue('csp.mslf.control.aux_array_c1'), 'Changed variable UI name.');
+		value('SC_DISP_aux_par_2', oldvalue('csp.mslf.control.aux_array_c2'), 'Changed variable UI name.');
+		
+		value('adjust_constant', oldvalue('adjust'){'constant'}, 'Changed adjust variable type.');
+		value('adjust_en_periods', oldvalue('adjust'){'en_periods'}, 'Changed adjust variable type.');
+		value('adjust_en_timeindex', oldvalue('adjust'){'en_timeindex'}, 'Changed adjust variable type.');
+
+
+		// Financial TOD
+		value('dispatch_tod_factors', [oldvalue('dispatch_factor1'), oldvalue('dispatch_factor2'), oldvalue('dispatch_factor3'),
+									   oldvalue('dispatch_factor4'), oldvalue('dispatch_factor5'), oldvalue('dispatch_factor6'),
+									   oldvalue('dispatch_factor7'), oldvalue('dispatch_factor8'), oldvalue('dispatch_factor9')],'Combined dispatch factors into array.');
+
+		// Capital Costs
+		value('site_improvements_spec_cost', oldvalue('csp.mslf.cost.site_improvements.cost_per_m2'), 'Changed variable cmod name.');
+		value('solar_field_spec_cost', oldvalue('csp.mslf.cost.solar_field.cost_per_m2'), 'Changed variable cmod name.');
+		value('htf_system_spec_cost', oldvalue('csp.mslf.cost.htf_system.cost_per_m2'), 'Changed variable cmod name.');
+		value('storage_spec_cost', oldvalue('csp.mslf.cost.ts_per_kwht'), 'Changed variable cmod name.');
+		value('fossil_spec_cost', oldvalue('csp.mslf.cost.fossil_backup.cost_per_kwe'), 'Changed variable cmod name.');
+		value('power_plant_spec_cost', oldvalue('csp.mslf.cost.power_plant.cost_per_kwe'), 'Changed variable cmod name.');
+		value('bop_spec_cost', oldvalue('csp.mslf.cost.bop_per_kwe'), 'Changed variable cmod name.');
+		value('contingency_percent', oldvalue('csp.mslf.cost.contingency_percent'), 'Changed variable cmod name.');
+		value('epc_cost_per_acre', oldvalue('csp.mslf.cost.epc.per_acre'), 'Changed variable cmod name.');
+		value('epc_cost_percent_direct', oldvalue('csp.mslf.cost.epc.percent'), 'Changed variable cmod name.');
+		value('epc_cost_per_watt', oldvalue('csp.mslf.cost.epc.per_watt'), 'Changed variable cmod name.');
+		value('epc_cost_fixed', oldvalue('csp.mslf.cost.epc.fixed'), 'Changed variable cmod name.');
+		value('plm_cost_per_acre', oldvalue('csp.mslf.cost.plm.per_acre'), 'Changed variable cmod name.');
+		value('plm_cost_percent_direct', oldvalue('csp.mslf.cost.plm.percent'), 'Changed variable cmod name.');
+		value('plm_cost_per_watt', oldvalue('csp.mslf.cost.plm.per_watt'), 'Changed variable cmod name.');
+		value('plm_cost_fixed', oldvalue('csp.mslf.cost.plm.fixed'), 'Changed variable cmod name.');
+		value('sales_tax_percent', oldvalue('csp.mslf.cost.sales_tax.percent'), 'Changed variable cmod name.');
+
+	}
+	
+		if ( cfg.tech == 'Fuel Cell' ) {
+		message('Fuel cell and battery dispatch inputs are now on separate pages.');
+		message('Update internal variable names for Run Fuel Cell, Fuel Cell Percent of Max Power, and Charge Battery from Fuel Cell inputs to use underscore instead of period.');
+		value('fc_p1_discharge',oldvalue('fc.p1.discharge'));
+		value('fc_p2_discharge',oldvalue('fc.p2.discharge'));
+		value('fc_p3_discharge',oldvalue('fc.p3.discharge'));
+		value('fc_p4_discharge',oldvalue('fc.p4.discharge'));
+		value('fc_p5_discharge',oldvalue('fc.p5.discharge'));
+		value('fc_p6_discharge',oldvalue('fc.p6.discharge'));
+		value('fc_discharge_percent_1',oldvalue('fc.discharge.percent.1'));
+		value('fc_discharge_percent_2',oldvalue('fc.discharge.percent.2'));
+		value('fc_discharge_percent_3',oldvalue('fc.discharge.percent.3'));
+		value('fc_discharge_percent_4',oldvalue('fc.discharge.percent.4'));
+		value('fc_discharge_percent_5',oldvalue('fc.discharge.percent.5'));
+		value('fc_discharge_percent_6',oldvalue('fc.discharge.percent.6'));
+		value('fc_storage_p1_charge',oldvalue('fc.storage.p1.charge'));
+		value('fc_storage_p2_charge',oldvalue('fc.storage.p2.charge'));
+		value('fc_storage_p3_charge',oldvalue('fc.storage.p3.charge'));
+		value('fc_storage_p4_charge',oldvalue('fc.storage.p4.charge'));
+		value('fc_storage_p5_charge',oldvalue('fc.storage.p5.charge'));
+		value('fc_storage_p6_charge',oldvalue('fc.storage.p6.charge'));
+        value('dispatch_manual_fuelcell_sched',value('dispatch_manual_sched'),'Copy battery dispatch weekday schedule to new fuel cell dispatch schedule.');
+        value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekend schedule to new fuel cell dispatch schedule.');
+		value('fuelcell_dispatch_excl', value('fuelcell_dispatch_choice'));
+	}
+};
+
 
 version_upgrade{'2022.12.22'} = define() {
 
@@ -61,7 +555,6 @@ version_upgrade{'2022.12.22'} = define() {
 	}
 };
 
-// this is for the Fall 2022 release. change version number to current internal version number for development, and change to release version when it is ready.
 version_upgrade{'2022.11.21'} = define() {
 	
 	const cfg = config();

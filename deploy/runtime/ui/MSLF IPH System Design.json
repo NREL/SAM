@@ -1,0 +1,1873 @@
+{
+    "Name": "MSLF IPH System Design",
+    "Width": 923.0,
+    "Height": 374.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "I_bn_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SD_CALC_nLoops"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 32.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SD_CALC_solar_mult"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 88.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SD_CALC_total_Ap"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 88.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SD_COPY_q_field_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "SD_COPY_q_field_des_ideal"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_loop_in_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_loop_out"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Thermal Energy Storage"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2120"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 486.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Heat Sink"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 2121"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Solar Field"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 906.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Design Point Parameters"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 867.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 63.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The design point parameters determine the nominal ratings of each part of the linear fresnel system. After specifying the design point parameters here, you can specify details of each component of the system on the Solar Field, Collector and Receiver, and Thermal Storage input pages."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pb_pump_coef"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 729.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_pb_design"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 729.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_mult_in"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "solar_mult_or_Ap"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 117.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 95.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 50.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Option 1:|Option 2:"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_Ap_in"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tshours"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 729.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "I_bn_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Design point DNI",
+            "Units": "W/m²",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 950.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_CALC_m_dot_field_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Cycle design HTF mass flow rate",
+            "Units": "kg/s",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_CALC_nLoops": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of loops",
+            "Units": " ",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 8.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_CALC_solar_mult": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": " ",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 10.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_CALC_total_Ap": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "m²",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_COPY_q_field_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Actual field thermal power",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "SD_COPY_q_field_des_ideal": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Field thermal power w/ no defocus constraints",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_htf_hot_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "ONLY USED FOR USER DEFINED POWER CYCLE",
+            "Units": "",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_loop_in_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Loop inlet HTF temperature",
+            "Units": "°C",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 293.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_loop_out": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Loop outlet HTF temperature",
+            "Units": "°C",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 391.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "csp_financial_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "nameplate": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Copy of nameplate (needed for financial models)",
+            "Units": "MWe",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pb_pump_coef": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Pumping power for HTF through power block",
+            "Units": "kW/kg/s",
+            "Group": "MSLF IPH System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "q_pb_design": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heat sink thermal power",
+            "Units": "MWt",
+            "Group": "MSLF IPH System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_mult_in": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar multiple",
+            "Units": " ",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 2.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "solar_mult_or_Ap": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Solar field mode (0=SM, 1=area)",
+            "Units": " ",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_Ap_in": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Field aperture",
+            "Units": "",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 877000.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "tshours": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Hours of storage at design point",
+            "Units": "hours",
+            "Group": "MSLF System Design",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 6.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "//",
+        "//  ONLY ADD UI INDICATOR, COMBO CONVERTERS, AND",
+        "//  INPUT AGGREGATOR EQUATIONS BELOW!",
+        "//",
+        "//   If the equations change an input value",
+        "//   modify the below main MIMO or add one,",
+        "//   referencing in ssc_equations.h",
+        "//\r",
+        "\r",
+        "// Only used for Financial model",
+        "\r",
+        "equations{ 'T_htf_hot_des' } = define() {\r",
+        "\treturn ${T_loop_out}; };\r",
+        "\t\r",
+        "equations{ 'nameplate' } = define() {\r",
+        "\treturn ${q_pb_design}; };\r",
+        "\t\r",
+        "equations{ 'SD_COPY_q_field_des' } = define() {\r",
+        "\treturn ${SF_CALC_q_field_des}; };\r",
+        "\t\r",
+        "equations{ 'SD_COPY_q_field_des_ideal' } = define() {\r",
+        "\treturn ${SF_CALC_q_field_des_ideal}; };\r",
+        "\t",
+        "equations{ 'csp_financial_model' } = define() {",
+        "if(financing() == \"None\"){\r",
+        "\t\treturn 8;\r",
+        "\t}\r",
+        "\telse if(financing() == \"LCOH Calculator\"){\r",
+        "\t\treturn 7;\r",
+        "\t}\r",
+        "\telse{\r",
+        "\t\treturn -1;\r",
+        "\t}\r",
+        "};",
+        "\r",
+        "equations{ '$MIMO$ ui_mslf_iph_system_design__mslf_iph_cmod' } = define()\r",
+        "{\r",
+        "\tobj = ssc_create();\r",
+        "\r",
+        "\t//#ssc_auto_exec(obj, 'fresnel_physical_iph', 2);\r",
+        "\t\r",
+        "\t//ret_d = ssc_dump(obj, 'mslf_iph_mimo_ssc_auto_exec.lk');\r",
+        "\tret = ssc_exec(obj, 'fresnel_physical_iph');\r",
+        "\r",
+        "\tif(ret == 0)\r",
+        "\t{\r",
+        "\t\t// System Design\r",
+        "\t\t${SD_CALC_nLoops} = ssc_var(obj, \"nLoops\");\r",
+        "\t\t${SD_CALC_solar_mult} = ssc_var(obj, \"solar_mult\");\r",
+        "\t\t${SD_CALC_total_Ap} = ssc_var(obj, \"total_Ap\");\r",
+        "\t\t\r",
+        "\t\t//${SD_CALC_q_pb_design} = ssc_var(obj, \"q_dot_cycle_des\");\r",
+        "\t\t//${SD_CALC_nameplate} = ssc_var(obj, \"nameplate\");\r",
+        "\t\t\r",
+        "\t\t// Solar Field\r",
+        "\t\t${SF_CALC_Ap_loop} = ssc_var(obj, \"A_loop\");\r",
+        "\t\t${SF_CALC_loop_opt_eff} = ssc_var(obj, \"loop_opt_eff\");\r",
+        "\t\t${SF_CALC_loop_therm_eff} = ssc_var(obj, \"loop_therm_eff\");\r",
+        "\t\t${SF_CALC_loop_eff} = ssc_var(obj, \"loop_eff\");\r",
+        "\t\t${SF_CALC_Ap_sm1} = ssc_var(obj, \"sm1_aperture\");\r",
+        "\t\t${SF_CALC_nLoops_sm1} = ssc_var(obj, \"sm1_nLoops\");\r",
+        "\t\t${SF_CALC_total_tracking_power} = ssc_var(obj, \"total_tracking_power\");\r",
+        "\t\t${SF_CALC_Ap_total} = ssc_var(obj, \"A_field\");\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_q_field_des} = ssc_var(obj, \"q_field_des_actual\");\r",
+        "\t\t${SF_CALC_q_field_des_ideal} = ssc_var(obj, \"q_field_des_ideal\");\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_field_area} = ssc_var(obj, \"field_area\");\r",
+        "\t\t${SF_CALC_total_land_area} = ssc_var(obj, \"total_land_area\");\r",
+        "\t\t${SF_CALC_field_htf_min_temp} = ssc_var(obj, \"field_htf_min_temp\");\r",
+        "\t\t${SF_CALC_field_htf_max_temp} = ssc_var(obj, \"field_htf_max_temp\");\r",
+        "\t\t${SF_CALC_mdot_field_des} = ssc_var(obj, \"mdot_field_des\");\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_m_dot_htfmin_actual} = ssc_var(obj, \"m_dot_htfmin_actual\");\r",
+        "\t\t${SF_CALC_m_dot_htfmax_actual} = ssc_var(obj, \"m_dot_htfmax_actual\");\r",
+        "\t\t${SF_CALC_f_htfmin_actual} = ssc_var(obj, \"f_htfmin_actual\");\r",
+        "\t\t${SF_CALC_f_htfmax_actual} = ssc_var(obj, \"f_htfmax_actual\");\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_dP_field_des_SS} = ssc_var(obj,\"dP_field_des_SS\");\r",
+        "\t\t${SF_CALC_Q_field_des_SS} = ssc_var(obj,\"Q_field_des_SS\");\r",
+        "\t\t${SF_CALC_T_field_out_des_SS} = ssc_var(obj, \"T_field_out_des_SS\");\r",
+        "\t\t${SF_CALC_m_dot_des_SS} = ssc_var(obj, \"m_dot_des_SS\");\r",
+        "\t\t${SF_CALC_m_dot_loop_des_SS} = ssc_var(obj, \"m_dot_loop_des_SS\");\r",
+        "\t\t//${SF_CALC_V_hdr_min_des_SS} = ssc_var(obj, \"V_hdr_min_des_SS\");\r",
+        "\t\t//${SF_CALC_V_hdr_max_des_SS} = ssc_var(obj, \"V_hdr_max_des_SS\");\r",
+        "\t\t${SF_CALC_eta_optical_des_SS} = ssc_var(obj, \"eta_optical_des_SS\");\r",
+        "\t\t${SF_CALC_therm_eff_des_SS} = ssc_var(obj, \"therm_eff_des_SS\");\r",
+        "\t\t${SF_CALC_eff_des_SS} = ssc_var(obj, \"eff_des_SS\");\r",
+        "\t\t${SF_CALC_W_dot_pump_des_SS} = ssc_var(obj, \"W_dot_pump_des_SS\");\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_T_loop_out_des_SS} = ssc_var(obj, \"T_loop_out_des_SS\");\r",
+        "\t\t${SF_CALC_Q_loop_des_SS} = ssc_var(obj, \"Q_loop_des_SS\");\r",
+        "\t\t${SF_CALC_therm_eff_loop_des_SS} = ssc_var(obj, \"therm_eff_loop_des_SS\");\r",
+        "\t\t${SF_CALC_eff_loop_des_SS} = ssc_var(obj, \"eff_loop_des_SS\");\r",
+        "\t\t${SF_CALC_Q_loss_receiver_des_SS} = ssc_var(obj, \"Q_loss_receiver_des_SS\");\r",
+        "\t\t${SF_CALC_Q_loss_hdr_rnr_des_SS} = ssc_var(obj, \"Q_loss_hdr_rnr_des_SS\");\r",
+        "\t\t\r",
+        "\t\t// Collector and Receiver\r",
+        "\t\t${CR_CALC_DP_pressure_loss} = ssc_var(obj, \"DP_pressure_loss\");\r",
+        "\t\t${CR_CALC_avg_dt_des} = ssc_var(obj, \"avg_dt_des\");\r",
+        "\t\t${CR_CALC_hl_des} = ssc_var(obj, \"hl_des\");\r",
+        "\t\t${CR_CALC_opt_derate} = ssc_var(obj, \"opt_derate\");\r",
+        "\t\t${CR_CALC_opt_normal} = ssc_var(obj, \"opt_normal\");\r",
+        "\r",
+        "\t\t// Thermal Storage\r",
+        "\t\t${TS_CALC_vol_tank} = ssc_var(obj, \"vol_tank\");\r",
+        "\t\t${TS_CALC_Q_tes} = ssc_var(obj, \"Q_tes_des\");\r",
+        "\t\t${TS_CALC_d_tank} = ssc_var(obj, \"d_tank\");\r",
+        "\t\t${TS_CALC_vol_min} = ssc_var(obj, \"vol_min\");\r",
+        "\t\t${TS_CALC_q_dot_loss_tes_des} = ssc_var(obj, \"q_dot_loss_tes_des\");\r",
+        "\t\t${TS_CALC_tes_htf_min_temp} = ssc_var(obj, \"tes_htf_min_temp\");\r",
+        "\t\t${TS_CALC_tes_htf_max_temp} = ssc_var(obj, \"tes_htf_max_temp\");\r",
+        "\t\t${TS_CALC_tes_htf_dens} = ssc_var(obj, \"tes_htf_dens\");\r",
+        "\t\t${TS_CALC_tes_htf_cp} = ssc_var(obj, \"tes_htf_cp\");\r",
+        "\t\t\r",
+        "\t\t// System Control\r",
+        "\t\t${SC_CALC_bop} = ssc_var(obj, \"W_dot_bop_design\");\r",
+        "\t\t${SC_CALC_aux} = ssc_var(obj, \"aux_design\");\r",
+        "\t\t\r",
+        "\t\tcsp_financial_model = ${csp_financial_model};\r",
+        "\t\t\r",
+        "\t\t\r",
+        "\t\t// Capital Costs\r",
+        "\t\t${CC_CALC_site_improvements_cost} = ssc_var(obj, \"site_improvements_cost\");\r",
+        "\t\t${CC_CALC_solar_field_cost} = ssc_var(obj, \"solar_field_cost\");\r",
+        "\t\t${CC_CALC_htf_system_cost} = ssc_var(obj, \"htf_system_cost\");\r",
+        "\t\t${CC_CALC_ts_cost} = ssc_var(obj, \"ts_cost\");\r",
+        "\t\t//${CC_CALC_fossil_backup_cost} = ssc_var(obj, \"fossil_backup_cost\");\r",
+        "\t\t${CC_CALC_heat_sink_cost} = ssc_var(obj, \"heat_sink_cost\");\r",
+        "\t\t${CC_CALC_bop_cost} = ssc_var(obj, \"bop_cost\");\r",
+        "\t\t${CC_CALC_contingency_cost} = ssc_var(obj, \"contingency_cost\");\r",
+        "\t\t${CC_CALC_total_direct_cost} = ssc_var(obj, \"total_direct_cost\");\r",
+        "\t\t${CC_CALC_epc_total_cost} = ssc_var(obj, \"epc_total_cost\");\r",
+        "\t\t${CC_CALC_plm_total_cost} = ssc_var(obj, \"plm_total_cost\");\r",
+        "\t\t${CC_CALC_total_indirect_cost} = ssc_var(obj, \"total_indirect_cost\");\r",
+        "\t\t${CC_CALC_sales_tax_total} = ssc_var(obj, \"sales_tax_total\");\r",
+        "\t\t${CC_CALC_total_installed_cost} = ssc_var(obj, \"total_installed_cost\");\r",
+        "\t\t${CC_CALC_installed_per_capacity} = ssc_var(obj, \"installed_per_capacity\");\r",
+        "\t\r",
+        "\t\t\r",
+        "\t}\r",
+        "\telse\r",
+        "\t{\r",
+        "\t\tfail = -789;\r",
+        "\t\r",
+        "\t\t// System Design\r",
+        "\t\t${SD_CALC_nLoops} = fail;\r",
+        "\t\t${SD_CALC_solar_mult} = fail;\r",
+        "\t\t${SD_CALC_total_Ap} = fail;\r",
+        "\r",
+        "\t\t// Solar Field\r",
+        "\t\t${SF_CALC_Ap_loop} = fail;\r",
+        "\t\t${SF_CALC_loop_opt_eff} = fail;\r",
+        "\t\t${SF_CALC_loop_therm_eff} = fail;\r",
+        "\t\t${SF_CALC_loop_eff} = fail;\r",
+        "\t\t${SF_CALC_Ap_sm1} = fail;\r",
+        "\t\t${SF_CALC_nLoops_sm1} = fail;\r",
+        "\t\t${SF_CALC_total_tracking_power} = fail;\r",
+        "\t\t${SF_CALC_Ap_total} = fail;\r",
+        "\t\t${SF_CALC_q_field_des} = fail;\r",
+        "\t\t${SF_CALC_field_area} = fail;\r",
+        "\t\t${SF_CALC_total_land_area} = fail;\r",
+        "\t\t${SF_CALC_field_htf_min_temp} = fail;\r",
+        "\t\t${SF_CALC_field_htf_max_temp} = fail;\r",
+        "\t\t${SF_CALC_mdot_field_des} = fail;\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_m_dot_htfmin_actual} = fail;\r",
+        "\t\t${SF_CALC_m_dot_htfmax_actual} = fail;\r",
+        "\t\t${SF_CALC_f_htfmin_actual} = fail;\r",
+        "\t\t${SF_CALC_f_htfmax_actual} = fail;\r",
+        "\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_dP_field_des_SS} = fail;\r",
+        "\t\t${SF_CALC_Q_field_des_SS} = fail;\r",
+        "\t\t${SF_CALC_T_field_out_des_SS} = fail;\r",
+        "\t\t${SF_CALC_m_dot_des_SS} = fail;\r",
+        "\t\t${SF_CALC_m_dot_loop_des_SS} = fail;\r",
+        "\t\t//${SF_CALC_V_hdr_min_des_SS} = fail;\r",
+        "\t\t//${SF_CALC_V_hdr_max_des_SS} = fail;\r",
+        "\t\t${SF_CALC_eta_optical_des_SS} = fail;\r",
+        "\t\t${SF_CALC_therm_eff_des_SS} = fail;\r",
+        "\t\t${SF_CALC_eff_des_SS} = fail;\r",
+        "\t\t${SF_CALC_W_dot_pump_des_SS} = fail;\r",
+        "\t\t\r",
+        "\t\t${SF_CALC_T_loop_out_des_SS} = fail;\r",
+        "\t\t${SF_CALC_Q_loop_des_SS} = fail;\r",
+        "\t\t${SF_CALC_therm_eff_loop_des_SS} = fail;\r",
+        "\t\t${SF_CALC_eff_loop_des_SS} = fail;\r",
+        "\t\t${SF_CALC_Q_loss_receiver_des_SS} = fail;\r",
+        "\t\t${SF_CALC_Q_loss_hdr_rnr_des_SS} = fail;\r",
+        "\t\t\r",
+        "\t\t// Collector and Receiver\r",
+        "\t\t${CR_CALC_DP_pressure_loss} = fail;\r",
+        "\t\t${CR_CALC_avg_dt_des} = fail;\r",
+        "\t\t${CR_CALC_hl_des} = fail;\r",
+        "\t\t${CR_CALC_opt_derate} = fail;\r",
+        "\t\t${CR_CALC_opt_normal} = fail;\r",
+        "\t\t\t\t\r",
+        "\t\t// Thermal Storage\r",
+        "\t\t${TS_CALC_vol_tank} = fail;\r",
+        "\t\t${TS_CALC_Q_tes} = fail;\r",
+        "\t\t${TS_CALC_d_tank} = fail;\r",
+        "\t\t${TS_CALC_vol_min} = fail;\r",
+        "\t\t${TS_CALC_q_dot_loss_tes_des} = fail;\r",
+        "\t\t${TS_CALC_tes_htf_min_temp} = fail;\r",
+        "\t\t${TS_CALC_tes_htf_max_temp} = fail;\r",
+        "\t\t${TS_CALC_tes_htf_dens} = fail;\r",
+        "\t\t${TS_CALC_tes_htf_cp} = fail;\r",
+        "\t\t\r",
+        "\t\t// System Control\r",
+        "\t\t${W_dot_bop_design} = fail;\r",
+        "\t\t${W_dot_fixed} = fail;\r",
+        "\t\t\r",
+        "\t\t\r",
+        "\t\t// Capital Costs\r",
+        "\t\t${CC_CALC_site_improvements_cost} = fail;\r",
+        "\t\t${CC_CALC_solar_field_cost} = fail;\r",
+        "\t\t${CC_CALC_htf_system_cost} = fail;\r",
+        "\t\t${CC_CALC_ts_cost} = fail;\r",
+        "\t\t//${CC_CALC_fossil_backup_cost} = fail;\r",
+        "\t\t${CC_CALC_heat_sink_cost} = fail;\r",
+        "\t\t${CC_CALC_bop_cost} = fail;\r",
+        "\t\t${CC_CALC_contingency_cost} = fail;\r",
+        "\t\t${CC_CALC_total_direct_cost} = fail;\r",
+        "\t\t${CC_CALC_epc_total_cost} = fail;\r",
+        "\t\t${CC_CALC_plm_total_cost} = fail;\r",
+        "\t\t${CC_CALC_total_indirect_cost} = fail;\r",
+        "\t\t${CC_CALC_sales_tax_total} = fail;\r",
+        "\t\t${CC_CALC_total_installed_cost} = fail;\r",
+        "\t\t${CC_CALC_installed_per_capacity} = fail;\r",
+        "\t\t\r",
+        "\t\t\r",
+        "\t}\r",
+        "\r",
+        "};\r",
+        "\t\r",
+        "\r",
+        "\t\r",
+        "\t"
+    ],
+    "Callbacks": [
+        "on_load{'MSLF IPH System Design'} = define()\r",
+        "{\r",
+        "\tenable ('total_Ap_in', 0);\r",
+        "};\r",
+        "\r",
+        "on_change{'solar_mult_or_Ap'} = define(){\r",
+        "  state = value('solar_mult_or_Ap');\r",
+        "  enable ('solar_mult_in', state == 0);\r",
+        "  enable ('total_Ap_in', state == 1);\r",
+        "};"
+    ]
+}

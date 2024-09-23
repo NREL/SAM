@@ -5,24 +5,8 @@
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
         [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
-            0.0
-        ],
-        [
+            0.0,
+            0.0,
             0.0
         ]
     ],
@@ -43,6 +27,7 @@
     "annual_global": 3.84577,
     "annual_snow": 23.0,
     "annual_tdry": 5.47658,
+    "annual_twet": 2.88032,
     "annual_wspd": 5.37725,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
@@ -452,17 +437,17 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
     "city": "Fargo",
-    "const_per_interest1": 1751580.0,
+    "const_per_interest1": 3252940.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 3.5,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 1751580.0,
+    "const_per_interest_total": 3252940.0,
     "const_per_months1": 6.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
@@ -485,7 +470,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 200181000.0,
-    "const_per_total1": 3753390.0,
+    "const_per_total1": 5254750.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -495,7 +480,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 3753390.0,
+    "construction_financing_cost": 5254750.0,
     "cost_dev_fee_percent": 3.0,
     "cost_dev_fee_tax_liability": 1593240.0,
     "cost_dev_fee_value": 6005430.0,
@@ -18775,7 +18760,7 @@
     "ibi_uti_percent_maxvalue": 1e38,
     "ibi_uti_percent_tax_fed": 1.0,
     "ibi_uti_percent_tax_sta": 1.0,
-    "in_location": "Type a location name, street address, or latitude and longitude",
+    "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "|||",
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
@@ -19538,7 +19523,7 @@
         0.0
     ],
     "real_discount_rate": 6.4,
-    "reserves_interest": 1.25,
+    "reserves_interest": 1.75,
     "sale_leaseback_message": "",
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
@@ -19716,7 +19701,7 @@
             0.0
         ]
     ],
-    "ur_dc_is_shown": 1.0,
+    "ur_dc_is_shown": 0.0,
     "ur_dc_sched_weekday": [
         [
             1.0,
@@ -21018,6 +21003,8 @@
     "ur_monthly_fixed_charge": 0.0,
     "ur_monthly_min_charge": 0.0,
     "ur_name": "",
+    "ur_nb_apply_credit_current_month": 0.0,
+    "ur_nb_credit_expire": 0.0,
     "ur_nm_credit_month": 0.0,
     "ur_nm_credit_rollover": 0.0,
     "ur_nm_yearend_sell_rate": 0.0,

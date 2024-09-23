@@ -855,7 +855,7 @@
                 },
                 "Tool Tip": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "This is the Tool Tip"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -863,11 +863,11 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "This is the Description"
                 },
                 "Label": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "This is  the Label"
                 },
                 "Mode": {
                     "Type": 3.0,

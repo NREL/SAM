@@ -149,8 +149,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -159,8 +157,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -171,8 +167,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -181,8 +175,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -193,8 +185,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -203,8 +193,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_inte
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -215,8 +203,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -225,8 +211,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -237,8 +221,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -247,8 +229,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -259,8 +239,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_mont
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -269,8 +247,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -281,8 +257,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -291,8 +265,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -303,8 +275,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -313,8 +283,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_perc
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -325,8 +293,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -335,8 +301,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -347,8 +311,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -357,8 +319,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -369,8 +329,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -379,8 +337,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest1_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest2_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -391,8 +347,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest2_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest3_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -401,8 +355,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest3_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest4_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -413,8 +365,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest4_nget(S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest5_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -423,8 +373,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest5_nget(S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -435,8 +383,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_interest_total_n
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_percent_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -445,8 +391,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_percent_total_ng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -457,8 +401,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal1_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -467,8 +409,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal2_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -479,8 +419,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal3_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -489,8 +427,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal4_nget(
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -501,8 +437,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal5_nget(
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -511,8 +445,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_principal_total_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -523,8 +455,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total1_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -533,8 +463,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total2_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -545,8 +473,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total3_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -555,8 +481,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total4_nget(SAM_
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total5_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -567,8 +491,6 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_const_per_total5_nget(SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -577,6 +499,4 @@ SAM_EXPORT double SAM_CbConstructionFinancing_Outputs_construction_financing_cos
 	});
 	return result;
 }
-
-
 

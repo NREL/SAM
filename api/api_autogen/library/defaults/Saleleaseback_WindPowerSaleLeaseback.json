@@ -53,12 +53,12 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"state_tax_rate": [7.000000],
 			"system_capacity": 200000
 		},
 		"SystemCosts": {
-			"om_capacity": [43.000000],
+			"om_capacity": [40.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -82,7 +82,7 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
-			"ptc_fed_amount": [0.026000],
+			"ptc_fed_amount": [0.027500],
 			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
@@ -229,7 +229,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 5.6211e+06,
+			"construction_financing_cost": 7.66584e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -242,7 +242,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 0,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 2.99792e+08
+			"total_installed_cost": 2.92032e+08
 		},
 		"UtilityBill": {
 		},
@@ -256,6 +256,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
+		},
+		"FuelCell": {
 		}
 	}
 }

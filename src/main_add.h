@@ -74,6 +74,14 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
+			{ 2024, 5, 28},		// 2024.05.28 Change trough mass flow rate limits 
+			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023, 2023.12.17.r1.ssc.290 3/4/2024
+			{ 2023, 12, 1 },  // 2023.12.1 ssc 287 2023 release candidate from develop expires 12/17/2023
+			{ 2023, 10, 31 },  // 2023.10.31 ssc 286 public beta release from develop expires 11/30/2023
+			{ 2023, 10, 6 },  // 2023.10.6 ssc 285 beta release from develop with hybrids expires 1/6/2024
+			{ 2023, 10, 2 },  // 2023.10.2 ssc 284 beta release from develop with hybrids expires 1/2/2024
+			{ 2023, 9, 19 },  // 2023.9.19 ssc 283 beta release from develop with hybrids expires 12/19/2023
+			{ 2023, 7, 24 },  // 2023.7.24 Add new molten salt linear fresnel model and IPH
 			{ 2022, 11, 21 }, // 2022.11.21 ssc 278 public release and ssc 279 revision 1
 			{ 2021, 12, 02 }, // 2021.12.02 ssc 267 public release
 			{ 2021, 11, 30 }, // 2021.11.30 ssc 265 release candidate beta expires 11/30/2022
@@ -247,7 +255,8 @@ public:
 		// dc.SetBackground(wxBrush(wxColour(255, 117, 24))); // Testing Autumn (Pumpkin) color
 		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		//dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
-		dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		//dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
+		dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
 
 		dc.Clear();
 
@@ -483,15 +492,15 @@ public:
 #endif
 
 		wxBoxSizer *tools = new wxBoxSizer( wxHORIZONTAL );
-#if defined(__WXMSW__)||defined(__WXOSX__)
-		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
-#endif
+//#if defined(__WXMSW__)||defined(__WXOSX__)
+//		tools->Add( new wxMetroButton( this, ID_BACK, "Back" ), 0, wxALL|wxEXPAND, 0 );
+//#endif
 		tools->Add( new wxMetroButton( this, ID_HOME, "Home" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
-		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_WEBSITE, "Web site" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_FORUM, "Forum" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_EMAIL_SUPPORT, "Email support" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_RELEASE_NOTES, "Release notes" ), 0, wxALL|wxEXPAND, 0 );
+//		tools->Add( new wxMetroButton( this, ID_SCRIPT_REFERENCE, "Scripting reference" ), 0, wxALL|wxEXPAND, 0 );
 		tools->AddStretchSpacer();
 		tools->Add( new wxMetroButton( this, wxID_ABOUT, "About" ), 0, wxALL|wxEXPAND, 0 );
 		tools->Add( new wxMetroButton( this, wxID_CLOSE, "Close" ), 0, wxALL|wxEXPAND, 0 );
@@ -563,7 +572,7 @@ public:
 			return;
 		}
 		else if ( url == ":forum" )
-			url = SamApp::WebApi( "forum" );
+			url = SamApp::WebApi( "website" ) + "/forum.html";
 		else if ( url == ":website" )
 			url = SamApp::WebApi( "website" );
 

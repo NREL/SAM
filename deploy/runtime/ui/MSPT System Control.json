@@ -1,7 +1,7 @@
 {
     "Name": "MSPT System Control",
-    "Width": 841.0,
-    "Height": 470.0,
+    "Width": 913.0,
+    "Height": 466.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1354,7 +1354,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1437,7 +1437,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1520,7 +1520,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1603,7 +1603,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1686,7 +1686,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1769,7 +1769,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1852,7 +1852,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1935,7 +1935,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2018,7 +2018,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2101,94 +2101,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
                     "Integer": 342.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "disp_wlim_maxspec"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 369.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2267,7 +2184,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 351.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2316,7 +2233,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2353,7 +2270,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 830.0
+                    "Integer": 900.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2394,7 +2311,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2536,9 +2453,9 @@
         "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Constant performance adjustment",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2549,9 +2466,9 @@
         "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable custom period performance adjustments",
+            "Units": "0/1",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2562,9 +2479,9 @@
         "adjust_en_timeindex": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Enable timeseries performance adjustments",
+            "Units": "0/1",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -2575,9 +2492,9 @@
         "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Custom period performance adjustments",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -2592,9 +2509,9 @@
         "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "Timeseries performance adjustments",
+            "Units": "%",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -2890,34 +2807,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "disp_wlim_maxspec": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Max. net power to the grid",
-            "Units": "MWe",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "dispatch_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Dispatch TOD series",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "is_dispatch": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2927,32 +2816,6 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "is_wlim_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": " ",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
@@ -2995,28 +2858,9 @@
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
-        },
-        "wlim_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Max. net power limit by time step",
-            "Units": " ",
-            "Group": "System Control",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
         }
     },
     "Equations": [
-        "equations{ 'is_wlim_design' } = define() {",
-        "\treturn ${is_dispatch};",
-        "};",
-        "",
         "equations{ 'csp.pt.par.calc.bop' } = define() {",
         "\treturn ${W_dot_bop_design_calc};",
         "};",
@@ -3044,8 +2888,6 @@
         "     enable(\"disp_csu_cost_rel\", en==1);",
         "     enable(\"disp_rsu_cost_rel\", en==1);",
         "     enable(\"disp_pen_ramping\", en==1);",
-        "     //enable(\"disp_wlim_max\", en==1);",
-        "     enable(\"disp_wlim_maxspec\", en==1);",
         "     enable(\"disp_time_weighting\", en==1);",
         "     ",
         "     enable(\"disp_hsu_cost_rel\", en_htr);",

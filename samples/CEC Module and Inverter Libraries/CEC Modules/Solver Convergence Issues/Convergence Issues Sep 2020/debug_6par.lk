@@ -1,0 +1,124 @@
+function set_params(Vmp, Imp, Voc, Isc, alpha, beta, gamma)
+{
+	set( '6par_vmp', Vmp );
+	set( '6par_imp', Imp );
+	set( '6par_voc', Voc );
+	set( '6par_isc', Isc );
+	set( '6par_bvoc_display', beta );
+	set( '6par_aisc_display', alpha );
+	set( '6par_bvoc_units', 0 );
+	set( '6par_aisc_units', 0 );
+	set( '6par_gpmp', gamma );
+}
+
+function solve_check_status(Vmp, Imp, Voc, Isc, alpha, beta, gamma)
+{
+	ssc_var(par, 'Vmp', vmp );
+	ssc_var(par, 'Imp', imp );
+	ssc_var(par, 'Voc', voc );
+	ssc_var(par, 'Isc', isc );
+	ssc_var(par, 'beta_voc', beta );
+	ssc_var(par, 'alpha_isc', alpha );
+	ssc_var(par, 'gamma_pmp', gamma );
+	outln('Vmp: ' + to_string(vmp) + ' Imp: ' + to_string(imp) + ' Voc: ' + to_string(voc) + ' Isc: ' + to_string(isc) + ' beta: ' + to_string(beta) + ' alpha: ' + to_string(alpha) + ' gamma: ' + to_string(gamma));
+	status = ssc_exec(par, '6parsolve');
+	outln(status);
+	return status;
+}
+
+function six_par_print_results()
+{
+	a = ssc_var(par, 'a');
+	Il = ssc_var(par, 'Il');
+	Io = ssc_var(par, 'Io');
+	Rs = ssc_var(par,  'Rs');
+	Rsh = ssc_var(par, 'Rsh');
+	Adj = ssc_var(par, 'Adj');
+	outln('a: ' + to_string(a) + ' Il: ' + to_string(Il) + ' Io: ' + to_string(Io) + ' Rs: ' + to_string(Rs) + ' Rsh: ' + to_string(Rs) + ' Adj: ' + to_string(Adj));
+}
+
+function create_range(low, high, n)
+{
+	array = alloc(n);
+	d = (high - low) / (n - 1);
+	for (i = 0; i < n; i++){
+		array[i] = low + i*d;
+	}
+	return array;
+}
+
+active_case('Case D 25C 2e16, 10 ns, 2 um');
+
+par = ssc_create();
+
+ssc_var(par, 'celltype', 'cdte' );
+ssc_var(par, 'Vmp', 236.499 );
+ssc_var(par, 'Imp', 2.3865 );
+ssc_var(par, 'Voc', 265.283 );
+ssc_var(par, 'Isc', 2.52 );
+ssc_var(par, 'beta_voc', -0.74279 );
+ssc_var(par, 'alpha_isc', 0.001007 );
+ssc_var(par, 'gamma_pmp', -0.32 );
+ssc_var(par, 'Nser', 264 );
+ssc_var(par, 'Tref', 45 );
+
+low_pct = 0.98;
+high_pct = 1.02;
+n_iter = 2;
+
+Vmp_range = [low_pct * ssc_var(par, 'Vmp'), high_pct * ssc_var(par, 'Vmp')];
+Vmp_range = create_range(Vmp_range[0], Vmp_range[1], n_iter);
+Imp_range = [low_pct* ssc_var(par, 'Imp'), high_pct * ssc_var(par, 'Imp')];
+Imp_range = create_range(Imp_range[0], Imp_range[1], n_iter);
+Voc_range = [low_pct * ssc_var(par, 'Voc'), high_pct * ssc_var(par, 'Voc')];
+Voc_range = create_range(Voc_range[0], Voc_range[1], n_iter);
+Isc_range = [low_pct * ssc_var(par, 'Isc'), high_pct * ssc_var(par, 'Isc')];
+Isc_range = create_range(Isc_range[0], Isc_range[1], n_iter);
+beta_range = [low_pct * ssc_var(par, 'beta_voc'), high_pct * ssc_var(par, 'beta_voc')];
+beta_range = create_range(beta_range[0], beta_range[1], n_iter);
+alpha_range = [low_pct * ssc_var(par, 'alpha_isc'), high_pct * ssc_var(par, 'alpha_isc')];
+alpha_range = create_range(alpha_range[0], alpha_range[1], n_iter);
+gamma_range = [low_pct * ssc_var(par, 'gamma_pmp'), high_pct * ssc_var(par, 'gamma_pmp')];
+gamma_range = create_range(gamma_range[0], gamma_range[1], n_iter);
+
+solved = false;
+
+for (ivmp = 0; ivmp < n_iter; ivmp++){
+	vmp = Vmp_range[ivmp];
+	for (iimp = 0; iimp < n_iter; iimp++){
+		imp = Imp_range[ivmp];
+		for (ivoc = 0; ivoc < n_iter; ivoc++){
+			voc = Voc_range[ivoc];
+			for (iisc = 0; iisc < n_iter; iisc++){
+				isc = Isc_range[iisc];
+				for (ib = 0; ib < n_iter; ib++){
+					beta = beta_range[ib];
+					for (ia = 0; ia < n_iter; ia++){
+						alpha = alpha_range[ia];
+						for (ig = 0; ig < n_iter; ig++){
+							gamma = gamma_range[ig];
+							
+							status = solve_check_status(vmp, imp, voc, isc, alpha, beta, gamma);
+							if (strcmp(status, "could not solve, check inputs") != 0){
+								set_params(vmp, imp, voc, isc, alpha, beta, gamma);
+								six_par_print_results();
+								outln('Found solution: Power: ' + to_string(vmp * imp));
+								solved = false;
+								break;
+							}
+							if (solved){break;}
+						}
+						if (solved){break;}
+					}
+					if (solved){break;}
+				}
+				if (solved){break;}
+			}
+			if (solved){break;}
+		}
+		if (solved){break;}
+	}
+	if (solved){break;}
+}
+
+ssc_free(par);

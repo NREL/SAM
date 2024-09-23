@@ -30,5 +30,3 @@ SAM_EXPORT const char* SAM_Wfcheck_WeatherFileChecker_input_file_sget(SAM_table 
 	return result;
 }
 
-
-

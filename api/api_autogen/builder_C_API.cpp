@@ -29,8 +29,9 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-
+// C++17 only - not in patch branch
+//#include <filesystem>
+#include <wx/file.h>
 #include <shared/lib_util.h>
 
 #include "builder_C_API.h"
@@ -39,8 +40,20 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 void builder_C_API::create_SAM_headers(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
+    if (cmod_symbol == "6parsolve")
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
+    else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
+        cmod_symbol += "Model";
+
+    std::string filename = file_dir + "/SAM_" + cmod_symbol + ".h";
+//    if (std::filesystem::exists(filename))
+    if (wxFileExists(filename))
+        return;
+
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".h");
+    fx_file.open(filename);
     assert(fx_file.is_open());
 
     fx_file << "#ifndef SAM_" << util::upper_case(cmod_symbol)<< "_H_\n"
@@ -193,8 +206,20 @@ void builder_C_API::create_SAM_headers(const std::string &cmod, const std::strin
 void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
+    if (cmod_symbol == "6parsolve")
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
+    else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
+        cmod_symbol += "Model";
+
+    std::string filename = file_dir + "/SAM_" + cmod_symbol + ".cpp";
+//    if (std::filesystem::exists(filename))
+    if (wxFileExists(filename))
+        return;
+
     std::ofstream fx_file;
-    fx_file.open(file_dir + "/SAM_" + cmod_symbol + ".cpp");
+    fx_file.open(filename);
     assert(fx_file.is_open());
 
     fx_file << "#include <string>\n"
@@ -228,6 +253,7 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
 
         if (mm->first == "AdjustmentFactors")
             continue;
+        
 
         for (auto & vardef : vardefs) {
             std::string var_symbol = vardef.first;
@@ -335,8 +361,6 @@ void builder_C_API::create_SAM_definitions(const std::string &cmod, const std::s
             else{
                 throw std::runtime_error(vd.type + " for " + var_name);
             }
-            fx_file << "\n\n";
-
         }
     }
     fx_file.close();
