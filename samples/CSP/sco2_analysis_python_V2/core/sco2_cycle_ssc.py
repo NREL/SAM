@@ -745,7 +745,16 @@ class C_sco2_sim_result_collection:
 
         # Add config_name
         if(('config_name' in solve_dict) == False):
-            config_name = self.get_config_name(solve_dict["cycle_config"], solve_dict["recomp_frac"], solve_dict["bypass_frac"])
+            
+            bypass_frac = ''
+            if('bypass_frac' in solve_dict):
+                bypass_frac = solve_dict["bypass_frac"]
+            
+            recomp_frac = ''
+            if('recomp_frac' in solve_dict):
+                recomp_frac = solve_dict["recomp_frac"]
+
+            config_name = self.get_config_name(solve_dict["cycle_config"], recomp_frac, bypass_frac)
             solve_dict["config_name"] = config_name
 
         #self.solve_dict_list.append(solve_dict)
