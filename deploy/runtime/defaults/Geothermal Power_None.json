@@ -51,7 +51,7 @@
     ],
     "delta_pressure_equip": 40.0,
     "design_temp": 200.0,
-    "drilling_success_rate": 75.0,
+    "drilling_success_rate": 76.0,
     "dt_prod_well": 0.0,
     "elev": 82.0,
     "enable_interconnection_limit": 0.0,

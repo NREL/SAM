@@ -21,7 +21,8 @@
             "resource_type": 0,
             "wet_bulb_temp": 15.56,
             "ambient_pressure": 14.70,
-            "stim_success_rate": 0
+            "stim_success_rate": 0,
+            "geotherm_cost_conf_num_wells": 3
         }
     }
 }
