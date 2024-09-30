@@ -1,7 +1,7 @@
 {
     "defaults": {
         "GetemParams": {
-            "analysisperiod": 30,
+            "analysis_period": 30,
             "geotherm_cost_prod_cost_curve_well_diam": 1,
             "geotherm_cost_prod_cost_curve_well_type": 0,
             "nameplate": 40000.0,
@@ -20,7 +20,9 @@
             "conversion_type": 1,
             "resource_type": 0,
             "wet_bulb_temp": 15.56,
-            "ambient_pressure": 14.70
+            "ambient_pressure": 14.70,
+            "stim_success_rate": 0,
+            "geotherm_cost_conf_num_wells": 3
         }
     }
 }
