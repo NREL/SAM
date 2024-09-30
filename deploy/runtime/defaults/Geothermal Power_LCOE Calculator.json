@@ -9542,6 +9542,7 @@
     "temp_decline_max": 30.0,
     "temp_decline_rate": 0.5,
     "total_direct_cost": 98871100.0,
+    "total_getem_om_cost": 42468700.0,
     "total_indirect_cost": 19279900.0,
     "total_installed_cost": 118151000.0,
     "turbine_ppi": 0.88285,

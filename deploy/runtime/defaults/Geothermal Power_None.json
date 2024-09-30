@@ -9423,6 +9423,7 @@
     "system_use_lifetime_output": 0.0,
     "temp_decline_max": 30.0,
     "temp_decline_rate": 0.5,
+    "total_getem_om_cost": 42468700.0,
     "tz": -8.0,
     "ui_calculations_only": 0.0,
     "ui_step_minutes": 60.0,
