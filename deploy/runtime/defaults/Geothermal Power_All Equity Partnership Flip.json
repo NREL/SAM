@@ -9719,8 +9719,6 @@
     "geotherm.delta_pressure_reservoir": 349.212,
     "geotherm.delta_pressure_reservoirBar": 24.0773,
     "geotherm.egs_ambient_temp": 15.0,
-    "geotherm.egs_design_temp_autoselect": 1.0,
-    "geotherm.egs_design_temp_input": 200.0,
     "geotherm.errors1": "",
     "geotherm.errors2": "No message",
     "geotherm.lookup.depth_array": [
@@ -18567,7 +18565,6 @@
     "in_nsrdb_options": 0.0,
     "in_time_step": 0.0,
     "inflation_rate": 2.5,
-    "inj_casing_size": 11.5,
     "inj_num_pumps": 1.0,
     "inj_prod_well_distance": 1500.0,
     "inj_pump_cost": 209536.0,
