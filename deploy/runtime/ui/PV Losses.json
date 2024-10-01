@@ -1894,7 +1894,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 450.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1902,7 +1902,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 381.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1914,7 +1914,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Enable subhourly clipping loss correction"
+                    "String": "Enable subhourly clipping loss correction (Allen method)"
                 },
                 "State": {
                     "Type": 2.0,
@@ -2352,7 +2352,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model. Subhourly clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy days."
+                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model. Subhourly clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy day (for hourly simulations only)."
                 },
                 "TextColour": {
                     "Type": 4.0,
