@@ -117,12 +117,12 @@ void OpenEI::RateData::Reset()
 
 	EnergyStructure.resize_fill(1, 6, 0);
 	// single default value
-	EnergyStructure.at(0, 0) = 1;
-	EnergyStructure.at(0, 1) = 1;
-	EnergyStructure.at(0, 2) = 1e+38;
-	EnergyStructure.at(0, 3) = 0;
-	EnergyStructure.at(0, 4) = 0;
-	EnergyStructure.at(0, 5) = 0;
+	EnergyStructure.at(0, 0) = 1; // period
+	EnergyStructure.at(0, 1) = 1; // tier
+	EnergyStructure.at(0, 2) = 1e+38; // max usage
+	EnergyStructure.at(0, 3) = 0; // max usage units
+	EnergyStructure.at(0, 4) = 0; // buy rate (skip adjustments)
+	EnergyStructure.at(0, 5) = 0; // sell rate
 	
 	for (i = 0; i < 12; i++)
 	{
@@ -387,7 +387,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name + " " + url;
+		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name; // do not report url because it has private API key
 		return false;
 	}
 
@@ -397,7 +397,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for utility company name = " + name;
+		if (err) *err = wxString::Format("Could not parse JSON for utility company name = %s.\nRapidJSON ParseErrorCode = %d", name, reader.GetParseError());
 		return false;
 	}
 
@@ -655,7 +655,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //	wxJSONValue dw = val.Item("demandwindow");
 //	if (dw.IsDouble())
 	if (val.HasMember("demandwindow")) {
-		if (val["demandwindow"].IsDouble()) {
+		if (val["demandwindow"].IsNumber()) {
 			rate.Unused.HasUnusedItems = true;
 			rate.Unused.DemandWindow = val["demandwindow"].GetDouble();
 		}
@@ -664,7 +664,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //   wxJSONValue drpc = val.Item("demandreactivepowercharge");
 //   if (drpc.IsDouble() )
 	if (val.HasMember("demandreactivepowercharge")) {
-		if (val["demandreactivepowercharge"].IsDouble()) {
+		if (val["demandreactivepowercharge"].IsNumber()) {
 			rate.Unused.HasUnusedItems = true;
 			rate.Unused.DemandReactivePowerCharge = val["demandreactivepowercharge"].GetDouble();
 		}
@@ -768,15 +768,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //					double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
 					double max = 1e38;
 					if (cr_tier[tier].HasMember("max"))
-						if (cr_tier[tier]["max"].IsDouble())
+						if (cr_tier[tier]["max"].IsNumber())
 							max = cr_tier[tier]["max"].GetDouble();
 					double charge = 0.0;
 					if (cr_tier[tier].HasMember("rate"))
-						if (cr_tier[tier]["rate"].IsDouble())
+						if (cr_tier[tier]["rate"].IsNumber())
 							charge = cr_tier[tier]["rate"].GetDouble();
 					double adj =  0.0;
 					if (cr_tier[tier].HasMember("adj"))
-						if (cr_tier[tier]["adj"].IsDouble())
+						if (cr_tier[tier]["adj"].IsNumber())
 							adj = cr_tier[tier]["adj"].GetDouble();
 					rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
 					rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
@@ -840,19 +840,19 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //					double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
 					double max = 1e38;
 					if (ers_tier[tier].HasMember("max"))
-						if (ers_tier[tier]["max"].IsDouble())
+						if (ers_tier[tier]["max"].IsNumber()) // some max values are stored as integers
 							max = ers_tier[tier]["max"].GetDouble();
 					double buy = 0.0;
 					if (ers_tier[tier].HasMember("rate"))
-						if (ers_tier[tier]["rate"].IsDouble())
+						if (ers_tier[tier]["rate"].IsNumber())
 							buy = ers_tier[tier]["rate"].GetDouble();
 					double sell = 0.0;
 					if (ers_tier[tier].HasMember("sell"))
-						if (ers_tier[tier]["sell"].IsDouble())
+						if (ers_tier[tier]["sell"].IsNumber())
 							sell = ers_tier[tier]["sell"].GetDouble();
 					double adj = 0.0;
 					if (ers_tier[tier].HasMember("adj"))
-						if (ers_tier[tier]["adj"].IsDouble())
+						if (ers_tier[tier]["adj"].IsNumber())
 							adj = ers_tier[tier]["adj"].GetDouble();
 					wxString units;
 					if (ers_tier[tier].HasMember("unit"))
@@ -894,7 +894,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	if (val.HasMember("lookbackpercent")) {
 		auto& lp = val["lookbackpercent"];
-		if (lp.IsDouble()) {
+		if (lp.IsNumber()) {
 			rate.LookbackPercent = lp.GetDouble() * 100.0;
 		}
 		else if (lp.IsInt()) {
@@ -960,15 +960,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 							//						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 							double max = 1e38;
 							if (fds_tier[tier].HasMember("max"))
-								if (fds_tier[tier]["max"].IsDouble())
+								if (fds_tier[tier]["max"].IsNumber())
 									max = fds_tier[tier]["max"].GetDouble();
 							double charge = 0.0;
 							if (fds_tier[tier].HasMember("rate"))
-								if (fds_tier[tier]["rate"].IsDouble())
+								if (fds_tier[tier]["rate"].IsNumber())
 									charge = fds_tier[tier]["rate"].GetDouble();
 							double adj = 0.0;
 							if (fds_tier[tier].HasMember("adj"))
-								if (fds_tier[tier]["adj"].IsDouble())
+								if (fds_tier[tier]["adj"].IsNumber())
 									adj = fds_tier[tier]["adj"].GetDouble();
 							rate.DemandFlatStructure.at(fd_row, 0) = m;
 							rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
@@ -1013,15 +1013,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 					//				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 					double max = 1e38;
 					if (drs_tier[tier].HasMember("max"))
-						if (drs_tier[tier]["max"].IsDouble())
+						if (drs_tier[tier]["max"].IsNumber())
 							max = drs_tier[tier]["max"].GetDouble();
 					double charge = 0.0;
 					if (drs_tier[tier].HasMember("rate"))
-						if (drs_tier[tier]["rate"].IsDouble())
+						if (drs_tier[tier]["rate"].IsNumber())
 							charge = drs_tier[tier]["rate"].GetDouble();
 					double adj = 0.0;
 					if (drs_tier[tier].HasMember("adj"))
-						if (drs_tier[tier]["adj"].IsDouble())
+						if (drs_tier[tier]["adj"].IsNumber())
 							adj = drs_tier[tier]["adj"].GetDouble();
 
 					rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
