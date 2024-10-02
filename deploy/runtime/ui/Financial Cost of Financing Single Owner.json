@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 21.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 57.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "SAM includes the financing cost (and the working capital reserve) in the project's financing cost, which is part of the project's total equity capital reported in the project cash flow. See Help for details."
+                    "String": "SAM includes this cost in the purchase of property value reported in the project cash flow. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -190,7 +190,7 @@
         "cost_other_financing": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Financing cost",
+            "Label": "Other financing cost",
             "Units": "$",
             "Group": "Cost of Acquiring Financing",
             "IndexLabels": "",
