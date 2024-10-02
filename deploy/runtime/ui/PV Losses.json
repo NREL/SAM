@@ -1,7 +1,7 @@
 {
     "Name": "PV Losses",
-    "Width": 854.0,
-    "Height": 1034.0,
+    "Width": 859.0,
+    "Height": 1176.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 972.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 107.0
+                    "Integer": 176.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 756.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 810.0
+                    "Integer": 882.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1317,7 +1317,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 921.0
+                    "Integer": 993.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1450,7 +1450,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 942.0
+                    "Integer": 1014.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1691,6 +1691,55 @@
                 }
             }
         },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "clipping_correction_method_ui"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 663.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 51.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Apply clipping corrections with matrix lookup approach|Apply clipping correction based on distribution of PV output"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "LossAdjustment": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1704,7 +1753,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 942.0
+                    "Integer": 1014.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1765,7 +1814,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 921.0
+                    "Integer": 993.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1890,7 +1939,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "enable_subhourly_clipping"
+                    "String": "enable_subhourly_clipping_ui"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1902,7 +1951,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 381.0
+                    "Integer": 300.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1914,7 +1963,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Enable subhourly clipping loss correction (Allen method)"
+                    "String": "Enable subhourly clipping loss correction"
                 },
                 "State": {
                     "Type": 2.0,
@@ -2398,7 +2447,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 774.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2460,7 +2509,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 918.0
+                    "Integer": 990.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2584,7 +2633,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 828.0
+                    "Integer": 900.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6114,7 +6163,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 846.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6197,7 +6246,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 747.0
+                    "Integer": 819.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6280,7 +6329,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 855.0
+                    "Integer": 927.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6475,6 +6524,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "clipping_correction_method_ui": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Clipping correction method choice",
+            "Units": "0/1",
+            "Group": "PV Losses",
+            "IndexLabels": "Apply clipping corrections with matrix lookup approach|Apply clipping correction based on distribution of PV output",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "dc_adjust": {
             "Version": 4.0,
             "Type": 1.0,
@@ -6575,6 +6637,19 @@
         "enable_subhourly_clipping": {
             "Version": 4.0,
             "Type": 1.0,
+            "Label": "Enable matrix lookup clipping correction",
+            "Units": "0/1",
+            "Group": "PV Losses",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "enable_subhourly_clipping_ui": {
+            "Version": 4.0,
+            "Type": 1.0,
             "Label": "Enable subhourly clipping loss correction",
             "Units": "0/1",
             "Group": "Losses",
@@ -6582,6 +6657,19 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "enable_subinterval_distribution": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Enable subinterval distribution clipping method",
+            "Units": "0/1",
+            "Group": "PV Losses",
+            "IndexLabels": "",
+            "Flags": 9.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -7317,7 +7405,31 @@
         "\treturn mean(${subarray3_soiling}); };",
         "",
         "equations{ 'subarray4_soiling_annual_average' } = define() {",
-        "\treturn mean(${subarray4_soiling}); };",
+        "\treturn mean(${subarray4_soiling}); };\r",
+        "\r",
+        "/*\r",
+        "equations{ '$MIMO$ ClippingCorrectionMethods'} - define() {\r",
+        "\tif (${enable_subhourly_clipping_ui} == 1) { //Clipping is enabled\r",
+        "\t\tif (${clipping_correction_metohd_ui}==0) { //Radio choice 0 - Allen method\r",
+        "\t\t\t${enable_subhourly_clipping} = 1;\r",
+        "\t\t\t${enable_subinternval_distribution} = 0;\r",
+        "\t\t}\r",
+        "\t\telse if (${clipping_correction_metohd_ui}==1 ){ //Radio choice 1 - Walker method\r",
+        "\t\t\t${enable_subhourly_clipping} = 0;\r",
+        "\t\t\t${enable_subinternval_distribution} = 1;\r",
+        "\t\t}\r",
+        "\t\telse { //Cover for any issues with input\r",
+        "\t\t\t${enable_subhourly_clipping} = 0;\r",
+        "\t\t\t${enable_subinternval_distribution} = 0;\r",
+        "\t\t}\r",
+        "\t\t\r",
+        "\t}\r",
+        "\telse { //Clipping is not enabled, turn off both models\r",
+        "\t\t${enable_subhourly_clipping} = 0;\r",
+        "\t\t${enable_subinternval_distribution} = 0;\r",
+        "\t}\r",
+        "};*/\r",
+        "\t\t",
         "\t"
     ],
     "Callbacks": [
@@ -7363,7 +7475,10 @@
         "\tpv_losses_enable_subarray_items( 4, value('subarray4_enable') != false );",
         "\tloss_adjustment_set();",
         "\tdc_loss_adjustment_set();\r",
-        "\tsubhourly_clipping_check();",
+        "\tsubhourly_clipping_check();\r",
+        "\ton_change{'enable_subhourly_clipping_ui'}();\r",
+        "\tclipping_correction_method_choice();\r",
+        "\t",
         "\t",
         "\t// Remove the following once there's a bifacial rack shading calculation",
         "\tshow('Label_bifacial_0', false);",
@@ -7454,16 +7569,59 @@
         "{\r",
         "\ttimestep = value('ui_step_minutes');\r",
         "\tif (timestep < 60) {\r",
-        "\t\tvalue('enable_subhourly_clipping', 0);\r",
-        "\t\tenable('enable_subhourly_clipping', false);\r",
+        "\t\tvalue('enable_subhourly_clipping_ui', 0);\r",
+        "\t\tenable('enable_subhourly_clipping_ui', false);\r",
         "\t}\r",
         "\telse {\r",
-        "\t\tenable('enable_subhourly_clipping', true);\r",
+        "\t\tenable('enable_subhourly_clipping_ui', true);\r",
         "\t}\r",
         "}\r",
         "\r",
+        "on_change{'enable_subhourly_clipping_ui'} = define() {\r",
+        "\tcheck = value('enable_subhourly_clipping_ui');\r",
+        "\tenable('clipping_correction_method_ui', false);\r",
+        "\t//msgbox(str(check));\r",
+        "\tif (check) {\r",
+        "\t\tenable('clipping_correction_method_ui', true);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('clipping_correction_method_ui', false);\r",
+        "\t}\r",
+        "\tclipping_correction_method_choice();\r",
+        "};\r",
+        "\r",
         "on_change{'ui_step_minutes'} = define() {\r",
         "\tsubhourly_clipping_check();\r",
-        "};"
+        "};\r",
+        "\r",
+        "function clipping_correction_method_choice() {\r",
+        "\tclipping_on = value('enable_subhourly_clipping_ui');\r",
+        "\tclipping_method = value('clipping_correction_method_ui');\r",
+        "\tif (clipping_on) {\r",
+        "\t\tif (clipping_method == 0) {\r",
+        "\t\t\tvalue('enable_subhourly_clipping', 1);\r",
+        "\t\t\tvalue('enable_subinterval_distribution', 0);\r",
+        "\t\t}\r",
+        "\t\telse if (clipping_method == 1) {\r",
+        "\t\t\tvalue('enable_subhourly_clipping', 0);\r",
+        "\t\t\tvalue('enable_subinterval_distribution', 1);\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tvalue('enable_subhourly_clipping', 0);\r",
+        "\t\t\tvalue('enable_subinterval_distribution', 0);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tvalue('enable_subhourly_clipping', 0);\r",
+        "\t\tvalue('enable_subinterval_distribution', 0);\r",
+        "\t}\r",
+        "}\r",
+        "\r",
+        "on_change{'clipping_correction_method_ui'} = define() {\r",
+        "\tclipping_correction_method_choice();\r",
+        "};\r",
+        "\t\t\r",
+        "\t\t\t\r",
+        "\t"
     ]
 }
