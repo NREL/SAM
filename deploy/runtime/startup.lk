@@ -1377,7 +1377,7 @@ setup_electricity_purchases();
 setconfig( 'Geothermal Power', 'LCOE Calculator' );
 setmodules( ['geothermal',  'grid', 'lcoefcr']);
 setup_geothermal_power_pages();
-addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
 addpage( [[ 'Financial LCOE Calc with Capex Page']], { 'sidebar'='Financial Parameters', 'help'='fin_lcoefcr'} );
 
 setconfig( 'Geothermal Power', 'None' );
