@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 104.0
+                    "Integer": 98.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "SAM includes the financing cost and working capital reserve in the project financing cost, which is part of the project total equity capital in the cash flow. The developer is liable for tax on the development fee in Year 1."
+                    "String": "SAM includes this cost in the purchase of property value reported in the project cash flow. The developer is liable for tax on the development fee in Year 1."
                 },
                 "TextColour": {
                     "Type": 4.0,
