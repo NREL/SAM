@@ -134,7 +134,7 @@ Geothermal Power,Merchant Plant,248258560,10.4575,NA,; Warning: IRR at end of an
 Geothermal Power,Leveraged Partnership Flip,248258560,11.1195,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-5.37013e+07. A negative NPV indicates project costs are higher than revenues.
 Geothermal Power,All Equity Partnership Flip,248258560,11.7313,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-4.97228e+06. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-5.877e+07. A negative NPV indicates project costs are higher than revenues.
 Geothermal Power,Sale Leaseback,248258560,11.8576,8.61147,; Warning: NPV is $-7.17299e+07. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,LCOE Calculator,fail,fail,fail
+Geothermal Power,LCOE Calculator,248204544,NA,NA,; 
 Geothermal Power,None,248204544,NA,NA,; 
 Solar Water Heating,Residential,2252.04,33.2105,NA,; 
 Solar Water Heating,Commercial,2252.12,21.3306,NA,; 
