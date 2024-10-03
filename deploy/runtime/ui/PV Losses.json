@@ -1,7 +1,7 @@
 {
     "Name": "PV Losses",
-    "Width": 859.0,
-    "Height": 1176.0,
+    "Width": 856.0,
+    "Height": 1113.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 176.0
+                    "Integer": 200.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 756.0
+                    "Integer": 771.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 882.0
+                    "Integer": 891.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,7 +172,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 86.0
+                    "Integer": 77.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1367,7 +1367,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 615.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1700,11 +1700,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 663.0
+                    "Integer": 714.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1724,7 +1724,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Apply clipping corrections with matrix lookup approach|Apply clipping correction based on distribution of PV output"
+                    "StringList": "Matrix lookup method|Distribution of PV output method"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -1943,11 +1943,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 636.0
+                    "Integer": 687.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2025,6 +2025,56 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 300.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Subhourly Clipping Loss Correction"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2059,6 +2109,68 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 807.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy days (for hourly simulations only)."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 }
             }
         },
@@ -2385,7 +2497,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 588.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2393,7 +2505,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2401,7 +2513,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model. Subhourly clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy day (for hourly simulations only)."
+                    "String": "AC losses apply to the electrical output of the inverter and account for losses not calculated by the inverter performance model."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2447,7 +2559,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 774.0
+                    "Integer": 789.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2633,7 +2745,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 909.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6163,7 +6275,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 846.0
+                    "Integer": 861.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6246,7 +6358,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 819.0
+                    "Integer": 834.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6329,7 +6441,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 927.0
+                    "Integer": 936.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6406,7 +6518,7 @@
             "Type": 1.0,
             "Label": "AC wiring",
             "Units": "% of AC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
@@ -6417,13 +6529,13 @@
         "adjust": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "AC availability losses",
+            "Units": "% of AC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -6431,8 +6543,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Constant performance adjustment",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of AC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6445,7 +6557,7 @@
             "Type": 1.0,
             "Label": "Enable custom period performance adjustments",
             "Units": "0/1",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6458,7 +6570,7 @@
             "Type": 1.0,
             "Label": "Enable timeseries performance adjustments",
             "Units": "0/1",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6470,8 +6582,8 @@
             "Version": 4.0,
             "Type": 3.0,
             "Label": "Custom period performance adjustments",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of AC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6487,8 +6599,8 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Timeseries performance adjustments",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of AC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6502,8 +6614,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Calculate bifacial electrical mismatch",
-            "Units": " ",
-            "Group": "Losses",
+            "Units": "0/1",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
@@ -6515,8 +6627,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Calculate rack shading",
-            "Units": " ",
-            "Group": "Losses",
+            "Units": "0/1",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6527,10 +6639,10 @@
         "clipping_correction_method_ui": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Clipping correction method choice",
+            "Label": "Clipping correction approach",
             "Units": "0/1",
             "Group": "PV Losses",
-            "IndexLabels": "Apply clipping corrections with matrix lookup approach|Apply clipping correction based on distribution of PV output",
+            "IndexLabels": "Matrix lookup method|Distribution of PV output method",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
@@ -6540,13 +6652,13 @@
         "dc_adjust": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
+            "Label": "DC availability losses",
+            "Units": "% of DC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -6554,8 +6666,8 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "DC Constant performance adjustment",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of DC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6568,7 +6680,7 @@
             "Type": 1.0,
             "Label": "DC enable custom period performance adjustments",
             "Units": "0/1",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6581,7 +6693,7 @@
             "Type": 1.0,
             "Label": "DC enable timeseries performance adjustments",
             "Units": "0/1",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -6593,8 +6705,8 @@
             "Version": 4.0,
             "Type": 3.0,
             "Label": "DC custom period performance adjustments",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of DC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6610,8 +6722,8 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "DC timeseries performance adjustments",
-            "Units": "%",
-            "Group": "Losses",
+            "Units": "% of DC output",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -6626,7 +6738,7 @@
             "Type": 1.0,
             "Label": "DC power optimizer loss",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6652,7 +6764,7 @@
             "Type": 1.0,
             "Label": "Enable subhourly clipping loss correction",
             "Units": "0/1",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6678,7 +6790,7 @@
             "Type": 1.0,
             "Label": "Total DC power loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -6691,7 +6803,7 @@
             "Type": 1.0,
             "Label": "DC wiring loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -6704,7 +6816,7 @@
             "Type": 1.0,
             "Label": "Diodes and connections loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.5,
@@ -6717,7 +6829,7 @@
             "Type": 1.0,
             "Label": "Electrical mismatch 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6730,7 +6842,7 @@
             "Type": 1.0,
             "Label": "Module mismatch loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -6743,7 +6855,7 @@
             "Type": 1.0,
             "Label": "Nameplate loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6756,7 +6868,7 @@
             "Type": 1.0,
             "Label": "Rack shading 1",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6769,7 +6881,7 @@
             "Type": 1.0,
             "Label": "Rear soiling loss 1",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6782,7 +6894,7 @@
             "Type": 2.0,
             "Label": "Monthly soiling losses array 1",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -6808,7 +6920,7 @@
             "Type": 1.0,
             "Label": "Average annual soiling 1",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -6821,7 +6933,7 @@
             "Type": 1.0,
             "Label": "Tracking error loss 1",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6834,7 +6946,7 @@
             "Type": 1.0,
             "Label": "Total DC power loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -6847,7 +6959,7 @@
             "Type": 1.0,
             "Label": "DC wiring loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -6860,7 +6972,7 @@
             "Type": 1.0,
             "Label": "Diodes and connections loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.5,
@@ -6873,7 +6985,7 @@
             "Type": 1.0,
             "Label": "Electrical mismatch 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6886,7 +6998,7 @@
             "Type": 1.0,
             "Label": "Module mismatch loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -6899,7 +7011,7 @@
             "Type": 1.0,
             "Label": "Nameplate loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6912,7 +7024,7 @@
             "Type": 1.0,
             "Label": "Rack shading 2",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6925,7 +7037,7 @@
             "Type": 1.0,
             "Label": "Rear soiling loss 2",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6938,7 +7050,7 @@
             "Type": 2.0,
             "Label": "Monthly soiling losses array 2",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -6964,7 +7076,7 @@
             "Type": 1.0,
             "Label": "Average annual soiling 2",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -6977,7 +7089,7 @@
             "Type": 1.0,
             "Label": "Tracking error loss 2",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -6990,7 +7102,7 @@
             "Type": 1.0,
             "Label": "Total DC power loss 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -7003,7 +7115,7 @@
             "Type": 1.0,
             "Label": "DC wiring loss 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -7016,7 +7128,7 @@
             "Type": 1.0,
             "Label": "Diodes and connections loss 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.5,
@@ -7029,7 +7141,7 @@
             "Type": 1.0,
             "Label": "Electrical mismatch 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7042,7 +7154,7 @@
             "Type": 1.0,
             "Label": "Module mismatch loss 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -7055,7 +7167,7 @@
             "Type": 1.0,
             "Label": "Nameplate loss 3",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7068,7 +7180,7 @@
             "Type": 1.0,
             "Label": "Rack shading 3",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7081,7 +7193,7 @@
             "Type": 1.0,
             "Label": "Rear soiling loss 3",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7094,7 +7206,7 @@
             "Type": 2.0,
             "Label": "Monthly soiling losses array 3",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -7120,7 +7232,7 @@
             "Type": 1.0,
             "Label": "Average annual soiling 3",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -7133,7 +7245,7 @@
             "Type": 1.0,
             "Label": "Tracking error loss 3",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7146,7 +7258,7 @@
             "Type": 1.0,
             "Label": "Total DC power loss 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -7159,7 +7271,7 @@
             "Type": 1.0,
             "Label": "DC wiring loss 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -7172,7 +7284,7 @@
             "Type": 1.0,
             "Label": "Diodes and connections loss 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.5,
@@ -7185,7 +7297,7 @@
             "Type": 1.0,
             "Label": "Electrical mismatch 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7198,7 +7310,7 @@
             "Type": 1.0,
             "Label": "Module mismatch loss 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 2.0,
@@ -7211,7 +7323,7 @@
             "Type": 1.0,
             "Label": "Nameplate loss 4",
             "Units": "% of DC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7224,7 +7336,7 @@
             "Type": 1.0,
             "Label": "Rack shading 4",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7237,7 +7349,7 @@
             "Type": 1.0,
             "Label": "Rear soiling loss 4",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7250,7 +7362,7 @@
             "Type": 2.0,
             "Label": "Monthly soiling losses array 4",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -7276,7 +7388,7 @@
             "Type": 1.0,
             "Label": "Average annual soiling 4",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -7289,7 +7401,7 @@
             "Type": 1.0,
             "Label": "Tracking error loss 4",
             "Units": "% of POA irradiance",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
@@ -7302,7 +7414,7 @@
             "Type": 1.0,
             "Label": "Transformer load loss",
             "Units": "% of AC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -7315,7 +7427,7 @@
             "Type": 1.0,
             "Label": "Transformer no load loss",
             "Units": "% of inverter AC capacity",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -7328,7 +7440,7 @@
             "Type": 1.0,
             "Label": "Transformer rating",
             "Units": "kVA",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -7341,7 +7453,7 @@
             "Type": 1.0,
             "Label": "Transmission loss",
             "Units": "% of AC output",
-            "Group": "Losses",
+            "Group": "PV Losses",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
