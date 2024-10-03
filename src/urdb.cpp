@@ -390,9 +390,8 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name; // do not report url because it has private API key
 		return false;
 	}
-
-//	reader.SetSkipStringDoubleQuotes(true);
-	rapidjson::Document reader;
+// change from UTF8 to UTF16 encoding to address unicode characters per SAM GitHub issue 1848
+	rapidjson::GenericDocument < rapidjson::UTF16<> > reader;
 	reader.Parse(json_data.c_str());
 
 	if (reader.HasParseError())
@@ -401,10 +400,10 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 		return false;
 	}
 
-	if (reader.HasMember("items")) {
-		if (reader["items"].IsArray()) {
+	if (reader.HasMember(L"items")) {
+		if (reader[L"items"].IsArray()) {
 
-			auto item_list = reader["items"].GetArray();
+			auto item_list = reader[L"items"].GetArray();
 
 			rates.clear();
 			// download additional rates, up to 500 at a time
@@ -426,9 +425,9 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 					if (err) *err = "No rates found for url = " + url;
 					return false;
 				}
-				if (reader.HasMember("items")) {
-					if (reader["items"].IsArray()) {
-						auto items = reader["items"].GetArray();
+				if (reader.HasMember(L"items")) {
+					if (reader[L"items"].IsArray()) {
+						auto items = reader[L"items"].GetArray();
 						count = items.Size();
 						for (int i = 0; i < count; i++) {
 							item_list[i + offset] = items[i];
@@ -442,26 +441,26 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 			count = item_list.Size();
 			for (size_t i = 0; i < count; i++) {
 				RateInfo x;
-				x.GUID = item_list[i]["label"].GetString();
-				x.Name = item_list[i]["name"].GetString();
-				x.Utility = item_list[i]["utility"].GetString();
-				x.Sector = item_list[i]["sector"].GetString();
+				x.GUID = item_list[i][L"label"].GetString();
+				x.Name = item_list[i][L"name"].GetString();
+				x.Utility = item_list[i][L"utility"].GetString();
+				x.Sector = item_list[i][L"sector"].GetString();
 				// optional
-				if (item_list[i].HasMember("description"))
-					x.Description = item_list[i]["description"].GetString();
+				if (item_list[i].HasMember(L"description"))
+					x.Description = item_list[i][L"description"].GetString();
 				// optional
-				if (item_list[i].HasMember("source"))
-					x.Source = item_list[i]["source"].GetString();
+				if (item_list[i].HasMember(L"source"))
+					x.Source = item_list[i][L"source"].GetString();
 				// optional
-				if (item_list[i].HasMember("version"))
-					x.Version = item_list[i]["version"].GetInt();
-				x.uri = item_list[i]["uri"].GetString();
+				if (item_list[i].HasMember(L"version"))
+					x.Version = item_list[i][L"version"].GetInt();
+				x.uri = item_list[i][L"uri"].GetString();
 				// optional
-				if (item_list[i].HasMember("startdate"))
-					x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
+				if (item_list[i].HasMember(L"startdate"))
+					x.StartDate = GetDate(item_list[i][L"startdate"].GetInt());
 				// optional
-				if (item_list[i].HasMember("enddate"))
-					x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				if (item_list[i].HasMember(L"enddate"))
+					x.EndDate = GetDate(item_list[i][L"enddate"].GetInt());
 				else
 					x.EndDate = "N/A";
 				rates.push_back(x);
