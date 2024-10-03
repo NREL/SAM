@@ -220,7 +220,7 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not process returned JSON data for utility rate companies.";
+		if (err) *err = wxString::Format("Could not process returned JSON data for utility rate companies.\nRapidJSON ParseErrorCode = %d", reader.GetParseError());
 		return false;
 	}
 
@@ -283,7 +283,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for zip code = " + zipcode + ".";
+		if (err) *err = wxString::Format("Could not parse JSON for zipcode = %s.\nRapidJSON ParseErrorCode = %d", zipcode, reader.GetParseError());;
 		return false;
 	}
 
@@ -321,7 +321,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	reader.Parse(json_data.c_str());
 	if (reader.HasParseError())
 	{
-		if (err) *err = "URDB ask for query by zip: Failed to parse JSON failed for EIAID = " + company_id + ".";
+		if (err) *err = wxString::Format("URDB ask for query by zip: Failed to parse JSON for EIAID = %s\nRapidJSON ParseErrorCode = %d", company_id, reader.GetParseError());
 		return false;
 	}
 
@@ -398,7 +398,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	if (reader.HasParseError())
 	{
 		if (err) *err = wxString::Format("Could not parse JSON for utility company name = %s.\nRapidJSON ParseErrorCode = %d", name, reader.GetParseError());
-		return false;
+			return false;
 	}
 
 	if (reader.HasMember("items")) {
@@ -423,7 +423,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 				json_data = MyGet(url);
 				reader.Parse(json_data.c_str());
 				if (reader.HasParseError()) {
-					if (err) *err = "No rates found for url = " + url;
+					if (err) *err = wxString::Format("No rates found for url = %s\nRapidJSON ParseErrorCode = %d", url, reader.GetParseError());
 					return false;
 				}
 				if (reader.HasMember("items")) {
@@ -514,7 +514,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for GUID = " + guid;
+		if (err) *err = wxString::Format("Could not parse JSON for GUID = %s.\nRapidJSON ParseErrorCode = %d", guid, reader.GetParseError());
 		return false;
 	}
 
