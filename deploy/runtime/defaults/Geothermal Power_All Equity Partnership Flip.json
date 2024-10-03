@@ -19867,6 +19867,7 @@
     "temp_decline_rate": 0.5,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 102871000.0,
+    "total_getem_om_cost": 42468700.0,
     "total_indirect_cost": 20059900.0,
     "total_installed_cost": 122931000.0,
     "turbine_ppi": 0.88285,
