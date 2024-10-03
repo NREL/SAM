@@ -79,6 +79,91 @@ version_upgrade{'2024.5.28'} = define() {
 			value('f_htfmin', 0.25);
 			value('f_htfmax', 1.2);
 	}
+	
+	//Check for renamed generic system configs
+	if(cfg.tech == 'Generic System' || cfg.tech == 'Generic System Battery' || cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
+	{
+		if (cfg.tech == 'Generic System') {
+			message('We renamed Generic System to Custom Generation Profile', 'warning');
+			config('Custom Generation Profile', cfg.fin);
+		}
+		if(cfg.tech == 'Generic System Battery') 
+		{
+			message('We renamed Generic System Battery to Custom Generation Battery', 'warning');
+			config('Custom Generation Battery', cfg.fin);
+		}
+		if(cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
+		{
+			message('We renamed Generic PVWatts Wind FuelCell Battery Hybrid to CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'warning');
+			config('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', cfg.fin);
+			value('customgeneration_system_capacity', oldvalue('generic_system_capacity'), 'Variable name changed');
+			value('customgeneration_total_installed_cost', oldvalue('generic_total_installed_cost'), 'Variable name changed');
+		}
+		
+		config_update_with_old_values();
+		value('customgen.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
+		value("customgen.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
+		value("customgen.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
+		value("customgen.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
+		value("customgen.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
+		value('customgen.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
+		value('customgen.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
+		value('customgen.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
+		value('customgen.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
+		value('customgen.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
+		value('customgen.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
+		value('customgen.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
+		value('customgen.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
+		value('customgen.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
+		value('customgen.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
+		value('customgen.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
+		value('customgen.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
+
+		
+	}
+	
+	//Check for renamed marine battery cost variables
+	if(cfg.tech == "Marine Wave Battery") {
+		value('marinebatt.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
+		value("marinebatt.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
+		value("marinebatt.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
+		value("marinebatt.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
+		value("marinebatt.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
+		value('marinebatt.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
+		value('marinebatt.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
+		value('marinebatt.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
+		value('marinebatt.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
+		value('marinebatt.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
+		value('marinebatt.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
+		value('marinebatt.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
+		value('marinebatt.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
+		value('marinebatt.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
+		value('marinebatt.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
+		value('marinebatt.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
+		value('marinebatt.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
+	}
+	//Check for renamed standalone battery cost variables
+	if(cfg.tech == "Standalone Battery") {
+		value('standalonebatt.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
+		value("standalonebatt.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
+		value("standalonebatt.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
+		value("standalonebatt.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
+		value("standalonebatt.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
+		value('standalonebatt.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
+		value('standalonebatt.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
+		value('standalonebatt.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
+		value('standalonebatt.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
+		value('standalonebatt.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
+		value('standalonebatt.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
+		value('standalonebatt.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
+		value('standalonebatt.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
+		value('standalonebatt.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
+		value('standalonebatt.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
+		value('standalonebatt.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
+		value('standalonebatt.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
+	}
+	
+		
 };
 
 version_upgrade{'2023.12.17'} = define() {

@@ -142,7 +142,7 @@ autographs{ 'Concentrating Solar Power = Physical Trough' } = define() { base_te
 autographs{ 'Dish Stirling' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Generic CSP System' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Solar Water Heating' } = define() { base_technology_graphs(); heatmap_graphs();};
-autographs{ 'Generic System' } = define() { base_technology_graphs(); heatmap_graphs(); };
+autographs{ 'Custom Generation Profile' } = define() { base_technology_graphs(); heatmap_graphs(); };
 autographs{ 'Wind Power' } = define() { base_technology_graphs(); heatmap_graphs(); wind_pruf_graphs();};
 autographs{ 'Fuel Cell' } = define() {heatmap_graphs();};
 autographs{ 'Biopower' } = define() {heatmap_graphs();};
@@ -158,7 +158,7 @@ autographs{ 'Physical Trough IPH' } = define() {heatmap_graphs();};
 autographs{ 'DSGL IPH' } = define() {heatmap_graphs();};
 autographs{ 'MSPT IPH' } = define() {heatmap_graphs();};
 autographs{ 'MSLF IPH' } = define() {heatmap_graphs();};
-autographs{ 'Generic Battery' } = define() {heatmap_graphs();};
+autographs{ 'Custom Generation Battery' } = define() {heatmap_graphs();};
 
 
 
@@ -306,15 +306,15 @@ autographs { 'Photovoltaic Wind Battery Hybrid|Host Developer' } = define () {
 };
 
 
-autographs { 'Generic PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = define () {
+autographs { 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = define () {
 	// monthly energy
-	agraph( 'generic_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	agraph( 'customgeneration_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly Generation in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
 	
 	// after-tax cash flow
 	agraph( 'cf_project_return_aftertax', 'After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 
 	// heatmaps here because of slow loading for scrolling
-	agraph( 'generic_annual_energy_distribution_time', 'Generic annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'customgeneration_annual_energy_distribution_time', 'Custom Generation annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 
@@ -328,16 +328,16 @@ autographs { 'Generic PVWatts Wind FuelCell Battery Hybrid|Single Owner' } = def
 	}
 };
 
-autographs { 'Generic PVWatts Wind FuelCell Battery Hybrid|Host Developer' } = define () {
+autographs { 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid|Host Developer' } = define () {
 	// monthly energy
-	agraph( 'generic_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
+	agraph( 'customgeneration_monthly_energy,pvwatts_monthly_energy,wind_monthly_energy', 'Monthly AC Energy in Year 1', '', 'kWh' , -1, false, true, 'bottom', 1 );
 
 	// after-tax cash flow and host indifference point
 	agraph( 'cf_project_return_aftertax', 'Developer After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 	agraph( 'cf_nte,cf_ppa_price', 'Host Indifference Point and PPA Price', 'Year', '$', -1, true, true,'bottom' );
 
 	// heatmaps here because of slow loading for scrolling
-	agraph( 'generic_annual_energy_distribution_time', 'Generic annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
+	agraph( 'customgeneration_annual_energy_distribution_time', 'Custom generation annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'pvwatts_annual_energy_distribution_time', 'PVWatts annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	agraph( 'wind_annual_energy_distribution_time', 'Wind annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 
