@@ -117,12 +117,12 @@ void OpenEI::RateData::Reset()
 
 	EnergyStructure.resize_fill(1, 6, 0);
 	// single default value
-	EnergyStructure.at(0, 0) = 1;
-	EnergyStructure.at(0, 1) = 1;
-	EnergyStructure.at(0, 2) = 1e+38;
-	EnergyStructure.at(0, 3) = 0;
-	EnergyStructure.at(0, 4) = 0;
-	EnergyStructure.at(0, 5) = 0;
+	EnergyStructure.at(0, 0) = 1; // period
+	EnergyStructure.at(0, 1) = 1; // tier
+	EnergyStructure.at(0, 2) = 1e+38; // max usage
+	EnergyStructure.at(0, 3) = 0; // max usage units
+	EnergyStructure.at(0, 4) = 0; // buy rate (skip adjustments)
+	EnergyStructure.at(0, 5) = 0; // sell rate
 	
 	for (i = 0; i < 12; i++)
 	{
@@ -220,7 +220,7 @@ bool OpenEI::QueryUtilityCompanies(wxArrayString &names, wxString *err)
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not process returned JSON data for utility rate companies.";
+		if (err) *err = wxString::Format("Could not process returned JSON data for utility rate companies.\nRapidJSON ParseErrorCode = %d", reader.GetParseError());
 		return false;
 	}
 
@@ -283,7 +283,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for zip code = " + zipcode + ".";
+		if (err) *err = wxString::Format("Could not parse JSON for zipcode = %s.\nRapidJSON ParseErrorCode = %d", zipcode, reader.GetParseError());;
 		return false;
 	}
 
@@ -321,7 +321,7 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 	reader.Parse(json_data.c_str());
 	if (reader.HasParseError())
 	{
-		if (err) *err = "URDB ask for query by zip: Failed to parse JSON failed for EIAID = " + company_id + ".";
+		if (err) *err = wxString::Format("URDB ask for query by zip: Failed to parse JSON for EIAID = %s\nRapidJSON ParseErrorCode = %d", company_id, reader.GetParseError());
 		return false;
 	}
 
@@ -387,24 +387,23 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	json_data = MyGet(url);
 	if (json_data.IsEmpty())
 	{
-		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name + " " + url;
+		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name; // do not report url because it has private API key
 		return false;
 	}
-
-//	reader.SetSkipStringDoubleQuotes(true);
-	rapidjson::Document reader;
+// change from UTF8 to UTF16 encoding to address unicode characters per SAM GitHub issue 1848
+	rapidjson::GenericDocument < rapidjson::UTF16<> > reader;
 	reader.Parse(json_data.c_str());
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for utility company name = " + name;
-		return false;
+		if (err) *err = wxString::Format("Could not parse JSON for utility company name = %s.\nRapidJSON ParseErrorCode = %d", name, reader.GetParseError());
+			return false;
 	}
 
-	if (reader.HasMember("items")) {
-		if (reader["items"].IsArray()) {
+	if (reader.HasMember(L"items")) {
+		if (reader[L"items"].IsArray()) {
 
-			auto item_list = reader["items"].GetArray();
+			auto item_list = reader[L"items"].GetArray();
 
 			rates.clear();
 			// download additional rates, up to 500 at a time
@@ -423,12 +422,12 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 				json_data = MyGet(url);
 				reader.Parse(json_data.c_str());
 				if (reader.HasParseError()) {
-					if (err) *err = "No rates found for url = " + url;
+					if (err) *err = wxString::Format("No rates found for url = %s\nRapidJSON ParseErrorCode = %d", url, reader.GetParseError());
 					return false;
 				}
-				if (reader.HasMember("items")) {
-					if (reader["items"].IsArray()) {
-						auto items = reader["items"].GetArray();
+				if (reader.HasMember(L"items")) {
+					if (reader[L"items"].IsArray()) {
+						auto items = reader[L"items"].GetArray();
 						count = items.Size();
 						for (int i = 0; i < count; i++) {
 							item_list[i + offset] = items[i];
@@ -442,26 +441,26 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 			count = item_list.Size();
 			for (size_t i = 0; i < count; i++) {
 				RateInfo x;
-				x.GUID = item_list[i]["label"].GetString();
-				x.Name = item_list[i]["name"].GetString();
-				x.Utility = item_list[i]["utility"].GetString();
-				x.Sector = item_list[i]["sector"].GetString();
+				x.GUID = item_list[i][L"label"].GetString();
+				x.Name = item_list[i][L"name"].GetString();
+				x.Utility = item_list[i][L"utility"].GetString();
+				x.Sector = item_list[i][L"sector"].GetString();
 				// optional
-				if (item_list[i].HasMember("description"))
-					x.Description = item_list[i]["description"].GetString();
+				if (item_list[i].HasMember(L"description"))
+					x.Description = item_list[i][L"description"].GetString();
 				// optional
-				if (item_list[i].HasMember("source"))
-					x.Source = item_list[i]["source"].GetString();
+				if (item_list[i].HasMember(L"source"))
+					x.Source = item_list[i][L"source"].GetString();
 				// optional
-				if (item_list[i].HasMember("version"))
-					x.Version = item_list[i]["version"].GetInt();
-				x.uri = item_list[i]["uri"].GetString();
+				if (item_list[i].HasMember(L"version"))
+					x.Version = item_list[i][L"version"].GetInt();
+				x.uri = item_list[i][L"uri"].GetString();
 				// optional
-				if (item_list[i].HasMember("startdate"))
-					x.StartDate = GetDate(item_list[i]["startdate"].GetInt());
+				if (item_list[i].HasMember(L"startdate"))
+					x.StartDate = GetDate(item_list[i][L"startdate"].GetInt());
 				// optional
-				if (item_list[i].HasMember("enddate"))
-					x.EndDate = GetDate(item_list[i]["enddate"].GetInt());
+				if (item_list[i].HasMember(L"enddate"))
+					x.EndDate = GetDate(item_list[i][L"enddate"].GetInt());
 				else
 					x.EndDate = "N/A";
 				rates.push_back(x);
@@ -514,7 +513,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	if (reader.HasParseError())
 	{
-		if (err) *err = "Could not parse JSON for GUID = " + guid;
+		if (err) *err = wxString::Format("Could not parse JSON for GUID = %s.\nRapidJSON ParseErrorCode = %d", guid, reader.GetParseError());
 		return false;
 	}
 
@@ -655,7 +654,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //	wxJSONValue dw = val.Item("demandwindow");
 //	if (dw.IsDouble())
 	if (val.HasMember("demandwindow")) {
-		if (val["demandwindow"].IsDouble()) {
+		if (val["demandwindow"].IsNumber()) {
 			rate.Unused.HasUnusedItems = true;
 			rate.Unused.DemandWindow = val["demandwindow"].GetDouble();
 		}
@@ -664,7 +663,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //   wxJSONValue drpc = val.Item("demandreactivepowercharge");
 //   if (drpc.IsDouble() )
 	if (val.HasMember("demandreactivepowercharge")) {
-		if (val["demandreactivepowercharge"].IsDouble()) {
+		if (val["demandreactivepowercharge"].IsNumber()) {
 			rate.Unused.HasUnusedItems = true;
 			rate.Unused.DemandReactivePowerCharge = val["demandreactivepowercharge"].GetDouble();
 		}
@@ -768,15 +767,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //					double adj = json_double(cr_tier[tier].Item("adj"), 0.0, &rate.Unused.HasCoincidentRate);
 					double max = 1e38;
 					if (cr_tier[tier].HasMember("max"))
-						if (cr_tier[tier]["max"].IsDouble())
+						if (cr_tier[tier]["max"].IsNumber())
 							max = cr_tier[tier]["max"].GetDouble();
 					double charge = 0.0;
 					if (cr_tier[tier].HasMember("rate"))
-						if (cr_tier[tier]["rate"].IsDouble())
+						if (cr_tier[tier]["rate"].IsNumber())
 							charge = cr_tier[tier]["rate"].GetDouble();
 					double adj =  0.0;
 					if (cr_tier[tier].HasMember("adj"))
-						if (cr_tier[tier]["adj"].IsDouble())
+						if (cr_tier[tier]["adj"].IsNumber())
 							adj = cr_tier[tier]["adj"].GetDouble();
 					rate.Unused.CoincidentRateStructure.at(cr_row, 0) = period + 1;
 					rate.Unused.CoincidentRateStructure.at(cr_row, 1) = tier + 1;
@@ -840,19 +839,19 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 //					double max = json_double(ers_tier[tier].Item("max"), 1e38, &rate.HasEnergyCharge);
 					double max = 1e38;
 					if (ers_tier[tier].HasMember("max"))
-						if (ers_tier[tier]["max"].IsDouble())
+						if (ers_tier[tier]["max"].IsNumber()) // some max values are stored as integers
 							max = ers_tier[tier]["max"].GetDouble();
 					double buy = 0.0;
 					if (ers_tier[tier].HasMember("rate"))
-						if (ers_tier[tier]["rate"].IsDouble())
+						if (ers_tier[tier]["rate"].IsNumber())
 							buy = ers_tier[tier]["rate"].GetDouble();
 					double sell = 0.0;
 					if (ers_tier[tier].HasMember("sell"))
-						if (ers_tier[tier]["sell"].IsDouble())
+						if (ers_tier[tier]["sell"].IsNumber())
 							sell = ers_tier[tier]["sell"].GetDouble();
 					double adj = 0.0;
 					if (ers_tier[tier].HasMember("adj"))
-						if (ers_tier[tier]["adj"].IsDouble())
+						if (ers_tier[tier]["adj"].IsNumber())
 							adj = ers_tier[tier]["adj"].GetDouble();
 					wxString units;
 					if (ers_tier[tier].HasMember("unit"))
@@ -894,7 +893,7 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 
 	if (val.HasMember("lookbackpercent")) {
 		auto& lp = val["lookbackpercent"];
-		if (lp.IsDouble()) {
+		if (lp.IsNumber()) {
 			rate.LookbackPercent = lp.GetDouble() * 100.0;
 		}
 		else if (lp.IsInt()) {
@@ -960,15 +959,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 							//						double adj = json_double(fds_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 							double max = 1e38;
 							if (fds_tier[tier].HasMember("max"))
-								if (fds_tier[tier]["max"].IsDouble())
+								if (fds_tier[tier]["max"].IsNumber())
 									max = fds_tier[tier]["max"].GetDouble();
 							double charge = 0.0;
 							if (fds_tier[tier].HasMember("rate"))
-								if (fds_tier[tier]["rate"].IsDouble())
+								if (fds_tier[tier]["rate"].IsNumber())
 									charge = fds_tier[tier]["rate"].GetDouble();
 							double adj = 0.0;
 							if (fds_tier[tier].HasMember("adj"))
-								if (fds_tier[tier]["adj"].IsDouble())
+								if (fds_tier[tier]["adj"].IsNumber())
 									adj = fds_tier[tier]["adj"].GetDouble();
 							rate.DemandFlatStructure.at(fd_row, 0) = m;
 							rate.DemandFlatStructure.at(fd_row, 1) = tier + 1;
@@ -1013,15 +1012,15 @@ bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxStr
 					//				double adj = json_double(drs_tier[tier].Item("adj"), 0.0, &rate.HasDemandCharge);
 					double max = 1e38;
 					if (drs_tier[tier].HasMember("max"))
-						if (drs_tier[tier]["max"].IsDouble())
+						if (drs_tier[tier]["max"].IsNumber())
 							max = drs_tier[tier]["max"].GetDouble();
 					double charge = 0.0;
 					if (drs_tier[tier].HasMember("rate"))
-						if (drs_tier[tier]["rate"].IsDouble())
+						if (drs_tier[tier]["rate"].IsNumber())
 							charge = drs_tier[tier]["rate"].GetDouble();
 					double adj = 0.0;
 					if (drs_tier[tier].HasMember("adj"))
-						if (drs_tier[tier]["adj"].IsDouble())
+						if (drs_tier[tier]["adj"].IsNumber())
 							adj = drs_tier[tier]["adj"].GetDouble();
 
 					rate.DemandTOUStructure.at(ds_row, 0) = period + 1;
