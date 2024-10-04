@@ -173,7 +173,14 @@ function cs_metrics()
 	metric_row( 'cost_installed', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
 	metric_row( 'size_of_equity', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
 	metric_row( 'size_of_debt', {'label'='Size of debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ','tableName'='table_cs_owner' } );
-	if ( value('debt_option')==0 ) metric_row( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2','tableName'='table_cs_owner' } );
+	if ( value('debt_option')==0 )
+	{
+		metric_row( 'min_dscr', {'label'='Minimum DSCR','mode'='f', 'deci'='2', 'tableName'='table_cs_owner' } );
+	}
+	else
+	{
+		metric_row( 'debt_fraction', {'label'='Debt percent','mode'='f', 'deci'='2', 'post'='%', 'tableName'='table_cs_owner' } );
+	}
 
 	metric_table('table_cs_subscriber', {'headers'='Subscriber Metrics by Class,'});
 	if ( value('subscriber1_name') != '' ) { metric_row( 'subscriber1_name', {'label'='Subscriber 1 Name','tableName'='table_cs_subscriber' }); }
