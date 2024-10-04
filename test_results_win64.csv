@@ -129,11 +129,11 @@ Wind Power,LCOE Calculator,818888256,NA,NA,;
 Wind Power,None,201595968,NA,NA,; 
 Fuel Cell,Commercial,1.93447e+06,9.76483,NA,; 
 Fuel Cell,Single Owner,213503456,11.1829,6.5363,; Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-9.64209e+07. A negative NPV indicates project costs are higher than revenues.
-Geothermal Power,Single Owner,fail,fail,fail
-Geothermal Power,Merchant Plant,fail,fail,fail
-Geothermal Power,Leveraged Partnership Flip,fail,fail,fail
-Geothermal Power,All Equity Partnership Flip,fail,fail,fail
-Geothermal Power,Sale Leaseback,fail,fail,fail
+Geothermal Power,Single Owner,248258560,11.1464,8.61147,; Warning: NPV is $-5.53849e+07. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,Merchant Plant,248258560,10.542,NA,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-1.45989e+08. A negative NPV indicates project costs are higher than revenues. Warning: Debt percent is -3.64621. A debt percent less than 0% may indicate the mininum EBITDA cannot support any debt in at least one year.
+Geothermal Power,Leveraged Partnership Flip,248258560,11.3103,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-5.77863e+07. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,All Equity Partnership Flip,248258560,11.814,8.61147,; Warning: IRR at end of analysis period is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: IRR in target year is not a number (NaN). This can indicate that revenues are too low to cover costs, or that they are excessively high compared to costs. Warning: NPV is $-6.76107e+06. A negative NPV indicates project costs are higher than revenues. Warning: NPV is $-5.8788e+07. A negative NPV indicates project costs are higher than revenues.
+Geothermal Power,Sale Leaseback,248258560,11.8576,8.61147,; Warning: NPV is $-7.17299e+07. A negative NPV indicates project costs are higher than revenues.
 Geothermal Power,LCOE Calculator,248204544,NA,NA,; 
 Geothermal Power,None,248204544,NA,NA,; 
 Solar Water Heating,Residential,2252.04,33.2105,NA,; 
