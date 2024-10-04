@@ -1,13 +1,78 @@
 {
     "CustomGeneration": {
+        "adjust": 0.0,
+        "adjust_constant": 0.0,
+        "adjust_en_periods": 0.0,
+        "adjust_en_timeindex": 0.0,
+        "adjust_periods": [
+            [
+                0.0,
+                0.0,
+                0.0
+            ]
+        ],
+        "adjust_timeindex": [
+            0.0
+        ],
+        "analysis_period": 30.0,
         "capacity_factor_calc": 86.4,
-        "customgen.cost.contingency_percent": 5.0,
-        "customgen.cost.epc.percent": 0.0,
-        "customgen.cost.per_watt": 10.0,
+        "conv_eff": 0.0,
+        "customgen.cost.contingency": 0.0,
+        "customgen.cost.contingency_percent": 8.4,
+        "customgen.cost.epc.fixed": 0.0,
+        "customgen.cost.epc.nonfixed": 0.0,
+        "customgen.cost.epc.percent": 16.0,
+        "customgen.cost.epc.total": 0.0,
+        "customgen.cost.installed_per_capacity": 0.0,
+        "customgen.cost.per_watt": 0.0,
+        "customgen.cost.plant": 100000.0,
+        "customgen.cost.plant_scaled": 0.0,
+        "customgen.cost.plm.fixed": 0.0,
+        "customgen.cost.plm.nonfixed": 0.0,
+        "customgen.cost.plm.percent": 3.5,
+        "customgen.cost.plm.total": 0.0,
+        "customgen.cost.sales_tax.percent": 80.0,
+        "customgen.cost.sales_tax.total": 0.0,
+        "customgen.cost.sales_tax.value": 0.0,
+        "degradation": [
+            0.0
+        ],
         "derate": 4.0,
+        "energy_output_array": [
+            0.0
+        ],
         "first_year_output": 756864000.0,
         "first_year_output_peak": 96000.0,
+        "fixed_plant_input": 0.0,
+        "heat_rate": 10.0,
+        "import_message": "",
+        "inflation_rate": 2.5,
+        "nameplate_capacity": 0.0,
+        "om_capacity": [
+            50.0
+        ],
+        "om_capacity_escal": 0.0,
+        "om_fixed": [
+            0.0
+        ],
+        "om_fixed_escal": 0.0,
+        "om_fuel_cost": [
+            0.0
+        ],
+        "om_fuel_cost_escal": 0.0,
+        "om_production": [
+            0.0
+        ],
+        "om_production_escal": 0.0,
+        "sales_tax_rate": 0.0,
+        "spec_mode": 0.0,
         "system_capacity": 100000.0,
+        "system_capacity_combined": 0.0,
+        "system_use_lifetime_output": 0.0,
+        "total_direct_cost": 0.0,
+        "total_indirect_cost": 0.0,
+        "total_installed_cost": 0.0,
+        "ui_step_minutes": 0.0,
         "user_capacity_factor": 90.0
     },
     "PVWatts": {
@@ -21385,21 +21450,6 @@
         "en_batt": 1.0,
         "en_standalone_batt": 0.0,
         "en_wave_batt": 0.0,
-        "genericsys.cost.contingency": 19590.4,
-        "genericsys.cost.contingency_percent": 5.0,
-        "genericsys.cost.epc.fixed": 403010.0,
-        "genericsys.cost.epc.nonfixed": 0.0,
-        "genericsys.cost.epc.percent": 0.0,
-        "genericsys.cost.epc.total": 403010.0,
-        "genericsys.cost.installed_per_capacity": 3.07011,
-        "genericsys.cost.per_watt": 0.0,
-        "genericsys.cost.plm.fixed": 0.0,
-        "genericsys.cost.plm.nonfixed": 49367.9,
-        "genericsys.cost.plm.percent": 12.0,
-        "genericsys.cost.plm.total": 49367.9,
-        "genericsys.cost.sales_tax.percent": 100.0,
-        "genericsys.cost.sales_tax.total": 20569.9,
-        "genericsys.cost.sales_tax.value": 5.0,
         "grid_interconnection_limit_kwac": 20000.0,
         "inflation_rate": 2.5,
         "load": [
@@ -30223,6 +30273,21 @@
         "pv_system_capacity": 540.0,
         "sales_tax_rate": 5.0,
         "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
+        "standalonebatt.cost.contingency": 0.0,
+        "standalonebatt.cost.contingency_percent": 0.0,
+        "standalonebatt.cost.epc.fixed": 0.0,
+        "standalonebatt.cost.epc.nonfixed": 0.0,
+        "standalonebatt.cost.epc.percent": 0.0,
+        "standalonebatt.cost.epc.total": 0.0,
+        "standalonebatt.cost.installed_per_capacity": 0.0,
+        "standalonebatt.cost.per_watt": 0.0,
+        "standalonebatt.cost.plm.fixed": 0.0,
+        "standalonebatt.cost.plm.nonfixed": 0.0,
+        "standalonebatt.cost.plm.percent": 0.0,
+        "standalonebatt.cost.plm.total": 0.0,
+        "standalonebatt.cost.sales_tax.percent": 0.0,
+        "standalonebatt.cost.sales_tax.total": 0.0,
+        "standalonebatt.cost.sales_tax.value": 0.0,
         "system_capacity": 288.05,
         "total_direct_cost": 411399.0,
         "total_indirect_cost": 452378.0,
@@ -39102,6 +39167,8 @@
         "crit_load_user_data": [
             0.0
         ],
+        "customgeneration_system_capacity": 1000.0,
+        "customgeneration_total_installed_cost": 0.0,
         "dc_ac_ratio": 1.15,
         "debt_message": "",
         "debt_option": 1.0,
@@ -47979,8 +48046,6 @@
         "flip_target_year": 20.0,
         "fuelcell_system_capacity": 200.0,
         "fuelcell_total_installed_cost": 84000.0,
-        "generic_system_capacity": 200.0,
-        "generic_total_installed_cost": 26774800.0,
         "grid_curtailment": [
             1e38,
             1e38,
@@ -75109,10 +75174,10 @@
         "ui_annual_load": 0.0,
         "ui_battery_capacity": 288.05,
         "ui_battery_cost": 884347.0,
+        "ui_customgeneration_capacity": 0.0,
+        "ui_customgeneration_cost": 0.0,
         "ui_fuel_cell_capacity": 200.0,
         "ui_fuel_cell_cost": 84000.0,
-        "ui_generic_capacity": 200.0,
-        "ui_generic_cost": 26774800.0,
         "ui_hyb_pv_capacity": 469.565,
         "ui_pv_cost": 937311.0,
         "ui_wacc": 6.70974,

@@ -1390,9 +1390,9 @@ setup_geothermal_power_pages();
 addpage( [['Geothermal Drilling' ]], { 'sidebar'='Well Drilling', 'help'='cc_geothermal' } );
 
 // Generic System //////////////////////////////////////////////////////////////
-function setup_generic_system_pages()
+function setup_custom_generation_pages()
 {
-	addpage( [[ 'Custom Generation Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+	addpage( [[ 'Custom Generation Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='custom_generation_profile_plant' } );
 	setup_grid_limits_page();
 }
 
@@ -1400,34 +1400,34 @@ function setup_generic_system_pages()
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Residential' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'cashloan']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_residential_pages( LOAD_SIMPLE ); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Third Party' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'thirdpartyownership']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
 setup_thirdparty_pages( LOAD_SIMPLE );
 
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Commercial' );
 setmodules( ['custom_generation',  'grid', 'utilityrate5', 'cashloan']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_commercial_pages(LOAD_SIMPLE); //does not include building load calculator
 
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Leveraged Partnership Flip' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'levpartflip']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
@@ -1435,9 +1435,9 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'All Equity Partnership Flip' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'equpartflip']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
@@ -1445,9 +1445,9 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Sale Leaseback' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'saleleaseback']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
@@ -1455,40 +1455,40 @@ setup_electricity_purchases();
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'Single Owner' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'singleowner']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 
 setconfig( 'Custom Generation Profile', 'Merchant Plant' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'merchantplant']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
 
 setconfig( 'Custom Generation Profile', 'Host Developer' );
 setmodules( ['custom_generation', 'grid', 'utilityrate5', 'host_developer']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lifetime_page( DEGRADATION_AC_SINGLE_YEAR );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_host_developer_pages( LOAD_SIMPLE ); //includes building load calculator by default in this function
 
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'LCOE Calculator' );
 setmodules( ['custom_generation', 'grid', 'lcoefcr']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 setup_lcoefcr_pages();
 
 //-----------------------------------------------------
 setconfig( 'Custom Generation Profile', 'None' );
 setmodules( ['custom_generation', 'grid']);
-setup_generic_system_pages();
+setup_custom_generation_pages();
 
 // Generic CSP System //////////////////////////////////////////////////////////
 function setup_generic_csp_pages()
@@ -2381,7 +2381,7 @@ setup_electricity_purchases();
 // Generic Battery /////////////////////////////////////////////////////////
 
 function setup_generic_battery_pages(is_btm) {
-	addpage( [[ 'Custom Generation Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='generic_system_plant' } );
+	addpage( [[ 'Custom Generation Plant', 'Battery Enable' ]], { 'sidebar'='Power Plant' , 'help'='custom_generation_profile_plant' } );
 	if (is_btm)
 	{
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
@@ -2403,7 +2403,7 @@ setconfig( 'Custom Generation Battery', 'Residential' );
 setmodules( ['custom_generation', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_residential_pages( LOAD_SIMPLE );
 
@@ -2411,7 +2411,7 @@ setconfig( 'Custom Generation Battery', 'Commercial' );
 setmodules( ['custom_generation', 'battery',  'grid', 'utilityrate5', 'cashloan']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs']],{ 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_commercial_pages( LOAD_SIMPLE ); //does not include building load calculator
 
@@ -2425,7 +2425,7 @@ setconfig( 'Custom Generation Battery', 'Host Developer' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'host_developer']);
 setup_generic_battery_pages(BTM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_host_developer_pages( LOAD_SIMPLE );
 
@@ -2433,7 +2433,7 @@ setconfig( 'Custom Generation Battery', 'Single Owner' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'singleowner']);
 setup_generic_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_single_owner_pages( );
 setup_electricity_purchases();
@@ -2442,7 +2442,7 @@ setconfig( 'Custom Generation Battery', 'Merchant Plant' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'merchantplant']);
 setup_generic_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_merchant_plant_pages( );
 setup_electricity_purchases();
@@ -2451,7 +2451,7 @@ setconfig( 'Custom Generation Battery', 'Leveraged Partnership Flip' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'levpartflip']);
 setup_generic_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_leveraged_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2460,7 +2460,7 @@ setconfig( 'Custom Generation Battery', 'All Equity Partnership Flip' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'equpartflip']);
 setup_generic_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_all_equity_partnership_flip_pages( );
 setup_electricity_purchases();
@@ -2469,7 +2469,7 @@ setconfig( 'Custom Generation Battery', 'Sale Leaseback' );
 setmodules( ['custom_generation', 'battery', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_generic_battery_pages(FOM);
 setup_lifetime_page( DEGRADATION_AC_LIFETIME );
-addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_generic_system' } );
+addpage( [[ 'Custom Generation Battery Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_custom_generation_profile' } );
 addpage( [[ 'Operating Costs Custom Generation Battery' ]], {'sidebar' = 'Operating Costs', 'help'='oc_battery'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
@@ -3053,9 +3053,9 @@ sethybridvariabledependencies([
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
-addpage( [[ 'Custom Generation Plant' ]], { 'sidebar'='Custom Generation Profile' , 'help'='generic_system_plant', 'bin_name'='CustomGeneration' } );
-addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='Generic AC Degradation','help'='degradation_ac', 'bin_name'='CustomGeneration' } );
-addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Custom Generation Costs', 'help'='cc_generic_system', 'bin_name'='CustomGeneration' } );
+addpage( [[ 'Custom Generation Plant' ]], { 'sidebar'='Custom Generation Profile' , 'help'='custom_generation_profile_plant', 'bin_name'='CustomGeneration' } );
+addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='Custom Generation AC Degradation','help'='degradation_ac', 'bin_name'='CustomGeneration' } );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Custom Generation Installation Costs', 'help'='cc_custom_generation_profile', 'bin_name'='CustomGeneration' } );
 addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Custom Generation Operating Costs', 'help'='oc_operating', 'bin_name'='CustomGeneration'} );
 // pvwatts
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pvwatts_location_and_resource', 'bin_name'='PVWatts' } );
@@ -3135,10 +3135,10 @@ sethybridvariabledependencies([
 ]);
 addpage([['Hybrid System']], {'sidebar'='Hybrid System', 'help'='hybrid_system', 'top_page'=true});
 //generic
-addpage( [[ 'Custom Generation Plant' ]], { 'sidebar'='Custom Generation Plant' , 'help'='generic_system_plant', 'bin_name'='CustomGeneration' } );
+addpage( [[ 'Custom Generation Plant' ]], { 'sidebar'='Custom Generation Profile' , 'help'='custom_generation_profile_plant', 'bin_name'='CustomGeneration' } );
 addpage( [[ 'Degradation AC Single Year'], ], { 'sidebar'='Generic AC Degradation','help'='degradation_ac', 'bin_name'='CustomGeneration' } );
-addpage( [[ 'Generic System Costs']],{ 'sidebar'='Generic Installation Costs', 'help'='cc_generic_system', 'bin_name'='CustomGeneration' } );
-addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Generic Operating Costs', 'help'='oc_operating', 'bin_name'='CustomGeneration'} );
+addpage( [[ 'Custom Generation Costs']],{ 'sidebar'='Custom Generation Installation Costs', 'help'='cc_custom_generation_profile', 'bin_name'='CustomGeneration' } );
+addpage( [[ 'Operating Costs Fuel' ]], {'sidebar' = 'Custom Generation Operating Costs', 'help'='oc_operating', 'bin_name'='CustomGeneration'} );
 // pvwatts
 addpage( [[ 'Solar Resource Data' ]], { 'sidebar'='PV Location and Resource', 'help'='pvwatts_location_and_resource', 'bin_name'='PVWatts' } );
 addpage( [[ 'PVWatts', {'name'='PV Land Area', 'caption' = 'Land Area', 'collapsible'=true, 'collapsible_var'='pv_land_area_is_shown'}, {'name'='PVWatts Advanced Inputs', 'caption' = 'Advanced Inputs', 'collapsible'=true, 'collapsible_var'='pvwatts.advanced.is_shown'} ]], { 'sidebar'='PV System Design', 'help'='pvwatts_system_design', 'bin_name'='PVWatts' } );
