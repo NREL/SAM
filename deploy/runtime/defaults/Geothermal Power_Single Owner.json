@@ -19881,6 +19881,7 @@
     "term_tenor": 18.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 104081000.0,
+    "total_getem_om_cost": 42468700.0,
     "total_indirect_cost": 20295800.0,
     "total_installed_cost": 124377000.0,
     "turbine_ppi": 0.88285,
