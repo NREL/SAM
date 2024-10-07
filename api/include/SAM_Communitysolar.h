@@ -413,6 +413,22 @@ extern "C"
 	SAM_EXPORT void SAM_Communitysolar_SystemCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set om_elec_price_for_heat_techs: Electricity price for purchases in heat model [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Communitysolar_SystemCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_elec_price_for_heat_techs_escal: Escalation for electricity price for purchases in heat model [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Communitysolar_SystemCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
 	 * options: !battery,!fuelcell
 	 * constraints: None
@@ -2798,6 +2814,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Communitysolar_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Communitysolar_SystemCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Communitysolar_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
 

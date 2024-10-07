@@ -632,18 +632,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Storage_u_tank_nset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_string(ptr, "ampl_data_dir", str);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_string(ptr, "ampl_exec_call", str);
-	});
-}
-
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "disp_reporting", number);
@@ -686,12 +674,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_ampl_engine", number);
-	});
-}
-
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_timestep_load_fractions", number);
@@ -701,12 +683,6 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_t
 SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "is_tod_pc_target_also_pc_max", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "is_write_ampl_dat", number);
 	});
 }
 
@@ -2059,26 +2035,6 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Storage_u_tank_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err){
-	const char* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_string(ptr, "ampl_data_dir");
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "ampl_data_dir");
-	});
-	return result;
-}
-
-SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err){
-	const char* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_string(ptr, "ampl_exec_call");
-	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "ampl_exec_call");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2144,15 +2100,6 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table 
 	return result;
 }
 
-SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_ampl_engine", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "is_ampl_engine");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2167,15 +2114,6 @@ SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_tod_pc_target_also_pc_max", &result))
 		make_access_error("SAM_FresnelPhysicalIph", "is_tod_pc_target_also_pc_max");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "is_write_ampl_dat", &result))
-		make_access_error("SAM_FresnelPhysicalIph", "is_write_ampl_dat");
 	});
 	return result;
 }
@@ -4058,6 +3996,15 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr,
 	result = ssc_data_get_array(ptr, "n_op_modes", length);
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "n_op_modes");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nameplate", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "nameplate");
 	});
 	return result;
 }

@@ -202,13 +202,13 @@
 		"TimeOfDeliveryFactors": {
 		},
 		"CapitalCosts": {
-			"bop_spec_cost": 340,
+			"bop_spec_cost": 0,
 			"contingency_percent": 7,
 			"epc_cost_fixed": 0,
 			"epc_cost_per_acre": 0,
 			"epc_cost_per_watt": 0,
 			"epc_cost_percent_direct": 11,
-			"heat_sink_spec_cost": 0,
+			"heat_sink_spec_cost": 140,
 			"htf_system_spec_cost": 47,
 			"plm_cost_fixed": 0,
 			"plm_cost_per_acre": 10000,

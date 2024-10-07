@@ -896,22 +896,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ampl_data_dir: AMPL data file directory [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
 	 * Set disp_reporting: Dispatch optimization reporting level [-]
 	 * options: None
 	 * constraints: None
@@ -968,14 +952,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
 	 * options: None
 	 * constraints: None
@@ -990,14 +966,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
@@ -1027,7 +995,7 @@ extern "C"
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: is_timestep_load_fractions=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1805,10 +1773,6 @@ extern "C"
 	 * Tou Getters
 	 */
 
-	SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
@@ -1823,13 +1787,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
@@ -2272,6 +2232,8 @@ extern "C"
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 

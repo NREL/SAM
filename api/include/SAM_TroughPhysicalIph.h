@@ -32,20 +32,12 @@ extern "C"
 	//
 
 	/**
-	 * Set disp_csu_cost: Cycle startup cost [$]
+	 * Set is_dispatch: Allow dispatch optimization?
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_disp_csu_cost_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_rsu_cost: Receiver startup cost [$]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_disp_rsu_cost_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
@@ -445,6 +437,22 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_loop_out_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_shutdown: Temperature when solar field begins recirculating [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_shutdown_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_startup: Required temperature of the system before the power block can be switched on [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SolarField_T_startup_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set Tau_envelope: Envelope transmittance [none]
@@ -940,7 +948,7 @@ extern "C"
 	 * Set cold_tank_Thtr: Minimum allowable cold tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -948,31 +956,39 @@ extern "C"
 	 * Set cold_tank_max_heat: Rated heater capacity for cold tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set d_tank_in: Tank diameter input [m]
+	 * options: None
+	 * constraints: None
+	 * required if: is_h_tank_fixed=0|is_h_tank_fixed=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set h_tank: Total height of tank (height of HTF when tank is full [m]
+	 * Set h_tank_in: Total height of tank input (height of HTF when tank is full [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: is_h_tank_fixed=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -980,7 +996,7 @@ extern "C"
 	 * Set hot_tank_Thtr: Minimum allowable hot tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_hot_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -988,7 +1004,7 @@ extern "C"
 	 * Set hot_tank_max_heat: Rated heater capacity for hot tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1001,10 +1017,18 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_h_tank_fixed: [1] Use fixed height (calculate diameter) [0] Use fixed diameter [2] Use fixed d and h (for packed bed) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set store_fl_props: User defined storage fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1012,7 +1036,7 @@ extern "C"
 	 * Set store_fluid: Material number for storage fluid [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_store_fluid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1023,6 +1047,134 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_n_tsteps: Number of subtimesteps (for NT and packed bed)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type>0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_nt_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_cp: Tank wall cp (used for Norwich HeatTrap) [kJ/kg-K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_nt_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_dens: Tank wall thickness (used for Norwich HeatTrap) [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_nt_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_insul_percent: Percent additional wall mass due to insulation (used for Norwich HeatTrap) [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_nt_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_thick: Tank wall thickness (used for Norwich HeatTrap) [m]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_nt_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_charge_min: Min charge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_charge_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_cold_delta: Max allowable increase in cold discharge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_cold_delta_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_hot_delta: Max allowable decrease in hot discharge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_hot_delta_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_cp_solid: TES particle specific heat [kJ/kg K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_cp_solid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_dens_solid: TES packed bed media density [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_dens_solid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_f_oversize: Packed bed oversize factor
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_f_oversize_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_k_eff: TES packed bed effective conductivity [W/m K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_k_eff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_n_xsteps: Number of spatial segments
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_n_xsteps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_void_frac: TES packed bed void fraction
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_void_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_type: Standard two tank (0), Packed Bed (1), HeatTrap Single Tank (2) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tshours: Equivalent full-load thermal storage hours [hr]
@@ -1036,297 +1188,9 @@ extern "C"
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Tou parameters
-	//
-
-	/**
-	 * Set ampl_data_dir: AMPL data file directory [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set can_cycle_use_standby: Can the cycle use standby operation?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_pen_delta_w: Dispatch cycle production change penalty [$/kWe-change]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_pen_delta_w_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekday: 12x24 PPA pricing Weekday schedule
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: 12x24 PPA pricing Weekend schedule
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
-	 * options: 0=diurnal,1=timestep
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=9e99
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-
-	//
-	// FinancialModel parameters
-	//
-
-	/**
-	 * Set csp_financial_model:  [1-8]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// FinancialSolutionMode parameters
-	//
-
-	/**
-	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// ElectricityRates parameters
-	//
-
-	/**
-	 * Set en_electricity_rates: Enable electricity rates for grid purchase [0/1]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// TimeOfDeliveryFactors parameters
-	//
-
-	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
-	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// Revenue parameters
-	//
-
-	/**
-	 * Set mp_energy_market_revenue: Energy market revenue input
-	 * options: Lifetime x 2[Cleared Capacity(MW),Price($/MWh)]
-	 * constraints: None
-	 * required if: csp_financial_model=6&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_mp_energy_market_revenue_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// System parameters
-	//
-
-	/**
-	 * Set aux_array: Auxiliary heater, mult frac and const, linear and quad coeff
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_System_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set bop_array: Balance of plant parasitic power fraction, mult frac and const, linear and quad coeff
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_System_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set pb_fixed_par: Fraction of rated gross power constantly consumed [MWe/MWcap]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_System_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set washing_frequency: Mirror washing frequency [-/year]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_System_washing_frequency_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set water_usage_per_wash: Water usage per wash [L/m2_aper]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_System_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Powerblock parameters
-	//
-
-	/**
-	 * Set L_rnr_pb: Length of runner pipe in power block [m]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set P_boil: Boiler operating pressure [bar]
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Powerblock_P_boil_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1409,7 +1273,7 @@ extern "C"
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1463,16 +1327,291 @@ extern "C"
 
 
 	//
-	// TowerAndReceiver parameters
+	// SysControl parameters
 	//
 
 	/**
-	 * Set piping_loss: Thermal loss per meter of piping [Wt/m]
+	 * Set disp_frequency: Frequency for dispatch optimization calculations [hour]
 	 * options: None
 	 * constraints: None
 	 * required if: None
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_frequency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_horizon: Time horizon for dispatch optimization [hour]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_horizon_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_max_iter: Max. no. dispatch optimization iterations [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_mip_gap: Dispatch optimization solution tolerance [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_mip_gap_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_time_weighting: Dispatch optimization future time discounting factor [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.999
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_time_weighting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_timeout: Max. dispatch optimization solve duration [s]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Tou parameters
+	//
+
+	/**
+	 * Set disp_reporting: Dispatch optimization reporting level [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Time series electricity price multipliers
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekday: 12x24 PPA pricing Weekday schedule
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set dispatch_sched_weekend: 12x24 PPA pricing Weekend schedule
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set f_turb_tou_periods: Time series heat sink load fractions
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
+	 * options: 0=diurnal,1=timestep
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_fractions: Heat sink load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set weekday_schedule: 12x24 CSP operation Time-of-Use Weekday schedule
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set weekend_schedule: 12x24 CSP operation Time-of-Use Weekend schedule
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// FinancialModel parameters
+	//
+
+	/**
+	 * Set csp_financial_model:  [1-8]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// FinancialSolutionMode parameters
+	//
+
+	/**
+	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// TimeOfDeliveryFactors parameters
+	//
+
+	/**
+	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
+	 * options: We added this array input after SAM 2022.12.21 to replace the functionality of former single value inputs dispatch_factor1 through dispatch_factor9
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// System parameters
+	//
+
+	/**
+	 * Set aux_array: Auxiliary heater, mult frac and const, linear and quad coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_System_aux_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set bop_array: Balance of plant parasitic power fraction, mult frac and const, linear and quad coeff
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_System_bop_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set pb_fixed_par: Fraction of rated gross power constantly consumed [MWe/MWcap]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_System_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set washing_frequency: Mirror washing frequency [-/year]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_System_washing_frequency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set water_usage_per_wash: Water usage per wash [L/m2_aper]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_System_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Powerblock parameters
+	//
+
+	/**
+	 * Set L_rnr_pb: Length of runner pipe in power block [m]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1826,13 +1965,269 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set en_electricity_rates: Optionally enable/disable electricity_rate [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_annual_min_charge: Annual minimum charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand [%]
+	 * options: 12x2
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_lookback_period: Billing demand lookback period [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=12
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_minimum: Minimum billing demand [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_billing_demand_periods: Billing demand applicability to a given demand charge time of use period
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_billing_demand_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_enable: Enable demand charge [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_flat_mat: Demand rates (flat) table [col 0=month, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule [Periods defined in ur_dc_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule [Periods defined in ur_dc_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table [col 0=period no, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule [Periods defined in ur_ec_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule [Periods defined in ur_ec_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_tou_mat: Energy rates table [col 0=period no, col 1=tier no, col 2=max usage, col 3=max usage units (0=kWh, 1=kWh/kW, 2=kWh daily, 3=kWh/kW daily), col 4=buy rate ($/kWh), col 5=sell rate ($/kWh)]
+	 * options: nx6
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_enable_billing_demand: Enable billing demand ratchets [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_metering_option: Metering options [0=net energy metering,1=net energy metering with $ credits,2=net billing,3=net billing with carryover to next month,4=buy all - sell all]
+	 * options: Net metering monthly excess
+	 * constraints: INTEGER,MIN=0,MAX=4
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_metering_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_monthly_fixed_charge: Monthly fixed charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_monthly_fixed_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_monthly_min_charge: Monthly minimum charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_apply_credit_current_month: Apply earned credits to balance before rolling over excess         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_credit_expire: Credit is lost upon end of year         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=11
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_nm_yearend_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_sell_eq_buy: Set sell rate equal to buy rate [0/1]
+	 * options: Optional override
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_ts_buy_rate: Time step buy rates [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_ts_sell_rate: Time step sell rates [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero [kW]
+	 * options: 12
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * SystemControl Getters
 	 */
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_disp_csu_cost_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_disp_rsu_cost_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
@@ -1944,6 +2339,10 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_in_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_loop_out_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_shutdown_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SolarField_T_startup_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -2079,9 +2478,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_dt_hot_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err);
 
@@ -2091,117 +2492,49 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_store_fluid_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_n_tsteps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_TES_tes_nt_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_nt_tank_cp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_nt_tank_dens_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_nt_tank_insul_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_nt_tank_thick_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_T_charge_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_T_cold_delta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_T_hot_delta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_cp_solid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_dens_solid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_f_oversize_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_k_eff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_n_xsteps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_pb_void_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tes_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_tshours_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_TES_u_tank_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Tou Getters
-	 */
-
-	SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_TroughPhysicalIph_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_pen_delta_w_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-
-	/**
-	 * FinancialModel Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * FinancialSolutionMode Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * ElectricityRates Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * TimeOfDeliveryFactors Getters
-	 */
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * Revenue Getters
-	 */
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_mp_energy_market_revenue_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * System Getters
-	 */
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_System_aux_array_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_System_bop_array_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_System_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_System_washing_frequency_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_System_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Powerblock Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_P_boil_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2242,10 +2575,105 @@ extern "C"
 
 
 	/**
-	 * TowerAndReceiver Getters
+	 * SysControl Getters
 	 */
 
-	SAM_EXPORT double SAM_TroughPhysicalIph_TowerAndReceiver_piping_loss_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_frequency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_horizon_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_max_iter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_mip_gap_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_time_weighting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Tou Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+
+	/**
+	 * FinancialModel Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_FinancialModel_csp_financial_model_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * FinancialSolutionMode Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * TimeOfDeliveryFactors Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * System Getters
+	 */
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_System_aux_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_System_bop_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_System_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_System_washing_frequency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_System_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Powerblock Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Powerblock_L_rnr_pb_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2348,6 +2776,78 @@ extern "C"
 
 
 	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -2380,6 +2880,26 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_cold_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_field_hot_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_0_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_grad_9_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2527,6 +3047,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_csp_pt_tes_tank_height_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_dP_sf_SS_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2535,11 +3057,43 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_direct_subtotal_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_obj_relax_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_objective_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_presolve_nconstr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_presolve_nvar_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_qsf_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_qsfprod_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_qsfsu_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_rel_mip_gap_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_solve_iter_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_solve_state_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_solve_time_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_subopt_flag_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_tes_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_disp_thermeff_expected_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_dni_costh_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_ch_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_e_dot_field_int_energy_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_elec_price_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_electricity_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_f_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
 
@@ -2558,6 +3112,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_fixed_land_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_heat_load_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2761,7 +3317,21 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_SA_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_SA_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_SA_tot_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_cold_vol_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_error_corrected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_error_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_avg_temp_nget(SAM_table ptr, SAM_error *err);
 
@@ -2770,6 +3340,16 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tes_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_leak_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_mass_tot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_piston_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_piston_loc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_wall_error_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2800,6 +3380,12 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vol_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vol_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_vol_tes_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 

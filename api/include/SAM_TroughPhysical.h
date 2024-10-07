@@ -618,6 +618,22 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_T_loop_out_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set T_shutdown: Temperature when solar field begins recirculating [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_T_shutdown_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_startup: Required temperature of the system before the power block can be switched on [C]
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SolarField_T_startup_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set Tau_envelope: Envelope transmittance [none]
 	 * options: None
 	 * constraints: None
@@ -1311,7 +1327,7 @@ extern "C"
 	 * Set cold_tank_Thtr: Minimum allowable cold tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_cold_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1319,31 +1335,39 @@ extern "C"
 	 * Set cold_tank_max_heat: Rated heater capacity for cold tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set d_tank_in: Tank diameter input [m]
+	 * options: None
+	 * constraints: None
+	 * required if: is_h_tank_fixed=0|is_h_tank_fixed=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_d_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set h_tank: Total height of tank (height of HTF when tank is full [m]
+	 * Set h_tank_in: Total height of tank input (height of HTF when tank is full [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: is_h_tank_fixed=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysical_TES_h_tank_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysical_TES_h_tank_in_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1351,7 +1375,7 @@ extern "C"
 	 * Set hot_tank_Thtr: Minimum allowable hot tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_hot_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1359,7 +1383,7 @@ extern "C"
 	 * Set hot_tank_max_heat: Rated heater capacity for hot tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_hot_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1372,10 +1396,18 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_TES_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_h_tank_fixed: [1] Use fixed height (calculate diameter) [0] Use fixed diameter [2] Use fixed d and h (for packed bed) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_is_h_tank_fixed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set store_fl_props: User defined storage fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1383,7 +1415,7 @@ extern "C"
 	 * Set store_fluid: Material number for storage fluid [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_store_fluid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1394,6 +1426,134 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_n_tsteps: Number of subtimesteps (for NT and packed bed)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type>0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_nt_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_cp: Tank wall cp (used for Norwich HeatTrap) [kJ/kg-K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_nt_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_dens: Tank wall thickness (used for Norwich HeatTrap) [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_nt_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_insul_percent: Percent additional wall mass due to insulation (used for Norwich HeatTrap) [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_nt_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_nt_tank_thick: Tank wall thickness (used for Norwich HeatTrap) [m]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_nt_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_charge_min: Min charge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_T_charge_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_cold_delta: Max allowable increase in cold discharge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_T_cold_delta_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_T_hot_delta: Max allowable decrease in hot discharge temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_T_hot_delta_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_cp_solid: TES particle specific heat [kJ/kg K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_cp_solid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_dens_solid: TES packed bed media density [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_dens_solid_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_f_oversize: Packed bed oversize factor
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_f_oversize_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_k_eff: TES packed bed effective conductivity [W/m K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_k_eff_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_n_xsteps: Number of spatial segments
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_n_xsteps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_pb_void_frac: TES packed bed void fraction
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_pb_void_frac_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_type: Standard two tank (0), Packed Bed (1), HeatTrap Single Tank (2) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tshours: Equivalent full-load thermal storage hours [hr]
@@ -1407,9 +1567,150 @@ extern "C"
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: tes_type=0|tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_TES_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// Controller parameters
+	//
+
+	/**
+	 * Set DP_SGS: Pressure drop within the steam generator [bar]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_DP_SGS_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_tank_hot_inlet_min: Minimum hot tank htf inlet temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_T_tank_hot_inlet_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set V_tes_des: Design-point velocity to size the TES pipe diameters [m/s]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_V_tes_des_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set custom_tes_p_loss: TES pipe losses are based on custom lengths and coeffs [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_p_loss_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set custom_tes_pipe_sizes: Use custom TES pipe diams, wallthks, and lengths [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set has_hot_tank_bypass: Bypass valve connects field outlet to cold tank [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_has_hot_tank_bypass_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set k_tes_loss_coeffs: Minor loss coeffs for the coll, gen, and bypass loops [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set non_solar_field_land_area_multiplier: non_solar_field_land_area_multiplier [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_solar_multiple: specified_solar_multiple [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_solar_multiple_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set specified_total_aperture: specified_total_aperture [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_total_aperture_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_diams: Custom TES diameters [m]
+	 * options: None
+	 * constraints: None
+	 * required if: custom_tes_pipe_sizes=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_diams_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set tes_lengths: Custom TES lengths [m]
+	 * options: None
+	 * constraints: None
+	 * required if: custom_tes_pipe_sizes=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_lengths_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set tes_pump_coef: Pumping power to move 1kg of HTF through tes loop [kW/(kg/s)]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_pump_coef_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_wallthicks: Custom TES wall thicknesses [m]
+	 * options: None
+	 * constraints: None
+	 * required if: custom_tes_pipe_sizes=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set trough_loop_control: trough_loop_control [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_trough_loop_control_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set use_solar_mult_or_aperture_area: Use solar multiple or total field aperture area [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1609,6 +1910,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Tou_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
 	 * options: None
 	 * constraints: None
@@ -1797,147 +2106,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_System_water_usage_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// Controller parameters
-	//
-
-	/**
-	 * Set DP_SGS: Pressure drop within the steam generator [bar]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_DP_SGS_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set T_tank_hot_inlet_min: Minimum hot tank htf inlet temperature [C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_T_tank_hot_inlet_min_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set V_tes_des: Design-point velocity to size the TES pipe diameters [m/s]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_V_tes_des_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set custom_tes_p_loss: TES pipe losses are based on custom lengths and coeffs [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_p_loss_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set custom_tes_pipe_sizes: Use custom TES pipe diams, wallthks, and lengths [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set has_hot_tank_bypass: Bypass valve connects field outlet to cold tank [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_has_hot_tank_bypass_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set k_tes_loss_coeffs: Minor loss coeffs for the coll, gen, and bypass loops [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set non_solar_field_land_area_multiplier: non_solar_field_land_area_multiplier [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set specified_solar_multiple: specified_solar_multiple [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_solar_multiple_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set specified_total_aperture: specified_total_aperture [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_specified_total_aperture_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_diams: Custom TES diameters [m]
-	 * options: None
-	 * constraints: None
-	 * required if: custom_tes_pipe_sizes=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_diams_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set tes_lengths: Custom TES lengths [m]
-	 * options: None
-	 * constraints: None
-	 * required if: custom_tes_pipe_sizes=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_lengths_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set tes_pump_coef: Pumping power to move 1kg of HTF through tes loop [kW/(kg/s)]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_pump_coef_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_wallthicks: Custom TES wall thicknesses [m]
-	 * options: None
-	 * constraints: None
-	 * required if: custom_tes_pipe_sizes=1
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_tes_wallthicks_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set trough_loop_control: trough_loop_control [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_trough_loop_control_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set use_solar_mult_or_aperture_area: Use solar multiple or total field aperture area [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2305,6 +2473,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_T_loop_out_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_T_shutdown_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SolarField_T_startup_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_Tau_envelope_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_TrackingError_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2489,9 +2661,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_cold_tank_max_heat_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_TES_d_tank_in_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_TES_dt_hot_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TroughPhysical_TES_h_tank_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TroughPhysical_TES_h_tank_in_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_h_tank_min_nget(SAM_table ptr, SAM_error *err);
 
@@ -2501,15 +2675,88 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_init_hot_htf_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_TES_is_h_tank_fixed_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysical_TES_store_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_store_fluid_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_n_tsteps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_TES_tes_nt_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_nt_tank_cp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_nt_tank_dens_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_nt_tank_insul_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_nt_tank_thick_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_T_charge_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_T_cold_delta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_T_hot_delta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_cp_solid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_dens_solid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_f_oversize_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_k_eff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_n_xsteps_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_pb_void_frac_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_TES_tes_type_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_TES_tshours_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_TES_u_tank_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Controller Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_DP_SGS_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_V_tes_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_p_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Controller_trough_loop_control_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2563,6 +2810,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_dispatch_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
@@ -2633,45 +2882,6 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_System_washing_frequency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_System_water_usage_per_wash_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Controller Getters
-	 */
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_DP_SGS_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_T_tank_hot_inlet_min_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_V_tes_des_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_p_loss_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_custom_tes_pipe_sizes_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_has_hot_tank_bypass_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Controller_k_tes_loss_coeffs_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_non_solar_field_land_area_multiplier_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_solar_multiple_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_specified_total_aperture_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_tanks_in_parallel_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_lengths_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_tes_pump_coef_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Controller_tes_wallthicks_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysical_Controller_trough_loop_control_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_Controller_use_solar_mult_or_aperture_area_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2776,6 +2986,26 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_field_cold_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_field_hot_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_0_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_grad_9_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_T_in_loop_final_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2886,6 +3116,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_htf_density_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_diameter_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Outputs_csp_pt_tes_tank_height_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_cycle_Tdb_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -3187,7 +3419,21 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_SA_tot_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_avail_vol_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_cold_vol_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_corrected_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_error_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_htf_avg_temp_nget(SAM_table ptr, SAM_error *err);
 
@@ -3196,6 +3442,16 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_tes_htf_min_temp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_leak_error_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_mass_tot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_piston_frac_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_piston_loc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_tes_wall_error_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3226,6 +3482,12 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_min_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Outputs_vol_tank_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_cold_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_hot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysical_Outputs_vol_tes_tot_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Outputs_wspd_aget(SAM_table ptr, int* length, SAM_error *err);
 

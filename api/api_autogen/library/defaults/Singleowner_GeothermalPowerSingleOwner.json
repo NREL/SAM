@@ -369,9 +369,12 @@
 			"gen": [0.000000],
 			"system_capacity": 32813.6
 		},
+		"HeatModelOutput": {
+		},
 		"UtilityBill": {
 		},
 		"Lifetime": {
+			"inflation_rate": 2.5,
 			"system_use_lifetime_output": 1
 		},
 		"FuelCell": {

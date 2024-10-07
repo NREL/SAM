@@ -544,7 +544,7 @@ extern "C"
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 

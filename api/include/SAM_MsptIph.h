@@ -53,22 +53,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ampl_data_dir: AMPL data file directory
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
 	 * Set aux_par: Aux heater, boiler parasitic [MWe/MWcap]
 	 * options: None
 	 * constraints: None
@@ -269,14 +253,6 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set is_dispatch: Allow dispatch optimization?
 	 * options: None
 	 * constraints: None
@@ -307,14 +283,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_MsptIph_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set pb_fixed_par: Fixed parasitic load - runs at all times [MWe/MWcap]
@@ -376,7 +344,7 @@ extern "C"
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: is_timestep_load_fractions=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_SystemControl_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1100,7 +1068,7 @@ extern "C"
 	 * Set piping_loss_coefficient: Thermal loss per meter of piping [Wt/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_MsptIph_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1539,7 +1507,7 @@ extern "C"
 	 * Set tes_init_hot_htf_percent: Initial fraction of available volume that is hot [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_MsptIph_ThermalStorage_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1960,10 +1928,6 @@ extern "C"
 	 * SystemControl Getters
 	 */
 
-	SAM_EXPORT const char* SAM_MsptIph_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_MsptIph_SystemControl_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MsptIph_SystemControl_aux_par_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_aux_par_0_nget(SAM_table ptr, SAM_error *err);
@@ -2014,8 +1978,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_MsptIph_SystemControl_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err);
@@ -2023,8 +1985,6 @@ extern "C"
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_MsptIph_SystemControl_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
 

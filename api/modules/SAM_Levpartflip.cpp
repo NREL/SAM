@@ -374,6 +374,18 @@ SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_capacity_escal_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_elec_price_for_heat_techs", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_elec_price_for_heat_techs_escal", number);
+	});
+}
+
 SAM_EXPORT void SAM_Levpartflip_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
@@ -2279,6 +2291,25 @@ SAM_EXPORT double SAM_Levpartflip_SystemCosts_om_capacity_escal_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
 		make_access_error("SAM_Levpartflip", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Levpartflip_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_elec_price_for_heat_techs", length);
+	if (!result)
+		make_access_error("SAM_Levpartflip", "om_elec_price_for_heat_techs");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Levpartflip_SystemCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_elec_price_for_heat_techs_escal", &result))
+		make_access_error("SAM_Levpartflip", "om_elec_price_for_heat_techs_escal");
 	});
 	return result;
 }

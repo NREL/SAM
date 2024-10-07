@@ -380,6 +380,18 @@ SAM_EXPORT void SAM_Singleowner_SystemCosts_om_capacity_escal_nset(SAM_table ptr
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_SystemCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_elec_price_for_heat_techs", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_SystemCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_elec_price_for_heat_techs_escal", number);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_SystemCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_fixed", arr, length);
@@ -1736,9 +1748,21 @@ SAM_EXPORT void SAM_Singleowner_SystemOutput_system_pre_curtailment_kwac_aset(SA
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_HeatModelOutput_annual_electricity_consumption_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "annual_electricity_consumption", number);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_UtilityBill_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "utility_bill_w_sys", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
 	});
 }
 
@@ -2540,6 +2564,25 @@ SAM_EXPORT double SAM_Singleowner_SystemCosts_om_capacity_escal_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
 		make_access_error("SAM_Singleowner", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_elec_price_for_heat_techs", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "om_elec_price_for_heat_techs");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_SystemCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_elec_price_for_heat_techs_escal", &result))
+		make_access_error("SAM_Singleowner", "om_elec_price_for_heat_techs_escal");
 	});
 	return result;
 }
@@ -4624,12 +4667,30 @@ SAM_EXPORT double* SAM_Singleowner_SystemOutput_system_pre_curtailment_kwac_aget
 	return result;
 }
 
+SAM_EXPORT double SAM_Singleowner_HeatModelOutput_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_electricity_consumption", &result))
+		make_access_error("SAM_Singleowner", "annual_electricity_consumption");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Singleowner_UtilityBill_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Singleowner", "inflation_rate");
 	});
 	return result;
 }
@@ -6105,6 +6166,16 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_capacity_expense_aget(SAM_table
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_om_capacity_expense");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_elec_price_for_heat_techs", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_om_elec_price_for_heat_techs");
 	});
 	return result;
 }
