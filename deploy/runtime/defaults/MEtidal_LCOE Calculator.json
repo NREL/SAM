@@ -1093,6 +1093,7 @@
     "tidal_resource_filename": "COD0911.csv",
     "tidal_resource_model_choice": 0.0,
     "tidal_resource_shear": 0.0,
+    "tidal_turbine_cf": 30.0,
     "tidal_turbine_cut_out": 3.3,
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
