@@ -1093,7 +1093,6 @@
     "tidal_resource_filename": "COD0911.csv",
     "tidal_resource_model_choice": 0.0,
     "tidal_resource_shear": 0.0,
-    "tidal_turbine_cf": 30.0,
     "tidal_turbine_cut_out": 3.3,
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
@@ -1181,6 +1180,7 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 50.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
     "tidal_velocity": [
         1.06411,
         0.907655,
