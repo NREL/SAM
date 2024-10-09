@@ -51,6 +51,8 @@ addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership
 // Generic System
 addconfig( 'Custom Generation Profile', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic System', ['None']);
+addconfig( 'Generic Battery', ['None']);
+addconfig( 'Generic PVWatts Wind FuelCell Battery Hybrid', ['None']);
 
 addconfig( 'Retired', ['None']);
 // Hybrid Power
@@ -78,8 +80,12 @@ configopt( 'Biopower', { 'long_name'='Biomass Combustion', 'short_name'='Biopowe
 configopt( 'Geothermal Power', { 'long_name'='Geothermal', 'short_name'='Geothermal', 'description'='Geothermal power model for hydrothermal and EGS systems with flash or binary conversion' } );
 configopt( 'Solar Water Heating', { 'long_name'='Solar Water Heating', 'short_name'='Solar water', 'description'='Solar water heating model for residential and commercial building applications' } );
 configopt( 'Fuel Cell', { 'long_name'='Fuel Cell - PV - Battery', 'short_name'='FuelCell', 'description'='Fuel cell with photovoltaic system and optional electric battery for commercial building or PPA project applications' } );
-configopt( 'Custom Generation Profile', { 'long_name'='Custom Generation Profile', 'short_name'='Custom Generation', 'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
+configopt( 'Custom Generation Profile', { 'long_name'='Custom Generation Profile (formerly Generic System)', 'short_name'='Custom Generation', 'description'='Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input' } );
 configopt( 'Generic System', { 'tree_parent'='Retired'} );
+configopt( 'Generic Battery', { 'tree_parent'='Retired'} );
+configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Retired'} );
+
+
 
 configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short_name'='Marine Wave', 'description'='Marine energy wave system' });
 configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Wave-Battery', 'description'='Marine energy wave system with battery' });
