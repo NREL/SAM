@@ -960,7 +960,7 @@ addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Ele
 setup_iph_lcoefcr_cost_pages_no_elec();
 
 setconfig('Physical Trough IPH', 'Single Owner');
-setmodules( ['trough_physical_iph', 'singleowner']);	// 'iph_to_lcoefcr', 
+setmodules( ['trough_physical_iph', 'singleowner_heat']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
@@ -984,7 +984,7 @@ addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 setconfig( 'Physical Trough IPH', 'Commercial' );
-setmodules( ['trough_physical_iph', 'utilityrate5', 'cashloan']);
+setmodules( ['trough_physical_iph', 'utilityrate5', 'cashloan_heat']);
 setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
@@ -1879,7 +1879,7 @@ addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financi
 setup_iph_lcoefcr_cost_pages();
 
 setconfig('MSPT IPH', 'Single Owner');
-setmodules(['mspt_iph', 'singleowner']);
+setmodules(['mspt_iph', 'singleowner_heat']);
 setup_MSPT_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
@@ -2172,7 +2172,7 @@ setup_iph_lcoefcr_cost_pages();
 
 //-----------------------------------------------------
 setconfig('MSLF IPH', 'Single Owner');
-setmodules( ['fresnel_physical_iph', 'singleowner']); 	//, 'singleowner']);
+setmodules( ['fresnel_physical_iph', 'singleowner_heat']); 	//, 'singleowner']);
 setup_MSLF_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
