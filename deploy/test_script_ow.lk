@@ -28,6 +28,7 @@ for (t=0; t<#technologies; t++)
 	&& (technologies[t] != "Dish Stirling")
 	&& (technologies[t] != "ISCC")
 	&& (technologies[t] != "Retired")
+	&& (technologies[t] != "Generic System")
 	&& (technologies[t] != "MSPTV2"))
 //	&& (technologies[t] != "PVWatts Wind Battery Hybrid"))
 	{

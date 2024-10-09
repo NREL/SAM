@@ -50,7 +50,7 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator
 addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Generic System
 addconfig( 'Custom Generation Profile', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic System', ['None']);
 
 addconfig( 'Retired', ['None']);
 // Hybrid Power

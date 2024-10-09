@@ -116,7 +116,7 @@ function cf_production()
 		cfline( 'wind_cf_energy_net',0);
 	}
 	if ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid') 	{
-		cfline( 'generic_cf_energy_net',0);
+		cfline( 'customgeneration_cf_energy_net',0);
 		cfline( 'pvwatts_cf_energy_net',0);
 		cfline( 'wind_cf_energy_net',0);
 	}
@@ -298,7 +298,7 @@ function cf_om_expenses()
 	}
 	if ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'){
 		cfline( 'Subsystem Costs', -1, 0 );
-		cfline( 'generic_cf_om_fixed,generic_cf_om_production,generic_cf_om_capacity,generic_cf_om_fuel_cost',0);
+		cfline( 'customgeneration_cf_om_fixed,customgeneration_cf_om_production,customgeneration_cf_om_capacity,customgeneration_cf_om_fuel_cost',0);
 		if (fin == 'Single Owner')
 			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
 		else 

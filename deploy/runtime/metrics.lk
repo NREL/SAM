@@ -705,9 +705,9 @@ metrics{ 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid|Single Owner'}  
 	so_metrics();
 
 	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
-	metric_row( 'generic_annual_energy', {'label'='Generic', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
-	metric_row( 'generic_capacity_factor', {'label'='Generic AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
-	metric_row( 'generic_kwh_per_kw', {'label'='Generic energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'customgeneration_annual_energy', {'label'='Custom generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'customgeneration_capacity_factor', {'label'='Custom generation AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'customgeneration_kwh_per_kw', {'label'='Custom generation energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
 	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
 	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
 	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
@@ -723,9 +723,9 @@ metrics{ 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid|Host Developer'}
 	host_developer_metrics();
 
 	metric_table('SubsystemTable', {'headers'='Year 1 Generation by Subsystem,Value'});
-	metric_row( 'generic_annual_energy', {'label'='Generic', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
-	metric_row( 'generic_capacity_factor', {'label'='Generic AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
-	metric_row( 'generic_kwh_per_kw', {'label'='Generic energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
+	metric_row( 'customgeneration_annual_energy', {'label'='Custom generation', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
+	metric_row( 'customgeneration_capacity_factor', {'label'='Custom generation AC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
+	metric_row( 'customgeneration_kwh_per_kw', {'label'='Custom generation energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
 	metric_row( 'pvwatts_annual_energy', {'label'='PVWatts', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh', 'tableName'='SubsystemTable' } );
 	metric_row( 'pvwatts_capacity_factor', {'label'='PVWatts DC capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%', 'tableName'='SubsystemTable'} );
 	metric_row( 'pvwatts_kwh_per_kw', {'label'='PVWatts energy yield', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh/kW', 'tableName'='SubsystemTable' } );
