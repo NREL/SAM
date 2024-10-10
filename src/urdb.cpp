@@ -356,6 +356,8 @@ bool OpenEI::QueryUtilityCompaniesbyZipcode(const wxString &zipcode, wxArrayStri
 
 bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rates, wxString *err)
 {
+	rates.clear(); // reset rates list
+	
 	wxString utlnm = name;
 	utlnm.Replace("&", "%26");
 	
@@ -366,12 +368,6 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	wxString url;
 	wxString json_data;
 
-	/*
-	wxJSONReader reader;
-	wxJSONValue root;
-	wxJSONValue item_list;
-	wxJSONValue items;
-	*/
 
 	// initial query to get first 500 rates
 	// OpenEI International Utility Rate Database https://openei.org/services/doc/rest/util_rates/?version=7
@@ -384,102 +380,84 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	url.Replace("<GUID>", "");
 	url.Replace("<APIKEY>", wxString(sam_api_key));
 
-	json_data = MyGet(url);
-	if (json_data.IsEmpty())
-	{
-		if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name; // do not report url because it has private API key
-		return false;
-	}
-// change from UTF8 to UTF16 encoding to address unicode characters per SAM GitHub issue 1848
+
+
+	// change from UTF8 to UTF16 encoding to address unicode characters per SAM GitHub issue 1848
 	rapidjson::GenericDocument < rapidjson::UTF16<> > reader;
-	reader.Parse(json_data.c_str());
+	bool retrieve_rates = true;
+	bool ret = true;
+	// up to maxlimit rates added to rates vector
 
-	if (reader.HasParseError())
-	{
-		if (err) *err = wxString::Format("Could not parse JSON for utility company name = %s.\nRapidJSON ParseErrorCode = %d", name, reader.GetParseError());
-			return false;
-	}
+	while (retrieve_rates) {
 
-	if (reader.HasMember(L"items")) {
-		if (reader[L"items"].IsArray()) {
-
-			auto item_list = reader[L"items"].GetArray();
-
-			rates.clear();
-			// download additional rates, up to 500 at a time
-			old_offset = offset;
-			offset = max_limit + 1;
-			count = item_list.Size();
-
-			if (count == 0) {
-				if (err) *err = "No rates found for utility company name = " + name;
-				return false;
-			}
-
-			while (count != 0)
-			{
-				url.Replace(wxString::Format("&offset=%d", (int)old_offset), wxString::Format("&offset=%d", (int)offset));
-				json_data = MyGet(url);
-				reader.Parse(json_data.c_str());
-				if (reader.HasParseError()) {
-					if (err) *err = wxString::Format("No rates found for url = %s\nRapidJSON ParseErrorCode = %d", url, reader.GetParseError());
-					return false;
-				}
-				if (reader.HasMember(L"items")) {
-					if (reader[L"items"].IsArray()) {
-						auto items = reader[L"items"].GetArray();
-						count = items.Size();
-						for (int i = 0; i < count; i++) {
-							item_list[i + offset] = items[i];
-						}
-						old_offset = offset;
-						offset += max_limit;
-					}
-				}
-			}
-			// can check each for validity
-			count = item_list.Size();
-			for (size_t i = 0; i < count; i++) {
-				RateInfo x;
-				x.GUID = item_list[i][L"label"].GetString();
-				x.Name = item_list[i][L"name"].GetString();
-				x.Utility = item_list[i][L"utility"].GetString();
-				x.Sector = item_list[i][L"sector"].GetString();
-				// optional
-				if (item_list[i].HasMember(L"description"))
-					x.Description = item_list[i][L"description"].GetString();
-				// optional
-				if (item_list[i].HasMember(L"source"))
-					x.Source = item_list[i][L"source"].GetString();
-				// optional
-				if (item_list[i].HasMember(L"version"))
-					x.Version = item_list[i][L"version"].GetInt();
-				x.uri = item_list[i][L"uri"].GetString();
-				// optional
-				if (item_list[i].HasMember(L"startdate"))
-					x.StartDate = GetDate(item_list[i][L"startdate"].GetInt());
-				// optional
-				if (item_list[i].HasMember(L"enddate"))
-					x.EndDate = GetDate(item_list[i][L"enddate"].GetInt());
-				else
-					x.EndDate = "N/A";
-				rates.push_back(x);
-			}
-
-			if (err) *err = wxEmptyString;
-
-			return true;
+		json_data = MyGet(url);
+		if (json_data.IsEmpty()) {
+			if (err) *err = "Web API call to urdb_rates returned empty JSON for utility company name = " + name; // do not report url because it has private API key
+			ret = false;
 		}
 		else {
-			if (err) *err = "No rates found for utility company name = " + name;
-			return false;
+			reader.Parse(json_data.c_str());
+
+			if (reader.HasParseError())	{
+				if (err) *err = wxString::Format("Could not parse JSON for utility company name = %s.\nRapidJSON ParseErrorCode = %d", name, reader.GetParseError());
+				ret = false;
+			} 
+			else if (!reader.HasMember(L"items")) {
+				if (err) *err = "No rates found for utility company name = " + name;
+				ret = false;
+			}
+			else if (!reader[L"items"].IsArray()) {
+				if (err) *err = "No rates found for utility company name = " + name;
+				ret = false;
+			}
+			else {
+				auto item_list = reader[L"items"].GetArray();
+
+				count = item_list.Size();
+
+				if (count == 0) {
+					if (err) *err = "No rates found for utility company name = " + name;
+					ret = false;
+				}
+				else {
+					// add to rates vector
+					for (int i = 0; i < count; i++) {
+						RateInfo x;
+						x.GUID = item_list[i][L"label"].GetString();
+						x.Name = item_list[i][L"name"].GetString();
+						x.Utility = item_list[i][L"utility"].GetString();
+						x.Sector = item_list[i][L"sector"].GetString();
+						// optional
+						if (item_list[i].HasMember(L"description"))
+							x.Description = item_list[i][L"description"].GetString();
+						// optional
+						if (item_list[i].HasMember(L"source"))
+							x.Source = item_list[i][L"source"].GetString();
+						// optional
+						if (item_list[i].HasMember(L"version"))
+							x.Version = item_list[i][L"version"].GetInt();
+						x.uri = item_list[i][L"uri"].GetString();
+						// optional
+						if (item_list[i].HasMember(L"startdate"))
+							x.StartDate = GetDate(item_list[i][L"startdate"].GetInt());
+						// optional
+						if (item_list[i].HasMember(L"enddate"))
+							x.EndDate = GetDate(item_list[i][L"enddate"].GetInt());
+						else
+							x.EndDate = "N/A";
+						rates.push_back(x);
+					}
+					// update offset and url
+					old_offset = offset;
+					offset += max_limit;
+
+					url.Replace(wxString::Format("&offset=%d", (int)old_offset), wxString::Format("&offset=%d", (int)offset));
+					retrieve_rates = (count == max_limit); // more rates to be returned
+				}
+			}
 		}
 	}
-	else {
-		if (err) *err = "No rates found for utility company name = " + name;
-		return false;
-	}
-
+	return ret;
 }
 
 bool OpenEI::RetrieveUtilityRateData(const wxString &guid, RateData &rate, wxString *json_url, wxString *err)
@@ -1302,6 +1280,7 @@ void OpenEIUtilityRateDialog::QueryRates(const wxString &utility_name)
 	wxBusyInfo busy("Getting available rates...", this);
 	lblStatus->SetLabel("Loading rates...");
 
+	mUtilityRates.clear();
 	wxString err;
 
     // get rates
