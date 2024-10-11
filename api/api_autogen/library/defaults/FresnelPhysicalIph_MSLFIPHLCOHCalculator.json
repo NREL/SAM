@@ -28,14 +28,10 @@
 			"V_hdr_min": 2,
 			"V_wind_des": 4,
 			"eta_pump": 0.85,
-			"f_htfmax": 1.2,
-			"f_htfmin": 0.25,
 			"field_fl_props": [
 				[1.000000, 7.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 			],
 			"land_mult": 1.6,
-			"m_dot_htfmax": 14.4763,
-			"m_dot_htfmin": 3.01589,
 			"mc_bal_cold": 0.2,
 			"mc_bal_hot": 0.2,
 			"mc_bal_sca": 4.5,
@@ -46,9 +42,15 @@
 			"rec_su_delay": 0.2,
 			"theta_dep": 10,
 			"theta_stow": 170,
-			"use_abs_or_rel_mdot_limit": 0,
 			"washes_per_year": 120,
 			"water_per_wash": 0.02
+		},
+		"SolarField": {
+			"f_htfmax": 1.2,
+			"f_htfmin": 0.25,
+			"m_dot_htfmax": 14.4763,
+			"m_dot_htfmin": 3.01589,
+			"use_abs_or_rel_mdot_limit": 0
 		},
 		"ColRec": {
 			"A_aperture": 940.6,
@@ -194,6 +196,10 @@
 		},
 		"FinancialModel": {
 			"csp_financial_model": 7
+		},
+		"FinancialSolutionMode": {
+		},
+		"TimeOfDeliveryFactors": {
 		},
 		"CapitalCosts": {
 			"bop_spec_cost": 340,

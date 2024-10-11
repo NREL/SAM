@@ -71,7 +71,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 57600,
+			"system_capacity": 57600.1,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -251,7 +251,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 57600
+			"system_capacity": 57600.1
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,

@@ -67,7 +67,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/pllineplot.h>
 #include <wex/dview/dvplotctrl.h>
 #include <wex/utils.h>
-#include <wex/jsonreader.h>
+//#include <wex/jsonreader.h>
 #include <wex/easycurl.h>
 
 //#include <curl/curl.h>
