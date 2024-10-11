@@ -388,7 +388,7 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 	bool ret = true;
 	// up to maxlimit rates added to rates vector
 
-	while (retrieve_rates) {
+	while (retrieve_rates && ret) {
 
 		json_data = MyGet(url);
 		if (json_data.IsEmpty()) {
