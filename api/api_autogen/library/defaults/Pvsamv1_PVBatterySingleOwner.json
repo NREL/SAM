@@ -485,7 +485,8 @@
 		"Load": {
 		},
 		"PVLosses": {
-			"enable_subhourly_clipping": 0
+			"enable_subhourly_clipping": 0,
+			"enable_subinterval_distribution": 0
 		},
 		"AdjustmentFactors": {
 			"constant": 0,
