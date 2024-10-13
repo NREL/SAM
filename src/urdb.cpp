@@ -426,7 +426,9 @@ bool OpenEI::QueryUtilityRates(const wxString &name, std::vector<RateInfo> &rate
 						x.GUID = item_list[i][L"label"].GetString();
 						x.Name = item_list[i][L"name"].GetString();
 						x.Utility = item_list[i][L"utility"].GetString();
-						x.Sector = item_list[i][L"sector"].GetString();
+						// optional
+						if (item_list[i].HasMember(L"sector"))
+							x.Sector = item_list[i][L"sector"].GetString();
 						// optional
 						if (item_list[i].HasMember(L"description"))
 							x.Description = item_list[i][L"description"].GetString();
