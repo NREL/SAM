@@ -49,10 +49,10 @@ addconfig( 'Solar Water Heating', ['Residential', 'Commercial', 'LCOE Calculator
 // Biomass Combustion
 addconfig( 'Biopower', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Generic System
-addconfig( 'Custom Generation Profile', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
-addconfig( 'Generic System', ['None']);
-addconfig( 'Generic Battery', ['None']);
-addconfig( 'Generic PVWatts Wind FuelCell Battery Hybrid', ['None']);
+addconfig( 'Custom Generation Profile', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']); //have to leave in startup for 1 year for version upgrade script to find config
+addconfig( 'Generic System', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Generic Battery', ['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback'] );
+addconfig( 'Generic PVWatts Wind FuelCell Battery Hybrid', ['Single Owner', 'Host Developer']);
 
 addconfig( 'Retired', ['None']);
 // Hybrid Power
@@ -743,9 +743,62 @@ function setup_geothermal_power_pages()
     setup_grid_limits_page();
 }
 
+function setup_generic_systems()
+{
+	addpage([['Empty']], {'bin_name': 'Retired'} );
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // now set up all the pages ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+//Generic Configs retired
+//['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']
+setconfig('Generic Battery', 'Single Owner');
+setup_generic_systems();
+setconfig('Generic Battery', 'Host Developer');
+setup_generic_systems();
+setconfig('Generic Battery', 'Merchant Plant');
+setup_generic_systems();
+setconfig('Generic Battery', 'Leveraged Partnership Flip');
+setup_generic_systems();
+setconfig('Generic Battery', 'All Equity Partnership Flip');
+setup_generic_systems();
+setconfig('Generic Battery', 'Sale Leaseback');
+setup_generic_systems();
+setconfig('Generic Battery', 'Residential');
+setup_generic_systems();
+setconfig('Generic Battery', 'Commercial');
+setup_generic_systems();
+setconfig('Generic Battery', 'Third Party');
+setup_generic_systems();
+setconfig('Generic Battery', 'Host Developer');
+setup_generic_systems();
+setconfig('Generic System', 'Single Owner');
+setup_generic_systems();
+setconfig('Generic System', 'Host Developer');
+setup_generic_systems();
+setconfig('Generic System', 'Merchant Plant');
+setup_generic_systems();
+setconfig('Generic System', 'Leveraged Partnership Flip');
+setup_generic_systems();
+setconfig('Generic System', 'All Equity Partnership Flip');
+setup_generic_systems();
+setconfig('Generic System', 'Sale Leaseback');
+setup_generic_systems();
+setconfig('Generic System', 'Residential');
+setup_generic_systems();
+setconfig('Generic System', 'Commercial');
+setup_generic_systems();
+setconfig('Generic System', 'Third Party');
+setup_generic_systems();
+setconfig('Generic System', 'Host Developer');
+setup_generic_systems();
+setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Single Owner');
+setup_generic_systems();
+setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Host Developer');
+setup_generic_systems();
+
 
 // CSP - Empirical Trough ///////////////////////////////////////////////////////
 setconfig( 'Empirical Trough', 'LCOE Calculator' );

@@ -81,13 +81,13 @@ version_upgrade{'2024.5.28'} = define() {
 	}
 	
 	//Check for renamed generic system configs
-	if(cfg.tech == 'Generic System' || cfg.tech == 'Generic System Battery' || cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
+	if(cfg.tech == 'Generic System' || cfg.tech == 'Generic Battery' || cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
 	{
 		if (cfg.tech == 'Generic System') {
 			message('We renamed Generic System to Custom Generation Profile', 'warning');
 			config('Custom Generation Profile', cfg.fin);
 		}
-		if(cfg.tech == 'Generic System Battery') 
+		if(cfg.tech == 'Generic Battery') 
 		{
 			message('We renamed Generic System Battery to Custom Generation Battery', 'warning');
 			config('Custom Generation Battery', cfg.fin);
