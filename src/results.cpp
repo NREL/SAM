@@ -503,7 +503,7 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
 
     //m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
     //AddPage(m_timeSeries, "Time series");
-    m_timeSeries = new wxDVTimeSeriesCtrlSAM(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+    m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
     AddPage(m_timeSeries, "Time series");
 
     //m_dailySeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_DAILY, wxDV_AVERAGE);
@@ -542,11 +542,6 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
             AddPage(m_spatialLayout, "Spatial", true);
         }
 
-        if (tech_model == "PV Battery")
-        {
-            m_battVisualization = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
-            AddPage(m_battVisualization, "Dispatch");
-        }
     }
     //m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
     //AddPage( m_durationCurve, "Duration curve" );
@@ -567,12 +562,7 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
     settings.SetProperty(wxT("tsTopSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
     settings.SetProperty(wxT("tsBottomSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
 
-    //***TimeSeries Properties***
-    settings.SetProperty(wxT("tsAxisMin"), m_battVisualization->GetViewMin());
-    settings.SetProperty(wxT("tsAxisMax"), m_battVisualization->GetViewMax());
-    settings.SetProperty(wxT("tsTopSelectedNames"), m_battVisualization->GetDataSelectionList()->GetSelectedNamesInCol(0));
-    settings.SetProperty(wxT("tsBottomSelectedNames"), m_battVisualization->GetDataSelectionList()->GetSelectedNamesInCol(1));
-
+   
     //settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
     //settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
     //settings.SetProperty(wxT("tsDailyTopSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
@@ -669,22 +659,30 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
     SetSelection(i);
 
     int preset = 0;
-    switch (preset) {
-        case 0: {
+    if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
+    {
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+        wxString fin_model = cw->GetCase()->GetFinancing();
+        if (tech_model.Contains("Battery") && (fin_model == "Residential" || fin_model == "Commercial"
+            || fin_model == "Third Party" || fin_model == "Host Developer")) { //only BTM technologies
+
             //Battery visualization test
             int batt_index = -1;
             int load_index = -1;
             int gen_index = -1;
             int grid_index = -1;
+            wxString prepend = "";
+            if (tech_model.Contains("Hybrid")) prepend = "battery_"; //Check for prepended battery
             for (size_t j = 0; j < m_tsDataSets.size(); j++)
             {
-                if (m_tsDataSets[j]->GetMetaData() == "batt_to_load") {
+                
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "batt_to_load") {
                     batt_index = j;
                 }
-                if (m_tsDataSets[j]->GetMetaData() == "grid_to_load") {
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "grid_to_load") {
                     grid_index = j;
                 }
-                if (m_tsDataSets[j]->GetMetaData() == "system_to_load") {
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "system_to_load") {
                     gen_index = j;
                 }
                 if (m_tsDataSets[j]->GetMetaData() == "load") {
@@ -695,110 +693,32 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 
 
             //***TimeSeries Properties***
-            m_battVisualization->SetStackingOnYLeft(true); //Turn on stacked area plot
-            m_battVisualization->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
-            m_battVisualization->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+            m_timeSeries->SetStackingOnYLeft(true); //Turn on stacked area plot
+            m_timeSeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+            m_timeSeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
 
             // select something by default
-            if (m_battVisualization->GetNumberOfSelections() == 0) {
-                m_battVisualization->SelectDataSetAtIndex(batt_index, 0);
-                m_battVisualization->SelectDataSetAtIndex(grid_index, 0);
-                m_battVisualization->SelectDataSetAtIndex(gen_index, 0);
-                m_battVisualization->SelectDataSetAtIndex(load_index, 1);
+            if (m_timeSeries->GetNumberOfSelections() == 0) {
+                m_timeSeries->SelectDataSetAtIndex(batt_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(grid_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(gen_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(load_index, 1);
 
             }
 
             //Set min/max after setting plots to make sure there is an axis to set.
             if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
-                m_battVisualization->SetViewMin(min);
+                m_timeSeries->SetViewMin(min);
             /*
             if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
-                m_battVisualization->SetViewMax(max);
+                m_timeSeries->SetViewMax(max);
             */
-            m_battVisualization->SetViewMax(500);
-            break;
+            m_timeSeries->SetViewMax(500);
         }
-        case 1: {
-            //Battery visualization test
-            int gen_index = -1;
-            for (size_t j = 0; j < m_tsDataSets.size(); j++)
-            {
-                if (m_tsDataSets[j]->GetMetaData() == "gen") {
-                    gen_index = j;
-                }
-                
-            }
-
-
-
-            //***TimeSeries Properties***
-            m_battVisualization->SetStackingOnYLeft(true); //Turn on stacked area plot
-            m_battVisualization->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
-            m_battVisualization->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
-
-            // select something by default
-            if (m_battVisualization->GetNumberOfSelections() == 0) {
-                m_battVisualization->SelectDataSetAtIndex(gen_index, 0);
-
-            }
-
-            //Set min/max after setting plots to make sure there is an axis to set.
-            if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
-                m_battVisualization->SetViewMin(min);
-            /*
-            if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
-                m_battVisualization->SetViewMax(max);
-            */
-            m_battVisualization->SetViewMax(500);
-            break;
-        }
+        
+        
     }
 
-    //Battery visualization test
-    int batt_index = -1;
-    int load_index = -1;
-    int gen_index = -1;
-    int grid_index = -1;
-    for (size_t j = 0; j < m_tsDataSets.size(); j++)
-    {
-        if (m_tsDataSets[j]->GetMetaData() == "batt_to_load") {
-            batt_index = j;
-        }
-        if (m_tsDataSets[j]->GetMetaData() == "grid_to_load") {
-            grid_index = j;
-        }
-        if (m_tsDataSets[j]->GetMetaData() == "system_to_load") {
-            gen_index = j;
-        }
-        if (m_tsDataSets[j]->GetMetaData() == "load") {
-            load_index = j;
-        }
-    }
-
-
-
-    //***TimeSeries Properties***
-    m_battVisualization->SetStackingOnYLeft(true); //Turn on stacked area plot
-    m_battVisualization->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
-    m_battVisualization->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
-
-    // select something by default
-    if (m_battVisualization->GetNumberOfSelections() == 0) {
-        m_battVisualization->SelectDataSetAtIndex(batt_index,0);
-        m_battVisualization->SelectDataSetAtIndex(grid_index,0);
-        m_battVisualization->SelectDataSetAtIndex(gen_index,0);
-        m_battVisualization->SelectDataSetAtIndex(load_index, 1);
-
-    }
-
-    //Set min/max after setting plots to make sure there is an axis to set.
-    if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
-        m_battVisualization->SetViewMin(min);
-    /*
-    if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
-        m_battVisualization->SetViewMax(max);
-    */
-    m_battVisualization->SetViewMax(500);
 
     //	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
     //	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
@@ -1530,18 +1450,6 @@ void ResultsViewer::Setup(Simulation* sim)
             if (pn > -1) HidePage(pn);
         }
 
-        if (tech_model == "PV Battery")
-        {
-            // if model was changed from another technology, the ResultsViewer was not initialized with Uncertainties
-            if (!m_battVisualization) {
-                m_battVisualization = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
-                AddPage(m_battVisualization, "Dispatch");
-            }
-            /*
-            else
-                m_battVisualization->RemoveAllDataSets();
-                */
-        }
     }
     m_tables->Setup(m_sim);
 
@@ -1791,7 +1699,6 @@ void ResultsViewer::AddDataSet(wxDVTimeSeriesDataSet* d, const wxString& group, 
     d->SetGroupName(group);
 
     m_timeSeries->AddDataSet(d, update_ui);
-    m_battVisualization->AddDataSet(d, update_ui);
     //	m_dailySeries->AddDataSet(d, update_ui);
     m_dMap->AddDataSet(d, update_ui);
     m_profilePlots->AddDataSet(d, update_ui);
@@ -2071,7 +1978,6 @@ void ResultsViewer::ExportEqnExcel()
 void ResultsViewer::RemoveAllDataSets()
 {
     m_timeSeries->RemoveAllDataSets();
-    m_battVisualization->RemoveAllDataSets();
     //m_dailySeries->RemoveAllDataSets();
     m_dMap->RemoveAllDataSets();
     m_profilePlots->RemoveAllDataSets();
