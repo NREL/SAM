@@ -84,7 +84,6 @@ if (num_cases > 4)
 //outln('Cases: ' + cases);
 //outln('Number of cases: ' + num_cases);
 //outln(cases[3]);
-tech = alloc(0, num_cases);
 fin = alloc(0, num_cases);
 lcoe = alloc(0,num_cases);
 lcos = alloc(0, num_cases);
@@ -128,7 +127,7 @@ for (i=0; i<num_cases; i++)
 
 	}
 	
-	tech[i] = config[0];
+
 	lcoe[i] = get('lcoe_nom');
 	lcos[i] = get('lcos_nom');
 	aep[i] = get('annual_energy');
@@ -261,13 +260,6 @@ reportCode =
             '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
         '</tr>'
-        '<tr>'
-             '<td>Technology</td>'
-             '<td>'+ tech[3] +'</td>'
-             '<td>'+ tech[2] +'</td>'
-             '<td>'+ tech[1] +'</td>'
-             '<td>'+ tech[0] +'</td>'
-         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
              '<td>'+ sprintf("$%.2f",lcoe[3]) +' /kWh</td>'
@@ -523,12 +515,6 @@ reportCode =
             '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
         '</tr>'
-        '<tr>'
-             '<td>Technology</td>'
-             '<td>'+ tech[2] +'</td>'
-             '<td>'+ tech[1] +'</td>'
-             '<td>'+ tech[0] +'</td>'
-         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
              '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
@@ -766,11 +752,6 @@ reportCode =
             '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
         '</tr>'
-        '<tr>'
-             '<td>Technology</td>'
-             '<td>'+ tech[1] +'</td>'
-             '<td>'+ tech[0] +'</td>'
-         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
              '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
