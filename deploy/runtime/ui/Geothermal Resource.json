@@ -2650,11 +2650,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2733,11 +2733,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2816,11 +2816,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2899,11 +2899,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 648.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2982,11 +2982,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 888.0
+                    "Integer": 549.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3148,7 +3148,7 @@
             "Label": "Default Type",
             "Units": " ",
             "Group": "Geothermal Resource",
-            "IndexLabels": "Greenfield-Reference-Hydrothermal-Flash|Greenfield-Reference-Hydrothermal-Binary|Greenfield-Reference-EGS-Flash|Greenfield-Reference-EGS-Binary|Greenfield-Technology Improvement-Hydrothermal-Flash|Greenfield-Technology Improvement-Hydrothermal-Binary|Greenfield-Technology Improvement-EGS-Flash|Greenfield-Technology Improvement-EGS-Binary|Brownfield-Reference-EGS-Flash|Brownfield-Reference-EGS-Binary|Brownfield-Technology Improvement-EGS-Flash|Brownfield-Technology Improvement-Hydrothermal-Flash",
+            "IndexLabels": "Greenfield-Reference-Hydrothermal-Flash|Greenfield-Reference-Hydrothermal-Binary|Greenfield-Reference-EGS-Flash|Greenfield-Reference-EGS-Binary|Greenfield-Technology Improvement-Hydrothermal-Flash|Greenfield-Technology Improvement-Hydrothermal-Binary|Greenfield-Technology Improvement-EGS-Flash|Greenfield-Technology Improvement-EGS-Binary|Brownfield-Reference-EGS-Flash|Brownfield-Reference-EGS-Binary|Brownfield-Technology Improvement-EGS-Flash|Brownfield-Technology Improvement-EGS-Binary",
             "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
@@ -3618,7 +3618,7 @@
         "\t\treturn;",
         "\t}",
         "\t",
-        "\tvalue('analysis_period',getem_params.analysisperiod);",
+        "\tvalue('analysis_period',getem_params.analysis_period);",
         "\t//value('geotherm.cost.prod_cost_curve_well_diam', getem_params.geotherm.cost.prod_cost_curve_well_diam);",
         "\t//value('geotherm.cost.prod_cost_curve_well_type', getem_params.geotherm.cost.prod_cost_curve_well_type);",
         "\tvalue('nameplate', getem_params.nameplate);",
@@ -3630,12 +3630,16 @@
         "\tvalue('geotherm.cost.pump_per_hp', getem_params.geotherm_cost_pump_per_hp);",
         "\tvalue('delta_pressure_equip', getem_params.delta_pressure_equip);",
         "\tvalue('reservoir_pressure_change', getem_params.reservoir_pressure_change);",
+        "\tvalue('injectivity_index', getem_params.injectivity_index);\r",
+        "\tvalue('geotherm.cost.stim_per_well', getem_params.geotherm_cost_stim_per_well);\r",
         "\tvalue('subsurface_water_loss', getem_params.subsurface_water_loss);",
         "\tvalue('temp_decline_rate', getem_params.temp_decline_rate);",
         "\tvalue('conversion_type', getem_params.conversion_type);",
         "\tvalue('resource_type', getem_params.resource_type);",
         "\tvalue('wet_bulb_temp', getem_params.wet_bulb_temp);",
-        "\tvalue('ambient_pressure', getem_params.ambient_pressure);",
+        "\tvalue('ambient_pressure', getem_params.ambient_pressure);\r",
+        "\tvalue('stim_success_rate', getem_params.stim_success_rate);\r",
+        "\tvalue('geotherm.cost.conf_num_wells', getem_params.geotherm_cost_conf_num_wells);",
         "\t",
         "}",
         "",
@@ -3659,10 +3663,10 @@
         "\tenable('fracture_angle', check==1);",
         "\tenable('fracture_length', check==1);",
         "\tenable('fracture_spacing', check==1);",
-        "\tenable('rock_density', check==1);",
-        "\tenable('rock_specific_heat', check==1);",
-        "\tenable('rock_thermal_conductivity', check==1);",
-        "\tenable('subsurface_water_loss', check==1);",
+        "\t//enable('rock_density', check==1);",
+        "\t//enable('rock_specific_heat', check==1);",
+        "\t//enable('rock_thermal_conductivity', check==1);",
+        "\t//enable('subsurface_water_loss', check==1);",
         "\tif (check==3 && tech_check==1) {",
         "\t\tvalue('reservoir_model_inputs_shown', 1);",
         "\t}",

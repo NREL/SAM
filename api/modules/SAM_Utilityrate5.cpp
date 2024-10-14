@@ -164,6 +164,18 @@ SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nset(SAM
 	});
 }
 
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_apply_credit_current_month", number);
+	});
+}
+
+SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_credit_expire", number);
+	});
+}
+
 SAM_EXPORT void SAM_Utilityrate5_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_nm_credit_month", number);
@@ -533,6 +545,24 @@ SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_monthly_min_charge_nget(S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ur_monthly_min_charge", &result))
 		make_access_error("SAM_Utilityrate5", "ur_monthly_min_charge");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_apply_credit_current_month", &result))
+		make_access_error("SAM_Utilityrate5", "ur_nb_apply_credit_current_month");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Utilityrate5_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_credit_expire", &result))
+		make_access_error("SAM_Utilityrate5", "ur_nb_credit_expire");
 	});
 	return result;
 }

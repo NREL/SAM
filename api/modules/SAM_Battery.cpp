@@ -1160,6 +1160,18 @@ SAM_EXPORT void SAM_Battery_ElectricityRates_ur_monthly_min_charge_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_apply_credit_current_month", number);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ur_nb_credit_expire", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ur_nm_credit_month", number);
@@ -3074,6 +3086,24 @@ SAM_EXPORT double SAM_Battery_ElectricityRates_ur_monthly_min_charge_nget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_apply_credit_current_month", &result))
+		make_access_error("SAM_Battery", "ur_nb_apply_credit_current_month");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ur_nb_credit_expire", &result))
+		make_access_error("SAM_Battery", "ur_nb_credit_expire");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3563,6 +3593,15 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_table ptr, i
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_grid_charge_percent", &result))
+		make_access_error("SAM_Battery", "batt_grid_charge_percent");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3894,6 +3933,24 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_voltage_cell");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_grid", &result))
+		make_access_error("SAM_Battery", "batt_year1_charge_from_grid");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_system", &result))
+		make_access_error("SAM_Battery", "batt_year1_charge_from_system");
 	});
 	return result;
 }

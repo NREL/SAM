@@ -44,8 +44,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <ssc/sscapi.h> // for preprocessing
 
 #include "equations.h"
-#include "case.h"
-#include "main.h" // ConfigInfo
 
 
 EqnDatabase::EqnDatabase()
@@ -128,12 +126,6 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 	wxString lookup = "//#ssc_auto_exec(";
 	size_t nposStart = text->Find(lookup); 
 	if (nposStart != wxNOT_FOUND)  {
-/*		if (!c) {// line that equation on does not have \n (could also check for end of string)
-			errors->Add("Check equations PreProcessScript: no case provided for ssc_auto_exec.");
-			return false;
-		}
-*/
-
 		// first part of string to keep
 		auto strPart1 = text->Mid(0, nposStart - 1);
 		auto strPart2 = text->Mid(nposStart, text->Length() - 1);
@@ -158,6 +150,7 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 
 		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 		*/
+
 		if (args.Count() != 3) {// specific to lookup function
 			errors->Add("Check equations script: " + lookup + " statement does not have 3 arguments.");
 			return false;
@@ -182,10 +175,8 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 			wxString name(ssc_info_name(p_inf)); // assumed to be non-null
 			wxString reqd(ssc_info_required(p_inf));
 			wxString uihint(ssc_info_uihint(p_inf));
-			bool bRequired = (reqd.Length() > 0); // SAM issue 1634 - works for MSPT and fails for MSLF - until missing required values updated REQUIRED_IF
 
-			if (bRequired && (var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
-//			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
+			if ((var_type == SSC_INPUT || var_type == SSC_INOUT) && uihint != "SIMULATION_PARAMETER")
 			{
 				// handle ssc variable names
 				// that are explicit field accesses"shading:mxh"
@@ -234,11 +225,11 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 
 
 
-bool EqnDatabase::LoadScript(  const wxString &text, wxArrayString *errors )
+bool EqnDatabase::LoadScript( const wxString &text, wxArrayString *errors )
 {
 // check text for preprocessing setup for design point calculations SAM issue #634
 	wxString txtPreprocess(text);
-	if (PreProcessScript( &txtPreprocess, errors)) {
+	if (PreProcessScript(&txtPreprocess, errors)) {
 		//	lk::input_string in(text);
 		lk::input_string in(txtPreprocess);
 		if (Parse(in, errors)) return true;

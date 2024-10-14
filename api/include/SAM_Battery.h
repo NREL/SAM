@@ -1625,6 +1625,22 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set ur_nb_apply_credit_current_month: Apply earned credits to balance before rolling over excess         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_credit_expire: Credit is lost upon end of year         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battery_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
@@ -2262,6 +2278,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
@@ -2379,6 +2399,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_power_dc_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2446,6 +2468,10 @@ extern "C"
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_Outputs_capacity_factor_sales_nget(SAM_table ptr, SAM_error *err);
 

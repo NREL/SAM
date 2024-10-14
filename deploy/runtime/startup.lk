@@ -80,10 +80,10 @@ configopt( 'Generic System', { 'long_name'='Generic System', 'short_name'='Gener
 configopt( 'MEwave', { 'tree_parent'='Marine Energy', 'long_name'='Wave', 'short_name'='Marine Wave', 'description'='Marine energy wave system' });
 configopt( 'MEwave Battery', { 'tree_parent'='Marine Energy', 'long_name'='Wave Battery', 'short_name'='Wave-Battery', 'description'='Marine energy wave system with battery' });
 configopt( 'MEtidal', { 'tree_parent'='Marine Energy', 'long_name'='Tidal', 'short_name'='Marine Tidal', 'description'='Marine energy tidal system' });
-configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Battery Hybrid', 'short_name' = 'PVWatts-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
-configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery Hybrid', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
-configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery Hybrid', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
-configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind FuelCell Battery Hybrid', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'PVWatts Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Battery', 'short_name' = 'PVWatts-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='PVWatts Wind Fuel Cell Battery', 'short_name' = 'PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation, fuel cell, and battery storage)'});
+configopt( 'Photovoltaic Wind Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Photovoltaic Wind Battery', 'short_name' = 'PV-Wind-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
+configopt( 'Generic PVWatts Wind FuelCell Battery Hybrid', { 'tree_parent'='Hybrid', 'long_name'='Generic PVWatts Wind Fuel Cell Battery', 'short_name' = 'Generic-PVWatts-Wind-FuelCell-Battery', 'description' ='Hybrid power system with PVWatts and wind power generation and battery storage)'});
 configopt( 'MSPT', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Power Tower Molten Salt', 'short_name'='CSP Tower Molten Salt', 'description'='CSP molten salt power tower system using heat transfer and thermodynamic component models' } );
 configopt( 'Physical Trough', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough Physical Model', 'short_name'='CSP Trough (Physical Model)', 'description'='CSP parabolic trough system using heat transfer and thermodynamic component models' } );
 configopt( 'Empirical Trough', { 'tree_parent'='Concentrating Solar Power', 'long_name'='Parabolic Trough Empirical Model', 'short_name'='CSP Trough (Empirical Model)', 'description'='CSP parabolic trough system using model with empirically-derived coefficients and equations' } );
@@ -1338,7 +1338,7 @@ setconfig( 'Geothermal Power', 'Leveraged Partnership Flip' );
 setmodules( ['geothermal', 'grid', 'utilityrate5', 'levpartflip']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_leveraged_partnership_flip_pages();
 setup_electricity_purchases();
 
@@ -1346,7 +1346,7 @@ setconfig( 'Geothermal Power', 'All Equity Partnership Flip' );
 setmodules( ['geothermal', 'grid', 'utilityrate5', 'equpartflip']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_all_equity_partnership_flip_pages();
 setup_electricity_purchases();
 
@@ -1354,7 +1354,7 @@ setconfig( 'Geothermal Power', 'Sale Leaseback' );
 setmodules( ['geothermal', 'grid', 'utilityrate5', 'saleleaseback']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_sale_leaseback_pages();
 setup_electricity_purchases();
 
@@ -1362,7 +1362,7 @@ setconfig( 'Geothermal Power', 'Single Owner' );
 setmodules( ['geothermal', 'grid', 'utilityrate5', 'singleowner']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 
@@ -1370,7 +1370,7 @@ setconfig( 'Geothermal Power', 'Merchant Plant' );
 setmodules( ['geothermal', 'grid', 'utilityrate5', 'merchantplant']);
 setup_geothermal_power_pages();
 addpage( [[ 'Geothermal Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_geothermal' } );
-addpage( [[ 'Operating Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Operating Costs', 'Geothermal OM Costs' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
 
