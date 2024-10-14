@@ -614,6 +614,15 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_dispatch_sched_mget(SAM_table ptr,
 	return result;
 }
 
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_grid_charge_percent", &result))
+		make_access_error("SAM_Battwatts", "batt_grid_charge_percent");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -945,6 +954,24 @@ SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
 	if (!result)
 		make_access_error("SAM_Battwatts", "batt_voltage_cell");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_grid", &result))
+		make_access_error("SAM_Battwatts", "batt_year1_charge_from_grid");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battwatts_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_system", &result))
+		make_access_error("SAM_Battwatts", "batt_year1_charge_from_system");
 	});
 	return result;
 }
