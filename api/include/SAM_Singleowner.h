@@ -2390,19 +2390,6 @@ extern "C"
 
 
 	//
-	// HeatModelOutput parameters
-	//
-
-	/**
-	 * Set annual_electricity_consumption: Annual electricity consumption w/ avail derate [kWe-hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Singleowner_HeatModelOutput_annual_electricity_consumption_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// UtilityBill parameters
 	//
 
@@ -3417,13 +3404,6 @@ extern "C"
 
 
 	/**
-	 * HeatModelOutput Getters
-	 */
-
-	SAM_EXPORT double SAM_Singleowner_HeatModelOutput_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
 	 * UtilityBill Getters
 	 */
 
@@ -3780,8 +3760,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 

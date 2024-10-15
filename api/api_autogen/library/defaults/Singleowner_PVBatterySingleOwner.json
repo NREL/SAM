@@ -385,8 +385,6 @@
 			"gen": [0],
 			"system_capacity": 100003
 		},
-		"HeatModelOutput": {
-		},
 		"UtilityBill": {
 		},
 		"Lifetime": {
