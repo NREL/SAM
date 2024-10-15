@@ -754,6 +754,7 @@ function setup_generic_systems()
 
 //Generic Configs retired
 //['Residential', 'Commercial', 'Third Party', 'Host Developer', 'Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']
+/*
 setconfig('Generic Battery', 'Single Owner');
 setup_generic_systems();
 setconfig('Generic Battery', 'Host Developer');
@@ -798,6 +799,7 @@ setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Single Owner
 setup_generic_systems();
 setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Host Developer');
 setup_generic_systems();
+*/
 
 
 // CSP - Empirical Trough ///////////////////////////////////////////////////////

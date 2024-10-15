@@ -29,6 +29,8 @@ for (t=0; t<#technologies; t++)
 	&& (technologies[t] != "ISCC")
 	&& (technologies[t] != "Retired")
 	&& (technologies[t] != "Generic System")
+	&& (technologies[t] != "Generic Battery")
+	&& (technologies[t] != "Generic PVWatts Wind FuelCell Battery Hybrid")
 	&& (technologies[t] != "MSPTV2"))
 //	&& (technologies[t] != "PVWatts Wind Battery Hybrid"))
 	{
