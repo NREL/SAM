@@ -915,6 +915,16 @@ SAM_EXPORT double* SAM_Pvwattsv7_Outputs_snow_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
+SAM_EXPORT double* SAM_Pvwattsv7_Outputs_snow_cover_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "snow_cover", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv7", "snow_cover");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Pvwattsv7_Outputs_solrad_annual_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
