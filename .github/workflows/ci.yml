@@ -8,7 +8,7 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
   DEFAULT_BRANCH: develop
-  WX_VERSION: '3.2.4'
+  WX_VERSION: '3.2.6'
 
 jobs:
   build-ubuntu:
