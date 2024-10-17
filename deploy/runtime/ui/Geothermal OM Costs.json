@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal OM Costs",
-    "Width": 778.0,
-    "Height": 209.0,
+    "Width": 551.0,
+    "Height": 206.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 108.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -110,7 +110,8 @@
         "\t}\r",
         "\tssc_var( geothermal, 'resource_depth', ${resource_depth} );\r",
         "\tssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );\t\r",
-        "\tssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );\t\t\t\t\t\t\t\t\t\t\t\t\r",
+        "\tssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );\t\r",
+        "\tssc_var( geothermal, 'allow_reservoir_replacements', ${allow_reservoir_replacements});\t\t\t\t\t\t\t\t\t\t\t\r",
         "\t// Other inputs\t\t\t\t\t\t\t    \r",
         "\tssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER\r",
         "\tssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER\r",
