@@ -964,7 +964,7 @@ setmodules( ['trough_physical_iph', 'singleowner_heat']);	// 'iph_to_lcoefcr',
 setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -974,11 +974,9 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
-addpage( [[ 'Financial Solution Mode Single Owner ETES',
-  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
+addpage( [ ['Financial Solution Mode Single Owner IPH']],
             { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
-addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
@@ -1884,7 +1882,7 @@ setup_MSPT_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 //addpage([['Electricity Purchases Heat Model','Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_utility_rate();
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
@@ -1895,11 +1893,9 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
-addpage( [[ 'Financial Solution Mode Single Owner ETES',
-  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
+addpage( [[ 'Financial Solution Mode Single Owner IPH']],
             { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
-addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
@@ -2178,7 +2174,7 @@ setmodules( ['fresnel_physical_iph', 'singleowner_heat']); 	//, 'singleowner']);
 setup_MSLF_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -2188,11 +2184,9 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
-addpage( [[ 'Financial Solution Mode Single Owner ETES',
-  			    { 'name'='Financial TOD Factors', 'caption'='Time of Delivery', 'collapsible'=true, 'collapsible_var'='revenue_TOD_is_shown', 'collapsed_by_default'=true },
-			    { 'name'='Financial Capacity Payments', 'caption'='Capacity Payments', 'collapsible'=true, 'collapsible_var'='revenue_capacity_payments_is_shown', 'collapsed_by_default'=true } ]],
+addpage( [[ 'Financial Solution Mode Single Owner IPH']],
             { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
-addpage( [[ 'Financial Tax Credits','Financial Cash Incentives']],
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
