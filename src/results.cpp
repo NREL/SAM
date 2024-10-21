@@ -668,7 +668,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 
             //Battery visualization test
             int batt_index = -1;
-            int load_index = -1;
+            int batt_SOC_index = -1;
             int gen_index = -1;
             int grid_index = -1;
             wxString prepend = "";
@@ -685,8 +685,8 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
                 if (m_tsDataSets[j]->GetMetaData() == prepend + "system_to_load") {
                     gen_index = j;
                 }
-                if (m_tsDataSets[j]->GetMetaData() == "load") {
-                    load_index = j;
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "batt_SOC") {
+                    batt_SOC_index = j;
                 }
             }
 
@@ -702,7 +702,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
                 m_timeSeries->SelectDataSetAtIndex(batt_index, 0);
                 m_timeSeries->SelectDataSetAtIndex(grid_index, 0);
                 m_timeSeries->SelectDataSetAtIndex(gen_index, 0);
-                m_timeSeries->SelectDataSetAtIndex(load_index, 1);
+                m_timeSeries->SelectDataSetAtIndex(batt_SOC_index, 0); //right y-axis, battery SOC percentage (%)
 
             }
 

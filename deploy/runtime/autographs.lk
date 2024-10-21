@@ -46,8 +46,8 @@ function battery_btm_monthly_graph_hybrid()
 {
 	fin = financing();
 	if (fin == "Residential" || fin == "Commercial" || fin == "Third Party" || fin == "Host Developer") {
-		agraph( 'battery_monthly_system_to_load,battery_monthly_batt_to_load,battery_monthly_grid_to_load', 'Monthly Energy to Load in Year 1', '', 'kWh' , -1, true, true, 'bottom', 1 );
-		agraph( 'year1_monthly_ec_charge_with_system,year1_monthly_dc_tou_with_system,year1_monthly_dc_fixed_with_system,year1_monthly_fixed_with_system', 'Monthly Utility Bill in Year 1', '', '$/month' , -1, true, true, 'bottom', 1 );
+		agraph( 'battery_monthly_system_to_load,battery_monthly_batt_to_load,battery_monthly_grid_to_load', 'Monthly Energy to Load in Year 1', '', 'kWh' , -1, true, true, 'right', 1 );
+		agraph( 'year1_monthly_ec_charge_with_system,year1_monthly_dc_tou_with_system,year1_monthly_dc_fixed_with_system,year1_monthly_fixed_with_system', 'Monthly Utility Bill in Year 1', '', '$/month' , -1, true, true, 'right', 1 );
 	}
 
 }
