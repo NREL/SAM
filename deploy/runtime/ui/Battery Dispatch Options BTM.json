@@ -155,7 +155,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Battery can charge from curtailed system power"
+                    "String": "Battery can charge from grid-limited system power"
                 },
                 "State": {
                     "Type": 2.0,
