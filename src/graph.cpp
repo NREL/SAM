@@ -355,7 +355,12 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		}
 		else if (m_g.Type == Graph::STACKED)
 		{
-			wxPLBarPlot* bar = new wxPLBarPlot(plotdata[i], 0.0, m_s->GetLabel(ynames[i]), s_colours[cidx]);
+            wxString label = m_s->GetLabel(ynames[i]);
+            if (m_s->GetLabel(ynames[i]).Contains("Battery ")) {
+                //Check for battery prepend in hybrid configs, remove it for graphing?
+                label.Replace("Battery ", "");
+            }
+            wxPLBarPlot* bar = new wxPLBarPlot(plotdata[i], 0.0, label, s_colours[cidx]);
 			if (m_g.Size != 0)
 				bar->SetThickness(m_g.Size);
 			bar->SetStackedOn(last_bar);
@@ -471,12 +476,22 @@ static const char *s_monthNames[12] = { "Jan", "Feb", "Mar", "Apr", "May", "Jun"
 		{
             if (m_g.XMin == m_g.XMax)
                 m_g.XMax = 1;
-			wxPLLabelAxis *x1 = new wxPLLabelAxis(m_g.XMin, m_g.XMax, m_g.XLabel);
+            wxPLLabelAxis* x1;
+            if (ndata == 12) x1 = new wxPLLabelAxis(-1, 12, m_g.XLabel);
+            else x1 = new wxPLLabelAxis(m_g.XMin, m_g.XMax, m_g.XLabel);
 			if (m_g.ShowXValues)
 			{
-				for (size_t i = 0; i < ynames.size(); i++)
-					x1->Add(i, m_s->GetLabel(ynames[i]));
+                if (ndata == 12) {
+                    for (size_t i = 0; i < 12; i++)
+                        x1->Add(i, s_monthNames[i]);
+                }
+                else {
+                    for (size_t i = 0; i < ynames.size(); i++) {
+                        x1->Add(i, m_s->GetLabel(ynames[i]));
+                    }
+                }
 			}
+            
 			SetXAxis1(x1);
 		}
 		else if (ndata == 1)
