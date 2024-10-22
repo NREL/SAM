@@ -29,6 +29,7 @@
         0.0,
         0.0
     ],
+    "allow_reservoir_replacements": 0.0,
     "ambient_pressure": 14.7,
     "analysis_period": 25.0,
     "analysis_period_warning": "No messages.",
