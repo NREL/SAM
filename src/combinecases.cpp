@@ -75,7 +75,7 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 
 	// Text at top of window
 	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
-	msg += "profiles into a single profile to be used with this generic case.\n\n";
+	msg += "profiles into a single profile to be used with this custom generation profile case.\n\n";
 	msg += "SAM will switch to each case in the project and run a simulation.\n";
 	msg += "Depending on the configuration, SAM may be temporarily unresponsive.";
 
@@ -148,7 +148,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 				if (arychecked.Count() >= 2) {
 
-					// Get analysis period and inflation from generic case
+					// Get analysis period and inflation from custom generation case
 					// TODO: Move some of this to constructor?
 					wxString technology_name = m_custom_generation_case->GetTechnology();
 					wxString financial_name = m_custom_generation_case->GetFinancing();
@@ -404,7 +404,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 					}
 
-					// Set the generic system performance parameters
+					// Set the custom generation system performance parameters
 					m_custom_generation_case->Values(0).Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
 																								//  sets the hidden 'Nameplate capacity' widget value
 					m_custom_generation_case->Values(0).Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
@@ -477,10 +477,10 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							"View these messages or warnings on the Notices pane of the Results page.",
 							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
-					if (has_a_contingency && technology_name == "Generic Battery" && financial_name != "Third Party") {
+					if (has_a_contingency && technology_name == "Custom Generation Battery" && financial_name != "Third Party") {
 						wxMessageBox("Notices\n\n"
 							"At least one of the models has a contingency specified.\n\n"
-							"Verify contingency is not double-counted on this generic-battery system's Installation Costs page.",
+							"Verify contingency is not double-counted on this custom generation-battery system's Installation Costs page.",
 							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
 					EndModal(wxID_OK);
@@ -514,7 +514,7 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	m_chlCases->Clear();
 	for (size_t i = 0; i < m_cases.size(); i++)
 	{
-		// Exclude generic case from displaying in case list
+		// Exclude custom generation case from displaying in case list
 		if (m_cases[i].display_name != m_custom_generation_case_name) {
 			int ndx = m_chlCases->Append(m_cases[i].display_name);
 			if (m_cases[i].is_selected) {
