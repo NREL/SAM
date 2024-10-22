@@ -476,6 +476,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "allow_reservoir_replacements"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Allow reservoir replacements"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1552,7 +1593,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2967,7 +3008,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3493,6 +3534,19 @@
                 0.0
             ],
             "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "allow_reservoir_replacements": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Allow reservoir replacements",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4100,7 +4154,7 @@
         "//\tssc_var( obj, 'adjust:constant', 0.0 );",
         "//\tssc_var( obj, 'adjust', {\"constant\" = 0.0} );",
         "\tssc_var( obj, 'adjust_constant', 0.0 );\r",
-        "",
+        "\tssc_var( obj, 'allow_reservoir_replacements', ${allow_reservoir_replacements});",
         "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER",
         "\tssc_var( obj, 'resource_temp', ${resource_temp} );",
         "\tssc_var( obj, 'resource_depth', ${resource_depth} );",
@@ -4309,6 +4363,7 @@
         "\ton_change{'prod_well_choice'}();\r",
         "\tloss_adjustment_set();\r",
         "\ton_change{'use_weather_file_conditions'}();\r",
+        "\ton_change{'allow_reservoir_replacements'}();\r",
         "\trefresh();\r",
         "};\t\r",
         "\r",
@@ -4364,6 +4419,11 @@
         "\tenable('wet_bulb_temp_input', check == 0);\r",
         "\tenable('wet_bulb_temp_wf', check == 1);\r",
         "\trefresh();\r",
+        "};\r",
+        "\r",
+        "on_change{'allow_reservoir_replacements'} = define() {\r",
+        "\tcheck = value('allow_reservoir_replacements');\r",
+        "\tenable('temp_decline_max', check);\r",
         "};"
     ]
 }
