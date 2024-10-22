@@ -1142,9 +1142,9 @@ SAM_EXPORT void SAM_MsptIph_FinancialSolutionMode_ppa_soln_mode_nset(SAM_table p
 	});
 }
 
-SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
+		ssc_data_set_array(ptr, "ppa_price_input_heatBtu", arr, length);
 	});
 }
 
@@ -3080,12 +3080,12 @@ SAM_EXPORT double SAM_MsptIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table
 	return result;
 }
 
-SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	result = ssc_data_get_array(ptr, "ppa_price_input_heatBtu", length);
 	if (!result)
-		make_access_error("SAM_MsptIph", "ppa_price_input");
+		make_access_error("SAM_MsptIph", "ppa_price_input_heatBtu");
 	});
 	return result;
 }
@@ -4633,6 +4633,16 @@ SAM_EXPORT double* SAM_MsptIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_
 	return result;
 }
 
+SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat", length);
+	if (!result)
+		make_access_error("SAM_MsptIph", "gen_heat");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_MsptIph_Outputs_h_rec_input_to_cost_model_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4977,6 +4987,16 @@ SAM_EXPORT double* SAM_MsptIph_Outputs_operating_modes_c_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "operating_modes_c", length);
 	if (!result)
 		make_access_error("SAM_MsptIph", "operating_modes_c");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_MsptIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_MsptIph", "ppa_price_input");
 	});
 	return result;
 }

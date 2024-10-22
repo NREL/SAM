@@ -1596,12 +1596,12 @@ extern "C"
 	//
 
 	/**
-	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * Set ppa_price_input_heatBtu: PPA prices - yearly [$/MMBtu]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2355,7 +2355,7 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2707,6 +2707,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_MsptIph_Outputs_h_rec_input_to_cost_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_Outputs_h_tower_calc_nget(SAM_table ptr, SAM_error *err);
@@ -2778,6 +2780,8 @@ extern "C"
 	SAM_EXPORT double* SAM_MsptIph_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MsptIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err);
 

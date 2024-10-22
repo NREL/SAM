@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_is_dispatch_nset(SAM_table p
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_is_parallel_htr_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "is_parallel_htr", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sim_type", number);
@@ -680,6 +686,48 @@ SAM_EXPORT void SAM_TroughPhysicalIph_HeatSink_pb_pump_coef_nset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_q_dot_des_allowable_su", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "f_q_dot_heater_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "heater_efficiency", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "heater_mult", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hrs_startup_at_max_rate", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_SystemCosts_allow_heater_no_dispatch_opt_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "allow_heater_no_dispatch_opt", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_SystemCosts_heater_spec_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "heater_spec_cost", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cold_tank_Thtr", number);
@@ -1100,9 +1148,9 @@ SAM_EXPORT void SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nset(S
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "ppa_price_input", arr, length);
+		ssc_data_set_array(ptr, "ppa_price_input_heatBtu", arr, length);
 	});
 }
 
@@ -1591,6 +1639,15 @@ SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_is_dispatch_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "is_dispatch", &result))
 		make_access_error("SAM_TroughPhysicalIph", "is_dispatch");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "is_parallel_htr", &result))
+		make_access_error("SAM_TroughPhysicalIph", "is_parallel_htr");
 	});
 	return result;
 }
@@ -2643,6 +2700,69 @@ SAM_EXPORT double SAM_TroughPhysicalIph_HeatSink_pb_pump_coef_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_q_dot_des_allowable_su", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_q_dot_des_allowable_su");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "f_q_dot_heater_min", &result))
+		make_access_error("SAM_TroughPhysicalIph", "f_q_dot_heater_min");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_heater_efficiency_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heater_efficiency", &result))
+		make_access_error("SAM_TroughPhysicalIph", "heater_efficiency");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heater_mult", &result))
+		make_access_error("SAM_TroughPhysicalIph", "heater_mult");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hrs_startup_at_max_rate", &result))
+		make_access_error("SAM_TroughPhysicalIph", "hrs_startup_at_max_rate");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_SystemCosts_allow_heater_no_dispatch_opt_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "allow_heater_no_dispatch_opt", &result))
+		make_access_error("SAM_TroughPhysicalIph", "allow_heater_no_dispatch_opt");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_SystemCosts_heater_spec_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "heater_spec_cost", &result))
+		make_access_error("SAM_TroughPhysicalIph", "heater_spec_cost");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3287,12 +3407,12 @@ SAM_EXPORT double SAM_TroughPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget
 	return result;
 }
 
-SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	result = ssc_data_get_array(ptr, "ppa_price_input_heatBtu", length);
 	if (!result)
-		make_access_error("SAM_TroughPhysicalIph", "ppa_price_input");
+		make_access_error("SAM_TroughPhysicalIph", "ppa_price_input_heatBtu");
 	});
 	return result;
 }
@@ -4055,6 +4175,15 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_D_cpnt_mget(SAM_table ptr, int*
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "E_heater_su_des", &result))
+		make_access_error("SAM_TroughPhysicalIph", "E_heater_su_des");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EndLoss_ave_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4305,6 +4434,26 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_out_aget(SAM_table 
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_heater_in", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "T_htf_heater_in");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "T_htf_heater_out", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "T_htf_heater_out");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_cold_in_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4380,6 +4529,25 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_field_pump_aget(SAM_table
 	result = ssc_data_get_array(ptr, "W_dot_field_pump", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "W_dot_field_pump");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "W_dot_heater", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "W_dot_heater");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "W_dot_heater_des", &result))
+		make_access_error("SAM_TroughPhysicalIph", "W_dot_heater_des");
 	});
 	return result;
 }
@@ -5282,6 +5450,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* le
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "gen_heat");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_heat_load_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5297,6 +5475,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_hour_day_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "hour_day", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "hour_day");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "is_PAR_HTR_allowed", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "is_PAR_HTR_allowed");
 	});
 	return result;
 }
@@ -5434,6 +5622,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_ta
 	result = ssc_data_get_array(ptr, "m_dot_htf_heat_sink", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "m_dot_htf_heat_sink");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "m_dot_htf_heater", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "m_dot_htf_heater");
 	});
 	return result;
 }
@@ -5928,6 +6126,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "ppa_price_input");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5978,6 +6186,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dc_tes_aget(SAM_table ptr, in
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_elec_to_PAR_HTR_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_elec_to_PAR_HTR", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "q_dot_elec_to_PAR_HTR");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -6024,6 +6242,35 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_freeze_prot_aget(SAM_tabl
 	result = ssc_data_get_array(ptr, "q_dot_freeze_prot", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "q_dot_freeze_prot");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_dot_heater_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "q_dot_heater_des", &result))
+		make_access_error("SAM_TroughPhysicalIph", "q_dot_heater_des");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_heater_startup", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "q_dot_heater_startup");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_heater_to_htf_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "q_dot_heater_to_htf", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "q_dot_heater_to_htf");
 	});
 	return result;
 }
@@ -6535,6 +6782,24 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tou_value_aget(SAM_table ptr, i
 	result = ssc_data_get_array(ptr, "tou_value", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "tou_value");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tshours_field_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tshours_field", &result))
+		make_access_error("SAM_TroughPhysicalIph", "tshours_field");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tshours_heater", &result))
+		make_access_error("SAM_TroughPhysicalIph", "tshours_heater");
 	});
 	return result;
 }

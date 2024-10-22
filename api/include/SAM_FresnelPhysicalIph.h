@@ -1127,14 +1127,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ppa_price_input: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
 	 * options: None
 	 * constraints: None
@@ -1170,6 +1162,19 @@ extern "C"
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set ppa_price_input_heatBtu: PPA prices - yearly [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1842,8 +1847,6 @@ extern "C"
 	 * FinancialSolutionMode Getters
 	 */
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -1856,6 +1859,13 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2163,6 +2173,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_heat_sink_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_hl_des_nget(SAM_table ptr, SAM_error *err);
@@ -2266,6 +2278,8 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_plm_total_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err);
 

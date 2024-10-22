@@ -40,6 +40,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_parallel_htr: Does plant include a HTF heater parallel to solar field?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SystemControl_is_parallel_htr_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
 	 * options: None
 	 * constraints: None
@@ -941,6 +949,72 @@ extern "C"
 
 
 	//
+	// ParallelHeater parameters
+	//
+
+	/**
+	 * Set f_q_dot_des_allowable_su: Fraction of design power allowed during startup [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_des_allowable_su_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_q_dot_heater_min: Minimum allowable heater output as fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_heater_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_efficiency: Heater electric to thermal efficiency [%]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_heater_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_mult: Heater multiple relative to design cycle thermal power [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_heater_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hrs_startup_at_max_rate: Duration of startup at max startup power [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_ParallelHeater_hrs_startup_at_max_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
+	// SystemCosts parameters
+	//
+
+	/**
+	 * Set allow_heater_no_dispatch_opt: Allow heater with no dispatch optimization? SAM UI relies on cmod default
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SystemCosts_allow_heater_no_dispatch_opt_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set heater_spec_cost: Heater specific cost [$/kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_SystemCosts_heater_spec_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// TES parameters
 	//
 
@@ -1535,12 +1609,12 @@ extern "C"
 	//
 
 	/**
-	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * Set ppa_price_input_heatBtu: PPA prices - yearly [$/MMBtu]
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2229,6 +2303,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
 
@@ -2471,6 +2547,30 @@ extern "C"
 
 
 	/**
+	 * ParallelHeater Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_des_allowable_su_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_f_q_dot_heater_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_heater_efficiency_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_heater_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_ParallelHeater_hrs_startup_at_max_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * SystemCosts Getters
+	 */
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SystemCosts_allow_heater_no_dispatch_opt_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_SystemCosts_heater_spec_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * TES Getters
 	 */
 
@@ -2644,7 +2744,7 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2855,6 +2955,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_D_cpnt_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_E_heater_su_des_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EndLoss_ave_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_EqOpteff_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2905,6 +3007,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_heat_sink_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_htf_heater_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_htf_heater_out_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_cold_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_T_rec_hot_out_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2920,6 +3026,10 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_V_tank_hot_ini_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_field_pump_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_heater_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_W_dot_heater_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_W_dot_par_tot_haf_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3113,9 +3223,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_heat_load_capacity_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_is_hx_nget(SAM_table ptr, SAM_error *err);
 
@@ -3144,6 +3258,8 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_field_to_cycle_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heat_sink_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_m_dot_htf_heater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_m_dot_htfmax_actual_nget(SAM_table ptr, SAM_error *err);
 
@@ -3245,6 +3361,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_pricing_mult_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3255,6 +3373,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dc_tes_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_elec_to_PAR_HTR_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_on_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_cr_su_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3264,6 +3384,12 @@ extern "C"
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_est_tes_dc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_freeze_prot_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_q_dot_heater_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_heater_startup_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_heater_to_htf_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_q_dot_htf_sf_out_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3370,6 +3496,10 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_tracking_power_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tou_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tshours_field_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_tshours_heater_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_twet_aget(SAM_table ptr, int* length, SAM_error *err);
 

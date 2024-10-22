@@ -311,6 +311,10 @@
 		"HeatSink": {
 			"pb_pump_coef": 0.55
 		},
+		"ParallelHeater": {
+		},
+		"SystemCosts": {
+		},
 		"TES": {
 			"cold_tank_Thtr": 60,
 			"cold_tank_max_heat": 0.5,
@@ -448,7 +452,6 @@
 			"ppa_soln_mode": 1
 		},
 		"Revenue": {
-			"ppa_price_input": [0.034000]
 		},
 		"TimeOfDeliveryFactors": {
 			"dispatch_tod_factors": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]

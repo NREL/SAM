@@ -9572,7 +9572,6 @@
 			"ppa_soln_mode": 1
 		},
 		"Revenue": {
-			"ppa_price_input": [0.034000]
 		},
 		"FinancialParameters": {
 			"const_per_interest_rate1": 3.5,

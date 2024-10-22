@@ -1760,6 +1760,12 @@ SAM_EXPORT void SAM_SingleownerHeat_UtilityBill_utility_bill_w_sys_aset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_UtilityBill_utility_bill_wo_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_wo_sys", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inflation_rate", number);
@@ -4670,6 +4676,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_UtilityBill_utility_bill_w_sys_aget(SAM_t
 	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
 	if (!result)
 		make_access_error("SAM_SingleownerHeat", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_SingleownerHeat_UtilityBill_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_wo_sys", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "utility_bill_wo_sys");
 	});
 	return result;
 }

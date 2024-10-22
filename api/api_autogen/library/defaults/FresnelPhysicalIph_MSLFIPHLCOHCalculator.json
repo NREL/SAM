@@ -201,6 +201,8 @@
 		},
 		"TimeOfDeliveryFactors": {
 		},
+		"Revenue": {
+		},
 		"CapitalCosts": {
 			"bop_spec_cost": 0,
 			"contingency_percent": 7,

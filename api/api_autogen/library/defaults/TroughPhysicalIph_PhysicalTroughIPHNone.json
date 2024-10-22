@@ -311,6 +311,10 @@
 		"HeatSink": {
 			"pb_pump_coef": 0.55
 		},
+		"ParallelHeater": {
+		},
+		"SystemCosts": {
+		},
 		"TES": {
 			"cold_tank_Thtr": 60,
 			"cold_tank_max_heat": 0.5,
