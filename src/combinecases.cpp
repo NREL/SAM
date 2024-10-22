@@ -437,13 +437,13 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 					if (financial_name != "None" && financial_name != "Third Party" && overwrite_capital) {
 						// Installation Costs
 						m_custom_generation_case->Values(0).Get("fixed_plant_input")->Set(total_installed_cost);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.per_watt")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.contingency_percent")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.epc.percent")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.epc.fixed")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.plm.percent")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.plm.fixed")->Set(0.);
-						m_custom_generation_case->Values(0).Get("genericsys.cost.sales_tax.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.per_watt")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.contingency_percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.epc.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.epc.fixed")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.plm.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.plm.fixed")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.sales_tax.percent")->Set(0.);
 
 						// Operating Costs - all zero except fixed (see explanation above)
 						m_custom_generation_case->Values(0).Get("om_fixed")->Set(om_fixed);
