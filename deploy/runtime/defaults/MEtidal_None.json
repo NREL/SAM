@@ -580,6 +580,12 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 25.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
+    "tidal_vel_freq": [
+        [
+            0.0
+        ]
+    ],
     "tidal_velocity": [
         1.06411,
         0.907655,
