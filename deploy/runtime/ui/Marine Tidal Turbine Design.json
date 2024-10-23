@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 264.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -438,7 +438,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 144.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -550,7 +550,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 207.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -603,7 +603,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -670,6 +670,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_target_cf"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
@@ -910,6 +993,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tidal_turbine_target_cf": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Target capacity factor",
+            "Units": "%",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tidal_velocity_power_law_fit": {
             "Version": 4.0,
             "Type": 1.0,
@@ -946,7 +1042,9 @@
         "\tdata.tidal_resource = ${tidal_resource};\r",
         "\t//data.generator_rated_capacity = ${tidal_turbine_kw_rating_input};\r",
         "\tdata.pto_efficiency = ${tidal_turbine_pto_eff};\r",
-        "\t\r",
+        "\tdata.target_cf = ${tidal_turbine_target_cf};\r",
+        "\tdata.tidal_resource_model_choice = ${ui_tidal_resource_model_choice};\r",
+        "\tdata.tidal_vel_freq = ${tidal_vel_freq};\r",
         "\t\r",
         "\tsuccess = ssc_eqn(\"tidal_turbine_calculate_powercurve\", data);\r",
         "\t/*\r",
@@ -1032,6 +1130,6 @@
         "on_change{'tidal_turbine_cutin'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cut_out'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};\r",
-        ""
+        "on_change{'tidal_turbine_target_cf'} = define() {plot_turbine_curve();};"
     ]
 }
