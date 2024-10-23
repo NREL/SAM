@@ -2272,6 +2272,7 @@ public:
 		wxArrayString modes;
 		modes.Add("Subhourly");
 		modes.Add("Hourly");
+        modes.Add("Three Hourly");
 		modes.Add("Daily");
 		if (optweekly) modes.Add("Weekly");
 		modes.Add("Monthly");
@@ -2350,6 +2351,12 @@ public:
 			Grid->ResizeGrid(l, 1);
 			break;
 		}
+        case DATA_LIFETIME_ARRAY_THREEHOURLY: // assume 2920
+        {
+            l = mAnalysisPeriod * 2920;
+            Grid->ResizeGrid(l, 1);
+            break;
+        }
 		case DATA_LIFETIME_ARRAY_SUBHOURLY: // assume 8760 * timesteps per hour
 		{
 			// error handling
@@ -2414,18 +2421,20 @@ public:
 			mData.push_back(0.0);
 			dataSize = 1;
 		}
-		if (dataSize == 1)
-			mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
-		else if (dataSize == (mAnalysisPeriod))
-			mMode = DATA_LIFETIME_ARRAY_ANNUAL;
-		else if (dataSize == (mAnalysisPeriod * 12))
-			mMode = DATA_LIFETIME_ARRAY_MONTHLY;
-		else if (dataSize == (mAnalysisPeriod * 52))
-			mMode = DATA_LIFETIME_ARRAY_WEEKLY;
-		else if (dataSize == (mAnalysisPeriod * 365))
-			mMode = DATA_LIFETIME_ARRAY_DAILY;
-		else if (dataSize == (mAnalysisPeriod * 8760))
-			mMode = DATA_LIFETIME_ARRAY_HOURLY;
+        if (dataSize == 1)
+            mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+        else if (dataSize == (mAnalysisPeriod))
+            mMode = DATA_LIFETIME_ARRAY_ANNUAL;
+        else if (dataSize == (mAnalysisPeriod * 12))
+            mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+        else if (dataSize == (mAnalysisPeriod * 52))
+            mMode = DATA_LIFETIME_ARRAY_WEEKLY;
+        else if (dataSize == (mAnalysisPeriod * 365))
+            mMode = DATA_LIFETIME_ARRAY_DAILY;
+        else if (dataSize == (mAnalysisPeriod * 8760))
+            mMode = DATA_LIFETIME_ARRAY_HOURLY;
+        else if (dataSize == (mAnalysisPeriod * 2920))
+            mMode = DATA_LIFETIME_ARRAY_THREEHOURLY;
 		else
 		{
 			mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
