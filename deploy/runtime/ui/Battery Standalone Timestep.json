@@ -1,7 +1,7 @@
 {
     "Name": "Battery Standalone Timestep",
-    "Width": 1057.0,
-    "Height": 194.0,
+    "Width": 670.0,
+    "Height": 113.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,11 +20,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1044.0
+                    "Integer": 651.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 99.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -111,11 +111,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 123.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -148,7 +148,7 @@
         "timestep_minutes": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Simulation",
+            "Label": "Simulation timestep",
             "Units": "Minutes",
             "Group": "",
             "IndexLabels": "",
@@ -166,7 +166,7 @@
             "Group": "Simulation",
             "IndexLabels": "",
             "Flags": 0.0,
-            "DefaultValue": 60.0,
+            "DefaultValue": 0.0,
             "UIObject": "Choice",
             "sscVariableName": "",
             "sscVariableValue": ""
