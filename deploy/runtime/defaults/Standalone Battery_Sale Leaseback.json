@@ -20342,6 +20342,8 @@
     "system_capacity": 57600.1,
     "system_use_lifetime_output": 1.0,
     "tax_investor_required_lease_reserve": 6.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 111262000.0,
     "total_indirect_cost": 0.0,

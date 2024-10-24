@@ -54738,6 +54738,8 @@
     ],
     "system_capacity": 288.05,
     "system_use_lifetime_output": 1.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "total_direct_cost": 631862.0,
     "total_indirect_cost": 0.0,
     "total_installed_cost": 663455.0,

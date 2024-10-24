@@ -46760,6 +46760,8 @@
     "system_use_lifetime_output": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 631862.0,
     "total_indirect_cost": 0.0,
