@@ -1,18 +1,18 @@
 /*@
-This macro allows you to compare multiple PV Battery cases.
+This macro allows you to compare multiple renewable energy system cases.
 This may be helpful for modeling a variety of scenarios, including:
 <ul>
 <li>Model a baseline system in contrast with an alternate system.
-<li>Compare systems with different PV or battery configurations.
+<li>Compare systems with different technologies or configurations for the same financial model.
 <li>Compare systems located at different resource locations.
 </ul>
 
 <b>Instructions:</b>
 <ol>
-<li>Create the cases that you wish to compare. 
-<li>Define the PV module, inverter, system design, battery system, losses, system cost, and financial parameters for all the created cases. 
+<li>Create the cases that you wish to compare (this macro will not evaluate battery performance). 
+<li>Define the resource, system specifications, losses, system cost, and financial parameters for all the created cases. 
 <li>Simulate all the cases.
-<li>Open the PV Battery Compare Cases Macro and select a simulation option from the list. 
+<li>Open the Compare Cases Macro and select a simulation option from the list. 
 <ul>
 <li>You may choose all of the cases in the existing project to be compared, OR
 <li>You may choose which cases to compare by typing their names into the input box, separated by ONLY a comma (no space).
@@ -172,10 +172,6 @@ for (i=0; i<num_cases; i++)
 		irr_bill_table[i] = sprintf("%.1f%",irr_bill[i]);
 	}
 }
-outln(batt_annual_charge_grid);
-outln(batt_annual_charge_sys);
-outln(batt_charge_sys);
-outln(batt_charge_grid);
 
 //outln(lcoe);
 //outln(aep);
