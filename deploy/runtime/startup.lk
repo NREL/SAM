@@ -2478,7 +2478,7 @@ function setup_standalone_battery_pages(is_btm) {
 	
 	if (is_btm) {
 		addpage([['Battery Standalone Timestep',
-			 ]], { 'sidebar'='Battery Timestep', 'help'='battery_storage_btm', 'bin_name'='Battery' } );
+			 ]], { 'sidebar'='Battery Time Step', 'help'='battery_storage_btm', 'bin_name'='Battery' } );
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_btm();
@@ -2487,7 +2487,7 @@ function setup_standalone_battery_pages(is_btm) {
 	}
 	else {
 		addpage([['Battery Standalone Timestep',
-			 ]], { 'sidebar'='Battery Timestep', 'help'='battery_storage_fom', 'bin_name'='Battery' } );
+			 ]], { 'sidebar'='Battery Time Step', 'help'='battery_storage_fom', 'bin_name'='Battery' } );
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_fom();
