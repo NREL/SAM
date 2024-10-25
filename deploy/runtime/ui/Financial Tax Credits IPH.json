@@ -1720,7 +1720,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ptc_fed_amount_heatBtu"
+                    "String": "ptc_fed_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1939,7 +1939,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ptc_sta_amount_heatBtu"
+                    "String": "ptc_sta_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -2349,7 +2349,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ptc_fed_amount_heatBtu": {
+        "ptc_fed_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Federal PTC amount",
@@ -2390,7 +2390,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ptc_sta_amount_heatBtu": {
+        "ptc_sta_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "State PTC amount",
@@ -2457,20 +2457,20 @@
         "\tproperty('itc_sta_percent','FixedLength',value('analysis_period'));",
         "\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));",
         "\tproperty('itc_fed_percent_maxvalue','FixedLength',value('analysis_period'));",
-        "\tproperty('ptc_fed_amount_heatBtu','FixedLength',value('analysis_period'));",
-        "\tproperty('ptc_sta_amount_heatBtu','FixedLength',value('analysis_period'));",
+        "\tproperty('ptc_fed_amount_heat_btu','FixedLength',value('analysis_period'));",
+        "\tproperty('ptc_sta_amount_heat_btu','FixedLength',value('analysis_period'));",
         "\r",
         "\tptc_grid_charge_message();\r",
         "",
         "};\r",
         "\r",
-        "on_change{'ptc_fed_amount_heatBtu'} = define() { ptc_grid_charge_message(); };\r",
+        "on_change{'ptc_fed_amount_heat_btu'} = define() { ptc_grid_charge_message(); };\r",
         "on_change{'ptc_fed_term'} = define() { ptc_grid_charge_message(); };\r",
-        "on_change{'ptc_sta_amount_heatBtu'} = define() { ptc_grid_charge_message(); };\r",
+        "on_change{'ptc_sta_amount_heat_btu'} = define() { ptc_grid_charge_message(); };\r",
         "on_change{'ptc_sta_term'} = define() { ptc_grid_charge_message(); };\r",
         "\r",
         "function ptc_grid_charge_message() {\r",
-        "\tptc_enabled = ( sum(value('ptc_fed_amount_heatBtu')) != 0 && value('ptc_fed_term') > 0 ) || ( sum(value('ptc_sta_amount_heatBtu')) != 0 && value('ptc_sta_term') > 0 );\r",
+        "\tptc_enabled = ( sum(value('ptc_fed_amount_heat_btu')) != 0 && value('ptc_fed_term') > 0 ) || ( sum(value('ptc_sta_amount_heat_btu')) != 0 && value('ptc_sta_term') > 0 );\r",
         "\tgridcharge_enabled = false;\r",
         "\tif ( is_assigned('batt_dispatch_choice') ) {\r",
         "\t\tif ( value('batt_dispatch_choice') == 3 ) { // manual dispatch\r",

@@ -2165,7 +2165,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cbi_fed_amount_heatBtu"
+                    "String": "cbi_fed_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -2495,7 +2495,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cbi_oth_amount_heatBtu"
+                    "String": "cbi_oth_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -2825,7 +2825,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cbi_sta_amount_heatBtu"
+                    "String": "cbi_sta_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3155,7 +3155,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cbi_uti_amount_heatBtu"
+                    "String": "cbi_uti_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -6351,7 +6351,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pbi_fed_amount_heatBtu"
+                    "String": "pbi_fed_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -6693,7 +6693,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pbi_oth_amount_heatBtu"
+                    "String": "pbi_oth_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -7035,7 +7035,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pbi_sta_amount_heatBtu"
+                    "String": "pbi_sta_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -7377,7 +7377,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "pbi_uti_amount_heatBtu"
+                    "String": "pbi_uti_amount_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -7716,7 +7716,20 @@
         }
     },
     "VarDatabase": {
-        "cbi_fed_amount_heatBtu": {
+        "cbi_fed_amount": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Federal CBI amount in $/W",
+            "Units": "$/W",
+            "Group": "Cash Incentives",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cbi_fed_amount_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Federal CBI amount",
@@ -7794,7 +7807,20 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cbi_oth_amount_heatBtu": {
+        "cbi_oth_amount": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Other CBI amount in orig units",
+            "Units": "$/W",
+            "Group": "Cash Incentives",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cbi_oth_amount_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Other CBI amount",
@@ -7872,7 +7898,20 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cbi_sta_amount_heatBtu": {
+        "cbi_sta_amount": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "State CBI amount in orig units",
+            "Units": "$/W",
+            "Group": "Cash Incentives",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cbi_sta_amount_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "State CBI amount",
@@ -7950,7 +7989,20 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cbi_uti_amount_heatBtu": {
+        "cbi_uti_amount": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Utility CBI amount in orig units",
+            "Units": "$/W",
+            "Group": "Cash Incentives",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "cbi_uti_amount_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Utility CBI amount",
@@ -8600,7 +8652,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "pbi_fed_amount_heatBtu": {
+        "pbi_fed_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Federal PBI amount",
@@ -8680,7 +8732,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "pbi_oth_amount_heatBtu": {
+        "pbi_oth_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Other PBI amount",
@@ -8760,7 +8812,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "pbi_sta_amount_heatBtu": {
+        "pbi_sta_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "State PBI amount",
@@ -8840,7 +8892,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "pbi_uti_amount_heatBtu": {
+        "pbi_uti_amount_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Utility PBI amount",
@@ -8921,13 +8973,31 @@
             "sscVariableValue": ""
         }
     },
-    "Equations": [],
+    "Equations": [
+        "// Calculated variables converted back to W units, for use in other forms\r",
+        "\r",
+        "equations{ 'cbi_fed_amount' } = define() {\r",
+        "\treturn  ${cbi_fed_amount_heat_btu} / 3.412141633;\r",
+        "\t};\r",
+        "\t\r",
+        "equations{ 'cbi_sta_amount' } = define() {\r",
+        "\treturn  ${cbi_sta_amount_heat_btu} / 3.412141633;\r",
+        "\t};\r",
+        "\t\r",
+        "equations{ 'cbi_uti_amount' } = define() {\r",
+        "\treturn  ${cbi_uti_amount_heat_btu} / 3.412141633;\r",
+        "\t};\r",
+        "\t\r",
+        "equations{ 'cbi_oth_amount' } = define() {\r",
+        "\treturn  ${cbi_oth_amount_heat_btu} / 3.412141633;\r",
+        "\t};"
+    ],
     "Callbacks": [
         "function pbi_grid_charge_message() {\r",
-        "\tpbi_enabled = ( sum(value('pbi_fed_amount_heatBtu')) != 0 && value('pbi_fed_term') > 0 ) \r",
-        "\t           || ( sum(value('pbi_sta_amount_heatBtu')) != 0 && value('pbi_sta_term') > 0 ) \r",
-        "\t           || ( sum(value('pbi_uti_amount_heatBtu')) != 0 && value('pbi_uti_term') > 0 ) \r",
-        "\t           || ( sum(value('pbi_oth_amount_heatBtu')) != 0 && value('pbi_oth_term') > 0 );\r",
+        "\tpbi_enabled = ( sum(value('pbi_fed_amount_heat_btu')) != 0 && value('pbi_fed_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_sta_amount_heat_btu')) != 0 && value('pbi_sta_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_uti_amount_heat_btu')) != 0 && value('pbi_uti_term') > 0 ) \r",
+        "\t           || ( sum(value('pbi_oth_amount_heat_btu')) != 0 && value('pbi_oth_term') > 0 );\r",
         "\tgridcharge_enabled = false;\r",
         "\tif ( is_assigned('batt_dispatch_choice') ) {\r",
         "\t\tif ( value('batt_dispatch_choice') == 3 ) { // manual dispatch\r",
@@ -8958,10 +9028,10 @@
         "",
         "\tf = financing();",
         "\t\r",
-        "    property('pbi_fed_amount_heatBtu','FixedLength',value('analysis_period'));\r",
-        "    property('pbi_sta_amount_heatBtu','FixedLength',value('analysis_period'));\r",
-        "    property('pbi_uti_amount_heatBtu','FixedLength',value('analysis_period'));\r",
-        "    property('pbi_oth_amount_heatBtu','FixedLength',value('analysis_period'));\r",
+        "    property('pbi_fed_amount_heat_btu','FixedLength',value('analysis_period'));\r",
+        "    property('pbi_sta_amount_heat_btu','FixedLength',value('analysis_period'));\r",
+        "    property('pbi_uti_amount_heat_btu','FixedLength',value('analysis_period'));\r",
+        "    property('pbi_oth_amount_heat_btu','FixedLength',value('analysis_period'));\r",
         "\t",
         "\tshow( 'ibi_fed_amount_deprbas_fed', ((f!='None')&&(f!='Residential')) );",
         "\tshow( 'ibi_fed_amount_deprbas_sta', ((f!='None')&&(f!='Residential')));",
@@ -9009,10 +9079,10 @@
         "\tshow( 'pbi_oth_for_ds', is_debt_fin);",
         "};\r",
         "\r",
-        "on_change{\"pbi_fed_amount_heatBtu\"} = define() { pbi_grid_charge_message(); };\r",
-        "on_change{\"pbi_sta_amount_heatBtu\"} = define() { pbi_grid_charge_message(); };\r",
-        "on_change{\"pbi_uti_amount_heatBtu\"} = define() { pbi_grid_charge_message(); };\r",
-        "on_change{\"pbi_oth_amount_heatBtu\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_fed_amount_heat_btu\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_sta_amount_heat_btu\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_uti_amount_heat_btu\"} = define() { pbi_grid_charge_message(); };\r",
+        "on_change{\"pbi_oth_amount_heat_btu\"} = define() { pbi_grid_charge_message(); };\r",
         "\r",
         "on_change{\"pbi_fed_term\"} = define() { pbi_grid_charge_message(); };\r",
         "on_change{\"pbi_sta_term\"} = define() { pbi_grid_charge_message(); };\r",

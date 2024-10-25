@@ -273,7 +273,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ppa_price_input_heatBtu"
+                    "String": "ppa_price_input_heat_btu"
                 },
                 "X": {
                     "Type": 3.0,
@@ -349,7 +349,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ppa_price_input_heatBtu": {
+        "ppa_price_input_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "PPA price",
@@ -401,7 +401,7 @@
         "\tdisplay_message();",
         "};",
         "",
-        "on_change{'ppa_price_input_heatBtu'} = define()",
+        "on_change{'ppa_price_input_heat_btu'} = define()",
         "{",
         "\tsoln_mode_ctrl_refresh();",
         "};",
@@ -435,7 +435,7 @@
         "function soln_mode_ctrl_refresh()",
         "{",
         "    is_specify_irr = false;",
-        "\tshow_escalation = (#${ppa_price_input_heatBtu} < 2);",
+        "\tshow_escalation = (#${ppa_price_input_heat_btu} < 2);",
         "\tenable(\"ppa_escalation\",(show_escalation || is_specify_irr));",
         "}"
     ]

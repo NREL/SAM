@@ -314,7 +314,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "om_capacity_heatBtu"
+                    "String": "om_capacity_heat"
                 },
                 "X": {
                     "Type": 3.0,
@@ -586,7 +586,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "om_production_heatBtu"
+                    "String": "om_production_heat"
                 },
                 "X": {
                     "Type": 3.0,
@@ -649,11 +649,11 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "om_capacity_heatBtu": {
+        "om_capacity_heat": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Fixed cost by capacity",
-            "Units": "$/(MMBtu/hr)-yr",
+            "Units": "$/kWt-yr",
             "Group": "Operating Costs",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -705,11 +705,11 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "om_production_heatBtu": {
+        "om_production_heat": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Variable cost by generation",
-            "Units": "$/MMBtu",
+            "Units": "$/MWht",
             "Group": "Operating Costs",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -724,24 +724,24 @@
     "Equations": [],
     "Callbacks": [
         "on_load{'Operating Costs IPH'} = define() {",
-        "\tenable( 'om_capacity_escal',#${om_capacity_heatBtu}==1);",
+        "\tenable( 'om_capacity_escal',#${om_capacity_heat}==1);",
         "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
-        "\tenable( 'om_production_escal',#${om_production_heatBtu}==1);",
-        "\tproperty( 'om_capacity_heatBtu','FixedLength',${analysis_period});",
+        "\tenable( 'om_production_escal',#${om_production_heat}==1);",
+        "\tproperty( 'om_capacity_heat','FixedLength',${analysis_period});",
         "\tproperty( 'om_fixed','FixedLength',${analysis_period});",
-        "\tproperty( 'om_production_heatBtu','FixedLength',${analysis_period});",
+        "\tproperty( 'om_production_heat','FixedLength',${analysis_period});",
         "};",
         "",
-        "on_change{'om_capacity_heatBtu'} = define() {",
-        "\tenable( 'om_capacity_escal',#${om_capacity_heatBtu}==1);",
+        "on_change{'om_capacity_heat'} = define() {",
+        "\tenable( 'om_capacity_escal',#${om_capacity_heat}==1);",
         "};",
         "",
         "on_change{'om_fixed'} = define() {",
         "\tenable( 'om_fixed_escal',#${om_fixed}==1);",
         "};",
         "",
-        "on_change{'om_production_heatBtu'} = define() {",
-        "\tenable( 'om_production_escal',#${om_production_heatBtu}==1);",
+        "on_change{'om_production_heat'} = define() {",
+        "\tenable( 'om_production_escal',#${om_production_heat}==1);",
         "};",
         ""
     ]

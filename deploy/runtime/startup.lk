@@ -982,12 +982,27 @@ addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 setconfig( 'Physical Trough IPH', 'Commercial' );
-setmodules( ['trough_physical_iph', 'utilityrate5', 'cashloan_heat']);
+setmodules( ['trough_physical_iph', 'utilityrate5', 'thermalrate_iph', 'cashloan_heat']);
 setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
-setup_commercial_pages(LOAD_SIMPLE); //belpe not valid for commercial
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Debt Min DSCR',
+		  'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  'Financial Depreciation Simple', ]],
+	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+setup_utility_rate();
+setup_elec_load_page( LOAD_SIMPLE );
+addpage( [[ 'Thermal Rate IPH' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load IPH' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
