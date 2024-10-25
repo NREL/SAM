@@ -2617,20 +2617,22 @@ void AFDataLifetimeArrayButton::Set(const std::vector<double> &data, size_t anal
 	mAnalysisPeriod = analysis_period;
 	mData = data;
 	size_t newSize = mData.size();
-	if (newSize == 1)
-		mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
-	else if (newSize == mAnalysisPeriod)
-		mMode = DATA_LIFETIME_MATRIX_ANNUAL;
-	else if (newSize == (mAnalysisPeriod * 12))
-		mMode = DATA_LIFETIME_MATRIX_MONTHLY;
-	else if (newSize == (mAnalysisPeriod * 52))
-		mMode = DATA_LIFETIME_MATRIX_WEEKLY;
-	else if (newSize == (mAnalysisPeriod * 365))
-		mMode = DATA_LIFETIME_MATRIX_DAILY;
-	else if (newSize == (mAnalysisPeriod * 8760))
-		mMode = DATA_LIFETIME_MATRIX_HOURLY;
+    if (newSize == 1)
+        mMode = DATA_LIFETIME_ARRAY_SINGLEVALUE;
+    else if (newSize == mAnalysisPeriod)
+        mMode = DATA_LIFETIME_ARRAY_ANNUAL;
+    else if (newSize == (mAnalysisPeriod * 12))
+        mMode = DATA_LIFETIME_ARRAY_MONTHLY;
+    else if (newSize == (mAnalysisPeriod * 52))
+        mMode = DATA_LIFETIME_ARRAY_WEEKLY;
+    else if (newSize == (mAnalysisPeriod * 365))
+        mMode = DATA_LIFETIME_ARRAY_DAILY;
+    else if (newSize == (mAnalysisPeriod * 8760))
+        mMode = DATA_LIFETIME_ARRAY_HOURLY;
+    else if (newSize == (mAnalysisPeriod * 2920))
+        mMode = DATA_LIFETIME_ARRAY_THREEHOURLY;
 	else
-		mMode = DATA_LIFETIME_MATRIX_SUBHOURLY;
+		mMode = DATA_LIFETIME_ARRAY_SUBHOURLY;
 }
 void AFDataLifetimeArrayButton::SetDataLabel(const wxString &s)
 {
