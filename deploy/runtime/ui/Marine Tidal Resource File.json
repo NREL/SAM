@@ -562,6 +562,23 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tidal_vel_freq": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Tidal timeseries velocity distribution",
+            "Units": "%",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tidal_velocity": {
             "Version": 4.0,
             "Type": 2.0,
@@ -573,7 +590,7 @@
             "DefaultValue": [
                 0.0
             ],
-            "UIObject": "Default",
+            "UIObject": "DataArray",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -635,6 +652,44 @@
         "\tarray = ${tidal_velocity};\r",
         "\tlen_array = #array;\r",
         "\treturn 60 / (len_array/8760);\r",
+        "};\r",
+        "\r",
+        "equations{ 'tidal_vel_freq' } = define() {\r",
+        "\tobj = ssc_create();\r",
+        "\tssc_var(obj, 'tidal_resource_model_choice', 1);\r",
+        "\tssc_var(obj, 'tidal_resource_filename', ${tidal_resource_filename});\r",
+        "\terr = ssc_exec(obj, 'tidal_file_reader');\r",
+        "\tif (err != 0) {\r",
+        "\t\tmsgbox('error');\r",
+        "\t\treturn [[0]];\r",
+        "\t}\r",
+        "\tarray = [];\r",
+        "\tarray = ssc_var(obj, 'tidal_velocity');\r",
+        "\t//array = ${tidal_velocity};\r",
+        "\tlen_array = #array;\r",
+        "\tmin_vel = floor(min(array));\r",
+        "\tmax_vel = ceil(max(array));\r",
+        "\tbins = (max_vel - min_vel) * 10; //int to int, * 10 for 0.1 bin size\r",
+        "\tfreq_bin = [[]];\r",
+        "\tfor (i = 1; i <= bins; i++) { //Create velocity bins (m/s)\r",
+        "\t\tfreq_bin[i-1][0] = min_vel + 0.1 * i;\r",
+        "\t\tfreq_bin[i-1][1] = 0;\r",
+        "\t}\r",
+        "\tfor (j = 0; j < len_array; j++) { //iterate through time series to sort velocities into bins\r",
+        "\t\tvel = array[j];\r",
+        "\t\tif (vel < freq_bin[0][0]) {\r",
+        "\t\t\tfreq_bin[0][1] += 1 / len_array;\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tk = 0;\r",
+        "\t\t\twhile ((array[j] - freq_bin[k][0]) > 0.1 && k < bins) {\r",
+        "\t\t\t\tk = k + 1;\r",
+        "\t\t\t}\r",
+        "\t\t\tfreq_bin[k][1] += 1.0 / len_array;\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\treturn freq_bin;\r",
+        "\r",
         "};\r",
         ""
     ],
