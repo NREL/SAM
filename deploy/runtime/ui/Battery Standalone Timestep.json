@@ -148,7 +148,7 @@
         "timestep_minutes": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Simulation timestep",
+            "Label": "Simulation timestep (ssc minutes)",
             "Units": "Minutes",
             "Group": "",
             "IndexLabels": "",
