@@ -160,6 +160,13 @@ for (i=0; i<num_cases; i++)
 		annual_cashflow[j][i] = 0;
 	}
 	
+	if (config[1] == "Residential" || config[1] == "Commercial") {
+		irr_bill[i] = get('irr');
+	}
+	else {
+		irr_bill[i] = get('project_return_aftertax_irr');
+	}
+	
 	/*
 	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
 		irr_bill[i] = get('savings_year1');
