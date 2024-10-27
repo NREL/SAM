@@ -818,9 +818,9 @@ SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factor
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "ppa_price_input_heatBtu", arr, length);
+		ssc_data_set_array(ptr, "ppa_price_input_heat_btu", arr, length);
 	});
 }
 
@@ -2324,12 +2324,12 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_fac
 	return result;
 }
 
-SAM_EXPORT double* SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double* SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "ppa_price_input_heatBtu", length);
+	result = ssc_data_get_array(ptr, "ppa_price_input_heat_btu", length);
 	if (!result)
-		make_access_error("SAM_FresnelPhysicalIph", "ppa_price_input_heatBtu");
+		make_access_error("SAM_FresnelPhysicalIph", "ppa_price_input_heat_btu");
 	});
 	return result;
 }

@@ -2625,6 +2625,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Cashloan_Outputs_irr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err);
@@ -2652,6 +2654,8 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_table ptr, SAM_error *err);
 

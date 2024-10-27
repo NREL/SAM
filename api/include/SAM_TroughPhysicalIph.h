@@ -1609,12 +1609,12 @@ extern "C"
 	//
 
 	/**
-	 * Set ppa_price_input_heatBtu: PPA prices - yearly [$/MMBtu]
+	 * Set ppa_price_input_heat_btu: PPA prices - yearly [$/MMBtu]
 	 * options: None
 	 * constraints: None
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_TroughPhysicalIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2744,7 +2744,7 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_heatBtu_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3044,8 +3044,6 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_electricity_consumption_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err);
 
