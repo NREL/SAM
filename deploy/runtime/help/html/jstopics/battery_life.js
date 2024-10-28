@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Battery Life",
 hmDescription:"The battery life inputs determine how the battery degrades over time, and the timing of battery replacements.",
-hmPrevLink:"battery_dispatch_fom.html",
+hmPrevLink:"battery_time_step.html",
 hmNextLink:"battery_results.html",
 hmParentLink:"battery_storage.html",
 hmBreadCrumbs:"<a href=\"battery_storage.html\">Battery Storage<\/a>",
