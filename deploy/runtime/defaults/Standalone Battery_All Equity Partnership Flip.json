@@ -20349,6 +20349,8 @@
     "tax_investor_postflip_tax_percent": 10.0,
     "tax_investor_preflip_cash_percent": 98.0,
     "tax_investor_preflip_tax_percent": 98.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 111262000.0,
     "total_indirect_cost": 0.0,

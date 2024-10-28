@@ -95,7 +95,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "me_adjust"
+                    "String": "adjust"
                 },
                 "X": {
                     "Type": 3.0,
@@ -215,7 +215,7 @@
         }
     },
     "VarDatabase": {
-        "me_adjust": {
+        "adjust": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -224,24 +224,11 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "me_adjust_constant": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "LossAdjustment",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "me_adjust_en_periods": {
+        "adjust_constant": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -254,7 +241,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "me_adjust_en_timeindex": {
+        "adjust_en_periods": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -267,7 +254,20 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "me_adjust_periods": {
+        "adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "adjust_periods": {
             "Version": 4.0,
             "Type": 3.0,
             "Label": "",
@@ -284,7 +284,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "me_adjust_timeindex": {
+        "adjust_timeindex": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "",
@@ -303,27 +303,61 @@
     "Equations": [],
     "Callbacks": [
         "on_load{'Marine Availability'} = define() {",
-        "\tenable_avail();",
+        "\tenable_avail();\r",
+        "\tloss_adjustment_set();",
         "};",
         "",
         "function enable_avail()",
         "{",
-        "\tif (financing() != \"Single Owner\") {",
-        "\t\tcheck = value('wave_resource_model_choice');",
-        "\t\tif (check == 1) {",
-        "\t\t\tenable('me_adjust', true);",
-        "\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');",
-        "\t\t}",
-        "\t\telse {",
-        "\t\t\tenable('me_adjust', false);",
-        "\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave resource data.');",
-        "\t\t\t",
+        "\tif (financing() != \"Single Owner\") {\r",
+        "\t\tif (technology() == \"MEwave\") { //Check wave fcr for time series",
+        "\t\t\tcheck = value('wave_resource_model_choice');",
+        "\t\t\tif (check == 1) {",
+        "\t\t\t\tenable('adjust', true);",
+        "\t\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');",
+        "\t\t\t}",
+        "\t\t\telse {",
+        "\t\t\t\tenable('adjust', false);",
+        "\t\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave or tidal resource data.');",
+        "\t\t\t\t",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t\telse if (technology() == \"MEtidal\") { //check tidal fcr for time series\r",
+        "\t\t\tcheck = value('ui_tidal_resource_model_choice');\r",
+        "\t\t\tif (check == 1) {\r",
+        "\t\t\t\tenable('adjust', true);\r",
+        "\t\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');\r",
+        "\t\t\t}\r",
+        "\t\t\telse {\r",
+        "\t\t\t\tenable('adjust', false);\r",
+        "\t\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave or tidal resource data.');\r",
+        "\t\t\t\t\r",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t\telse { //\r",
+        "\t\t\tenable('adjust', false);\r",
+        "\t\t\tproperty('me_avail_label', 'Caption', 'System availability losses are only available for time series wave or tidal resource data.');\r",
         "\t\t}",
         "\t}",
         "\telse {",
-        "\t\tenable('me_adjust', true);",
+        "\t\tenable('adjust', true);",
         "\t\tproperty('me_avail_label', 'Caption', 'System availability losses reduce the system output to represent system outages or other events. Losses are applied in addition to the constant loss factors specified above');",
         "\t}",
+        "}\r",
+        "\r",
+        "function loss_adjustment_set() \r",
+        "{\r",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\t\tif (value('system_use_lifetime_output') == 1) {\r",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
+        "\t}\r",
         "}"
     ]
 }

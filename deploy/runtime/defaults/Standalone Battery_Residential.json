@@ -37213,6 +37213,8 @@
     ],
     "system_capacity": 4.79002,
     "system_use_lifetime_output": 1.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "total_direct_cost": 10737.1,
     "total_indirect_cost": 7575.0,
     "total_installed_cost": 18849.0,

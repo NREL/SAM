@@ -1327,7 +1327,8 @@ addpage( [[ { 'name'='Battery None', 'caption'='No Battery'}],
 			{ 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 			{ 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 			{ 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-			{ 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+			{ 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+			'Battery Standalone Enable' ]],
 		 { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
 addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ],
 		  [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ],
@@ -1374,7 +1375,8 @@ addpage( [[ { 'name'='Battery None','caption'='No Battery'}],
 		    { 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 		    { 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
 		    { 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
-		    { 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'} ]],
+		    { 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
+		    'Battery Standalone Enable' ]],
 	     { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
 addpage( [[ { 'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], 
 		  [ { 'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'} ],
@@ -2160,7 +2162,7 @@ function setup_mewave_pages(lcoe_fcr)
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource', 'exclusive_header_pages'=['Marine Wave Resource Header'], 'exclusive_var'='wave_resource_model_choice', 'exclusive_hide' = true } );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	if (lcoe_fcr == 1) {
 		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
 			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
@@ -2194,7 +2196,7 @@ function setup_mewave_so()
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array']], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_grid_limits_page();
 	setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 	addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
@@ -2223,7 +2225,7 @@ function setup_mewave_batt_so()
 			  { 'sidebar'='Wave Resource', 'help'='me_wave_resource'} );
 	addpage( [[ 'Marine Wave Converter', 'Battery Enable' ]], { 'sidebar'='Wave Energy Converter', 'help'='me_wave_converter' } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_wave_array' } );
-	addpage( [[ 'Marine Losses']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability']], { 'sidebar'='Losses', 'help'='me_wave_losses' } );
 	setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
 	setup_pages_battery_life();
 	setup_pages_pv_battery_dispatch_fom();
@@ -2283,7 +2285,7 @@ function setup_metidal_pages(lcoe_fcr)
 			[{'name'='Marine Tidal Turbine Design', 'caption'='Tidal Converter Design'}]], 
 		{ 'sidebar'='Tidal Energy Converter', 'help'='me_tidal_converter', 'exclusive_var'='tidal_design_excl','exclusive_tab'=true, 'exclusive_hide'=true, 'exclusive_header_pages'=['Marine Tidal Converter Header'] } );
 	addpage( [[ 'Marine Array' ]], { 'sidebar'='Array', 'help'='me_tidal_array' } );
-	addpage( [[ 'Marine Losses' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
+	addpage( [[ 'Marine Losses', 'Marine Availability' ]], { 'sidebar'='Losses', 'help'='me_tidal_losses' } );
 	if (lcoe_fcr == 1) {
 		addpage( [[ 'Marine Costs - Device Costs',{'name'='Marine Costs - Structural Assembly','caption' = 'Structural Assembly Cost Breakdown','collapsible'=true,'collapsible_var'='stuctural_assem_shown'},
 			{'name'='Marine Costs - PTO','caption'= 'Power Take-off System Cost Breakdown','collapsible'=true,'collapsible_var'='pto_shown'},
@@ -2538,8 +2540,11 @@ setup_electricity_purchases();
 // Standalone Battery /////////////////////////////////////////////////////////
 
 function setup_standalone_battery_pages(is_btm) {
+	
 	if (is_btm) {
 		setup_pages_battery_cell_and_system(false, true); // No REopt and BTM
+		addpage([['Battery Standalone Timestep',
+			 ]], { 'sidebar'='Battery Time Step', 'help'='battery_time_step', 'bin_name'='Battery' } );
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_btm();
 		setup_grid_limits_page();
@@ -2547,6 +2552,8 @@ function setup_standalone_battery_pages(is_btm) {
 	}
 	else {
 		setup_pages_battery_cell_and_system(false, false); // No REopt and FOM
+		addpage([['Battery Standalone Timestep',
+			 ]], { 'sidebar'='Battery Time Step', 'help'='battery_time_step', 'bin_name'='Battery' } );
 		setup_pages_battery_life();
 		setup_pages_standalone_battery_dispatch_fom();
 		setup_grid_limits_page();

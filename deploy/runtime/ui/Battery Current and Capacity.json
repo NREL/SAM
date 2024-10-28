@@ -1,7 +1,7 @@
 {
     "Name": "Battery Current and Capacity",
-    "Width": 1050.0,
-    "Height": 479.0,
+    "Width": 1051.0,
+    "Height": 453.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
