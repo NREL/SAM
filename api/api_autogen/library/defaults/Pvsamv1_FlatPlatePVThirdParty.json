@@ -264,7 +264,6 @@
 			"cec_bifacial_ground_clearance_height": 1,
 			"cec_bifacial_transmission_factor": 0.013,
 			"cec_bifaciality": 0.7,
-			"cec_gamma_r": -0.31,
 			"cec_gap_spacing": 0.05,
 			"cec_heat_transfer": 0,
 			"cec_height": 0,
@@ -460,7 +459,8 @@
 			"load_escalation": [0.000000]
 		},
 		"PVLosses": {
-			"enable_subhourly_clipping": 0
+			"enable_subhourly_clipping": 0,
+			"enable_subinterval_distribution": 0
 		},
 		"AdjustmentFactors": {
 			"constant": 0,

@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Simulation_timestep_minutes_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "timestep_minutes", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
@@ -1309,6 +1315,15 @@ SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "percent_complete", &result))
 		make_access_error("SAM_Battery", "percent_complete");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Simulation_timestep_minutes_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "timestep_minutes", &result))
+		make_access_error("SAM_Battery", "timestep_minutes");
 	});
 	return result;
 }
@@ -3593,6 +3608,15 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_dispatch_sched_mget(SAM_table ptr, i
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_grid_charge_percent", &result))
+		make_access_error("SAM_Battery", "batt_grid_charge_percent");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Battery_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3924,6 +3948,24 @@ SAM_EXPORT double* SAM_Battery_Outputs_batt_voltage_cell_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "batt_voltage_cell", length);
 	if (!result)
 		make_access_error("SAM_Battery", "batt_voltage_cell");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_grid", &result))
+		make_access_error("SAM_Battery", "batt_year1_charge_from_grid");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_year1_charge_from_system", &result))
+		make_access_error("SAM_Battery", "batt_year1_charge_from_system");
 	});
 	return result;
 }

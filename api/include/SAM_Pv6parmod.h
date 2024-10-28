@@ -221,14 +221,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set gamma_pmp: Temp coeff of power at MP [%/'C]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set height: System installation height [0/1]
 	 * options: 0=less than 22ft, 1=more than 22ft
 	 * constraints: INTEGER,MIN=0,MAX=1
@@ -315,8 +307,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_area_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_height_nget(SAM_table ptr, SAM_error *err);
 
