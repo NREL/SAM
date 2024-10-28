@@ -2333,14 +2333,6 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_energy_pre_curtailment_ac: Annual Energy AC pre-curtailment (year 1) [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_SystemOutput_annual_energy_pre_curtailment_ac_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set degradation: Annual energy degradation
 	 * options: None
 	 * constraints: None
@@ -2379,14 +2371,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_SingleownerHeat_SystemOutput_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set system_pre_curtailment_kwac: System power before grid curtailment [kW]
-	 * options: System generation
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_SystemOutput_system_pre_curtailment_kwac_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -2511,80 +2495,6 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_SingleownerHeat_FuelCell_fuelcell_replacement_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-
-	//
-	// CapacityPayments parameters
-	//
-
-	/**
-	 * Set cp_battery_nameplate: Battery nameplate [MW]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: cp_capacity_payment_type=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_battery_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cp_capacity_credit_percent: Capacity credit (eligible portion of nameplate) [%]
-	 * options: None
-	 * constraints: None
-	 * required if: cp_capacity_payment_type=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_capacity_credit_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set cp_capacity_payment_amount: Capacity payment amount [$ or $/MW]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set cp_capacity_payment_esc: Capacity payment escalation [%/year]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_esc_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cp_capacity_payment_type: Capacity payment type
-	 * options: 0=Energy basis,1=Fixed amount
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_type_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set cp_system_nameplate: System nameplate [MW]
-	 * options: None
-	 * constraints: MIN=0
-	 * required if: cp_capacity_payment_type=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_CapacityPayments_cp_system_nameplate_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// GridLimits parameters
-	//
-
-	/**
-	 * Set grid_curtailment_price: Curtailment price [$/kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_GridLimits_grid_curtailment_price_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set grid_curtailment_price_esc: Curtailment price escalation [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_GridLimits_grid_curtailment_price_esc_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -3388,8 +3298,6 @@ extern "C"
 	 * SystemOutput Getters
 	 */
 
-	SAM_EXPORT double SAM_SingleownerHeat_SystemOutput_annual_energy_pre_curtailment_ac_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3399,8 +3307,6 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_SystemOutput_system_capacity_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_system_pre_curtailment_kwac_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3447,32 +3353,6 @@ extern "C"
 	SAM_EXPORT double SAM_SingleownerHeat_FuelCell_fuelcell_replacement_option_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_FuelCell_fuelcell_replacement_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
-
-
-	/**
-	 * CapacityPayments Getters
-	 */
-
-	SAM_EXPORT double SAM_SingleownerHeat_CapacityPayments_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_CapacityPayments_cp_capacity_credit_percent_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_amount_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_esc_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_CapacityPayments_cp_capacity_payment_type_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_CapacityPayments_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * GridLimits Getters
-	 */
-
-	SAM_EXPORT double* SAM_SingleownerHeat_GridLimits_grid_curtailment_price_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_GridLimits_grid_curtailment_price_esc_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -3571,8 +3451,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_battery_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_capacity_payment_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_charging_cost_grid_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3580,8 +3458,6 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_charging_cost_grid_month_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_charging_cost_pv_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_curtailment_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_debt_balance_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3608,8 +3484,6 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_ebitda_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_effective_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_curtailed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4612,10 +4486,6 @@ extern "C"
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_npv_annual_costs_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_npv_annual_costs_lcos_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_npv_capacity_revenue_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_npv_curtailment_revenue_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_npv_energy_lcos_nom_nget(SAM_table ptr, SAM_error *err);
 

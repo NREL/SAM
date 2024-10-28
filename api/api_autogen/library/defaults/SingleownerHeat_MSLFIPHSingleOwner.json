@@ -224,13 +224,6 @@
 		},
 		"FuelCell": {
 		},
-		"CapacityPayments": {
-			"cp_capacity_payment_amount": [0],
-			"cp_capacity_payment_esc": 0,
-			"cp_capacity_payment_type": 0
-		},
-		"GridLimits": {
-		},
 		"LCOS": {
 			"batt_salvage_percentage": 0
 		},
