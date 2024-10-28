@@ -3,6 +3,20 @@
     "active_structure_cost": 0.0,
     "additional_structural_components_cost": 0.0,
     "additional_structural_components_cost_total": 0.0,
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "air_turbine_cost": 0.0,
     "air_turbine_cost_rvalue": 0.0,
     "air_turbine_cost_total": 0.0,
