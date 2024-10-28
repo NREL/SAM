@@ -29030,6 +29030,7 @@
     "elev": 358.0,
     "en_batt": 1.0,
     "en_snowloss": 0.0,
+    "en_standalone_batt": 0.0,
     "en_user_spec_losses": 0.0,
     "enable_interconnection_limit": 0.0,
     "energy_1": 57339.5,
