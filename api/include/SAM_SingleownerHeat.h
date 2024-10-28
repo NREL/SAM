@@ -32,38 +32,6 @@ extern "C"
 	//
 
 	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_Revenue_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekday: Diurnal weekday TOD periods [1..9]
-	 * options: 12 x 24 matrix
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_Revenue_dispatch_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_sched_weekend: Diurnal weekend TOD periods [1..9]
-	 * options: 12 x 24 matrix
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_Revenue_dispatch_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set dispatch_tod_factors: TOD factors for periods 1 through 9
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_Revenue_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set flip_target_percent: After-tax IRR target [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -86,14 +54,6 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_SingleownerHeat_Revenue_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model [0/1]
-	 * options: 0=diurnal,1=timestep
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_Revenue_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set ppa_price_input: PPA price in first year input [$/kWh]
@@ -2349,6 +2309,14 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set gen_heat: Thermal power [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_SingleownerHeat_SystemOutput_gen_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
@@ -2689,21 +2657,11 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double* SAM_SingleownerHeat_Revenue_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Revenue_dispatch_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Revenue_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Revenue_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_SingleownerHeat_Revenue_flip_target_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Revenue_flip_target_year_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Revenue_ppa_escalation_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Revenue_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3302,6 +3260,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemOutput_gen_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3490,66 +3450,6 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_apr_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_aug_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dec_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_feb_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_jan_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_jul_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_jun_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_mar_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_may_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_nov_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_oct_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3750,66 +3650,6 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_reserve_receivables_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_reserve_total_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_apr_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_aug_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dec_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_feb_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_jan_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_jul_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_jun_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_mar_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_may_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_nov_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_oct_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_revenue_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4271,60 +4111,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_effective_tax_rate_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_dispatch9_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_energy_price9_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch1_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch2_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch3_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch4_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch5_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch6_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch7_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch8_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_SingleownerHeat_Outputs_firstyear_revenue_dispatch9_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_flip_actual_irr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_flip_actual_year_nget(SAM_table ptr, SAM_error *err);
@@ -4512,8 +4298,6 @@ extern "C"
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_ppa_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_ppa_escalation_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_ppa_multipliers_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err);
 

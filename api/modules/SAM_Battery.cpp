@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Simulation_timestep_minutes_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "timestep_minutes", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
@@ -1321,6 +1327,15 @@ SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "percent_complete", &result))
 		make_access_error("SAM_Battery", "percent_complete");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Simulation_timestep_minutes_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "timestep_minutes", &result))
+		make_access_error("SAM_Battery", "timestep_minutes");
 	});
 	return result;
 }

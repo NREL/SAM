@@ -39,6 +39,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, double number, SAM_error *err);
 
+	/**
+	 * Set timestep_minutes: Simulation timestep [minutes]
+	 * options: The number of minutes in each timestep
+	 * constraints: None
+	 * required if: en_standalone_batt=1
+	 */
+	SAM_EXPORT void SAM_Battery_Simulation_timestep_minutes_nset(SAM_table ptr, double number, SAM_error *err);
+
 
 	//
 	// Lifetime parameters
@@ -1848,6 +1856,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Simulation_timestep_minutes_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

@@ -212,6 +212,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
+			"gen_heat": [0],
 			"system_capacity": 5190
 		},
 		"HeatModelOutput": {
