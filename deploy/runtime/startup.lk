@@ -960,7 +960,7 @@ addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Ele
 setup_iph_lcoefcr_cost_pages_no_elec();
 
 setconfig('Physical Trough IPH', 'Single Owner');
-setmodules( ['trough_physical_iph', 'singleowner_heat']);	// 'iph_to_lcoefcr', 
+setmodules( ['trough_physical_iph', 'utilityrate5', 'singleowner_heat']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
@@ -2187,7 +2187,7 @@ setup_iph_lcoefcr_cost_pages();
 
 //-----------------------------------------------------
 setconfig('MSLF IPH', 'Single Owner');
-setmodules( ['fresnel_physical_iph', 'singleowner_heat']); 	//, 'singleowner']);
+setmodules( ['fresnel_physical_iph', 'utilityrate5', 'singleowner_heat']); 	//, 'singleowner']);
 setup_MSLF_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
