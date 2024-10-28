@@ -982,7 +982,7 @@ public:
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
         AddProperty("Description", new wxUIProperty(wxString("")));
         AddProperty("Label", new wxUIProperty(wxString("")));
-        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Hourly,Subhourly"));
+        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Three Hourly,Hourly,Subhourly"));
         AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
         AddProperty("ShowMode", new wxUIProperty(true));
         AddProperty("AnnualEnabled", new wxUIProperty(true));

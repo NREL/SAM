@@ -1,4 +1,18 @@
 {
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "array_sizing_mode": 0.0,
     "average_power_flux": 32.2,
     "bathymetry": "Gently Sloping",

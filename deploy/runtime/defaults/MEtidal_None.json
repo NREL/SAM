@@ -1,4 +1,18 @@
 {
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "array_sizing_mode": 0.0,
     "cable_length_option": 0.0,
     "cable_system_overbuild": 10.0,
@@ -566,6 +580,12 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 25.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
+    "tidal_vel_freq": [
+        [
+            0.0
+        ]
+    ],
     "tidal_velocity": [
         1.06411,
         0.907655,
