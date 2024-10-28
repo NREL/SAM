@@ -83,6 +83,34 @@ version_upgrade{'2024.5.28'} = define() {
 	
 	const cfg = config();
 
+	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
+	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
+
+	// Standalone Battery Changes
+	if(cfg.tech == 'Standalone Battery')
+	{
+		timestep_mins = 60;
+		ts_per_hour = 1;
+		if (is_btm_fin) {
+			load = value("load");
+			ts_per_hour = #load / 8760;
+			
+		}
+		if (is_fom_fin) {
+			curtailment = value("grid_curtailment");
+			ts_per_hour = #curtailment / 8760;
+		}
+		timestep_mins /= ts_per_hour;
+		options = [60, 30, 20, 15, 10, 5, 1];
+		i = 0;
+		while(timestep_mins < options[i]){
+			i++;
+		}
+		
+		value("timestep_minutes", timestep_mins);
+		value("timestep_minutes_ui", i);
+	}
+
 	// Physical Trough Model Changes
 	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
 	{
