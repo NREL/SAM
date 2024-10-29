@@ -1,18 +1,18 @@
 /*@
-This macro allows you to compare multiple PV Battery cases.
+This macro allows you to compare multiple generation + battery cases.
 This may be helpful for modeling a variety of scenarios, including:
 <ul>
 <li>Model a baseline system in contrast with an alternate system.
-<li>Compare systems with different PV or battery configurations.
+<li>Compare systems with different battery configurations.
 <li>Compare systems located at different resource locations.
 </ul>
 
 <b>Instructions:</b>
 <ol>
 <li>Create the cases that you wish to compare. 
-<li>Define the PV module, inverter, system design, battery system, losses, system cost, and financial parameters for all the created cases. 
+<li>Define the system design, battery system, losses, system cost, and financial parameters for all the created cases. 
 <li>Simulate all the cases.
-<li>Open the PV Battery Compare Cases Macro and select a simulation option from the list. 
+<li>Open the Battery Compare Cases Macro and select a simulation option from the list. 
 <ul>
 <li>You may choose all of the cases in the existing project to be compared, OR
 <li>You may choose which cases to compare by typing their names into the input box, separated by ONLY a comma (no space).
@@ -99,6 +99,9 @@ batt_charge_grid = alloc(0, num_cases);
 dispatch_choice = alloc(0, num_cases);
 monthly_energy = alloc(12, num_cases);
 annual_cashflow = alloc(40, num_cases);
+revenue = alloc(0, 50);
+bill_savings = alloc(0, num_cases);
+value = alloc(0, num_cases);
 monthly_bill = alloc(12, num_cases);
 irr_bill = alloc(0, num_cases);
 irr_bill_table = alloc(0, num_cases);
@@ -139,13 +142,6 @@ for (i=0; i<num_cases; i++)
 	capacityFactor[i] = get('capacity_factor');
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
-	batt_annual_discharge = get('cf_annual_discharge_lcos');
-	aep_battery[i] = batt_annual_discharge[1];
-	aep_system[i] = aep[i] - aep_battery[i];
-	batt_annual_charge_grid = get('batt_annual_charge_from_grid');
-	batt_annual_charge_sys = get('batt_annual_charge_from_system');
-	batt_charge_sys[i] = batt_annual_charge_sys[1];
-	batt_charge_grid[i] = batt_annual_charge_grid[1];
 	monthly_energy_bin = get('monthly_energy');
 	for (j = 0; j < 12; j++) {
 		monthly_energy[j][i] = monthly_energy_bin[j];
@@ -168,54 +164,26 @@ for (i=0; i<num_cases; i++)
 		annual_cashflow[j][i] = 0;
 	}
 	
-	
-	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
-		dispatch = get('batt_dispatch_choice');
-		if (dispatch == 0) dispatch_choice[i] = "Peak shaving";
-		else if (dispatch == 1) dispatch_choice[i] = "Grid power targets";
-		else if (dispatch == 2) dispatch_choice[i] = "Battery power targets";
-		else if (dispatch == 3) dispatch_choice[i] = "Manual dispatch";
-		else if (dispatch == 4) dispatch_choice[i] = "Retail rate dispatch";
-		else dispatch_choice[i] = "Self-consumption";
-		irr_bill[i] = get('savings_year1');
-		irr_bill_string = "Net savings with system";
-		irr_bill_table[i] = sprintf("$%.1f",irr_bill[i]);
+	if (config[1] == "Residential" || config[1] == "Commercial") {
+		irr_bill[i] = get('irr');
 	}
 	else {
-		dispatch = get('batt_dispatch_choice');
-		if (dispatch == 0) dispatch_choice[i] = "Automated dispatch";
-		else if (dispatch == 1) dispatch_choice[i] = "PV smoothing";
-		else if (dispatch == 2) dispatch_choice[i] = "Custom time series";
-		else dispatch_choice[i] = "Manual dispatch";
 		irr_bill[i] = get('project_return_aftertax_irr');
-		irr_bill_string = "Internal rate of return";
-		irr_bill_table[i] = sprintf("%.1f%",irr_bill[i]);
 	}
+	
+	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
+		
+		value[i] = get('savings_year1');
+		value_string = "Electricity Bill Savings with System (year 1)";
+	}
+	else {
+		revenue = get('cf_energy_value');
+		value_string = "PPA Revenue (Year 1)";
+		value[i] = revenue[1]; //Year 1 PPA revenue 
+	}
+	
 }
-outln(batt_annual_charge_grid);
-outln(batt_annual_charge_sys);
-outln(batt_charge_sys);
-outln(batt_charge_grid);
 
-//outln(lcoe);
-//outln(aep);
-//outln(capEx);
-//outln(opEx);
-//outln(arrayRatedPower);
-//outln(structure);
-//outln(pto);
-//outln(foundation);
-//outln(development);
-//outln(engmanag);
-//outln(commissioning);
-//outln(access);
-//outln(otherinfras);
-//outln(projectContingency);
-//outln(reserveAccounts);
-//outln(financial);
-//outln(insurance);
-//outln(operations);
-//outln(maintenance);
 
 //get cost in dollar per kw
 capexKw = alloc(0,num_cases);
@@ -276,74 +244,67 @@ reportCode =
 	'<table>'
          '<tr>'
             '<th></th>'
-            '<th>'+cases[3]+'</th>'
-            '<th>'+cases[2]+'</th>'
-            '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[3]+'</th>'
         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[3]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
-         '</tr>'
-         '<tr>'
-             '<td>Levelized Cost of Storage</td>'
-             '<td>'+ sprintf("$%.2f",lcos[3]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[2]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[3]) +' /kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
-			 '<td>'+ sprintf("%,",aep[3]) +' kWh</td>'
-		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
-			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
-			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+			 '<td>'+ sprintf("%.2f,",aep[0]) +' kWh</td>'
+		     '<td>'+ sprintf("%.2f,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%.2f,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%.2f,",aep[3]) +' kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Capacity Factor</td>'
-             '<td>'+ sprintf("%.1f",capacityFactor[3]) +'% </td>'
-		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
-			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
-			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+             '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[3]) +'% </td>'
          '</tr>'
          
          '<tr>'
              '<td>Total Installed Cost</td>'
-             '<td>'+ sprintf("$%,",capEx[3]) +' </td>'
-		     '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
-			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
-			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+             '<td>'+ sprintf("$%.2f,",capEx[0]) +' </td>'
+		     '<td>'+ sprintf("$%.2f,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%.2f,",capEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%.2f,",capEx[3]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Operational Expenditures (present value)</td>'
-             '<td>'+ sprintf("$%,",opEx[3]) +' </td>'
-			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+             '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
 			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
-			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[3]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Net Present Value</td>'
-             '<td>'+ sprintf("$%,",npv[3]) +' </td>'
-             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
-             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
-             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%.2f,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%.2f,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%.2f,",npv[2]) +' </td>'
+             '<td>'+ sprintf("$%.2f,",npv[3]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>'+sprintf(irr_bill_string)+' </td>'
-             '<td>'+ sprintf("%.1f",irr_bill[3]) +' %</td>'
-             '<td>'+ sprintf("%.1f",irr_bill[2]) +' %</td>'
-             '<td>'+ sprintf("%.1f",irr_bill[1]) +' %</td>'
+             '<td>Internal Rate of Return</td>'
              '<td>'+ sprintf("%.1f",irr_bill[0]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[3]) +' %</td>'
          '</tr>'
          '<tr>'
-             '<td>Dispatch Option</td>'
-             '<td>'+ sprintf(dispatch_choice[3]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+             '<td>'+sprintf(value_string)+'</td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[2]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[3]) +'</td>'
          '</tr>'
      '</table>'
 
@@ -353,23 +314,20 @@ reportCode =
         
         '<script>'
         
-            'var xValues =["'+ cases[3] +'","'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'","'+ cases[3] +'"];'
               
-            'var aep1 = {'
-               'x: xValues,'
-               'y: ['+ aep_battery[3] +','+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
-               'name: "Battery discharge",'
-               'type: "bar"'
-            '};'
             
             'var aep2 = {'
                 'x: xValues,'
-                'y: ['+ aep_system[3] +','+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +','+ aep_system[3] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
             '};'
             
-            'var lcoeData = [aep2, aep1];'
+            'var lcoeData = [aep2];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -552,64 +510,58 @@ reportCode =
 	'<table>'
          '<tr>'
             '<th></th>'
-            '<th>'+cases[2]+'</th>'
-            '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[2]+'</th>'
         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
-         '</tr>'
-         '<tr>'
-             '<td>Levelized Cost of Storage</td>'
-             '<td>'+ sprintf("$%.2f",lcos[2]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[2]) +' /kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
-		     '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+		     '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
 			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
-			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Capacity Factor</td>'
-		     '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
-			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
          '</tr>'
          
          '<tr>'
              '<td>Total Installed Cost</td>'
-		     '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
-			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
-			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+		     '<td>'+ sprintf("$%.2f,",capEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%.2f,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Operational Expenditures (present value)</td>'
-			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
-			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
 			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Net Present Value</td>'
-             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
-             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
              '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>'+sprintf(irr_bill_string)+' </td>'
-             '<td>'+ sprintf("%.1f",irr_bill[2]) +' </td>'
-             '<td>'+ sprintf("%.1f",irr_bill[1]) +' </td>'
+             '<td>Internal Rate of Return</td>'
              '<td>'+ sprintf("%.1f",irr_bill[0]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +' </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +' </td>'
          '</tr>'
-         '<tr>'
-             '<td>Dispatch Option</td>'
-             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+		 '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[2]) +'</td>'
          '</tr>'
      '</table>'
 
@@ -619,23 +571,20 @@ reportCode =
         
         '<script>'
         
-            'var xValues =["'+ cases[2] +'","'+ cases[1] +'","'+ cases[0] +'"];'
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'"];'
               
-            'var aep1 = {'
-               'x: xValues,'
-               'y: ['+ aep_battery[2] +','+ aep_battery[1] +','+ aep_battery[0] +'],'
-               'name: "Battery discharge",'
-               'type: "bar"'
-            '};'
             
             'var aep2 = {'
                 'x: xValues,'
-                'y: ['+ aep_system[2] +','+ aep_system[1] +','+ aep_system[0] +'],'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
             '};'
             
-            'var lcoeData = [aep2, aep1];'
+            'var lcoeData = [aep2];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -767,23 +716,7 @@ reportCode =
 
 if (num_cases ==2)
 {
-//Get change in capex, opex, and aep contribution for two case comparison
 
-	if ((batt_charge_sys[1]+batt_charge_grid[1])>(batt_charge_sys[0]+batt_charge_grid[0]))
-	{
-		baselineCase = 1;
-		advancedCase = 0;
-	}
-	if (lcoe[0]>=lcoe[1])
-	{
-		baselineCase = 0;
-		advancedCase = 1;
-	}
-	
-battChargeBaseline = batt_charge_sys[baselineCase] + batt_charge_grid[baselineCase];
-battChargeAdvanced = batt_charge_sys[advancedCase] + batt_charge_grid[advancedCase];
-battChargeSysChange = batt_charge_sys[baselineCase] - batt_charge_sys[advancedCase];
-battChargeGridChange = batt_charge_grid[baselineCase] - batt_charge_grid[advancedCase];
 //outln(lcoe[baselineCase]-lcoe[advancedCase]);
 //outln(capexLcoeChange);
 //outln(opexLcoeChange);
@@ -824,54 +757,49 @@ reportCode =
 	'<table>'
          '<tr>'
             '<th></th>'
-            '<th>'+cases[1]+'</th>'
             '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
         '</tr>'
          '<tr>'
              '<td>Levelized Cost of Energy</td>'
-             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
              '<td>'+ sprintf("$%.2f",lcoe[0]) +' /kWh</td>'
-         '</tr>'
-         '<tr>'
-             '<td>Levelized Cost of Storage</td>'
-             '<td>'+ sprintf("$%.2f",lcos[1]) +' /kWh</td>'
-             '<td>'+ sprintf("$%.2f",lcos[0]) +' /kWh</td>'
+             '<td>'+ sprintf("$%.2f",lcoe[1]) +' /kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
-			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
 			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
          '</tr>'
          '<tr>'
              '<td>Capacity Factor</td>'
-			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
          '</tr>'
          
          '<tr>'
              '<td>Total Installed Cost</td>'
-			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
 			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Operational Expenditures (present value)</td>'
-			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
 			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Net Present Value</td>'
-             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
              '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
          '</tr>'
 		 '<tr>'
-             '<td>'+sprintf(irr_bill_string)+' </td>'
-             '<td>'+ irr_bill_table[1] +' </td>'
+             '<td>Internal Rate of Return</td>'
              '<td>'+ irr_bill_table[0] +' </td>'
+             '<td>'+ irr_bill_table[1] +' </td>'
          '</tr>'
-         '<tr>'
-             '<td>Dispatch Option</td>'
-             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
-             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+		 '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
          '</tr>'
      '</table>'
 
@@ -881,23 +809,20 @@ reportCode =
         
         '<script>'
         
-            'var xValues =["'+ cases[1] +'","'+ cases[0] +'"];'
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'"];'
               
-            'var aep1 = {'
-               'x: xValues,'
-               'y: ['+ aep_battery[1] +','+ aep_battery[0] +'],'
-               'name: "Battery discharge",'
-               'type: "bar"'
-            '};'
             
             'var aep2 = {'
                 'x: xValues,'
-                'y: ['+ aep_system[1] +','+ aep_system[0] +'],'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
             '};'
             
-            'var lcoeData = [aep2, aep1];'
+            'var lcoeData = [aep2];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -997,33 +922,6 @@ reportCode =
         '</script>'
 
 
-		'<div id="waterfallChart"></div>'
-		
-		'<script>'
-            
-            'var data1 = [{'
-                'type: "waterfall",'
-                'x: ["Baseline", "System Charging", "Grid Charging", "Advanced Case"],'
-                'textposition: "inside",'
-				'text: ["'+ cases[baselineCase] +'"," "," "," ","'+ cases[advancedCase] +'"],'
-                'measure: ["absolute", "relative", "relative", "total"],'
-                'y: ['+ battChargeBaseline +','+ -1*battChargeSysChange +','+ -1*battChargeGridChange +','+ battChargeAdvanced +'],'
-                'base: 0,'
-                'decreasing: { marker: { color: "Maroon" , line:{color : "red", width :2}}},'
-                'increasing: { marker: { color: "Teal"}},'
-                'totals: { marker: { color: "deep sky blue", line:{color:"blue",width:3}}}'
-            '}];'
-            
-            'var layout1 = {'
-                'title:"Change in Year 1 Battery Annual Energy Charging",'
-                'waterfallgap : 0.3,'
-                'xaxis: {tickfont: {size: 15},ticks: "outside"},'
-                'yaxis:{title: "Annual Energy Charged kWh"}'
-            '};'   
-
-          
-		'Plotly.newPlot("waterfallChart", data1, layout1);'
-        '</script>'
 	
 '</body>'
 '<footer>'

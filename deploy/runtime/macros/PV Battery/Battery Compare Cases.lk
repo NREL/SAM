@@ -99,6 +99,9 @@ batt_charge_grid = alloc(0, num_cases);
 dispatch_choice = alloc(0, num_cases);
 monthly_energy = alloc(12, num_cases);
 annual_cashflow = alloc(40, num_cases);
+revenue = alloc(0, 50);
+bill_savings = alloc(0, num_cases);
+value = alloc(0, num_cases);
 monthly_bill = alloc(12, num_cases);
 irr_bill = alloc(0, num_cases);
 irr_bill_table = alloc(0, num_cases);
@@ -166,6 +169,17 @@ for (i=0; i<num_cases; i++)
 	}
 	else {
 		irr_bill[i] = get('project_return_aftertax_irr');
+	}
+	
+	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
+		
+		value[i] = get('savings_year1');
+		value_string = "Electricity Bill Savings with System (year 1)";
+	}
+	else {
+		revenue = get('cf_energy_value');
+		value_string = "PPA Revenue (Year 1)";
+		value[i] = revenue[1]; //Year 1 PPA revenue 
 	}
 	
 }
@@ -284,6 +298,13 @@ reportCode =
              '<td>'+ sprintf("%.1f",irr_bill[1]) +' %</td>'
              '<td>'+ sprintf("%.1f",irr_bill[2]) +' %</td>'
              '<td>'+ sprintf("%.1f",irr_bill[3]) +' %</td>'
+         '</tr>'
+         '<tr>'
+             '<td>'+sprintf(value_string)+'</td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[2]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[3]) +'</td>'
          '</tr>'
      '</table>'
 
@@ -536,6 +557,12 @@ reportCode =
              '<td>'+ sprintf("%.1f",irr_bill[1]) +' </td>'
              '<td>'+ sprintf("%.1f",irr_bill[2]) +' </td>'
          '</tr>'
+		 '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[2]) +'</td>'
+         '</tr>'
      '</table>'
 
         '<div class="lcoeContainer">'
@@ -768,6 +795,11 @@ reportCode =
              '<td>Internal Rate of Return</td>'
              '<td>'+ irr_bill_table[0] +' </td>'
              '<td>'+ irr_bill_table[1] +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%.2f,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%.2f,",value[1]) +'</td>'
          '</tr>'
      '</table>'
 
