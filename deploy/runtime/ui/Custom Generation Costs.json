@@ -268,89 +268,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "fixed_plant_input"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 468.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "customgen.cost.contingency"
                 },
                 "X": {
@@ -1754,6 +1671,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 16.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fixed_plant_input"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 468.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
                 }
             }
         },
@@ -3195,25 +3195,12 @@
         }
     },
     "VarDatabase": {
-        "fixed_plant_input": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Plant cost",
-            "Units": "$",
-            "Group": "Generic System Capital Costs",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "customgen.cost.contingency": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Contingency",
             "Units": "Total",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3226,7 +3213,7 @@
             "Type": 1.0,
             "Label": "Contingency cost",
             "Units": "% of direct costs",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 8.4,
@@ -3239,7 +3226,7 @@
             "Type": 1.0,
             "Label": "Permitting EPC costs",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
@@ -3252,7 +3239,7 @@
             "Type": 1.0,
             "Label": "Permitting EPC costs",
             "Units": "Calculated",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3265,7 +3252,7 @@
             "Type": 1.0,
             "Label": "Permitting EPC costs",
             "Units": "% of direct cost",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 16.0,
@@ -3278,7 +3265,7 @@
             "Type": 1.0,
             "Label": "Permitting EPC costs",
             "Units": "Total",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3291,7 +3278,7 @@
             "Type": 1.0,
             "Label": "Total installed cost per capacity",
             "Units": " ",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3304,7 +3291,7 @@
             "Type": 1.0,
             "Label": "Plant cost per capacity",
             "Units": "$/Wac",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
@@ -3317,7 +3304,7 @@
             "Type": 1.0,
             "Label": "Fixed plant cost",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 100000.0,
@@ -3330,7 +3317,7 @@
             "Type": 1.0,
             "Label": "Non-fixed system cost",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3343,7 +3330,7 @@
             "Type": 1.0,
             "Label": "Engineering EPC costs",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
@@ -3356,7 +3343,7 @@
             "Type": 1.0,
             "Label": "Engineering EPC costs",
             "Units": "Calculated",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3369,7 +3356,7 @@
             "Type": 1.0,
             "Label": "Engineering EPC costs",
             "Units": "% of direct cost",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 3.5,
@@ -3382,7 +3369,7 @@
             "Type": 1.0,
             "Label": "Engineering EPC costs",
             "Units": "Total",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3395,7 +3382,7 @@
             "Type": 1.0,
             "Label": "Sales tax basis as percent of direct cost",
             "Units": "%",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 80.0,
@@ -3408,7 +3395,7 @@
             "Type": 1.0,
             "Label": "Sales tax",
             "Units": "Total",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3421,9 +3408,22 @@
             "Type": 1.0,
             "Label": "Sales tax rate",
             "Units": "%",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "fixed_plant_input": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Plant cost",
+            "Units": "$",
+            "Group": "Custom Generation Capital Costs",
+            "IndexLabels": "",
+            "Flags": 2.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3434,7 +3434,7 @@
             "Type": 1.0,
             "Label": "Nameplate capacity",
             "Units": "kW",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -3447,7 +3447,7 @@
             "Type": 1.0,
             "Label": "Total direct cost",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3460,7 +3460,7 @@
             "Type": 1.0,
             "Label": "Total indirect cost",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
@@ -3473,7 +3473,7 @@
             "Type": 1.0,
             "Label": "Total installed cost",
             "Units": "$",
-            "Group": "Generic System Capital Costs",
+            "Group": "Custom Generation Capital Costs",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": 0.0,
