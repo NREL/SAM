@@ -501,6 +501,8 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     cf_main_sizer->SetSizeHints(m_cf_panel);
 
 
+    //m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
+    //AddPage(m_timeSeries, "Time series");
     m_timeSeries = new wxDVTimeSeriesCtrl(this, wxID_ANY, wxDV_RAW, wxDV_AVERAGE);
     AddPage(m_timeSeries, "Time series");
 
@@ -527,6 +529,7 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
     if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
     {
         wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+        wxString fin_model = cw->GetCase()->GetFinancing();
         if (tech_model == "Wind Power")
         {
             m_uncertaintiesViewer = new UncertaintiesViewer(this);
@@ -538,6 +541,7 @@ ResultsViewer::ResultsViewer(wxWindow* parent, int id)
             m_spatialLayout = new wxSnapLayout(this, wxID_ANY);
             AddPage(m_spatialLayout, "Spatial", true);
         }
+
     }
     //m_durationCurve = new wxDVDCCtrl( this, wxID_ANY );
     //AddPage( m_durationCurve, "Duration curve" );
@@ -558,6 +562,7 @@ wxDVPlotCtrlSettings ResultsViewer::GetDViewState()
     settings.SetProperty(wxT("tsTopSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
     settings.SetProperty(wxT("tsBottomSelectedNames"), m_timeSeries->GetDataSelectionList()->GetSelectedNamesInCol(1));
 
+   
     //settings.SetProperty(wxT("tsDailyAxisMin"), m_dailySeries->GetViewMin());
     //settings.SetProperty(wxT("tsDailyAxisMax"), m_dailySeries->GetViewMax());	
     //settings.SetProperty(wxT("tsDailyTopSelectedNames"), m_dailySeries->GetDataSelectionList()->GetSelectedNamesInCol(0));
@@ -648,6 +653,72 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
         m_timeSeries->SetViewMin(min);
     if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
         m_timeSeries->SetViewMax(max);
+
+    long j;
+    settings.GetProperty(wxT("tabIndex")).ToLong(&i);
+    SetSelection(i);
+
+    int preset = 0;
+    if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
+    {
+        wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+        wxString fin_model = cw->GetCase()->GetFinancing();
+        if (tech_model.Contains("Battery") && (fin_model == "Residential" || fin_model == "Commercial"
+            || fin_model == "Third Party" || fin_model == "Host Developer")) { //only BTM technologies
+
+            //Battery visualization test
+            int batt_index = -1;
+            int batt_SOC_index = -1;
+            int gen_index = -1;
+            int grid_index = -1;
+            wxString prepend = "";
+            if (tech_model.Contains("Hybrid")) prepend = "battery_"; //Check for prepended battery
+            for (size_t j = 0; j < m_tsDataSets.size(); j++)
+            {
+                
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "batt_to_load") {
+                    batt_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "grid_to_load") {
+                    grid_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "system_to_load") {
+                    gen_index = j;
+                }
+                if (m_tsDataSets[j]->GetMetaData() == prepend + "batt_SOC") {
+                    batt_SOC_index = j;
+                }
+            }
+
+
+
+            //***TimeSeries Properties***
+            m_timeSeries->SetStackingOnYLeft(true); //Turn on stacked area plot
+            m_timeSeries->SetTopSelectedNames(settings.GetProperty(wxT("tsTopSelectedNames")));
+            m_timeSeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsBottomSelectedNames")));
+
+            // select something by default
+            if (m_timeSeries->GetNumberOfSelections() == 0) {
+                m_timeSeries->SelectDataSetAtIndex(batt_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(grid_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(gen_index, 0);
+                m_timeSeries->SelectDataSetAtIndex(batt_SOC_index, 0); //right y-axis, battery SOC percentage (%)
+
+            }
+
+            //Set min/max after setting plots to make sure there is an axis to set.
+            if (settings.GetProperty(wxT("tsAxisMin")).ToDouble(&min))
+                m_timeSeries->SetViewMin(min);
+            /*
+            if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
+                m_timeSeries->SetViewMax(max);
+            */
+            m_timeSeries->SetViewMax(500);
+        }
+        
+        
+    }
+
 
     //	m_dailySeries->SetTopSelectedNames(settings.GetProperty(wxT("tsDailyTopSelectedNames")));
     //	m_dailySeries->SetBottomSelectedNames(settings.GetProperty(wxT("tsDailyBottomSelectedNames")));
@@ -779,7 +850,17 @@ wxString ResultsViewer::GetCurrentContext() const
             else
                 return "notices";
         }
-    case 11: return "notices";
+    case 11:
+        // TODO: remove this when uncertainties available for all technologies
+        if (CaseWindow* cw = static_cast<CaseWindow*>(this->GetParent()->GetParent()))
+        {
+            wxString tech_model = cw->GetCase()->GetConfiguration()->TechnologyFullName;
+            if ( tech_model == "PV Battery")
+                return "dispatch";
+            else
+                return "notices";
+        }
+    case 12: return "notices";
     default: return "results";
     }
 }
@@ -1368,6 +1449,7 @@ void ResultsViewer::Setup(Simulation* sim)
             int pn = GetPageIndex(m_spatialLayout);
             if (pn > -1) HidePage(pn);
         }
+
     }
     m_tables->Setup(m_sim);
 
