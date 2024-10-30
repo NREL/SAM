@@ -1209,7 +1209,7 @@
     "Callbacks": [
         "on_load{'Hybrid Costs'} = define() {\r",
         "\tis_customgeneration_tech = technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid';\r",
-        "\tis_fuel_cell_tech = ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) ;\r",
+        "\tis_fuel_cell_tech = ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) ;\r",
         "\tshow( 'ui_customgeneration_cost',  is_customgeneration_tech );\r",
         "\tshow( 'ui_fuel_cell_cost', is_fuel_cell_tech );\r",
         "\tvalue('total_installed_cost', value('total_installed_cost'));\r",
