@@ -140,6 +140,10 @@ for (i=0; i<num_cases; i++)
 	else {
 		lcoe[i] = get('lcoe_nom');
 	}
+	if (lcoe[i] == null) {
+		msgbox('All cases must be simulated before running the macro. The case named ' + cases[i] + ' has not been simulated');
+		exit;
+	}
 	lcos[i] = get('lcos_nom');
 	aep[i] = get('annual_energy');
 	arrayRatedPower[i] = get('system_capacity');
@@ -147,6 +151,13 @@ for (i=0; i<num_cases; i++)
 	capacityFactor[i] = get('capacity_factor');
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
+	batt_annual_discharge = get('cf_annual_discharge_lcos');
+	aep_battery[i] = batt_annual_discharge[1];
+	aep_system[i] = aep[i] - aep_battery[i];
+	batt_annual_charge_grid = get('batt_annual_charge_from_grid');
+	batt_annual_charge_sys = get('batt_annual_charge_from_system');
+	batt_charge_sys[i] = batt_annual_charge_sys[1];
+	batt_charge_grid[i] = batt_annual_charge_grid[1];
 	monthly_energy_bin = get('monthly_energy');
 	for (j = 0; j < 12; j++) {
 		monthly_energy[j][i] = monthly_energy_bin[j];
@@ -187,6 +198,22 @@ for (i=0; i<num_cases; i++)
 		value[i] = revenue[1]; //Year 1 PPA revenue 
 	}
 	
+	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
+		dispatch = get('batt_dispatch_choice');
+		if (dispatch == 0) dispatch_choice[i] = "Peak shaving";
+		else if (dispatch == 1) dispatch_choice[i] = "Grid power targets";
+		else if (dispatch == 2) dispatch_choice[i] = "Battery power targets";
+		else if (dispatch == 3) dispatch_choice[i] = "Manual dispatch";
+		else if (dispatch == 4) dispatch_choice[i] = "Retail rate dispatch";
+		else dispatch_choice[i] = "Self-consumption";
+	}
+	else {
+		dispatch = get('batt_dispatch_choice');
+		if (dispatch == 0) dispatch_choice[i] = "Automated dispatch";
+		else if (dispatch == 1) dispatch_choice[i] = "PV smoothing";
+		else if (dispatch == 2) dispatch_choice[i] = "Custom time series";
+		else dispatch_choice[i] = "Manual dispatch";
+	}
 }
 
 
@@ -239,7 +266,7 @@ reportCode =
   '</style>'
   
  '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
 '</head>' 
 
 '<body>' 
@@ -260,6 +287,20 @@ reportCode =
              '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
              '<td>'+ sprintf("%.2f",lcoe[2]) +' cents/kWh</td>'
              '<td>'+ sprintf("%.2f",lcoe[3]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Storage (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcos[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[1]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[2]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[3]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[3]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
@@ -320,19 +361,22 @@ reportCode =
         '<script>'
         
             'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'","'+ cases[3] +'"];'
-              
+            
+            'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[0] +','+ aep_battery[1] +','+ aep_battery[2] +','+ aep_battery[3] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'  
             
             'var aep2 = {'
                 'x: xValues,'
                 'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +','+ aep_system[3] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
-                'marker: {'
-					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
-				'}'
             '};'
             
-            'var lcoeData = [aep2];'
+            'var lcoeData = [aep2,aep1];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -505,7 +549,7 @@ reportCode =
   '</style>'
   
  '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
 '</head>' 
 
 '<body>' 
@@ -524,6 +568,18 @@ reportCode =
              '<td>'+ sprintf("%.2f",lcoe[0]) +' cents/kWh</td>'
              '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
              '<td>'+ sprintf("%.2f",lcoe[2]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Storage (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcos[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[1]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[2]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[2]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
@@ -578,18 +634,21 @@ reportCode =
         
             'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'"];'
               
+            'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[0] +','+ aep_battery[1] +','+ aep_battery[2] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'
             
             'var aep2 = {'
                 'x: xValues,'
                 'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
-                'marker: {'
-					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
-				'}'
             '};'
             
-            'var lcoeData = [aep2];'
+            'var lcoeData = [aep2, aep1];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -721,7 +780,23 @@ reportCode =
 
 if (num_cases ==2)
 {
+//Get change in capex, opex, and aep contribution for two case comparison
 
+	if ((batt_charge_sys[1]+batt_charge_grid[1])>(batt_charge_sys[0]+batt_charge_grid[0]))
+	{
+		baselineCase = 1;
+		advancedCase = 0;
+	}
+	if (lcoe[0]>=lcoe[1])
+	{
+		baselineCase = 0;
+		advancedCase = 1;
+	}
+	
+	battChargeBaseline = batt_charge_sys[baselineCase] + batt_charge_grid[baselineCase];
+	battChargeAdvanced = batt_charge_sys[advancedCase] + batt_charge_grid[advancedCase];
+	battChargeSysChange = batt_charge_sys[baselineCase] - batt_charge_sys[advancedCase];
+	battChargeGridChange = batt_charge_grid[baselineCase] - batt_charge_grid[advancedCase];
 //outln(lcoe[baselineCase]-lcoe[advancedCase]);
 //outln(capexLcoeChange);
 //outln(opexLcoeChange);
@@ -733,7 +808,7 @@ if (num_cases ==2)
 reportCode = 
 '<html>'
 '<head>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
   '<style>'
     'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
     'p {margin-left:5%;}'
@@ -769,6 +844,16 @@ reportCode =
              '<td>Levelized Cost of Energy (nominal)</td>'
              '<td>'+ sprintf("%.2f",lcoe[0]) +' cents/kWh</td>'
              '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Levelized Cost of Storage (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcos[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcos[1]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Dispatch Option</td>'
+             '<td>'+ sprintf(dispatch_choice[0]) +' </td>'
+             '<td>'+ sprintf(dispatch_choice[1]) +' </td>'
          '</tr>'
          '<tr>'
              '<td>Annual Energy Production</td>'
@@ -816,18 +901,21 @@ reportCode =
         
             'var xValues =["'+ cases[0] +'","'+ cases[1] +'"];'
               
+			'var aep1 = {'
+               'x: xValues,'
+               'y: ['+ aep_battery[1] +','+ aep_battery[0] +'],'
+               'name: "Battery discharge",'
+               'type: "bar"'
+            '};'
             
             'var aep2 = {'
                 'x: xValues,'
                 'y: ['+ aep_system[0] +','+ aep_system[1] +'],'
                 'name: "System Generation",'
                 'type: "bar"'
-                'marker: {'
-					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
-				'}'
             '};'
             
-            'var lcoeData = [aep2];'
+            'var lcoeData = [aep2, aep1];'
 
             'var layout = {'
                 'title: "Year 1 Annual Energy",'
@@ -880,6 +968,34 @@ reportCode =
                 '};'   
             
 		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
+        '</script>'
+        
+        '<div id="waterfallChart"></div>'
+		
+		'<script>'
+            
+            'var data1 = [{'
+                'type: "waterfall",'
+                'x: ["Baseline", "System Charging", "Grid Charging", "Advanced Case"],'
+                'textposition: "inside",'
+				'text: ["'+ cases[baselineCase] +'"," "," "," ","'+ cases[advancedCase] +'"],'
+                'measure: ["absolute", "relative", "relative", "total"],'
+                'y: ['+ battChargeBaseline +','+ -1*battChargeSysChange +','+ -1*battChargeGridChange +','+ battChargeAdvanced +'],'
+                'base: 0,'
+                'decreasing: { marker: { color: "Maroon" , line:{color : "red", width :2}}},'
+                'increasing: { marker: { color: "Teal"}},'
+                'totals: { marker: { color: "deep sky blue", line:{color:"blue",width:3}}}'
+            '}];'
+            
+            'var layout1 = {'
+                'title:"Change in Year 1 Battery Annual Energy Charging",'
+                'waterfallgap : 0.3,'
+                'xaxis: {tickfont: {size: 15},ticks: "outside"},'
+                'yaxis:{title: "Annual Energy Charged kWh"}'
+            '};'   
+
+          
+		'Plotly.newPlot("waterfallChart", data1, layout1);'
         '</script>'
         
         '<div class="lcoeContainer">'

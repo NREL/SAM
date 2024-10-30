@@ -133,6 +133,10 @@ for (i=0; i<num_cases; i++)
 	
 	tech[i] = config[0];
 	lcoe[i] = get('lcoe_nom');
+	if (lcoe[i] == null) {
+		msgbox('All cases must be simulated before running the macro. The case named ' + cases[i] + ' has not been simulated');
+		exit;
+	}
 	lcos[i] = get('lcos_nom');
 	aep[i] = get('annual_energy');
 	aep_system[i] = aep[i];
@@ -252,7 +256,7 @@ reportCode =
   '</style>'
   
  '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
 '</head>' 
 
 '<body>' 
