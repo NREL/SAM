@@ -201,11 +201,16 @@ function cf_revenue()
 	elseif ( fin == 'Single Owner' ) // Only single owner earns revenue other than PPA revenue
 	{
 		cfline( 'cf_ppa_price' , -2 );
+		if (is_iph_tech()) 		cfline( 'cf_ppa_price_heat_btu' , -2 );
 		cfline( 'cf_energy_value', 0);
 		if (!is_iph_tech()) 
+	/*	{
+			//cfline( 'cf_thermal_value', 0);		
+		}
+		else */
 		{
-		cfline( 'cf_curtailment_value', 0);
-		cfline( 'cf_capacity_payment', 0);
+			cfline( 'cf_curtailment_value', 0);
+			cfline( 'cf_capacity_payment', 0);
 		}
 	}
 	elseif ( fin == 'Community Solar')
