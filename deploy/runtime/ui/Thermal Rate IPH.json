@@ -1,45 +1,8 @@
 {
     "Name": "Thermal Rate IPH",
-    "Width": 664.0,
-    "Height": 510.0,
+    "Width": 1153.0,
+    "Height": 606.0,
     "FormObjects": {
-        "GroupBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "GroupBox9"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 12.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 342.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 525.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 153.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Annual Escalation"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -49,19 +12,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 459.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 502.0
+                    "Integer": 352.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 94.0
+                    "Integer": 148.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -102,36 +65,49 @@
                 }
             }
         },
-        "GroupBox": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 4"
+                    "String": "object 22"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 30.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 499.0
+                    "Integer": 384.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Sell rate"
+                    "String": "Sell Rate"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -139,36 +115,99 @@
                 }
             }
         },
-        "GroupBox": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 48"
+                    "String": "object 224"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 69.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 499.0
+                    "Integer": 369.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 139.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Buy rate"
+                    "String": "Annual Escalation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 226"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Buy Rate"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -193,11 +232,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 824.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 554.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -222,19 +261,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 33.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 786.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 33.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -284,11 +323,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -367,19 +406,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 39.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 129.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 38.0
+                    "Integer": 86.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -399,7 +438,7 @@
                 },
                 "Horizontal": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -416,11 +455,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 258.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 93.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -499,11 +538,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -536,11 +575,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 348.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -573,11 +612,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 639.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -626,11 +665,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -709,19 +748,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 39.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 279.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 132.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 38.0
+                    "Integer": 83.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -741,7 +780,7 @@
                 },
                 "Horizontal": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -758,11 +797,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -803,11 +842,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 249.0
+                    "Integer": 243.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -844,8 +883,8 @@
         "thermal_buy_rate_flat_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Buy rate",
-            "Units": "$/MMBtu",
+            "Label": "Flat rate",
+            "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -875,7 +914,7 @@
             "Group": "Thermal Rate",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 50.0,
+            "DefaultValue": 100.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -883,11 +922,11 @@
         "thermal_monthly_buy_rate_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Monthly buy rate",
+            "Label": "Monthly",
             "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "$/(MMBtu/hr)|1",
-            "Flags": 3.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 0.0,
                 0.0,
@@ -909,11 +948,11 @@
         "thermal_monthly_sell_rate_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Monthly sell rate",
+            "Label": "Monthly",
             "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "$/(MMBtu/hr)|1",
-            "Flags": 3.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 0.0,
                 0.0,
@@ -950,8 +989,8 @@
         "thermal_sell_rate_flat_heat_btu": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Sell Rate",
-            "Units": "$/MMBtu",
+            "Label": "Flat rate",
+            "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -976,11 +1015,11 @@
         "thermal_timestep_buy_rate_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "timestep buy rate ",
+            "Label": "Timestep",
             "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "$/(MMBtu/hr)|1",
-            "Flags": 3.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 0.0
             ],
@@ -991,11 +1030,11 @@
         "thermal_timestep_sell_rate_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Timestep sell rate",
+            "Label": "Timestep",
             "Units": "$/(MMBtu/hr)",
             "Group": "Thermal Rate",
             "IndexLabels": "$/(MMBtu/hr)|1",
-            "Flags": 1.0,
+            "Flags": 2.0,
             "DefaultValue": [
                 0.0
             ],
