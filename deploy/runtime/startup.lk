@@ -1983,10 +1983,11 @@ setup_DSGL_IPH_pages();
 setup_iph_lcoefcr_pages();
 
 setconfig( 'DSGL IPH', 'Single Owner' );
-setmodules( ['linear_fresnel_dsg_iph', 'utilityrate5', 'single_owner_heat'] );
+setmodules( ['linear_fresnel_dsg_iph', 'utilityrate5', 'singleowner_heat'] );
 setup_DSGL_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
-addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+//addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['LF DSG Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_utility_rate();
 setting( { 'analysis_period_var'='cf_length' } );
