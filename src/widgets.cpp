@@ -630,7 +630,7 @@ public:
 		tools->Add( new wxButton( this, ID_copy, "Copy" ), 0, wxALL, 3 );
 		tools->Add( new wxButton( this, ID_paste, "Paste" ), 0, wxALL, 3 );
 		tools->Add( new wxStaticLine( this ), 0, wxALL|wxEXPAND, 2 );
-		tools->Add( new wxStaticText( this, wxID_ANY, "Enter single value:" ), 0, wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_RIGHT, 5 );
+		tools->Add(new wxStaticText(this, wxID_ANY, "Enter single value:"), 0, wxALL | wxALIGN_RIGHT, 5);
 		tools->Add( numSV, 0, wxALL, 3 );
 		tools->Add( new wxButton( this, ID_applyVal, "Apply" ), 0, wxALL, 3 );
 		tools->AddStretchSpacer();
@@ -640,7 +640,7 @@ public:
 		center->Add( tools, 0, wxALL|wxEXPAND, 4 );
 
 		wxBoxSizer *sizer = new wxBoxSizer( wxVERTICAL );
-		sizer->Add( lblDescription, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+		sizer->Add(lblDescription, 0, wxALL, 5);
 		sizer->Add( center, 1, wxALL|wxEXPAND, 0 );
 		sizer->Add( CreateButtonSizer( wxOK|wxCANCEL|wxHELP ), 0, wxALL|wxEXPAND, 10 );
 
