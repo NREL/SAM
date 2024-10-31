@@ -833,7 +833,7 @@
         "\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', option == 2);",
         "\tshow('batt_dispatch_auto_can_fuelcellcharge', option !=3 && \r",
         "\t\t(technology() == 'Fuel Cell' || technology() == 'PVWatts Wind FuelCell Battery Hybrid'\r",
-        "\t\t|| technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'));",
+        "\t\t|| technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'));",
         "\trefresh(); \r",
         "}",
         "",

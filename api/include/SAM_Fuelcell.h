@@ -405,7 +405,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -413,7 +413,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */

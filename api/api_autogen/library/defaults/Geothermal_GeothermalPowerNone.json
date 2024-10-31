@@ -11,6 +11,7 @@
 			"T_approach": 5,
 			"T_htf_cold_ref": 90,
 			"T_htf_hot_ref": 200,
+			"allow_reservoir_replacements": 0,
 			"ambient_pressure": 14.7,
 			"analysis_type": 0,
 			"conversion_subtype": 0,

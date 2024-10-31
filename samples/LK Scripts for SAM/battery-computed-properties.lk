@@ -1,6 +1,6 @@
 /*
 
-This script reads inputs from a PV-Battery, Generic Battery, or Standalone
+This script reads inputs from a PV-Battery, Custom Generation Battery, or Standalone
 Battery case and replicates the code used to calculate the computed properties
 shown on the Battery Cell and System page.
 
@@ -347,12 +347,12 @@ function battery_computed_properties() {
 
 config = configuration();
 
-is_batt_tech = ( config[0] == 'PV Battery' || config[0] == 'Standalone Battery' || config[0] == 'Generic Battery' || config[0] == 'Fuel Cell' );
+is_batt_tech = ( config[0] == 'PV Battery' || config[0] == 'Standalone Battery' || config[0] == 'Custom Generation Battery' || config[0] == 'Fuel Cell' );
 is_batt_enabled = ( get('en_batt') == true );
 
 if ( !is_batt_tech ) 
 {
-	msgbox( 'Current case is not a battery configuration.\n The case ' + active_case() + ' is a ' + config[0] + ' case. This script requires PV Battery, Generic Battery, Standalone Battery, or Fuel Cell case.\n\nExiting script.'); 
+	msgbox( 'Current case is not a battery configuration.\n The case ' + active_case() + ' is a ' + config[0] + ' case. This script requires PV Battery, Custom Generation Battery, Standalone Battery, or Fuel Cell case.\n\nExiting script.'); 
 	exit;
 }
 

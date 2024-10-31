@@ -74,6 +74,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_T_htf_hot_ref_nset(SAM_table ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_allow_reservoir_replacements_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "allow_reservoir_replacements", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_ambient_pressure_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ambient_pressure", number);
@@ -640,6 +646,15 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_T_htf_hot_ref_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_htf_hot_ref", &result))
 		make_access_error("SAM_Geothermal", "T_htf_hot_ref");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_allow_reservoir_replacements_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "allow_reservoir_replacements", &result))
+		make_access_error("SAM_Geothermal", "allow_reservoir_replacements");
 	});
 	return result;
 }

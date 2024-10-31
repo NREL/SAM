@@ -1465,6 +1465,8 @@ void CaseWindow::UpdateConfiguration()
 			m_navigationMenu->AppendItem(wxDataViewItem(0), m_pageGroups[j]->SideBarLabel);
 		}
 	}
+
+    if (cfg->TechnologyFullName.Contains("Generic")) return; //if generic get out of the loop
     
 	wxDataViewItem dvi = m_navigationMenu->GetNthChild(wxDataViewItem(0), 0);
 	if (m_navigationMenu->IsContainer(dvi)) {
