@@ -713,7 +713,7 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
             if (settings.GetProperty(wxT("tsAxisMax")).ToDouble(&max))
                 m_timeSeries->SetViewMax(max);
             */
-            m_timeSeries->SetViewMax(500);
+            m_timeSeries->SetViewMax(168); //24 hr/day * 7 days, show first week
         }
         
         

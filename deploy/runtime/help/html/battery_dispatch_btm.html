@@ -547,11 +547,13 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Self-consumption</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Dispatch the battery to minimize power to and from the grid.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Charge Options</span></h4>
-<p class="p_Text"><span class="f_Text">The battery charge options are limits on the dispatch options. Not all charge options are available for all dispatch options. SAM automatically disables (greys out) charge options that do not apply to the dispatch option you choose.</span></p>
+<p class="p_Text"><span class="f_Text">The charge options control how the battery can charge and discharge. SAM enables and disables (greys out) the options as appropriate for the dispatch option and whether the battery is DC- or AC-connected.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can charge from grid</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Allow power from the grid to charge the battery.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can charge from system</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Allow the photovoltaic array or other power system to charge the battery.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can charge from grid-limited system power</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Allow the battery to charge from power in excess of the interconnection limit or from curtailed power when the interconnection limit is enabled and/or curtailment is specified on the <a href="grid_limits.html" class="topiclink">Grid Limits</a> page. </span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can charge from clipped system power</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For a photovoltaic array with DC-connected battery, allow the photovoltaic array to charge the battery when the array DC power exceeds the inverter nominal DC input power.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery can discharge to grid</span></p>
@@ -621,6 +623,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_Text"><span class="f_Text">Choose </span><span class="f_CHInterfaceElement">Input battery power</span><span class="f_Text"> targets, and then enter the battery power target data.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Time series battery power targets</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Click </span><span class="f_CHInterfaceElement">Edit array</span><span class="f_VariableDescription"> and import or copy and paste an array of battery power values in kW, where discharge power is positive, charge power is negative. The array must have the same number of rows as simulation time steps: For hourly simulations, 8,760 rows, for for 15-minute simulations 35,040 rows, etc.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> For standalone batteries, the time step for time series power targets must be the same as the simulation time step, which you can set on the <a href="battery_time_step.html" class="topiclink">Battery Time Step</a> page.</span></p>
 </td>
 </tr>
 </table>
@@ -644,7 +647,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Discharge to grid</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The battery can only discharge to the grid during time steps that it is allowed to discharge to the load. For each period that you want to allow the battery to discharge to the grid, check the box in the </span><span class="f_CHInterfaceElement">Allow</span><span class="f_VariableDescription"> column. SAM uses the same discharge rate for discharges to the load and the grid.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">System power priority</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to determine how to prioritize electricity from the power generating system (PV array or generic system). This option is not available with the </span><span class="f_CHInterfaceElement">Charge from system only when system output exceeds load</span><span class="f_VariableDescription"> option.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Use this option to determine how to prioritize electricity from the power generating system (PV array or custom generation profile). This option is not available with the </span><span class="f_CHInterfaceElement">Charge from system only when system output exceeds load</span><span class="f_VariableDescription"> option.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">Meet load</span><span class="f_VariableDescription"> to prioritize using system power to meet the load over charging the battery.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Choose </span><span class="f_CHInterfaceElement">Charge battery</span><span class="f_VariableDescription"> to prioritize using system power to charge the battery over meeting the load. </span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Weekday and Weekend Schedules</span></p>

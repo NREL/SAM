@@ -423,7 +423,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_fuel_cell_capacity"
+                    "String": "ui_customgeneration_capacity"
                 },
                 "X": {
                     "Type": 3.0,
@@ -431,7 +431,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -506,7 +506,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_generic_capacity"
+                    "String": "ui_fuel_cell_capacity"
                 },
                 "X": {
                     "Type": 3.0,
@@ -514,7 +514,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -778,10 +778,10 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_fuel_cell_capacity": {
+        "ui_customgeneration_capacity": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fuel cell capacity",
+            "Label": "Custom generation capacity",
             "Units": "kWac",
             "Group": "Hybrid System",
             "IndexLabels": "",
@@ -791,10 +791,10 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_generic_capacity": {
+        "ui_fuel_cell_capacity": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Generic system capacity",
+            "Label": "Fuel cell capacity",
             "Units": "kWac",
             "Group": "Hybrid System",
             "IndexLabels": "",
@@ -847,7 +847,7 @@
         "};\r",
         "\r",
         "equations { 'ui_fuel_cell_capacity' } = define() { \r",
-        "\tif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\tif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
         "\t\treturn ${fuelcell_system_capacity};\r",
         "\t}\r",
         "\telse {\r",
@@ -855,9 +855,9 @@
         "\t}\r",
         "};\r",
         "\r",
-        "equations { 'ui_generic_capacity' } = define() {\r",
-        "\tif ( technology () == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
-        "\t\treturn ${generic_system_capacity};\r",
+        "equations { 'ui_customgeneration_capacity' } = define() {\r",
+        "\tif ( technology () == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${customgeneration_system_capacity};\r",
         "\t}\r",
         "\telse {\r",
         "\t\treturn 0;\r",
@@ -878,8 +878,8 @@
         "\t\treturn ${total_inverter_capacity}\r",
         "\t\t+ ${wind_system_capacity}; \r",
         "\t}\r",
-        "\telseif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
-        "\t\treturn ${generic_system_capacity} \r",
+        "\telseif ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${customgeneration_system_capacity} \r",
         "\t\t+ ${ac_nameplate}\r",
         "\t\t+ ${wind_system_capacity}\r",
         "\t\t+ ${fuelcell_system_capacity}; \r",
@@ -905,9 +905,9 @@
         "\t{\r",
         "\t\tmsg = 'The hybrid system combines generation profiles from the Detailed PV and Wind models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
         "\t}\r",
-        "\telseif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\telseif ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )\r",
         "\t{\r",
-        "\t\tmsg = 'The hybrid system combines generation profiles from the Generic System, PVWatts, Wind, and Fuel Cell models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
+        "\t\tmsg = 'The hybrid system combines generation profiles from the Custom Generation Profile, PVWatts, Wind, and Fuel Cell models. This electricity is available to charge the battery, meet the electric load, or be delivered to the grid, depending on your application.';\r",
         "\t}\r",
         "\telse\r",
         "\t{\r",
@@ -915,8 +915,8 @@
         "\t}\r",
         "\tmsg = msg + ' The capacity of each subsystem is defined on its system design page.';\r",
         "\tproperty('lbl_hybrid_description','Caption',msg);\r",
-        "\tshow( 'ui_generic_capacity', technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' );\r",
-        "\tshow( 'ui_fuel_cell_capacity', ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) );\r",
+        "\tshow( 'ui_customgeneration_capacity', technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' );\r",
+        "\tshow( 'ui_fuel_cell_capacity', ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) );\r",
         "};\r",
         ""
     ]

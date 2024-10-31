@@ -5828,7 +5828,7 @@
         "\t  || tech == 'PVWatts Wind Battery Hybrid' \r",
         "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
         "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
-        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' );",
+        "\t  || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' );",
         "\t\t",
         "\t// arrays for monthly load (kWh) and peak (kW)",
         "\tmload = alloc(12);",

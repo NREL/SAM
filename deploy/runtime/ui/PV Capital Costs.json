@@ -7878,7 +7878,7 @@
         "\tif ( tech == 'PVWatts Wind Battery Hybrid' \r",
         "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
         "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
-        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t  || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )\r",
         "\t{\r",
         "\t\tpv_name = 'Total Installed Cost of PV Subsystem';\r",
         "\t\tpv_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the PV subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",

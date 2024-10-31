@@ -101,6 +101,14 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Turbine_wind_resource_shear_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set wind_turbine_ct_curve: User-defined Ct curve vs WS for wake models
+	 * options: uses same wind speeds as power curve
+	 * constraints: LENGTH_EQUAL=wind_turbine_powercurve_windspeeds
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_ct_curve_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set wind_turbine_hub_ht: Hub height [m]
 	 * options: None
 	 * constraints: POSITIVE
@@ -154,12 +162,28 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set park_wake_decay_constant: Wake decay constant for Park model [0..1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Farm_park_wake_decay_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_capacity: Nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set wake_loss_multiplier: Multiplier for the calculated wake loss
+	 * options: >1 increases loss, <1 decreases loss
+	 * constraints: MIN=0
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Farm_wake_loss_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set wind_farm_wake_model: Wake Model [Simple, Park, EV, Constant] [0/1/2/3]
@@ -301,6 +325,14 @@ extern "C"
 	 * required if: en_icing_cutoff=1
 	 */
 	SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set icing_persistence_timesteps: Num timesteps icing lasts if conditions are met
+	 * options: includes initial timestep
+	 * constraints: MIN=1,INTEGER
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_icing_persistence_timesteps_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set low_temp_cutoff: Low Temperature Cutoff [C]
@@ -575,6 +607,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_ct_curve_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_max_cp_nget(SAM_table ptr, SAM_error *err);
@@ -592,7 +626,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Farm_park_wake_decay_constant_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Farm_wake_loss_multiplier_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Farm_wind_farm_wake_model_nget(SAM_table ptr, SAM_error *err);
 
@@ -632,6 +670,8 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_rh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Losses_icing_persistence_timesteps_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_low_temp_cutoff_nget(SAM_table ptr, SAM_error *err);
 
@@ -723,6 +763,12 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_kWh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_total_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
@@ -773,7 +819,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_kW_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_table ptr, int* length, SAM_error *err);
 

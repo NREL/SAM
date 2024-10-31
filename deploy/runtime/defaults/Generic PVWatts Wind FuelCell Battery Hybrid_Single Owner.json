@@ -19768,6 +19768,7 @@
         "batt_discharge_percent_6": 25.0,
         "batt_dispatch_auto_can_charge": 1.0,
         "batt_dispatch_auto_can_clipcharge": 0.0,
+        "batt_dispatch_auto_can_curtailcharge": 0.0,
         "batt_dispatch_auto_can_fuelcellcharge": 0.0,
         "batt_dispatch_auto_can_gridcharge": 0.0,
         "batt_dispatch_choice": 3.0,
