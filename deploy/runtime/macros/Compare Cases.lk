@@ -146,7 +146,7 @@ for (i=0; i<num_cases; i++)
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
 	monthly_energy_bin = get('monthly_energy');
-	if (monthly_energy_bin == null) {
+	if (monthly_energy_bin == null) { //report can continue, monthly energy graph will just not build
 		outln('Monthly energy not found');
 	}
 	else {
