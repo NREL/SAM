@@ -146,8 +146,13 @@ for (i=0; i<num_cases; i++)
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
 	monthly_energy_bin = get('monthly_energy');
-	for (j = 0; j < 12; j++) {
-		monthly_energy[j][i] = monthly_energy_bin[j];
+	if (monthly_energy_bin == null) {
+		outln('Monthly energy not found');
+	}
+	else {
+		for (j = 0; j < 12; j++) {
+			monthly_energy[j][i] = monthly_energy_bin[j];
+		}
 	}
 	analysis_period = get('analysis_period');
 	if (config[1] == "Single Owner" || config[1] == "Merchant Plant" || config[1] == "All Equity Partnership Flip" || config[1] == "Leveraged Partnership Flip" || config[1] == "Community Solar") {
@@ -272,7 +277,7 @@ reportCode =
             '<th>'+cases[3]+'</th>'
         '</tr>'
         '<tr>'
-             '<td>Technology</td>'
+             '<td>Performance Model</td>'
              '<td>'+ tech[0] +'</td>'
              '<td>'+ tech[1] +'</td>'
              '<td>'+ tech[2] +'</td>'
@@ -491,8 +496,8 @@ reportCode =
 
 '</section>'
 '</body>'
-'<footer>'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
@@ -528,7 +533,7 @@ reportCode =
   '</style>'
   
  '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
 '</head>' 
 
 '<body>' 
@@ -543,7 +548,7 @@ reportCode =
             '<th>'+cases[2]+'</th>'
         '</tr>'
         '<tr>'
-             '<td>Technology</td>'
+             '<td>Performance Model</td>'
              '<td>'+ tech[0] +'</td>'
              '<td>'+ tech[1] +'</td>'
              '<td>'+ tech[2] +'</td>'
@@ -612,8 +617,10 @@ reportCode =
                 'x: xValues,'
                 'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +'],'
                 'name: "System Generation",'
-                'type: "bar"'
-                'marker_color: ["blue","orange","green","red"]'
+                'type: "bar",'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
             '};'
             
             'var lcoeData = [aep2];'
@@ -733,8 +740,8 @@ reportCode =
 
 '</section>'
 '</body>'
-'<footer>'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
@@ -760,7 +767,7 @@ if (num_cases ==2)
 reportCode = 
 '<html>'
 '<head>'
-  '<title>SAM ME Wave Energy Case Comparison Report</title>'
+  '<title>SAM Case Comparison Report</title>'
   '<style>'
     'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
     'p {margin-left:5%;}'
@@ -793,7 +800,7 @@ reportCode =
             '<th>'+cases[1]+'</th>'
         '</tr>'
         '<tr>'
-             '<td>Technology</td>'
+             '<td>Performance Model</td>'
              '<td>'+ tech[0] +'</td>'
              '<td>'+ tech[1] +'</td>'
          '</tr>'
@@ -853,8 +860,10 @@ reportCode =
                 'x: xValues,'
                 'y: ['+ aep_system[0] +','+ aep_system[1] +'],'
                 'name: "System Generation",'
-                'type: "bar"'
-                'marker_color: ["blue","orange","green","red"]'
+                'type: "bar",'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
             '};'
             
             'var lcoeData = [aep2];'
@@ -958,8 +967,8 @@ reportCode =
 
 	
 '</body>'
-'<footer>'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
@@ -971,7 +980,6 @@ reportCode =
 '</html>';
 
 }
-outln(reportCode);
 report = tempfile('html'); //specify a temporary location to save the plot
 
 ok = write_text_file(report, reportCode);

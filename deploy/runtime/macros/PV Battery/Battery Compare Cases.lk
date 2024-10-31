@@ -123,17 +123,7 @@ for (i=0; i<num_cases; i++)
 		msgbox('The Battery Compare Cases macro is only meant to be used with battery cases. See the Compare Cases macro for non-battery cases');
 		exit;
 	}
-	/*
-	if (config[1] != 'LCOE Calculator')
 
-	{
-
-		msgbox('The ME Wave report macro only works with the LCOE Calculator selected as the financial model.');
-
-		exit;
-
-	}
-	*/
 	if (config[1] == 'LCOE Calculator') {
 		lcoe[i] = get('lcoe_fcr');
 	}
@@ -159,8 +149,13 @@ for (i=0; i<num_cases; i++)
 	batt_charge_sys[i] = batt_annual_charge_sys[1];
 	batt_charge_grid[i] = batt_annual_charge_grid[1];
 	monthly_energy_bin = get('monthly_energy');
-	for (j = 0; j < 12; j++) {
-		monthly_energy[j][i] = monthly_energy_bin[j];
+	if (monthly_energy_bin == null) {
+		outln('Monthly energy not found');
+	}
+	else {
+		for (j = 0; j < 12; j++) {
+			monthly_energy[j][i] = monthly_energy_bin[j];
+		}
 	}
 	analysis_period = get('analysis_period');
 	if (config[1] == "Single Owner" || config[1] == "Merchant Plant" || config[1] == "All Equity Partnership Flip" || config[1] == "Leveraged Partnership Flip" || config[1] == "Community Solar") {
@@ -512,7 +507,7 @@ reportCode =
 
 '</section>'
 '</body>'
-'<footer>'
+'<footer style="text-align:center;">'
     '<p>This report was generated using the System Advisor Model testMacro on:</P>'
     '<p id="demo" ></p>'
 
@@ -765,7 +760,7 @@ reportCode =
 
 '</section>'
 '</body>'
-'<footer>'
+'<footer style="text-align:center;">'
     '<p>This report was generated using the System Advisor Model testMacro on:</P>'
     '<p id="demo" ></p>'
 
@@ -1045,7 +1040,7 @@ reportCode =
 
 	
 '</body>'
-'<footer>'
+'<footer style="text-align:center;">'
     '<p>This report was generated using the System Advisor Model testMacro on:</P>'
     '<p id="demo" ></p>'
 
