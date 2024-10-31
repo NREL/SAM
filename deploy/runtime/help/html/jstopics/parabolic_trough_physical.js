@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"CSP Physical Trough Model",
 hmDescription:"The physical trough model calculates the electricity delivered to the grid by a parabolic trough solar field that delivers thermal energy to a power block for electricity...",
-hmPrevLink:"generic_system_plant.html",
+hmPrevLink:"custom_generation_profile.html",
 hmNextLink:"troughphysical_location_and_resource.html",
 hmParentLink:"index.html",
 hmBreadCrumbs:"",

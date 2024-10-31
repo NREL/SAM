@@ -1,5 +1,5 @@
 {
-    "Name": "Fuel Cell Dispatch Manual",
+    "Name": "Fuel Cell Dispatch Manual old",
     "Width": 1061.0,
     "Height": 612.0,
     "FormObjects": {
@@ -6445,7 +6445,7 @@
         "{",
         "\tbtm = behind_the_meter();\r",
         "\tif (  technology() == 'PVWatts Wind FuelCell Battery Hybrid' \r",
-        "\t   || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'  )\r",
+        "\t   || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'  )\r",
         "\t{\r",
         "\t\ten_manual = value('batt_dispatch_choice_ui') == 2;\r",
         "\t}\r",

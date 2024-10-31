@@ -62,6 +62,12 @@ SAM_EXPORT void SAM_Windpower_Turbine_wind_resource_shear_nset(SAM_table ptr, do
 	});
 }
 
+SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_ct_curve_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "wind_turbine_ct_curve", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_hub_ht_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "wind_turbine_hub_ht", number);
@@ -98,9 +104,21 @@ SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Windpower_Farm_park_wake_decay_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "park_wake_decay_constant", number);
+	});
+}
+
 SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_capacity", number);
+	});
+}
+
+SAM_EXPORT void SAM_Windpower_Farm_wake_loss_multiplier_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "wake_loss_multiplier", number);
 	});
 }
 
@@ -203,6 +221,12 @@ SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_rh_nset(SAM_table ptr, double 
 SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_temp_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "icing_cutoff_temp", number);
+	});
+}
+
+SAM_EXPORT void SAM_Windpower_Losses_icing_persistence_timesteps_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "icing_persistence_timesteps", number);
 	});
 }
 
@@ -455,6 +479,16 @@ SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_ct_curve_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "wind_turbine_ct_curve", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "wind_turbine_ct_curve");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -511,11 +545,29 @@ SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SA
 	return result;
 }
 
+SAM_EXPORT double SAM_Windpower_Farm_park_wake_decay_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "park_wake_decay_constant", &result))
+		make_access_error("SAM_Windpower", "park_wake_decay_constant");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_capacity", &result))
 		make_access_error("SAM_Windpower", "system_capacity");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Windpower_Farm_wake_loss_multiplier_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "wake_loss_multiplier", &result))
+		make_access_error("SAM_Windpower", "wake_loss_multiplier");
 	});
 	return result;
 }
@@ -671,6 +723,15 @@ SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "icing_cutoff_temp", &result))
 		make_access_error("SAM_Windpower", "icing_cutoff_temp");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Windpower_Losses_icing_persistence_timesteps_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "icing_persistence_timesteps", &result))
+		make_access_error("SAM_Windpower", "icing_persistence_timesteps");
 	});
 	return result;
 }
@@ -998,6 +1059,33 @@ SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_kWh_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_wake_loss_internal_kWh", &result))
+		make_access_error("SAM_Windpower", "annual_wake_loss_internal_kWh");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_wake_loss_internal_percent", &result))
+		make_access_error("SAM_Windpower", "annual_wake_loss_internal_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_total_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_wake_loss_total_percent", &result))
+		make_access_error("SAM_Windpower", "annual_wake_loss_total_percent");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1237,11 +1325,22 @@ SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SA
 	return result;
 }
 
-SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_kW_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "wake_losses", &result))
-		make_access_error("SAM_Windpower", "wake_losses");
+	result = ssc_data_get_array(ptr, "wake_loss_internal_kW", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "wake_loss_internal_kW");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "wake_loss_internal_percent", length);
+	if (!result)
+		make_access_error("SAM_Windpower", "wake_loss_internal_percent");
 	});
 	return result;
 }
