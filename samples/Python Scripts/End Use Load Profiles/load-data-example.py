@@ -61,17 +61,17 @@ from eulp import get, plot, stats
 ## Set these parameters before running the script! ##
 
 # 1. Choose a U.S. state and county:
-state = 'FL'
-county_name = 'Broward'
+state = 'CO'
+county_name = 'Jefferson'
 
 # 2. Get these parameters from the data lake website:
-year = '2021'
-dataset = 'comstock_amy2018_release_1'
+year = '2022'
+dataset = 'resstock_amy2018_release_1'
 upgrade = 'baseline'
 
 # 3. Set the path where you want to store files
 # (files are large, you'll need at least 200 MB of space):
-path='Sample Results'
+path=''
 
 ## End Parameters ##
 
