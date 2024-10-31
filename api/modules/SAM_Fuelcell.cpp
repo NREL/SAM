@@ -272,18 +272,6 @@ SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_capacity_escal_nset(SAM_table ptr, d
 	});
 }
 
-SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_elec_price_for_heat_techs", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "om_elec_price_for_heat_techs_escal", number);
-	});
-}
-
 SAM_EXPORT void SAM_Fuelcell_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_fixed_escal", number);
@@ -768,25 +756,6 @@ SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_capacity_escal_nget(SAM_table ptr,
 	return result;
 }
 
-SAM_EXPORT double* SAM_Fuelcell_HybridCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_elec_price_for_heat_techs", length);
-	if (!result)
-		make_access_error("SAM_Fuelcell", "om_elec_price_for_heat_techs");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "om_elec_price_for_heat_techs_escal", &result))
-		make_access_error("SAM_Fuelcell", "om_elec_price_for_heat_techs_escal");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Fuelcell_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -994,6 +963,16 @@ SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_fuelcell_replacement_cost_schedule_ag
 	result = ssc_data_get_array(ptr, "cf_fuelcell_replacement_cost_schedule", length);
 	if (!result)
 		make_access_error("SAM_Fuelcell", "cf_fuelcell_replacement_cost_schedule");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Fuelcell_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_land_lease_expense", length);
+	if (!result)
+		make_access_error("SAM_Fuelcell", "cf_land_lease_expense");
 	});
 	return result;
 }

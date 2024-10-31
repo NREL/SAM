@@ -32,15 +32,15 @@ SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_flat_heat_btu_ns
 	});
 }
 
-SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "thermal_buy_rate_heat_btu", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_buy_rate_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_conversion_efficiency_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "thermal_conversion_efficiency", number);
 	});
 }
 
@@ -62,6 +62,18 @@ SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_load_heat_btu_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_monthly_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_monthly_buy_rate_heat_btu", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_monthly_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_monthly_sell_rate_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "thermal_rate_escalation", arr, length);
@@ -74,15 +86,21 @@ SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_flat_heat_btu_n
 	});
 }
 
-SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "thermal_sell_rate_heat_btu", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_option_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "thermal_sell_rate_option", number);
+	});
+}
+
+SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_timestep_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_timestep_buy_rate_heat_btu", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_timestep_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "thermal_timestep_sell_rate_heat_btu", arr, length);
 	});
 }
 
@@ -132,21 +150,20 @@ SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_flat_heat_btu_
 	return result;
 }
 
-SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "thermal_buy_rate_heat_btu", length);
-	if (!result)
-		make_access_error("SAM_ThermalrateIph", "thermal_buy_rate_heat_btu");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_buy_rate_option", &result))
 		make_access_error("SAM_ThermalrateIph", "thermal_buy_rate_option");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_conversion_efficiency_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "thermal_conversion_efficiency", &result))
+		make_access_error("SAM_ThermalrateIph", "thermal_conversion_efficiency");
 	});
 	return result;
 }
@@ -181,6 +198,26 @@ SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_load_heat_btu_aget(SAM
 	return result;
 }
 
+SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_monthly_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_monthly_buy_rate_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_monthly_buy_rate_heat_btu");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_monthly_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_monthly_sell_rate_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_monthly_sell_rate_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -200,21 +237,31 @@ SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_flat_heat_btu
 	return result;
 }
 
-SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "thermal_sell_rate_heat_btu", length);
-	if (!result)
-		make_access_error("SAM_ThermalrateIph", "thermal_sell_rate_heat_btu");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_option_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_sell_rate_option", &result))
 		make_access_error("SAM_ThermalrateIph", "thermal_sell_rate_option");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_timestep_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_timestep_buy_rate_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_timestep_buy_rate_heat_btu");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_timestep_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_timestep_sell_rate_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_timestep_sell_rate_heat_btu");
 	});
 	return result;
 }

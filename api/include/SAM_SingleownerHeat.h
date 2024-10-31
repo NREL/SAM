@@ -474,20 +474,20 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: !battery,!fuelcell
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity_heat: Capacity-based O&M amount [$/kWt-yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_capacity_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_elec_price_for_heat_techs: Electricity price for purchases in heat model [$/kWh]
@@ -507,7 +507,7 @@ extern "C"
 
 	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: !battery,!fuelcell
+	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -626,14 +626,6 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_opt_fuel_2_usage_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: !battery,!fuelcell
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
 	 * options: battery
 	 * constraints: None
@@ -656,6 +648,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production_heat: Production-based O&M amount [$/MWht]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_SingleownerHeat_SystemCosts_om_production_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
@@ -2775,9 +2775,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_SingleownerHeat_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_capacity_heat_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2813,13 +2813,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_SingleownerHeat_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_SingleownerHeat_SystemCosts_om_production_heat_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_SingleownerHeat_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
@@ -3572,6 +3572,8 @@ extern "C"
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_pbi_total_uti_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_ppa_price_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_ppa_price_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_pretax_cashflow_aget(SAM_table ptr, int* length, SAM_error *err);
 

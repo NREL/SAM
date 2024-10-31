@@ -56,20 +56,20 @@ extern "C"
 	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_flat_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set thermal_buy_rate_heat_btu: Thermal buy rate [$/(MMBtu/hr)]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set thermal_buy_rate_option: Thermal buy rate option [0/1]
-	 * options: 0=flat,1=timestep
-	 * constraints: INTEGER,MIN=0,MAX=1
+	 * Set thermal_buy_rate_option: Thermal buy rate option [0-2]
+	 * options: 0=flat,1=timestep,2=monthly
+	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set thermal_conversion_efficiency: Heat conversion efficiency (buy) [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=100
+	 */
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_conversion_efficiency_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set thermal_degradation: Annual energy degradation [%]
@@ -96,6 +96,22 @@ extern "C"
 	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_load_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set thermal_monthly_buy_rate_heat_btu: Monthly thermal buy rate [$/(MMBtu/hr)]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_monthly_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set thermal_monthly_sell_rate_heat_btu: Thermal sell rate monthly [$/(MMBtu/hr)]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_monthly_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set thermal_rate_escalation: Annual thermal rate escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -112,20 +128,28 @@ extern "C"
 	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_flat_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set thermal_sell_rate_heat_btu: Thermal sell rate [$/(MMBtu/hr)]
+	 * Set thermal_sell_rate_option: Thermal sell rate option [0/1]
+	 * options: 0=flat,1=timestep
+	 * constraints: INTEGER,MIN=0,MAX=2
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set thermal_timestep_buy_rate_heat_btu: Thermal buy rate [$/(MMBtu/hr)]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_timestep_buy_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set thermal_sell_rate_option: Thermal sell rate option [0/1]
-	 * options: 0=flat,1=timestep
-	 * constraints: INTEGER,MIN=0,MAX=1
+	 * Set thermal_timestep_sell_rate_heat_btu: Thermal sell rate timestep [$/(MMBtu/hr)]
+	 * options: None
+	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_option_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_thermal_timestep_sell_rate_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -167,9 +191,9 @@ extern "C"
 
 	SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_flat_heat_btu_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_buy_rate_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_conversion_efficiency_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -177,13 +201,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_load_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_monthly_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_monthly_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_flat_heat_btu_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_ThermalrateIph_ThermalRate_thermal_sell_rate_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_timestep_buy_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_ThermalrateIph_ThermalRate_thermal_timestep_sell_rate_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

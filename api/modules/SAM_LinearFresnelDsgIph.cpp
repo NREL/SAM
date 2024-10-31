@@ -428,6 +428,12 @@ SAM_EXPORT void SAM_LinearFresnelDsgIph_HeatSink_heat_sink_dP_frac_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_LinearFresnelDsgIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ppa_price_input_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_LinearFresnelDsgIph_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "adjust_constant", number);
@@ -1123,6 +1129,16 @@ SAM_EXPORT double SAM_LinearFresnelDsgIph_HeatSink_heat_sink_dP_frac_nget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "ppa_price_input_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_LinearFresnelDsgIph_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1268,16 +1284,6 @@ SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table p
 	return result;
 }
 
-SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_LinearFresnelDsgIph", "annual_energy_distribution_time");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1374,6 +1380,16 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_aget(SAM_table ptr, int* 
 	return result;
 }
 
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat", length);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "gen_heat");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1449,6 +1465,16 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_op_mode_3_aget(SAM_table ptr,
 	result = ssc_data_get_array(ptr, "op_mode_3", length);
 	if (!result)
 		make_access_error("SAM_LinearFresnelDsgIph", "op_mode_3");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ppa_price_input", length);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "ppa_price_input");
 	});
 	return result;
 }
