@@ -1097,7 +1097,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1582,7 +1582,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 165.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1806,89 +1806,6 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 5.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "rec_hl_perm2"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 717.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 165.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 6.0
                 }
             }
         },
@@ -2307,7 +2224,7 @@
         "REC_COPY_m_dot_htf_rec_des_calc": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Design receiver mass flow rate",
+            "Label": "Total receiver design mass flow rate",
             "Units": "kg/s",
             "Group": " ",
             "IndexLabels": "",
@@ -2346,7 +2263,7 @@
         "csp.pt.rec.max_flow_to_rec": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Maximum flow rate to receiver",
+            "Label": "Total maximum flow rate to receiver",
             "Units": "kg/s",
             "Group": "Tower and Receiver",
             "IndexLabels": "",
@@ -2598,19 +2515,6 @@
             "IndexLabels": "-",
             "Flags": 2.0,
             "DefaultValue": 50.0,
-            "UIObject": "Default",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "rec_hl_perm2": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Estimated receiver heat loss",
-            "Units": "kWt/m²",
-            "Group": "Tower and Receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 30.0,
             "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""

@@ -6255,7 +6255,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -6394,6 +6394,89 @@
                 "X": {
                     "Type": 3.0,
                     "Integer": 141.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 141.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_tower_total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 489.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -6784,7 +6867,7 @@
         "csp.pt.cost.receiver.area": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Aperature area",
+            "Label": "Aperture area",
             "Units": "m²",
             "Group": "Tower SolarPilot Capital Costs",
             "IndexLabels": "",
@@ -7239,7 +7322,7 @@
         "ui_receiver_height": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Receiver height",
+            "Label": "Receiver height (max)",
             "Units": "m",
             "Group": "Tower SolarPilot Capital Costs",
             "IndexLabels": "",
@@ -7274,6 +7357,19 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "ui_tower_total": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total tower height",
+            "Units": "m",
+            "Group": "Tower SolarPilot Capital Costs",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         }
     },
     "Equations": [
@@ -7299,7 +7395,7 @@
         "\r",
         "// ui only\r",
         "equations{'ui_rec_lift_height'} = define() {\r",
-        "\treturn ${h_tower} + ${helio_height} / 2. + ${h_rec_input_to_cost_model_calc} / 2.0;\r",
+        "\treturn ${h_tower} + ${helio_height} / 2. + ${h_rec_input_to_cost_model_calc};\r",
         "};\r",
         "\r",
         "equations{'ui_rec_m_dot_des'} = define() {\r",
@@ -7385,6 +7481,11 @@
         "// ui only",
         "equations{ 'ui_receiver_height' } = define() {",
         "\treturn ${h_rec_input_to_cost_model_calc};",
+        "};\r",
+        "\r",
+        "// ui only\r",
+        "equations{ 'ui_tower_total' } = define() {\r",
+        "\treturn ${tower_total_height};\r",
         "};",
         "",
         "// ui only",

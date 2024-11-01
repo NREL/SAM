@@ -1,8 +1,113 @@
 {
     "Name": "Particle Tower Free-falling",
-    "Width": 867.0,
-    "Height": 442.0,
+    "Width": 871.0,
+    "Height": 699.0,
     "FormObjects": {
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "COPY_rec_design_hl_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 753.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 95.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Heat loss \\nestimate \\n(kWt/m2)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -16,7 +121,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 564.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -99,7 +204,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 639.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -182,7 +287,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 615.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -265,7 +370,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 588.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -348,7 +453,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 615.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -431,7 +536,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 588.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -501,20 +606,125 @@
                 }
             }
         },
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "fp_rec_height"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Aperture \\nHeight \\n(m)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "is_snout"
+                    "String": "is_recs_duplicate"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 570.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -542,7 +752,112 @@
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_snout"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 140.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "Receiver 1,Receiver 2,Receiver 3,Receiver 4,Receiver 5,Receiver 6,Receiver 7,Receiver 8,Receiver 9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Enable \\nSNOUT \\n(0/1)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -551,81 +866,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 587.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 104.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Curtain Depth \\nfrom \\nAperture (m)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 4.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -634,81 +971,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 411.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 85.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Normalized \\nCurtain \\nHeight (-)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 2.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -717,77 +1076,227 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 498.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 85.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Normalized \\nCurtain \\nWidth (-)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
                 },
-                "Decimals": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 2.0
+                    "Integer": -1.0
                 },
-                "Prefix": {
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "num_recs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 38.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "0|1|2|3|4"
                 },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 12.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 12"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 474.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 382.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 167.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "Particle Tower Free-falling.png"
+                },
+                "Centered": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 22"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 738.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 189.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate Values"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -804,11 +1313,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 303.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 380.0
+                    "Integer": 374.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -837,19 +1346,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 228.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 858.0
+                    "Integer": 852.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 187.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -857,7 +1366,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Free-Falling Particle Receiver Geometry"
+                    "String": "Receiver SNOUT Geometry"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -878,7 +1387,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 303.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -915,11 +1424,48 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 3.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 856.0
+                    "Integer": 852.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Free-Falling Particle Receiver Geometry"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 41520"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 853.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -952,7 +1498,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1035,7 +1581,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1105,6 +1651,111 @@
                 }
             }
         },
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "power_fraction"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 140.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "Receiver 1,Receiver 2,Receiver 3,Receiver 4,Receiver 5,Receiver 6,Receiver 7,Receiver 8,Receiver 9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Power \\nFraction \\n(-)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1118,7 +1769,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 201.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1146,6 +1797,111 @@
                 }
             }
         },
+        "DataArrayTable": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rec_azimuth"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Receiver \\nAzimuth \\n(deg)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1159,7 +1915,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 255.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1242,7 +1998,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 231.0
+                    "Integer": 468.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1325,7 +2081,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 495.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1395,89 +2151,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "rec_height"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 294.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 30.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                }
-            }
-        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1491,7 +2164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 450.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1532,7 +2205,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 642.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1602,7 +2275,7 @@
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1611,81 +2284,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 80.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Prefix": {
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Suffix": {
+                "HorizontalLabel": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "ThousandsSep": {
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Aperture \\nWidth \\n(m)"
                 },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
                 },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
                 },
-                "TabOrder": {
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1694,81 +2389,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 165.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 65.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "\\nDepth \\n(m)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1777,81 +2494,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 234.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 95.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Horizontal \\nAngle \\n(deg)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 7.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1860,81 +2599,103 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 333.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 65.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Bottom \\nAngle \\n(deg)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 8.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
-        "Numeric": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1943,82 +2704,119 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 675.0
+                    "Integer": 402.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 60.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 },
-                "Mode": {
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": "R1,R2,R3,R4,R5,R6,R7,R8,R9"
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "Top \\nAngle \\n(deg)"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
                     "Integer": 1.0
                 },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
     },
     "VarDatabase": {
+        "COPY_rec_design_hl_calc": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArrayTable",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "cav_abs": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2110,29 +2908,70 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "is_snout": {
+        "fp_rec_height": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Aperture height",
+            "Units": "m",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                20.0,
+                20.0,
+                20.0,
+                20.0
+            ],
+            "UIObject": "DataArrayTable",
+            "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "is_recs_duplicate": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Enable SNOUT",
+            "Label": "All receivers have same power and geometry",
             "Units": "",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "is_snout": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Enable SNOUT",
+            "Units": "",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "UIObject": "DataArrayTable",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "max_curtain_depth": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Curtain depth from aperture",
             "Units": "m",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                0.5,
+                0.5,
+                0.5,
+                0.5
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2164,27 +3003,37 @@
         },
         "norm_curtain_height": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Normalized curtain height",
             "Units": "",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.1,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                1.1,
+                1.1,
+                1.1,
+                1.1
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "norm_curtain_width": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Normalized curtain width",
             "Units": "",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.1,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                1.1,
+                1.1,
+                1.1,
+                1.1
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2205,6 +3054,19 @@
             "UIObject": "DataMatrix",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "num_recs": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of receivers",
+            "Units": "",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "0|1|2|3|4",
+            "Flags": 2.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": "0|1|2|3|4"
         },
         "particle_abs": {
             "Version": 4.0,
@@ -2232,6 +3094,24 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "power_fraction": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Target Fraction Power",
+            "Units": "-",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "UIObject": "DataArrayTable",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "rec_adv_model_type": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2243,7 +3123,25 @@
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
-            "sscVariableValue": "0|1"
+            "sscVariableValue": "0.1"
+        },
+        "rec_azimuth": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Receiver Azimuth",
+            "Units": "deg",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "UIObject": "DataArrayTable",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         },
         "rec_eta_fixed": {
             "Version": 4.0,
@@ -2282,19 +3180,6 @@
             "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "rec_height": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Aperture height",
-            "Units": "m",
-            "Group": "Free-falling receiver",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 10.0,
-            "UIObject": "Numeric",
-            "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "rec_model_type": {
@@ -2362,74 +3247,121 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "rec_width": {
+        "rec_tower_offset": {
             "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Aperture width",
+            "Type": 3.0,
+            "Label": "Receiver offset from tower center",
             "Units": "m",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
             "Flags": 2.0,
-            "DefaultValue": 10.0,
-            "UIObject": "Numeric",
+            "DefaultValue": [
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_width": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Aperture width",
+            "Units": "m",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": [
+                20.0,
+                20.0,
+                20.0,
+                20.0
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "snout_depth": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "SNOUT depth",
             "Units": "m",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                0.5,
+                0.5,
+                0.5,
+                0.5
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "snout_horiz_angle": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Horizontal SNOUT angle",
             "Units": "deg",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 90.0,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                90.0,
+                90.0,
+                90.0,
+                90.0
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "snout_vert_bot_angle": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Vertical SNOUT bottom angle",
             "Units": "deg",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 30.0,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                30.0,
+                30.0,
+                30.0,
+                30.0
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
         "snout_vert_top_angle": {
             "Version": 4.0,
-            "Type": 1.0,
+            "Type": 2.0,
             "Label": "Vertical SNOUT top angle",
             "Units": "deg",
             "Group": "Free-falling receiver",
             "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 10.0,
-            "UIObject": "Numeric",
+            "Flags": 3.0,
+            "DefaultValue": [
+                10.0,
+                10.0,
+                10.0,
+                10.0
+            ],
+            "UIObject": "DataArrayTable",
             "sscVariableName": "",
             "sscVariableValue": ""
         }
     },
     "Equations": [
-        "//TODO:Update image\r",
+        "equations{ 'COPY_rec_design_hl_calc' } = define() {\r",
+        "\treturn ${rec_design_hl_calc}; \r",
+        "};\r",
+        "\r",
         "\r",
         "equations{ 'curtain_type' } = define() {",
         "\treturn 0;",
@@ -2437,7 +3369,26 @@
         "",
         "equations{ 'norm_heights_depths' } = define() {",
         "\treturn [[0,0]];",
-        "};",
+        "};\r",
+        "\r",
+        "\r",
+        "equations{ 'rec_tower_offset' } = define() {\r",
+        "\t// Set receiver offset to zero for all receivers\r",
+        "\tnum_recs = to_int(${num_recs});\r",
+        "\tif (num_recs == 1) {\r",
+        "\t\treturn [[0,0,0]];\r",
+        "\t}\r",
+        "\telseif (num_recs == 2) {\r",
+        "\t\treturn [[0,0,0],[0,0,0]];\r",
+        "\t}\r",
+        "\telseif (num_recs == 3) {\r",
+        "\t\treturn [[0,0,0],[0,0,0],[0,0,0]];\r",
+        "\t}\r",
+        "\telseif (num_recs == 4) {\r",
+        "\t\treturn [[0,0,0],[0,0,0],[0,0,0],[0,0,0]];\r",
+        "\t}\r",
+        "};\r",
+        "",
         "\r",
         "equations{ 'rec_rad_model_type' } = define() {\r",
         "\treturn 1;\r",
@@ -2452,7 +3403,7 @@
         "};\r",
         "\r",
         "equations{ 'n_flux_x' } = define() {\r",
-        "\treturn 1; // TODO: make accessible through UI?\r",
+        "\treturn 3; // TODO: make accessible through UI?\r",
         "};\r",
         "\r",
         "equations{ 'n_flux_y' } = define() {\r",
@@ -2463,19 +3414,36 @@
     ],
     "Callbacks": [
         "on_load{\"Particle Tower Free-falling\"} = define() {\r",
-        "\ton_change{\"is_snout\"}();\r",
+        "\t//on_change{\"is_snout\"}();\r",
+        "\ton_change{\"num_recs\"}();\r",
         "\ton_change{\"rec_model_type\"}();\r",
         "\ton_change{\"rec_adv_model_type\"}();\r",
         "};\r",
         "\r",
+        "on_change{'num_recs'} = define() {\r",
+        "\tnum_recs = to_int(value('num_recs'));\r",
+        "\tif (num_recs == 1) {\r",
+        "\t\tvalue('rec_tower_offset', [[0,0,0]]);\r",
+        "\t}\r",
+        "\telseif (num_recs == 2) {\r",
+        "\t\tvalue('rec_tower_offset', [[0,0,0],[0,0,0]]);\r",
+        "\t}\r",
+        "\telseif (num_recs == 3) {\r",
+        "\t\tvalue('rec_tower_offset', [[0,0,0],[0,0,0],[0,0,0]]);\r",
+        "\t}\r",
+        "\telseif (num_recs == 4) {\r",
+        "\t\tvalue('rec_tower_offset', [[0,0,0],[0,0,0],[0,0,0],[0,0,0]]);\r",
+        "\t}\r",
         "\r",
-        "on_change{'is_snout'} = define() { \t\r",
-        "\tis_snout = value('is_snout') == 1;\r",
-        "\tenable(\"snout_depth\", is_snout);\r",
-        "\tenable(\"snout_horiz_angle\", is_snout);\r",
-        "\tenable(\"snout_vert_bot_angle\", is_snout);\r",
-        "\tenable(\"snout_vert_top_angle\", is_snout);\r",
         "};\r",
+        "\r",
+        "//on_change{'is_snout'} = define() { \t\r",
+        "//\tis_snout = value('is_snout') == 1;\r",
+        "//\tenable(\"snout_depth\", is_snout);\r",
+        "//\tenable(\"snout_horiz_angle\", is_snout);\r",
+        "//\tenable(\"snout_vert_bot_angle\", is_snout);\r",
+        "//\tenable(\"snout_vert_top_angle\", is_snout);\r",
+        "//};\r",
         "\r",
         "on_change{'rec_model_type'} = define() {\r",
         "\trec_model_type = value('rec_model_type');\r",
