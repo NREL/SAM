@@ -1172,47 +1172,6 @@
                 }
             }
         },
-        "Choice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "num_recs"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 204.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 30.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 38.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "0|1|2|3|4"
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 12.0
-                }
-            }
-        },
         "Image": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2799,6 +2758,47 @@
                     "Integer": -1.0
                 }
             }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_num_recs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 204.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 38.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "1|2|3|4"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -3061,12 +3061,12 @@
             "Label": "Number of receivers",
             "Units": "",
             "Group": "Free-falling receiver",
-            "IndexLabels": "0|1|2|3|4",
+            "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
-            "UIObject": "Choice",
+            "UIObject": "Default",
             "sscVariableName": "",
-            "sscVariableValue": "0|1|2|3|4"
+            "sscVariableValue": ""
         },
         "particle_abs": {
             "Version": 4.0,
@@ -3355,9 +3355,26 @@
             "UIObject": "DataArrayTable",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "ui_num_recs": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Number of receivers",
+            "Units": "",
+            "Group": "Free-falling receiver",
+            "IndexLabels": "1|2|3|4",
+            "Flags": 0.0,
+            "DefaultValue": 1.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         }
     },
     "Equations": [
+        "equations{ 'num_recs' } = define() {\r",
+        "\treturn ${ui_num_recs} + 1; \r",
+        "};\r",
+        "\r",
         "equations{ 'COPY_rec_design_hl_calc' } = define() {\r",
         "\treturn ${rec_design_hl_calc}; \r",
         "};\r",
@@ -3415,12 +3432,12 @@
     "Callbacks": [
         "on_load{\"Particle Tower Free-falling\"} = define() {\r",
         "\t//on_change{\"is_snout\"}();\r",
-        "\ton_change{\"num_recs\"}();\r",
+        "\ton_change{\"ui_num_recs\"}();\r",
         "\ton_change{\"rec_model_type\"}();\r",
         "\ton_change{\"rec_adv_model_type\"}();\r",
         "};\r",
         "\r",
-        "on_change{'num_recs'} = define() {\r",
+        "on_change{'ui_num_recs'} = define() {\r",
         "\tnum_recs = to_int(value('num_recs'));\r",
         "\tif (num_recs == 1) {\r",
         "\t\tvalue('rec_tower_offset', [[0,0,0]]);\r",
