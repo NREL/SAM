@@ -782,7 +782,7 @@ if (num_cases ==2)
 		baselineCase = 1;
 		advancedCase = 0;
 	}
-	if (lcoe[0]>=lcoe[1])
+	else
 	{
 		baselineCase = 0;
 		advancedCase = 1;
@@ -1053,7 +1053,6 @@ reportCode =
 '</html>';
 
 }
-outln(reportCode);
 report = tempfile('html'); //specify a temporary location to save the plot
 
 ok = write_text_file(report, reportCode);
