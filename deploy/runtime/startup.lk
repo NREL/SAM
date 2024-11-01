@@ -965,6 +965,7 @@ setup_cst_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_utility_rate();
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -2216,6 +2217,7 @@ setup_MSLF_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_utility_rate();
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
