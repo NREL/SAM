@@ -2550,7 +2550,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "TES thermal capacity",
-            "Units": "MWt-hr",
+            "Units": "MWht",
             "Group": "Physical Trough Thermal Storage",
             "IndexLabels": "",
             "Flags": 8.0,
