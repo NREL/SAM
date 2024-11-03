@@ -74,9 +74,9 @@ private:
 	bool HasContingency(Simulation& bcsim);
 
 	int m_result_code;
-	Case* m_generic_case;
-	wxString m_generic_case_name;
-	CaseWindow* m_generic_case_window;
+	Case* m_custom_generation_case;
+	wxString m_custom_generation_case_name;
+	CaseWindow* m_custom_generation_case_window;
 	std::vector<double> m_generic_degradation;
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;

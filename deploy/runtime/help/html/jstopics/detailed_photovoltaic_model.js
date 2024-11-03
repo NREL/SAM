@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Detailed Photovoltaic Model",
 hmDescription:"The following overview is to help you get started modeling  a photovoltaic system with the detailed photovoltaic model. For a description of the model, see Performance Models.",
-hmPrevLink:"weather_format_csv_marine_energy.html",
+hmPrevLink:"weather_format_srw_wind.html",
 hmNextLink:"pv_location_and_resource.html",
 hmParentLink:"index.html",
 hmBreadCrumbs:"",

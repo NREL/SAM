@@ -51,9 +51,9 @@ if(macro.location_choice == 'Use location from weather file')//use location from
 	config = configuration(); 
 	
 	//check that there is a weather file location
-	if (config[0] == 'Generic System')
+	if (config[0] == 'Custom Generation Profile')
 	{
-		msgbox('You must specify a latitude and longitude or an address to run this macro for a Generic System.');
+		msgbox('You must specify a latitude and longitude or an address to run this macro for a Custom Generation Profile.');
 		exit;
 	} 
 	if (config[0] == 'Wind Power')
@@ -64,7 +64,7 @@ if(macro.location_choice == 'Use location from weather file')//use location from
 			exit;
 		}
 	}
-	if((config[0] != 'Wind Power' && config[0] != 'Generic System' && get('use_specific_weather_file') == 1))
+	if((config[0] != 'Wind Power' && config[0] != 'Custom Generation Profile' && get('use_specific_weather_file') == 1))
 	{
 		msgbox('You must specify a latitude and longitude or an address to run this macro when using a specific weather file on disk.');
 		exit;

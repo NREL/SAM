@@ -683,7 +683,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.contingency"
+                    "String": "standalonebatt.cost.contingency"
                 },
                 "X": {
                     "Type": 3.0,
@@ -766,7 +766,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.contingency_percent"
+                    "String": "standalonebatt.cost.contingency_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -849,7 +849,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.fixed"
+                    "String": "standalonebatt.cost.epc.fixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -932,7 +932,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.nonfixed"
+                    "String": "standalonebatt.cost.epc.nonfixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1015,7 +1015,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.percent"
+                    "String": "standalonebatt.cost.epc.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1098,7 +1098,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.total"
+                    "String": "standalonebatt.cost.epc.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1181,7 +1181,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.installed_per_capacity"
+                    "String": "standalonebatt.cost.installed_per_capacity"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1264,7 +1264,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.fixed"
+                    "String": "standalonebatt.cost.plm.fixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1347,7 +1347,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.nonfixed"
+                    "String": "standalonebatt.cost.plm.nonfixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1430,7 +1430,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.percent"
+                    "String": "standalonebatt.cost.plm.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1513,7 +1513,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.total"
+                    "String": "standalonebatt.cost.plm.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1596,7 +1596,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.percent"
+                    "String": "standalonebatt.cost.sales_tax.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1679,7 +1679,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.total"
+                    "String": "standalonebatt.cost.sales_tax.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1762,7 +1762,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.value"
+                    "String": "standalonebatt.cost.sales_tax.value"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3410,7 +3410,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.contingency": {
+        "standalonebatt.cost.contingency": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total contingency cost",
@@ -3423,7 +3423,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.contingency_percent": {
+        "standalonebatt.cost.contingency_percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Contingency cost",
@@ -3436,7 +3436,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.fixed": {
+        "standalonebatt.cost.epc.fixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total EPC cost",
@@ -3449,7 +3449,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.nonfixed": {
+        "standalonebatt.cost.epc.nonfixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "EPC cost as percent of direct cost",
@@ -3462,7 +3462,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.percent": {
+        "standalonebatt.cost.epc.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "EPC cost percent of direct cost",
@@ -3475,7 +3475,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.total": {
+        "standalonebatt.cost.epc.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total EPC cost",
@@ -3488,7 +3488,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.installed_per_capacity": {
+        "standalonebatt.cost.installed_per_capacity": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total installed cost per capacity",
@@ -3501,7 +3501,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.per_watt": {
+        "standalonebatt.cost.per_watt": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Cost per watt",
@@ -3514,7 +3514,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.fixed": {
+        "standalonebatt.cost.plm.fixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Fixed PLM costs",
@@ -3527,7 +3527,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.nonfixed": {
+        "standalonebatt.cost.plm.nonfixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "PLM cost as percent of direct cost",
@@ -3540,7 +3540,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.percent": {
+        "standalonebatt.cost.plm.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "PLM cost as percent of direct cost",
@@ -3553,7 +3553,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.total": {
+        "standalonebatt.cost.plm.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total PLM cost",
@@ -3566,7 +3566,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.percent": {
+        "standalonebatt.cost.sales_tax.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Sales tax basis as percent of direct cost",
@@ -3579,7 +3579,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.total": {
+        "standalonebatt.cost.sales_tax.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total sales tax",
@@ -3592,7 +3592,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.value": {
+        "standalonebatt.cost.sales_tax.value": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Sales tax rate",
@@ -3657,38 +3657,38 @@
         "};",
         "",
         "equations{ 'total_installed_cost' } = define() {",
-        "\treturn ${total_direct_cost}+${total_indirect_cost}+${genericsys.cost.sales_tax.total}; };",
+        "\treturn ${total_direct_cost}+${total_indirect_cost}+${standalonebatt.cost.sales_tax.total}; };",
         "",
-        "equations{ 'genericsys.cost.installed_per_capacity' } = define() {",
+        "equations{ 'standalonebatt.cost.installed_per_capacity' } = define() {",
         "\treturn ${total_installed_cost}/${system_capacity}/1000; };",
         "",
-        "equations{ 'genericsys.cost.epc.nonfixed' } = define() {",
-        "\treturn ${total_direct_cost}*${genericsys.cost.epc.percent}/100; };",
+        "equations{ 'standalonebatt.cost.epc.nonfixed' } = define() {",
+        "\treturn ${total_direct_cost}*${standalonebatt.cost.epc.percent}/100; };",
         "",
-        "equations{ 'genericsys.cost.sales_tax.value' } = define() {",
+        "equations{ 'standalonebatt.cost.sales_tax.value' } = define() {",
         "\treturn ${sales_tax_rate}; };",
         "",
-        "equations{ 'genericsys.cost.contingency' } = define() {",
-        "\treturn ${genericsys.cost.contingency_percent}/100",
+        "equations{ 'standalonebatt.cost.contingency' } = define() {",
+        "\treturn ${standalonebatt.cost.contingency_percent}/100",
         "*(${battery_total}); };",
         "",
         "equations{ 'total_indirect_cost' } = define() {",
-        "\treturn ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}; };",
+        "\treturn ${standalonebatt.cost.epc.total}+${standalonebatt.cost.plm.total}; };",
         "",
-        "equations{ 'genericsys.cost.sales_tax.total' } = define() {",
-        "\treturn ${genericsys.cost.sales_tax.value}/100*${total_direct_cost}*${genericsys.cost.sales_tax.percent}/100; };",
+        "equations{ 'standalonebatt.cost.sales_tax.total' } = define() {",
+        "\treturn ${standalonebatt.cost.sales_tax.value}/100*${total_direct_cost}*${standalonebatt.cost.sales_tax.percent}/100; };",
         "",
         "equations{ 'total_direct_cost' } = define() {",
-        "\treturn ${genericsys.cost.contingency}+${battery_total}; };",
+        "\treturn ${standalonebatt.cost.contingency}+${battery_total}; };",
         "",
-        "equations{ 'genericsys.cost.plm.nonfixed' } = define() {",
-        "\treturn ${total_direct_cost}*${genericsys.cost.plm.percent}/100; };",
+        "equations{ 'standalonebatt.cost.plm.nonfixed' } = define() {",
+        "\treturn ${total_direct_cost}*${standalonebatt.cost.plm.percent}/100; };",
         "",
-        "equations{ 'genericsys.cost.epc.total' } = define() {",
-        "\treturn ${genericsys.cost.epc.fixed}+${genericsys.cost.epc.nonfixed}; };",
+        "equations{ 'standalonebatt.cost.epc.total' } = define() {",
+        "\treturn ${standalonebatt.cost.epc.fixed}+${standalonebatt.cost.epc.nonfixed}; };",
         "",
-        "equations{ 'genericsys.cost.plm.total' } = define() {",
-        "\treturn ${genericsys.cost.plm.fixed}+${genericsys.cost.plm.nonfixed}; };",
+        "equations{ 'standalonebatt.cost.plm.total' } = define() {",
+        "\treturn ${standalonebatt.cost.plm.fixed}+${standalonebatt.cost.plm.nonfixed}; };",
         "",
         "equations {'battery_total_cost_lcos' } = define() {",
         "\treturn ${total_installed_cost};",
@@ -3702,7 +3702,7 @@
         "\tif ( tech == 'PVWatts Wind Battery Hybrid' \r",
         "\t  || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
         "\t  || tech == 'Photovoltaic Wind Battery Hybrid' \r",
-        "\t  || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )\r",
+        "\t  || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )\r",
         "\t{\r",
         "\t\tbatt_name = 'Total Installed Cost of Battery Subsystem';\r",
         "\t\tbatt_description = 'See the Hybrid Cost page for the total installed cost of the hybrid system. The total installed cost of the battery subsystem is the sum of the indirect, sales tax, and direct costs. Note that it does not include any financing costs from the Financial Parameters page.';\r",
