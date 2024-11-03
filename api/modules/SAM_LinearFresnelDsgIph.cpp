@@ -1284,6 +1284,25 @@ SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table p
 	return result;
 }
 
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy_heat_btu", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "annual_energy_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1326,6 +1345,15 @@ SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_capacity_factor_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "capacity_factor", &result))
 		make_access_error("SAM_LinearFresnelDsgIph", "capacity_factor");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "cp_system_nameplate");
 	});
 	return result;
 }
@@ -1390,6 +1418,16 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_aget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_LinearFresnelDsgIph", "gen_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1435,6 +1473,15 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_month_aget(SAM_table ptr, int
 	result = ssc_data_get_array(ptr, "month", length);
 	if (!result)
 		make_access_error("SAM_LinearFresnelDsgIph", "month");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nameplate", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "nameplate");
 	});
 	return result;
 }
@@ -1585,6 +1632,15 @@ SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_solzen_aget(SAM_table ptr, in
 	result = ssc_data_get_array(ptr, "solzen", length);
 	if (!result)
 		make_access_error("SAM_LinearFresnelDsgIph", "solzen");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_LinearFresnelDsgIph", "system_capacity");
 	});
 	return result;
 }

@@ -282,6 +282,7 @@
 			"batt_dispatch_auto_btm_can_discharge_to_grid": 0,
 			"batt_dispatch_auto_can_charge": 1,
 			"batt_dispatch_auto_can_clipcharge": 0,
+			"batt_dispatch_auto_can_curtailcharge": 0,
 			"batt_dispatch_auto_can_fuelcellcharge": 0,
 			"batt_dispatch_auto_can_gridcharge": 0,
 			"batt_dispatch_charge_only_system_exceeds_load": 1,

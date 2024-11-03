@@ -3858,6 +3858,15 @@ SAM_EXPORT double* SAM_MsptIph_Outputs_annual_energy_distribution_time_mget(SAM_
 	return result;
 }
 
+SAM_EXPORT double SAM_MsptIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy_heat_btu", &result))
+		make_access_error("SAM_MsptIph", "annual_energy_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_MsptIph_Outputs_annual_eta_rec_th_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4639,6 +4648,16 @@ SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_aget(SAM_table ptr, int* length,
 	result = ssc_data_get_array(ptr, "gen_heat", length);
 	if (!result)
 		make_access_error("SAM_MsptIph", "gen_heat");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_MsptIph", "gen_heat_btu");
 	});
 	return result;
 }

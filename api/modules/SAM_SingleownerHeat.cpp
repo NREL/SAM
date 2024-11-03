@@ -620,6 +620,12 @@ SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_amount_aset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ptc_fed_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_escal", number);
@@ -638,6 +644,12 @@ SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_amount_aset(SAM_
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ptc_sta_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_escal", number);
@@ -650,249 +662,15 @@ SAM_EXPORT void SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_term_nset(SAM_ta
 	});
 }
 
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_custom_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_fedbas_method_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_fedbas_method", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
-	});
-}
-
-SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_stabas_method_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_stabas_method", number);
-	});
-}
-
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_amount", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_fed_amount_heat_btu", number);
 	});
 }
 
@@ -932,6 +710,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_oth_amount_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_oth_amount_heat_btu", number);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_fed", number);
@@ -968,6 +752,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_sta_amount_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_sta_amount_heat_btu", number);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_fed", number);
@@ -1001,6 +791,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_t
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_uti_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_amount", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_uti_amount_heat_btu", number);
 	});
 }
 
@@ -1304,6 +1100,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_fed_amount_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_fed_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_escal", number);
@@ -1337,6 +1139,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_fed_term_nset(SAM_tabl
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_oth_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_oth_amount", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_oth_amount_heat_btu", arr, length);
 	});
 }
 
@@ -1376,6 +1184,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_sta_amount_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_sta_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_escal", number);
@@ -1412,6 +1226,12 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_uti_amount_aset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_uti_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_uti_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_escal", number);
@@ -1439,6 +1259,246 @@ SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_uti_tax_sta_nset(SAM_t
 SAM_EXPORT void SAM_SingleownerHeat_PaymentIncentives_pbi_uti_term_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_uti_term", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_custom_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_fedbas_method_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_fedbas_method", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_SingleownerHeat_Depreciation_depr_stabas_method_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_stabas_method", number);
 	});
 }
 
@@ -2855,6 +2915,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_amount_aget(S
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ptc_fed_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "ptc_fed_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2883,6 +2953,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_amount_aget(S
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ptc_sta_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "ptc_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2901,372 +2981,20 @@ SAM_EXPORT double SAM_SingleownerHeat_TaxCreditIncentives_ptc_sta_term_nget(SAM_
 	return result;
 }
 
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_custom_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_macrs_15_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_macrs_5_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_15_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_20_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_39_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_5_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_custom");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_macrs_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_macrs_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_20");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_39");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_custom");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_macrs_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_macrs_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_20");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_39");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_SingleownerHeat_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
-	if (!result)
-		make_access_error("SAM_SingleownerHeat", "depr_custom_schedule");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_fedbas_method");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_custom");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_macrs_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_macrs_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_20");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_39");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_custom");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_macrs_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_macrs_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_15");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_20");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_39");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_5");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_stabas_method_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
-		make_access_error("SAM_SingleownerHeat", "depr_stabas_method");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_amount", &result))
 		make_access_error("SAM_SingleownerHeat", "cbi_fed_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_fed_amount_heat_btu", &result))
+		make_access_error("SAM_SingleownerHeat", "cbi_fed_amount_heat_btu");
 	});
 	return result;
 }
@@ -3325,6 +3053,15 @@ SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_oth_amount_nget(SAM_
 	return result;
 }
 
+SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_oth_amount_heat_btu", &result))
+		make_access_error("SAM_SingleownerHeat", "cbi_oth_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3379,6 +3116,15 @@ SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_sta_amount_nget(SAM_
 	return result;
 }
 
+SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_sta_amount_heat_btu", &result))
+		make_access_error("SAM_SingleownerHeat", "cbi_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3429,6 +3175,15 @@ SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_uti_amount_nget(SAM_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_amount", &result))
 		make_access_error("SAM_SingleownerHeat", "cbi_uti_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_uti_amount_heat_btu", &result))
+		make_access_error("SAM_SingleownerHeat", "cbi_uti_amount_heat_btu");
 	});
 	return result;
 }
@@ -3884,6 +3639,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_fed_amount_aget(SAM
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_fed_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "pbi_fed_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3935,6 +3700,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_oth_amount_aget(SAM
 	result = ssc_data_get_array(ptr, "pbi_oth_amount", length);
 	if (!result)
 		make_access_error("SAM_SingleownerHeat", "pbi_oth_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_oth_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "pbi_oth_amount_heat_btu");
 	});
 	return result;
 }
@@ -3994,6 +3769,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_sta_amount_aget(SAM
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_sta_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "pbi_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4049,6 +3834,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_uti_amount_aget(SAM
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_uti_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "pbi_uti_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4090,6 +3885,367 @@ SAM_EXPORT double SAM_SingleownerHeat_PaymentIncentives_pbi_uti_term_nget(SAM_ta
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pbi_uti_term", &result))
 		make_access_error("SAM_SingleownerHeat", "pbi_uti_term");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_custom_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_macrs_15_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_macrs_5_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_15_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_20_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_39_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_alloc_sl_5_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_fed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_bonus_sta_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_SingleownerHeat_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "depr_custom_schedule");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_fedbas_method");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_fed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_itc_sta_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_SingleownerHeat_Depreciation_depr_stabas_method_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
+		make_access_error("SAM_SingleownerHeat", "depr_stabas_method");
 	});
 	return result;
 }

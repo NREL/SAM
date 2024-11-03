@@ -871,6 +871,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_thermal_consumption_nget(SAM_table ptr, SAM_error *err);
@@ -880,6 +884,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -893,6 +899,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
@@ -902,6 +910,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_m_dot_loop_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -932,6 +942,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 

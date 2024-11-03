@@ -4619,6 +4619,25 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_energy_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy_heat_btu", &result))
+		make_access_error("SAM_TroughPhysicalIph", "annual_energy_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5450,6 +5469,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, in
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "gen_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_heat_load_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -5765,6 +5794,16 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_monthly_energy_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "monthly_energy");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_monthly_energy_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "monthly_energy_heat_btu");
 	});
 	return result;
 }

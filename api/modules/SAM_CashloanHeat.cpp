@@ -446,6 +446,12 @@ SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_aset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ptc_fed_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_fed_escal", number);
@@ -464,6 +470,12 @@ SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_aset(SAM_tab
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "ptc_sta_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ptc_sta_escal", number);
@@ -479,6 +491,12 @@ SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_term_nset(SAM_table
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_fed_amount", number);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_fed_amount_heat_btu", number);
 	});
 }
 
@@ -518,6 +536,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_nset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_oth_amount_heat_btu", number);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_oth_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_oth_deprbas_fed", number);
@@ -554,6 +578,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_nset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_sta_amount_heat_btu", number);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_deprbas_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_sta_deprbas_fed", number);
@@ -587,6 +617,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_tax_sta_nset(SAM_tabl
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cbi_uti_amount", number);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "cbi_uti_amount_heat_btu", number);
 	});
 }
 
@@ -890,6 +926,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_aset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_fed_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_fed_escal", number);
@@ -917,6 +959,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_term_nset(SAM_table p
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_oth_amount", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_oth_amount_heat_btu", arr, length);
 	});
 }
 
@@ -950,6 +998,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_aset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_sta_amount_heat_btu", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pbi_sta_escal", number);
@@ -977,6 +1031,12 @@ SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_term_nset(SAM_table p
 SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "pbi_uti_amount", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "pbi_uti_amount_heat_btu", arr, length);
 	});
 }
 
@@ -2011,6 +2071,16 @@ SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_aget(SAM_
 	return result;
 }
 
+SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ptc_fed_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "ptc_fed_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2039,6 +2109,16 @@ SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_aget(SAM_
 	return result;
 }
 
+SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "ptc_sta_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "ptc_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2062,6 +2142,15 @@ SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_fed_amount", &result))
 		make_access_error("SAM_CashloanHeat", "cbi_fed_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_fed_amount_heat_btu", &result))
+		make_access_error("SAM_CashloanHeat", "cbi_fed_amount_heat_btu");
 	});
 	return result;
 }
@@ -2120,6 +2209,15 @@ SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_nget(SAM_tab
 	return result;
 }
 
+SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_oth_amount_heat_btu", &result))
+		make_access_error("SAM_CashloanHeat", "cbi_oth_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2174,6 +2272,15 @@ SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_nget(SAM_tab
 	return result;
 }
 
+SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_sta_amount_heat_btu", &result))
+		make_access_error("SAM_CashloanHeat", "cbi_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2224,6 +2331,15 @@ SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cbi_uti_amount", &result))
 		make_access_error("SAM_CashloanHeat", "cbi_uti_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cbi_uti_amount_heat_btu", &result))
+		make_access_error("SAM_CashloanHeat", "cbi_uti_amount_heat_btu");
 	});
 	return result;
 }
@@ -2679,6 +2795,16 @@ SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_aget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_fed_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "pbi_fed_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2721,6 +2847,16 @@ SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_aget(SAM_ta
 	result = ssc_data_get_array(ptr, "pbi_oth_amount", length);
 	if (!result)
 		make_access_error("SAM_CashloanHeat", "pbi_oth_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_oth_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "pbi_oth_amount_heat_btu");
 	});
 	return result;
 }
@@ -2771,6 +2907,16 @@ SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_aget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_sta_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "pbi_sta_amount_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2813,6 +2959,16 @@ SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_aget(SAM_ta
 	result = ssc_data_get_array(ptr, "pbi_uti_amount", length);
 	if (!result)
 		make_access_error("SAM_CashloanHeat", "pbi_uti_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pbi_uti_amount_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "pbi_uti_amount_heat_btu");
 	});
 	return result;
 }

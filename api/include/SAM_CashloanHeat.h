@@ -182,7 +182,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -190,7 +190,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
@@ -270,7 +270,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -278,7 +278,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -628,6 +628,14 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set ptc_fed_amount_heat_btu: Federal PTC amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set ptc_fed_escal: Federal PTC escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -650,6 +658,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ptc_sta_amount_heat_btu: State PTC amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ptc_sta_escal: State PTC escalation [%/year]
@@ -679,6 +695,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cbi_fed_amount_heat_btu: Federal CBI amount [$/(Btu/hr))]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_fed_deprbas_fed: Federal CBI reduces federal depreciation basis [0/1]
@@ -729,6 +753,14 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set cbi_oth_amount_heat_btu: Other CBI amount [$/(Btu/hr))]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set cbi_oth_deprbas_fed: Other CBI reduces federal depreciation basis [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -777,6 +809,14 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set cbi_sta_amount_heat_btu: State CBI amount [$/(Btu/hr))]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set cbi_sta_deprbas_fed: State CBI reduces federal depreciation basis [0/1]
 	 * options: None
 	 * constraints: BOOLEAN
@@ -823,6 +863,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set cbi_uti_amount_heat_btu: Utility CBI amount [$/(Btu/hr))]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cbi_uti_deprbas_fed: Utility CBI reduces federal depreciation basis [0/1]
@@ -1225,6 +1273,14 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set pbi_fed_amount_heat_btu: Federal PBI amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set pbi_fed_escal: Federal PBI escalation [%]
 	 * options: None
 	 * constraints: None
@@ -1263,6 +1319,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set pbi_oth_amount_heat_btu: Other PBI amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_oth_escal: Other PBI escalation [%]
@@ -1305,6 +1369,14 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set pbi_sta_amount_heat_btu: State PBI amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set pbi_sta_escal: State PBI escalation [%]
 	 * options: None
 	 * constraints: None
@@ -1343,6 +1415,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set pbi_uti_amount_heat_btu: Utility PBI amount [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set pbi_uti_escal: Utility PBI escalation [%]
@@ -2035,11 +2115,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_TaxCreditIncentives_ptc_fed_term_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_TaxCreditIncentives_ptc_sta_escal_nget(SAM_table ptr, SAM_error *err);
 
@@ -2051,6 +2135,8 @@ extern "C"
 	 */
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_fed_amount_heat_btu_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_fed_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
@@ -2064,6 +2150,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_amount_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_oth_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
@@ -2076,6 +2164,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_amount_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_deprbas_sta_nget(SAM_table ptr, SAM_error *err);
@@ -2087,6 +2177,8 @@ extern "C"
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_sta_tax_sta_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_uti_amount_heat_btu_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_cbi_uti_deprbas_fed_nget(SAM_table ptr, SAM_error *err);
 
@@ -2188,6 +2280,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_fed_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_fed_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_fed_tax_fed_nget(SAM_table ptr, SAM_error *err);
@@ -2197,6 +2291,8 @@ extern "C"
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_fed_term_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_oth_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_oth_escal_nget(SAM_table ptr, SAM_error *err);
 
@@ -2208,6 +2304,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_sta_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_sta_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_sta_tax_fed_nget(SAM_table ptr, SAM_error *err);
@@ -2217,6 +2315,8 @@ extern "C"
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_sta_term_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_PaymentIncentives_pbi_uti_amount_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_PaymentIncentives_pbi_uti_escal_nget(SAM_table ptr, SAM_error *err);
 

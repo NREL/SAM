@@ -848,6 +848,14 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_auto_can_curtailcharge: Battery can charge from grid-limited system power? [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
@@ -2072,6 +2080,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nget(SAM_table ptr, SAM_error *err);
 

@@ -293,7 +293,7 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -748,7 +748,7 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_HeliostatField_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set p_start: Heliostat startup energy [kWe-hr]
+	 * Set p_start: Heliostat startup energy [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -2541,6 +2541,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_MsptIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MsptIph_Outputs_annual_eta_rec_th_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_Outputs_annual_eta_rec_th_incl_refl_nget(SAM_table ptr, SAM_error *err);
@@ -2708,6 +2710,8 @@ extern "C"
 	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_Outputs_h_rec_input_to_cost_model_nget(SAM_table ptr, SAM_error *err);
 

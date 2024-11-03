@@ -3440,6 +3440,12 @@ SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_ns
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_auto_can_curtailcharge", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_fuelcellcharge", number);
@@ -9351,6 +9357,15 @@ SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_clipcharge", &result))
 		make_access_error("SAM_Pvsamv1", "batt_dispatch_auto_can_clipcharge");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_curtailcharge", &result))
+		make_access_error("SAM_Pvsamv1", "batt_dispatch_auto_can_curtailcharge");
 	});
 	return result;
 }

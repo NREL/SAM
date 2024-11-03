@@ -3046,6 +3046,15 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_annual_energy_distribution_tim
 	return result;
 }
 
+SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_energy_heat_btu", &result))
+		make_access_error("SAM_FresnelPhysicalIph", "annual_energy_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3674,6 +3683,16 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, i
 	return result;
 }
 
+SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "gen_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "gen_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_heat_sink_cost_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3987,6 +4006,16 @@ SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_monthly_energy_aget(SAM_table 
 	result = ssc_data_get_array(ptr, "monthly_energy", length);
 	if (!result)
 		make_access_error("SAM_FresnelPhysicalIph", "monthly_energy");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_monthly_energy_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "monthly_energy_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_FresnelPhysicalIph", "monthly_energy_heat_btu");
 	});
 	return result;
 }
