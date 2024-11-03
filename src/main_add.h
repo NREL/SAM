@@ -257,7 +257,8 @@ public:
 		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		//dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
 		//dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
-		dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
+		//dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
+		dc.SetBackground(wxBrush(wxColour(255, 200, 45))); // 11/1/2024 University of Kansas KU Jayhawks
 
 		dc.Clear();
 
