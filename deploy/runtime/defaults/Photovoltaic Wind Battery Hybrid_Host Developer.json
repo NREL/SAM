@@ -478,7 +478,7 @@
         "engr_percent": 0.0,
         "engr_total": 150732.0,
         "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-        "gamma_r_calc": -1.19718,
+        "gamma_pmp_calc": -1.19718,
         "grid_fixed": 0.0,
         "grid_per_watt": 0.05,
         "grid_percent": 0.0,

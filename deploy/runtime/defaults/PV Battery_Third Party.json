@@ -55726,7 +55726,7 @@
     ],
     "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "floor_area": 2000.0,
-    "gamma_r_calc": -1.03914,
+    "gamma_pmp_calc": -1.03914,
     "grid_curtailment": [
         1e38,
         1e38,
