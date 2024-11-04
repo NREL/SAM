@@ -183,6 +183,24 @@ function cf_savings()
 	cfline( '' );
 }
 
+
+function cf_savings_heat()
+{
+	tech = technology();
+	fin = financing();
+	cfline( 'SAVINGS', -1 );
+	cfline( 'thermal_cost_without_system', 0);
+	cfline('minus:', -1, 0);
+	cfline( 'thermal_cost_with_system', 0);
+	cfline('equals:', -1, 0);
+	cfline( 'annual_thermal_value', 0);
+	cfline( '' );
+}
+
+
+
+
+
 function cf_revenue()
 {
 	tech = technology();
@@ -289,6 +307,10 @@ function cf_om_expenses()
 			cfline('cf_utility_bill', 0 ); // electricity purchases for self-consumption and/or battery charging
 		}
 	}
+	else if(is_iph_tech()) {
+			cfline('cf_om_elec_price_for_heat_techs', 0);
+	}
+
 	if ( technology() == 'PVWatts Wind Battery Hybrid') 
 	{
 		cfline( 'Subsystem Costs', -1, 0 );
@@ -1970,7 +1992,10 @@ cashflow{ 'Residential' } = define()
 cashflow{ 'Commercial' } = define()
 {
 	cf_production();
- 	cf_savings();
+	if (is_iph_tech())
+		cf_savings_heat();
+	else
+		cf_savings();
  	cf_operating_expenses();
 	cf_debt_repayment();
 	cf_income_tax_savings();

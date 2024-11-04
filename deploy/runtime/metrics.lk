@@ -23,6 +23,21 @@ function rescom_metrics()
 	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
 }
 
+function rescom_metrics_heat()
+{
+	metric( 'lcoe_nom',{'label'='LCOH Levelized cost of heat nominal', 'post'=' \u00A2/kWht', 'mode'='f', 'deci'='2' } );
+	metric( 'lcoe_real',{'label'='LCOH Levelized cost of heat real', 'post'=' \u00A2/kWht', 'mode'='f', 'deci'='2' } );
+	metric( 'thermal_cost_without_system_year1',{'label'='Thermal bill without system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_cost_with_system_year1',{'label'='Thermal bill with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'thermal_savings_year1',{'label'='Net savings with system (year 1)', 'pre'='$', 'post'=' ', 'thousep'='true', 'mode'='f', 'deci'='0' } );
+	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'payback', {'label'='Simple payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
+	metric( 'discounted_payback', {'label'='Discounted payback period', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' years' } );
+	metric( 'adjusted_installed_cost', {'label'='Net capital cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'first_cost', {'label'='Equity', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+	metric( 'loan_amount', {'label'='Debt', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
+}
+
 function third_party_metrics()
 {
 	metric( 'npv', {'label'='Net present value', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' ' } );
@@ -627,7 +642,8 @@ metrics{ 'Standalone Battery' } = define() {standalone_battery_metrics(); };
 
 // Financial Metrics
 metrics{ 'Residential' } = define() { rescom_metrics(); };
-metrics{ 'Commercial' } = define() { rescom_metrics(); };
+//metrics{ 'Commercial' } = define() { rescom_metrics(); };
+metrics{ 'Commercial' } = define() { if (is_iph_tech()) rescom_metrics_heat(); else rescom_metrics(); };
 metrics{ 'Commercial PPA' } = define() { ipp_metrics(); };
 metrics{ 'Third Party' } = define() { third_party_metrics(); };
 metrics{ 'Host Developer' } = define() { host_developer_metrics(); };
