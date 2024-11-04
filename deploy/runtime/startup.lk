@@ -688,7 +688,7 @@ function setup_csp_physical_trough_pages()
 			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 
 
-	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES NT' ]], 
+	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
 			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
 
@@ -722,7 +722,7 @@ function setup_cst_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
 
-	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES NT' ]], 
+	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
 			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
 

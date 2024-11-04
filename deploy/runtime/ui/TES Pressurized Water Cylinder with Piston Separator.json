@@ -1,5 +1,5 @@
 {
-    "Name": "TES NT",
+    "Name": "TES Pressurized Water Cylinder with Piston Separator",
     "Width": 904.0,
     "Height": 148.0,
     "FormObjects": {
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "NT TES Parameters"
+                    "String": "Piston Cylinder TES Parameters"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -107,7 +107,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_piston_loss_poly_0"
+                    "String": "tes_cyl_piston_loss_poly_0"
                 },
                 "X": {
                     "Type": 3.0,
@@ -190,7 +190,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_piston_loss_poly_1"
+                    "String": "tes_cyl_piston_loss_poly_1"
                 },
                 "X": {
                     "Type": 3.0,
@@ -273,7 +273,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_piston_loss_poly_2"
+                    "String": "tes_cyl_piston_loss_poly_2"
                 },
                 "X": {
                     "Type": 3.0,
@@ -356,7 +356,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_piston_loss_poly_3"
+                    "String": "tes_cyl_piston_loss_poly_3"
                 },
                 "X": {
                     "Type": 3.0,
@@ -439,7 +439,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_tank_cp"
+                    "String": "tes_cyl_tank_cp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -522,7 +522,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_tank_dens"
+                    "String": "tes_cyl_tank_dens"
                 },
                 "X": {
                     "Type": 3.0,
@@ -605,7 +605,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_tank_insul_percent"
+                    "String": "tes_cyl_tank_insul_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -688,7 +688,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tes_nt_tank_thick"
+                    "String": "tes_cyl_tank_thick"
                 },
                 "X": {
                     "Type": 3.0,
@@ -768,7 +768,7 @@
         }
     },
     "VarDatabase": {
-        "tes_nt_piston_loss_poly": {
+        "tes_cyl_piston_loss_poly": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Piston Loss Poly Coeffs",
@@ -783,7 +783,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_piston_loss_poly_0": {
+        "tes_cyl_piston_loss_poly_0": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "f(x)= ",
@@ -796,7 +796,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_piston_loss_poly_1": {
+        "tes_cyl_piston_loss_poly_1": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -809,7 +809,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_piston_loss_poly_2": {
+        "tes_cyl_piston_loss_poly_2": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -822,7 +822,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_piston_loss_poly_3": {
+        "tes_cyl_piston_loss_poly_3": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "",
@@ -835,7 +835,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_tank_cp": {
+        "tes_cyl_tank_cp": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Tank wall specific heat",
@@ -848,7 +848,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_tank_dens": {
+        "tes_cyl_tank_dens": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Tank wall density",
@@ -861,7 +861,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_tank_insul_percent": {
+        "tes_cyl_tank_insul_percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Additional wall mass due to insulation",
@@ -874,7 +874,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tes_nt_tank_thick": {
+        "tes_cyl_tank_thick": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Tank wall thickness",
@@ -890,11 +890,11 @@
     },
     "Equations": [
         "// Collect Array Inputs\r",
-        "equations{ 'tes_nt_piston_loss_poly' } = define(){\r",
-        "\treturn [${tes_nt_piston_loss_poly_0},\r",
-        "\t\t\t${tes_nt_piston_loss_poly_1},\r",
-        "\t\t\t${tes_nt_piston_loss_poly_2},\r",
-        "\t\t\t${tes_nt_piston_loss_poly_3}\r",
+        "equations{ 'tes_cyl_piston_loss_poly' } = define(){\r",
+        "\treturn [${tes_cyl_piston_loss_poly_0},\r",
+        "\t\t\t${tes_cyl_piston_loss_poly_1},\r",
+        "\t\t\t${tes_cyl_piston_loss_poly_2},\r",
+        "\t\t\t${tes_cyl_piston_loss_poly_3}\r",
         "\t\t\t];\r",
         "};"
     ],
