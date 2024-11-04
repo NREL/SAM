@@ -28388,7 +28388,7 @@
     "cec_bifacial_transmission_factor": 0.013,
     "cec_bifaciality": 0.7,
     "cec_eff": 19.0159,
-    "cec_gamma_r": -0.386,
+    "cec_gamma_pmp": -0.386,
     "cec_gap_spacing": 0.05,
     "cec_heat_transfer": 0.0,
     "cec_height": 0.0,
@@ -55835,7 +55835,7 @@
         21.0
     ],
     "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-    "gamma_r_calc": -1.19718,
+    "gamma_pmp_calc": -1.19718,
     "grid_curtailment": [
         1e38,
         1e38,

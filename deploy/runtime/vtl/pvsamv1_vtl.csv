@@ -90,7 +90,7 @@ pv.mod.cec.a_ref,cec_a_ref
 pv.mod.cec.adjust,cec_adjust
 pv.mod.cec.alpha_sc,cec_alpha_sc
 pv.mod.cec.beta_oc,cec_beta_oc
-pv.mod.cec.gamma_r,cec_gamma_r
+pv.mod.cec.gamma_pmp,cec_gamma_pmp
 pv.mod.cec.i_l_ref,cec_i_l_ref
 pv.mod.cec.i_mp_ref,cec_i_mp_ref
 pv.mod.cec.i_o_ref,cec_i_o_ref

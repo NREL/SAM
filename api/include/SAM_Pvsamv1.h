@@ -1904,12 +1904,12 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set cec_gamma_r: Maximum power point temperature coefficient [%/C]
+	 * Set cec_gamma_pmp: Maximum power point temperature coefficient [%/C]
 	 * options: None
 	 * constraints: None
 	 * required if: module_model=1
 	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_pmp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set cec_gap_spacing: Gap spacing [m]
@@ -6193,7 +6193,7 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifaciality_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_pmp_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_nget(SAM_table ptr, SAM_error *err);
 
