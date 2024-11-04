@@ -6391,7 +6391,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type a Federal PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
+                    "String": "Type a Federal PBI amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -6733,7 +6733,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type an Other PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
+                    "String": "Type an Other PBI amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -7075,7 +7075,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type a State PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
+                    "String": "Type a State PBI amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -7417,7 +7417,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type a Utility PBI amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
+                    "String": "Type a Utility PBI amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation to the PBI amount."
                 },
                 "TabOrder": {
                     "Type": 3.0,

@@ -1760,7 +1760,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type a Federal PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values."
+                    "String": "Type a Federal PTC amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values."
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -1979,7 +1979,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Type a State PTC amount ($/kWh) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values."
+                    "String": "Type a State PTC amount ($/MMBtu) for each year. Use nominal dollars. SAM does not apply inflation or escalation to these values."
                 },
                 "TabOrder": {
                     "Type": 3.0,
