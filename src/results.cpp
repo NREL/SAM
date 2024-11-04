@@ -2188,6 +2188,7 @@ public:
     std::vector<wxString> MakeXY();
     std::vector<wxString> MakeOpticalEfficiency();
     std::vector<wxString> MakeFluxMaps(size_t n_cols);
+    std::vector<wxString> MakeFluxMapsMultiRec(size_t n_cols);
     std::vector<wxString> MakeNoRowLabels(size_t n_rows);
     std::vector<wxString> MakeSCO2UDPClabels();
 
@@ -2520,6 +2521,11 @@ public:
                             write_label = false;
                             MatrixColLabels = MakeFluxMaps(nc);
                         }
+                        else if (!value.Cmp("FLUX_MAPS_MULT_REC"))
+                        {
+                            write_label = false;
+                            MatrixColLabels = MakeFluxMapsMultiRec(nc);
+                        }
                         else if (!value.Cmp("UDPC_SCO2_PREPROC"))
                         {
                             write_label = false;
@@ -2799,6 +2805,25 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMaps(size_t n_cols)
         wxString str;
         str.Printf(wxT("Panel %d Absorbed Flux (kW/m2)"), i - 1);
         v.push_back(str);
+    }
+
+    return v;
+}
+std::vector<wxString> TabularBrowser::ResultsTable::MakeFluxMapsMultiRec(size_t n_cols)
+{
+    std::vector<wxString> v;
+
+    v.push_back("Azimuth Angle (deg)");
+    v.push_back("Zenith Angle (deg)");
+
+    size_t n_flux_x = 3;    // Hard coded because UI input is hard coded as well
+    size_t n_recs = (n_cols - 2) / n_flux_x;
+    for (size_t i = 1; i != n_recs+1; i++) {
+        for (size_t j = 0; j != n_flux_x; j++) {
+            wxString str;
+            str.Printf(wxString::Format("Receiver %d, x Element %d, Absorbed Flux (kW/m2)", (int)i, (int)j));
+            v.push_back(str);
+        }
     }
 
     return v;
