@@ -2268,7 +2268,7 @@ public:
     std::vector<wxString> MakeURTierNums(bool cols);
     std::vector<wxString> MakeMonths();
     std::vector<wxString> MakeXY();
-    std::vector<wxString> MakeOpticalEfficiency();
+    std::vector<wxString> MakeOpticalEfficiency(size_t n_cols);
     std::vector<wxString> MakeFluxMaps(size_t n_cols);
     std::vector<wxString> MakeFluxMapsMultiRec(size_t n_cols);
     std::vector<wxString> MakeNoRowLabels(size_t n_rows);
@@ -2596,7 +2596,7 @@ public:
                         else if (!value.Cmp("OPTICAL_EFFICIENCY"))
                         {
                             write_label = false;
-                            MatrixColLabels = MakeOpticalEfficiency();
+                            MatrixColLabels = MakeOpticalEfficiency(nc);
                         }
                         else if (!value.Cmp("FLUX_MAPS"))
                         {
@@ -2852,13 +2852,23 @@ std::vector<wxString> TabularBrowser::ResultsTable::MakeXY()
 
     return v;
 }
-std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency()
+std::vector<wxString> TabularBrowser::ResultsTable::MakeOpticalEfficiency(size_t n_cols)
 {
     std::vector<wxString> v;
 
     v.push_back("Azimuth Angle (deg)");
     v.push_back("Zenith Angle (deg)");
-    v.push_back("Optical Efficiency (-)");
+    if (n_cols > 3) {   // Multi-receiver systems
+        size_t num_recs = n_cols - 2;
+        for (size_t i = 0; i != num_recs; i++) {
+            wxString str;
+            str.Printf(wxT("Field %d Optical Efficiency (-)"), i + 1);
+            v.push_back(str);
+        }
+    }
+    else {
+        v.push_back("Optical Efficiency (-)");
+    }
 
     return v;
 }
