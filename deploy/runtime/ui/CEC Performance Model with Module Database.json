@@ -1578,7 +1578,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cec_gamma_r"
+                    "String": "cec_gamma_pmp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3310,7 +3310,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "gamma_r_calc"
+                    "String": "gamma_pmp_calc"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3545,7 +3545,7 @@
                 },
                 "Fields": {
                     "Type": 5.0,
-                    "String": "Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date"
+                    "String": "Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_pmp,BIPV,Version,Date"
                 }
             }
         },
@@ -4078,7 +4078,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cec_gamma_r": {
+        "cec_gamma_pmp": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": " ",
@@ -4390,7 +4390,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "gamma_r_calc": {
+        "gamma_pmp_calc": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": " ",
@@ -4556,8 +4556,8 @@
         "equations{ 'beta_oc_calc' } = define() {",
         "\treturn ${cec_beta_oc} / ${cec_v_oc_ref} * 100.0; };",
         "",
-        "equations{ 'gamma_r_calc' } = define() {",
-        "\treturn ${cec_gamma_r} * ${cec_p_mp_ref} / 100.0; };",
+        "equations{ 'gamma_pmp_calc' } = define() {",
+        "\treturn ${cec_gamma_pmp} * ${cec_p_mp_ref} / 100.0; };",
         "\t",
         "equations{'cec_step'} = define() {",
         "\treturn ${step};",

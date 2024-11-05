@@ -3,6 +3,20 @@
     "active_structure_cost": 0.0,
     "additional_structural_components_cost": 0.0,
     "additional_structural_components_cost_total": 0.0,
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "air_turbine_cost": 0.0,
     "air_turbine_cost_rvalue": 0.0,
     "air_turbine_cost_total": 0.0,
@@ -1180,6 +1194,12 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 50.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
+    "tidal_vel_freq": [
+        [
+            0.0
+        ]
+    ],
     "tidal_velocity": [
         1.06411,
         0.907655,

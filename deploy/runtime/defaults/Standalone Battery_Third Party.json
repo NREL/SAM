@@ -37012,6 +37012,8 @@
     "run_resiliency_calcs": 0.0,
     "scale_factor": 1.0,
     "system_use_lifetime_output": 1.0,
+    "timestep_minutes": 60.0,
+    "timestep_minutes_ui": 0.0,
     "ui_annual_load": 0.0,
     "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,

@@ -53,7 +53,7 @@ function is_batt_tech()
 	tech = technology();
 	x = ( tech == 'PV Battery' ||
 	      tech == 'Standalone Battery' ||
-	      tech == 'Generic Battery' ||
+	      tech == 'Custom Generation Battery' ||
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
 	return x;
 }
@@ -92,7 +92,7 @@ function is_land_lease_config()
 function is_fuel_tech()
 {
 	tech = technology();
-	x = ( tech == 'Generic System' ||
+	x = ( tech == 'Custom Generation Profile' ||
 		  tech == 'DSLF' ||
 		  tech == 'MSLF' ||
 		  tech == 'Generic CSP System' ||
@@ -115,12 +115,12 @@ function cf_production()
 		cfline( 'photovoltaic_cf_energy_net',0);
 		cfline( 'wind_cf_energy_net',0);
 	}
-	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid') 	{
-		cfline( 'generic_cf_energy_net',0);
+	if ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid') 	{
+		cfline( 'customgeneration_cf_energy_net',0);
 		cfline( 'pvwatts_cf_energy_net',0);
 		cfline( 'wind_cf_energy_net',0);
 	}
-	if (( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
+	if (( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid')  ||  ( technology() == 'PVWatts Wind FuelCell Battery Hybrid') ){
 		cfline( 'fuelcell_fuelcell_annual_energy_discharged',0);
 	}
 	if ( is_fom_fin() || financing() == 'Community Solar' )
@@ -239,7 +239,7 @@ function cf_om_expenses()
     tech = technology();
     fin = financing();
 
-	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )
 	{
 		cfline( 'System Costs', -1, 0 );
 	}
@@ -296,9 +296,9 @@ function cf_om_expenses()
 		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
 		cfline( 'Project Costs', -1, 0 );
 	}
-	if ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'){
+	if ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'){
 		cfline( 'Subsystem Costs', -1, 0 );
-		cfline( 'generic_cf_om_fixed,generic_cf_om_production,generic_cf_om_capacity,generic_cf_om_fuel_cost',0);
+		cfline( 'customgeneration_cf_om_fixed,customgeneration_cf_om_production,customgeneration_cf_om_capacity,customgeneration_cf_om_fuel_cost',0);
 		if (fin == 'Single Owner')
 			cfline( 'pvwatts_cf_om_fixed,pvwatts_cf_om_production,pvwatts_cf_om_capacity,pvwatts_cf_om_land_lease',0);
 		else 
@@ -955,8 +955,7 @@ function cf_reserves()
 
 function depreciation_tables()
 {
-	cfrow('% of Total\nDepreciable Basis,Gross Amount\nAllocated,IBI\nReduction,CBI\nReduction,Depreciable Basis\nPrior to ITC,ITC Qualifying\nCosts,% of ITC\nQualifying Costs,ITC as Percent\nAmount,ITC Basis\nDisallowance,ITC as Fixed\nAmount,ITC Basis\nDisallowance,State ITC\nReduction,Federal ITC\nReduction,Depreciable Basis\nAfter ITC Reduction,First Year Bonus\nDepreciation,Depreciable Basis\nAfter Bonus Reduction',-2);
-	cfrow('DEPRECIATION AND ITC: STATE',-1);
+	cfrow('% of Basis\nPrior to\nAllocation,Gross\nBasis Allocations,Basis Reduction\nfor IBI,Basis Reduction\nfor CBI,Basis After IBI and\nCBI Reductions,ITC Qualifying\nCosts,% of ITC\nQualifying\nCosts,ITC as Percentage\nAmount,50% Basis\nReduction for\nITC as %,ITC as Fixed\nAmount,50% Basis\nReduction for\nITC as Fixed\nAmount,State ITC\nReduction,Federal ITC\nReduction,Basis After ITC\nReduction,Bonus\nDepreciation\nReduction,Depreciable Basis',-2);
 	cfrow('MACRS 5-yr,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5' );
 	cfrow('MACRS 15-yr,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15' );
 	cfrow('Straight Line 5-yr,depr_stabas_percent_sl_5,depr_alloc_sl_5,depr_stabas_ibi_reduc_sl_5,depr_stabas_cbi_reduc_sl_5,depr_stabas_prior_itc_sl_5,itc_sta_qual_sl_5,depr_stabas_percent_qual_sl_5,depr_stabas_percent_amount_sl_5,itc_disallow_sta_percent_sl_5,depr_stabas_fixed_amount_sl_5,itc_disallow_sta_fixed_sl_5,depr_stabas_itc_sta_reduction_sl_5,depr_stabas_itc_fed_reduction_sl_5,depr_stabas_after_itc_sl_5,depr_stabas_first_year_bonus_sl_5,depr_stabas_sl_5' );
@@ -1048,7 +1047,7 @@ function create_workbook( wkbk )
 
 	tech = technology();
 	
-	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' )
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )
 	{
 		msgbox('Send-to Excel with Equations Not Available.\nThis option is not available for ' + tech + ' configurations.');
 		exit;

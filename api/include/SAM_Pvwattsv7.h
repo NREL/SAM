@@ -555,6 +555,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_snow_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_snow_cover_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvwattsv7_Outputs_solrad_annual_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvwattsv7_Outputs_solrad_monthly_aget(SAM_table ptr, int* length, SAM_error *err);

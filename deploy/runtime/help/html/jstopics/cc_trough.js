@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Trough Installation Costs",
 hmDescription:"Installation Costs are costs associated with installing the system, and include equipment, labor, engineering, permitting, and any other costs that apply in Year 0 of the...",
-hmPrevLink:"cc_generic_system.html",
+hmPrevLink:"cc_custom_generation.html",
 hmNextLink:"cc_tower.html",
 hmParentLink:"installation_costs.html",
 hmBreadCrumbs:"<a href=\"installation_costs.html\">Installation Costs<\/a>",

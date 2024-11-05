@@ -11,6 +11,7 @@
 			"T_approach": 5,
 			"T_htf_cold_ref": 90,
 			"T_htf_hot_ref": 200,
+			"allow_reservoir_replacements": 0,
 			"ambient_pressure": 14.7,
 			"analysis_type": 0,
 			"conversion_subtype": 0,
@@ -19,7 +20,7 @@
 			"decline_type": 0,
 			"delta_pressure_equip": 40,
 			"design_temp": 200,
-			"drilling_success_rate": 75,
+			"drilling_success_rate": 76,
 			"dt_prod_well": 0,
 			"eta_ref": 0.17,
 			"excess_pressure_pump": 50,
@@ -181,7 +182,7 @@
 			"wet_bulb_temp": 10
 		},
 		"AdjustmentFactors": {
-			"constant": 0,
+			"constant": 5,
 			"en_periods": 0,
 			"en_timeindex": 0,
 			"periods": [

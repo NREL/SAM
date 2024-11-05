@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Plant and Equipment",
-    "Width": 844.0,
-    "Height": 697.0,
+    "Width": 857.0,
+    "Height": 1016.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -102,7 +102,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 89.0
+                    "Integer": 131.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -110,7 +110,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "System Availability"
+                    "String": "Plant Utilitzation Factor"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -131,7 +131,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -139,7 +139,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 137.0
+                    "Integer": 182.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -168,7 +168,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -176,7 +176,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 137.0
+                    "Integer": 182.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -205,7 +205,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 564.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -238,19 +238,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 465.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 47.0
+                    "Integer": 368.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 48.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -258,13 +258,13 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "kW"
+                    "String": "GETEM assumption:15°C for Flash and 10°C for Binary plants. Please change when switching between plants."
                 },
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
+                        "Red": 255.0,
+                        "Green": 128.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
                     }
@@ -279,7 +279,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -287,7 +287,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 }
             }
         },
@@ -353,6 +353,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label19"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 47.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "kW"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
         "LossAdjustment": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -362,7 +424,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 522.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -414,6 +476,47 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "allow_reservoir_replacements"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 483.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Allow reservoir replacements"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -423,11 +526,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 661.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 480.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -510,7 +613,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 33.0
+                    "Integer": 39.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -649,7 +752,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -698,7 +801,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 627.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -947,7 +1050,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 651.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1017,130 +1120,6 @@
                 }
             }
         },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "geotherm.egs_design_temp_autoselect"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 543.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 129.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 257.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Automatically set to resource temp"
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 5.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "geotherm.egs_design_temp_input"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 297.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 186.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 6.0
-                }
-            }
-        },
         "TextEntry": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1154,7 +1133,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 669.0
+                    "Integer": 750.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1540,7 +1519,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 567.0
+                    "Integer": 648.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1614,7 +1593,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1762,7 +1741,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 624.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1799,7 +1778,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1836,7 +1815,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1873,7 +1852,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1894,6 +1873,68 @@
                 "TipTitle": {
                     "Type": 5.0,
                     "String": "Wet-bulb Temp from Weather File"
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "getem_utilization_factor_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 264.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 480.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 96.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The System Availability Losses are generation outages and losses that decrease the utilization factor of a plant. This utilization factor is also termed the net capacity factor in GETEM. It accounts for plant availability and ambient temperature variability but does not include the effect of declining resource productivity/degradation. Resource productivity decline is included separately in the LCOE calculation."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -1993,7 +2034,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 573.0
+                    "Integer": 654.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2317,68 +2358,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 264.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 423.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 48.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "System availability losses reduce the system output to represent system outages or other events."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 77"
                 },
                 "X": {
@@ -2387,7 +2366,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2573,7 +2552,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 582.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2656,7 +2635,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 603.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2739,7 +2718,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 549.0
+                    "Integer": 630.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2822,7 +2801,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 606.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2905,7 +2884,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 630.0
+                    "Integer": 711.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2988,7 +2967,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 684.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3029,7 +3008,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3112,7 +3091,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3195,7 +3174,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3236,7 +3215,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 579.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3315,11 +3294,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 661.0
+                    "Integer": 660.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3402,7 +3381,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3555,6 +3534,19 @@
                 0.0
             ],
             "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "allow_reservoir_replacements": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Allow reservoir replacements",
+            "Units": "0/1",
+            "Group": "Geothermal Plant and Equipment",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3716,32 +3708,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "geotherm.egs_design_temp_autoselect": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Automatically set to resource temperature",
-            "Units": "0/1",
-            "Group": "Geothermal Plant and Equipment",
-            "IndexLabels": "",
-            "Flags": 1.0,
-            "DefaultValue": 1.0,
-            "UIObject": "CheckBox",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "geotherm.egs_design_temp_input": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Enter Plant Design Temperature (EGS only)",
-            "Units": "'C",
-            "Group": "Geothermal Plant and Equipment",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 200.0,
-            "UIObject": "Numeric",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "geotherm.errors1": {
             "Version": 4.0,
             "Type": 4.0,
@@ -3817,19 +3783,6 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
-        "inj_casing_size": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Injection Pump Casing Size",
-            "Units": "inches",
-            "Group": "Geothermal Plant and Equipment",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -4187,12 +4140,7 @@
         "};",
         "",
         "equations{ 'design_temp' } = define() {",
-        "\tif (${geotherm.egs_design_temp_autoselect} == 1 )",
-        "\t\treturn ${resource_temp};",
-        "\telse if (${geotherm.egs_design_temp_autoselect} == 0 && ${resource_type} == 1)",
-        "\t\treturn ${geotherm.egs_design_temp_input};",
-        "\telse ",
-        "\t\treturn ${resource_temp};",
+        "\treturn ${resource_temp};",
         "};",
         "",
         "equations{ 'ui_calculations_only' } = define() {",
@@ -4206,7 +4154,7 @@
         "//\tssc_var( obj, 'adjust:constant', 0.0 );",
         "//\tssc_var( obj, 'adjust', {\"constant\" = 0.0} );",
         "\tssc_var( obj, 'adjust_constant', 0.0 );\r",
-        "",
+        "\tssc_var( obj, 'allow_reservoir_replacements', ${allow_reservoir_replacements});",
         "\tssc_var( obj, 'resource_type', ${resource_type} );   // INTEGER",
         "\tssc_var( obj, 'resource_temp', ${resource_temp} );",
         "\tssc_var( obj, 'resource_depth', ${resource_depth} );",
@@ -4414,9 +4362,8 @@
         "\tupdate_controls();\r",
         "\ton_change{'prod_well_choice'}();\r",
         "\tloss_adjustment_set();\r",
-        "\tegs_temp_def();\r",
         "\ton_change{'use_weather_file_conditions'}();\r",
-        "\tshow('geotherm.egs_design_temp_autoselect', value('resource_type') == 1);\r",
+        "\ton_change{'allow_reservoir_replacements'}();\r",
         "\trefresh();\r",
         "};\t\r",
         "\r",
@@ -4426,6 +4373,7 @@
         "\t\tvalue('decline_type', 0);\r",
         "\t\tenable('decline_type', false);\r",
         "\t}\r",
+        "\t//msgbox('Plant type has changed. Consider updating the assumed wet bulb temperature to 10degC for Binary or 15degC for Flash. Placeholder text, update with text from Dayo.');\r",
         "};\r",
         "\r",
         "on_change{'analysis_type'} = define() {\r",
@@ -4464,18 +4412,6 @@
         "\t}\r",
         "}\r",
         "\r",
-        "on_change{'geotherm.egs_design_temp_autoselect'} = define() \r",
-        "{\r",
-        "\tegs_temp_def();\r",
-        "\t\r",
-        "};\r",
-        "\r",
-        "function egs_temp_def()\r",
-        "{\r",
-        "\tcheck = value('geotherm.egs_design_temp_autoselect');\r",
-        "\tresource = value('resource_type');\r",
-        "\tenable('geotherm.egs_design_temp_input', check == 0 && resource == 1);\r",
-        "}\r",
         "\r",
         "on_change{'use_weather_file_conditions'} = define()\r",
         "{\r",
@@ -4483,6 +4419,11 @@
         "\tenable('wet_bulb_temp_input', check == 0);\r",
         "\tenable('wet_bulb_temp_wf', check == 1);\r",
         "\trefresh();\r",
+        "};\r",
+        "\r",
+        "on_change{'allow_reservoir_replacements'} = define() {\r",
+        "\tcheck = value('allow_reservoir_replacements');\r",
+        "\tenable('temp_decline_max', check);\r",
         "};"
     ]
 }

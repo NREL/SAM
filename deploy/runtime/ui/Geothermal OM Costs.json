@@ -1,0 +1,257 @@
+{
+    "Name": "Geothermal OM Costs",
+    "Width": 551.0,
+    "Height": 206.0,
+    "FormObjects": {
+        "Button": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "getem_om_cost_btn"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Calculate GETEM OM Costs"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 537.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 108.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "GETEM OM Cost Calculator"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "total_getem_om_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{'total_getem_om_cost'} = define() {\r",
+        "\r",
+        "\tgeothermal = ssc_create();\t\r",
+        "\tssc_var( geothermal, 'ui_calculations_only', 0);\r",
+        "\tssc_var( geothermal, 'adjust_constant', 0.0);\r",
+        "\tssc_var( geothermal, 'file_name', ${file_name});\r",
+        "\tssc_var( geothermal, 'resource_potential', ${resource_potential});\r",
+        "\tssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER\r",
+        "\tif (${resource_temp} < 374) {\r",
+        "\t\tssc_var( geothermal, 'resource_temp', ${resource_temp} );\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tssc_var( geothermal, 'resource_temp', ${resource_temp_old} );\r",
+        "\t}\r",
+        "\tssc_var( geothermal, 'resource_depth', ${resource_depth} );\r",
+        "\tssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );\t\r",
+        "\tssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );\t\r",
+        "\tssc_var( geothermal, 'allow_reservoir_replacements', ${allow_reservoir_replacements});\t\t\t\t\t\t\t\t\t\t\t\r",
+        "\t// Other inputs\t\t\t\t\t\t\t    \r",
+        "\tssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER\r",
+        "\tssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER\r",
+        "\tssc_var( geothermal, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});\r",
+        "\tssc_var( geothermal, 'drilling_success_rate', ${drilling_success_rate});\r",
+        "\tssc_var( geothermal, 'stim_success_rate', ${stim_success_rate});\r",
+        "\tssc_var( geothermal, 'failed_prod_flow_ratio', ${failed_prod_flow_ratio});\r",
+        "\t// geothermal plant and equipment\t\t    \r",
+        "\tssc_var( geothermal, 'nameplate', ${nameplate} );\r",
+        "\tssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER\r",
+        "\tssc_var( geothermal, 'num_wells', ${num_wells} );\r",
+        "\tssc_var( geothermal, 'num_wells_getem', ${num_wells_getem});\r",
+        "\tssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER\r",
+        "\tssc_var( geothermal, 'ppi_base_year', ${ppi_base_year} );\r",
+        "\tssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );\r",
+        "\tssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER\r",
+        "\tif (${resource_type} == 0)\r",
+        "\t\tssc_var( geothermal, 'decline_type', 0 );       // INTEGER\r",
+        "\telse if (${conversion_type} == 0) \r",
+        "\t\tssc_var( geothermal, 'decline_type', ${decline_type});\r",
+        "\telse \r",
+        "\t\tssc_var( geothermal, 'decline_type', 0);\r",
+        "\tssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );\r",
+        "\tssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );\r",
+        "\tssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );\r",
+        "\tssc_var( geothermal, 'use_weather_file_conditions', ${use_weather_file_conditions} );\r",
+        "\tssc_var( geothermal, 'ambient_pressure', ${ambient_pressure} );\r",
+        "\tssc_var( geothermal, 'well_flow_rate', ${well_flow_rate} );\r",
+        "\tssc_var( geothermal, 'pump_efficiency', ${pump_efficiency} );\r",
+        "\tssc_var( geothermal, 'delta_pressure_equip', ${delta_pressure_equip} );\r",
+        "\tssc_var( geothermal, 'excess_pressure_pump', ${excess_pressure_pump} );\r",
+        "\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );\r",
+        "\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );\r",
+        "\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
+        "\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welldiam', ${geotherm.cost.prod_cost_curve_welldiam} );\r",
+        "\r",
+        "\tssc_var( geothermal, 'design_temp', ${design_temp} );\r",
+        "\tssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER\r",
+        "\tssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );\r",
+        "\r",
+        "\t// detailed geothermal inputs\r",
+        "\tssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );\r",
+        "\tssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );\r",
+        "\tssc_var( geothermal, 'rock_density', ${rock_density} );\r",
+        "\tif (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {\r",
+        "\t\tssc_var( geothermal, 'reservoir_pressure_change_type', 0 ); // INTEGER\r",
+        "\t\tmsgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');\r",
+        "\t}\r",
+        "\telse \r",
+        "\t\tssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER\r",
+        "\tssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );\r",
+        "\tssc_var( geothermal, 'injectivity_index', ${injectivity_index} );\r",
+        "\tssc_var( geothermal, 'exploration_wells_production', ${geotherm.cost.confirm_wells_num} );\r",
+        "\tssc_var( geothermal, 'reservoir_width', ${reservoir_width} );\r",
+        "\tssc_var( geothermal, 'reservoir_height', ${reservoir_height} );\r",
+        "\tssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );\t\t\r",
+        "\tssc_var( geothermal, 'inj_prod_well_distance', ${inj_prod_well_distance} );\t\t\r",
+        "\tssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); \t\t\r",
+        "\tssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );\r",
+        "\tssc_var( geothermal, 'fracture_width', ${fracture_width} );\r",
+        "\tssc_var( geothermal, 'fracture_length', ${fracture_length} );\r",
+        "\tssc_var( geothermal, 'fracture_spacing', ${fracture_spacing} );\r",
+        "\tssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER\r",
+        "\tssc_var( geothermal, 'fracture_angle', ${fracture_angle} );\r",
+        "\tssc_var( geothermal, 'reservoir_model_inputs', ${reservoir_model_inputs} );\r",
+        "\r",
+        "\t// temp input for testing\r",
+        "\tssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER\r",
+        "\t\r",
+        "\t//power block parameters needed but not on power block SAM input page\r",
+        "\tssc_var( geothermal, 'T_htf_cold_ref', ${T_htf_cold_ref});\r",
+        "\tssc_var( geothermal, 'T_htf_hot_ref', ${T_htf_hot_ref});\r",
+        "\tssc_var( geothermal, 'HTF', ${HTF});\r",
+        "\t\r",
+        "\t//power block input parameters\r",
+        "\tssc_var( geothermal, 'P_boil', ${P_boil});\r",
+        "\tssc_var( geothermal, 'eta_ref', ${eta_ref});\r",
+        "\tssc_var( geothermal, 'q_sby_frac', ${q_sby_frac});\r",
+        "\tssc_var( geothermal, 'startup_frac', ${startup_frac});\r",
+        "\tssc_var( geothermal, 'startup_time', ${startup_time});\r",
+        "\tssc_var( geothermal, 'pb_bd_frac', ${pb_bd_frac});\r",
+        "\tssc_var( geothermal, 'T_amb_des', ${T_amb_des});\r",
+        "\tssc_var( geothermal, 'CT', ${CT});\r",
+        "\tssc_var( geothermal, 'dT_cw_ref', ${dT_cw_ref});\r",
+        "\tssc_var( geothermal, 'T_approach', ${T_approach});\r",
+        "\tssc_var( geothermal, 'T_ITD_des', ${T_ITD_des});\r",
+        "\tssc_var( geothermal, 'P_cond_ratio', ${P_cond_ratio});\r",
+        "\tssc_var( geothermal, 'P_cond_min', ${P_cond_min});\r",
+        "\tssc_var( geothermal, 'hc_ctl1', ${hc_ctl1});\r",
+        "\tssc_var( geothermal, 'hc_ctl2', ${hc_ctl2});\r",
+        "\tssc_var( geothermal, 'hc_ctl3', ${hc_ctl3});\r",
+        "\tssc_var( geothermal, 'hc_ctl4', ${hc_ctl4});\r",
+        "\tssc_var( geothermal, 'hc_ctl5', ${hc_ctl5});\r",
+        "\tssc_var( geothermal, 'hc_ctl6', ${hc_ctl6});\r",
+        "\tssc_var( geothermal, 'hc_ctl7', ${hc_ctl7});\r",
+        "\tssc_var( geothermal, 'hc_ctl8', ${hc_ctl8});\r",
+        "\tssc_var( geothermal, 'hc_ctl9', ${hc_ctl9});\r",
+        "\tssc_var( geothermal, 'hybrid_dispatch_schedule', ${hybrid_dispatch_schedule});\r",
+        "\tresult = ssc_exec(geothermal, 'geothermal');\r",
+        "\tif ( typeof(result) != 'number' && result != 0 )\r",
+        "\t{\r",
+        "\t\tmsgbox('geothermal mimo error, result =' + result); \r",
+        "\t}\r",
+        "\tif (ssc_exec(geothermal, 'geothermal') == 0) \r",
+        "\t{\r",
+        "\t\tdata.gross_output = ${gross_output};\r",
+        "\t\tdata.conversion_type = ${conversion_type};\r",
+        "\t\tif (${geotherm.cost.plant_auto_estimate} == 1) {\r",
+        "\t\t\tdata.baseline_cost = ${geotherm.cost.plant_per_kW};\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tdata.baseline_cost = ${geotherm.cost.plant_per_kW_input};\r",
+        "\t\t}\r",
+        "\t\tdata.ppi_base_year = ${ppi_base_year};\r",
+        "\t\tdata.cwflow = ssc_var(geothermal, \"cwflow\");\r",
+        "\t\tdata.drilling_cost = ${geotherm.cost.drilling.amount};\r",
+        "\t\tdata.field_gathering_system_cost = ${geotherm.cost.pumping.amount};\r",
+        "\t\tdata.GF_flowrate = ssc_var(geothermal, \"GF_flowrate\");\r",
+        "\t\tdata.num_wells = ${geotherm.cost.prod_req};\r",
+        "\t\tdata.water_loss = ${subsurface_water_loss};\r",
+        "\t\tdata.total_installed_cost = ${total_installed_cost};\r",
+        "\t\tdata.pump_only_cost = ${geotherm.cost.pump_total_per_pump};\r",
+        "\t\tdata.pump_cost_install = ${geotherm.cost.pump_total_per_pump} + ${geotherm.cost.pump_installation};\r",
+        "\t\tdata.pump_depth = ${pump_depth};\r",
+        "\t\tdata.pump_type = 0; //0 - Lineshaft, 1 - Submersible\r",
+        "\t\tsuccess = ssc_eqn('getem_om_cost_calc', data);\r",
+        "\t\treturn data.total_getem_om_cost;\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn -50;\r",
+        "\t}\r",
+        "\t\r",
+        "};\r",
+        "\r",
+        ""
+    ],
+    "Callbacks": [
+        "on_change{'getem_om_cost_btn'} = define() {\r",
+        "\tvalue('om_fixed', [value('total_getem_om_cost')]);\r",
+        "\trefresh();\r",
+        "};"
+    ]
+}

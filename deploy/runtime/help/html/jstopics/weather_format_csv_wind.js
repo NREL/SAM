@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"SAM CSV Format for Wind",
 hmDescription:"The SAM CSV Format for Wind is a comma-delimited text format for SAM\'s wind power performance model. This is the format for files from the NREL WIND Toolkit API and NREL RE...",
-hmPrevLink:"weather_format_srw_wind.html",
+hmPrevLink:"weather_format_sam_csv_solar.html",
 hmNextLink:"weather_format_csv_marine_energy.html",
 hmParentLink:"weather_format.html",
 hmBreadCrumbs:"<a href=\"weather_format.html\">Weather File Formats<\/a>",

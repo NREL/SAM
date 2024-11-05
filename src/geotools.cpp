@@ -89,13 +89,13 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
                     if (reader["results"][0]["geometry"].IsArray()) {
                         if (reader["results"][0]["geometry"][0].HasMember("location")) {
                             if (reader["results"][0]["geometry"][0]["location"].HasMember("lat")) {
-                                if (reader["results"][0]["geometry"][0]["location"]["lat"].IsDouble()) {
+                                if (reader["results"][0]["geometry"][0]["location"]["lat"].IsNumber()) {
                                     *lat = reader["results"][0]["geometry"][0]["location"]["lat"].GetDouble();
                                     success = true;
                                 }
                             }
                             if (reader["results"][0]["geometry"][0]["location"].HasMember("lng")) {
-                                if (reader["results"][0]["geometry"][0]["location"]["lng"].IsDouble()) {
+                                if (reader["results"][0]["geometry"][0]["location"]["lng"].IsNumber()) {
                                     *lon = reader["results"][0]["geometry"][0]["location"]["lng"].GetDouble();
                                     success &= true;
                                 }
@@ -141,7 +141,7 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
 
         if (!reader.HasParseError()) {
             if (reader.HasMember("rawOffset")) {
-                if (reader["rawOffset"].IsDouble()) {
+                if (reader["rawOffset"].IsNumber()) {
                     *tz = reader["rawOffset"].GetDouble() / 3600.0;
                     success = true;
                 }
@@ -219,13 +219,13 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
                     if (reader["results"][0]["locations"].IsArray()) {
                         if (reader["results"][0]["locations"][0].HasMember("latLng")) {
                             if (reader["results"][0]["locations"][0]["latLng"].HasMember("lat")) {
-                                if (reader["results"][0]["locations"][0]["latLng"]["lat"].IsDouble()) {
+                                if (reader["results"][0]["locations"][0]["latLng"]["lat"].IsNumber()) {
                                     *lat = reader["results"][0]["locations"][0]["latLng"]["lat"].GetDouble();
                                     success = true;
                                 }
                             }
                             if (reader["results"][0]["locations"][0]["latLng"].HasMember("lng")) {
-                                if (reader["results"][0]["locations"][0]["latLng"]["lng"].IsDouble()) {
+                                if (reader["results"][0]["locations"][0]["latLng"]["lng"].IsNumber()) {
                                     *lon = reader["results"][0]["locations"][0]["latLng"]["lng"].GetDouble();
                                     success &= true;
                                 }

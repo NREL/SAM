@@ -11,6 +11,20 @@
     "add_om_num_types": 1.0,
     "additional_structural_components_cost": 0.0,
     "additional_structural_components_cost_total": 0.0,
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "air_turbine_cost": 0.0,
     "air_turbine_cost_rvalue": 0.0,
     "air_turbine_cost_total": 0.0,
@@ -136,6 +150,7 @@
     "batt_discharge_percent_6": 25.0,
     "batt_dispatch_auto_can_charge": 1.0,
     "batt_dispatch_auto_can_clipcharge": 0.0,
+    "batt_dispatch_auto_can_curtailcharge": 0.0,
     "batt_dispatch_auto_can_fuelcellcharge": 0.0,
     "batt_dispatch_auto_can_gridcharge": 1.0,
     "batt_dispatch_choice": 3.0,
@@ -22707,20 +22722,20 @@
     "generic_degradation": [
         0.0
     ],
-    "genericsys.cost.contingency": 318868.0,
-    "genericsys.cost.contingency_percent": 4.0,
-    "genericsys.cost.epc.fixed": 0.0,
-    "genericsys.cost.epc.nonfixed": 0.0,
-    "genericsys.cost.epc.percent": 0.0,
-    "genericsys.cost.epc.total": 0.0,
-    "genericsys.cost.installed_per_capacity": 0.28988,
-    "genericsys.cost.plm.fixed": 0.0,
-    "genericsys.cost.plm.nonfixed": 0.0,
-    "genericsys.cost.plm.percent": 0.0,
-    "genericsys.cost.plm.total": 0.0,
-    "genericsys.cost.sales_tax.percent": 0.0,
-    "genericsys.cost.sales_tax.total": 0.0,
-    "genericsys.cost.sales_tax.value": 5.0,
+    "marinebatt.cost.contingency": 318868.0,
+    "marinebatt.cost.contingency_percent": 4.0,
+    "marinebatt.cost.epc.fixed": 0.0,
+    "marinebatt.cost.epc.nonfixed": 0.0,
+    "marinebatt.cost.epc.percent": 0.0,
+    "marinebatt.cost.epc.total": 0.0,
+    "marinebatt.cost.installed_per_capacity": 0.28988,
+    "marinebatt.cost.plm.fixed": 0.0,
+    "marinebatt.cost.plm.nonfixed": 0.0,
+    "marinebatt.cost.plm.percent": 0.0,
+    "marinebatt.cost.plm.total": 0.0,
+    "marinebatt.cost.sales_tax.percent": 0.0,
+    "marinebatt.cost.sales_tax.total": 0.0,
+    "marinebatt.cost.sales_tax.value": 5.0,
     "geological_and_bathymetry_cost": 0.0,
     "grid_curtailment": [
         1e38,

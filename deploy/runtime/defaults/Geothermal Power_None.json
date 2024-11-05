@@ -10,7 +10,7 @@
     "T_htf_cold_ref": 90.0,
     "T_htf_hot_ref": 200.0,
     "adjust": 0.0,
-    "adjust_constant": 0.0,
+    "adjust_constant": 5.0,
     "adjust_en_periods": 0.0,
     "adjust_en_timeindex": 0.0,
     "adjust_periods": [
@@ -29,6 +29,7 @@
         0.0,
         0.0
     ],
+    "allow_reservoir_replacements": 0.0,
     "ambient_pressure": 14.7,
     "analysis_type": 0.0,
     "annual_albedo": "nan",
@@ -51,7 +52,7 @@
     ],
     "delta_pressure_equip": 40.0,
     "design_temp": 200.0,
-    "drilling_success_rate": 75.0,
+    "drilling_success_rate": 76.0,
     "dt_prod_well": 0.0,
     "elev": 82.0,
     "enable_interconnection_limit": 0.0,
@@ -93,8 +94,6 @@
     "geotherm.delta_pressure_reservoir": 349.212,
     "geotherm.delta_pressure_reservoirBar": 24.0773,
     "geotherm.egs_ambient_temp": 15.0,
-    "geotherm.egs_design_temp_autoselect": 1.0,
-    "geotherm.egs_design_temp_input": 200.0,
     "geotherm.errors1": "",
     "geotherm.errors2": "No message",
     "geotherm.lookup.depth_array": [
@@ -8895,7 +8894,6 @@
     "in_location_options": 0.0,
     "in_nsrdb_options": 0.0,
     "in_time_step": 0.0,
-    "inj_casing_size": 11.5,
     "inj_prod_well_distance": 1500.0,
     "inj_pump_hp": 1762.21,
     "inj_well_diam": 12.25,
