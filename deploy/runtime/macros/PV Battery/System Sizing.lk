@@ -225,7 +225,7 @@ function get_module_parameters( )
 		T.bvoc = get('cec_beta_oc') / T.voc * 100;
 		T.vmp = get('cec_v_mp_ref');
 		T.pmp = get('cec_p_mp_ref');
-		T.gpmp = get('cec_gamma_r');
+		T.gpmp = get('cec_gamma_pmp');
 		T.manufacturer = get('lib_manufacturer');
 		if ( get('cec_temp_corr_mode') == 0 ) // noct method
 		{

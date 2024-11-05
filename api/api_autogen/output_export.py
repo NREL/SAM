@@ -896,8 +896,8 @@ ui_form_to_eqn_var_map = {
 		('csp_dtr_sca_length_1', 'csp_dtr_sca_ncol_per_sca_1'): 
 			('csp_dtr_sca_ap_length_1')	},
 	'CEC Performance Model with Module Database': {
-		('cec_gamma_r', 'cec_p_mp_ref'): 
-			('gamma_r_calc'),
+		('cec_gamma_pmp', 'cec_p_mp_ref'): 
+			('gamma_pmp_calc'),
 		('cec_beta_oc', 'cec_v_oc_ref'): 
 			('beta_oc_calc'),
 		('cec_v_mp_ref', 'cec_i_mp_ref', 'cec_area'): 
