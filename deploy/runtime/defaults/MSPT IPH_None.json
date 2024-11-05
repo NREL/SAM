@@ -47064,6 +47064,7 @@
     "station_id": "91486",
     "step": 3600.0,
     "storage_cost_calc": 61407700.0,
+    "sun_loc_des": 0.0,
     "tank_pairs": 1.0,
     "tanks_in_parallel": 1.0,
     "tes_avail_vol": 7019.72,

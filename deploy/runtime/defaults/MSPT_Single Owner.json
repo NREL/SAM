@@ -66251,6 +66251,7 @@
     "station_id": "91486",
     "step": 3600.0,
     "storage_cost_calc": 61407800.0,
+    "sun_loc_des": 0.0,
     "system_capacity": 101664.0,
     "system_use_lifetime_output": 0.0,
     "tank_pairs": 1.0,

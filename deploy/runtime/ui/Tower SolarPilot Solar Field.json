@@ -1216,6 +1216,43 @@
                 }
             }
         },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "design_point"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 408.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Design Point"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3233,11 +3270,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 408.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 324.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3245,7 +3282,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 90.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3274,7 +3311,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3357,7 +3394,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3440,7 +3477,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 366.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3763,6 +3800,47 @@
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
+                }
+            }
+        },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "sun_loc_des"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 597.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 441.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Summer Solstice|Equinox|Winter Solstice"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         },
@@ -4685,6 +4763,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "sun_loc_des": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Sun location at design point",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
+            "sscVariableValue": "0|1|2"
+        },
         "total_land_area": {
             "Version": 4.0,
             "Type": 1.0,
@@ -4828,7 +4919,8 @@
         "",
         "\tlogmsg('btn_solarpilot');",
         "\tobj = ssc_create();",
-        "\tssc_var(obj, \"solar_resource_file\",${solar_resource_file});",
+        "\tssc_var(obj, \"solar_resource_file\",${solar_resource_file});\r",
+        "\tssc_var(obj, \"sun_loc_des\", ${sun_loc_des});",
         "\tssc_var(obj, \"receiver_type\", rec_type);\r",
         "\tif ( rec_type == 0 || rec_type == 1) {\r",
         "\t\t// external\r",
