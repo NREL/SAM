@@ -86,6 +86,15 @@ version_upgrade{'2024.5.28'} = define() {
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
 
+	// Detailed PV Model Changes
+	if(cfg.tech == 'Flat Plate PV')
+	{
+		gpmp = oldvalue('cec_gamma_r');
+		value('cec_gamma_pmp', gpmp);
+		cgpmp = oldvalue('gamma_r_calc');
+		value('gamma_pmp_calc', cgpmp);
+	}
+	
 	// Standalone Battery Changes
 	if(cfg.tech == 'Standalone Battery')
 	{

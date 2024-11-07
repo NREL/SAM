@@ -132,7 +132,7 @@ I_o_ref, calculate
 R_s, calculate
 R_sh_ref, calculate
 Adjust, calculate
-gamma_r, γPmax
+gamma_pmp, γPmax
 Version
 PTC, PTC
 Technology, Technology
