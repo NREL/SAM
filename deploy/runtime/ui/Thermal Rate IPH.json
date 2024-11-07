@@ -821,11 +821,11 @@
                 },
                 "Label": {
                     "Type": 5.0,
-                    "String": "$/(MMBtu/hr)"
+                    "String": "$/MMBtu"
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Enter thermal buy rates in $/(MMBtu/hr)"
+                    "String": "Enter thermal buy rates in $/MMBtu"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -866,11 +866,11 @@
                 },
                 "Label": {
                     "Type": 5.0,
-                    "String": "$/(MMBtu/hr)"
+                    "String": "$/MMBtu"
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Enter thermal sell rates in $/(MMBtu/hr)"
+                    "String": "Enter thermal sell rates in $/MMBtu"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -884,7 +884,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Flat rate",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -923,9 +923,9 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Monthly",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
-            "IndexLabels": "$/(MMBtu/hr)|1",
+            "IndexLabels": "$/MMBtu|1",
             "Flags": 2.0,
             "DefaultValue": [
                 0.0,
@@ -949,9 +949,9 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Monthly",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
-            "IndexLabels": "$/(MMBtu/hr)|1",
+            "IndexLabels": "$/MMBtu|1",
             "Flags": 2.0,
             "DefaultValue": [
                 0.0,
@@ -990,7 +990,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Flat rate",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
             "IndexLabels": "",
             "Flags": 2.0,
@@ -1016,9 +1016,9 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Timestep",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
-            "IndexLabels": "$/(MMBtu/hr)|1",
+            "IndexLabels": "$/MMBtu|1",
             "Flags": 2.0,
             "DefaultValue": [
                 0.0
@@ -1031,9 +1031,9 @@
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Timestep",
-            "Units": "$/(MMBtu/hr)",
+            "Units": "$/MMBtu",
             "Group": "Thermal Rate",
-            "IndexLabels": "$/(MMBtu/hr)|1",
+            "IndexLabels": "$/MMBtu|1",
             "Flags": 2.0,
             "DefaultValue": [
                 0.0
