@@ -70,56 +70,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 22"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 30.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 249.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 384.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Orientation": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Colour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 120.0,
-                        "Green": 120.0,
-                        "Blue": 120.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Sell Rate"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Divider": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 224"
                 },
                 "X": {
@@ -236,7 +186,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 554.0
+                    "Integer": 272.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -281,7 +231,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Buy rates for heat purchases and sell rates for excess thermal generation. You can specify either a flat rate or a time-series rate for each. "
+                    "String": "Buy rates for heat purchases. You can specify a flat rate, a monthly rate, or a time-series rate. "
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -566,43 +516,6 @@
                 }
             }
         },
-        "MonthlyFactor": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "thermal_monthly_sell_rate_heat_btu"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 243.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 348.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": "Monthly heat sell rate"
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "SchedNumeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -656,138 +569,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "thermal_sell_rate_flat_heat_btu"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 243.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 279.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "RadioChoice": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "thermal_sell_rate_option"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 39.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 279.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 132.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 83.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Selection": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Items": {
-                    "Type": 6.0,
-                    "StringList": "Flat sell rate|Time series sell rates|Monthly sell rates"
-                },
-                "ShowCaptions": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Horizontal": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "DataArray": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -826,51 +607,6 @@
                 "Description": {
                     "Type": 5.0,
                     "String": "Enter thermal buy rates in $/MMBtu"
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
-        "DataArray": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "thermal_timestep_sell_rate_heat_btu"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 243.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 309.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 90.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 30.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Label": {
-                    "Type": 5.0,
-                    "String": "$/MMBtu"
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": "Enter thermal sell rates in $/MMBtu"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -945,32 +681,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "thermal_monthly_sell_rate_heat_btu": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Monthly",
-            "Units": "$/MMBtu",
-            "Group": "Thermal Rate",
-            "IndexLabels": "$/MMBtu|1",
-            "Flags": 2.0,
-            "DefaultValue": [
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0
-            ],
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "thermal_rate_escalation": {
             "Version": 4.0,
             "Type": 2.0,
@@ -986,48 +696,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "thermal_sell_rate_flat_heat_btu": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Flat rate",
-            "Units": "$/MMBtu",
-            "Group": "Thermal Rate",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "thermal_sell_rate_option": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "Thermal Rate",
-            "IndexLabels": "Flat sell rate|Timestep sell rate| Monthly sell rate",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "RadioChoice",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "thermal_timestep_buy_rate_heat_btu": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Timestep",
-            "Units": "$/MMBtu",
-            "Group": "Thermal Rate",
-            "IndexLabels": "$/MMBtu|1",
-            "Flags": 2.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "DataArray",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "thermal_timestep_sell_rate_heat_btu": {
             "Version": 4.0,
             "Type": 2.0,
             "Label": "Timestep",
@@ -1055,7 +724,6 @@
         "\tif (buy_enable) {",
         "\t\ton_change{'thermal_buy_rate_option'}();",
         "\t}",
-        "\ton_change{'thermal_sell_rate_option'}();",
         "};",
         "",
         "on_change{'thermal_buy_rate_option'} = define() {",
@@ -1064,14 +732,6 @@
         "\tenable('thermal_timestep_buy_rate_heat_btu',x==1);\r",
         "\tenable('thermal_monthly_buy_rate_heat_btu',x==2);",
         "};",
-        "",
-        "on_change{'thermal_sell_rate_option'} = define() {",
-        "\tx = value('thermal_sell_rate_option');",
-        "\tenable('thermal_sell_rate_flat_heat_btu',x==0);",
-        "\tenable('thermal_timestep_sell_rate_heat_btu',x==1);\r",
-        "\tenable('thermal_monthly_sell_rate_heat_btu',x==2);",
-        "};",
-        "",
         ""
     ]
 }
