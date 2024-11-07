@@ -1133,7 +1133,7 @@ setup_merchant_plant_pages();
 setup_electricity_purchases();
 
 setconfig( 'Physical Trough', 'Commercial' );
-setmodules( ['trough_physical', 'utilityrate5', 'cashloan']);
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'cashloan']);
 setup_csp_physical_trough_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
