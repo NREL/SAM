@@ -6088,19 +6088,20 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	cxt.result().hash_item("scenario", reopt_post);
 
     
-	// send the post
+	// set base url
 	wxString post_url = SamApp::WebApi("reopt_post");
 	post_url.Replace("<SAMAPIKEY>", wxString(sam_api_key));
 
+	//wxMessageBox("url=" + post_url, "Getting UUID."); // DEBUG
 
+	// set post headers and data
 	wxEasyCurl curl;
 	curl.AddHttpHeader("Content-Type: application/json");
 	curl.AddHttpHeader("Accept: application/json");
 	curl.SetPostData(reopt_post);
 
     /*
-	//DEBUG only - fails on Mac per ssc pull request 1204
-	// write to file for SAM issue 1830
+	//DEBUG write post data to file for debugging
 	wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost.json";
 	wxFile file(filename, wxFile::write);
 	if (!file.IsOpened()) {
@@ -6114,6 +6115,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 //	post_url = "'" + post_url + "'"; // lk error on Windows
 //	post_url = "\"" + post_url + "\""; // lk error on Windows
 
+	// initial call to check for error
 	wxString msg, err;
 	if (!curl.Get(post_url, msg))
 	{
@@ -6127,12 +6129,23 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	}
 
 	// get the run_uuid to poll for result, checking the status
-	// examine raw string
-	//wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result");
+	
+	//wxMessageBox("curl = " + curl.GetDataAsString(), "CURL result from POST url"); // DEBUG raw string
 
-	// handle errors instead of hard crash SAM 1830
+	// get result as string to check for issues
 	auto strData = curl.GetDataAsString();
+	
+	// handle empty string instead of hard crash SAM 1830
+	if (strData == wxEmptyString) {
+		pdlg.Close();
+		cxt.result().assign("Failed to get REopt run_uuid. POST request returned empty string.");
+		return;
+	}
+
+	// TODO test on Mac to see if this is still necessary
+	// this submits DOE reference load data instead of time series data from SAM, so not a good solution
 	if (strData.Find("error") != wxNOT_FOUND) {
+		// ssc pull request 1204
 		// content-length issue on Linux 135832 runs and 140778 fails
 		// if failing with "Request Rejected" title, then run with monthly scaled load per 
 		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
@@ -6184,8 +6197,9 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			cxt.result().hash_item("scenario", reopt_post);
 			curl.SetPostData(reopt_post);
             /*
+			
 			// DEBUG only - fails on Mac per ssc pull request 1204
-			// write to file for SAM issue 1830
+			// write post request to file for SAM issue 1830
 			wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
 			wxFile file(filename, wxFile::write);
 			if (!file.IsOpened()) {
@@ -6195,6 +6209,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 			file.Write(reopt_post);
 			file.Close();
 			*/
+			
 			if (!curl.Get(post_url, msg))
 			{
 				pdlg.Close();
@@ -6215,10 +6230,22 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		}
 	}
 
-
 	lk::vardata_t results;
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
+
+	/*
+	// DEBUG 
+	// write get request for results to file for SAM issue 1830
+	wxString fname = SamApp::GetAppPath() + "/reopt_result_uuid.json";
+	wxFile f(fname, wxFile::write);
+	if (!f.IsOpened()) {
+		wxLogError("Could not open file for writing!");
+		return;
+	}
+	f.Write(reopt_run_uuid);
+	f.Close();
+	*/
 
 	// if run_uuid is not returned, get error message from json result
 	// structure is {"messages": {"error": "<error description>" }, "status": "error"}
@@ -6238,11 +6265,25 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 	poll_url.Replace("<RUN_UUID>", results.lookup("run_uuid")->str());
 	curl = wxEasyCurl();
 
+	//wxMessageBox("url=" + poll_url, "Getting response from GET url."); // DEBUG
+
 	if (!curl.Get(poll_url, msg))	{
 		cxt.result().hash_item("error", msg);
 		return;
 	}
 
+	/*
+	// DEBUG 
+	// write get request for results to file
+	wxString fn = SamApp::GetAppPath() + "/reopt_result_uuid.json";
+	wxFile fresults(fn, wxFile::write);
+	if (!fresults.IsOpened()) {
+		wxLogError("Could not open file for writing!");
+		return;
+	}
+	fresults.Write(curl.GetDataAsString());
+	fresults.Close();
+	*/
 
 	cxt.result().hash_item("response", lk::vardata_t());
 	lk::vardata_t* cxt_result = cxt.result().lookup("response");
@@ -6271,7 +6312,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 
 		optimizing_status = cxt_result->lookup("status")->as_string();
 		if (optimizing_status.find("error") != std::string::npos) {
-			std::string error = cxt_result->lookup("messages")->lookup("error")->as_string().ToStdString();
+			std::string error = cxt_result->lookup("messages")->lookup("errors")->as_string().ToStdString();
 			cxt.result().hash_item("errors", error);
 			break;
 		}
@@ -6281,7 +6322,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 
 	}
 
-//	wxMessageBox("url=" + poll_url, "Finished"); // Debug test to make sure completed loop
+	//wxMessageBox("url=" + poll_url, "Finished"); // DEBUG test to make sure completed loop
 
 	pdlg.Update(100, "Done.");
 	wxMilliSleep(1000);
