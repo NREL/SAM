@@ -689,7 +689,7 @@ function setup_csp_physical_trough_pages()
 
 
 	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
-			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
+			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'TES_DISP_tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
 
 	//addpage( [[ 'Physical Trough Power Block Common' ,
@@ -723,7 +723,7 @@ function setup_cst_physical_trough_pages()
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
 
 	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
-			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'tes_type',
+			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'TES_DISP_tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
 
 	addpage( [[ 'Physical Trough IPH System Control' ,

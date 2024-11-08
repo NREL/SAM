@@ -1077,6 +1077,7 @@
     "TES_COPY_T_loop_out": 391.0,
     "TES_COPY_q_pb_design": 311.798,
     "TES_COPY_tshours": 6.0,
+    "TES_DISP_tes_type": 0.0,
     "T_ITD_des": 16.0,
     "T_amb_des": 42.0,
     "T_approach": 5.0,
@@ -11130,12 +11131,6 @@
     "tc_void": 0.25,
     "tech_type": 1.0,
     "tes_avail_vol": 27214.9,
-    "tes_diams": [
-        [
-            -1.0
-        ]
-    ],
-    "tes_n_tsteps": 50.0,
     "tes_cyl_piston_loss_poly": [
         0.0,
         0.0,
@@ -11150,6 +11145,12 @@
     "tes_cyl_tank_dens": 8000.0,
     "tes_cyl_tank_insul_percent": 0.0,
     "tes_cyl_tank_thick": 0.0254,
+    "tes_diams": [
+        [
+            -1.0
+        ]
+    ],
+    "tes_n_tsteps": 50.0,
     "tes_pb_T_charge_min": 0.0,
     "tes_pb_T_cold_delta": 10.0,
     "tes_pb_T_hot_delta": 10.0,
@@ -11160,7 +11161,7 @@
     "tes_pb_n_xsteps": 99.0,
     "tes_pb_void_frac": 0.22,
     "tes_pump_coef": 0.15,
-    "tes_type": 0.0,
+    "tes_type": 1.0,
     "tes_wallthicks": [
         [
             -1.0

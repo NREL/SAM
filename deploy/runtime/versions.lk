@@ -60,16 +60,19 @@ version_upgrade{'2024.9.15'} = define() {
 	if(cfg.tech == 'Physical Trough')
 	{
 		message('We added new TES models and modified certain TES variable names in the physical trough model', 'warning');
-
-		// NT is now tes_type == 2 (two tank == 0, packed bed == 1)
-		old_tes_type = value('tes_type');
-		tes_type = 0;
-		if(old_tes_type == 1)
+				
+		if(isalnum(oldvalue('tes_tank_insul_percent')) == true)
 		{
-			tes_type = 2;
+			// Piston Cylinder TES is now tes_type == 3 (two tank == 1, packed bed == 2)
+			old_tes_type = value('tes_type');
+			if(old_tes_type == 1)
+			{
+				tes_type = 3;
+			}
+			value('tes_type', tes_type);
+			value('TES_DISP_tes_type', tes_type - 1);
 		}
-   
-		value('tes_type', tes_type);
+
 		value('tes_cyl_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
 		value('tes_cyl_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
 		value('tes_cyl_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
@@ -130,7 +133,6 @@ version_upgrade{'2024.5.28'} = define() {
 			value('use_abs_or_rel_mdot_limit', 0);
 			value('f_htfmin', 0.25);
 			value('f_htfmax', 1.2);
-			value('tes_type', 0); // Need to set tes_type to zero (two tank is only option, but is set to 1 by default in prior releases)
 	}
 	
 	// Linear Fresnel Model Changes
