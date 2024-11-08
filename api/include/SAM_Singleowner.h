@@ -2730,7 +2730,7 @@ extern "C"
 	//
 
 	/**
-	 * Set monthly_energy: Monthly energy [kWh]
+	 * Set monthly_energy: Monthly AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: LENGTH = 12
 	 * required if: None

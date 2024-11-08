@@ -164,15 +164,27 @@ SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_batt_variable_cost_aset(SAM_tabl
 	});
 }
 
-SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_capacity", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_capacity_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_capacity_heat", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_elec_price_for_heat_techs", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "om_elec_price_for_heat_techs_escal", number);
 	});
 }
 
@@ -266,12 +278,6 @@ SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_opt_fuel_2_usage_nset(SAM_table 
 	});
 }
 
-SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "om_production", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production1_values_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "om_production1_values", arr, length);
@@ -287,6 +293,12 @@ SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production2_values_aset(SAM_tabl
 SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "om_production_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "om_production_heat", arr, length);
 	});
 }
 
@@ -1626,21 +1638,40 @@ SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_batt_variable_cost_aget(SAM_t
 	return result;
 }
 
-SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_capacity", length);
-	if (!result)
-		make_access_error("SAM_CashloanHeat", "om_capacity");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_capacity_escal", &result))
 		make_access_error("SAM_CashloanHeat", "om_capacity_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_capacity_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_capacity_heat", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "om_capacity_heat");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_elec_price_for_heat_techs", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "om_elec_price_for_heat_techs");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "om_elec_price_for_heat_techs_escal", &result))
+		make_access_error("SAM_CashloanHeat", "om_elec_price_for_heat_techs_escal");
 	});
 	return result;
 }
@@ -1788,16 +1819,6 @@ SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_opt_fuel_2_usage_nget(SAM_tabl
 	return result;
 }
 
-SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "om_production", length);
-	if (!result)
-		make_access_error("SAM_CashloanHeat", "om_production");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1823,6 +1844,16 @@ SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_production_escal_nget(SAM_tabl
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "om_production_escal", &result))
 		make_access_error("SAM_CashloanHeat", "om_production_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "om_production_heat", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "om_production_heat");
 	});
 	return result;
 }
@@ -4133,6 +4164,16 @@ SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_capacity_expense_aget(SAM_tabl
 	result = ssc_data_get_array(ptr, "cf_om_capacity_expense", length);
 	if (!result)
 		make_access_error("SAM_CashloanHeat", "cf_om_capacity_expense");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_om_elec_price_for_heat_techs", length);
+	if (!result)
+		make_access_error("SAM_CashloanHeat", "cf_om_elec_price_for_heat_techs");
 	});
 	return result;
 }
