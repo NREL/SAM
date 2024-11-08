@@ -327,7 +327,7 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_energy: Annual Energy [kWh]
+	 * Set annual_energy: Annual AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1388,12 +1388,28 @@ extern "C"
 	//
 
 	/**
+	 * Set mp_ancserv1_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv1_revenue_single: Ancillary services 1 revenue input
 	 * options: Lifetime x 1[Price($/MWh)]
 	 * constraints: None
 	 * required if: forecast_price_signal_model=1&mp_enable_ancserv1_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv2_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv2_revenue_single: Ancillary services 2 revenue input
@@ -1404,12 +1420,28 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv3_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv3_revenue_single: Ancillary services 3 revenue input
 	 * options: Lifetime x 1[Price($/MWh)]
 	 * constraints: None
 	 * required if: forecast_price_signal_model=1&mp_enable_ancserv3_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv4_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv4_revenue_single: Ancillary services 4 revenue input
@@ -1466,6 +1498,14 @@ extern "C"
 	 * required if: forecast_price_signal_model=1&mp_enable_market_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Battery_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_market_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Battery_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -2231,11 +2271,19 @@ extern "C"
 	 * Revenue Getters
 	 */
 
+	SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -2250,6 +2298,8 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battery_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battery_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

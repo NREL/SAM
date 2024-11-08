@@ -226,52 +226,52 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tank_pairs_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set tes_cyl_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set tes_cyl_tank_cp: Tank wall cp (used for Piston Cylinder) [kJ/kg-K]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_cyl_tank_dens: Tank wall thickness (used for Piston Cylinder) [kg/m3]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_cyl_tank_insul_percent: Percent additional wall mass due to insulation (used for Piston Cylinder) [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set tes_cyl_tank_thick: Tank wall thickness (used for Piston Cylinder) [m]
+	 * options: None
+	 * constraints: None
+	 * required if: tes_type=2
+	 */
+	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set tes_n_tsteps: Number of subtimesteps (for NT and packed bed)
 	 * options: None
 	 * constraints: None
 	 * required if: tes_type>0
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_nt_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
-	 * options: None
-	 * constraints: None
-	 * required if: tes_type=2
-	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set tes_nt_tank_cp: Tank wall cp (used for Norwich HeatTrap) [kJ/kg-K]
-	 * options: None
-	 * constraints: None
-	 * required if: tes_type=2
-	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_nt_tank_dens: Tank wall thickness (used for Norwich HeatTrap) [kg/m3]
-	 * options: None
-	 * constraints: None
-	 * required if: tes_type=2
-	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_nt_tank_insul_percent: Percent additional wall mass due to insulation (used for Norwich HeatTrap) [%]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set tes_nt_tank_thick: Tank wall thickness (used for Norwich HeatTrap) [m]
-	 * options: None
-	 * constraints: None
-	 * required if: tes_type=2
-	 */
-	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set tes_pb_T_charge_min: Min charge temp [C]
@@ -354,7 +354,7 @@ extern "C"
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_void_frac_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tes_type: Standard two tank (0), Packed Bed (1), HeatTrap Single Tank (2) [-]
+	 * Set tes_type: Standard two tank (0), Packed Bed (1), Piston Cylinder (2) [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -629,17 +629,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_tank_pairs_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_CspSubcomponent_TES_tes_cyl_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_cp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_dens_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_insul_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_thick_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_n_tsteps_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_CspSubcomponent_TES_tes_nt_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_cp_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_dens_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_insul_percent_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_thick_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CspSubcomponent_TES_tes_pb_T_charge_min_nget(SAM_table ptr, SAM_error *err);
 

@@ -152,39 +152,39 @@ SAM_EXPORT void SAM_CspSubcomponent_TES_tank_pairs_nset(SAM_table ptr, double nu
 	});
 }
 
+SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "tes_cyl_piston_loss_poly", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_cp_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_cyl_tank_cp", number);
+	});
+}
+
+SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_dens_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_cyl_tank_dens", number);
+	});
+}
+
+SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_cyl_tank_insul_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_thick_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "tes_cyl_tank_thick", number);
+	});
+}
+
 SAM_EXPORT void SAM_CspSubcomponent_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "tes_n_tsteps", number);
-	});
-}
-
-SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "tes_nt_piston_loss_poly", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_cp_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_nt_tank_cp", number);
-	});
-}
-
-SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_dens_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_nt_tank_dens", number);
-	});
-}
-
-SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_insul_percent_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_nt_tank_insul_percent", number);
-	});
-}
-
-SAM_EXPORT void SAM_CspSubcomponent_TES_tes_nt_tank_thick_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "tes_nt_tank_thick", number);
 	});
 }
 
@@ -612,57 +612,57 @@ SAM_EXPORT double SAM_CspSubcomponent_TES_tank_pairs_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
+SAM_EXPORT double* SAM_CspSubcomponent_TES_tes_cyl_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "tes_cyl_piston_loss_poly", length);
+	if (!result)
+		make_access_error("SAM_CspSubcomponent", "tes_cyl_piston_loss_poly");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_cp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_cyl_tank_cp", &result))
+		make_access_error("SAM_CspSubcomponent", "tes_cyl_tank_cp");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_dens_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_cyl_tank_dens", &result))
+		make_access_error("SAM_CspSubcomponent", "tes_cyl_tank_dens");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_insul_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_cyl_tank_insul_percent", &result))
+		make_access_error("SAM_CspSubcomponent", "tes_cyl_tank_insul_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CspSubcomponent_TES_tes_cyl_tank_thick_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "tes_cyl_tank_thick", &result))
+		make_access_error("SAM_CspSubcomponent", "tes_cyl_tank_thick");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_CspSubcomponent_TES_tes_n_tsteps_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "tes_n_tsteps", &result))
 		make_access_error("SAM_CspSubcomponent", "tes_n_tsteps");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_CspSubcomponent_TES_tes_nt_piston_loss_poly_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "tes_nt_piston_loss_poly", length);
-	if (!result)
-		make_access_error("SAM_CspSubcomponent", "tes_nt_piston_loss_poly");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_cp_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_nt_tank_cp", &result))
-		make_access_error("SAM_CspSubcomponent", "tes_nt_tank_cp");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_dens_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_nt_tank_dens", &result))
-		make_access_error("SAM_CspSubcomponent", "tes_nt_tank_dens");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_insul_percent_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_nt_tank_insul_percent", &result))
-		make_access_error("SAM_CspSubcomponent", "tes_nt_tank_insul_percent");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_CspSubcomponent_TES_tes_nt_tank_thick_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "tes_nt_tank_thick", &result))
-		make_access_error("SAM_CspSubcomponent", "tes_nt_tank_thick");
 	});
 	return result;
 }

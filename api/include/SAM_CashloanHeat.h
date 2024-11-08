@@ -182,7 +182,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -190,7 +190,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
@@ -237,14 +237,6 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_batt_variable_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: !battery,!fuelcell
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
 	 * options: None
 	 * constraints: None
@@ -253,8 +245,32 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set om_capacity_heat: Capacity-based O&M amount [$/kWt-yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_capacity_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_elec_price_for_heat_techs: Electricity price for purchases in heat model [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_elec_price_for_heat_techs_escal: Escalation for electricity price for purchases in heat model [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: !battery,!fuelcell
+	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -270,7 +286,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -278,7 +294,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -373,14 +389,6 @@ extern "C"
 	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_opt_fuel_2_usage_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: !battery,!fuelcell
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
 	 * options: battery
 	 * constraints: None
@@ -403,6 +411,14 @@ extern "C"
 	 * required if: ?=0.0
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production_heat: Production-based O&M amount [$/MWht]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_SystemCosts_om_production_heat_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
@@ -2006,9 +2022,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_batt_variable_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_capacity_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_elec_price_for_heat_techs_escal_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2040,13 +2060,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_opt_fuel_2_usage_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production1_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production2_values_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_SystemCosts_om_production_heat_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_SystemCosts_om_replacement_cost_escal_nget(SAM_table ptr, SAM_error *err);
 
@@ -2610,6 +2630,8 @@ extern "C"
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_capacity2_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_elec_price_for_heat_techs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_om_fixed1_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 

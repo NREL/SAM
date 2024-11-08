@@ -40,7 +40,7 @@ extern "C"
 	SAM_EXPORT void SAM_ThermalrateIph_ThermalRate_en_thermal_rates_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set gen_heat: Thermal power generated [kW-t]
+	 * Set gen_heat: Thermal power generated [kWt]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -233,7 +233,11 @@ extern "C"
 
 	SAM_EXPORT double* SAM_ThermalrateIph_Outputs_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_ThermalrateIph_Outputs_thermal_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_ThermalrateIph_Outputs_thermal_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_ThermalrateIph_Outputs_thermal_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_ThermalrateIph_Outputs_thermal_cost_without_system_year1_nget(SAM_table ptr, SAM_error *err);
 

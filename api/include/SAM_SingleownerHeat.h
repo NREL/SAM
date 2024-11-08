@@ -56,7 +56,7 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_Revenue_ppa_escalation_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_price_input: PPA price in first year input [$/kWh]
+	 * Set ppa_price_input: PPA price in first year input [$/kWht]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -64,7 +64,7 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_max: PPA solution maximum ppa [cents/kWh]
+	 * Set ppa_soln_max: PPA solution maximum ppa [cents/kWht]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=100
@@ -80,7 +80,7 @@ extern "C"
 	SAM_EXPORT void SAM_SingleownerHeat_Revenue_ppa_soln_max_iterations_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set ppa_soln_min: PPA solution minimum ppa [cents/kWh]
+	 * Set ppa_soln_min: PPA solution minimum ppa [cents/kWht]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -2725,7 +2725,7 @@ extern "C"
 	//
 
 	/**
-	 * Set monthly_energy: Monthly energy [kWh]
+	 * Set monthly_energy: Monthly AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: LENGTH = 12
 	 * required if: None
