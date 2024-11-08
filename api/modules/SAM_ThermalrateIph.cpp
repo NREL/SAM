@@ -303,11 +303,31 @@ SAM_EXPORT double* SAM_ThermalrateIph_Outputs_annual_thermal_value_aget(SAM_tabl
 	return result;
 }
 
+SAM_EXPORT double* SAM_ThermalrateIph_Outputs_thermal_cost_with_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_cost_with_system", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_cost_with_system");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_ThermalrateIph_Outputs_thermal_cost_with_system_year1_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "thermal_cost_with_system_year1", &result))
 		make_access_error("SAM_ThermalrateIph", "thermal_cost_with_system_year1");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_ThermalrateIph_Outputs_thermal_cost_without_system_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_cost_without_system", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "thermal_cost_without_system");
 	});
 	return result;
 }

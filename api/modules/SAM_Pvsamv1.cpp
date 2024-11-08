@@ -1388,12 +1388,6 @@ SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacialit
 	});
 }
 
-SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "cec_gamma_r", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "cec_gap_spacing", number);
@@ -3830,9 +3824,21 @@ SAM_EXPORT void SAM_Pvsamv1_PriceSignal_ppa_price_input_aset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv1_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv2_percent_gen", number);
 	});
 }
 
@@ -3842,9 +3848,21 @@ SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv2_revenue_single_mset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv3_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv4_percent_gen", number);
 	});
 }
 
@@ -3887,6 +3905,12 @@ SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_enable_market_percent_gen_nset(SAM_table 
 SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_market_percent_gen", number);
 	});
 }
 
@@ -6240,15 +6264,6 @@ SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cec_bifaciality", &result))
 		make_access_error("SAM_Pvsamv1", "cec_bifaciality");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "cec_gamma_r", &result))
-		make_access_error("SAM_Pvsamv1", "cec_gamma_r");
 	});
 	return result;
 }
@@ -9974,12 +9989,30 @@ SAM_EXPORT double* SAM_Pvsamv1_PriceSignal_ppa_price_input_aget(SAM_table ptr, i
 	return result;
 }
 
+SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Pvsamv1", "mp_ancserv1_percent_gen");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "mp_ancserv1_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Pvsamv1", "mp_ancserv2_percent_gen");
 	});
 	return result;
 }
@@ -9994,12 +10027,30 @@ SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv2_revenue_single_mget(SAM_table
 	return result;
 }
 
+SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Pvsamv1", "mp_ancserv3_percent_gen");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "mp_ancserv3_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Pvsamv1", "mp_ancserv4_percent_gen");
 	});
 	return result;
 }
@@ -10065,6 +10116,15 @@ SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mget(SAM_
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Pvsamv1", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_market_percent_gen", &result))
+		make_access_error("SAM_Pvsamv1", "mp_market_percent_gen");
 	});
 	return result;
 }

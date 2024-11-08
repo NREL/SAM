@@ -18,9 +18,11 @@
 		},
 		"SystemCosts": {
 			"om_capacity_escal": 0,
+			"om_capacity_heat": [66.000000],
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
+			"om_production_heat": [4.000000],
 			"total_installed_cost": 9.92967e+06
 		},
 		"LandLease": {

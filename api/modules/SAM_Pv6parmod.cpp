@@ -152,12 +152,6 @@ SAM_EXPORT void SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nset(SAM_table
 	});
 }
 
-SAM_EXPORT void SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "gamma_pmp", number);
-	});
-}
-
 SAM_EXPORT void SAM_Pv6parmod_CEC6ParameterPVModuleModel_height_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "height", number);
@@ -394,15 +388,6 @@ SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_beta_voc_nget(SAM_tab
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "beta_voc", &result))
 		make_access_error("SAM_Pv6parmod", "beta_voc");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Pv6parmod_CEC6ParameterPVModuleModel_gamma_pmp_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "gamma_pmp", &result))
-		make_access_error("SAM_Pv6parmod", "gamma_pmp");
 	});
 	return result;
 }
