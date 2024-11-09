@@ -6141,95 +6141,14 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		cxt.result().assign("Failed to get REopt run_uuid. POST request returned empty string.");
 		return;
 	}
-
-	// TODO test on Mac to see if this is still necessary
-	// this submits DOE reference load data instead of time series data from SAM, so not a good solution
+    
+    // get any errors from API
 	if (strData.Find("error") != wxNOT_FOUND) {
-		// ssc pull request 1204
-		// content-length issue on Linux 135832 runs and 140778 fails
-		// if failing with "Request Rejected" title, then run with monthly scaled load per 
-		// https://nrel.github.io/REopt.jl/stable/reopt/inputs/#ElectricLoad
-		if (strData.Find("Request Rejected") != wxNOT_FOUND) {
-			// TODO: extra prompt to let user know what is going on???
-			auto ElectricLoad = reopt_scenario.lookup("ElectricLoad");
-			ElectricLoad->empty_hash();
-			if (sam_case->GetFinancing() == "Residential")
-				ElectricLoad->hash_item("doe_reference_name", "SmallOffice");
-			else
-				ElectricLoad->hash_item("doe_reference_name", "LargeOffice");
-			lk::vardata_t monthly_load;
-			monthly_load.empty_vector();
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_1")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_2")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_3")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_4")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_5")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_6")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_7")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_8")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_9")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_10")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_11")->Value());
-			monthly_load.vec_append(sam_case->Values(0).Get("energy_12")->Value());
-			ElectricLoad->hash_item("monthly_totals_kwh", monthly_load);
-            
-            reopt_post = "{\n";
-            
-            str = lk::json_write(*reopt_scenario.lookup("Site"));
-            reopt_post += "\"Site\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("ElectricStorage"));
-            reopt_post += "\"ElectricStorage\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("ElectricLoad"));
-            reopt_post += "\"ElectricLoad\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("ElectricUtility"));
-            reopt_post += "\"ElectricUtility\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("ElectricTariff"));
-            reopt_post += "\"ElectricTariff\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("PV"));
-            reopt_post += "\"PV\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("Financial"));
-            reopt_post += "\"Financial\" : {\n" + str.SubString(3, str.Len()-3) + "\n},\n";
-            str = lk::json_write(*reopt_scenario.lookup("Settings"));
-            reopt_post += "\"Settings\" : {\n" + str.SubString(3, str.Len()-3) + "\n}\n";
-
-            reopt_post += "}\n";
-
-			cxt.result().hash_item("scenario", reopt_post);
-			curl.SetPostData(reopt_post);
-            /*
-			
-			// DEBUG only - fails on Mac per ssc pull request 1204
-			// write post request to file for SAM issue 1830
-			wxString filename = SamApp::GetAppPath() + "/reopt_jsonpost2.json";
-			wxFile file(filename, wxFile::write);
-			if (!file.IsOpened()) {
-				wxLogError("Could not open file for writing!");
-				return;
-			}
-			file.Write(reopt_post);
-			file.Close();
-			*/
-			
-			if (!curl.Get(post_url, msg))
-			{
-				pdlg.Close();
-				cxt.result().assign(msg);
-				return;
-			}
-			strData = curl.GetDataAsString();
-			if (strData.Find("error") != wxNOT_FOUND) {
-				pdlg.Close();
-				cxt.result().hash_item("error", strData);
-				return;
-			}
-		}
-		else {
-			pdlg.Close();
-			cxt.result().hash_item("error", strData);
-			return;
-		}
+		pdlg.Close();
+		cxt.result().hash_item("error", strData);
+		return;
 	}
-
+    
 	lk::vardata_t results;
 	if (!lk::json_read(curl.GetDataAsString(), results, &err))
 		cxt.result().assign("<reopt-error> " + err);
