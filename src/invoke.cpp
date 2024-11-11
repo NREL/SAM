@@ -6162,7 +6162,7 @@ static void fcall_reopt_size_battery(lk::invoke_t& cxt)
 		wxLogError("Could not open file for writing!");
 		return;
 	}
-	f.Write(reopt_run_uuid);
+	f.Write(strData);
 	f.Close();
 	*/
 
