@@ -1,6 +1,7 @@
 {
 	"defaults": {
 		"Simulation": {
+			"timestep_minutes": 60
 		},
 		"Lifetime": {
 			"analysis_period": 25,

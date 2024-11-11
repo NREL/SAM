@@ -4441,6 +4441,15 @@ SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
+SAM_EXPORT double SAM_Cashloan_Outputs_irr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "irr", &result))
+		make_access_error("SAM_Cashloan", "irr");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -4563,6 +4572,15 @@ SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "loan_amount", &result))
 		make_access_error("SAM_Cashloan", "loan_amount");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "nominal_discount_rate", &result))
+		make_access_error("SAM_Cashloan", "nominal_discount_rate");
 	});
 	return result;
 }
