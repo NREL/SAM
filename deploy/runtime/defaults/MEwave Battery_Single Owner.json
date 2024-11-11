@@ -18744,7 +18744,6 @@
         ]
     ],
     "batt_volume": 285.714,
-    "battery_availability_losses_shown": 0.0,
     "battery_energy": 20000.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 233.17,

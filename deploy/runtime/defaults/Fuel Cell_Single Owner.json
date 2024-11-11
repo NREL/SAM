@@ -18701,7 +18701,6 @@
         ]
     ],
     "batt_volume": 478.803,
-    "battery_availability_losses_shown": 0.0,
     "battery_energy": 240000.0,
     "battery_energy_kwh": 240000.0,
     "battery_losses_shown": 0.0,

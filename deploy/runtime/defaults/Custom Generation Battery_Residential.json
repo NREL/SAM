@@ -27446,7 +27446,6 @@
         ]
     ],
     "batt_volume": 0.152122,
-    "battery_availability_losses_shown": 0.0,
     "battery_energy": 12.474,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,

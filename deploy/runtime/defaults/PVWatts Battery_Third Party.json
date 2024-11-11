@@ -44081,7 +44081,6 @@
     "ppa_escalation": 1.0,
     "ppa_price": 0.1,
     "pv_land_area_is_shown": 0.0,
-    "pvwatts.advanced.battery.is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
     "rate_escalation": [
         0.0
