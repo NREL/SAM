@@ -19619,6 +19619,7 @@
     "is_h_tank_fixed": 1.0,
     "is_hx": 0.0,
     "is_timestep_load_fractions": 1.0,
+    "is_tod_pc_target_also_pc_max": 1.0,
     "itc_fed_amount": [
         0.0
     ],

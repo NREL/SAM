@@ -453,6 +453,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "is_tod_pc_target_also_pc_max": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Use output fraction as maximum heat sink output",
+            "Units": "",
+            "Group": "Thermal load",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "timestep_load_abs": {
             "Version": 4.0,
             "Type": 2.0,
@@ -511,7 +524,10 @@
         "\treturn ${DISP_load_input_option} + 1; };\r",
         "\r",
         "equations{ 'COPY_q_pb_design' } = define() {\r",
-        "\treturn ${q_pb_design} * 1000.0; };"
+        "\treturn ${q_pb_design} * 1000.0; };\r",
+        "\t\r",
+        "equations{ 'is_tod_pc_target_also_pc_max' } = define() {\r",
+        "\treturn 1; };"
     ],
     "Callbacks": [
         "on_load{'Physical Trough IPH Thermal Load'} = define() {\r",
