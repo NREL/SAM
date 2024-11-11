@@ -1013,7 +1013,7 @@ addpage( [[ 'Physical Trough IPH System Control' ,
 		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('Physical Trough IPH', 'LCOH Calculator');
 setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
@@ -1022,7 +1022,7 @@ addpage( [[ 'Physical Trough IPH System Control' ,
 		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 //addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Electricity Rates', 'help'='tod_factors' });  
 //setup_iph_lcoefcr_cost_pages_no_elec();
 setup_iph_lcoefcr_cost_pages();
@@ -1062,7 +1062,7 @@ addpage( [[ 'Physical Trough IPH System Control' ,
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Debt Min DSCR',
 		  'Financial Analysis Parameters',
@@ -1959,13 +1959,13 @@ setconfig('MSPT IPH', 'None');
 setmodules( ['mspt_iph']);
 setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('MSPT IPH', 'LCOH Calculator');
 setmodules( ['mspt_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
 
 setconfig('MSPT IPH', 'Single Owner');
@@ -2273,7 +2273,7 @@ setconfig('MSLF IPH', 'None');
 setmodules( ['fresnel_physical_iph']);
 setup_MSLF_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 
 //-----------------------------------------------------
@@ -2281,7 +2281,7 @@ setconfig('MSLF IPH', 'LCOH Calculator');
 setmodules( ['fresnel_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_MSLF_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
 
 //-----------------------------------------------------
