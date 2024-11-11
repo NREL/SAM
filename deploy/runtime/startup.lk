@@ -725,10 +725,6 @@ function setup_cst_physical_trough_pages()
 	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
 			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'TES_DISP_tes_type',
 			  'exclusive_header_pages' = ['TES Common']} );
-
-	addpage( [[ 'Physical Trough IPH System Control' ,
-		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 
 function setup_csp_empirical_trough_pages()
@@ -1013,12 +1009,18 @@ setup_single_owner_dispatch_pages();
 setconfig( 'Physical Trough IPH', 'None' );
 setmodules( ['trough_physical_iph']);
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('Physical Trough IPH', 'LCOH Calculator');
 setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 //addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Electricity Rates', 'help'='tod_factors' });  
@@ -1028,6 +1030,9 @@ setup_iph_lcoefcr_cost_pages();
 setconfig('Physical Trough IPH', 'Single Owner');
 setmodules( ['trough_physical_iph', 'utilityrate5', 'singleowner_heat']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1051,6 +1056,9 @@ addpage( [['Financial Depreciation Detailed' ]],
 setconfig( 'Physical Trough IPH', 'Commercial' );
 setmodules( ['trough_physical_iph', 'utilityrate5', 'thermalrate_iph', 'cashloan_heat']);
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Thermal Load', 'caption'='Thermal Load', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -1068,8 +1076,8 @@ setup_utility_rate();
 setup_elec_load_page( LOAD_SIMPLE );
 addpage( [[ 'Thermal Rate IPH' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
-addpage( [[ 'Thermal Load IPH' ]], 
-         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
+//addpage( [[ 'Thermal Load IPH' ]], 
+//         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
