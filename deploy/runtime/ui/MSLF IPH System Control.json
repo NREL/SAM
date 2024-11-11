@@ -2632,11 +2632,19 @@
         "\treturn a;\r",
         "};\r",
         "\r",
+        "\r",
+        "equations{ 'is_dispatch' } = define() {\r",
+        "\treturn false;\r",
+        "};\r",
+        "\r",
         ""
     ],
     "Callbacks": [
         "on_load{'MSLF IPH System Control'} = define()\r",
         "{\r",
+        "\tenable('is_dispatch', false);\r",
+        "\tshow('is_dispatch', false);\r",
+        "\ton_change{\"is_dispatch\"}();\r",
         "\tloss_adjustment_set();\r",
         "};\r",
         "\r",
@@ -2655,6 +2663,19 @@
         "\telse {\r",
         "\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
         "\t}\r",
-        "}"
+        "}\r",
+        "\r",
+        "on_change{\"is_dispatch\"} = define() {\r",
+        "     en = value(\"is_dispatch\");\r",
+        "     \r",
+        "     enable(\"disp_horizon\", en==1);\r",
+        "     enable(\"disp_frequency\", en==1);\r",
+        "     enable(\"disp_rsu_cost_rel\", en==1);\r",
+        "     enable(\"disp_max_iter\", en==1);\r",
+        "     enable(\"disp_timeout\", en==1);\r",
+        "     enable(\"disp_mip_gap\", en==1);\r",
+        "     enable(\"disp_time_weighting\", en==1);\r",
+        "\r",
+        "};"
     ]
 }
