@@ -10,11 +10,6 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment versi
 
 set(CMAKE_XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS "-o linker-signed")
 
-if (UNIX AND NOT CMAKE_C_COMPILER)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-endif()
-
 
 #####################################################################################################################
 #
@@ -26,7 +21,7 @@ option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix,
 
 option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
-Project(samos)
+Project(samos LANGUAGES CXX C)
 
 if (SAMAPI_EXPORT)
 	add_subdirectory(api)
@@ -95,7 +90,6 @@ set(SAM_SRC src/private.h
 #
 #####################################################################################################################
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
@@ -183,6 +177,7 @@ else() # if Release or if MSVC multigenerator
 			${SAM_ICON})
 	set(SAM_EXE SAMOS)
 endif()
+target_compile_features(${SAM_EXE} PUBLIC cxx_std_11)
 
 if (MSVC)
 	set_target_properties(${SAM_EXE}
