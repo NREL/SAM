@@ -194,7 +194,7 @@ extern "C"
 	SAM_EXPORT void SAM_Pvwattsv8_SystemDesign_inv_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set losses: Other DC losses [%]
+	 * Set losses: DC system losses [%]
 	 * options: total system losses
 	 * constraints: MIN=-5,MAX=99
 	 * required if: *

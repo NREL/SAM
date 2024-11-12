@@ -275,6 +275,7 @@
 			"batt_cycle_cost_choice": 0,
 			"batt_dispatch_auto_can_charge": 1,
 			"batt_dispatch_auto_can_clipcharge": 1,
+			"batt_dispatch_auto_can_curtailcharge": 0,
 			"batt_dispatch_auto_can_fuelcellcharge": 0,
 			"batt_dispatch_auto_can_gridcharge": 0,
 			"batt_dispatch_choice": 3,
@@ -366,15 +367,19 @@
 			]
 		},
 		"Revenue": {
+			"mp_ancserv1_percent_gen": 0,
 			"mp_ancserv1_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv2_percent_gen": 0,
 			"mp_ancserv2_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv3_percent_gen": 0,
 			"mp_ancserv3_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv4_percent_gen": 0,
 			"mp_ancserv4_revenue_single": [
 				[0.000000]
 			],
@@ -219384,7 +219389,8 @@
 				[38.730000],
 				[38.570000],
 				[5.350000]
-			]
+			],
+			"mp_market_percent_gen": 100
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,

@@ -53,7 +53,7 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_energy: Annual Energy AC (year 1) [kWh]
+	 * Set annual_energy: Annual AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -119,7 +119,7 @@ extern "C"
 	//
 
 	/**
-	 * Set monthly_energy: AC energy (year 1) [kWh/mo]
+	 * Set monthly_energy: Monthly AC energy in Year 1 [kWh/mo]
 	 * options: None
 	 * constraints: LENGTH=12
 	 * required if: None
