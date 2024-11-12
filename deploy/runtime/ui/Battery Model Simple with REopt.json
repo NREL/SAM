@@ -738,7 +738,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Availability Losses"
+                    "String": "Battery Availability"
                 },
                 "Bold": {
                     "Type": 2.0,

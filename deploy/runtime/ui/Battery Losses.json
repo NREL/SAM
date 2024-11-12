@@ -1,5 +1,5 @@
 {
-    "Name": "Battery Ancillary Losses",
+    "Name": "Battery Losses",
     "Width": 1052.0,
     "Height": 352.0,
     "FormObjects": {
@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Availability Losses"
+                    "String": "Battery Availability"
                 },
                 "Bold": {
                     "Type": 2.0,
