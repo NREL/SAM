@@ -42,11 +42,18 @@
 			],
 			"year": [2010.000000]
 		},
-		"AdjustmentFactors": {
-		},
 		"Lifetime": {
 			"analysis_period": 30,
 			"system_use_lifetime_output": 0
+		},
+		"AdjustmentFactors": {
+			"constant": 0,
+			"en_periods": 0,
+			"en_timeindex": 0,
+			"periods": [
+				[0.000000, 0.000000, 0.000000]
+			],
+			"timeindex": [0.000000]
 		}
 	}
 }
