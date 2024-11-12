@@ -62,9 +62,16 @@
 			"wave_resource_model_choice": 0,
 			"year": [2010.000000]
 		},
-		"AdjustmentFactors": {
-		},
 		"Lifetime": {
+		},
+		"AdjustmentFactors": {
+			"constant": 0,
+			"en_periods": 0,
+			"en_timeindex": 0,
+			"periods": [
+				[0.000000, 0.000000, 0.000000]
+			],
+			"timeindex": [0.000000]
 		}
 	}
 }

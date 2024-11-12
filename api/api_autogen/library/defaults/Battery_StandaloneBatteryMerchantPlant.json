@@ -1,6 +1,7 @@
 {
 	"defaults": {
 		"Simulation": {
+			"timestep_minutes": 60
 		},
 		"Lifetime": {
 			"analysis_period": 25,
@@ -347,15 +348,19 @@
 			]
 		},
 		"Revenue": {
+			"mp_ancserv1_percent_gen": 0,
 			"mp_ancserv1_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv2_percent_gen": 0,
 			"mp_ancserv2_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv3_percent_gen": 0,
 			"mp_ancserv3_revenue_single": [
 				[0.000000]
 			],
+			"mp_ancserv4_percent_gen": 0,
 			"mp_ancserv4_revenue_single": [
 				[0.000000]
 			],
@@ -219365,7 +219370,8 @@
 				[38.730000],
 				[38.570000],
 				[5.350000]
-			]
+			],
+			"mp_market_percent_gen": 100
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
