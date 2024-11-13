@@ -1,45 +1,8 @@
 {
     "Name": "Battery Model Simple with REopt",
-    "Width": 889.0,
-    "Height": 423.0,
+    "Width": 886.0,
+    "Height": 416.0,
     "FormObjects": {
-        "GroupBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Availability losses"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 12.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 285.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 860.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 122.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Availability Losses"
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -49,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 12.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -61,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 414.0
+                    "Integer": 411.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -86,11 +49,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 69.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -196,7 +159,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -204,7 +167,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 44.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -506,7 +469,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 324.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -564,11 +527,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 99.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -601,11 +564,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 474.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -683,32 +646,45 @@
                 }
             }
         },
-        "GroupBox": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 4"
+                    "String": "object 22"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 306.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 858.0
+                    "Integer": 837.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 109.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
                 },
                 "Caption": {
                     "Type": 5.0,
@@ -720,65 +696,53 @@
                 }
             }
         },
-        "Label": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "object 228"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 339.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 190.0
+                    "Integer": 837.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Battery Availabililty Losses"
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
                 },
-                "TextColour": {
+                "Colour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
                         "Alpha": 255.0
                     }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery Availability"
                 },
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
                 }
             }
         },
@@ -791,19 +755,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 831.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 73.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

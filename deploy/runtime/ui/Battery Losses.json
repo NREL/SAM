@@ -1,7 +1,7 @@
 {
-    "Name": "Battery Ancillary Losses",
-    "Width": 1067.0,
-    "Height": 354.0,
+    "Name": "Battery Losses",
+    "Width": 1052.0,
+    "Height": 352.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,15 +53,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1046.0
+                    "Integer": 1042.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 135.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -69,7 +69,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Availability Losses"
+                    "String": "Battery Availability"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -123,11 +123,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 258.0
+                    "Integer": 267.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,68 +385,6 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 324.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 228.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 190.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Battery Availabililty Losses"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "object 71"
                 },
                 "X": {
@@ -455,7 +393,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -513,19 +451,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 12.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 231.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 1008.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 73.0
+                    "Integer": 32.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -790,7 +728,7 @@
     },
     "Equations": [],
     "Callbacks": [
-        "on_load{'Battery Ancillary Losses'} = define()",
+        "on_load{'Battery Losses'} = define()",
         "{",
         "\ttoggle_losses();",
         "};",
