@@ -19126,7 +19126,7 @@
     "custom_tes_pipe_sizes": 0.0,
     "dP_sf_SS": 4.39675,
     "d_tank_in": 0.0,
-    "debt_fraction": 100.0,
+    "debt_fraction": 60.0,
     "debt_message": "",
     "degradation": [
         0.0
@@ -37296,7 +37296,7 @@
     "offset_xpan_hdr": 1.0,
     "om_capacity_escal": 0.0,
     "om_capacity_heat": [
-        66.0
+        33.0
     ],
     "om_fixed": [
         0.0
@@ -37304,7 +37304,7 @@
     "om_fixed_escal": 0.0,
     "om_production_escal": 0.0,
     "om_production_heat": [
-        4.0
+        2.0
     ],
     "p_start": 0.021,
     "pb_fixed_par": 0.0055,
@@ -37482,9 +37482,9 @@
             -1.0
         ]
     ],
-    "thermal_buy_rate_flat_heat_btu": 0.0,
+    "thermal_buy_rate_flat_heat_btu": 10.0,
     "thermal_buy_rate_option": 0.0,
-    "thermal_conversion_efficiency": 50.0,
+    "thermal_conversion_efficiency": 85.0,
     "thermal_monthly_buy_rate_heat_btu": [
         0.0,
         0.0,
@@ -46407,11 +46407,11 @@
     "ui_epsilon_4_1": 0.86,
     "ui_epsilon_4_2": 0.86,
     "ui_epsilon_4_3": 1.0,
-    "ui_loan_amount": 9929670.0,
+    "ui_loan_amount": 5957800.0,
     "ui_net_capital_cost": 9929670.0,
     "ui_receiver_description": "Schott PTR80",
     "ui_step_minutes": 60.0,
-    "ui_wacc": 5.1429,
+    "ui_wacc": 6.70974,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
