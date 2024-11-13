@@ -170,30 +170,6 @@ SAM_EXPORT void SAM_MhkWave_MHKWave_year_aset(SAM_table ptr, double* arr, int le
 	});
 }
 
-SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "me_adjust:constant", number);
-	});
-}
-
-SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "me_adjust:hourly", arr, length);
-	});
-}
-
-SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_matrix(ptr, "me_adjust:periods", mat, nrows, ncols);
-	});
-}
-
-SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "me_adjust:timeindex", arr, length);
-	});
-}
-
 SAM_EXPORT void SAM_MhkWave_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
@@ -209,6 +185,36 @@ SAM_EXPORT void SAM_MhkWave_Lifetime_generic_degradation_aset(SAM_table ptr, dou
 SAM_EXPORT void SAM_MhkWave_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_constant", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_periods", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "adjust_en_timeindex", number);
+	});
+}
+
+SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "adjust_periods", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_MhkWave_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "adjust_timeindex", arr, length);
 	});
 }
 
@@ -456,45 +462,6 @@ SAM_EXPORT double* SAM_MhkWave_MHKWave_year_aget(SAM_table ptr, int* length, SAM
 	return result;
 }
 
-SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_me_adjust_constant_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "me_adjust:constant", &result))
-		make_access_error("SAM_MhkWave", "me_adjust:constant");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_hourly_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "me_adjust:hourly", length);
-	if (!result)
-		make_access_error("SAM_MhkWave", "me_adjust:hourly");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_matrix(ptr, "me_adjust:periods", nrows, ncols);
-	if (!result)
-		make_access_error("SAM_MhkWave", "me_adjust:periods");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_me_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "me_adjust:timeindex", length);
-	if (!result)
-		make_access_error("SAM_MhkWave", "me_adjust:timeindex");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_MhkWave_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -519,6 +486,53 @@ SAM_EXPORT double SAM_MhkWave_Lifetime_system_use_lifetime_output_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
 		make_access_error("SAM_MhkWave", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_constant", &result))
+		make_access_error("SAM_MhkWave", "adjust_constant");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_periods", &result))
+		make_access_error("SAM_MhkWave", "adjust_en_periods");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MhkWave_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "adjust_en_timeindex", &result))
+		make_access_error("SAM_MhkWave", "adjust_en_timeindex");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "adjust_periods", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_MhkWave", "adjust_periods");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_MhkWave_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
+	if (!result)
+		make_access_error("SAM_MhkWave", "adjust_timeindex");
 	});
 	return result;
 }
