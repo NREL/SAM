@@ -1,7 +1,7 @@
 {
     "Name": "Battery Model Simple with REopt",
-    "Width": 897.0,
-    "Height": 452.0,
+    "Width": 889.0,
+    "Height": 423.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -12,19 +12,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 12.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 1046.0
+                    "Integer": 860.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 119.0
+                    "Integer": 122.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 414.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -86,11 +86,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 342.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 336.0
+                    "Integer": 324.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -729,11 +729,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 339.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -791,11 +791,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 321.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
