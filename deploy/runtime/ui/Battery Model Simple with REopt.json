@@ -992,6 +992,7 @@
     "Callbacks": [
         "on_load{'Battery Model Simple with REopt'} = define(){",
         "\tenable(\"batt_custom_dispatch\", (value(\"batt_simple_dispatch\") == 2));",
+        "\tbatt_loss_adjustment_set();\r",
         "};",
         "",
         "on_change{\"batt_simple_dispatch\"} = define(){",
@@ -1107,6 +1108,21 @@
         "\t}",
         "",
         "\tvalue('batt_custom_dispatch', dispatch);",
-        "};"
+        "};\r",
+        "\r",
+        "function batt_loss_adjustment_set() \r",
+        "{\r",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\t\tif (value('system_use_lifetime_output') == 1) {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', value('analysis_period'));\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t}\r",
+        "}"
     ]
 }
