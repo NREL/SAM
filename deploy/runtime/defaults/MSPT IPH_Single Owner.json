@@ -1,6 +1,7 @@
 {
     "A_rec_calc": 1087.68,
     "A_sf_calc": 1348320.0,
+    "COPY_system_capacity_heat_btu": 952.417,
     "D_rec": 16.922,
     "D_rec_calc": 16.922,
     "E_heater_su_des_calc": 0.0,
@@ -37991,6 +37992,7 @@
     "step": 3600.0,
     "storage_cost_calc": 61407700.0,
     "system_capacity": 279126.0,
+    "system_capacity_heat_btu": 952.417,
     "system_use_lifetime_output": 0.0,
     "tank_pairs": 1.0,
     "tanks_in_parallel": 1.0,

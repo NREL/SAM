@@ -37685,6 +37685,7 @@
     "step": 3600.0,
     "storage_cost_calc": 61407700.0,
     "system_capacity": 279126.0,
+    "system_capacity_heat_btu": 952.417,
     "tank_pairs": 1.0,
     "tanks_in_parallel": 1.0,
     "tes_avail_vol": 12986.5,

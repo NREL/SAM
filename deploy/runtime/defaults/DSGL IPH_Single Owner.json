@@ -29,6 +29,7 @@
             0.0
         ]
     ],
+    "COPY_system_capacity_heat_btu": 20.4728,
     "ColAz": 0.0,
     "D_2": [
         [
@@ -1464,6 +1465,7 @@
     "station_id": "67345",
     "step": 3600.0,
     "system_capacity": 6000.0,
+    "system_capacity_heat_btu": 20.4728,
     "system_use_lifetime_output": 0.0,
     "term_int_rate": 0.0,
     "term_tenor": 0.0,

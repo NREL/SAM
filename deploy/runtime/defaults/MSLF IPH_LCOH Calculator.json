@@ -747,6 +747,7 @@
     ],
     "store_fluid": 18.0,
     "system_capacity": 279880.0,
+    "system_capacity_heat_btu": 954.99,
     "tank_pairs": 1.0,
     "tanks_in_parallel": 1.0,
     "tes_pump_coef": 0.15,

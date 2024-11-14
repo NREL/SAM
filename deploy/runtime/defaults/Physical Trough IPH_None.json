@@ -2148,6 +2148,7 @@
     ],
     "store_fluid": 31.0,
     "system_capacity": 5190.0,
+    "system_capacity_heat_btu": 17.709,
     "t_ch_out_max": 500.0,
     "t_dis_out_min": 500.0,
     "tank_pairs": 1.0,

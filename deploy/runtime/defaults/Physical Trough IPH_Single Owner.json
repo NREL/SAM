@@ -65,6 +65,7 @@
     ],
     "COPY_field_thermal_output": 13.6943,
     "COPY_field_thermal_output_ideal": 13.6943,
+    "COPY_system_capacity_heat_btu": 17.709,
     "COPY_total_aperture": 20992.0,
     "ColperSCA": [
         8.0,
@@ -2460,6 +2461,7 @@
     ],
     "store_fluid": 31.0,
     "system_capacity": 5190.0,
+    "system_capacity_heat_btu": 17.709,
     "system_use_lifetime_output": 0.0,
     "t_ch_out_max": 500.0,
     "t_dis_out_min": 500.0,
