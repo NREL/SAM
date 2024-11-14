@@ -1,7 +1,7 @@
 {
-    "Name": "Battery Ancillary Losses",
-    "Width": 1053.0,
-    "Height": 207.0,
+    "Name": "Battery Losses",
+    "Width": 1052.0,
+    "Height": 352.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 3.0
+                    "Integer": 6.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 200.0
+                    "Integer": 202.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -35,6 +35,141 @@
                     "String": "Ancillary Equipment Losses"
                 },
                 "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Availability losses"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1042.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 135.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery Availability"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "GroupBox159"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 972.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 842.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 130.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "System Availability"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "LossAdjustment": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_adjust"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 70.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -250,15 +385,15 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "object 71"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 12.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -275,6 +410,68 @@
                 "Caption": {
                     "Type": 5.0,
                     "String": "Specify additional hourly losses not captured by power conversion losses.  Such losses might include pumps, heaters, or other equipment required by the battery system.  For AC-connected batteries, the losses are applied on the AC side.  For DC-connected batteries, the losses are applied on the DC side."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 710"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 231.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 1008.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 32.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery availability losses reduce the power and capacity to represent system outages or other events. At the start of a loss, the SOC will be reduced to represent cells or banks going offline."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -371,6 +568,90 @@
         }
     },
     "VarDatabase": {
+        "batt_adjust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "%",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "%",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "0/1",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "0/1",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Battery Availability Losses",
+            "Units": "",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Battery Availability Losses",
+            "Units": "",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "batt_loss_choice": {
             "Version": 4.0,
             "Type": 1.0,
@@ -447,9 +728,10 @@
     },
     "Equations": [],
     "Callbacks": [
-        "on_load{'Battery Ancillary Losses'} = define()",
+        "on_load{'Battery Losses'} = define()",
         "{",
-        "\ttoggle_losses();",
+        "\ttoggle_losses();\r",
+        "\tbatt_loss_adjustment_set() ;",
         "};",
         "on_change{'batt_loss_choice'} = define()",
         "{",
@@ -466,6 +748,21 @@
         "\tenable('batt_losses_discharging', monthly);",
         "\tenable('batt_losses_idle', monthly);",
         "\tenable('batt_losses', !monthly);",
+        "}\r",
+        "\r",
+        "function batt_loss_adjustment_set() \r",
+        "{\r",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\t\tif (value('system_use_lifetime_output') == 1) {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', value('analysis_period'));\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t}\r",
         "}",
         ""
     ]
