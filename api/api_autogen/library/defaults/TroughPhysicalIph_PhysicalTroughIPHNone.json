@@ -346,7 +346,7 @@
 			"tes_pb_k_eff": 5.69,
 			"tes_pb_n_xsteps": 99,
 			"tes_pb_void_frac": 0.22,
-			"tes_type": 0,
+			"tes_type": 1,
 			"tshours": 6,
 			"u_tank": 0.3
 		},
@@ -454,26 +454,6 @@
 			"sales_tax_rate": 5
 		},
 		"FinancialParameters": {
-			"const_per_interest_rate1": 0,
-			"const_per_interest_rate2": 0,
-			"const_per_interest_rate3": 0,
-			"const_per_interest_rate4": 0,
-			"const_per_interest_rate5": 0,
-			"const_per_months1": 0,
-			"const_per_months2": 0,
-			"const_per_months3": 0,
-			"const_per_months4": 0,
-			"const_per_months5": 0,
-			"const_per_percent1": 0,
-			"const_per_percent2": 0,
-			"const_per_percent3": 0,
-			"const_per_percent4": 0,
-			"const_per_percent5": 0,
-			"const_per_upfront_rate1": 0,
-			"const_per_upfront_rate2": 0,
-			"const_per_upfront_rate3": 0,
-			"const_per_upfront_rate4": 0,
-			"const_per_upfront_rate5": 0
 		},
 		"AdjustmentFactors": {
 			"constant": 4,

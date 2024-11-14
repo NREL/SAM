@@ -1022,7 +1022,7 @@ extern "C"
 	 * Set cold_tank_Thtr: Minimum allowable cold tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1030,7 +1030,7 @@ extern "C"
 	 * Set cold_tank_max_heat: Rated heater capacity for cold tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1046,7 +1046,7 @@ extern "C"
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1062,7 +1062,7 @@ extern "C"
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1070,7 +1070,7 @@ extern "C"
 	 * Set hot_tank_Thtr: Minimum allowable hot tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_hot_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1078,7 +1078,7 @@ extern "C"
 	 * Set hot_tank_max_heat: Rated heater capacity for hot tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_hot_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1102,7 +1102,7 @@ extern "C"
 	 * Set store_fl_props: User defined storage fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -1110,7 +1110,7 @@ extern "C"
 	 * Set store_fluid: Material number for storage fluid [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_store_fluid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1126,7 +1126,7 @@ extern "C"
 	 * Set tes_cyl_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_cyl_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -1134,7 +1134,7 @@ extern "C"
 	 * Set tes_cyl_tank_cp: Tank wall cp (used for Piston Cylinder) [kJ/kg-K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_cyl_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1142,7 +1142,7 @@ extern "C"
 	 * Set tes_cyl_tank_dens: Tank wall thickness (used for Piston Cylinder) [kg/m3]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_cyl_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1158,7 +1158,7 @@ extern "C"
 	 * Set tes_cyl_tank_thick: Tank wall thickness (used for Piston Cylinder) [m]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_cyl_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1166,7 +1166,7 @@ extern "C"
 	 * Set tes_n_tsteps: Number of subtimesteps (for NT and packed bed)
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type>0
+	 * required if: tes_type>1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1174,7 +1174,7 @@ extern "C"
 	 * Set tes_pb_T_charge_min: Min charge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_charge_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1182,7 +1182,7 @@ extern "C"
 	 * Set tes_pb_T_cold_delta: Max allowable increase in cold discharge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_cold_delta_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1190,7 +1190,7 @@ extern "C"
 	 * Set tes_pb_T_hot_delta: Max allowable decrease in hot discharge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_T_hot_delta_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1198,7 +1198,7 @@ extern "C"
 	 * Set tes_pb_cp_solid: TES particle specific heat [kJ/kg K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_cp_solid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1206,7 +1206,7 @@ extern "C"
 	 * Set tes_pb_dens_solid: TES packed bed media density [kg/m3]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_dens_solid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1214,7 +1214,7 @@ extern "C"
 	 * Set tes_pb_f_oversize: Packed bed oversize factor
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_f_oversize_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1222,7 +1222,7 @@ extern "C"
 	 * Set tes_pb_k_eff: TES packed bed effective conductivity [W/m K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_k_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1230,7 +1230,7 @@ extern "C"
 	 * Set tes_pb_n_xsteps: Number of spatial segments
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_n_xsteps_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1238,15 +1238,15 @@ extern "C"
 	 * Set tes_pb_void_frac: TES packed bed void fraction
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_pb_void_frac_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tes_type: Standard two tank (0), Packed Bed (1), Piston Cylinder (2) [-]
+	 * Set tes_type: Standard two tank (1), Packed Bed (2), Piston Cylinder (3) [-]
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1262,7 +1262,7 @@ extern "C"
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_TES_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1347,7 +1347,7 @@ extern "C"
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1530,7 +1530,7 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * Set is_timestep_load_fractions: 0: block dispatch, 1: hourly load fraction, 2: absolute load
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -1552,6 +1552,22 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_abs: Heat sink hourly load (not normalized) [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=2
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_abs_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set timestep_load_abs_factor: Heat sink hourly load scale factor
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_abs_factor_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set timestep_load_fractions: Heat sink load fraction for each timestep, alternative to block dispatch
@@ -1837,7 +1853,7 @@ extern "C"
 	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1845,7 +1861,7 @@ extern "C"
 	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1853,7 +1869,7 @@ extern "C"
 	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1861,7 +1877,7 @@ extern "C"
 	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1869,7 +1885,7 @@ extern "C"
 	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1877,7 +1893,7 @@ extern "C"
 	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1885,7 +1901,7 @@ extern "C"
 	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1893,7 +1909,7 @@ extern "C"
 	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1901,7 +1917,7 @@ extern "C"
 	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1909,7 +1925,7 @@ extern "C"
 	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1917,7 +1933,7 @@ extern "C"
 	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1925,7 +1941,7 @@ extern "C"
 	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1933,7 +1949,7 @@ extern "C"
 	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1941,7 +1957,7 @@ extern "C"
 	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1949,7 +1965,7 @@ extern "C"
 	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1957,7 +1973,7 @@ extern "C"
 	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1965,7 +1981,7 @@ extern "C"
 	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1973,7 +1989,7 @@ extern "C"
 	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1981,7 +1997,7 @@ extern "C"
 	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1989,7 +2005,7 @@ extern "C"
 	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_TroughPhysicalIph_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2718,6 +2734,10 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_abs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysicalIph_Tou_timestep_load_abs_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3481,7 +3501,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_wall_error_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_thermal_load_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_timestep_load_abs_calc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_timestep_load_fractions_calc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysicalIph_Outputs_total_aperture_nget(SAM_table ptr, SAM_error *err);
 

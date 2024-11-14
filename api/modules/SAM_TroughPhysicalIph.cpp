@@ -1118,6 +1118,18 @@ SAM_EXPORT void SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_abs_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "timestep_load_abs", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_abs_factor_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "timestep_load_abs_factor", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysicalIph_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "timestep_load_fractions", arr, length);
@@ -3355,6 +3367,25 @@ SAM_EXPORT double SAM_TroughPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table 
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "ppa_multiplier_model", &result))
 		make_access_error("SAM_TroughPhysicalIph", "ppa_multiplier_model");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Tou_timestep_load_abs_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "timestep_load_abs", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "timestep_load_abs");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysicalIph_Tou_timestep_load_abs_factor_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "timestep_load_abs_factor", &result))
+		make_access_error("SAM_TroughPhysicalIph", "timestep_load_abs_factor");
 	});
 	return result;
 }
@@ -6714,12 +6745,42 @@ SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_tes_wall_error_aget(SAM_table p
 	return result;
 }
 
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_thermal_load_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "thermal_load_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "thermal_load_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "time_hr", length);
 	if (!result)
 		make_access_error("SAM_TroughPhysicalIph", "time_hr");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_timestep_load_abs_calc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "timestep_load_abs_calc", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "timestep_load_abs_calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_TroughPhysicalIph_Outputs_timestep_load_fractions_calc_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "timestep_load_fractions_calc", length);
+	if (!result)
+		make_access_error("SAM_TroughPhysicalIph", "timestep_load_fractions_calc");
 	});
 	return result;
 }

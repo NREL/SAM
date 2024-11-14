@@ -101,7 +101,7 @@ extern "C"
 	 * Set cold_tank_Thtr: Minimum allowable cold tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_cold_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -109,7 +109,7 @@ extern "C"
 	 * Set cold_tank_max_heat: Rated heater capacity for cold tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_cold_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -125,7 +125,7 @@ extern "C"
 	 * Set dt_hot: Hot side HX approach temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_dt_hot_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -141,7 +141,7 @@ extern "C"
 	 * Set h_tank_min: Minimum allowable HTF height in storage tank [m]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_h_tank_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -149,7 +149,7 @@ extern "C"
 	 * Set hot_tank_Thtr: Minimum allowable hot tank HTF temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_hot_tank_Thtr_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -165,7 +165,7 @@ extern "C"
 	 * Set hot_tank_max_heat: Rated heater capacity for hot tank heating [MWe]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_hot_tank_max_heat_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -205,7 +205,7 @@ extern "C"
 	 * Set store_fl_props: User defined storage fluid property data [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_store_fl_props_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -213,7 +213,7 @@ extern "C"
 	 * Set store_fluid: Material number for storage fluid [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_store_fluid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -229,7 +229,7 @@ extern "C"
 	 * Set tes_cyl_piston_loss_poly: Polynomial coefficients describing piston heat loss function (f(kg/s)=%)
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_piston_loss_poly_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -237,7 +237,7 @@ extern "C"
 	 * Set tes_cyl_tank_cp: Tank wall cp (used for Piston Cylinder) [kJ/kg-K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_cp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -245,7 +245,7 @@ extern "C"
 	 * Set tes_cyl_tank_dens: Tank wall thickness (used for Piston Cylinder) [kg/m3]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_dens_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -261,7 +261,7 @@ extern "C"
 	 * Set tes_cyl_tank_thick: Tank wall thickness (used for Piston Cylinder) [m]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=2
+	 * required if: tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_cyl_tank_thick_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -269,7 +269,7 @@ extern "C"
 	 * Set tes_n_tsteps: Number of subtimesteps (for NT and packed bed)
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type>0
+	 * required if: tes_type>1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_n_tsteps_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -277,7 +277,7 @@ extern "C"
 	 * Set tes_pb_T_charge_min: Min charge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_T_charge_min_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -285,7 +285,7 @@ extern "C"
 	 * Set tes_pb_T_cold_delta: Max allowable increase in cold discharge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_T_cold_delta_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -301,7 +301,7 @@ extern "C"
 	 * Set tes_pb_T_hot_delta: Max allowable decrease in hot discharge temp [C]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_T_hot_delta_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -309,7 +309,7 @@ extern "C"
 	 * Set tes_pb_cp_solid: TES particle specific heat [kJ/kg K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_cp_solid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -317,7 +317,7 @@ extern "C"
 	 * Set tes_pb_dens_solid: TES packed bed media density [kg/m3]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_dens_solid_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -325,7 +325,7 @@ extern "C"
 	 * Set tes_pb_f_oversize: Packed bed oversize factor
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_f_oversize_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -333,7 +333,7 @@ extern "C"
 	 * Set tes_pb_k_eff: TES packed bed effective conductivity [W/m K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_k_eff_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -341,7 +341,7 @@ extern "C"
 	 * Set tes_pb_n_xsteps: Number of spatial segments
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_n_xsteps_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -349,15 +349,15 @@ extern "C"
 	 * Set tes_pb_void_frac: TES packed bed void fraction
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=1
+	 * required if: tes_type=2
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_pb_void_frac_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set tes_type: Standard two tank (0), Packed Bed (1), Piston Cylinder (2) [-]
+	 * Set tes_type: Standard two tank (1), Packed Bed (2), Piston Cylinder (3) [-]
 	 * options: None
 	 * constraints: None
-	 * required if: ?=0
+	 * required if: ?=1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_tes_type_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -373,7 +373,7 @@ extern "C"
 	 * Set u_tank: Loss coefficient from the tank [W/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0|tes_type=2
+	 * required if: tes_type=1|tes_type=3
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_TES_u_tank_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -532,7 +532,7 @@ extern "C"
 	 * Set tanks_in_parallel: Tanks are in parallel, not in series, with solar field [-]
 	 * options: None
 	 * constraints: None
-	 * required if: tes_type=0
+	 * required if: tes_type=1
 	 */
 	SAM_EXPORT void SAM_CspSubcomponent_Controller_tanks_in_parallel_nset(SAM_table ptr, double number, SAM_error *err);
 

@@ -536,7 +536,7 @@
 			"tes_pb_k_eff": 5.69,
 			"tes_pb_n_xsteps": 99,
 			"tes_pb_void_frac": 0.22,
-			"tes_type": 0,
+			"tes_type": 1,
 			"tshours": 6,
 			"u_tank": 0.4
 		},
@@ -648,6 +648,8 @@
 			"csp_dtr_cost_solar_field_cost_per_m2": 350,
 			"csp_dtr_cost_storage_cost_per_kwht": 70,
 			"sales_tax_rate": 5
+		},
+		"FinancialParameters": {
 		},
 		"AdjustmentFactors": {
 			"constant": 4,

@@ -1612,7 +1612,7 @@ extern "C"
 	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1620,7 +1620,7 @@ extern "C"
 	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1628,7 +1628,7 @@ extern "C"
 	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1636,7 +1636,7 @@ extern "C"
 	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1644,7 +1644,7 @@ extern "C"
 	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1652,7 +1652,7 @@ extern "C"
 	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1660,7 +1660,7 @@ extern "C"
 	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1668,7 +1668,7 @@ extern "C"
 	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1676,7 +1676,7 @@ extern "C"
 	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1684,7 +1684,7 @@ extern "C"
 	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1692,7 +1692,7 @@ extern "C"
 	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1700,7 +1700,7 @@ extern "C"
 	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1708,7 +1708,7 @@ extern "C"
 	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1716,7 +1716,7 @@ extern "C"
 	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1724,7 +1724,7 @@ extern "C"
 	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1732,7 +1732,7 @@ extern "C"
 	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1740,7 +1740,7 @@ extern "C"
 	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1748,7 +1748,7 @@ extern "C"
 	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1756,7 +1756,7 @@ extern "C"
 	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1764,7 +1764,7 @@ extern "C"
 	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
