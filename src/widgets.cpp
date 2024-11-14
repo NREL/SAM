@@ -2261,7 +2261,7 @@ public:
 		timestepmin.Add("15");
 		timestepmin.Add("20");
 		timestepmin.Add("30");
-		Timesteps = new wxComboBox(this, ILDD_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
+		Timesteps = new wxComboBox(this, ILDD_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin, wxCB_READONLY);
 		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
@@ -2270,15 +2270,15 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Subhourly");
-		modes.Add("Hourly");
-        modes.Add("Three Hourly");
-		modes.Add("Daily");
-		if (optweekly) modes.Add("Weekly");
-		modes.Add("Monthly");
-		if (optannual)	modes.Add("Annual");
 		modes.Add("Single Value");
-		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Monthly");
+		if (optweekly) modes.Add("Weekly");
+		modes.Add("Daily");
+		modes.Add("Three Hourly");
+		modes.Add("Hourly");
+		modes.Add("Subhourly");
+		ModeOptions = new wxComboBox(this, ILDD_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes, wxCB_READONLY);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
@@ -2988,7 +2988,7 @@ public:
 		timestepmin.Add("15");
 		timestepmin.Add("20");
 		timestepmin.Add("30");
-		Timesteps = new wxComboBox(this, ILDM_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin);
+		Timesteps = new wxComboBox(this, ILDM_TIMESTEPS, "30", wxDefaultPosition, wxDefaultSize, timestepmin, wxCB_READONLY);
 		TimestepsLabel = new wxStaticText(this, -1, "Time step in minutes");
 		szh_top4->Add(TimestepsLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top4->AddSpacer(3);
@@ -2997,14 +2997,14 @@ public:
 
 		wxBoxSizer *szh_top3 = new wxBoxSizer(wxHORIZONTAL);
 		wxArrayString modes;
-		modes.Add("Subhourly");
-		modes.Add("Hourly");
-		modes.Add("Daily");
-		if (optweekly) modes.Add("Weekly");
-		modes.Add("Monthly");
-		if (optannual)	modes.Add("Annual");
 		modes.Add("Single Value");
-		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes);
+		if (optannual)	modes.Add("Annual");
+		modes.Add("Monthly");
+		if (optweekly) modes.Add("Weekly");
+		modes.Add("Daily");
+		modes.Add("Hourly");
+		modes.Add("Subhourly");
+		ModeOptions = new wxComboBox(this, ILDM_MODEOPTIONS, "Hourly", wxDefaultPosition, wxDefaultSize, modes, wxCB_READONLY);
 		szh_top3->Add(new wxStaticText(this, -1, "Mode"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
 		szh_top3->AddSpacer(3);
 		szh_top3->Add(ModeOptions, 0, wxALL | wxEXPAND, 1);
