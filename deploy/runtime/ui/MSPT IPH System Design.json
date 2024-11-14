@@ -1858,7 +1858,7 @@
         "pb_pump_coef": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Pumping power for HTF through power block",
+            "Label": "Pumping power for HTF through heat sink",
             "Units": "kW/kg/s",
             "Group": "",
             "IndexLabels": "",
