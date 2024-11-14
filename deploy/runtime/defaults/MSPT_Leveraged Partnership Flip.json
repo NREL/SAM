@@ -66204,8 +66204,8 @@
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
-    "sf_adjust": 890.324,
-    "sf_adjust_constant": 0.0,
+    "sf_adjust": 0.0,
+    "sf_adjust_constant": 5.0,
     "sf_adjust_en_periods": 0.0,
     "sf_adjust_en_timeindex": 0.0,
     "sf_adjust_periods": [
