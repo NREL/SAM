@@ -312,15 +312,15 @@ function wind_power_metrics()
 function physical_trough_metrics()
 {
 	//metric( 'annual_gross_energy', {'label'='Annual Gross Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'annual_energy', {'label'='Annual AC Energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_thermal_consumption', {'label'='Annual Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_tes_freeze_protection', {'label'='Annual TES Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_field_freeze_protection', {'label'='Annual Field Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_energy', {'label'='Annual AC energy in year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_thermal_consumption', {'label'='Annual freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_tes_freeze_protection', {'label'='Annual TES freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_field_freeze_protection', {'label'='Annual field freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_W_cycle_gross', {'label'='Power cycle gross electrical output', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
 	metric( 'kwh_per_kw', {'label'='First year kWh/kW', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' -' } );
 	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 function physical_trough_iph_metrics()
@@ -328,9 +328,9 @@ function physical_trough_iph_metrics()
 	metric( 'annual_energy', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWht' } );
 	metric( 'annual_energy_heat_btu', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MMBtu' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	metric( 'heat_load_capacity_factor', {'label'='Heat Load Capacity Factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
+	metric( 'heat_load_capacity_factor', {'label'='Heat load capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 	metric( 'total_installed_cost', {'label'='Total installed cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' '} );
 }
 
@@ -340,7 +340,7 @@ function mspt_iph_metrics()
 	metric( 'annual_energy_heat_btu', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MMBtu' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 	metric( 'total_installed_cost', {'label'='Total installed cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' '} );
 }
 
@@ -377,7 +377,7 @@ function MSPT_metrics()
 	metric( 'annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 //	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 function ISCC_metrics()
@@ -392,7 +392,7 @@ function DSPT_metrics()
 	metric( 'annual_energy', {'label'='Annual AC energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
 //	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 function MSLF_IPH_metrics()
@@ -401,22 +401,22 @@ function MSLF_IPH_metrics()
 	metric( 'annual_energy_heat_btu', {'label'='Annual energy (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' MMBtu' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_electricity_consumption', {'label'='Annual electricity load (year 1)', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 	metric( 'total_installed_cost', {'label'='Total installed cost', 'mode'='f', 'deci'='0', 'thousep'='true', 'pre'='$', 'post'=' '} );
 }
 
 function MSLF_metrics()
 {
 	//metric( 'annual_gross_energy', {'label'='Annual Gross Electrical Energy Production', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWh' } );
-	metric( 'annual_energy', {'label'='Annual AC Energy in Year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_thermal_consumption', {'label'='Annual Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_tes_freeze_protection', {'label'='Annual TES Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
-	metric( 'annual_field_freeze_protection', {'label'='Annual Field Freeze Protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_energy', {'label'='Annual AC energy in year 1', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_thermal_consumption', {'label'='Annual freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_tes_freeze_protection', {'label'='Annual TES freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
+	metric( 'annual_field_freeze_protection', {'label'='Annual field freeze protection', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
 	metric( 'capacity_factor', {'label'='Capacity factor', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	metric( 'annual_W_cycle_gross', {'label'='Power cycle gross electrical output', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' kWhe' } );
 	metric( 'kwh_per_kw', {'label'='First year kWh/kW', 'mode'='f', 'deci'='0', 'thousep'='true', 'post'=' -' } );
 	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 function DSLF_metrics()
@@ -425,7 +425,7 @@ function DSLF_metrics()
 //	metric( 'conversion_factor', {'label'='Gross-to-net conversion', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'=' %' } );
 	metric( 'capacity_factor', {'label'='Capacity factor (year 1)', 'mode'='f', 'deci'='1', 'thousep'='true', 'post'='%' } );
 	//metric( 'kwh_per_kw', {'label'='First year kWhAC/kWDC', 'mode'='f', 'deci'='0', 'thousep'='true' } );
-	metric( 'annual_total_water_use', {'label'='Annual Water Usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
+	metric( 'annual_total_water_use', {'label'='Annual water usage','mode'='f','deci'='0','thousep'='true','post'=' m^3' } );
 }
 
 
