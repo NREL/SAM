@@ -18690,8 +18690,8 @@
     "battery_energy": 12.474,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 545.48,
-    "battery_per_kWh": 706.24,
+    "battery_per_kW": 401.0,
+    "battery_per_kWh": 434.0,
     "battery_power": 4.9896,
     "battery_thermal_shown": 0.0,
     "battery_total": 11531.4,
@@ -63425,14 +63425,14 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
-        9.68
+        14.81
     ],
     "om_batt_fixed_cost": [
         0.0
     ],
     "om_batt_nameplate": 12.474,
     "om_batt_replacement_cost": [
-        273.52
+        434.0
     ],
     "om_batt_variable_cost": [
         0.0

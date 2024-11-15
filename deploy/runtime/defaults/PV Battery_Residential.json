@@ -28257,8 +28257,8 @@
     "battery_energy_kwh": 12.474,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 545.48,
-    "battery_per_kWh": 273.52,
+    "battery_per_kW": 401.0,
+    "battery_per_kWh": 434.0,
     "battery_power": 4.9896,
     "battery_power_kw": 4.9896,
     "battery_thermal_shown": 0.0,
@@ -28268,7 +28268,7 @@
     "beta_oc_calc": -0.25,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.6,
+    "bos_equip_perwatt": 0.67,
     "bos_equip_total": 6968.91,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
@@ -55856,7 +55856,7 @@
     "energy_8": 1393.36,
     "energy_9": 1016.16,
     "engr_fixed": 0.0,
-    "engr_per_watt": 0.89,
+    "engr_per_watt": 1.33,
     "engr_percent": 0.0,
     "engr_total": 6898.52,
     "escal_belpe": [
@@ -64917,11 +64917,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.13,
+    "install_labor_perwatt": 0.32,
     "install_labor_total": 1196.68,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.57,
+    "install_margin_perwatt": 0.77,
     "install_margin_total": 6968.91,
     "installed_per_capacity": 5.46341,
     "insurance_rate": 0.0,
@@ -84502,14 +84502,14 @@
     "num_strings_total": 3.0,
     "offset": 0.0,
     "om_batt_capacity_cost": [
-        9.68
+        14.81
     ],
     "om_batt_fixed_cost": [
         0.0
     ],
     "om_batt_nameplate": 12.474,
     "om_batt_replacement_cost": [
-        273.52
+        434.0
     ],
     "om_batt_variable_cost": [
         0.0

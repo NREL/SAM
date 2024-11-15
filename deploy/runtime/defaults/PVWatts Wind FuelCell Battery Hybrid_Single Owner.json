@@ -29493,8 +29493,8 @@
         "battery_energy": 240000.0,
         "battery_indirect_cost_percent": 0.0,
         "battery_losses_shown": 0.0,
-        "battery_per_kW": 236.0,
-        "battery_per_kWh": 323.0,
+        "battery_per_kW": 233.0,
+        "battery_per_kWh": 252.0,
         "battery_power": 60000.1,
         "battery_thermal_shown": 0.0,
         "battery_total": 91680100.0,
@@ -30843,14 +30843,14 @@
         "hybrid_system_capacity": 271629.0,
         "inflation_rate": 2.5,
         "om_batt_capacity_cost": [
-            5.3
+            7.25
         ],
         "om_batt_fixed_cost": [
             0.0
         ],
         "om_batt_nameplate": 240000.0,
         "om_batt_replacement_cost": [
-            323.0
+            252.0
         ],
         "om_batt_variable_cost": [
             0.0
