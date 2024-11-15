@@ -10035,7 +10035,7 @@
     "customgen.cost.epc.percent": 10.0,
     "customgen.cost.epc.total": 22226400.0,
     "customgen.cost.installed_per_capacity": 13.1691,
-    "customgen.cost.per_watt": 6.0,
+    "customgen.cost.per_watt": 1.0,
     "customgen.cost.plant": 0.0,
     "customgen.cost.plant_scaled": 120000000.0,
     "customgen.cost.plm.fixed": 0.0,
@@ -29697,7 +29697,7 @@
     ],
     "om_fixed_escal": 0.0,
     "om_fuel_cost": [
-        0.0
+        10.0
     ],
     "om_fuel_cost_escal": 0.0,
     "om_production": [

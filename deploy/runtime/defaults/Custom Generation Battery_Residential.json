@@ -36303,7 +36303,7 @@
     "customgen.cost.epc.percent": 10.0,
     "customgen.cost.epc.total": 10279.8,
     "customgen.cost.installed_per_capacity": 12.9229,
-    "customgen.cost.per_watt": 6.0,
+    "customgen.cost.per_watt": 1.0,
     "customgen.cost.plant": 0.0,
     "customgen.cost.plant_scaled": 24000.0,
     "customgen.cost.plm.fixed": 0.0,
@@ -63438,7 +63438,7 @@
         0.0
     ],
     "om_capacity": [
-        10.0
+        25.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -63446,7 +63446,7 @@
     ],
     "om_fixed_escal": 0.0,
     "om_fuel_cost": [
-        0.0
+        10.0
     ],
     "om_fuel_cost_escal": 0.0,
     "om_production": [
@@ -63552,7 +63552,7 @@
     "state_tax_rate": [
         7.0
     ],
-    "system_capacity": 4.0,
+    "system_capacity": 8.0,
     "system_capacity_combined": 0.0,
     "system_use_lifetime_output": 1.0,
     "total_battery_indirect_cost": 2503.65,

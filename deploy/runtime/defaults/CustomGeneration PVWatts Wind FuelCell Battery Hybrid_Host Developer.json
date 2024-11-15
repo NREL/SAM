@@ -24,7 +24,7 @@
         "customgen.cost.epc.percent": 16.0,
         "customgen.cost.epc.total": 0.0,
         "customgen.cost.installed_per_capacity": 0.0,
-        "customgen.cost.per_watt": 0.0,
+        "customgen.cost.per_watt": 1.0,
         "customgen.cost.plant": 100000.0,
         "customgen.cost.plant_scaled": 0.0,
         "customgen.cost.plm.fixed": 0.0,
@@ -49,7 +49,7 @@
         "inflation_rate": 2.5,
         "nameplate_capacity": 0.0,
         "om_capacity": [
-            50.0
+            25.0
         ],
         "om_capacity_escal": 0.0,
         "om_fixed": [
@@ -57,7 +57,7 @@
         ],
         "om_fixed_escal": 0.0,
         "om_fuel_cost": [
-            0.0
+            10.0
         ],
         "om_fuel_cost_escal": 0.0,
         "om_production": [
