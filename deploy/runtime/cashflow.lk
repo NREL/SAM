@@ -823,7 +823,9 @@ function cf_levelized_metrics()
 
     has_ppa_revenue = ( fin != 'Community Solar') && ( fin != 'Merchant Plant');
 
-	cfline('AFTER-TAX LCOE' + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
+	lcoe_label = 'LCOE';
+	if(is_iph_tech()) lcoe_label = 'LCOH';
+	cfline('AFTER-TAX ' + lcoe_label + ? has_ppa_revenue[ '', ' AND PPA PRICE'], -1);
 	cfline('cf_annual_costs', 0);
 	if ( has_ppa_revenue ) { cfline('cf_energy_value', 0); }
 	cfline('cf_energy_sales', 0);
