@@ -46,7 +46,7 @@
     "bifaciality": 0.0,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.29,
+    "bos_equip_perwatt": 0.32,
     "bos_equip_total": 29000000.0,
     "capex_table_ac_cost_per_w": 0.33,
     "capex_table_ac_inputs": [
@@ -18496,11 +18496,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.18,
+    "install_labor_perwatt": 0.17,
     "install_labor_total": 18000000.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.12,
+    "install_margin_perwatt": 0.13,
     "install_margin_total": 12000000.0,
     "installed_per_capacity": 1.16394,
     "insurance_rate": 0.0,
@@ -19224,7 +19224,7 @@
     "months_working_reserve": 6.0,
     "nominal_discount_rate": 9.06,
     "om_capacity": [
-        15.0
+        19.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -19272,8 +19272,8 @@
     "pbi_uti_tax_fed": 1.0,
     "pbi_uti_tax_sta": 1.0,
     "pbi_uti_term": 0.0,
-    "per_inverter": 0.05,
-    "per_module": 0.39,
+    "per_inverter": 0.03,
+    "per_module": 0.34,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.0,
     "permitting_percent": 0.0,

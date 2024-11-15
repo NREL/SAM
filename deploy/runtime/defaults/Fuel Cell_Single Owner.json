@@ -9880,7 +9880,7 @@
         0.0
     ],
     "batt_pvs_user_specified_weather_file": "",
-    "batt_replacement_capacity": 0.0,
+    "batt_replacement_capacity": 70.0,
     "batt_replacement_option": 0.0,
     "batt_replacement_schedule_percent": [
         0.0,
@@ -18718,7 +18718,7 @@
     "bos_equip_fcperkw": 0.0,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.27,
+    "bos_equip_perwatt": 0.32,
     "bos_equip_total": 27000000.0,
     "cap_vs_temp": [
         [
@@ -56282,13 +56282,13 @@
     "install_labor_fcperkw": 0.0,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.18,
+    "install_labor_perwatt": 0.17,
     "install_labor_total": 18000000.0,
     "install_margin_battperkw": 0.0,
     "install_margin_fcperkw": 0.0,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.12,
+    "install_margin_perwatt": 0.13,
     "install_margin_total": 12000000.0,
     "installed_per_capacity": 2.09508,
     "insurance_rate": 0.0,
@@ -57029,7 +57029,7 @@
         0.0
     ],
     "om_capacity": [
-        15.0
+        19.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -57096,8 +57096,8 @@
     "pbi_uti_tax_fed": 1.0,
     "pbi_uti_tax_sta": 1.0,
     "pbi_uti_term": 0.0,
-    "per_inverter": 0.05,
-    "per_module": 0.37,
+    "per_inverter": 0.03,
+    "per_module": 0.34,
     "permitting_fixed": 0.0,
     "permitting_per_battkw": 0.0,
     "permitting_per_fckw": 0.0,

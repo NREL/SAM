@@ -19414,7 +19414,7 @@
     "batt_pv_clipping_forecast": [
         0.0
     ],
-    "batt_replacement_capacity": 50.0,
+    "batt_replacement_capacity": 70.0,
     "batt_replacement_option": 1.0,
     "batt_replacement_schedule_percent": [
         0.0,
@@ -28268,7 +28268,7 @@
     "beta_oc_calc": -0.25,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.99,
+    "bos_equip_perwatt": 0.6,
     "bos_equip_total": 6968.91,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
@@ -55856,7 +55856,7 @@
     "energy_8": 1393.36,
     "energy_9": 1016.16,
     "engr_fixed": 0.0,
-    "engr_per_watt": 0.98,
+    "engr_per_watt": 0.89,
     "engr_percent": 0.0,
     "engr_total": 6898.52,
     "escal_belpe": [
@@ -64917,11 +64917,11 @@
     "inflation_rate": 2.5,
     "install_labor_fixed": 0.0,
     "install_labor_perarea": 0.0,
-    "install_labor_perwatt": 0.17,
+    "install_labor_perwatt": 0.13,
     "install_labor_total": 1196.68,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.99,
+    "install_margin_perwatt": 0.57,
     "install_margin_total": 6968.91,
     "installed_per_capacity": 5.46341,
     "insurance_rate": 0.0,
@@ -84515,7 +84515,7 @@
         0.0
     ],
     "om_capacity": [
-        28.78
+        30.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -84572,10 +84572,10 @@
     "peak_8": 4.19724,
     "peak_9": 3.6658,
     "peak_shaving_batt_dispatch_choice": 0.0,
-    "per_inverter": 0.46,
-    "per_module": 0.56,
+    "per_inverter": 0.36,
+    "per_module": 0.39,
     "permitting_fixed": 0.0,
-    "permitting_per_watt": 0.24,
+    "permitting_per_watt": 0.15,
     "permitting_percent": 0.0,
     "permitting_total": 1689.43,
     "prop_tax_assessed_decline": 0.0,

@@ -9588,7 +9588,7 @@
     "beta_oc_calc": -0.25,
     "bos_equip_fixed": 0.0,
     "bos_equip_perarea": 0.0,
-    "bos_equip_perwatt": 0.55,
+    "bos_equip_perwatt": 0.6,
     "bos_equip_total": 3871.62,
     "calculate_bifacial_electrical_mismatch": 1.0,
     "calculate_rack_shading": 0.0,
@@ -18925,7 +18925,7 @@
     "energy_8": 1393.36,
     "energy_9": 1016.16,
     "engr_fixed": 0.0,
-    "engr_per_watt": 0.03,
+    "engr_per_watt": 0.89,
     "engr_percent": 0.0,
     "engr_total": 211.179,
     "escal_belpe": [
@@ -27987,7 +27987,7 @@
     "install_labor_total": 915.11,
     "install_margin_fixed": 0.0,
     "install_margin_perarea": 0.0,
-    "install_margin_perwatt": 0.8,
+    "install_margin_perwatt": 0.57,
     "install_margin_total": 5631.44,
     "installed_per_capacity": 2.76125,
     "insurance_rate": 0.0,
@@ -47562,7 +47562,7 @@
     "num_strings_total": 3.0,
     "offset": 0.0,
     "om_capacity": [
-        28.78
+        30.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -47617,8 +47617,8 @@
     "peak_7": 4.30453,
     "peak_8": 4.19724,
     "peak_9": 3.6658,
-    "per_inverter": 0.46,
-    "per_module": 0.56,
+    "per_inverter": 0.36,
+    "per_module": 0.39,
     "permitting_fixed": 0.0,
     "permitting_per_watt": 0.15,
     "permitting_percent": 0.0,
