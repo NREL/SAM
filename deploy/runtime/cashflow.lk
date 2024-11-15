@@ -135,15 +135,22 @@ function cf_production()
 	}
 	if ( is_fom_fin() || financing() == 'Community Solar' )
 	{
-		if (!is_iph_tech()) {
+		is_iph = is_iph_tech();
+		if (!is_iph) {
 			cfline( 'cf_energy_sales', 0);
 			cfline( 'cf_energy_purchases', 0);
 		}
 		cfline( 'cf_energy_net', 0);
+		if (is_iph) {
+			cfline('cf_energy_net_heat_btu', 0);
+		}
 	}
 	else
 	{
 		cfline( 'cf_energy_net', 0);
+		if (is_iph_tech()) {
+			cfline('cf_energy_net_heat_btu', 0); 
+		}
 	}
 	if ( is_batt_tech() && (varinfo('gen_without_battery')!= null))  // SAM issue 1563
 	{
