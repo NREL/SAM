@@ -2937,7 +2937,8 @@ addpage( [[ 'Operating Costs Standalone Battery']],{ 'sidebar'='Battery Operatin
 setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
-setup_host_developer_pages(LOAD_SIMPLE);addpage( [[ 'Thermal Rate' ]], 
+setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
 addpage( [[ 'Thermal Load' ]], 
          {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
@@ -3162,7 +3163,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_total_installed_cost'},
@@ -3241,4 +3242,8 @@ setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
