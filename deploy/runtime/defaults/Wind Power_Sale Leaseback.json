@@ -36,7 +36,7 @@
     "batt_salvage_value": 0.0,
     "bonding_usd": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 347.76,
+    "bos_cost_per_kw": 475.0,
     "bos_cost_per_turbine": 0.0,
     "bos_cost_total": 69552000.0,
     "buryDepth": 2.0,

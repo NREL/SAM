@@ -260,7 +260,7 @@
         "avail_loss_total": 5.50117,
         "avail_turb_loss": 3.58,
         "bos_cost_fixed": 0.0,
-        "bos_cost_per_kw": 347.76,
+        "bos_cost_per_kw": 475.0,
         "bos_cost_per_turbine": 0.0,
         "bos_cost_total": 69552000.0,
         "cols": 1.0,

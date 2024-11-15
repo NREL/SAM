@@ -336,7 +336,7 @@
         "avail_loss_total": 5.50117,
         "avail_turb_loss": 3.58,
         "bos_cost_fixed": 0.0,
-        "bos_cost_per_kw": 1911.6,
+        "bos_cost_per_kw": 3633.0,
         "bos_cost_per_turbine": 0.0,
         "bos_cost_total": 191160.0,
         "cols": 1.0,
@@ -357,7 +357,7 @@
         "inflation_rate": 2.5,
         "install_type": 0.0,
         "om_capacity": [
-            35.0
+            39.0
         ],
         "om_capacity_escal": 0.0,
         "om_fixed": [
@@ -395,7 +395,7 @@
         "turb_perf_loss": 1.1,
         "turb_specific_loss": 0.81,
         "turbine_cost_fixed": 0.0,
-        "turbine_cost_per_kw": 2732.4,
+        "turbine_cost_per_kw": 2422.0,
         "turbine_cost_per_turbine": 0.0,
         "turbine_cost_total": 273240.0,
         "ui_step_minutes": 60.0,

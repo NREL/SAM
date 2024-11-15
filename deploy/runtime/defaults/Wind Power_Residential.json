@@ -36,7 +36,7 @@
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 3348.0,
+    "bos_cost_per_kw": 4838.0,
     "bos_cost_per_turbine": 0.0,
     "bos_cost_total": 66960.0,
     "cbi_fed_amount": 0.0,
@@ -28137,7 +28137,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
-        35.0
+        39.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -28265,7 +28265,7 @@
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
-    "turbine_cost_per_kw": 2781.0,
+    "turbine_cost_per_kw": 3225.0,
     "turbine_cost_per_turbine": 0.0,
     "turbine_cost_total": 55620.0,
     "ui_annual_load": 0.0,
