@@ -1047,7 +1047,7 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
 addpage( [ ['Financial Solution Mode Single Owner IPH']],
-            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
@@ -1986,7 +1986,7 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
 addpage( [[ 'Financial Solution Mode Single Owner IPH']],
-            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
@@ -2075,7 +2075,7 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
 addpage( [[ 'Financial Solution Mode Single Owner IPH']],
-            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
@@ -2307,7 +2307,7 @@ addpage( [[ 'Financial Analysis Parameters',
 		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
 	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
 addpage( [[ 'Financial Solution Mode Single Owner IPH']],
-            { 'sidebar'='Revenue', 'help'='revenue_ppa' } );
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
 addpage( [['Financial Depreciation Detailed' ]],
