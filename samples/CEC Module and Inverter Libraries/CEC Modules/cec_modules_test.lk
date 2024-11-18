@@ -17,6 +17,11 @@ Revised 2/23/22
 
 function set_inverter_params()
 {
+
+	//set('vdcmax_inverter',1500);
+	//set('inv_ds_mppt_hi',1500);
+	//set('inv_ds_vdcmax',1500);
+
 	pmp = get( 'cec_p_mp_ref' );
 	voc = get('cec_v_oc_ref');
 
@@ -25,12 +30,17 @@ function set_inverter_params()
 	vmppt_min = floor(voc *0.25);
 	vdco = round(( vmppt_max + vmppt_min ) / 2);
 
+
 	set('inv_ds_paco',paco);
-	set('inv_ds_mppt_hi',vmppt_max);
-	set('inv_ds_mppt_low',vmppt_min);
+	set('inv_ds_vdcmax',vmppt_max);
 	set('inv_ds_vdco',vdco);
 	set('inv_ds_idcmax',ceil(pmp/vmppt_max));
+	set('inv_ds_mppt_hi',vmppt_max);
+	set('inv_ds_mppt_low',vmppt_min);
 
+	set('vdcmax_inverter',vmppt_max);
+	set('mppt_hi_inverter', vmppt_max);
+	set('mppt_low_inverter', vmppt_min);
 }
 
 function run()
@@ -81,4 +91,4 @@ for ( i=1; i<#modules; i++ )
 
 outln('Done.');
 csvwrite( f_name(), results );
-browse(f_name());
+browse(f_name()); 
