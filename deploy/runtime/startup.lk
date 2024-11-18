@@ -2870,7 +2870,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 3,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
@@ -2879,6 +2879,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_thermal', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_thermal'}, // for cmod_thermalrate - output = handled in cmod_hybrid
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_total_installed_cost'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_power_discharge_max_kwac', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_power_discharge_max_kwac'},
@@ -2937,6 +2938,10 @@ setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
 
 //Wind + Detailed PV + Battery
@@ -3158,7 +3163,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_total_installed_cost'},
@@ -3237,4 +3242,8 @@ setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});

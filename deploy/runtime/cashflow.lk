@@ -156,7 +156,16 @@ function cf_savings()
 	cfline('equals:', -1, 0);
 	if ( fin == 'Host Developer' ) { cfline( 'annual_energy_value', 0); }
 	else if ( fin != 'Merchant Plant' ){ cfline( 'cf_energy_value', 0); }
-	if (tech == 'Fuel Cell') { cfline( 'cf_thermal_value', 0); }
+	if (tech == 'Fuel Cell' || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'  ||  tech == 'PVWatts Wind FuelCell Battery Hybrid') { 
+		cfline( 'thermal_cost_without_system', 0);
+		cfline('minus:', -1, 0);
+		cfline( 'thermal_cost_with_system', 0);
+		cfline('equals:', -1, 0);
+		if ( fin == 'Host Developer' ) 
+			cfline( 'annual_thermal_value', 0); 
+		else
+			cfline( 'cf_thermal_value', 0); 
+	}
 	if ( fin == 'Host Developer' )
 	{
 		cfline( '' );
