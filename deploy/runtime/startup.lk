@@ -33,7 +33,7 @@ addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant',
 addconfig( 'MSPT IPH', ['None', 'LCOH Calculator', 'Single Owner']);
 addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator', 'Single Owner', 'Commercial']);
 addconfig( 'DSGL IPH', ['None', 'LCOH Calculator', 'Single Owner']);
-addconfig( 'MSLF IPH', ['None', 'LCOH Calculator', 'Single Owner']);
+addconfig( 'MSLF IPH', ['None', 'LCOH Calculator', 'Single Owner', 'Commercial']);
 // Marine Energy
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
 addconfig( 'MEwave Battery', ['Single Owner']);
@@ -2262,16 +2262,15 @@ function setup_MSLF_IPH_pages()
 		{ 'sidebar'='Collector and Receiver', 'help'='iph_mslf_collector_receiver' } );
 
 	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_mslf_thermal_storage' } );
-
-	addpage( [[ 'MSLF IPH System Control' ,
-		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 
 //-----------------------------------------------------
 setconfig('MSLF IPH', 'None');
 setmodules( ['fresnel_physical_iph']);
 setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 //addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
@@ -2280,6 +2279,9 @@ addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'
 setconfig('MSLF IPH', 'LCOH Calculator');
 setmodules( ['fresnel_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 //addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
@@ -2288,6 +2290,9 @@ setup_iph_lcoefcr_cost_pages();
 setconfig('MSLF IPH', 'Single Owner');
 setmodules( ['fresnel_physical_iph', 'utilityrate5', 'singleowner_heat']); 	//, 'singleowner']);
 setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
@@ -2308,6 +2313,33 @@ addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
 addpage( [['Financial Depreciation Detailed' ]],
            { 'sidebar'='Depreciation', 'help'='depreciation' });
 //setup_single_owner_dispatch_pages();
+
+//-------------------------------------------------------
+setconfig('MSLF IPH', 'Commercial');
+setmodules( ['fresnel_physical_iph', 'utilityrate5', 'thermalrate_iph', 'cashloan_heat']);
+setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'Physical Trough IPH Thermal Load', 'caption'='Thermal Load', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Debt Min DSCR',
+		  'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  'Financial Depreciation Simple', ]],
+	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+setup_utility_rate();
+setup_elec_load_page( LOAD_SIMPLE );
+addpage( [[ 'Thermal Rate IPH' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+
+
+
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)

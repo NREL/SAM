@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -186,7 +186,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 88.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -269,7 +269,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 88.0
+                    "Integer": 100.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -593,7 +593,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 327.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1091,7 +1091,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 222.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1306,7 +1306,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 222.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1967,6 +1967,17 @@
         "{\r",
         "\tenable ('total_Ap_in', 0);\r",
         "\t\r",
+        "\tset_financial_model_int();\r",
+        "};\r",
+        "\r",
+        "on_change{'solar_mult_or_Ap'} = define(){\r",
+        "  state = value('solar_mult_or_Ap');\r",
+        "  enable ('solar_mult_in', state == 0);\r",
+        "  enable ('total_Ap_in', state == 1);\r",
+        "};\r",
+        "\r",
+        "function set_financial_model_int() { \r",
+        "\r",
         "\tif (financing() == \"Single Owner\"){\r",
         "\t\tfm = 1;\r",
         "\t}\r",
@@ -1976,17 +1987,14 @@
         "\telse if(financing() == \"LCOH Calculator\"){\r",
         "\t\tfm = 7;\r",
         "\t}\r",
+        "\telse if(financing() == \"Commercial\"){\r",
+        "\t\tfm = 5;\r",
+        "\t}\r",
         "\telse{\r",
         "\t\tfm = -1;\r",
         "\t}\r",
         "\t\r",
         "\tvalue(\"csp_financial_model\", fm);\r",
-        "};\r",
-        "\r",
-        "on_change{'solar_mult_or_Ap'} = define(){\r",
-        "  state = value('solar_mult_or_Ap');\r",
-        "  enable ('solar_mult_in', state == 0);\r",
-        "  enable ('total_Ap_in', state == 1);\r",
-        "};"
+        "}"
     ]
 }

@@ -1,7 +1,7 @@
 {
     "Name": "MSLF IPH System Control",
-    "Width": 916.0,
-    "Height": 374.0,
+    "Width": 838.0,
+    "Height": 364.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1984,7 +1984,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2021,7 +2021,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
