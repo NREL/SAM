@@ -108,10 +108,10 @@ Generic CSP System,None,592360448,NA,NA,; Notice: time 0.00 { Generic solar mode
 MSPT IPH,None,1496956800,NA,NA,; 
 MSPT IPH,LCOH Calculator,1496956800,NA,NA,; 
 MSPT IPH,Single Owner,1550245888,6.95685,10.2901,; Warning: IRR at end of analysis period is 50.0639%. A high IRR may indicate a project with unrealistically high returns. Warning: IRR in target year is 50.0514%. A high IRR may indicate a project with unrealistically high returns.
-Physical Trough IPH,None,22127178,NA,NA,; 
-Physical Trough IPH,LCOH Calculator,22127178,NA,NA,; 
-Physical Trough IPH,Single Owner,22127178,5.39937,3.69557,; 
-Physical Trough IPH,Commercial,22127178,3.148,NA,; 
+Physical Trough IPH,None,22067516,NA,NA,; 
+Physical Trough IPH,LCOH Calculator,22067516,NA,NA,; 
+Physical Trough IPH,Single Owner,22067516,5.41321,3.69557,; 
+Physical Trough IPH,Commercial,22067516,3.15625,NA,; 
 DSGL IPH,None,10833103,NA,NA,; 
 DSGL IPH,LCOH Calculator,10833103,NA,NA,; 
 DSGL IPH,Single Owner,10833103,14.1036,18.6686,; 
