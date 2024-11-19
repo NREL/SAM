@@ -1036,7 +1036,13 @@ addpage( [[ 'Physical Trough IPH System Control' ,
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_rates' } );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -1975,7 +1981,13 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 //addpage([['Electricity Purchases Heat Model','Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_rates' } );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -2064,7 +2076,13 @@ setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 //addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage( [['LF DSG Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_rates' } );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
@@ -2296,7 +2314,13 @@ addpage( [[ 'MSLF IPH System Control' ,
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_rates' } );
 setting( { 'analysis_period_var'='cf_length' } );
 addpage( [[ 'Financial Analysis Parameters',
 		  'Financial Tax and Insurance Rates',
