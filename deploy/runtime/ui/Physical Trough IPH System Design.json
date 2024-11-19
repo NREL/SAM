@@ -1728,7 +1728,7 @@
             "Units": "kWt",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 8.0,
             "DefaultValue": -123.0,
             "UIObject": "Default",
             "sscVariableName": "",
