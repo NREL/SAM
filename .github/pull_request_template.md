@@ -14,7 +14,8 @@ Please delete options that are not relevant.
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
-- [ ] This change modifies variables in existing compute modules. Please see [Checking for PySAM Incompatible API Changes](https://github.com/NREL/SAM/wiki/Checking-for-PySAM-Incompatible-API-Changes).
+- [ ] This change modifies variables in existing compute modules. Please see [Checking for PySAM Incompatible API Changes](https://github.com/NREL/SAM/wiki/PySAM-Incompatible-API-Changes-&-Regenerating-PySAM-Files).
+- [ ] This change requires updating the PySAM files via export_config. Please see [When do the PySAM files need to be regenerated?](https://github.com/NREL/SAM/wiki/PySAM-Incompatible-API-Changes-&-Regenerating-PySAM-Files#when-do-the-pysam-files-need-to-be-regenerated-via-export_config)
 
 
 ## Checklist:

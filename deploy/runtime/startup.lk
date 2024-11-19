@@ -153,7 +153,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  'Battery Current and Capacity',
 			  'Battery Configuration',
 			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
 			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery' } );
@@ -165,7 +165,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  'Battery Current and Capacity',
 			  'Battery Configuration',
 			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
 			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
@@ -177,7 +177,7 @@ function setup_pages_battery_cell_and_system(is_reopt,is_btm)
 			  'Battery Current and Capacity',
 			  'Battery Configuration',
 			  {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			  {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			  {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			  {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			  'Battery Standalone Enable',
 			 ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
@@ -1406,7 +1406,7 @@ addpage( [[ { 'name'='Battery None', 'caption'='No Battery'}],
 			'Battery Life Cycle Calendar',
 			{ 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 			{ 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-			{ 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+			{ 'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 			{ 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 			'Battery Standalone Enable' ]],
 		 { 'sidebar'='Battery Storage', 'help'='battery_storage_btm', 'exclusive_var'='en_batt'} );
@@ -1454,7 +1454,7 @@ addpage( [[ { 'name'='Battery None','caption'='No Battery'}],
 		    'Battery Life Cycle Calendar',
 		    { 'name'='Battery Replacements', 'caption'='Battery Replacements', 'collapsible'=true, 'collapsible_var'='battery_replacements_shown'},
 		    { 'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'},
-		    { 'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
+		    { 'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'},
 		    { 'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'},
 		    'Battery Standalone Enable' ]],
 	     { 'sidebar'='Battery Storage', 'help'='battery_storage_fom', 'exclusive_var'='en_batt'} );
@@ -3043,7 +3043,7 @@ addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell D
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
+addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [{'name'='Battery Dispatch PV Smoothing', 'caption'='System Smoothing'}], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
 addpage( [[ 'Standalone Battery Costs'/*, 'Battery Enable' set on battery dispatch automated fom*/ ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -3056,7 +3056,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'ac_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'ac_nameplate'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'solar_resource_file', 'DependentVartableIndex' = 3,'DependentVariableName' = 'solar_resource_file'}, // battery dispatch
@@ -3065,6 +3065,7 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_system_capacity'},
 { 'IndependentVartableIndex' = 1,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'wind_total_installed_cost'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_nameplate'}, // fuel cell costs hybrid
+//{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_thermal', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_power_thermal'}, // for cmod_thermalrate - output = handled in cmod_hybrid
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'fuelcell_power_nameplate', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_system_capacity'},
 { 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 4,'DependentVariableName' = 'fuelcell_total_installed_cost'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'batt_power_discharge_max_kwac', 'DependentVartableIndex' = 4,'DependentVariableName' = 'batt_power_discharge_max_kwac'},
@@ -3113,7 +3114,7 @@ addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
+addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -3123,6 +3124,10 @@ setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});
 
 //Wind + Detailed PV + Battery
@@ -3331,7 +3336,7 @@ addpage( [[{'name'='AA Empty', 'caption'='Fixed Output'}], [{'name'='Fuel Cell D
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
+addpage( [['Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_fom', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Dispatch Automated FOM', 'caption'='Automated'} ], [{'name'='Battery Dispatch PV Smoothing', 'caption'='PV Smoothing'}], [ {'name'='Battery Dispatch Custom Time Series', 'caption'='Custom Time Series'} ], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}] ], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_fom', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options FOM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery'} );
 addpage( [[ 'Standalone Battery Costs'/*, 'Battery Enable' set on battery dispatch automated fom*/ ]], { 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -3344,7 +3349,7 @@ setup_single_owner_pages( );
 setup_electricity_purchases();
 
 setconfig('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'Host Developer' );
-setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'host_developer']);
+setmodules( ['custom_generation', 'pvwattsv8', 'windpower', 'fuelcell', 'battery', 'grid', 'utilityrate5', 'thermalrate', 'host_developer']);
 sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'system_capacity', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_system_capacity'},
 { 'IndependentVartableIndex' = 0,'IndependentVariableName' = 'total_installed_cost', 'DependentVartableIndex' = 5,'DependentVariableName' = 'customgeneration_total_installed_cost'},
@@ -3413,7 +3418,7 @@ addpage( [[ {'name'='AA Empty', 'caption'='Fixed Output'} ], [ {'name'='AA Empty
 addpage( [[ 'Fuel Cell Costs Hybrid' ]], { 'sidebar'='Fuel Cell Installation Costs', 'help'='cc_fuel_cell', 'bin_name'='FuelCell' } );
 addpage( [[ 'Operating Costs Fuel Cell Hybrid' ]], { 'sidebar'='Fuel Cell Operating Costs', 'help'='oc_fuel_cell', 'bin_name'='FuelCell' } );
 // battery
-addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Ancillary Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
+addpage( [[ 'Battery Model', 'Battery Bank Sizing', 'Battery Current and Capacity', 'Battery Configuration', {'name'='Battery Voltage', 'caption'='Battery Voltage', 'collapsible'=true, 'collapsible_var'='battery_voltage_shown'}, {'name'='Battery Losses', 'caption'='Battery Losses', 'collapsible'=true, 'collapsible_var'='battery_losses_shown'}, {'name'='Battery Thermal', 'caption'='Battery Thermal', 'collapsible'=true, 'collapsible_var'='battery_thermal_shown'}, 'Battery Standalone Enable', ]], { 'sidebar'='Battery Cell and System', 'help'='battery_storage_btm', 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Life Cycle Calendar', 'caption'='Calendar and Cycle Degradation'}], [{'name'='Battery Life Empty 1','caption'='Li-on NMC/Graphite Degradation'}], [{'name'='Battery Life Empty 2','caption'='Li-ion LMO/LTO Degradation'}]], {'sidebar'='Battery Life', 'help'='battery_life' , 'exclusive_var' = 'batt_life_excl', 'exclusive_header_pages' = ['Battery Replacements','Battery Life Options' ], 'exclusive_tabs' = true, 'exclusive_hide' = true, 'bin_name'='Battery'  } );
 addpage( [[ {'name'='Battery Dispatch Peak Shaving BTM', 'caption'='Peak Shaving'} ], [ {'name'='Battery Dispatch Grid Power Targets', 'caption'='Grid Power Targets'} ], [ {'name'='Battery Dispatch Battery Power Targets', 'caption'='Battery Power Targets'}], [ {'name'='Battery Dispatch Manual', 'caption'='Manual'}], [ {'name'='Battery Dispatch Retail Rate', 'caption'='Retail Rate'} ], [ {'name'='Battery Dispatch Self Consumption', 'caption'='Self Consumption'} ]], { 'sidebar'='Battery Dispatch', 'help'='battery_dispatch_btm', 'exclusive_var' = 'batt_dispatch_excl', 'exclusive_header_pages' = ['Battery Dispatch Common', 'Battery Dispatch Options BTM'], 'exclusive_tabs'=true, 'exclusive_hide'=true, 'bin_name'='Battery' } );
 addpage( [[ 'Standalone Battery Costs', 'Battery Enable' ]],{ 'sidebar'='Battery Installation Costs', 'help'='cc_standalone_battery', 'bin_name'='Battery' } );
@@ -3423,4 +3428,8 @@ setup_grid_limits_page();
 setup_grid_outage_page();// host developer
 // host developer
 setup_host_developer_pages(LOAD_SIMPLE);
+addpage( [[ 'Thermal Rate' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+addpage( [[ 'Thermal Load' ]], 
+         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 addpage([['Hybrid Costs']], {'sidebar'='Hybrid System Costs', 'help'='hybrid_system_costs', 'top_page'=true});

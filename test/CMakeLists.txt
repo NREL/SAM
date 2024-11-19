@@ -40,8 +40,6 @@ set(SAM_SRC
 #
 #####################################################################################################################
 
-set(CMAKE_CXX_STANDARD 11)
-
 if(MSVC)
 	add_compile_options(/W4 /MP)
 	foreach (flag_var CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG)
@@ -105,6 +103,7 @@ set_target_properties(SAMtest
     DEBUG_POSTFIX "d"
 	PREFIX ""
 	)
+target_compile_features(SAMtest PUBLIC cxx_std_11)
 
 if (MSVC)
 	set_target_properties(SAMtest PROPERTIES
