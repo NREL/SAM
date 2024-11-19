@@ -646,7 +646,7 @@
         "\t      || tech == 'PVWatts Wind Battery Hybrid' \r",
         "\t      || tech == 'PVWatts Wind FuelCell Battery Hybrid' \r",
         "\t      || tech == 'Photovoltaic Wind Battery Hybrid' \r",
-        "\t      || tech == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t      || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
         "\t\tland_area = ${total_land_area}; }",
         "\telse {\r",
         "\t\tland_area = 0; }",

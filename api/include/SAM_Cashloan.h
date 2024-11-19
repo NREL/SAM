@@ -182,7 +182,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -190,7 +190,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
@@ -270,7 +270,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -278,7 +278,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -2605,6 +2605,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Cashloan_Outputs_irr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err);
@@ -2632,6 +2634,8 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_table ptr, SAM_error *err);
 

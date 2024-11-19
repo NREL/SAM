@@ -459,7 +459,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -467,7 +467,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
@@ -547,7 +547,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -555,7 +555,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: generic_system,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -2722,7 +2722,7 @@ extern "C"
 	//
 
 	/**
-	 * Set monthly_energy: Monthly energy [kWh]
+	 * Set monthly_energy: Monthly AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: LENGTH = 12
 	 * required if: None

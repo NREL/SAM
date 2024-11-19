@@ -12,6 +12,48 @@
         ]
     ],
     "adjust_timeindex": [
+        0.0
+    ],
+    "albedo": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+    ],
+    "analysis_period": 25.0,
+    "analysis_period_warning": "",
+    "annual_albedo": 0.183951,
+    "annual_beam": 7.33564,
+    "annual_crit": 0.0,
+    "annual_diffuse": 1.34843,
+    "annual_global": 5.79476,
+    "annual_peak": 274.231,
+    "annual_snow": "nan",
+    "annual_tdry": 21.9385,
+    "annual_twet": "nan",
+    "annual_wspd": 1.78648,
+    "array_type": 1.0,
+    "azimuth": 180.0,
+    "batt_adjust": 0.0,
+    "batt_adjust_constant": 0.0,
+    "batt_adjust_en_periods": 0.0,
+    "batt_adjust_en_timeindex": 0.0,
+    "batt_adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "batt_adjust_timeindex": [
         0.0,
         0.0,
         0.0,
@@ -8773,34 +8815,6 @@
         0.0,
         0.0
     ],
-    "albedo": [
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2,
-        0.2
-    ],
-    "analysis_period": 25.0,
-    "analysis_period_warning": "",
-    "annual_albedo": 0.183951,
-    "annual_beam": 7.33564,
-    "annual_crit": 0.0,
-    "annual_diffuse": 1.34843,
-    "annual_global": 5.79476,
-    "annual_peak": 274.231,
-    "annual_snow": "nan",
-    "annual_tdry": 21.9385,
-    "annual_twet": "nan",
-    "annual_wspd": 1.78648,
-    "array_type": 1.0,
-    "azimuth": 180.0,
     "batt_custom_dispatch": [
         0.0
     ],

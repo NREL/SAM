@@ -20,6 +20,12 @@ SAM_EXPORT void SAM_Battery_Simulation_percent_complete_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Simulation_timestep_minutes_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "timestep_minutes", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_period", number);
@@ -590,6 +596,12 @@ SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_ns
 	});
 }
 
+SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "batt_dispatch_auto_can_curtailcharge", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "batt_dispatch_auto_can_fuelcellcharge", number);
@@ -974,9 +986,21 @@ SAM_EXPORT void SAM_Battery_PriceSignal_ppa_price_input_aset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv1_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv1_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv2_percent_gen", number);
 	});
 }
 
@@ -986,9 +1010,21 @@ SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv2_revenue_single_mset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv3_percent_gen", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_ancserv3_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_ancserv4_percent_gen", number);
 	});
 }
 
@@ -1031,6 +1067,12 @@ SAM_EXPORT void SAM_Battery_Revenue_mp_enable_market_percent_gen_nset(SAM_table 
 SAM_EXPORT void SAM_Battery_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "mp_energy_market_revenue_single", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Battery_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "mp_market_percent_gen", number);
 	});
 }
 
@@ -1309,6 +1351,15 @@ SAM_EXPORT double SAM_Battery_Simulation_percent_complete_nget(SAM_table ptr, SA
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "percent_complete", &result))
 		make_access_error("SAM_Battery", "percent_complete");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Simulation_timestep_minutes_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "timestep_minutes", &result))
+		make_access_error("SAM_Battery", "timestep_minutes");
 	});
 	return result;
 }
@@ -2188,6 +2239,15 @@ SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_clipcharge_
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "batt_dispatch_auto_can_curtailcharge", &result))
+		make_access_error("SAM_Battery", "batt_dispatch_auto_can_curtailcharge");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Battery_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2792,12 +2852,30 @@ SAM_EXPORT double* SAM_Battery_PriceSignal_ppa_price_input_aget(SAM_table ptr, i
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv1_percent_gen", &result))
+		make_access_error("SAM_Battery", "mp_ancserv1_percent_gen");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv1_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Battery", "mp_ancserv1_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv2_percent_gen", &result))
+		make_access_error("SAM_Battery", "mp_ancserv2_percent_gen");
 	});
 	return result;
 }
@@ -2812,12 +2890,30 @@ SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv2_revenue_single_mget(SAM_table
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv3_percent_gen", &result))
+		make_access_error("SAM_Battery", "mp_ancserv3_percent_gen");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Battery_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_matrix(ptr, "mp_ancserv3_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Battery", "mp_ancserv3_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_ancserv4_percent_gen", &result))
+		make_access_error("SAM_Battery", "mp_ancserv4_percent_gen");
 	});
 	return result;
 }
@@ -2883,6 +2979,15 @@ SAM_EXPORT double* SAM_Battery_Revenue_mp_energy_market_revenue_single_mget(SAM_
 	result = ssc_data_get_matrix(ptr, "mp_energy_market_revenue_single", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Battery", "mp_energy_market_revenue_single");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Battery_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "mp_market_percent_gen", &result))
+		make_access_error("SAM_Battery", "mp_market_percent_gen");
 	});
 	return result;
 }

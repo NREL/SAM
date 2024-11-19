@@ -683,7 +683,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.contingency"
+                    "String": "marinebatt.cost.contingency"
                 },
                 "X": {
                     "Type": 3.0,
@@ -766,7 +766,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.contingency_percent"
+                    "String": "marinebatt.cost.contingency_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -849,7 +849,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.fixed"
+                    "String": "marinebatt.cost.epc.fixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -932,7 +932,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.nonfixed"
+                    "String": "marinebatt.cost.epc.nonfixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1015,7 +1015,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.percent"
+                    "String": "marinebatt.cost.epc.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1098,7 +1098,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.epc.total"
+                    "String": "marinebatt.cost.epc.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1181,7 +1181,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.installed_per_capacity"
+                    "String": "marinebatt.cost.installed_per_capacity"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1264,7 +1264,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.fixed"
+                    "String": "marinebatt.cost.plm.fixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1347,7 +1347,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.nonfixed"
+                    "String": "marinebatt.cost.plm.nonfixed"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1430,7 +1430,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.percent"
+                    "String": "marinebatt.cost.plm.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1513,7 +1513,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.plm.total"
+                    "String": "marinebatt.cost.plm.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1596,7 +1596,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.percent"
+                    "String": "marinebatt.cost.sales_tax.percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1679,7 +1679,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.total"
+                    "String": "marinebatt.cost.sales_tax.total"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1762,7 +1762,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "genericsys.cost.sales_tax.value"
+                    "String": "marinebatt.cost.sales_tax.value"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3397,7 +3397,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.contingency": {
+        "marinebatt.cost.contingency": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Battery contingency cost",
@@ -3410,7 +3410,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.contingency_percent": {
+        "marinebatt.cost.contingency_percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Contingency cost",
@@ -3423,7 +3423,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.fixed": {
+        "marinebatt.cost.epc.fixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Fixed battery EPC cost",
@@ -3436,7 +3436,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.nonfixed": {
+        "marinebatt.cost.epc.nonfixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Nonfixed battery EPC cost",
@@ -3449,7 +3449,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.percent": {
+        "marinebatt.cost.epc.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Battery EPC percent",
@@ -3462,7 +3462,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.epc.total": {
+        "marinebatt.cost.epc.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Battery EPC total",
@@ -3475,7 +3475,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.installed_per_capacity": {
+        "marinebatt.cost.installed_per_capacity": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Total installed cost per capacity ",
@@ -3488,7 +3488,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.fixed": {
+        "marinebatt.cost.plm.fixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Fixed battery PLM cost",
@@ -3501,7 +3501,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.nonfixed": {
+        "marinebatt.cost.plm.nonfixed": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Nonfixed battery PLM cost",
@@ -3514,7 +3514,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.percent": {
+        "marinebatt.cost.plm.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Battery PLM percent",
@@ -3527,7 +3527,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.plm.total": {
+        "marinebatt.cost.plm.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Battery PLM total",
@@ -3540,7 +3540,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.percent": {
+        "marinebatt.cost.sales_tax.percent": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Sales tax basis as percent of direct cost",
@@ -3553,7 +3553,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.total": {
+        "marinebatt.cost.sales_tax.total": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Sales tax total cost",
@@ -3566,7 +3566,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "genericsys.cost.sales_tax.value": {
+        "marinebatt.cost.sales_tax.value": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Sales tax rate",
@@ -3631,38 +3631,38 @@
         "};",
         "",
         "equations{ 'total_installed_battery_cost' } = define() {",
-        "\treturn ${total_direct_battery_cost}+${total_indirect_battery_cost}+${genericsys.cost.sales_tax.total}; };",
+        "\treturn ${total_direct_battery_cost}+${total_indirect_battery_cost}+${marinebatt.cost.sales_tax.total}; };",
         "",
-        "equations{ 'genericsys.cost.installed_per_capacity' } = define() {",
+        "equations{ 'marinebatt.cost.installed_per_capacity' } = define() {",
         "\treturn ${total_installed_battery_cost}/${system_capacity}/1000; };",
         "",
-        "equations{ 'genericsys.cost.epc.nonfixed' } = define() {",
-        "\treturn ${total_direct_battery_cost}*${genericsys.cost.epc.percent}/100; };",
+        "equations{ 'marinebatt.cost.epc.nonfixed' } = define() {",
+        "\treturn ${total_direct_battery_cost}*${marinebatt.cost.epc.percent}/100; };",
         "",
-        "equations{ 'genericsys.cost.sales_tax.value' } = define() {",
+        "equations{ 'marinebatt.cost.sales_tax.value' } = define() {",
         "\treturn ${sales_tax_rate}; };",
         "",
-        "equations{ 'genericsys.cost.contingency' } = define() {",
-        "\treturn ${genericsys.cost.contingency_percent}/100",
+        "equations{ 'marinebatt.cost.contingency' } = define() {",
+        "\treturn ${marinebatt.cost.contingency_percent}/100",
         "*(${battery_total}); };",
         "",
         "equations{ 'total_indirect_battery_cost' } = define() {",
-        "\treturn ${genericsys.cost.epc.total}+${genericsys.cost.plm.total}; };",
+        "\treturn ${marinebatt.cost.epc.total}+${marinebatt.cost.plm.total}; };",
         "",
-        "equations{ 'genericsys.cost.sales_tax.total' } = define() {",
-        "\treturn ${genericsys.cost.sales_tax.value}/100*${total_direct_battery_cost}*${genericsys.cost.sales_tax.percent}/100; };",
+        "equations{ 'marinebatt.cost.sales_tax.total' } = define() {",
+        "\treturn ${marinebatt.cost.sales_tax.value}/100*${total_direct_battery_cost}*${marinebatt.cost.sales_tax.percent}/100; };",
         "",
         "equations{ 'total_direct_battery_cost' } = define() {",
-        "\treturn ${genericsys.cost.contingency}+${battery_total}; };",
+        "\treturn ${marinebatt.cost.contingency}+${battery_total}; };",
         "",
-        "equations{ 'genericsys.cost.plm.nonfixed' } = define() {",
-        "\treturn ${total_direct_battery_cost}*${genericsys.cost.plm.percent}/100; };",
+        "equations{ 'marinebatt.cost.plm.nonfixed' } = define() {",
+        "\treturn ${total_direct_battery_cost}*${marinebatt.cost.plm.percent}/100; };",
         "",
-        "equations{ 'genericsys.cost.epc.total' } = define() {",
-        "\treturn ${genericsys.cost.epc.fixed}+${genericsys.cost.epc.nonfixed}; };",
+        "equations{ 'marinebatt.cost.epc.total' } = define() {",
+        "\treturn ${marinebatt.cost.epc.fixed}+${marinebatt.cost.epc.nonfixed}; };",
         "",
-        "equations{ 'genericsys.cost.plm.total' } = define() {",
-        "\treturn ${genericsys.cost.plm.fixed}+${genericsys.cost.plm.nonfixed}; };",
+        "equations{ 'marinebatt.cost.plm.total' } = define() {",
+        "\treturn ${marinebatt.cost.plm.fixed}+${marinebatt.cost.plm.nonfixed}; };",
         "",
         "equations {'battery_total_cost_lcos' } = define() {",
         "\treturn ${total_installed_battery_cost};",
