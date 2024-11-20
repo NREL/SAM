@@ -678,1168 +678,6 @@
                 }
             }
         },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.contingency"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 642.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 75.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 6.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.contingency_percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 366.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 75.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.epc.fixed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 513.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 192.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 5.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.epc.nonfixed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 384.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 192.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.epc.percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 249.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 192.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 4.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.epc.total"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 642.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 192.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 11.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.installed_per_capacity"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 645.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 411.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 133.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.plm.fixed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 513.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 7.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.plm.nonfixed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 384.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 13.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.plm.percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 249.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 100.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 6.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.plm.total"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 642.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 216.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 136.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.sales_tax.percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 267.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 321.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 8.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.sales_tax.total"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 645.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 321.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 133.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 2.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": "$ "
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 18.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "standalonebatt.cost.sales_tax.value"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 444.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 321.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                }
-            }
-        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -3073,6 +1911,1168 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "standalonebatt.cost.contingency"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 136.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.contingency_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 366.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.epc.fixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 5.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.epc.nonfixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.epc.percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.epc.total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 136.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.installed_per_capacity"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 645.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 411.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 133.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.plm.fixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 513.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.plm.nonfixed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.plm.percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 249.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.plm.total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 642.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 216.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 136.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.sales_tax.percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.sales_tax.total"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 645.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 133.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": "$ "
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "standalonebatt.cost.sales_tax.value"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "total_direct_cost"
                 },
                 "X": {
@@ -3496,19 +3496,6 @@
             "Group": "Installation Costs",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "standalonebatt.cost.per_watt": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Cost per watt",
-            "Units": "$/W",
-            "Group": "Installation Costs",
-            "IndexLabels": "",
-            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
