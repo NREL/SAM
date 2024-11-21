@@ -4560,7 +4560,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Heliostat startup energy",
-            "Units": "kWe-hr",
+            "Units": "kWhe",
             "Group": "Heliostat Field",
             "IndexLabels": "",
             "Flags": 2.0,

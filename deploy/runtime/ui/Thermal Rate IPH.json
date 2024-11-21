@@ -1,0 +1,737 @@
+{
+    "Name": "Thermal Rate IPH",
+    "Width": 1153.0,
+    "Height": 606.0,
+    "FormObjects": {
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 459.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 123.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 352.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 148.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "In Value mode, enter a rate in real terms because SAM applies both escalation and inflation to the total first-year thermal bill to calculate the annual thermal bill in later years. In Schedule mode, enter rates in nominal terms because inflation does not apply. See Help for details."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 224"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 369.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Annual Escalation"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 226"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 384.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Buy Rate"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 49"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 824.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 272.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Thermal rates"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 786.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Buy rates for heat purchases. You can specify a flat rate, a monthly rate, or a time-series rate. "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_buy_rate_flat_heat_btu"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_buy_rate_option"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 86.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Flat buy rate|Time series buy rates|Monthly buy rates"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_conversion_efficiency"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 93.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 69.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "MonthlyFactor": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_monthly_buy_rate_heat_btu"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Monthly heat buy rate"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_rate_escalation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 639.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 75.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "%/year"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type an escalation rate (%) for each year. Each year's rate applies to the first-year electricity cost. Inflation does not apply."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_timestep_buy_rate_heat_btu"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 243.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "$/MMBtu"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Enter thermal buy rates in $/MMBtu"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "thermal_buy_rate_flat_heat_btu": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Flat rate",
+            "Units": "$/MMBtu",
+            "Group": "Thermal Rate",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "thermal_buy_rate_option": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": " ",
+            "Units": " ",
+            "Group": "Thermal Rate",
+            "IndexLabels": "Flat buy rate|Timestep buy rate| Monthly buy rate",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "thermal_conversion_efficiency": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Nominal heat conversion efficiency",
+            "Units": "%",
+            "Group": "Thermal Rate",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 100.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "thermal_monthly_buy_rate_heat_btu": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Monthly",
+            "Units": "$/MMBtu",
+            "Group": "Thermal Rate",
+            "IndexLabels": "$/MMBtu|1",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "thermal_rate_escalation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Thermal rate escalation",
+            "Units": "%/yr",
+            "Group": "Thermal Rate",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "thermal_timestep_buy_rate_heat_btu": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Timestep",
+            "Units": "$/MMBtu",
+            "Group": "Thermal Rate",
+            "IndexLabels": "$/MMBtu|1",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [],
+    "Callbacks": [
+        "",
+        "on_load{'Thermal Rate IPH'} = define() {",
+        "\tfin = financing();",
+        "\tbuy_enable = (fin == \"Commercial\");",
+        "\tenable(\"thermal_buy_rate_option\",fin);",
+        "\tenable(\"thermal_buy_rate_flat_heat_btu\",fin);",
+        "\tenable(\"thermal_timestep_buy_rate_heat_btu\",fin);",
+        "\tif (buy_enable) {",
+        "\t\ton_change{'thermal_buy_rate_option'}();",
+        "\t}",
+        "};",
+        "",
+        "on_change{'thermal_buy_rate_option'} = define() {",
+        "\tx = value('thermal_buy_rate_option');",
+        "\tenable('thermal_buy_rate_flat_heat_btu',x==0);",
+        "\tenable('thermal_timestep_buy_rate_heat_btu',x==1);\r",
+        "\tenable('thermal_monthly_buy_rate_heat_btu',x==2);",
+        "};",
+        ""
+    ]
+}

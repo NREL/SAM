@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Base PPA Price and IRR Evaluation Year"
+                    "String": "PPA Price"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -326,13 +326,13 @@
         "flip_target_year": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "IRR evaluation year",
+            "Label": "IRR target year",
             "Units": " ",
             "Group": "PPA Price and IRR",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 10.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -345,7 +345,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -372,7 +372,7 @@
             "Group": "PPA Price and IRR",
             "IndexLabels": "",
             "Flags": 8.0,
-            "DefaultValue": 0.0,
+            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""

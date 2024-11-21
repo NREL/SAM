@@ -55,6 +55,36 @@ version_upgrade{'2024.12.12'} = define() {
 	
 	const cfg = config();
 
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough')
+	{
+		message('We added new TES models and modified certain TES variable names in the physical trough model', 'warning');
+				
+		if(isalnum(oldvalue('tes_tank_insul_percent')) == true)
+		{
+			// Piston Cylinder TES is now tes_type == 3 (two tank == 1, packed bed == 2)
+			old_tes_type = value('tes_type');
+			if(old_tes_type == 1)
+			{
+				tes_type = 3;
+			}
+			value('tes_type', tes_type);
+			value('TES_DISP_tes_type', tes_type - 1);
+		}
+
+		value('tes_cyl_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
+		value('tes_cyl_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
+		value('tes_cyl_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
+		value('tes_cyl_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
+		value('tes_cyl_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
+	}
+};
+
+
+version_upgrade{'2024.5.28'} = define() {
+	
+	const cfg = config();
+
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
 
@@ -102,7 +132,6 @@ version_upgrade{'2024.12.12'} = define() {
 			value('use_abs_or_rel_mdot_limit', 0);
 			value('f_htfmin', 0.25);
 			value('f_htfmax', 1.2);
-			
 	}
 	
 	// Linear Fresnel Model Changes

@@ -640,11 +640,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 285.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1095,11 +1095,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 408.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1178,11 +1178,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1261,11 +1261,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 528.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1415,6 +1415,172 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 10.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_shutdown"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "T_startup"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 225.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
                 }
             }
         },
@@ -1925,11 +2091,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 552.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1966,11 +2132,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 576.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2131,11 +2297,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 309.0
+                    "Integer": 384.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2911,11 +3077,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 336.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 501.0
+                    "Integer": 579.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3964,11 +4130,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 504.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4047,11 +4213,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 480.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4130,11 +4296,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 381.0
+                    "Integer": 456.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5287,11 +5453,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5684,6 +5850,32 @@
             "Flags": 2.0,
             "DefaultValue": 50.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_shutdown": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Shutdown temperature",
+            "Units": "C",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "T_startup": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Startup temperature",
+            "Units": "C",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

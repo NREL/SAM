@@ -56029,6 +56029,7 @@
     "is_rec_model_trans": 0.0,
     "is_rec_startup_from_T_soln": 0.0,
     "is_rec_startup_trans": 0.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -56930,6 +56931,9 @@
     "th_tube": 1.25,
     "time_start": 0.0,
     "time_stop": 31536000.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 548376000.0,
     "total_direct_cost_calc": 548376000.0,
