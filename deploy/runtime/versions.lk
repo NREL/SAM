@@ -51,8 +51,7 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
-// Placeholder numbewr 
-version_upgrade{'2024.9.15'} = define() {
+version_upgrade{'2024.12.12'} = define() {
 	
 	const cfg = config();
 
