@@ -5325,6 +5325,16 @@ SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_net_aget(SAM_table ptr,
 	return result;
 }
 
+SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_net_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_net_heat_btu", length);
+	if (!result)
+		make_access_error("SAM_SingleownerHeat", "cf_energy_net_heat_btu");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{

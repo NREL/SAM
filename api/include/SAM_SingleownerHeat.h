@@ -3547,6 +3547,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_net_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_SingleownerHeat_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);

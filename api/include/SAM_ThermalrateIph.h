@@ -249,6 +249,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_ThermalrateIph_Outputs_thermal_savings_year1_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_ThermalrateIph_Outputs_year1_monthly_load_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
 #ifdef __cplusplus
 } /* end of extern "C" { */
 #endif
