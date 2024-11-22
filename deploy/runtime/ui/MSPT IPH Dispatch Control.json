@@ -1,7 +1,7 @@
 {
     "Name": "MSPT IPH Dispatch Control",
-    "Width": 851.0,
-    "Height": 742.0,
+    "Width": 845.0,
+    "Height": 775.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -74,19 +74,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 105.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 497.0
+                    "Integer": 557.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 728.0
+                    "Integer": 758.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 447.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -247,11 +247,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 414.0
+                    "Integer": 465.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -292,7 +292,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 237.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -393,11 +393,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 291.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -409,7 +409,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use hourly heat sink fraction?"
+                    "String": "Use hourly heat sink fraction"
                 },
                 "State": {
                     "Type": 2.0,
@@ -434,11 +434,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 290.0
+                    "Integer": 365.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -450,7 +450,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use output fraction as maximum heat sink output?"
+                    "String": "Use output fraction as maximum heat sink output"
                 },
                 "State": {
                     "Type": 2.0,
@@ -475,7 +475,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 51.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -520,7 +520,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 165.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -565,7 +565,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 468.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -604,7 +604,7 @@
             "Type": 2.0,
             "Label": "Heat sink output fraction",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -625,9 +625,9 @@
         "is_timestep_load_fractions": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Use hourly heat sink fraction?",
+            "Label": "Use hourly heat sink fraction",
             "Units": "",
-            "Group": "",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
@@ -638,13 +638,13 @@
         "is_tod_pc_target_also_pc_max": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Use output fraction as maximum heat sink output",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -653,7 +653,7 @@
             "Type": 2.0,
             "Label": "Hourly heat sink fractions",
             "Units": "",
-            "Group": "",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -668,7 +668,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekday schedule matrix",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -994,7 +994,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekend schedule matrix",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [

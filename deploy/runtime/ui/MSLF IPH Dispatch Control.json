@@ -1,7 +1,7 @@
 {
     "Name": "MSLF IPH Dispatch Control",
-    "Width": 844.0,
-    "Height": 719.0,
+    "Width": 841.0,
+    "Height": 744.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 315.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -74,19 +74,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 512.0
+                    "Integer": 530.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 713.0
+                    "Integer": 737.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -867,15 +867,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 384.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 21.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 350.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -887,7 +887,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use hourly heat sink fraction?"
+                    "String": "Use hourly heat sink fractions"
                 },
                 "State": {
                     "Type": 2.0,
@@ -908,15 +908,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 289.0
+                    "Integer": 350.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -928,7 +928,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use output fraction as maximum heat sink output?"
+                    "String": "Use output fraction as maximum heat sink output"
                 },
                 "State": {
                     "Type": 2.0,
@@ -949,11 +949,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 567.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 48.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1745,7 +1745,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1790,7 +1790,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1829,7 +1829,7 @@
             "Type": 2.0,
             "Label": "Turbine output fraction TOU periods",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": [
@@ -1842,9 +1842,9 @@
         "is_timestep_load_fractions": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "Use hourly heat sink fractions",
             "Units": "",
-            "Group": "",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": 0.0,
@@ -1857,11 +1857,11 @@
             "Type": 1.0,
             "Label": "Use turbine output fraction as maximum cycle output",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1870,7 +1870,7 @@
             "Type": 2.0,
             "Label": "Hourly heat sink fractions",
             "Units": "",
-            "Group": "",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -1885,11 +1885,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 1",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.1,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1898,11 +1898,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 2",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1911,11 +1911,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 3",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1924,11 +1924,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 4",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1937,11 +1937,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 5",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1950,11 +1950,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 6",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1963,11 +1963,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 7",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1976,11 +1976,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 8",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1989,11 +1989,11 @@
             "Type": 1.0,
             "Label": "Turbine output fraction period 9",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2002,7 +2002,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekday schedule matrix",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
@@ -2328,7 +2328,7 @@
             "Type": 3.0,
             "Label": "Dispatch weekend schedule matrix",
             "Units": " ",
-            "Group": "System Control",
+            "Group": "Dispatch Control",
             "IndexLabels": "",
             "Flags": 3.0,
             "DefaultValue": [
