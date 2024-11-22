@@ -1011,7 +1011,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 59.0
+                    "Integer": 74.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1048,7 +1048,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -1073,7 +1073,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 59.0
+                    "Integer": 74.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1110,7 +1110,7 @@
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
@@ -2121,7 +2121,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 27.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2129,7 +2129,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 813.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2141,7 +2141,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Clipping correction accounts for inverter power limiting that may occur within the hour on partially cloudy days (for hourly simulations only)."
+                    "String": "Clipping correction accounts for inverter power limiting that may occur within the hour on partly cloudy days (hourly simulations only)."
                 },
                 "TextColour": {
                     "Type": 4.0,

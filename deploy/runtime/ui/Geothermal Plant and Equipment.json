@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Plant and Equipment",
-    "Width": 857.0,
-    "Height": 1016.0,
+    "Width": 844.0,
+    "Height": 774.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -526,11 +526,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 693.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 480.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1848,7 +1848,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 792.0
+                    "Integer": 807.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1897,7 +1897,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 105.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2362,11 +2362,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 411.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3004,7 +3004,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3087,11 +3087,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3294,11 +3294,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 693.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3377,11 +3377,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 693.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3462,7 +3462,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
