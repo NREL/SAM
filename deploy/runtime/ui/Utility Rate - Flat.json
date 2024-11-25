@@ -1,7 +1,7 @@
 {
     "Name": "Utility Rate - Flat",
-    "Width": 1414.0,
-    "Height": 586.0,
+    "Width": 1413.0,
+    "Height": 567.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -234,11 +234,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 606.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 513.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
