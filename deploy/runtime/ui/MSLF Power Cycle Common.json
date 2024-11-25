@@ -1435,27 +1435,9 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
-        },
-        "system_capacity": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Power block startup time",
-            "Units": "kW",
-            "Group": "MSLF Power Cycle",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
         }
     },
     "Equations": [
-        "// This is only used by the financial models. NOT for cmod\r",
-        "equations{ 'system_capacity' } = define() {\r",
-        "\treturn ${nameplate}*1000; };//MWh to kWh\r",
-        "\r",
-        "\r",
         "equations{ 'PB_COPY_P_ref' } = define(){\r",
         "\treturn ${P_ref}; };",
         "\r",

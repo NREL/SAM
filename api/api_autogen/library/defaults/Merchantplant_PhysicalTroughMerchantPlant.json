@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": -59.175,
+			"construction_financing_cost": 4.25168e+07,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -35,7 +35,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": -789000,
+			"system_capacity": 99900,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -46,10 +46,10 @@
 			"om_fixed_escal": 0,
 			"om_production": [4.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": -789
+			"total_installed_cost": 5.6689e+08
 		},
 		"LandLease": {
-			"land_area": -789,
+			"land_area": 835.127,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -219266,7 +219266,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": -789000
+			"system_capacity": 99900
 		},
 		"UtilityBill": {
 		},
@@ -219281,7 +219281,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": -789
+			"cp_system_nameplate": 99.9
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0

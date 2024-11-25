@@ -27856,6 +27856,7 @@
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "is_dispatch": 0.0,
+    "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
     "itc_fed_amount": [
         0.0
@@ -28705,6 +28706,9 @@
     "theta_dep": 10.0,
     "theta_stow": 170.0,
     "tilt": 0.0,
+    "timestep_load_fractions": [
+        0.0
+    ],
     "tod_library": "Uniform Dispatch",
     "total_Ap_in": 877000.0,
     "total_direct_cost": 503059000.0,

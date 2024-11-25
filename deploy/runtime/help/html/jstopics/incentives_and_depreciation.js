@@ -2,7 +2,7 @@ hmLoadTopic({
 hmKeywords:"",
 hmTitle:"Incentives and Depreciation",
 hmDescription:"The Incentives and Depreciation input pages are where you describe financial incentives and depreciation parameters.",
-hmPrevLink:"tod_factors.html",
+hmPrevLink:"revenue_iph.html",
 hmNextLink:"incentives.html",
 hmParentLink:"index.html",
 hmBreadCrumbs:"",

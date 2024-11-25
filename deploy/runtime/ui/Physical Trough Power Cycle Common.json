@@ -1371,19 +1371,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "T_startup": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Minimum required startup temp",
-            "Units": "°C",
-            "Group": "Power Cycle",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 350.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "cycle_cutoff_frac": {
             "Version": 4.0,
             "Type": 1.0,

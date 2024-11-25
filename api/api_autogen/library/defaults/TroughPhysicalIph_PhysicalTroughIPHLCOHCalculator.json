@@ -1,6 +1,7 @@
 {
 	"defaults": {
 		"SystemControl": {
+			"is_dispatch": 0
 		},
 		"Weather": {
 		},
@@ -16,8 +17,8 @@
 				[1.000000, 1.000000, 1.000000, 1.000000]
 			],
 			"AnnulusGas": [
-				[27.000000, 1.000000, 1.000000, 1.000000],
-				[27.000000, 1.000000, 1.000000, 1.000000],
+				[27.000000, 1.000000, 1.000000, 27.000000],
+				[27.000000, 1.000000, 1.000000, 27.000000],
 				[27.000000, 1.000000, 1.000000, 27.000000],
 				[27.000000, 1.000000, 1.000000, 27.000000]
 			],
@@ -142,6 +143,8 @@
 			"T_fp": 10,
 			"T_loop_in_des": 90,
 			"T_loop_out": 150,
+			"T_shutdown": 109.8,
+			"T_startup": 109.8,
 			"Tau_envelope": [
 				[0.964000, 0.964000, 1.000000, 0.000000],
 				[0.964000, 0.964000, 1.000000, 0.000000],
@@ -308,22 +311,75 @@
 		"HeatSink": {
 			"pb_pump_coef": 0.55
 		},
+		"ParallelHeater": {
+		},
+		"SystemCosts": {
+		},
 		"TES": {
 			"cold_tank_Thtr": 60,
 			"cold_tank_max_heat": 0.5,
+			"d_tank_in": 0,
 			"dt_hot": 5,
-			"h_tank": 15,
+			"h_tank_in": 15,
 			"h_tank_min": 0.5,
 			"hot_tank_Thtr": 110,
 			"hot_tank_max_heat": 1,
 			"init_hot_htf_percent": 30,
+			"is_h_tank_fixed": 1,
 			"store_fl_props": [
 				[1.000000]
 			],
 			"store_fluid": 31,
 			"tank_pairs": 1,
+			"tes_cyl_piston_loss_poly": [0.000000, 0.000000, 0.000000, 0.000000],
+			"tes_cyl_tank_cp": 0.49,
+			"tes_cyl_tank_dens": 8000,
+			"tes_cyl_tank_insul_percent": 0,
+			"tes_cyl_tank_thick": 0.0254,
+			"tes_n_tsteps": 50,
+			"tes_pb_T_charge_min": 0,
+			"tes_pb_T_cold_delta": 10,
+			"tes_pb_T_hot_delta": 10,
+			"tes_pb_cp_solid": 0.83,
+			"tes_pb_dens_solid": 2500,
+			"tes_pb_f_oversize": 1,
+			"tes_pb_k_eff": 5.69,
+			"tes_pb_n_xsteps": 99,
+			"tes_pb_void_frac": 0.22,
+			"tes_type": 1,
 			"tshours": 6,
 			"u_tank": 0.3
+		},
+		"Controller": {
+			"T_tank_hot_inlet_min": 400,
+			"V_tes_des": 1.85,
+			"custom_tes_p_loss": 0,
+			"custom_tes_pipe_sizes": 0,
+			"has_hot_tank_bypass": 0,
+			"k_tes_loss_coeffs": [
+				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+			],
+			"non_solar_field_land_area_multiplier": 1.1,
+			"specified_solar_multiple": 2.5,
+			"specified_total_aperture": 20000,
+			"tanks_in_parallel": 1,
+			"tes_diams": [
+				[-1.000000]
+			],
+			"tes_pump_coef": 0.15,
+			"tes_wallthicks": [
+				[-1.000000]
+			],
+			"trough_loop_control": [4.000000, 1.000000, 1.000000, 4.000000, 1.000000, 1.000000, 3.000000, 1.000000, 1.000000, 2.000000, 1.000000, 1.000000, 1.000000],
+			"use_solar_mult_or_aperture_area": 0
+		},
+		"SysControl": {
+			"disp_frequency": 24,
+			"disp_horizon": 48,
+			"disp_max_iter": 50000,
+			"disp_mip_gap": 0.001,
+			"disp_time_weighting": 0.999,
+			"disp_timeout": 5
 		},
 		"Tou": {
 			"f_turb_tou_periods": [1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
@@ -364,46 +420,19 @@
 		},
 		"FinancialSolutionMode": {
 		},
-		"ElectricityRates": {
+		"Revenue": {
 		},
 		"TimeOfDeliveryFactors": {
 		},
-		"Revenue": {
-		},
 		"System": {
-			"aux_array": [0.023000, 1.000000, 0.483000, 0.571000, 0.000000],
-			"bop_array": [0.000000, 1.000000, 0.000000, 0.483000, 0.000000],
+			"aux_array": [0.023000, 1.000000, 0.483000, 0.517000, 0.000000],
+			"bop_array": [0.000000, 1.000000, 0.483000, 0.517000, 0.000000],
 			"pb_fixed_par": 0.0055,
-			"washing_frequency": 12,
+			"washing_frequency": 63,
 			"water_usage_per_wash": 0.7
 		},
 		"Powerblock": {
 			"L_rnr_pb": 25
-		},
-		"Controller": {
-			"T_tank_hot_inlet_min": 400,
-			"V_tes_des": 1.85,
-			"custom_tes_p_loss": 0,
-			"custom_tes_pipe_sizes": 0,
-			"has_hot_tank_bypass": 0,
-			"k_tes_loss_coeffs": [
-				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
-			],
-			"non_solar_field_land_area_multiplier": 1.1,
-			"specified_solar_multiple": 2.5,
-			"specified_total_aperture": 20992,
-			"tanks_in_parallel": 1,
-			"tes_diams": [
-				[-1.000000]
-			],
-			"tes_pump_coef": 0.15,
-			"tes_wallthicks": [
-				[-1.000000]
-			],
-			"trough_loop_control": [4.000000, 1.000000, 1.000000, 4.000000, 1.000000, 1.000000, 3.000000, 1.000000, 1.000000, 2.000000, 1.000000, 1.000000, 1.000000],
-			"use_solar_mult_or_aperture_area": 0
-		},
-		"TowerAndReceiver": {
 		},
 		"CapitalCosts": {
 			"csp_dtr_cost_bop_per_kwe": 90,
@@ -425,26 +454,6 @@
 			"sales_tax_rate": 5
 		},
 		"FinancialParameters": {
-			"const_per_interest_rate1": 0,
-			"const_per_interest_rate2": 0,
-			"const_per_interest_rate3": 0,
-			"const_per_interest_rate4": 0,
-			"const_per_interest_rate5": 0,
-			"const_per_months1": 0,
-			"const_per_months2": 0,
-			"const_per_months3": 0,
-			"const_per_months4": 0,
-			"const_per_months5": 0,
-			"const_per_percent1": 0,
-			"const_per_percent2": 0,
-			"const_per_percent3": 0,
-			"const_per_percent4": 0,
-			"const_per_percent5": 0,
-			"const_per_upfront_rate1": 0,
-			"const_per_upfront_rate2": 0,
-			"const_per_upfront_rate3": 0,
-			"const_per_upfront_rate4": 0,
-			"const_per_upfront_rate5": 0
 		},
 		"AdjustmentFactors": {
 			"constant": 4,
@@ -454,6 +463,10 @@
 				[0.000000, 0.000000, 0.000000]
 			],
 			"timeindex": [0.000000]
+		},
+		"ElectricityRates": {
+		},
+		"Lifetime": {
 		}
 	}
 }

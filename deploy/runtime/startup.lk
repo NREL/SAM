@@ -22,7 +22,7 @@ addconfig( 'Standalone Battery', ['Residential', 'Commercial', 'Third Party', 'H
 addconfig( 'ETES', ['Single Owner']);
 addconfig( 'PTES', ['Single Owner']);
 // Concentrating Solar Power
-addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
+addconfig( 'Physical Trough', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'Commercial', 'None']);
 addconfig( 'Empirical Trough', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'MSPT', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'None']);
 addconfig( 'MSLF', ['Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback']);
@@ -30,10 +30,10 @@ addconfig( 'DSLF', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Pa
 //addconfig( 'Dish Stirling', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 addconfig( 'Generic CSP System', ['Commercial','Single Owner', 'Merchant Plant', 'Leveraged Partnership Flip', 'All Equity Partnership Flip', 'Sale Leaseback', 'LCOE Calculator', 'None']);
 // Heat
-addconfig( 'MSPT IPH', ['None', 'LCOH Calculator']);
-addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator']);
-addconfig( 'DSGL IPH', ['None', 'LCOH Calculator']);
-addconfig( 'MSLF IPH', ['None', 'LCOH Calculator']);
+addconfig( 'MSPT IPH', ['None', 'LCOH Calculator', 'Single Owner']);
+addconfig( 'Physical Trough IPH', ['None', 'LCOH Calculator', 'Single Owner', 'Commercial']);
+addconfig( 'DSGL IPH', ['None', 'LCOH Calculator', 'Single Owner']);
+addconfig( 'MSLF IPH', ['None', 'LCOH Calculator', 'Single Owner', 'Commercial']);
 // Marine Energy
 addconfig( 'MEwave', ['Single Owner', 'LCOE Calculator', 'None']);
 addconfig( 'MEwave Battery', ['Single Owner']);
@@ -390,6 +390,12 @@ function setup_iph_lcoefcr_cost_pages() // LCOE calculator will not work with to
            { 'sidebar'='Financial Parameters', 'help'='fin_lcoh'} );
 }
 
+function setup_iph_lcoefcr_cost_pages_no_elec() // LCOE calculator will not work with tower models because cost inputs required for solar pilot
+{
+  addpage( [['Financial LCOE Calc with Costs']],
+           { 'sidebar'='Financial Parameters', 'help'='fin_lcoh'} );
+}
+
 function setup_commercial_pages( mode ) // mode determines whether or not the building load calculator is included (see function:setup_elec_load_page)
 {
   setting( { 'analysis_period_var'='cf_length' } );
@@ -681,11 +687,16 @@ function setup_csp_physical_trough_pages()
 			{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle', 'exclusive_var' = 'pc_config',
 			  'exclusive_header_pages' = ['Physical Trough Power Cycle Common']} );
 
+
+	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
+			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'TES_DISP_tes_type',
+			  'exclusive_header_pages' = ['TES Common']} );
+
 	//addpage( [[ 'Physical Trough Power Block Common' ,
 	  //{'name' = 'Physical Trough Rankine Cycle', 'caption' = 'Rankine Cycle', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  //{ 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
 	//addpage( [[ 'Physical Trough Power Block' ]], { 'sidebar'='Power Cycle', 'help'='troughphysical_power_cycle' } );
-	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
+	//addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
 	addpage( [[ 'Physical Trough System Control' ,
 	  {'name' = 'Physical Trough Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
 	  { 'sidebar'='System Control', 'help'='troughphysical_system_control' } );
@@ -711,11 +722,9 @@ function setup_cst_physical_trough_pages()
 	 {'name'='Physical Trough Receiver Type 4', 'caption'='Receiver Type 4', 'collapsible'=true, 'collapsible_var'='hce_4_is_shown'} ]],
 	 { 'sidebar'='Receivers (HCEs)', 'help'='troughphysical_receivers_hces' } );
 
-	addpage( [[ 'Physical Trough Thermal Storage' ]], { 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage' } );
-
-	addpage( [[ 'Physical Trough IPH System Control' ,
-		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+	addpage( [[ 'TES Two Tank' ], [ 'TES Packed Bed' ], [ 'TES Pressurized Water Cylinder with Piston Separator' ]], 
+			{ 'sidebar'='Thermal Storage', 'help'='troughphysical_thermal_storage', 'exclusive_var' = 'TES_DISP_tes_type',
+			  'exclusive_header_pages' = ['TES Common']} );
 }
 
 function setup_csp_empirical_trough_pages()
@@ -1000,15 +1009,81 @@ setup_single_owner_dispatch_pages();
 setconfig( 'Physical Trough IPH', 'None' );
 setmodules( ['trough_physical_iph']);
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('Physical Trough IPH', 'LCOH Calculator');
 setmodules( ['trough_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Electricity Price LCOH', 'Financial TOD Factors']], { 'sidebar'='Electricity Rates', 'help'='tod_factors' });  
+//setup_iph_lcoefcr_cost_pages_no_elec();
 setup_iph_lcoefcr_cost_pages();
+
+setconfig('Physical Trough IPH', 'Single Owner');
+setmodules( ['trough_physical_iph', 'utilityrate5', 'singleowner_heat']);	// 'iph_to_lcoefcr', 
+setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+		  {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+addpage( [ ['Financial Solution Mode Single Owner IPH']],
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+
+setconfig( 'Physical Trough IPH', 'Commercial' );
+setmodules( ['trough_physical_iph', 'utilityrate5', 'thermalrate_iph', 'cashloan_heat']);
+setup_cst_physical_trough_pages();
+addpage( [[ 'Physical Trough IPH System Control' ,
+		{'name' = 'Physical Trough IPH Thermal Load', 'caption'='Thermal Load', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['Physical Trough IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_physical_trough' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Debt Min DSCR',
+		  'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  'Financial Depreciation Simple', ]],
+	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+setup_utility_rate();
+setup_elec_load_page( LOAD_SIMPLE );
+addpage( [[ 'Thermal Rate IPH' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+//addpage( [[ 'Thermal Load IPH' ]], 
+//         {'sidebar' = 'Thermal Load','help' = 'thermal_load'});
 
 // CSP - Physical Trough ///////////////////////////////////////////////////////
 setconfig( 'Physical Trough', 'LCOE Calculator' );
@@ -1070,6 +1145,17 @@ addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs'
 addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_merchant_plant_pages();
 setup_electricity_purchases();
+
+setconfig( 'Physical Trough', 'Commercial' );
+setmodules( ['trough_physical', 'grid', 'utilityrate5', 'cashloan']);
+setup_csp_physical_trough_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [[ 'Physical Trough Capital Costs' ]], { 'sidebar'='Installation Costs', 'help'='cc_trough' } );
+addpage( [[ 'Operating Costs', 'Operating Costs Land Lease' ]], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setup_commercial_pages(LOAD_SIMPLE);
+//setup_single_owner_pages();
+//setup_electricity_purchases();
+//setup_elec_load_page(1);
 
 // PVWatts /////////////////////////////////////////////////////////////////////
 setconfig( 'PVWatts', 'LCOE Calculator' );
@@ -1879,14 +1965,44 @@ setconfig('MSPT IPH', 'None');
 setmodules( ['mspt_iph']);
 setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 
 setconfig('MSPT IPH', 'LCOH Calculator');
 setmodules( ['mspt_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_MSPT_IPH_pages();
 addpage( [['Sales Tax Rate Single Input','MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
+
+setconfig('MSPT IPH', 'Single Owner');
+setmodules(['mspt_iph', 'utilityrate5', 'singleowner_heat']);
+setup_MSPT_IPH_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+//addpage([['Electricity Purchases Heat Model','Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+		  {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+addpage( [[ 'Financial Solution Mode Single Owner IPH']],
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 //-----------------------------------------------------
 setconfig( 'MSPT', 'Leveraged Partnership Flip' );
@@ -1952,6 +2068,36 @@ setconfig( 'DSGL IPH', 'LCOH Calculator' );
 setmodules( ['linear_fresnel_dsg_iph', 'iph_to_lcoefcr', 'lcoefcr'] );
 setup_DSGL_IPH_pages();
 setup_iph_lcoefcr_pages();
+
+setconfig( 'DSGL IPH', 'Single Owner' );
+setmodules( ['linear_fresnel_dsg_iph', 'utilityrate5', 'singleowner_heat'] );
+setup_DSGL_IPH_pages();
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+//addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage( [['LF DSG Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+		  {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+addpage( [[ 'Financial Solution Mode Single Owner IPH']],
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
 
 
 // Direct Steam Linear Fresnel ////////////////////////////////////////////////////////////////////
@@ -2134,26 +2280,90 @@ function setup_MSLF_IPH_pages()
 		{ 'sidebar'='Collector and Receiver', 'help'='iph_mslf_collector_receiver' } );
 
 	addpage( [[ 'MSLF Storage' ]], { 'sidebar'='Thermal Storage', 'help'='iph_mslf_thermal_storage' } );
-
-	addpage( [[ 'MSLF IPH System Control' ,
-		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
-		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 }
 
 //-----------------------------------------------------
 setconfig('MSLF IPH', 'None');
 setmodules( ['fresnel_physical_iph']);
 setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+
 
 //-----------------------------------------------------
 setconfig('MSLF IPH', 'LCOH Calculator');
 setmodules( ['fresnel_physical_iph', 'lcoefcr_design']);	// 'iph_to_lcoefcr', 
 setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
 addpage( [['Sales Tax Rate Single Input','MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
-addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
+//addpage( [['Financial Construction Financing']],{'sidebar'='Construction Financing'}); // 'Financial Tax and Insurance Rates']]); //, 'Financial Analysis Parameters']]);
 setup_iph_lcoefcr_cost_pages();
+
+//-----------------------------------------------------
+setconfig('MSLF IPH', 'Single Owner');
+setmodules( ['fresnel_physical_iph', 'utilityrate5', 'singleowner_heat']); 	//, 'singleowner']);
+setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'MSLF IPH Dispatch Control', 'caption'='Dispatch Control', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  {'name'='Financial Debt DSCR or Debt Fraction','caption'='Project Term Debt','collapsible'=true,'collapsible_var'='show_DebtConstDSCR'},
+		  {'name'='Financial Cost of Financing Single Owner', 'caption'='Cost of Acquiring Financing','collapsible'=true,'collapsible_var'='show_CapitalCostSO'},
+		  {'name'='Financial Construction Financing','caption'='Construction Financing','collapsible'=true,'collapsible_var'='show_construction_period', 'collapsed_by_default'=false},
+		  {'name'='Financial Reserve Accounts', 'caption'='Reserve Accounts','collapsible'=true,'collapsible_var'='show_ReserveAccounts'} ]],
+	   { 'sidebar'='Financial Parameters', 'help'='fin_single_owner' }  );
+addpage( [[ 'Financial Solution Mode Single Owner IPH']],
+            { 'sidebar'='Revenue', 'help'='revenue_iph' } );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+addpage( [['Financial Depreciation Detailed' ]],
+           { 'sidebar'='Depreciation', 'help'='depreciation' });
+//setup_single_owner_dispatch_pages();
+
+//-------------------------------------------------------
+setconfig('MSLF IPH', 'Commercial');
+setmodules( ['fresnel_physical_iph', 'utilityrate5', 'thermalrate_iph', 'cashloan_heat']);
+setup_MSLF_IPH_pages();
+addpage( [[ 'MSLF IPH System Control' ,
+		{'name' = 'Physical Trough IPH Thermal Load', 'caption'='Thermal Load', 'collapsible'=false, 'collapsible_var'='csp_dispatch_is_shown'} ]],
+		{ 'sidebar'='System Control', 'help'='iph_mslf_system_control' } );
+setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
+addpage( [['MSLF IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_linear_fresnel' } );
+addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+setting( { 'analysis_period_var'='cf_length' } );
+addpage( [[ 'Financial Debt Min DSCR',
+		  'Financial Analysis Parameters',
+		  'Financial Tax and Insurance Rates',
+		  'Financial Salvage Value',
+		  'Financial Depreciation Simple', ]],
+	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
+addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
+           { 'sidebar'='Incentives', 'help'='incentives' } );
+setup_utility_rate();
+setup_elec_load_page( LOAD_SIMPLE );
+addpage( [[ 'Thermal Rate IPH' ]], 
+         {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
+
+
+
 
 // Marine Energy ////////////////////////////////////////////////////////////////////
 function setup_mewave_pages(lcoe_fcr)

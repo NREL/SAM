@@ -627,13 +627,21 @@ void ResultsViewer::SetDViewState(wxDVPlotCtrlSettings& settings)
 	int energy_index = -1;
 	for( size_t i=0;i<m_tsDataSets.size();i++ )
 	{
-        if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
-            energy_index = i;
-            break;
+        if (m_sim && m_sim->GetCase()->GetTechnology().Find(" IPH") != wxNOT_FOUND) {
+            if (m_tsDataSets[i]->GetMetaData() == "gen_heat") {
+                energy_index = i;
+                break;
+            }
         }
-        if (m_tsDataSets[i]->GetMetaData() == "gen") {
-            energy_index = i;
-            break;
+        else {
+            if (m_tsDataSets[i]->GetMetaData() == "energy_hourly_kW") {
+                energy_index = i;
+                break;
+            }
+            if (m_tsDataSets[i]->GetMetaData() == "gen") {
+                energy_index = i;
+                break;
+            }
         }
 	}
 
@@ -3380,11 +3388,19 @@ void TabularBrowser::UpdateAll()
 	}
     
     if (n == 0) {
-        int idx = m_names.Index("gen");
-        if (idx >= 0)
-        {
-            m_varSel->SelectRowInCol(idx);
-            ProcessAdded("gen");
+        if (m_sim && m_sim->GetCase()->GetTechnology().Find(" IPH") != wxNOT_FOUND){
+            int idx = m_names.Index("gen_heat");
+            if (idx >= 0) {
+                m_varSel->SelectRowInCol(idx);
+                ProcessAdded("gen_heat");
+            }
+        }
+        else {
+            int idx = m_names.Index("gen");
+            if (idx >= 0) {
+                m_varSel->SelectRowInCol(idx);
+                ProcessAdded("gen");
+            }
         }
     }
     
@@ -3412,7 +3428,10 @@ void TabularBrowser::OnCommand(wxCommandEvent& evt)
             ProcessRemovedAll(sizes[i]);
 
         UpdateAll();
-        ProcessRemoved("gen");
+        if (m_sim && m_sim->GetCase()->GetTechnology().Find(" IPH") != wxNOT_FOUND)
+            ProcessRemoved("gen_heat");
+        else
+            ProcessRemoved("gen");
         int vsx, vsy;
         UpdateSelectionList(vsx, vsy);
         UpdateSelectionExpansion(vsx, vsy);
