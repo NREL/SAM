@@ -8806,7 +8806,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "C3 (W/m-K³)"
+                    "String": "C3 (W/m-K^3)"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -9612,7 +9612,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "C2 (W/m-K²)"
+                    "String": "C2 (W/m-K^2)"
                 },
                 "TextColour": {
                     "Type": 4.0,
