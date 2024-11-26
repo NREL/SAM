@@ -123,7 +123,7 @@
 			"depr_bonus_sta": 0,
 			"depr_bonus_sta_custom": 0,
 			"depr_bonus_sta_macrs_15": 0,
-			"depr_bonus_sta_macrs_5": 0,
+			"depr_bonus_sta_macrs_5": 1,
 			"depr_bonus_sta_sl_15": 0,
 			"depr_bonus_sta_sl_20": 0,
 			"depr_bonus_sta_sl_39": 0,
