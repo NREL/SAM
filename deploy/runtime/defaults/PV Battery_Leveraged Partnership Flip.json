@@ -50742,7 +50742,7 @@
     "pbi_fed_for_ds": 0.0,
     "pbi_fed_tax_fed": 1.0,
     "pbi_fed_tax_sta": 1.0,
-    "pbi_fed_term": 10.0,
+    "pbi_fed_term": 0.0,
     "pbi_oth_amount": [
         0.0
     ],
@@ -50750,7 +50750,7 @@
     "pbi_oth_for_ds": 0.0,
     "pbi_oth_tax_fed": 1.0,
     "pbi_oth_tax_sta": 1.0,
-    "pbi_oth_term": 10.0,
+    "pbi_oth_term": 0.0,
     "pbi_sta_amount": [
         0.0
     ],
@@ -50758,7 +50758,7 @@
     "pbi_sta_for_ds": 0.0,
     "pbi_sta_tax_fed": 1.0,
     "pbi_sta_tax_sta": 1.0,
-    "pbi_sta_term": 10.0,
+    "pbi_sta_term": 0.0,
     "pbi_uti_amount": [
         0.0
     ],
@@ -50766,7 +50766,7 @@
     "pbi_uti_for_ds": 0.0,
     "pbi_uti_tax_fed": 1.0,
     "pbi_uti_tax_sta": 1.0,
-    "pbi_uti_term": 10.0,
+    "pbi_uti_term": 0.0,
     "per_inverter": 0.05,
     "per_module": 0.39,
     "permitting_fixed": 0.0,
