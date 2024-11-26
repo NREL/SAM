@@ -239,7 +239,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 5.16921e+06,
+			"construction_financing_cost": 5.05565e+06,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -252,7 +252,7 @@
 			"sponsor_operating_margin_escalation": 2,
 			"system_use_lifetime_output": 1,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.96922e+08
+			"total_installed_cost": 1.92596e+08
 		},
 		"UtilityBill": {
 		},
