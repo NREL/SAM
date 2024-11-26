@@ -15,7 +15,7 @@
     "batt_C_rate_max_discharge": 0.5,
     "batt_C_rate_max_discharge_input": 0.5,
     "batt_Cp": 1500.0,
-    "batt_Qexp": 0.04,
+    "batt_Qexp": 0.0400001,
     "batt_Qexp_percent": 1.77778,
     "batt_Qfull": 2.25,
     "batt_Qfull_flow": 11.25,

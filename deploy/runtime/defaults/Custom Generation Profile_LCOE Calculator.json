@@ -41,7 +41,7 @@
     "c_nominal_interest_rate": 7.0,
     "c_tax_rate": 28.0,
     "capacity_factor_calc": 86.4,
-    "capital_cost": 182700000.0,
+    "capital_cost": 100000000.0,
     "conv_eff": 34.118,
     "derate": 4.0,
     "en_batt": 0.0,
@@ -53,7 +53,7 @@
     "first_year_output": 756864000.0,
     "first_year_output_peak": 96000.0,
     "fixed_charge_rate": 0.0924304,
-    "fixed_operating_cost": 5100000.0,
+    "fixed_operating_cost": 2500000.0,
     "grid_curtailment": [
         1e38,
         1e38,
