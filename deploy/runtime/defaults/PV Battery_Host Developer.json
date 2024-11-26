@@ -63986,8 +63986,8 @@
     "dispatch_manual_discharge": [
         0.0,
         1.0,
-        0.0,
-        0.0,
+        1.0,
+        1.0,
         0.0,
         0.0
     ],
@@ -64000,6 +64000,8 @@
         0.0
     ],
     "dispatch_manual_percent_discharge": [
+        25.0,
+        25.0,
         25.0,
         0.0
     ],
