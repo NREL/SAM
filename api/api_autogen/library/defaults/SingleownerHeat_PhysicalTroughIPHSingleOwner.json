@@ -8,7 +8,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 744726,
+			"construction_financing_cost": 1.00345e+06,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -40,7 +40,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 5190,
+			"system_capacity": 5000,
 			"term_int_rate": 4,
 			"term_tenor": 18
 		},
@@ -51,7 +51,7 @@
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_production_heat": [2.000000],
-			"total_installed_cost": 9.92967e+06
+			"total_installed_cost": 1.33794e+07
 		},
 		"LandLease": {
 		},
@@ -327,7 +327,7 @@
 			"degradation": [0.000000],
 			"gen": [0],
 			"gen_heat": [0],
-			"system_capacity": 5190
+			"system_capacity": 5000
 		},
 		"HeatModelOutput": {
 		},
