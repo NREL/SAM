@@ -40116,7 +40116,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.043
+        0.04
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -40124,7 +40124,7 @@
     "property_assessed_value": 116394000.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
-        0.0275
+        0.03
     ],
     "ptc_fed_escal": 2.5,
     "ptc_fed_term": 10.0,

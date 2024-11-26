@@ -94675,7 +94675,7 @@
     "property_assessed_value": 1438250.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
-        0.0
+        0.03
     ],
     "ptc_fed_escal": 0.0,
     "ptc_fed_term": 10.0,
