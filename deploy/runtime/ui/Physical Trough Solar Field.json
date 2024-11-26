@@ -3002,7 +3002,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 76.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3948,7 +3948,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 490.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3956,7 +3956,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 76.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -4885,7 +4885,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 100.0
+                    "Integer": 76.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -6563,7 +6563,7 @@
         "rec_qf_delay": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Receiver startup delay energy fraction",
+            "Label": "Receiver startup delay energy frac",
             "Units": "-",
             "Group": "Physical Trough Solar Field",
             "IndexLabels": "",

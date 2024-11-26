@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 456.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -518,7 +518,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 400.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -568,7 +568,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 400.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -618,7 +618,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 400.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -668,7 +668,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 400.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -834,7 +834,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1332,7 +1332,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1415,7 +1415,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1498,7 +1498,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1581,7 +1581,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1747,7 +1747,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1830,7 +1830,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 741.0
+                    "Integer": 765.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1992,7 +1992,7 @@
         "f_hp_parasitic_des": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Parasitics (non-pumping) as fraction of thermodynamic power",
+            "Label": "Parasitics (non-pumping) fraction of thermodynamic power",
             "Units": " ",
             "Group": "PTES Heat Pump",
             "IndexLabels": "",
@@ -2005,7 +2005,7 @@
         "f_q_dot_des_allowable_su": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fraction of design power allowed during startup",
+            "Label": "Fraction of design power allowed at startup",
             "Units": " ",
             "Group": " ",
             "IndexLabels": "",
