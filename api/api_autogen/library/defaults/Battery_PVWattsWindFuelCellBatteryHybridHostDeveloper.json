@@ -50,7 +50,7 @@
 			"LeadAcid_tn": 1,
 			"batt_C_rate": 0.2,
 			"batt_Cp": 1500,
-			"batt_Qexp": 0.04,
+			"batt_Qexp": 0.0400001,
 			"batt_Qfull": 2.25,
 			"batt_Qfull_flow": 2398.5,
 			"batt_Qnom": 2,
@@ -377,6 +377,8 @@
 		},
 		"Revenue": {
 		},
+		"AdjustmentFactors": {
+		},
 		"ElectricityRates": {
 		},
 		"GridLimits": {
@@ -388,7 +390,7 @@
 			"om_batt_nameplate": 1200.21,
 			"om_capacity_escal": 0,
 			"om_fixed_escal": 0,
-			"total_installed_cost": 890576
+			"total_installed_cost": 396879
 		}
 	}
 }

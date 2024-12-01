@@ -53,22 +53,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ampl_data_dir: AMPL data file directory
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
 	 * Set aux_par: Aux heater, boiler parasitic [MWe/MWcap]
 	 * options: None
 	 * constraints: None
@@ -269,14 +253,6 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set is_dispatch: Allow dispatch optimization?
 	 * options: None
 	 * constraints: None
@@ -309,14 +285,6 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_MsptIph_SystemControl_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set pb_fixed_par: Fixed parasitic load - runs at all times [MWe/MWcap]
 	 * options: None
 	 * constraints: None
@@ -325,7 +293,7 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -376,7 +344,7 @@ extern "C"
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: is_timestep_load_fractions=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_SystemControl_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -780,7 +748,7 @@ extern "C"
 	SAM_EXPORT void SAM_MsptIph_HeliostatField_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set p_start: Heliostat startup energy [kWe-hr]
+	 * Set p_start: Heliostat startup energy [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1100,7 +1068,7 @@ extern "C"
 	 * Set piping_loss_coefficient: Thermal loss per meter of piping [Wt/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_MsptIph_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1539,7 +1507,7 @@ extern "C"
 	 * Set tes_init_hot_htf_percent: Initial fraction of available volume that is hot [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_MsptIph_ThermalStorage_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1628,12 +1596,12 @@ extern "C"
 	//
 
 	/**
-	 * Set ppa_price_input: PPA prices - yearly [$/kWh]
+	 * Set ppa_price_input_heat_btu: PPA prices - yearly [$/MMBtu]
 	 * options: None
 	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
 	 */
-	SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+	SAM_EXPORT void SAM_MsptIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1644,7 +1612,7 @@ extern "C"
 	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1652,7 +1620,7 @@ extern "C"
 	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1660,7 +1628,7 @@ extern "C"
 	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1668,7 +1636,7 @@ extern "C"
 	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1676,7 +1644,7 @@ extern "C"
 	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1684,7 +1652,7 @@ extern "C"
 	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1692,7 +1660,7 @@ extern "C"
 	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1700,7 +1668,7 @@ extern "C"
 	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1708,7 +1676,7 @@ extern "C"
 	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1716,7 +1684,7 @@ extern "C"
 	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1724,7 +1692,7 @@ extern "C"
 	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1732,7 +1700,7 @@ extern "C"
 	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1740,7 +1708,7 @@ extern "C"
 	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1748,7 +1716,7 @@ extern "C"
 	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1756,7 +1724,7 @@ extern "C"
 	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1764,7 +1732,7 @@ extern "C"
 	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1772,7 +1740,7 @@ extern "C"
 	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1780,7 +1748,7 @@ extern "C"
 	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1788,7 +1756,7 @@ extern "C"
 	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1796,7 +1764,7 @@ extern "C"
 	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_MsptIph_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1960,10 +1928,6 @@ extern "C"
 	 * SystemControl Getters
 	 */
 
-	SAM_EXPORT const char* SAM_MsptIph_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_MsptIph_SystemControl_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MsptIph_SystemControl_aux_par_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_aux_par_0_nget(SAM_table ptr, SAM_error *err);
@@ -2014,8 +1978,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_MsptIph_SystemControl_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err);
@@ -2023,8 +1985,6 @@ extern "C"
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_MsptIph_SystemControl_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
 
@@ -2395,7 +2355,7 @@ extern "C"
 	 * Revenue Getters
 	 */
 
-	SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double* SAM_MsptIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -2581,6 +2541,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_MsptIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_MsptIph_Outputs_annual_eta_rec_th_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_Outputs_annual_eta_rec_th_incl_refl_nget(SAM_table ptr, SAM_error *err);
@@ -2747,6 +2709,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MsptIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_MsptIph_Outputs_h_rec_input_to_cost_model_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_Outputs_h_tower_calc_nget(SAM_table ptr, SAM_error *err);
@@ -2818,6 +2784,8 @@ extern "C"
 	SAM_EXPORT double* SAM_MsptIph_Outputs_operating_modes_b_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_MsptIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_MsptIph_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err);
 
