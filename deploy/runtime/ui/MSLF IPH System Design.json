@@ -1706,7 +1706,7 @@
             "Units": "",
             "Group": "System Design",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
