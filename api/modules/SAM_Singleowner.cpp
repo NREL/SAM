@@ -1742,6 +1742,12 @@ SAM_EXPORT void SAM_Singleowner_UtilityBill_utility_bill_w_sys_aset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "inflation_rate", number);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
@@ -4630,6 +4636,15 @@ SAM_EXPORT double* SAM_Singleowner_UtilityBill_utility_bill_w_sys_aget(SAM_table
 	result = ssc_data_get_array(ptr, "utility_bill_w_sys", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "utility_bill_w_sys");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inflation_rate", &result))
+		make_access_error("SAM_Singleowner", "inflation_rate");
 	});
 	return result;
 }

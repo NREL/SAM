@@ -2391,6 +2391,14 @@ extern "C"
 	//
 
 	/**
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_use_lifetime_output: Lifetime hourly system outputs [0/1]
 	 * options: 0=hourly first year,1=hourly lifetime
 	 * constraints: INTEGER,MIN=0
@@ -3385,6 +3393,8 @@ extern "C"
 	/**
 	 * Lifetime Getters
 	 */
+
+	SAM_EXPORT double SAM_Singleowner_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 

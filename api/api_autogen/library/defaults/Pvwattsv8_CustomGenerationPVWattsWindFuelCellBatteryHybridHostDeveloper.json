@@ -45,7 +45,7 @@
 		},
 		"HybridCosts": {
 			"degradation": [0.500000],
-			"land_area": 3.51186,
+			"land_area": 2.341,
 			"om_capacity": [22.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],

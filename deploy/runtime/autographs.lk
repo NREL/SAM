@@ -25,7 +25,7 @@ function heatmap_graphs()
 			agraph( 'annual_energy_distribution_time', 'Annual AC energy in Year 1 (kW)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 		}
 	}
-	else if(tech == "MSPT IPH" || tech == "MSLF IPH" || tech == "Physical Trough IPH"){
+	else if(tech == "MSPT IPH" || tech == "MSLF IPH" || tech == "Physical Trough IPH" || tech == "DSGL IPH"){
 		agraph( 'annual_energy_distribution_time', 'Annual thermal energy in Year 1 (kWt)', 'Day', 'Hour', -1, true, false, 'bottom', 4);
 	}
 	else {
@@ -55,11 +55,21 @@ function battery_btm_monthly_graph_hybrid()
 //**************Categories of graphs for financials**************************
 function rescom_financial_graphs()
 {
-	if (technology() != "Standalone Battery") { //No monthly_energy for standalone battery
-		agraph( 'monthly_energy,year1_monthly_load', 'Monthly AC Energy and Load in Year 1', '', 'kWh', -1, true, true, 'bottom'  );
+	tech = technology();
+	monthly_energy_label = 'Monthly AC Energy and Load in Year 1';
+	cf_energy_net_label = 'Electricity Net Generation';
+	year1_monthly_load_var = 'year1_monthly_load';
+	if(tech == "MSPT IPH" || tech == "MSLF IPH" || tech == "Physical Trough IPH" || tech == "DSGL IPH")
+	{
+		monthly_energy_label = 'Monthly Thermal Energy and Load in Year 1';
+		cf_energy_net_label = 'Thermal Net Generation';
+		year1_monthly_load_var = 'year1_monthly_load_heat';
+	}
+	if (tech != "Standalone Battery") { //No monthly_energy for standalone battery
+		agraph( 'monthly_energy,'+year1_monthly_load_var, monthly_energy_label, '', 'kWh', -1, true, true, 'bottom'  );
 	}
 	agraph( 'cf_after_tax_cash_flow', 'After Tax Cash Flow- System Lifetime', '', '$' );
-	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+	agraph( 'cf_energy_net', cf_energy_net_label, 'Year', 'kWh', -1, true, false,'bottom' );
 }
 
 function third_party_graphs()
@@ -129,7 +139,13 @@ function mp_revenue_graphs()
 
 function ppa_financial_graphs()
 {
-	agraph( 'cf_energy_net', 'Electricity Net Generation', 'Year', 'kWh', -1, true, false,'bottom' );
+	tech = technology();
+	cf_energy_net_label = 'Electricity Net Generation';
+	if(tech == "MSPT IPH" || tech == "MSLF IPH" || tech == "Physical Trough IPH" || tech == "DSGL IPH")
+	{
+		cf_energy_net_label = 'Thermal Net Generation';
+	}
+	agraph( 'cf_energy_net', cf_energy_net_label, 'Year', 'kWh', -1, true, false,'bottom' );
 	agraph( 'cf_project_return_aftertax', 'Project After-tax Cash Flow', 'Year', '$', -1, true, false, 'bottom' );
 }
 

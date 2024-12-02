@@ -327,7 +327,7 @@ extern "C"
 	 * Set inflation_rate: Inflation rate [%]
 	 * options: None
 	 * constraints: MIN=-99
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Utilityrateforecast_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
