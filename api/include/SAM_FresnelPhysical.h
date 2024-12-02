@@ -303,7 +303,7 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_nMod_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set p_start: Collector startup energy, per SCA [kWe-hr]
+	 * Set p_start: Collector startup energy, per SCA [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1081,6 +1081,123 @@ extern "C"
 
 
 	//
+	// Tou parameters
+	//
+
+	/**
+	 * Set can_cycle_use_standby: Can the cycle use standby operation?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_reporting: Dispatch optimization reporting level [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=-1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations [-]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set dispatch_factors_ts: Dispatch payment factor array
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_timestep_load_fractions_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWhe]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=9e99
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
+	 * options: None
+	 * constraints: None
+	 * required if: ?
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// SysControl parameters
 	//
 
@@ -1173,14 +1290,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SysControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set dispatch_series: Time series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SysControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set is_dispatch: Allow dispatch optimization? [-]
 	 * options: None
 	 * constraints: None
@@ -1211,147 +1320,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-
-	//
-	// Tou parameters
-	//
-
-	/**
-	 * Set ampl_data_dir: AMPL data file directory [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set can_cycle_use_standby: Can the cycle use standby operation?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_can_cycle_use_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_reporting: Dispatch optimization reporting level [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_reporting_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_bb: Dispatch optimization B&B heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_presolve_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_spec_scaling: Dispatch optimization scaling heuristic [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=-1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_spec_scaling_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set disp_steps_per_hour: Time steps per hour for dispatch optimization calculations [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_disp_steps_per_hour_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_factors_ts: Dispatch payment factor array
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=1&csp_financial_model<5&is_dispatch=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_dispatch_factors_ts_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0.0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_heattrace_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set q_rec_standby: Receiver standby energy consumption [kWt]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=9e99
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
-	 * options: None
-	 * constraints: None
-	 * required if: ?
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1600,7 +1568,7 @@ extern "C"
 	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1608,7 +1576,7 @@ extern "C"
 	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1616,7 +1584,7 @@ extern "C"
 	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1624,7 +1592,7 @@ extern "C"
 	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1632,7 +1600,7 @@ extern "C"
 	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1640,7 +1608,7 @@ extern "C"
 	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1648,7 +1616,7 @@ extern "C"
 	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1656,7 +1624,7 @@ extern "C"
 	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1664,7 +1632,7 @@ extern "C"
 	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1672,7 +1640,7 @@ extern "C"
 	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1680,7 +1648,7 @@ extern "C"
 	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1688,7 +1656,7 @@ extern "C"
 	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1696,7 +1664,7 @@ extern "C"
 	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1704,7 +1672,7 @@ extern "C"
 	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1712,7 +1680,7 @@ extern "C"
 	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1720,7 +1688,7 @@ extern "C"
 	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1728,7 +1696,7 @@ extern "C"
 	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1736,7 +1704,7 @@ extern "C"
 	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1744,7 +1712,7 @@ extern "C"
 	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1752,7 +1720,7 @@ extern "C"
 	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model<5|csp_financial_model=6
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2100,6 +2068,39 @@ extern "C"
 
 
 	/**
+	 * Tou Getters
+	 */
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysical_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * SysControl Getters
 	 */
 
@@ -2125,8 +2126,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
@@ -2134,45 +2133,6 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-
-	/**
-	 * Tou Getters
-	 */
-
-	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_FresnelPhysical_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_can_cycle_use_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_presolve_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_spec_scaling_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_disp_steps_per_hour_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_dispatch_factors_ts_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysical_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**

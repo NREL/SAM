@@ -6576,7 +6576,7 @@
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",

@@ -1,0 +1,8 @@
+1) Download 'CSP' folder from SAM/samples https://github.com/NREL/SAM/tree/iph-split-heat-elec-pricing/samples/CSP
+2) Open folder '24-iph-tes' in VS Code
+3) You will need an Anaconda environment to run the example file
+4) 'trough-iph.py' relies on infrastructure code in CSP/sco2_analysis_python_V2/core. In the core folder, there is an old version of ssc.dll and a file named PySSC.py. The first lines of PySSC.py point to ssc.dll. You either need to change this code to point to a local version of ssc.dll, or you need to replace the local ssc.dll with your local version.
+5) In the '24-iph-tes' folder, the sam file contains a Trough IPH case that models a potential oil trough for process heat. The TES fluid is VP-1, the same as the field, but the intent in setting these equal is to avoid the complication of the heat exchanger. This configuration is a placeholder for a cheaper TES technology that is not currently in SAM, like packed bed TES.
+6) Entering Shift + F5 in the SAM case will active a menu of options to export the case for scripting. "Json for Inputs" outputs the SAM information in the structure we need for trough-iph.py to use PySSC. 'IPH_with_oil_field.json' is the output of Shift + F5 for the IPH case in the SAM file. 
+7) Note that when you use Shift+F5, it will use a local directory as the input to the weather file. The current json uses a directory in the SAM Github repo.
+8) trough-iph.py shows an example of using the json inputs to call the trough iph model in SSC through ssc.dll - both design point and annual simulation. The printed outputs should equal their corresponding output in the SAM file.

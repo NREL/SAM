@@ -212,6 +212,8 @@
 		"HeatSink": {
 			"heat_sink_dP_frac": 0.01
 		},
+		"Revenue": {
+		},
 		"AdjustmentFactors": {
 			"constant": 4,
 			"en_periods": 0,

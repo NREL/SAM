@@ -287,7 +287,7 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SolarField_nMod_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set p_start: Collector startup energy, per SCA [kWe-hr]
+	 * Set p_start: Collector startup energy, per SCA [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -896,22 +896,6 @@ extern "C"
 	//
 
 	/**
-	 * Set ampl_data_dir: AMPL data file directory [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=''
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
-	 * Set ampl_exec_call: System command to run AMPL code [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?='ampl sdk_solution.run'
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sset(SAM_table ptr, const char* str, SAM_error *err);
-
-	/**
 	 * Set disp_reporting: Dispatch optimization reporting level [-]
 	 * options: None
 	 * constraints: None
@@ -963,20 +947,12 @@ extern "C"
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction [-]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: is_timestep_load_fractions=0
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_timestep_load_fractions: Use turbine load fraction for each timestep instead of block dispatch?
+	 * Set is_timestep_load_fractions: 0: block dispatch, 1: hourly load fraction, 2: absolute load
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -992,14 +968,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run [-]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set ppa_multiplier_model: PPA multiplier model 0: dispatch factors dispatch_factorX, 1: hourly multipliers dispatch_factors_ts [0/1]
 	 * options: None
 	 * constraints: INTEGER,MIN=0
@@ -1008,7 +976,7 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_ppa_multiplier_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -1024,12 +992,44 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set timestep_load_abs: Heat sink hourly load (not normalized) [kWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=2
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_timestep_load_abs_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set timestep_load_abs_factor: Heat sink hourly load scale factor
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_timestep_load_abs_factor_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: is_timestep_load_fractions=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set weekday_schedule: 12x24 Time of Use Values for week days
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
+	 * options: None
+	 * constraints: None
+	 * required if: is_timestep_load_fractions=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Tou_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 
 	//
@@ -1124,22 +1124,6 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
 
-	/**
-	 * Set weekday_schedule: 12x24 Time of Use Values for week days
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set weekend_schedule: 12x24 Time of Use Values for week end days
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
 
 	//
 	// FinancialModel parameters
@@ -1157,14 +1141,6 @@ extern "C"
 	//
 	// FinancialSolutionMode parameters
 	//
-
-	/**
-	 * Set ppa_price_input: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
-	 * options: None
-	 * constraints: None
-	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set ppa_soln_mode: PPA solution mode (0=Specify IRR target, 1=Specify PPA price)
@@ -1202,6 +1178,19 @@ extern "C"
 	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1&sim_type=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set ppa_price_input_heat_btu: PPA prices - yearly [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: ppa_multiplier_model=0&csp_financial_model<5&is_dispatch=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -1353,7 +1342,7 @@ extern "C"
 	 * Set const_per_interest_rate1: Interest rate, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1361,7 +1350,7 @@ extern "C"
 	 * Set const_per_interest_rate2: Interest rate, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1369,7 +1358,7 @@ extern "C"
 	 * Set const_per_interest_rate3: Interest rate, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1377,7 +1366,7 @@ extern "C"
 	 * Set const_per_interest_rate4: Interest rate, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1385,7 +1374,7 @@ extern "C"
 	 * Set const_per_interest_rate5: Interest rate, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1393,7 +1382,7 @@ extern "C"
 	 * Set const_per_months1: Months prior to operation, loan 1
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1401,7 +1390,7 @@ extern "C"
 	 * Set const_per_months2: Months prior to operation, loan 2
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1409,7 +1398,7 @@ extern "C"
 	 * Set const_per_months3: Months prior to operation, loan 3
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1417,7 +1406,7 @@ extern "C"
 	 * Set const_per_months4: Months prior to operation, loan 4
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1425,7 +1414,7 @@ extern "C"
 	 * Set const_per_months5: Months prior to operation, loan 5
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1433,7 +1422,7 @@ extern "C"
 	 * Set const_per_percent1: Percent of total installed cost, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1441,7 +1430,7 @@ extern "C"
 	 * Set const_per_percent2: Percent of total installed cost, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1449,7 +1438,7 @@ extern "C"
 	 * Set const_per_percent3: Percent of total installed cost, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1457,7 +1446,7 @@ extern "C"
 	 * Set const_per_percent4: Percent of total installed cost, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1465,7 +1454,7 @@ extern "C"
 	 * Set const_per_percent5: Percent of total installed cost, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1473,7 +1462,7 @@ extern "C"
 	 * Set const_per_upfront_rate1: Upfront fee on principal, loan 1 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1481,7 +1470,7 @@ extern "C"
 	 * Set const_per_upfront_rate2: Upfront fee on principal, loan 2 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1489,7 +1478,7 @@ extern "C"
 	 * Set const_per_upfront_rate3: Upfront fee on principal, loan 3 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1497,7 +1486,7 @@ extern "C"
 	 * Set const_per_upfront_rate4: Upfront fee on principal, loan 4 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1505,7 +1494,7 @@ extern "C"
 	 * Set const_per_upfront_rate5: Upfront fee on principal, loan 5 [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: csp_financial_model=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1553,6 +1542,264 @@ extern "C"
 	 * required if: adjust_en_timeindex=1
 	 */
 	SAM_EXPORT void SAM_FresnelPhysicalIph_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// ElectricityRates parameters
+	//
+
+	/**
+	 * Set en_electricity_rates: Optionally enable/disable electricity_rate [years]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_en_electricity_rates_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rate_escalation: Annual electricity rate escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_rate_escalation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_annual_min_charge: Annual minimum charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_annual_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_lookback_percentages: Billing demand lookback percentages by month and consider actual peak demand [%]
+	 * options: 12x2
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_lookback_percentages_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_lookback_period: Billing demand lookback period [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=12
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_lookback_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_billing_demand_minimum: Minimum billing demand [kW]
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_minimum_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_billing_demand_periods: Billing demand applicability to a given demand charge time of use period
+	 * options: None
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_billing_demand_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_enable: Enable demand charge [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_enable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_dc_flat_mat: Demand rates (flat) table [col 0=month, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_flat_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekday: Demand charge weekday schedule [Periods defined in ur_dc_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_sched_weekend: Demand charge weekend schedule [Periods defined in ur_dc_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_dc_tou_mat: Demand rates (TOU) table [col 0=period no, col 1=tier no, col 2=tier peak (kW), col 3=charge ($/kW)]
+	 * options: nx4
+	 * constraints: None
+	 * required if: ur_dc_enable=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_sched_weekday: Energy charge weekday schedule [Periods defined in ur_ec_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_sched_weekday_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_sched_weekend: Energy charge weekend schedule [Periods defined in ur_ec_tou_mat]
+	 * options: 12x24
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_sched_weekend_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_ec_tou_mat: Energy rates table [col 0=period no, col 1=tier no, col 2=max usage, col 3=max usage units (0=kWh, 1=kWh/kW, 2=kWh daily, 3=kWh/kW daily), col 4=buy rate ($/kWh), col 5=sell rate ($/kWh)]
+	 * options: nx6
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_tou_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set ur_en_ts_buy_rate: Enable time step buy rates [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_en_ts_buy_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_en_ts_sell_rate: Enable time step sell rates [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_en_ts_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_enable_billing_demand: Enable billing demand ratchets [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_enable_billing_demand_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_metering_option: Metering options [0=net energy metering,1=net energy metering with $ credits,2=net billing,3=net billing with carryover to next month,4=buy all - sell all]
+	 * options: Net metering monthly excess
+	 * constraints: INTEGER,MIN=0,MAX=4
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_metering_option_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_monthly_fixed_charge: Monthly fixed charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_monthly_fixed_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_monthly_min_charge: Monthly minimum charge [$]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_apply_credit_current_month: Apply earned credits to balance before rolling over excess         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_credit_expire: Credit is lost upon end of year         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=11
+	 * required if: ?=11
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_credit_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_credit_rollover: Apply net metering true-up credits to future bills [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_credit_rollover_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nm_yearend_sell_rate: Net metering true-up credit sell rate [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_yearend_sell_rate_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_sell_eq_buy: Set sell rate equal to buy rate [0/1]
+	 * options: Optional override
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_sell_eq_buy_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_ts_buy_rate: Time step buy rates [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_ts_buy_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_ts_sell_rate: Time step sell rates [$/kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_ts_sell_rate_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set ur_yearzero_usage_peaks: Peak usage by month for year zero [kW]
+	 * options: 12
+	 * constraints: None
+	 * required if: ur_enable_billing_demand=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_ElectricityRates_ur_yearzero_usage_peaks_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set inflation_rate: Inflation rate [%]
+	 * options: None
+	 * constraints: MIN=-99
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_FresnelPhysicalIph_Lifetime_inflation_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -1805,10 +2052,6 @@ extern "C"
 	 * Tou Getters
 	 */
 
-	SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT const char* SAM_FresnelPhysicalIph_Tou_ampl_exec_call_sget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_disp_reporting_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_disp_spec_bb_nget(SAM_table ptr, SAM_error *err);
@@ -1823,13 +2066,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_timestep_load_fractions_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_ppa_multiplier_model_nget(SAM_table ptr, SAM_error *err);
 
@@ -1837,7 +2076,15 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_timestep_load_abs_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Tou_timestep_load_abs_factor_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_timestep_load_fractions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Tou_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
 	/**
@@ -1866,10 +2113,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_SysControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
 
 	/**
 	 * FinancialModel Getters
@@ -1881,8 +2124,6 @@ extern "C"
 	/**
 	 * FinancialSolutionMode Getters
 	 */
-
-	SAM_EXPORT double* SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_FinancialSolutionMode_ppa_soln_mode_nget(SAM_table ptr, SAM_error *err);
 
@@ -1896,6 +2137,13 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_TimeOfDeliveryFactors_dispatch_tod_factors_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -1998,6 +2246,78 @@ extern "C"
 
 
 	/**
+	 * ElectricityRates Getters
+	 */
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_en_electricity_rates_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_rate_escalation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_annual_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_lookback_percentages_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_lookback_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_billing_demand_minimum_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_billing_demand_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_enable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_flat_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_dc_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_sched_weekday_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_sched_weekend_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_ec_tou_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_en_ts_buy_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_en_ts_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_enable_billing_demand_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_metering_option_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_monthly_fixed_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_nm_yearend_sell_rate_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_ElectricityRates_ur_sell_eq_buy_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_ts_buy_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_ts_sell_rate_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_ElectricityRates_ur_yearzero_usage_peaks_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Lifetime_inflation_rate_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -2070,6 +2390,8 @@ extern "C"
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_annual_field_freeze_protection_nget(SAM_table ptr, SAM_error *err);
 
@@ -2203,6 +2525,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_heat_sink_cost_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_hl_des_nget(SAM_table ptr, SAM_error *err);
@@ -2269,9 +2595,13 @@ extern "C"
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_monthly_energy_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nLoops_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_n_op_modes_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2304,6 +2634,8 @@ extern "C"
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_pipe_tes_wallthk_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_plm_total_cost_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2399,7 +2731,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_therm_eff_loop_des_SS_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_thermal_load_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_time_hr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_timestep_load_abs_calc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_FresnelPhysicalIph_Outputs_timestep_load_fractions_calc_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysicalIph_Outputs_total_Ap_nget(SAM_table ptr, SAM_error *err);
 

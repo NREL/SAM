@@ -1701,7 +1701,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "TES thermal capacity",
-            "Units": "MWt-hr",
+            "Units": "MWht",
             "Group": "Thermal Energy Storage",
             "IndexLabels": "",
             "Flags": 8.0,
