@@ -126,10 +126,10 @@ def get_weather_data(state, county_code, year, dataset, path):
 
     # 2021 stores eather files in folders by wf_type
     # 2022 stores weather files in folders by state
-    if int(year) >= 2022:
-        wf_folder = f'state={state}'
-    else:
+    if year == '2021':
         wf_folder = f'{wf_type}'
+    else:
+        wf_folder = f'state={state}'
 
 
     url = f'https://oedi-data-lake.s3.amazonaws.com/' \
@@ -183,11 +183,8 @@ def get_county_code(state, county, year, dataset, path):
     """
 
     url_path = dataset
-    print(year == str(2024))
-    print("resstock" in dataset)
-    if year == str(2024) and "resstock" in dataset:
+    if year == '2024' and "resstock" in dataset:
         url_path = "resstock_dataset_2024.1/resstock_tmy3"
-    print(url_path)
 
     # url to lookup table for year and dataset
     url = f'https://oedi-data-lake.s3.amazonaws.com/' \
