@@ -379,3 +379,13 @@ SAM_EXPORT double SAM_ThermalrateIph_Outputs_thermal_savings_year1_nget(SAM_tabl
 	return result;
 }
 
+SAM_EXPORT double* SAM_ThermalrateIph_Outputs_year1_monthly_load_heat_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "year1_monthly_load_heat", length);
+	if (!result)
+		make_access_error("SAM_ThermalrateIph", "year1_monthly_load_heat");
+	});
+	return result;
+}
+
