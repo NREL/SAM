@@ -663,6 +663,7 @@
     "hs_phys_f_mdot_steam_max": 1.5,
     "hs_phys_f_mdot_steam_min": 0.2,
     "hs_phys_tol": 0.01,
+    "hs_type": 0.0,
     "htf_system_spec_cost": 47.0,
     "in_location": "Type a location name, street address, or lat,lon in decimal degrees",
     "in_location_list": "15458 Denver W Pkwy, Golden CO 804041|phoenix,az|45.5,-120.9|Manaus,Brazil",

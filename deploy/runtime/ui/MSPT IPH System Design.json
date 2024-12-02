@@ -1842,6 +1842,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "hs_type": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Heat sink type (0: ideal, 1: physical)",
+            "Units": "",
+            "Group": "System Design",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "installed_per_capacity_calc": {
             "Version": 4.0,
             "Type": 1.0,

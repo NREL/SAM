@@ -37726,6 +37726,7 @@
     "hs_phys_f_mdot_steam_max": 1.5,
     "hs_phys_f_mdot_steam_min": 0.2,
     "hs_phys_tol": 0.01,
+    "hs_type": 0.0,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
     "ibi_fed_amount_deprbas_sta": 0.0,
