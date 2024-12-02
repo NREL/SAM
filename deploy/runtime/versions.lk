@@ -78,12 +78,7 @@ version_upgrade{'2024.12.12'} = define() {
 		value('tes_cyl_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
 		value('tes_cyl_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
 	}
-};
-
-
-version_upgrade{'2024.5.28'} = define() {
 	
-	const cfg = config();
 
 	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
 	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
