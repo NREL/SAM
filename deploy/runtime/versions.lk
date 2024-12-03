@@ -75,8 +75,27 @@ version_upgrade{'2024.12.12'} = define() {
 		value('tes_cyl_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
 		value('tes_cyl_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
 		value('tes_cyl_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
-		value('tes_cyl_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
 		value('tes_cyl_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
+		value('tes_n_tsteps', oldvalue('tes_NT_nstep'), 'Updated variable name');
+		
+		piston_loss_poly = oldvalue('tes_NT_piston_loss_poly');
+		value('tes_cyl_piston_loss_poly', piston_loss_poly, 'Updated variable name');
+
+		if(piston_loss_poly!=null) {
+			piston_loss_poly_labels = ['tes_cyl_piston_loss_poly_0', 
+									   'tes_cyl_piston_loss_poly_1', 
+									   'tes_cyl_piston_loss_poly_2', 
+									   'tes_cyl_piston_loss_poly_3'];
+			N_piston_loss_poly = #piston_loss_poly;
+			for (i = 0; i < #piston_loss_poly_labels; i++) {
+				if(i < N_piston_loss_poly)
+					val = piston_loss_poly[i];
+				else
+					val = 0;
+				value(piston_loss_poly_labels[i], val);
+			}
+		}
+		
 	}
 	
 
