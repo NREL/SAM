@@ -1990,15 +1990,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 213.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3448,11 +3448,11 @@
         "ud_is_sco2_regr": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Apply sCO2 heuristic to interpolation?",
+            "Label": "Maximum cycle output control method",
             "Units": "",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",
