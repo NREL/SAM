@@ -23216,6 +23216,7 @@
             1.0
         ]
     ],
+    "ud_is_sco2_regr": 0.0,
     "ud_m_dot_des_calc": 1.0,
     "ud_m_dot_design": 1.0,
     "ud_m_dot_high_calc": 1.2,

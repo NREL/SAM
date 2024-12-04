@@ -321,6 +321,14 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_T_room_init_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set availabilty_loss: Battery availability losses at each timestep [[%]]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_availabilty_loss_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set cap_vs_temp: Table with Temperature and Capacity % as columns [[[C,%]]]
 	 * options: None
 	 * constraints: None
@@ -827,6 +835,22 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_StateCell_n_cycles_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set percent_unavailable: Percent of system that is down [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_percent_unavailable_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set percent_unavailable_prev: Percent of system that was down last step [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_StateCell_percent_unavailable_prev_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set prev_charge: Charge mode of last time step [0/1/2]
 	 * options: None
 	 * constraints: None
@@ -1071,6 +1095,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsPack_T_room_init_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_availabilty_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_cap_vs_temp_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_ParamsPack_h_nget(SAM_table ptr, SAM_error *err);
@@ -1204,6 +1230,10 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_dq_relative_neg_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_n_cycles_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_percent_unavailable_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_StateCell_percent_unavailable_prev_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_StateCell_prev_charge_nget(SAM_table ptr, SAM_error *err);
 

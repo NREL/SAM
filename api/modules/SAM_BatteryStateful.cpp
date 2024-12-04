@@ -224,6 +224,12 @@ SAM_EXPORT void SAM_BatteryStateful_ParamsPack_T_room_init_nset(SAM_table ptr, d
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_ParamsPack_availabilty_loss_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "availabilty_loss", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_ParamsPack_cap_vs_temp_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "cap_vs_temp", mat, nrows, ncols);
@@ -593,6 +599,18 @@ SAM_EXPORT void SAM_BatteryStateful_StateCell_dq_relative_neg_nset(SAM_table ptr
 SAM_EXPORT void SAM_BatteryStateful_StateCell_n_cycles_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "n_cycles", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_percent_unavailable_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "percent_unavailable", number);
+	});
+}
+
+SAM_EXPORT void SAM_BatteryStateful_StateCell_percent_unavailable_prev_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "percent_unavailable_prev", number);
 	});
 }
 
@@ -1030,6 +1048,16 @@ SAM_EXPORT double SAM_BatteryStateful_ParamsPack_T_room_init_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "T_room_init", &result))
 		make_access_error("SAM_BatteryStateful", "T_room_init");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_BatteryStateful_ParamsPack_availabilty_loss_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "availabilty_loss", length);
+	if (!result)
+		make_access_error("SAM_BatteryStateful", "availabilty_loss");
 	});
 	return result;
 }
@@ -1597,6 +1625,24 @@ SAM_EXPORT double SAM_BatteryStateful_StateCell_n_cycles_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "n_cycles", &result))
 		make_access_error("SAM_BatteryStateful", "n_cycles");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_percent_unavailable_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "percent_unavailable", &result))
+		make_access_error("SAM_BatteryStateful", "percent_unavailable");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_BatteryStateful_StateCell_percent_unavailable_prev_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "percent_unavailable_prev", &result))
+		make_access_error("SAM_BatteryStateful", "percent_unavailable_prev");
 	});
 	return result;
 }

@@ -126,10 +126,10 @@ def get_weather_data(state, county_code, year, dataset, path):
 
     # 2021 stores eather files in folders by wf_type
     # 2022 stores weather files in folders by state
-    if year == '2022':
-        wf_folder = f'state={state}'
-    else:
+    if year == '2021':
         wf_folder = f'{wf_type}'
+    else:
+        wf_folder = f'state={state}'
 
 
     url = f'https://oedi-data-lake.s3.amazonaws.com/' \
@@ -182,12 +182,16 @@ def get_county_code(state, county, year, dataset, path):
             County code as string, e.g., 'G0400130' for Maricopa County, Arizona.
     """
 
+    url_path = dataset
+    if year == '2024' and "resstock" in dataset:
+        url_path = "resstock_dataset_2024.1/resstock_tmy3"
+
     # url to lookup table for year and dataset
     url = f'https://oedi-data-lake.s3.amazonaws.com/' \
     f'nrel-pds-building-stock/' \
     f'end-use-load-profiles-for-us-building-stock/' \
     f'{year}/' \
-    f'{dataset}/' \
+    f'{url_path}/' \
     f'geographic_information/' \
     f'spatial_tract_lookup_table.csv'
 
