@@ -19588,7 +19588,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -37495,7 +37495,7 @@
             -1.0
         ]
     ],
-    "thermal_buy_rate_flat_heat_btu": 10.0,
+    "thermal_buy_rate_flat_heat_btu": 14.0,
     "thermal_buy_rate_option": 0.0,
     "thermal_conversion_efficiency": 85.0,
     "thermal_monthly_buy_rate_heat_btu": [

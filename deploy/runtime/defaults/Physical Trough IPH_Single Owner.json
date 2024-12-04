@@ -2143,7 +2143,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -2368,7 +2368,7 @@
     "pbi_uti_term": 0.0,
     "ppa_escalation": 1.0,
     "ppa_price_input_heat_btu": [
-        10.0
+        15.0
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
