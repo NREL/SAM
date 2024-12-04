@@ -9935,7 +9935,7 @@
     ],
     "batt_resistance": 0.001155,
     "batt_room_temperature_celsius": [
-        20.0
+        25.0
     ],
     "batt_room_temperature_single": 20.0,
     "batt_room_temperature_vector": [
