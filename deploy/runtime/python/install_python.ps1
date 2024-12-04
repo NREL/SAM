@@ -85,9 +85,10 @@ function Get-Pip {
         Remove-Item $filename
     }
     if (!(Test-Path $filename)) {
-        Invoke-WebRequestExitOnError https://bootstrap.pypa.io/${filename} $filename
+#Specific to Python 3.7 and LandBOSSE 2.3.0.3
+        Invoke-WebRequestExitOnError https://bootstrap.pypa.io/pip/3.7/${filename} $filename
     }
-    Invoke-CommandExitOnError ".\python.exe $filename --prefix=$path --no-warn-script-location"
+    Invoke-CommandExitOnError ".\python.exe $filename --prefix=`"$path`" --no-warn-script-location"
     if ($FORCE_DOWNLOAD -eq 1) {
         Remove-Item $filename
     }
@@ -164,7 +165,7 @@ if (!(Test-Path $PYTHON_CONFIG_FILE)) {
 
 $pythonPath = Get-Python $version $majorMinor
 $execPath = Join-Path $pythonPath python.exe
-$pipPath = Join-Path $pythonPath Scripts | Join-Path -ChildPath pip.exe
+$pipPath = Join-Path $pythonPath Scripts | Join-Path -ChildPath pip3.exe
 
 # Update the python config file.
 $data = Get-Content -Raw -Path $PYTHON_CONFIG_FILE | ConvertFrom-Json
