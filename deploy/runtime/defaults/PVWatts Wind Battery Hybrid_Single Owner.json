@@ -31057,7 +31057,7 @@
             7.0
         ],
         "system_capacity": 276923.0,
-        "term_int_rate": 4.0,
+        "term_int_rate": 7.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
         "total_installed_cost": 504009000.0,
@@ -31065,7 +31065,7 @@
         "ui_battery_cost": 74460100.0,
         "ui_customgeneration_capacity": 0.0,
         "ui_customgeneration_cost": 0.0,
-        "ui_electricity_rate_option": 1.0,
+        "ui_electricity_rate_option": 0.0,
         "ui_fuel_cell_capacity": 0.0,
         "ui_fuel_cell_cost": 0.0,
         "ui_hyb_pv_capacity": 76923.1,

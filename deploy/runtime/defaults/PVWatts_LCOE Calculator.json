@@ -46,7 +46,7 @@
         0.0
     ],
     "c_construction_duration": 0.0,
-    "c_construction_interest": 3.5,
+    "c_construction_interest": 6.5,
     "c_debt_percent": 60.0,
     "c_depreciation_schedule": [
         20.0,
@@ -70,7 +70,7 @@
     "en_user_spec_losses": 0.0,
     "enable_interconnection_limit": 0.0,
     "file_name": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-    "fixed_charge_rate": 0.0917255,
+    "fixed_charge_rate": 0.0926804,
     "fixed_operating_cost": 1900000.0,
     "gcr": 0.3,
     "grid_curtailment": [
@@ -8923,7 +8923,7 @@
     "ui_array_land_area_multiplier": 1.0,
     "ui_capital_cost_capacity": 1118.0,
     "ui_capital_cost_fixed": 53455000.0,
-    "ui_cfin": 1.01249,
+    "ui_cfin": 1.02303,
     "ui_cost_input_option": 1.0,
     "ui_crf": 0.0842662,
     "ui_fcr_input_option": 1.0,
