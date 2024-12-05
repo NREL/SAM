@@ -199,6 +199,7 @@ bool CodeGen_Base::PlatformFiles()
 		wxCopyFile(f1,f2);
 	}
 	else {
+		/* skip fallback per SAM issue 1918 
 		// fallback to sscapi.h generation
 		wxString fn = m_folder + "/sscapi.h";
 		FILE* f = fopen(fn.c_str(), "w");
@@ -292,6 +293,7 @@ bool CodeGen_Base::PlatformFiles()
 		fprintf(f, "\n");
 		fprintf(f, "#endif\n");
 		fclose(f);
+		*/
 	}
 	return true;
 }
