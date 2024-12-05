@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": 3.05536e+06,
+			"construction_financing_cost": 2.9418e+06,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -40,16 +40,16 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [15.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.16394e+08
+			"total_installed_cost": 1.12068e+08
 		},
 		"LandLease": {
-			"land_area": 650.278,
+			"land_area": 433.518,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -68,7 +68,7 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
-			"ptc_fed_amount": [0.027500],
+			"ptc_fed_amount": [0.030000],
 			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],

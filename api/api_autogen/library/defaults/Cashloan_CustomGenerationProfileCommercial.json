@@ -17,7 +17,7 @@
 			"system_capacity": 9707.12
 		},
 		"SystemCosts": {
-			"om_capacity": [16.000000],
+			"om_capacity": [25.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -25,17 +25,17 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 7.1857e+07
+			"total_installed_cost": 1.19762e+07
 		},
 		"LandLease": {
 		},
 		"Depreciation": {
 			"depr_fed_custom": [0.000000],
-			"depr_fed_sl_years": 7,
-			"depr_fed_type": 1,
+			"depr_fed_sl_years": 20,
+			"depr_fed_type": 2,
 			"depr_sta_custom": [0.000000],
-			"depr_sta_sl_years": 7,
-			"depr_sta_type": 1
+			"depr_sta_sl_years": 20,
+			"depr_sta_type": 2
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": [0.000000],

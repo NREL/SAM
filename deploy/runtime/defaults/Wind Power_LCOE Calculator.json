@@ -35,7 +35,7 @@
         10.0
     ],
     "c_construction_duration": 0.0,
-    "c_construction_interest": 3.5,
+    "c_construction_interest": 6.5,
     "c_debt_percent": 60.0,
     "c_depreciation_schedule": [
         20.0,
@@ -50,7 +50,7 @@
     "c_lifetime": 20.0,
     "c_nominal_interest_rate": 7.0,
     "c_tax_rate": 28.0,
-    "capital_cost": 292032000.0,
+    "capital_cost": 317052000.0,
     "cols": 5.0,
     "correlation_uncert": [
         [
@@ -1684,7 +1684,7 @@
     "eval_uncert_10yr_total": 2.22261,
     "eval_uncert_20yr_total": 2.22261,
     "eval_uncert_total": 2.22261,
-    "fixed_charge_rate": 0.0924304,
+    "fixed_charge_rate": 0.0940214,
     "fixed_operating_cost": 8000000.0,
     "grid_curtailment": [
         1e38,
@@ -10494,9 +10494,9 @@
     "turb_specific_uncert": 1.2,
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
-    "ui_capital_cost_capacity": 1460.16,
+    "ui_capital_cost_capacity": 1585.26,
     "ui_capital_cost_fixed": 27405000.0,
-    "ui_cfin": 1.02027,
+    "ui_cfin": 1.03783,
     "ui_cost_input_option": 1.0,
     "ui_crf": 0.0842662,
     "ui_fcr_input_option": 1.0,
