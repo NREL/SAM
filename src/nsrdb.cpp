@@ -700,7 +700,8 @@ void NSRDBDialog::GetResources()
 #endif
 			// skip some datasets
 			if ((name.Lower() != "spectral-india-tmy") // not compatible with SAM
-				&& (name.Lower() != "full-disc") // only covers a few years and is similar to GOES V4 from solar modeling perspective
+				&& (name.Lower() != "full-disc") // only covers a few years and is similar to PSM V3 from solar modeling perspective
+				&& (name.Lower() != "nsrdb-goes-full-disc-v4-0-0") // similar to GOES V4 from solar modeling perspective
 				&& (name.Lower() != "philippines") // basic solar resource data only tamb, dhi, dni, ghi, wind (not enough data for CSP or PV thermal models)
 				&& (name.Lower() != "vietnam")) // // basic solar resource data only tamb, dhi, dni, ghi, wind  (not enough data for CSP or PV thermal models)
 			{
