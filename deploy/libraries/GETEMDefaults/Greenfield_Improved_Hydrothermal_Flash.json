@@ -6,7 +6,7 @@
             "geotherm_cost_prod_cost_curve_well_type": 0,
             "nameplate": 40000.0,
             "well_flow_rate": 80,
-            "geotherm_cost_contingency_percent": 15,
+            "geotherm_cost_contingency_percent": 10,
             "excess_pressure_pump": 50,
             "well_diameter": 9.625,
             "geotherm_cost_pump_per_foot": 49.74,
