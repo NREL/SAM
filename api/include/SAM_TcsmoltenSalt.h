@@ -2212,7 +2212,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ud_is_sco2_regr: False: default, base udpc interpolation, True: use sco2 heuristic regression
+	 * Set ud_is_sco2_regr: 0: (default) simple max htf mass flow correction; 1: sco2 heuristic regression; 2: no correction
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
