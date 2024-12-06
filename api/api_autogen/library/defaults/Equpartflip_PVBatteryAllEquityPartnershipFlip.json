@@ -57,26 +57,26 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 100003
+			"system_capacity": 99999.3
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [5.300000],
+			"om_batt_capacity_cost": [7.250000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
-			"om_batt_replacement_cost": [323.000000],
+			"om_batt_replacement_cost": [252.000000],
 			"om_batt_variable_cost": [0.000000],
-			"om_capacity": [15.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 2.19387e+08
+			"total_installed_cost": 1.92596e+08
 		},
 		"LandLease": {
-			"land_area": 433.167,
+			"land_area": 400.395,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -84,7 +84,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [30.000000],
+			"itc_fed_percent": [0.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -95,8 +95,8 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
-			"ptc_fed_amount": [0.000000],
-			"ptc_fed_escal": 0,
+			"ptc_fed_amount": [0.030000],
+			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
@@ -217,27 +217,27 @@
 			"pbi_fed_escal": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 100003
+			"system_capacity": 99999.3
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
@@ -251,7 +251,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 5.7589e+06
+			"construction_financing_cost": 5.05565e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -275,7 +275,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 9.84641e+07
+			"battery_total_cost_lcos": 7.91831e+07
 		},
 		"ChargesByMonth": {
 		},
@@ -283,7 +283,7 @@
 			"batt_computed_bank_capacity": 240000,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 323,
+			"battery_per_kWh": 252,
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 0

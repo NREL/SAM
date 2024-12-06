@@ -362,7 +362,7 @@
             0.0
         ]
     ],
-    "analysis_period": 30.0,
+    "analysis_period": 25.0,
     "analysis_period_warning": "",
     "annual_albedo": 0.217164,
     "annual_beam": 7.36408,
@@ -680,18 +680,18 @@
     "cbi_uti_tax_sta": 1.0,
     "chk_update_peaks": 0.0,
     "city": "-",
-    "const_per_interest1": 0.0,
+    "const_per_interest1": 175473.0,
     "const_per_interest2": 0.0,
     "const_per_interest3": 0.0,
     "const_per_interest4": 0.0,
     "const_per_interest5": 0.0,
-    "const_per_interest_rate1": 0.0,
+    "const_per_interest_rate1": 6.5,
     "const_per_interest_rate2": 0.0,
     "const_per_interest_rate3": 0.0,
     "const_per_interest_rate4": 0.0,
     "const_per_interest_rate5": 0.0,
-    "const_per_interest_total": 0.0,
-    "const_per_months1": 0.0,
+    "const_per_interest_total": 175473.0,
+    "const_per_months1": 24.0,
     "const_per_months2": 0.0,
     "const_per_months3": 0.0,
     "const_per_months4": 0.0,
@@ -701,54 +701,54 @@
     "const_per_name3": "Loan 3",
     "const_per_name4": "Loan 4",
     "const_per_name5": "Loan 5",
-    "const_per_percent1": 0.0,
+    "const_per_percent1": 100.0,
     "const_per_percent2": 0.0,
     "const_per_percent3": 0.0,
     "const_per_percent4": 0.0,
     "const_per_percent5": 0.0,
-    "const_per_percent_total": 0.0,
-    "const_per_principal1": 0.0,
+    "const_per_percent_total": 100.0,
+    "const_per_principal1": 2699590.0,
     "const_per_principal2": 0.0,
     "const_per_principal3": 0.0,
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
-    "const_per_principal_total": 0.0,
-    "const_per_total1": 0.0,
+    "const_per_principal_total": 2699590.0,
+    "const_per_total1": 202469.0,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
     "const_per_total5": 0.0,
-    "const_per_upfront_rate1": 0.0,
+    "const_per_upfront_rate1": 1.0,
     "const_per_upfront_rate2": 0.0,
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 0.0,
+    "construction_financing_cost": 202469.0,
     "cost_debt_closing": 0.0,
-    "cost_debt_fee": 0.0,
+    "cost_debt_fee": 2.75,
     "cost_other_financing": 0.0,
     "country": "-",
     "csp.lf.cost.bop": 0.0,
     "csp.lf.cost.bop_mwe": 5.0,
     "csp.lf.cost.bop_per_kwe": 0.0,
-    "csp.lf.cost.contingency": 533869.0,
+    "csp.lf.cost.contingency": 152013.0,
     "csp.lf.cost.contingency_percent": 7.0,
     "csp.lf.cost.epc.cost_per_watt": 0.0,
     "csp.lf.cost.epc.fixed": 0.0,
     "csp.lf.cost.epc.per_acre": 0.0,
     "csp.lf.cost.epc.per_watt": 0.0,
     "csp.lf.cost.epc.percent": 11.0,
-    "csp.lf.cost.epc.total": 897662.0,
+    "csp.lf.cost.epc.total": 255599.0,
     "csp.lf.cost.fossil_backup": 0.0,
     "csp.lf.cost.fossil_backup.cost_per_kwe": 0.0,
     "csp.lf.cost.fossil_backup.mwe": 5.0,
-    "csp.lf.cost.heat_sink": 5750000.0,
-    "csp.lf.cost.heat_sink.cost_per_kwe": 1150.0,
+    "csp.lf.cost.heat_sink": 600000.0,
+    "csp.lf.cost.heat_sink.cost_per_kwe": 120.0,
     "csp.lf.cost.heat_sink.mwe": 5.0,
-    "csp.lf.cost.htf_system": 305078.0,
+    "csp.lf.cost.htf_system": 0.0,
     "csp.lf.cost.htf_system.area": 9244.8,
-    "csp.lf.cost.htf_system.cost_per_m2": 33.0,
-    "csp.lf.cost.installed_per_capacity": 1817.13,
+    "csp.lf.cost.htf_system.cost_per_m2": 0.0,
+    "csp.lf.cost.installed_per_capacity": 539.917,
     "csp.lf.cost.nameplate": 5.0,
     "csp.lf.cost.plm.fixed": 0.0,
     "csp.lf.cost.plm.per_acre": 10000.0,
@@ -756,17 +756,17 @@
     "csp.lf.cost.plm.percent": 0.0,
     "csp.lf.cost.plm.total": 27413.3,
     "csp.lf.cost.sales_tax.percent": 80.0,
-    "csp.lf.cost.sales_tax.total": 0.0,
-    "csp.lf.cost.sales_tax.value": 0.0,
+    "csp.lf.cost.sales_tax.total": 92945.2,
+    "csp.lf.cost.sales_tax.value": 5.0,
     "csp.lf.cost.site_improvements": 184896.0,
     "csp.lf.cost.site_improvements.area": 9244.8,
     "csp.lf.cost.site_improvements.cost_per_m2": 20.0,
     "csp.lf.cost.solar_field": 1386720.0,
     "csp.lf.cost.solar_field.area": 9244.8,
     "csp.lf.cost.solar_field.cost_per_m2": 150.0,
-    "csp.lf.cost.total_direct": 8160560.0,
-    "csp.lf.cost.total_indirect": 925075.0,
-    "csp.lf.cost.total_installed": 9085640.0,
+    "csp.lf.cost.total_direct": 2323630.0,
+    "csp.lf.cost.total_indirect": 283012.0,
+    "csp.lf.cost.total_installed": 2699590.0,
     "csp.lf.cost.total_land_area": 2.74133,
     "csp.lf.geom1.absorber_material": 0.0,
     "csp.lf.geom1.annulus_gas": [
@@ -1145,11 +1145,11 @@
     ],
     "deltaT_subcooled": 10.0,
     "depr_alloc_custom_percent": 0.0,
-    "depr_alloc_macrs_15_percent": 0.0,
-    "depr_alloc_macrs_5_percent": 100.0,
-    "depr_alloc_none": 0.0,
-    "depr_alloc_sl_15_percent": 0.0,
-    "depr_alloc_sl_20_percent": 0.0,
+    "depr_alloc_macrs_15_percent": 1.5,
+    "depr_alloc_macrs_5_percent": 90.0,
+    "depr_alloc_none": 3.0,
+    "depr_alloc_sl_15_percent": 2.5,
+    "depr_alloc_sl_20_percent": 3.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
     "depr_bonus_fed": 0.0,
@@ -1195,18 +1195,18 @@
             0.0
         ]
     ],
-    "dscr": 0.0,
-    "dscr_limit_debt_fraction": 0.0,
-    "dscr_maximum_debt_fraction": 100.0,
-    "dscr_reserve_months": 0.0,
+    "dscr": 1.3,
+    "dscr_limit_debt_fraction": 1.0,
+    "dscr_maximum_debt_fraction": 60.0,
+    "dscr_reserve_months": 6.0,
     "e_startup": 2.7,
     "elev": 773.0,
     "equip1_reserve_cost": 0.0,
-    "equip1_reserve_freq": 0.0,
+    "equip1_reserve_freq": 12.0,
     "equip2_reserve_cost": 0.0,
-    "equip2_reserve_freq": 0.0,
+    "equip2_reserve_freq": 15.0,
     "equip3_reserve_cost": 0.0,
-    "equip3_reserve_freq": 0.0,
+    "equip3_reserve_freq": 3.0,
     "equip_reserve_depr_fed": 0.0,
     "equip_reserve_depr_sta": 0.0,
     "error": [
@@ -1222,11 +1222,11 @@
     "fP_hdr_h": 0.025,
     "fP_sf_boil": 0.075,
     "federal_tax_rate": [
-        0.0
+        21.0
     ],
     "field_thermal_output": 6.48671,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
-    "flip_target_year": 10.0,
+    "flip_target_year": 20.0,
     "heat_sink_dP_frac": 0.01,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
@@ -1278,7 +1278,7 @@
     "in_nsrdb_options": 0.0,
     "in_time_step": 0.0,
     "inflation_rate": 2.5,
-    "insurance_rate": 1.0,
+    "insurance_rate": 0.5,
     "is_advanced": 0.0,
     "is_btm": 0.0,
     "itc_fed_amount": [
@@ -1287,7 +1287,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -1322,10 +1322,10 @@
     "months_working_reserve": 6.0,
     "nLoops": 3.0,
     "nModBoil": 6.0,
-    "nominal_discount_rate": 8.1375,
+    "nominal_discount_rate": 9.06,
     "om_capacity_escal": 0.0,
     "om_capacity_heat": [
-        66.0
+        33.0
     ],
     "om_fixed": [
         0.0
@@ -1370,13 +1370,13 @@
     "pbi_uti_term": 0.0,
     "ppa_escalation": 1.0,
     "ppa_price_input_heat_btu": [
-        49.822
+        19.0
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 9085640.0,
-    "property_tax_rate": 1.0,
+    "property_assessed_value": 2699590.0,
+    "property_tax_rate": 0.0,
     "ptc_fed_amount_heat_btu": [
         0.0
     ],
@@ -1391,7 +1391,7 @@
     "rate_escalation": [
         0.0
     ],
-    "real_discount_rate": 5.5,
+    "real_discount_rate": 6.4,
     "reserves_interest": 1.75,
     "rho_mirror_clean": [
         [
@@ -1401,7 +1401,7 @@
             0.0
         ]
     ],
-    "sales_tax_rate": 0.0,
+    "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "sh_OpticalTable": [
@@ -1446,9 +1446,9 @@
             0.0
         ]
     ],
-    "show_CapitalCostSO": 0.0,
-    "show_DebtConstDSCR": 0.0,
-    "show_ReserveAccounts": 0.0,
+    "show_CapitalCostSO": 1.0,
+    "show_DebtConstDSCR": 1.0,
+    "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
     "solar_data_file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solar_data_file_name_load": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
@@ -1460,24 +1460,24 @@
     "specified_solar_multiple": 1.2,
     "state": "-",
     "state_tax_rate": [
-        0.0
+        7.0
     ],
     "station_id": "67345",
     "step": 3600.0,
     "system_capacity": 6000.0,
     "system_capacity_heat_btu": 20.4728,
     "system_use_lifetime_output": 0.0,
-    "term_int_rate": 0.0,
-    "term_tenor": 0.0,
+    "term_int_rate": 4.0,
+    "term_tenor": 18.0,
     "tes_hours": 0.0,
     "theta_dep": 10.0,
     "theta_stow": 10.0,
-    "total_direct_cost": 925075.0,
-    "total_installed_cost": 9085640.0,
+    "total_direct_cost": 283012.0,
+    "total_installed_cost": 2699590.0,
     "total_land_area": 2.74133,
     "tz": -7.0,
     "ui_step_minutes": 60.0,
-    "ui_wacc": 4.06875,
+    "ui_wacc": 5.9994,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,
     "ur_billing_demand_lookback_percentages": [
@@ -2861,129 +2861,9 @@
         [
             1.0,
             1.0,
-            9.6,
-            2.0,
-            0.16756,
-            0.0
-        ],
-        [
-            1.0,
-            2.0,
-            12.48,
-            2.0,
-            0.17999,
-            0.0
-        ],
-        [
-            1.0,
-            3.0,
-            19.2,
-            2.0,
-            0.34805,
-            0.0
-        ],
-        [
-            1.0,
-            4.0,
             1e38,
             2.0,
-            0.45718,
-            0.0
-        ],
-        [
-            2.0,
-            1.0,
-            9.6,
-            2.0,
-            0.14747,
-            0.0
-        ],
-        [
-            2.0,
-            2.0,
-            12.48,
-            2.0,
-            0.1599,
-            0.0
-        ],
-        [
-            2.0,
-            3.0,
-            19.2,
-            2.0,
-            0.3134,
-            0.0
-        ],
-        [
-            2.0,
-            4.0,
-            1e38,
-            2.0,
-            0.34283,
-            0.0
-        ],
-        [
-            3.0,
-            1.0,
-            10.1,
-            2.0,
-            0.14982,
-            0.0
-        ],
-        [
-            3.0,
-            2.0,
-            13.13,
-            2.0,
-            0.16225,
-            0.0
-        ],
-        [
-            3.0,
-            3.0,
-            20.2,
-            2.0,
-            0.29989,
-            0.0
-        ],
-        [
-            3.0,
-            4.0,
-            1e38,
-            2.0,
-            0.35231,
-            0.0
-        ],
-        [
-            4.0,
-            1.0,
-            10.1,
-            2.0,
-            0.14747,
-            0.0
-        ],
-        [
-            4.0,
-            2.0,
-            13.13,
-            2.0,
-            0.1599,
-            0.0
-        ],
-        [
-            4.0,
-            3.0,
-            20.2,
-            2.0,
-            0.29603,
-            0.0
-        ],
-        [
-            4.0,
-            4.0,
-            1e38,
-            2.0,
-            0.34241,
+            0.06,
             0.0
         ]
     ],
