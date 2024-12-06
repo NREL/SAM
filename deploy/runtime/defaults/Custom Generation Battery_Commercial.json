@@ -31,7 +31,7 @@
     "batt_C_rate_max_discharge": 0.108333,
     "batt_C_rate_max_discharge_input": 0.5,
     "batt_Cp": 1500.0,
-    "batt_Qexp": 0.04,
+    "batt_Qexp": 0.0400001,
     "batt_Qexp_percent": 1.77778,
     "batt_Qfull": 2.25,
     "batt_Qfull_flow": 2398.5,
@@ -9848,7 +9848,7 @@
     "batt_pv_clipping_forecast": [
         0.0
     ],
-    "batt_replacement_capacity": 50.0,
+    "batt_replacement_capacity": 70.0,
     "batt_replacement_option": 1.0,
     "batt_replacement_schedule_percent": [
         0.0,
@@ -18690,12 +18690,12 @@
     "battery_energy": 1200.21,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 405.56,
-    "battery_per_kWh": 225.06,
+    "battery_per_kW": 667.0,
+    "battery_per_kWh": 184.0,
     "battery_power": 130.023,
     "battery_thermal_shown": 0.0,
-    "battery_total": 322851.0,
-    "battery_total_cost_lcos": 477967.0,
+    "battery_total": 307564.0,
+    "battery_total_cost_lcos": 412308.0,
     "battery_voltage_shown": 0.0,
     "cap_vs_temp": [
         [
@@ -36296,22 +36296,22 @@
         0.0,
         0.0
     ],
-    "customgen.cost.contingency": 80642.6,
+    "customgen.cost.contingency": 26128.2,
     "customgen.cost.contingency_percent": 5.0,
     "customgen.cost.epc.fixed": 403010.0,
-    "customgen.cost.epc.nonfixed": 169349.0,
+    "customgen.cost.epc.nonfixed": 54869.2,
     "customgen.cost.epc.percent": 10.0,
-    "customgen.cost.epc.total": 572359.0,
-    "customgen.cost.installed_per_capacity": 11.8779,
-    "customgen.cost.per_watt": 6.0,
+    "customgen.cost.epc.total": 457879.0,
+    "customgen.cost.installed_per_capacity": 5.11558,
+    "customgen.cost.per_watt": 1.0,
     "customgen.cost.plant": 0.0,
-    "customgen.cost.plant_scaled": 1290000.0,
+    "customgen.cost.plant_scaled": 215000.0,
     "customgen.cost.plm.fixed": 0.0,
-    "customgen.cost.plm.nonfixed": 203219.0,
+    "customgen.cost.plm.nonfixed": 65843.0,
     "customgen.cost.plm.percent": 12.0,
-    "customgen.cost.plm.total": 203219.0,
+    "customgen.cost.plm.total": 65843.0,
     "customgen.cost.sales_tax.percent": 100.0,
-    "customgen.cost.sales_tax.total": 84674.7,
+    "customgen.cost.sales_tax.total": 27434.6,
     "customgen.cost.sales_tax.value": 5.0,
     "debt_fraction": 60.0,
     "debt_message": "",
@@ -36348,8 +36348,8 @@
     "dispatch_manual_discharge": [
         0.0,
         1.0,
-        0.0,
-        0.0,
+        1.0,
+        1.0,
         0.0,
         0.0
     ],
@@ -36362,6 +36362,8 @@
         0.0
     ],
     "dispatch_manual_percent_discharge": [
+        25.0,
+        25.0,
         25.0,
         0.0
     ],
@@ -63430,20 +63432,20 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
-        6.28
+        5.25
     ],
     "om_batt_fixed_cost": [
         0.0
     ],
     "om_batt_nameplate": 1200.21,
     "om_batt_replacement_cost": [
-        225.06
+        280.0
     ],
     "om_batt_variable_cost": [
         0.0
     ],
     "om_capacity": [
-        16.0
+        25.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -63451,7 +63453,7 @@
     ],
     "om_fixed_escal": 0.0,
     "om_fuel_cost": [
-        0.0
+        10.0
     ],
     "om_fuel_cost_escal": 0.0,
     "om_production": [
@@ -63506,7 +63508,7 @@
     "peak_shaving_batt_dispatch_choice": 0.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 2553750.0,
+    "property_assessed_value": 1099850.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -63527,11 +63529,11 @@
     "pv.storage.p2.dischargetogrid": 0.0,
     "pv.storage.p2.gridcharge": 0.0,
     "pv.storage.p3.charge": 0.0,
-    "pv.storage.p3.discharge": 0.0,
+    "pv.storage.p3.discharge": 1.0,
     "pv.storage.p3.dischargetogrid": 0.0,
     "pv.storage.p3.gridcharge": 0.0,
     "pv.storage.p4.charge": 0.0,
-    "pv.storage.p4.discharge": 0.0,
+    "pv.storage.p4.discharge": 1.0,
     "pv.storage.p4.dischargetogrid": 0.0,
     "pv.storage.p4.gridcharge": 0.0,
     "pv.storage.p5.charge": 0.0,
@@ -63560,11 +63562,11 @@
     "system_capacity": 215.0,
     "system_capacity_combined": 0.0,
     "system_use_lifetime_output": 1.0,
-    "total_battery_indirect_cost": 155116.0,
-    "total_direct_cost": 1693490.0,
-    "total_indirect_cost": 775579.0,
-    "total_installed_cost": 2553750.0,
-    "total_system_indirect_cost": 620463.0,
+    "total_battery_indirect_cost": 104744.0,
+    "total_direct_cost": 548692.0,
+    "total_indirect_cost": 523722.0,
+    "total_installed_cost": 1099850.0,
+    "total_system_indirect_cost": 418978.0,
     "ui_annual_load": 0.0,
     "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
@@ -63573,8 +63575,8 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
-    "ui_loan_amount": 1532250.0,
-    "ui_net_capital_cost": 2553750.0,
+    "ui_loan_amount": 659909.0,
+    "ui_net_capital_cost": 1099850.0,
     "ui_plant_capacity": 215.0,
     "ui_step_minutes": 60.0,
     "ui_wacc": 6.70974,

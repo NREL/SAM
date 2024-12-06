@@ -84,7 +84,7 @@
 			"om_fuel_cost_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.092e+09
+			"total_installed_cost": 1.092e+08
 		},
 		"LandLease": {
 		},
@@ -112,10 +112,10 @@
 		},
 		"Depreciation": {
 			"depr_alloc_custom_percent": 0,
-			"depr_alloc_macrs_15_percent": 1.5,
-			"depr_alloc_macrs_5_percent": 90,
-			"depr_alloc_sl_15_percent": 2.5,
-			"depr_alloc_sl_20_percent": 3,
+			"depr_alloc_macrs_15_percent": 0,
+			"depr_alloc_macrs_5_percent": 0,
+			"depr_alloc_sl_15_percent": 0,
+			"depr_alloc_sl_20_percent": 100,
 			"depr_alloc_sl_39_percent": 0,
 			"depr_alloc_sl_5_percent": 0,
 			"depr_bonus_fed": 0,
@@ -266,7 +266,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 2.8665e+07
+			"construction_financing_cost": 2.8665e+06
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
