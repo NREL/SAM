@@ -14,7 +14,7 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 5190
+			"system_capacity": 5000
 		},
 		"SystemCosts": {
 			"om_capacity_escal": 0,
@@ -23,7 +23,7 @@
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_production_heat": [2.000000],
-			"total_installed_cost": 9.92967e+06
+			"total_installed_cost": 1.33794e+07
 		},
 		"LandLease": {
 		},
@@ -134,22 +134,22 @@
 			"pbi_fed_escal": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount_heat_btu": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount_heat_btu": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount_heat_btu": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
 		},

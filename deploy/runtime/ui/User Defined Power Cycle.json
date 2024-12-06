@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 141.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 33.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -189,7 +189,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 177.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -226,7 +226,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 156.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -234,7 +234,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 1065.0
+                    "Integer": 1047.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -346,7 +346,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 378.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -512,7 +512,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -678,7 +678,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -927,7 +927,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1010,7 +1010,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1176,7 +1176,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1425,7 +1425,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1508,7 +1508,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1591,7 +1591,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1674,7 +1674,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1798,7 +1798,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1981,6 +1981,47 @@
                 }
             }
         },
+        "Choice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ud_is_sco2_regr"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 453.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 195.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Simple Correction|sCO2 Correction|No Correction"
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1994,7 +2035,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 249.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2160,7 +2201,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 264.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2492,7 +2533,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2575,7 +2616,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 378.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2658,7 +2699,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2741,7 +2782,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2824,7 +2865,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2907,7 +2948,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 297.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2990,7 +3031,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 201.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3052,7 +3093,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 321.0
+                    "Integer": 330.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3402,6 +3443,19 @@
             ],
             "UIObject": "DataMatrix",
             "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "ud_is_sco2_regr": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Maximum cycle output control method",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Choice",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "ud_m_dot_des_calc": {

@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 30,
-			"construction_financing_cost": 5.49958e+06,
+			"construction_financing_cost": 5.01162e+06,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -78,12 +78,12 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 2,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [7.250000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
-			"om_batt_replacement_cost": [323.000000],
+			"om_batt_replacement_cost": [252.000000],
 			"om_batt_variable_cost": [0.000000],
-			"om_capacity": [15.000000],
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -97,10 +97,10 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 2.09508e+08
+			"total_installed_cost": 1.90919e+08
 		},
 		"LandLease": {
-			"land_area": 650.278,
+			"land_area": 433.518,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -145,7 +145,7 @@
 			"depr_bonus_sta": 0,
 			"depr_bonus_sta_custom": 0,
 			"depr_bonus_sta_macrs_15": 0,
-			"depr_bonus_sta_macrs_5": 0,
+			"depr_bonus_sta_macrs_5": 1,
 			"depr_bonus_sta_sl_15": 0,
 			"depr_bonus_sta_sl_20": 0,
 			"depr_bonus_sta_sl_39": 0,
@@ -154,14 +154,14 @@
 			"depr_fedbas_method": 1,
 			"depr_itc_fed_custom": 0,
 			"depr_itc_fed_macrs_15": 0,
-			"depr_itc_fed_macrs_5": 0,
+			"depr_itc_fed_macrs_5": 1,
 			"depr_itc_fed_sl_15": 0,
 			"depr_itc_fed_sl_20": 0,
 			"depr_itc_fed_sl_39": 0,
 			"depr_itc_fed_sl_5": 0,
 			"depr_itc_sta_custom": 0,
 			"depr_itc_sta_macrs_15": 0,
-			"depr_itc_sta_macrs_5": 0,
+			"depr_itc_sta_macrs_5": 1,
 			"depr_itc_sta_sl_15": 0,
 			"depr_itc_sta_sl_20": 0,
 			"depr_itc_sta_sl_39": 0,
@@ -267,7 +267,7 @@
 			"batt_meter_position": 1,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 323,
+			"battery_per_kWh": 252,
 			"en_batt": 1,
 			"en_standalone_batt": 0
 		},
@@ -415,7 +415,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 9.56694e+07
+			"battery_total_cost_lcos": 7.75959e+07
 		},
 		"ChargesByMonth": {
 		},

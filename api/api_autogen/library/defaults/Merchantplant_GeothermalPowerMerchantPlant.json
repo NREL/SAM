@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": 1.52983e+07,
+			"construction_financing_cost": 2.39559e+07,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -46,9 +46,9 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"system_recapitalization_cost": 2.82098e+07,
+			"system_recapitalization_cost": 8.68415e+07,
 			"system_use_recapitalization": 1,
-			"total_installed_cost": 1.24377e+08
+			"total_installed_cost": 1.94764e+08
 		},
 		"LandLease": {
 		},

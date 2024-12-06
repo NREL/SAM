@@ -52,13 +52,13 @@
 		},
 		"HybridCosts": {
 			"degradation": [0.000000],
-			"om_capacity": [35.000000],
+			"om_capacity": [39.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 487620
+			"total_installed_cost": 635775
 		}
 	}
 }

@@ -502,11 +502,11 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 					VersionUpgrade::log( VersionUpgrade::VAR_ADDED, 
 						"Added '" + label + "', " + vv_strtypes[type] + ": " + valstr, reason ) );
 			}
-			else
+			else // variable's value or its name may have changed
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Changed '" + label + "' to: " + valstr, reason ) );
+						label + " = " + valstr, reason ) );
 			}
 
 			cxt.result().assign( ok ? 1.0 : 0.0 );

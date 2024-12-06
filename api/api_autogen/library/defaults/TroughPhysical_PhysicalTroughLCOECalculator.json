@@ -503,6 +503,7 @@
 				[410.000000, 1.000000, 52.105300, 1.193630, 1.193880, 1.000000, 1.000000],
 				[410.000000, 1.000000, 55.000000, 1.181830, 1.193880, 1.000000, 1.000000]
 			],
+			"ud_is_sco2_regr": 0,
 			"ud_m_dot_water_cool_des": 0
 		},
 		"TES": {
@@ -523,13 +524,13 @@
 			"tank_pairs": 1,
 			"tes_cyl_piston_loss_poly": [0.000000, 0.000000, 0.000000, 0.000000],
 			"tes_cyl_tank_cp": 0.49,
-			"tes_cyl_tank_dens": 0,
+			"tes_cyl_tank_dens": 8000,
 			"tes_cyl_tank_insul_percent": 0,
 			"tes_cyl_tank_thick": 0.0254,
-			"tes_n_tsteps": 50,
-			"tes_pb_T_charge_min": 0,
-			"tes_pb_T_cold_delta": 10,
-			"tes_pb_T_hot_delta": 10,
+			"tes_n_tsteps": 100,
+			"tes_pb_T_charge_min": 381,
+			"tes_pb_T_cold_delta": 30,
+			"tes_pb_T_hot_delta": 30,
 			"tes_pb_cp_solid": 0.83,
 			"tes_pb_dens_solid": 2500,
 			"tes_pb_f_oversize": 1,
