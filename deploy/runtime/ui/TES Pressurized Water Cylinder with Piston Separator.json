@@ -852,7 +852,7 @@
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Tank wall density",
-            "Units": "kg/m3",
+            "Units": "kg/m³",
             "Group": "",
             "IndexLabels": "",
             "Flags": 0.0,
