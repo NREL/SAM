@@ -35,12 +35,12 @@
 			"flip_target_year": 20,
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.043000],
+			"ppa_price_input": [0.040000],
 			"ppa_soln_mode": 1
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"construction_financing_cost": 3.05543e+06,
+			"construction_financing_cost": 2.94178e+06,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -72,7 +72,7 @@
 			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 100003,
+			"system_capacity": 99999.3,
 			"term_int_rate": 7,
 			"term_tenor": 18
 		},
@@ -83,10 +83,10 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.16398e+08
+			"total_installed_cost": 1.12068e+08
 		},
 		"LandLease": {
-			"land_area": 649.75,
+			"land_area": 400.395,
 			"om_land_lease": [0.000000],
 			"om_land_lease_escal": 0
 		},
@@ -105,7 +105,7 @@
 			"itc_sta_percent_deprbas_fed": 0,
 			"itc_sta_percent_deprbas_sta": 0,
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
-			"ptc_fed_amount": [0.027500],
+			"ptc_fed_amount": [0.030000],
 			"ptc_fed_escal": 2.5,
 			"ptc_fed_term": 10,
 			"ptc_sta_amount": [0.000000],
@@ -228,25 +228,25 @@
 			"pbi_fed_for_ds": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_for_ds": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_for_ds": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_for_ds": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
 			"en_batt": 0,
@@ -370,7 +370,7 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 100003
+			"system_capacity": 99999.3
 		},
 		"UtilityBill": {
 		},
@@ -386,7 +386,7 @@
 			"cp_capacity_payment_amount": [0.000000],
 			"cp_capacity_payment_esc": 0,
 			"cp_capacity_payment_type": 0,
-			"cp_system_nameplate": 100.003
+			"cp_system_nameplate": 99.9993
 		},
 		"GridLimits": {
 			"grid_curtailment_price": [0.000000],

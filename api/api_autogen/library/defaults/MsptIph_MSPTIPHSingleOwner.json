@@ -9533,6 +9533,14 @@
 			"u_tank": 0.4
 		},
 		"HeatSink": {
+			"hs_phys_N_sub": 100,
+			"hs_phys_P_steam_hot_des": 4.762,
+			"hs_phys_Q_steam_hot_des": 0.75,
+			"hs_phys_T_steam_cold_des": 120,
+			"hs_phys_f_mdot_steam_max": 1.5,
+			"hs_phys_f_mdot_steam_min": 0.2,
+			"hs_phys_tol": 0.01,
+			"hs_type": 0,
 			"pb_pump_coef": 0.55
 		},
 		"TimeOfDeliveryFactors": {

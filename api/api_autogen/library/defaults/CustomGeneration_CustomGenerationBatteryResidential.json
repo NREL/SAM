@@ -6,7 +6,7 @@
 			"energy_output_array": [0.000000],
 			"heat_rate": 10,
 			"spec_mode": 0,
-			"system_capacity": 4,
+			"system_capacity": 8,
 			"user_capacity_factor": 20
 		},
 		"Lifetime": {

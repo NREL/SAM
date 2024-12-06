@@ -78,7 +78,7 @@
 			"om_capacity": [0],
 			"om_fixed": [0],
 			"om_production": [0],
-			"total_installed_cost": 1.78119e+06
+			"total_installed_cost": 2.0353e+06
 		},
 		"LandLease": {
 		},
@@ -123,7 +123,7 @@
 			"depr_bonus_sta": 0,
 			"depr_bonus_sta_custom": 0,
 			"depr_bonus_sta_macrs_15": 0,
-			"depr_bonus_sta_macrs_5": 0,
+			"depr_bonus_sta_macrs_5": 1,
 			"depr_bonus_sta_sl_15": 0,
 			"depr_bonus_sta_sl_20": 0,
 			"depr_bonus_sta_sl_39": 0,
@@ -275,7 +275,7 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 46756.2
+			"construction_financing_cost": 53426.5
 		},
 		"BatterySystem": {
 			"batt_replacement_option": 1
@@ -293,7 +293,7 @@
 		"FuelCell": {
 		},
 		"HybridCosts": {
-			"total_installed_cost": 1.78119e+06
+			"total_installed_cost": 2.0353e+06
 		}
 	}
 }
