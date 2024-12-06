@@ -19596,7 +19596,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -37330,7 +37330,7 @@
     "pbi_fed_for_ds": 0.0,
     "pbi_fed_tax_fed": 1.0,
     "pbi_fed_tax_sta": 1.0,
-    "pbi_fed_term": 10.0,
+    "pbi_fed_term": 0.0,
     "pbi_oth_amount_heat_btu": [
         0.0
     ],
@@ -37338,7 +37338,7 @@
     "pbi_oth_for_ds": 0.0,
     "pbi_oth_tax_fed": 1.0,
     "pbi_oth_tax_sta": 1.0,
-    "pbi_oth_term": 10.0,
+    "pbi_oth_term": 0.0,
     "pbi_sta_amount_heat_btu": [
         0.0
     ],
@@ -37346,7 +37346,7 @@
     "pbi_sta_for_ds": 0.0,
     "pbi_sta_tax_fed": 1.0,
     "pbi_sta_tax_sta": 1.0,
-    "pbi_sta_term": 10.0,
+    "pbi_sta_term": 0.0,
     "pbi_uti_amount_heat_btu": [
         0.0
     ],
@@ -37354,7 +37354,7 @@
     "pbi_uti_for_ds": 0.0,
     "pbi_uti_tax_fed": 1.0,
     "pbi_uti_tax_sta": 1.0,
-    "pbi_uti_term": 10.0,
+    "pbi_uti_term": 0.0,
     "peak_1": 5000.0,
     "peak_10": 5000.0,
     "peak_11": 5000.0,
@@ -37503,7 +37503,7 @@
             -1.0
         ]
     ],
-    "thermal_buy_rate_flat_heat_btu": 10.0,
+    "thermal_buy_rate_flat_heat_btu": 14.0,
     "thermal_buy_rate_option": 0.0,
     "thermal_conversion_efficiency": 85.0,
     "thermal_monthly_buy_rate_heat_btu": [

@@ -229,7 +229,7 @@
 			"rate_escalation": [0.000000]
 		},
 		"SaleLeaseback": {
-			"construction_financing_cost": 1.52983e+07,
+			"construction_financing_cost": 2.39559e+07,
 			"cost_dev_fee_percent": 3,
 			"cost_equity_closing": 300000,
 			"cost_other_financing": 0,
@@ -240,11 +240,11 @@
 			"salvage_percentage": 0,
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
-			"system_recapitalization_cost": 2.82098e+07,
+			"system_recapitalization_cost": 8.68415e+07,
 			"system_use_lifetime_output": 1,
 			"system_use_recapitalization": 1,
 			"tax_investor_required_lease_reserve": 6,
-			"total_installed_cost": 1.24377e+08
+			"total_installed_cost": 1.94764e+08
 		},
 		"UtilityBill": {
 		},

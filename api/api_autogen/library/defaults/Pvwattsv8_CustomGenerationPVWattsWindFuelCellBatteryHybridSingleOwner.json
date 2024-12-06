@@ -45,8 +45,8 @@
 		},
 		"HybridCosts": {
 			"degradation": [0.500000],
-			"land_area": 650.278,
-			"om_capacity": [15.000000],
+			"land_area": 433.518,
+			"om_capacity": [19.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
@@ -54,7 +54,7 @@
 			"om_land_lease_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.16394e+08
+			"total_installed_cost": 1.12068e+08
 		}
 	}
 }
