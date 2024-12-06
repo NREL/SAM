@@ -1311,6 +1311,14 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_Powerblock_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set ud_is_sco2_regr: 0: (default) simple max htf mass flow correction; 1: sco2 heuristic regression; 2: no correction
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_Powerblock_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ud_m_dot_water_cool_des: Mass flow rate of water required at user-defined power cycle design point [kg/s]
 	 * options: None
 	 * constraints: None
@@ -2814,6 +2822,8 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_Powerblock_ud_f_W_dot_cool_des_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_Powerblock_ud_ind_od_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_Powerblock_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_Powerblock_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err);
 
