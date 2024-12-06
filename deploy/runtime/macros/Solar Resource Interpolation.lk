@@ -234,7 +234,7 @@ function identify_case(input_data, lat, long, tz){
 			if (cols[4] == -1){
 				case[0] = 1;
 				max_hour = -1;
-				for (hr=0; hr<24; hr++){
+				for (hr=0; hr<48; hr++){
 					max_hour = max(max_hour, input_data[hr][cols[3]]);
 				}
 				if (max_hour == 23)
