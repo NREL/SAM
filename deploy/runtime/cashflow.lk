@@ -213,10 +213,6 @@ function cf_savings_heat()
 	cfline( '' );
 }
 
-
-
-
-
 function cf_revenue()
 {
 	tech = technology();
@@ -1112,7 +1108,7 @@ function create_workbook( wkbk )
 
 	tech = technology();
 	
-	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' )
+	if ( tech == 'PVWatts Wind Battery Hybrid' || tech == 'PVWatts Wind FuelCell Battery Hybrid' || tech == 'Photovoltaic Wind Battery Hybrid' || tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' || is_iph_tech() )
 	{
 		msgbox('Send-to Excel with Equations Not Available.\nThis option is not available for ' + tech + ' configurations.');
 		exit;
