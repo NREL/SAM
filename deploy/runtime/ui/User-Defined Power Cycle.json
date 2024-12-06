@@ -1981,7 +1981,7 @@
                 }
             }
         },
-        "CheckBox": {
+        "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -1990,15 +1990,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 426.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 57.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 213.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2008,13 +2008,13 @@
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Apply sCO2 heuristic to interpolation?"
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Simple Correction|sCO2 Correction|No Correction"
                 },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -3448,11 +3448,11 @@
         "ud_is_sco2_regr": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Apply sCO2 heuristic to interpolation?",
+            "Label": "Maximum cycle output control method",
             "Units": "",
             "Group": "",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 0.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
             "sscVariableName": "",

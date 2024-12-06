@@ -6,10 +6,10 @@
 		"Weather": {
 		},
 		"SystemDesign": {
-			"q_pb_design": 5.19
+			"q_pb_design": 5
 		},
 		"SolarField": {
-			"A_aperture": [656.000000, 656.000000, 656.000000, 656.000000],
+			"A_aperture": [1320.000000, 656.000000, 656.000000, 656.000000],
 			"AbsorberMaterial": [
 				[1.000000, 1.000000, 1.000000, 1.000000],
 				[1.000000, 1.000000, 1.000000, 1.000000],
@@ -22,7 +22,7 @@
 				[27.000000, 1.000000, 1.000000, 27.000000],
 				[27.000000, 1.000000, 1.000000, 27.000000]
 			],
-			"Ave_Focal_Length": [2.150000, 2.150000, 2.150000, 2.150000],
+			"Ave_Focal_Length": [2.890000, 2.150000, 2.150000, 2.150000],
 			"ColperSCA": [8.000000, 8.000000, 8.000000, 8.000000],
 			"D_2": [
 				[0.076000, 0.076000, 0.076000, 0.076000],
@@ -80,7 +80,7 @@
 				[0.860000, 0.860000, 1.000000, 0.000000],
 				[0.860000, 0.860000, 1.000000, 0.000000]
 			],
-			"Error": [1.000000, 1.000000, 1.000000, 1.000000],
+			"Error": [0.990000, 1.000000, 1.000000, 1.000000],
 			"FieldConfig": 1,
 			"Flow_type": [
 				[1.000000, 1.000000, 1.000000, 1.000000],
@@ -88,8 +88,8 @@
 				[1.000000, 1.000000, 1.000000, 1.000000],
 				[1.000000, 1.000000, 1.000000, 1.000000]
 			],
-			"Fluid": 31,
-			"GeomEffects": [0.952000, 0.952000, 0.952000, 0.952000],
+			"Fluid": 21,
+			"GeomEffects": [0.980000, 0.952000, 0.952000, 0.952000],
 			"GlazingIntactIn": [
 				[1.000000, 1.000000, 0.000000, 1.000000],
 				[1.000000, 1.000000, 0.000000, 1.000000],
@@ -104,13 +104,13 @@
 			],
 			"HDR_rough": 4.57e-05,
 			"IAM_matrix": [
-				[1.000000, 0.032700, -0.135100],
-				[1.000000, 0.032700, -0.135100],
-				[1.000000, 0.032700, -0.135100],
-				[1.000000, 0.032700, -0.135100]
+				[1.000000, -0.008000, -0.117000, 0.000000],
+				[1.000000, 0.032700, -0.135100, 0.000000],
+				[1.000000, 0.032700, -0.135100, 0.000000],
+				[1.000000, 0.032700, -0.135100, 0.000000]
 			],
 			"I_bn_des": 950,
-			"L_SCA": [115.000000, 115.000000, 115.000000, 115.000000],
+			"L_SCA": [168.000000, 115.000000, 115.000000, 115.000000],
 			"L_aperture": [14.375000, 14.375000, 14.375000, 14.375000],
 			"L_rnr_per_xpan": 70,
 			"L_xpan_hdr": 20,
@@ -125,7 +125,7 @@
 				[0.000100, 750.000000, 750.000000, 0.000000]
 			],
 			"Pipe_hl_coef": 0.45,
-			"Rho_mirror_clean": [0.930000, 0.930000, 0.930000, 0.930000],
+			"Rho_mirror_clean": [0.935000, 0.930000, 0.930000, 0.930000],
 			"Rough": [
 				[0.000045, 0.000045, 0.000045, 0.000045],
 				[0.000045, 0.000045, 0.000045, 0.000045],
@@ -142,21 +142,21 @@
 			],
 			"T_fp": 10,
 			"T_loop_in_des": 90,
-			"T_loop_out": 150,
-			"T_shutdown": 109.8,
-			"T_startup": 109.8,
+			"T_loop_out": 300,
+			"T_shutdown": 159.3,
+			"T_startup": 159.3,
 			"Tau_envelope": [
 				[0.964000, 0.964000, 1.000000, 0.000000],
 				[0.964000, 0.964000, 1.000000, 0.000000],
 				[0.964000, 0.964000, 1.000000, 0.000000],
 				[0.964000, 0.964000, 1.000000, 0.000000]
 			],
-			"TrackingError": [0.988000, 0.988000, 0.988000, 0.988000],
+			"TrackingError": [0.990000, 0.988000, 0.988000, 0.988000],
 			"V_hdr_cold_max": 3,
 			"V_hdr_cold_min": 2,
 			"V_hdr_hot_max": 3,
 			"V_hdr_hot_min": 2,
-			"W_aperture": [6.000000, 6.000000, 6.000000, 6.000000],
+			"W_aperture": [8.200000, 6.000000, 6.000000, 6.000000],
 			"accept_init": 0,
 			"accept_loc": 1,
 			"accept_mode": 0,
@@ -309,6 +309,14 @@
 			"wind_stow_speed": 25
 		},
 		"HeatSink": {
+			"hs_phys_N_sub": 100,
+			"hs_phys_P_steam_hot_des": 4.762,
+			"hs_phys_Q_steam_hot_des": 0.75,
+			"hs_phys_T_steam_cold_des": 120,
+			"hs_phys_f_mdot_steam_max": 1.5,
+			"hs_phys_f_mdot_steam_min": 0.2,
+			"hs_phys_tol": 0.01,
+			"hs_type": 0,
 			"pb_pump_coef": 0.55
 		},
 		"ParallelHeater": {
@@ -327,19 +335,19 @@
 			"init_hot_htf_percent": 30,
 			"is_h_tank_fixed": 1,
 			"store_fl_props": [
-				[1.000000]
+				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 			],
-			"store_fluid": 31,
+			"store_fluid": 18,
 			"tank_pairs": 1,
 			"tes_cyl_piston_loss_poly": [0.000000, 0.000000, 0.000000, 0.000000],
 			"tes_cyl_tank_cp": 0.49,
 			"tes_cyl_tank_dens": 8000,
 			"tes_cyl_tank_insul_percent": 0,
 			"tes_cyl_tank_thick": 0.0254,
-			"tes_n_tsteps": 50,
-			"tes_pb_T_charge_min": 0,
-			"tes_pb_T_cold_delta": 10,
-			"tes_pb_T_hot_delta": 10,
+			"tes_n_tsteps": 100,
+			"tes_pb_T_charge_min": 290,
+			"tes_pb_T_cold_delta": 30,
+			"tes_pb_T_hot_delta": 30,
 			"tes_pb_cp_solid": 0.83,
 			"tes_pb_dens_solid": 2500,
 			"tes_pb_f_oversize": 1,
@@ -360,7 +368,7 @@
 				[0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
 			],
 			"non_solar_field_land_area_multiplier": 1.1,
-			"specified_solar_multiple": 2.5,
+			"specified_solar_multiple": 2.3,
 			"specified_total_aperture": 20000,
 			"tanks_in_parallel": 1,
 			"tes_diams": [
@@ -421,8 +429,8 @@
 			"csp_dtr_cost_plm_per_watt": 0,
 			"csp_dtr_cost_plm_percent": 0,
 			"csp_dtr_cost_sales_tax_percent": 80,
-			"csp_dtr_cost_site_improvements_cost_per_m2": 25,
-			"csp_dtr_cost_solar_field_cost_per_m2": 150,
+			"csp_dtr_cost_site_improvements_cost_per_m2": 16,
+			"csp_dtr_cost_solar_field_cost_per_m2": 297,
 			"csp_dtr_cost_storage_cost_per_kwht": 62,
 			"sales_tax_rate": 5
 		},

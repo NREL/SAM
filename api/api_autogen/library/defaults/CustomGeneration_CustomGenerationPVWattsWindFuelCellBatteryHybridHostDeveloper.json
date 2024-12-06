@@ -5,7 +5,7 @@
 			"derate": 0,
 			"heat_rate": 0,
 			"spec_mode": 0,
-			"system_capacity": 969.565,
+			"system_capacity": 100770,
 			"user_capacity_factor": 0
 		},
 		"Lifetime": {
@@ -17,7 +17,7 @@
 			"om_capacity": [0],
 			"om_fixed": [0],
 			"om_production": [0],
-			"total_installed_cost": 2.91449e+07
+			"total_installed_cost": 1.35922e+08
 		}
 	}
 }

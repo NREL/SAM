@@ -1525,6 +1525,70 @@ extern "C"
 	//
 
 	/**
+	 * Set hs_phys_N_sub: Number physical heat sink HX nodes
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_N_sub_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_P_steam_hot_des: Steam outlet (and inlet) pressure for physical heat sink [bar]
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_P_steam_hot_des_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_Q_steam_hot_des: Steam outlet quality for physical heat sink
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_Q_steam_hot_des_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_T_steam_cold_des: Steam inlet temperature for physical heat sink [C]
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_T_steam_cold_des_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_f_mdot_steam_max: Max steam mdot fraction for physical heat sink
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_max_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_f_mdot_steam_min: Min steam mdot fraction for physical heat sink
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_min_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_phys_tol: Physical heat sink solve tolerance
+	 * options: None
+	 * constraints: None
+	 * required if: hs_type=1
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_tol_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set hs_type: 0: ideal model, 1: physical steam model
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_MsptIph_HeatSink_hs_type_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set pb_pump_coef: Pumping power to move 1kg of HTF through PB loop [kW/kg]
 	 * options: None
 	 * constraints: None
@@ -2325,6 +2389,22 @@ extern "C"
 	/**
 	 * HeatSink Getters
 	 */
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_N_sub_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_P_steam_hot_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_Q_steam_hot_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_T_steam_cold_des_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_max_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_min_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_tol_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_MsptIph_HeatSink_hs_type_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_MsptIph_HeatSink_pb_pump_coef_nget(SAM_table ptr, SAM_error *err);
 

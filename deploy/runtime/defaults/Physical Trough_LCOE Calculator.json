@@ -1403,7 +1403,7 @@
         10.0
     ],
     "c_construction_duration": 0.0,
-    "c_construction_interest": 3.5,
+    "c_construction_interest": 6.5,
     "c_debt_percent": 60.0,
     "c_depreciation_schedule": [
         20.0,
@@ -2117,7 +2117,7 @@
     "field_thermal_output": 364.649,
     "field_thermal_output_ideal": 626.602,
     "file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
-    "fixed_charge_rate": 0.0824469,
+    "fixed_charge_rate": 0.083866,
     "fixed_land_area": 596.519,
     "fixed_operating_cost": 6593400.0,
     "fluid_dens_inlet_temp": 820.811,
@@ -12882,6 +12882,7 @@
             1.0
         ]
     ],
+    "ud_is_sco2_regr": 0.0,
     "ud_m_dot_des_calc": 1.0,
     "ud_m_dot_design": 1.0,
     "ud_m_dot_high_calc": 1.2,
@@ -12945,7 +12946,7 @@
     "ui_alpha_env_2": 0.02,
     "ui_alpha_env_3": 0.0,
     "ui_capital_cost_reference": 838520000.0,
-    "ui_cfin": 1.02027,
+    "ui_cfin": 1.03783,
     "ui_collector_description": "SkyFuel SkyTrough (with 80-mm OD receiver)",
     "ui_crf": 0.0751645,
     "ui_disp_1_turbout": 1.0,
