@@ -193,12 +193,12 @@ bool CodeGen_Base::PlatformFiles()
 	wxCopyFile(f1, f2);
 	// sscapi.h - switch to copy version for syching issues 5/30/17
 	// assumes in runtime folder for all builds.
-	f1 = SamApp::GetAppPath() + "/sscapi.h";
+	f1 = SamApp::GetRuntimePath() + "/sscapi.h";
 	if (wxFileExists(f1)) {
 		f2 = m_folder + "/sscapi.h";
 		wxCopyFile(f1,f2);
 	}
-	else {
+	//else {
 		/* skip fallback per SAM issue 1918 
 		// fallback to sscapi.h generation
 		wxString fn = m_folder + "/sscapi.h";
@@ -294,7 +294,7 @@ bool CodeGen_Base::PlatformFiles()
 		fprintf(f, "#endif\n");
 		fclose(f);
 		*/
-	}
+	//}
 	return true;
 }
 
