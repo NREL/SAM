@@ -576,7 +576,11 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Tower and Receiver Dimensions</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tower height, m</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Height in meters of the tower structure, equal to the vertical distance between the heliostat pivot points and the vertical center of receiver.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The tower height may be automatically calculated by SolarPILOT depending on the options you choose on the Heliostat Field page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">The tower height may be automatically calculated by SolarPILOT depending on the options you choose on the Heliostat Field page.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">SAM assumes that the heliostat pivot point is half of the heliostat height so that there is no ground clearance when the heliostat is vertical.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Receiver Flux Modeling Parameters</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum receiver flux, kWt/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable incident flux on the receiver, before reflection, re-radiation, or convection losses. </span></p>
@@ -599,7 +603,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The minimum allowable fraction of the maximum flow rate to receiver.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum receiver operation fraction</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The maximum allowable fraction of the maximum flow rate to receiver. SAM removes heliostats from operation if the HTF mass flow rate exceeds the maximum allowable value.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup delay time</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup delay time, hr</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The time in hours required to start the receiver. The receiver starts whenever the radiation incident on the field in the previous hour is zero, and there is sufficient thermal energy in the current hour to meet the thermal design requirement. SAM calculates the start up energy as the product of the available thermal energy, startup delay time, and startup delay energy fraction.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver startup delay energy fraction</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Fraction of receiver design thermal power required by the receiver during the startup period.</span></p>

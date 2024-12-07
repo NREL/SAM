@@ -543,15 +543,24 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The device rated power is the maximum power value in the TEC power curve and determines the device and array rated power for cost calculations. SAM automatically determines the device rated power from the power curve data.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">Design Tidal Converter</span></h4>
 <p class="p_Text"><span class="f_Text">You can specify the basic TEC characteristics, and SAM will calculate a TEC power curve.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rated power output</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rated power per rotor</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Target capacity factor</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">User-defined rotor diameter</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rated power output, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nameplate capacity of the TEC in AC kilowatts, equivalent to the maximum value in the TEC power curve. It is calculated as the sum of the products of the resource frequency distribution at a given fluid velocity and the power output at that velocity divided by the capacity factor.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Rated power per rotor, kW</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The nameplate capacity of a single rotor of the TEC in AC kilowatts, calculated as the rated power output divided by the number of rotors.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Target capacity factor, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The target capacity factor sets the maximum value in the TEC power curve, which in effect limits the TEC power output to the maximum value at higher fluid velocities.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">User-defined rotor diameter, m</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The diameter of a single rotor in meters.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of rotors</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PTO efficiency</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The number of rotors in the TEC.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">PTO efficiency, %</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The conversion efficiency of the power take-off (PTO) that converts mechanical energy of the rotors into electricity. Enter a single value, or click </span><img alt="SS_AnnSched-valschedbutton" style="margin:0;width:1.4375rem;height:1.5000rem;border:none" src="./images/ss_annsched-valschedbutton.png"/> to specify a value for each velocity from the <a href="me_tidal_resource.html" class="topiclink">Tidal Resource</a> page.</p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Maximum Cp</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cut-in tidal surface velocity</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cut-out tidal surface velocity</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The rotor power efficiency. The fraction of the rotor's total available power that the blades can convert to mechanical power. Enter a single value, or click </span><img alt="SS_AnnSched-valschedbutton" style="margin:0;width:1.4375rem;height:1.5000rem;border:none" src="./images/ss_annsched-valschedbutton.png"/> to specify a value for each velocity from the <a href="me_tidal_resource.html" class="topiclink">Tidal Resource</a> page.</p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cut-in tidal surface velocity, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The minimum fluid velocity at which the TEC generates power.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Cut-out tidal surface velocity, m/s</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The maximum fluid velocity at which the TEC generates power. At fluid velocities above the cut-out velocity, the TEC output is zero.</span></p>
 
 	<footer class="topicfooter">
 <p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>
