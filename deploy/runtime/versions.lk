@@ -69,7 +69,12 @@ version_upgrade{'2024.12.12'} = define() {
 		{
 			// Piston Cylinder TES is now tes_type == 3 (two tank == 1, packed bed == 2)
 			old_tes_type = value('tes_type');
-			if(old_tes_type == 1)
+			tes_type = old_tes_type;
+			if(old_tes_type == 0)
+			{
+				tes_type = 1;
+			}
+			else if(old_tes_type == 1)
 			{
 				tes_type = 3;
 			}
@@ -105,9 +110,18 @@ version_upgrade{'2024.12.12'} = define() {
 		        ' The default relative factors for minimum and maximum mass flow are 0.25 and 1.2, respectively.'
 		        , 'warning');
 		        
-			value('use_abs_or_rel_mdot_limit', 0, 'Use relative minimum and maximum flow rate limits (fractions) by default');
-			value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
-			value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
+		value('use_abs_or_rel_mdot_limit', 0, 'Use relative minimum and maximum flow rate limits (fractions) by default');
+		value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
+		value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
+			
+			
+		message('We added an option on the Thermal Storage page to size the tank with either a fixed diameter or fixed height.', 'warning');
+		h_tank = oldvalue('h_tank');
+		if(h_tank != null)
+		{
+			variable_name_change('h_tank_in', 'h_tank');
+			value('is_h_tank_fixed', 1, 'Set default tank sizing to fixed height');
+		}
 	}
 	
 	// Linear Fresnel Model Changes
