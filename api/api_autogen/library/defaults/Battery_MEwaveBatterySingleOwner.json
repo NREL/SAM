@@ -250,7 +250,7 @@
 			"batt_minimum_SOC": 30,
 			"batt_minimum_modetime": 10,
 			"batt_resistance": 0.001155,
-			"batt_room_temperature_celsius": [20.000000],
+			"batt_room_temperature_celsius": [25.000000],
 			"batt_voltage_choice": 0,
 			"batt_voltage_matrix": [
 				[0.000000, 1.200000],

@@ -2,7 +2,7 @@
 	"defaults": {
 		"ThermalRate": {
 			"gen_heat": [0],
-			"thermal_buy_rate_flat_heat_btu": 10,
+			"thermal_buy_rate_flat_heat_btu": 14,
 			"thermal_buy_rate_option": 0,
 			"thermal_conversion_efficiency": 85,
 			"thermal_monthly_buy_rate_heat_btu": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],

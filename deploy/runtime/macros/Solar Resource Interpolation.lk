@@ -233,7 +233,14 @@ function identify_case(input_data, lat, long, tz){
 			cols = parse_header(input_data[line]);
 			if (cols[4] == -1){
 				case[0] = 1;
-				case[1] = 1;
+				max_hour = -1;
+				for (hr=0; hr<48; hr++){
+					max_hour = max(max_hour, input_data[hr][cols[3]]);
+				}
+				if (max_hour == 23)
+					case[1] = 0;
+				else
+					case[1] = 1;
 			}
 			else{
 				case[0] = 0;

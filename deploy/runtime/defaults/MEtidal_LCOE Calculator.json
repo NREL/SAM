@@ -1111,7 +1111,7 @@
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
     "tidal_turbine_kw_rating": 8129.31,
-    "tidal_turbine_kw_rating_input": 4064.66,
+    "tidal_turbine_kw_rating_rotor": 4064.66,
     "tidal_turbine_max_cp": [
         0.42
     ],

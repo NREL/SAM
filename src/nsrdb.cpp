@@ -686,6 +686,7 @@ void NSRDBDialog::GetResources()
 			datasets have different available intervals in addition to 60 (all datasets have 60 minute data):
 			psm3 https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/ 30
 			psm3-2-2 https://developer.nrel.gov/docs/solar/nsrdb/psm3-2-2-download/ 30
+			nsrdb-GOES-aggregated-v4-0-0 https://developer.nrel.gov/api/nsrdb/v2/solar/nsrdb-GOES-aggregated-v4-0-0-download 30
 			psm3-5min https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/ 5,15,30
 			suny-india https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/ 15,30
 			msg-iodc https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/ 15,30
@@ -700,6 +701,7 @@ void NSRDBDialog::GetResources()
 			// skip some datasets
 			if ((name.Lower() != "spectral-india-tmy") // not compatible with SAM
 				&& (name.Lower() != "full-disc") // only covers a few years and is similar to PSM V3 from solar modeling perspective
+				&& (name.Lower() != "nsrdb-goes-full-disc-v4-0-0") // similar to GOES V4 from solar modeling perspective
 				&& (name.Lower() != "philippines") // basic solar resource data only tamb, dhi, dni, ghi, wind (not enough data for CSP or PV thermal models)
 				&& (name.Lower() != "vietnam")) // // basic solar resource data only tamb, dhi, dni, ghi, wind  (not enough data for CSP or PV thermal models)
 			{

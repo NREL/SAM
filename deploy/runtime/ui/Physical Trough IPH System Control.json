@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough IPH System Control",
     "Width": 841.0,
-    "Height": 374.0,
+    "Height": 391.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -1905,7 +1905,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 141.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2100,6 +2100,172 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rec_qf_delay"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rec_su_delay"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
@@ -2494,6 +2660,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "rec_qf_delay": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Receiver startup delay energy fraction",
+            "Units": "",
+            "Group": "System Control",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.25,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_su_delay": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Receiver startup delay time",
+            "Units": "hr",
+            "Group": "System Control",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.2,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "time_start": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2580,6 +2772,8 @@
         "     //enable(\"disp_wlim_max\", en==1);\r",
         "     //enable(\"disp_wlim_maxspec\", en==1);\r",
         "     enable(\"disp_time_weighting\", en==1);\r",
+        "     enable(\"rec_su_delay\", en==1);\r",
+        "     enable(\"rec_qf_delay\", en==1);\r",
         "};\r",
         "",
         "function loss_adjustment_set() ",
