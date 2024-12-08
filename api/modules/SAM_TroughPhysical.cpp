@@ -134,6 +134,18 @@ SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_qf_delay", number);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_su_delay", number);
+	});
+}
+
 SAM_EXPORT void SAM_TroughPhysical_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "sim_type", number);
@@ -740,18 +752,6 @@ SAM_EXPORT void SAM_TroughPhysical_SolarField_p_start_nset(SAM_table ptr, double
 	});
 }
 
-SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_qf_delay", number);
-	});
-}
-
-SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_su_delay", number);
-	});
-}
-
 SAM_EXPORT void SAM_TroughPhysical_SolarField_sf_hdr_diams_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "sf_hdr_diams", mat, nrows, ncols);
@@ -959,6 +959,12 @@ SAM_EXPORT void SAM_TroughPhysical_Powerblock_ud_f_W_dot_cool_des_nset(SAM_table
 SAM_EXPORT void SAM_TroughPhysical_Powerblock_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_matrix(ptr, "ud_ind_od", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_TroughPhysical_Powerblock_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ud_is_sco2_regr", number);
 	});
 }
 
@@ -1977,6 +1983,24 @@ SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nget(SAM_
 	return result;
 }
 
+SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
+		make_access_error("SAM_TroughPhysical", "rec_qf_delay");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
+		make_access_error("SAM_TroughPhysical", "rec_su_delay");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_TroughPhysical_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2938,24 +2962,6 @@ SAM_EXPORT double SAM_TroughPhysical_SolarField_p_start_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
-		make_access_error("SAM_TroughPhysical", "rec_qf_delay");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
-		make_access_error("SAM_TroughPhysical", "rec_su_delay");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_hdr_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3275,6 +3281,15 @@ SAM_EXPORT double* SAM_TroughPhysical_Powerblock_ud_ind_od_mget(SAM_table ptr, i
 	result = ssc_data_get_matrix(ptr, "ud_ind_od", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_TroughPhysical", "ud_ind_od");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_TroughPhysical_Powerblock_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ud_is_sco2_regr", &result))
+		make_access_error("SAM_TroughPhysical", "ud_is_sco2_regr");
 	});
 	return result;
 }

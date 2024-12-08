@@ -192,106 +192,11 @@ bool CodeGen_Base::PlatformFiles()
 #endif
 	wxCopyFile(f1, f2);
 	// sscapi.h - switch to copy version for syching issues 5/30/17
-	// assumes in runtime folder for all builds.
-	f1 = SamApp::GetAppPath() + "/sscapi.h";
+	// assumes in runtime folder for all builds. See SAM issue 1918
+	f1 = SamApp::GetRuntimePath() + "/sscapi.h";
 	if (wxFileExists(f1)) {
 		f2 = m_folder + "/sscapi.h";
 		wxCopyFile(f1,f2);
-	}
-	else {
-		// fallback to sscapi.h generation
-		wxString fn = m_folder + "/sscapi.h";
-		FILE* f = fopen(fn.c_str(), "w");
-		if (!f) return false;
-		fprintf(f, "#ifndef __ssc_api_h\n");
-		fprintf(f, "#define __ssc_api_h\n");
-		fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
-		fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
-		fprintf(f, "#else\n");
-		fprintf(f, "#define SSCEXPORT\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-		fprintf(f, "#ifdef __cplusplus\n");
-		fprintf(f, "extern \"C\" {\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "SSCEXPORT int ssc_version();\n");
-		fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
-		fprintf(f, "typedef void* ssc_data_t;\n");
-		fprintf(f, "typedef double ssc_number_t;\n");
-		fprintf(f, "typedef int ssc_bool_t;\n");
-		fprintf(f, "#define SSC_INVALID 0\n");
-		fprintf(f, "#define SSC_STRING 1\n");
-		fprintf(f, "#define SSC_NUMBER 2\n");
-		fprintf(f, "#define SSC_ARRAY 3\n");
-		fprintf(f, "#define SSC_MATRIX 4\n");
-		fprintf(f, "#define SSC_TABLE 5\n");
-		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
-		fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
-		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
-		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
-		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "typedef void* ssc_entry_t;\n");
-		fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
-		fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
-		fprintf(f, "typedef void* ssc_module_t;\n");
-		fprintf(f, "typedef void* ssc_info_t;\n");
-		fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
-		fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
-		fprintf(f, "#define SSC_INPUT 1\n");
-		fprintf(f, "#define SSC_OUTPUT 2\n");
-		fprintf(f, "#define SSC_INOUT 3\n");
-		fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
-		fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
-		fprintf(f, "#define SSC_LOG 0\n");
-		fprintf(f, "#define SSC_UPDATE 1\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
-		fprintf(f, "typedef void* ssc_handler_t;\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
-		fprintf(f, "	ssc_module_t p_mod,\n");
-		fprintf(f, "	ssc_data_t p_data,\n");
-		fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
-		fprintf(f, "	void *pf_user_data );\n");
-		fprintf(f, "#define SSC_NOTICE 1\n");
-		fprintf(f, "#define SSC_WARNING 2\n");
-		fprintf(f, "#define SSC_ERROR 3\n");
-		fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
-		fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
-		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-		fprintf(f, "#ifdef __cplusplus\n");
-		fprintf(f, "}\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "\n");
-		fprintf(f, "#endif // __SSCLINKAGECPP__\n");
-		fprintf(f, "\n");
-		fprintf(f, "#endif\n");
-		fclose(f);
 	}
 	return true;
 }

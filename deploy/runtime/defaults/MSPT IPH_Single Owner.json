@@ -37796,7 +37796,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -37853,7 +37853,7 @@
     "nominal_discount_rate": 9.06,
     "om_capacity_escal": 0.0,
     "om_capacity_heat": [
-        66.0
+        33.0
     ],
     "om_fixed": [
         0.0
@@ -37914,7 +37914,7 @@
     "power_block_cost_calc": 0.0,
     "ppa_escalation": 1.0,
     "ppa_price_input_heat_btu": [
-        27.8445
+        18.5
     ],
     "ppa_soln_mode": 1.0,
     "preheat_flux": 50.0,

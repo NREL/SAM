@@ -87,7 +87,7 @@ if [ -z $FORCE_DOWNLOAD ]; then
 	FORCE_DOWNLOAD=1
 fi
 
-if [ -z $3 ]; then
+if [ -z "$3" ]; then
 	show_help
 	exit 1
 fi
@@ -102,12 +102,12 @@ fi
 PYTHON_MAJOR_MINOR="${VER_ARRAY[0]}${VER_ARRAY[1]}"
 INSTALL_BASE=$3
 
-if [ ! -d $INSTALL_BASE ]; then
+if [ ! -d "$INSTALL_BASE" ]; then
 	error "path $INSTALL_BASE does not exist"
 	exit 1
 fi
 
-cd $INSTALL_BASE
+cd "$INSTALL_BASE"
 CONFIG_FILE=python_config.json
 
 if [ ! -f $CONFIG_FILE ]; then
@@ -115,15 +115,19 @@ if [ ! -f $CONFIG_FILE ]; then
 	exit 1
 fi
 
+arch=$(uname -m)
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	PLATFORM=Linux-x86_64
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	PLATFORM=MacOSX-x86_64
+	PLATFORM=MacOSX-$arch
 else
 	error "unknown OS type $OSTYPE"
 	exit 1
 fi
+
+
+
 
 CONDA_PACKAGE_NAME=Miniconda3-py${PYTHON_MAJOR_MINOR}_${CONDA_VERSION}-${PLATFORM}.sh
 CONDA_URL=https://repo.anaconda.com/miniconda/$CONDA_PACKAGE_NAME

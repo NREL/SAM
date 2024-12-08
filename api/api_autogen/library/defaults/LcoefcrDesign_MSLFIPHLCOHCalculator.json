@@ -4,7 +4,7 @@
 		},
 		"SimpleLCOE": {
 			"c_construction_cost": [100.000000],
-			"c_construction_interest": 3.5,
+			"c_construction_interest": 6.5,
 			"c_debt_percent": 60,
 			"c_depreciation_schedule": [20.000000, 32.000000, 19.200000, 11.520000, 11.520000, 5.760000],
 			"c_equity_return": 13,
@@ -18,7 +18,7 @@
 			"variable_operating_cost": 0.001
 		},
 		"SystemCosts": {
-			"total_installed_cost": 4.34851e+08
+			"total_installed_cost": 6.3373e+06
 		},
 		"IPHLCOH": {
 			"electricity_rate": 0.06

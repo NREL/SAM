@@ -218,18 +218,6 @@ SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_htf_vol_nset(SAM_table ptr, d
 	});
 }
 
-SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_qf_delay", number);
-	});
-}
-
-SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "rec_su_delay", number);
-	});
-}
-
 SAM_EXPORT void SAM_FresnelPhysical_SolarField_theta_dep_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "theta_dep", number);
@@ -668,6 +656,12 @@ SAM_EXPORT void SAM_FresnelPhysical_UserDefinedPC_ud_ind_od_mset(SAM_table ptr, 
 	});
 }
 
+SAM_EXPORT void SAM_FresnelPhysical_UserDefinedPC_ud_is_sco2_regr_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ud_is_sco2_regr", number);
+	});
+}
+
 SAM_EXPORT void SAM_FresnelPhysical_UserDefinedPC_ud_m_dot_water_cool_des_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "ud_m_dot_water_cool_des", number);
@@ -929,6 +923,18 @@ SAM_EXPORT void SAM_FresnelPhysical_SysControl_is_dispatch_nset(SAM_table ptr, d
 SAM_EXPORT void SAM_FresnelPhysical_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_fixed_par", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysical_SysControl_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_qf_delay", number);
+	});
+}
+
+SAM_EXPORT void SAM_FresnelPhysical_SysControl_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "rec_su_delay", number);
 	});
 }
 
@@ -1554,24 +1560,6 @@ SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_htf_vol_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "rec_htf_vol", &result))
 		make_access_error("SAM_FresnelPhysical", "rec_htf_vol");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
-		make_access_error("SAM_FresnelPhysical", "rec_qf_delay");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
-		make_access_error("SAM_FresnelPhysical", "rec_su_delay");
 	});
 	return result;
 }
@@ -2264,6 +2252,15 @@ SAM_EXPORT double* SAM_FresnelPhysical_UserDefinedPC_ud_ind_od_mget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_FresnelPhysical_UserDefinedPC_ud_is_sco2_regr_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ud_is_sco2_regr", &result))
+		make_access_error("SAM_FresnelPhysical", "ud_is_sco2_regr");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_FresnelPhysical_UserDefinedPC_ud_m_dot_water_cool_des_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2662,6 +2659,24 @@ SAM_EXPORT double SAM_FresnelPhysical_SysControl_pb_fixed_par_nget(SAM_table ptr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pb_fixed_par", &result))
 		make_access_error("SAM_FresnelPhysical", "pb_fixed_par");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysical_SysControl_rec_qf_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_qf_delay", &result))
+		make_access_error("SAM_FresnelPhysical", "rec_qf_delay");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_FresnelPhysical_SysControl_rec_su_delay_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "rec_su_delay", &result))
+		make_access_error("SAM_FresnelPhysical", "rec_su_delay");
 	});
 	return result;
 }

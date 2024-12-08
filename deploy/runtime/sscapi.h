@@ -1,3 +1,36 @@
+/*
+BSD 3-Clause License
+
+Copyright (c) Alliance for Sustainable Energy, LLC. See also https://github.com/NREL/ssc/blob/develop/LICENSE
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
 /**
    \file sscapi.h
 
@@ -33,33 +66,127 @@ extern "C" {
 #endif
 
 #endif // __SSCLINKAGECPP__
-	
+
 /** Returns the library version number as an integer.  Version numbers start at 1. */
 SSCEXPORT int ssc_version();
 
 /** Returns information about the build configuration of this particular SSC library binary as a text string that lists the compiler, platform, build date/time and other information. */
 SSCEXPORT const char *ssc_build_info();
 
-/** An opaque reference to a structure that holds a collection of variables.  This structure can contain any number of variables referenced by name, and can hold strings, numbers, arrays, and matrices.  Matrices are stored in row-major order, where the array size is nrows*ncols, and the array index is calculated by r*ncols+c. An ssc_data_t object holds all input and output variables for a simulation. It does not distinguish between input, output, and input variables - that is handled at the model context level. */
+/** @name Data types:
+  * Possible data types for ssc_var_t in an ssc_data_t:
+*/
+/**@{*/
+#define SSC_INVALID 0
+#define SSC_STRING 1
+#define SSC_NUMBER 2
+#define SSC_ARRAY 3     // only numeric entries
+#define SSC_MATRIX 4    // only numeric entries
+#define SSC_TABLE 5
+#define SSC_DATARR 6    // entries may be any SSC type
+#define SSC_DATMAT 7    // entries may be any SSC type
+/**@}*/
+
+/**
+ * An opaque reference to a structure that holds a hash table of variables. This structure can contain any number of
+ * variables (ssc_var_t) referenced by name, which can hold strings, numbers, arrays, matrices, and tables.
+ * Matrices are stored in row-major order, where the array size is nrows*ncols, and the array index is calculated by
+ * r*ncols+c.
+ *
+ * An ssc_data_t object holds all input and output variables for a simulation. It does not distinguish
+ * between input, output, and input variables - that is handled at the model context level.
+ *
+ * Example of assigning an SSC_STRING:
+ *      ssc_data_t p_data = ssc_data_create();
+ *      ssc_data_set_string(p_data, "string");
+ *      ...
+ *      ssc_data_free(p_data);
+ */
 typedef void* ssc_data_t;
 
-/** The numeric type used in the SSC API. All numeric values are stored in this format. SSC uses 32-bit floating point numbers at the library interface to minimize memory usage.  Calculations inside compute modules generally are performed with double-precision 64-bit floating point internally. */
-typedef float ssc_number_t;
+/**
+ * An opaque reference to a structure that holds a variable of the possible types above. This structure provides a way
+ * to collect variables of different types into a single container, the ssc_data_t hash table. Each entry in a ssc_data_t
+ * can be worked with as ssc_var_t or indirectly from the ssc_data_* functions below.
+ *
+ * Example of assigning an SSC_DATARR:
+ *      \verbatim
+ *      ssc_data_t p_data = ssc_data_create();
+ *      ssc_var_t datarr[2];
+ *      for (size_t i = 0; i < 2; i++){
+ *          vd[i] = ssc_var_create();
+ *          ssc_var_set_string(vd[i], "string");
+ *      }
+ *      ssc_data_set_data_array(data, "array", &vd[0], 2);
+ *      ...
+ *      # free p_data, datarr
+ *      \endverbatim
+ */
+typedef void* ssc_var_t;
+
+/** The numeric type used in the SSC API. All numeric values are stored in this format. SSC uses 64-bit double numbers
+ * at the library interface and calculations inside compute modules generally are performed with double-precision
+ * 64-bit floating point internally. */
+typedef double ssc_number_t;
 
 /** The boolean type used internally in SSC. Zero values represent false; non-zero represents true. */
 typedef int ssc_bool_t;
 
-/** @name Data types:
-  * Possible data types for variables in an ssc_data_t:
-*/
-/**@{*/ 
-#define SSC_INVALID 0
-#define SSC_STRING 1
-#define SSC_NUMBER 2
-#define SSC_ARRAY 3
-#define SSC_MATRIX 4
-#define SSC_TABLE 5
-/**@}*/ 
+/** Returns an empty ssc_var_t which will need to be freed after use. */
+SSCEXPORT ssc_var_t ssc_var_create();
+
+SSCEXPORT void ssc_var_free(ssc_var_t p_var);
+
+/** Clears all of the values in a var object. Type is reset to SSC_INVALID */
+SSCEXPORT void ssc_var_clear( ssc_var_t p_var );
+
+/** Get type of variable as defined above, which will determine which setter and getter function must be used. */
+SSCEXPORT int ssc_var_query(ssc_var_t p_var);
+
+/** Invalid types are 0x0. Strings and numbers are 1x1. Arrays and tables are nx1 and matrices are nxm. */
+SSCEXPORT void ssc_var_size(ssc_var_t p_var, int* nrows, int* ncols);
+
+/** Assigns a copy of a string value to the p_var variable. Type becomes SSC_STRING. */
+SSCEXPORT void ssc_var_set_string( ssc_var_t p_var, const char *value );
+
+/** Assigns a copy of a numeric value to the p_var variable. Type becomes SSC_NUMBER. */
+SSCEXPORT void ssc_var_set_number( ssc_var_t p_var, ssc_number_t value );
+
+/** Assigns a copy of an array of doubles of given length to the p_var variable. Type becomes SSC_ARRAY. */
+SSCEXPORT void ssc_var_set_array( ssc_var_t p_var, ssc_number_t *pvalues, int length );
+
+/** Assigns a copy of a matrix of doubles of given dimension to the p_var variable. Type becomes SSC_MATRIX. */
+SSCEXPORT void ssc_var_set_matrix( ssc_var_t p_var, ssc_number_t *pvalues, int nrows, int ncols );
+
+/** Assigns a copy of a table to the p_var variable. Type becomes SSC_TABLE. */
+SSCEXPORT void ssc_var_set_table( ssc_var_t p_var, ssc_data_t table );
+
+/** Assigns a copy of a variable to the r-th entry in an array of ssc_var_t. Type becomes SSC_DATARR. */
+SSCEXPORT void ssc_var_set_data_array(ssc_var_t p_var, ssc_var_t p_var_entry, int r );
+
+/** Assigns a copy of a variable to the r,c-th entry in a matrix of ssc_var_t. Type becomes SSC_DATMAT. */
+SSCEXPORT void ssc_var_set_data_matrix(ssc_var_t p_var, ssc_var_t p_var_entry, int r, int c );
+
+/** Returns a copy of the string value. */
+SSCEXPORT const char *ssc_var_get_string( ssc_var_t p_var);
+
+/** Returns a copy of the numeric value. */
+SSCEXPORT ssc_number_t ssc_var_get_number( ssc_var_t p_var );
+
+/** Returns a reference to the numeric array and gets the length. */
+SSCEXPORT ssc_number_t *ssc_var_get_array(ssc_var_t p_var,  int *length );
+
+/** Returns a reference to the numeric matrix and gets the dimensions. */
+SSCEXPORT ssc_number_t *ssc_var_get_matrix( ssc_var_t p_var, int *nrows, int *ncols );
+
+/** Returns a reference to the ssc_data_t table stored in p_var. */
+SSCEXPORT ssc_data_t ssc_var_get_table( ssc_var_t p_var);
+
+/** Returns a reference to the r-th variable entry in the variant array. */
+SSCEXPORT ssc_var_t ssc_var_get_var_array(ssc_var_t p_var, int r);
+
+/** Returns a reference to the r,c-th variable entry in the variant matrix. */
+SSCEXPORT ssc_var_t ssc_var_get_var_matrix(ssc_var_t p_var, int r, int c);
 
 /** Creates a new data object in memory.  A data object stores a table of named values, where each value can be of any SSC datatype. */
 SSCEXPORT ssc_data_t ssc_data_create();
@@ -67,7 +194,7 @@ SSCEXPORT ssc_data_t ssc_data_create();
 /** Frees the memory associated with a data object, where p_data is the data container to free. */
 SSCEXPORT void ssc_data_free( ssc_data_t p_data );
 
-/** Clears all of the variables in a data object. */
+/** Clears all of the variables in a data object. Type becomes SSC_INVALID. */
 SSCEXPORT void ssc_data_clear( ssc_data_t p_data );
 
 /** Unassigns the variable with the specified name. */
@@ -96,11 +223,20 @@ SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );
  */
 SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );
 
+SSCEXPORT ssc_var_t ssc_data_lookup(ssc_data_t p_data, const char *name);
+
+/** Returns a reference to a stored variable by case-matching the name. */
+SSCEXPORT ssc_var_t ssc_data_lookup_case(ssc_data_t p_data, const char *name);
+
 /** @name Assigning variable values.
-The following functions do not take ownership of the data pointeres for arrays, matrices, and tables. A deep copy is made into the internal SSC engine. You must remember to free the table that you create to pass into 
+The following functions do not take ownership of the data pointers for arrays, matrices, and tables. A deep copy is made into the internal SSC engine. You must remember to free the table that you create to pass into
 ssc_data_set_table( ) for example.
 */
 /**@{*/
+
+SSCEXPORT void ssc_data_set_var(ssc_data_t p_data, const char* name, ssc_var_t p_var);
+SSCEXPORT void ssc_data_set_var_match_case(ssc_data_t p_data, const char* name, ssc_var_t p_var);
+
 /** Assigns value of type @a SSC_STRING */
 SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );
 
@@ -115,7 +251,13 @@ SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_num
 
 /** Assigns value of type @a SSC_TABLE. */
 SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );
-/**@}*/ 
+
+/** Assigns value of type @a SSC_DATAARR. */
+SSCEXPORT void ssc_data_set_data_array(ssc_data_t p_data, const char *name, ssc_var_t *data_array, int nrows );
+
+/** Assigns value of type @a SSC_DATAMAT. */
+SSCEXPORT void ssc_data_set_data_matrix(ssc_data_t p_data, const char *name, ssc_var_t *data_matrix, int nrows, int ncols );
+/**@}*/
 
 /** @name Retrieving variable values.
 The following functions return internal references to memory, and the returned string, array, matrix, and tables should not be freed by the user.
@@ -127,15 +269,39 @@ SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name )
 /** Returns the value of a @a SSC_NUMBER variable with the given name. */
 SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );
 
-/** Returns the value of a @a SSC_ARRAY variable with the given name. */
+/** Returns the reference of a @a SSC_ARRAY variable with the given name. */
 SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );
 
-/** Returns the value of a @a SSC_MATRIX variable with the given name. Matrices are specified as a continuous array, in row-major order.  Example: the matrix [[5,2,3],[9,1,4]] is stored as [5,2,3,9,1,4]. */
+/** Returns the reference of a @a SSC_MATRIX variable with the given name. Matrices are specified as a continuous array, in row-major order.  Example: the matrix [[5,2,3],[9,1,4]] is stored as [5,2,3,9,1,4]. */
 SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );
 
-/** Returns the value of a @a SSC_TABLE variable with the given name. */
+/** Returns the reference of a @a SSC_TABLE variable with the given name. */
 SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );
-/**@}*/ 
+
+/** Returns the reference of a @a SSC_DATAARR variable with the given name. */
+SSCEXPORT ssc_var_t ssc_data_get_data_array(ssc_data_t p_data, const char *name, int *nrows);
+
+/** Returns the reference of a @a SSC_DATAMAT variable with the given name. */
+SSCEXPORT ssc_var_t ssc_data_get_data_matrix(ssc_data_t p_data, const char *name, int* nrows, int* ncols );
+
+SSCEXPORT ssc_bool_t ssc_data_deep_copy(ssc_data_t source, ssc_data_t dest);
+
+/**@}*/
+
+
+/** RapidJSON and ssc_data_t conversion functions
+ *
+ * Numerical json values (int, bool, real) map to SSC_NUMBER type.
+ * Json strings map to SSC_STRING type.
+ * Json arrays map to SSC_ARRAY, SSC_MATRIX, or SSC_DATARR type.
+ * Json objects map to SSC_TABLE type
+ */
+SSCEXPORT ssc_data_t json_to_ssc_data(const char* json_str);
+SSCEXPORT ssc_data_t json_file_to_ssc_data(const char* json_fn);
+
+SSCEXPORT const char* ssc_data_to_json(ssc_data_t p_data);
+
+
 
 /** The opaque data structure that stores information about a compute module. */
 typedef void* ssc_entry_t;
@@ -147,8 +313,8 @@ typedef void* ssc_entry_t;
 	ssc_entry_t p_entry;
 	while( p_entry = ssc_module_entry(i++) )
 	{
-		printf("Compute Module '%s': \n", 
-		     	ssc_entry_name(p_entry), 
+		printf("Compute Module '%s': \n",
+		     	ssc_entry_name(p_entry),
 			    ssc_entry_description(p_entry) );
 	}
 	\endverbatim
@@ -177,22 +343,22 @@ SSCEXPORT ssc_module_t ssc_module_create( const char *name );
 SSCEXPORT void ssc_module_free( ssc_module_t p_mod );
 
 /** @name Variable types:*/
-/**@{*/ 	
+/**@{*/
 #define SSC_INPUT 1
 #define SSC_OUTPUT 2
 #define SSC_INOUT 3
 /**@}*/
 
 /** Returns references to variable info objects.  Returns NULL for invalid index. Note that the ssc_info_* functions that return strings may return NULL if the computation module has not specified a value, i.e. no units or no grouping name. Example for a previously created 'p_mod' object:
-  
-	\verbatim 
+
+	\verbatim
 	int i=0;
 	const ssc_info_t p_inf = NULL;
 	while ( p_inf = ssc_module_var_info( p_mod, i++ ) )
 	{
 		int var_type = ssc_info_var_type( p_inf );   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
 		int data_type = ssc_info_data_type( p_inf ); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
-		
+
 		const char *name = ssc_info_name( p_inf );
 		const char *label = ssc_info_label( p_inf );
 		const char *units = ssc_info_units( p_inf );
@@ -224,7 +390,7 @@ SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );
 /** Returns any grouping information.  Variables can be assigned to groups for presentation to the user, for example */
 SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );
 
-/** Returns information about whether a variable is required to be assigned for 
+/** Returns information about whether a variable is required to be assigned for
 a compute module to run.  It may alternatively be given a default value, specified as '?=<value>'. */
 SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );
 
@@ -243,11 +409,11 @@ SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data
 /** Another very simple way to run a computation module over a data set. The function returns NULL on success.  If something went wrong, the first error message is returned. Because the returned string references a common internal data container, this function is never thread-safe.  */
 SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );
 
-/** @name Action/notification types that can be sent to a handler function: 
-  *	SSC_LOG: Log a message in the handler. f0: (int)message type, f1: time, s0: message text, s1: unused. 
+/** @name Action/notification types that can be sent to a handler function:
+  *	SSC_LOG: Log a message in the handler. f0: (int)message type, f1: time, s0: message text, s1: unused.
   *	SSC_UPDATE: Notify simulation progress update. f0: percent done, f1: time, s0: current action text, s1: unused.
 */
-/**@{*/ 
+/**@{*/
 #define SSC_LOG 0
 #define SSC_UPDATE 1
 /**@}*/
@@ -255,28 +421,49 @@ SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_dat
 /** Runs an instantiated computation module over the specified data set. Returns Boolean: 1 or 0. Detailed notices, warnings, and errors can be retrieved using the ssc_module_log function. */
 SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data ); /* uses default internal built-in handler */
 
-/** An opaque pointer for transferring external executable output back to SSC */ 
+/** An opaque pointer for transferring external executable output back to SSC */
 typedef void* ssc_handler_t;
 
 /** A full-featured way to run a compute module with a callback function to handle custom logging, progress updates, and cancelation requests. Returns Boolean: 1 or 0 indicating success or failure. */
-SSCEXPORT ssc_bool_t ssc_module_exec_with_handler( 
-	ssc_module_t p_mod, 
-	ssc_data_t p_data, 
+SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(
+	ssc_module_t p_mod,
+	ssc_data_t p_data,
 	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),
 	void *pf_user_data );
 
 /** @name Message types:*/
-/**@{*/ 	
+/**@{*/
 #define SSC_NOTICE 1
 #define SSC_WARNING 2
 #define SSC_ERROR 3
 /**@}*/
+
+/** Add a var info vartable to a compute module. */
+SSCEXPORT ssc_bool_t ssc_module_add_var_info(ssc_module_t, ssc_info_t);
+
+/** Adds the input variables required for a technology module to be used in a cmod_hybrid simulation. */
+SSCEXPORT ssc_bool_t ssc_module_hybridize(ssc_module_t p_mod);
 
 /** Retrive notices, warnings, and error messages from the simulation. Returns a NULL-terminated ASCII C string with the message text, or NULL if the index passed in was invalid. */
 SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );
 
 /** DO NOT CALL THIS FUNCTION: immediately causes a segmentation fault within the library. This is only useful for testing crash handling from an external application that is dynamically linked to the SSC library */
 SSCEXPORT void __ssc_segfault();
+
+/**
+ * Functions for calling python as an external process with python_handler
+ */
+
+SSCEXPORT int set_python_path(const char* abs_path);
+
+SSCEXPORT const char *get_python_path();
+
+/**
+ * Functions for calling stateful compute modules
+ */
+
+// returns 1 if successful, otherwise 0 with errors stored in log and retrieved with `ssc_module_log`
+SSCEXPORT int ssc_stateful_module_setup(ssc_module_t p_mod, ssc_data_t p_data);
 
 #ifndef __SSCLINKAGECPP__
 

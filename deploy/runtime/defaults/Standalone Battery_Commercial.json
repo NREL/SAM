@@ -17,7 +17,7 @@
     "batt_C_rate_max_discharge": 0.25,
     "batt_C_rate_max_discharge_input": 0.5,
     "batt_Cp": 1500.0,
-    "batt_Qexp": 0.04,
+    "batt_Qexp": 0.0400001,
     "batt_Qexp_percent": 1.77778,
     "batt_Qfull": 2.25,
     "batt_Qfull_flow": 2398.5,
@@ -9828,7 +9828,7 @@
     "batt_pv_clipping_forecast": [
         0.0
     ],
-    "batt_replacement_capacity": 50.0,
+    "batt_replacement_capacity": 70.0,
     "batt_replacement_option": 1.0,
     "batt_replacement_schedule_percent": [
         0.0,
@@ -18670,12 +18670,12 @@
     "battery_energy": 1200.21,
     "battery_indirect_cost_percent": 0.0,
     "battery_losses_shown": 0.0,
-    "battery_per_kW": 964.44,
-    "battery_per_kWh": 260.28,
+    "battery_per_kW": 667.0,
+    "battery_per_kWh": 184.0,
     "battery_power": 300.052,
     "battery_thermal_shown": 0.0,
-    "battery_total": 601773.0,
-    "battery_total_cost_lcos": 663455.0,
+    "battery_total": 420973.0,
+    "battery_total_cost_lcos": 464123.0,
     "battery_voltage_shown": 0.0,
     "cap_vs_temp": [
         [
@@ -63381,14 +63381,14 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
-        15.0
+        12.0
     ],
     "om_batt_fixed_cost": [
         0.0
     ],
     "om_batt_nameplate": 1200.21,
     "om_batt_replacement_cost": [
-        260.28
+        280.0
     ],
     "om_batt_variable_cost": [
         0.0
@@ -63444,7 +63444,7 @@
     "peak_shaving_batt_dispatch_choice": 0.0,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 663455.0,
+    "property_assessed_value": 464123.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -63491,20 +63491,19 @@
     "scale_factor": 1.0,
     "show_cash_incentives": 1.0,
     "show_tax_credits": 1.0,
-    "standalonebatt.cost.contingency": 30088.7,
+    "standalonebatt.cost.contingency": 21048.7,
     "standalonebatt.cost.contingency_percent": 5.0,
     "standalonebatt.cost.epc.fixed": 0.0,
     "standalonebatt.cost.epc.nonfixed": 0.0,
     "standalonebatt.cost.epc.percent": 0.0,
     "standalonebatt.cost.epc.total": 0.0,
-    "standalonebatt.cost.installed_per_capacity": 2.30326,
-    "standalonebatt.cost.per_watt": 6.0,
+    "standalonebatt.cost.installed_per_capacity": 1.61126,
     "standalonebatt.cost.plm.fixed": 0.0,
     "standalonebatt.cost.plm.nonfixed": 0.0,
     "standalonebatt.cost.plm.percent": 0.0,
     "standalonebatt.cost.plm.total": 0.0,
     "standalonebatt.cost.sales_tax.percent": 100.0,
-    "standalonebatt.cost.sales_tax.total": 31593.1,
+    "standalonebatt.cost.sales_tax.total": 22101.1,
     "standalonebatt.cost.sales_tax.value": 5.0,
     "state_tax_rate": [
         7.0
@@ -63513,9 +63512,9 @@
     "system_use_lifetime_output": 1.0,
     "timestep_minutes": 60.0,
     "timestep_minutes_ui": 0.0,
-    "total_direct_cost": 631862.0,
+    "total_direct_cost": 442022.0,
     "total_indirect_cost": 0.0,
-    "total_installed_cost": 663455.0,
+    "total_installed_cost": 464123.0,
     "ui_annual_load": 0.0,
     "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
@@ -63524,8 +63523,8 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
-    "ui_loan_amount": 398073.0,
-    "ui_net_capital_cost": 663455.0,
+    "ui_loan_amount": 278474.0,
+    "ui_net_capital_cost": 464123.0,
     "ui_wacc": 6.70974,
     "ur_annual_min_charge": 0.0,
     "ur_billing_demand_is_shown": 0.0,

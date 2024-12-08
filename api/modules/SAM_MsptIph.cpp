@@ -1100,6 +1100,54 @@ SAM_EXPORT void SAM_MsptIph_ThermalStorage_u_tank_nset(SAM_table ptr, double num
 	});
 }
 
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_N_sub_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_N_sub", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_P_steam_hot_des_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_P_steam_hot_des", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_Q_steam_hot_des_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_Q_steam_hot_des", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_T_steam_cold_des_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_T_steam_cold_des", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_max_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_f_mdot_steam_max", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_min_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_f_mdot_steam_min", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_phys_tol_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_phys_tol", number);
+	});
+}
+
+SAM_EXPORT void SAM_MsptIph_HeatSink_hs_type_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "hs_type", number);
+	});
+}
+
 SAM_EXPORT void SAM_MsptIph_HeatSink_pb_pump_coef_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_pump_coef", number);
@@ -3009,6 +3057,78 @@ SAM_EXPORT double SAM_MsptIph_ThermalStorage_u_tank_nget(SAM_table ptr, SAM_erro
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "u_tank", &result))
 		make_access_error("SAM_MsptIph", "u_tank");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_N_sub_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_N_sub", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_N_sub");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_P_steam_hot_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_P_steam_hot_des", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_P_steam_hot_des");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_Q_steam_hot_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_Q_steam_hot_des", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_Q_steam_hot_des");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_T_steam_cold_des_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_T_steam_cold_des", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_T_steam_cold_des");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_max_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_f_mdot_steam_max", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_f_mdot_steam_max");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_f_mdot_steam_min_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_f_mdot_steam_min", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_f_mdot_steam_min");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_phys_tol_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_phys_tol", &result))
+		make_access_error("SAM_MsptIph", "hs_phys_tol");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_MsptIph_HeatSink_hs_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "hs_type", &result))
+		make_access_error("SAM_MsptIph", "hs_type");
 	});
 	return result;
 }

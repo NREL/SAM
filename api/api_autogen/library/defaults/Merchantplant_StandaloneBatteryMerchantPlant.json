@@ -3,7 +3,7 @@
 		"FinancialParameters": {
 			"analysis_period": 25,
 			"batt_salvage_percentage": 0,
-			"construction_financing_cost": 3.06665e+06,
+			"construction_financing_cost": 2.05231e+06,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -44,13 +44,13 @@
 			"om_batt_capacity_cost": [15.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 240000,
-			"om_batt_replacement_cost": [374.760000],
+			"om_batt_replacement_cost": [252.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 1.16825e+08
+			"total_installed_cost": 7.81831e+07
 		},
 		"LandLease": {
 		},
@@ -192,25 +192,25 @@
 			"pbi_fed_for_ds": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_for_ds": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_for_ds": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_for_ds": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"Revenue": {
 			"mp_ancserv1_percent_gen": 0,
@@ -219263,7 +219263,7 @@
 			"batt_meter_position": 1,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 374.76,
+			"battery_per_kWh": 252,
 			"en_batt": 1,
 			"en_standalone_batt": 1
 		},
@@ -219293,7 +219293,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 1.16825e+08
+			"battery_total_cost_lcos": 7.81831e+07
 		},
 		"ChargesByMonth": {
 		},

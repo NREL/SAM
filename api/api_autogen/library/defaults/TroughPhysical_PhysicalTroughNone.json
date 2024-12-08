@@ -1,6 +1,8 @@
 {
 	"defaults": {
 		"SystemControl": {
+			"rec_qf_delay": 0.25,
+			"rec_su_delay": 0.2,
 			"time_start": 0,
 			"time_stop": 3.1536e+07
 		},
@@ -272,8 +274,6 @@
 			"northsouth_field_sep": 20,
 			"offset_xpan_hdr": 1,
 			"p_start": 0.021,
-			"rec_qf_delay": 0.25,
-			"rec_su_delay": 0.2,
 			"sf_hdr_diams": [
 				[-1.000000]
 			],
@@ -503,6 +503,7 @@
 				[410.000000, 1.000000, 52.105300, 1.193630, 1.193880, 1.000000, 1.000000],
 				[410.000000, 1.000000, 55.000000, 1.181830, 1.193880, 1.000000, 1.000000]
 			],
+			"ud_is_sco2_regr": 0,
 			"ud_m_dot_water_cool_des": 0
 		},
 		"TES": {
