@@ -319,22 +319,6 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_htf_vol_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set theta_dep: deploy angle [deg]
 	 * options: None
 	 * constraints: None
@@ -1314,6 +1298,22 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SysControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SysControl_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SysControl_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set weekday_schedule: 12x24 Time of Use Values for week days
 	 * options: None
 	 * constraints: None
@@ -1865,10 +1865,6 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_htf_vol_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
-
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_theta_dep_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err);
@@ -2139,6 +2135,10 @@ extern "C"
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SysControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SysControl_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SysControl_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_FresnelPhysical_SysControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
