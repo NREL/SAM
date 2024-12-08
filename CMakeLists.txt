@@ -317,6 +317,7 @@ if (UNIX)
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime/bin
+            COMMAND cp $ENV{SSCDIR}/ssc/sscapi.h ${SAM_APP}/Contents/runtime
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-${SAM_NAME}.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
@@ -338,6 +339,7 @@ if (UNIX)
                 COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime/bin
+                COMMAND cp $ENV{SSCDIR}/ssc/sscapi.h ${SAM_APP}/runtime
 #                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
                 COMMAND cp ${SSC_SO} ${SAM_APP}/linux_64
         )
@@ -401,6 +403,12 @@ else()
         POST_BUILD
         COMMAND ${CMAKE_COMMAND}
         ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
+    )
+    add_custom_command(
+        TARGET ${SAM_EXE}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E copy $ENV{SSCDIR}/ssc/sscapi.h ${CMAKE_CURRENT_SOURCE_DIR}/deploy/runtime
     )
 endif()
 

@@ -192,6 +192,22 @@ extern "C"
 	SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_TroughPhysical_SystemControl_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
 	 * options: None
 	 * constraints: None
@@ -1008,22 +1024,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TroughPhysical_SolarField_p_start_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_qf_delay: Energy-based receiver startup delay (fraction of rated thermal power) [-]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_qf_delay_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set rec_su_delay: Fixed startup delay time for the receiver [hr]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_TroughPhysical_SolarField_rec_su_delay_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sf_hdr_diams: Custom header diameters [m]
@@ -2532,6 +2532,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_op_mode_initial_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TroughPhysical_SystemControl_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SystemControl_time_start_nget(SAM_table ptr, SAM_error *err);
@@ -2743,10 +2747,6 @@ extern "C"
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_offset_xpan_hdr_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TroughPhysical_SolarField_p_start_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_qf_delay_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TroughPhysical_SolarField_rec_su_delay_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TroughPhysical_SolarField_sf_hdr_diams_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 

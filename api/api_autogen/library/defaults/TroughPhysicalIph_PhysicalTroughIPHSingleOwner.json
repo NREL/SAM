@@ -430,7 +430,7 @@
 			"ppa_soln_mode": 1
 		},
 		"Revenue": {
-			"ppa_price_input_heat_btu": [10.000000]
+			"ppa_price_input_heat_btu": [15.000000]
 		},
 		"TimeOfDeliveryFactors": {
 		},

@@ -46,7 +46,7 @@
 		},
 		"SystemCosts": {
 			"om_capacity_escal": 0,
-			"om_capacity_heat": [66.000000],
+			"om_capacity_heat": [33.000000],
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
@@ -59,7 +59,7 @@
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [30.000000],
+			"itc_fed_percent": [0.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
