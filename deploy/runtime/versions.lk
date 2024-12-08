@@ -21,17 +21,17 @@ The value() function cannot change the data type of a variable, as that is set b
 To upgrade an old variable that no longer exists:
 
 	x = oldvalue('derate1');
-	value( 'loss1', 100*(1-x) );
+	value( 'loss1', 100*(1-x), 'The fraction derate1 is now the percentage loss1' );
 
 To upgrade an old variable that has a new datatype:
 
 	x = oldvalue('derate1');
-	value( 'derate1', [ x ] ); // derate is now an array to support schedules
+	value( 'derate1', [ x ], 'derate is now an array to support schedules' );  
 	
 To upgrade just the value of an old variable (same name and datatype), such as when the units have changed:
 
 	x = value('loss1');
-	value( 'loss1', 100*x ); // units changed from fraction to percent
+	value( 'loss1', 100*x, 'units changed from fraction to percent' );  
 	
 You don't need to delete any variables.  Old variables are discarded when a project is saved, and only the currently valid values
 are saved in the project file.
@@ -51,14 +51,19 @@ Some more examples:
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
 
+function variable_name_change(new, old){
+	value(new, oldvalue(old), 'Variable name changed from \"' + old + '\" to \"' +  new + '\"');
+}
+
 version_upgrade{'2024.12.12'} = define() {
 	
 	const cfg = config();
 
 	// Physical Trough Model Changes
-	if(cfg.tech == 'Physical Trough')
+	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
 	{
-		message('We added new TES models and modified certain TES variable names in the physical trough model', 'warning');
+		message('We added new packed bed and pressurized water cylinder TES options to the existing two-tank option on the Thermal Storage page. We also changed some TES variable names for the physical trough model.'
+				, 'warning');
 				
 		if(isalnum(oldvalue('tes_tank_insul_percent')) == true)
 		{
@@ -68,48 +73,84 @@ version_upgrade{'2024.12.12'} = define() {
 			{
 				tes_type = 3;
 			}
-			value('tes_type', tes_type);
-			value('TES_DISP_tes_type', tes_type - 1);
+			value('tes_type', tes_type, 'Update TES type option for SSC variable (1=two tank, 2=packed bed, 3=pressurized water)');
+			value('TES_DISP_tes_type', tes_type - 1, 'Update TES type option for SAM user interface copy of variable (0=two tank, 1=packed bed, 2=pressurized water)');
 		}
 
-		value('tes_cyl_tank_thick', oldvalue('tes_tank_thick'), 'Updated variable name');
-		value('tes_cyl_tank_cp', oldvalue('tes_tank_cp'), 'Updated variable name');
-		value('tes_cyl_tank_dens', oldvalue('tes_tank_dens'), 'Updated variable name');
-		value('tes_cyl_piston_loss_poly', oldvalue('tes_NT_piston_loss_poly'), 'Updated variable name');
-		value('tes_cyl_tank_insul_percent', oldvalue('tes_tank_insul_percent'), 'Updated variable name');
+		variable_name_change('tes_cyl_tank_thick', 'tes_tank_thick');
+		variable_name_change('tes_cyl_tank_cp', 'tes_tank_cp');
+		variable_name_change('tes_cyl_tank_dens', 'tes_tank_dens');
+		variable_name_change('tes_cyl_tank_insul_percent', 'tes_tank_insul_percent');
+		variable_name_change('tes_n_tsteps', 'tes_NT_nstep');
+		
+		variable_name_change('tes_cyl_piston_loss_poly', 'tes_NT_piston_loss_poly');
+
+		piston_loss_poly = oldvalue('tes_NT_piston_loss_poly');
+		if(piston_loss_poly!=null) {
+			piston_loss_poly_labels = ['tes_cyl_piston_loss_poly_0', 
+									   'tes_cyl_piston_loss_poly_1', 
+									   'tes_cyl_piston_loss_poly_2', 
+									   'tes_cyl_piston_loss_poly_3'];
+			N_piston_loss_poly = #piston_loss_poly;
+			for (i = 0; i < #piston_loss_poly_labels; i++) {
+				if(i < N_piston_loss_poly)
+					val = piston_loss_poly[i];
+				else
+					val = 0;
+				value(piston_loss_poly_labels[i], val);
+			}
+		}
+		
+		message('We added an option on the Solar Field page to specify the trough loop minimum and maximum mass flow rate limits as either absolute (kg/s) or relative (fraction) values.'
+		        ' The default relative factors for minimum and maximum mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 0, 'Use relative minimum and maximum flow rate limits (fractions) by default');
+			value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
+			value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
 	}
-};
-
-
-version_upgrade{'2024.5.28'} = define() {
 	
-	const cfg = config();
-
-	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
-	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
+	// Linear Fresnel Model Changes
+	if(cfg.tech == 'MSLF' || cfg.tech == 'MSLF IPH')
+	{
+		message('We added an option on the Solar Field page to specify the trough loop minimum and maximum mass flow rate limits as either absolute (kg/s) or relative (fraction) values.'
+		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 'Use relative (fraction) minimum and maximum flow rate limits by default');
+			value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
+			value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
+	}
 
 	// Detailed PV Model Changes
 	if(cfg.tech == 'Flat Plate PV')
 	{
-		gpmp = oldvalue('cec_gamma_r');
-		value('cec_gamma_pmp', gpmp);
-		cgpmp = oldvalue('gamma_r_calc');
-		value('gamma_pmp_calc', cgpmp);
+		variable_name_change('cec_gamma_pmp', 'cec_gamma_r');
+		variable_name_change('gamma_pmp_calc', 'gamma_r_calc');
 	}
 	
+	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
+	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
+
 	// Standalone Battery Changes
 	if(cfg.tech == 'Standalone Battery')
 	{
+		message('We added a new Battery Time Step input page to explicitly define the simulation time step for standalone batteries. (For batteries coupled with a power generation system, the simulation time step is defined by the system model.)', 'warning');
 		timestep_mins = 60;
 		ts_per_hour = 1;
 		if (is_btm_fin) {
 			load = value("load");
 			ts_per_hour = #load / 8760;
-			
 		}
 		if (is_fom_fin) {
-			curtailment = value("grid_curtailment");
-			ts_per_hour = #curtailment / 8760;
+			if ( value('batt_dispatch_choice_ui') == 1 ) {
+				custom_dispatch = value('batt_custom_dispatch');
+				ts_per_hour = #custom_dispatch / 8760;
+			}
+			else {
+				curtailment = value("grid_curtailment");
+				ts_per_hour = #curtailment / 8760;
+			}
 		}
 		timestep_mins /= ts_per_hour;
 		options = [60, 30, 20, 15, 10, 5, 1];
@@ -118,34 +159,11 @@ version_upgrade{'2024.5.28'} = define() {
 			i++;
 		}
 		
-		value("timestep_minutes", timestep_mins);
-		value("timestep_minutes_ui", i);
+		value("timestep_minutes", timestep_mins, 'Simulation time step in minutes');
+		value("timestep_minutes_ui", i, 'Simulation time step option (0=60 min, 1=30 min, 2=20 min, 3=15 min, 4=10 min, 5=5 min, 6=1 min)');
 	}
 
-	// Physical Trough Model Changes
-	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
-	{
-		message('We modified the trough loop min and max mass flow rate limits to allow either absolute or relative values.'
-		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
-		        , 'warning');
-		        
-			value('use_abs_or_rel_mdot_limit', 0);
-			value('f_htfmin', 0.25);
-			value('f_htfmax', 1.2);
-	}
-	
-	// Linear Fresnel Model Changes
-	if(cfg.tech == 'MSLF' || cfg.tech == 'MSLF IPH')
-	{
-		message('We modified the linear fresnel loop min and max mass flow rate limits to allow either absolute or relative values.'
-		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
-		        , 'warning');
-		        
-			value('use_abs_or_rel_mdot_limit', 0);
-			value('f_htfmin', 0.25);
-			value('f_htfmax', 1.2);
-	}
-	
+
 	//Check for renamed generic system configs
 	if(cfg.tech == 'Generic System' || cfg.tech == 'Generic Battery' || cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
 	{
@@ -160,73 +178,67 @@ version_upgrade{'2024.5.28'} = define() {
 		}
 		if(cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
 		{
-			message('We renamed Generic PVWatts Wind FuelCell Battery Hybrid to CustomGeneration PVWatts Wind FuelCell Battery Hybrid', 'warning');
+			message('We renamed Generic PVWatts Wind FuelCell Battery Hybrid to CustomGeneration PVWatts Wind FuelCell Battery Hybrid.', 'warning');
 			config('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', cfg.fin);
-			value('customgeneration_system_capacity', oldvalue('generic_system_capacity'), 'Variable name changed');
-			value('customgeneration_total_installed_cost', oldvalue('generic_total_installed_cost'), 'Variable name changed');
+			//value('customgeneration_system_capacity', oldvalue('generic_system_capacity'), 'Variable name changed');
+			//value('customgeneration_total_installed_cost', oldvalue('generic_total_installed_cost'), 'Variable name changed');
 		}
-		
-		config_update_with_old_values();
-		value('customgen.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
-		value("customgen.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
-		value("customgen.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
-		value("customgen.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
-		value("customgen.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
-		value('customgen.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
-		value('customgen.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
-		value('customgen.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
-		value('customgen.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
-		value('customgen.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
-		value('customgen.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
-		value('customgen.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
-		value('customgen.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
-		value('customgen.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
-		value('customgen.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
-		value('customgen.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
-		value('customgen.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
 
+		config_update_with_old_values();
+		
+		variable_name_change('customgen.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('customgen.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('customgen.cost.epc.fixed', 'genericsys.cost.epc.fixed');
+		variable_name_change('customgen.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('customgen.cost.epc.percent', 'genericsys.cost.epc.percent');
+		variable_name_change('customgen.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('customgen.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('customgen.cost.per_watt','genericsys.cost.per_watt');
+		variable_name_change('customgen.cost.plant','genericsys.cost.plant');
+		variable_name_change('customgen.cost.plant_scaled','genericsys.cost.plant_scaled');
+		variable_name_change('customgen.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('customgen.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('customgen.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('customgen.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('customgen.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('customgen.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('customgen.cost.sales_tax.value','genericsys.cost.sales_tax.value');
 		
 	}
 	
 	//Check for renamed marine battery cost variables
-	if(cfg.tech == "Marine Wave Battery") {
-		value('marinebatt.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
-		value("marinebatt.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
-		value("marinebatt.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
-		value("marinebatt.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
-		value("marinebatt.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
-		value('marinebatt.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
-		value('marinebatt.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
-		value('marinebatt.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
-		value('marinebatt.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
-		value('marinebatt.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
-		value('marinebatt.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
-		value('marinebatt.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
-		value('marinebatt.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
-		value('marinebatt.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
-		value('marinebatt.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
-		value('marinebatt.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
-		value('marinebatt.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
+	if(cfg.tech == "MEwave Battery") {
+		variable_name_change('marinebatt.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('marinebatt.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('marinebatt.cost.epc.fixed', 'customgen.cost.epc.fixed');
+		variable_name_change('marinebatt.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('marinebatt.cost.epc.percent', 'custom.cost.epc.percent');
+		variable_name_change('marinebatt.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('marinebatt.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('marinebatt.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('marinebatt.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('marinebatt.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('marinebatt.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('marinebatt.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('marinebatt.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('marinebatt.cost.sales_tax.value','genericsys.cost.sales_tax.value');
 	}
 	//Check for renamed standalone battery cost variables
 	if(cfg.tech == "Standalone Battery") {
-		value('standalonebatt.cost.contingency', oldvalue("genericsys.cost.contingency"), 'Variable name changed');
-		value("standalonebatt.cost.contingency_percent", oldvalue("genericsys.cost.contingency"), 'Variable name changed');	
-		value("standalonebatt.cost.epc.fixed", oldvalue('customgen.cost.epc.fixed'), 'Variable name changed');
-		value("standalonebatt.cost.epc.nonfixed", oldvalue("genericsys.cost.epc.nonfixed"), 'Variable name changed');
-		value("standalonebatt.cost.epc.percent", oldvalue('custom.cost.epc.percent'), 'Variable name changed');
-		value('standalonebatt.cost.epc.total',oldvalue("genericsys.cost.epc.total"), 'Variable name changed');
-		value('standalonebatt.cost.installed_per_capacity',oldvalue("genericsys.cost.installed_per_capacity"), 'Variable name changed');
-		value('standalonebatt.cost.per_watt',oldvalue("genericsys.cost.per_watt"), 'Variable name changed');
-		value('standalonebatt.cost.plant',oldvalue("genericsys.cost.plant"), 'Variable name changed');
-		value('standalonebatt.cost.plant_scaled',oldvalue("genericsys.cost.plant_scaled"), 'Variable name changed');
-		value('standalonebatt.cost.plm.fixed',oldvalue("genericsys.cost.plm.fixed"), 'Variable name changed');
-		value('standalonebatt.cost.plm.nonfixed',oldvalue("genericsys.cost.plm.nonfixed"), 'Variable name changed');
-		value('standalonebatt.cost.plm.percent',oldvalue("genericsys.cost.plm.percent"), 'Variable name changed');
-		value('standalonebatt.cost.plm.total',oldvalue("genericsys.cost.plm.total"), 'Variable name changed');
-		value('standalonebatt.cost.sales_tax.percent',oldvalue("genericsys.cost.sales_tax.percent"), 'Variable name changed');
-		value('standalonebatt.cost.sales_tax.total',oldvalue("genericsys.cost.sales_tax.total"), 'Variable name changed');
-		value('standalonebatt.cost.sales_tax.value',oldvalue("genericsys.cost.sales_tax.value"), 'Variable name changed');
+		variable_name_change('standalonebatt.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('standalonebatt.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('standalonebatt.cost.epc.fixed', 'customgen.cost.epc.fixed');
+		variable_name_change('standalonebatt.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('standalonebatt.cost.epc.percent', 'custom.cost.epc.percent');
+		variable_name_change('standalonebatt.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('standalonebatt.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('standalonebatt.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('standalonebatt.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('standalonebatt.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('standalonebatt.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('standalonebatt.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('standalonebatt.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('standalonebatt.cost.sales_tax.value','genericsys.cost.sales_tax.value');
 	}
 	
 		

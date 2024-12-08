@@ -294,7 +294,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tidal_turbine_kw_rating_input"
+                    "String": "tidal_turbine_kw_rating_rotor"
                 },
                 "X": {
                     "Type": 3.0,
@@ -862,7 +862,7 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tidal_turbine_kw_rating_input": {
+        "tidal_turbine_kw_rating_rotor": {
             "Version": 4.0,
             "Type": 1.0,
             "Label": "Rated power per rotor",
@@ -1071,7 +1071,7 @@
         "\t${tidal_turbine_powercurve_powerout} = power_rated;\r",
         "\t//${tidal_turbine_powercurve_powerout_electric} = power;\r",
         "\t${tidal_turbine_kw_rating} = rated_power;\r",
-        "\t${tidal_turbine_kw_rating_input} = rated_power_rotor; //todo rename variables\r",
+        "\t${tidal_turbine_kw_rating_rotor} = rated_power_rotor; //todo rename variables\r",
         "\t\r",
         "\t\r",
         "\t// other outputs\r",
