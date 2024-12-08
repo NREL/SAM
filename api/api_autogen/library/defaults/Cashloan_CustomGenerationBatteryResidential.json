@@ -20,7 +20,7 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
-			"om_batt_capacity_cost": [14.810000],
+			"om_batt_capacity_cost": [15.000000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 12.474,
 			"om_batt_replacement_cost": [434.000000],
