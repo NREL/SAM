@@ -213,7 +213,7 @@
 			"heat_sink_dP_frac": 0.01
 		},
 		"Revenue": {
-			"ppa_price_input_heat_btu": [49.822000]
+			"ppa_price_input_heat_btu": [19.000000]
 		},
 		"AdjustmentFactors": {
 			"constant": 4,
