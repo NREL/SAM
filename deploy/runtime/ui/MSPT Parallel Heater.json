@@ -990,7 +990,7 @@
         "f_q_dot_des_allowable_su": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fraction of design power allowed during startup",
+            "Label": "Design power fraction allowed at startup",
             "Units": " ",
             "Group": "MSPT Parallel Heater",
             "IndexLabels": "",

@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 385.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -593,7 +593,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -676,7 +676,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -759,7 +759,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -842,7 +842,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1248,7 +1248,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1331,7 +1331,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 385.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1414,7 +1414,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1497,7 +1497,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 280.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1580,7 +1580,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 726.0
+                    "Integer": 760.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1721,7 +1721,7 @@
         "COPY_field_thermal_output_ideal": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Field thermal power w/ no defocus constraints",
+            "Label": "Field thermal power w/o defocus constraints",
             "Units": "MWt",
             "Group": "",
             "IndexLabels": "",

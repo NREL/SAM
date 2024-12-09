@@ -1985,7 +1985,6 @@ setmodules(['mspt_iph', 'utilityrate5', 'singleowner_heat']);
 setup_MSPT_IPH_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage( [['MSPT IPH Capital Costs' ]],{ 'sidebar'='Installation Costs', 'help'='cc_tower' } );
-//addpage([['Electricity Purchases Heat Model','Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage([['Operating Costs IPH']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 addpage( [[ 'Utility Rate - Flat',
 			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },

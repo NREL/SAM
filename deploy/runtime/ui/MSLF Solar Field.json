@@ -4665,7 +4665,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 536.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -6549,7 +6549,7 @@
         "T_fp": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Freeze point heat trace activation temperature",
+            "Label": "Freeze point heat trace activation temp",
             "Units": "°C",
             "Group": "MSLF Solar Field",
             "IndexLabels": "",
@@ -6717,7 +6717,7 @@
         "mc_bal_cold": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Heat capacity of the balance of plant on the cold side",
+            "Label": "Heat capacity of the balance of plant, cold side",
             "Units": "kWht/K-MWt",
             "Group": "MSLF Solar Field",
             "IndexLabels": "",
@@ -6730,7 +6730,7 @@
         "mc_bal_hot": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Heat capacity of the balance of plant on the hot side",
+            "Label": "Heat capacity of the balance of plant, hot side",
             "Units": "kWht/K-MWt",
             "Group": "MSLF Solar Field",
             "IndexLabels": "",
@@ -6743,7 +6743,7 @@
         "mc_bal_sca": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Non-HTF heat capacity associated with each SCA",
+            "Label": "Non-HTF heat capacity of each SCA",
             "Units": "Wht/K-m",
             "Group": "MSLF Solar Field",
             "IndexLabels": "",

@@ -358,11 +358,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -773,11 +773,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1354,7 +1354,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1437,7 +1437,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1520,7 +1520,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1603,7 +1603,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1686,7 +1686,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 252.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1769,7 +1769,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1852,7 +1852,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 672.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1935,7 +1935,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 255.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2062,7 +2062,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 57.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2191,13 +2191,13 @@
         "adjust": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "",
+            "Label": "System availability",
             "Units": "",
-            "Group": "",
+            "Group": "Sytem Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "LossAdjustment",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2281,59 +2281,59 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.023,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_0": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Aux heater boiler parasitic coefficient 0",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.483,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_1": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Aux heater boiler parasitic coefficent 1",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.571,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_2": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Aux heater boiler parasitic coefficient 2",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "aux_par_f": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Aux heater boiler parasitic factor",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2346,18 +2346,18 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.025,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_0": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of plant parasitic coefficient 0",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": " ",
@@ -2366,39 +2366,39 @@
         "bop_par_1": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of plant parasitic coefficient 1",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.483,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_2": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of plant parasitic coefficient 2",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
         "bop_par_f": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Balance of plant parasitic factor",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
-            "Flags": 0.0,
+            "Flags": 1.0,
             "DefaultValue": 1.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2411,7 +2411,7 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2424,7 +2424,7 @@
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2450,7 +2450,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 24.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2463,7 +2463,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 48.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2472,7 +2472,7 @@
             "Type": 1.0,
             "Label": "Heater startup cost penalty",
             "Units": "$/MWt/start",
-            "Group": " ",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.015,
@@ -2489,7 +2489,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 10000.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2502,7 +2502,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.055,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2528,7 +2528,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.4,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2541,7 +2541,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.99,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2554,7 +2554,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 5.0,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2567,7 +2567,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
+            "UIObject": "CheckBox",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2580,7 +2580,7 @@
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0055,
-            "UIObject": "Default",
+            "UIObject": "Numeric",
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
@@ -2625,24 +2625,31 @@
         "};"
     ],
     "Callbacks": [
-        "on_load{\"MSPT IPH System Control\"} = define()",
-        "{\r",
-        "\tenable('is_dispatch', false);\r",
-        "\tshow('is_dispatch', false);",
-        "\ton_change{\"is_dispatch\"}();",
+        "on_load{ 'MSPT IPH Dispatch Control' } = define() {",
+        "",
+        "  fin = financing();",
+        "  if ( fin == \"Commercial\" || fin == \"None\" || fin == \"LCOH Calculator\") ",
+        "    show( 'copy_schedule', false );",
+        "\r",
+        "\ton_change{\"is_timestep_load_fractions\"}();\r",
+        "",
         "};",
         "\r",
-        "on_change{\"is_dispatch\"} = define() {\r",
-        "     en = value(\"is_dispatch\");\r",
-        "     \r",
-        "     enable(\"disp_horizon\", en==1);\r",
-        "     enable(\"disp_frequency\", en==1);\r",
-        "     enable(\"disp_rsu_cost_rel\", en==1);\r",
-        "     enable(\"disp_max_iter\", en==1);\r",
-        "     enable(\"disp_timeout\", en==1);\r",
-        "     enable(\"disp_mip_gap\", en==1);\r",
-        "     enable(\"disp_time_weighting\", en==1);\r",
-        "\r",
-        "};"
+        "on_change{ 'is_timestep_load_fractions' }= define(){\r",
+        "\tmode = value(\"is_timestep_load_fractions\");\r",
+        "\tenable(\"timestep_load_fractions\",mode==1);\r",
+        "\tenable(\"f_turb_tou_periods\",mode==0);\r",
+        "\tenable(\"copy_schedule\",mode==0);\r",
+        "\tenable(\"weekday_schedule\",mode==0);\r",
+        "\tenable(\"weekend_schedule\",mode==0);\r",
+        "};\r",
+        "",
+        "on_change{ 'copy_schedule' } = define() {",
+        "",
+        "    value( 'weekday_schedule' , value ( 'dispatch_sched_weekday' ) );",
+        "    value( 'weekend_schedule' , value ( 'dispatch_sched_weekend' ) );",
+        "",
+        "};",
+        ""
     ]
 }
