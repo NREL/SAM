@@ -9549,7 +9549,7 @@
 			"ppa_soln_mode": 1
 		},
 		"Revenue": {
-			"ppa_price_input_heat_btu": [27.844500]
+			"ppa_price_input_heat_btu": [18.500000]
 		},
 		"FinancialParameters": {
 			"const_per_interest_rate1": 3.5,
