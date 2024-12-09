@@ -1182,7 +1182,7 @@
         "// can happen via LK script or URDB rate download",
         "function check_fom_sell_rates()",
         "{",
-        "\tif ( is_fom_bool() || is_merchant_plant() )",
+        "\tif ( is_fom_bool() || is_merchant_plant() || is_iph())",
         "\t{",
         "\t\tx = value('ur_ec_tou_mat');",
         "\t\tis_sell_rate = false;",

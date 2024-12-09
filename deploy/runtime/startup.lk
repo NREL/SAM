@@ -1078,7 +1078,13 @@ addpage( [[ 'Financial Debt Min DSCR',
 	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
 setup_elec_load_page( LOAD_SIMPLE );
 addpage( [[ 'Thermal Rate IPH' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
@@ -2356,7 +2362,13 @@ addpage( [[ 'Financial Debt Min DSCR',
 	   { 'sidebar'='Financial Parameters','help'='fin_commercial'} );
 addpage( [[ 'Financial Tax Credits IPH','Financial Cash Incentives IPH']],
            { 'sidebar'='Incentives', 'help'='incentives' } );
-setup_utility_rate();
+addpage( [[ 'Utility Rate - Flat',
+			    { 'name'='Utility Rate - Description', 'caption'='Description and Applicability', 'collapsible'=true, 'collapsible_var'='ur_desc_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Energy Charge', 'caption'='Energy Charges', 'collapsible'=true, 'collapsible_var'='ur_ec_is_shown', 'collapsed_by_default'=false },
+				{ 'name'='Utility Rate - Billing Demand', 'caption'='Billing Demand', 'collapsible'=true, 'collapsible_var'='ur_billing_demand_is_shown', 'collapsed_by_default'=true },
+			    { 'name'='Utility Rate - Demand Charge', 'caption'='Demand Charges', 'collapsible'=true, 'collapsible_var'='ur_dc_is_shown', 'collapsed_by_default'=false },
+			    { 'name'='Utility Rate - Unused', 'caption'='Unused Items', 'collapsible'=true, 'collapsible_var'='ur_unused_is_shown', 'collapsed_by_default'=true },]],
+		     { 'sidebar'='Electricity Purchases', 'help'='electricity_purchases' } );
 setup_elec_load_page( LOAD_SIMPLE );
 addpage( [[ 'Thermal Rate IPH' ]], 
          {'sidebar' = 'Thermal Rates','help' = 'thermal_rates'});
