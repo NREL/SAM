@@ -1,7 +1,7 @@
 {
     "Name": "PTES Power Cycle",
-    "Width": 941.0,
-    "Height": 553.0,
+    "Width": 960.0,
+    "Height": 549.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -652,7 +652,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 921.0
+                    "Integer": 950.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -689,7 +689,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 921.0
+                    "Integer": 950.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -718,7 +718,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1050,7 +1050,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1133,7 +1133,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1382,7 +1382,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1465,7 +1465,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1548,7 +1548,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1631,7 +1631,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1714,7 +1714,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1797,7 +1797,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1880,7 +1880,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1963,7 +1963,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 786.0
+                    "Integer": 810.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2164,7 +2164,7 @@
         "f_pc_parasitic_des": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Parasitics (non-pumping) as fraction of thermodynamic power",
+            "Label": "Parasitics (non-pumping) fraction of thermodynamic power",
             "Units": " ",
             "Group": "PTES Power Cycle",
             "IndexLabels": "",
@@ -2203,7 +2203,7 @@
         "startup_frac": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fraction of design thermal energy (1 hr) needed for startup",
+            "Label": "Design thermal energy (1 hr) fraction for startup",
             "Units": " ",
             "Group": " ",
             "IndexLabels": "",

@@ -3928,7 +3928,7 @@
         "CT_tes_spec_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Thermal energy storage cost",
+            "Label": "Storage cost",
             "Units": "$/kWt",
             "Group": " ",
             "IndexLabels": "PTES Cost",
@@ -4097,7 +4097,7 @@
         "tes_spec_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Thermal energy storage cost",
+            "Label": "Storage cost",
             "Units": "$/kWht",
             "Group": "PTES Cost",
             "IndexLabels": "",
