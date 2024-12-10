@@ -54,32 +54,115 @@ tr:nth-child(even) {
 
 <p>Brief paragraph describing major updates in new version or sentence describing maintenance udpate.</p>
 
-<h2>CATEGORY: General, Solar, Detailed Photovoltaic, Wind Power, CSP Physical Trough, PPA Single Owner, etc. Skip category for maintenance updates.</h2>
-
 <ul>
-<li>ITEM 1 DESCRIPTION: Sentence describing change, and if relevent, impact on results.] (<a href="[URL to pull request]">SAM/SSC/WEX/LK [PR number]</a>)
-<li>ITEM 2 DESCRIPTION
-<li>...
+<li>Optional list of major release highights.</li>
+<li>...</li>
 </ul>
 
+<h2>CATEGORY FOR MAJOR RELEASES: General, Solar, Detailed Photovoltaic, Wind Power, CSP Physical Trough, PPA Single Owner, etc. Skip category for maintenance updates.</h2>
+
+<p>ITEM 1 DESCRIPTION: Sentence describing change, and if relevent, impact on results.] (<a href="[URL to pull request]">SAM/SSC/WEX/LK [PR number]</a>)</p>
+
+<p>ITEM 2 DESCRIPTION</p>
+
+<p>..</p>
+
+<ul>
+<li>
+CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
+<li>ITEM 1 DESCRIPTION: Sentence describing change, and if relevent, impact on results.] (<a href="[URL to pull request]">SAM/SSC/WEX/LK [PR number]</a>)
+<li>ITEM 2 DESCRIPTION</li>
+<li>...</li>
+</li>
+</ul>
 
 -->
 
 <h1 id="2024-12-12">SAM 2024.12.12, SSC 296: December 12, 2024</h1>
 
-<p>Placeholder for SAM 2024.12.12 release notes.</p>
+<p>This version adds the Single Owner and Commercial financial models as options to the Industrial Process Heat (IPH) configurations, and includes several fixes and updates.</p>
 
-<h2>Default System Design for Detailed PV and PVWatts</h2>
+<ul>
+<li>Optional list of major release highights.</li>
+<li>...</li>
+</ul>
 
-<p>Update default system designs based on <a href="https://www.energy.gov/eere/solar/solar-photovoltaic-system-cost-benchmarks">DOE Solar Photovoltaic System Cost Benchmarks</a>:</p>
+<p>For a complete list of code revisions associated with this version, see the <a href="https://github.com/NREL/SAM/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2024+Release%22+is%3Aclosed">SAM</a> and <a href="https://github.com/NREL/ssc/pulls?q=is%3Apr+milestone%3A%22SAM+Fall+2024+Release%22+is%3Aclosed">SSC</a> GitHub repositories.  Highlights include:</p>
+
+<h2>General</h2>
+
+<p>Update weather file downloads to NREL NSRDB GOES V4 dataset covering 1998 - 2023. (<a href="https://github.com/NREL/SAM/pull/1945">SAM 1945</a>)</p>
+
+<p>Fix alignment of user interface elements for Linux and Mac versions of SAM. (<a href="https://github.com/NREL/SAM/pull/1926">SAM 1926</a>, <a href="https://github.com/NREL/SAM/pull/1929">SAM 1929</a>)</p>
+
+<p>Fix code generator for MATLAB problem with incorrect library. (<a href="https://github.com/NREL/SAM/pull/1950">SAM 1950</a>)</p>
+
+<p>Test and update macros and sample LK scripts. (<a href="https://github.com/NREL/SAM/pull/1948">SAM 1948</a>, <a href="https://github.com/NREL/SAM/pull/1956">SAM 1956</a>)</p>
+
+<p>Test and update PDF report templates. (<a href="https://github.com/NREL/SAM/pull/1947">SAM 1947</a>)</p>
+
+<p>Revise Help for new features, updates, and to correct errors. (<a href="https://github.com/NREL/SAM/pull/1960">SAM 1960</a>, <a href="https://github.com/NREL/SAM/pull/1941">SAM 1941"</a>, <a href="https://github.com/NREL/SAM/pull/1919">SAM 1919</a>)</p>
+
+<p>Fix problem with list of time step options in user interface widget for availability losses and time series data. (<a href="https://github.com/NREL/SAM/pull/1907">SAM 1907</a>)</p>
+
+<h2>Update Default Costs and System Designs</h2>
+
+<p>Update defaults to better align with current state of U.S. market and incentives. (<a href="https://github.com/NREL/SAM/pull/1930">SAM 1930</a>)</p>
+
+<p>For Detailed PV and PVWatts configurations, update default system designs based on <a href="https://www.energy.gov/eere/solar/solar-photovoltaic-system-cost-benchmarks">DOE Solar Photovoltaic System Cost Benchmarks</a>:</p>
+
+<p>Update sample Python script for accessing NREL ResStock building load data to 2024 datasets. (<a href="https://github.com/NREL/SAM/pull/1915">SAM 1915</a>)</p>
 
 <ul>
 <li>Behind-the-meter residential is 7.9 kWdc fixed roof-mount with 400 Wdc monofacial modules and 7.6 kWac string inverters with DC optimizers.</li> 
 <li>Behind-the-meter commercial and third party ownership is 560 kWdc fixed or rack-mounted with 530 Wdc bifacial modules and 227 kWac central inverters. It is based on both the 3 MW agrivoltaic (APV) system from the <a href="https://www.energy.gov/eere/solar/solar-photovoltaic-system-cost-benchmarks">DOE Solar Photovoltaic System Cost Benchmarks</a> and the 200 kW fixed roof-mount system from the <a href="https://atb.nrel.gov/electricity/2024/data">2024 Annual Technology Baseline (ATB)</a>.</li>
 <li>Front-of-meter is 100 MWdc ground-mounted, single-axis tracking with 530 Wdc bifacial modules and 2.5 MWac central inverters.</li>
+<li>PVWatts default system designs assume monofacial modules because bifacial option is hidden in collapsed "Advanced Parameters" panel. See <a href="https://github.com/NREL/SAM/issues/1959">SAM Issue 1959</a>.</li>
 </ul>
 
-<p>PVWatts default system designs assume monofacial modules because bifacial option is hidden in collapsed "Advanced Parameters" panel. See <a href="https://github.com/NREL/SAM/issues/1959">SAM Issue 1959</a>.</p>
+<p>For IPH configurations, update default incentives (no investment tax credit, ITC), heat sink capacity, and O&M cost. (<a href="https://github.com/NREL/SAM/pull/1946">SAM 1946</a>)</p>
+
+<p>Update default utility rate for behind-the-meter (BTM) configurations. (<a href="https://github.com/NREL/SAM/pull/1958">SAM 1958</a>)</p>
+
+<h2>Detailed PV</h2>
+
+<p>Update module and inverter libraries. (<a href="https://github.com/NREL/SAM/pull/1913">SAM 1913</a>, <a href="https://github.com/NREL/SAM/pull/1917">SAM 1917</a>)</p>
+
+<h2>Electric Battery Storage</h2>
+
+<p>Update and fix REopt API calls for battery size and dispatch optimization. (<a href="https://github.com/NREL/SAM/pull/1904">SAM 1904</a>, <a href="https://github.com/NREL/ssc/pull/1242">SSC 1242</a>)</p>
+
+<p>Add battery-specifi availability loss inputs. (<a href="https://github.com/NREL/SAM/pull/1902">SAM 1902</a>, <a href="https://github.com/NREL/ssc/pull/1241">SSC 1241</a>)</p>
+
+<h2>Hybrid Systems</h2>
+
+<p>Add input pages for thermal loads and thermal rates to hybrid configurations that include fuel cells. <a href="https://github.com/NREL/SAM/pull/1903">SAM 1903</a>, <a href="https://github.com/NREL/ssc/pull/1244">SSC 1244</a>)</p>
+
+<h2>Concentrating Solar Power (CSP)</h2>
+
+<p>For parabolic trough and linear Fresnel configurations, move input variables for receiver startup dely time and energy fraction from Solar Field page to System Control page. These inputs are for the dispatch optimization algorithm, not the performance simulation. (They are inputs to the performance model for power tower configurations.) (<a href=<https://github.com/NREL/SAM/pull/1961>SAM 1961</a>)/p>
+
+<p>New options for user-defined power cycle mode. <a href="https://github.com/NREL/SAM/pull/1935">SAM 1935</a>)</p>
+
+<h2>Industrial Process Heat (IPH)</h2>
+
+<p>Add Single Owner and Commercial financial model option for IPH performance models. For older versions of SAM, only the LCOH Calculator (fixed-charge rate method of calculating levelized cost of heat) financial model was available. This major new feature involves adding new cash flow cost and benefit streams based on heat generated by the system. (<a href="https://github.com/NREL/SAM/pull/1900">SAM 1900</a>, <a href="https://github.com/NREL/ssc/pull/1238">SSC 1238</a>)</p>
+
+<p>Disable Send-to-Excel with Equations (Windows only) for IPH configurations with Single Owner or Commercial financial model until workbooks are updated. (<a href="https://github.com/NREL/SAM/pull/1954">SAM 1954</a>)</p>
+
+<p>Placeholder variables for IPH models for physical model of heat sink to be implemented in future. These variables are not visible on SAM input pages, but may appear in variable lists for parametric and stochastic simulations, in the LK script editor, and generated by PySAM (<a href="https://github.com/NREL/SAM/pull/1933">SAM 1933</a>)</p>
+
+<h2>Marine Energy</h2>
+
+<p>Update PDF report template to support Wave and Tidal configurations with Single Owner and LCOE Calculator financial models, and new energy converter and resource options. (<a href="https://github.com/NREL/SAM/pull/1947">SAM 1947</a>)
+
+<h2>Geothermal Power</h2>
+
+<p>Update cost scenario data. (<a href="https://github.com/NREL/SAM/pull/1931">SAM 1931</a>)</p>
+
+<h2>Wind Power</h2>
+
+<p>Fix LandBOSSE call to run Python from SAM user interface. (<a href="https://github.com/NREL/SAM/pull/1939">SAM 1939</a>)</p>
 
 <h1 id="2023-12-17-r2">SAM 2023.12.17 r2, SSC 292: August 23, 2024</h1>
 
