@@ -27,7 +27,7 @@ This macro helps the user determine the optimal subarray size, ground coverage r
 //@ name=length;type=number;label=Enter the Length of Field or Rooftop (m):;value=35
 //@ name=width;type=number;label=Enter the width of Field or Rooftop (m):;value=25
 //@ name=setback;type=number;label=Enter the setback (in m) from edges:;value=1 
-//@ name=max_gcr;type=number;label=Enter the maximum GCR:;value=1 
+//@ name=max_gcr;type=number;label=Enter the maximum GCR:;value=0.99 
 //@ name=min_gcr;type=number;label=Enter the minimum GCR(value cannot equal 0):;value=0.1 
 //@ name=gcr_steps;type=number;label=Enter the increments you would like to iterate GCR over:;value=0.1
 //@ name=max_tilt;type=number;label=Enter the maximum allowable (fixed) tilt angle (in Degrees):;value=90
