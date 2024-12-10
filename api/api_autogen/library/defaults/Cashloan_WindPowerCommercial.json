@@ -36,10 +36,10 @@
 			"depr_sta_type": 1
 		},
 		"TaxCreditIncentives": {
-			"itc_fed_amount": [30.000000],
+			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [0.000000],
+			"itc_fed_percent": [30.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],

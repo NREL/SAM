@@ -255,6 +255,22 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_eta_pump_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=1
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set field_fl_props: Fluid property data
 	 * options: None
 	 * constraints: None
@@ -269,6 +285,22 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_land_mult_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
+	 * options: None
+	 * constraints: None
+	 * required if: use_abs_or_rel_mdot_limit=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mc_bal_cold: The heat capacity of the balance of plant on the cold side [kWht/K-MWt]
@@ -335,6 +367,14 @@ extern "C"
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_theta_stow_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set washes_per_year: Mirror washing frequency [none]
 	 * options: None
 	 * constraints: None
@@ -349,51 +389,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_FresnelPhysical_SolarField_water_per_wash_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
-	// SolarField parameters
-	//
-
-	/**
-	 * Set f_htfmax: Maximum loop mass flow rate fraction of design
-	 * options: None
-	 * constraints: None
-	 * required if: use_abs_or_rel_mdot_limit=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set f_htfmin: Minimum loop mass flow rate fraction of design
-	 * options: None
-	 * constraints: None
-	 * required if: use_abs_or_rel_mdot_limit=1
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_f_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set m_dot_htfmax: Maximum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: use_abs_or_rel_mdot_limit=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmax_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set m_dot_htfmin: Minimum loop HTF flow rate [kg/s]
-	 * options: None
-	 * constraints: None
-	 * required if: use_abs_or_rel_mdot_limit=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_m_dot_htfmin_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set use_abs_or_rel_mdot_limit: Use mass flow abs (0) or relative (1) limits
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1849,9 +1844,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_eta_pump_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_FresnelPhysical_SolarField_field_fl_props_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_land_mult_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_mc_bal_cold_nget(SAM_table ptr, SAM_error *err);
 
@@ -1869,24 +1872,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_theta_stow_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_washes_per_year_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_FresnelPhysical_SolarField_water_per_wash_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * SolarField Getters
-	 */
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmax_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_f_htfmin_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmax_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_m_dot_htfmin_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_FresnelPhysical_SolarField_use_abs_or_rel_mdot_limit_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
