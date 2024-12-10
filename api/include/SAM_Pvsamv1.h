@@ -8217,6 +8217,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_system_capacity_ac_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_dc_aget(SAM_table ptr, int* length, SAM_error *err);

@@ -1342,6 +1342,15 @@ SAM_EXPORT double* SAM_Pvwattsv8_Outputs_sunup_aget(SAM_table ptr, int* length, 
 	return result;
 }
 
+SAM_EXPORT double SAM_Pvwattsv8_Outputs_system_capacity_ac_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity_ac", &result))
+		make_access_error("SAM_Pvwattsv8", "system_capacity_ac");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Pvwattsv8_Outputs_tamb_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
