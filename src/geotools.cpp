@@ -278,6 +278,9 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
         url.Replace("<POINT>", wxString::Format("%.14lf,%.14lf", *lat, *lon));
         url.Replace("<BINGAPIKEY>", wxString(bing_api_key));
 
+
+        wxMessageBox(url, "geocode developer bing tz URL");
+
         if (showprogress) 
         {
             if (!curl.Get(url, "Geocoding address '" + address + "'..."))
@@ -289,6 +292,9 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
         }
 
         str = curl.GetDataAsString();
+
+        wxMessageBox(str, "geocode developer bing tz URL return string");
+
         reader.Parse(str.c_str());
 
         if (!reader.HasParseError()) {
