@@ -185,6 +185,8 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
 
     wxEasyCurl curl;
     wxBusyCursor curs;
+    wxMessageBox(url, "geocode developer URL");
+
     if (showprogress) {
         if (!curl.Get(url, "Geocoding address '" + address + "'..."))
             return false;
@@ -196,6 +198,9 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
  
     rapidjson::Document reader;
     auto str = curl.GetDataAsString();
+
+    wxMessageBox(str, "geocode developer URL return string");
+
     reader.Parse(str.c_str());
 
 
