@@ -123,6 +123,15 @@ for (i=0; i<num_cases; i++)
 		msgbox('The Battery Compare Cases macro is only meant to be used with battery cases. See the Compare Cases macro for non-battery cases');
 		exit;
 	}
+	
+	if (config[1] == 'LCOE Calculator' || config[1] == "None" || config[1] == "Third Party")
+	{
+
+		msgbox('The case comparison macro does not work with the LCOE Calculator financial model, the Third Party Owner - Host financial model, or with No Financial model.');
+
+		exit;
+
+	}
 
 	if (config[1] == 'LCOE Calculator') {
 		lcoe[i] = get('lcoe_fcr');
@@ -162,11 +171,8 @@ for (i=0; i<num_cases; i++)
 	
 		annual_cashflow_bin = get('cf_project_return_aftertax');
 	}
-	else if (config[1] == "Residential" || config[1] == "Commercial") {
-		annual_cashflow_bin = get('cf_after_tax_cash_flow');
-	}
 	else {
-		annual_cashflow_bin = get('cf_tax_investor_aftertax');
+		annual_cashflow_bin = get('cf_after_tax_cash_flow');
 	}
 	for (j = 0; j < analysis_period+1; j++) {
 		annual_cashflow[j][i] = annual_cashflow_bin[j];
