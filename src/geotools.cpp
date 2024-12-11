@@ -187,9 +187,14 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
     wxBusyCursor curs;
     wxMessageBox(url, "geocode developer URL");
 
-    // SAM issue 1968
+    // SAM issue 1968 
+    /* works from command line and fails in curl.get with invalid key 
     url.Replace("&", "\\&");
     wxMessageBox(url, "updated geocode developer URL");
+    */
+    curl.AddHttpHeader("Content-Type: application/json");
+    curl.AddHttpHeader("Accept: application/json");
+
 
     if (showprogress) {
         if (!curl.Get(url, "Geocoding address '" + address + "'..."))
