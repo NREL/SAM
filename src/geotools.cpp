@@ -187,6 +187,10 @@ bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lo
     wxBusyCursor curs;
     wxMessageBox(url, "geocode developer URL");
 
+    // SAM issue 1968
+    url.Replace("&", "\\&");
+    wxMessageBox(url, "updated geocode developer URL");
+
     if (showprogress) {
         if (!curl.Get(url, "Geocoding address '" + address + "'..."))
             return false;
