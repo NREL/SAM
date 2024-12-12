@@ -172,7 +172,7 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <h2>PVWatts (SAM 2024.12.12)</h2>
 
-<p>Change variable group name for 'losses' input variable from "Other DC losses" to "DC system losses". <a href ="https://github.com/NREL/ssc/pull/1229">SSC 1229</a>)</p>
+<p>Change variable group name for 'losses' input variable from "Other DC losses" to "DC system losses". (<a href ="https://github.com/NREL/ssc/pull/1229">SSC 1229</a>)</p>
 
 <p>Improve solar position algorithm to speed up PVWatts and Detailed PV simulation run times. (<a href="https://github.com/NREL/ssc/pull/1212">SSC 1212</a>)</p>
 
@@ -180,17 +180,17 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 	 
 <p>Modify battery dispatch to consider grid limits. (<a href="https://github.com/NREL/SAM/pull/1883">SAM 1883</a>, <a href="https://github.com/NREL/ssc/pull/1224">SSC 1224</a>)</p>
 	 
-<p>Update and fix REopt API calls for battery size and dispatch optimization. (<a href="https://github.com/NREL/SAM/pull/1904">SAM 1904</a>, <a href="https://github.com/NREL/ssc/pull/1242">SSC 1242</a>, <a href="https://github.com/NREL/ssc/pull/1203">SSC 1203</a>)</p>
-
 <p>Add battery-specific availability loss inputs. (<a href="https://github.com/NREL/SAM/pull/1902">SAM 1902</a>, <a href="https://github.com/NREL/ssc/pull/1241">SSC 1241</a>, <a href="https://github.com/NREL/ssc/pull/1234">SSC 1234</a>)</p>
 
 <p>Add new Standalone Battery input to define simulation time step rather than basing it on other inputs. (<a href="https://github.com/NREL/SAM/pull/1887">SAM 1887</a>, <a href="https://github.com/NREL/ssc/pull/1227">SSC 1227</a>)</p>
 
 <p>For behind-the-meter (BTM) batteries, Add metrics and graphs to Summary tab on Results page, and default graph showing battery performance metrics on Time Series tab. (<a href="https://github.com/NREL/SAM/pull/1884">SAM 1884</a>, <a href="https://github.com/NREL/SAM/pull/1865">SAM 1865</a>, <a href="https://github.com/NREL/ssc/pull/1215">SSC 1215</a>)</p>
 
-<p>Improve efficiency of internal handling of battery parameter variables to decrease simulation run time, particularly for PV smoothing dispatch option. (<a href="https://github.com/NREL/ssc/pull/1251">SSC 1251</a>)</p>
-
 <p>Change battery life model to base degraded battery capacity on sum of calendar and cycle degradation rather than the minimum of the two. (<a href="https://github.com/NREL/ssc/pull/1239">SSC 1239</a>)</p>
+
+<p>Update and fix REopt API calls for battery size and dispatch optimization. (<a href="https://github.com/NREL/SAM/pull/1904">SAM 1904</a>, <a href="https://github.com/NREL/ssc/pull/1242">SSC 1242</a>, <a href="https://github.com/NREL/ssc/pull/1203">SSC 1203</a>)</p>
+
+<p>Improve efficiency of internal handling of battery parameter variables to decrease simulation run time, particularly for PV smoothing dispatch option. (<a href="https://github.com/NREL/ssc/pull/1251">SSC 1251</a>)</p>
 
 <p>Improve determination of price signal forecast for Merchant Plant configurations with automated dispatch: Calculate price signal in each time step as capacity-weighted sum of enabled energy and ancillary service prices instead of simple sum. (<a href="https://github.com/NREL/ssc/pull/1235">SSC 1235</a>)</p> 
 
@@ -204,7 +204,7 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <p>For parabolic trough and linear Fresnel configurations, move input variables for receiver startup dely time and energy fraction from Solar Field page to System Control page. These inputs are for the dispatch optimization algorithm, not the performance simulation. (They are inputs to the performance model for power tower configurations.) (<a href=<https://github.com/NREL/SAM/pull/1961>SAM 1961</a>)</p>
 
-<p>New options for user-defined power cycle (UDPC) mode. <a href="https://github.com/NREL/SAM/pull/1935">SAM 1935</a>, <a href="https://github.com/NREL/ssc/pull/1253">SSC 1253</a>)</p>
+<p>New options for user-defined power cycle (UDPC) mode. (<a href="https://github.com/NREL/SAM/pull/1935">SAM 1935</a>, <a href="https://github.com/NREL/ssc/pull/1253">SSC 1253</a>)</p>
 
 <p>Fix parabolic trough and linear Fresnel dispatch issue that resulted in infeasible results. (<a href="https://github.com/NREL/ssc/pull/1213">SSC 1213</a>)</p>
 
