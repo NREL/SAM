@@ -74,7 +74,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-			{ 2024, 12, 12},	// 2024.12.12 ssc 297 release candidate - no expiration
+			{ 2024, 12, 12},	// 2024.12.12 ssc 298 public release
 			{ 2024, 11, 14},	// 2024.11.14 ssc 295 beta release for IPH configurations expires 1/31/2025
 			{ 2024, 9, 15},		// 2024.09.15 Placeholder version number for updated NT variable names (replace with release version number)		
 			{ 2024, 9, 11},		// 2024.09.11 Final Norwich beta		
