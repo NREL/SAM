@@ -605,6 +605,19 @@ extern "C"
 
 
 	//
+	// Revenue parameters
+	//
+
+	/**
+	 * Set ppa_price_input_heat_btu: PPA prices - yearly [$/MMBtu]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_LinearFresnelDsgIph_Revenue_ppa_price_input_heat_btu_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// AdjustmentFactors parameters
 	//
 
@@ -612,7 +625,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_LinearFresnelDsgIph_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -813,6 +826,13 @@ extern "C"
 
 
 	/**
+	 * Revenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Revenue_ppa_price_input_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * AdjustmentFactors Getters
 	 */
 
@@ -853,6 +873,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_energy_heat_btu_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_field_energy_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_annual_thermal_consumption_nget(SAM_table ptr, SAM_error *err);
@@ -862,6 +884,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_beam_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -873,6 +897,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_gen_heat_btu_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_hour_day_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err);
@@ -883,11 +911,15 @@ extern "C"
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_month_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_nameplate_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_op_mode_1_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_op_mode_2_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_op_mode_3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_ppa_price_input_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -910,6 +942,8 @@ extern "C"
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_solazi_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_solzen_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_LinearFresnelDsgIph_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_LinearFresnelDsgIph_Outputs_tdry_aget(SAM_table ptr, int* length, SAM_error *err);
 

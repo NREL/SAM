@@ -54,10 +54,10 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 1,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 31448.9
+			"system_capacity": 32813.6
 		},
 		"SystemCosts": {
 			"om_capacity": [175.000000],
@@ -66,7 +66,7 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.31e+08
+			"total_installed_cost": 1.94764e+08
 		},
 		"LandLease": {
 		},
@@ -227,14 +227,14 @@
 		"SystemOutput": {
 			"degradation": [0.000000],
 			"gen": [0.000000],
-			"system_capacity": 31448.9
+			"system_capacity": 32813.6
 		},
 		"ElectricityRates": {
 			"en_electricity_rates": 0,
 			"rate_escalation": [0.000000]
 		},
 		"Recapitalization": {
-			"system_recapitalization_cost": 3.7765e+07,
+			"system_recapitalization_cost": 8.68415e+07,
 			"system_use_recapitalization": 1
 		},
 		"TimeOfDelivery": {
@@ -243,7 +243,7 @@
 		"UtilityBill": {
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 1.2183e+07
+			"construction_financing_cost": 2.39559e+07
 		},
 		"OtherCapitalCosts": {
 			"cost_dev_fee_percent": 3,
@@ -271,6 +271,8 @@
 		"ChargesByMonth": {
 		},
 		"BatterySystem": {
+		},
+		"FuelCell": {
 		}
 	}
 }

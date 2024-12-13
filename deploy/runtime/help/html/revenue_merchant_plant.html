@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?revenue_merchant_plant.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -729,7 +724,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The system's nameplate capacity. Note that the nameplate capacity is defined differently for different kinds of systems. For example for photovoltaic systems, the nameplate capacity is the total DC array capacity, and for wind and concentrating solar power systems, it is an AC capacity.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Battery maximum discharge power, MWac</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For systems with battery storage, the battery's maximum discharge power from the Battery Cell and System page. </span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">For PV Battery and Generic Battery configurations, SAM shows this battery capacity value for reference, but does not use it to calculate the capacity payment amount.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For PV Battery and </span><span class="f_Text">Custom Generation Profile - Battery</span><span class="f_VariableDescription"> configurations, SAM shows this battery capacity value for reference, but does not use it to calculate the capacity payment amount.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For Standalone Battery configurations, SAM uses the battery maximum discharge power to calculate the capacity payment amount.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">NREL Cambium Hourly Price Data Download</span></h3>
 <p class="p_Text"><span class="f_Text">If you do not have time series price data for your analysis, you can download hourly marginal cost data for modeled futures of the U.S. electricity sector from the <a href="https://cambium.nrel.gov/" target="_blank" class="weblink" title="https://www.nrel.gov/analysis/cambium.html">NREL Cambium database</a>.</span></p>
@@ -746,7 +741,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">The Multiple Years option downloads 8760 hourly values for more than one year, which may take a few minutes to complete.</span><br />
 <span class="f_Note">&nbsp;</span><br />
-<span class="f_Note">Only some years are available from the Cambium database. For example, Cambium 2022 data is available for 2024, 2026, 2028, 2030, 2035, 2040, 2045, and 2050. If you set the start date to 2026 for a project with a 25-year analysis period, SAM downloads cambium data for the available years between 2026 and 2051. For missing years, it copies data from the previous available year, so it would use 2024 data for 2025 and 2030 data for 2031, 2032, 2033, and 2034.</span><br />
+<span class="f_Note">Only some years are available from the Cambium database. For example, Cambium 2023 data is available for 2025, 2030, 2035, 2040, 2045, and 2050. If you set the start date to 2030 for a project with a 25-year analysis period, SAM downloads cambium data for the available years between 2030 and 2050. For missing years, it copies data from the previous available year, so it would use 2030 data for 2031, 2032, 2033, and 2034.</span><br />
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">If you specify an escalation rate, SAM treats the start year as Year 0, and uses the escalation rate to adjust the values for later years. It does not apply the inflation rate from the Financial Parameters page to the downloaded price data.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Energy Market and Ancillary Service</span></h3>

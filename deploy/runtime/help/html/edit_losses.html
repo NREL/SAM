@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?edit_losses.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -528,6 +523,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable time series losses</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check the box to enable losses by time step. Click </span><span class="f_CHInterfaceElement">Edit time series losses</span><span class="f_VariableDescription"> to open the <a href="edit_data_lifetime.html" class="topiclink">Edit Lifetime Data</a> window, and use the table in the window to specify the losses.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The check box allows you to enable and disable time series losses without deleting the data in the loss table.</span></p>
+<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> If you choose </span><span class="f_CHInterfaceElement">Hourly</span><span class="f_Note">, </span><span class="f_CHInterfaceElement">Subhourly</span><span class="f_Note">, or </span><span class="f_CHInterfaceElement">Three Hourly</span><span class="f_Note"> for </span><span class="f_CHInterfaceElement">Mode</span><span class="f_Note">, the mode must be consistent with the simulation time step. For example, the Three Hourly mode is for Marine Energy models and will not work with solar or wind models that run hourly or subhourly &nbsp;simulations.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Enable time series losses with custom periods</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Check the box when you want to apply losses to specific time periods. Choose a date and time for the start time and end time, and specify a loss for that period. Click </span><span class="f_CHInterfaceElement">Add period</span><span class="f_VariableDescription"> to specify more than one time period. In the example above, a 5% loss applies from April 1 12:15 pm to April 7 11:30 pm, and a 2% loss applies from September 15 8:30 am to September 20 5:00 pm.</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The check box allows you to enable custom period losses without deleting the loss schedule. </span></p>

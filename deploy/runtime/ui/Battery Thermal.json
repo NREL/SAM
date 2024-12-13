@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -302,7 +302,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 183.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -679,7 +679,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -687,7 +687,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1362,6 +1362,68 @@
                     "Boolean": 1.0
                 }
             }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "thermal_prop_label"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The time series environment temperature array must match the timestep of the selected weather file. For hybrid systems, the length of the array must match the smallest timestep weather file. "
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -1672,9 +1734,11 @@
         "\t// Single value, scale to input size",
         "\tif (${batt_thermal_choice} == 0){",
         "\t\tT_room = ${batt_room_temperature_single};",
+        "\t\t/*\r",
         "\t\tfor (i = 0; i < #T; i++){",
         "\t\t\tT_ambient[i] = T_room;",
-        "\t\t}",
+        "\t\t}*/\r",
+        "\t\tT_ambient[0] = ${batt_room_temperature_single}; //new method",
         "\t}",
         "\t// Input time series",
         "\tif (${batt_thermal_choice} == 1){",

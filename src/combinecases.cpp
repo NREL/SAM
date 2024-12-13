@@ -60,14 +60,14 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 {
 	// Initializations
 	m_result_code = -1;
-	m_generic_case = SamApp::Window()->GetCurrentCase();
-	m_generic_case_name = SamApp::Window()->Project().GetCaseName(m_generic_case);
-	m_generic_case_window = SamApp::Window()->GetCaseWindow(m_generic_case);
-	if (m_generic_case->Values(0).Get("generic_degradation")) {
-		m_generic_degradation = m_generic_case->Values(0).Get("generic_degradation")->Array();	// name in generic-battery cases
+	m_custom_generation_case = SamApp::Window()->GetCurrentCase();
+	m_custom_generation_case_name = SamApp::Window()->Project().GetCaseName(m_custom_generation_case);
+	m_custom_generation_case_window = SamApp::Window()->GetCaseWindow(m_custom_generation_case);
+	if (m_custom_generation_case->Values(0).Get("generic_degradation")) {
+		m_generic_degradation = m_custom_generation_case->Values(0).Get("generic_degradation")->Array();	// name in generic-battery cases
 	}
-	else if (m_generic_case->Values(0).Get("degradation")) {
-		m_generic_degradation = m_generic_case->Values(0).Get("degradation")->Array();			// name in other cases, if defined
+	else if (m_custom_generation_case->Values(0).Get("degradation")) {
+		m_generic_degradation = m_custom_generation_case->Values(0).Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
 		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
@@ -75,7 +75,7 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 
 	// Text at top of window
 	wxString msg = "Select open cases, simulate those cases and combine their generation\n";
-	msg += "profiles into a single profile to be used with this generic case.\n\n";
+	msg += "profiles into a single profile to be used with this custom generation profile case.\n\n";
 	msg += "SAM will switch to each case in the project and run a simulation.\n";
 	msg += "Depending on the configuration, SAM may be temporarily unresponsive.";
 
@@ -148,19 +148,19 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 
 				if (arychecked.Count() >= 2) {
 
-					// Get analysis period and inflation from generic case
+					// Get analysis period and inflation from custom generation case
 					// TODO: Move some of this to constructor?
-					wxString technology_name = m_generic_case->GetTechnology();
-					wxString financial_name = m_generic_case->GetFinancing();
+					wxString technology_name = m_custom_generation_case->GetTechnology();
+					wxString financial_name = m_custom_generation_case->GetFinancing();
 					double analysis_period = 0.;
 					double inflation = 0.;
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
-						analysis_period = m_generic_case->Values(0).Get("c_lifetime")->Value();
-						inflation = m_generic_case->Values(0).Get("c_inflation")->Value();
+						analysis_period = m_custom_generation_case->Values(0).Get("c_lifetime")->Value();
+						inflation = m_custom_generation_case->Values(0).Get("c_inflation")->Value();
 					}
 					else if (financial_name != "None") {
-						analysis_period = m_generic_case->Values(0).Get("analysis_period")->Value();
-						inflation = m_generic_case->Values(0).Get("inflation_rate")->Value();
+						analysis_period = m_custom_generation_case->Values(0).Get("analysis_period")->Value();
+						inflation = m_custom_generation_case->Values(0).Get("inflation_rate")->Value();
 					}
 
 					// Allocate and initialize variables to run through the cases to combine
@@ -219,7 +219,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						// check that the case ran
 						if (!ok) {
 							m_result_code = 1;
-							m_generic_case_window->UpdateResults();
+							m_custom_generation_case_window->UpdateResults();
 							case_window->SwitchToPage("results:notices");
 							wxArrayString messages = current_case->BaseCase().GetAllMessages();
 							wxMessageBox("Error in " + case_name + "\n\n"
@@ -276,9 +276,9 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 						else if (hourly_energy_this.ncells() > 8760 * analysis_period_this) {
 							m_result_code = 1;
-							m_generic_case_window->UpdateResults();
-							SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-							m_generic_case_window->SwitchToInputPage("Power Plant");
+							m_custom_generation_case_window->UpdateResults();
+							SamApp::Window()->SwitchToCaseWindow(m_custom_generation_case_name);
+							m_custom_generation_case_window->SwitchToInputPage("Power Plant");
 							wxMessageBox("Subhourly simulations unsupported\n\n"
 								"The subhourly simulation for case " + technology_name + " is not supported.",
 								"Combine Cases Message", wxOK, this);
@@ -404,24 +404,24 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 						}
 					}
 
-					// Set the generic system performance parameters
-					m_generic_case->Values(0).Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
+					// Set the custom generation system performance parameters
+					m_custom_generation_case->Values(0).Get("system_capacity_combined")->Set(nameplate);	// the shown and editable 'Nameplate capacity' widget that also
 																								//  sets the hidden 'Nameplate capacity' widget value
-					m_generic_case->Values(0).Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
+					m_custom_generation_case->Values(0).Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
 																								//  'Nameplate capacity' widget that is hidden when combining cases
-					m_generic_case->Values(0).Get("spec_mode")->Set(2);							// specify the third radio button
-					m_generic_case->Values(0).Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
-					m_generic_case->Values(0).Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
-					m_generic_case->Values(0).Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
-					m_generic_case->VariableChanged("energy_output_array",0);						// triggers UI update
+					m_custom_generation_case->Values(0).Get("spec_mode")->Set(2);							// specify the third radio button
+					m_custom_generation_case->Values(0).Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
+					m_custom_generation_case->Values(0).Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
+					m_custom_generation_case->Values(0).Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());
+					m_custom_generation_case->VariableChanged("energy_output_array",0);						// triggers UI update
 
 					bool overwrite_capital = m_chkOverwriteCapital->IsChecked();
 					if (financial_name == "LCOE Calculator" || financial_name == "LCOH Calculator") {
 						if (!constant1) {
 							m_result_code = 1;
-							m_generic_case_window->UpdateResults();
-							SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-							m_generic_case_window->SwitchToInputPage("Power Plant");
+							m_custom_generation_case_window->UpdateResults();
+							SamApp::Window()->SwitchToCaseWindow(m_custom_generation_case_name);
+							m_custom_generation_case_window->SwitchToInputPage("Power Plant");
 							wxMessageBox("LCOE calculator error\n\n"
 								"Single annualized fixed operating costs must be used.\n\n"
 								"Check O&M inputs in case " + technology_name,
@@ -429,65 +429,65 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 							return;
 						}
 						else if (overwrite_capital) {
-							m_generic_case->Values(0).Get("fixed_operating_cost")->Set(om_fixed);
+							m_custom_generation_case->Values(0).Get("fixed_operating_cost")->Set(om_fixed);
 						}
 					}
 
 					// Set installation and operating costs
 					if (financial_name != "None" && financial_name != "Third Party" && overwrite_capital) {
 						// Installation Costs
-						m_generic_case->Values(0).Get("fixed_plant_input")->Set(total_installed_cost);
-						m_generic_case->Values(0).Get("genericsys.cost.per_watt")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.contingency_percent")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.epc.percent")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.epc.fixed")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.plm.percent")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.plm.fixed")->Set(0.);
-						m_generic_case->Values(0).Get("genericsys.cost.sales_tax.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("fixed_plant_input")->Set(total_installed_cost);
+						m_custom_generation_case->Values(0).Get("customgen.cost.per_watt")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.contingency_percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.epc.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.epc.fixed")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.plm.percent")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.plm.fixed")->Set(0.);
+						m_custom_generation_case->Values(0).Get("customgen.cost.sales_tax.percent")->Set(0.);
 
 						// Operating Costs - all zero except fixed (see explanation above)
-						m_generic_case->Values(0).Get("om_fixed")->Set(om_fixed);
-						m_generic_case->Values(0).Get("om_capacity")->Set(new double[1]{0.}, 1);
-						m_generic_case->Values(0).Get("om_production")->Set(new double[1]{0.}, 1);
+						m_custom_generation_case->Values(0).Get("om_fixed")->Set(om_fixed);
+						m_custom_generation_case->Values(0).Get("om_capacity")->Set(new double[1]{0.}, 1);
+						m_custom_generation_case->Values(0).Get("om_production")->Set(new double[1]{0.}, 1);
 						//O&M escalation rates are also zeroed because they are accounted for in the fixed O&M costs
-						m_generic_case->Values(0).Get("om_fixed_escal")->Set(0.);
-						m_generic_case->Values(0).Get("om_capacity_escal")->Set(0.);
-						m_generic_case->Values(0).Get("om_production_escal")->Set(0.);
+						m_custom_generation_case->Values(0).Get("om_fixed_escal")->Set(0.);
+						m_custom_generation_case->Values(0).Get("om_capacity_escal")->Set(0.);
+						m_custom_generation_case->Values(0).Get("om_production_escal")->Set(0.);
 
-						if (m_generic_case->Values(0).Get("om_fuel_cost")) {
-							m_generic_case->Values(0).Get("om_fuel_cost")->Set(new double[1]{0.}, 1);
-							m_generic_case->Values(0).Get("om_fuel_cost_escal")->Set(0.);
+						if (m_custom_generation_case->Values(0).Get("om_fuel_cost")) {
+							m_custom_generation_case->Values(0).Get("om_fuel_cost")->Set(new double[1]{0.}, 1);
+							m_custom_generation_case->Values(0).Get("om_fuel_cost_escal")->Set(0.);
 						}
 
-						if (m_generic_case->Values(0).Get("om_replacement_cost1")) {
-							m_generic_case->Values(0).Get("om_replacement_cost1")->Set(new double[1]{0.}, 1);
-							m_generic_case->Values(0).Get("om_replacement_cost_escal")->Set(0.);
+						if (m_custom_generation_case->Values(0).Get("om_replacement_cost1")) {
+							m_custom_generation_case->Values(0).Get("om_replacement_cost1")->Set(new double[1]{0.}, 1);
+							m_custom_generation_case->Values(0).Get("om_replacement_cost_escal")->Set(0.);
 						}
 					}
 
 					// Update UI with results
 					m_result_code = 0;	// 0=success
-					SamApp::Window()->SwitchToCaseWindow(m_generic_case_name);
-					int result = m_generic_case->RecalculateAll(0,false);
-					m_generic_case_window->UpdateResults();
-					m_generic_case_window->SwitchToInputPage("Power Plant");
+					SamApp::Window()->SwitchToCaseWindow(m_custom_generation_case_name);
+					int result = m_custom_generation_case->RecalculateAll(0,false);
+					m_custom_generation_case_window->UpdateResults();
+					m_custom_generation_case_window->SwitchToInputPage("Power Plant");
 					if (is_notices) {
 						wxMessageBox("Notices\n\n"
 							"At least one of the models generated notices.\n\n"
 							"View these messages or warnings on the Notices pane of the Results page.",
 							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
-					if (has_a_contingency && technology_name == "Generic Battery" && financial_name != "Third Party") {
+					if (has_a_contingency && technology_name == "Custom Generation Battery" && financial_name != "Third Party") {
 						wxMessageBox("Notices\n\n"
 							"At least one of the models has a contingency specified.\n\n"
-							"Verify contingency is not double-counted on this generic-battery system's Installation Costs page.",
+							"Verify contingency is not double-counted on this custom generation-battery system's Installation Costs page.",
 							"Combine Cases Message", wxOK | wxSTAY_ON_TOP, this);
 					}
 					EndModal(wxID_OK);
 
 					// 'Press' Edit array... button to show energy output array
 					ActiveInputPage* aip = 0;
-					wxUIObject* energy_output_array = m_generic_case_window->FindObject("energy_output_array", &aip);
+					wxUIObject* energy_output_array = m_custom_generation_case_window->FindObject("energy_output_array", &aip);
 					if (AFDataArrayButton* btn_energy_output_array = energy_output_array->GetNative<AFDataArrayButton>()) {
 						btn_energy_output_array->OnPressed(e);
 					}
@@ -514,8 +514,8 @@ void CombineCasesDialog::RefreshList(size_t first_item)
 	m_chlCases->Clear();
 	for (size_t i = 0; i < m_cases.size(); i++)
 	{
-		// Exclude generic case from displaying in case list
-		if (m_cases[i].display_name != m_generic_case_name) {
+		// Exclude custom generation case from displaying in case list
+		if (m_cases[i].display_name != m_custom_generation_case_name) {
 			int ndx = m_chlCases->Append(m_cases[i].display_name);
 			if (m_cases[i].is_selected) {
 				m_chlCases->Check(ndx, true);

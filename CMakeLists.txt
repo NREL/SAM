@@ -6,14 +6,9 @@
 
 cmake_minimum_required(VERSION 3.24)
 
-set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment version")
 
 set(CMAKE_XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS "-o linker-signed")
-
-if (UNIX AND NOT CMAKE_C_COMPILER)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-endif()
 
 
 #####################################################################################################################
@@ -26,7 +21,7 @@ option(SAMAPI_EXPORT "Export of ssc binaries to the SAM_api directory; for Unix,
 
 option(SAM_SKIP_AUTOGEN "Skips the automatic regeneration of SAMAPI files from export_config" ON)
 
-Project(samos)
+Project(samos LANGUAGES CXX C)
 
 if (SAMAPI_EXPORT)
 	add_subdirectory(api)
@@ -95,7 +90,6 @@ set(SAM_SRC src/private.h
 #
 #####################################################################################################################
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
@@ -183,6 +177,7 @@ else() # if Release or if MSVC multigenerator
 			${SAM_ICON})
 	set(SAM_EXE SAMOS)
 endif()
+target_compile_features(${SAM_EXE} PUBLIC cxx_std_11)
 
 if (MSVC)
 	set_target_properties(${SAM_EXE}
@@ -224,21 +219,23 @@ endif()
 if (${CMAKE_PROJECT_NAME} STREQUAL system_advisor_model)
 	target_link_libraries(${SAM_EXE} lk wex ssc)
 else()
-	unset(WEX_LIB CACHE)
-	unset(LK_LIB CACHE)
-	unset(SSC_LIB CACHE)
-	find_library( WEX_LIB
-			NAMES wex.a wex.lib
-			PATHS $ENV{WEX_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
-	find_library( LK_LIB
-			NAMES lk.a lk.lib
-			PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
-	find_library( SSC_LIB
-			NAMES ssc.dylib ssc.lib ssc.so
-			PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
-	target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
+	if (CMAKE_BUILD_TYPE STREQUAL "Release" OR "Release" IN_LIST CMAKE_CONFIGURATION_TYPES)
+	    unset(WEX_LIB CACHE)
+	    unset(LK_LIB CACHE)
+	    unset(SSC_LIB CACHE)
+	    find_library( WEX_LIB
+			    NAMES wex.a wex.lib
+			    PATHS $ENV{WEX_LIB} $ENV{WEXDIR}/build $ENV{WEXDIR}/build/Release)
+	    find_library( LK_LIB
+			    NAMES lk.a lk.lib
+			    PATHS $ENV{LK_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Release)
+	    find_library( SSC_LIB
+			    NAMES ssc.dylib ssc.lib ssc.so
+			    PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
+	    target_link_libraries(${SAM_EXE} optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
+    endif()
 
-	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR "Debug" IN_LIST CMAKE_CONFIGURATION_TYPES)
 		unset(LKD_LIB CACHE)
 		unset(WEXD_LIB CACHE)
 		unset(SSCD_LIB CACHE)
@@ -249,10 +246,27 @@ else()
 				NAMES lkd.a lkd.lib
 				PATHS $ENV{LKD_LIB} $ENV{LKDIR}/build $ENV{LKDIR}/build/Debug)
 		find_library( SSCD_LIB
-				NAMES sscd.dylib sscd.lib sscd.so
+				NAMES sscd.dylib sscd.lib sscd.so libssc.so
 				PATHS $ENV{SSCD_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Debug)
 		target_link_libraries(${SAM_EXE} debug ${SSCD_LIB} debug ${WEXD_LIB} debug ${LKD_LIB})
 	endif()
+
+    if (MSVC)
+        if ("Release" IN_LIST CMAKE_CONFIGURATION_TYPES)
+            unset(SHARED_LIB CACHE)
+            find_library( SHARED_LIB
+			    NAMES shared.lib
+			    PATHS $ENV{SSCDIR}/build/shared/Release)
+	        target_link_libraries(${SAM_EXE} optimized ${SHARED_LIB})
+        endif()
+        if ("Debug" IN_LIST CMAKE_CONFIGURATION_TYPES)
+            unset(SHAREDD_LIB CACHE)
+            find_library( SHAREDD_LIB
+			    NAMES sharedd.lib
+			    PATHS $ENV{SSCDIR}/build/shared/Debug)
+	        target_link_libraries(${SAM_EXE} debug ${SHAREDD_LIB})
+        endif()
+    endif()
 endif()
 
 target_link_libraries(${SAM_EXE} ${wxWidgets_LIBRARIES})
@@ -303,6 +317,7 @@ if (UNIX)
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime
             COMMAND mkdir -p ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/lhs.bin ${SAM_APP}/Contents/runtime/bin
+            COMMAND cp $ENV{SSCDIR}/ssc/sscapi.h ${SAM_APP}/Contents/runtime
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/osx/stepwise.bin ${SAM_APP}/Contents/runtime/bin
             COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/build_resources/Info-${SAM_NAME}.plist ${SAM_APP}/Contents/Info.plist
             COMMAND mkdir -p ${SAM_APP}/Contents/Frameworks
@@ -324,6 +339,7 @@ if (UNIX)
                 COMMAND rsync -a -v ${CMAKE_CURRENT_SOURCE_DIR}/deploy/* ${SAM_APP}
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/lhs.bin ${SAM_APP}/runtime/bin
                 COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/Sandia/linux/stepwise.bin ${SAM_APP}/runtime/bin
+                COMMAND cp $ENV{SSCDIR}/ssc/sscapi.h ${SAM_APP}/runtime
 #                COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/build_linux/GtkTheme ${SAM_APP}/linux_64
                 COMMAND cp ${SSC_SO} ${SAM_APP}/linux_64
         )
@@ -387,6 +403,12 @@ else()
         POST_BUILD
         COMMAND ${CMAKE_COMMAND}
         ARGS -E copy ${SSC_DLL} ${SSC_LIB} ${SAMEXE_DIR}
+    )
+    add_custom_command(
+        TARGET ${SAM_EXE}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E copy $ENV{SSCDIR}/ssc/sscapi.h ${CMAKE_CURRENT_SOURCE_DIR}/deploy/runtime
     )
 endif()
 

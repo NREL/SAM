@@ -1,0 +1,1001 @@
+/*@
+This macro allows you to compare multiple renewable energy system cases.
+This may be helpful for modeling a variety of scenarios, including:
+<ul>
+<li>Model a baseline system in contrast with an alternate system.
+<li>Compare systems with different technologies or configurations for the same financial model.
+<li>Compare systems located at different resource locations.
+</ul>
+
+<b>Instructions:</b>
+<ol>
+<li>Create the cases that you wish to compare (this macro will not evaluate battery performance). 
+<li>Define the resource, system specifications, losses, system cost, and financial parameters for all the created cases. 
+<li>Simulate all the cases.
+<li>Open the Compare Cases Macro and select a simulation option from the list. 
+<ul>
+<li>You may choose all of the cases in the existing project to be compared, OR
+<li>You may choose which cases to compare by typing their names into the input box, separated by ONLY a comma (no space).
+</ul>
+<li>Click 'Run macro' at the top of the screen.
+<li>When prompted, confirm the cases that will be compared.
+<li>When the macro simulation is complete, view the results in your browser.
+</ol>
+
+@*/
+//Macro user interface widgets
+//@ name=mode;type=combo;label=Choose an option;value=1) Compare all cases,2) Compare only the cases listed below;sel=0
+//@ name=cases;type=text;label=List cases for Option 2 (comma-separated);value= 
+
+
+//Check that this macro was run from within a case
+if ( typeof(macro) == 'unknown' ) {
+	msgbox('This macro must be run from within a case.');
+	exit;
+}
+
+//Determine available cases
+cases = list_cases();
+num_cases = #cases;
+
+//if 'Select cases' is enabled, parse the input to get the list of cases that should be compared
+if (macro.mode == '2) Compare only the cases listed below')
+{
+	input_cases = split(macro.cases, ','); //delimited with commas
+	for (i=0; i<#input_cases; i++) //check each input case
+	{
+		match = false; //a match has not yet been found
+		for (j=0; j<num_cases; j++) //loop through all available cases
+			if (input_cases[i] == cases[j]) //check if it matches
+				match = true; //flag that this input case was found in the list of available cases
+		if (!match) //a match was never found
+		{
+			msgbox('Input case ' + input_cases[i] + ' was not found among the cases in this project. Check the name and try again.');
+			exit;
+		}
+	}
+	//all cases were found, overwrite the list of cases
+	cases = input_cases;
+	num_cases = #cases;
+	
+}
+
+//Make sure there are sufficient cases
+if (num_cases <= 0)
+{
+	msgbox('No cases detected. Check your inputs and try again.');
+	exit;
+}
+
+if (num_cases == 1)
+{
+	msgbox('Only ' + num_cases + ' case detected.\n\nThis macro requires at least 2 cases.' + 
+		'Check your inputs and try again.');
+	exit;
+}
+if (num_cases > 4)
+{
+	msgbox('This macro requires 4 or less cases.' + 
+		' Check your inputs and try again.');
+	exit;
+}
+
+
+//outln('Cases: ' + cases);
+//outln('Number of cases: ' + num_cases);
+//outln(cases[3]);
+tech = alloc(0, num_cases);
+fin = alloc(0, num_cases);
+lcoe = alloc(0,num_cases);
+lcos = alloc(0, num_cases);
+aep = alloc(0,num_cases);
+arrayRatedPower = alloc(0,num_cases);
+npv = alloc(0,num_cases);
+capacityFactor = alloc(0,num_cases);
+capEx = alloc(0,num_cases);
+opEx = alloc(0,num_cases);
+aep_battery = alloc(0, num_cases);
+aep_system = alloc(0, num_cases);
+batt_charge_sys = alloc(0, num_cases);
+batt_charge_grid = alloc(0, num_cases);
+dispatch_choice = alloc(0, num_cases);
+monthly_energy = alloc(12, num_cases);
+annual_cashflow = alloc(40, num_cases);
+revenue = alloc(0, 50);
+bill_savings = alloc(0, num_cases);
+value = alloc(0, num_cases);
+monthly_bill = alloc(12, num_cases);
+irr_bill = alloc(0, num_cases);
+irr_bill_table = alloc(0, num_cases);
+batt_annual_charge_grid = [];
+batt_annual_charge_sys = [];
+annual_cashflow_bin = [];
+
+for (i=0; i<num_cases; i++)
+{
+	active_case(cases[i]);
+	config = configuration();
+	fin[i] = config[1];
+	if (i > 0 && fin[i-1] != fin[i]) {
+		msgbox('The macro can only compare cases with the same financial model.');
+		exit;
+	}
+	
+	if (config[1] == 'LCOE Calculator' || config[1] == "None" || config[1] == "Third Party")
+	{
+
+		msgbox('The case comparison macro does not work with the LCOE Calculator financial model, the Third Party Owner - Host financial model, or with No Financial model.');
+
+		exit;
+
+	}
+	
+	tech[i] = config[0];
+	lcoe[i] = get('lcoe_nom');
+	if (lcoe[i] == null) {
+		msgbox('All cases must be simulated before running the macro. The case named ' + cases[i] + ' has not been simulated');
+		exit;
+	}
+	lcos[i] = get('lcos_nom');
+	aep[i] = get('annual_energy');
+	aep_system[i] = aep[i];
+	arrayRatedPower[i] = get('system_capacity');
+	npv[i] = get('project_return_aftertax_npv');
+	capacityFactor[i] = get('capacity_factor');
+	capEx[i] = get('total_installed_cost');
+	opEx[i] = get('present_value_oandm');
+	monthly_energy_bin = get('monthly_energy');
+	if (monthly_energy_bin == null) { //report can continue, monthly energy graph will just not build
+		outln('Monthly energy not found');
+	}
+	else {
+		for (j = 0; j < 12; j++) {
+			monthly_energy[j][i] = monthly_energy_bin[j];
+		}
+	}
+	analysis_period = get('analysis_period');
+	if (config[1] == "Single Owner" || config[1] == "Merchant Plant" || config[1] == "All Equity Partnership Flip" || config[1] == "Leveraged Partnership Flip" || config[1] == "Community Solar") {
+	
+		annual_cashflow_bin = get('cf_project_return_aftertax');
+	}
+	else {
+		annual_cashflow_bin = get('cf_after_tax_cash_flow');
+	}
+	for (j = 0; j < analysis_period+1; j++) {
+		annual_cashflow[j][i] = annual_cashflow_bin[j];
+	}
+	for (j = analysis_period + 1; j < 40; j++) {
+		annual_cashflow[j][i] = 0;
+	}
+	
+	if (config[1] == "Residential" || config[1] == "Commercial") {
+		irr_bill[i] = get('irr');
+	}
+	else {
+		irr_bill[i] = get('project_return_aftertax_irr');
+	}
+	
+	
+	if (config[1] == "Commercial" || config[1] == "Residential" || config[1] == "Third Party" || config[1] == "Host Developer") {
+		
+		value[i] = get('savings_year1');
+		value_string = "Electricity Bill Savings with System (year 1)";
+	}
+	else {
+		revenue = get('cf_energy_value');
+		value_string = "PPA Revenue (Year 1)";
+		value[i] = revenue[1]; //Year 1 PPA revenue 
+	}
+}
+
+//outln(lcoe);
+//outln(aep);
+//outln(capEx);
+//outln(opEx);
+//outln(arrayRatedPower);
+//outln(structure);
+//outln(pto);
+//outln(foundation);
+//outln(development);
+//outln(engmanag);
+//outln(commissioning);
+//outln(access);
+//outln(otherinfras);
+//outln(projectContingency);
+//outln(reserveAccounts);
+//outln(financial);
+//outln(insurance);
+//outln(operations);
+//outln(maintenance);
+
+//get cost in dollar per kw
+capexKw = alloc(0,num_cases);
+opexKw =  alloc(0,num_cases);
+
+//get cost in dollar per kw
+for (i=0; i<num_cases; i++)
+{
+	active_case(cases[i]);
+	capexKw[i] = round(capEx[i]/arrayRatedPower[i]);
+	opexKw[i] =  round(opEx[i]/arrayRatedPower[i]);
+}
+
+//outln(capexKw);
+//outln(opexKw);
+
+//get LCOE fraction
+capexLcoe = alloc(0,num_cases);
+opexLcoe =  alloc(0,num_cases);
+
+
+
+//outln(commissioningLcoe);
+
+if (num_cases ==4)
+{
+test = '4 cases';
+
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[2]+'</th>'
+            '<th>'+cases[3]+'</th>'
+        '</tr>'
+        '<tr>'
+             '<td>Performance Model</td>'
+             '<td>'+ tech[0] +'</td>'
+             '<td>'+ tech[1] +'</td>'
+             '<td>'+ tech[2] +'</td>'
+             '<td>'+ tech[3] +'</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcoe[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[2]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[3]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+		     '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[3]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+             '<td>'+ sprintf("%.1f",capacityFactor[0]) +' % </td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[1]) +' % </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +' % </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[3]) +' % </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+             '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+		     '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[3]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+             '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[3]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[3]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[0]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +' %</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[3]) +' %</td>'
+         '</tr>'
+         '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%,",value[2]) +'</td>'
+             '<td>'+ sprintf("$%,",value[3]) +'</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'","'+ cases[3] +'"];'
+              
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +','+ aep_system[3] +'],'
+                'name: "System Generation",'
+                'type: "bar",'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
+            '};'
+            
+            'var lcoeData = [aep2];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+            
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][3] +','+ monthly_energy[1][3] +','+  monthly_energy[2][3] +','+ monthly_energy[3][3] +','+ monthly_energy[4][3] +','+ monthly_energy[5][3] +','+ monthly_energy[6][3] +','+ monthly_energy[7][3] +','+ monthly_energy[8][3] +','+ monthly_energy[9][3] +','+  monthly_energy[10][3] +','+  monthly_energy[11][3] +'],'
+               'name: "'+ cases[3] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly2 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][2] +','+ monthly_energy[1][2] +','+  monthly_energy[2][2] +','+ monthly_energy[3][2] +','+ monthly_energy[4][2] +','+ monthly_energy[5][2] +','+ monthly_energy[6][2] +','+ monthly_energy[7][2] +','+ monthly_energy[8][2] +','+ monthly_energy[9][2] +','+  monthly_energy[10][2] +','+  monthly_energy[11][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+              
+            'var monthly3 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly4 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly4, monthly3, monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="cashflowPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39];'
+              
+            'var cashflow0 = {'
+               'x: xValues,'
+               'y: ['+ annual_cashflow[0][3] +','+ annual_cashflow[1][3] +','+  annual_cashflow[2][3] +','+ annual_cashflow[3][3] +','+ annual_cashflow[4][3] +','+ annual_cashflow[5][3] +','+ annual_cashflow[6][3] +','+ annual_cashflow[7][3] +','+ annual_cashflow[8][3] +','+ annual_cashflow[9][3] +','+  annual_cashflow[10][3] +','+  annual_cashflow[11][3] + ','
+               + annual_cashflow[12][3] +','+ annual_cashflow[13][3] +','+ annual_cashflow[14][3] +','+  annual_cashflow[15][3] +','+ annual_cashflow[16][3] +','+ annual_cashflow[17][3] +','+ annual_cashflow[18][3] +','+ annual_cashflow[19][3] +','+ annual_cashflow[20][3] +','+ annual_cashflow[21][3] +','+ annual_cashflow[22][3] +','+  annual_cashflow[23][3] +','+  annual_cashflow[24][3] + ','
+               + annual_cashflow[25][3] +','+ annual_cashflow[26][3] +','+  annual_cashflow[27][3] +','+ annual_cashflow[28][3] +','+ annual_cashflow[29][3] +','+ annual_cashflow[30][3] +','+ annual_cashflow[31][3] +','+ annual_cashflow[32][3] +','+ annual_cashflow[33][3] +','+ annual_cashflow[34][3] +','+  annual_cashflow[35][3] +','+  annual_cashflow[36][3]  + ','
+               + annual_cashflow[37][3] +','+ annual_cashflow[38][3] +','+  annual_cashflow[39][3] +'],'
+               'name: "'+ cases[3] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var cashflow1 = {'
+               'x: xValues,'
+               'y: ['+ annual_cashflow[0][2] +','+ annual_cashflow[1][2] +','+  annual_cashflow[2][2] +','+ annual_cashflow[3][2] +','+ annual_cashflow[4][2] +','+ annual_cashflow[5][2] +','+ annual_cashflow[6][2] +','+ annual_cashflow[7][2] +','+ annual_cashflow[8][2] +','+ annual_cashflow[9][2] +','+  annual_cashflow[10][2] +','+  annual_cashflow[11][2] + ','
+               + annual_cashflow[12][2] +','+ annual_cashflow[13][2] +','+ annual_cashflow[14][2] +','+  annual_cashflow[15][2] +','+ annual_cashflow[16][2] +','+ annual_cashflow[17][2] +','+ annual_cashflow[18][2] +','+ annual_cashflow[19][2] +','+ annual_cashflow[20][2] +','+ annual_cashflow[21][2] +','+ annual_cashflow[22][2] +','+  annual_cashflow[23][2] +','+  annual_cashflow[24][2] + ','
+               + annual_cashflow[25][2] +','+ annual_cashflow[26][2] +','+  annual_cashflow[27][2] +','+ annual_cashflow[28][2] +','+ annual_cashflow[29][2] +','+ annual_cashflow[30][2] +','+ annual_cashflow[31][2] +','+ annual_cashflow[32][2] +','+ annual_cashflow[33][2] +','+ annual_cashflow[34][2] +','+  annual_cashflow[35][2] +','+  annual_cashflow[36][2]  + ','
+               + annual_cashflow[37][2] +','+ annual_cashflow[38][2] +','+  annual_cashflow[39][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var cashflow2 = {'
+			   'x: xValues,'
+			   'y: ['+ annual_cashflow[0][1] +','+ annual_cashflow[1][1] +','+  annual_cashflow[2][1] +','+ annual_cashflow[3][1] +','+ annual_cashflow[4][1] +','+ annual_cashflow[5][1] +','+ annual_cashflow[6][1] +','+ annual_cashflow[7][1] +','+ annual_cashflow[8][1] +','+ annual_cashflow[9][1] +','+  annual_cashflow[10][1] +','+  annual_cashflow[11][1] + ','
+               + annual_cashflow[12][1] +','+ annual_cashflow[13][1] +','+ annual_cashflow[14][1] +','+  annual_cashflow[15][1] +','+ annual_cashflow[16][1] +','+ annual_cashflow[17][1] +','+ annual_cashflow[18][1] +','+ annual_cashflow[19][1] +','+ annual_cashflow[20][1] +','+ annual_cashflow[21][1] +','+ annual_cashflow[22][1] +','+  annual_cashflow[23][1] +','+  annual_cashflow[24][1] + ','
+               + annual_cashflow[25][1] +','+ annual_cashflow[26][1] +','+  annual_cashflow[27][1] +','+ annual_cashflow[28][1] +','+ annual_cashflow[29][1] +','+ annual_cashflow[30][1] +','+ annual_cashflow[31][1] +','+ annual_cashflow[32][1] +','+ annual_cashflow[33][1] +','+ annual_cashflow[34][1] +','+  annual_cashflow[35][1] +','+  annual_cashflow[36][1] + ',' 
+               + annual_cashflow[37][1] +','+ annual_cashflow[38][1] +','+  annual_cashflow[39][1] +'],'               
+               'name: "'+ cases[1] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var cashflow3 = {'
+			   'x: xValues,'
+			   'y: ['+ annual_cashflow[0][0] +','+ annual_cashflow[1][0] +','+  annual_cashflow[2][0] +','+ annual_cashflow[3][0] +','+ annual_cashflow[4][0] +','+ annual_cashflow[5][0] +','+ annual_cashflow[6][0] +','+ annual_cashflow[7][0] +','+ annual_cashflow[8][0] +','+ annual_cashflow[9][0] +','+  annual_cashflow[10][0] +','+  annual_cashflow[11][0] + ','
+               + annual_cashflow[12][0] +','+ annual_cashflow[13][0] +','+ annual_cashflow[14][0] +','+  annual_cashflow[15][0] +','+ annual_cashflow[16][0] +','+ annual_cashflow[17][0] +','+ annual_cashflow[18][0] +','+ annual_cashflow[19][0] +','+ annual_cashflow[20][0] +','+ annual_cashflow[21][0] +','+ annual_cashflow[22][0] +','+  annual_cashflow[23][0] +','+  annual_cashflow[24][0] + ','
+               + annual_cashflow[25][0] +','+ annual_cashflow[26][0] +','+  annual_cashflow[27][0] +','+ annual_cashflow[28][0] +','+ annual_cashflow[29][0] +','+ annual_cashflow[30][0] +','+ annual_cashflow[31][0] +','+ annual_cashflow[32][0] +','+ annual_cashflow[33][0] +','+ annual_cashflow[34][0] +','+  annual_cashflow[35][0] +','+  annual_cashflow[36][0] + ',' 
+               + annual_cashflow[37][0] +','+ annual_cashflow[38][0] +','+  annual_cashflow[39][0] +'],'               
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var cashflowData = [cashflow3, cashflow2, cashflow1, cashflow0];'
+
+            'var layout = {'
+                'title: "Project After-tax Cash Flow",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"$"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("cashflowPlot", cashflowData, layout);'
+        '</script>'
+        
+
+
+'</section>'
+'</body>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==3)
+{
+reportCode = 
+'<html>'
+'<head>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+	'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+  
+  '</style>'
+  
+ '<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  '<title>SAM Case Comparison Report</title>'
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
+            '<th>'+cases[2]+'</th>'
+        '</tr>'
+        '<tr>'
+             '<td>Performance Model</td>'
+             '<td>'+ tech[0] +'</td>'
+             '<td>'+ tech[1] +'</td>'
+             '<td>'+ tech[2] +'</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcoe[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[2]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+		     '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[2]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+		     '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+		     '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[2]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[2]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[2]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[0]) +'% </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +'% </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[2]) +'% </td>'
+         '</tr>'
+         '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%,",value[1]) +'</td>'
+             '<td>'+ sprintf("$%,",value[2]) +'</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'","'+ cases[2] +'"];'
+              
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +','+ aep_system[2] +'],'
+                'name: "System Generation",'
+                'type: "bar",'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
+            '};'
+            
+            'var lcoeData = [aep2];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+                'barmode: "stack",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+          'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+            
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][2] +','+ monthly_energy[1][2] +','+  monthly_energy[2][2] +','+ monthly_energy[3][2] +','+ monthly_energy[4][2] +','+ monthly_energy[5][2] +','+ monthly_energy[6][2] +','+ monthly_energy[7][2] +','+ monthly_energy[8][2] +','+ monthly_energy[9][2] +','+  monthly_energy[10][2] +','+  monthly_energy[11][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+              
+            'var monthly2 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly3 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly3, monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="cashflowPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39];'
+              
+            'var cashflow1 = {'
+               'x: xValues,'
+               'y: ['+ annual_cashflow[0][2] +','+ annual_cashflow[1][2] +','+  annual_cashflow[2][2] +','+ annual_cashflow[3][2] +','+ annual_cashflow[4][2] +','+ annual_cashflow[5][2] +','+ annual_cashflow[6][2] +','+ annual_cashflow[7][2] +','+ annual_cashflow[8][2] +','+ annual_cashflow[9][2] +','+  annual_cashflow[10][2] +','+  annual_cashflow[11][2] + ','
+               + annual_cashflow[12][2] +','+ annual_cashflow[13][2] +','+ annual_cashflow[14][2] +','+  annual_cashflow[15][2] +','+ annual_cashflow[16][2] +','+ annual_cashflow[17][2] +','+ annual_cashflow[18][2] +','+ annual_cashflow[19][2] +','+ annual_cashflow[20][2] +','+ annual_cashflow[21][2] +','+ annual_cashflow[22][2] +','+  annual_cashflow[23][2] +','+  annual_cashflow[24][2] + ','
+               + annual_cashflow[25][2] +','+ annual_cashflow[26][2] +','+  annual_cashflow[27][2] +','+ annual_cashflow[28][2] +','+ annual_cashflow[29][2] +','+ annual_cashflow[30][2] +','+ annual_cashflow[31][2] +','+ annual_cashflow[32][2] +','+ annual_cashflow[33][2] +','+ annual_cashflow[34][2] +','+  annual_cashflow[35][2] +','+  annual_cashflow[36][2]  + ','
+               + annual_cashflow[37][2] +','+ annual_cashflow[38][2] +','+  annual_cashflow[39][2] +'],'
+               'name: "'+ cases[2] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var cashflow2 = {'
+			   'x: xValues,'
+			   'y: ['+ annual_cashflow[0][1] +','+ annual_cashflow[1][1] +','+  annual_cashflow[2][1] +','+ annual_cashflow[3][1] +','+ annual_cashflow[4][1] +','+ annual_cashflow[5][1] +','+ annual_cashflow[6][1] +','+ annual_cashflow[7][1] +','+ annual_cashflow[8][1] +','+ annual_cashflow[9][1] +','+  annual_cashflow[10][1] +','+  annual_cashflow[11][1] + ','
+               + annual_cashflow[12][1] +','+ annual_cashflow[13][1] +','+ annual_cashflow[14][1] +','+  annual_cashflow[15][1] +','+ annual_cashflow[16][1] +','+ annual_cashflow[17][1] +','+ annual_cashflow[18][1] +','+ annual_cashflow[19][1] +','+ annual_cashflow[20][1] +','+ annual_cashflow[21][1] +','+ annual_cashflow[22][1] +','+  annual_cashflow[23][1] +','+  annual_cashflow[24][1] + ','
+               + annual_cashflow[25][1] +','+ annual_cashflow[26][1] +','+  annual_cashflow[27][1] +','+ annual_cashflow[28][1] +','+ annual_cashflow[29][1] +','+ annual_cashflow[30][1] +','+ annual_cashflow[31][1] +','+ annual_cashflow[32][1] +','+ annual_cashflow[33][1] +','+ annual_cashflow[34][1] +','+  annual_cashflow[35][1] +','+  annual_cashflow[36][1] + ',' 
+               + annual_cashflow[37][1] +','+ annual_cashflow[38][1] +','+  annual_cashflow[39][1] +'],'               
+               'name: "'+ cases[1] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var cashflow3 = {'
+			   'x: xValues,'
+			   'y: ['+ annual_cashflow[0][0] +','+ annual_cashflow[1][0] +','+  annual_cashflow[2][0] +','+ annual_cashflow[3][0] +','+ annual_cashflow[4][0] +','+ annual_cashflow[5][0] +','+ annual_cashflow[6][0] +','+ annual_cashflow[7][0] +','+ annual_cashflow[8][0] +','+ annual_cashflow[9][0] +','+  annual_cashflow[10][0] +','+  annual_cashflow[11][0] + ','
+               + annual_cashflow[12][0] +','+ annual_cashflow[13][0] +','+ annual_cashflow[14][0] +','+  annual_cashflow[15][0] +','+ annual_cashflow[16][0] +','+ annual_cashflow[17][0] +','+ annual_cashflow[18][0] +','+ annual_cashflow[19][0] +','+ annual_cashflow[20][0] +','+ annual_cashflow[21][0] +','+ annual_cashflow[22][0] +','+  annual_cashflow[23][0] +','+  annual_cashflow[24][0] + ','
+               + annual_cashflow[25][0] +','+ annual_cashflow[26][0] +','+  annual_cashflow[27][0] +','+ annual_cashflow[28][0] +','+ annual_cashflow[29][0] +','+ annual_cashflow[30][0] +','+ annual_cashflow[31][0] +','+ annual_cashflow[32][0] +','+ annual_cashflow[33][0] +','+ annual_cashflow[34][0] +','+  annual_cashflow[35][0] +','+  annual_cashflow[36][0] + ',' 
+               + annual_cashflow[37][0] +','+ annual_cashflow[38][0] +','+  annual_cashflow[39][0] +'],'               
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var cashflowData = [cashflow3, cashflow2, cashflow1];'
+
+            'var layout = {'
+                'title: "Project After-tax Cash Flow",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"$"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("cashflowPlot", cashflowData, layout);'
+        '</script>'
+
+'</section>'
+'</body>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+}
+
+if (num_cases ==2)
+{
+
+//outln(lcoe[baselineCase]-lcoe[advancedCase]);
+//outln(capexLcoeChange);
+//outln(opexLcoeChange);
+//outln(aepLcoeChange);
+//outln(totalLcoeChange);
+//outln('baseline case = '+baselineCase);
+//outln('baseline= '+cases[baselineCase]);
+//outln('advanced case='+cases[advancedCase]);
+reportCode = 
+'<html>'
+'<head>'
+  '<title>SAM Case Comparison Report</title>'
+  '<style>'
+    'body {width: 100%; margin: 0 auto; padding:0;max-width:1400px;}'
+    'p {margin-left:5%;}'
+    'h1 {font-family: Arial, Helvetica, sans-serif; text-align:center;}'
+    'h2,h3,h4 {font-family: Arial, Helvetica, sans-serif; margin-left:5%;}'
+    'section {page-break-after: always;}'
+    'table {font-family: Arial, Helvetica, sans-serif;font-size: 0.85em; border-collapse: collapse;margin-top: 2em; margin-bottom: 3em; margin-left:5%;}'
+    'caption {caption-side: bottom;text-align: left;}'
+    'th {border: 1px solid #ddd; padding: 1em .5em .5em; background-color:#80b3ff; color: black;}'
+    'td:first-child { width: 50%;}'
+    'td {border: 1px solid #ddd;padding: .5em 1em .5em;}'
+	'tr:nth-child(even){background-color: #f2f2f2;}'
+    'tr:hover {background-color: #ddd;}'
+    '.lcoeContainer {display: flex; align-items: center; justify-content: center;}'
+    '.waterfallContainer {display: flex; align-items: center; justify-content: center;}'
+  '</style>'
+  
+'<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>'
+  
+'</head>' 
+
+'<body>' 
+
+'<section>'
+     '<h2>Case Comparison Summary</h2>'
+	'<table>'
+         '<tr>'
+            '<th></th>'
+            '<th>'+cases[0]+'</th>'
+            '<th>'+cases[1]+'</th>'
+        '</tr>'
+        '<tr>'
+             '<td>Performance Model</td>'
+             '<td>'+ tech[0] +'</td>'
+             '<td>'+ tech[1] +'</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Levelized Cost of Energy (nominal)</td>'
+             '<td>'+ sprintf("%.2f",lcoe[0]) +' cents/kWh</td>'
+             '<td>'+ sprintf("%.2f",lcoe[1]) +' cents/kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Annual Energy Production</td>'
+			 '<td>'+ sprintf("%,",aep[0]) +' kWh</td>'
+			 '<td>'+ sprintf("%,",aep[1]) +' kWh</td>'
+         '</tr>'
+         '<tr>'
+             '<td>Capacity Factor</td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
+         '</tr>'
+         
+         '<tr>'
+             '<td>Total Installed Cost</td>'
+			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",capEx[1]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Operational Expenditures (present value)</td>'
+			 '<td>'+ sprintf("$%,",opEx[0]) +' </td>'
+			 '<td>'+ sprintf("$%,",opEx[1]) +' </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Net Present Value</td>'
+             '<td>'+ sprintf("$%,",npv[0]) +' </td>'
+             '<td>'+ sprintf("$%,",npv[1]) +' </td>'
+         '</tr>'
+		 '<tr>'
+             '<td>Internal Rate of Return</td>'
+             '<td>'+ sprintf("%.1f",irr_bill[0]) +'% </td>'
+             '<td>'+ sprintf("%.1f",irr_bill[1]) +'% </td>'
+         '</tr>'
+         '<tr>'
+             '<td>'+sprintf(value_string)+' </td>'
+             '<td>'+ sprintf("$%,",value[0]) +'</td>'
+             '<td>'+ sprintf("$%,",value[1]) +'</td>'
+         '</tr>'
+     '</table>'
+
+        '<div class="lcoeContainer">'
+        '<div id="lcoePlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =["'+ cases[0] +'","'+ cases[1] +'"];'
+              
+            
+            'var aep2 = {'
+                'x: xValues,'
+                'y: ['+ aep_system[0] +','+ aep_system[1] +'],'
+                'name: "System Generation",'
+                'type: "bar",'
+                'marker: {'
+					'color: ["#1f77b4","#ff7f0e","#2ca02c","#d62728"]'
+				'}'
+            '};'
+            
+            'var lcoeData = [aep2];'
+
+            'var layout = {'
+                'title: "Year 1 Annual Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Annual Energy kWh"},'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("lcoePlot", lcoeData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="monthlyPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            
+            'var xValues =["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];'
+              
+            'var monthly1 = {'
+               'x: xValues,'
+               'y: ['+ monthly_energy[0][1] +','+ monthly_energy[1][1] +','+  monthly_energy[2][1] +','+ monthly_energy[3][1] +','+ monthly_energy[4][1] +','+ monthly_energy[5][1] +','+ monthly_energy[6][1] +','+ monthly_energy[7][1] +','+ monthly_energy[8][1] +','+ monthly_energy[9][1] +','+  monthly_energy[10][1] +','+  monthly_energy[11][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var monthly2 = {'
+			   'x: xValues,'
+			   'y: ['+ monthly_energy[0][0] +','+ monthly_energy[1][0] +','+  monthly_energy[2][0] +','+ monthly_energy[3][0] +','+ monthly_energy[4][0] +','+ monthly_energy[5][0] +','+ monthly_energy[6][0] +','+ monthly_energy[7][0] +','+ monthly_energy[8][0] +','+ monthly_energy[9][0] +','+  monthly_energy[10][0] +','+  monthly_energy[11][0] +'],'
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var monthlyData = [monthly2, monthly1];'
+
+            'var layout = {'
+                'title: "Year 1 Monthly Energy",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"Monthly Energy kWh"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("monthlyPlot", monthlyData, layout);'
+        '</script>'
+        
+        '<div class="lcoeContainer">'
+        '<div id="cashflowPlot"></div>'
+        '</div>'
+        
+        '<script>'
+        
+            'var xValues =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39];'
+              
+            'var cashflow1 = {'
+               'x: xValues,'
+               'y: ['+ annual_cashflow[0][1] +','+ annual_cashflow[1][1] +','+  annual_cashflow[2][1] +','+ annual_cashflow[3][1] +','+ annual_cashflow[4][1] +','+ annual_cashflow[5][1] +','+ annual_cashflow[6][1] +','+ annual_cashflow[7][1] +','+ annual_cashflow[8][1] +','+ annual_cashflow[9][1] +','+  annual_cashflow[10][1] +','+  annual_cashflow[11][1] + ','
+               + annual_cashflow[12][1] +','+ annual_cashflow[13][1] +','+ annual_cashflow[14][1] +','+  annual_cashflow[15][1] +','+ annual_cashflow[16][1] +','+ annual_cashflow[17][1] +','+ annual_cashflow[18][1] +','+ annual_cashflow[19][1] +','+ annual_cashflow[20][1] +','+ annual_cashflow[21][1] +','+ annual_cashflow[22][1] +','+  annual_cashflow[23][1] +','+  annual_cashflow[24][1] + ','
+               + annual_cashflow[25][1] +','+ annual_cashflow[26][1] +','+  annual_cashflow[27][1] +','+ annual_cashflow[28][1] +','+ annual_cashflow[29][1] +','+ annual_cashflow[30][1] +','+ annual_cashflow[31][1] +','+ annual_cashflow[32][1] +','+ annual_cashflow[33][1] +','+ annual_cashflow[34][1] +','+  annual_cashflow[35][1] +','+  annual_cashflow[36][1]  + ','
+               + annual_cashflow[37][1] +','+ annual_cashflow[38][1] +','+  annual_cashflow[39][1] +'],'
+               'name: "'+ cases[1] + '",'
+               'type: "bar"'
+            '};'
+            
+            'var cashflow2 = {'
+			   'x: xValues,'
+			   'y: ['+ annual_cashflow[0][0] +','+ annual_cashflow[1][0] +','+  annual_cashflow[2][0] +','+ annual_cashflow[3][0] +','+ annual_cashflow[4][0] +','+ annual_cashflow[5][0] +','+ annual_cashflow[6][0] +','+ annual_cashflow[7][0] +','+ annual_cashflow[8][0] +','+ annual_cashflow[9][0] +','+  annual_cashflow[10][0] +','+  annual_cashflow[11][0] + ','
+               + annual_cashflow[12][0] +','+ annual_cashflow[13][0] +','+ annual_cashflow[14][0] +','+  annual_cashflow[15][0] +','+ annual_cashflow[16][0] +','+ annual_cashflow[17][0] +','+ annual_cashflow[18][0] +','+ annual_cashflow[19][0] +','+ annual_cashflow[20][0] +','+ annual_cashflow[21][0] +','+ annual_cashflow[22][0] +','+  annual_cashflow[23][0] +','+  annual_cashflow[24][0] + ','
+               + annual_cashflow[25][0] +','+ annual_cashflow[26][0] +','+  annual_cashflow[27][0] +','+ annual_cashflow[28][0] +','+ annual_cashflow[29][0] +','+ annual_cashflow[30][0] +','+ annual_cashflow[31][0] +','+ annual_cashflow[32][0] +','+ annual_cashflow[33][0] +','+ annual_cashflow[34][0] +','+  annual_cashflow[35][0] +','+  annual_cashflow[36][0] + ',' 
+               + annual_cashflow[37][0] +','+ annual_cashflow[38][0] +','+  annual_cashflow[39][0] +'],'               
+               'name: "'+ cases[0] + '",'
+			   'type: "bar"'
+            '};'
+            
+            'var cashflowData = [cashflow2, cashflow1];'
+
+            'var layout = {'
+                'title: "Project After-tax Cash Flow",'
+                'xaxis:{tickangle:0},'
+                'yaxis:{title:"$"},'
+                'barmode: "group",'
+			    'autosize: "false",'
+				'width: 800,'
+                'height: 700,'
+                'automargin: "true"'
+                '};'   
+            
+		'Plotly.newPlot("cashflowPlot", cashflowData, layout);'
+        '</script>'
+
+
+	
+'</body>'
+'<footer style="text-align:center;">'
+    '<p>This report was generated using the System Advisor Model Compare Cases macro on:</P>'
+    '<p id="demo" ></p>'
+
+        '<script>'
+		'var d = new Date();'
+		'document.getElementById("demo").innerHTML = d;' 
+        '</script>'
+'</footer>'
+
+'</html>';
+
+}
+report = tempfile('html'); //specify a temporary location to save the plot
+
+ok = write_text_file(report, reportCode);
+if (!ok)
+	{
+		msgbox('Report rendering failed.');
+		exit;
+	}
+browse(report);	
+
+msgbox('Please save the report opened in your browser as a PDF.');
+
+//// Delete temporary chart file 
+
+remove_file(report);
+
+
+
+
+
+
+
+

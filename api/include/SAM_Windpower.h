@@ -101,6 +101,14 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Turbine_wind_resource_shear_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set wind_turbine_ct_curve: User-defined Ct curve vs WS for wake models
+	 * options: uses same wind speeds as power curve
+	 * constraints: LENGTH_EQUAL=wind_turbine_powercurve_windspeeds
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Turbine_wind_turbine_ct_curve_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set wind_turbine_hub_ht: Hub height [m]
 	 * options: None
 	 * constraints: POSITIVE
@@ -154,12 +162,28 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Farm_max_turbine_override_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set park_wake_decay_constant: Wake decay constant for Park model [0..1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Farm_park_wake_decay_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_capacity: Nameplate capacity [kW]
 	 * options: None
 	 * constraints: MIN=0
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Windpower_Farm_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set wake_loss_multiplier: Multiplier for the calculated wake loss
+	 * options: >1 increases loss, <1 decreases loss
+	 * constraints: MIN=0
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Windpower_Farm_wake_loss_multiplier_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set wind_farm_wake_model: Wake Model [Simple, Park, EV, Constant] [0/1/2/3]
@@ -303,6 +327,14 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Losses_icing_cutoff_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set icing_persistence_timesteps: Num timesteps icing lasts if conditions are met
+	 * options: includes initial timestep
+	 * constraints: MIN=1,INTEGER
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Windpower_Losses_icing_persistence_timesteps_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set low_temp_cutoff: Low Temperature Cutoff [C]
 	 * options: None
 	 * constraints: None
@@ -407,7 +439,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Windpower_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -457,6 +489,99 @@ extern "C"
 	SAM_EXPORT void SAM_Windpower_Uncertainty_total_uncert_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// HybridCosts parameters
+	//
+
+	/**
+	 * Set degradation: Annual AC degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fixed: Fixed O&M annual amount [$/year]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production: Production-based O&M amount [$/MWh]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_production_escal: Production-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_om_production_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set total_installed_cost: Total installed cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Windpower_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * Resource Getters
 	 */
@@ -482,6 +607,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_resource_shear_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Windpower_Turbine_wind_turbine_ct_curve_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_hub_ht_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Turbine_wind_turbine_max_cp_nget(SAM_table ptr, SAM_error *err);
@@ -499,7 +626,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Farm_max_turbine_override_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Farm_park_wake_decay_constant_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Farm_system_capacity_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Farm_wake_loss_multiplier_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Farm_wind_farm_wake_model_nget(SAM_table ptr, SAM_error *err);
 
@@ -539,6 +670,8 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_rh_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_icing_cutoff_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Losses_icing_persistence_timesteps_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_low_temp_cutoff_nget(SAM_table ptr, SAM_error *err);
 
@@ -588,6 +721,33 @@ extern "C"
 
 
 	/**
+	 * HybridCosts Getters
+	 */
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_om_production_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -603,6 +763,12 @@ extern "C"
 
 	SAM_EXPORT double SAM_Windpower_Outputs_annual_gross_energy_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_kWh_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_internal_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Outputs_annual_wake_loss_total_percent_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Windpower_Outputs_avail_losses_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
@@ -612,6 +778,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -651,7 +819,9 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_turbine_output_by_windspeed_bin_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double SAM_Windpower_Outputs_wake_losses_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_kW_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Windpower_Outputs_wake_loss_internal_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Windpower_Outputs_wind_direction_aget(SAM_table ptr, int* length, SAM_error *err);
 

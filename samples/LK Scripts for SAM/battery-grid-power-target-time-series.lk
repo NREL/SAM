@@ -8,7 +8,7 @@
 	
 	To use the script:
 	
-	1. Create or open a PV Battery or Genericy Battery case with
+	1. Create or open a PV Battery or Custom Generation Battery case with
 	either the Residential or Commercial financial model.
 	
 	2. On the Battery Storage page, choose the "Input grid power targets" 
@@ -19,7 +19,7 @@
 	4. Set the value of the grid_target variable below to the value you want
 	to use in the time series array for the grid power target array.
 	
-	Tested in SAM 2021.12.02.
+	Tested in SAM 2024.12.12.
 */
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -1430,43 +1430,6 @@
                 }
             }
         },
-        "Image": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "Picture1"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 72.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 540.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 190.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 102.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Image": {
-                    "Type": 7.0,
-                    "Image": "PV System Design.png"
-                },
-                "Centered": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2598,6 +2561,43 @@
                     "Boolean": 0.0
                 },
                 "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Image": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "pv_orientation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 72.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 540.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 200.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 110.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Image": {
+                    "Type": 7.0,
+                    "Image": "PV System Design.png"
+                },
+                "Centered": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -9818,7 +9818,9 @@
         "\t\r",
         "\tenable_disable_spatial_albedos();\r",
         "\t\r",
-        "\tinv_voltage_warning();",
+        "\tinv_voltage_warning();\r",
+        "\t\r",
+        "\tproperty('pv_orientation', 'Image', 'collector-tilt-azimuth-simple.png');",
         "};",
         "\r",
         "on_change{'btn_reset_inverter_voltages'} = define() {\r",

@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?mtp_capacity_factor.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -518,8 +513,8 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
 	<p class="p_Text"><span class="f_Text">The capacity factor is the ratio of the system's electrical output in the first year of operation to the system's electrical output if it operated at its nameplate capacity for every hour of the year.</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">Capacity Factor = Net Annual Energy (kWhac/yr) / ( System Capacity (kWdc or kWac) * 8760 (h/yr) )</span></p>
-<p class="p_Text"><span class="f_Text">Where </span><span class="f_Emphasis">Net Annual Energy</span><span class="f_Text"> is the total annual electric generation in the first year of operation, and System</span><span class="f_Emphasis"> Capacity</span><span class="f_Text"> is the system's nameplate capacity (see table below), and 8760 is the number of hours in one year.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Capacity Factor = Annual Energy (kWhac/yr) / ( System Capacity (kWdc or kWac) * 8760 (h/yr) )</span></p>
+<p class="p_Text"><span class="f_Text">Where </span><span class="f_Emphasis">Annual Energy</span><span class="f_Text"> is the total annual electric generation in the first year of operation, and System</span><span class="f_Emphasis"> Capacity</span><span class="f_Text"> is the system's nameplate capacity (see table below), and 8760 is the number of hours in one year.</span></p>
 <p class="p_Text"><span class="f_Text">For PV systems, the capacity factor is either an AC-to-DC value and labeled as DC Capacity Factor, or an AC-to-AC value labeled as AC Capacity Factor. For other systems, the capacity is an AC-to-AC value.</span></p>
 <p class="p_Text"><span class="f_Text">For systems with batteries, Net Annual Energy </span></p>
 <p class="p_Text"><span class="f_Text">The system nameplate capacity depends on the technology being modeled. SAM converts the capacity value to the appropriate units (MW, kW, or W) before using it to calculate metrics such as the capacity factor, or the value of costs and incentives expressed in $/W. For the photovoltaic models, the capacity is a DC power rating, and for the others it is an AC power rating. For the Solar Water Heating Model, the capacity is a thermal rating, while for the others it is an electric rating.</span></p>
@@ -591,11 +586,11 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="width:18.0625rem;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System-Battery (AC)</span></p>
+<td class="DefaultShadedRows" style="width:18.0625rem;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Custom Generation Profile - Battery (AC)</span></p>
 </td>
 <td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate capacity (kWac) (does not include battery nominal bank power)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><a href="generic_system_plant.html" class="topiclink">Power Plant</a></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><a href="custom_generation_profile.html" class="topiclink">Power Plant</a></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">
@@ -639,11 +634,11 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 </td>
 </tr>
 <tr class="DefaultShadedRows">
-<td class="DefaultShadedRows" style="width:18.0625rem;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Generic System (AC)</span></p>
+<td class="DefaultShadedRows" style="width:18.0625rem;"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Custom Generation Profile (AC)</span></p>
 </td>
 <td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft">Nameplate capacity (kWe)</span></p>
 </td>
-<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="generic_system_plant.html" class="topiclink">Power Plant</a></span></p>
+<td class="DefaultShadedRows"><p class="p_TableTextLeft" style="page-break-inside: avoid;"><span class="f_TableTextLeft"><a href="custom_generation_profile.html" class="topiclink">Power Plant</a></span></p>
 </td>
 </tr>
 <tr class="DefaultShadedRows">

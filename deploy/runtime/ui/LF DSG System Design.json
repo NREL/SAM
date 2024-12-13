@@ -1143,6 +1143,89 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "system_capacity_heat_btu"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 696.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 222.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                }
+            }
+        },
         "RadioChoice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1504,6 +1587,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "system_capacity_heat_btu": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "System capacity",
+            "Units": "MMBtu/hr",
+            "Group": "LF DSG System Design",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "use_quality_or_subcooled": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1541,6 +1637,10 @@
         "{",
         "\treturn ${specified_q_dot_rec_des}*1000.0;",
         "};",
+        "\r",
+        "// Convert to MMBtu/hr for display\r",
+        "equations{ 'system_capacity_heat_btu' } = define() {\r",
+        "\treturn ${system_capacity} / 293.07107; };\r",
         "",
         "equations{ '$MIMO$ ui_lf_dsg_design' } = define()",
         "{",

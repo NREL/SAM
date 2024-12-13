@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?pv_shading.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -607,6 +602,8 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The number of modules along the edge of the subarray array perpendicular to the bottom of the array as defined below.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of modules along bottom of row</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The number of modules along the bottom of a row, which is the edge of the row nearest to the ground.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For fixed arrays, the bottom edge is perpendicular to the azimuth angle. For example, for a fixed array in the northern hemisphere and an azimuth angle of 180 degrees, the bottom of the row is the southernmost edge of the row.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For arrays with one-axis tracking, the bottom edge is parallel to the tracking axis, which is determined by the azimuth angle. For example, for a one-axis tracking array with an azimuth angle of 180 degrees, the bottom of each row is the edge closest to the east in the morning.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Number of rows</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The number of rows given the number of modules in the subarray from the <a href="pv_system_design.html" class="topiclink">System Design</a> page and the numbers of modules along the side and bottom of row that you specify.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">Number of Rows = Number of Modules in Subarray ÷ Number of Modules along Side ÷ Number of Modules along Bottom</span></p>
@@ -625,7 +622,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">For landscape module orientation:</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">length of side = module width × number of modules along side of row</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">GCR from System Design page</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Ground coverage ratio from the <a href="pv_system_design.html" class="topiclink">System Design</a> page, defined as the length of the side of one row divided by the distance between the bottom of one row and the bottom of its neighboring row.</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Ground coverage ratio from the <a href="pv_system_design.html" class="topiclink">System Design</a> page, equivalent to the length of the side of one row divided by the distance between the bottom of one row and the bottom of its neighboring row.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Row spacing estimate (m)</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The distance in meters between the bottom of any two rows in the subarray. SAM displays this value for reference. The self-shading calculations use the module area and GCR.</span></p>
 <p class="p_EquationExcel"><span class="f_EquationExcel">row spacing estimate = length of side ÷ GCR</span></p>

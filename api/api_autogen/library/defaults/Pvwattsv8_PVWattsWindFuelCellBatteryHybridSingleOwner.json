@@ -1,0 +1,60 @@
+{
+	"defaults": {
+		"SolarResource": {
+			"albedo": [0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000, 0.200000],
+			"use_wf_albedo": 1
+		},
+		"Lifetime": {
+			"analysis_period": 25,
+			"system_use_lifetime_output": 0
+		},
+		"SystemDesign": {
+			"array_type": 2,
+			"azimuth": 180,
+			"batt_simple_enable": 0,
+			"bifaciality": 0,
+			"dc_ac_ratio": 1.4,
+			"en_snowloss": 0,
+			"gcr": 0.3,
+			"inv_eff": 96,
+			"losses": 14.0757,
+			"module_type": 0,
+			"soiling": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
+			"system_capacity": 100000,
+			"tilt": 0
+		},
+		"Shading": {
+			"shading_azal": [
+				[0.000000]
+			],
+			"shading_diff": 0,
+			"shading_en_azal": 0,
+			"shading_en_diff": 0,
+			"shading_en_mxh": 0,
+			"shading_en_string_option": 0,
+			"shading_en_timestep": 0,
+			"shading_mxh": [
+				[0.000000]
+			],
+			"shading_string_option": 0,
+			"shading_timestep": [
+				[0.000000]
+			]
+		},
+		"AdjustmentFactors": {
+		},
+		"HybridCosts": {
+			"degradation": [0.500000],
+			"land_area": 433.518,
+			"om_capacity": [19.000000],
+			"om_capacity_escal": 0,
+			"om_fixed": [0.000000],
+			"om_fixed_escal": 0,
+			"om_land_lease": [0.000000],
+			"om_land_lease_escal": 0,
+			"om_production": [0.000000],
+			"om_production_escal": 0,
+			"total_installed_cost": 1.12068e+08
+		}
+	}
+}

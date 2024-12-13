@@ -1,4 +1,18 @@
 {
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "array_sizing_mode": 0.0,
     "cable_length_option": 0.0,
     "cable_system_overbuild": 10.0,
@@ -174,7 +188,7 @@
     "library_or_input_tidal": 0.0,
     "load_grid_voltage": 8.0,
     "load_grid_voltage_options": 0.0,
-    "location": "<invalid>",
+    "location": "Woods Hole the Strait",
     "location_id": "COD0911",
     "lon": -70.6829,
     "loss_additional": 0.0,
@@ -183,11 +197,11 @@
     "loss_resource_overprediction": 0.0,
     "loss_total": 7.0,
     "loss_transmission": 5.0,
-    "notes": "-",
+    "notes": "",
     "number_devices": 1.0,
     "number_rows": 1.0,
-    "offshore_substation_choice": 0.0,
-    "onshore_substation_choice": 0.0,
+    "offshore_substation_choice": 1.0,
+    "onshore_substation_choice": 1.0,
     "probability_sum": 1.0,
     "riser_cable_length": 82.5,
     "riser_cable_voltage": 7.2,
@@ -482,8 +496,8 @@
     "tidal_turbine_cut_out": 3.3,
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
-    "tidal_turbine_kw_rating": 0.0,
-    "tidal_turbine_kw_rating_input": 210.0,
+    "tidal_turbine_kw_rating": 2032.33,
+    "tidal_turbine_kw_rating_rotor": 1016.16,
     "tidal_turbine_max_cp": [
         0.42
     ],
@@ -500,29 +514,29 @@
         102.787,
         146.35,
         200.755,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0
+        267.205,
+        346.905,
+        441.059,
+        550.872,
+        677.549,
+        822.293,
+        986.31,
+        1170.8,
+        1376.98,
+        1606.04,
+        1859.19,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33,
+        2032.33
     ],
     "tidal_turbine_powercurve_tidalspeeds": [
         0.0,
@@ -566,6 +580,129 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 25.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
+    "tidal_vel_freq": [
+        [
+            0.1,
+            0.0710046
+        ],
+        [
+            0.2,
+            0.0376712
+        ],
+        [
+            0.3,
+            0.0393836
+        ],
+        [
+            0.4,
+            0.0417808
+        ],
+        [
+            0.5,
+            0.0416667
+        ],
+        [
+            0.6,
+            0.0480594
+        ],
+        [
+            0.7,
+            0.0544521
+        ],
+        [
+            0.8,
+            0.0634703
+        ],
+        [
+            0.9,
+            0.0976027
+        ],
+        [
+            1.0,
+            0.142466
+        ],
+        [
+            1.1,
+            0.116096
+        ],
+        [
+            1.2,
+            0.0805936
+        ],
+        [
+            1.3,
+            0.0523973
+        ],
+        [
+            1.4,
+            0.0364155
+        ],
+        [
+            1.5,
+            0.0269406
+        ],
+        [
+            1.6,
+            0.0199772
+        ],
+        [
+            1.7,
+            0.0116438
+        ],
+        [
+            1.8,
+            0.00958904
+        ],
+        [
+            1.9,
+            0.00547945
+        ],
+        [
+            2.0,
+            0.00251142
+        ],
+        [
+            2.1,
+            0.000799087
+        ],
+        [
+            2.2,
+            0.0
+        ],
+        [
+            2.3,
+            0.0
+        ],
+        [
+            2.4,
+            0.0
+        ],
+        [
+            2.5,
+            0.0
+        ],
+        [
+            2.6,
+            0.0
+        ],
+        [
+            2.7,
+            0.0
+        ],
+        [
+            2.8,
+            0.0
+        ],
+        [
+            2.9,
+            0.0
+        ],
+        [
+            3.0,
+            0.0
+        ]
+    ],
     "tidal_velocity": [
         1.06411,
         0.907655,
@@ -9329,7 +9466,7 @@
         0.143375
     ],
     "tidal_velocity_power_law_fit": 0.0,
-    "tz": -10.0,
+    "tz": 0.0,
     "ui_step_minutes": 60.0,
     "ui_tidal_resource_model_choice": 0.0,
     "use_offshore_substation_calc": 0.0,

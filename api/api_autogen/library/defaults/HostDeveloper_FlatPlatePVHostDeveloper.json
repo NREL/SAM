@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"cost_debt_closing": 450000,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -67,21 +67,21 @@
 			"prop_tax_cost_assessed_percent": 100,
 			"property_tax_rate": 0,
 			"real_discount_rate": 6.4,
-			"reserves_interest": 1.25,
+			"reserves_interest": 1.75,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 499.96,
-			"term_int_rate": 4,
+			"system_capacity": 557.285,
+			"term_int_rate": 7,
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [18.000000],
+			"om_capacity": [22.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 970411
+			"total_installed_cost": 978549
 		},
 		"LandLease": {
 		},
@@ -223,25 +223,25 @@
 			"pbi_fed_for_ds": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_for_ds": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_for_ds": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_for_ds": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"Host": {
 			"annual_energy_value": [0],
@@ -266,10 +266,9 @@
 			"utility_bill_w_sys": [0]
 		},
 		"SystemOutput": {
-			"annual_energy_value": [0],
 			"degradation": [0.000000],
 			"gen": [0],
-			"system_capacity": 499.96
+			"system_capacity": 557.285
 		},
 		"Moratorium": {
 			"loan_moratorium": 0
@@ -280,7 +279,7 @@
 			"system_use_lifetime_output": 1
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 18195.2
+			"construction_financing_cost": 25686.9
 		},
 		"BatterySystem": {
 			"en_batt": 0,
@@ -295,6 +294,8 @@
 		"HybridFin": {
 		},
 		"Monthly": {
+		},
+		"FuelCell": {
 		}
 	}
 }

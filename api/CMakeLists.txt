@@ -11,13 +11,8 @@ cmake_minimum_required(VERSION 3.24)
 # For CMake build option `SAMAPI_EXPORT` and `SAM_SKIP_AUTOGEN`, see ../CMakeLists.txt
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment version")
     set(CMAKE_MACOSX_RPATH 1)
-endif()
-
-if (UNIX AND NOT CMAKE_C_COMPILER)
-    set(CMAKE_C_COMPILER gcc)
-    set(CMAKE_CXX_COMPILER g++)
 endif()
 
 
@@ -27,7 +22,7 @@ endif()
 #
 #####################################################################################################################
 
-Project(SAM_API)
+Project(SAM_API LANGUAGES CXX C)
 
 if (NOT SAM_SKIP_AUTOGEN)
     add_subdirectory(api_autogen)
@@ -49,7 +44,6 @@ file(GLOB SAM_API_MODULES ${PROJECT_SOURCE_DIR}/modules/*.cpp ${PROJECT_SOURCE_D
 #
 #####################################################################################################################
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
@@ -69,7 +63,7 @@ else()
 endif()
 
 if(APPLE)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=10.15" )
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=12" )
 endif()
 
 
@@ -81,6 +75,7 @@ endif()
 #####################################################################################################################
 
 add_library(SAM_api SHARED ${SAM_API_SRC} ${SAM_API_MODULES})
+target_compile_features(SAM_api PUBLIC cxx_std_11)
 
 target_include_directories(SAM_api PRIVATE include src $ENV{SSCDIR} $ENV{SSCDIR}/ssc $ENV{SSCDIR}/shared)
 

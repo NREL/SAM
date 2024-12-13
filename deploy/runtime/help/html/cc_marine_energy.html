@@ -14,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="generator" content="Help+Manual" />
 	<meta name="keywords" content="" />
-	<meta name="description" content="SAM's marine energy models for wave and tidal power use a fixed-charge-rate (FCR) method to calculate the levelized cost of energy (LCOE) from inputs on the Financial..." />
+	<meta name="description" content="When you use the marine energy wave or marine energy tidal performance model with the LCOE calculator financial model, SAM uses a fixed-charge-rate (FCR) method to calculate..." />
 	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
 	<meta name="author" content="National Renewable Energy Laboratory" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?cc_marine_energy.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -517,10 +512,15 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody">
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
-	<p class="p_Text"><span class="f_Text">SAM's marine energy models for wave and tidal power use a fixed-charge-rate (FCR) method to calculate the levelized cost of energy (LCOE) from inputs on the <a href="fin_lcoefcr.html" class="topiclink">Financial Parameters</a> page. The FCR method requires a total installed cost and annual operating cost value as input, along with a fixed charge rate representing the financial assumptions for the project.</span></p>
-<p class="p_Text"><span class="f_Text">For the marine energy models, each Capital Costs page and the O&amp;M (operation and maintenance) Cost page provide a detailed cost structure that SAM uses to calculate the total capital cost and fixed annual operating cost for the LCOE calculation:</span></p>
+	<p class="p_Text"><span class="f_Text">When you use the marine energy wave or marine energy tidal performance model with the LCOE calculator financial model, SAM uses a fixed-charge-rate (FCR) method to calculate the levelized cost of energy (LCOE) from inputs on the <a href="fin_lcoefcr.html" class="topiclink">Financial Parameters</a> page. The FCR method requires a total installed cost and annual operating cost value as input, along with a fixed charge rate representing the financial assumptions for the project. </span></p>
+<p class="p_Text"><span class="f_Text">When you use the single owner financial model with either the wave or wave battery performance model, SAM uses an annual cash flow model to calculate financial metrics such as the net present value (NPV), internal rate of return (IRR), power purchase price (PPA), LCOE, and other metrics.</span></p>
+<p class="p_Text"><span class="f_Text">Each Capital Costs page and the O&amp;M (operation and maintenance) Cost page provide a detailed cost structure that SAM uses to calculate the total capital cost and fixed annual operating cost for the financial model calculations:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">The total capital cost is the sum of the total device cost, total balance-of-system (BOS) cost, and total financial cost.</span></p>
 <p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">The fixed operating cost is the sum of the O&amp;M costs.</span></p>
+<p class="p_Text"><span class="f_Text">SAM's marine energy models are based on the U.S Department of Energy (DOE) Reference Model Project (RMP). You can find links to documents for the RMP on the Sandia National Laboratories website at <a href="https://energy.sandia.gov/programs/renewable-energy/water-power/projects/reference-model-project-rmp/" target="_blank" class="weblink">https://energy.sandia.gov/programs/renewable-energy/water-power/projects/reference-model-project-rmp/</a>. Excel workbooks with cost category details are available for each technology:</span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Mirko Previsic (2012). <a href="https://energy.sandia.gov/download/21275/" class="weblink">Reference Model 1 Cost Breakdown Structure for Tidal Current Device</a></span></p>
+<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Mirko Previsic (2012). <a href="https://energy.sandia.gov/download/23667/" class="weblink">Cost Breakdown Structure for WEC Rated at 286 kW</a></span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Marine Energy Cost Structure</span></h4>
 <p class="p_Text"><span class="f_Text">The cost structure has several levels, so you can specify each cost as a single value, or break it down into more detailed categories and subcategories.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Override cost structure</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">This is the highest level in the cost structure. Use this option to enter a total cost at the Device, BOS, Financial, or O&amp;M Cost level. When you check </span><span class="f_CHInterfaceElement">Override cost structure</span><span class="f_VariableDescription">, SAM uses the value you type and ignores the detailed cost values.</span></p>
@@ -546,8 +546,22 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-itemized" style="margin:0 auto 0 auto;width:17.6250rem;height:4.2500rem;border:none" src="./images/ss-me-cost-itemized.png"/></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">or check </span><span class="f_CHInterfaceElement">Enter detailed costs</span><span class="f_VariableDescription"> to enter itemized costs for each subcategory. SAM automatically calculates the total based on the costs you enter.</span></p>
 <p class="p_VariableDescription" style="text-align: center;"><img alt="ss-me-cost-itemized-detailed" style="margin:0 auto 0 auto;width:16.5000rem;height:12.7500rem;border:none" src="./images/ss-me-cost-itemized-detailed.png"/></p>
-<p class="p_Text"><span class="f_Text">For information about a cost item, click the Information button next to the item's label.</span></p>
-<p class="p_Text" style="text-align: center;"><img alt="SS_MHKCosts-information" style="margin:0 auto 0 auto;width:25.4375rem;height:7.1250rem;border:none" src="./images/ss_mhkcosts-information.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">For information about a cost item, click the Information button next to the item's label.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_MHKCosts-information" style="margin:0 auto 0 auto;width:25.4375rem;height:7.1250rem;border:none" src="./images/ss_mhkcosts-information.png"/></p>
+<p class="p_Text" style="text-align: center;"><span class="f_Text">&nbsp;</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Use Array Scaling</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Choose this option for SAM to scale the array cost based on the cost of a single device. The &quot;user input&quot; value is the cost of a single device in dollars. The array scaling R-value scales the single device cost as follows:</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">&nbsp;</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="EQ_MARINE_costscalingb" style="margin:0 auto 0 auto;width:6.9375rem;height:2.3750rem;border:none" src="./images/eq_marine_costscalingb.png"/></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="EQ_MARINE_costscalingcost" style="margin:0 auto 0 auto;width:17.7500rem;height:1.3750rem;border:none" src="./images/eq_marine_costscalingcost.png"/></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where:</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_CHEquationVariable">R</span><span class="f_VariableDescription"> = </span><span class="f_CHInterfaceElement">Array scaling R-value</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_CHEquationVariable">Cost</span><span class="f_CHVariableSubscript">device</span><span class="f_VariableDescription"> = </span><span class="f_CHInterfaceElement">User input</span><span class="f_VariableDescription"> for the </span><span class="f_CHInterfaceElement">Structural assembly</span><span class="f_VariableDescription"> option, representing the cost of a single device in dollars</span></p>
+<p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_CHInterfaceElement" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_CHEquationVariable">N</span><span class="f_CHVariableSubscript">devices</span><span class="f_VariableDescription"> = </span><span class="f_CHInterfaceElement">Number of devices in array</span><span class="f_VariableDescription"> from Array page</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The following screenshot is for an example with 100 devices to illustrate how the calculation works with </span><span class="f_CHEquationVariable">R = 0.1</span><span class="f_VariableDescription">, </span><span class="f_CHEquationVariable">Cost</span><span class="f_CHVariableSubscript">device</span><span class="f_CHEquationVariable"> = 10</span><span class="f_VariableDescription">, and </span><span class="f_CHEquationVariable">N</span><span class="f_CHVariableSubscript">devices</span><span class="f_CHEquationVariable">=100</span><span class="f_VariableDescription">:</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><span class="f_VariableDescription">&nbsp;</span></p>
+<p style="text-align: center; line-height: 1.28; margin: 0 0 0.6875rem 0;"><img alt="ss-me-cost-scaling" style="margin:0 auto 0 auto;width:51.7500rem;height:3.4375rem;border:none" src="./images/ss-me-cost-scaling.png"/></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 
 	<footer class="topicfooter">
 <p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>

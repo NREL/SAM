@@ -45,8 +45,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wx/srchctrl.h>
 
 #include <wex/easycurl.h>
-#include <wex/jsonval.h>
-#include <wex/jsonreader.h>
+
+#include <rapidjson/reader.h>
 
 #include "nsrdb.h"
 #include "main.h"
@@ -55,7 +55,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 enum {
 	ID_txtAddress, ID_txtFolder, ID_cboFilter, /*ID_cboWeatherFile,*/ ID_chlResources,
-	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_chk60, ID_chk30, ID_chk5, ID_chkTmy, ID_chkTgy, ID_chkTdy, ID_btnResources, ID_btnFolder, ID_search
+	ID_btnSelectAll, ID_btnClearAll, ID_btnSelectFiltered, ID_btnShowSelected, ID_btnShowAll, ID_chk60, ID_chk30, ID_chk15, ID_chk10, ID_chk5, ID_chkTmy, ID_chkTgy, ID_chkTdy, ID_btnResources, ID_btnFolder, ID_search
 };
 
 BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
@@ -66,6 +66,8 @@ BEGIN_EVENT_TABLE( NSRDBDialog, wxDialog )
 	EVT_BUTTON(ID_btnShowAll, NSRDBDialog::OnEvt)
 	EVT_CHECKBOX(ID_chk60, NSRDBDialog::OnEvt)
 	EVT_CHECKBOX(ID_chk30, NSRDBDialog::OnEvt)
+	EVT_CHECKBOX(ID_chk15, NSRDBDialog::OnEvt)
+	EVT_CHECKBOX(ID_chk10, NSRDBDialog::OnEvt)
 	EVT_CHECKBOX(ID_chk5, NSRDBDialog::OnEvt)
 	EVT_CHECKBOX(ID_chkTmy, NSRDBDialog::OnEvt)
 	EVT_CHECKBOX(ID_chkTgy, NSRDBDialog::OnEvt)
@@ -89,12 +91,15 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	m_txtFolder->SetValue(dnpath);
 
 	m_txtAddress = new wxTextCtrl(this, ID_txtAddress, "39.74,-105.17");// , wxDefaultPosition, wxSize(500, 30));
+	m_txtLatLon = new wxTextCtrl(this, ID_txtAddress, "", wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
 
 	m_btnFolder = new wxButton(this, ID_btnFolder, "...", wxDefaultPosition, wxSize(30, 30));
 	m_btnSelectAll = new wxButton(this, ID_btnSelectAll, "Select all");
 	m_btnClearAll = new wxButton(this, ID_btnClearAll, "Clear all");
 	m_chk60 = new wxCheckBox(this, ID_chk60, "60 min");
 	m_chk30 = new wxCheckBox(this, ID_chk30, "30 min");
+	m_chk15 = new wxCheckBox(this, ID_chk15, "15 min");
+	m_chk10 = new wxCheckBox(this, ID_chk10, "10 min");
 	m_chk5 = new wxCheckBox(this, ID_chk5, "5 min");
 	m_chkTmy = new wxCheckBox(this, ID_chkTmy, "TMY");
 	m_chkTgy = new wxCheckBox(this, ID_chkTgy, "TGY");
@@ -115,9 +120,14 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	msg += "Click OK to download the selected files and add them to your solar resource library.";
 
 	wxBoxSizer *szAddress = new wxBoxSizer(wxHORIZONTAL);
-	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Find location:"), 0, wxALL , 2);
+	szAddress->Add(new wxStaticText(this, wxID_ANY, "1. Location:"), 0, wxALL , 2);
 	szAddress->Add(m_txtAddress, 5, wxALL|wxEXPAND, 2);
 	szAddress->Add(m_btnResources, 0, wxALL, 2);
+
+	wxBoxSizer* szLatLon = new wxBoxSizer(wxHORIZONTAL);
+	szLatLon->Add(15, 0, 0);
+	szLatLon->Add(new wxStaticText(this, wxID_ANY, "Latitude and longitude:"), 0, wxALL, 2);
+	szLatLon->Add(m_txtLatLon, 5, wxALL | wxEXPAND, 1);
 
 	wxBoxSizer *szFolder = new wxBoxSizer(wxHORIZONTAL);
 	szFolder->Add(new wxStaticText(this, wxID_ANY, "3. Choose download folder:"), 0, wxALL, 2);
@@ -129,9 +139,11 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	szWeatherFile->Add(m_cboWeatherFile, 5, wxALL | wxEXPAND, 2);
 */	
 	wxBoxSizer* szChkBtn = new wxBoxSizer(wxHORIZONTAL);
-	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select from PSM v3:"), 0, wxALL, 2);
+	szChkBtn->Add(new wxStaticText(this, wxID_ANY, "Auto-select options:"), 0, wxALL, 2);
 	szChkBtn->Add(m_chk60, 0, wxALL, 2);
 	szChkBtn->Add(m_chk30, 0, wxALL, 2);
+	szChkBtn->Add(m_chk15, 0, wxALL, 2);
+	szChkBtn->Add(m_chk10, 0, wxALL, 2);
 	szChkBtn->Add(m_chk5, 0, wxALL, 2);
 	szChkBtn->Add(m_chkTmy, 0, wxALL, 2);
 	szChkBtn->Add(m_chkTgy, 0, wxALL, 2);
@@ -155,11 +167,13 @@ NSRDBDialog::NSRDBDialog(wxWindow *parent, const wxString &title)
 	wxBoxSizer *szmain = new wxBoxSizer( wxVERTICAL );
 	szmain->Add(new wxStaticText(this, wxID_ANY, msg), 0, wxALL | wxEXPAND, 10);
 	szmain->Add(szAddress, 0,  wxEXPAND, 1);
+	szmain->Add(szLatLon, 0, wxEXPAND, 1);
 	szmain->Add(szgrid, 10, wxALL | wxEXPAND, 1);
 	szmain->Add(szFolder, 0, wxALL | wxEXPAND, 1);
 	//szmain->Add(szWeatherFile, 0, wxALL | wxEXPAND, 1);
 	szmain->Add( CreateButtonSizer( wxHELP|wxOK|wxCANCEL ), 0, wxALL|wxEXPAND, 10 );
 
+	ResetAll();
 	SetSizer( szmain );
 	Fit();
 	m_txtAddress->SetFocus();
@@ -175,6 +189,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 			break;
 		case ID_btnResources:
 			{
+				ResetAll();
 				GetResources();
 				//std::sort(m_links.begin(),m_links.end());
 				// select first item (should be tmy)
@@ -200,7 +215,7 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				size_t first_item = 0;
 				if (m_search->GetValue() == "")
 				{
-					wxMessageBox("Type a keyword in the Search box before clicking Check Filtered.", "NSRDB Download Message", wxOK, this);
+					wxMessageBox("Type a keyword in the Search box before clicking Select Filtered.", "NSRDB Download Message", wxOK, this);
 					break;
 				}
 				for (size_t i = 0; i < m_links.size(); i++)
@@ -236,38 +251,49 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 		break;
 		case ID_chk60:
 			{
-				size_t x = SelectItems("psm3_60", m_chk60);
+				size_t x = SelectItems("_60", m_chk60);
 				RefreshList(x);
 			}
 			break;
 		case ID_chk30:
 			{
-				size_t x = SelectItems("psm3_30", m_chk30);
+				size_t x = SelectItems("_30", m_chk30);
 				RefreshList(x);
 			}
 			break;
+		case ID_chk15:
+		{
+			size_t x = SelectItems("_15", m_chk15);
+			RefreshList(x);
+		}
+		break;
+		case ID_chk10:
+		{
+			size_t x = SelectItems("_10", m_chk10);
+			RefreshList(x);
+		}
+		break;
 		case ID_chk5:
 			{
-				size_t x = SelectItems("psm3-5min_5", m_chk5);
+				size_t x = SelectItems("_5", m_chk5);
 				RefreshList(x);
 			}
 			break;
 		case ID_chkTmy:
 			{
-				size_t x;
-				x = SelectItems("psm3-tmy_60_tmy", m_chkTmy);
+				size_t x = SelectItems("_tmy", m_chkTmy);
 				RefreshList(x);
 			}
 			break;
 		case ID_chkTgy:
 			{
-				size_t x = SelectItems("psm3-tmy_60_tgy", m_chkTgy);
+				size_t x = SelectItems("_tgy", m_chkTgy);
 				RefreshList(x);
 			}
 			break;
 		case ID_chkTdy:
 			{
-				size_t x = SelectItems("psm3-tmy_60_tdy", m_chkTdy);
+				size_t x = SelectItems("_tdy", m_chkTdy);
 				RefreshList(x);
 			}
 			break;
@@ -291,6 +317,8 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 				}
 				m_chk60->SetValue(false);
 				m_chk30->SetValue(false);
+				m_chk15->SetValue(false);
+				m_chk10->SetValue(false);
 				m_chk5->SetValue(false);
 				m_chkTmy->SetValue(false);
 				m_chkTgy->SetValue(false);
@@ -385,18 +413,13 @@ void NSRDBDialog::OnEvt( wxCommandEvent &e )
 
 							int ndx = arychecked[i];
 							wxString url = m_links[ndx].URL;
-							// SAM specific attributes to minimize files size 
-							wxString attr = m_links[ndx].attributes;
 							wxString curstr = m_links[ndx].display;
 							//Download the weather file
 							pdlg.Update(i+1, "File: " + curstr );
 #ifdef __DEBUG__
 			wxLogStatus("downloading (%d of %d): %s", (int)(i+1), (int)arychecked.Count(), (const char*)url.c_str());
 #endif
-							bool ok = curl.Get(url+attr);
-							// in case attributes list is incorrect try without attributes if returned file is not a weather file
-							if (ok && (curl.GetDataAsString().Length() < 1000)) // file likely json or html instead of csv
-								ok = curl.Get(url+"&utc=false"); // without attributes returns file with all attributes
+							bool ok = curl.Get(url+"&utc=false");
 							if (!ok)
 								wxMessageBox("Download failed.\n\n" + curstr +"\n\nThere may be a problem with your internet connection,\nor the NSRDB web service may be down.", "NSRDB Download Message", wxOK, this);
 							else if (curl.GetDataAsString().Length() < 1000)
@@ -479,9 +502,39 @@ void NSRDBDialog::RefreshList( size_t first_item )
 		}
 	}
 	m_chlResources->Thaw();
-	m_chlResources->SetFirstItem(first_item);
+	if ( first_item > 0 )
+		m_chlResources->SetFirstItem(first_item);
 }
 
+void NSRDBDialog::ResetAll()
+{
+	m_txtLatLon->Clear();
+	m_chlResources->Clear();
+	m_chlResources->Disable();
+	m_links.clear();
+	m_chk60->SetValue(false);
+	m_chk30->SetValue(false);
+	m_chk15->SetValue(false);
+	m_chk10->SetValue(false);
+	m_chk5->SetValue(false);
+	m_chkTmy->SetValue(false);
+	m_chkTgy->SetValue(false);
+	m_chkTdy->SetValue(false);
+	m_chk60->Disable();
+	m_chk30->Disable();
+	m_chk15->Disable();
+	m_chk10->Disable();
+	m_chk5->Disable();
+	m_chkTmy->Disable();
+	m_chkTgy->Disable();
+	m_chkTdy->Disable();
+	m_search->Disable();
+	m_btnSelectFiltered->Disable();
+	m_btnShowSelected->Disable();
+	m_btnShowAll->Disable();
+	m_btnSelectAll->Disable();
+	m_btnClearAll->Disable();
+}
 void NSRDBDialog::GetResources()
 {
 	// hit api with address and return available resources
@@ -529,7 +582,8 @@ void NSRDBDialog::GetResources()
 		}
 	}
 
-	//Create URL for weather file download
+	// NSRDB Data Query returns a list of links to all available files for a location
+	// https://developer.nrel.gov/docs/solar/nsrdb/nsrdb_data_query/
 	wxString url;
 	url = SamApp::WebApi("nsrdb_query");
 	url.Replace("<LAT>", wxString::Format("%lg", lat), 1);
@@ -554,32 +608,34 @@ void NSRDBDialog::GetResources()
 		return;
 	}
 
-	wxJSONReader reader;
-	//	reader.SetSkipStringDoubleQuotes(true);
-	wxJSONValue root;
-	if (reader.Parse(json_data, &root) != 0)
+
+	rapidjson::Document reader;
+	reader.Parse(json_data.c_str());
+
+	if (reader.HasParseError())
 	{
 		wxMessageBox("NSRDB Data Query failed.\n\nCould not process JSON from NSRDB Data Query response for\n" + location + "\n\nPlease try again and contact SAM Support if you continue to have trouble.", "NSRDB Download Message", wxOK, this);
 		return;
 	}
 
-	wxJSONValue meta_data = root["metadata"];
-	wxJSONValue result_set = meta_data["resultset"];
+	if (reader.HasMember("metadata"))
+		if (reader["metadata"].HasMember("resultset"))
+			if (reader["metadata"]["resultset"].HasMember("count"))
+				if (reader["metadata"]["resultset"]["count"].IsInt())
+					if (reader["metadata"]["resultset"]["count"].GetInt() == 0)	{
+						wxMessageBox("No Weather Files Found.\n\nNSRDB Data Query did not return any files for\n" + location, "NSRDB Download Message", wxOK, this);
+						return;
+					}
 
-	if (result_set["count"].AsInt() == 0)
-	{
-		wxMessageBox("No Weather Files Found.\n\nNSRDB Data Query did not return any files for\n" + location, "NSRDB Download Message", wxOK, this);
-		return;
-	}
+	if (reader.HasMember("error"))
+		if (reader["error"].HasMember("message") && reader["error"].HasMember("code"))
+			if (reader["error"]["message"].IsString() && reader["error"]["code"].IsString()) {
+				wxString message = reader["error"]["message"].GetString();
+				wxString code = reader["error"]["code"].GetString();
+		        wxMessageBox( wxString::Format("NSRDB API error!\n\nMessage: %s\n\nCode: %s ", message.c_str(), code.c_str()));
+				return;
+			}
 
-    if (root.HasMember("error"))
-    {
-       wxJSONValue error_list = root.Item("error");
-       wxMessageBox( wxString::Format("NSRDB API error!\n\nMessage: %s\n\nCode: %s ", error_list.Item("message").AsString(), error_list.Item("code").AsString() ));
-       return;
-    }
-
-	wxJSONValue output_list = root["outputs"];
 
 	// format location to use in file name
 	location.Replace("\\", "_"); 
@@ -590,67 +646,93 @@ void NSRDBDialog::GetResources()
 	location.Replace(")", "_");
 	location.Replace("__", "_");
 
-	m_chlResources->Clear();
-	m_links.clear();
-	for (int i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
-	{
-		wxJSONValue out_item = output_list[i_outputs];
-		wxJSONValue links_list = output_list[i_outputs]["links"];
-		for (int i_links = 0; i_links < links_list.Size(); i_links++)
-		{
-			wxString name = output_list[i_outputs]["name"].AsString();
-			wxString displayName = output_list[i_outputs]["displayName"].AsString();
+	m_txtLatLon->SetValue(wxString::Format("%f,%f", lat, lon));
 
-			wxString year = links_list[i_links]["year"].AsString();
-			wxString interval = links_list[i_links]["interval"].AsString();
-           // URL - minimum attributes for each endpoint
-            wxString URL = links_list[i_links]["link"].AsString();
+
+	if (!reader.HasMember("outputs")) return; // error message?
+	if (!reader["outputs"].IsArray()) return; // error message?
+
+	auto output_list = reader["outputs"].GetArray();
+
+	for (size_t i_outputs = 0; i_outputs<output_list.Size(); i_outputs++)
+	{
+
+		if (!output_list[i_outputs].HasMember("links")) return; // error message?
+		if (!output_list[i_outputs]["links"].IsArray()) return; // error message?
+
+		auto links_list = output_list[i_outputs]["links"].GetArray();
+
+		for (size_t i_links = 0; i_links < links_list.Size(); i_links++)
+		{
+			// check for validity
+			wxString name = output_list[i_outputs]["name"].GetString();
+			wxString displayName = output_list[i_outputs]["displayName"].GetString();
+
+			wxString year, interval;
+			// year may be a number like 2018 or a string like "tmy-2020"
+			if (links_list[i_links]["year"].IsInt())
+				year = wxString::Format("%d", links_list[i_links]["year"].GetInt());
+			else
+				year = links_list[i_links]["year"].GetString();
+			// interval should be a number like 5, 15, 30, 60
+			if (links_list[i_links]["interval"].IsInt())
+				interval = wxString::Format("%d", links_list[i_links]["interval"].GetInt());
+
+			wxString URL = links_list[i_links]["link"].GetString();
             URL.Replace("yourapikey", "<SAMAPIKEY>");
 			URL.Replace("youremail", "<USEREMAIL>");
-            // specify attributes for each endpoint to minimize file size and to account for differences in attribute names
-            // newer endpoints use same attribute names, but some older ones do not, e.g., wind_speed vs wspd
-			wxString attributes = "";
-			if (name.Trim() == "psm3") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/
-				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-			else if (name.Trim() == "psm3-5min") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/
-				attributes = "&utc=false&attributes=dhi,dni,dew_point,air_temperature,surface_pressure,relative_humidity,wind_speed,wind_direction,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-			else if (name.Trim() == "psm3-tmy") // https://developer.nrel.gov/docs/solar/nsrdb/psm3-tmy-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,wind_direction,wind_speed,surface_albedo";
-			else if (name.Trim() == "suny-india") // https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,surface_temperature,surface_pressure,relative_humidity,snow_depth,wdir,wspd,clearsky_dhi,clearsky_dni,clearsky_ghi";
-			else if (name.Trim() == "msg-iodc") // https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-            else if (name.Trim() == "himawari") // https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/
-                attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-			else if (name.Trim() == "full-disc") // https://developer.nrel.gov/docs/solar/nsrdb/full-disc-download/
-				attributes = "&utc=false&attributes=dhi,dni,ghi,dew_point,air_temperature,surface_pressure,relative_humidity,wind_direction,wind_speed,surface_albedo,clearsky_dhi,clearsky_dni,clearsky_ghi";
-			else
-				attributes = "&utc=false"; // downloads all attributes
+
+			/*
+			datasets have different available intervals in addition to 60 (all datasets have 60 minute data):
+			psm3 https://developer.nrel.gov/docs/solar/nsrdb/psm3-download/ 30
+			psm3-2-2 https://developer.nrel.gov/docs/solar/nsrdb/psm3-2-2-download/ 30
+			nsrdb-GOES-aggregated-v4-0-0 https://developer.nrel.gov/api/nsrdb/v2/solar/nsrdb-GOES-aggregated-v4-0-0-download 30
+			psm3-5min https://developer.nrel.gov/docs/solar/nsrdb/psm3-5min-download/ 5,15,30
+			suny-india https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/ 15,30
+			msg-iodc https://developer.nrel.gov/docs/solar/nsrdb/meteosat-download/ 15,30
+			msg-v1-0-0 https://developer.nrel.gov/docs/solar/nsrdb/nsrdb-msg-v1-0-0-download/ 15,30
+			himawari https://developer.nrel.gov/docs/solar/nsrdb/himawari-download/ 10,30
+			himawari7 https://developer.nrel.gov/docs/solar/nsrdb/himawari7-download/ 30
+			*/
+
 #ifdef __DEBUG__
 			wxLogStatus("link info: %s, %s, %s, %s, %s, %s", displayName.c_str(), name.c_str(), /*type.c_str(),*/ year.c_str(), interval.c_str(), URL.c_str());
 #endif
-			// skip datasets that do not work with SAM
-			// spectral-india-tmy is not compatible with SAM
-			if ( (name.Lower() != "spectral-india-tmy") )
-				m_links.push_back(LinkInfo(name, displayName, year, URL, interval, location, attributes));
-			// disable auto-select button if not psm3 data, need this for suny-india data
-			if ( !name.Lower().Contains("psm3") )
+			// skip some datasets
+			if ((name.Lower() != "spectral-india-tmy") // not compatible with SAM
+				&& (name.Lower() != "full-disc") // only covers a few years and is similar to PSM V3 from solar modeling perspective
+				&& (name.Lower() != "nsrdb-goes-full-disc-v4-0-0") // similar to GOES V4 from solar modeling perspective
+				&& (name.Lower() != "philippines") // basic solar resource data only tamb, dhi, dni, ghi, wind (not enough data for CSP or PV thermal models)
+				&& (name.Lower() != "vietnam")) // // basic solar resource data only tamb, dhi, dni, ghi, wind  (not enough data for CSP or PV thermal models)
 			{
-				m_chk60->Disable();
-				m_chk30->Disable();
-				m_chk5->Disable();
-				m_chkTmy->Disable();
-				m_chkTgy->Disable();
-				m_chkTdy->Disable();
-			}
-			else
-			{
-				m_chk60->Enable();
-				m_chk30->Enable();
-				m_chk5->Enable();
-				m_chkTmy->Enable();
-				m_chkTgy->Enable();
-				m_chkTdy->Enable();
+				m_links.push_back(LinkInfo(name, displayName, year, URL, interval, location));
+
+				// enable list, search, and buttons
+				m_chlResources->Enable();
+				m_search->Enable();
+				m_btnSelectFiltered->Enable();
+				m_btnShowSelected->Enable();
+				m_btnShowAll->Enable();
+				m_btnSelectAll->Enable();
+				m_btnClearAll->Enable();
+
+				// enable filter options that are available for this location
+				m_chk60->Enable(); // all datasets have hourly data
+				if (interval.IsSameAs("30"))
+					m_chk30->Enable();
+				if (interval.IsSameAs("15"))
+					m_chk15->Enable();
+				if (interval.IsSameAs("10"))
+					m_chk10->Enable();
+				if (interval.IsSameAs("5"))
+					m_chk5->Enable();
+				// may be names like "tmy" or "tmy-2020" so use Contains() for these
+				if (year.Lower().Contains("tmy"))
+					m_chkTmy->Enable();
+				if (year.Lower().Contains("tgy"))
+					m_chkTgy->Enable();
+				if (year.Lower().Contains("tdy"))
+					m_chkTdy->Enable();
 			}
 		}
 	}

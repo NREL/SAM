@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?mtp_system_performance_factor.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -520,8 +515,8 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<p class="p_Text"><span class="f_Text">The performance ratio &nbsp;is a measure of a photovoltaic system's annual electric generation output in AC kWh compared to its nameplate rated capacity in DC kW, taking into account the solar resource at the system's location, and shading and soiling of the array.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM only calculates the system performance factor for the detailed photovoltaic model. It does not calculate the value for the PVWatts or </span><span class="f_Text">high concentration photovoltaic (HCPV)</span><span class="f_Note"> models, or for the other technologies.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Performance ratio</span></p>
-<p class="p_EquationExcel"><span class="f_EquationExcel">performance ratio = annual energy (kWh) ÷ ( annual POA total radiation (nominal) (kWh) × module efficiency (%) )</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Where </span><span class="f_Emphasis">annual energy</span><span class="f_VariableDescription"> is the system's total net AC output in Year One reported in the <a href="mtp_annual_energy.html" class="topiclink">Metrics</a> table, </span><span class="f_Emphasis">annual POA total radiation (nominal)</span><span class="f_VariableDescription"> is the total solar radiation incident on the array before shading and soiling losses are applied over the year, and </span><span class="f_Emphasis">module efficiency</span><span class="f_VariableDescription"> is the nominal efficiency of the modules in the array at standard test conditions STC.</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Performance Ratio = Annual Energy (kWh) ÷ ( Annual POA Total Radiation (Nominal) (kWh) × Module Efficiency (%) )</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Where A</span><span class="f_Emphasis">nnual energy</span><span class="f_VariableDescription"> is the system's total net AC output in Year One reported in the <a href="mtp_annual_energy.html" class="topiclink">Metrics</a> table, A</span><span class="f_Emphasis">nnual POA Total Radiation (Nominal)</span><span class="f_VariableDescription"> is the total solar radiation incident on the array before shading and soiling losses are applied over the year, and </span><span class="f_Emphasis">Module Efficiency</span><span class="f_VariableDescription"> is the nominal efficiency of the modules in the array at standard test conditions STC.</span></p>
 <p class="p_Text"><span class="f_Text">To see the values used in this calculation, after running a simulation, on Results page, click <a href="data.html" class="topiclink">Data</a> and find the variables under </span><span class="f_CHInterfaceElement">Single Values</span><span class="f_Text">. The module efficiency is from the <a href="pv_module.html" class="topiclink">Module</a> page.</span></p>
 <p class="p_Text"><span class="f_Text">The method used to calculate the photovoltaic system performance factor is based on the method described in the SMA technical bulletin </span><span class="f_Emphasis"><a href="https://files.sma.de/downloads/Perfratio-TI-en-11.pdf" target="_blank" class="weblink" title="https://files.sma.de/downloads/Perfratio-TI-en-11.pdf">Performance Ratio: Quality Factor for the PV Plant</a>, Perfratio-Tl-en-1.1, Version 1.1</span><span class="f_Text">.</span></p>
 

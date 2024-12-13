@@ -1906,7 +1906,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 531.0
+                    "Integer": 561.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -4570,7 +4570,7 @@
         "csp.dtr.cost.bop_per_kwe": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Balance of Plant Cost per kWe",
+            "Label": "Balance of Plant Cost per kWt",
             "Units": "$/kWe",
             "Group": "Physical Trough Capital Costs",
             "IndexLabels": "",
@@ -4700,7 +4700,7 @@
         "csp.dtr.cost.heat_sink.cost_per_kwe": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Power Plant Cost per kWe",
+            "Label": "Power Plant Cost per kWt",
             "Units": "$/kWt",
             "Group": "Physical Trough Capital Costs",
             "IndexLabels": "",

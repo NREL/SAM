@@ -1,7 +1,7 @@
 {
     "Name": "Battery Dispatch Options FOM",
-    "Width": 1051.0,
-    "Height": 201.0,
+    "Width": 1053.0,
+    "Height": 208.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -57,7 +57,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 150.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -90,6 +90,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_curtailcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 306.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 129.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from grid-limited system power"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "batt_dispatch_auto_can_fuelcellcharge"
                 },
                 "X": {
@@ -98,7 +139,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 153.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -361,7 +402,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 199.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -397,6 +438,19 @@
             "Type": 1.0,
             "Label": "Battery can charge from clipped power",
             "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_curtailcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can only charge from grid-limited system power",
+            "Units": "",
             "Group": "Battery Dispatch",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -464,11 +518,13 @@
         "{",
         "\tshow_hide_charge_options();",
         "\tcheck_auto_ppa();",
-        "\tenable_charge_from_clip();",
+        "\tenable_charge_from_clip();\r",
+        "\tenable_grid_limited_power();",
         "\twarning_message();",
         "\twave_batt_smoothing_msg();\r",
+        "\tptc_pbi_with_grid_charging_message();\r",
         "\tt = technology();\r",
-        "\tis_hybrid = (t == 'PVWatts Wind FuelCell Battery Hybrid' || t == 'Generic PVWatts Wind FuelCell Battery Hybrid' ||\r",
+        "\tis_hybrid = (t == 'PVWatts Wind FuelCell Battery Hybrid' || t == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ||\r",
         "\t\tt == 'Photovoltaic Wind Battery Hybrid' || t == 'PVWatts Wind Battery Hybrid');\r",
         "\tif (is_hybrid) en_batt = 1;\r",
         "\telse en_batt = value('en_batt');\r",
@@ -495,15 +551,21 @@
         "\tproperty('lbl_dispatch_options','TextColour',clr);",
         "};",
         "\r",
-        "on_change{'batt_dispatch_auto_can_gridcharge'} = define() {ptc_with_grid_charging_message();};\r",
+        "on_change{'batt_dispatch_auto_can_gridcharge'} = define() {ptc_pbi_with_grid_charging_message();};\r",
+        "\r",
+        "on_change{'batt_dispatch_auto_can_charge'} = define()\r",
+        "{\r",
+        "\tenable_grid_limited_power();\r",
+        "};\r",
         "",
         "on_change{'batt_dispatch_choice_ui'} = define() ",
         "{",
         "\tcheck_auto_ppa();",
         "\tenable_charge_from_clip();",
-        "\tshow_hide_charge_options();",
+        "\tshow_hide_charge_options();\r",
+        "\tenable_grid_limited_power();",
         "\twave_batt_smoothing_msg();\r",
-        "\tptc_with_grid_charging_message();\t",
+        "\tptc_pbi_with_grid_charging_message();\t",
         "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
         "};",
         "\r",
@@ -524,7 +586,7 @@
         "\ten_batt = 0;\r",
         "\tt = technology();\r",
         "\t\r",
-        "\tis_hybrid = (t == 'PVWatts Wind FuelCell Battery Hybrid' || t == 'Generic PVWatts Wind FuelCell Battery Hybrid' ||\r",
+        "\tis_hybrid = (t == 'PVWatts Wind FuelCell Battery Hybrid' || t == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ||\r",
         "\t\tt == 'Photovoltaic Wind Battery Hybrid' || t == 'PVWatts Wind Battery Hybrid');\r",
         "\tif (is_hybrid) en_batt = 1;\r",
         "\telse en_batt = value('en_batt');",
@@ -540,7 +602,7 @@
         "// hide charge options for manual dispatch",
         "function show_hide_charge_options() {",
         "\tis_dc = (value('batt_ac_or_dc' ) == 0);\r",
-        "\tis_fuelcell = (technology() == 'Fuel Cell' || technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid');",
+        "\tis_fuelcell = (technology() == 'Fuel Cell' || technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid');",
         "\toption = value('batt_dispatch_choice_ui');",
         "\tenable('batt_dispatch_auto_can_charge',option != 3);",
         "\tenable('batt_dispatch_auto_can_gridcharge', option !=3 );",
@@ -566,6 +628,29 @@
         "\t} ",
         "\twarning_message();",
         "}",
+        "\r",
+        "function enable_grid_limited_power()\r",
+        "{\r",
+        "\tinterconnection = value(\"enable_interconnection_limit\");\r",
+        "\tcurtailment = value(\"grid_curtailment\");\r",
+        "\ten_curtailment = false;\r",
+        "\tfor (i=0; i<#curtailment; i++)\r",
+        "\t{\r",
+        "\t\tif (curtailment[i] < 9e37) {\r",
+        "\t\t\ten_curtailment = true;\r",
+        "\t\t\tbreak;\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\ten_dispatch = value('batt_dispatch_choice_ui') == 0 || (value('batt_dispatch_choice_ui') == 3);\r",
+        "\ten_system_power = value('batt_dispatch_auto_can_charge');\r",
+        "\tif ((interconnection || en_curtailment) && en_dispatch && !en_system_power) {\r",
+        "\t\tenable('batt_dispatch_auto_can_curtailcharge', true);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('batt_dispatch_auto_can_curtailcharge', false);\r",
+        "\t\tproperty('batt_dispatch_auto_can_curtailcharge','State', 0);\r",
+        "\t}\r",
+        "}\r",
         "",
         "function warning_message() ",
         "{",
@@ -579,7 +664,7 @@
         "\t{ ",
         "\t\tmsg = 'Battery is AC-connected.'; ",
         "\t}",
-        "\tmsg = msg + ' Charging from clipped power is only available for automated or manual dispatch and DC-connected batteries. See input under Power Converters on Battery Cell and System page.';",
+        "\tmsg = msg + ' Charging from clipped or grid-limited power is only available for automated or manual dispatch and DC-connected batteries. See input under Power Converters on Battery Cell and System page.';",
         "\tif ( value('batt_dispatch_choice_ui') == 2 ) ",
         "\t{",
         "\t\tmsg = ''; ",

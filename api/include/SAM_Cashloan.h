@@ -174,7 +174,7 @@ extern "C"
 
 	/**
 	 * Set add_om_num_types: Number of O and M types
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
@@ -182,7 +182,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -190,23 +190,15 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Cashloan_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -214,7 +206,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -222,7 +214,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -230,7 +222,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -238,7 +230,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -246,7 +238,7 @@ extern "C"
 
 	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -262,7 +254,7 @@ extern "C"
 
 	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -278,7 +270,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -286,7 +278,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -294,7 +286,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -302,7 +294,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -310,7 +302,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_nameplate: Fuel cell capacity for System Costs values [kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -318,7 +310,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -326,7 +318,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -334,7 +326,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -342,7 +334,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -350,7 +342,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -358,7 +350,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -366,7 +358,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -374,7 +366,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -382,7 +374,7 @@ extern "C"
 
 	/**
 	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -390,7 +382,7 @@ extern "C"
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -398,7 +390,7 @@ extern "C"
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -414,7 +406,7 @@ extern "C"
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -1459,12 +1451,28 @@ extern "C"
 	//
 
 	/**
+	 * Set annual_fuel_usage_lifetime: Annual Fuel Usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set en_fuelcell: Enable fuel cell storage model [0/1]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Cashloan_FuelCell_en_fuelcell_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set fuelcell_computed_bank_capacity: Fuel cell capacity [kWh]
@@ -1671,7 +1679,7 @@ extern "C"
 	SAM_EXPORT void SAM_Cashloan_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
+	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -1907,8 +1915,6 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Cashloan_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2246,7 +2252,11 @@ extern "C"
 	 * FuelCell Getters
 	 */
 
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_FuelCell_en_fuelcell_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Cashloan_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_FuelCell_fuelcell_computed_bank_capacity_nget(SAM_table ptr, SAM_error *err);
 
@@ -2549,8 +2559,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_salvage_cost_lcos_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2597,6 +2605,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Cashloan_Outputs_irr_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_itc_total_fed_nget(SAM_table ptr, SAM_error *err);
@@ -2624,6 +2634,8 @@ extern "C"
 	SAM_EXPORT double SAM_Cashloan_Outputs_lnte_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_loan_amount_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Cashloan_Outputs_nominal_discount_rate_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Cashloan_Outputs_npv_nget(SAM_table ptr, SAM_error *err);
 

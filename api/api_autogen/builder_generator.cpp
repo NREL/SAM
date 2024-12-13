@@ -41,6 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <shared/lib_util.h>
 #include <ssc/sscapi.h>
 #include <ssc/ssc_equations.h>
+#include <ssc/core.h>
 
 #include "lk_env.h"
 #include "lk_eval.h"
@@ -53,6 +54,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "builder_generator_helper.h"
 #include "builder_C_API.h"
 #include "builder_PySAM.h"
+
 
 std::unordered_map<std::string, bool> SAM_completed_cmods;
 
@@ -80,8 +82,11 @@ builder_generator::builder_generator(config_extractor *ce){
     for (size_t i = 0; i < cmods.size(); i++){
         std::string cmod_name = cmods[i];
         ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
-        ssc_module_objects.insert({cmod_name, p_mod});
 
+        if (config_name.find("Hybrid") != std::string::npos) {
+            ssc_module_hybridize(p_mod);
+        }
+        ssc_module_objects.insert({cmod_name, p_mod});
     }
 }
 
@@ -123,12 +128,18 @@ void builder_generator::select_ui_variables(std::string ui_name, std::map<std::s
 void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
     ssc_module_t p_mod = ssc_module_create(const_cast<char*>(cmod_name.c_str()));
 
+    // hybrid technology compute modules have extra financial variables that need to be exported to defaults
+    if (active_config.find("Hybrid") != std::string::npos) {
+        ssc_module_hybridize(p_mod);
+    }
+
     digraph* graph = nullptr;
     if (SAM_config_to_variable_graph.find(active_config) != SAM_config_to_variable_graph.end())
         graph = SAM_config_to_variable_graph[active_config];
 
     int var_index = 0;
     ssc_info_t mod_info = ssc_module_var_info(p_mod, var_index);
+    var_info* mod_info_cast = static_cast<var_info*>(mod_info);
     std::map<std::string, var_def> adj_map;
     std::map<std::string, var_def> outputs_map;
     while (mod_info){
@@ -173,17 +184,6 @@ void builder_generator::gather_variables_ssc(const std::string &cmod_name) {
         std::vector<std::string> ssctype_str = {"invalid", "string", "number", "array", "matrix", "table"};
         vd.type_n = ssc_info_data_type(mod_info);
         vd.type = ssctype_str[vd.type_n];
-/*
-        if (vd.group == "Adjustment Factors") {
-            size_t pos = vd.name.find(':');
-            size_t pos2 = vd.name.find("adjust");
-            vd.name = vd.name.substr(0, pos2) + vd.name.substr(pos+1);
-            adj_map.insert({vd.name, vd});
-            ++var_index;
-            mod_info = ssc_module_var_info(p_mod, var_index);
-            continue;
-        }
-*/
         int var_type = ssc_info_var_type(mod_info);
 
         size_t pos = vd.name.find(':');
@@ -419,32 +419,31 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
 
             VarValue* vv = nullptr;
 
- /*           // if adjustment factors, the default values are stored in a table
-            if (module_name == "AdjustmentFactors"){
+           // if adjustment factors, the variables need to have the 'adjust_' prefix removed
+            if (module_symbol == "AdjustmentFactors"){
                 size_t pos = v.name.find('_');
-                std::string adj_type = "adjust";
-                if (pos != std::string::npos){
-                    adj_type = v.name.substr(0, pos + 1) + adj_type;
-                }
-
-                vv = SAM_config_to_defaults[config_name][adj_type];
+                vv = SAM_config_to_defaults[config_name][v.name];
                 if (vv){
-                    std::string name = v.name.substr(pos+1);
-                    if (name == "hourly" && !(vv->Table().Get("en_hourly")->Boolean()))
-                        continue;
-                    if (name == "periods" && !(vv->Table().Get("en_periods")->Boolean()))
-                        continue;
-                    vv = vv->Table().Get(name);
+                    var_symbol = v.name.substr(pos+1);
                 }
                 else
                     continue;
             }
-            else
- */               vv = SAM_config_to_defaults[config_name][v.name];
+            else{
+                if (config_name.find("Hybrid") != std::string::npos){
+                    VarValue* vt = SAM_config_to_defaults[config_name].Get(format_as_symbol(cmod));
+                    if (!vt)
+                        vt = SAM_config_to_defaults[config_name].Get("Hybrid");
+                    vv = vt->Table()[v.name];
+                }
+                else{
+                    vv = SAM_config_to_defaults[config_name][v.name];
 
-            // if it's a battery configuration, turn on battery by default
-            if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))
-                vv->Set(1);
+                    // if it's a battery configuration, turn on battery by default. Hybrid techs don't need this because cmod_hybrid does it
+                    if ((cmod == "battery" && v.name == "en_batt") ||  (cmod == "battwatts" && v.name == "batt_simple_enable"))
+                        vv->Set(1);
+                }
+            }
 
             // vv can be null in the case of variables not available in UI
             if (!vv && v.reqif != "*")
@@ -457,7 +456,6 @@ void builder_generator::export_variables_json(const std::string &cmod, const std
             if (!first) json << ",";
             json << "\n\t\t\t\"" + format_as_variable(var_symbol) + "\": ";
             json << ssc_value_to_json(v.type_n, vv);
-
 
             first = false;
         }

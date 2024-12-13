@@ -1,0 +1,27 @@
+{
+	"defaults": {
+		"SystemControl": {
+		},
+		"SimpleLCOE": {
+			"c_construction_cost": [100.000000],
+			"c_construction_interest": 3.5,
+			"c_debt_percent": 60,
+			"c_depreciation_schedule": [20.000000, 32.000000, 19.200000, 11.520000, 11.520000, 5.760000],
+			"c_equity_return": 9,
+			"c_inflation": 2.5,
+			"c_lifetime": 25,
+			"c_nominal_interest_rate": 7,
+			"c_tax_rate": 28,
+			"fixed_operating_cost": 103758,
+			"ui_fcr_input_option": 1,
+			"ui_fixed_charge_rate": 0.098,
+			"variable_operating_cost": 0.002
+		},
+		"SystemCosts": {
+			"total_installed_cost": 1.33794e+07
+		},
+		"IPHLCOH": {
+			"electricity_rate": 0.06
+		}
+	}
+}

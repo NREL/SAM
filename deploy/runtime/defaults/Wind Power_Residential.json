@@ -36,9 +36,9 @@
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bos_cost_fixed": 0.0,
-    "bos_cost_per_kw": 3348.0,
+    "bos_cost_per_kw": 4838.0,
     "bos_cost_per_turbine": 0.0,
-    "bos_cost_total": 66960.0,
+    "bos_cost_total": 96760.0,
     "cbi_fed_amount": 0.0,
     "cbi_fed_deprbas_fed": 0.0,
     "cbi_fed_deprbas_sta": 0.0,
@@ -10556,12 +10556,12 @@
     "insurance_rate": 0.0,
     "is_btm": 1.0,
     "itc_fed_amount": [
-        30.0
+        0.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        0.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -28110,7 +28110,7 @@
         1.24378,
         0.980213
     ],
-    "loan_amount": 98064.0,
+    "loan_amount": 129008.0,
     "loan_rate": 7.0,
     "loan_term": 25.0,
     "market": 0.0,
@@ -28137,7 +28137,7 @@
     "nominal_discount_rate": 9.06,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
-        35.0
+        39.0
     ],
     "om_capacity_escal": 0.0,
     "om_fixed": [
@@ -28204,7 +28204,7 @@
     "peak_9": 3.6658,
     "prop_tax_assessed_decline": 0.0,
     "prop_tax_cost_assessed_percent": 100.0,
-    "property_assessed_value": 122580.0,
+    "property_assessed_value": 161260.0,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
         0.0
@@ -28251,8 +28251,8 @@
     "system_use_lifetime_output": 0.0,
     "total_10yr_uncert": 12.0852,
     "total_20yr_uncert": 12.0852,
-    "total_installed_cost": 122580.0,
-    "total_installed_cost_per_kw": 6129.0,
+    "total_installed_cost": 161260.0,
+    "total_installed_cost_per_kw": 8063.0,
     "total_uncert": 12.085,
     "turb_generic_loss": 1.7,
     "turb_generic_uncert": 3.72,
@@ -28265,11 +28265,11 @@
     "turb_subopt_uncert": 2.0,
     "turb_uncert_total": 4.50315,
     "turbine_cost_fixed": 0.0,
-    "turbine_cost_per_kw": 2781.0,
+    "turbine_cost_per_kw": 3225.0,
     "turbine_cost_per_turbine": 0.0,
-    "turbine_cost_total": 55620.0,
+    "turbine_cost_total": 64500.0,
     "ui_annual_load": 0.0,
-    "ui_net_capital_cost": 122580.0,
+    "ui_net_capital_cost": 161260.0,
     "ui_step_minutes": 60.0,
     "ui_wacc": 6.2388,
     "ur_annual_min_charge": 0.0,
@@ -30060,6 +30060,8 @@
     "ur_monthly_fixed_charge": 10.0,
     "ur_monthly_min_charge": 0.0,
     "ur_name": "Generic Residential",
+    "ur_nb_apply_credit_current_month": 0.0,
+    "ur_nb_credit_expire": 0.0,
     "ur_nm_credit_month": 11.0,
     "ur_nm_credit_rollover": 0.0,
     "ur_nm_yearend_sell_rate": 0.0,

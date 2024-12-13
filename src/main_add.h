@@ -74,7 +74,12 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
-			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023
+			{ 2024, 12, 12},	// 2024.12.12 ssc 298 public release
+			{ 2024, 11, 14},	// 2024.11.14 ssc 295 beta release for IPH configurations expires 1/31/2025
+			{ 2024, 9, 15},		// 2024.09.15 Placeholder version number for updated NT variable names (replace with release version number)		
+			{ 2024, 9, 11},		// 2024.09.11 Final Norwich beta		
+			{ 2024, 5, 28},		// 2024.05.28 Change trough mass flow rate limits 
+			{ 2023, 12, 17 },  // 2023.12.17 ssc 288 release candidate from develop - no expiration first built 12/11/2023, 2023.12.17.r1.ssc.290 3/7/2024, 2023.12.17.r2.ssc.292 8/12/2024 
 			{ 2023, 12, 1 },  // 2023.12.1 ssc 287 2023 release candidate from develop expires 12/17/2023
 			{ 2023, 10, 31 },  // 2023.10.31 ssc 286 public beta release from develop expires 11/30/2023
 			{ 2023, 10, 6 },  // 2023.10.6 ssc 285 beta release from develop with hybrids expires 1/6/2024
@@ -255,7 +260,8 @@ public:
 		//dc.SetBackground(wxBrush(wxColour(151, 69, 21))); // Burnt Orange from Brian 11/12/2020
 		//dc.SetBackground(wxBrush(wxColour(4, 16, 96))); // Navy Blue (Matt's birthday 4/16/96) 11/22/21
 		//dc.SetBackground(wxBrush(wxColour(182, 86, 42))); // Thanksgiving color palette https://www.color-hex.com/color-palette/27134
-		dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
+		//dc.SetBackground(wxBrush(wxColour(49, 212, 179))); // 10/31/2023
+		dc.SetBackground(wxBrush(wxColour(255, 200, 45))); // 11/1/2024 University of Kansas KU Jayhawks
 
 		dc.Clear();
 
@@ -571,7 +577,7 @@ public:
 			return;
 		}
 		else if ( url == ":forum" )
-			url = SamApp::WebApi( "forum" );
+			url = SamApp::WebApi( "website" ) + "/forum.html";
 		else if ( url == ":website" )
 			url = SamApp::WebApi( "website" );
 

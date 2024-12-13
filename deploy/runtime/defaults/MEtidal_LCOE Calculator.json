@@ -3,6 +3,20 @@
     "active_structure_cost": 0.0,
     "additional_structural_components_cost": 0.0,
     "additional_structural_components_cost_total": 0.0,
+    "adjust": 0.0,
+    "adjust_constant": 0.0,
+    "adjust_en_periods": 0.0,
+    "adjust_en_timeindex": 0.0,
+    "adjust_periods": [
+        [
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "adjust_timeindex": [
+        0.0
+    ],
     "air_turbine_cost": 0.0,
     "air_turbine_cost_rvalue": 0.0,
     "air_turbine_cost_total": 0.0,
@@ -41,8 +55,8 @@
     "assembly_areas_cost": 0.0,
     "balance_of_system_cost_input": 0.0,
     "balance_of_system_cost_override": 0.0,
-    "balance_of_system_cost_total": 9760050.0,
-    "balance_of_system_cost_total_mill": 9.76005,
+    "balance_of_system_cost_total": 8512660.0,
+    "balance_of_system_cost_total_mill": 8.51266,
     "balance_of_system_scheduled_maintenance_cost": 0.0,
     "balance_of_system_unscheduled_maintenance_cost": 0.0,
     "ballast_system_cost": 0.0,
@@ -57,7 +71,7 @@
         0.0
     ],
     "c_construction_duration": 0.0,
-    "c_construction_interest": 3.5,
+    "c_construction_interest": 6.5,
     "c_debt_percent": 0.0,
     "c_depreciation_schedule": [
         20.0,
@@ -80,8 +94,8 @@
     "cable_protection_cost_total": 0.0,
     "cable_protection_cost_total_check": 0.0,
     "cable_system_overbuild": 10.0,
-    "capex_check": 13623300.0,
-    "capital_cost": 15217300.0,
+    "capex_check": 12408700.0,
+    "capital_cost": 13860600.0,
     "carrying_cost_during_construction_cost": 0.0,
     "cathodic_protection_system_cost": 0.0,
     "civil_infrastructure_cost": 0.0,
@@ -180,10 +194,10 @@
     "due_diligence_cost": 0.0,
     "e&m_shown": 0.0,
     "elec_infrac_shown": 0.0,
-    "elec_infras_cost": 2100470.0,
+    "elec_infras_cost": 885871.0,
     "elec_infras_cost_input": 0.0,
     "elec_infras_cost_method": 2.0,
-    "elec_infras_cost_modeled": 2100470.0,
+    "elec_infras_cost_modeled": 885871.0,
     "elec_infras_cost_rvalue": 0.0,
     "elec_infras_cost_total": 885871.0,
     "elec_infras_override": 0.0,
@@ -236,8 +250,8 @@
     "feed_cost": 0.0,
     "financial_cost_input": 0.0,
     "financial_cost_override": 0.0,
-    "financial_cost_total": 1226100.0,
-    "financial_cost_total_mill": 1.2261,
+    "financial_cost_total": 1116790.0,
+    "financial_cost_total_mill": 1.11679,
     "financial_itemized_shown": 0.0,
     "financial_override_check": 0.0,
     "financing_and_incentives_cost": 0.0,
@@ -277,9 +291,9 @@
     "initial_engineering_cost_rvalue": 0.0,
     "initial_engineering_cost_total": 0.0,
     "initial_engineering_cost_total_check": 0.0,
-    "insurance_during_construction_cost": 136233.0,
+    "insurance_during_construction_cost": 124087.0,
     "insurance_during_construction_cost_input": 0.0,
-    "insurance_during_construction_cost_modeled_ui": 136233.0,
+    "insurance_during_construction_cost_modeled_ui": 124087.0,
     "insurance_during_construction_cost_rvalue": 0.0,
     "insurance_during_construction_method": 2.0,
     "insurance_during_construction_modeled": 133690.0,
@@ -463,7 +477,7 @@
     "library_or_input_tidal": 0.0,
     "load_grid_voltage": 8.0,
     "load_grid_voltage_options": 0.0,
-    "location": "<invalid>",
+    "location": "Woods Hole the Strait",
     "location_id": "COD0911",
     "lon": -70.6829,
     "long_term_service_agreement_cost": 0.0,
@@ -512,7 +526,7 @@
     "mooring_shown": 0.0,
     "navigation_lighting_cost": 0.0,
     "noise_mitigation_cost": 0.0,
-    "notes": "-",
+    "notes": "",
     "number_devices": 1.0,
     "number_rows": 1.0,
     "offshore_accommodations_platform_cost": 0.0,
@@ -525,7 +539,7 @@
     "offshore_logistical_infrastructure_assem_install_cost": 0.0,
     "offshore_logistical_infrastructure_other_infras_cost": 0.0,
     "offshore_substation_assem_install_cost": 0.0,
-    "offshore_substation_choice": 0.0,
+    "offshore_substation_choice": 1.0,
     "offshore_substation_cost": 0.0,
     "offshore_substation_cost_input": 0.0,
     "offshore_substation_cost_method": 2.0,
@@ -549,11 +563,11 @@
     "onshore_land_lease_cost": 0.0,
     "onshore_om_facilities_cost": 0.0,
     "onshore_substation_assem_install_cost": 0.0,
-    "onshore_substation_choice": 0.0,
+    "onshore_substation_choice": 1.0,
     "onshore_substation_cost": 0.0,
     "onshore_substation_cost_input": 0.0,
     "onshore_substation_cost_method": 2.0,
-    "onshore_substation_cost_modeled": 1214600.0,
+    "onshore_substation_cost_modeled": 0.0,
     "onshore_substation_cost_rvalue": 0.0,
     "onshore_substation_cost_total": 0.0,
     "onshore_substation_cost_total_check": 0.0,
@@ -663,11 +677,11 @@
     "personnel_access_system_cost": 0.0,
     "personnel_access_system_mooring_cost": 0.0,
     "personnel_facilities_cost": 0.0,
-    "plant_commissioning_cost": 217973.0,
+    "plant_commissioning_cost": 198540.0,
     "plant_commissioning_cost_input": 0.0,
     "plant_commissioning_cost_method": 2.0,
     "plant_commissioning_cost_modeled": 213904.0,
-    "plant_commissioning_cost_modeled_ui": 217973.0,
+    "plant_commissioning_cost_modeled_ui": 198540.0,
     "plant_commissioning_cost_rvalue": 0.0,
     "plumbing_fittings_cost": 0.0,
     "port_fees_cost": 0.0,
@@ -710,11 +724,11 @@
     "profit_eng_cost": 0.0,
     "project_certification_cost": 0.0,
     "project_certification_cost_total_display": 0.0,
-    "project_contingency_budget_cost": 681167.0,
+    "project_contingency_budget_cost": 620437.0,
     "project_contingency_budget_cost_rvalue": 0.0,
     "project_contingency_cost_input": 0.0,
     "project_contingency_cost_method": 2.0,
-    "project_contingency_cost_modeled_ui": 681167.0,
+    "project_contingency_cost_modeled_ui": 620437.0,
     "project_contingency_modeled": 668449.0,
     "project_management_during_development_cost": 0.0,
     "project_management_during_development_cost_rvalue": 0.0,
@@ -727,10 +741,10 @@
     "quayside_docking_fees_cost": 0.0,
     "railings_cost": 0.0,
     "rectifying_circuit_cost": 0.0,
-    "reserve_accounts_cost": 408700.0,
+    "reserve_accounts_cost": 372262.0,
     "reserve_accounts_cost_input": 0.0,
     "reserve_accounts_cost_method": 2.0,
-    "reserve_accounts_cost_modeled_ui": 408700.0,
+    "reserve_accounts_cost_modeled_ui": 372262.0,
     "reserve_accounts_cost_rvalue": 0.0,
     "reserve_accounts_cost_total": 0.0,
     "reserve_accounts_modeled": 401069.0,
@@ -763,11 +777,11 @@
     "shortterm_energy_storage_cost": 0.0,
     "shortterm_energy_storage_cost_total": 0.0,
     "site_access_override": 0.0,
-    "site_access_port_staging_cost": 149857.0,
+    "site_access_port_staging_cost": 136496.0,
     "site_access_port_staging_cost_input": 0.0,
     "site_access_port_staging_cost_method": 2.0,
     "site_access_port_staging_cost_modeled": 147059.0,
-    "site_access_port_staging_cost_modeled_ui": 149857.0,
+    "site_access_port_staging_cost_modeled_ui": 136496.0,
     "site_access_port_staging_cost_rvalue": 0.0,
     "site_access_port_staging_cost_total": 0.0,
     "site_access_shown": 0.0,
@@ -1096,8 +1110,8 @@
     "tidal_turbine_cut_out": 3.3,
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
-    "tidal_turbine_kw_rating": 0.0,
-    "tidal_turbine_kw_rating_input": 210.0,
+    "tidal_turbine_kw_rating": 8129.31,
+    "tidal_turbine_kw_rating_rotor": 4064.66,
     "tidal_turbine_max_cp": [
         0.42
     ],
@@ -1110,33 +1124,33 @@
         51.3933,
         100.378,
         173.452,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0,
-        210.0
+        275.436,
+        411.147,
+        585.402,
+        803.021,
+        1068.82,
+        1387.62,
+        1764.24,
+        2203.49,
+        2710.19,
+        3289.17,
+        3945.24,
+        4683.22,
+        5507.92,
+        6424.16,
+        7436.77,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31,
+        8129.31
     ],
     "tidal_turbine_powercurve_tidalspeeds": [
         0.0,
@@ -1180,6 +1194,129 @@
     "tidal_turbine_rotor_diameter": 0.0,
     "tidal_turbine_rotor_diameter_input": 50.0,
     "tidal_turbine_site_depth": 50.0,
+    "tidal_turbine_target_cf": 30.0,
+    "tidal_vel_freq": [
+        [
+            0.1,
+            0.0710046
+        ],
+        [
+            0.2,
+            0.0376712
+        ],
+        [
+            0.3,
+            0.0393836
+        ],
+        [
+            0.4,
+            0.0417808
+        ],
+        [
+            0.5,
+            0.0416667
+        ],
+        [
+            0.6,
+            0.0480594
+        ],
+        [
+            0.7,
+            0.0544521
+        ],
+        [
+            0.8,
+            0.0634703
+        ],
+        [
+            0.9,
+            0.0976027
+        ],
+        [
+            1.0,
+            0.142466
+        ],
+        [
+            1.1,
+            0.116096
+        ],
+        [
+            1.2,
+            0.0805936
+        ],
+        [
+            1.3,
+            0.0523973
+        ],
+        [
+            1.4,
+            0.0364155
+        ],
+        [
+            1.5,
+            0.0269406
+        ],
+        [
+            1.6,
+            0.0199772
+        ],
+        [
+            1.7,
+            0.0116438
+        ],
+        [
+            1.8,
+            0.00958904
+        ],
+        [
+            1.9,
+            0.00547945
+        ],
+        [
+            2.0,
+            0.00251142
+        ],
+        [
+            2.1,
+            0.000799087
+        ],
+        [
+            2.2,
+            0.0
+        ],
+        [
+            2.3,
+            0.0
+        ],
+        [
+            2.4,
+            0.0
+        ],
+        [
+            2.5,
+            0.0
+        ],
+        [
+            2.6,
+            0.0
+        ],
+        [
+            2.7,
+            0.0
+        ],
+        [
+            2.8,
+            0.0
+        ],
+        [
+            2.9,
+            0.0
+        ],
+        [
+            3.0,
+            0.0
+        ]
+    ],
     "tidal_velocity": [
         1.06411,
         0.907655,
@@ -9951,16 +10088,16 @@
     "total_device_cost_per_kwh": 4.24697,
     "total_financial_cost_lcoe": 5.90559,
     "total_financial_cost_per_kwh": 0.60996,
-    "total_installed_cost": 15217300.0,
+    "total_installed_cost": 13860600.0,
     "total_installed_cost_lcoe": 73.2949,
-    "total_installed_cost_mill": 15.2173,
+    "total_installed_cost_mill": 13.8606,
     "total_installed_cost_structural": 1102070.0,
     "total_operating_cost": 1362080.0,
     "total_operating_cost_mill": 1.36208,
     "total_operations_cost_lcoe": 26.7051,
     "total_operations_cost_per_kwh": 0.29789,
     "total_rated_capacity": 1115.0,
-    "total_test": 15217300.0,
+    "total_test": 13860600.0,
     "transmission_charges_rights_cost": 0.0,
     "transmission_towers_cost": 0.0,
     "transport_power_conversion_chain_cost": 0.0,
@@ -9969,9 +10106,9 @@
     "transport_structure_cost_total": 0.0,
     "transportation_cost": 0.0,
     "turbine_bearings_cost": 0.0,
-    "tz": -10.0,
+    "tz": 0.0,
     "ui_capital_cost_capacity": 0.0,
-    "ui_capital_cost_reference": 15217300.0,
+    "ui_capital_cost_reference": 13860600.0,
     "ui_cfin": 0.0,
     "ui_crf": "inf",
     "ui_fcr_input_option": 0.0,

@@ -650,7 +650,7 @@
         10.0
     ],
     "c_construction_duration": 0.0,
-    "c_construction_interest": 3.5,
+    "c_construction_interest": 6.5,
     "c_debt_percent": 100.0,
     "c_depreciation_schedule": [
         20.0,
@@ -1141,6 +1141,7 @@
     "station_id": "67345",
     "step": 3600.0,
     "system_capacity": 6000.0,
+    "system_capacity_heat_btu": 20.4728,
     "tes_hours": 0.0,
     "theta_dep": 10.0,
     "theta_stow": 10.0,

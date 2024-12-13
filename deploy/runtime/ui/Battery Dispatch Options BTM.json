@@ -1,7 +1,7 @@
 {
     "Name": "Battery Dispatch Options BTM",
-    "Width": 1056.0,
-    "Height": 232.0,
+    "Width": 1055.0,
+    "Height": 256.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -131,6 +131,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "batt_dispatch_auto_can_curtailcharge"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 415.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery can charge from grid-limited system power"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 7.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "batt_dispatch_auto_can_fuelcellcharge"
                 },
                 "X": {
@@ -139,7 +180,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -221,7 +262,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 144.0
+                    "Integer": 165.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -311,7 +352,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -360,7 +401,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 171.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -484,7 +525,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 218.0
+                    "Integer": 246.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -533,6 +574,19 @@
             "Type": 1.0,
             "Label": "DC connected battery can charge from clipped power",
             "Units": " ",
+            "Group": "Battery Dispatch",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_dispatch_auto_can_curtailcharge": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery can only charge from curtailed power",
+            "Units": "",
             "Group": "Battery Dispatch",
             "IndexLabels": "",
             "Flags": 3.0,
@@ -718,7 +772,9 @@
         "\tshow_hide_charge_options();",
         "\tenable_disable_powerflow_options();",
         "\tenable_charge_from_clip();",
-        "\tenable_charging_priority();",
+        "\tenable_charging_priority();\r",
+        "\tenable_grid_limited_power();\r",
+        "\tptc_pbi_with_grid_charging_message();",
         "\tif ( technology() == 'Fuel Cell' && value('en_batt') == 0 ) { \r",
         "\t\tmsg = 'Battery storage is not enabled. Enable battery on Battery Storage page before setting storage dispatch options. ';\r",
         "\t\tclr = 'red';\r",
@@ -739,18 +795,20 @@
         "",
         "on_change{'batt_dispatch_choice_ui'} = define() {",
         "\tshow_hide_charge_options();",
-        "\tenable_charge_from_clip();",
+        "\tenable_charge_from_clip();\r",
+        "\tenable_grid_limited_power();",
         "\tenable_disable_powerflow_options();",
         "\tenable_charging_priority();\r",
-        "\tptc_with_grid_charging_message();",
+        "\tptc_pbi_with_grid_charging_message();",
         "\tvalue('batt_dispatch_excl', value('batt_dispatch_choice_ui'));",
         "};",
         "",
         "on_change{'batt_dispatch_auto_can_charge'} = define() {",
         "\tenable_disable_powerflow_options();\r",
+        "\tenable_grid_limited_power();\r",
         "};\r",
         "\r",
-        "on_change{'batt_dispatch_auto_can_gridcharge'} = define() {ptc_with_grid_charging_message();};",
+        "on_change{'batt_dispatch_auto_can_gridcharge'} = define() {ptc_pbi_with_grid_charging_message();};",
         "",
         "// Only allow system charge priority options when this is unchecked",
         "on_change{'batt_dispatch_charge_only_system_exceeds_load'} = define() {",
@@ -775,7 +833,7 @@
         "\tenable('batt_dispatch_auto_btm_can_discharge_to_grid', option == 2);",
         "\tshow('batt_dispatch_auto_can_fuelcellcharge', option !=3 && \r",
         "\t\t(technology() == 'Fuel Cell' || technology() == 'PVWatts Wind FuelCell Battery Hybrid'\r",
-        "\t\t|| technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid'));",
+        "\t\t|| technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid'));",
         "\trefresh(); \r",
         "}",
         "",
@@ -805,12 +863,35 @@
         "\t} ",
         "\tbtm_warning_message();",
         "}",
+        "\r",
+        "function enable_grid_limited_power()\r",
+        "{\r",
+        "\tinterconnection = value(\"enable_interconnection_limit\");\r",
+        "\tcurtailment = value(\"grid_curtailment\");\r",
+        "\ten_curtailment = false;\r",
+        "\tfor (i=0; i<#curtailment; i++)\r",
+        "\t{\r",
+        "\t\tif (curtailment[i] < 9e37) {\r",
+        "\t\t\ten_curtailment = true;\r",
+        "\t\t\tbreak;\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\ten_dispatch = value('batt_dispatch_choice_ui') == 3 || (value('batt_dispatch_choice_ui') == 4);\r",
+        "\ten_system_power = value('batt_dispatch_auto_can_charge');\r",
+        "\tif ((interconnection || en_curtailment) && en_dispatch && !en_system_power) {\r",
+        "\t\tenable('batt_dispatch_auto_can_curtailcharge', true);\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tenable('batt_dispatch_auto_can_curtailcharge', false);\r",
+        "\t\tproperty('batt_dispatch_auto_can_curtailcharge','State', 0);\r",
+        "\t}\r",
+        "}\r",
         "",
         "function btm_warning_message() {",
         "\tis_dc = (value('batt_ac_or_dc' ) == 0);",
         "\tcolor = 'black';",
         "\tif ( is_dc ) {",
-        "\t\tmsg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems. Charging from clipped system power is only available for Price Signal Forecast and Manual dispatch options.'; ",
+        "\t\tmsg = 'Battery is DC-connected. The Charge From System Only When System Output Exceeds Load option is only available for AC-connected systems. Charging from clipped or grid-limited system power is only available for Retail Rate and Manual dispatch options.'; ",
         "\t}",
         "\telse { ",
         "\t\tmsg = 'Battery is AC-connected. Charging from clipped power is only available for DC-connected batteries. See input under Power Converters on Battery Cell and System page.'; ",

@@ -14,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="generator" content="Help+Manual" />
 	<meta name="keywords" content="" />
-	<meta name="description" content="The Uncertainty simulation option is available for the Detailed PV and PVWatts performance model. For the Wind Power model, the Uncertainties input page provides a way to model..." />
+	<meta name="description" content="The Uncertainty simulation option is available for the Detailed PV and PVWatts performance models. For the Wind Power model, the Uncertainties input page provides a way to..." />
 	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
 	<meta name="author" content="National Renewable Energy Laboratory" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?pvuncertainty.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -517,7 +512,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody">
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
-	<p class="p_Text"><span class="f_Text">The Uncertainty simulation option is available for the Detailed PV and PVWatts performance model. For the Wind Power model, the <a href="wind_uncertainties.html" class="topiclink">Uncertainties</a> input page provides a way to model uncertainties in wind resource or predicted power output of the model. For other models, the <a href="p50p90.html" class="topiclink">P50 / P90</a> simulation option calculates P-values given a set of weather files.</span></p>
+	<p class="p_Text"><span class="f_Text">The Uncertainty simulation option is available for the Detailed PV and PVWatts performance models. For the Wind Power model, the <a href="wind_uncertainties.html" class="topiclink">Uncertainties</a> input page provides a way to model uncertainties in wind resource or predicted power output of the model. For other models, the <a href="p50p90.html" class="topiclink">P50 / P90</a> simulation option calculates P-values given a set of weather files.</span></p>
 <p class="p_Text"><span class="f_Text">For descriptions of this implementation of uncertainty modeling, see:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Prilliman, M.; Hansen, C.; Keith, J.; Janzou, S.; Theristis, M.; Scheiner, A.; Ozakyol, E. (2023) Quantifying Uncertainty in PV Energy Estimates Final Report. National Renewable Energy Laboratory. 18 pp. NREL/TP-7A40-84993 (<a href="http://www.nrel.gov/docs/fy23osti/84993.pdf" target="_blank" class="weblink">PDF 541 KB</a>)</span></p>
 <p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">C.; Moser, D.; Belluardo, G.; Ingenhoven, P. (2018) <a href="https://iea-pvps.org/wp-content/uploads/2020/01/Uncertainties_in_PV_System_Yield_Predictions_and_Assessments_by_Task_13.pdf" target="_blank" class="weblink" title="Link to Uncertainties IEA Report IEA-PVPS T13-12:2018">Uncertainties in PV System Yield Predictions and Assessments</a>, PVPS Report IEA-PVPS T13-12:2018, International Energy Agency (IEA) Photovoltaic Power Systems Programme (PVPS).</span></p>
@@ -528,7 +523,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <span class="f_Note">&nbsp;</span><br />
 <span class="f_Note">In this description, &quot;annual energy&quot; means the total electrical output of the system in Year 1.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To model uncertainty:</span></p>
-<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_ProcedureStep">For each source of uncertainty, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to define a distribution.</span></p>
+<p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_ProcedureStep">For each source of uncertainty, click </span><span class="f_CHInterfaceElement">Edit</span><span class="f_ProcedureStep"> to define a distribution. Use the check box to enable or disable the source: Disabling a source of uncertainty removes its effect from the resulting graphs.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Click the information icon (&quot;i&quot;) next to the uncertainty source to see a description. If you are unsure of the distribution, you can use the default distribution, which is based on Table 15 in the IEA report cited above.</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">2.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Choose folder</span><span class="f_ProcedureStep"> to choose a weather file folder that contains at least ten valid weather files. If you do not have such a folder, first click </span><span class="f_CHInterfaceElement">Download from NSRDB</span><span class="f_ProcedureStep"> to automatically download a set of weather files from the NSRDB, and then choose the folder that contains the downloaded files.</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">3.</span><span class="f_ProcedureStep">Click </span><span class="f_CHInterfaceElement">Run uncertainty simulations</span><span class="f_ProcedureStep">.</span></p>

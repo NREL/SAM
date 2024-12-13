@@ -53,11 +53,11 @@ std::string module_doc(const std::string& tech_symbol){
             {"Biomass", "Biomass combustion for electricity generation"},
             {"CashloanModel", "Financial model for residential and commercial behind-the-meter projects"},
             {"Communitysolar", "Community solar owner financial model"},
+            {"CustomGenerationProfile", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input (formerly known as Generic System)"},
             {"Equpartflip", "PPA all equity partnership flip (no debt) financial model"},
             {"EtesElectricResistance", "Electric thermal energy storage"},
             {"EtesPtes", "Pumped thermal energy storage"},
             {"Fuelcell", "Fuel cell model"},
-            {"GenericSystem", "Basic power system model using either capacity, capacity factor, and heat rate, or an hourly power generation profile as input"},
             {"Geothermal", "Geothermal power model for hydrothermal and EGS systems with flash or binary conversion"},
             {"Grid", "Electric grid model"},
             {"Hcpv", "Concentrating photovoltaic system with a high concentration photovoltaic module model and separate inverter model"},
@@ -173,11 +173,13 @@ void builder_PySAM::all_options_of_cmod(const std::string &cmod) {
 void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::string &file_dir, bool stateful) {
     std::string cmod_symbol = format_as_symbol(cmod);
 
-    std::string tech_symbol = cmod_symbol;
     if (cmod_symbol == "6parsolve")
-        tech_symbol = "SixParsolve";
+        cmod_symbol = "SixParsolve";
+    else if (cmod_symbol == "Tcsmslf")
+        cmod_symbol = "TcsMSLF";
     else if (root->m_vardefs.find(cmod_symbol) != root->m_vardefs.end())
-        tech_symbol += "Model";
+        cmod_symbol += "Model";
+    std::string tech_symbol = cmod_symbol;
 
     std::ofstream fx_file;
     fx_file.open(file_dir + "/modules/" + tech_symbol + ".c");
@@ -185,7 +187,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "#include <Python.h>\n"
                "\n"
-               "#include <SAM_" << cmod_symbol << ".h>\n"
+               "#include <SAM_" << tech_symbol << ".h>\n"
                "#include <SAM_api.h>\n"
                "\n"
                "#include \"PySAM_utils.h\"\n\n";
@@ -612,6 +614,10 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
 
     fx_file << "\tPyObject_Del(self);\n"
                "}\n\n\n";
+    fx_file << "static PyObject *\n"
+                "" << tech_symbol << "_get_data_ptr(" << object_type << " *self, PyObject *args)\n"
+                "{\n\tPyObject* ptr = PyLong_FromVoidPtr((void*)self->data_ptr);\n"
+                "\treturn ptr;\n}\n\n\n";
 
     if (stateful) {
         fx_file << "static PyObject *\n"
@@ -704,7 +710,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\t{\"value\",             (PyCFunction)" << tech_symbol << "_value, METH_VARARGS,\n"
                "\t\t\t\tPyDoc_STR(\"value(name, optional value) -> Union[None, float, dict, sequence, str]\\n Get or set by name a value in any of the variable groups.\")},\n"
                "\t\t{\"unassign\",          (PyCFunction)" << tech_symbol << "_unassign, METH_VARARGS,\n"
-               "\t\t\t\tPyDoc_STR(\"unassign(name) -> None\\n Unassign a value in any of the variable groups.\")},\n";
+               "\t\t\t\tPyDoc_STR(\"unassign(name) -> None\\n Unassign a value in any of the variable groups.\")},\n"
+               "\t\t{\"get_data_ptr\",           (PyCFunction)" << tech_symbol << "_get_data_ptr,  METH_VARARGS,\n"
+			   "\t\t\t\tPyDoc_STR(\"get_data_ptr() -> Pointer\\n Get ssc_data_t pointer\")},\n";
 
     // add ssc equations as methods under the cmod class
     auto cmod_it = root->m_eqn_entries.find(cmod_symbol);
@@ -1100,8 +1108,17 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
             fx_file << "-";
         fx_file << "-\n\n";
 
-        fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
-        fx_file << "\t:members:\n\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << ".. autoclass:: PySAM.AdjustmentFactors.AdjustmentFactors\n";
+        }
+        else {
+            fx_file << ".. autoclass:: PySAM." << tech_symbol << "." << tech_symbol << "." << module_symbol << "\n";
+        }
+        fx_file << "\t:members:\n";
+        if (module_symbol == "AdjustmentFactors") {
+            fx_file << "\t:noindex:\n";
+        }
+        fx_file << "\n";
     }
 
     fx_file.close();
@@ -1125,6 +1142,9 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                "\t\tpass\n"
                "\n"
                "\tdef export(self):\n"
+               "\t\tpass\n"
+               "\n"
+               "\tdef get_data_ptr(self):\n"
                "\t\tpass\n"
                "\n"
                "\tdef __getattribute__(self, *args, **kwargs):\n"
@@ -1158,15 +1178,27 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
                        "\t\tdef __init__(self, *args, **kwargs): # real signature unknown\n"
                        "\t\t\tpass\n"
                        "\t\n"
-                       "\t\tconstant = float\n"
-                       "\t\tdc_constant = float\n"
-                       "\t\tdc_hourly = tuple\n"
-                       "\t\tdc_periods = tuple\n"
-                       "\t\thourly = tuple\n"
-                       "\t\tperiods = tuple\n"
-                       "\t\tsf_constant = float\n"
-                       "\t\tsf_hourly = tuple\n"
-                       "\t\tsf_periods = tuple\n\n";
+                       "\t\tadjust_constant = float\n"
+                       "\t\tadjust_en_hourly = float\n"
+                       "\t\tadjust_en_periods = float\n"
+                       "\t\tadjust_en_timeindex = float\n"
+                       "\t\tadjust_hourly = tuple\n"
+                       "\t\tadjust_periods = tuple\n"
+                       "\t\tadjust_timeindex = tuple\n"
+                       "\t\tdc_adjust_constant = float\n"
+                       "\t\tdc_adjust_en_hourly = float\n"
+                       "\t\tdc_adjust_en_periods = float\n"
+                       "\t\tdc_adjust_en_timeindex = float\n"
+                       "\t\tdc_adjust_hourly = tuple\n"
+                       "\t\tdc_adjust_periods = tuple\n"
+                       "\t\tdc_adjust_timeindex = tuple\n"
+                       "\t\tsf_adjust_constant = float\n"
+                       "\t\tsf_adjust_en_hourly = float\n"
+                       "\t\tsf_adjust_en_periods = float\n"
+                       "\t\tsf_adjust_en_timeindex = float\n"
+                       "\t\tsf_adjust_hourly = tuple\n"
+                       "\t\tsf_adjust_periods = tuple\n"
+                       "\t\tsf_adjust_timeindex = tuple\n\n";
             continue;
         }
 

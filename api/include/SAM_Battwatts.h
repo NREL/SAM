@@ -179,6 +179,51 @@ extern "C"
 
 
 	//
+	// AdjustmentFactors parameters
+	//
+
+	/**
+	 * Set batt_adjust_constant: Battery Constant loss adjustment [%]
+	 * options: None
+	 * constraints: MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_AdjustmentFactors_batt_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_en_periods: Enable battery period-based adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_AdjustmentFactors_batt_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_en_timeindex: Enable battery lifetime adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Battwatts_AdjustmentFactors_batt_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_periods: Battery Period-based Adjustment Factors [%]
+	 * options: n x 3 matrix [ start, end, loss ]
+	 * constraints: COLS=3
+	 * required if: batt_adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_Battwatts_AdjustmentFactors_batt_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_timeindex: Battery Lifetime Adjustment Factors [%]
+	 * options: None
+	 * constraints: None
+	 * required if: batt_adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_Battwatts_AdjustmentFactors_batt_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// GridLimits parameters
 	//
 
@@ -257,6 +302,21 @@ extern "C"
 
 
 	/**
+	 * AdjustmentFactors Getters
+	 */
+
+	SAM_EXPORT double SAM_Battwatts_AdjustmentFactors_batt_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_AdjustmentFactors_batt_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_AdjustmentFactors_batt_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_AdjustmentFactors_batt_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Battwatts_AdjustmentFactors_batt_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * GridLimits Getters
 	 */
 
@@ -311,6 +371,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_annual_energy_system_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_availability_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Battwatts_Outputs_batt_bank_installed_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -330,6 +392,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_cycles_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_dispatch_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -399,6 +463,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battwatts_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_cdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -449,11 +517,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_monthly_system_to_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Battwatts_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Battwatts_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Battwatts_Outputs_resilience_hrs_aget(SAM_table ptr, int* length, SAM_error *err);
 

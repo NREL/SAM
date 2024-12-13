@@ -6,7 +6,7 @@
 			"federal_tax_rate": [21.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
-			"loan_rate": 4,
+			"loan_rate": 7,
 			"loan_term": 25,
 			"prop_tax_assessed_decline": 0,
 			"prop_tax_cost_assessed_percent": 100,
@@ -18,10 +18,10 @@
 		},
 		"SystemCosts": {
 			"add_om_num_types": 2,
-			"om_batt_capacity_cost": [0.000000],
+			"om_batt_capacity_cost": [5.250000],
 			"om_batt_fixed_cost": [0.000000],
 			"om_batt_nameplate": 1200.21,
-			"om_batt_replacement_cost": [225.060000],
+			"om_batt_replacement_cost": [184.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [18.000000],
 			"om_capacity_escal": 0,
@@ -37,7 +37,7 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 2.93647e+06
+			"total_installed_cost": 2.91114e+06
 		},
 		"LandLease": {
 		},
@@ -144,29 +144,30 @@
 			"pbi_fed_escal": 0,
 			"pbi_fed_tax_fed": 1,
 			"pbi_fed_tax_sta": 1,
-			"pbi_fed_term": 10,
+			"pbi_fed_term": 0,
 			"pbi_oth_amount": [0.000000],
 			"pbi_oth_escal": 0,
 			"pbi_oth_tax_fed": 1,
 			"pbi_oth_tax_sta": 1,
-			"pbi_oth_term": 10,
+			"pbi_oth_term": 0,
 			"pbi_sta_amount": [0.000000],
 			"pbi_sta_escal": 0,
 			"pbi_sta_tax_fed": 1,
 			"pbi_sta_tax_sta": 1,
-			"pbi_sta_term": 10,
+			"pbi_sta_term": 0,
 			"pbi_uti_amount": [0.000000],
 			"pbi_uti_escal": 0,
 			"pbi_uti_tax_fed": 1,
 			"pbi_uti_tax_sta": 1,
-			"pbi_uti_term": 10
+			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
 			"batt_computed_bank_capacity": 1200.21,
 			"batt_replacement_option": 0,
 			"batt_replacement_schedule_percent": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
-			"battery_per_kWh": 225.06,
-			"en_batt": 1
+			"battery_per_kWh": 184,
+			"en_batt": 1,
+			"en_standalone_batt": 0
 		},
 		"FuelCell": {
 			"fuelcell_replacement_option": 1,
@@ -204,7 +205,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 406288
+			"battery_total_cost_lcos": 433616
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

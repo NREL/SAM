@@ -1,0 +1,23 @@
+{
+	"defaults": {
+		"Plant": {
+			"conv_eff": 0,
+			"derate": 0,
+			"heat_rate": 0,
+			"spec_mode": 0,
+			"system_capacity": 377123,
+			"user_capacity_factor": 0
+		},
+		"Lifetime": {
+			"analysis_period": 25
+		},
+		"AdjustmentFactors": {
+		},
+		"HybridCosts": {
+			"om_capacity": [0],
+			"om_fixed": [0],
+			"om_production": [0],
+			"total_installed_cost": 6.18984e+08
+		}
+	}
+}

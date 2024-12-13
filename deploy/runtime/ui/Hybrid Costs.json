@@ -679,7 +679,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_fuel_cell_cost"
+                    "String": "ui_customgeneration_cost"
                 },
                 "X": {
                     "Type": 3.0,
@@ -687,7 +687,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 210.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -762,7 +762,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_generic_cost"
+                    "String": "ui_fuel_cell_cost"
                 },
                 "X": {
                     "Type": 3.0,
@@ -770,7 +770,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 210.0
+                    "Integer": 183.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1086,10 +1086,10 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_fuel_cell_cost": {
+        "ui_customgeneration_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Fuel cell installed cost",
+            "Label": "Custom generation installed cost",
             "Units": "$",
             "Group": "Hybrid Costs",
             "IndexLabels": "",
@@ -1099,10 +1099,10 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "ui_generic_cost": {
+        "ui_fuel_cell_cost": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Generic system installed cost",
+            "Label": "Fuel cell installed cost",
             "Units": "$",
             "Group": "Hybrid Costs",
             "IndexLabels": "",
@@ -1154,7 +1154,7 @@
         "\r",
         "equations{ 'ui_fuel_cell_cost' } = define() {\r",
         "\tif ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' \r",
-        "\t  || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t  || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
         "\t\treturn ${fuelcell_total_installed_cost};\r",
         "\t}\r",
         "\telse {\r",
@@ -1162,9 +1162,9 @@
         "\t}\r",
         "};\r",
         "\r",
-        "equations{ 'ui_generic_cost' } = define() {\r",
-        "\tif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
-        "\t\treturn ${generic_total_installed_cost};\r",
+        "equations{ 'ui_customgeneration_cost' } = define() {\r",
+        "\tif ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\t\treturn ${customgeneration_total_installed_cost};\r",
         "\t}\r",
         "\telse {\r",
         "\t\treturn 0;\r",
@@ -1192,9 +1192,9 @@
         "             + ${wind_total_installed_cost} \r",
         "             + ${battery_total_installed_cost};\r",
         "\t}\r",
-        "\telseif ( technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) {\r",
+        "\telseif ( technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) {\r",
         "\t\treturn ${hybrid_capital_cost}\r",
-        "\t\t     + ${generic_total_installed_cost} \r",
+        "\t\t     + ${customgeneration_total_installed_cost} \r",
         "             + ${pv_total_installed_cost} \r",
         "             + ${wind_total_installed_cost}  \r",
         "             + ${fuelcell_total_installed_cost} \r",
@@ -1208,9 +1208,9 @@
     ],
     "Callbacks": [
         "on_load{'Hybrid Costs'} = define() {\r",
-        "\tis_generic_tech = technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid';\r",
-        "\tis_fuel_cell_tech = ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'Generic PVWatts Wind FuelCell Battery Hybrid' ) ;\r",
-        "\tshow( 'ui_generic_cost',  is_generic_tech );\r",
+        "\tis_customgeneration_tech = technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid';\r",
+        "\tis_fuel_cell_tech = ( technology() == 'PVWatts Wind FuelCell Battery Hybrid' || technology() == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid' ) ;\r",
+        "\tshow( 'ui_customgeneration_cost',  is_customgeneration_tech );\r",
         "\tshow( 'ui_fuel_cell_cost', is_fuel_cell_tech );\r",
         "\tvalue('total_installed_cost', value('total_installed_cost'));\r",
         "\trefresh('total_installed_cost');\r",

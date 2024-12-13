@@ -885,7 +885,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The fixed annual operating cost on the Financial Parameters page is the sum of the Operations and Maintenance (O&M) costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance costs' box is used as the 'Fixed operating cost (annual) value in the Financial Parameters page. See Help for details."
+                    "String": "The fixed annual operating cost on the Financial Parameters page is the sum of the Operations and Maintenance (O&M) costs on this page. On this page, enter itemized operations and maintenance costs in $ or $/kW, check Override Cost Structure to enter the total O&M cost as a single value, or choose Use Modeled Value to have SAM automatically calculate the O&M cost. The value in the 'Total operations and mainetance costs' box is used as the 'Fixed operating cost (annual) value in the Financial Parameters page. For the Array Scaling option, the user input is the cost for a single device in $, which is scaled to the total category cost using the number of devices and the Array scaling R-value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,

@@ -9,12 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 cmake_minimum_required(VERSION 3.24)
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
-endif()
-
-if (UNIX AND NOT CMAKE_C_COMPILER)
-    set(CMAKE_C_COMPILER gcc)
-    set(CMAKE_CXX_COMPILER g++)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 
@@ -24,7 +19,7 @@ endif()
 #
 #####################################################################################################################
 
-Project(EXPORT_SAM_UI)
+Project(EXPORT_SAM_UI LANGUAGES CXX C)
 
 set(SAM_SOURCES
         ../../src/variables.cpp
@@ -39,7 +34,6 @@ file(TO_CMAKE_PATH ../../../ssc/shared/lib_util.cpp SSC_SOURCES)
 #
 #####################################################################################################################
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 if(MSVC)
@@ -116,6 +110,8 @@ set_target_properties(export_config
     DEBUG_POSTFIX "d"
     PREFIX ""
     )
+target_compile_features(export_config PUBLIC cxx_std_11)
+
 if (MSVC)
     set_target_properties(export_config
         PROPERTIES

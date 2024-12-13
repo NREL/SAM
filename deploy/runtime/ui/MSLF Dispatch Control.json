@@ -1,7 +1,7 @@
 {
     "Name": "MSLF Dispatch Control",
-    "Width": 909.0,
-    "Height": 707.0,
+    "Width": 903.0,
+    "Height": 763.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 621.0
+                    "Integer": 660.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -78,7 +78,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -140,7 +140,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -206,11 +206,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 900.0
+                    "Integer": 882.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 701.0
+                    "Integer": 749.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -239,7 +239,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 126.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -276,7 +276,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 429.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -313,7 +313,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 165.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -375,7 +375,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -437,7 +437,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -499,7 +499,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -561,7 +561,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -623,7 +623,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -685,7 +685,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -747,7 +747,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -809,7 +809,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 93.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -871,7 +871,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 141.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -929,11 +929,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -970,7 +970,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1053,7 +1053,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1136,7 +1136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 489.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1219,7 +1219,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1302,7 +1302,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1385,7 +1385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1468,7 +1468,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1551,7 +1551,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1634,7 +1634,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 594.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1709,6 +1709,47 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "is_timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 504.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Use hourly turbine output fraction?"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "is_tod_pc_target_also_pc_max"
                 },
                 "X": {
@@ -1754,11 +1795,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 22.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 375.0
+                    "Integer": 414.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1820,7 +1861,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 594.0
+                    "Integer": 633.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1882,7 +1923,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 609.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1944,7 +1985,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 585.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2006,7 +2047,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 522.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2068,7 +2109,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 498.0
+                    "Integer": 537.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2130,7 +2171,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 474.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2192,7 +2233,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 489.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2254,7 +2295,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 426.0
+                    "Integer": 465.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2316,7 +2357,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2365,6 +2406,51 @@
                 }
             }
         },
+        "DataArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "timestep_load_fractions"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 534.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 57.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Hourly load fractions"
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -2378,7 +2464,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2461,7 +2547,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 141.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2544,7 +2630,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 165.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2627,7 +2713,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 189.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2710,7 +2796,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2793,7 +2879,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2876,7 +2962,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2959,7 +3045,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3042,7 +3128,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 309.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3125,7 +3211,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3170,7 +3256,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 450.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3351,6 +3437,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "is_timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "is_tod_pc_target_also_pc_max": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3361,6 +3460,21 @@
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "timestep_load_fractions": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Hourly heat sink fractions",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataArray",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -4195,6 +4309,8 @@
         "\tenable(\"hybrid_tou7\", mode==2);",
         "\tenable(\"hybrid_tou8\", mode==2);",
         "\tenable(\"hybrid_tou9\", mode==2);",
+        "\r",
+        "\ton_change{\"is_timestep_load_fractions\"}();\r",
         "",
         "};",
         "\t",
@@ -4203,6 +4319,22 @@
         "    value( 'weekday_schedule' , value ( 'dispatch_sched_weekday' ) );",
         "    value( 'weekend_schedule' , value ( 'dispatch_sched_weekend' ) );",
         "",
+        "};\r",
+        "\r",
+        "on_change{\"is_timestep_load_fractions\"}=define(){\r",
+        "\tmode = value(\"is_timestep_load_fractions\");\r",
+        "\tenable(\"timestep_load_fractions\",mode==1);\r",
+        "\tenable(\"ui_disp_1_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_2_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_3_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_4_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_5_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_6_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_7_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_8_turbout\",mode==0);\r",
+        "\tenable(\"ui_disp_9_turbout\",mode==0);\r",
+        "\tenable(\"weekday_schedule\",mode==0);\r",
+        "\tenable(\"weekend_schedule\",mode==0);\r",
         "};"
     ]
 }

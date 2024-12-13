@@ -1578,7 +1578,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "cec_gamma_r"
+                    "String": "cec_gamma_pmp"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3310,7 +3310,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "gamma_r_calc"
+                    "String": "gamma_pmp_calc"
                 },
                 "X": {
                     "Type": 3.0,
@@ -3545,7 +3545,7 @@
                 },
                 "Fields": {
                     "Type": 5.0,
-                    "String": "Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_r,BIPV,Version,Date"
+                    "String": "Name,Manufacturer,Technology,Bifacial,STC,PTC,A_c,Length,Width,N_s,I_sc_ref,V_oc_ref,I_mp_ref,V_mp_ref,alpha_sc,beta_oc,T_NOCT,a_ref,I_L_ref,I_o_ref,R_s,R_sh_ref,Adjust,gamma_pmp,BIPV,Version,Date"
                 }
             }
         },
@@ -3583,6 +3583,130 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 7"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 816.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "%/°C"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 73"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 963.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 312.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 39.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "W/°C"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 }
             }
         },
@@ -4078,14 +4202,14 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "cec_gamma_r": {
+        "cec_gamma_pmp": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Pmp temperature coefficient (percentage)",
             "Units": "%/°C",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -4390,14 +4514,14 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "gamma_r_calc": {
+        "gamma_pmp_calc": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Pmp temperature coefficient (Watts)",
             "Units": "W/°C",
             "Group": "PV Module (CEC Database)",
             "IndexLabels": "",
-            "Flags": 8.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -4509,6 +4633,15 @@
         }
     },
     "Equations": [
+        "equations{ '$MIMO$ dispatch_vars_by_tech' } = define() {\r",
+        "\r",
+        "if (${module_name} == \"\") { // SAM issue 1314\r",
+        "\t${cec_n_s} = -1;\r",
+        "}\r",
+        "\r",
+        "};\r",
+        "\r",
+        "\r",
         "equations{ 'cec_aspect_ratio' } = define() {\r",
         "\tif ( ${lib_length} == 0 || ${lib_width} == 0 )\r",
         "\t\treturn ${ui_aspect_ratio};\r",
@@ -4547,8 +4680,8 @@
         "equations{ 'beta_oc_calc' } = define() {",
         "\treturn ${cec_beta_oc} / ${cec_v_oc_ref} * 100.0; };",
         "",
-        "equations{ 'gamma_r_calc' } = define() {",
-        "\treturn ${cec_gamma_r} * ${cec_p_mp_ref} / 100.0; };",
+        "equations{ 'gamma_pmp_calc' } = define() {",
+        "\treturn ${cec_gamma_pmp} * ${cec_p_mp_ref} / 100.0; };",
         "\t",
         "equations{'cec_step'} = define() {",
         "\treturn ${step};",

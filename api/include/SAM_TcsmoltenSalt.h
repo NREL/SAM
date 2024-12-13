@@ -61,6 +61,22 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_F_wc_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set T_tank_cold_init: Initial cold tank temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_T_tank_cold_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set T_tank_hot_init: Initial hot tank temp [C]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_T_tank_hot_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ampl_data_dir: AMPL data file directory
 	 * options: None
 	 * constraints: None
@@ -253,7 +269,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_spec_bb_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set disp_spec_presolve: Dispatch optimization presolve heuristic
+	 * Set disp_spec_presolve: Dispatch optimization pre-solve heuristic
 	 * options: None
 	 * constraints: None
 	 * required if: ?=-1
@@ -293,28 +309,20 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_timeout_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set disp_wlim_maxspec: Fixed design-point max net power to the grid (dispatch opt only)
-	 * options: None
-	 * constraints: None
-	 * required if: is_wlim_design=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_disp_wlim_maxspec_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set dispatch_series: Time series dispatch factors
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_dispatch_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set f_turb_tou_periods: Dispatch logic for turbine load fraction
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_PAR_HTR_allowed_in: User-provided is electrical heater operation allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1&is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_PAR_HTR_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set is_ampl_engine: Run dispatch optimization with external AMPL engine
@@ -333,12 +341,20 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set is_dispatch_series: Use time-series dispatch factors
+	 * Set is_dispatch_targets: Run solution from user-specified dispatch targets? [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_dispatch_targets_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set is_field_tracking_init: Is heliostat field tracking? (1 = true) [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_field_tracking_init_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set is_parallel_htr: Does plant include a HTF heater parallel to solar field?
@@ -349,28 +365,36 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set is_pc_sb_allowed_in: User-provided is power cycle standby allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_pc_sb_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_pc_su_allowed_in: User-provided is power cycle startup allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_pc_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set is_rec_su_allowed_in: User-provided is receiver startup allowed? [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set is_tod_pc_target_also_pc_max: Is the TOD target cycle heat input also the max cycle heat input?
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_wlim_design: Use fixed design-point net electricity generation limits (dispatch opt only)
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_design_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set is_wlim_series: Use time-series net electricity generation limits (dispatch opt only)
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set is_write_ampl_dat: Write AMPL data files for dispatch run
@@ -389,7 +413,63 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWe-hr]
+	 * Set pc_op_mode_initial: Initial cycle operation mode 0:startup, 1:on, 2:standby, 3:off, 4:startup_controlled [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pc_startup_energy_remain_initial: Initial cycle startup energy remaining [kwh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_startup_energy_remain_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set pc_startup_time_remain_init: Initial cycle startup time remaining [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_pc_startup_time_remain_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set q_dot_elec_to_PAR_HTR_in: User-provided electrical power to parallel heater [-]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1&is_parallel_htr=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_dot_elec_to_PAR_HTR_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_pc_max_in: User-provided max thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_max_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_pc_target_on_in: User-provided target thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_target_on_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_pc_target_su_in: User-provided target thermal power to PC [MWt]
+	 * options: None
+	 * constraints: None
+	 * required if: is_dispatch_targets=1
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_pc_target_su_in_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set q_rec_heattrace: Receiver heat trace energy consumption during startup [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0.0
@@ -403,6 +483,30 @@ extern "C"
 	 * required if: ?=9e99
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_op_mode_initial: Initial receiver operating mode 0: off, 1: startup, 2: on [-]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_op_mode_initial_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_startup_energy_remain_init: Initial receiver startup energy remaining [Wh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_startup_energy_remain_init_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set rec_startup_time_remain_init: Initial receiver startup time remaining [hr]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_rec_startup_time_remain_init_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set sim_type: 1 (default): timeseries, 2: design only
@@ -440,7 +544,7 @@ extern "C"
 	 * Set timestep_load_fractions: Turbine load fraction for each timestep, alternative to block dispatch
 	 * options: None
 	 * constraints: None
-	 * required if: ?
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_timestep_load_fractions_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -467,14 +571,6 @@ extern "C"
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
-
-	/**
-	 * Set wlim_series: Time series net electicity generation limits (dispatch opt only) [kWe]
-	 * options: None
-	 * constraints: None
-	 * required if: is_wlim_series=1
-	 */
-	SAM_EXPORT void SAM_TcsmoltenSalt_SystemControl_wlim_series_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 
 	//
@@ -863,7 +959,7 @@ extern "C"
 	 * Set piping_loss_coefficient: Thermal loss per meter of piping [Wt/m2-K]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_TowerAndReceiver_piping_loss_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1313,7 +1409,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_HeliostatField_opt_max_iter_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set p_start: Heliostat startup energy [kWe-hr]
+	 * Set p_start: Heliostat startup energy [kWhe]
 	 * options: None
 	 * constraints: None
 	 * required if: *
@@ -1683,7 +1779,7 @@ extern "C"
 	 * Set tes_init_hot_htf_percent: Initial fraction of available volume that is hot [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: *
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_ThermalStorage_tes_init_hot_htf_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1813,7 +1909,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_epsilon_radHX_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set epsilon_radbot: Emmissivity of top of radiator panel bottom (facing ground) [-]
+	 * Set epsilon_radbot: Emissivity of top of radiator panel bottom (facing ground) [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=.07
@@ -1821,7 +1917,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_epsilon_radbot_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set epsilon_radgrnd: Emmissivity of ground underneath radiator panel [-]
+	 * Set epsilon_radgrnd: Emissivity of ground underneath radiator panel [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=.90
@@ -1829,7 +1925,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_epsilon_radgrnd_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set epsilon_radtop: Emmissivity of top of radiator panel [-]
+	 * Set epsilon_radtop: Emissivity of top of radiator panel [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=.95
@@ -1885,7 +1981,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_RADCOOL_n_rad_tubes_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set rad_multiplier: Ratio of radiator field area to solar aperature area [-]
+	 * Set rad_multiplier: Ratio of radiator field area to solar aperture area [-]
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -2015,7 +2111,7 @@ extern "C"
 	//
 
 	/**
-	 * Set CT: Condensor type: 1=evaporative, 2=air, 3=hybrid
+	 * Set CT: Condenser type: 1=evaporative, 2=air, 3=hybrid
 	 * options: None
 	 * constraints: None
 	 * required if: pc_config=0
@@ -2116,7 +2212,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_ind_od_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
-	 * Set ud_is_sco2_regr: False: default, base udpc interpolation, True: use sco2 heuristic regression
+	 * Set ud_is_sco2_regr: 0: (default) simple max htf mass flow correction; 1: sco2 heuristic regression; 2: no correction
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -2132,7 +2228,7 @@ extern "C"
 	SAM_EXPORT void SAM_TcsmoltenSalt_UserDefinedPowerCycle_ud_m_dot_water_cool_des_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set use_net_cycle_output_as_capacity: False: default, use net calculation including system parasitics, True: for UDPC only, set as cycle output less cooling power
+	 * Set use_net_cycle_output_as_capacity: False: default, use net calculation including system parasitic, True: for UDPC only, set as cycle output less cooling power
 	 * options: None
 	 * constraints: None
 	 * required if: ?=0
@@ -2466,7 +2562,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2506,7 +2602,7 @@ extern "C"
 	 * Set sf_adjust_constant: SF Constant loss adjustment [%]
 	 * options: 'sf_adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_TcsmoltenSalt_AdjustmentFactors_sf_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -2557,6 +2653,10 @@ extern "C"
 	 */
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_F_wc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_T_tank_cold_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_T_tank_hot_init_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT const char* SAM_TcsmoltenSalt_SystemControl_ampl_data_dir_sget(SAM_table ptr, SAM_error *err);
 
@@ -2616,33 +2716,55 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_timeout_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_disp_wlim_maxspec_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_dispatch_series_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_f_turb_tou_periods_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_PAR_HTR_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_ampl_engine_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_series_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_dispatch_targets_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_field_tracking_init_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_parallel_htr_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_pc_sb_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_pc_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_is_rec_su_allowed_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_tod_pc_target_also_pc_max_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_design_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_wlim_series_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_is_write_ampl_dat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pb_fixed_par_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_op_mode_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_startup_energy_remain_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_pc_startup_time_remain_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_dot_elec_to_PAR_HTR_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_max_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_target_on_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_q_pc_target_su_in_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_heattrace_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_q_rec_standby_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_op_mode_initial_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_startup_energy_remain_init_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_rec_startup_time_remain_init_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err);
 
@@ -2659,8 +2781,6 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekday_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_weekend_schedule_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
-
-	SAM_EXPORT double* SAM_TcsmoltenSalt_SystemControl_wlim_series_aget(SAM_table ptr, int* length, SAM_error *err);
 
 
 	/**
@@ -3505,6 +3625,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_csp_pt_cost_tower_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_Tdb_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_eff_load_table_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_cycle_htf_pump_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_d_tank_tes_nget(SAM_table ptr, SAM_error *err);
@@ -3597,7 +3721,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_hot_hours_revenue_fraction_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_hot_tank_htf_percent_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_PAR_HTR_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_field_tracking_final_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_is_pc_sb_allowed_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3681,6 +3809,12 @@ extern "C"
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_operating_modes_c_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_startup_energy_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pc_startup_time_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pparasi_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_pricing_mult_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3748,6 +3882,12 @@ extern "C"
 	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_defocus_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_rec_height_calc_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_op_mode_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_startup_energy_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_TcsmoltenSalt_Outputs_rec_startup_time_remain_final_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_TcsmoltenSalt_Outputs_refl_image_error_nget(SAM_table ptr, SAM_error *err);
 

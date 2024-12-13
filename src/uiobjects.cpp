@@ -45,8 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <wex/plot/plplotctrl.h>
 #include <wex/csv.h>
 #include <wex/utils.h>
-#include <wex/jsonval.h>
-#include <wex/jsonreader.h>
+#include <rapidjson/document.h>
 
 #include "ptlayoutctrl.h"
 #include "materials.h"
@@ -931,12 +930,11 @@ public:
 			wxString tt_name;
 			wxString tt_title;
 			wxString json_file;
-			wxJSONReader reader;
-			wxJSONValue root;
+			rapidjson::Document reader;
 			wxString json_items;
 			wxTextFile tf;
 			wxString str_line;
-			int i;
+			size_t i;
 			// use widget property values if not defined in json file
 			tt_name = Property("Name").GetString();
 			tt_tips = Property("Tips").GetString();
@@ -950,17 +948,22 @@ public:
 					json_items += tf.GetNextLine();
 				tf.Close();
 			}
-			if (reader.Parse(json_items, &root) != 0)
+			reader.Parse(json_items.c_str());
+			if (reader.HasParseError())
 				tt_title = "JSON or file read failed.";
 			else
 			{
-				wxJSONValue tooltips = root["tooltips"];
-				for (i = 0; i < tooltips.Size(); i++)
-				{
-					if (tooltips[i]["name"].AsString() == tt_name)
-					{
-						tt_title = tooltips[i]["title"].AsString();
-						tt_tips = tooltips[i]["tip"].AsString();
+				if (reader.HasMember("tooltips")) {
+					if (reader["tooltips"].IsArray()) {
+						auto tooltips = reader["tooltips"].GetArray();
+						for (i = 0; i < tooltips.Size(); i++)
+						{
+							if (tooltips[i]["name"].GetString() == tt_name)
+							{
+								tt_title = tooltips[i]["title"].GetString();
+								tt_tips = tooltips[i]["tip"].GetString();
+							}
+						}
 					}
 				}
 			}
@@ -979,7 +982,7 @@ public:
 		AddProperty("TabOrder", new wxUIProperty( (int)-1 ) );
         AddProperty("Description", new wxUIProperty(wxString("")));
         AddProperty("Label", new wxUIProperty(wxString("")));
-        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Hourly,Subhourly"));
+        AddProperty("Mode", new wxUIProperty(1, "Single Value,Annual,Monthly,Weekly,Daily,Three Hourly,Hourly,Subhourly"));
         AddProperty("AnalysisPeriod", new wxUIProperty((int)25));
         AddProperty("ShowMode", new wxUIProperty(true));
         AddProperty("AnnualEnabled", new wxUIProperty(true));

@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?cc_fuel_cell.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -532,11 +527,11 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
 <p class="p_Text"><span class="f_Text">A direct capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module ($/Wdc or $/Unit)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Module, $/Wdc or $/Unit</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">You can specify the module cost either in $/Wdc or $/unit:</span></p>
 <p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Dollars per watt multiplied by </span><span class="f_CHInterfaceElement">System nameplate capacity</span><span class="f_VariableDescription"> from the <a href="fuelcell_pv_system.html" class="topiclink">PV System</a> page, or</span></p>
 <p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Dollars per unit, where the number of modules is assumed to be one.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inverter ($/Wac or $/Unit)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Inverter, $/Wac or $/Unit</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">For PVWatts, the inverter cost is either dollars per watt AC or DC, or dollars per inverter:</span></p>
 <p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Dollars per watt DC multiplied by the system nameplate capacity from the <a href="fuelcell_pv_system.html" class="topiclink">PV System</a> page, or</span></p>
 <p class="p_VariableDescription" style="text-indent: 0; padding-left: 0.8125rem; margin-left: 1.5000rem;"><span class="f_VariableDescription" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:0.8125rem;margin-left:-0.8125rem">&#8226;</span><span class="f_VariableDescription">Dollars per watt AC multiplied by the system nameplate capacity and divided by the DC to AC Derate Factor on the <a href="pvwatts_system_design.html" class="topiclink">System Design</a> page, or</span></p>
@@ -555,9 +550,9 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the battery's nominal power rating, equal to the </span><span class="f_CHInterfaceElement">Maximum charge power (AC) </span><span class="f_VariableDescription">on the <a href="battery_storage.html" class="topiclink">Battery Storage</a> page.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fuel Cell $/kW</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A cost proportional to the fuel cell stack nameplate capacity, equal to the </span><span class="f_CHInterfaceElement">Cell stack nameplate </span><span class="f_VariableDescription">on the <a href="fuelcell_fuel_cell.html" class="topiclink">Fuel Cell</a> &nbsp;page.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency (%)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency, %</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the module, inverter, balance-of-system, installation labor, and installer margin and overhead costs that you can use to account for expected uncertainties in direct cost estimates.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Direct Cost ($)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Direct Cost, $</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The sum of module, inverter, balance-of-system, installation labor, installer margin and overhead costs, and contingency costs.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Indirect Capital Costs</span></h3>
 <p class="p_Text"><span class="f_Text">An indirect cost is typically one that cannot be identified with a specific piece of equipment or installation service.</span></p>
@@ -576,7 +571,7 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <h4 class="p_Heading4"><span class="f_Heading4">Land Costs</span></h4>
 <p class="p_Text"><span class="f_Text">SAM calculates the total land cost as the sum of </span><span class="f_CHInterfaceElement">Land area</span><span class="f_Text">, </span><span class="f_CHInterfaceElement">Land purchase</span><span class="f_Text">, and </span><span class="f_CHInterfaceElement">Land prep. and transmission</span><span class="f_Text">. The land cost categories use the Cost $/acre category in addition to the categories for the other indirect costs.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> The land area input is independent of the PV array size or other input parameters. If you want to include land area costs in your analysis, be sure to specify a land area in acres that is appropriate for your system's design.</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Sales Tax (%)</span></h3>
+<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Sales Tax</span></h3>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Sales tax basis, %</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">The percentage of total direct cost used to the calculate sales tax amount.</span></p>
 <p class="p_Text"><span class="f_Text">SAM calculates the total sales tax amount by multiplying the sales tax rate from the <a href="financial_parameters.html" class="topiclink">Financial Parameters</a> page by the sales tax basis on the Installation Costs page: </span></p>

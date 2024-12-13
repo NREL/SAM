@@ -1,0 +1,18 @@
+{
+	"defaults": {
+		"ThermalRate": {
+			"gen_heat": [0],
+			"thermal_buy_rate_flat_heat_btu": 16.5,
+			"thermal_buy_rate_option": 0,
+			"thermal_conversion_efficiency": 85,
+			"thermal_monthly_buy_rate_heat_btu": [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000],
+			"thermal_rate_escalation": [0.000000],
+			"thermal_timestep_buy_rate_heat_btu": [0.000000]
+		},
+		"Lifetime": {
+			"analysis_period": 25,
+			"inflation_rate": 2.5,
+			"system_use_lifetime_output": 0
+		}
+	}
+}

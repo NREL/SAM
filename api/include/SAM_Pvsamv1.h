@@ -141,6 +141,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Losses_en_snow_model_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set snow_slide_coefficient: Snow Slide Coefficient
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1.97
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Losses_snow_slide_coefficient_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray1_dcwiring_loss: Sub-array 1 DC wiring loss [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
@@ -551,14 +559,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_inverter_count_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set measured_temp_array: Measured module temperature [C]
-	 * options: None
-	 * constraints: None
-	 * required if: use_measured_temp=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_measured_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set subarray1_azimuth: Sub-array 1 Azimuth [degrees]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
@@ -573,6 +573,22 @@ extern "C"
 	 * required if: subarray1_track_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_backtrack_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_custom_cell_temp_array: Subarray 1 custom cell temperature [C]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray1_use_custom_cell_temp=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_custom_cell_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set subarray1_custom_rot_angles_array: Sub-array 1 Custom tracker rotation angles [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray1_use_custom_rot_angles=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_custom_rot_angles_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray1_gcr: Sub-array 1 Ground coverage ratio [0..1]
@@ -609,7 +625,7 @@ extern "C"
 	/**
 	 * Set subarray1_nstrings: Sub-array 1 Number of parallel strings
 	 * options: None
-	 * constraints: INTEGER
+	 * constraints: INTEGER,POSITIVE
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_nstrings_nset(SAM_table ptr, double number, SAM_error *err);
@@ -663,6 +679,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_track_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray1_use_custom_cell_temp: Subarray 1 Use custom cell temperatures [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_use_custom_cell_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray1_use_custom_rot_angles: Sub-array 1 Use custom tracker rotation angles [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray1_use_custom_rot_angles_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray2_azimuth: Sub-array 2 Azimuth [degrees]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
@@ -677,6 +709,22 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_backtrack_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_custom_cell_temp_array: Subarray 2 custom cell temperatures [C]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray2_use_custom_cell_temp=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_custom_cell_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set subarray2_custom_rot_angles_array: Sub-array 2 Custom tracker rotation angles [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray2_use_custom_rot_angles=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_custom_rot_angles_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray2_enable: Sub-array 2 Enable [0/1]
@@ -706,7 +754,7 @@ extern "C"
 	 * Set subarray2_monthly_tilt: Sub-array 2 Monthly tilt input [degrees]
 	 * options: None
 	 * constraints: LENGTH=12
-	 * required if: subarray2_track_mode=4
+	 * required if: subarray2_enable=1&subarray2_track_mode=4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_monthly_tilt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -775,6 +823,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_track_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray2_use_custom_cell_temp: Subarray 2 Use custom cell temperatures [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_use_custom_cell_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray2_use_custom_rot_angles: Sub-array 2 Use custom tracker rotation angles [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray2_use_custom_rot_angles_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray3_azimuth: Sub-array 3 Azimuth [degrees]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
@@ -789,6 +853,22 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_backtrack_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_custom_cell_temp_array: Subarray 3 custom cell temperatures [C]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray3_use_custom_cell_temp=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_custom_cell_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set subarray3_custom_rot_angles_array: Sub-array 3 Custom tracker rotation angles [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray3_use_custom_rot_angles=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_custom_rot_angles_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray3_enable: Sub-array 3 Enable [0/1]
@@ -818,7 +898,7 @@ extern "C"
 	 * Set subarray3_monthly_tilt: Sub-array 3 Monthly tilt input [degrees]
 	 * options: None
 	 * constraints: LENGTH=12
-	 * required if: None
+	 * required if: subarray3_enable=1&subarray3_track_mode=4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_monthly_tilt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -887,6 +967,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_track_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray3_use_custom_cell_temp: Subarray 3 Use custom cell temperatures [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_use_custom_cell_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray3_use_custom_rot_angles: Sub-array 3 Use custom tracker rotation angles [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray3_use_custom_rot_angles_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subarray4_azimuth: Sub-array 4 Azimuth [degrees]
 	 * options: 0=N,90=E,180=S,270=W
 	 * constraints: MIN=0,MAX=359.9
@@ -901,6 +997,22 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_backtrack_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_custom_cell_temp_array: Subarray 4 custom cell temperatures [C]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray4_use_custom_cell_temp=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_custom_cell_temp_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set subarray4_custom_rot_angles_array: Sub-array 4 Custom tracker rotation angles [deg]
+	 * options: None
+	 * constraints: None
+	 * required if: subarray4_use_custom_rot_angles=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_custom_rot_angles_array_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
 	 * Set subarray4_enable: Sub-array 4 Enable [0/1]
@@ -930,7 +1042,7 @@ extern "C"
 	 * Set subarray4_monthly_tilt: Sub-array 4 Monthly tilt input [degrees]
 	 * options: None
 	 * constraints: LENGTH=12
-	 * required if: None
+	 * required if: subarray2_enable=1&subarray2_track_mode=4
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_monthly_tilt_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -999,20 +1111,28 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_track_mode_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set subarray4_use_custom_cell_temp: Subarray 4 Use custom cell temperatures [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_use_custom_cell_temp_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set subarray4_use_custom_rot_angles: Sub-array 4 Use custom tracker rotation angles [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_subarray4_use_custom_rot_angles_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set system_capacity: DC Nameplate capacity [kWdc]
 	 * options: None
 	 * constraints: None
 	 * required if: *
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_system_capacity_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set use_measured_temp: Use measured temperatures [0/1]
-	 * options: None
-	 * constraints: INTEGER,MIN=0,MAX=1
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_SystemDesign_use_measured_temp_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1525,7 +1645,7 @@ extern "C"
 	/**
 	 * Set spe_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_SimpleEfficiencyModuleModel_spe_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1762,7 +1882,7 @@ extern "C"
 	/**
 	 * Set cec_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -1784,14 +1904,6 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifaciality_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set cec_gamma_r: Maximum power point temperature coefficient [%/C]
-	 * options: None
-	 * constraints: None
-	 * required if: module_model=1
-	 */
-	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
 	 * Set cec_gap_spacing: Gap spacing [m]
 	 * options: None
 	 * constraints: None
@@ -1802,7 +1914,7 @@ extern "C"
 	/**
 	 * Set cec_ground_clearance_height: Module ground clearance height for heat transfer coefficient [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: cec_lacunarity_enable=1&cec_temp_corr_mode=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -2007,7 +2119,7 @@ extern "C"
 	/**
 	 * Set 6par_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=2
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_CECPerformanceModelWithUserEnteredSpecifications_sixpar_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -3086,7 +3198,7 @@ extern "C"
 	/**
 	 * Set mlm_bifacial_ground_clearance_height: Module ground clearance height [m]
 	 * options: None
-	 * constraints: None
+	 * constraints: POSITIVE
 	 * required if: module_model=5
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_MermoudLejeuneSingleDiodeModel_mlm_bifacial_ground_clearance_height_nset(SAM_table ptr, double number, SAM_error *err);
@@ -4161,6 +4273,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set enable_subinterval_distribution: Enable subinterval distribution of PV power output [0/1]
+	 * options: None
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set subhourly_clipping_matrix: PV Subhourly clipping correction matrix
 	 * options: None
 	 * constraints: None
@@ -4177,7 +4297,7 @@ extern "C"
 	 * Set adjust_constant: Constant loss adjustment [%]
 	 * options: 'adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4214,10 +4334,50 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
+	 * Set batt_adjust_constant: Battery Constant loss adjustment [%]
+	 * options: None
+	 * constraints: MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_batt_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_en_periods: Enable battery period-based adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_batt_adjust_en_periods_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_en_timeindex: Enable battery lifetime adjustment factors [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_batt_adjust_en_timeindex_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_periods: Battery Period-based Adjustment Factors [%]
+	 * options: n x 3 matrix [ start, end, loss ]
+	 * constraints: COLS=3
+	 * required if: batt_adjust_en_periods=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_batt_adjust_periods_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set batt_adjust_timeindex: Battery Lifetime Adjustment Factors [%]
+	 * options: None
+	 * constraints: None
+	 * required if: batt_adjust_en_timeindex=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_batt_adjust_timeindex_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
 	 * Set dc_adjust_constant: DC Constant loss adjustment [%]
 	 * options: 'dc_adjust' and 'constant' separated by _ instead of : after SAM 2022.12.21
 	 * constraints: MAX=100
-	 * required if: *
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_AdjustmentFactors_dc_adjust_constant_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -4592,6 +4752,14 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set batt_dispatch_auto_can_curtailcharge: Battery can charge from grid-limited system power? [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set batt_dispatch_auto_can_fuelcellcharge: Charging from fuel cell allowed for automated dispatch? [0/1]
 	 * options: None
 	 * constraints: None
@@ -4616,8 +4784,8 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_dispatch_charge_only_system_exceeds_load_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4]
-	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=PriceSignalForecast if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
+	 * Set batt_dispatch_choice: Battery dispatch algorithm [0/1/2/3/4/5]
+	 * options: If behind the meter: 0=PeakShaving,1=InputGridTarget,2=InputBatteryPower,3=ManualDispatch,4=RetailRateDispatch,5=SelfConsumption if front of meter: 0=AutomatedEconomic,1=PV_Smoothing,2=InputBatteryPower,3=ManualDispatch
 	 * constraints: None
 	 * required if: en_batt=1
 	 */
@@ -4794,7 +4962,7 @@ extern "C"
 	/**
 	 * Set batt_look_ahead_hours: Hours to look ahead in automated dispatch [hours]
 	 * options: None
-	 * constraints: None
+	 * constraints: MIN=1
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_BatteryDispatch_batt_look_ahead_hours_nset(SAM_table ptr, double number, SAM_error *err);
@@ -5124,12 +5292,28 @@ extern "C"
 	//
 
 	/**
+	 * Set mp_ancserv1_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv1_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv1_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv1_revenue_single: Ancillary services 1 revenue input
 	 * options: Lifetime x 1[Price($/MWh)]
 	 * constraints: None
 	 * required if: forecast_price_signal_model=1&mp_enable_ancserv1_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv1_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv2_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv2_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv2_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv2_revenue_single: Ancillary services 2 revenue input
@@ -5140,12 +5324,28 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv2_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
+	 * Set mp_ancserv3_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv3_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv3_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set mp_ancserv3_revenue_single: Ancillary services 3 revenue input
 	 * options: Lifetime x 1[Price($/MWh)]
 	 * constraints: None
 	 * required if: forecast_price_signal_model=1&mp_enable_ancserv3_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv3_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_ancserv4_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_ancserv4_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_ancserv4_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set mp_ancserv4_revenue_single: Ancillary services 4 revenue input
@@ -5202,6 +5402,14 @@ extern "C"
 	 * required if: forecast_price_signal_model=1&mp_enable_market_percent_gen=1
 	 */
 	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set mp_market_percent_gen: Percent of demand to copy to cleared capacity array [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: forecast_price_signal_model=1&mp_enable_market_percent_gen=1
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_Revenue_mp_market_percent_gen_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -5377,6 +5585,22 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_monthly_min_charge_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set ur_nb_apply_credit_current_month: Apply earned credits to balance before rolling over excess         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nb_apply_credit_current_month_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set ur_nb_credit_expire: Credit is lost upon end of year         [0/1]
+	 * options: 0=disable,1=enable
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_ElectricityRates_ur_nb_credit_expire_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set ur_nm_credit_month: Month of year end payout (true-up) [mn]
 	 * options: None
 	 * constraints: INTEGER,MIN=0,MAX=11
@@ -5462,6 +5686,91 @@ extern "C"
 	SAM_EXPORT void SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nset(SAM_table ptr, double number, SAM_error *err);
 
 
+	//
+	// HybridCosts parameters
+	//
+
+	/**
+	 * Set degradation: Annual AC degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set land_area: Total land area [acres]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_land_area_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_capacity_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_capacity_escal: Capacity-based O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_capacity_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_fixed: Fixed O&M annual amount [$/year]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_fixed_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_fixed_escal: Fixed O&M escalation [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_fixed_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_land_lease: Land lease cost [$/acre]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_land_lease_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set om_land_lease_escal: Land lease cost escalation [%/yr]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_land_lease_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set om_production: Production-based O&M amount [$/MWh]
+	 * options: !battery,!fuelcell
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_om_production_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set total_installed_cost: Total installed cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_Pvsamv1_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
+
+
 	/**
 	 * SolarResource Getters
 	 */
@@ -5496,6 +5805,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Losses_en_snow_model_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Losses_snow_slide_coefficient_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Losses_subarray1_dcwiring_loss_nget(SAM_table ptr, SAM_error *err);
 
@@ -5607,11 +5918,13 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_inverter_count_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_measured_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_azimuth_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_backtrack_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray1_custom_cell_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray1_custom_rot_angles_array_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_gcr_nget(SAM_table ptr, SAM_error *err);
 
@@ -5635,9 +5948,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_track_mode_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_use_custom_cell_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray1_use_custom_rot_angles_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_azimuth_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_backtrack_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray2_custom_cell_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray2_custom_rot_angles_array_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_enable_nget(SAM_table ptr, SAM_error *err);
 
@@ -5663,9 +5984,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_track_mode_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_use_custom_cell_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray2_use_custom_rot_angles_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_azimuth_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_backtrack_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray3_custom_cell_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray3_custom_rot_angles_array_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_enable_nget(SAM_table ptr, SAM_error *err);
 
@@ -5691,9 +6020,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_track_mode_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_use_custom_cell_temp_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray3_use_custom_rot_angles_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_azimuth_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_backtrack_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray4_custom_cell_temp_array_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_SystemDesign_subarray4_custom_rot_angles_array_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_enable_nget(SAM_table ptr, SAM_error *err);
 
@@ -5719,9 +6056,11 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_track_mode_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_use_custom_cell_temp_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_use_measured_temp_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_subarray4_use_custom_rot_angles_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_SystemDesign_system_capacity_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -5933,8 +6272,6 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifacial_transmission_factor_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_bifaciality_nget(SAM_table ptr, SAM_error *err);
-
-	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gamma_r_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_CECPerformanceModelWithModuleDatabase_cec_gap_spacing_nget(SAM_table ptr, SAM_error *err);
 
@@ -6577,6 +6914,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subhourly_clipping_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_PVLosses_enable_subinterval_distribution_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_PVLosses_subhourly_clipping_matrix_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 
@@ -6593,6 +6932,16 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_AdjustmentFactors_batt_adjust_constant_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_AdjustmentFactors_batt_adjust_en_periods_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_AdjustmentFactors_batt_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_AdjustmentFactors_batt_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_AdjustmentFactors_batt_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_AdjustmentFactors_dc_adjust_constant_nget(SAM_table ptr, SAM_error *err);
 
@@ -6695,6 +7044,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_charge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_clipcharge_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_curtailcharge_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_BatteryDispatch_batt_dispatch_auto_can_fuelcellcharge_nget(SAM_table ptr, SAM_error *err);
 
@@ -6844,11 +7195,19 @@ extern "C"
 	 * Revenue Getters
 	 */
 
+	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv1_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv1_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv2_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv2_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv3_percent_gen_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv3_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_ancserv4_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_ancserv4_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -6863,6 +7222,8 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_enable_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Revenue_mp_energy_market_revenue_single_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Revenue_mp_market_percent_gen_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -6911,6 +7272,10 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_monthly_min_charge_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nb_apply_credit_current_month_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nb_credit_expire_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nm_credit_month_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_ElectricityRates_ur_nm_credit_rollover_nget(SAM_table ptr, SAM_error *err);
@@ -6935,6 +7300,31 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_GridLimits_grid_curtailment_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_GridLimits_grid_interconnection_limit_kwac_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * HybridCosts Getters
+	 */
+
+	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_land_area_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_capacity_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_fixed_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_om_land_lease_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_HybridCosts_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -7036,6 +7426,10 @@ extern "C"
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_dc_wiring_loss_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_distribution_clipping_loss_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err);
 
@@ -7201,6 +7595,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_annual_energy_system_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_availability_loss_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_bank_installed_capacity_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_bank_replacement_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7220,6 +7616,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_cycles_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_dispatch_sched_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_grid_charge_percent_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_power_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7289,6 +7687,10 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_batt_voltage_cell_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_year1_charge_from_grid_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_batt_year1_charge_from_system_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_bifacial_electrical_mismatch_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err);
@@ -7303,6 +7705,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_fuelcell_replacement_cost_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_land_lease_expense_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_capacity_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_fixed_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7312,8 +7716,6 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_land_lease_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_cf_om_production_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_Pvsamv1_Outputs_clipping_potential_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_crit_load_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7332,6 +7734,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_df_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_df_calc_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_distribution_clipping_loss_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_dn_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -7437,11 +7841,19 @@ extern "C"
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_nameplate_dc_rating_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_num_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_num_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_durations_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_outage_losses_unmet_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_pdf_of_surviving_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_percent_ts_load_met_by_system_lifetime_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_percent_ts_load_met_by_system_yr1_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Pvsamv1_Outputs_performance_ratio_nget(SAM_table ptr, SAM_error *err);
 
@@ -7555,6 +7967,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_rear_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_rear_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray1_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7624,6 +8038,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_nom_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_rear_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_rear_cs_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray2_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
@@ -7695,6 +8111,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_rear_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_rear_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray3_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7765,6 +8183,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_rear_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_rear_cs_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_rear_spatial_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_subarray4_poa_shaded_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -7796,6 +8216,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_sunup_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_survival_function_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Pvsamv1_Outputs_system_capacity_ac_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Pvsamv1_Outputs_system_to_batt_aget(SAM_table ptr, int* length, SAM_error *err);
 

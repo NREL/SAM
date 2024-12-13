@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?troughempirical_power_block.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -533,12 +528,16 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_VariableDescription"><span class="f_VariableDescription">The power cycle's nominal capacity, calculated as the product of the design gross output and estimated gross to net conversion factor. SAM uses this value to calculate the system's rated capacity for capacity-related calculations, including the estimated total cost per net capacity value on the <a href="cc_trough.html" class="topiclink">Installation Costs</a> page, capacity-based incentives on the <a href="incentives.html" class="topiclink">Incentives</a> page, and the capacity factor reported in the <a href="results_page.html" class="topiclink">results</a>.</span></p>
 <h4 class="p_Heading4"><span class="f_Heading4">System Availability</span></h4>
 <p class="p_Text"><span class="f_Text">System availability losses are reductions in the system's output due to operational requirements such as maintenance down time or other situations that prevent the system from operating as designed. </span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.html" class="topiclink">Grid</a> page.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">To model curtailment, or forced outages or reduction in power output required by the grid operator, use the inputs on the <a href="grid_limits.html" class="topiclink">Grid Limits</a> page. The Grid Limits page is not available for all performance models.</span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Note">For the PV Battery model, battery dispatch is affected by the system availability losses. For the PVWatts Battery, </span><span class="f_Text">Custom Generation Profile - Battery</span><span class="f_Note">, and Standalone Battery battery dispatch ignores the system availability losses.</span></p>
 <p class="p_Text"><span class="f_Text">To edit the system availability losses, click </span><span class="f_CHInterfaceElement">Edit losses</span><span class="f_Text">.</span></p>
 <p class="p_Text"><span class="f_Text">The <a href="edit_losses.html" class="topiclink">Edit Losses</a> window allows you to define loss factors as follows:</span></p>
 <p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List">Constant loss is a single loss factor that applies to the system's entire output. You can use this to model an availability factor.</span></p>
-<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Hourly losses apply to specific hours of the year.</span></p>
-<p class="p_Text"><span class="f_Text">SAM reduces the system's output in each hour by the loss percentage that you specify for that hour. For a given hour, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%. For subhourly simulations, SAM applies the loss factor for a given hour to each time step in that hour</span></p>
+<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast">Time series &nbsp;losses apply to specific time steps.</span></p>
+<p class="p_Text"><span class="f_Text">SAM reduces the system's output in each time step by the loss percentage that you specify for that time step. For a given time step, a loss of zero would result in no adjustment. A loss of 5% would reduce the output by 5%, and a loss of -5% would increase the output value by 5%.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Power Cycle</span></h3>
 <p class="p_Text"><span class="f_Text">The variables in the power cycle group describe a reference steam turbine. SAM uses the reference turbine specifications to calculate the turbine output, and then scales the actual output based on the turbine rating variables. Each set of reference turbine specifications is stored in the reference turbine library.</span></p>
 <p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Current Power Block</span></p>

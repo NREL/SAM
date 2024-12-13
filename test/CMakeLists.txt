@@ -9,7 +9,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 cmake_minimum_required(VERSION 3.24)
 
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "12" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 
@@ -39,8 +39,6 @@ set(SAM_SRC
 # Compile Options per Platform
 #
 #####################################################################################################################
-
-set(CMAKE_CXX_STANDARD 11)
 
 if(MSVC)
 	add_compile_options(/W4 /MP)
@@ -105,6 +103,7 @@ set_target_properties(SAMtest
     DEBUG_POSTFIX "d"
 	PREFIX ""
 	)
+target_compile_features(SAMtest PUBLIC cxx_std_11)
 
 if (MSVC)
 	set_target_properties(SAMtest PROPERTIES

@@ -224,10 +224,11 @@ bool ParametricData::Read( wxInputStream &_I )
 	return in.Read8() == code;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
+//    void EnablePasteEvent(bool b); // sent as GRID_CELL_CHANGE with GetRow() = -1 and GetCol() = -1
 BEGIN_EVENT_TABLE(ParametricGrid, wxExtGridCtrl)
 EVT_GRID_CELL_LEFT_CLICK(ParametricGrid::OnLeftClick)
 EVT_GRID_COL_SORT(ParametricGrid::OnColSort)
+EVT_GRID_CELL_CHANGE(ParametricGrid::OnGridCellChange)
 END_EVENT_TABLE()
 
 
@@ -239,6 +240,41 @@ ParametricGrid::ParametricGrid(wxWindow *parent, wxWindowID id, const wxPoint &p
 ParametricGrid::~ParametricGrid()
 {
 }
+
+void ParametricGrid::OnGridCellChange(wxGridEvent& evt)
+{
+	if (evt.GetRow() == -1 && evt.GetCol() == -1) { // paste event
+		// validation for library values ( SAM issue 1314)
+		if (ParametricGridData* pgd = static_cast<ParametricGridData*>(GetTable())) {
+			for (size_t iCol = 0; iCol < pgd->GetNumberCols(); iCol++) {
+				if (pgd->IsInput(iCol)) {
+					if (VarInfo* vi = pgd->GetVarInfo(0, iCol)) {
+						if (vi->UIObject == "Library") { // MUST be set in UI Editor
+							for (size_t iRow = 0; iRow < pgd->GetNumberRows(); iRow++) {
+								if (wxUIObject* obj = wxUIObjectTypeProvider::Create(vi->UIObject)) {
+									wxWindow* ctrl = obj->CreateNative(this);
+									if (LibraryCtrl* ll = obj->GetNative<LibraryCtrl>()) {
+										wxArrayString lib = vi->IndexLabels;
+										if (lib.Count() > 0)
+											ll->SetLibrary(lib[0], "*"); 
+										auto val = pgd->GetValue(iRow, iCol);
+										if (!ll->SetEntrySelection(val)) {
+											wxMessageBox("Row " + wxString::Format("%d", (int)iRow + 1) + ": '" + val + "' not found in " + lib[0] + " library.", "Library Selection Error", wxOK | wxICON_ERROR);
+											pgd->SetValue(iRow, iCol, ""); // fails for modules
+											pgd->SetVarValue(iRow, iCol, NULL);
+										}
+									}
+									ctrl->Destroy();
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 
 void ParametricGrid::OnLeftClick(wxGridEvent &evt)
 {

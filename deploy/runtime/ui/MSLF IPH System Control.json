@@ -1,7 +1,7 @@
 {
     "Name": "MSLF IPH System Control",
-    "Width": 915.0,
-    "Height": 243.0,
+    "Width": 841.0,
+    "Height": 413.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1345,6 +1345,665 @@
                 }
             }
         },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_frequency"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_horizon"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_max_iter"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 285.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_mip_gap"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 309.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_rsu_cost_rel"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_time_weighting"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_timeout"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 714.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 333.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_dispatch"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 258.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 237.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 830.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 171.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Dispatch Optimization"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1362,7 +2021,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 902.0
+                    "Integer": 830.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1526,6 +2185,172 @@
                     "Integer": 4.0
                 }
             }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rec_qf_delay"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 381.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "rec_su_delay"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 273.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 357.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 4.0
+                }
+            }
         }
     },
     "VarDatabase": {
@@ -1534,7 +2359,7 @@
             "Type": 1.0,
             "Label": "Aux",
             "Units": "MWe",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -1547,7 +2372,7 @@
             "Type": 1.0,
             "Label": "BOP",
             "Units": "MWe",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 8.0,
             "DefaultValue": 0.0,
@@ -1560,7 +2385,7 @@
             "Type": 1.0,
             "Label": "Aux heater boiler parasitic",
             "Units": "MWe/MWtcap",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.023,
@@ -1573,7 +2398,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.483,
@@ -1586,7 +2411,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.571,
@@ -1599,7 +2424,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1612,7 +2437,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 1.0,
@@ -1625,7 +2450,7 @@
             "Type": 1.0,
             "Label": "Balance of plant parasitic",
             "Units": "MWe/MWtcap",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.025,
@@ -1638,7 +2463,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1651,7 +2476,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.483,
@@ -1664,7 +2489,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1677,7 +2502,7 @@
             "Type": 1.0,
             "Label": "",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 1.0,
@@ -1690,7 +2515,7 @@
             "Type": 5.0,
             "Label": "Performance adjustment factors",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 1.0,
             "DefaultValue": {},
@@ -1703,7 +2528,7 @@
             "Type": 1.0,
             "Label": "Constant performance adjustment",
             "Units": "%",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1716,7 +2541,7 @@
             "Type": 1.0,
             "Label": "Enable custom period performance adjustments",
             "Units": "0/1",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1729,7 +2554,7 @@
             "Type": 1.0,
             "Label": "Enable timeseries performance adjustments",
             "Units": "0/1",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
@@ -1742,7 +2567,7 @@
             "Type": 3.0,
             "Label": "Custom period performance adjustments",
             "Units": "%",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -1759,7 +2584,7 @@
             "Type": 2.0,
             "Label": "Timeseries performance adjustments",
             "Units": "%",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": [
@@ -1774,7 +2599,7 @@
             "Type": 2.0,
             "Label": "Coefficients for auxiliary heater parasitics calcs",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": [
@@ -1789,7 +2614,7 @@
             "Type": 2.0,
             "Label": "Coefficients for balance of plant parasitics calcs",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 9.0,
             "DefaultValue": [
@@ -1804,7 +2629,7 @@
             "Type": 1.0,
             "Label": "Cycle startup cost penalty",
             "Units": "$/MWe-cycle/start",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 87.0,
@@ -1817,7 +2642,7 @@
             "Type": 1.0,
             "Label": "Frequency for dispatch reoptimization",
             "Units": "hour",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 24.0,
@@ -1830,7 +2655,7 @@
             "Type": 1.0,
             "Label": "Time horizon for dispatch optimization",
             "Units": "hour",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 48.0,
@@ -1843,7 +2668,7 @@
             "Type": 1.0,
             "Label": "Maximum branch and bound iterations",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 10000.0,
@@ -1856,7 +2681,7 @@
             "Type": 1.0,
             "Label": "Solution optimality gap tolerance",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.055,
@@ -1869,7 +2694,7 @@
             "Type": 1.0,
             "Label": "Power generation ramping penalty",
             "Units": "$/ΔMWe",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.0,
@@ -1882,7 +2707,7 @@
             "Type": 1.0,
             "Label": "Receiver startup cost penalty",
             "Units": "$/MWt-field/start",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 1.4,
@@ -1895,7 +2720,7 @@
             "Type": 1.0,
             "Label": "Objective function time weighting exponent",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.99,
@@ -1908,38 +2733,10 @@
             "Type": 1.0,
             "Label": "Optimization solver timeout limit",
             "Units": "sec",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 5.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "disp_wlim_maxspec": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Max. net power to the grid",
-            "Units": "MWe",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "dispatch_series": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Dispatch TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": [
-                0.0
-            ],
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -1949,36 +2746,10 @@
             "Type": 1.0,
             "Label": "Enable dispatch optimization",
             "Units": "",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_dispatch_series": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Use specified TOD series",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "is_wlim_design": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "",
-            "Units": "",
-            "Group": "MSLF System Control",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -1988,10 +2759,36 @@
             "Type": 1.0,
             "Label": "Fraction of rated gross power consumed all times",
             "Units": "MWe/MWtcap",
-            "Group": "MSLF System Control",
+            "Group": "System Control",
             "IndexLabels": "",
             "Flags": 2.0,
             "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_qf_delay": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Receiver startup delay energy fraction",
+            "Units": "",
+            "Group": "System Control",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.25,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "rec_su_delay": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Receiver startup delay time",
+            "Units": "hr",
+            "Group": "System Control",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.2,
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
@@ -2006,10 +2803,6 @@
         "//   modify the below main MIMO or add one,",
         "//   referencing in ssc_equations.h",
         "//",
-        "\r",
-        "equations{ 'is_wlim_design' } = define() {\r",
-        "\treturn ${is_dispatch};\r",
-        "};\r",
         "\r",
         "// Just UI input aggregator\r",
         "equations{ 'aux_array' } = define() {\r",
@@ -2031,11 +2824,19 @@
         "\treturn a;\r",
         "};\r",
         "\r",
+        "\r",
+        "equations{ 'is_dispatch' } = define() {\r",
+        "\treturn false;\r",
+        "};\r",
+        "\r",
         ""
     ],
     "Callbacks": [
-        "on_load{'MSLF System Control'} = define()\r",
+        "on_load{'MSLF IPH System Control'} = define()\r",
         "{\r",
+        "\tenable('is_dispatch', false);\r",
+        "\tshow('is_dispatch', false);\r",
+        "\ton_change{\"is_dispatch\"}();\r",
         "\tloss_adjustment_set();\r",
         "};\r",
         "\r",
@@ -2043,7 +2844,7 @@
         "\r",
         "function loss_adjustment_set() \r",
         "{\r",
-        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\tif (financing() != \"LCOH Calculator\" && financing() != \"None\") {\r",
         "\t\tif (value('system_use_lifetime_output') == 1) {\r",
         "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));\r",
         "\t\t}\r",
@@ -2054,6 +2855,21 @@
         "\telse {\r",
         "\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
         "\t}\r",
-        "}"
+        "}\r",
+        "\r",
+        "on_change{\"is_dispatch\"} = define() {\r",
+        "     en = value(\"is_dispatch\");\r",
+        "     \r",
+        "     enable(\"disp_horizon\", en==1);\r",
+        "     enable(\"disp_frequency\", en==1);\r",
+        "     enable(\"disp_rsu_cost_rel\", en==1);\r",
+        "     enable(\"disp_max_iter\", en==1);\r",
+        "     enable(\"disp_timeout\", en==1);\r",
+        "     enable(\"disp_mip_gap\", en==1);\r",
+        "     enable(\"disp_time_weighting\", en==1);\r",
+        "     enable(\"rec_su_delay\", en==1);\r",
+        "     enable(\"rec_qf_delay\", en==1);\r",
+        "\r",
+        "};"
     ]
 }

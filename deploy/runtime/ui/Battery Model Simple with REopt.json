@@ -1,7 +1,7 @@
 {
     "Name": "Battery Model Simple with REopt",
-    "Width": 886.0,
-    "Height": 296.0,
+    "Width": 876.0,
+    "Height": 400.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,11 +20,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 872.0
+                    "Integer": 863.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 396.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -35,6 +35,67 @@
                     "String": "Battery Bank "
                 },
                 "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "LossAdjustment": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "batt_adjust"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 102.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 234.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 58.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -98,7 +159,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 96.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -106,7 +167,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 44.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -408,15 +469,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 822.0
+                    "Integer": 831.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 44.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -466,11 +527,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 96.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -503,11 +564,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 486.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -541,6 +602,56 @@
                 "Name": {
                     "Type": 5.0,
                     "String": "object 21"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 174.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 837.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery Availability"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 219"
                 },
                 "X": {
                     "Type": 3.0,
@@ -585,32 +696,45 @@
                 }
             }
         },
-        "GroupBox": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 4"
+                    "String": "object 22"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 174.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 858.0
+                    "Integer": 837.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 109.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
                 },
                 "Caption": {
                     "Type": 5.0,
@@ -621,9 +745,155 @@
                     "Boolean": 1.0
                 }
             }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 710"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 192.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 831.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Battery availability losses reduce the power and capacity to represent system outages or other events. At the start of a loss, the SOC will be reduced to represent cells or banks going offline."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
         }
     },
     "VarDatabase": {
+        "batt_adjust": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 1.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_constant": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "%",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_en_periods": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "0/1",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_en_timeindex": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery Availability Losses",
+            "Units": "0/1",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_periods": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "Battery Availability Losses",
+            "Units": "",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    0.0
+                ]
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "batt_adjust_timeindex": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Battery Availability Losses",
+            "Units": "",
+            "Group": "Battery Availability Losses",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "LossAdjustment",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "batt_custom_dispatch": {
             "Version": 4.0,
             "Type": 2.0,
@@ -722,6 +992,7 @@
     "Callbacks": [
         "on_load{'Battery Model Simple with REopt'} = define(){",
         "\tenable(\"batt_custom_dispatch\", (value(\"batt_simple_dispatch\") == 2));",
+        "\tbatt_loss_adjustment_set();\r",
         "};",
         "",
         "on_change{\"batt_simple_dispatch\"} = define(){",
@@ -732,22 +1003,31 @@
         "\tdispatch_original_mode = value(\"batt_simple_dispatch\"); //save original dispatch mode",
         "\tbatt_kw_original = value(\"batt_simple_kw\");",
         "\tbatt_kwh_original = value(\"batt_simple_kwh\");",
-        "",
+        "\tur_dc_tou_mat_original = value('ur_dc_tou_mat');\r",
+        "\tur_dc_flat_mat_original = value('ur_dc_flat_mat');\r",
+        "\tur_ec_tou_mat_original = value('ur_ec_tou_mat');\r",
+        "\t",
         "\twf_len = 60 / ${ui_step_minutes} * 8760;",
         "\tload_len = #(${load});",
         "\tif (wf_len != load_len) {",
-        "\t\tmsgbox(\"Weather file and load number of records must be the same.\");",
+        "\t\tmsgbox('Time step issue.\\nWeather and load data must have the same time step.');",
         "\t\texit;",
         "\t}",
-        "\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) {",
-        "\t\tmsgbox(\"Simulation timestep must be 15, 30 or 60 minutes.\");",
-        "\t\texit;",
+        "\tif (load_len != 8760 * 4 && load_len != 8760 * 2 && load_len != 8760) \r",
+        "\t{\r",
+        "\t\tmsgbox('Unsupported simulation time step.\\nWeather file time step is ' + to_string(${ui_step_minutes}) + ' minutes. REopt requires 15-, 30-, or 60-minute time steps.');\r",
+        "\t\texit;\r",
         "\t}",
-        "\t",
         "\t// reset size to 0 to remove battery costs from total_installed_cost",
         "\tvalue(\"batt_simple_kw\", 0);",
         "\tvalue(\"batt_simple_kwh\", 0); ",
         "\tvalue(\"batt_simple_dispatch\",0); //set dispatch mode to 0 to run ReOPT",
+        "\t\r",
+        "\t// set energy and demand tier max value to 1e14 to avoid issue with HiGHS optimization\r",
+        "\ttier_max = 1e14;\r",
+        "\tvalue('ur_dc_tou_mat', set_max_value('ur_dc_tou_mat', tier_max));\r",
+        "\tvalue('ur_dc_flat_mat', set_max_value('ur_dc_flat_mat', tier_max));\r",
+        "\tvalue('ur_ec_tou_mat', set_max_value('ur_ec_tou_mat', tier_max));\r",
         "\t",
         "\treopt = reopt_size_battery();",
         "\ty = reopt.response;",
@@ -760,7 +1040,10 @@
         "\t\t}",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
-        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original);\r",
+        "\t\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\t\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\t\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original); ",
         "\t\texit;",
         "\t}",
         "",
@@ -768,7 +1051,10 @@
         "\t\tmsgbox(\"Error in REopt response. Try again later or try another system design.\");",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
-        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original);\r",
+        "\t\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\t\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\t\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original);  ",
         "\t\texit;",
         "\t}",
         "\t",
@@ -781,13 +1067,21 @@
         "\t\t\t\"\\nOptimal power (kW): \" + to_string(0) + \"\\n\\nReplace \" + ",
         "\t\t\t\"'Battery capacity' and 'Battery power' with results from REopt?\";",
         "\t\tapply = yesno(apply_str);",
-        "\t\tif (apply){",
+        "\t\tif (apply) {",
         "\t\t\tvalue('batt_simple_kw', 0.0);",
-        "\t\t\tvalue('batt_simple_kwh', 0.0);",
+        "\t\t\tvalue('batt_simple_kwh', 0.0);\r",
+        "\t\t\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\t\t\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\t\t\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original); ",
+        "\t\t}\r",
+        "\t\telse {",
+        "\t\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
+        "\t\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
+        "\t\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); \r",
+        "\t\t\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\t\t\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\t\t\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original); \r",
         "\t\t}",
-        "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
-        "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
-        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
         "\t\texit;",
         "\t}",
         "",
@@ -798,12 +1092,18 @@
         "\tif (!apply) {",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
         "\t\tvalue(\"batt_simple_kw\", batt_kw_original);",
-        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original); ",
+        "\t\tvalue(\"batt_simple_kwh\", batt_kwh_original);\r",
+        "\t\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\t\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\t\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original);  ",
         "\t\texit;",
         "\t}",
         "\t",
         "\tvalue('batt_simple_kw', batt.size_kw);",
-        "\tvalue('batt_simple_kwh', batt.size_kwh);",
+        "\tvalue('batt_simple_kwh', batt.size_kwh);\r",
+        "\tvalue('ur_dc_tou_mat', ur_dc_tou_mat_original);\r",
+        "\tvalue('ur_dc_flat_mat', ur_dc_flat_mat_original);\r",
+        "\tvalue('ur_ec_tou_mat', ur_ec_tou_mat_original); ",
         "\t",
         "\tif ((batt.size_kw == 0 && batt.size_kwh == 0) || !apply) {",
         "\t\tvalue(\"batt_simple_dispatch\",dispatch_original_mode); //restore original dispatch mode for early exit from ReOPT",
@@ -811,8 +1111,9 @@
         "\t}",
         "\t",
         "\tbatt_to_grid = null;",
-        "\tif (batt.year_one_to_grid_series_kw)",
-        "\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;",
+        "\tif (batt.year_one_to_grid_series_kw) {",
+        "\t\tbatt_to_grid = batt.year_one_to_grid_series_kw;\r",
+        "\t}\t",
         "\tbatt_to_load = batt.storage_to_load_series_kw;",
         "\tpv_charge = pv.electric_to_storage_series_kw;",
         "\tgrid_charge = elec.electric_to_storage_series_kw;",
@@ -835,6 +1136,36 @@
         "\t}",
         "",
         "\tvalue('batt_custom_dispatch', dispatch);",
-        "};"
+        "};\r",
+        "\r",
+        "// set maximum value of all numbers in energy and demand rate table\r",
+        "function set_max_value(var_name,max_value) {\r",
+        "\tx = value(var_name);\r",
+        "\tresult = x;\r",
+        "\tfor (i=0; i<#x; i++) {\r",
+        "\t\ty = x[i];\r",
+        "\t\tfor (j=0; j<#y; j++ ) {\r",
+        "\t\t\tif ( y[j] > max_value ) {\r",
+        "\t\t\t\tresult[i][j] = max_value;\r",
+        "\t\t\t}\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\treturn result;\r",
+        "}\r",
+        "\r",
+        "function batt_loss_adjustment_set() \r",
+        "{\r",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\t\tif (value('system_use_lifetime_output') == 1) {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', value('analysis_period'));\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('batt_adjust', 'AnalysisPeriod', 1);\r",
+        "\t}\r",
+        "}"
     ]
 }

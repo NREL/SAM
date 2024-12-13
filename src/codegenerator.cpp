@@ -161,6 +161,10 @@ CodeGen_Base::CodeGen_Base( Case *cc, const wxString &fullpath )
 {
 	m_fp = fopen(fullpath.c_str(), "w");
 	wxFileName::SplitPath(fullpath, &m_folder, &m_name, NULL );
+	m_cfg = m_case->GetConfiguration();
+	m_is_hybrid = false;
+	if (m_cfg && m_cfg->Technology.size() > 1)
+		m_is_hybrid = true;
 }
 
 CodeGen_Base::~CodeGen_Base()
@@ -188,108 +192,11 @@ bool CodeGen_Base::PlatformFiles()
 #endif
 	wxCopyFile(f1, f2);
 	// sscapi.h - switch to copy version for syching issues 5/30/17
-	// assumes in runtime folder for all builds.
-	f1 = SamApp::GetAppPath() + "/sscapi.h";
-	if (wxFileExists(f1))
-	{
+	// assumes in runtime folder for all builds. See SAM issue 1918
+	f1 = SamApp::GetRuntimePath() + "/sscapi.h";
+	if (wxFileExists(f1)) {
 		f2 = m_folder + "/sscapi.h";
 		wxCopyFile(f1,f2);
-	}
-	else
-	{
-		// fallback to sscapi.h generation
-		wxString fn = m_folder + "/sscapi.h";
-		FILE* f = fopen(fn.c_str(), "w");
-		if (!f) return false;
-		fprintf(f, "#ifndef __ssc_api_h\n");
-		fprintf(f, "#define __ssc_api_h\n");
-		fprintf(f, "#if defined(__WINDOWS__)&&defined(__DLL__)\n");
-		fprintf(f, "#define SSCEXPORT __declspec(dllexport)\n");
-		fprintf(f, "#else\n");
-		fprintf(f, "#define SSCEXPORT\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-		fprintf(f, "#ifdef __cplusplus\n");
-		fprintf(f, "extern \"C\" {\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "SSCEXPORT int ssc_version();\n");
-		fprintf(f, "SSCEXPORT const char *ssc_build_info();\n");
-		fprintf(f, "typedef void* ssc_data_t;\n");
-		fprintf(f, "typedef double ssc_number_t;\n");
-		fprintf(f, "typedef int ssc_bool_t;\n");
-		fprintf(f, "#define SSC_INVALID 0\n");
-		fprintf(f, "#define SSC_STRING 1\n");
-		fprintf(f, "#define SSC_NUMBER 2\n");
-		fprintf(f, "#define SSC_ARRAY 3\n");
-		fprintf(f, "#define SSC_MATRIX 4\n");
-		fprintf(f, "#define SSC_TABLE 5\n");
-		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_create();\n");
-		fprintf(f, "SSCEXPORT void ssc_data_free( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_clear( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_unassign( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT int ssc_data_query( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_first( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_next( ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_string( ssc_data_t p_data, const char *name, const char *value );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_number( ssc_data_t p_data, const char *name, ssc_number_t value );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_array( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int length );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_matrix( ssc_data_t p_data, const char *name, ssc_number_t *pvalues, int nrows, int ncols );\n");
-		fprintf(f, "SSCEXPORT void ssc_data_set_table( ssc_data_t p_data, const char *name, ssc_data_t table );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_data_get_string( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_data_get_number( ssc_data_t p_data, const char *name, ssc_number_t *value );\n");
-		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_array( ssc_data_t p_data, const char *name, int *length );\n");
-		fprintf(f, "SSCEXPORT ssc_number_t *ssc_data_get_matrix( ssc_data_t p_data, const char *name, int *nrows, int *ncols );\n");
-		fprintf(f, "SSCEXPORT ssc_data_t ssc_data_get_table( ssc_data_t p_data, const char *name );\n");
-		fprintf(f, "typedef void* ssc_entry_t;\n");
-		fprintf(f, "SSCEXPORT ssc_entry_t ssc_module_entry( int index );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_entry_name( ssc_entry_t p_entry );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_entry_description( ssc_entry_t p_entry );\n");
-		fprintf(f, "SSCEXPORT int ssc_entry_version( ssc_entry_t p_entry );\n");
-		fprintf(f, "typedef void* ssc_module_t;\n");
-		fprintf(f, "typedef void* ssc_info_t;\n");
-		fprintf(f, "SSCEXPORT ssc_module_t ssc_module_create( const char *name );\n");
-		fprintf(f, "SSCEXPORT void ssc_module_free( ssc_module_t p_mod );\n");
-		fprintf(f, "#define SSC_INPUT 1\n");
-		fprintf(f, "#define SSC_OUTPUT 2\n");
-		fprintf(f, "#define SSC_INOUT 3\n");
-		fprintf(f, "SSCEXPORT const ssc_info_t ssc_module_var_info( ssc_module_t p_mod, int index );\n");
-		fprintf(f, "SSCEXPORT int ssc_info_var_type( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT int ssc_info_data_type( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_name( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_label( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_units( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_meta( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_group( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_required( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_constraints( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_info_uihint( ssc_info_t p_inf );\n");
-		fprintf(f, "SSCEXPORT void ssc_module_exec_set_print( int print );\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_simple( const char *name, ssc_data_t p_data );\n");
-		fprintf(f, "SSCEXPORT const char *ssc_module_exec_simple_nothread( const char *name, ssc_data_t p_data );\n");
-		fprintf(f, "#define SSC_LOG 0\n");
-		fprintf(f, "#define SSC_UPDATE 1\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec( ssc_module_t p_mod, ssc_data_t p_data );\n");
-		fprintf(f, "typedef void* ssc_handler_t;\n");
-		fprintf(f, "SSCEXPORT ssc_bool_t ssc_module_exec_with_handler(\n");
-		fprintf(f, "	ssc_module_t p_mod,\n");
-		fprintf(f, "	ssc_data_t p_data,\n");
-		fprintf(f, "	ssc_bool_t (*pf_handler)( ssc_module_t, ssc_handler_t, int action, float f0, float f1, const char *s0, const char *s1, void *user_data ),\n");
-		fprintf(f, "	void *pf_user_data );\n");
-		fprintf(f, "#define SSC_NOTICE 1\n");
-		fprintf(f, "#define SSC_WARNING 2\n");
-		fprintf(f, "#define SSC_ERROR 3\n");
-		fprintf(f, "SSCEXPORT const char *ssc_module_log( ssc_module_t p_mod, int index, int *item_type, float *time );\n");
-		fprintf(f, "SSCEXPORT void __ssc_segfault();\n");
-		fprintf(f, "#ifndef __SSCLINKAGECPP__\n");
-		fprintf(f, "#ifdef __cplusplus\n");
-		fprintf(f, "}\n");
-		fprintf(f, "#endif\n");
-		fprintf(f, "\n");
-		fprintf(f, "#endif // __SSCLINKAGECPP__\n");
-		fprintf(f, "\n");
-		fprintf(f, "#endif\n");
-		fclose(f);
 	}
 	return true;
 }
@@ -316,13 +223,254 @@ bool CodeGen_Base::Prepare()
 		if (n < 0)
 		{
 			wxArrayString& errs = eval.GetErrors();
-			for (size_t i = 0; i < errs.size(); i++)
-				m_errors.Add(errs[i]);
+			for (size_t ii = 0; ii < errs.size(); ii++)
+				m_errors.Add(errs[ii]);
 
 			return false;
 		}
 	}
 	return true;
+}
+
+bool CodeGen_Base::GenerateInputsOutputs(wxString& compute_module, ssc_data_t p_data, ssc_data_t p_data_output, std::vector<const char*>& cm_names)
+{
+	ssc_module_t p_mod = ssc_module_create(compute_module.c_str());
+	if (!p_mod)
+	{
+		m_errors.Add("could not create ssc module: " + compute_module);
+		return false;
+	}
+
+
+	int pidx = 0;
+	while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
+	{
+		int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+		int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
+		const char* var_name = ssc_info_name(p_inf);
+		wxString name(var_name); // assumed to be non-null
+		wxString reqd(ssc_info_required(p_inf));
+
+		if (var_type == SSC_INPUT || var_type == SSC_INOUT)
+		{
+			// handle ssc variable names
+			// that are explicit field accesses"shading:mxh"
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND)
+			{
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != ssc_data_type)
+			{
+				for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
+					if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
+					{
+						if (!field.IsEmpty())
+						{
+							if (vv->Type() != VV_TABLE)
+								m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
+
+							bool do_copy_var = false;
+							if (reqd.Left(1) == "?")
+							{
+								// if the SSC variable is optional, check for the 'en_<field>' element in the table
+								if (VarValue* en_flag = vv->Table().Get("en_" + field))
+									if (en_flag->Boolean())
+										do_copy_var = true;
+							}
+							else do_copy_var = true;
+
+							if (do_copy_var)
+							{
+								if (VarValue* vv_field = vv->Table().Get(field))
+								{
+									if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
+										m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
+									else
+										cm_names.push_back(var_name);
+								}
+							}
+
+						}
+						else // no table value
+						{
+							if (!VarValueToSSC(vv, p_data, name))
+								m_errors.Add("Error translating data from SAM UI to SSC for " + name);
+							else
+								cm_names.push_back(var_name);
+						}
+					}
+					//					else if (reqd == "*")
+					//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
+				}
+			}
+		}
+		else if (var_type == SSC_OUTPUT)
+		{
+			wxString field;
+			int pos = name.Find(':');
+			if (pos != wxNOT_FOUND)
+			{
+				field = name.Mid(pos + 1);
+				name = name.Left(pos);
+			}
+
+			int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
+			if (existing_type != ssc_data_type)
+			{
+				if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
+					m_errors.Add("Error for output " + name);
+			}
+		}
+	} // end of compute module variables
+	return true;
+}
+
+bool CodeGen_Base::GenerateCodeHybrids(const int& array_matrix_threshold)
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+
+	if (!cfg)
+	{
+		m_errors.Add("no valid configuration for this case");
+		return false;
+	}
+	if (!Prepare())
+	{
+		m_errors.Add("preparation failed for this case");
+		return false;
+	}
+	ssc_data_t p_data = ssc_data_create();
+
+	ssc_data_t p_input = ssc_data_create();
+	// set "compute_modules"
+
+	ssc_var_t p_compute_modules[10];  // only constant allowed here - assumes m_simlist.size() < 10
+	for (size_t i = 0; i < cfg->Simulations.size() && i < 10; i++) {
+		p_compute_modules[i] = ssc_var_create();
+		ssc_var_set_string(p_compute_modules[i], cfg->Simulations[i].c_str());
+	}
+	ssc_data_set_data_array(p_input, "compute_modules", &p_compute_modules[0], (int)cfg->Simulations.size());
+	for (size_t i = 0; i < cfg->Simulations.size() && i < 10; i++)
+		ssc_var_free(p_compute_modules[i]);
+
+	for (size_t i = 0; i < m_case->GetConfiguration()->Technology.size() && i < cfg->Simulations.size(); i++) { // each vartable
+		ssc_data_t p_val = ssc_data_create();
+		m_case->Values(i).AsSSCData(p_val, true); // skips overrides - okay for base case
+		// remove any inputs that are not in the compute module
+		wxArrayString ssc_inputs;
+		std::string inputs_name;
+		if (i == m_case->GetConfiguration()->Technology.size() - 1) {// "Hybrid" captures all non-generators and non-battery and non-fuel cell compute modules, e.g. "grid", "utility rate5","singleowner", etc.
+			size_t j = i;
+			while (j < cfg->Simulations.size()) {
+				auto& scompute_module = cfg->Simulations[j];
+				ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+				if (!p_mod)	{
+					m_errors.Add("could not create ssc module: " + scompute_module);
+					return false;
+				}
+				// do not hybridize "Hybrid" compute modules
+				int pidx = 0;
+				while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+					int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+					const char* var_name = ssc_info_name(p_inf);
+					int ssc_type = ssc_info_data_type(p_inf);
+
+					if (ssc_type == SSC_ARRAY) {
+						int ssc_data_type = ssc_data_query(p_val, var_name);
+						if (ssc_data_type == SSC_NUMBER) {
+							ssc_number_t num;
+							ssc_data_get_number(p_val, var_name, &num);
+							ssc_data_set_array(p_val, var_name, &num, 1);
+						}
+					}
+
+					wxString name(var_name); // assumed to be non-null
+					wxString reqd(ssc_info_required(p_inf));
+
+					if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+						ssc_inputs.Add(name);
+					}
+				}
+				j++;
+			}
+			inputs_name = m_case->GetConfiguration()->Technology[i].ToStdString();
+		}
+		else {
+			// remove inputs not in compute module
+			auto& scompute_module = cfg->Simulations[i];
+			ssc_module_t p_mod = ssc_module_create(scompute_module.c_str());
+			if (!p_mod)	{
+				m_errors.Add("could not create ssc module: " + scompute_module);
+				return false;
+			}
+			if (!ssc_module_hybridize( p_mod)) { // add o and m and total installed cost for each hybrid subsystem
+				m_errors.Add("could hybridize ssc module: " + scompute_module);
+				return false;
+			}
+
+			int pidx = 0;
+			while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))	{
+				int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
+				const char* var_name = ssc_info_name(p_inf);
+				wxString name(var_name); // assumed to be non-null
+				wxString reqd(ssc_info_required(p_inf));
+
+				if (var_type == SSC_INPUT || var_type == SSC_INOUT) {
+					ssc_inputs.Add(name);
+				}
+			}
+			inputs_name = cfg->Simulations[i].ToStdString();
+		}
+		auto c = ssc_data_first(p_val);
+		wxArrayString inputs_to_unassign;
+		while (c) {
+			if (ssc_inputs.Index(wxString(c),false) == wxNOT_FOUND) // no case comparison, e.g. wind_farm_xCoordinates
+				inputs_to_unassign.Add(c);
+			c = ssc_data_next(p_val);
+		}
+		for (auto d : inputs_to_unassign)
+			ssc_data_unassign(p_val, d.c_str());
+		ssc_data_set_table(p_input, inputs_name.c_str(), p_val);
+		ssc_data_free(p_val);
+	}
+	// set "input" SSC_TABLE
+	ssc_data_set_table(p_data, "input", p_input);
+	ssc_data_free(p_input); // after deep copy above
+
+	// Platform specific files
+	if (!PlatformFiles())
+		m_errors.Add("PlatformFiles failed");
+
+	// language specific additional files
+	if (!SupportingFiles())
+		m_errors.Add("SupportingFiles failed");
+
+	// write language specific header
+	if (!Header())
+		m_errors.Add("Header failed");
+
+	std::string name = "input";
+	if (!Input(p_data, name.c_str(), m_folder, array_matrix_threshold))
+		m_errors.Add(wxString::Format("Input %s write failed", name.c_str()));
+
+
+	wxString compute_module = "hybrid";
+	CreateSSCModule(compute_module);
+	RunSSCModule(compute_module);
+	FreeSSCModule();
+
+	// TODO: Add outputs here!
+
+	if (!Footer())
+		m_errors.Add("Footer failed");
+
+	if (m_fp) fclose(m_fp);
+	return (m_errors.Count() == 0);
 }
 
 
@@ -361,101 +509,10 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 
 	for (size_t kk = 0; kk < simlist.size(); kk++)
 	{
-		ssc_module_t p_mod = ssc_module_create(simlist[kk].c_str());
-		if (!p_mod)
-		{
-			m_errors.Add("could not create ssc module: " + simlist[kk]);
-			continue;
-		}
-
 		// store all variable names that are used to run compute module in vector of variable names
-		std::vector<const char *> cm_names;
+		std::vector<const char*> cm_names;
 
-		int pidx = 0;
-		while (const ssc_info_t p_inf = ssc_module_var_info(p_mod, pidx++))
-		{
-			int var_type = ssc_info_var_type(p_inf);   // SSC_INPUT, SSC_OUTPUT, SSC_INOUT
-			int ssc_data_type = ssc_info_data_type(p_inf); // SSC_STRING, SSC_NUMBER, SSC_ARRAY, SSC_MATRIX
-			const char* var_name = ssc_info_name(p_inf);
-			wxString name(var_name); // assumed to be non-null
-			wxString reqd(ssc_info_required(p_inf));
-
-			if (var_type == SSC_INPUT || var_type == SSC_INOUT)
-			{
-				// handle ssc variable names
-				// that are explicit field accesses"shading:mxh"
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					for (size_t ndx_hybrid = 0; ndx_hybrid < m_case->GetConfiguration()->Technology.size(); ndx_hybrid++) {
-						if (VarValue* vv = m_case->Values(ndx_hybrid).Get(name))
-						{
-							if (!field.IsEmpty())
-							{
-								if (vv->Type() != VV_TABLE)
-									m_errors.Add("SSC variable has table:field specification, but '" + name + "' is not a table in SAM");
-
-								bool do_copy_var = false;
-								if (reqd.Left(1) == "?")
-								{
-									// if the SSC variable is optional, check for the 'en_<field>' element in the table
-									if (VarValue* en_flag = vv->Table().Get("en_" + field))
-										if (en_flag->Boolean())
-											do_copy_var = true;
-								}
-								else do_copy_var = true;
-
-								if (do_copy_var)
-								{
-									if (VarValue* vv_field = vv->Table().Get(field))
-									{
-										if (!VarValueToSSC(vv_field, p_data, name + ":" + field))
-											m_errors.Add("Error translating table:field variable from SAM UI to SSC for '" + name + "':" + field);
-										else
-											cm_names.push_back(var_name);
-									}
-								}
-
-							}
-							else // no table value
-							{
-								if (!VarValueToSSC(vv, p_data, name))
-									m_errors.Add("Error translating data from SAM UI to SSC for " + name);
-								else
-									cm_names.push_back(var_name);
-							}
-						}
-						//					else if (reqd == "*")
-						//						m_errors.Add("SSC requires input '" + name + "', but was not found in the SAM UI or from previous simulations");
-					}
-				}
-			}
-			else if (var_type == SSC_OUTPUT)
-			{
-				wxString field;
-				int pos = name.Find(':');
-				if (pos != wxNOT_FOUND)
-				{
-					field = name.Mid(pos + 1);
-					name = name.Left(pos);
-				}
-
-				int existing_type = ssc_data_query(p_data, ssc_info_name(p_inf));
-				if (existing_type != ssc_data_type)
-				{
-					if (!SSCTypeToSSC(ssc_data_type, p_data_output, name))
-						m_errors.Add("Error for output " + name);
-				}
-			}
-		} // end of compute module variables
+		GenerateInputsOutputs(simlist[kk], p_data, p_data_output, cm_names);
 		if (cm_names.size() > 0)
 			input_order.push_back(cm_names);
 	}
@@ -471,35 +528,6 @@ bool CodeGen_Base::GenerateCode(const int &array_matrix_threshold)
 	// write language specific header
 	if (!Header())
 		m_errors.Add("Header failed");
-
-	/* old single unordered grouping of inputs
-	const char *name = ssc_data_first(p_data);
-	while (name)
-	{
-		if (!Input(p_data, name, m_folder, array_matrix_threshold))
-			m_errors.Add(wxString::Format("Input %s write failed",name));
-		name = ssc_data_next(p_data);
-	}
-	*/
-
-	// check that input order has same count as number of compute modules
-	//if (simlist.size() != input_order.size())
-	//	m_errors.Add("input ordering failed");
-	// can do inputs with compute module calls below
-	/*
-	for (size_t k = 0; k < simlist.size() && k < input_order.size(); k++)
-	{
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-		fprintf(m_fp, "\\ Compute module '%s' inputs;\n", simlist[k].c_str()); // TODO - if desired add comment for each language implementation
-		for (size_t jj = 0; jj < input_order[k].size(); jj++)
-		{
-			const char* name = input_order[k][jj];
-			if (!Input(p_data, name, m_folder, array_matrix_threshold))
-				m_errors.Add(wxString::Format("Input %s write failed", name));
-		}
-		fprintf(m_fp, "\\ **************;\n"); // TODO - if desired add comment for each language implementation
-	}
-	*/
 
 	// run compute modules in sequence (INOUT variables will be updated)
 //	for (size_t kk = 0; kk < simlist.size(); kk++)
@@ -567,17 +595,14 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	wxArrayString code_languages;
 	// ids or just index values from here
 	code_languages.Add("JSON for inputs");				// 0
-	code_languages.Add("LK for SDKtool");				// 1
-	code_languages.Add("C");							// 2
-	code_languages.Add("MATLAB");						// 3
-	code_languages.Add("Python 2");						// 4
-	code_languages.Add("Python 3");						// 5
-	code_languages.Add("Java");							// 6
-	code_languages.Add("C#");							// 8 7
-	code_languages.Add("VBA");							// 9 8
-	code_languages.Add("PHP 5");						// 8 (11) 7 (9)
-	code_languages.Add("PHP 7");						// 9 (12) 8 (10)
-	code_languages.Add("PySAM JSON");					// 10 (13) 9 (11)
+	code_languages.Add("PySAM JSON");					// 1
+	code_languages.Add("LK for SDKtool");				// 2
+	code_languages.Add("C");							// 3
+	code_languages.Add("MATLAB");						// 4
+	code_languages.Add("Java");							// 5
+	code_languages.Add("C#");							// 6
+	code_languages.Add("VBA");							// 7
+	//code_languages.Add("PHP 8");						// 8 - remove since Zend no longer supported per 7/27/2024 meeting
 	// initialize properties
 	wxString foldername = SamApp::Settings().Read("CodeGeneratorFolder");
 	if (foldername.IsEmpty()) foldername = ::wxGetHomeDir();
@@ -634,8 +659,7 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	wxString testpath, testname,testext;
 	wxFileName::SplitPath(fn,&testpath,&testname,&testext);
 
-	if (!wxFileName::DirExists(testpath))
-	{
+	if (!wxFileName::DirExists(testpath)) {
 		wxString msg = wxString::Format("Error with file path or case name\n Please check path = %s\nand name = %s", (const char*)foldername.c_str(), cfn);
 		delete[] cfn;
 		wxMessageBox(msg, "Code Generator Errors", wxICON_ERROR);
@@ -643,65 +667,37 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 	}
 	delete[] cfn;
 
+	// Updates per SAM issue 1717 - generate json to be used for all code generation options
+	std::shared_ptr<CodeGen_json> cgjson;
+	wxString fnjson = fn + ".json";
+	cgjson = std::make_shared<CodeGen_json>(c, fnjson);
+	if (cgjson) {
+		ConfigInfo* cfg = c->GetConfiguration();
+		if (!cfg)
+			return false;
+		if (cfg->Technology.size() > 1)
+			cgjson->GenerateCodeHybrids(threshold);
+		else
+			cgjson->GenerateCode(threshold);
+		if (!cgjson->Ok()) {
+			wxMessageBox(cgjson->GetErrors(), "Code Generator Errors", wxICON_ERROR);
+			return false;
+		}
+	}
+	else
+		return false;
+
+
 	std::shared_ptr<CodeGen_Base> cg;
-	wxString err_msg = "";
+//	wxString err_msg = "";
+	/*
 	if (lang == 0) // JSON
 	{
 		fn += ".json";
 		cg = std::make_shared<CodeGen_json>(c, fn);
 	}
-	else if (lang == 1) // lk
-	{
-		fn += ".lk";
-		cg = std::make_shared<CodeGen_lk>(c, fn);
-	}
-	else if (lang == 2) // c
-	{
-		fn += ".c";
-		cg = std::make_shared < CodeGen_c>(c, fn);
-	}
-	else if (lang == 3) // matlab
-	{
-		fn += ".m";
-		cg = std::make_shared < CodeGen_matlab>(c, fn);
-	}
-	else if (lang == 4) // python2
-	{
-		fn += ".py";
-		cg = std::make_shared < CodeGen_python2>(c, fn);
-	}
-	else if (lang == 5) // python3
-	{
-		fn += ".py";
-		cg = std::make_shared < CodeGen_python3>(c, fn);
-	}
-	else if (lang == 6) // java
-	{
-		fn += ".java";
-		cg = std::make_shared < CodeGen_java>(c, fn);
-	}
-
-	else if (lang == 7) // c#
-	{
-		fn += ".cs";
-		cg = std::make_shared < CodeGen_csharp>(c, fn);
-	}
-	else if (lang == 8) // vba
-	{
-		fn += ".bas";
-		cg = std::make_shared < CodeGen_vba>(c, fn);
-	}
-	else if (lang == 9) // php
-	{
-		fn += ".php";
-		cg = std::make_shared < CodeGen_php5>(c, fn);
-	}
-	else if (lang == 10) // php
-	{
-		fn += ".php";
-		cg = std::make_shared < CodeGen_php7>(c, fn);
-	}
-	else if (lang == 11) // PySAM JSON
+	else */
+	if (lang == 1) // PySAM JSON
 	{
 		fn += ".json";
 		std::shared_ptr<CodeGen_pySAM> pySAM = std::make_shared < CodeGen_pySAM>(c, fn);
@@ -717,14 +713,76 @@ bool CodeGen_Base::ShowCodeGenDialog(CaseWindow *cw)
 		}
 		else
 			return false;
-		}
-	//#endif
+	}
+	else if (lang == 2) // lk
+	{
+		fn += ".lk";
+		cg = std::make_shared<CodeGen_lk>(c, fn);
+	}
+	else if (lang == 3) // c
+	{
+		fn += ".c";
+		cg = std::make_shared < CodeGen_c>(c, fn);
+	}
+	else if (lang == 4) // matlab
+	{
+		fn += ".m";
+		cg = std::make_shared < CodeGen_matlab>(c, fn);
+	}
+	else if (lang == 5) // java
+	{
+		fn += ".java";
+		cg = std::make_shared < CodeGen_java>(c, fn);
+	}
+
+	else if (lang == 6) // c#
+	{
+		fn += ".cs";
+		cg = std::make_shared < CodeGen_csharp>(c, fn);
+	}
+	else if (lang == 7) // vba
+	{
+		fn += ".bas";
+		cg = std::make_shared < CodeGen_vba>(c, fn);
+	}
+	/*
+	else if (lang == 8) // php
+	{
+		fn += ".php";
+		cg = std::make_shared < CodeGen_php8>(c, fn);
+	}
+	*/
 	else
 		return false;
 
-	if (cg)
-	{
-		cg->GenerateCode(threshold);
+	if (cg)	{
+		/*
+		ConfigInfo* cfg = c->GetConfiguration();
+		if (!cfg)
+			return false;
+		if (cfg->Technology.size() > 1)
+			cg->GenerateCodeHybrids(threshold);
+		else
+			cg->GenerateCode(threshold);
+			*/
+		// Platform specific files
+		if (!cg->PlatformFiles())
+			cg->AddError("PlatformFiles failed");
+		// language specific additional files
+		if (!cg->SupportingFiles())
+			cg->AddError("SupportingFiles failed");
+		if (!cg->Header())
+			cg->AddError("Header failed");
+		if (!cg->Inputs())
+			cg->AddError("Inputs failed");
+		if (!cg->RunSSCModules())
+			cg->AddError("RunsSSCModules failed");
+		if (!cg->Outputs())
+			cg->AddError("Outputs failed");
+		if (!cg->Footer())
+			cg->AddError("Footer failed");
+
+
 		if (!cg->Ok())
 			wxMessageBox(cg->GetErrors(), "Code Generator Errors", wxICON_ERROR);
 		else
@@ -749,9 +807,24 @@ CodeGen_lk::CodeGen_lk(Case *cc, const wxString &folder) : CodeGen_Base(cc, fold
 {
 }
 
+bool CodeGen_lk::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "outputs = var('output');\n");
+		fprintf(m_fp, "outln(outputs); // View all outputs that are available.\n");
+	}
+	else {
+		fprintf(m_fp, "num_metrics = var('number_metrics');\n");
+		fprintf(m_fp, "for (i=0;i<num_metrics;i++)\n");
+		fprintf(m_fp, "\toutln(var('metric_'+i+'_label') + ' = ' + var(var('metric_' + i)));\n");
+	}
+	return true;
+}
 
 bool CodeGen_lk::Output(ssc_data_t)
 {
+
 	for (size_t ii = 0; ii < m_data.size(); ii++) {
 		m_data[ii].label.Replace("\\", "\\\\"); // for unicode handling in outln statements
 		wxString outs = m_data[ii].label + m_data[ii].pre + m_data[ii].post;
@@ -760,11 +833,31 @@ bool CodeGen_lk::Output(ssc_data_t)
 		else
 			fprintf(m_fp, "outln('%s ' + %g * var('%s'));\n", (const char*)outs.c_str(), m_data[ii].scale, (const char*)m_data[ii].var.c_str());
 	}
+
+
+	return true;
+}
+
+
+bool CodeGen_lk::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, "json_to_ssc('%s.json');\n", (const char*)m_name.c_str());
+
+	if (m_is_hybrid) {
+		fprintf(m_fp, "inputs = var('input');\n");
+		fprintf(m_fp, "outln(inputs); // View all inputs from JSON file.\n");
+	}
+	else { // all non-hybrid values in JSON and SDKtool var_table
+	}
+
 	return true;
 }
 
 bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
+
+
 	ssc_number_t value;
 	ssc_number_t *p;
 	int len, nr, nc;
@@ -855,16 +948,33 @@ bool CodeGen_lk::Input(ssc_data_t p_data, const char *name, const wxString &fold
 		}
 		// TODO tables in future
 	}
+	
 	return true;
 }
 
+bool CodeGen_lk::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "run('hybrid');\n");
+	}
+	else {
+		fprintf(m_fp, "num_cm = var('number_compute_modules');\n");
+		fprintf(m_fp, "for (i=0;i<num_cm;i++)\n");
+		fprintf(m_fp, "\trun(var('compute_module_'+i));\n");
+	}
+
+	return true;
+}
 
 bool CodeGen_lk::RunSSCModule(wxString &name)
 {
+	
 	if (name.IsNull() || name.Length() < 1)
 		return false;
 	else
 		fprintf(m_fp, "run('%s');\n", (const char*)name.c_str());
+		
 	return true;
 }
 
@@ -900,6 +1010,41 @@ bool CodeGen_lk::Footer()
 
 CodeGen_c::CodeGen_c(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
+}
+
+bool CodeGen_c::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	ssc_data_t outputs = ssc_data_get_table(data, \"output\");\n");
+		fprintf(m_fp, "	ssc_number_t ae;\n");
+		// iterate through compute modules and get annual energy
+		auto &simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	ssc_data_t %s = ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ssc_data_get_number(%s, \"annual_energy\", &ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		printf(\"%%s annual outputs = %%lg\\n\", \"%s\", (double)ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
 }
 
 
@@ -1038,6 +1183,37 @@ bool CodeGen_c::RunSSCModule(wxString &)
 	fprintf(m_fp, "		ssc_data_free(data); \n");
 	fprintf(m_fp, "		return -1; \n");
 	fprintf(m_fp, "	}\n");
+	return true;
+}
+
+
+bool CodeGen_c::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
+bool CodeGen_c::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " data = json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
 	return true;
 }
 
@@ -1242,6 +1418,42 @@ CodeGen_csharp::CodeGen_csharp(Case *cc, const wxString &folder) : CodeGen_Base(
 {
 }
 
+bool CodeGen_csharp::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "		SSC.Data outputs = data.GetTable(\"output\");\n"); // note that GetTable currently uses m_data implicitly and has no "data" argument - need to update in Header.
+		fprintf(m_fp, "		double ae;\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "		SSC.Data %s = outputs.GetTable(\"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "		if (%s != null) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "			if (%s.Query(\"annual_energy\") == 2) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "				ae = %s.GetNumber(\"annual_energy\");\n", (const char*)sim.c_str());
+			fprintf(m_fp, "				Console.WriteLine(\"{0} annual outputs = {1}\", \"%s\", ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "			}\n");
+			fprintf(m_fp, "		}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "		double num_metrics = data.GetNumber(\"number_metrics\");\n");
+		fprintf(m_fp, "		double metric;\n");
+		fprintf(m_fp, "		string metric_name;\n");
+		fprintf(m_fp, "		string metric_label_name;\n");
+		fprintf(m_fp, "		for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "			metric_label_name = string.Format(\"metric_{0}_label\", i);\n");
+		fprintf(m_fp, "			metric_name = string.Format(\"metric_{0}\", i);\n");
+		fprintf(m_fp, "			string metric_label = data.GetString(metric_label_name);\n");
+		fprintf(m_fp, "			string metric_value = data.GetString(metric_name);\n");
+		fprintf(m_fp, "			metric = data.GetNumber(metric_value);\n");
+		fprintf(m_fp, "			Console.WriteLine(\"{0} = {1}\", metric_label, metric);\n");
+		fprintf(m_fp, "		}\n");
+	}
+	return true;
+}
+
 
 bool CodeGen_csharp::Output(ssc_data_t p_data)
 {
@@ -1272,6 +1484,15 @@ bool CodeGen_csharp::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+bool CodeGen_csharp::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, "		data = SSC.API.JSONFileToSSCData(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -1372,6 +1593,31 @@ bool CodeGen_csharp::Input(ssc_data_t p_data, const char *name, const wxString &
 }
 
 
+
+bool CodeGen_csharp::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
+
+
 bool CodeGen_csharp::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "		if (!module.Exec(data))\n");
@@ -1411,446 +1657,92 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "        static sscapi()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_version\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_version32();\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_version\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_version64();\n");
-	fprintf(m_fp, "        public static int ssc_version()\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_version64() : ssc_version32();\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_build_info\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_build_info32();\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_build_info\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_build_info64();\n");
-	fprintf(m_fp, "        public static IntPtr ssc_build_info()\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_build_info64() : ssc_build_info32();\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_create\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_create32();\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_create\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_create64();\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_create()\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_create64() : ssc_data_create32();\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_free\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_free32(HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_free\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_free64(HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static void ssc_data_free(HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8) \n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_free64(cxtData);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_free32(cxtData);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_clear\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_clear32(HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_clear\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_clear64(HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static void ssc_data_clear(HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_clear64(cxtData);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_clear32(cxtData);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_unassign\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_unassign32(HandleRef cxtData, string variableName);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_unassign\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_unassign64(HandleRef cxtData, string variableName);\n");
-	fprintf(m_fp, "        public static void ssc_data_unassign(HandleRef cxtData, string variableName)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_unassign64(cxtData, variableName);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_unassign32(cxtData, variableName);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_query\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_query32(HandleRef cxtData, string variableName);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_query\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_query64(HandleRef cxtData, string variableName);\n");
-	fprintf(m_fp, "        public static int ssc_data_query(HandleRef cxtData, string variableName)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_query64(cxtData, variableName) : ssc_data_query32(cxtData, variableName);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_first\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_first32(HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_first\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_first64(HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_first(HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_first64(cxtData) : ssc_data_first32(cxtData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_next\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_next32(HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_next\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_next64(HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_next(HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_next64(cxtData) : ssc_data_next32(cxtData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_string\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_string32(HandleRef cxtData, string name, string value);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_string\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_string64(HandleRef cxtData, string name, string value);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_string(HandleRef cxtData, string name, string value)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_string64(cxtData, name, value);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_string32(cxtData, name, value);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_number\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_number32(HandleRef cxtData, string name, double value);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_number\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_number64(HandleRef cxtData, string name, double value);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_number(HandleRef cxtData, string name, double value)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_number64(cxtData, name, value);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_number32(cxtData, name, value);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_array\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_array32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_array\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_array64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_array(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_array64(cxtData, name, array, length);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_array32(cxtData, name, array, length);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_matrix\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_matrix32(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_matrix\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_matrix64(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_matrix(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_matrix64(cxtData, name, matrix, nRows, nCols);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_matrix32(cxtData, name, matrix, nRows, nCols);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_table\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_table32(HandleRef cxtData, string name, HandleRef cxtTable);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_table\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_data_set_table64(HandleRef cxtData, string name, HandleRef cxtTable);\n");
-	fprintf(m_fp, "        public static void ssc_data_set_table(HandleRef cxtData, string name, HandleRef cxtTable)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_table64(cxtData, name, cxtTable);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_data_set_table32(cxtData, name, cxtTable);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_string\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_string32(HandleRef cxtData, string name);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_string\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_string64(HandleRef cxtData, string name);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_get_string(HandleRef cxtData, string name)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_string64(cxtData, name) : ssc_data_get_string32(cxtData, name);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_number\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_get_number32(HandleRef cxtData, string name, out double number);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_number\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_data_get_number64(HandleRef cxtData, string name, out double number);\n");
-	fprintf(m_fp, "        public static int ssc_data_get_number(HandleRef cxtData, string name, out double number)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_number64(cxtData, name, out number) : ssc_data_get_number32(cxtData, name, out number);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_array\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_array32(HandleRef cxtData, string name, out int len);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_array\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_array64(HandleRef cxtData, string name, out int len);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_get_array(HandleRef cxtData, string name, out int len)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_array64(cxtData, name, out len) : ssc_data_get_array32(cxtData, name, out len);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_matrix\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_matrix32(HandleRef cxtData, string name, out int nRows, out int nCols);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_matrix\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_matrix64(HandleRef cxtData, string name, out int nRows, out int nCols);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_get_matrix(HandleRef cxtData, string name, out int nRows, out int nCols)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_matrix64(cxtData, name, out nRows, out nCols) : ssc_data_get_matrix32(cxtData, name, out nRows, out nCols);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_table\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_table32(HandleRef cxtData, string name);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_table\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_table64(HandleRef cxtData, string name);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_data_get_table(HandleRef cxtData, string name)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_data_get_table64(cxtData, name) : ssc_data_get_table32(cxtData, name);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_entry\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_entry32(int moduleIndex);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_entry\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_entry64(int moduleIndex);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_entry(int moduleIndex)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_entry64(moduleIndex) : ssc_module_entry32(moduleIndex);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_name\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_entry_name32(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_name\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_entry_name64(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_entry_name(HandleRef cxtEntry)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_entry_name64(cxtEntry) : ssc_entry_name32(cxtEntry);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_description\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_entry_description32(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_description\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_entry_description64(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_entry_description(HandleRef cxtEntry)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_entry_description64(cxtEntry) : ssc_entry_description32(cxtEntry);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_version\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_entry_version32(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_version\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_entry_version64(HandleRef cxtEntry);\n");
-	fprintf(m_fp, "        public static int ssc_entry_version(HandleRef cxtEntry)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_entry_version64(cxtEntry) : ssc_entry_version32(cxtEntry);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_create\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_create32(string moduleName);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_create\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_create64(string moduleName);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_create(string moduleName)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_create64(moduleName) : ssc_module_create32(moduleName);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_free\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_module_free32(HandleRef cxtModule);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_free\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_module_free64(HandleRef cxtModule);\n");
-	fprintf(m_fp, "        public static void ssc_module_free(HandleRef cxtModule)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_module_free64(cxtModule);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "            {\n");
-	fprintf(m_fp, "                ssc_module_free32(cxtModule);\n");
-	fprintf(m_fp, "            }\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_var_info\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_var_info32(HandleRef cxtModule, int index);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_var_info\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_var_info64(HandleRef cxtModule, int index);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_var_info(HandleRef cxtModule, int index)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_var_info64(cxtModule, index) : ssc_module_var_info32(cxtModule, index);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_var_type\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_info_var_type32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_var_type\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_info_var_type64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static int ssc_info_var_type(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_var_type64(cxtInfo) : ssc_info_var_type32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_data_type\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_info_data_type32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_data_type\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_info_data_type64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static int ssc_info_data_type(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_data_type64(cxtInfo) : ssc_info_data_type32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_name\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_name32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_name\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_name64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_name(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_name64(cxtInfo) : ssc_info_name32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_label\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_label32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_label\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_label64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_label(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_label64(cxtInfo) : ssc_info_label32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_units\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_units32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_units\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_units64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_units(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_units64(cxtInfo) : ssc_info_units32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_meta\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_meta32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_meta\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_meta64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_meta(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_meta64(cxtInfo) : ssc_info_meta32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_group\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_group32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_group\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_group64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_group(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_group64(cxtInfo) : ssc_info_group32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_required\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_required32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_required\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_required64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_required(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_required64(cxtInfo) : ssc_info_required32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_constraints\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_constraints32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_constraints\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_constraints64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_constraints(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_constraints64(cxtInfo) : ssc_info_constraints32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_uihint\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_uihint32(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_uihint\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_info_uihint64(HandleRef cxtInfo);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_info_uihint(HandleRef cxtInfo)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_info_uihint64(cxtInfo) : ssc_info_units32(cxtInfo);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec_simple32(string moduleName, HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec_simple64(string moduleName, HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static int ssc_module_exec_simple(string moduleName, HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_exec_simple64(moduleName, cxtData) : ssc_module_exec_simple32(moduleName, cxtData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_set_print\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_module_exec_set_print32(int print); \n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_set_print\")]\n");
-	fprintf(m_fp, "        public static extern void ssc_module_exec_set_print64(int print); \n");
-	fprintf(m_fp, "        public static void ssc_module_exec_set_print(int print)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            if (System.IntPtr.Size == 8)\n");
-	fprintf(m_fp, "			       ssc_module_exec_set_print64(print); \n");
-	fprintf(m_fp, "            else\n");
-	fprintf(m_fp, "                ssc_module_exec_set_print32(print); \n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple_nothread\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_exec_simple_nothread32(string moduleName, HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple_nothread\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_exec_simple_nothread64(string moduleName, HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_exec_simple_nothread(string moduleName, HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_exec_simple_nothread64(moduleName, cxtData) : ssc_module_exec_simple_nothread32(moduleName, cxtData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "        \n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec32(HandleRef cxtModule, HandleRef cxtData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec64(HandleRef cxtModule, HandleRef cxtData);\n");
-	fprintf(m_fp, "        public static int ssc_module_exec(HandleRef cxtModule, HandleRef cxtData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_exec64(cxtModule, cxtData) : ssc_module_exec32(cxtModule, cxtData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_with_handler\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec_with_handler32(HandleRef cxtModule, HandleRef cxtData, HandleRef cxtHandler, HandleRef cxtUserData);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_with_handler\")]\n");
-	fprintf(m_fp, "        public static extern int ssc_module_exec_with_handler64(HandleRef cxtModule, HandleRef cxtData, HandleRef cxtHandler, HandleRef cxtUserData);\n");
-	fprintf(m_fp, "        public static int ssc_module_exec_with_handler(HandleRef cxtModule, HandleRef cxtData, HandleRef cxtHandler, HandleRef cxtUserData)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_exec_with_handler64(cxtModule, cxtData, cxtHandler, cxtUserData) : ssc_module_exec_with_handler32(cxtModule, cxtData, cxtHandler, cxtUserData);\n");
-	fprintf(m_fp, "        }\n");
-	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        [DllImport(\"ssc32.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_log\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_log32(HandleRef cxtModule, int index, out int messageType, out double time);\n");
-	fprintf(m_fp, "        [DllImport(\"ssc64.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_log\")]\n");
-	fprintf(m_fp, "        public static extern IntPtr ssc_module_log64(HandleRef cxtModule, int index, out int messageType, out double time);\n");
-	fprintf(m_fp, "        public static IntPtr ssc_module_log(HandleRef cxtModule, int index, out int messageType, out double time)\n");
-	fprintf(m_fp, "        {\n");
-	fprintf(m_fp, "            return (System.IntPtr.Size == 8) ? ssc_module_log64(cxtModule, index, out messageType, out time) : ssc_module_log32(cxtModule, index, out messageType, out time);\n");
-	fprintf(m_fp, "        }\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"json_file_to_ssc_data\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr json_file_to_ssc_data(string name);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_version\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_version();\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_build_info\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_build_info();\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_create\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_create();\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_free\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_free(HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_clear\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_clear(HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_unassign\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_unassign(HandleRef cxtData, string variableName);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_query\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_data_query(HandleRef cxtData, string variableName);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_first\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_first(HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_next\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_next(HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_string\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_string(HandleRef cxtData, string name, string value);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_number\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_number(HandleRef cxtData, string name, double value);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_array\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_array(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[] array, int length);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_matrix\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_matrix(HandleRef cxtData, string name, [In, MarshalAs(UnmanagedType.LPArray)]double[,] matrix, int nRows, int nCols);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_set_table\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_data_set_table(HandleRef cxtData, string name, HandleRef cxtTable);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_string\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_string(HandleRef cxtData, string name);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_number\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_data_get_number(HandleRef cxtData, string name, out double number);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_array\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_array(HandleRef cxtData, string name, out int len);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_matrix\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_matrix(HandleRef cxtData, string name, out int nRows, out int nCols);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_data_get_table\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_data_get_table(HandleRef cxtData, string name);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_entry\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_entry(int moduleIndex);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_name\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_entry_name(HandleRef cxtEntry);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_description\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_entry_description(HandleRef cxtEntry);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_entry_version\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_entry_version(HandleRef cxtEntry);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_create\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_create(string moduleName);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_free\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_module_free(HandleRef cxtModule);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_var_info\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_var_info(HandleRef cxtModule, int index);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_var_type\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_info_var_type(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_data_type\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_info_data_type(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_name\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_name(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_label\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_label(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_units\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_units(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_meta\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_meta(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_group\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_group(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_required\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_required(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_constraints\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_constraints(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_info_uihint\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_info_uihint(HandleRef cxtInfo);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_module_exec_simple(string moduleName, HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_set_print\")]\n");
+	fprintf(m_fp, "        public static extern void ssc_module_exec_set_print(int print); \n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_simple_nothread\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_exec_simple_nothread(string moduleName, HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_module_exec(HandleRef cxtModule, HandleRef cxtData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_exec_with_handler\")]\n");
+	fprintf(m_fp, "        public static extern int ssc_module_exec_with_handler(HandleRef cxtModule, HandleRef cxtData, HandleRef cxtHandler, HandleRef cxtUserData);\n");
+	fprintf(m_fp, "        [DllImport(\"ssc.dll\", CallingConvention = CallingConvention.Cdecl, EntryPoint = \"ssc_module_log\")]\n");
+	fprintf(m_fp, "        public static extern IntPtr ssc_module_log(HandleRef cxtModule, int index, out int messageType, out double time);\n");
 	fprintf(m_fp, "    }\n");
 	fprintf(m_fp, "\n");
 	fprintf(m_fp, "\n");
@@ -1883,7 +1775,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            sscapi.ssc_data_clear(m_data);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String First()\n");
+	fprintf(m_fp, "        public string First()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_data_first(m_data);\n");
 	fprintf(m_fp, "            if (p != IntPtr.Zero)\n");
@@ -1892,7 +1784,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "                return null;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String Next()\n");
+	fprintf(m_fp, "        public string Next()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_data_next(m_data);\n");
 	fprintf(m_fp, "            if (p != IntPtr.Zero)\n");
@@ -1901,40 +1793,40 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "                return null;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public int Query(String name)\n");
+	fprintf(m_fp, "        public int Query(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            return sscapi.ssc_data_query(m_data, name);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetNumber(String name, double value)\n");
+	fprintf(m_fp, "        public void SetNumber(string name, double value)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_number(m_data, name, value);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public double GetNumber(String name)\n");
+	fprintf(m_fp, "        public double GetNumber(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            double val = double.NaN;\n");
 	fprintf(m_fp, "            sscapi.ssc_data_get_number(m_data, name, out val);\n");
 	fprintf(m_fp, "            return val;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetString(String name, String value)\n");
+	fprintf(m_fp, "        public void SetString(string name, string value)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_string(m_data, name, value);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String GetString(String name)\n");
+	fprintf(m_fp, "        public string GetString(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_data_get_string(m_data, name);\n");
 	fprintf(m_fp, "            return Marshal.PtrToStringAnsi(p);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetArray(String name, double[] data)\n");
+	fprintf(m_fp, "        public void SetArray(string name, double[] data)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_array(m_data, name, data, data.Length);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetArray(String name, String fn, int len)\n");
+	fprintf(m_fp, "        public void SetArray(string name, string fn, int len)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            StreamReader sr = new StreamReader(fn);\n");
 	fprintf(m_fp, "            int Row = 0;\n");
@@ -1948,7 +1840,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            sscapi.ssc_data_set_array(m_data, name, data, len);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public double[] GetArray(String name)\n");
+	fprintf(m_fp, "        public double[] GetArray(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int len;\n");
 	fprintf(m_fp, "            IntPtr res = sscapi.ssc_data_get_array(m_data, name, out len);\n");
@@ -1961,14 +1853,14 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return arr;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetMatrix(String name, double[,] mat)\n");
+	fprintf(m_fp, "        public void SetMatrix(string name, double[,] mat)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int nRows = mat.GetLength(0);\n");
 	fprintf(m_fp, "            int nCols = mat.GetLength(1);\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_matrix(m_data, name, mat, nRows, nCols);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetMatrix(String name, String fn, int nr, int nc)\n");
+	fprintf(m_fp, "        public void SetMatrix(string name, string fn, int nr, int nc)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            StreamReader sr = new StreamReader(fn);\n");
 	fprintf(m_fp, "            int Row = 0;\n");
@@ -1983,7 +1875,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            sscapi.ssc_data_set_matrix(m_data, name, mat, nr, nc);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public double[,] GetMatrix(String name)\n");
+	fprintf(m_fp, "        public double[,] GetMatrix(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            int nRows, nCols;\n");
 	fprintf(m_fp, "            IntPtr res = sscapi.ssc_data_get_matrix(m_data, name, out nRows, out nCols);\n");
@@ -2005,12 +1897,12 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "                return null;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public void SetTable(String name, Data table)\n");
+	fprintf(m_fp, "        public void SetTable(string name, Data table)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            sscapi.ssc_data_set_table(m_data, name, table.GetDataHandle());\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public Data GetTable(String name)\n");
+	fprintf(m_fp, "        public Data GetTable(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_data_get_table(m_data, name);\n");
 	fprintf(m_fp, "            if (IntPtr.Zero == p)\n");
@@ -2035,7 +1927,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            sscapi.ssc_module_exec_set_print(print);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public Module(String name)\n");
+	fprintf(m_fp, "        public Module(string name)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            m_mod = new HandleRef(this, sscapi.ssc_module_create(name) );\n");
 	fprintf(m_fp, "        }\n");
@@ -2061,7 +1953,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return (sscapi.ssc_module_exec(m_mod, data.GetDataHandle()) != 0);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public bool Log(int idx, out String msg, out int type, out double time)\n");
+	fprintf(m_fp, "        public bool Log(int idx, out string msg, out int type, out double time)\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            msg = \"\";\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_module_log(m_mod, idx, out type, out time);\n");
@@ -2105,7 +1997,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return true;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String Name()\n");
+	fprintf(m_fp, "        public string Name()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (m_entry.Handle != IntPtr.Zero)\n");
 	fprintf(m_fp, "            {\n");
@@ -2115,7 +2007,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            else return null;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String Description()\n");
+	fprintf(m_fp, "        public string Description()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (m_entry.Handle != IntPtr.Zero)\n");
 	fprintf(m_fp, "            {\n");
@@ -2166,7 +2058,7 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return true;\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        public String Name()\n");
+	fprintf(m_fp, "        public string Name()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            if (m_inf.Handle == IntPtr.Zero) return null;\n");
 	fprintf(m_fp, "            IntPtr p = sscapi.ssc_info_name(m_inf);\n");
@@ -2255,10 +2147,19 @@ bool CodeGen_csharp::Header()
 	fprintf(m_fp, "            return sscapi.ssc_version();\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "\n");
-	fprintf(m_fp, "        static public String BuildInfo()\n");
+	fprintf(m_fp, "        static public string BuildInfo()\n");
 	fprintf(m_fp, "        {\n");
 	fprintf(m_fp, "            IntPtr buildInfo = sscapi.ssc_build_info();\n");
 	fprintf(m_fp, "            return Marshal.PtrToStringAnsi(buildInfo);\n");
+	fprintf(m_fp, "        }\n");
+	fprintf(m_fp, "\n");
+	fprintf(m_fp, "        static public Data JSONFileToSSCData(string name)\n");
+	fprintf(m_fp, "        {\n");
+	fprintf(m_fp, "				IntPtr data = sscapi.json_file_to_ssc_data(name);\n");
+	fprintf(m_fp, "				if (IntPtr.Zero == data)\n");
+	fprintf(m_fp, "					return null;\n");
+	fprintf(m_fp, "				else\n");
+	fprintf(m_fp, "					return new Data(data);\n");
 	fprintf(m_fp, "        }\n");
 	fprintf(m_fp, "    }\n");
 	fprintf(m_fp, "}\n");
@@ -2316,14 +2217,6 @@ bool CodeGen_csharp::FreeSSCModule()
 
 bool CodeGen_csharp::SupportingFiles()
 {
-	// required dll to be named according to platform
-	wxString f1 = m_folder + "/ssc.dll";
-#ifdef _WIN64
-	wxString f2 = m_folder + "/ssc64.dll";
-#else
-	wxString f2 = m_folder + "/ssc32.dll";
-#endif
-	wxCopyFile(f1, f2);
 	return true;
 }
 
@@ -2342,6 +2235,42 @@ bool CodeGen_csharp::Footer()
 
 CodeGen_matlab::CodeGen_matlab(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
+}
+
+
+bool CodeGen_matlab::Outputs()
+{
+//	fprintf(m_fp, "	%s = ssccall('data_get_string', data, '%s' );\n", name, name);
+//	fprintf(m_fp, "	%s = ssccall('data_get_number', data, '%s' );\n", name, name);
+//	fprintf(m_fp, "	disp(sprintf('%%s = %%g', '%s', %s));\n", (const char*)m_data[ii].label.c_str(), name);
+
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	outputs = ssccall('data_get_table',data, 'output');\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	%s = ssccall('data_get_table',outputs, '%s');\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if ssccall('ssc_data_lookup', %s, 'annual_energy')\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		ae = ssccall('data_get_number', %s, 'annual_energy');\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		fprintf('%%s annual outputs = %%g\\n', '%s', ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	end\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	num_metrics = ssccall('data_get_number', data, 'number_metrics');\n");
+		fprintf(m_fp, "	for i=1:num_metrics\n");
+		fprintf(m_fp, "		d =  num2str(i-1);\n");
+		fprintf(m_fp, "		metric_label_name =  strcat('metric_',d,'_label');\n");
+		fprintf(m_fp, "		metric_name = strcat('metric_',d);\n");
+		fprintf(m_fp, "		metric_label = ssccall('data_get_string', data, metric_label_name);\n");
+		fprintf(m_fp, "		metric_value = ssccall('data_get_string', data, metric_name);\n");
+		fprintf(m_fp, "		metric = ssccall('data_get_number', data, metric_value);\n");
+		fprintf(m_fp, "		fprintf('%%s = %%g\\n', metric_label, metric);\n");
+		fprintf(m_fp, "	end\n");
+	}
+	return true;
 }
 
 
@@ -2384,6 +2313,17 @@ bool CodeGen_matlab::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+
+bool CodeGen_matlab::Inputs()
+{
+	// all values from json file and then running compute module (assumes in same folder)
+	// in Header fprintf(m_fp, "	data = ssccall('data_create');\n");
+	fprintf(m_fp, "	data = ssccall('json_file_to_ssc_data', '%s.json');\n", (const char*)m_name.c_str());
+	return true;
+}
+
 
 bool CodeGen_matlab::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -2501,6 +2441,28 @@ bool CodeGen_matlab::RunSSCModule(wxString &name)
 }
 
 
+bool CodeGen_matlab::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_matlab::Header()
 {
 	// top of file and supporting functions
@@ -2532,6 +2494,18 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_create');\n");
 	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
 	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        end\n");
+	fprintf(m_fp, "    elseif strcmp(action,'json_file_to_ssc_data')\n");
+	fprintf(m_fp, "        result = calllib(ssclib, 'json_file_to_ssc_data', arg0);\n");
+	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
+	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        end\n");
+	fprintf(m_fp, "    elseif strcmp(action,'ssc_data_lookup')\n");
+	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_lookup', arg0, arg1);\n");
+	fprintf(m_fp, "        if ( isnullpointer(result) )\n");
+	fprintf(m_fp, "            result = 0;\n");
+	fprintf(m_fp, "        else\n");
+	fprintf(m_fp, "            result = 1;\n");
 	fprintf(m_fp, "        end\n");
 	fprintf(m_fp, "    elseif strcmp(action,'data_free')\n");
 	fprintf(m_fp, "        result = calllib(ssclib, 'ssc_data_free', arg0);\n");
@@ -2717,7 +2691,7 @@ bool CodeGen_matlab::Header()
 	fprintf(m_fp, "	disp(sprintf('SSC Version = %%d', ssccall('version')));\n");
 	fprintf(m_fp, "	disp(sprintf('SSC Build Information = %%s', ssccall('build_info')));\n");
 	fprintf(m_fp, "	ssccall('module_exec_set_print',0);\n");
-	fprintf(m_fp, "	data = ssccall('data_create');\n");
+//	fprintf(m_fp, "	data = ssccall('data_create');\n");
 	return true;
 }
 
@@ -3328,6 +3302,44 @@ CodeGen_java::CodeGen_java(Case *cc, const wxString &folder) : CodeGen_Base(cc, 
 }
 
 
+bool CodeGen_java::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	long outputs = api.ssc_data_get_table(data, \"output\");\n");
+		fprintf(m_fp, "	double[] ae = {0.0f};\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	long %s = api.ssc_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (api.ssc_data_lookup(%s, \"annual_energy\") != 0) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		api.ssc_data_get_number(%s, \"annual_energy\", ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		System.out.println(\"%s annual outputs = \" + ae[0]);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	double[] num_metrics = {0.0f};\n");
+		fprintf(m_fp, "	api.ssc_data_get_number(data,\"number_metrics\", num_metrics);\n");
+		fprintf(m_fp, "	double[] metric = {0.0f};\n");
+		fprintf(m_fp, "	String metric_name;\n");
+		fprintf(m_fp, "	String metric_label_name;\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics[0];i++) {\n");
+		fprintf(m_fp, "		metric_label_name = String.format(\"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		metric_name = String.format(\"metric_%%d\", i);\n");
+		fprintf(m_fp, "		String metric_label = api.ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		String metric_value = api.ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		api.ssc_data_get_number(data, metric_value, metric);\n");
+		fprintf(m_fp, "		System.out.println(String.format(\"%%s = %%f\", metric_label, metric[0]));\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+
+
+
 bool CodeGen_java::Output(ssc_data_t p_data)
 {
 	wxString str_value;
@@ -3338,7 +3350,7 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 		switch (type)
 		{
 		case SSC_STRING:// TODO
-			fprintf(m_fp, "		String %s = ssc_data_get_string( data, \"%s\" );\n", name, name);
+			fprintf(m_fp, "		String %s = api.ssc_data_get_string( data, \"%s\" );\n", name, name);
 			fprintf(m_fp, "		System.out.println(\"%s = \" + %s);\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_NUMBER:
@@ -3359,6 +3371,16 @@ bool CodeGen_java::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+bool CodeGen_java::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " data = api.json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -3454,6 +3476,28 @@ bool CodeGen_java::Input(ssc_data_t p_data, const char *name, const wxString &fo
 }
 
 
+bool CodeGen_java::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_java::RunSSCModule(wxString &)
 {// TODO
 	fprintf(m_fp, "		if (api.ssc_module_exec(mod,data)==0)\n");
@@ -3492,7 +3536,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "		try {\n");
 	fprintf(m_fp, "			br = new BufferedReader(new FileReader(csvFile));\n");
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
-	fprintf(m_fp, "				ary[i]=double.parseDouble(line);\n");
+	fprintf(m_fp, "				ary[i]=Double.parseDouble(line);\n");
 	fprintf(m_fp, "				i++;\n");
 	fprintf(m_fp, "			}\n");
 	fprintf(m_fp, "		} catch (FileNotFoundException e) {\n");
@@ -3529,7 +3573,7 @@ bool CodeGen_java::Header()
 	fprintf(m_fp, "			while (((line = br.readLine()) != null) && (i<len)) {\n");
 	fprintf(m_fp, "				values = line.split(cvsSplitBy);\n");
 	fprintf(m_fp, "				for (int ic=0;ic<values.length;ic++){\n");
-	fprintf(m_fp, "					ary[i]=double.parseDouble(values[ic]);\n");
+	fprintf(m_fp, "					ary[i]=Double.parseDouble(values[ic]);\n");
 	fprintf(m_fp, "					i++;\n");
 	fprintf(m_fp, "				}\n");
 	fprintf(m_fp, "			}\n");
@@ -3606,10 +3650,12 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  public final static native int SSC_MATRIX_get();\n");
 	fprintf(f, "  public final static native int SSC_TABLE_get();\n");
 	fprintf(f, "  public final static native long ssc_data_create();\n");
+	fprintf(f, "  public final static native long json_file_to_ssc_data(String jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_free(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_clear(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_unassign(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native int ssc_data_query(long jarg1, String jarg2);\n");
+	fprintf(f, "  public final static native int ssc_data_lookup(long jarg1, String jarg2);\n");
 	fprintf(f, "  public final static native String ssc_data_first(long jarg1);\n");
 	fprintf(f, "  public final static native String ssc_data_next(long jarg1);\n");
 	fprintf(f, "  public final static native void ssc_data_set_string(long jarg1, String jarg2, String jarg3);\n");
@@ -3867,6 +3913,40 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "  result = (ssc_data_t)ssc_data_create();\n");
 	fprintf(f, "  *(ssc_data_t *)&jresult = result;\n");
 	fprintf(f, "  return jresult;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "SWIGEXPORT jlong JNICALL Java_SSCAPIJNI_json_1file_1to_1ssc_1data(JNIEnv *jenv, jclass jcls, jstring jarg2) {\n");
+	fprintf(f, "  jlong jresult = 0 ;\n");
+	fprintf(f, "  ssc_data_t result;\n");
+	fprintf(f, "  char *arg2 = (char *) 0;\n");
+	fprintf(f, "  (void)jenv;\n");
+	fprintf(f, "  (void)jcls;\n");
+	fprintf(f, "  if (jarg2) {\n");
+	fprintf(f, "    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);\n");
+	fprintf(f, "    if (!arg2) return 0;\n");
+	fprintf(f, "  }\n");
+	fprintf(f, "  result = (ssc_data_t)json_file_to_ssc_data((char const *)arg2);\n");
+	fprintf(f, "  *(ssc_data_t *)&jresult = result;\n");
+	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
+	fprintf(f, "  return jresult;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "SWIGEXPORT jint JNICALL Java_SSCAPIJNI_ssc_1data_1lookup(JNIEnv *jenv, jclass jcls, jlong jarg1, jstring jarg2) {\n");
+	fprintf(f, "  jint jresult = 0 ;\n");
+	fprintf(f, "  ssc_data_t  arg1 = (ssc_data_t) 0;\n");
+	fprintf(f, "  char *arg2 = (char *) 0;\n");
+	fprintf(f, "  ssc_var_t result;\n");
+	fprintf(f, "  (void)jenv;\n");
+	fprintf(f, "  (void)jcls;\n");
+	fprintf(f, "  arg1 = *(ssc_data_t *)&jarg1;\n");
+	fprintf(f, "  if (jarg2) {\n");
+	fprintf(f, "    arg2 = (char *)(*jenv)->GetStringUTFChars(jenv, jarg2, 0);\n");
+	fprintf(f, "    if (!arg2) return 0;\n");
+	fprintf(f, "  }\n");
+	fprintf(f, "  result = (ssc_var_t)ssc_data_lookup(arg1,(char const *)arg2);\n");
+	fprintf(f, "  if (arg2) (*jenv)->ReleaseStringUTFChars(jenv, jarg2, (const char *)arg2);\n");
+	fprintf(f, "  if (result == NULL)\n");
+	fprintf(f, "	return 0;\n");
+	fprintf(f, "  else\n");
+	fprintf(f, "	return 1;\n");
 	fprintf(f, "}\n");
 	fprintf(f, "SWIGEXPORT void JNICALL Java_SSCAPIJNI_ssc_1data_1free(JNIEnv *jenv, jclass jcls, jlong jarg1) {\n");
 	fprintf(f, "  ssc_data_t arg1 = (ssc_data_t) 0 ;\n");
@@ -4573,25 +4653,14 @@ bool CodeGen_java::SupportingFiles()
 	fprintf(f, "	RM = del /Q\n");
 	fprintf(f, "	EXT = dll\n");
 	fprintf(f, "	JNILIB = SSCAPIJNI.dll\n");
-	fprintf(f, "	ifneq (,$(findstring 64, $(value PROCESSOR_IDENTIFIER)))\n");
-	fprintf(f, "		BITS = 64\n");
-	fprintf(f, "		CCCOMP = c:/MinGW64/bin/gcc.exe\n");
+	fprintf(f, "	BITS = 64\n");
+	fprintf(f, "	CCCOMP = c:/MinGW-64/mingw64/bin/gcc.exe\n");
 	fprintf(f, "#Update based on your Java installation location		\n");
-	fprintf(f, " 		CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files\\Java\\jdk1.7.0_71\\include\"  -I\"C:\\Program Files\\Java\\jdk1.7.0_71\\include\\win32\"\n");
-	fprintf(f, "		JC = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\javac.exe\n");
-	fprintf(f, "		JAR = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\jar.exe\n");
-	fprintf(f, "		JAVA = C:\\Program Files\\Java\\jdk1.7.0_71\\bin\\java.exe\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	else\n");
-	fprintf(f, "		BITS = 32\n");
-	fprintf(f, "		CCCOMP = c:/MinGW/bin/gcc.exe\n");
-	fprintf(f, "#Update based on your Java installation location		\n");
-	fprintf(f, "		CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files(x86)\\Java\\jdk1.7.0_71\\include\"  -I\"C:\\Program Files(x86)\\Java\\jdk1.7.0_71\\include\\win32\"\n");
-	fprintf(f, "		JC = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\javac.exe\n");
-	fprintf(f, "		JAR = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\jar.exe\n");
-	fprintf(f, "		JAVA = C:\\Program Files (x86)\\Java\\jdk1.7.0_71\\bin\\java.exe\n");
-	fprintf(f, "		SSCLIB = ssc.dll\n");
-	fprintf(f, "	endif	\n");
+	fprintf(f, " 	CIFLAGS = -Wl,--kill-at -I\"C:\\Program Files\\Java\\jdk-22\\include\"  -I\"C:\\Program Files\\Java\\jdk-22\\include\\win32\"\n");
+	fprintf(f, "	JC = C:\\Program Files\\Java\\jdk-22\\bin\\javac.exe\n");
+	fprintf(f, "	JAR = C:\\Program Files\\Java\\jdk-22\\bin\\jar.exe\n");
+	fprintf(f, "	JAVA = C:\\Program Files\\Java\\jdk-22\\bin\\java.exe\n");
+	fprintf(f, "	SSCLIB = ssc.dll\n");
 	fprintf(f, "else\n");
 	fprintf(f, "    PF = $(shell uname)\n");
 	fprintf(f, "    ifneq (,$(findstring Darwin, $(PF)))\n");
@@ -4695,6 +4764,55 @@ CodeGen_php::CodeGen_php(Case * cc, const wxString & folder) : CodeGen_Base(cc, 
 }
 #pragma warning(pop)
 
+
+bool CodeGen_php::Outputs()
+{
+	// all values from json file and then running compute module
+	/*
+		case SSC_STRING:
+			fprintf(m_fp, "	$%s = sscphp_data_get_string( $dat, \"%s\" );\n", name, name);
+			fprintf(m_fp, " echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+		case SSC_NUMBER:
+			fprintf(m_fp, "	$%s = sscphp_data_get_number( $dat, \"%s\");\n", name, name);
+			fprintf(m_fp, "	echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			break;
+	*/
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	$outputs = sscphp_data_get_table($dat, \"output\");\n");
+//		fprintf(m_fp, "	ssc_number_t ae;\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	$%s = sscphp_data_get_table(outputs, \"%s\");\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	if (ssc_data_lookup(%s, \"annual_energy\")) {\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		$ae = sscphp_data_get_number(%s, \"annual_energy\");\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		printf(\"%%s annual outputs = %%lg\\n\", \"%s\", (double)ae);\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		echo '%s = '. $ae . PHP_EOL;\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	}\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	ssc_number_t num_metrics;\n");
+		fprintf(m_fp, "	ssc_data_get_number(data,\"number_metrics\", &num_metrics);\n");
+		fprintf(m_fp, "	ssc_number_t metric;\n");
+		fprintf(m_fp, "	char metric_name[10];\n");
+		fprintf(m_fp, "	char metric_label_name[17];\n");
+		fprintf(m_fp, "	for (int i=0;i<(int)num_metrics;i++) {\n");
+		fprintf(m_fp, "		sprintf(metric_label_name, \"metric_%%d_label\", i);\n");
+		fprintf(m_fp, "		sprintf(metric_name, \"metric_%%d\", i);\n");
+		fprintf(m_fp, "		const char *metric_label = ssc_data_get_string( data, metric_label_name);\n");
+		fprintf(m_fp, "		const char *metric_value = ssc_data_get_string( data, metric_name);\n");
+		fprintf(m_fp, "		ssc_data_get_number(data, metric_value, &metric);\n");
+		fprintf(m_fp, "		printf(\"%%s = %%lg\\n\", metric_label, (double)metric);\n");
+		fprintf(m_fp, "	}\n");
+	}
+	return true;
+}
+
+
+
 bool CodeGen_php::Output(ssc_data_t p_data)
 {
 	//		fprintf(m_fp, "outln('%s ' + var('%s'));\n", (const char*)m_data[ii].label.c_str(), (const char*)m_data[ii].var.c_str());
@@ -4711,7 +4829,7 @@ bool CodeGen_php::Output(ssc_data_t p_data)
 			break;
 		case SSC_NUMBER:
 			fprintf(m_fp, "	$%s = sscphp_data_get_number( $dat, \"%s\");\n", name, name);
-			fprintf(m_fp, "	 echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
+			fprintf(m_fp, "	echo '%s = '. $%s . PHP_EOL;\n", (const char*)m_data[ii].label.c_str(), name);
 			break;
 		case SSC_ARRAY:
 			fprintf(m_fp, "	$%s = sscphp_data_get_array( $dat, \"%s\");\n", name, name);
@@ -4727,6 +4845,16 @@ bool CodeGen_php::Output(ssc_data_t p_data)
 	}
 	return true;
 }
+
+
+bool CodeGen_php::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, " $dat = sscphp_json_file_to_ssc_data(\"%s.json\");\n", (const char*)m_name.c_str());
+
+	return true;
+}
+
 
 bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &folder, const int &array_matrix_threshold)
 {
@@ -4825,6 +4953,28 @@ bool CodeGen_php::Input(ssc_data_t p_data, const char *name, const wxString &fol
 }
 
 
+bool CodeGen_php::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_php::RunSSCModule(wxString &)
 {
 	fprintf(m_fp, "	if ( !sscphp_module_exec( $mod, $dat ) )\n");
@@ -4898,7 +5048,7 @@ bool CodeGen_php::Header()
 	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_version() . PHP_EOL;\n");
 	fprintf(m_fp, "	echo 'SSC Version = ' . sscphp_build_info() . PHP_EOL;\n");
 	fprintf(m_fp, "	sscphp_module_exec_set_print(0);\n");
-	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
+//	fprintf(m_fp, "	$dat = sscphp_data_create();\n");
 	return true;
 }
 
@@ -6172,10 +6322,684 @@ bool CodeGen_php7::SupportingFiles()
 }
 
 
+CodeGen_php8::CodeGen_php8(Case* cc, const wxString& folder) : CodeGen_Base(cc, folder), CodeGen_php(cc, folder)
+{
+}
+
+bool CodeGen_php8::SupportingFiles()
+{
+	// add c wrapper for building
+	wxString fn = m_folder + "/sscphp.c";
+	FILE* f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "#include <stdio.h>\n");
+	fprintf(f, "#include <stdlib.h>\n");
+	fprintf(f, "#include <string.h>\n");
+	fprintf(f, "#include <ctype.h>\n");
+	fprintf(f, "#include <php.h>\n");
+	fprintf(f, "#include \"sscapi.h\"\n");
+	fprintf(f, "#define PHP_SSC_VERSION \"1.0\"\n");
+	fprintf(f, "#define PHP_SSC_EXTNAME \"sscphp\"\n");
+	fprintf(f, "typedef struct {\n");
+	fprintf(f, "	ssc_module_t p_mod;\n");
+	fprintf(f, "	ssc_data_t p_dat;\n");
+	fprintf(f, "	int is_dat_const_ref;\n");
+	fprintf(f, "} spobj;\n");
+	fprintf(f, "static int spobj_id;\n");
+	fprintf(f, "#define spobj_name \"sscphpobj\"\n");
+	fprintf(f, "static void _free_spobj( zend_resource *rsrc TSRMLS_DC ) {\n");
+	fprintf(f, "	spobj *p = (spobj*)rsrc->ptr;\n");
+	fprintf(f, "	if ( p->p_mod ) ssc_module_free( p->p_mod );\n");
+	fprintf(f, "	if ( p->p_dat && !p->is_dat_const_ref ) ssc_data_free( p->p_dat );\n");
+	fprintf(f, "	efree(p);\n");
+	fprintf(f, "};\n");
+	fprintf(f, "static spobj *create_ref( ssc_module_t *m, ssc_data_t *d ) {\n");
+	fprintf(f, "	spobj *p = emalloc(sizeof(spobj));\n");
+	fprintf(f, "	p->p_mod = m;\n");
+	fprintf(f, "	p->p_dat = d;\n");
+	fprintf(f, "	p->is_dat_const_ref = 0;\n");
+	fprintf(f, "	return p;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MINIT_FUNCTION(sscphp) {\n");
+	fprintf(f, "	spobj_id = zend_register_list_destructors_ex( _free_spobj,\n");
+	fprintf(f, "			NULL, spobj_name, module_number );\n");
+	fprintf(f, "	return SUCCESS;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MSHUTDOWN_FUNCTION(sscphp) {\n");
+	fprintf(f, "	return SUCCESS;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_MINFO_FUNCTION(sscphp) {\n");
+	fprintf(f, "	char buf[16];\n");
+	fprintf(f, "	sprintf(buf, \"188713200\", ssc_version());\n");
+	fprintf(f, "	php_info_print_table_start();\n");
+	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
+	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
+	fprintf(f, "	php_info_print_table_row(2, \"Build\", ssc_build_info() );\n");
+	fprintf(f, "	php_info_print_table_end();\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_version ) {\n");
+	fprintf(f, "	RETURN_LONG( ssc_version() );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_build_info ) {\n");
+	fprintf(f, "	RETURN_STRING( ssc_build_info() );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_create ) {\n");
+	fprintf(f, "	spobj *p = create_ref(0, ssc_data_create() );\n");
+	fprintf(f, "	RETURN_RES(zend_register_resource( (void *)p, spobj_id ));\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_free ) {\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		ssc_data_free( p->p_dat );\n");
+	fprintf(f, "		p->p_dat = 0;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_clear ) {\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		ssc_data_clear( p->p_dat );\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_unassign )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		ssc_data_unassign( p->p_dat, name );\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_query )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "		RETURN_LONG( ssc_data_query( p->p_dat, name ) );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_first )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		const char *str = ssc_data_first(p->p_dat);\n");
+	fprintf(f, "		if ( str )\n");
+	fprintf(f, "			RETURN_STRING( str );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_next )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( p->p_dat )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		const char *str = ssc_data_next( p->p_dat );\n");
+	fprintf(f, "		if ( str )\n");
+	fprintf(f, "			RETURN_STRING( str );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_string )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	char *value;\n");
+	fprintf(f, "	size_t value_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rss\", &res, &name, &name_len, &value, &value_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p ) RETURN_FALSE;\n");
+	fprintf(f, "	if( p->p_dat )\n");
+	fprintf(f, "		ssc_data_set_string( p->p_dat, name, value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_number )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	double value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsd\", &res, &name, &name_len, &value ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p ) RETURN_FALSE;\n");
+	fprintf(f, "	if( p->p_dat )\n");
+	fprintf(f, "		ssc_data_set_number( p->p_dat, name, (ssc_number_t)value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_array )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	long i, len;\n");
+	fprintf(f, "	zval *arr;\n");
+	fprintf(f, "	zval *data;\n");
+	fprintf(f, "	HashTable *hash;\n");
+	fprintf(f, "	HashPosition pointer;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsa\", &res, &name, &name_len, &arr ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) return;\n");
+	fprintf(f, "	hash = Z_ARRVAL_P(arr);\n");
+	fprintf(f, "	len = zend_hash_num_elements( hash );\n");
+	fprintf(f, "	if (len < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_number_t *vec = (ssc_number_t*) malloc( sizeof(ssc_number_t)*len );\n");
+	fprintf(f, "	if ( !vec ) RETURN_FALSE;\n");
+	fprintf(f, "	i=0;\n");
+	fprintf(f, "	for( zend_hash_internal_pointer_reset_ex( hash, &pointer );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex(hash, &pointer )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(hash, &pointer ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		if ( i >= len ) break;\n");
+	fprintf(f, "		vec[i] = 0.0f;\n");
+	fprintf(f, "		if ( Z_TYPE_P(data) == IS_DOUBLE )\n");
+	fprintf(f, "			vec[i] = (ssc_number_t)Z_DVAL_P(data);\n");
+	fprintf(f, "		else if ( Z_TYPE_P(data) == IS_LONG )\n");
+	fprintf(f, "			vec[i] = (ssc_number_t)Z_LVAL_P(data);\n");
+	fprintf(f, "		i++;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	ssc_data_set_array( p->p_dat, name, vec, len );\n");
+	fprintf(f, "	free( vec );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_matrix )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	long i, j, nr, nc, nlen, index;\n");
+	fprintf(f, "	zval *mat;\n");
+	fprintf(f, "	zval *data;\n");
+	fprintf(f, "	HashTable *hash, *row;\n");
+	fprintf(f, "	HashPosition pointer1, pointer2;\n");
+	fprintf(f, "	ssc_number_t *vec;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsa\", &res, &name, &name_len, &mat ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	hash = Z_ARRVAL_P(mat);\n");
+	fprintf(f, "	nr = zend_hash_num_elements( hash );\n");
+	fprintf(f, "	if ( nr < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	zend_hash_internal_pointer_reset_ex( hash, &pointer1 );\n");
+	fprintf(f, "  	data = zend_hash_get_current_data_ex(hash, &pointer1 );\n");
+	fprintf(f, "	row = Z_ARRVAL_P(data);\n");
+	fprintf(f, "	nc = zend_hash_num_elements( row );\n");
+	fprintf(f, "	if ( nc < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	nlen = nr * nc;\n");
+	fprintf(f, "	vec = (ssc_number_t*)malloc( sizeof(ssc_number_t)*nlen );\n");
+	fprintf(f, "	if ( !vec ) RETURN_FALSE;\n");
+	fprintf(f, "	i = 0;\n");
+	fprintf(f, "	for( zend_hash_internal_pointer_reset_ex( hash, &pointer1 );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex(hash, &pointer1 )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(hash, &pointer1) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		if ( i >= nr ) break;\n");
+	fprintf(f, "		if ( Z_TYPE_P(data) != IS_ARRAY ) continue;\n");
+	fprintf(f, "		row = Z_ARRVAL_P(data);\n");
+	fprintf(f, "		j = 0;\n");
+	fprintf(f, "		nc = zend_hash_num_elements( row );\n");
+	fprintf(f, "		for( zend_hash_internal_pointer_reset_ex( row, &pointer2 );\n");
+	fprintf(f, "			(data = zend_hash_get_current_data_ex( row, &pointer2 )) != NULL;\n");
+	fprintf(f, "			zend_hash_move_forward_ex(row, &pointer2 ) )\n");
+	fprintf(f, "		{\n");
+	fprintf(f, "			if ( j >= nc ) break;\n");
+	fprintf(f, "			index = i*nc+j;\n");
+	fprintf(f, "			vec[index] = 0.0f;\n");
+	fprintf(f, "			if ( Z_TYPE_P(data) == IS_DOUBLE )\n");
+	fprintf(f, "				vec[ index ] = (ssc_number_t)Z_DVAL_P(data);\n");
+	fprintf(f, "			else if ( Z_TYPE_P(data) == IS_LONG )\n");
+	fprintf(f, "				vec[ index ] = (ssc_number_t)Z_LVAL_P(data);\n");
+	fprintf(f, "			j++;\n");
+	fprintf(f, "		}\n");
+	fprintf(f, "		i++;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "\n");
+	fprintf(f, "	ssc_data_set_matrix( p->p_dat, name, vec, nr, nc );\n");
+	fprintf(f, "	free( vec );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_set_table )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	zval *tab;\n");
+	fprintf(f, "	spobj *t;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rsr\", &res, &name, &name_len, &tab ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	if ((t = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "//	ZEND_FETCH_RESOURCE( t, spobj*, &tab, -1, spobj_name, spobj_id );\n");
+	fprintf(f, "	if (!t || !t->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_data_set_table( p->p_dat, name, t->p_dat );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_string )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	const char *value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	value = ssc_data_get_string( p->p_dat, name );\n");
+	fprintf(f, "	RETURN_STRING( value ? value : \"\" )\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_number )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t value;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( ssc_data_get_number( p->p_dat, name, &value ) )\n");
+	fprintf(f, "		RETURN_DOUBLE( (double)value );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_array )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t *arr;\n");
+	fprintf(f, "	int i, len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_dat) RETURN_FALSE;\n");
+	fprintf(f, "	arr = ssc_data_get_array( p->p_dat, name, &len );\n");
+	fprintf(f, "	if ( !arr || len < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	array_init( return_value );\n");
+	fprintf(f, "	for( i=0;i<len;i++)\n");
+	fprintf(f, "		add_index_double( return_value, i, (double)arr[i] );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_matrix )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_number_t *mat;\n");
+	fprintf(f, "	int i,j, nr, nc;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	mat = ssc_data_get_matrix( p->p_dat, name, &nr, &nc );\n");
+	fprintf(f, "	if ( !mat || nr < 1 || nc < 1 ) RETURN_FALSE;\n");
+	fprintf(f, "	array_init( return_value );\n");
+	fprintf(f, "	for( i=0;i<nr;i++ )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		zval *row;\n");
+	fprintf(f, "//		MAKE_STD_ZVAL( row );\n");
+	fprintf(f, "		array_init( row );\n");
+	fprintf(f, "		for( j=0;j<nc;j++ )\n");
+	fprintf(f, "		{\n");
+	fprintf(f, "			int index = i*nc+j;\n");
+	fprintf(f, "			add_index_double( row, j, (double)mat[index] );\n");
+	fprintf(f, "		}\n");
+	fprintf(f, "		add_index_zval( return_value, i, row );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_data_get_table )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	ssc_data_t table;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rs\", &res, &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	table = ssc_data_get_table( p->p_dat, name );\n");
+	fprintf(f, "	if ( !table ) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	spobj *t = create_ref( 0, 0);\n");
+	fprintf(f, "	t->p_dat = table;\n");
+	fprintf(f, "	t->is_dat_const_ref = 1; // ssc_data_get_table returns an internal reference\n");
+	fprintf(f, "	RETURN_RES(zend_register_resource( (void *)t, spobj_id ));\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_entry )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	ssc_entry_t ent;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"l\", &index ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( ent = ssc_module_entry( index ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		array_init( return_value );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"name\", (char*)ssc_entry_name( ent ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"description\", (char*)ssc_entry_description( ent ) );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"version\", (long)ssc_entry_version( ent ) );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	else\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_NULL();\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_create )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	ssc_module_t mod;\n");
+	fprintf(f, "	char *name;\n");
+	fprintf(f, "	size_t name_len;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"s\", &name, &name_len ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( mod = ssc_module_create( name ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		spobj *p = create_ref( mod, 0 );\n");
+	fprintf(f, "		RETURN_RES(zend_register_resource( (void *)p, spobj_id ));\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	else\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_NULL();\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_free )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"r\", &res ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if (!p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	ssc_module_free( p->p_mod );\n");
+	fprintf(f, "	p->p_mod = 0;\n");
+	fprintf(f, "	RETURN_TRUE;\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_var_info )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	ssc_info_t inf;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rl\", &res, &index ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	if ( inf = ssc_module_var_info( p->p_mod, index ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		array_init( return_value );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"var_type\", (long)ssc_info_var_type( inf ) );\n");
+	fprintf(f, "		add_assoc_long( return_value, \"data_type\", (long)ssc_info_data_type( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"name\", (char*)ssc_info_name( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"label\", (char*)ssc_info_label( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"units\", (char*)ssc_info_units( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"meta\", (char*)ssc_info_meta( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"group\", (char*)ssc_info_group( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"required\", (char*)ssc_info_required( inf ) );\n");
+	fprintf(f, "		add_assoc_string( return_value, \"constraints\", (char*)ssc_info_constraints( inf ) );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_exec_set_print )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	long print;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"l\", &print ) == FAILURE )\n");
+	fprintf(f, "		return;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	ssc_module_exec_set_print( print );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_exec )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *mm, *dd;\n");
+	fprintf(f, "	zval *res1, *res2;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rr\", &res1, &res2 ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((mm = (spobj *)zend_fetch_resource_ex(res1, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !mm || !mm->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "	if ((dd = (spobj *)zend_fetch_resource_ex(res2, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !dd || !dd->p_dat ) RETURN_FALSE;\n");
+	fprintf(f, "	RETURN_BOOL( ssc_module_exec( mm->p_mod, dd->p_dat ) );\n");
+	fprintf(f, "}\n");
+	fprintf(f, "PHP_FUNCTION( sscphp_module_log )\n");
+	fprintf(f, "{\n");
+	fprintf(f, "	spobj *p;\n");
+	fprintf(f, "	zval *res;\n");
+	fprintf(f, "	long index;\n");
+	fprintf(f, "	const char *msg;\n");
+	fprintf(f, "	int type;\n");
+	fprintf(f, "	float time;\n");
+	fprintf(f, "	if ( zend_parse_parameters( ZEND_NUM_ARGS() TSRMLS_CC, \"rl\", &res, &index ) == FAILURE )\n");
+	fprintf(f, "		RETURN_FALSE;\n");
+	fprintf(f, "	if ((p = (spobj *)zend_fetch_resource_ex(res, spobj_name, spobj_id )) == NULL) {\n");
+	fprintf(f, "	    RETURN_FALSE;\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "	if ( !p || !p->p_mod ) RETURN_FALSE;\n");
+	fprintf(f, "\n");
+	fprintf(f, "	if ( msg = ssc_module_log( p->p_mod, index, &type, &time ) )\n");
+	fprintf(f, "	{\n");
+	fprintf(f, "		RETURN_STRING( msg );\n");
+	fprintf(f, "	}\n");
+	fprintf(f, "}\n");
+	fprintf(f, "\n");
+	fprintf(f, "static zend_function_entry sscphp_functions[] = {\n");
+	fprintf(f, "	PHP_FE( sscphp_version, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_build_info, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_create, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_free, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_clear, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_query, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_first, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_next, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_string, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_number, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_array, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_matrix, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_set_table, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_string, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_number, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_array, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_matrix, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_data_get_table, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_entry, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_create, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_free, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_var_info, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_exec_set_print, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_exec, NULL )\n");
+	fprintf(f, "		PHP_FE( sscphp_module_log, NULL )\n");
+	fprintf(f, "		{ NULL, NULL, NULL }\n");
+	fprintf(f, "};\n");
+	fprintf(f, "zend_module_entry sscphp_module_entry = {\n");
+	fprintf(f, "	STANDARD_MODULE_HEADER,\n");
+	fprintf(f, "	PHP_SSC_EXTNAME,\n");
+	fprintf(f, "	sscphp_functions,\n");
+	fprintf(f, "	PHP_MINIT(sscphp),\n");
+	fprintf(f, "	PHP_MSHUTDOWN(sscphp),\n");
+	fprintf(f, "	NULL,\n");
+	fprintf(f, "	NULL,\n");
+	fprintf(f, "	PHP_MINFO(sscphp),\n");
+	fprintf(f, "	PHP_SSC_VERSION,\n");
+	fprintf(f, "	STANDARD_MODULE_PROPERTIES\n");
+	fprintf(f, "};\n");
+	fprintf(f, "// install module\n");
+	fprintf(f, "ZEND_GET_MODULE(sscphp)\n");
+	fclose(f);
+	// add php.ini for module location
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "extension=%s/sscphp.so\n", (const char*)m_folder.c_str());
+	fclose(f);
+#if defined(__WXMSW__)  // no windows support yet
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
+#elif defined(__WXOSX__) // not tested on OS X
+	fn = m_folder + "/php.ini";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# Please run generated code on Linux with correct files using Linux SAM desktop version.\n");
+	fclose(f);
+	return true;
+#elif defined(__WXGTK__)
+	// add Makefile (currently linux only)
+	fn = m_folder + "/Makefile";
+	f = fopen(fn.c_str(), "w");
+	if (!f) return false;
+	fprintf(f, "# Built and tested on CentOS 7 PHP 7.0.25 and Zend 3.0.0 on 3/12/2018\n");
+	fprintf(f, "# PHP and Zend installation using php package, e.g. sudo yum install php\n");
+	fprintf(f, "# Header files from php-devel package, e.g. sudo yum install php-devel\n");
+	fprintf(f, "# Set PHPDIR to your php installation which can be found using the command php -i\n");
+	fprintf(f, "# To build and run:\n");
+	fprintf(f, "# make\n");
+	fprintf(f, "# make run\n");
+	fprintf(f, "PHPDIR=/usr/include/php\n");
+	fprintf(f, "\n");
+	fprintf(f, "sscphp.so: sscphp.c\n");
+	fprintf(f, "	gcc -shared -O2 -fPIC -I$(PHPDIR) -I$(PHPDIR)/TSRM -I$(PHPDIR)/main -I$(PHPDIR)/ext -I$(PHPDIR)/Zend -o sscphp.so sscphp.c ./ssc.so\n");
+	fprintf(f, "\n");
+	fprintf(f, "run:\n");
+	fprintf(f, "	php -c ./php.ini %s.php\n", (const char*)m_name.c_str());
+	fprintf(f, "\n");
+	fprintf(f, "clean:\n");
+	fprintf(f, "	rm sscphp.so\n");
+	fprintf(f, "\n");
+	fprintf(f, "help:\n");
+	fprintf(f, "	@echo \"Please check the settings for your system.Your system may not be supported.Please contact sam.support@nrel.gov.System: $(PF) $(VERS)\"\n");
+	fclose(f);
+	return true;
+#else
+	return false;
+#endif
+}
+
+
 // vba code generation class
 
 CodeGen_vba::CodeGen_vba(Case *cc, const wxString &folder) : CodeGen_Base(cc, folder)
 {
+}
+
+
+bool CodeGen_vba::Outputs()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		fprintf(m_fp, "	Dim outputs As LongPtr\n");
+		fprintf(m_fp, "	outputs = sscvb_data_get_table(p_data, \"output\")\n");
+		fprintf(m_fp, "	Dim ae As Double\n");
+		// iterate through compute modules and get annual energy
+		auto& simlist = m_cfg->Simulations;
+		for (auto& sim : simlist) {
+			fprintf(m_fp, "	Dim %s As LongPtr\n", (const char*)sim.c_str());
+			fprintf(m_fp, "	%s = sscvb_data_get_table(outputs, \"%s\")\n", (const char*)sim.c_str(), (const char*)sim.c_str());
+			// check that "annual_energy" exists
+			fprintf(m_fp, "	If (sscvb_data_lookup(%s, \"annual_energy\") = 1) Then\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		sscvb_data_get_number %s, \"annual_energy\", ae\n", (const char*)sim.c_str());
+			fprintf(m_fp, "		Debug.Print \"%s annual outputs = \" & ae \n", (const char*)sim.c_str());
+			fprintf(m_fp, "	End If\n");
+		}
+	}
+	else { // output label and value for each metric from JSON for inputs
+		fprintf(m_fp, "	Dim num_metrics As Double\n");
+		fprintf(m_fp, "	sscvb_data_get_number p_data,\"number_metrics\", num_metrics\n");
+		fprintf(m_fp, "	Dim metric As Double\n");
+		fprintf(m_fp, "	Dim metric_name As String\n");
+		fprintf(m_fp, "	Dim metric_label_name As String\n");
+		fprintf(m_fp, "	Dim metric_value As String\n");
+		fprintf(m_fp, "	Dim metric_label As String\n");
+		fprintf(m_fp, "	Dim I As Long\n");
+		fprintf(m_fp, "	For I=0 To num_metrics - 1\n");
+		fprintf(m_fp, "		metric_label_name = \"metric_\" & i & \"_label\"\n");
+		fprintf(m_fp, "		metric_name = \"metric_\" & i\n");
+		fprintf(m_fp, "		metric_label = VBASSCDataGetString(p_data, metric_label_name)\n");
+		fprintf(m_fp, "		metric_value = VBASSCDataGetString(p_data, metric_name)\n");
+		fprintf(m_fp, "		sscvb_data_get_number p_data, metric_value, metric\n");
+		fprintf(m_fp, "		Debug.Print metric_label & \" = \" & metric \n");
+		fprintf(m_fp, "	Next I\n");
+	}
+	return true;
 }
 
 
@@ -6204,6 +7028,15 @@ bool CodeGen_vba::Output(ssc_data_t p_data)
 			break;
 		}
 	}
+	return true;
+}
+
+
+bool CodeGen_vba::Inputs()
+{
+	// all values from json file and then running compute module
+	fprintf(m_fp, "	p_data = sscvb_json_file_to_ssc_data(\"%s.json\")\n", (const char*)m_name.c_str());
+
 	return true;
 }
 
@@ -6308,6 +7141,28 @@ bool CodeGen_vba::Input(ssc_data_t p_data, const char *name, const wxString &fol
 }
 
 
+bool CodeGen_vba::RunSSCModules()
+{
+	// all values from json file and then running compute module
+	if (m_is_hybrid) {
+		wxString s_cm = "hybrid";
+		CreateSSCModule(s_cm);
+		RunSSCModule(s_cm);
+		FreeSSCModule();
+	}
+	else {
+		wxArrayString simlist = m_cfg->Simulations;
+		for (size_t kk = 0; kk < simlist.size(); kk++)
+		{
+			CreateSSCModule(simlist[kk]);
+			RunSSCModule(simlist[kk]);
+			FreeSSCModule();
+		}
+	}
+	return true;
+}
+
+
 bool CodeGen_vba::RunSSCModule(wxString &name)
 {
 	fprintf(m_fp, "    res = sscvb_module_exec(p_mod, p_data)\n");
@@ -6328,121 +7183,63 @@ bool CodeGen_vba::RunSSCModule(wxString &name)
 bool CodeGen_vba::Header()
 {
 	fprintf(m_fp, "Option Explicit\n");
-	fprintf(m_fp, "#If Win64 Then\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_version _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_version _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        () As Long\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_build_info _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_build_info _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal info As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_create _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_create _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        () As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_create _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_json_file_to_ssc_data _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
 	fprintf(m_fp, "        (ByVal name As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_table _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_number _\n");
+	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String) As LongPtr\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_lookup _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_array _\n");
+	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String) As LongPtr\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_create _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_array _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_string _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_exec _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_free _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_free _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "#Else ' win32 - requires Alias per dumpbin\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_version _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_version@0\" _\n");
-	fprintf(m_fp, "        () As Long\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_build_info _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_build_info@8\" _\n");
-	fprintf(m_fp, "        (ByVal info As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_create _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_create@0\" _\n");
-	fprintf(m_fp, "        () As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_create _\n");
-	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_create@4\" _\n");
 	fprintf(m_fp, "        (ByVal name As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_number _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_number@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_number _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_number _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_number@12\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_array _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_array _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_array@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_array _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_array _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_array@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal length As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_matrix _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_matrix@20\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_matrix _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_matrix@20\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByRef value As Double, ByVal nrows As LongPtr, ByVal ncols As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_set_string _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_set_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_set_string@12\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_get_string _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_get_string _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_get_string@16\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr, ByVal name As String, ByVal value As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_exec _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_exec _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_exec@8\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_data_free _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_data_free _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_data_free@4\" _\n");
 	fprintf(m_fp, "        (ByVal p_data As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_free _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_free _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_free@4\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr) As LongPtr\n");
-	fprintf(m_fp, "    Private Declare PtrSafe Function sscvb_module_log _\n");
+	fprintf(m_fp, "Private Declare PtrSafe Function sscvb_module_log _\n");
 	fprintf(m_fp, "        Lib \"ssc.dll\" _\n");
-	fprintf(m_fp, "        Alias \"_sscvb_module_log@24\" _\n");
 	fprintf(m_fp, "        (ByVal p_mod As LongPtr, ByVal index As LongPtr, ByRef item_type As LongPtr, ByRef time As Double, ByVal msg As String, ByVal str_len As Long) As LongPtr\n");
-	fprintf(m_fp, "#End If\n");
 	fprintf(m_fp, "Public Function VBASSCDataSetArray(pdata As LongPtr, name As String, data() As Double) As LongPtr\n");
 	fprintf(m_fp, "    Dim count As LongPtr\n");
 	fprintf(m_fp, "    count = UBound(data) + 1\n");
@@ -6730,7 +7527,7 @@ bool CodeGen_vba::Header()
 	fprintf(m_fp, "    str = Space(str_len)\n");
 	fprintf(m_fp, "    lng_ptr = sscvb_build_info(str, str_len)\n");
 	fprintf(m_fp, "    Debug.Print \"ssc build \" & str\n");
-	fprintf(m_fp, "    p_data = sscvb_data_create()\n");
+//	fprintf(m_fp, "    p_data = sscvb_data_create()\n");
 
 	return true;
 }
@@ -7558,14 +8355,20 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 	case SSC_STRING:
 		str_value = wxString::FromUTF8(::ssc_data_get_string(p_data, name));
 		str_value.Replace("\\", "/");
-		fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
+		str_value.Replace("\"", "\\\"");
+		// one exception per SAM issue 1515 for "library_folder_list"
+		if (strcmp(name,"library_folder_list")==0)
+			fprintf(m_fp, "	\"%s\" : \"x\",\n", name);
+		else
+			fprintf(m_fp, "	\"%s\" : \"%s\",\n", name, (const char*)str_value.c_str());
 		break;
 	case SSC_NUMBER:
 		::ssc_data_get_number(p_data, name, &value);
 		dbl_value = (double)value;
 		if (dbl_value > 1e38) dbl_value = 1e38;
         if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-            fprintf(m_fp, "    \"%s\" : NaN,\n", name);
+			fprintf(m_fp, "    \"%s\" : \"nan\", \n", name); // per SAM issue 1515
+//			fprintf(m_fp, "    \"%s\" : NaN,\n", name);
 		else {
 			fprintf(m_fp, "    \"%s\" : %.17g,\n", name, dbl_value);
 		}
@@ -7579,14 +8382,16 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				dbl_value = (double)p[i];
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                    fprintf(m_fp, " NaN,");
+					fprintf(m_fp, " \"nan\",");
+				//                    fprintf(m_fp, " NaN,");
                 else
                     fprintf(m_fp, " %.17g,", dbl_value);
 			}
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ],\n");
+				fprintf(m_fp, " \"nan\" ],\n");
+			//                fprintf(m_fp, " NaN ],\n");
             else
                 fprintf(m_fp, " %.17g ],\n", dbl_value);
 		}
@@ -7602,25 +8407,29 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 				if (dbl_value > 1e38) dbl_value = 1e38;
                 if (nc == 1){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ], [");
+						fprintf(m_fp, " \"nan\" ], [");
+					//                        fprintf(m_fp, " NaN ], [");
                     else
                         fprintf(m_fp, " %.17g ], [", dbl_value);
                 }
 				else if ((k > 0) && (k % nc == 0)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " [ NaN,");
+						fprintf(m_fp, " [ \"nan\",");
+					//                        fprintf(m_fp, " [ NaN,");
                     else
                         fprintf(m_fp, " [ %.17g,", dbl_value);
                 }
 				else if (k % nc == (nc - 1)){
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN ],");
+						fprintf(m_fp, " \"nan\" ],");
+					//                        fprintf(m_fp, " NaN ],");
                     else
                         fprintf(m_fp, " %.17g ],", dbl_value);
                 }
 				else {
                     if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                        fprintf(m_fp, " NaN, ");
+						fprintf(m_fp, " \"nan\", ");
+					//                        fprintf(m_fp, " NaN, ");
                     else
                         fprintf(m_fp, " %.17g, ", dbl_value);
                 }
@@ -7628,19 +8437,20 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			dbl_value = (double)p[len - 1];
 			if (dbl_value > 1e38) dbl_value = 1e38;
             if (isnan(dbl_value)) // "nan" from printf fails in json parser - must be "NaN"
-                fprintf(m_fp, " NaN ] ],\n");
+				fprintf(m_fp, " \"nan\" ] ],\n");
+			//                fprintf(m_fp, " NaN ] ],\n");
             else
                 fprintf(m_fp, " %.17g ] ],\n", dbl_value);
 		}
 		break;
 	case SSC_TABLE:
 		{
-		// create table
+			// create table
 			auto dat = ssc_data_get_table(p_data, name); // owned by p_data - no need to free
 			fprintf(m_fp, "	\"%s\" : {\n", name);
-		// track number of table inputs - add to table to prevent read error for last entry with comma
+			// track number of table inputs - add to table to prevent read error for last entry with comma
 			int num_entries = 0;
-		// call input
+			// call input
 			const char* dat_name = ssc_data_first(dat);
 			while (dat_name)
 			{
@@ -7652,6 +8462,32 @@ bool CodeGen_json::Input(ssc_data_t p_data, const char* name, const wxString&, c
 			// finish json table
 			fprintf(m_fp, " \"number table entries\" : %d\n", num_entries);
 			fprintf(m_fp, " },\n");
+		}
+		break;
+	case SSC_DATARR:
+		{
+			int n;
+			ssc_var_t data_arr = ssc_data_get_data_array(p_data, name, &n);
+			fprintf(m_fp, "	\"%s\" : [", name);
+			for (int i = 0; i < n - 1; i++)
+			{
+				ssc_var_t var = ssc_var_get_var_array(data_arr, i);
+				switch (ssc_var_query(var)) {
+				case SSC_STRING:
+					fprintf(m_fp, "\"%s\",", ssc_var_get_string(var));
+					break;
+				case SSC_NUMBER:
+					fprintf(m_fp, "%.17g,", ssc_var_get_number(var));
+				}
+			}
+			ssc_var_t var = ssc_var_get_var_array(data_arr, n - 1);
+			switch (ssc_var_query(var)) {
+			case SSC_STRING:
+				fprintf(m_fp, "\"%s\"],\n", ssc_var_get_string(var));
+				break;
+			case SSC_NUMBER:
+				fprintf(m_fp, "%.17g],\n", ssc_var_get_number(var));
+			}
 		}
 		break;
 	}

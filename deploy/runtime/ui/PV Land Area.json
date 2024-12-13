@@ -94,7 +94,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total array area projected onto ground"
+                    "String": "Ground area occupied by array"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -803,7 +803,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 200.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -886,7 +886,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 200.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -969,7 +969,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 292.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1010,7 +1010,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 200.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1496,7 +1496,7 @@
         "ui_array_land_area_acres": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Array land area",
+            "Label": "Ground area occupied by array",
             "Units": "acres",
             "Group": "PV Land Area",
             "IndexLabels": "",
@@ -1640,8 +1640,6 @@
     "Equations": [
         "equations{ 'ui_ac_capacity' } = define() ",
         "{\r",
-        "\t/*HYBRID TO DO: Need to change this if we change 'photovoltaic' in hybrid config name\r",
-        "\talso see below*/",
         "\tif (technology() == 'Flat Plate PV' || technology() == 'PV Battery' || technology() == 'Photovoltaic Wind Battery Hybrid' ) ",
         "\t{",
         "\t\treturn ${total_inverter_capacity}/1000;",
@@ -1669,7 +1667,8 @@
         "",
         "equations{ 'ui_array_land_area_acres' } = define() ",
         "{\r",
-        "\tif (${ui_use_acre_per_mw} == 0) { // caclulate from module area",
+        "\tif (${ui_use_acre_per_mw} == 0)  // caclulate from module area",
+        "\t{\t\r",
         "\t\tif (technology() == 'Flat Plate PV' || technology() == 'PV Battery' || technology() == 'Photovoltaic Wind Battery Hybrid'  ) ",
         "\t\t{",
         "\t\t\ttotal_land_area_meters = ${subarray1_land_area};",
@@ -1681,20 +1680,19 @@
         "\t\t\t\ttotal_land_area_meters += ${subarray4_land_area};",
         "\t\t\treturn total_land_area_meters / 4046.86;",
         "\t\t}",
-        "\t\telse {",
-        "\t\t\taspect = 1.7;",
-        "\t\t\tlength = 1.7;",
-        "\t\t\tnmods = round(${ui_total_module_area} / 1.7) / 2; //Two rows",
-        "\t\t\twidth = 1;",
-        "\t\t\tarea = length* ( 3 / ${gcr}) * nmods * width; //Row of space in front and back",
+        "\t\telse \r",
+        "\t\t{",
+        "\t\t\tarea = ${ui_total_module_area} / ${gcr};",
         "\t\t\treturn area / 4046.86;",
         "\t\t}",
         "\t}",
         "\telse { // calculate from user entered acres/MWac",
-        "\t\tif (technology() == 'Flat Plate PV' || technology() == 'PV Battery' || technology() == 'Photovoltaic Wind Battery Hybrid' ) {",
+        "\t\tif (technology() == 'Flat Plate PV' || technology() == 'PV Battery' || technology() == 'Photovoltaic Wind Battery Hybrid' ) \r",
+        "\t\t{",
         "\t\t\treturn ${ui_land_area_per_mw} * ${total_inverter_capacity}/1000;",
         "\t\t}",
-        "\t\telse if (technology() == 'PVWatts' || technology() == 'PVWatts Battery' || technology() == 'Fuel Cell' || technology() == 'PVWatts Wind Battery Hybrid') {",
+        "\t\telse\r",
+        "\t\t{",
         "\t\t\treturn ${ui_land_area_per_mw} * ${ac_nameplate}/1000;",
         "\t\t}\r",
         "\t}",

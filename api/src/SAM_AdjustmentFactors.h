@@ -57,28 +57,59 @@ extern "C"
 SAM_EXPORT void SAM_AdjustmentFactors_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Set adjust_hourly
+ * Set adjust_en_hourly
  * options: None
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err);
 
+/**
+ * Set adjust_en_periods
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_periods_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set adjust_en_timeindex
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set adjust_hourly
+ * options: None
+ * constraints: None
+ * required if: adjust_en_hourly is True
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
 
 /**
  * Set adjust_periods
  * options: None
  * constraints: None
- * required if: None
+ * required if: adjust_en_periods is True
  */
 SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+/**
+ * Set adjust_timeindex
+ * options: None
+ * constraints: None
+ * required if: adjust_en_timeindex is True
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err);
 
 //
 // DC Adjustment Factors for All Technology Models
 //
 
 /**
- * Set dc_adjust:_onstant
+ * Set dc_adjust_constant
  * options: None
  * constraints: None
  * required if: None
@@ -86,10 +117,34 @@ SAM_EXPORT void SAM_AdjustmentFactors_adjust_periods_mset(void* ptr, double* mat
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Setdc_ adjust_hourly
+ * Set dc_adjust_en_hourly
  * options: None
  * constraints: None
  * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set dc_adjust_en_periods
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_periods_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set dc_adjust_en_timeindex
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set dc_adjust_hourly
+ * options: None
+ * constraints: None
+ * required if: dc_adjust_en_hourly is True
  */
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
 
@@ -97,9 +152,17 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_hourly_aset(void* ptr, double* a
  * Set dc_adjust_periods
  * options: None
  * constraints: None
- * required if: None
+ * required if: dc_adjust_en_periods is True
  */
 SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+/**
+ * Set dc_adjust_timeindex
+ * options: None
+ * constraints: None
+ * required if: dc_adjust_en_timeindex is True
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err);
 
 //
 // SF Adjustment Factors for All Technology Models
@@ -114,21 +177,52 @@ SAM_EXPORT void SAM_AdjustmentFactors_dc_adjust_periods_mset(void* ptr, double* 
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_constant_nset(void* ptr, double num, SAM_error *err);
 
 /**
- * Setsf_ adjust_hourly
+ * Set sf_adjust_en_hourly
  * options: None
  * constraints: None
  * required if: None
  */
-SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_hourly_nset(void* ptr, double num, SAM_error *err);
 
+/**
+ * Set sf_adjust_en_periods
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_periods_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set sf_adjust_en_index
+ * options: None
+ * constraints: None
+ * required if: None
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_en_timeindex_nset(void* ptr, double num, SAM_error *err);
+
+/**
+ * Set sf_adjust_hourly
+ * options: None
+ * constraints: None
+ * required if: sf_adjust_en_hourly is True
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_hourly_aset(void* ptr, double* arr, int length, SAM_error *err);
 
 /**
  * Set sf_adjust_periods
  * options: None
  * constraints: None
- * required if: None
+ * required if: sf_adjust_en_periods is True
  */
 SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_periods_mset(void* ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+/**
+ * Set sf_adjust_timeindex
+ * options: None
+ * constraints: None
+ * required if: sf_adjust_en_timeindex is True
+ */
+SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_timeindex_aset(void* ptr, double* arr, int length, SAM_error *err);
 
 /**
  * Getters
@@ -136,22 +230,49 @@ SAM_EXPORT void SAM_AdjustmentFactors_sf_adjust_periods_mset(void* ptr, double* 
 
 SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void* ptr, SAM_error *err);
 
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_hourly_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_periods_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_en_timeindex_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_adjust_constant_nget(void* ptr, SAM_error *err);
+
 SAM_EXPORT double* SAM_AdjustmentFactors_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
 
 SAM_EXPORT double* SAM_AdjustmentFactors_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
+SAM_EXPORT double* SAM_AdjustmentFactors_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err);
+
+
 SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_constant_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_hourly_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_periods_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_dc_adjust_en_timeindex_nget(void* ptr, SAM_error *err);
 
 SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
 
 SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
+SAM_EXPORT double* SAM_AdjustmentFactors_dc_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err);
+
+
 SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_constant_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_hourly_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_periods_nget(void* ptr, SAM_error *err);
+
+SAM_EXPORT double SAM_AdjustmentFactors_sf_adjust_en_timeindex_nget(void* ptr, SAM_error *err);
 
 SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_hourly_aget(void* ptr, int* length, SAM_error *err);
 
 SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_periods_mget(void *ptr, int *nrows, int *ncols, SAM_error *err);
 
+SAM_EXPORT double* SAM_AdjustmentFactors_sf_adjust_timeindex_aget(void* ptr, int* length, SAM_error *err);
 
 #ifdef __cplusplus
 } /* end of extern "C" { */

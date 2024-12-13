@@ -14,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="generator" content="Help+Manual" />
 	<meta name="keywords" content="" />
-	<meta name="description" content="** ADD GENERAL DESCRIPTION OF MODEL **" />
+	<meta name="description" content="The IPH molten salt linear Fresnel model simulates the performance of a linear Fresnel system that utilizes a sensible-heating liquid such as molten salt as the heat transfer..." />
 	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
 	<meta name="author" content="National Renewable Energy Laboratory" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?iph_mslf.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -517,7 +512,12 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody">
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
-	<p class="p_Normal"><span style="background-color: #ff0000;">** ADD GENERAL DESCRIPTION OF MODEL **</span></p>
+	<p class="p_Text"><span class="f_Text">The IPH molten salt linear Fresnel model simulates the performance of a linear Fresnel system that utilizes a sensible-heating liquid such as molten salt as the heat transfer fluid (HTF) in the field. This model complements the IPH linear Fresnel direct steam model for linear Fresnel systems that generate steam.</span></p>
+<p class="p_Text"><span class="f_Text">The IPH molten salt linear Fresnel model includes a thermal energy storage model, which may use either the same HTF as the solar field, or a different fluid. If the field and storage system use the same HTF, the system is modeled as a direct storage system with no heat exchanger between the field and storage system. If the field and storage fluids differ, SAM includes a heat exchanger in the storage system that impacts exergetic system performance. </span></p>
+<p class="p_Text"><span class="f_Text">Several options are available for modeling the performance of the solar field. Collector optical performance can be specified using incidence angle modifier equations in the transversal and longitudinal directions, or an optical efficiency table can provide the optical efficiency as a function of either solar position or collector incidence angles. The linear Fresnel model allows you to specify thermal loss relationships either using a set of polynomial equations or with a detailed evacuated tube receiver model.</span></p>
+<p class="p_Text"><span class="f_Text">The IPH molten salt linear Fresnel model represents all major subsystems associated with indirect systems, including the solar field, optional thermal energy storage system, heat sink, and plant control system. Output from the model includes financial metrics as well as detailed performance data covering temperature, pressure, mass flow, thermal energy flow, water use, parasitic consumption, heat sink output, and many other relevant values.</span></p>
+<p class="p_Text"><span class="f_Text">The IPH molten salt linear Fresnel model can also be used for compact linear Fresnel reflector (CLFR) systems by using the appropriate coefficients with the polynomial heat loss model for the receiver geometry and heat loss parameters on the Collector and Receiver page. </span></p>
+<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
 
 	<footer class="topicfooter">
 <p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>

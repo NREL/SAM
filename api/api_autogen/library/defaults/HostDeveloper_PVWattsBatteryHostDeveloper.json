@@ -40,7 +40,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 25,
-			"cost_debt_closing": 450000,
+			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
 			"debt_option": 1,
@@ -75,13 +75,13 @@
 			"term_tenor": 18
 		},
 		"SystemCosts": {
-			"om_capacity": [58.000000],
+			"om_capacity": [59.380000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 1.55017e+06
+			"total_installed_cost": 1.44459e+06
 		},
 		"LandLease": {
 		},
@@ -266,7 +266,6 @@
 			"utility_bill_w_sys": [0]
 		},
 		"SystemOutput": {
-			"annual_energy_value": [0],
 			"degradation": [0.500000],
 			"gen": [0],
 			"system_capacity": 540
@@ -280,14 +279,14 @@
 			"system_use_lifetime_output": 0
 		},
 		"ConstructionFinancing": {
-			"construction_financing_cost": 31003.3
+			"construction_financing_cost": 37920.5
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 225.06
+			"battery_per_kWh": 184
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 501473
+			"battery_total_cost_lcos": 518341
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]
@@ -295,6 +294,8 @@
 		"HybridFin": {
 		},
 		"Monthly": {
+		},
+		"FuelCell": {
 		}
 	}
 }

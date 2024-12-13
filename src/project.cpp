@@ -502,11 +502,11 @@ static void fcall_vuc_value( lk::invoke_t &cxt )
 					VersionUpgrade::log( VersionUpgrade::VAR_ADDED, 
 						"Added '" + label + "', " + vv_strtypes[type] + ": " + valstr, reason ) );
 			}
-			else
+			else // variable's value or its name may have changed
 			{
 				vuc->GetLog( vuc->GetName() ).push_back( 
 					VersionUpgrade::log( VersionUpgrade::VAR_CHANGED, 
-						"Changed '" + label + "' to: " + valstr, reason ) );
+						label + " = " + valstr, reason ) );
 			}
 
 			cxt.result().assign( ok ? 1.0 : 0.0 );
@@ -743,28 +743,49 @@ void VersionUpgrade::WriteHtml( const wxString &section, const std::vector<log> 
 {
 	html += "<table bgcolor=#545454 width=100% cellspacing=1 cellpadding=3><tr width=100%><td><font size=+1 color=#ffffff><b>" + section + "</b></font></td></tr>\n";
 
+	wxString html_fail, html_warning, html_config_changed, html_var_changed, htm_var_added, html_var_deleted;
+
 	for( int i=0;i<(int)LL.size();i++ )
 	{
-		wxString bgcolor("#EFEFEF");
-		switch( LL[i].type )
-		{
-		case FAIL: bgcolor="#FDB3B3"; break;
-		case WARNING: bgcolor="#FFDAA8"; break;
-		case CONFIG_CHANGE: bgcolor="#e8d3a7"; break;
-		case VAR_CHANGED: bgcolor="#d1eba9"; break;
-		case VAR_ADDED: bgcolor="#cce1e6"; break;
-		case VAR_DELETED: bgcolor="#e0ced7"; break;
-		}
-
 		wxString reason;
-		if ( !LL[i].reason.IsEmpty())
+		if (!LL[i].reason.IsEmpty())
 			reason = "<br><b>" + LL[i].reason + "</b>";
 
-		html += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+		wxString bgcolor("#EFEFEF");
+
+		switch( LL[i].type )
+		{
+		case FAIL: 
+			bgcolor="#FDB3B3";
+			html_fail += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		case WARNING: 
+			bgcolor="#FFDAA8"; 
+			html_warning += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		case CONFIG_CHANGE: 
+			bgcolor="#e8d3a7"; 
+			html_config_changed += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		case VAR_CHANGED: 
+			bgcolor="#d1eba9"; 
+			html_var_changed += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		case VAR_ADDED: 
+			bgcolor="#cce1e6"; 
+			htm_var_added += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		case VAR_DELETED: 
+			bgcolor="#e0ced7"; 
+			html_var_deleted += "<tr width=100% bgcolor=" + bgcolor + "><td>" + LL[i].message + reason + "</td></tr>\n";
+			break;
+		}
 	}
 
-	html += "</table><br>\n";
+	// order per SAM issue 1635
+	html += html_fail + html_warning + html_config_changed + html_var_changed + htm_var_added + html_var_deleted;
 
+	html += "</table><br>\n";
 }
 
 class UpgradeReportDialog : public wxDialog

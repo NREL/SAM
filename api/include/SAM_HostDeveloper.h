@@ -215,7 +215,7 @@ extern "C"
 	/**
 	 * Set dscr_maximum_debt_fraction: Maximum debt fraction [%]
 	 * options: None
-	 * constraints: MIN=0
+	 * constraints: POSITIVE
 	 * required if: ?=100
 	 */
 	SAM_EXPORT void SAM_HostDeveloper_FinancialParameters_dscr_maximum_debt_fraction_nset(SAM_table ptr, double number, SAM_error *err);
@@ -435,7 +435,7 @@ extern "C"
 
 	/**
 	 * Set add_om_num_types: Number of O and M types
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: INTEGER,MIN=0,MAX=2
 	 * required if: ?=0
 	 */
@@ -443,7 +443,7 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage: Fuel usage (yr 1) [kWht]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: MIN=0
 	 * required if: ?=0
 	 */
@@ -451,23 +451,15 @@ extern "C"
 
 	/**
 	 * Set annual_fuel_usage_lifetime: Fuel usage (lifetime) [kWht]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
-	 * options: None
-	 * constraints: None
-	 * required if: ?=0
-	 */
-	SAM_EXPORT void SAM_HostDeveloper_SystemCosts_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
 	 * Set om_batt_capacity_cost: Battery capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -475,7 +467,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_fixed_cost: Battery fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -483,7 +475,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_nameplate: Battery capacity for System Costs values [kW]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -491,7 +483,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_replacement_cost: Replacement cost 1 [$/kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -499,7 +491,7 @@ extern "C"
 
 	/**
 	 * Set om_batt_variable_cost: Battery production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -507,7 +499,7 @@ extern "C"
 
 	/**
 	 * Set om_capacity: Capacity-based O&M amount [$/kWcap]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -523,7 +515,7 @@ extern "C"
 
 	/**
 	 * Set om_fixed: Fixed O&M annual amount [$/year]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -539,7 +531,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost: Fuel cost [$/MMBtu]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -547,7 +539,7 @@ extern "C"
 
 	/**
 	 * Set om_fuel_cost_escal: Fuel cost escalation [%/year]
-	 * options: None
+	 * options: custom_generation,fuelcell,tcslinearfresnel,tcstroughempirical,tcsgenericsolar,fresnelphysical
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -555,7 +547,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_capacity_cost: Fuel cell capacity-based System Costs amount [$/kWcap]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -563,7 +555,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_fixed_cost: Fuel cell fixed System Costs annual amount [$/year]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -571,7 +563,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_nameplate: Fuel cell capacity for System Costs values [kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -579,7 +571,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_replacement_cost: Replacement cost 2 [$/kW]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -587,7 +579,7 @@ extern "C"
 
 	/**
 	 * Set om_fuelcell_variable_cost: Fuel cell production-based System Costs amount [$/MWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -595,7 +587,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost: Biomass feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -603,7 +595,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_cost_escal: Biomass feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -611,7 +603,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_1_usage: Biomass feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -619,7 +611,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost: Coal feedstock cost [$/unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -627,7 +619,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_cost_escal: Coal feedstock cost escalation [%/year]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -635,7 +627,7 @@ extern "C"
 
 	/**
 	 * Set om_opt_fuel_2_usage: Coal feedstock usage [unit]
-	 * options: None
+	 * options: biomass
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -643,7 +635,7 @@ extern "C"
 
 	/**
 	 * Set om_production: Production-based O&M amount [$/MWh]
-	 * options: None
+	 * options: !battery,!fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -651,7 +643,7 @@ extern "C"
 
 	/**
 	 * Set om_production1_values: Battery production for System Costs values [kWh]
-	 * options: None
+	 * options: battery
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -659,7 +651,7 @@ extern "C"
 
 	/**
 	 * Set om_production2_values: Fuel cell production for System Costs values [kWh]
-	 * options: None
+	 * options: fuelcell
 	 * constraints: None
 	 * required if: ?=0
 	 */
@@ -675,7 +667,7 @@ extern "C"
 
 	/**
 	 * Set om_replacement_cost_escal: Replacement cost escalation [%/year]
-	 * options: None
+	 * options: battery,fuelcell
 	 * constraints: None
 	 * required if: ?=0.0
 	 */
@@ -2082,15 +2074,7 @@ extern "C"
 	//
 
 	/**
-	 * Set annual_energy_value: Energy value [$]
-	 * options: None
-	 * constraints: None
-	 * required if: *
-	 */
-	SAM_EXPORT void SAM_HostDeveloper_SystemOutput_annual_energy_value_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set annual_thermal_value: Energy value [$]
+	 * Set annual_thermal_value: Host thermal value [$]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -2114,7 +2098,7 @@ extern "C"
 	SAM_EXPORT void SAM_HostDeveloper_SystemOutput_gen_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set gen_purchases: Electricity from grid [kW]
+	 * Set gen_purchases: Electricity from grid to system [kW]
 	 * options: None
 	 * constraints: None
 	 * required if: None
@@ -2447,12 +2431,62 @@ extern "C"
 	//
 
 	/**
-	 * Set monthly_energy: Monthly energy [kWh]
+	 * Set monthly_energy: Monthly AC energy in Year 1 [kWh]
 	 * options: None
 	 * constraints: LENGTH = 12
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_HostDeveloper_Monthly_monthly_energy_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// FuelCell parameters
+	//
+
+	/**
+	 * Set annual_fuel_usage_lifetime: Annual Fuel Usage (lifetime) [kWht]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_FuelCell_annual_fuel_usage_lifetime_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set fuelcell_annual_energy_discharged: Fuel cell annual energy discharged [kWh]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_FuelCell_fuelcell_annual_energy_discharged_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set fuelcell_replacement: Fuel cell replacements per year [number/year]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_FuelCell_fuelcell_replacement_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
+	// HybridCosts parameters
+	//
+
+	/**
+	 * Set degradation: Annual AC degradation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0.0
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set total_installed_cost: Total installed cost [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_HostDeveloper_HybridCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	/**
@@ -2572,8 +2606,6 @@ extern "C"
 	SAM_EXPORT double SAM_HostDeveloper_SystemCosts_annual_fuel_usage_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_SystemCosts_om_batt_capacity_cost_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3009,8 +3041,6 @@ extern "C"
 	 * SystemOutput Getters
 	 */
 
-	SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_annual_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_annual_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_SystemOutput_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -3138,6 +3168,26 @@ extern "C"
 
 
 	/**
+	 * FuelCell Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_FuelCell_annual_fuel_usage_lifetime_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_FuelCell_fuelcell_annual_energy_discharged_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_FuelCell_fuelcell_replacement_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
+	 * HybridCosts Getters
+	 */
+
+	SAM_EXPORT double* SAM_HostDeveloper_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_HybridCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Outputs Getters
 	 */
 
@@ -3215,69 +3265,69 @@ extern "C"
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_apr_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_aug_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dec_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_feb_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jan_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jul_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_jun_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_mar_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_may_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_nov_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_oct_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_net_sep_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_apr_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_aug_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dec_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_dispatch9_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_feb_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jan_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jul_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_jun_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_mar_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_may_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD4_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD6_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD7_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD8_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_monthly_firstyear_TOD9_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_nov_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_oct_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_sales_sep_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_energy_value_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3456,8 +3506,6 @@ extern "C"
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_ptc_fed_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_ptc_sta_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_ptc_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_cf_pv_cash_for_ds_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -4238,6 +4286,10 @@ extern "C"
 	SAM_EXPORT double* SAM_HostDeveloper_Outputs_ppa_multipliers_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_ppa_price_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_HostDeveloper_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_HostDeveloper_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 

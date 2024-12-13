@@ -1,7 +1,7 @@
 {
     "Name": "Utility Rate - Flat",
-    "Width": 1414.0,
-    "Height": 586.0,
+    "Width": 1413.0,
+    "Height": 567.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -234,7 +234,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 612.0
+                    "Integer": 606.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -477,11 +477,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 655.0
+                    "Integer": 622.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 64.0
+                    "Integer": 58.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -531,15 +531,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 393.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 105.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 837.0
+                    "Integer": 737.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -729,15 +729,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 663.0
+                    "Integer": 657.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 345.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 422.0
+                    "Integer": 348.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -770,7 +770,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 663.0
+                    "Integer": 657.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -778,7 +778,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 422.0
+                    "Integer": 348.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1017,6 +1017,88 @@
                 }
             }
         },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nb_apply_credit_current_month"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 1008.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 391.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Apply earned credits to current month before roll over"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ur_nb_credit_expire"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 1008.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 390.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Accrued credits expire at end of true-up period"
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1030,7 +1112,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 255.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1038,7 +1120,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 28.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1067,7 +1149,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 978.0
+                    "Integer": 1008.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1112,7 +1194,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 228.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1191,19 +1273,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 393.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 75.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 404.0
+                    "Integer": 737.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1295,7 +1377,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1493,6 +1575,32 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "ur_nb_apply_credit_current_month": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Apply earned credits to current month before roll over",
+            "Units": "",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ur_nb_credit_expire": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Accrued credits expire at end of true-up period",
+            "Units": "",
+            "Group": "Electricity Rates - General",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "CheckBox",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "ur_nm_credit_month": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1604,6 +1712,20 @@
         "\tis_mp = financing() == \"Merchant Plant\";",
         "\treturn (is_mp);",
         "}",
+        "\r",
+        "function is_iph()\r",
+        "{\r",
+        "\ttech = technology();\r",
+        "\tis_iph_bool = false;\r",
+        "\tif (tech == \"Physical Trough IPH\"\r",
+        "\t\t\t|| tech == \"MSPT IPH\"\r",
+        "\t\t\t|| tech == \"MSLF IPH\"\r",
+        "\t\t\t|| tech == \"DSGL IPH\")\r",
+        "\t{\r",
+        "\t\tis_iph_bool = true;\r",
+        "\t}\r",
+        "\treturn is_iph_bool;\r",
+        "}\r",
         "",
         "// set inputs on Utility Rate - Energy Charge form",
         "// based on values of inputs on Utility Rate - Flat form",
@@ -1633,11 +1755,11 @@
         "\t\t{",
         "\t\t\tproperty('ur_ec_tou_mat','ShowColumn',4);",
         "\t\t}",
-        "\t\tif (en_ts_sell || is_fom_bool() || is_merchant_plant() )",
+        "\t\tif (en_ts_sell || is_fom_bool() || is_merchant_plant() || is_iph())",
         "\t\t{",
         "\t\t\tproperty('ur_ec_tou_mat','HideColumn',5);",
         "\t\t}",
-        "\t\telseif ( !is_fom_bool() || !is_merchant_plant() )",
+        "\t\telseif ( !is_fom_bool() || !is_merchant_plant() || !is_iph())",
         "\t\t{",
         "\t\t\tproperty('ur_ec_tou_mat','ShowColumn',5);",
         "\t\t}",
@@ -1663,17 +1785,19 @@
         "function set_metering_billing_inputs()",
         "{\t",
         "\teme = value('ur_metering_option');",
-        "\tenable('ur_metering_option', !is_fom_bool() && !is_merchant_plant());",
-        "\tenable('ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());",
-        "\tenable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant());",
-        "\tshow('lbl_metering_option',is_fom_bool() && !is_merchant_plant());",
+        "\tenable('ur_metering_option', !is_fom_bool() && !is_merchant_plant() && !is_iph());",
+        "\tenable('ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() && !is_iph());",
+        "\tenable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() && !is_iph());",
+        "\tshow('lbl_metering_option',is_fom_bool() && !is_merchant_plant() && is_iph());",
         "\tenable( 'ur_nm_yearend_sell_rate', eme==0 );",
         "\tenable( 'ur_nm_credit_rollover', eme==0 );",
-        "\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );",
+        "\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );\r",
+        "\tenable( 'ur_nb_credit_expire', eme==3 );\r",
+        "\tenable( 'ur_nb_apply_credit_current_month', eme==3 );",
         "\tif (eme==2 || eme==3|| eme==4)",
         "\t{",
-        "\t\tenable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() );",
-        "\t\tenable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && (!is_fom_bool() && !is_merchant_plant()) );",
+        "\t\tenable( 'ur_en_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() && !is_iph() );",
+        "\t\tenable( 'ur_ts_sell_rate', value('ur_en_ts_sell_rate') && (!is_fom_bool() && !is_merchant_plant() && !is_iph()) );",
         "\t\tenable( 'ur_en_ts_buy_rate', true );",
         "\t\tenable( 'ur_ts_buy_rate', value('ur_en_ts_buy_rate') );",
         "\t}",
@@ -1824,7 +1948,7 @@
         "\tvalue ('ur_annual_min_charge', hash{'annual_min_charge'});",
         "\t",
         "\t// metering option",
-        "\tif ( !is_fom_bool() ) {value('ur_metering_option',hash{'metering_option'});\t}",
+        "\tif ( !is_fom_bool()  && !is_iph()) {value('ur_metering_option',hash{'metering_option'});\t}",
         "\tvalue( 'ur_dc_enable', hash{'dc_enable'});",
         "\ton_change{'ur_dc_enable'}(); // invoke callback for ur_ec_enable to set up enable/disable of widgets",
         "\t",

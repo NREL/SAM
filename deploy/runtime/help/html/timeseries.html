@@ -14,7 +14,7 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="generator" content="Help+Manual" />
 	<meta name="keywords" content="" />
-	<meta name="description" content="Time series data is hourly or subhourly data. It includes time series data from the performance model, and time-dependent pricing data from the financial model." />
+	<meta name="description" content="The Time Series tab displays the same data shown in tables on the Data Tables tab in graphical form. It includes time series data from the performance model, and time-dependent..." />
 	<meta name="ZOOMIMAGE" content="./images/zoomimage.jpg" />
 	<meta name="author" content="National Renewable Energy Laboratory" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?timeseries.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -517,15 +512,19 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 	<div id="hmpagebody">
 	<div id="hmpagebody_scroller">
 <!--ZOOMRESTART--> 
-	<p class="p_Text"><span class="f_Text">Time series data is hourly or subhourly data. It includes time series data from the performance model, and time-dependent pricing data from the financial model.</span></p>
-<p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> SAM's time series data viewer is also available as a standalone application. For details, see <a href="https://beopt.nrel.gov/downloadDView" target="_blank" class="weblink" title="https://beopt.nrel.gov/downloadDView">BEopt Download DView</a>.</span></p>
+	<p class="p_Text"><span class="f_Text">The Time Series tab displays the same data shown in tables on the <a href="data.html" class="topiclink">Data Tables</a> tab in graphical form. It includes time series data from the performance model, and time-dependent pricing data from the financial model.</span></p>
+<p class="p_Note"><span class="f_CHNote">Notes.</span><span class="f_Note"> </span><br />
+<span class="f_Note">&nbsp;</span><br />
+<span class="f_Text">When you run a simulation for the first time after opening or creating a .sam file, SAM automatically displays either system power generated for most configurations, or battery state of charge with electricity to load from battery, system, and grid for behind-the-meter battery configurations. To change the graph, use the check boxes to add and remove variables and buttons in the toolbar at the bottom right of the graph to control stacked graphs, axis scale, and other settings.</span><br />
+<span class="f_Text">&nbsp;</span><br />
+<span class="f_Note">SAM's time series data viewer is also available as a standalone application. For details, see <a href="https://beopt.nrel.gov/downloadDView" target="_blank" class="weblink" title="https://beopt.nrel.gov/downloadDView">BEopt Download DView</a>.</span></p>
 <p class="p_TitleProcedure" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_TitleProcedure">To view the Time Series graphs:</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">1.</span><span class="f_ProcedureStep">On the Results page, click the </span><span class="f_CHInterfaceElement">Time series</span><span class="f_ProcedureStep"> tab.</span></p>
-<p class="p_ProcedureStepNoNumber"><img alt="SS_Results-ButtonsTimeSeries" style="margin:0;width:38.5625rem;height:6.1250rem;border:none" src="./images/ss_results-buttonstimeseries.png"/></p>
+<p class="p_ProcedureStepNoNumber"><img alt="SS_Results-ButtonsTimeSeries" style="margin:0;width:41.5000rem;height:3.0000rem;border:none" src="./images/ss_results-buttonstimeseries.png"/></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="display:inline-block;width:1.5000rem;margin-left:-1.5000rem">2.</span><span class="f_ProcedureStep">Choose variables to display in the graph by checking boxes or choosing from lists as appropriate.</span></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The left column of check boxes displays data in the main graph. The right column of check boxes displays data in a secondary graph below the main graph.</span></p>
 <p class="p_ProcedureStepNoNumber"><img alt="SS_Results-TimeSeriesColumns" style="margin:0;width:33.1250rem;height:25.1250rem;border:none" src="./images/ss_results-timeseriescolumns.png"/></p>
-<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The tool bar below the graphs provides tools for zooming and changing graph settings:</span></p>
+<p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">The tool bar below the graphs provides tools for zooming and changing graph <a href="timeseries.html#viewsettings" class="topiclink">settings</a>:</span></p>
 <p class="p_ProcedureStepNoNumber"><img alt="SS_DViewControls" style="margin:0;width:28.6250rem;height:5.8750rem;border:none" src="./images/ss_dviewcontrols.png"/></p>
 <p class="p_ProcedureStepNoNumber"><span class="f_ProcedureStepNoNumber">Use your mouse to zoom in to a section of the graph:</span></p>
 <p class="p_ProcedureStepNoNumber"><img alt="SS_DViewMouseZoom" style="margin:0;width:50.8125rem;height:23.3750rem;border:none" src="./images/ss_dviewmousezoom.png"/></p>
@@ -536,14 +535,18 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ProcedureStep">Mouse Wheel – zoom plot</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ProcedureStep">Shift + Mouse Wheel – Scroll plot horizontally</span></p>
 <p class="p_ProcedureStep" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_ProcedureStep" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ProcedureStep">Ctrl + Mouse Wheel – Scroll plot vertically (where applicable)</span></p>
-<h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Time Series Graph Types</span></h3>
-<p class="p_Text"><span class="f_Text">You can other graphs of time series data:</span></p>
-<p class="p_Text"><img alt="SS_Results-TimeSeriesOptions" style="margin:0;width:36.8750rem;height:2.2500rem;border:none" src="./images/ss_results-timeseriesoptions.png"/></p>
-<p class="p_Text"><span class="f_Text">&nbsp;</span></p>
-<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="profiles.html" class="topiclink">Profiles</a></span></p>
-<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="statistics.html" class="topiclink">Statistics</a></span></p>
-<p class="p_List" style="text-indent: 0; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_List"><a href="heatmap.html" class="topiclink">Heat Map</a></span></p>
-<p class="p_ListLast" style="text-indent: 0; page-break-inside: avoid; padding-left: 1.5000rem; margin-left: 1.5000rem;"><span class="f_List" style="font-family: Arial,'Lucida Sans Unicode','Lucida Grande','Lucida Sans';display:inline-block;width:1.5000rem;margin-left:-1.5000rem">&#8226;</span><span class="f_ListLast"><a href="pdfcdf.html" class="topiclink">PDF/CDF</a></span></p>
+<h4 class="p_Heading4"><a id="viewsettings" class="hmanchor"></a><span class="f_Heading4">View Settings</span></h4>
+<p class="p_Text"><span class="f_Text">Click </span><img alt="ss-icon-wrench" style="margin:0;width:2.1250rem;height:2.1250rem;border:none" src="./images/ss-icon-wrench.png"/><span class="f_ImageCaption"> at the bottom right of the graph</span> to open the View Settings window.</p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Stepped lines</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">By default, time series plots represent each value as a point connected by a line. This results in a smooth line, but makes it difficult to see the exact value of each point. The Stepped Lines option represents each value as a horizontal line with the length of a single time step. This makes it possible to see the actual value over the time step. For example, the following shows the effect of the Stepped Lines option for a graph of the AC output of a residential photovoltaic system (blue) and the building's electric load (orange) &nbsp;over a period of three days.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_TimeSeries_viewsettingssmooth" style="margin:0 auto 0 auto;width:25.9375rem;height:27.1250rem;border:none" src="./images/ss_timeseries_viewsettingssmooth.png"/><img alt="SS_TimeSeries_viewsettingsstepped" style="margin:0 auto 0 auto;width:25.9375rem;height:27.1250rem;border:none" src="./images/ss_timeseries_viewsettingsstepped.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Stacked area on left Y axis</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The Stacked Area option fills the area under the line for each variable in the graph and stacks the filled areas. For example, this graph for a residential PV-battery system shows the electricity to load in kilowatts from grid (blue), photovoltaic system (orange), and battery (red). The plots are stacked so that you can see the total load and how the grid, photovoltaic system, and battery meet the load. The graph also shows the battery state of charge, which appears as a line instead of part of the stacked plot because it has different units (% instead of kilowatts).</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_TimeSeries_stacked" style="margin:0 auto 0 auto;width:42.7500rem;height:23.2500rem;border:none" src="./images/ss_timeseries_stacked.png"/></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Graph scale</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">By default, the graph y-axis scales automatically based on the minimum and maximum values of the data in the graph over the year or lifetime. In some cases, when you zoom in to a few days or hours, you may want to adjust the y-axis scale. For a graph with two y-axes, you can change the scale of each axis independently by typing values in the </span><span class="f_CHInterfaceElement">Y Min</span><span class="f_VariableDescription"> and </span><span class="f_CHInterfaceElement">Y Max</span><span class="f_VariableDescription"> columns. Click </span><span class="f_CHInterfaceElement">Autoscale</span><span class="f_VariableDescription"> to automatically scale the axis. </span><span class="f_CHInterfaceElement">Top right axis</span><span class="f_VariableDescription"> only appears when your graph has two y-axes to display variables with different units.</span></p>
+<p class="p_VariableDescription" style="text-align: center;"><img alt="SS_TimeSeries_axisscale" style="margin:0 auto 0 auto;width:15.9375rem;height:5.1875rem;border:none" src="./images/ss_timeseries_axisscale.png"/></p>
+
 	<footer class="topicfooter">
 <p class="topicfooter">System Advisor Model (SAM) Help &copy; National Renewable Energy Laboratory</p>
 </footer>

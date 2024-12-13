@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 264.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -211,7 +211,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "tidal_turbine_kw_rating_input"
+                    "String": "tidal_turbine_kw_rating"
                 },
                 "X": {
                     "Type": 3.0,
@@ -243,7 +243,90 @@
                 },
                 "Format": {
                     "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_kw_rating_rotor"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 1500.0
+                },
+                "Mode": {
+                    "Type": 3.0,
                     "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -302,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 237.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -334,7 +417,7 @@
                 },
                 "Description": {
                     "Type": 5.0,
-                    "String": "Enter an annual land lease cost for each year of the analysis period."
+                    "String": "Enter Maximum CP values for each tidal surface velocity bin"
                 },
                 "TabOrder": {
                     "Type": 3.0,
@@ -355,7 +438,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -467,7 +550,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 147.0
+                    "Integer": 207.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -520,7 +603,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -587,6 +670,89 @@
                 "TabOrder": {
                     "Type": 3.0,
                     "Integer": 4.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "tidal_turbine_target_cf"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 198.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 114.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 118.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
                 }
             }
         }
@@ -686,26 +852,26 @@
         "tidal_turbine_kw_rating": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Generator Rated Power",
+            "Label": "Rated power output",
             "Units": "kW",
             "Group": "ME Tidal Converter",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "tidal_turbine_kw_rating_input": {
+        "tidal_turbine_kw_rating_rotor": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "User-defined rated output",
+            "Label": "Rated power per rotor",
             "Units": "kW",
-            "Group": "ME Tidal Converter",
+            "Group": "ME Tidal Turbine",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 8.0,
             "DefaultValue": 0.0,
-            "UIObject": "Numeric",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -827,6 +993,19 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "tidal_turbine_target_cf": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Target capacity factor",
+            "Units": "%",
+            "Group": "ME Tidal Converter",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "tidal_velocity_power_law_fit": {
             "Version": 4.0,
             "Type": 1.0,
@@ -861,9 +1040,11 @@
         "\tdata.cut_in = ${tidal_turbine_cutin};\r",
         "\tdata.cut_out = ${tidal_turbine_cut_out};\r",
         "\tdata.tidal_resource = ${tidal_resource};\r",
-        "\tdata.generator_rated_capacity = ${tidal_turbine_kw_rating_input};\r",
+        "\t//data.generator_rated_capacity = ${tidal_turbine_kw_rating_input};\r",
         "\tdata.pto_efficiency = ${tidal_turbine_pto_eff};\r",
-        "\t\r",
+        "\tdata.target_cf = ${tidal_turbine_target_cf};\r",
+        "\tdata.tidal_resource_model_choice = ${ui_tidal_resource_model_choice};\r",
+        "\tdata.tidal_vel_freq = ${tidal_vel_freq};\r",
         "\t\r",
         "\tsuccess = ssc_eqn(\"tidal_turbine_calculate_powercurve\", data);\r",
         "\t/*\r",
@@ -883,12 +1064,24 @@
         "\t\r",
         "\tts = data.tidal_turbine_powercurve_tidespeeds;\r",
         "\tpower = data.tidal_turbine_powercurve_powerout;\r",
+        "\tpower_rated = data.tidal_turbine_powercurve_powerout_rated;\r",
+        "\trated_power = data.tidal_turbine_rated_power;\r",
+        "\trated_power_rotor = data.tidal_turbine_rated_power_rotor;\r",
         "\t${tidal_turbine_powercurve_tidalspeeds} = ts;\r",
-        "\t${tidal_turbine_powercurve_powerout} = power;\r",
+        "\t${tidal_turbine_powercurve_powerout} = power_rated;\r",
+        "\t//${tidal_turbine_powercurve_powerout_electric} = power;\r",
+        "\t${tidal_turbine_kw_rating} = rated_power;\r",
+        "\t${tidal_turbine_kw_rating_rotor} = rated_power_rotor; //todo rename variables\r",
+        "\t\r",
         "\t\r",
         "\t// other outputs\r",
         "\treturn 0;\r",
         "};\r",
+        "/*\r",
+        "equations{'tidal_turbine_kw_rating_input'} = define() {\r",
+        "\trotor_area = pow(${tidal_turbine_rotor_diameter_input}/2,2) * 3.1415 * ${tidal_turbine_number_rotors};\r",
+        "\treturn 0.5 * 1025 * max(${tidal_turbine_max_cp}) * rotor_area / 1e6 * 1000; //kW\r",
+        "};*/\r",
         ""
     ],
     "Callbacks": [
@@ -896,12 +1089,13 @@
         "{\r",
         "\tsetplot('tidal_turbine_power_curve_plot');\r",
         "\tclearplot('tidal_turbine_power_curve_plot');\r",
-        "\tplotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'=[75,10]}  );\r",
+        "\tplotopt( {'title'='Turbine power curve','backcolor'=[255,255,255], 'popup'=true, 'legend'=false, 'legendpos'='northwest'}  );\r",
         "\t\r",
         "\tws = ${tidal_turbine_powercurve_tidalspeeds};\r",
         "\tpc = ${tidal_turbine_powercurve_powerout};\r",
-        "\tplot( ws, pc, {'thick'=1, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});\r",
-        "\t\r",
+        "\t//pce = ${tidal_turbine_powercurve_powerout_electric};\r",
+        "\tplot( ws, pc, {'thick'=3, 'scale'=true, 'color'=[100,200,100], 'series'='Turbine Output'});\r",
+        "\t//plot( ws, pce, {'thick'=5, 'scale'=true, 'color'=[200,100,100], 'series'='Electric Output'});\r",
         "\thigh = max( ws );\r",
         "\tlow = min( ws );\r",
         "\tpad = (high - low) * 0.05;\r",
@@ -911,7 +1105,7 @@
         "\tlow = min( pc );\r",
         "\tpad = (high - low) * 0.05;\r",
         "\taxis( 'y1', {'label'='Turbine Power (kW)', 'min'=floor(low-pad), 'max'=ceil(high+pad) });\r",
-        "\t\r",
+        "\trefresh();\r",
         "\t// show any error messages\r",
         "\t//set_error_msg();\r",
         "}\r",
@@ -929,12 +1123,13 @@
         "\trefresh();\r",
         "}\r",
         "\r",
-        "on_change{'tidal_turbine_kw_rating_input'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_kW_rating'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_rotor_diameter_input'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_max_cp'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_pto_eff'} = define() { set_turbine_sched();plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cutin'} = define() { plot_turbine_curve();};\r",
         "on_change{'tidal_turbine_cut_out'} = define() { plot_turbine_curve();};\r",
-        "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};"
+        "on_change{'tidal_turbine_number_rotors'} = define() { plot_turbine_curve();};\r",
+        "on_change{'tidal_turbine_target_cf'} = define() {plot_turbine_curve();};"
     ]
 }

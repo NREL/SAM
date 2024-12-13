@@ -336,8 +336,6 @@ SAM_EXPORT const char* SAM_Hcpv_SolarResourceData_file_name_sget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_PVWatts_system_capacity_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -346,8 +344,6 @@ SAM_EXPORT double SAM_Hcpv_PVWatts_system_capacity_nget(SAM_table ptr, SAM_error
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -358,8 +354,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a_nget(SAM_table ptr, SAM_error *er
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -368,8 +362,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a0_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -380,8 +372,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a1_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -390,8 +380,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a2_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -402,8 +390,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a3_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a4_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -412,8 +398,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_a4_nget(SAM_table ptr, SAM_error *e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_alignment_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -424,8 +408,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_alignment_error_nget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_b_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -434,8 +416,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_b_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_cell_area_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -446,8 +426,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_cell_area_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_concentration_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -456,8 +434,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_concentration_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_dT_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -468,8 +444,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_dT_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_flutter_loss_coeff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -478,8 +452,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_flutter_loss_coeff_nget(SAM_table p
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_HCPVModule_module_mjeff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -491,8 +463,6 @@ SAM_EXPORT double* SAM_Hcpv_HCPVModule_module_mjeff_aget(SAM_table ptr, int* len
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_ncells_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -502,8 +472,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_ncells_nget(SAM_table ptr, SAM_erro
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_optical_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -512,8 +480,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_optical_error_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_HCPVModule_module_rad_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -525,8 +491,6 @@ SAM_EXPORT double* SAM_Hcpv_HCPVModule_module_rad_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_reference_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -535,8 +499,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_reference_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVModule_module_temp_coeff_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -547,8 +509,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVModule_module_temp_coeff_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c0_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -557,8 +517,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c0_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c1_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -569,8 +527,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c1_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c2_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -579,8 +535,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c2_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c3_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -591,8 +545,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_c3_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_paco_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -601,8 +553,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_paco_nget(SAM_table ptr, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -613,8 +563,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pdco_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pnt_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -623,8 +571,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pnt_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pso_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -635,8 +581,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_pso_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_vdcmax_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -645,8 +589,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_vdcmax_nget(SAM_table ptr
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_vdco_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -657,8 +599,6 @@ SAM_EXPORT double SAM_Hcpv_InverterCECDatabase_inv_snl_vdco_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_ac_wiring_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -667,8 +607,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_ac_wiring_loss_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_dc_mismatch_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -679,8 +617,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_dc_mismatch_loss_nget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_dc_wiring_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -689,8 +625,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_dc_wiring_loss_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_diode_conn_loss_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -701,8 +635,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_diode_conn_loss_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_enable_azalt_sf_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -712,8 +644,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_enable_azalt_sf_nget(SAM_table ptr, S
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_modules_per_tracker_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -722,8 +652,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_modules_per_tracker_nget(SAM_table pt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_HCPVArray_array_monthly_soiling_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -735,8 +663,6 @@ SAM_EXPORT double* SAM_Hcpv_HCPVArray_array_monthly_soiling_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_num_inverters_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -745,8 +671,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_num_inverters_nget(SAM_table ptr, SAM
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_num_trackers_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -757,8 +681,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_num_trackers_nget(SAM_table ptr, SAM_
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_az_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -767,8 +689,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_az_max_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_az_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -779,8 +699,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_az_min_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_el_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -789,8 +707,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_el_max_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_el_min_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -801,8 +717,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_rlim_el_min_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_tracker_power_fraction_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -811,8 +725,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_tracker_power_fraction_nget(SAM_table
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_tracking_error_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -823,8 +735,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_tracking_error_nget(SAM_table ptr, SA
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_HCPVArray_array_wind_stow_speed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -833,8 +743,6 @@ SAM_EXPORT double SAM_Hcpv_HCPVArray_array_wind_stow_speed_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_HCPVArray_azaltsf_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -846,8 +754,6 @@ SAM_EXPORT double* SAM_Hcpv_HCPVArray_azaltsf_mget(SAM_table ptr, int* nrows, in
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_constant_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -856,8 +762,6 @@ SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_constant_nget(SAM_table ptr,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_en_periods_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -868,8 +772,6 @@ SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_en_periods_nget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -878,8 +780,6 @@ SAM_EXPORT double SAM_Hcpv_AdjustmentFactors_adjust_en_timeindex_nget(SAM_table 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_AdjustmentFactors_adjust_periods_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -891,8 +791,6 @@ SAM_EXPORT double* SAM_Hcpv_AdjustmentFactors_adjust_periods_mget(SAM_table ptr,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_AdjustmentFactors_adjust_timeindex_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -903,8 +801,6 @@ SAM_EXPORT double* SAM_Hcpv_AdjustmentFactors_adjust_timeindex_aget(SAM_table pt
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_ac_loss_tracker_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -913,8 +809,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_ac_loss_tracker_kwh_nget(SAM_table ptr, SAM_e
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_ac_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -925,8 +819,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_ac_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_beam_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -935,8 +827,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_beam_nget(SAM_table ptr, SAM_error *er
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_dc_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -947,8 +837,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_dc_nget(SAM_table ptr, SAM_error *err)
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_dc_net_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -958,8 +846,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_dc_net_nget(SAM_table ptr, SAM_error *
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -968,8 +854,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_energy_nget(SAM_table ptr, SAM_error *
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_annual_energy_distribution_time_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
@@ -981,8 +865,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_annual_energy_distribution_time_mget(SAM_tab
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_annual_input_radiation_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -991,8 +873,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_annual_input_radiation_nget(SAM_table ptr, SA
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double SAM_Hcpv_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
@@ -1003,8 +883,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_dc_loss_stowing_kwh_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1014,8 +892,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_dc_loss_stowing_kwh_nget(SAM_table ptr, SAM_e
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_dc_nominal_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1024,8 +900,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_dc_nominal_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_gen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1037,8 +911,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_gen_aget(SAM_table ptr, int* length, SAM_err
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_ac_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1048,8 +920,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_ac_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_airmass_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1061,8 +931,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_airmass_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1072,8 +940,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_beam_aget(SAM_table ptr, int* length,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_celleff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1085,8 +951,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_celleff_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_dc_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1096,8 +960,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_dc_aget(SAM_table ptr, int* length, S
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_dc_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1109,8 +971,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_dc_net_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_input_radiation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1120,8 +980,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_input_radiation_aget(SAM_table ptr, i
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_modeff_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1133,8 +991,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_modeff_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_poa_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1144,8 +1000,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_poa_aget(SAM_table ptr, int* length, 
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_sazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1157,8 +1011,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_sazi_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_shading_derate_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1168,8 +1020,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_shading_derate_aget(SAM_table ptr, in
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_solazi_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1181,8 +1031,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_solazi_aget(SAM_table ptr, int* lengt
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_solzen_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1192,8 +1040,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_solzen_aget(SAM_table ptr, int* lengt
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_stilt_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1205,8 +1051,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_stilt_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_sunup_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1216,8 +1060,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_sunup_aget(SAM_table ptr, int* length
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tcell_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1229,8 +1071,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tcell_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tdry_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1240,8 +1080,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tdry_aget(SAM_table ptr, int* length,
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tmod_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1253,8 +1091,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_tmod_aget(SAM_table ptr, int* length,
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_windspd_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1265,8 +1101,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_hourly_windspd_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1276,8 +1110,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_kwh_per_kw_nget(SAM_table ptr, SAM_error *err
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_modeff_ref_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1286,8 +1118,6 @@ SAM_EXPORT double SAM_Hcpv_Outputs_modeff_ref_nget(SAM_table ptr, SAM_error *err
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_beam_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1299,8 +1129,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_beam_aget(SAM_table ptr, int* length
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_dc_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1310,8 +1138,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_dc_net_aget(SAM_table ptr, int* leng
 	});
 	return result;
 }
-
-
 
 SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_energy_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
@@ -1323,8 +1149,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_energy_aget(SAM_table ptr, int* leng
 	return result;
 }
 
-
-
 SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_input_radiation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -1335,8 +1159,6 @@ SAM_EXPORT double* SAM_Hcpv_Outputs_monthly_input_radiation_aget(SAM_table ptr, 
 	return result;
 }
 
-
-
 SAM_EXPORT double SAM_Hcpv_Outputs_tracker_nameplate_watts_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1345,6 +1167,4 @@ SAM_EXPORT double SAM_Hcpv_Outputs_tracker_nameplate_watts_nget(SAM_table ptr, S
 	});
 	return result;
 }
-
-
 

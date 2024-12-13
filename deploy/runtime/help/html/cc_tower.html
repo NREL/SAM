@@ -467,11 +467,6 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 		<a onclick="hmWebHelp.extFuncs('hmDoToggle',{method: 'hmToggleToggles', obj: {speed: 80}});" title="Show/hide Expanding Text Blocks on Page" href="javascript:void(0);"> 
 		<span>Show Expanding Text</span></a>
 	</li>
-	<li id="hm_printable_version" role="menuitem">
-		<svg class="hmbicon" viewBox="0 0 30 32"><use xlink:href="#print"></use></svg>
-		<a id="hm_printable_link" href="_hm_print_window.htm?cc_tower.html" onclick="hmWebHelp.hamburgerMenu()" target="hm_print_window" title="Print Current Topic" href="javascript:void(0);">
-		<span>Print Topic</span></a>
-	</li>
 	<li id="mailfeedback" role="menuitem">
 		<svg class="hmbicon" viewBox="0 0 32 32"><use xlink:href="#mail-alt"></use></svg>
 		<a onclick="hmWebHelp.extFuncs('hm_mail_feedback')" title="Send an E-Mail with Feedback on This Topic" href="javascript:void(0);"> 
@@ -532,39 +527,51 @@ hmDevice.pageStylesheet = "./css/hmprojectstyles.css";
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Direct Capital Costs</span></h3>
 <p class="p_Text"><span class="f_Text">A direct capital cost represents an expense for a specific piece of equipment or installation service that applies in year zero of the cash flow.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Site Improvements ($/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span><span class="f_VariableName">)</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Heliostat Field</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Site improvement cost, $/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A cost per square meter of total reflective area from the Heliostat Field page to account for expenses related to site preparation and other equipment not included in the heliostat field cost category.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat Field ($/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span><span class="f_VariableName">)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat field cost, $/m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">A cost per square meter of total reflective area from the Heliostat Field page to account for expenses related to installation of the heliostats, including heliostat parts, field wiring, drives, labor, and equipment.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of Plant ($/kWe)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per electric kilowatt of power cycle gross capacity from the Power Cycle page expenses related to installation of the balance-of-plant components and controls, and construction of buildings, including labor and equipment.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Power Block ($/kWe)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per electric kilowatt of power cycle gross capacity from the Power Cycle page expenses related to installation of the power block components, including labor and equipment. The Power Block and Balance of Plant costs are rolled together into a single number for calculation purposes.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fossil Backup ($/kWe)</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heliostat field cost fixed, $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed cost to account for any epenses related to installation of the heliostats that do not scale with the reflective area of the field.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Tower</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tower cost fixed, $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed cost to account for tower construction, materials and labor costs. The fixed tower cost serves as the multiplier in the tower cost scaling equation shown below.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tower cost scaling exponent</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the tower cost in the optimization calculations. The tower cost scaling exponent defines the nonlinear relationship between tower cost and tower height. See Total Tower Cost below.</span></p>
+<p class="p_Text"><span class="f_Text">The total tower cost shown in blue is calculated as follows:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Total Tower Cost = Fixed Tower Costs x e ^ ( Tower Cost Scaling Exponent x ( Tower Height - Receiver Height ÷ 2 + Heliostat Height ÷ 2 ) )</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Reciever</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver reference cost, $</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The cost per receiver reference area to account for receiver installation costs, including labor and equipment.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver reference area, m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">The receiver area on which the receiver reference cost is based.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver cost scaling exponent</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the receiver cost in the optimization calculations. The receiver cost scaling exponent defines the nonlinear relationship between receiver cost and receiver area based on the reference cost conditions provided.</span></p>
+<p class="p_Text"><span class="f_Text">The total receiver cost shown in blue is calculated as follows:</span></p>
+<p class="p_EquationExcel"><span class="f_EquationExcel">Receiver Cost = Receiver Reference Cost x ( Receiver Area / Receiver Reference Area ) ^ Receiver Cost Scaling Exponent</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Thermal Energy Storage</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Thermal energy storage cost, $/kWht</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Cost per thermal megawatt-hour of storage capacity from the Thermal Storage page to account for the installation of a thermal energy storage system, including equipment and labor.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Power Cycle (CSP Only)</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fossil backup cost, $/kWe</span></p>
 <p class="p_VariableDescription"><span class="f_VariableDescription">Cost per electric kilowatt of power block gross capacity to account for the installation of a fossil backup system, including equipment and labor.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note.</span><span class="f_Note"> In versions of SAM released after June 2015, thermocline storage, and fossil backup are not available because they were not incorporated into the new dispatch controller logic at the time of the software release. If you want to use those features, you can use the legacy version SAM 2015.6.30, available on the SAM website <a href="https://sam.nrel.gov/download" target="_blank" class="weblink" title="https://sam.nrel.gov/download">Download page</a>.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Storage ($/kWht)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Cost per thermal megawatt-hour of storage capacity from the Thermal Storage page to account for the installation of a thermal energy storage system, including equipment and labor.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed Solar Field Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">An additional fixed cost in dollars to include as a direct cost that is not accounted for by any of the above categories.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Fixed Tower Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A fixed cost to account for tower construction, materials and labor costs. The fixed tower cost serves as the multiplier in the tower cost scaling equation shown below.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Tower Cost Scaling Exponent</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the tower cost in the optimization calculations. The tower cost scaling exponent defines the nonlinear relationship between tower cost and tower height. See Total Tower Cost below.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Tower Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Total Tower Cost = Fixed Tower Costs x e ^ ( Tower Cost Scaling Exponent x ( Tower Height - Receiver Height ÷ 2 + Heliostat Height ÷ 2 ) )</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver Reference Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The cost per receiver reference area to account for receiver installation costs, including labor and equipment.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver Reference Area (m</span><span class="f_VariableName" style="font-size: 0.70rem; vertical-align: super;">2</span><span class="f_VariableName">)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The receiver area on which the receiver reference cost is based.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Receiver Cost Scaling Exponent</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">SAM uses the receiver cost in the optimization calculations. The receiver cost scaling exponent defines the nonlinear relationship between receiver cost and receiver area based on the reference cost conditions provided.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Receiver Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">Receiver Cost = Receiver Reference Cost x ( Receiver Area / Receiver Reference Area ) ^ Receiver Cost Scaling Exponent</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency (%)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the site improvements, heliostat field, balance of plant, power block, storage system, fixed solar field, total tower, and total receiver costs to account for expected uncertainties in direct cost estimates.</span></p>
-<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Total Direct Cost ($)</span></p>
-<p class="p_VariableDescription"><span class="f_VariableDescription">The sum of improvements, site improvements, heliostat field, balance of plant, power block, storage system, fixed solar field, total tower, total receiver, and contingency costs.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of plant cost, $/kWe</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per electric kilowatt of power cycle gross capacity from the Power Cycle page for expenses related to installation of the balance-of-plant components and controls, and construction of buildings, including labor and equipment.</span></p>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Power cycle cost, $/kWe</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per electric kilowatt of power cycle gross capacity from the Power Cycle page for expenses related to installation of the power cycle &nbsp;components, including labor and equipment. The power cycle and balance of plant costs are rolled together into a single number for calculation purposes.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Heat Sink (IPH Only)</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Balance of plant cost, $/kWt</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A cost per thermal kilowatt of heat sink capacity from the System Design page for expenses related to installation of the heat sink, including labor and equipment.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Parallel Heater</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Heater cost, $/kWt</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">Applies only to systems with the electric heater enabled on the System Design page. A cost per unit of heater capacity for expenses related to the electric heater components, including labor and equipment.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Contingency</span></h4>
+<p class="p_VariableName" style="page-break-inside: avoid; page-break-after: avoid;"><span class="f_VariableName">Contingency, % of subtotal</span></p>
+<p class="p_VariableDescription"><span class="f_VariableDescription">A percentage of the sum of the above direct costs to account for expected uncertainties in direct cost estimates.</span></p>
+<h4 class="p_Heading4"><span class="f_Heading4">Total Direct Cost, $</span></h4>
+<p class="p_Text"><span class="f_Text">The total direct cost is the sum of heliostat field, tower, receiver, thermal energy storage, power cycle (heat sink for IPH), parallel heater, and contingency costs.</span></p>
 <h3 class="p_Heading3_atocs_" style="page-break-inside: avoid; page-break-after: avoid; border-top: none; border-right: none; border-left: none;"><span class="f_Heading3_atocs_">Indirect Capital Costs</span></h3>
 <p class="p_Text"><span class="f_Text">An indirect cost is typically one that cannot be identified with a specific piece of equipment or installation service.</span></p>
 <p class="p_Note"><span class="f_CHNote">Note:</span><span class="f_Note"> Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different indirect capital cost categories does not affect the final results.</span></p>

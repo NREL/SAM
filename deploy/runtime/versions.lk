@@ -21,17 +21,17 @@ The value() function cannot change the data type of a variable, as that is set b
 To upgrade an old variable that no longer exists:
 
 	x = oldvalue('derate1');
-	value( 'loss1', 100*(1-x) );
+	value( 'loss1', 100*(1-x), 'The fraction derate1 is now the percentage loss1' );
 
 To upgrade an old variable that has a new datatype:
 
 	x = oldvalue('derate1');
-	value( 'derate1', [ x ] ); // derate is now an array to support schedules
+	value( 'derate1', [ x ], 'derate is now an array to support schedules' );  
 	
 To upgrade just the value of an old variable (same name and datatype), such as when the units have changed:
 
 	x = value('loss1');
-	value( 'loss1', 100*x ); // units changed from fraction to percent
+	value( 'loss1', 100*x, 'units changed from fraction to percent' );  
 	
 You don't need to delete any variables.  Old variables are discarded when a project is saved, and only the currently valid values
 are saved in the project file.
@@ -50,6 +50,235 @@ Some more examples:
 
 //***********************************************************************************************************************************************************
 //CURRENT WORKING VERSION (see SAM/main_add.h) - CHANGE THIS VERSION NUMBER WHEN RELEASES ARE CREATED AND MAKE A NEW CURRENT WORKING VERSION FUNCTION
+
+function variable_name_change(new, old){
+	value(new, oldvalue(old), 'Variable name changed from \"' + old + '\" to \"' +  new + '\"');
+}
+
+version_upgrade{'2024.12.12'} = define() {
+	
+	const cfg = config();
+
+	// Physical Trough Model Changes
+	if(cfg.tech == 'Physical Trough' || cfg.tech == 'Physical Trough IPH')
+	{
+		message('We added new packed bed and pressurized water cylinder TES options to the existing two-tank option on the Thermal Storage page. We also changed some TES variable names for the physical trough model.'
+				, 'warning');
+				
+		if(isalnum(oldvalue('tes_tank_insul_percent')) == true)
+		{
+			// Piston Cylinder TES is now tes_type == 3 (two tank == 1, packed bed == 2)
+			old_tes_type = value('tes_type');
+			tes_type = old_tes_type;
+			if(old_tes_type == 0)
+			{
+				tes_type = 1;
+			}
+			else if(old_tes_type == 1)
+			{
+				tes_type = 3;
+			}
+			value('tes_type', tes_type, 'Update TES type option for SSC variable (1=two tank, 2=packed bed, 3=pressurized water)');
+			value('TES_DISP_tes_type', tes_type - 1, 'Update TES type option for SAM user interface copy of variable (0=two tank, 1=packed bed, 2=pressurized water)');
+		}
+
+		variable_name_change('tes_cyl_tank_thick', 'tes_tank_thick');
+		variable_name_change('tes_cyl_tank_cp', 'tes_tank_cp');
+		variable_name_change('tes_cyl_tank_dens', 'tes_tank_dens');
+		variable_name_change('tes_cyl_tank_insul_percent', 'tes_tank_insul_percent');
+		variable_name_change('tes_n_tsteps', 'tes_NT_nstep');
+		
+		variable_name_change('tes_cyl_piston_loss_poly', 'tes_NT_piston_loss_poly');
+
+		piston_loss_poly = oldvalue('tes_NT_piston_loss_poly');
+		if(piston_loss_poly!=null) {
+			piston_loss_poly_labels = ['tes_cyl_piston_loss_poly_0', 
+									   'tes_cyl_piston_loss_poly_1', 
+									   'tes_cyl_piston_loss_poly_2', 
+									   'tes_cyl_piston_loss_poly_3'];
+			N_piston_loss_poly = #piston_loss_poly;
+			for (i = 0; i < #piston_loss_poly_labels; i++) {
+				if(i < N_piston_loss_poly)
+					val = piston_loss_poly[i];
+				else
+					val = 0;
+				value(piston_loss_poly_labels[i], val);
+			}
+		}
+		
+		message('We added an option on the Solar Field page to specify the trough loop minimum and maximum mass flow rate limits as either absolute (kg/s) or relative (fraction) values.'
+		        ' The default relative factors for minimum and maximum mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+		value('use_abs_or_rel_mdot_limit', 0, 'Use relative minimum and maximum flow rate limits (fractions) by default');
+		value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
+		value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
+			
+			
+		message('We added an option on the Thermal Storage page to size the tank with either a fixed diameter or fixed height.', 'warning');
+		h_tank = oldvalue('h_tank');
+		if(h_tank != null)
+		{
+			variable_name_change('h_tank_in', 'h_tank');
+			value('is_h_tank_fixed', 1, 'Set default tank sizing to fixed height');
+		}
+		
+		if(oldvalue('T_shutdown') == null)
+		{
+			message('We added the ability to set the field startup and shutdown temperatures, which were previously set internally by SAM.'
+				' The startup and shutdown temperatures will be set to the previous SAM-calculated value. ', 'warning');
+			
+			T_loop_out = oldvalue('T_loop_out');
+			T_loop_in = oldvalue('T_loop_in_des');
+			
+			T_startup_min = T_loop_in;
+			if(T_loop_out > 600)
+			{
+				T_startup_min = T_loop_out - 70.0;
+			}
+			T_startup = max(T_startup_min, 0.67 * T_loop_in + 0.33 * T_loop_out);
+			T_shutdown = T_startup;
+			value('T_startup', T_startup, 'Field startup temperature set using the previous SAM version method.');
+			value('T_shutdown', T_shutdown, 'Field shutdown temperature set equal to startup.');
+		}
+		
+		
+		
+	}
+	
+	// Linear Fresnel Model Changes
+	if(cfg.tech == 'MSLF' || cfg.tech == 'MSLF IPH')
+	{
+		message('We added an option on the Solar Field page to specify the trough loop minimum and maximum mass flow rate limits as either absolute (kg/s) or relative (fraction) values.'
+		        ' The default relative factors for min and max mass flow are 0.25 and 1.2, respectively.'
+		        , 'warning');
+		        
+			value('use_abs_or_rel_mdot_limit', 'Use relative (fraction) minimum and maximum flow rate limits by default');
+			value('f_htfmin', 0.25, 'Set default minimum mass flow rate fraction');
+			value('f_htfmax', 1.2, 'Set default maximum mass flow rate fraction');
+	}
+
+	// Detailed PV Model Changes
+	if(cfg.tech == 'Flat Plate PV')
+	{
+		variable_name_change('cec_gamma_pmp', 'cec_gamma_r');
+		variable_name_change('gamma_pmp_calc', 'gamma_r_calc');
+	}
+	
+	is_btm_fin = ( cfg.fin == 'Residential' || cfg.fin == 'Commercial' || cfg.fin == 'Host Developer' || cfg.fin == 'Third Party' );
+	is_fom_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' );
+
+	// Standalone Battery Changes
+	if(cfg.tech == 'Standalone Battery')
+	{
+		message('We added a new Battery Time Step input page to explicitly define the simulation time step for standalone batteries. (For batteries coupled with a power generation system, the simulation time step is defined by the system model.)', 'warning');
+		timestep_mins = 60;
+		ts_per_hour = 1;
+		if (is_btm_fin) {
+			load = value("load");
+			ts_per_hour = #load / 8760;
+		}
+		if (is_fom_fin) {
+			if ( value('batt_dispatch_choice_ui') == 1 ) {
+				custom_dispatch = value('batt_custom_dispatch');
+				ts_per_hour = #custom_dispatch / 8760;
+			}
+			else {
+				curtailment = value("grid_curtailment");
+				ts_per_hour = #curtailment / 8760;
+			}
+		}
+		timestep_mins /= ts_per_hour;
+		options = [60, 30, 20, 15, 10, 5, 1];
+		i = 0;
+		while(timestep_mins < options[i]){
+			i++;
+		}
+		
+		value("timestep_minutes", timestep_mins, 'Simulation time step in minutes');
+		value("timestep_minutes_ui", i, 'Simulation time step option (0=60 min, 1=30 min, 2=20 min, 3=15 min, 4=10 min, 5=5 min, 6=1 min)');
+	}
+
+
+	//Check for renamed generic system configs
+	if(cfg.tech == 'Generic System' || cfg.tech == 'Generic Battery' || cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
+	{
+		if (cfg.tech == 'Generic System') {
+			message('We renamed Generic System to Custom Generation Profile', 'warning');
+			config('Custom Generation Profile', cfg.fin);
+		}
+		if(cfg.tech == 'Generic Battery') 
+		{
+			message('We renamed Generic System Battery to Custom Generation Battery', 'warning');
+			config('Custom Generation Battery', cfg.fin);
+		}
+		if(cfg.tech == 'Generic PVWatts Wind FuelCell Battery Hybrid')
+		{
+			message('We renamed Generic PVWatts Wind FuelCell Battery Hybrid to CustomGeneration PVWatts Wind FuelCell Battery Hybrid.', 'warning');
+			config('CustomGeneration PVWatts Wind FuelCell Battery Hybrid', cfg.fin);
+			//value('customgeneration_system_capacity', oldvalue('generic_system_capacity'), 'Variable name changed');
+			//value('customgeneration_total_installed_cost', oldvalue('generic_total_installed_cost'), 'Variable name changed');
+		}
+
+		config_update_with_old_values();
+		
+		variable_name_change('customgen.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('customgen.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('customgen.cost.epc.fixed', 'genericsys.cost.epc.fixed');
+		variable_name_change('customgen.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('customgen.cost.epc.percent', 'genericsys.cost.epc.percent');
+		variable_name_change('customgen.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('customgen.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('customgen.cost.per_watt','genericsys.cost.per_watt');
+		variable_name_change('customgen.cost.plant','genericsys.cost.plant');
+		variable_name_change('customgen.cost.plant_scaled','genericsys.cost.plant_scaled');
+		variable_name_change('customgen.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('customgen.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('customgen.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('customgen.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('customgen.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('customgen.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('customgen.cost.sales_tax.value','genericsys.cost.sales_tax.value');
+		
+	}
+	
+	//Check for renamed marine battery cost variables
+	if(cfg.tech == "MEwave Battery") {
+		variable_name_change('marinebatt.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('marinebatt.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('marinebatt.cost.epc.fixed', 'customgen.cost.epc.fixed');
+		variable_name_change('marinebatt.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('marinebatt.cost.epc.percent', 'custom.cost.epc.percent');
+		variable_name_change('marinebatt.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('marinebatt.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('marinebatt.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('marinebatt.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('marinebatt.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('marinebatt.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('marinebatt.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('marinebatt.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('marinebatt.cost.sales_tax.value','genericsys.cost.sales_tax.value');
+	}
+	//Check for renamed standalone battery cost variables
+	if(cfg.tech == "Standalone Battery") {
+		variable_name_change('standalonebatt.cost.contingency', 'genericsys.cost.contingency');
+		variable_name_change('standalonebatt.cost.contingency_percent', 'genericsys.cost.contingency_percent');	
+		variable_name_change('standalonebatt.cost.epc.fixed', 'customgen.cost.epc.fixed');
+		variable_name_change('standalonebatt.cost.epc.nonfixed', 'genericsys.cost.epc.nonfixed');
+		variable_name_change('standalonebatt.cost.epc.percent', 'custom.cost.epc.percent');
+		variable_name_change('standalonebatt.cost.epc.total','genericsys.cost.epc.total');
+		variable_name_change('standalonebatt.cost.installed_per_capacity','genericsys.cost.installed_per_capacity');
+		variable_name_change('standalonebatt.cost.plm.fixed','genericsys.cost.plm.fixed');
+		variable_name_change('standalonebatt.cost.plm.nonfixed','genericsys.cost.plm.nonfixed');
+		variable_name_change('standalonebatt.cost.plm.percent','genericsys.cost.plm.percent');
+		variable_name_change('standalonebatt.cost.plm.total','genericsys.cost.plm.total');
+		variable_name_change('standalonebatt.cost.sales_tax.percent','genericsys.cost.sales_tax.percent');
+		variable_name_change('standalonebatt.cost.sales_tax.total','genericsys.cost.sales_tax.total');
+		variable_name_change('standalonebatt.cost.sales_tax.value','genericsys.cost.sales_tax.value');
+	}
+	
+		
+};
 
 version_upgrade{'2023.12.17'} = define() {
 	
@@ -172,7 +401,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
@@ -203,7 +437,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods from previous versions are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [[0,0,0]] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('dc_adjust_periods', p); 
 		value('dc_adjust_en_timeindex', x.en_timeindex);
 		value('dc_adjust_timeindex', x.timeindex);
@@ -216,7 +455,12 @@ version_upgrade{'2023.12.17'} = define() {
 		//assigned periods are a matrix [[x,y,z]], unassigned periods are [1]. the latter must be reformatted to [0,0,0] to simulate correctly.
 		p = x.periods;
 		p1 = p[0];
-		if (typeof(p1) == 'number') {p = [[0,0,0]];}
+		if ( typeof(p1) == 'number' ) {
+			p = [[0,0,0]];
+		}
+		elseif ( #p1 != 3 ) {
+			p = [[0,0,0]];
+		}
 		value('adjust_periods', p); 
 		value('adjust_en_timeindex', x.en_timeindex);
 		value('adjust_timeindex', x.timeindex);
@@ -495,6 +739,7 @@ version_upgrade{'2023.12.17'} = define() {
 		value('fc_storage_p6_charge',oldvalue('fc.storage.p6.charge'));
         value('dispatch_manual_fuelcell_sched',value('dispatch_manual_sched'),'Copy battery dispatch weekday schedule to new fuel cell dispatch schedule.');
         value('dispatch_manual_fuelcell_sched_weekend',value('dispatch_manual_sched_weekend'),'Copy battery dispatch weekend schedule to new fuel cell dispatch schedule.');
+		value('fuelcell_dispatch_excl', value('fuelcell_dispatch_choice'));
 	}
 };
 

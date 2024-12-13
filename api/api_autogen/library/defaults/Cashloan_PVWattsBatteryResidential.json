@@ -6,7 +6,7 @@
 			"federal_tax_rate": [15.000000],
 			"inflation_rate": 2.5,
 			"insurance_rate": 0,
-			"loan_rate": 5,
+			"loan_rate": 7,
 			"loan_term": 25,
 			"market": 0,
 			"mortgage": 1,
@@ -19,13 +19,13 @@
 			"system_capacity": 8
 		},
 		"SystemCosts": {
-			"om_capacity": [56.000000],
+			"om_capacity": [65.040000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 42841.7
+			"total_installed_cost": 40725.5
 		},
 		"LandLease": {
 		},
@@ -144,7 +144,7 @@
 			"pbi_uti_term": 0
 		},
 		"BatterySystem": {
-			"battery_per_kWh": 273.52
+			"battery_per_kWh": 434
 		},
 		"FuelCell": {
 		},
@@ -180,7 +180,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 8405.72
+			"battery_total_cost_lcos": 10169.5
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]
