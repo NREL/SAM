@@ -122,6 +122,10 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <p>Use consistent labels for monthly and annual energy variables. (<a href="https://github.com/NREL/ssc/pull/1236">SSC 1236</a>)</p>
 
+<p>Improve display of parametric results that include "NaN" or "Inf" values. (<a href="https://github.com/NREL/wex/pull/180">WEX 180</a>)</p>
+
+<p>Fix time series data viewer issue with leap days that caused time series to end on a day other than December 31. (<a href="https://github.com/NREL/wex/pull/179">WEX 179</a>)</p>
+
 <h2>Update Default Costs and System Designs (SAM 2024.12.12)</h2>
 
 <p>Update defaults to better align with current state of U.S. market and incentives. (<a href="https://github.com/NREL/SAM/pull/1930">SAM 1930</a>)</p>
@@ -151,9 +155,13 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <h2>Electricity Bill Calculator (SAM 2024.12.12)</h2>
 
+<p>Fix downloads from Utility Rate Database (URDB) for utility companies with more than 500 rates (PG&E and others) or with no rates. (<a href="https://github.com/NREL/SAM/pull/1873">SAM 1875</a>)</p>
+
 <p>Add option for net billing with carryover for credits that expire at end of true-up period instead of carrying over to following year, and credits apply to energy charge portion of monthly electricity bill. (<a href="https://github.com/NREL/SAM/pull/1835">SAM 1835</a>, <a href="https://github.com/NREL/ssc/pull/1200">SSC 1200</a>)</p>
 
 <p>Improve error checking of time-of-use (TOU) rates by requiring that tiers are the same within a month across TOU periods. (<a href="https://github.com/NREL/ssc/pull/1207">SSC 1207</a>)</p>
+
+<p>Fix an issue with front-of-meter (FOM) electricity purchases with hourly buy rates of zero. (<a href="https://github.com/NREL/ssc/pull/1264">SSC 1264</a>)</p>
 
 <h2>Detailed PV (SAM 2024.12.12)</h2>
 
@@ -203,15 +211,23 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <p>Include battery discharge power in power profile used to calculate project costs and benefits. (<a href="https://github.com/NREL/ssc/issues/1256">SSC 1256</a>)</p>
 
+<p>Fix issue with PV-based O&M costs that scaled costs specified in $/kWac by PV DC capacity instead of PV AC capacity. (<a href="https://github.com/NREL/ssc/pull/1260">)SSC 1260</a>)</p>
+
+<p>Use consistent default time-of-delivery (TOD) PPA price factors for all for front-of-meter (FOM) hybrid configurations. (<a href="https://github.com/NREL/SAM/pull/1971">SAM 1971</a>)</p> 
+
+<p>Remove "Hybrid" from performance model names in configuration window when creating or adding new cases. (<a href="https://github.com/NREL/SAM/pull/1875">SAM 1875</a>)</p>
+
 <h2>Concentrating Solar Power (CSP) (SAM 2024.12.12)</h2>
 
-<p>For parabolic trough and linear Fresnel configurations, move input variables for receiver startup dely time and energy fraction from Solar Field page to System Control page. These inputs are for the dispatch optimization algorithm, not the performance simulation. (They are inputs to the performance model for power tower configurations.) (<a href=<https://github.com/NREL/SAM/pull/1961>SAM 1961</a>)</p>
+<p>For parabolic trough and linear Fresnel configurations, move input variables for receiver startup dely time and energy fraction from Solar Field page to System Control page. These inputs are for the dispatch optimization algorithm, not the performance simulation. (They are inputs to the performance model for power tower configurations.) (<a href=<"https://github.com/NREL/SAM/pull/1961">SAM 1961</a>, <a href="https://github.com/NREL/ssc/pull/1261">SSC 1261</a>)</p>
 
 <p>New options for user-defined power cycle (UDPC) interpolation at maximum cycle output. (<a href="https://github.com/NREL/SAM/pull/1935">SAM 1935</a>, <a href="https://github.com/NREL/ssc/pull/1253">SSC 1253</a>)</p>
 
 <p>Fix parabolic trough and linear Fresnel dispatch issue that resulted in infeasible results. (<a href="https://github.com/NREL/ssc/pull/1213">SSC 1213</a>)</p>
 
 <p>New packed bed thermocline and pressurized water cylinder with piston separator TES options for the Physical Trough CSP and IPH performance models. (<a href="https://github.com/NREL/SAM/pull/1900">SAM 1900</a>, <a href="https://github.com/NREL/ssc/pull/1238">SSC 1238</a>)</p>
+
+<p>Change default constant availability loss for molten salt power tower configurations from 0 to 5%. (<a href="https://github.com/NREL/SAM/pull/1899">SAM 1899</a>)</p>
 
 <h2>Industrial Process Heat (IPH) (SAM 2024.12.12)</h2>
 
@@ -229,7 +245,7 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 
 <p>Add time series availability losses to Wave Energy and Tidal Energy models. (<a href="https://github.com/NREL/SAM/pull/1885">SAM 1885</a>, <a href="https://github.com/NREL/ssc/pull/1225">SSC 1225</a>)</p>
 
-<p>Add capacity factor input to tidal energy turbine design page. (<a href="https://github.com/NREL/SAM/pull/1872">SAM 1872</a>, <a href="https://github.com/NREL/ssc/pull/1218">SSC 1218</a>)</p>
+<p>Add capacity factor input to tidal energy turbine design page. (<a href="https://github.com/NREL/SAM/pull/1872">SAM 1872</a>, <a href="https://github.com/NREL/ssc/pull/1218">SSC 1218</a>, <a href="https://github.com/NREL/ssc/pull/1181">SSC 1181</a>)</p>
 
 <p>Update marine energy device cost curves. (<a href="https://github.com/NREL/ssc/pull/1249">SSC 1249</a>)</p>
 
@@ -252,6 +268,8 @@ CATEGORY FOR MAINTENANCE UPDATES: General, Solar, etc.
 <p>Fix LandBOSSE call to run Python from SAM user interface. (<a href="https://github.com/NREL/SAM/pull/1939">SAM 1939</a>)</p>
 
 <p>Add wind weather file reader check for missing data to improve error message for invalid wind resource files. (<a href="https://github.com/NREL/ssc/pull/1221">SSC 1221</a>)</p>
+
+<p>New inputs to SSC (accessible only via <a href="https://sam.nrel.gov/software-development-kit-sdk">SAM Software Development Kit (SDK)</a> for wake model, access to internal Park wake model inputs, and new "icing persistence" input. These features are not available in the SAM desktop application. (<a href="https://github.com/NREL/ssc/pull/1186">SSC 1186</a>)</p>
 
 <h2>Custom Generation Profile (SAM 2024.12.12)</h2>
 
