@@ -661,7 +661,7 @@
         "on_load{'Financial Solution Mode Single Owner'} = define()",
         "{",
         "\tsoln_mode_ctrl_refresh();",
-        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && financing() != \"Host Developer\") {",
+        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && technology() != 'PVWatts CSPTowerMoltenSalt Battery Hybrid' && financing() != \"Host Developer\") {",
         "\t\tcheck_auto_ppa();",
         "\t}",
         "\tdisplay_message();",
@@ -671,7 +671,7 @@
         "on_change{'ppa_soln_mode'} = define()",
         "{",
         "\tsoln_mode_ctrl_refresh();",
-        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && financing() != \"Host Developer\") {",
+        "\tif (is_assigned('en_batt') && value('en_batt') != 0 && technology() != 'PVWatts CSPTowerMoltenSalt Battery Hybrid' && financing() != \"Host Developer\") {",
         "\t\tcheck_auto_ppa();",
         "\t}",
         "\tdisplay_message();",
@@ -724,6 +724,7 @@
         "\r",
         "function check_auto_ppa()\r",
         "{\r",
+        "\t\r",
         "\tdispatch = value('batt_dispatch_choice_ui');\r",
         "\tif (dispatch == 0 && value('en_batt') != 0 && financing() != \"Merchant Plant\") \r",
         "\t{\r",
@@ -732,6 +733,7 @@
         "\t\t\tmsgbox('Specify IRR Target not available for automated dispatch.\\nThe automated battery dispatch options require the Specify PPA Price option on the Revenue or Financial Parameters page.\\n\\nPlease change Specify IRR Target to Specify PPA Price and specify a PPA price and optional escalation rate to use the Automated Dispatch options.');\r",
         "\t\t}\r",
         "\t}\r",
+        "\t\r",
         "}\r",
         ""
     ]

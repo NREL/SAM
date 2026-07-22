@@ -261,7 +261,7 @@
         "REC_COPY_T_htf_hot_des": 574.0,
         "REC_COPY_W_dot_rec_pump_des": 6.057255174419515,
         "REC_COPY_W_dot_rec_pump_rec_share_des": 3.0880808352057538,
-        "REC_COPY_W_dot_rec_pump_tower_share_des": 2.9691743392137619,
+        "REC_COPY_W_dot_rec_pump_tower_share_des": 2.969174339213762,
         "REC_COPY_eta_rec_therm_des_calc": 94.15782727176776,
         "REC_COPY_m_dot_htf_rec_des_calc": 1085.4616025535289,
         "REC_COPY_solarm": 1.9,
@@ -301,7 +301,7 @@
         "W_dot_heater_des_calc": 0.0,
         "W_dot_rec_pump_des_calc": 6.057255174419515,
         "W_dot_rec_pump_rec_share_des_calc": 3.0880808352057538,
-        "W_dot_rec_pump_tower_share_des_calc": 2.9691743392137619,
+        "W_dot_rec_pump_tower_share_des_calc": 2.969174339213762,
         "W_rad_tubes": 0.05,
         "adjust": 0.0,
         "adjust_constant": 0.0,
@@ -48006,7 +48006,7 @@
         "tower_fixed_cost": 899272.0,
         "tshours": 6.0,
         "tshours_heater": 0.0,
-        "tshours_sf": 3.1578947368421059,
+        "tshours_sf": 3.157894736842106,
         "u_ctes_tank": 0.4,
         "u_riser": 4.0,
         "u_tank": 1.2,
@@ -48957,7 +48957,8 @@
             ]
         ],
         "compute_as_cube": 1.0,
-        "en_standalone_batt": 0.0,
+        "en_batt": 0.0,
+        "en_wave_batt": 0.0,
         "hybrid_system_capacity": 100505.77853481176,
         "om_batt_capacity_cost": [
             0.0
