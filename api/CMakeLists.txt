@@ -118,7 +118,7 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(SAMAPI_EXPORT) # only on Unix
+    if(SAMAPI_EXPORT AND UNIX) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
