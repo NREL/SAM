@@ -25,7 +25,7 @@ set(SAM_SOURCES
         ../../src/variables.cpp
         ../../src/equations.cpp)
 
-file(TO_CMAKE_PATH ../../../ssc/shared/lib_util.cpp SSC_SOURCES)
+file(TO_CMAKE_PATH $ENV{SSCDIR}/shared/lib_util.cpp SSC_SOURCES)
 
 
 #####################################################################################################################
@@ -144,7 +144,7 @@ set_target_properties(export_config
     DEBUG_POSTFIX "d"
     PREFIX ""
     )
-target_compile_features(export_config PUBLIC cxx_std_11)
+target_compile_features(export_config PUBLIC cxx_std_20)
 
 if (MSVC)
     set_target_properties(export_config
@@ -177,7 +177,7 @@ else()
             PATHS $ENV{SSC_LIB} $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
     target_link_libraries(export_config optimized ${WEX_LIB} optimized ${SSC_LIB} optimized ${LK_LIB})
 
-    if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         unset(LKD_LIB CACHE)
         unset(WEXD_LIB CACHE)
         unset(SSCD_LIB CACHE)
